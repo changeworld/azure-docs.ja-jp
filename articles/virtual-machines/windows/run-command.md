@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/02/2018
+ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 322b21ae2273b949e9a46e0c47a9f9e4d661603e
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 3ba1f9afda1b4f7f227c996615cc17a8c604d5fb
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267955"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138227"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
@@ -37,6 +37,9 @@ ms.locfileid: "48267955"
 * スクリプトの実行を取り消すことはできない
 * スクリプトを実行できる最大時間は 90 分であり、その後タイムアウトになる
 * スクリプトの結果を返すために、VM からの送信接続が必要
+
+> [!NOTE]
+> 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 拡張機能に、これらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行しても、結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して、Azure パブリック IP アドレスへのトラフィックを許可できます。
 
 ## <a name="run-a-command"></a>コマンドの実行
 

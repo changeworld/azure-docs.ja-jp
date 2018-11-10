@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 9250e38eadb9d9b1e8bf0c09fa1a9a165e5e69f1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 5a3d63637d7b680a012057b92546ccde87ac73de
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886264"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233363"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Kubernetes を Azure Stack Marketplace に追加する
 
@@ -72,9 +72,10 @@ Kubernetes の Marketplace 項目のプラン、オファー、サブスクリ�
 
 1. 「 `UbuntuServer` 」を入力します。
 
-1. 次のプロファイルを持つ最新バージョンのサーバーを選択します。
+1. サーバーの最新バージョンを選択します。 通常版を確認して、最新バージョンがインストールされていることを確認してください。
     - **[発行元]**: Canonical
     - **[オファー]**: UbuntuServer
+    - **[バージョン]**: 16.04.201806120
     - **[SKU]**: 16.04-LTS
 
 1. **[ダウンロード]** を選択します。

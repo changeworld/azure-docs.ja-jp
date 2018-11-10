@@ -4,16 +4,16 @@ description: この記事では、Azure Policy のポリシーをプログラム
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dd7ec4f1d0c018a3c7eed19bea523f7c09bfea3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985318"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242638"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>ポリシーをプログラムで作成してコンプライアンス データを表示する
 
@@ -74,7 +74,13 @@ ms.locfileid: "46985318"
    New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   このコマンドは、_Audit Storage Accounts Open to Public Networks_ という名前のポリシー定義を作成します。 使用できるその他のパラメーターの詳細については、「[New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition)」を参照してください。
+   このコマンドは、_Audit Storage Accounts Open to Public Networks_ という名前のポリシー定義を作成します。
+   使用できるその他のパラメーターの詳細については、「[New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition)」を参照してください。
+
+   場所のパラメーターを指定せずに呼び出す場合、`New-AzureRmPolicyDefinition` は、既定により、セッション コンテキストの選択されたサブスクリプションにポリシー定義を保存することになります。 定義を別の場所に保存するには、次のパラメーターを使用します。
+
+   - **SubscriptionId** -別のサブスクリプションに保存します。 _GUID_ 値が必要です。
+   - **ManagementGroupName** -管理グループに保存します。 _string_ 値が必要です。
 
 1. ポリシー定義を作成したら、次のコマンドを実行してポリシー割り当てを作成できます。
 
@@ -85,6 +91,13 @@ ms.locfileid: "46985318"
    ```
 
    _ContosoRG_ を対象とするリソース グループの名前に置き換えます。
+
+   `New-AzureRmPolicyAssignment` の **Scope** パラメーターも、サブスクリプションと管理グループで使用できます。 このパラメーターは、`Get-AzureRmResourceGroup` の **ResourceId** プロパティが返す完全なリソース パスを使用します。 各コンテナーの **Scope** のパターンは、次のとおりです。
+   `{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。
+
+   - リソース グループ - `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - サブスクリプション - `/subscriptions/{subId}/`
+   - 管理グループ - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Azure Resource Manager PowerShell モジュールを使用したリソース ポリシーの管理の詳細については、「[AzureRM.Resources](/powershell/module/azurerm.resources/#policies)」をご覧ください。
 

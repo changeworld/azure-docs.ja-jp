@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 08/26/2018
 ms.author: shvija
-ms.openlocfilehash: ee1339d02fb23282d3589a80385f982eae2865fe
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: dce7c4067ba6d96bf14f4e3300d951b594afe930
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128168"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240634"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs からイベントを受信する
 
@@ -50,7 +50,7 @@ EventProcessorHost を使用するには、[Azure ストレージ アカウン�
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
 
-    このチュートリアルの後半で使用するため、key1 の値を一時的な場所にコピーしておきます。
+    key1 の値を一時的な場所にコピーします。 このチュートリアルの後の方で、それを使用します。
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>EventProcessor ホストを使用した Java プロジェクトの作成
 
@@ -273,23 +273,18 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 
 既定のチェックポイント マネージャーには、Blob Storage が使用されます。しかし、EPH で使用されているチェックポイント マネージャーを独自の実装でオーバーライドすれば、その独自実装の基盤として任意のストアを使用することができます。
 
-インターフェイス com.microsoft.azure.eventprocessorhost.ICheckpointManager を実装するクラスを作成する必要があります。
+インターフェイス com.microsoft.azure.eventprocessorhost.ICheckpointManager を実装するクラスを作成します
 
 チェックポイント マネージャー (com.microsoft.azure.eventprocessorhost.ICheckpointManager) のカスタム実装を使用します。
 
 既定のチェックポイントのメカニズムをカスタム実装内でオーバーライドし、独自のデータ ストア (SQL Server、CosmosDB、Redis Cache など) を基盤として独自のチェックポイントを実装します。 チェックポイント マネージャーの実装の基盤として使用するストアには、コンシューマー グループのイベントを処理するすべての EPH インスタンスからアクセスできるストアを使用することをお勧めします。
 
-ご利用の環境内で利用できるあらゆるデータストアを使用できます。
+環境内で利用できるどのデータストアでも使用できます。
 
 com.microsoft.azure.eventprocessorhost.EventProcessorHost クラスには、EventProcessorHost のチェックポイント マネージャーをオーバーライドする際に使用できる 2 つのコンストラクターがあります。
 
 ## <a name="next-steps"></a>次の手順
-
-Event Hubs の詳細については、次のリンク先を参照してください:
-
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [Event Hub を作成する](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+このクイック スタートでは、イベント ハブからメッセージを受信する Java アプリケーションを作成しました。 Java を使用してイベント ハブにイベントを送信する方法については、[Java を使用してイベント ハブからイベントを送信すること](event-hubs-java-get-started-send.md)に関するページを参照してください。
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md

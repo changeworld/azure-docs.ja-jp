@@ -3,8 +3,8 @@ title: Azure での OpenShift デプロイのトラブルシューティング |
 description: Azure での OpenShift デプロイの問題を解決します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: haroldw
-manager: najoshi
+author: haroldwongms
+manager: joraio
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,34 +15,109 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 35e554d3a9c7e7d56546ae9723c33eb59e906472
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 6a4af0efb14d8ad45add906262ffd2121e8b78d0
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
-ms.locfileid: "24139452"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085833"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Azure での OpenShift デプロイのトラブルシューティング
 
-OpenShift クラスターが正常に展開しない場合は、これらのトラブルシューティングを試すと、問題を絞り込むことができます。 デプロイ ステータスを表示し、次の終了コード一覧と比較してください。
+OpenShift クラスターが正常にデプロイされない場合は、Azure portal にエラーが出力されます。 この出力が読みにくく、問題を簡単に識別できない場合があります。 この出力にざっと目を通して、終了コード 3、4、または 5 を探してください。 これら 3 つの終了コードの情報を次に示します。
 
 - 終了コード 3: Red Hat サブスクリプション ユーザー名/パスワードまたは組織 ID/ライセンス認証キーが正しくありません
 - 終了コード 4: Red Hat のプール ID が正しくないか、使用権利がありません
 - 終了コード 5: Docker シン プールのボリュームをプロビジョニングできません
-- 終了コード 6: OpenShift クラスターのインストールに失敗しました
-- 終了コード 7: OpenShift クラスターのインストールは成功しましたが、Azure Cloud Solution Provider の構成に失敗しました - マスター ノードのマスター設定の問題
-- 終了コード 8: OpenShift クラスターのインストールは成功しましたが、Azure Cloud Solution Provider の構成に失敗しました - マスター ノードのノード設定の問題
-- 終了コード 9: OpenShift クラスターのインストールは成功しましたが、Azure Cloud Solution Provider の構成に失敗しました - インすらストラクチャまたはアプリケーション ノードのノード設定の問題
-- 終了コード 10: OpenShift クラスターのインストールは成功しましたが、Azure Cloud Solution Provider の構成に失敗しました - マスター ノードの修正、またはマスターをスケジュール不可に設定できません
-- 終了コード 11: メトリックの展開に失敗しました
-- 終了コード 12: ロギングの展開に失敗しました
 
-終了コード 7 から 10、OpenShift クラスターをインストールしましたが、Azure Cloud Solution Provider の構成に失敗しました。 SSH をマスター ノード (OpenShift Origin) または要塞ノード (OpenShift Container Platform) に送信し、そこから各ノードに SSH を送信して、問題を解決できます。
+他のすべての終了コードについては、ssh 経由でホストに接続して、ログ ファイルを表示してください。
 
-終了コード 7 から 9 で失敗する場合、主な原因として、サービス プリンシパルがサブスクリプションまたはリソース グループに対する適切な権限を持っていなかったことが考えられます。 これが原因である場合は、適切な権限を割り当て、失敗したスクリプトと後続のすべてのスクリプトを手動で再実行します。
+**OpenShift Container Platform**
 
-スクリプトを再度実行する前に、必ず失敗したサービス (たとえば、systemctl atomic-openshift-node.service) を再起動してください。
+Ansible プレイブック ホストに SSH 接続します。 テンプレートまたは Marketplace オファーの場合は、要塞ホストを使用します。 要塞ホストから、クラスター内の他のすべてのノード (マスター、インフラストラクチャ、CNS、コンピューティング) に SSH 接続できます。 ログ ファイルを表示するには、root である必要があります。 SSH アクセスでは root は既定で無効になるため、root を使用して他のノードに接続しないでください。
 
-さらにトラブルシューティングするには、ポート 2200 (Origin) で、マスター ノードに SSH を送信するか、またはポート 22 (Container Platform) の要塞ノードに送信します。 ルート (sudo su -) ユーザーでログインし、/var/lib/waagent/custom-script/download ディレクトリに移動します。
+**OKD**
 
-ここには "0" と "1" というフォルダーがあります。 これらの各フォルダーに、"stderr"、"stdout" という 2 つのファイルがあります。 これらのファイルから、障害が発生した箇所を特定します。
+Ansible プレイブック ホストに SSH 接続します。 OKD テンプレート (バージョン 3.9 以前) では、master-0 ホストを使用します。 OKD テンプレート (バージョン3.10 以降) では、要塞ホストを使用します。 Ansible プレイブック ホストから、クラスター内の他のすべてのノード (マスター、インフラストラクチャ、CN、コンピューティング) に SSH 接続できます。 ログ ファイルを表示するには、root (sudo su -) である必要があります。 SSH アクセスでは root は既定で無効になるため、root を使用して他のノードに接続しないでください。
+
+## <a name="log-files"></a>ログ ファイル
+
+ホスト準備スクリプト用のログ ファイル (標準エラーと標準出力) は、すべてのホストで /var/lib/waagent/custom-script/download/0 に配置されます。 ホストの準備中にエラーが発生した場合は、これらのログ ファイルを調べてエラーを特定します。
+
+準備スクリプトが正常に実行された場合は、Ansible プレイブック ホストの /var/lib/waagent/custom-script/download/1 ディレクトリ内のログ ファイルを調べる必要があります。 OpenShift の実際のインストール中にエラーが発生した場合は、標準出力ファイルにエラーが表示されます。 この情報を使用して、サポートに連絡してさらに支援を求めてください。
+
+出力例
+
+```json
+TASK [openshift_storage_glusterfs : Load heketi topology] **********************
+fatal: [mycluster-master-0]: FAILED! => {"changed": true, "cmd": ["oc", "--config=/tmp/openshift-glusterfs-ansible-IbhnUM/admin.kubeconfig", "rsh", "--namespace=glusterfs", "deploy-heketi-storage-1-d9xl5", "heketi-cli", "-s", "http://localhost:8080", "--user", "admin", "--secret", "VuoJURT0/96E42Vv8+XHfsFpSS8R20rH1OiMs3OqARQ=", "topology", "load", "--json=/tmp/openshift-glusterfs-ansible-IbhnUM/topology.json", "2>&1"], "delta": "0:00:21.477831", "end": "2018-05-20 02:49:11.912899", "failed": true, "failed_when_result": true, "rc": 0, "start": "2018-05-20 02:48:50.435068", "stderr": "", "stderr_lines": [], "stdout": "Creating cluster ... ID: 794b285745b1c5d7089e1c5729ec7cd2\n\tAllowing file volumes on cluster.\n\tAllowing block volumes on cluster.\n\tCreating node mycluster-cns-0 ... ID: 45f1a3bfc20a4196e59ebb567e0e02b4\n\t\tAdding device /dev/sdd ... OK\n\t\tAdding device /dev/sde ... OK\n\t\tAdding device /dev/sdf ... OK\n\tCreating node mycluster-cns-1 ... ID: 596f80d7bbd78a1ea548930f23135131\n\t\tAdding device /dev/sdc ... Unable to add device: Unable to execute command on glusterfs-storage-4zc42:   Device /dev/sdc excluded by a filter.\n\t\tAdding device /dev/sde ... OK\n\t\tAdding device /dev/sdd ... OK\n\tCreating node mycluster-cns-2 ... ID: 42c0170aa2799559747622acceba2e3f\n\t\tAdding device /dev/sde ... OK\n\t\tAdding device /dev/sdf ... OK\n\t\tAdding device /dev/sdd ... OK", "stdout_lines": ["Creating cluster ... ID: 794b285745b1c5d7089e1c5729ec7cd2", "\tAllowing file volumes on cluster.", "\tAllowing block volumes on cluster.", "\tCreating node mycluster-cns-0 ... ID: 45f1a3bfc20a4196e59ebb567e0e02b4", "\t\tAdding device /dev/sdd ... OK", "\t\tAdding device /dev/sde ... OK", "\t\tAdding device /dev/sdf ... OK", "\tCreating node mycluster-cns-1 ... ID: 596f80d7bbd78a1ea548930f23135131", "\t\tAdding device /dev/sdc ... Unable to add device: Unable to execute command on glusterfs-storage-4zc42:   Device /dev/sdc excluded by a filter.", "\t\tAdding device /dev/sde ... OK", "\t\tAdding device /dev/sdd ... OK", "\tCreating node mycluster-cns-2 ... ID: 42c0170aa2799559747622acceba2e3f", "\t\tAdding device /dev/sde ... OK", "\t\tAdding device /dev/sdf ... OK", "\t\tAdding device /dev/sdd ... OK"]}
+
+PLAY RECAP *********************************************************************
+mycluster-cns-0       : ok=146  changed=57   unreachable=0    failed=0   
+mycluster-cns-1       : ok=146  changed=57   unreachable=0    failed=0   
+mycluster-cns-2       : ok=146  changed=57   unreachable=0    failed=0   
+mycluster-infra-0     : ok=143  changed=55   unreachable=0    failed=0   
+mycluster-infra-1     : ok=143  changed=55   unreachable=0    failed=0   
+mycluster-infra-2     : ok=143  changed=55   unreachable=0    failed=0   
+mycluster-master-0    : ok=502  changed=198  unreachable=0    failed=1   
+mycluster-master-1    : ok=348  changed=140  unreachable=0    failed=0   
+mycluster-master-2    : ok=348  changed=140  unreachable=0    failed=0   
+mycluster-node-0      : ok=143  changed=55   unreachable=0    failed=0   
+mycluster-node-1      : ok=143  changed=55   unreachable=0    failed=0   
+localhost                  : ok=13   changed=0    unreachable=0    failed=0   
+
+INSTALLER STATUS ***************************************************************
+Initialization             : Complete (0:00:39)
+Health Check               : Complete (0:00:24)
+etcd Install               : Complete (0:01:24)
+Master Install             : Complete (0:14:59)
+Master Additional Install  : Complete (0:01:10)
+Node Install               : Complete (0:10:58)
+GlusterFS Install          : In Progress (0:03:33)
+    This phase can be restarted by running: playbooks/openshift-glusterfs/config.yml
+
+Failure summary:
+
+  1. Hosts:    mycluster-master-0
+     Play:     Configure GlusterFS
+     Task:     Load heketi topology
+     Message:  Failed without returning a message.
+```
+
+インストール時に発生する最も一般的なエラーは次のとおりです。
+
+1. 秘密キーにパスフレーズが含まれている
+2. 秘密キーを含むキー コンテナー シークレットが正しく作成されなかった
+3. サービス プリンシパルの資格情報が正しく入力されなかった
+4. サービス プリンシパルにリソース グループへの共同作成者アクセス権がない
+
+### <a name="private-key-has-a-passphrase"></a>秘密キーにパスフレーズが含まれている
+
+SSH 接続でアクセス許可が拒否されたというエラーが表示されます。 Ansible プレイブック ホストに SSH 接続して、秘密キーに関するパスフレーズをチェックします。
+
+### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>秘密キーを含むキー コンテナー シークレットが正しく作成されなかった
+
+Ansible プレイブック ホストに秘密キーが挿入されています (~/.ssh/id_rsa)。 このファイルが正しいことを確認します。 Ansible プレイブック ホストからいずれかのクラスター ノードに対して SSH セッションを開くことでテストします。
+
+### <a name="service-principal-credentials-were-entered-incorrectly"></a>サービス プリンシパルの資格情報が正しく入力されなかった
+
+テンプレートまたは Marketplace オファーへの入力時に、不適切な情報が指定されました。 サービス プリンシパルの適切な appId (clientId) とパスワード (clientSecret) を使用していることを確認します。 次の azure cli コマンドを実行して確認します。
+
+```bash
+az login --service-principal -u <client id> -p <client secret> -t <tenant id>
+```
+
+### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>サービス プリンシパルにリソース グループへの共同作成者アクセス権がない
+
+Azure クラウド プロバイダーが有効になっている場合、使用するサービス プリンシパルは、リソース グループへの共同作成者アクセス権が必要です。 次の azure cli コマンドを実行して確認します。
+
+```bash
+az group update -g <openshift resource group> --set tags.sptest=test
+```
+
+## <a name="additional-tools"></a>その他のツール
+
+一部のエラーでは、次のコマンドを使用して詳細を取得することもできます。
+
+1. systemctl status <service>
+2. journalctl -xe

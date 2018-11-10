@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 2741ea2931ddd7989fc05e1cddbeedb80bf30410
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1df3b790d0c6c0f597a8559551ff5e42c9f110e4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386624"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230269"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Environment v1 の作成方法 
 
@@ -33,8 +33,8 @@ App Service Environment (ASE) は Azure App Service の Premium サービス オ
 ### <a name="before-you-create-your-ase"></a>ASE を作成する前に
 変更できない事柄があることを認識しておくことが重要です。 ASE に関する次の事柄は、ASE を作成した後で変更することはできません。
 
-* 場所
-* [サブスクリプション]
+* Location
+* サブスクリプション
 * リソース グループ
 * 使用する VNet
 * 使用するサブネット 

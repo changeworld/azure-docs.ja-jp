@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/08/2018
-ms.openlocfilehash: f261c59193349d55d407e6079002b75884273e84
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fb4eabb247e6a4fe5550b2b23d34862c789bfaa1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960245"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232326"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service および Terraform を使用して Kubernetes クラスターを作成する
 [Azure Kubernetes Service (AKS)](/azure/aks/) を使用すると、ホストされている Kubernetes 環境を管理できます。これによって、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
@@ -372,6 +372,6 @@ Kubernetes ツールを使用して、新しく作成したクラスターを確
 この記事では、Terraform と AKS を使用して Kubernetes クラスターを作成する方法を学習しました。 Azure 上の Terraform の詳細については、次のリソースもご覧ください。 
 
  [Microsoft.com の Terraform ハブ](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure プロバイダーのドキュメント](http://aka.ms/terraform)  
- [Terraform Azure プロバイダーのソース](http://aka.ms/tfgit)  
- [Terraform Azure モジュール](http://aka.ms/tfmodules)
+ [Terraform Azure プロバイダーのドキュメント](https://aka.ms/terraform)  
+ [Terraform Azure プロバイダーのソース](https://aka.ms/tfgit)  
+ [Terraform Azure モジュール](https://aka.ms/tfmodules)

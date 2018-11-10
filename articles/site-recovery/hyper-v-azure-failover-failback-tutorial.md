@@ -1,29 +1,29 @@
 ---
-title: Site Recovery を使用して Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック | Microsoft Docs
-description: Azure Site Recovery を使用して Hyper-V VM を Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します
+title: ディザスター リカバリーの最中に Azure Site Recovery を使用して Hyper-V VM を Azure にフェールオーバーおよびフェールバックする | Microsoft Docs
+description: ディザスター リカバリーの最中に Azure Site Recovery サービスを使用して Hyper-V VM を Azure にフェールオーバーおよびフェールバックする方法を説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 31de654e6746cecf5aedabbfe481ab99b2aa3510
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6dde345e360dc304578b626ee2678dd51fe56dc6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076985"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210518"
 ---
-# <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック
+# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック
 
 このチュートリアルでは、Hyper-V VM と Azure にフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにフェールバックします。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Hyper-V VM のプロパティで Azure の要件に準拠していることを確認する
 > * Azure へのフェールオーバーを実行する
-> * Azure からオンプレミスへのフェールバック
+> * Azure からオンプレミスにフェールバックする
 > * オンプレミス VM のレプリケートを反転して、Azure へのレプリケートを再開する
 
 このチュートリアルはシリーズで 5 番目のチュートリアルです。 このチュートリアルでは、前のチュートリアルで以下のタスクが既に完了していることを前提としています。    

@@ -1,5 +1,5 @@
 ---
-title: Intelligent Insights でデータベースの使用状況を監視する - Azure SQL Database | Microsoft Docs
+title: Intelligent Insights でデータベースのパフォーマンスを監視する - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database Intelligent Insights は、組み込まれているインテリジェンスを使って、人工知能によりデータベースの使用状況を継続的に監視し、パフォーマンス低下の原因となる破壊的なイベントを検出します。
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: b64c8f5d30f95cccf8a029adfd5c443a81597c4d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e87cd3742a5dcd52c3a447bb66ea9089c18d5aee
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870691"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214683"
 ---
-# <a name="intelligent-insights-using-artificial-intelligence-to-monitor-database-usage"></a>人工知能を使用してデータベースの使用状況を監視する Intelligent Insights
+# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>AI を使用してデータベース パフォーマンスの監視とトラブルシューティングを行う Intelligent Insights
 
 Azure SQL Database Intelligent Insights では、SQL Database と Managed Instance データベースのパフォーマンスに起きていることを把握できます。
 

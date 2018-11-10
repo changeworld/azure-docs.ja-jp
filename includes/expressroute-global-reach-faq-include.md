@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b9c4cf6c90ef5507b318b4f13afb982aab151c79
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 4a3581b3d61c5ad17352c2865fc059704c1eece1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48874147"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50035329"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>ExpressRoute Global Reach とは何ですか。
 
@@ -21,7 +21,7 @@ ExpressRoute Global Reach は、Microsoft のグローバル ネットワーク�
 
 ### <a name="how-do-i-enable-or-disable-expressroute-global-reach"></a>ExpressRoute Global Reach はどのようにして有効または無効にするのですか。
 
-ExpressRoute Global Reach は、ExpressRoute 回線を互いに接続することで有効にします。 この機能を無効にするには、この回線を切断します。 構成を確認してください。
+ExpressRoute Global Reach は、ExpressRoute 回線を互いに接続することで有効にします。 この機能を無効にするには、この回線を切断します。 [構成](../articles/expressroute/expressroute-howto-set-global-reach.md)を確認してください。
 
 ### <a name="do-i-need-expressroute-premium-for-expressroute-global-reach"></a>ExpressRoute Global Reach 用の ExpressRoute Premium が必要ですか。
 
@@ -36,6 +36,7 @@ ExpressRoute は、オンプレミスのネットワークから Microsoft ク�
 ExpressRoute Global Reach は以下の国でサポートされています。 ExpressRoute 回線は、これらの国のピアリング拠点に作成する必要があります。
 
 * オーストラリア
+* フランス
 * 香港特別行政区
 * アイルランド
 * 日本
@@ -58,3 +59,11 @@ ExpressRoute Global Reach は以下の国でサポートされています。 Ex
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>ExpressRoute Global Reach を有効にした後でオンプレミスのネットワーク間では、どのようなネットワーク スループットを期待できますか。
 
 ExpressRoute Global Reach によって有効にしたオンプレミスのネットワーク間のネットワーク スループットは、2 つの ExpressRoute 回線のうち、小さい方によって制限されます。
+
+### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>ExpressRoute Global Reach では、アドバタイズできるルートの数と受信できるルートの数はいくつに制限されていますか。
+
+Azure プライベート ピアリングで Microsoft にアドバタイズできるルートの数は、Standard 回線では 4000、Premium 回線では 10000 のままです。 Azure プライベート ピアリングで Microsoft から受信するルートの数は、Azure 仮想ネットワークのルートと ExpressRoute Global Reach 経由で接続されているその他のオンプレミス ネットワークからのルートの合計です。 オンプレミスのルーターに適切な最大プレフィックス制限が設定されていることを確認してください。 
+
+### <a name="what-is-the-sla-for-expressroute-global-reach"></a>ExpressRoute Global Reach の SLA は何ですか。
+
+ExpressRoute Global Reach では、通常の ExpressRoute サービスと同じ[可用性 SLA](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/) が提供されます。

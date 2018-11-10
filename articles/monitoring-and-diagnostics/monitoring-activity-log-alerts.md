@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5ddf510d50f38ed9aaf742bd06c330e53ffe1391
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6f007ca3aacb338c14bf481ee58407596c8290ad
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992798"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091625"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート 
 
@@ -50,7 +50,7 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 - **[イベント開始者]**: "呼び出し元" とも呼ばれます。 操作を実行したユーザーの電子メール アドレスまたは Azure Active Directory 識別子。
 
 > [!NOTE]
-> 1 つのサブスクリプション内で、1 つのリソース レベル、リソース グループ内のすべてのリソース レベル、またはサブスクリプション レベル全体というスコープのアクティビティについて、最大 100 個のアラート ルールを作成できます。
+> 1 つのサブスクリプション内では、1 つのリソース レベル、リソース グループ内のすべてのリソース レベル、またはサブスクリプション レベル全体というスコープのアクティビティについて、最大 100 個のアラート ルールを作成できます。
 
 アクティビティ ログ アラートがアクティブになると、アクションまたは通知の生成にアクション グループが使用されます。 アクション グループは、通知レシーバー (電子メール アドレス、webhook URL、または SMS の電話番号) の再利用可能なセットです。 これらのレシーバーは、複数のアラートから参照でき、通知チャネルの一元管理とグループ化を行うことができます。 アクティビティ ログ アラートを定義するときには 2 つの方法があります。 次のようにすることができます。
 

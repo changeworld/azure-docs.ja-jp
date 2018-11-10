@@ -4,17 +4,17 @@ description: いくつかの高度なクエリを実行するには、Azure Reso
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 934dff93b9a7f5d6755f55ad1073e01e586b1ca7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fbbdc4a67cd6f2e7d74031f7acc584bf0004bea4
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647835"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085378"
 ---
 # <a name="advanced-resource-graph-queries"></a>Resource Graph の高度なクエリ
 
@@ -33,9 +33,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure CLI (拡張経由) および Azure PowerShell (モジュール経由) は、Azure Resource Graph をサポートします。 次のクエリを実行する前に、環境が準備できていることを確認します。 選択するシェル環境をインストールし、検証する手順については、[Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) および [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module) を参照してください。
 
-## <a name="vmss-capacity"></a>VMSS の容量とサイズを取得します
+## <a name="vmss-capacity"></a>仮想マシン スケール セットの容量とサイズを取得する
 
-このクエリでは、仮想マシン スケール セット (VMSS) のリソースを検索し、仮想マシンのサイズ、スケール セットの容量などのさまざまな詳細情報を取得します。 この情報は、`toint()`分類できるように、数値に容量をキャストする機能を使用します。 これにより、カスタムの名前付きプロパティに返される値も名前変更します。
+このクエリでは、仮想マシン スケール セットのリソースを検索し、仮想マシンのサイズ、スケール セットの容量などのさまざまな詳細情報を取得します。 このクエリは、`toint()` 関数を使用して、容量を分類できるよう数値にキャストしています。 最後に、列の名前をカスタムの名前付きプロパティに変更します。
 
 ```Query
 where type=~ 'microsoft.compute/virtualmachinescalesets'
@@ -75,7 +75,7 @@ Search-AzureRmGraph -Query "project tags | summarize buildschema(tags)"
 **regex @ との一致**により、一致する regex を **^Contoso(.*) [0-9] + $** と定義することができます。 その regex の定義は以下のように説明されています。
 
 - `^` - 一致は、文字列の先頭から始まる必要があります。
-- `Contoso` - 照合する Core 文字列 (大文字小文字を区別)。
+- `Contoso` - 文字列。大文字と小文字は区別されます。
 - `(.*)` - 部分式一致:
   - `.` - 任意の 1 文字との一致 (新しい行を除く)。
   - `*` - 「直前の要素 0 回以上」との一致。

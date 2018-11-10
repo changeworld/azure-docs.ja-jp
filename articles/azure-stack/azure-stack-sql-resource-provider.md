@@ -11,28 +11,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 55d0e51606e8768a01c0b5a7766dbafe24d97a0d
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.reviewer: quying
+ms.openlocfilehash: 3d608843ef31a1ed665fcb1fd90b822f34f77fdd
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307827"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086354"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 
-SQL Server リソースプロバイダー アダプター API を使用して、SQL データベースを [Azure Stack](azure-stack-poc.md) のサービスとして公開します。 リソースプロバイダーをインストールして 1 つまたは複数の SQL Server インスタンスに接続すると、御社および御社のユーザーは次のものを作成できます。
+SQL Server リソースプロバイダー アダプターを使用して、SQL データベースを [Azure Stack](azure-stack-poc.md) のサービスとして提供します。 リソースプロバイダーをインストールして 1 つまたは複数の SQL Server インスタンスに接続すると、御社および御社のユーザーは次のものを作成できます。
 
 - クラウドネイティブ アプリ向けデータベース。
 - SQL を使用する Websites。
 - SQL を使用するワークロード。
 
-リソース プロバイダーでは、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) のすべてのデータベース管理機能が提供されているわけではありません。 たとえば、リソースを自動的に割り当てるエラスティック プールはサポートされていません。 ただし、リソース プロバイダーでは、SQL Server データベースに対して同様の作成、読み取り、更新、および削除 (CRUD) 操作がサポートされています。 リソース プロバイダー API の詳細については、「[Windows Azure Pack SQL Server Resource Provider REST API Reference](https://msdn.microsoft.com/library/dn528529.aspx)」(Windows Azure Pack SQL Server リソース プロバイダー REST API リファレンス) を参照してください。
-
->[!NOTE]
-SQL Server リソース プロバイダー API は、Azure SQL Database と互換性がありません。
+リソース プロバイダーでは、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) のすべてのデータベース管理機能が提供されているわけではありません。 たとえば、リソースを自動的に割り当てるエラスティック プールはサポートされていません。 ただし、リソース プロバイダーでは、SQL Server データベースに対して同様の作成、読み取り、更新、および削除 (CRUD) 操作がサポートされています。 
 
 ## <a name="sql-resource-provider-adapter-architecture"></a>SQL リソースプロバイダー アダプターのアーキテクチャ
 

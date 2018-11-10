@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 06/02/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627391"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215414"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -213,21 +213,19 @@ PowerShell または Graph API でグループを削除しようとした場合�
 
 - グループベースのライセンスでは、他のグループを含むグループ (入れ子になったグループ) を現在サポートしていません。 入れ子になったグループにライセンスを適用した場合は、グループの第 1 レベルのユーザー メンバーだけにライセンスが適用されます。
 
-- この機能はセキュリティ グループでのみ使用できます。 Office グループでは現在サポートされておらず、ライセンスの割り当て処理で使用することはできません。
+- この機能は、セキュリティ グループ、および securityEnabled = TRUE の Office 365 グループでのみ使用できます。
 
 - 現在、[Office 365 管理ポータル](https://portal.office.com )では、グループベースのライセンスはサポートされていません。 ユーザーがライセンスをグループから継承する場合、このライセンスは Office 管理ポータルに通常のユーザー ライセンスとして表示されます。 そのライセンスを変更しようとした場合、または削除しようとした場合、ポータルはエラー メッセージを返します。 継承されたグループのライセンスをユーザーで直接変更することはできません。
 
-- ユーザーがグループから削除され、ライセンスを失うと、そのライセンスのサービス プラン (例: SharePoint Online) は、「**中断**」状態に設定されます。 サービス プランは最終的な無効状態には設定されていません。 この予防措置によって、管理者がグループ メンバーシップの管理で間違いを犯した場合にユーザー データが誤って削除されるのを回避することができます。
-
 - 大きなグループ (例: ユーザーが 100,000 人) に対してライセンスを割り当てるまたはライセンスを変更すると、パフォーマンスに影響が及ぶことがあります。 特に、Azure AD のオートメーションによって生成される変更の量によっては、Azure AD とオンプレミスのシステム間のディレクトリの同期のパフォーマンスに悪影響を及ぼす可能性があります。
 
-- ある種の負荷の大きな状況では、ライセンスの処理に遅延が生じ、グループ ライセンスの追加/削除、グループのユーザーの追加/削除などの変更の処理にかかる時間が長くなることがあります。 変更の処理にかかっている時間が 24 時間を超えた場合には、[サポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) Microsoft に調査を依頼してください。 Microsoft では、*一般提供*の開始までにこの機能のパフォーマンス指標を向上させる予定です。
+- 動的なグループを使用してユーザーのメンバーシップを管理している場合は、ユーザーがそのグループのメンバーであることを確認します。これは、ライセンスを割り当てるうえで必要です。 そうでない場合は、動的なグループの[メンバーシップ ルールの処理状態を確認](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule)します。 
+
+- 負荷が高い状況では、グループのライセンス変更や、既存のライセンスがあるグループのメンバー シップ変更を処理する場合に時間がかかることがあります。 ユーザー数が 60K 以下のグループ サイズの変更処理にかかっている時間が 24 時間を超えた場合には、[サポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) Microsoft に調査を依頼してください。 
 
 - ライセンス管理のオートメーションは、環境内のすべての種類の変更に自動的には反応しません。 たとえば、ライセンスの不足により一部のユーザーがエラー状態になる場合があります。 使用可能なシート数を解放するために、他のユーザーから直接割り当てられた一部のライセンスを削除できます。 ただし、システムがこの変更に自動的に反応してそのエラー状態のユーザーを修正することはありません。
 
   この種の制限の回避策として、Azure AD の 使用可能なシート数を解放するために、**[グループ]** ブレードに移動し、**[再処理]** ボタンをクリックします。 このコマンドにより、そのグループ内のすべてのユーザーが処理され、可能であればエラー状態が解決されます。
-
-- グループベースのライセンスでは、Exchange Online でプロキシ アドレス構成が重複しているためにユーザーにライセンスを割り当てることができなかった場合、エラーは記録されません。ライセンス割り当ての際に、このようなユーザーはスキップされます。 この問題を特定して解決する方法の詳細については、[このセクション](licensing-groups-resolve-problems.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -236,4 +234,6 @@ PowerShell または Graph API でグループを削除しようとした場合�
 * [What is group-based licensing in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md) (Azure Active Directory のグループベースのライセンスとは)
 * [Assigning licenses to a group in Azure Active Directory](licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](licensing-groups-resolve-problems.md)
-* [How to migrate individual licensed users to group-based licensing in Azure Active Directory](licensing-groups-migrate-users.md) (Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法)
+* [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](licensing-groups-migrate-users.md)
+* [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Azure Active Directory のグループベースのライセンスの PowerShell の例](../users-groups-roles/licensing-ps-examples.md)

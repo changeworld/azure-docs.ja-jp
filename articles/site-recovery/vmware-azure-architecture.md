@@ -1,25 +1,26 @@
 ---
-title: Azure Site Recovery での VMware から Azure へのレプリケーション アーキテクチャ | Microsoft Docs
-description: この記事では、Azure Site Recovery を使ってオンプレミスの VMware VM を Azure にレプリケートするときに使われるコンポーネントとアーキテクチャの概要を説明します
+title: Azure Site Recovery における VMware から Azure へのディザスター リカバリー アーキテクチャ | Microsoft Docs
+description: この記事では、Azure Site Recovery を使ってオンプレミスの VMware VM から Azure へのディザスター リカバリーを設定するときに使われるコンポーネントとアーキテクチャの概要を説明します
 author: rayne-wiselman
 ms.service: site-recovery
+ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 58129ece0fb1b7f446e5f8d738b5d1135aa0256e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715756"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212388"
 ---
-# <a name="vmware-to-azure-replication-architecture"></a>VMware から Azure へのレプリケーション アーキテクチャ
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware から Azure へのディザスター リカバリー アーキテクチャ
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) を使ってオンプレミスの VMware サイトと Azure 間で VMware 仮想マシン (VM) をレプリケート、フェールオーバー、および復旧する場合に使われるアーキテクチャとプロセスについて説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、オンプレミスの VMware サイトと Azure の間の VMware 仮想マシン (VM) のディザスター リカバリー レプリケーション、フェールオーバー、および復旧をデプロイする場合に使用するアーキテクチャとプロセスについて説明します。
 
 
 ## <a name="architectural-components"></a>アーキテクチャ コンポーネント
 
-次の表と図は、Azure への VMware レプリケーションに使用するコンポーネントの概要を示したものです。
+次の表と図は、Azure への VMware ディザスター リカバリーに使用するコンポーネントの概要を示したものです。
 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | ---

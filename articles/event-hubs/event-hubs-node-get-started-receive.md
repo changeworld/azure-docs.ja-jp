@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: shvija
-ms.openlocfilehash: 6d5b52c8a5dd0306a349cac5e67eecc809005c6f
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 2f59b7f47acc8ce8e566b7f0e2bcfed379ea60d2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429186"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239086"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Node.js を使用して Azure Event Hubs からイベントを受信する
 
@@ -33,11 +33,11 @@ Event Hubs の詳細については、[Event Hubs の概要](event-hubs-about.md
 
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
-- Node.js バージョン 8.x 以上 [https://nodejs.org](https://nodejs.org) から最新の LTS バージョンをダウンロードします。Node.js の古い LTS バージョンを使用しないでください。 
+- Node.js バージョン 8.x 以降。 [https://nodejs.org](https://nodejs.org) から最新の LTS バージョンをダウンロードします。Node.js の古い LTS バージョンを使用しないでください。 
 - アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][] を作成してください。
 
 ## <a name="create-a-namespace-and-event-hub"></a>名前空間とイベント ハブを作成する
-最初の手順として、Azure portal を使用して、Event Hubs 名前空間とイベント ハブを作成します。 既存のものがない場合は、「[Azure portal を使用して Event Hubs 名前空間とイベント ハブを作成する](event-hubs-create.md)」の手順に従って、これらのエンティティを作成できます。
+最初の手順として、Azure portal を使用して、Event Hubs 名前空間とイベント ハブを作成します。 既存のものがない場合は、[Azure portal を使用して Event Hubs 名前空間とイベント ハブを作成する方法](event-hubs-create.md)に関する記事の手順に従って、これらのエンティティを作成できます。
 
 ## <a name="create-a-storage-account-and-container"></a>ストレージ アカウントとコンテナーの作成
 EventProcessorHost を使用するには、Azure Storage アカウントが必要です。 パーティションのリースやイベント ストリーム内のチェックポイントなどの状態情報は、Azure Storage コンテナーを使用して受信者間で共有されます。 Azure Storage アカウントは、[こちらの記事](../storage/common/storage-quickstart-create-account.md)の手順に従って作成できます。
@@ -57,7 +57,7 @@ npm install @azure/event-processor-host
 
 1. Visual Studio Code でプロジェクトを開きます。 
 2. **processor** フォルダーの下で **.env** という名前のファイルを作成します。 ルート フォルダーの **sample.env** からサンプルの環境変数をコピーして貼り付けます。
-3. ご自分のイベント ハブの接続文字列、イベント ハブ名、およびストレージ エンドポイントを構成します。 Azure portal 内のイベント ハブ ページの **RootManageSharedAccessKey** の下にある **[接続文字列 – プライマリ]** からご自分のイベント ハブ用の接続文字列をコピーできます。 詳細な手順については、[接続文字列の取得](event-hubs-create.md#create-an-event-hubs-namespace)に関するページを参照してください。
+3. 自分のイベント ハブの接続文字列、イベント ハブ名、およびストレージ エンドポイントを構成します。 Azure portal 内のイベント ハブ ページの **RootManageSharedAccessKey** の下にある **[接続文字列 – プライマリ]** からご自分のイベント ハブ用の接続文字列をコピーできます。 詳細な手順については、[接続文字列の取得](event-hubs-create.md#create-an-event-hubs-namespace)に関するページを参照してください。
 4. ご利用の Azure CLI で、**processor** フォルダー パスに移動します。 次のコマンドを実行して、ノード パッケージをインストールし、プロジェクトをビルドします。
 
     ```nodejs
@@ -141,12 +141,7 @@ export EVENTHUB_NAME="<your-event-hub-name>"
 
 ## <a name="next-steps"></a>次の手順
 
-Event Hubs の詳細については、次のページを参照してください。
-
-* [Node.js を使用したイベントの送信](event-hubs-go-get-started-send.md)
-* [Event Hubs サンプル](https://github.com/Azure/azure-event-hubs-node/tree/master/processor/examples/)
-* [イベントを Azure Storage または Data Lake Store にキャプチャする](event-hubs-capture-overview.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+このクイック スタートでは、イベント ハブからメッセージを受信する Node.js アプリケーションを作成しました。 Node.js を使用してイベント ハブにイベントを送信する方法については、[ を使用してイベント ハブからイベントを送信すること](event-hubs-node-get-started-send.md)に関するページを参照してください。
 
 <!-- Links -->
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

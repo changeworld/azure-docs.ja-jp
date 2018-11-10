@@ -1,5 +1,5 @@
 ---
-title: キャッシュ アサイド パターンで Redis Cache を使用する Web アプリを作成するためにチュートリアル | Microsoft Docs
+title: キャッシュ アサイド パターンで Redis Cache を使用する Web アプリを作成するためのチュートリアル | Microsoft Docs
 description: キャッシュ アサイド パターンで Redis Cache を使用する Web アプリを作成する方法について説明します。
 services: redis-cache
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: wesmc
-ms.openlocfilehash: b0f1ba7f0799fb9f8f58370a39758416eab43dc7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c2dffc178a017d8b16ea7a36407d8bbf62c6d642
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195806"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242145"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>チュートリアル: ASP.NET でキャッシュ アサイド スコアボードを作成する
 
-このチュートリアルでは、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)で作成した *ContosoTeamStats* ASP.NET Web アプリを更新して、Azure Redis Cache で[キャッシュ アサイド パターン](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)を使用するスコアボードが含まれるようにします。 サンプル アプリケーションでは、チームの一連の統計情報をデータベースから取得して表示し、Azure Redis Cache を使用して、キャッシュに対するデータの保存と取得のパフォーマンスを向上させるさまざまな方法を示します。 チュートリアルの最後には、実際にデータベースの読み取りと書き込みを行う Web アプリが完成します。Web アプリは、Azure Redis Cache を使って最適化され、Azure でホストされます。
+このチュートリアルでは、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)に関する記事で作成した *ContosoTeamStats* ASP.NET Web アプリを更新して、Azure Redis Cache で[キャッシュ アサイド パターン](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)を使用するスコアボードが含まれるようにします。 サンプル アプリケーションでは、チームの統計情報の一覧をデータベースから取得して表示し、Azure Redis Cache を使用して、キャッシュに対するデータの保存と取得のパフォーマンスを向上させるさまざまな方法を示します。 チュートリアルの最後には、実際にデータベースの読み取りと書き込みを行う Web アプリが完成します。Web アプリは、Azure Redis Cache を使って最適化され、Azure でホストされます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -40,7 +40,7 @@ ms.locfileid: "32195806"
 
 このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
-* このチュートリアルは、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)の続きです。 クイックスタートを完了していない場合は、先に完了してください。
+* このチュートリアルは、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)に関する記事の続きです。 クイックスタートを完了していない場合は、先に完了してください。
 * 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
     * ASP.NET および Web の開発
     * Azure 開発
@@ -52,7 +52,7 @@ ms.locfileid: "32195806"
 
 ### <a name="add-the-entity-framework-to-the-project"></a>Entity Framework をプロジェクトに追加する
 
-1. Visual Studio で、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)で作成した *ContosoTeamStats* ソリューションを開きます。
+1. Visual Studio で、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)に関する記事で作成した *ContosoTeamStats* ソリューションを開きます。
 2. **[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。
 3. **[パッケージ マネージャー コンソール]** ウィンドウで次のコマンドを実行して、EntityFramework をインストールします。
 
@@ -701,7 +701,7 @@ Azure Redis Cache を使用するためにチームの統計情報を複数の�
 
     ![[発行]](./media/cache-web-app-cache-aside-leaderboard/cache-publish-app.png)
 
-2. クイックスタートで作成したのと同じ発行プロファイルを使用するには、**[発行]** をクリックします。
+2. クイックスタートで作成した発行プロファイルと同じものを使用するには、**[発行]** をクリックします。
 
 3. 発行が完了したら、Visual Studio によって、既定の Web ブラウザーでアプリが起動します。
 
@@ -728,7 +728,7 @@ Azure Redis Cache を使用するためにチームの統計情報を複数の�
 チュートリアルのサンプル アプリケーションを使い終わったら、コストとリソースを節約するために Azure リソースを削除しましょう。 すべてのリソースは同じリソース グループに含まれているため、リソース グループを削除するという 1 つの操作で、それらをまとめて削除できます。 このトピックの手順では、*TestResources* という名前のリソース グループを使用しました。
 
 > [!IMPORTANT]
-> 削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、該当するブレードから各リソースを個別に削除できます。
+> 削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルをホスティングするリソースを、維持したいリソースが含まれている既存のリソース グループ内に作成した場合は、該当するブレードから各リソースを個別に削除できます。
 >
 
 1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。

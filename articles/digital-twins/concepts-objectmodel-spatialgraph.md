@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 1c2068af510cb3733ce99a6ae7b40487a8c1a015
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c1d66e0b58567244f8c1406ee258c9311994ff20
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323806"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215108"
 ---
 # <a name="understanding-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digital Twins オブジェクト モデルと空間インテリジェンス グラフを理解する
 
@@ -25,7 +25,7 @@ Azure Digital Twins は Azure IoT サービスであり、物理環境および�
 
 ![Digital Twins 空間グラフの構築][1]
 
-<a id="model" />
+<a id="model"></a>
 
 空間グラフには、スペース、デバイス、センサー、ユーザーがまとめられています。 それぞれは、現実世界をモデル化する方法でリンクされています。会場 43 には 4 つのフロアがあり、それぞれに複数の異なる領域があります。 ユーザーは各自のワークステーションに関連付けられていて、グラフの一部にアクセスできます。  たとえば、管理者は空間グラフを変更する権限を持ちますが、訪問者には特定のビルのデータを見る権限しかありません。
 
@@ -52,19 +52,19 @@ Digital Twins オブジェクト モデルでは、オブジェクトの以下�
 - **マッチャー**は、特定のテレメトリ メッセージに対して実行される UDF を決定するオブジェクトです。
 - **エンドポイント**は、テレメトリ メッセージと Digital Twins のイベントをルーティングできる場所です (例: `Event Hub`、`Service Bus`、`Event Grid`)。
 
-<a id="graph" />
+<a id="graph"></a>
 
 ## <a name="spatial-intelligence-graph"></a>空間インテリジェンス グラフ
 
 **空間グラフ**は、**Digital Twins オブジェクト モデル**で定義されているスペース、デバイス、人の階層グラフです。 空間グラフでは、"_継承_"、"_フィルター_"、"_走査_"、"_スケーラビリティ_"、"_拡張性_" がサポートされています。 ユーザーは、REST API (下記参照) のコレクションを使用して空間グラフを管理および操作できます。
 
-自分のサブスクリプションに Digital Twins サービスをデプロイするユーザーは、ルート ノードのグローバル管理者になり、構造全体へのフル アクセスを自動的に許可されます。 このユーザーは、`Space` API を使用してグラフ内にスペースをプロビジョニングできます。 デバイスは `Device` API を使用してプロビジョニングでき、センサーは `Sensor` API を使用してプロビジョニングできます。グラフを一括してプロビジョニングするための[オープン ソース ツール](https://github.com/Azure-Samples/digital-twins-samples-csharp)も用意されています。
+自分のサブスクリプションに Digital Twins サービスをデプロイするユーザーは、ルート ノードのグローバル管理者になり、構造全体へのフル アクセスを自動的に許可されます。 このユーザーは、Space API を使用してグラフ内にスペースをプロビジョニングできます。 デバイスは Device API を使用してプロビジョニングでき、センサーは Sensor API を使用してプロビジョニングできます。グラフを一括してプロビジョニングするための[オープン ソース ツール](https://github.com/Azure-Samples/digital-twins-samples-csharp)も用意されています。
 
 グラフの "_継承_" はアクセス許可とプロパティに適用され、親ノードからその下にあるすべてのノードに伝えられます。 たとえば、特定のノード上のユーザーにロールが割り当てられると、ユーザーはその特定のノードとその下のすべてのノードに対してそのロールのアクセス許可を持つようになります。 さらに、特定のノードに対して定義されている各プロパティ キーと拡張型は、そのノードの下にあるすべてのノードによって継承されます。
 
-グラフの "_フィルター_" を使用すると、ユーザーは ID、名前、タイプ、サブタイプ、親のスペース、関連付けられているスペース、センサーのデータ型、プロパティのキーと値、走査、minLevel、maxLevel、および他の OData フィルター パラメーターによって、要求の結果を絞り込むことができます。
+グラフの "_フィルター_" を使用すると、ユーザーは ID、名前、タイプ、サブタイプ、親のスペース、関連付けられているスペース、センサーのデータ型、プロパティのキーと値、*traverse*、*minLevel*、*maxLevel*、および他の OData フィルター パラメーターによって、要求の結果を絞り込むことができます。
 
-グラフの "_走査_" を使用すると、空間グラフの深さと幅の全体を移動することができます。 深さの場合は、ナビゲーション パラメーター `traverse`、`minLevel`、`maxLevel` を使用して、トップダウンまたはボトムアップでグラフ内を移動できます。 幅の場合は、グラフ内を移動して、親スペースに直接関連付けられている兄弟ノードまたはその子孫のいずれかを取得できます。 オブジェクトのクエリでは、GET API の `includes` パラメーターを使用して、そのオブジェクトへの関係を持つすべての関連オブジェクトを取得できます。
+グラフの "_走査_" を使用すると、空間グラフの深さと幅の全体を移動することができます。 深さの場合は、ナビゲーション パラメーター *traverse*、*minLevel*、*maxLevel* を使用して、トップダウンまたはボトムアップでグラフ内を移動できます。 幅の場合は、グラフ内を移動して、親スペースに直接関連付けられている兄弟ノードまたはその子孫のいずれかを取得できます。 オブジェクトのクエリでは、GET API の *includes* パラメーターを使用して、そのオブジェクトへの関係を持つすべての関連オブジェクトを取得できます。
 
 Azure Digital Twins ではグラフの "_スケーラビリティ_" が保証されているので、現実のワークロードを処理できます。 Digital Twins を使用して、不動産、インフラストラクチャ、デバイス、センサー、テレメトリなどの大規模なポートフォリオを表すことができます。
 
@@ -80,8 +80,8 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 
 | カスタム属性の名前 | 置換後の文字列 |
 | --- | --- |
-| `yourInstanceName` | Azure Digital Twins インスタンスの名前 |
-| `yourLocation` | インスタンスをホストするサーバーのリージョン |
+| *yourInstanceName* | Azure Digital Twins インスタンスの名前 |
+| *yourLocation* | インスタンスをホストするサーバーのリージョン |
 
  URL の完全な形式は次の図で使用されているものでわかります。
 

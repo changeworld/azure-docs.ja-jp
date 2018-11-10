@@ -1,23 +1,22 @@
 ---
-title: Azure Site Recovery によるセカンダリ VMware サイトへの VMware VM または物理サーバーのレプリケーションのサポート マトリックス | Microsoft Docs
-description: Azure Site Recovery によるセカンダリ サイトへの VMware/物理サーバーのレプリケーションのサポートのまとめ
-services: site-recovery
+title: Azure Site Recovery を使用した VMware VM または物理サーバーのセカンダリ VMware サイトへのディザスター リカバリーのサポート マトリックス | Microsoft Docs
+description: Azure Site Recovery を使用して VMware VM および物理サーバーをセカンダリ サイトにディザスター リカバリーする場合のサポートについてまとめています。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4df929e8a185a04aef5cb13f30c19b0db707e765
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8406cf2b31b87cdb4f6c9b6ba3d06559cf1d4d41
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021995"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209804"
 ---
-# <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>セカンダリ サイトへの VMware VM と物理サーバーのレプリケーションのサポート マトリックス
+# <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM および物理サーバーのセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
-この記事は、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、VMware VM または Windows/Linux 物理サーバーをセカンダリの VMware サイトにレプリケートする際のサポートについてまとめてあります。
+この記事では、VMware VM または Windows/Linux 物理サーバーをセカンダリ VMware サイトにディザスター リカバリーするために、[Azure Site Recovery](site-recovery-overview.md) サービスを使用する際のサポートについてまとめています。
 
 - VMware VM または物理サーバーを Azure にレプリケートする場合は、[このサポート マトリックス](vmware-physical-azure-support-matrix.md)を確認してください。
 - Hyper-V VM をセカンダリ サイトにレプリケートする場合は、[このサポート マトリックス](hyper-v-azure-support-matrix.md)を確認してください。

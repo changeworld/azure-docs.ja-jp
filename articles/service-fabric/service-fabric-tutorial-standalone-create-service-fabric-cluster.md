@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 36d65abb26435581f3e6c9c4a9fc46bb3dd538ce
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b740aa205982bc0c1104b59e3ea89e2d5980d461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362780"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240343"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>チュートリアル: Service Fabric クラスターのインストールと作成
 
@@ -37,7 +37,7 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Windows Server 用 Service Fabric パッケージをダウンロードする
 
-Service Fabric には、Service Fabric スタンドアロン クラスターを作成するためのセットアップ パッケージが用意されています。  ローカル コンピューターで[セットアップ パッケージ](http://go.microsoft.com/fwlink/?LinkId=730690)をダウンロードします。  正常にダウンロードされたら、EC2 インスタンスへの RDP 接続を介してそれをコピーし、デスクトップに貼り付けます。
+Service Fabric には、Service Fabric スタンドアロン クラスターを作成するためのセットアップ パッケージが用意されています。  ローカル コンピューターで[セットアップ パッケージ](https://go.microsoft.com/fwlink/?LinkId=730690)をダウンロードします。  正常にダウンロードされたら、EC2 インスタンスへの RDP 接続を介してそれをコピーし、デスクトップに貼り付けます。
 
 zip ファイルを選択し、コンテキスト メニューを開いて、**[すべて展開]** > **[展開]** を選択します。  ファイルを展開すると、zip ファイルと同じ名前のフォルダーがデスクトップに生成されます。
 

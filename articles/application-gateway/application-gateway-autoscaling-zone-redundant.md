@@ -13,16 +13,16 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: victorh
-ms.openlocfilehash: ab1c9405042de02183b8742fa940a3a5a482923a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8fb3dce108b59b8df0d330ec642365d2487eae35
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165231"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085463"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)
 
-Application Gateway と Web アプリケーション ファイアウォール (WAF) は、現在、新しい SKU でパブリック プレビューとして使用できます。この SKU では、パフォーマンスの向上が提供され、自動スケール、ゾーン冗長性、静的 VIP のサポートなどの重要な新機能のサポートが追加されます。 一般公開された SKU の既存機能は、既知の制限のセクションで示されているいくつかの例外を除き、新しい SKU でも引き続きサポートされます。 新しい SKU には、次の拡張機能が含まれます。
+Application Gateway と Web アプリケーション ファイアウォール (WAF) は、現在、新しい v2 SKU でパブリック プレビューとして使用できます。この SKU では、パフォーマンスの向上が提供され、自動スケール、ゾーン冗長性、静的 VIP のサポートなどの重要な新機能のサポートが追加されます。 一般公開された SKU の既存機能は、既知の制限のセクションで示されているいくつかの例外を除き、新しい v2 SKU でも引き続きサポートされます。 新しい v2 SKU には、次の拡張機能が含まれます。
 
 - **自動スケール**: 自動スケール SKU の下での Application Gateway または WAF のデプロイは、トラフィック負荷パターンの変化に基づいてスケールアップまたはスケールダウンできます。 また、自動スケールにより、プロビジョニングの間にデプロイのサイズまたはインスタンスの数を選択する必要がなくなります。 このように、SKU では真の弾力性が提供されます。 新しい SKU では、Application Gateway は固定容量モード (自動スケール無効) と自動スケール有効モードの両方で動作できます。 固定容量モードは、ワークロードが一定で予測可能なシナリオに便利です。 自動スケール モードは、アプリケーション トラフィックの変動が大きいアプリケーションで役に立ちます。
    
@@ -48,6 +48,11 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 
 |問題|詳細|
 |--|--|
+|認証証明書|サポートされていません。<br>詳細については、「[Application Gateway でのエンド ツー エンド SSL の概要](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)」を参照してください。|
+|同じサブネット上の Standard_v2 と Standard Application Gateway の混在|サポートされていません。<br>さらに、自動スケールを有効にすると、1 つのサブネットには 1 つアプリケーション ゲートウェイだけが存在できます。|
+|Application Gateway サブネット上のユーザー定義ルート (UDR)|サポートされていません|
+|受信ポート範囲の NSG| - Standard_v2 SKU では 65200 ～ 65535<br>- Standard SKU では 65503 ～ 65534<br>詳細については、[FAQ](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet) をご覧ください。|
+|Azure 診断でのパフォーマンス ログ|サポートされていません。<br>Azure メトリックを使用する必要があります。|
 |課金|現在は請求されません。|
 |FIPS モード、WebSocket|現在はサポートされていません。|
 |ILB のみモード|現在これはサポートされていません。 パブリック モードと ILB モードがまとめてサポートされます。|

@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 1d4013d736d8cfcb75874bc0c86d20b86ab4dd62
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 815d1e9f6d1e4b9937647d55b67665e1b27f501e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215841"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240768"
 ---
 # <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>Conversation Learner モデルに API 呼び出しを追加する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "39215841"
 
 ## <a name="video"></a>ビデオ
 
-[![チュートリアル 12 のプレビュー](http://aka.ms/cl-tutorial-12-preview)](http://aka.ms/blis-tutorial-12)
+[![チュートリアル 12 のプレビュー](https://aka.ms/cl-tutorial-12-preview)](https://aka.ms/blis-tutorial-12)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、"tutorialAPICalls.ts" ボットが実行されている必要があります。
@@ -55,7 +55,7 @@ API 呼び出しのコードは、次のファイルに定義されています�
 - Multiply API コールバック: ユーザーによって指定された 2 つの数値を乗算します。 2 つの数値の乗算の結果を返します。 これは、API コールバックが入力を受け取ることができることを示しています。 最初の引数はメモリ マネージャーであることに注意してください。 
 - ClearEntities API コールバック: ユーザーが次の番号を入力できるように、number エンティティをクリアします。 これは、API 呼び出しがエンティティをどのように操作できるかを示しています。
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 
 アクションは 4 つ作成してあります。 
 

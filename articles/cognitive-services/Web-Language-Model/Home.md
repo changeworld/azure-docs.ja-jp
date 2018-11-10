@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 79b126fc33175b7cd6df96ab07cd7b726d6065a7
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 39995ca44573fe50bf0c2a2510c2c19fb227ff1d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389940"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241125"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは (プレビュー)
 
@@ -50,6 +50,6 @@ Web Language Model API では、次の 4 つの検索操作がサポートされ
 
 次の論文で、これらの言語モデルの開発について詳細に説明しています。このサービスを使用する研究発表では、この論文を引用する必要があります。
 
-- [An Overview of Microsoft Web N-gram Corpus and Applications (Microsoft Web n-gram コーパスおよびアプリケーションの概要)](http://research.microsoft.com/apps/pubs/default.aspx?id=130762)、NAACL HLT 2010
+- [An Overview of Microsoft Web N-gram Corpus and Applications (Microsoft Web n-gram コーパスおよびアプリケーションの概要)](https://research.microsoft.com/apps/pubs/default.aspx?id=130762)、NAACL HLT 2010
 
 [ここ](https://academic.microsoft.com/#/search?iq=And%28Ty%3D'0'%2CRId%3D2145833060%29&q=papers%20citing%20an%20overview%20of%20microsoft%20web%20n%20gram%20corpus%20and%20applications&filters=&from=0&sort=0)をクリックすると、現在これを引用している論文の一覧を確認できます。

@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 7a52ee11e52367755d2a241a0bea2cfc053cff3d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc54a3a375fa2780e289a20b699df5d65aaf08cc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039940"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155577"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Microsoft Flow 内で IoT Central コネクタを使用してワークフローを作成する
 
@@ -96,6 +96,8 @@ Microsoft Flow を使用すると、ビジネス ユーザーが利用する多�
     ![IoT Central の Device Explorer のデバイス ID](./media/howto-add-microsoft-flow/iotcdeviceid.PNG)
 
 1. デバイス名を更新できます。 デバイスのプロパティと設定を更新するには、更新するデバイスのデバイス テンプレートを **[Device Template]\(デバイス テンプレート\)** ドロップダウンで選択する必要があります。 アクション タイルが展開し、更新可能なすべてのプロパティと設定が表示されます。
+
+    ![Flow のデバイス更新ワークフロー](./media/howto-add-microsoft-flow/flowupdatedevice.PNG)
 
 1. 更新するプロパティと設定をそれぞれ選択します。 [動的なコンテンツ] ウィンドウで、対応する入力をトリガーから選択します。 この例では、[場所] の値が伝達され、デバイスの [場所] プロパティが更新されます。
 

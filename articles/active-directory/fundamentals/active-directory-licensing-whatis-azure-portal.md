@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.component: fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 7848b52bcf5204a871920cbfab8a0e95223654d4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 3f23b28c1b20155e50fddf17db90cd2a53c04855
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735903"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209821"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
@@ -28,8 +28,6 @@ ms.locfileid: "45735903"
 
 これらの課題を受けて、Azure AD はグループベース ライセンス機能が搭載されました。 この機能により、1 つのグループに 1 つ以上の製品ライセンスを割り当てることができます。 グループに含まれるメンバー全員に、Azure AD からライセンスが割り当てられるようになります。 新しいメンバーがグループに参加すると、適切なライセンスが割り当てられます。 グループから抜けると、割り当てられていたライセンスが削除されます。 これにより、組織や部門の構造の変化を反映するように PowerShell でユーザーごとのライセンス管理を自動化する必要はなくなりました。
 
->[!Note]
->グループベースのライセンスは Azure Active Directory (Azure AD) のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="features"></a>機能
 
@@ -45,11 +43,11 @@ ms.locfileid: "45735903"
 
 - グループのメンバー変更に伴うライセンスの変更は、Azure AD により自動で管理されます。 通常、ライセンスの変更はメンバーシップを変更した数分以内に有効になります。
 
-- ユーザーは、ライセンス ポリシーが指定された複数のグループのメンバーになることができます。 また、グループ外で直接割り当てられたライセンスを使用することもできます。 ユーザーの状態は、割り当て済みのすべての製品ライセンスとサービス ライセンスの組み合わせたものになります。
+- ユーザーは、ライセンス ポリシーが指定された複数のグループのメンバーになることができます。 また、グループ外で直接割り当てられたライセンスを使用することもできます。 ユーザーの状態は、割り当て済みのすべての製品ライセンスとサービス ライセンスの組み合わせたものになります。 ユーザーに複数のソースから同じライセンスが割り当てられている場合、ライセンスは 1 回だけ使用されます。
 
 - 場合によっては、ユーザーにライセンスを割り当てることができません。 たとえば、テナントに十分な数のライセンスがない場合や、同時に競合するサービスが割り当てられている場合などがあります。 管理者は、グループ ライセンスを Azure AD で完全には処理できないユーザーに関する情報へアクセスできます。 こうした情報に基づいて是正措置を取ることができます。
 
-- パブリック プレビュー中にグループベース ライセンス管理を使用するには、テナントに Azure AD の Basic または Premium Edition の有料サブスクリプション、または試用版サブスクリプションが必要になります。
+- グループベース ライセンス管理を使用するには、テナントに Azure AD Basic の有料サブスクリプションまたは試用版サブスクリプション、有料または試用版の Office 365 Enterprise E3、Office 365 A3 以上のエディションが必要になります。 この機能では、ライセンスが割り当てられているグループのメンバーである一意のユーザーごとにライセンスが必要です。 ユーザーをライセンスが割り当てられているグループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありませんが、少なくともそのすべてのユーザーを対象にできるだけのライセンス数が必要です。 たとえば、テナントのライセンスが割り当てられているすべてのグループに、合計 1,000 人の一意のユーザーがいる場合、ライセンス要件を満たすには、ライセンスが 1,000 個以上必要です。
 
 ## <a name="your-feedback-is-welcome"></a>ご意見をお待ちしております。
 
@@ -62,4 +60,6 @@ ms.locfileid: "45735903"
 * [Assigning licenses to a group in Azure Active Directory](../users-groups-roles/licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](../users-groups-roles/licensing-groups-resolve-problems.md)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](../users-groups-roles/licensing-groups-migrate-users.md)
+* [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Azure Active Directory グループベース ライセンスのその他のシナリオ](../users-groups-roles/licensing-group-advanced.md)
+* [Azure Active Directory のグループベースのライセンスの PowerShell の例](../users-groups-roles/licensing-ps-examples.md)

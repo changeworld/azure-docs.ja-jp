@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery を使用してセカンダリサイトに対して Hyper-V VM の DR ドリルを実行する | Microsoft Docs
-description: Azure Site Recovery を使用して、セカンダリ データセンターに対して VMM クラウド内の Hyper-V VM の DR ドリルを実行する方法について説明します。
-services: site-recovery
+title: Azure Site Recovery を使用してセカンダリサイトに対して Hyper-V VM のディザスター リカバリー ドリルを実行する | Microsoft Docs
+description: Azure Site Recovery を使用して、セカンダリ オンプレミス データセンターに対して VMM クラウド内の Hyper-V VM の DR ドリルを実行する方法について説明します。
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 03533af27ac6fd406b4639c31c3add0015a76f45
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3f7e534e9c698e31e1061c35aec713d20c7e570f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918800"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211351"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>セカンダリサイトに対して Hyper-V VM の DR ドリルを実行する
 

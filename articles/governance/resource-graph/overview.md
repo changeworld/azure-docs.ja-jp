@@ -4,17 +4,17 @@ description: Azure Resource Graph は、リソースの複雑なクエリを大�
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: d68183f4d0a928ac72f3f73ea5225ad174820cb7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: e78b525e1e08a05b8de6071f9ddba0dfb29ff672
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162102"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087278"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
@@ -24,14 +24,14 @@ Azure Resource Graph とは Azure 内のサービスで、環境を効果的に�
 - ガバナンスの要件に基づいてリソースを繰り返し探索し、ポリシー定義に、結果の式を変換する機能。
 - 広大なクラウド環境にポリシーを適用することの影響を評価する機能。
 
-本文書では、各機能の詳細を熟考します。
+このドキュメントでは、それぞれの機能について詳しく見ていきます。
 
 > [!NOTE]
 > Azure Resource Graph は、Azure portal の新しいブラウズ「すべてのリソース」エクスペリエンスによって使用されます。 大規模な環境を管理する必要があるお客様をサポートするために設計されています。
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Resource Graph が Azure Resource Manager をどのように補完するか
 
-Azure Resource Manager は、現在、複数のリソース フィールドに公開する制限付きリソース キャッシュに、具体的には – リソース名、ID、種類、リソース グループ、サブスクリプション、および場所にデータを送信します。 今日では、さらなるリソース プロパティを使用して作業を行いたい場合、個々のリソース プロバイダーに呼び出しを行い、各リソースのプロパティ詳細を要求する必要があります。
+Azure Resource Manager は、現在、複数のリソース フィールド (具体的にはリソース名、ID、種類、リソース グループ、サブスクリプション、場所) を公開する制限付きリソース キャッシュにデータを送信します。 以前は、各種のリソース プロパティを操作する場合、個々のリソース プロバイダーを呼び出し、リソースごとにプロパティの詳細を要求する必要がありました。
 
 Azure Resource Graph を使用することにより、各リソースプロバイダーへの個別の呼び出しを行う必要なく、リソースプロバイダーが返すこれらのプロパティにアクセスすることができます。
 
@@ -45,12 +45,11 @@ Azure Resource Graph のクエリ言語が [Azure Data Explorer のクエリ言�
 
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Resource Graph でのアクセス許可
 
-Resource Graph を使用するためには、[ロール ベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) を通じて、少なくともクエリを行いたいリソースへの読み取り許可の権限を付与される必要があります。 `read`管理グループ、サブスクリプション、リソースグループまたは個別のリソースについて許可を取得していない場合、Resource Graph クエリの結果に返されません。
+Resource Graph を使用するためには、最低限、照会したいリソースに読み取りアクセスできる適切な権限が、[ロール ベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) を通じて付与される必要があります。 Azure のオブジェクトまたはオブジェクト グループに対する `read` 以上のアクセス許可がないと、結果は返されません。
 
 ## <a name="running-your-first-query"></a>最初のクエリを送信する
 
-Resource Graph は、Azure CLI および Azure PowerShell の両方をサポートします。 どの言語を使用しているかに関わらず、クエリ コンポーネントは同様の構造です。 どちらの SDK においても、 Azure Resource Graph のサポートはまだデフォルトで利用可能ではありませんので、必要なコマンドを提供するために拡張機能またはモジュールを読み込む必要があります。
-[Azure CLI ](first-query-azurecli.md#add-the-resource-graph-extension)および[ Azure PowerShell ](first-query-powershell.md#add-the-resource-graph-module)において、Resource Graph を有効にする方法について説明します。
+Resource Graph は、Azure CLI および Azure PowerShell の両方をサポートします。 どちらの言語も、クエリの構造は同じです。 [Azure CLI ](first-query-azurecli.md#add-the-resource-graph-extension)および[ Azure PowerShell ](first-query-powershell.md#add-the-resource-graph-module)において、Resource Graph を有効にする方法について説明します。
 
 ## <a name="next-steps"></a>次の手順
 

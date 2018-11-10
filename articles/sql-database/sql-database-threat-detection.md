@@ -11,19 +11,24 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: ed7a117d4422b3b3feddd7d2fafa5eabea43f9e5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/25/2018
+ms.openlocfilehash: 2882bd782359697cf714214e68166c9f997f52e4
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164939"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093549"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Azure SQL Database の脅威の検出
 
-Azure SQL Database の脅威検出は、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある不自然なアクティビティを検出します。
+[SQL Database](sql-database-technical-overview.md) および [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の Azure SQL 脅威検出では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティを検出します。
 
 脅威検出は、高度な SQL セキュリティ機能の統合パッケージである [SQL Advanced Threat Protection](sql-advanced-threat-protection.md) (ATP) の一部です。 脅威検出は、SQL ATP ポータルを使って一元的にアクセスおよび管理できます。
+
+
+> [!NOTE] 
+> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
+
 
 ## <a name="what-is-threat-detection"></a>脅威検出とは
 
@@ -65,7 +70,7 @@ SQL の脅威の検出で提供される新しいセキュリティ階層は、�
 
 SQL Database の脅威の検出では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。 Azure portal のデータベースおよび SQL ATP ブレード内のライブ SQL 脅威検出タイルでは、アクティブな脅威の状態が追跡されます。
 
-**[脅威検出アラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースに対して検出されたアクティブな SQL 脅威の概要が表示されます。
+**[脅威検出アラート]** をクリックすると、Azure Security Center のアラート ページが起動され、データベースまたはデータ ウェアハウスに対して検出されたアクティブな SQL 脅威の概要が表示されます。
 
    ![脅威検出アラート](./media/sql-database-threat-detection/threat_detection_alert.png)
    

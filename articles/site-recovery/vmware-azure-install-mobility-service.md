@@ -1,19 +1,19 @@
 ---
-title: モビリティ サービスのインストール (VMware または物理から Azure へ) | Microsoft Docs
-description: モビリティ サービス エージェントをインストールして、オンプレミスの VMware 仮想マシンと、Azure Site Recovery を使用した物理サーバーを保護する方法について説明します。
+title: VMware VM と物理サーバーの Azure へのディザスター リカバリーのためにモビリティ サービスをインストールする | Microsoft Docs
+description: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーするために、モビリティ サービス エージェントをインストールする方法について説明します。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 145affbcff128e0ec599ad1f97c79260b0dcae5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526999"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212694"
 ---
-# <a name="install-the-mobility-service"></a>モビリティ サービスをインストールする 
+# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのディザスター リカバリーのためにモビリティ サービスをインストールする
 
 Azure Site Recovery モビリティ サービスは、Azure にレプリケートする VMware VM と物理サーバーにインストールされます。 このサービスは、コンピューター上のデータ書き込みをキャプチャし、プロセス サーバーに転送します。 モビリティ サービスは、Azure にレプリケートするすべてのコンピューター (VMware VM または物理サーバー) にデプロイします。 モビリティ サービスは、保護するサーバーと VMware VM に対して、次の方法でデプロイできます。
 

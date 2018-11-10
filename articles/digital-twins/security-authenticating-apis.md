@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: lyrana
-ms.openlocfilehash: dc5570b188bfdc0e1be78aa2bd5c5d92e884f377
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 414a52141aac05aac51bbb4fedf6ab67d98f2637
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638020"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092272"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>API に接続および認証する
 
@@ -54,7 +54,7 @@ Digital Twins API を起動して実行するには、API 環境として Postma
     |---------|---------|
     | 付与タイプ | 暗黙 |
     | コールバック URL | [https://www.getpostman.com/oauth2/callback](https://www.getpostman.com/oauth2/callback) |
-    | 認証 URL | [https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0](https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0)
+    | 認証 URL | https://login.microsoftonline.com/<Your Azure AD Tenant e.g. Contoso>.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0 |
     | クライアント ID | 手順 1 で作成または別の用途のために作り変えた Azure AD アプリのアプリケーション ID を使用する |
     | Scope (スコープ) | 空白のままにする |
     | 州 | 空白のままにする |

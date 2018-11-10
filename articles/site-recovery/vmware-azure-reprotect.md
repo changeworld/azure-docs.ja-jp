@@ -1,21 +1,20 @@
 ---
-title: Azure からオンプレミス サイトに移行した VM を再保護する | Microsoft Docs
-description: VM を Azure にフェールオーバーした後に、フェールバックを開始して VM をオンプレミスに戻すことができます。 フェールバックの前に再保護する方法について説明します。
-services: site-recovery
+title: VMware VM と物理サーバーのディザスター リカバリー時に Azure からオンプレミス サイトへの VM を再保護する | Microsoft Docs
+description: VMware VM と物理サーバーのディザスター リカバリー時の Azure へのフェールオーバー後に、Azure からオンプレミス サイトにフェールバックする方法について説明します。
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 3f661ab5ff2a127ba7507a64bb4520cbad740473
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346681"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213289"
 ---
-# <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトに移行したマシンの再保護
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Azure へのフェールオーバー後に、マシンを再保護し、オンプレミス サイトにフェールバックする
 
 オンプレミスの VMware VM または物理サーバーを Azure に[フェールオーバーした](site-recovery-failover.md)後、オンプレミス サイトにフェールバックする最初の手順は、フェールオーバー時に作成された Azure VM を再保護することです。 この記事では、その方法について説明します。 
 

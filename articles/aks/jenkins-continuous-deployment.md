@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: iainfou
-ms.openlocfilehash: cdf8c64f20e15074a1f055d2ab7abf4304d62505
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017909"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087697"
 ---
 # <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>Jenkins と Azure Kubernetes Service (AKS) を使った継続的デプロイ パイプラインを作成する
 
@@ -34,9 +34,11 @@ Azure Kubernetes Service (AKS) でアプリケーションにアップデート�
 - [AKS クラスター][aks-quickstart]、および [AKS クラスターの資格情報][aks-credentials]で構成されている `kubectl`。
 - [ACR レジストリによって認証][acr-authentication]するために構成される [Azure Container Registry (ACR) レジストリ][acr-quickstart]、ACR ログイン サーバー名、および AKS クラスター。
 
-- インストールおよび構成済みの Azure CLI バージョン 2.0.46 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+- インストールおよび構成済みの Azure CLI バージョン 2.0.46 以降。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 - 開発システムにインストールされた [Docker][docker-install]。
 - GitHub アカウント、[GitHub 個人用アクセス トークン][git-access-token]、および開発システムにインストールされた Git クライアント。
+
+- このサンプル スクリプトによる方法ではなく、独自の Jenkins インスタンスを指定して、Jenkins をデプロイする場合、Jenkins インスタンスには [Docker がインストールされ、構成されている][docker-install]ほか、[kubectl][kubectl-install] が必要です。
 
 ## <a name="prepare-the-application"></a>アプリケーションを準備する
 
@@ -317,6 +319,7 @@ SHOWHOST = 'false'
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [docker-install]: https://docs.docker.com/install/
+[kubectl-install]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 <!-- LINKS - internal -->
 [az-acr-list]: /cli/azure/acr#az-acr-list

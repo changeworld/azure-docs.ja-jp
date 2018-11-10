@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2018
-ms.author: andret
+ms.date: 10/24/2018
+ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5241df87297fb2e293e2cc828821e66d6f2837b0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: aa91701fd289be171a2e9f63165c669953dac918
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970826"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086796"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
+# <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート: ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -32,14 +32,32 @@ ms.locfileid: "46970826"
 ![このクイック スタートで生成されたサンプル アプリの動作](media/quickstart-v2-uwp/uwp-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download"></a>登録とダウンロード
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとコード サンプルの登録と構成
+> ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
+> [!div renderon="docs" class="sxs-lookup"]
+> クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
+> * [簡易] [選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [手動] [選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する](#option-2-register-and-manually-configure-your-application-and-code-sample)
+>
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
+>
+> 1. [Azure portal の [アプリケーションの登録]](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps) に移動します。
+> 1. アプリケーションの名前を入力して **[登録]** をクリックします。
+> 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する
+> [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
-> アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
-> 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します。
-> 1. **[アプリケーション名]** ボックスに、アプリケーションの名前を入力します。
-> 1. **[Guided Setup]\(ガイド付きセットアップ\)** チェック ボックスがオフになっていることを確認し、**[作成]** を選択します。
-> 1. **[プラットフォームの追加]**、**[ネイティブ アプリケーション]**、**[保存]** の順に選択します。
+> アプリケーションを登録し、その登録情報をソリューションに追加するには、次の手順を実行します。
+> 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+> 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
+> 1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)]** > **[新規登録]** を選択します。
+> 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
+>      - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `UWP-App-calling-MsGraph`)。
+>      - **[サポートされているアカウントの種類]** セクションで、**[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
+>      - **[登録]** を選択して、アプリケーションを作成します。
+> 1. アプリのページの一覧から **[認証]** を選択します。
+> 1. **[リダイレクト URL]** セクションで、**[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションを探し、**["urn:ietf:wg:oauth:2.0:oob]** を選択します。
+> 1. **[保存]** を選択します。
 
 > [!div renderon="portal" class="sxs-lookup alert alert-info"]
 > #### <a name="step-1-configure-your-application"></a>手順 1: アプリケーションの構成
@@ -48,7 +66,7 @@ ms.locfileid: "46970826"
 > > [この変更を行う]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-uwp/green-check.png) アプリケーションはこれらの属性で構成されています
+> > ![構成済み](media/quickstart-v2-uwp/green-check.png) アプリケーションはこれらの属性で構成されています。
 
 #### <a name="step-2-download-your-visual-studio-project"></a>手順 2: Visual Studio プロジェクトのダウンロード
 
@@ -56,9 +74,9 @@ ms.locfileid: "46970826"
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3: Visual Studio プロジェクトの構成
 
-1. ローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを解凍します。
-1. Visual Studio でプロジェクトを開きます
-1. **App.Xaml.cs** を編集し、`private static string ClientId` で始まる行を以下に置き換えます。
+1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
+1. Visual Studio でプロジェクトを開きます。
+1. **App.Xaml.cs** を編集し、`private static string ClientId` で始まる行を以下のコードに置き換えます。
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
@@ -66,11 +84,11 @@ ms.locfileid: "46970826"
 
 ## <a name="more-information"></a>詳細情報
 
-このクイック スタートの概要を以下に示します。
+このセクションでは、このクイック スタートについての詳しい情報を取り上げます。
 
 ### <a name="msalnet"></a>MSAL.NET
 
-MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) はユーザーにサインインし、Microsoft Azure Active Directory によって保護されている API にアクセスするトークンを要求するために使用するライブラリです。 これは、Visual Studio の*パッケージ マネージャー コンソール*で次のコマンドを実行してインストールできます。
+MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) はユーザーにサインインし、Microsoft Azure Active Directory によって保護されている API にアクセスするトークンを要求するために使用するライブラリです。 MSAL は、Visual Studio の "*パッケージ マネージャー コンソール*" で次のコマンドを実行してインストールできます。
 
 ```powershell
 Install-Package Microsoft.Identity.Client -Pre
@@ -78,13 +96,13 @@ Install-Package Microsoft.Identity.Client -Pre
 
 ### <a name="msal-initialization"></a>MSAL の初期化
 
-MSAL への参照を追加するには、以下の行を追加します。
+MSAL への参照を追加するには、次のコードを追加します。
 
 ```csharp
 using Microsoft.Identity.Client;
 ```
 
-続いて、以下の行を使用して MSAL を初期化します。
+続いて、次のコードを使用して MSAL を初期化することができます。
 
 ```csharp
 public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
@@ -92,7 +110,7 @@ public static PublicClientApplication PublicClientApp = new PublicClientApplicat
 
 > |各値の説明: ||
 > |---------|---------|
-> |ClientId | *portal.microsoft.com* に登録されているアプリケーションの Application ID |
+> | `ClientId` | Azure portal に登録されているアプリケーションの "**アプリケーション (クライアント) ID**"。 この値は、Azure portal のアプリの **[概要]** ページで確認できます。 |
 
 ### <a name="requesting-tokens"></a>トークンの要求
 
@@ -100,12 +118,12 @@ MSAL には、トークンの取得に使用する 2 つのメソッド `Acquire
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
- 資格情報の検証または同意を行うポップアップ ウィンドウが表示され、Azure Active Directory v2 エンドポイントの操作を強制される場合があります。以下にいくつか例を示します。
+ Azure Active Directory v2.0 エンドポイントの操作を強制される場合があります。その場合、資格情報の検証または同意を行うポップアップ ウィンドウが表示されます。 たとえば、次のようなシナリオが考えられます。
 
 - ユーザーが初めてアプリケーションにサインインする
-- パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある
+- パスワードの有効期限が切れているために、ユーザーが資格情報を再入力する必要がある
 - ご使用のアプリケーションが、ユーザーによる同意が必要なリソースへのアクセスを要求している
-- 2 要素認証が必須である
+- 2 要素認証が必須である場合
 
 ```csharp
 authResult = await App.PublicClientApp.AcquireTokenAsync(scopes);
@@ -113,11 +131,11 @@ authResult = await App.PublicClientApp.AcquireTokenAsync(scopes);
 
 > |各値の説明:||
 > |---------|---------|
-> |スコープ | 要求するスコープを含む (つまり、Microsoft Graph 用の `{ "user.read" }` またはカスタム Web API 用の `{ "api://<Application ID>/access_as_user" }`) |
+> | `scopes` | 要求するスコープを含む (Microsoft Graph 用の `{ "user.read" }` またはカスタム Web API 用の `{ "api://<Application ID>/access_as_user" }` など)。 |
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
-ユーザーがリソースにアクセスする必要があるたびに、そのユーザーに資格情報の検証を要求する必要はありません - 大抵の場合、ユーザーは何も操作することなく、トークンの取得と更新を行えます - `AcquireTokenSilentAsync` は、最初の `AcquireTokenAsync` の後に保護されたリソースにアクセスするために使用されるトークンを取得するために一般的に使用されるメソッドです:
+リソースへのアクセスが必要になるたびに、ユーザーに自分の資格情報を検証させたくない場合があります。 ほとんどの場合は、ユーザーの操作なしにトークンの取得や更新を行います。 `AcquireTokenSilentAsync` は、最初に `AcquireTokenAsync` メソッドを呼び出した後、保護されたリソースにアクセスするためのトークンを取得する目的で一般的に使用されるメソッドです。
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -126,16 +144,14 @@ authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.
 
 > |各値の説明: ||
 > |---------|---------|
-> |スコープ | 要求するスコープを含む (つまり、Microsoft Graph 用の `{ "user.read" }` またはカスタム Web API 用の `{ "api://<Application ID>/access_as_user" }`) |
-> |accounts.FirstOrDefault() | キャッシュ内の最初のユーザー (MSAL は、1 つのアプリで複数のユーザーをサポート) |
+> | `scopes` | 要求するスコープを含む (Microsoft Graph 用の `{ "user.read" }` またはカスタム Web API 用の `{ "api://<Application ID>/access_as_user" }` など) |
+> | `accounts.FirstOrDefault()` | キャッシュ内の最初のユーザーを指定する (MSAL は、1 つのアプリで複数のユーザーをサポート) |
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>次の手順
 
 アプリケーションや新機能の構築についての完全なステップ バイ ステップ ガイドは、Windows デスクトップ チュートリアルをお試しください。このクイック スタートの完全な説明も含まれています。
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションを作成する手順
-
 > [!div class="nextstepaction"]
 > [UWP -Graph API 呼び出しチュートリアル](tutorial-v2-windows-uwp.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

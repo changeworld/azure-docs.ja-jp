@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 32cd373499a1ac6dd8cc02e666b0f6ff70688157
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269260"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215261"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -72,11 +72,6 @@ Service Map は、システム更新評価の使用を強化します。他の�
 
 既定では、サービス マップは、直近 30 分間の依存関係情報を表示します。 左上にある時間コントロールを使用すると、過去の時間範囲 (最長 1 時間まで) のマップを照会し、過去における依存関係を表示することができます (例: インシデントの発生中や変更が発生する前)。 サービス マップのデータは、有料のワークスペースで 30 日間、無料のワークスペースでは 7 日間のあいだ保存されます。
 
-
-
-
-
-
 ## <a name="status-badges-and-border-coloring"></a>状態バッジと枠線の色分け
 マップ内の各サーバーの下部には、サーバーの状態情報を示す状態バッジの一覧が表示されます。 このバッジは、ソリューション統合のいずれかに、サーバー関連情報がいくつかあることを示します。 バッジをクリックすると、状態に関する詳細情報が右側のウィンドウに直接表示されます。 現在使用できる状態バッジには、アラート、サービス デスク、変更、セキュリティ、更新があります。
 
@@ -104,7 +99,7 @@ Service Map は、システム更新評価の使用を強化します。他の�
 ![グループの名前付け](media/monitoring-service-map/machine-groups-name.png)
 
 >[!NOTE]
->現在、マシン グループは 10 台のサーバーに制限されていますが、この上限は間もなく引き上げられる予定です。
+>マシン グループは、10 台のサーバーに制限されます。
 
 ### <a name="viewing-a-group"></a>グループの表示
 グループを作成した後、[グループ] タブを選択すると、そのグループが表示されます。
@@ -364,12 +359,12 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 | プロパティ | 説明 |
 |:--|:--|
 |MaliciousIp |RemoteIp アドレス |
-|IndicatorThreadType |検出される脅威のインジケーターは、*ボットネット*、*C2*、*CryptoMining*、*ダークネット*、*DDos*、*MaliciousUrl*、*マルウェア*、*フィッシング*、*プロキシ*、*PUA*、*ウォッチリスト*のいずれかの値です。   |
+|IndicatorThreadType |検出される脅威のインジケーターは、*Botnet*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*Malware*、*Phishing*、*Proxy*、*PUA*、*Watchlist* のいずれかの値です。   |
 |説明 |観察対象の脅威の説明。 |
-|TLPLevel |Traffic Light Protocol (TLP) レベルは、定義済みの値、*白*、*緑*、*アンバー*、*赤*のいずれかです。 |
-|信頼度 |値は *0 ～ 100* です。 |
-|severity |値は *0 ～ 5* です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
-|FirstReportedDateTime |プロバイダーが初めてインジケーターを報告した時間。 |
+|TLPLevel |Traffic Light Protocol (TLP) レベルは、定義済みの値、*White*、*Green*、*Amber*、*Red* のいずれかです。 |
+|信頼度 |値は "*0 から 100*" です。 |
+|severity |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
+|FirstReportedDateTime |プロバイダーが初めてインジケーターをレポートした時間。 |
 |LastReportedDateTime |Interflow によってインジケーターが最後に表示された時間。 |
 |IsActive |インジケーターが *True* または *False* の値で非アクティブ化されていることを示します。 |
 |ReportReferenceLink |特定の観測可能な脅威に関連するレポートにリンクします。 |

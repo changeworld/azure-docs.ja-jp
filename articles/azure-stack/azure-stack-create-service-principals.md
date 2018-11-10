@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
+ms.date: 10/26/2018
 ms.author: sethm
-ms.openlocfilehash: 96137b95f46f24bca6a4ee6a39d93a490a03c431
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a6d8ef698c005429c1184b5565b1a9387d05e062
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958450"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230116"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
@@ -77,6 +77,13 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 要件:
 - 証明書が必要です。
 
+証明書の要件:
+ - 暗号化サービス プロバイダー (CSP) は、従来のキー プロバイダーである必要があります。
+ - 公開キーと秘密キーの両方が必要なため、証明書は PFX ファイル形式である必要があります。 Windows サーバーでは、公開キー ファイル (SSL 証明書ファイル) と関連付けられている秘密キー ファイルが含まれている .pfx ファイルが使用されます。
+ - 運用環境では、証明書は、内部の証明機関または公的証明機関のどちらかから発行されている必要があります。 公的証明機関を使用している場合は、Microsoft の信頼されたルート機関プログラムの一部としてその機関を基本オペレーティング システム イメージに含める必要があります。 [Microsoft の信頼されたルート証明書プログラム: 参加者](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)に完全な一覧があります。
+ - お使いの Azure Stack インフラストラクチャは、証明書において公開されている証明機関の証明書失効リスト (CRL) の場所にネットワーク アクセスできる必要があります。 この CRL は、HTTP エンドポイントである必要があります。
+
+
 #### <a name="parameters"></a>parameters
 
 自動化パラメーターの入力として、次の情報が必要です。
@@ -93,7 +100,7 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 1. Windows PowerShell セッションを管理者特権で開き、次のコマンドを実行します。
 
    > [!NOTE]
-   > この例では、自己署名証明書を作成します。 運用環境でこれらのコマンドを実行する場合、[Get-Certificate](/powershell/module/pkiclient/get-certificate) を利用して、使用する証明書の証明書オブジェクトを取得します。
+   > この例では、自己署名証明書を作成します。 運用環境デプロイでこれらのコマンドを実行する場合、[Get-Item](/powershell/module/Microsoft.PowerShell.Management/Get-Item) を利用して、使用する証明書の証明書オブジェクトを取得します。
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
@@ -102,7 +109,7 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
     # Creating a PSSession to the ERCS PrivilegedEndpoint
     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-    # This produces a self signed cert for testing purposes. It is prefered to use a managed certificate for this.
+    # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
     $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
 
     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}

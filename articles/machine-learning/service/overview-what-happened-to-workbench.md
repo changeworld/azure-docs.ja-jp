@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 88e7dad15a7080c4132a6983d949f9451ad5ce69
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: d90f1791a05d575caedfdd5c696bb1e6d6c29376
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239263"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091918"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Azure Machine Learning の Workbench の変更点 (プレビュー)
 
@@ -46,9 +46,8 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 |段階|以前の機能のサポート詳細|
 |:---:|----------------|
-|1|_Azure Machine Learning 実験アカウント_ と _モデル管理アカウント_ を Azure portal と CLI で作成する機能。 CLI から ML コンピューティング環境を作成する機能も終了となります。 既存のアカウントをお持ちの場合、CLI とデスクトップ Workbench はこの段階では引き続き機能します。|
-|2|デスクトップ Workbench と CLI で以前のワークスペースやプロジェクトを作成するための基礎 API は終了します。 この段階では引き続き、既存のプロジェクトを開いたり、それにスクリプトを追加したり、既存のプロジェクトでスクリプトを実行したり、既存の ML コンピューティング環境に Web サービスをデプロイしたりできます。|
-|3|残りの API やデスクトップ Workbench など、その他すべてのサポートはこの段階で終了します。|
+|1|"_Azure Machine Learning 実験アカウント_" と "_モデル管理アカウント_" を Azure portal と CLI で作成する機能は終了となります。 CLI から ML コンピューティング環境を作成する機能も終了となります。 既存のアカウントをお持ちの場合、CLI とデスクトップ Workbench はこの段階では引き続き機能します。|
+|2|残りの API やデスクトップ Workbench など、その他すべてのサポートはこの段階で終了します。|
 
 今すぐ[移行を始めてください](how-to-migrate.md)。 最新の機能はすべて、新しい <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md)、[Portal](quickstart-get-started.md) でご利用いただけます。
 

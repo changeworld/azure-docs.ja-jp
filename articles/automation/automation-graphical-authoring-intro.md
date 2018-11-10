@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afc1ec8e171bc602f2698b4a36f249bc454cbed9
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141976"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233679"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成
 
@@ -48,7 +48,7 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 |:--- |:--- |
 | コマンドレット |Runbook で使用できるすべてのコマンドレットが含まれています。 コマンドレットはモジュールごとに整理されます。 オートメーション アカウントにインストールしたモジュールをすべて使用できます。 |
 | Runbooks |お使いの Automation アカウントの Runbook が含まれています。 これらの Runbook は、子 Runbook として使用するためにキャンバスに追加できます。 表示されるのは、編集中の Runbook と同じコアの種類の Runbook のみです。つまり、グラフィカル Runbook の場合は、PowerShell ベースの Runbook のみが表示されるのに対し、グラフィカル PowerShell ワークフロー Runbook の場合は、PowerShell ワークフロー ベースの Runbook のみが表示されます。 |
-| アセット |Runbook で使用できるオートメーション アカウントに [オートメーション資産](http://msdn.microsoft.com/library/dn939988.aspx) が含まれています。 Runbook に資産を追加すると、選択した資産を取得するワークフロー アクティビティが追加されます。 変数資産の場合は、変数を取得するアクティビティを追加するか、変数を設定するアクティビティを追加するかを選択できます。 |
+| アセット |Runbook で使用できるオートメーション アカウントに [オートメーション資産](https://msdn.microsoft.com/library/dn939988.aspx) が含まれています。 Runbook に資産を追加すると、選択した資産を取得するワークフロー アクティビティが追加されます。 変数資産の場合は、変数を取得するアクティビティを追加するか、変数を設定するアクティビティを追加するかを選択できます。 |
 | Runbook コントロール |現在の Runbook で使用できる Runbook コントロール アクティビティが含まれています。 *ジャンクション* では複数の入力を受け取り、すべてが完了するまで待機してから、ワークフローを続行します。 *コード* アクティビティは、グラフィカル Runbook の種類に応じて、PowerShell または PowerShell Workflow の 1 行以上のコードを実行します。 このアクティビティは、カスタム コードや、他のアクティビティでの実現が難しい機能に使用できます。 |
 
 ### <a name="configuration-control"></a>構成コントロール
@@ -336,7 +336,7 @@ Runbook の入力パラメーターには、Runbook ツールバーの **[入力
 
 ## <a name="powershell-expressions"></a>PowerShell の式
 
-グラフィカル作成の利点の 1 つは、PowerShell の最小限の知識があれば Runbook を作成できることです。 ただし、現時点では、特定の[パラメーター値](#activities)の設定および[リンク条件](#links-and-workflow)の設定に関して PowerShell の若干の知識が必要です。 ここでは、PowerShell の式のことをよく知らないユーザーのためにその概要について簡単に説明します。 PowerShell の詳細については、「 [Windows PowerShell を使用したスクリプト](http://technet.microsoft.com/library/bb978526.aspx)」を参照してください。
+グラフィカル作成の利点の 1 つは、PowerShell の最小限の知識があれば Runbook を作成できることです。 ただし、現時点では、特定の[パラメーター値](#activities)の設定および[リンク条件](#links-and-workflow)の設定に関して PowerShell の若干の知識が必要です。 ここでは、PowerShell の式のことをよく知らないユーザーのためにその概要について簡単に説明します。 PowerShell の詳細については、「 [Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」を参照してください。
 
 ### <a name="powershell-expression-data-source"></a>PowerShell 式のデータ ソース
 PowerShell 式をデータ ソースとして使用し、 [アクティビティ パラメーター](#activities) の値に PowerShell コードの結果を設定できます。 簡単な関数を実行する 1 行のコードでも、複雑なロジックを実行する複数行のコードでもかまいません。 変数に割り当てられていないコマンドからの出力は、パラメーター値に出力されます。
@@ -414,7 +414,7 @@ $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 
 ### <a name="hashtables"></a>ハッシュテーブル
 
-[ハッシュテーブル](http://technet.microsoft.com/library/hh847780.aspx) は、値のセットを返すのに便利な名前と値のペアです。 一部のアクティビティのプロパティでは、単純な値ではなくハッシュテーブルが想定されている場合があります。 ハッシュテーブルはディクショナリと考えることもできます。
+[ハッシュテーブル](https://technet.microsoft.com/library/hh847780.aspx) は、値のセットを返すのに便利な名前と値のペアです。 一部のアクティビティのプロパティでは、単純な値ではなくハッシュテーブルが想定されている場合があります。 ハッシュテーブルはディクショナリと考えることもできます。
 
 ハッシュテーブルは次の構文で作成します。 ハッシュテーブルは任意の数のエントリを含むことができますが、エントリごとに名前と値によって定義されます。
 

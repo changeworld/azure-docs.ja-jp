@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: fb428e63be54688744bcdb022ba276a957f8aee1
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648772"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155985"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -71,6 +71,27 @@ AKS は、専用の API サーバー、スケジューラなど、単一のテ�
 AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアップすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。
 
 別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[acs-engine][acs-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `acs-engine` リリースでは構成オプションに注目して、AKS クラスターで公式にサポートされる前に構成オプションを提供しています。 たとえば、Docker 以外のWindows コンテナーまたはコンテナー ランタイムの使用を検討している場合、`acs-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
+
+### <a name="resource-reservations"></a>リソース予約
+
+Kubernetes のコア コンポーネントは、各ノード (*kubelet*、*kube-proxy*、*kube-dns* など) で管理する必要はありませんが、使用可能なコンピューティング リソースを一部消費します。 ノードのパフォーマンスと機能を維持するために、各ノードでは次のコンピューティング リソースが予約されます。
+
+- **CPU** - 60 ミリ秒
+- **メモリ** - 20% (最大 4 GiB)
+
+これらの予約があるため、アプリケーションに使用可能な CPU とメモリの量は、ノード自体に含まれる量よりも小さく見える場合があります。 実行するアプリケーションの数によってリソースの制約が生じる場合は、これらの予約によって、Kubernetes のコア コンポーネントに使用可能な CPU とメモリが確保されます。 リソースの予約を変更することはできません。
+
+例: 
+
+- **Standard DS2 v2** ノード サイズには、2 つの vCPU と 7 GiB のメモリが含まれます
+    - 7 GiB メモリの 20% = 1.4 GiB
+    - ノードで使用できるメモリの合計は、*(7 - 1.4) = 5.6 GiB* になります
+    
+- **Standard E4s v3** ノード サイズには、4 つの vCPU と 32 GiB のメモリが含まれます
+    - 32 GiB メモリの 20% = 6.4 GiB (ただし、AKS で予約されるのは最大で 4 GiB のみ)
+    - ノードで使用できるメモリの合計は、*(32 - 4) = 28 GiB* になります
+    
+基盤のノード OS にも、自身のコア機能を果たすために一定の CPU とメモリ リソースが必要になります。
 
 ### <a name="node-pools"></a>ノード プール
 

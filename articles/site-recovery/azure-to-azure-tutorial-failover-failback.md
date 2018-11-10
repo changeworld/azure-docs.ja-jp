@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery でレプリケート済み Azure VM をセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする
-description: Azure Site Recovery で Azure VM レプリケーションをセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする方法について説明します
+title: Azure Site Recovery サービスを使用して、レプリケート済み Azure IaaS VM をディザスター リカバリー用のセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする。
+description: Azure Site Recovery サービスを使用して、レプリケート済み Azure VM をディザスター リカバリー用のセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f7d6594910f3c703c2381515c3b93eb56ff4f675
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9917656a3bc8fd8cfe7d71786dc39d296a2449c1
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456509"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239289"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする
 
@@ -34,7 +34,7 @@ ms.locfileid: "49456509"
 ## <a name="prerequisites"></a>前提条件
 
 - [ディザスター リカバリー訓練](azure-to-azure-tutorial-dr-drill.md)を実施して、すべてが正しく動作していることを確認します。
-- テスト フェールオーバーを実行する前に、VM のプロパティを確認します。 VM は [Azure の要件](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions)に準拠している必要があります。
+- テスト フェールオーバーを実行する前に、VM のプロパティを確認します。 VM は [Azure の要件](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)に準拠している必要があります。
 
 ## <a name="run-a-failover-to-the-secondary-region"></a>セカンダリ リージョンへのフェールオーバーを実行する
 

@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery を使用して AWS の VM を Azure に移行する | Microsoft Docs
+title: Azure Site Recovery サービスを使用して AWS VM を Azure に移行する | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して、アマゾン ウェブ サービス (AWS) で実行中の Windows VM を Azure に移行する方法を説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 04e7506562d29e37abb65b7a760fbc9bd707e2c6
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: b09cfe106eefe9f6ab76cd1bfea91a0b6ff13b7c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078938"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214530"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 

@@ -1,6 +1,6 @@
 ---
-title: PowerShell (Azure Resource Manager) を使用して Virtual Machine Manager クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする | Microsoft Docs
-description: PowerShell (Resource Manager) を使用して Virtual Machine Manager クラウド内の Hyper-V VM をセカンダリ Virtual Machine Manager サイトにレプリケートする方法について説明します。
+title: Azure Site Recovery と PowerShell を使用して、VMM クラウド内の Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する | Microsoft Docs
+description: Azure Site Recovery と PowerShell を使用して、VMM クラウド内の Hyper-V VM のセカンダリ VMM サイトへのディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 896b3cb3c40673dfbc7269cab1d37790f78912b0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6ade1d584fad05e33a72a0ff5099378a9cf7f29f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041358"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214581"
 ---
-# <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して Hyper-V VM をセカンダリ サイトへレプリケートする
+# <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して、Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、System Center Virtual Machine Manager クラウドの Hyper-V VM をセカンダリ オンプレミス サイトの Virtual Machine Manager クラウドにレプリケートする手順を自動化する方法について説明します。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298207"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240887"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows データ サイエンス仮想マシンのプロビジョニング
 Microsoft Data Science Virtual Machine (DSVM) は、Microsoft Azure 仮想マシン (VM) イメージです。 あらかじめインストールされており、Data Analytics と機械学習用に使用されているいくつかのツールで構成されています。 次のトピックが含まれています。
@@ -186,7 +186,7 @@ VM には複数の Azure ツールがインストールされます。
 * **Microsoft Azure PowerShell** は、PowerShell スクリプト言語で Azure リソースを管理するためのツールです。 やはり VM にインストールされます。 
 
 ### <a name="power-bi"></a>Power BI
-ダッシュボードの構築と高度な視覚化を支援するために、**Power BI Desktop** がインストールされます。 このツールを使用すると、他のソースからデータを抽出し、ダッシュボードとレポートを作成し、それらをクラウドに公開することができます。 詳しくは、[Power BI](http://powerbi.microsoft.com) のサイトをご覧ください。 Power BI Desktop は **[スタート]** メニューにあります。 
+ダッシュボードの構築と高度な視覚化を支援するために、**Power BI Desktop** がインストールされます。 このツールを使用すると、他のソースからデータを抽出し、ダッシュボードとレポートを作成し、それらをクラウドに公開することができます。 詳しくは、[Power BI](https://powerbi.microsoft.com) のサイトをご覧ください。 Power BI Desktop は **[スタート]** メニューにあります。 
 
 > [!NOTE]
 > Power BI にアクセスするには、Microsoft Office 365 アカウントが必要です。 
@@ -205,7 +205,7 @@ Workbench の各ユーザーは、1 回限りのアクションを実行する�
 [Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) は、他の Microsoft 開発ツールを探してダウンロードするために使用します。 Microsoft Data Science Virtual Machine のデスクトップにはツールのショートカットもあります。  
 
 ## <a name="important-directories-on-the-vm"></a>VM 上の重要なディレクトリ
-| 項目 | Directory |
+| Item | Directory |
 | --- | --- |
 | Jupyter Notebook サーバーの構成 | C:\ProgramData\jupyter |
 | Jupyter Notebook のサンプルのホーム ディレクトリ | c:\dsvm\notebooks および c:\users\<ユーザー名>\notebooks |
@@ -228,7 +228,7 @@ Workbench の各ユーザーは、1 回限りのアクションを実行する�
 * **[スタート]** メニューを選択して、Data Science VM でツールを調べます。
 * Azure Machine Learning Services および Workbench については、製品の[クイック スタートおよびチュートリアルのページ](../service/index.yml)をご覧ください。 
 * **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** に移動し、エンタープライズ規模での Data Analytics をサポートする R で RevoScaleR ライブラリを使用するサンプルを入手します。  
-* 記事「[Windows データ サイエンス仮想マシンでできる 10 のこと](http://aka.ms/dsvmtenthings)」を読みます。
+* 記事「[Windows データ サイエンス仮想マシンでできる 10 のこと](https://aka.ms/dsvmtenthings)」を読みます。
 * [Team Data Science Process](../team-data-science-process/index.yml)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
 * Azure Machine Learning および関連する Azure 上のデータ サービスを使用した機械学習および Data Analytics については、[Azure AI Gallery](http://gallery.cortanaintelligence.com) をご覧ください。 **[スタート]** メニューと仮想マシンのデスクトップに、このギャラリーへのアイコンも用意されています。
 

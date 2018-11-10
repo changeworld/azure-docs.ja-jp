@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Python を使用してテキストを翻訳する - Translator Text API'
+title: 'クイック スタート: テキストを翻訳する (Python) - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API と Python を使って、10 分以内でテキストを別の言語に翻訳します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: a9f848098f377a79ded07d3bbe41f212cb4a7e74
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 3ba8064a6d13cfe9d2a2ae2ac496cfa8302989cd
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945351"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085990"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>クイック スタート: Python で Translator Text API を使用して文字列を翻訳する
 
@@ -114,7 +114,7 @@ response = request.json()
 最後の手順では、結果を出力します。 このコード スニペットでは、キーを並べ替え、インデントを設定し、項目とキーの区切りを宣言することによって、結果を整形します。
 
 ```python
-print(json.dumps(response, sort_keys=True, indent=4, separators=(',', ': ')))
+print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
 ```
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置

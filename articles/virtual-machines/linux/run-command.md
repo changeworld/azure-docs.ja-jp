@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/02/2018
+ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 9ba60f770c094f65ee5a4ed6dc21a5e07bac3d27
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267751"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158807"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
 
@@ -38,6 +38,9 @@ ms.locfileid: "48267751"
 * スクリプトを実行できる最大時間は 90 分であり、その後タイムアウトになる
 * スクリプトの結果を返すために、VM からの送信接続が必要
 
+> [!NOTE]
+> 正常に機能するには、実行コマンドに Azure のパブリック IP アドレスへの接続 (ポート 443) が必要です。 拡張機能に、これらのエンドポイントへのアクセス権がない場合、スクリプトが正常に実行しても、結果が返されないことがあります。 仮想マシン上のトラフィックをブロックしている場合、[サービス タグ](../../virtual-network/security-overview.md#service-tags)を使用し、`AzureCloud` タグを使用して、Azure パブリック IP アドレスへのトラフィックを許可できます。
+
 ## <a name="azure-cli"></a>Azure CLI
 
 [az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) コマンドを使用して Azure Linux VM 上でシェル スクリプトを実行する例を次に示します。
@@ -55,7 +58,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ![実行コマンドの一覧](./media/run-command/run-command-list.png)
 
-実行するコマンドを選択します。 コマンドによっては、省略可能または必須の入力パラメーターがある場合があります。 これらのコマンドの場合、パラメーターは、入力値を指定するためのテキスト フィールドとして表示されます。 コマンドごとに、**[スクリプトの表示]** を展開することによって、実行されるスクリプトを表示できます。 **RunShellScript** は、独自のカスタム スクリプトを指定できる点で他のコマンドとは異なります。 
+実行するコマンドを選択します。 コマンドによっては、省略可能または必須の入力パラメーターがある場合があります。 これらのコマンドの場合、パラメーターは、入力値を指定するためのテキスト フィールドとして表示されます。 コマンドごとに、**[スクリプトの表示]** を展開することによって、実行されるスクリプトを表示できます。 **RunShellScript** は、独自のカスタム スクリプトを指定できる点で他のコマンドとは異なります。
 
 > [!NOTE]
 > 組み込みコマンドは編集できません。

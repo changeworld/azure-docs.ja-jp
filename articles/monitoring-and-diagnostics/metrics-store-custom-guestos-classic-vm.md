@@ -8,51 +8,55 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: 235eda231dfb0f936bf55c7c8d93a8f709fdf9bc
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 06b3d97f4b2b7867f09a8c4e5fe974615e9b0c70
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954854"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093422"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor データ ストアに送信する
 
-Azure Monitor [Windows Azure 診断拡張機能](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (WAD) を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、以前のリンク先の記事に記載されている多くの場所にテレメトリを送信することができます。
+Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) ("WAD" または "診断" と呼ばれる) を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの異なる場所](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
 
-この記事では、Windows 仮想マシン (クラシック) 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するプロセスについて説明します。 WAD バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 この場所にこれらを格納することで、プラットフォーム メトリックに対して使用できるのと同じアクションにアクセスできます。  アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。  これまで WAD 拡張機能は Azure Storage に書き込まれましたが、Azure Monitor のデータ ストアには書き込まれませんでした。 
+この記事では、Windows 仮想マシン (クラシック) 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するプロセスについて説明します。 診断拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 
+
+この場所にこれらを格納することで、プラットフォーム メトリックに対して実行するのと同じアクションにアクセスできます。 アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。 これまで、診断拡張機能では、Azure Monitor データ ストアではなく Azure Storage に書き込んでいました。 
 
 この記事で説明するプロセスは、Windows オペレーティング システムが実行されているクラシック仮想マシンでのみ機能します。
 
-## <a name="pre-requisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションで、[サービス管理者または共同管理者](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md)である必要があります 
+- Azure サブスクリプションで、[サービス管理者または共同管理者](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md)である必要があります。 
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) で登録する必要があります 
+- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal) に登録する必要があります 
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) がインストールされている必要があります。[Azure CloudShell](https://docs.microsoft.com/azure/cloud-shell/overview.md) を使用することもできます 
+- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>クラシック仮想マシンおよびストレージ アカウントを作成する
 
-1. Azure portal を使用してクラシック VM を作成します ![クラシック VM の作成](./media/metrics-store-custom-guestos-classic-vm/create-classic-vm.png)
+1. Azure portal を使用してクラシック VM を作成します。
+   ![クラシック VM の作成](./media/metrics-store-custom-guestos-classic-vm/create-classic-vm.png)
 
-1. この VM を作成するとき、新しいクラシック ストレージ アカウントの作成を選択します。 このストレージ アカウントは後の手順で使用します。
+1. この VM を作成しているときに、新しいクラシック ストレージ アカウントを作成するオプションを選択します。 このストレージ アカウントは後の手順で使用します。
 
-1. Azure portal で、ストレージ アカウント リソースのブレードに移動し、**[キー]** を選択して、ストレージ アカウント名とストレージ アカウント キーを書き留めておきます。 これらのキーは後の手順で必要です ![ストレージ アクセス キー](./media/metrics-store-custom-guestos-classic-vm/storage-access-keys.png)
+1. Azure portal で、**ストレージ アカウント**のリソース ブレードに移動します。 **[キー]** を選択して、ストレージ アカウント名とストレージ アカウント キーをメモしておきます。 この情報は後の手順で必要になります。
+   ![ストレージ アクセス キー](./media/metrics-store-custom-guestos-classic-vm/storage-access-keys.png)
 
-## <a name="create-a-service-principal"></a>サービス プリンシパルを作成する
+## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-[サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページの手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 このプロセスでは、以下の点に注意してください。 
-- このアプリに対して新しいクライアント シークレットを作成する  
-- 後の手順で使用するキーとクライアント ID を保存する。
+[サービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページの手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 このプロセスを進める際には、次の点に注意してください。 
+- このアプリ用に新しいクライアント シークレットを作成します。
+- 後の手順で使用するために、キーとクライアント ID を保存します。
 
 このアプリに、メトリックを出力するリソースへの "監視メトリック パブリッシャー" アクセス許可を付与します。 リソース グループまたはサブスクリプション全体を使用できます。  
 
 > [!NOTE]
-> 診断拡張機能では、サービス プリンシパルは、Azure Monitor に対する認証と、ご自身のクラシック VM 用メトリックの出力に使用されます。
+> 診断拡張機能では、サービス プリンシパルを使用して、Azure Monitor を認証し、クラシック VM 用のメトリックを発行します
 
-## <a name="author-diagnostics-extension-configuration"></a>その他の診断拡張機能の構成
+## <a name="author-diagnostics-extension-configuration"></a>診断拡張機能の構成の作成
 
-1. ご自身の WAD 診断拡張機能の構成ファイルを準備します。 このファイルにより、ご自身のクラシック VM について、診断拡張機能の収集対象のパフォーマンス カウンターとログが決まります。 以下に例を示します。
+1. 診断拡張機能の構成ファイルを準備します。 このファイルにより、ご自身のクラシック VM について、診断拡張機能の収集対象のパフォーマンス カウンターとログが決まります。 たとえば次のようになります。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -98,14 +102,14 @@ Azure Monitor [Windows Azure 診断拡張機能](https://docs.microsoft.com/azur
     <IsEnabled>true</IsEnabled>
     </DiagnosticsConfiguration>
     ```
-1. 診断ファイルの "SinksConfig" セクションにより、新しい Azure Monitor シンクが定義されます。
+1. 診断ファイルの "SinksConfig" セクションで、新しい Azure Monitor シンクを次のように定義します。
 
     ```xml
     <SinksConfig>
         <Sink name="AzMonSink">
             <AzureMonitor>
-                <ResourceId>Provide your Classic VM’s Resource ID </ResourceId>
-                <Region>Region your VM is deployed in</Region>
+                <ResourceId>Provide the resource ID of your classic VM </ResourceId>
+                <Region>The region your VM is deployed in</Region>
             </AzureMonitor>
         </Sink>
     </SinksConfig>
@@ -120,7 +124,7 @@ Azure Monitor [Windows Azure 診断拡張機能](https://docs.microsoft.com/azur
     </PerformanceCounters>
     ```
 
-1. プライベート構成で、Azure Monitor アカウントを定義し、メトリックの出力に使用するサービス プリンシパル情報を追加します。
+1. プライベート構成で、Azure Monitor アカウントを定義します。 その後、メトリックの出力に使用するサービス プリンシパル情報を追加します。
 
     ```xml
     <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -136,15 +140,15 @@ Azure Monitor [Windows Azure 診断拡張機能](https://docs.microsoft.com/azur
 
 1. このファイルをローカルに保存します。
 
-## <a name="deploy-diagnostics-extension-to-your-cloud-service"></a>診断拡張機能をクラウド サービスにデプロイする
+## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>診断拡張機能をクラウド サービスに配置する
 
-1. PowerShell を起動し、サインインします
+1. PowerShell を起動して、サインインします。
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-1. 最初に、お使いのクラシック VM にコンテキストを設定します
+1. 最初に、お使いのクラシック VM にコンテキストを設定します。
 
     ```powershell
     $VM = Get-AzureVM -ServiceName <VM’s Service_Name> -Name <VM Name>
@@ -162,13 +166,13 @@ Azure Monitor [Windows Azure 診断拡張機能](https://docs.microsoft.com/azur
     $diagconfig = “<path of the diagnostics configuration file with the Azure Monitor sink configured>”
     ```
 
-1.  Azure Monitor シンクが構成されている診断ファイルを使って、クラシック VM への更新を準備します
+1.  Azure Monitor シンクが構成されている診断ファイルを使って、クラシック VM への更新を準備します。
 
     ```powershell
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $diagconfig -VM $VM -StorageContext $Storage_Context
     ```
 
-1.  次のコマンドを実行して、ご自身の VM に更新をデプロイします
+1.  次のコマンドを実行して、ご自身の VM に更新をデプロイします。
 
     ```powershell
     Update-AzureVM -ServiceName "ClassicVMWAD7216" -Name "ClassicVMWAD" -VM $VM_Update.VM
@@ -179,19 +183,20 @@ Azure Monitor [Windows Azure 診断拡張機能](https://docs.microsoft.com/azur
 
 ## <a name="plot-the-metrics-in-the-azure-portal"></a>Azure portal でメトリックをプロットする
 
-1.  Azure portal に移動します
+1.  Azure Portal にアクセスします。 
 
-1.  左側のメニューで [モニター] をクリックします
+1.  左側のメニューで **[モニター]** を選択します。
 
-1.  [モニター] ブレードで、**[メトリック]** をクリックします
-   ![メトリックに移動](./media/metrics-store-custom-guestos-classic-vm/navigate-metrics.png)
+1.  **[モニター]** ブレードで、**[メトリック]** を選択します。
 
-1. リソースのドロップダウンで、ご自身のクラシック VM を選択します
+    ![メトリックを移動する](./media/metrics-store-custom-guestos-classic-vm/navigate-metrics.png)
 
-1. 名前空間のドロップダウンで、**[azure.vm.windows.guest]** を選択します
+1. リソースのドロップダウン メニューで、お使いのクラシック VM を選択します。
 
-1. メトリックのドロップダウンで、**[Memory\Committed Bytes in Use]** を選択します
-   ![メトリックのプロット](./media/metrics-store-custom-guestos-classic-vm/plot-metrics.png)
+1. 名前空間のドロップダウン メニューで、**[azure.vm.windows.guest]** を選択します。
+
+1. メトリックのドロップダウン メニューで、**[Memory\Committed Bytes in Use]** を選択します。
+   ![メトリックをプロットする](./media/metrics-store-custom-guestos-classic-vm/plot-metrics.png)
 
 
 ## <a name="next-steps"></a>次の手順

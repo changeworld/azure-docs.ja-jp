@@ -6,20 +6,20 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: c917fab84448684cf29af162ec0781d764605f71
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c09ee84cda5f0a9747d3ee1f8f1b37d1323f2cc2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323971"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212252"
 ---
 # <a name="egress-and-endpoints"></a>エグレスとエンドポイント
 
 Azure Digital Twins でサポートされる "_エンドポイント_" の概念では、各エンドポイントがユーザーの Azure サブスクリプションでのメッセージ/イベント ブローカーを表します。 イベントとメッセージは、**Event Hub**、**Event Grid**、および **Service Bus トピック**に送信できます。
 
-イベントは、定義済みのルーティング設定に従ってエンドポイントに送信されます。ユーザーは、イベント `TopologyOperation`、`UdfCustom`、`SensorChange`、`SpaceChange`、`DeviceMessage` を受け取る必要があるエンドポイントを指定できます。
+イベントは、定義済みのルーティング設定に従ってエンドポイントに送信されます。ユーザーは、イベント **TopologyOperation**、**UdfCustom**、**SensorChange**、**SpaceChange**、または **DeviceMessage** のいずれかを受け取る必要があるエンドポイントを指定できます。
 
 イベントのルーティングとイベントの種類の基本については、「[ルーティング イベントおよびメッセージ](concepts-events-routing.md)」をご覧ください。
 
@@ -27,9 +27,9 @@ Azure Digital Twins でサポートされる "_エンドポイント_" の概念
 
 各イベントの種類のイベント形式を次に示します。
 
-- `TopologyOperation`
+- **TopologyOperation**
 
-  グラフの変更を適用します。 `subject` プロパティは、影響を受けるオブジェクトの種類を指定します。 このイベントをトリガーできるオブジェクトの種類は、`Device, DeviceBlobMetadata`、`DeviceExtendedProperty`、`ExtendedPropertyKey`、`ExtendedType`、`KeyStore`、`Report`、`RoleDefinition`、`Sensor`、`SensorBlobMetadata`、`SensorExtendedProperty`、`Space`、`SpaceBlobMetadata`、`SpaceExtendedProperty`、`SpaceResource`、`SpaceRoleAssignment`、`System`、`User`、`UserBlobMetadata`、`UserExtendedProperty` です。
+  グラフの変更を適用します。 *subject* プロパティは、影響を受けるオブジェクトの種類を指定します。 このイベントをトリガーできるオブジェクトの種類は、**Device**、**DeviceBlobMetadata**、**DeviceExtendedProperty**、**ExtendedPropertyKey**、**ExtendedType**、**KeyStore**、**Report**、**RoleDefinition**、**Sensor**、**SensorBlobMetadata**、**SensorExtendedProperty**、**Space**、**SpaceBlobMetadata**、**SpaceExtendedProperty**、**SpaceResource**、**SpaceRoleAssignment**、**System**、**User**、**UserBlobMetadata**、**UserExtendedProperty** です。
 
   例:
 
@@ -55,11 +55,14 @@ Azure Digital Twins でサポートされる "_エンドポイント_" の概念
 
     | カスタム属性の名前 | 置換後の文字列 |
     | --- | --- |
-    | `yourTopicName` | カスタマイズしたトピックの名前 |
+    | *yourTopicName* | カスタマイズしたトピックの名前 |
 
-- `UdfCustom`
+- **UdfCustom**
 
-  ユーザー定義関数 (UDF) によって送信されるイベント。 このイベントは、UDF 自体から明示的に送信する必要があることに注意してください。
+  ユーザー定義関数 (UDF) によって送信されるイベント。 
+  
+  > [!IMPORTANT]
+  > このイベントは、UDF 自体から明示的に送信する必要があります。
 
   例:
 
@@ -83,9 +86,9 @@ Azure Digital Twins でサポートされる "_エンドポイント_" の概念
 
     | カスタム属性の名前 | 置換後の文字列 |
     | --- | --- |
-    | `yourTopicName` | カスタマイズしたトピックの名前 |
+    | *yourTopicName* | カスタマイズしたトピックの名前 |
 
-- `SensorChange`
+- **SensorChange**
 
   テレメトリの変化に基づく、センサーの状態に対する更新。
 
@@ -118,9 +121,9 @@ Azure Digital Twins でサポートされる "_エンドポイント_" の概念
 
     | カスタム属性の名前 | 置換後の文字列 |
     | --- | --- |
-    | `yourTopicName` | カスタマイズしたトピックの名前 |
+    | *yourTopicName* | カスタマイズしたトピックの名前 |
 
-- `SpaceChange`
+- **SpaceChange**
 
   テレメトリの変化に基づく、スペースの状態に対する更新。
 
@@ -153,15 +156,15 @@ Azure Digital Twins でサポートされる "_エンドポイント_" の概念
 
     | カスタム属性の名前 | 置換後の文字列 |
     | --- | --- |
-    | `yourTopicName` | カスタマイズしたトピックの名前 |
+    | *yourTopicName* | カスタマイズしたトピックの名前 |
 
-- `DeviceMessage`
+- **DeviceMessage**
 
-  Azure Digital Twins からも生テレメトリ イベントをルーティングできる `EventHub` 接続を指定できます。
+  Azure Digital Twins からも生テレメトリ イベントをルーティングできる **EventHub** 接続を指定できます。
 
 > [!NOTE]
-> - `DeviceMessage` は `EventHub` だけと結合できます。`DeviceMessage` を他のイベントの種類と結合することはできません。
-> - 種類 `EventHub`/`DeviceMessage` の組み合わせのエンドポイントは、1 つだけ指定できます。
+> - **DeviceMessage** は **EventHub** だけと結合できます。**DeviceMessage** を他のイベントの種類と結合することはできません。
+> - 種類 **EventHub** または **DeviceMessage** の組み合わせのエンドポイントは、1 つだけ指定できます。
 
 ## <a name="configuring-endpoints"></a>エンドポイントの構成
 
@@ -171,7 +174,7 @@ Azure Digital Twins でサポートされる "_エンドポイント_" の概念
 POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 ```
 
-- **Service Bus** イベントの種類に対するルート: `SensorChange`、`SpaceChange`、`TopologyOperation`
+- **Service Bus** イベントの種類へのルート: **SensorChange**、**SpaceChange**、**TopologyOperation**
 
   ```JSON
   {
@@ -189,12 +192,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | カスタム属性の名前 | 置換後の文字列 |
     | --- | --- |
-    | `yourNamespace` | エンドポイントの名前空間 |
-    | `yourPrimaryKey` | 認証に使用されるプライマリ接続文字列 |
-    | `yourSecondaryKey` | 認証に使用されるセカンダリ接続文字列 |
-    | `yourTopicName` | カスタマイズしたトピックの名前 |
+    | *yourNamespace* | エンドポイントの名前空間 |
+    | *yourPrimaryKey* | 認証に使用されるプライマリ接続文字列 |
+    | *yourSecondaryKey* | 認証に使用されるセカンダリ接続文字列 |
+    | *yourTopicName* | カスタマイズしたトピックの名前 |
 
-- **Event Grid** イベントの種類に対するルート: `SensorChange`、`SpaceChange`、`TopologyOperation`
+- **Event Grid** イベントの種類へのルート: **SensorChange**、**SpaceChange**、**TopologyOperation**
 
   ```JSON
   {
@@ -212,11 +215,11 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | カスタム属性の名前 | 置換後の文字列 |
     | --- | --- |
-    | `yourPrimaryKey` | 認証に使用されるプライマリ接続文字列|
-    | `yourSecondaryKey` | 認証に使用されるセカンダリ接続文字列 |
-    | `yourTopicName` | カスタマイズしたトピックの名前 |
+    | *yourPrimaryKey* | 認証に使用されるプライマリ接続文字列|
+    | *yourSecondaryKey* | 認証に使用されるセカンダリ接続文字列 |
+    | *yourTopicName* | カスタマイズしたトピックの名前 |
 
-- **Event Hub** イベントの種類に対するルート: `SensorChange`、`SpaceChange`、`TopologyOperation`
+- **Event Hub** イベントの種類へのルート: **SensorChange**、**SpaceChange**、**TopologyOperation**
 
   ```JSON
   {
@@ -234,12 +237,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | カスタム属性の名前 | 置換後の文字列 |
     | --- | --- |
-    | `yourNamespace` | エンドポイントの名前空間 |
-    | `yourPrimaryKey` | 認証に使用されるプライマリ接続文字列 |
-    | `yourSecondaryKey` | 認証に使用されるセカンダリ接続文字列 |
-    | `yourEventHubName` | イベント ハブの名前 |
+    | *yourNamespace* | エンドポイントの名前空間 |
+    | *yourPrimaryKey* | 認証に使用されるプライマリ接続文字列 |
+    | *yourSecondaryKey* | 認証に使用されるセカンダリ接続文字列 |
+    | *yourEventHubName* | **イベント ハブ**の名前 |
 
-- **Event Hub** イベントの種類に対するルート: `DeviceMessage` `connectionString` に _EntityPath_ が含まれることに注意してください。これは必須です。
+- **Event Hub** イベントの種類へのルート: **DeviceMessage**。 **connectionString** に `EntityPath` を含めることが必須です。
 
   ```JSON
   {
@@ -255,10 +258,10 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | カスタム属性の名前 | 置換後の文字列 |
     | --- | --- |
-    | `yourNamespace` | エンドポイントの名前空間 |
-    | `yourPrimaryKey` | 認証に使用されるプライマリ接続文字列 |
-    | `yourSecondaryKey` | 認証に使用されるセカンダリ接続文字列 |
-    | `yourEventHubName` | イベント ハブの名前 |
+    | *yourNamespace* | エンドポイントの名前空間 |
+    | *yourPrimaryKey* | 認証に使用されるプライマリ接続文字列 |
+    | *yourSecondaryKey* | 認証に使用されるセカンダリ接続文字列 |
+    | *yourEventHubName* | **イベント ハブ**の名前 |
 
 > [!NOTE]
 > 新しいエンドポイントを作成するとき、そのエンドポイントでイベントの受信が始まるまで最大 5 ～ 10 分かかる場合があります。

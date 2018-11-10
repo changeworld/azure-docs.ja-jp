@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d64cf71ea3a44b7539835e3616150218e8b3635
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861229"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211538"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -97,6 +97,19 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 > [!NOTE]
 > Azure AD によってグループ ライセンスが割り当てられるとき、指定された利用場所がないユーザーは、ディレクトリの場所を継承します。 管理者は、地域の法律と規制を遵守するために、グループベースのライセンスを使用する前に、ユーザーに対して正しい利用場所の値を設定することをお勧めします。
 
+## <a name="duplicate-proxy-addresses"></a>プロキシ アドレスの重複
+
+Exchange Online を使用する場合は、テナント内の一部のユーザーが、同じプロキシ アドレスの値で間違って構成されている可能性があります。 グループ ベースのライセンスによってこのようなユーザーにライセンス割り当てを試みると、失敗し、"プロキシ アドレスは既に使用されています" と表示されます。
+
+> [!TIP]
+> 重複したプロキシ アドレスの有無を確認するには、次の PowerShell コマンドレットを Exchange Online に対して実行します。
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](https://technet.microsoft.com/library/jj984289.aspx)に関する情報も確認できます。 Azure AD に proxyAddresses 属性を反映する方法の詳細については、[この記事](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)を参照してください。
+
+関連するユーザーのプロキシ アドレスの問題を解決したら、グループのライセンス処理を強制的に実行して、ライセンスが適用できるようになったことを確認してください。
+
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>1 つのグループに複数の製品ライセンスがある場合
 
 1 つのグループに複数の製品ライセンスを割り当てることができます。 たとえば、Office 365 Enterprise E3 と Enterprise Mobility + Security をグループに割り当てて、ユーザーによる製品内の全サービスの使用を簡単に有効にできます。
@@ -134,19 +147,7 @@ Microsoft Workplace Analytics はアドオン製品です。 同じ名前の単�
 > [!TIP]
 > 前提条件のサービス プランごとに複数のグループを作成できます。 たとえば、Office 365 Enterprise E1 と Office 365 Enterprise E3 の両方をユーザーに使用する場合、2 つのグループを作成して Microsoft Workplace Analytics にライセンスを付与できます。1 つは前提条件として E1 を利用するグループ、もう 1 つは E3 を利用するグループです。 これにより、追加のライセンスを使用せずに、E1 ユーザーと E3 ユーザーにアドオンを配布できます。
 
-## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Exchange Online でプロキシ アドレスの重複があるために、ユーザーのライセンス割り当てがエラーを記録することなく失敗する
 
-Exchange Online を使用する場合は、テナント内の一部のユーザーが、同じプロキシ アドレスの値で間違って構成されている可能性があります。 グループ ベースのライセンスがこのようなユーザーにライセンス割り当てを試みると、エラーが発生しますが、そのエラーは記録されません。 エラーが記録されないのは、プレビュー版ではこの機能が制限されているからです。この問題は、"*一般公開*" が開始されるまでには解決される予定です。
-
-> [!TIP]
-> 一部のユーザーがライセンスを得られず、そのユーザーに関してエラーが記録されていない場合は、まず、ユーザーに重複するプロキシ アドレスがないかどうかを確認してください。
-> 重複したプロキシ アドレスの有無を確認するには、次の PowerShell コマンドレットを Exchange Online に対して実行します。
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
-> この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](https://technet.microsoft.com/library/jj984289.aspx)に関する情報も確認できます。
-
-関連するユーザーのプロキシ アドレスの問題を解決したら、グループのライセンス処理を強制的に実行して、ライセンスが適用できるようになったことを確認してください。
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>グループでライセンスの処理を強制してエラーを解決する方法
 
@@ -154,11 +155,19 @@ Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.co
 
 たとえば、直接的に割り当てられたライセンスをユーザーから削除することで、一部のライセンスを解放した場合は、前に失敗したグループの処理を手動でトリガーして、すべてのユーザー メンバーに対して、完全にライセンスを付与する必要があります。 グループを処理するには、グループ ウィンドウに移動して **[ライセンス]** を開き、ツール バーの **[再処理]** ボタンを選択します。
 
+## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>ユーザーにライセンスの処理を強制してエラーを解決する方法
+
+エラーを解決した手順によっては、ユーザーの処理を手動でトリガーして、ユーザーの状態を更新しなければならない場合があります。
+
+たとえば、影響を受けるユーザーの重複したプロキシ アドレスの問題を解決した後に、ユーザーの処理をトリガーする必要があります。 ユーザーを再処理するには、ユーザー ウィンドウに移動して **[ライセンス]** を開き、ツール バーの **[再処理]** ボタンを選択します。
+
 ## <a name="next-steps"></a>次の手順
 
 グループによるライセンス管理の他のシナリオについては、以下を参照してください。
 
-* [Assigning licenses to a group in Azure Active Directory](licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
 * [What is group-based licensing in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md) (Azure Active Directory のグループベースのライセンスとは)
+* [Assigning licenses to a group in Azure Active Directory](licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](licensing-groups-migrate-users.md)
+* [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](licensing-groups-change-licenses.md)
 * [Azure Active Directory グループベース ライセンスのその他のシナリオ](licensing-group-advanced.md)
+* [Azure Active Directory のグループベースのライセンスの PowerShell の例](licensing-ps-examples.md)

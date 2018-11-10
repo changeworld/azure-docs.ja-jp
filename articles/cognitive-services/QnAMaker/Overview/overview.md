@@ -10,26 +10,28 @@ ms.component: qna-maker
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: tulasim
-ms.openlocfilehash: 742c18815445b038e85c33a96743790491976945
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: bd859183a13e0f8a21cdd2eabb464b718e949464
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901109"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212218"
 ---
 # <a name="what-is-qna-maker"></a>QnA Maker とは
 
-QnA Maker は、ユーザーの自然言語の質問にカスタムの機械学習インテリジェンスを適用して最適な回答を判定する、質問と回答ナレッジ ベース (KB) サービスです。
+QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 
 
-QnA Maker を使用すると、よく寄せられる質問 (FAQ) ドキュメント、URL、製品マニュアル、カスタムの質問と回答などの半構造化コンテンツからクラウドベースのサービスを強化することができます。 使いやすい [Web ポータル](https://qnamaker.ai)により、開発者エクスペリエンスがなくても、サービスを作成、管理、トレーニング、公開することができます。 サービスがエンドポイントに公開されると、チャット ボットなどのクライアント アプリケーションは、ユーザーとの会話を管理して、質問を受けてその回答を返すことができます。 
+QnA Maker を使うと、よくある質問 (FAQ) の URL、製品マニュアル、サポート ドキュメント、カスタムの Q&A などの半構造化コンテンツからナレッジベース (KB) を作成できます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジ ベースにある Q&A から回答となる可能性が最も高いものが提示されます。
+
+使いやすい [Web ポータル](https://qnamaker.ai)により、開発者エクスペリエンスがなくても、サービスを作成、管理、トレーニング、公開することができます。 サービスがエンドポイントに公開されると、チャット ボットなどのクライアント アプリケーションは、ユーザーとの会話を管理して、質問を受けてその回答を返すことができます。 
 
 ![概要](../media/qnamaker-overview-learnabout/overview.png)
 
 ## <a name="key-qna-maker-processes"></a>QnA Maker の主要なプロセス
 
-QnA Maker では、データに対して 2 つの主要なサービスが提供されます。
+QnA Maker には、データ関連の主要サービスが 2 つあります。
 
-* **抽出**: FAQ や製品マニュアルなどの半構造化された[データ ソース](../Concepts/data-sources-supported.md)から、構造化された質問と回答のデータが抽出されます。 この抽出は、KB の[作成](https://aka.ms/qnamaker-docs-createkb)の一部として、または後続の編集プロセスの一部として行うことができます。
+* **抽出**: FAQ や製品マニュアルなど、構造化されたり、半構造化されたりしている[データ ソース](../Concepts/data-sources-supported.md)から、構造化された質問と回答のデータが抽出されます。 この抽出は、KB の[作成](https://aka.ms/qnamaker-docs-createkb)の一部として、または後続の編集プロセスの一部として行うことができます。
 
 * **照合**: ナレッジ ベースの[トレーニングとテスト](https://aka.ms/qnamaker-docs-trainkb)が済んだら、それを[公開](https://aka.ms/qnamaker-docs-publishkb)します。 これにより、QnA Maker のナレッジ ベースに対してエンドポイントが有効になり、ボットやクライアント アプリで使用できるようになります。 このエンドポイントは、ユーザーの質問を受け付け、ナレッジ ベース内の最適な回答と、一致の信頼度スコアで応答します。
 
@@ -53,11 +55,11 @@ QnA Maker では、データに対して 2 つの主要なサービスが提供�
 
 ## <a name="qna-maker-architecture"></a>QnA Maker のアーキテクチャ
 
-QnA Maker は、次の API サービスで構成されます。
+QnA Maker のアーキテクチャは、次の 2 つのコンポーネントで構成されています。
 
 1. **QnA Maker 管理サービス**: QnA Maker ナレッジ ベースの管理エクスペリエンスであり、初期作成、更新、トレーニング、および公開が含まれています。 これらのアクティビティは、[ポータル](https://qnamaker.ai)または[管理 API](https://aka.ms/qnamaker-v4-apis) を使って行うことができます。 
 
-2. **QnA Maker 予測サービス**: 指定したリージョンの Azure サブスクリプションにデプロイされます。 顧客 KB コンテンツは [Azure Search](https://azure.microsoft.com/services/search/) に格納され、エンドポイントは[アプリ サービス](https://azure.microsoft.com/services/app-service/)としてデプロイされます。 分析用に [Application Insights](https://azure.microsoft.com/services/application-insights/) リソースをデプロイすることもできます。
+2. **QnA Maker のデータおよびランタイム**: 指定したリージョンの Azure サブスクリプションにデプロイされます。 KB のコンテンツは [Azure Search](https://azure.microsoft.com/services/search/) に格納され、エンドポイントは[アプリ サービス](https://azure.microsoft.com/services/app-service/)としてデプロイされます。 分析用に [Application Insights](https://azure.microsoft.com/services/application-insights/) リソースをデプロイすることもできます。
 
 ![アーキテクチャ](../media/qnamaker-overview-learnabout/architecture.png)
 

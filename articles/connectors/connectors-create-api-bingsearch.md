@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 8ac67f9df0e5baccc668c2aeb70f65d96e574df5
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 9997f27f360f84ff3cd185d7c12c45519513d82b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021287"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233091"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Bing Search と Azure Logic Apps を使用してニュースを検索する 
 
@@ -59,7 +59,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
    | 市場 | [はい] | <*locale*> | 検索ロケール。 既定値は "en-US" ですが、他の値を選択できます。 | 
    | セーフ サーチ | [はい] | <*search-level*> | 成人向けコンテンツを除外するためのフィルター レベル。 既定値は "中" ですが、他のレベルを選択します。 | 
    | Count | いいえ  | <*results-count*> | 返される結果数を指定します。 既定値は 20 ですが、他の値を指定できます。 実際に返される結果の数は、指定した数より少ないことがあります。 | 
-   | Offset | いいえ  | <*skip-value*> | 結果が返される前にスキップする結果の数 | 
+   | offset | いいえ  | <*skip-value*> | 結果が返される前にスキップする結果の数 | 
    ||||| 
 
    例: 
@@ -80,7 +80,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. Azure Portal または Visual Studio で、ロジック アプリをロジック アプリ デザイナーで開きます。 この例では、Azure Portal を使用します。
 
-2. トリガーまたはアクションで、**[新しいステップ]** > **[アクションの追加]** を選択します。
+2. トリガーまたはアクションで、**[新しいステップ]** > **[アクションの追加]** を選択します。
 
    この例では、**[Bing Search - On new news article]\(Bing Search - 新しいニュース記事\)** トリガーを使用します
 
@@ -106,7 +106,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    | 市場 | [はい] | <*locale*> | 検索ロケール。 既定値は "en-US" ですが、他の値を選択できます。 | 
    | セーフ サーチ | [はい] | <*search-level*> | 成人向けコンテンツを除外するためのフィルター レベル。 既定値は "中" ですが、他のレベルを選択します。 | 
    | Count | いいえ  | <*results-count*> | 返される結果数を指定します。 既定値は 20 ですが、他の値を指定できます。 実際に返される結果の数は、指定した数より少ないことがあります。 | 
-   | Offset | いいえ  | <*skip-value*> | 結果が返される前にスキップする結果の数 | 
+   | offset | いいえ  | <*skip-value*> | 結果が返される前にスキップする結果の数 | 
    ||||| 
 
    たとえば、カテゴリ名に "tech" が含まれる結果が返されるようにする必要があるとします。 
@@ -167,7 +167,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

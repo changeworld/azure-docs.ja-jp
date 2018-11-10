@@ -1,6 +1,6 @@
 ---
 title: シミュレートされた X.509 デバイスを Java を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
-description: Azure クイックスタート - IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
+description: Azure クイック スタート - IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングします。このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/09/2018
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 694c4fe10ec8f738131768d80dd70c5bd18fe223
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1c784aefca19040abb7ab34dd92dddb1ef0f28de
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040739"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418230"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -24,9 +24,15 @@ ms.locfileid: "47040739"
 
 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」も確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
+Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
+- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
+- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
+
+この記事では、個別登録の使用方法を示します。
+
 ## <a name="prepare-the-environment"></a>環境の準備 
 
-1. [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) がマシンにインストールされていることを確認します。
+1. [Java SE Development Kit 8](https://aka.ms/azure-jdks) がマシンにインストールされていることを確認します。
 
 2. [Maven](https://maven.apache.org/install.html) をダウンロードし、インストールします。
 
@@ -96,7 +102,7 @@ ms.locfileid: "47040739"
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする
 
-1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、_ID スコープ_と _Provisioning Service のグローバル エンドポイント_をメモします。
+1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、"_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
 
     ![サービス情報](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
@@ -108,7 +114,7 @@ ms.locfileid: "47040739"
 
 3. プロビジョニング サービスと X.509 の ID 情報をコードに入力します。 これは自動プロビジョニング中、デバイス登録の前に、シミュレートされたデバイスの構成証明に使用されます。
 
-   - ファイル `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` を編集して、前にメモした "_ID スコープ_" と "_Provisioning Service のグローバル エンドポイント_" を含めます。 また、前のセクションでメモした "_クライアント証明書_" と "_クライアント証明書の秘密キー_" も含めます。
+   - ファイル `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` を編集して、前にメモした "_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" を含めます。 また、前のセクションでメモした "_クライアント証明書_" と "_クライアント証明書の秘密キー_" も含めます。
 
       ```java
       private static final String idScope = "[Your ID scope here]";

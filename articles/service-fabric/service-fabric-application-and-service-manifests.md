@@ -12,20 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/23/2018
+ms.date: 10/29/2018
 ms.author: ryanwi
-ms.openlocfilehash: b79206b9d456226d14984e8a1c1002c07c4f626a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 78315409c5d83a98321e16913b1090e8996ed8ce
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208473"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230286"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェスト
-この記事では、ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルを使って、Service Fabric のアプリケーションとサービスの定義およびバージョン管理を行う方法について説明します。  これらのマニフェスト ファイルの XML スキーマについては、「[ServiceFabricServiceModel.xsd スキーマ ドキュメント](service-fabric-service-model-schema.md)」をご覧ください。
+この記事では、ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルを使って、Service Fabric のアプリケーションとサービスの定義およびバージョン管理を行う方法について説明します。  詳細な例については、[アプリケーションとサービスのマニフェストの例](service-fabric-manifest-examples.md)を参照してください。  これらのマニフェスト ファイルの XML スキーマについては、「[ServiceFabricServiceModel.xsd スキーマ ドキュメント](service-fabric-service-model-schema.md)」をご覧ください。
 
 ## <a name="describe-a-service-in-servicemanifestxml"></a>ServiceManifest.xml でサービスを記述する
-サービス マニフェストは、宣言によって、サービスの種類とバージョンを定義します。 サービスの種類、ヘルスのプロパティ、負荷分散のメトリック、サービスのバイナリ、および構成ファイルなどのサービス メタデータを指定します。  別の言い方をすれば、1 つ以上のサービスの種類をサポートするよう、サービス パッケージを構成するコード、構成、データのパッケージを記述します。 サービス マニフェストにはコード、構成、データの複数のパッケージを含めることができ、個別にバージョンを管理できます。 次に示すのは、[投票サンプル アプリケーション](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)の ASP.NET Core Web フロントエンド サービスのサービス マニフェストです。
+サービス マニフェストは、宣言によって、サービスの種類とバージョンを定義します。 サービスの種類、ヘルスのプロパティ、負荷分散のメトリック、サービスのバイナリ、および構成ファイルなどのサービス メタデータを指定します。  別の言い方をすれば、1 つ以上のサービスの種類をサポートするよう、サービス パッケージを構成するコード、構成、データのパッケージを記述します。 サービス マニフェストにはコード、構成、データの複数のパッケージを含めることができ、個別にバージョンを管理できます。 次に示すのは、[投票サンプル アプリケーション](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)の ASP.NET Core Web フロントエンド サービスのサービス マニフェストです (より詳細な例は[こちら](service-fabric-manifest-examples.md)にいくつかあります)。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -76,7 +76,7 @@ ms.locfileid: "34208473"
 * サービス実行可能ファイルが使用する可能性がある環境変数の設定と初期化などです。 これは、Service Fabric のプログラミング モデルによって記述されの実行可能ファイルだけに限定されません。 たとえば、npm.exe は node.js アプリケーションのデプロイに構成されているいくつかの環境変数が必要です。
 * セキュリティ証明書のインストールによるアクセス制御の設定
 
-**SetupEntryPoint** の構成方法について詳しくは、「[エントリ ポイント セットアップ サービスのポリシーを構成する](service-fabric-application-runas-security.md)」をご覧ください
+SetupEntryPoint の構成方法について詳しくは、「[エントリ ポイント セットアップ サービスのポリシーを構成する](service-fabric-application-runas-security.md)」をご覧ください
 
 **EnvironmentVariables** (前の例では設定されていません) は、このコード パッケージに対して設定されている環境変数の一覧を提供します。 `ApplicationManifest.xml` で環境変数をオーバーライドして、各種のサービス インスタンスに対して異なる値を指定できます。 
 
@@ -93,7 +93,7 @@ ms.locfileid: "34208473"
 </Settings>
 ```
 
-エンドポイントなどの **Resources** は、コンパイルしたコードを変更することなくリソースを宣言/変更するためにサービスによって使われます。  サービス マニフェストで指定したリソースへのアクセスは、**SecurityGroup** を使ってアプリケーション マニフェスト内で制御できます。  サービス マニフェストで **Endpoint** リソースが定義されていると、ポートが明示的に指定されていない場合、Service Fabric は予約済みのアプリケーション ポートの範囲からポートを割り当てます。  詳しくは、[エンドポイント リソースの指定または上書き](service-fabric-service-manifest-resources.md)に関するページをご覧ください。
+エンドポイントなどの **Resources** は、コンパイルしたコードを変更することなくリソースを宣言/変更するためにサービスによって使われます。  サービス マニフェストで指定したリソースへのアクセスは、**SecurityGroup** を使ってアプリケーション マニフェスト内で制御できます。  サービス マニフェストで **Endpoint** リソースが定義されていると、ポートが明示的に指定されていない場合、Service Fabric は予約済みのアプリケーション ポートの範囲からポートを割り当てます。  詳しくは、[エンドポイント リソースの指定またはオーバーライド](service-fabric-service-manifest-resources.md)に関するページをご覧ください。
 
 
 <!--
@@ -106,9 +106,9 @@ For more information about other features supported by service manifests, refer 
 -->
 
 ## <a name="describe-an-application-in-applicationmanifestxml"></a>ApplicationManifest.xml でアプリケーションを記述する
-アプリケーション マニフェストは、宣言によって、アプリケーションの種類とバージョンについて記述します。 安定した名前、パーティション分割スキーム、インスタンス数とレプリケーション係数、セキュリティと分離ポリシー、配置に関する制約、構成の上書き、構成サービスの種類などのサービス構成のメタデータを指定します。 アプリケーションが置かれる負荷分散のドメインについても記述します。
+アプリケーション マニフェストは、宣言によって、アプリケーションの種類とバージョンについて記述します。 安定した名前、パーティション分割スキーム、インスタンス数とレプリケーション係数、セキュリティと分離ポリシー、配置に関する制約、構成のオーバーライド、構成サービスの種類などのサービス構成のメタデータを指定します。 アプリケーションが置かれる負荷分散のドメインについても記述します。
 
-そのため、アプリケーション マニフェストは、アプリケーション レベルで要素を記述し、1 つ以上のサービス マニフェストを参照してアプリケーションの種類を構成します。 [投票サンプル アプリケーション](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)のアプリケーション マニフェストを次に示します。
+そのため、アプリケーション マニフェストは、アプリケーション レベルで要素を記述し、1 つ以上のサービス マニフェストを参照してアプリケーションの種類を構成します。 [投票サンプル アプリケーション](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)のアプリケーション マニフェストを次に示します (より詳細な例は[こちら](service-fabric-manifest-examples.md)にいくつかあります)。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -152,9 +152,9 @@ For more information about other features supported by service manifests, refer 
 
 サービス マニフェストと同様に、 **Version** 属性は構造化されていない文字列で、システムでは解析されません。 Version 属性は、アップグレード用の各コンポーネントのバージョン管理にも使用されます。
 
-**Parameters** では、アプリケーション マニフェスト全体で使われるパラメーターを定義します。 これらのパラメーターの値は、アプリケーションがインスタンス化されるときに指定でき、アプリケーションまたはサービスの構成設定を上書きできます。  アプリケーションのインスタンス化中に値が変更されない場合は、パラメーターの既定値が使われます。 個々の環境で異なるアプリケーションやサービスのパラメーターを維持する方法については、「 [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
+**Parameters** では、アプリケーション マニフェスト全体で使われるパラメーターを定義します。 これらのパラメーターの値は、アプリケーションがインスタンス化されるときに指定でき、アプリケーションまたはサービスの構成設定をオーバーライドできます。  アプリケーションのインスタンス化中に値が変更されない場合は、パラメーターの既定値が使われます。 個々の環境で異なるアプリケーションやサービスのパラメーターを維持する方法については、「 [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
 
-**ServiceManifestImport** には、このアプリケーションの種類を構成するサービス マニフェストへの参照が含まれています。 アプリケーション マニフェストは、複数のサービス マニフェストのインポートを含むことができ、個別に独立してバージョン管理できます。 インポートされたサービス マニフェストは、このアプリケーション内で有効なサービスの種類を決定します。 ServiceManifestImport 内では、Settings.xml ファイル内の構成値と、ServiceManifest.xml ファイル内の環境変数を上書きします。 エンドポイントのバインディング、セキュリティとアクセス、およびパッケージ共有に関する **Policies** (前の例では設定されていません) は、インポートされるサービス マニフェストで設定できます。  詳しくは、「[アプリケーションのセキュリティ ポリシーの構成](service-fabric-application-runas-security.md)」をご覧ください。
+**ServiceManifestImport** には、このアプリケーションの種類を構成するサービス マニフェストへの参照が含まれています。 アプリケーション マニフェストは、複数のサービス マニフェストのインポートを含むことができ、個別に独立してバージョン管理できます。 インポートされたサービス マニフェストは、このアプリケーション内で有効なサービスの種類を決定します。 ServiceManifestImport 内では、Settings.xml ファイル内の構成値と、ServiceManifest.xml ファイル内の環境変数をオーバーライドします。 エンドポイントのバインディング、セキュリティとアクセス、およびパッケージ共有に関する **Policies** (前の例では設定されていません) は、インポートされるサービス マニフェストで設定できます。  詳しくは、「[アプリケーションのセキュリティ ポリシーの構成](service-fabric-application-runas-security.md)」をご覧ください。
 
 **DefaultServices** は、アプリケーションがこのアプリケーションの種類に対してインスタンス化されるたびに自動的に作成されるサービス インスタンスを宣言します。 既定のサービスは便利で、作成後はすべての面で通常のサービスと同様に動作します。 アプリケーション インスタンスの他のサービスと共にアップグレードされ、削除することもできます。 アプリケーション マニフェストは、複数の既定サービスを含むことができます。
 

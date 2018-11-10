@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: b7561848ffd0158e22e97530774112dcee2a9864
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a45f82b142ee4f4c9c88ea755607b88323feaae5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323788"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210127"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>データ処理とユーザー定義関数
 
@@ -25,7 +25,7 @@ Azure Digital Twins は高度な計算機能を備えています。 開発者�
 
 ![Digital Twins データ処理フロー][1]
 
-1. _検証_フェーズでは、受信したテレメトリ メッセージが一般的に理解できる [`data transfer object`](https://en.wikipedia.org/wiki/Data_transfer_object) 形式に変換されます。 このフェーズでは、デバイスとセンサーも検証されます。
+1. _検証_フェーズでは、受信したテレメトリ メッセージが一般的に理解できる[**データ転送オブジェクト**](https://en.wikipedia.org/wiki/Data_transfer_object)の形式に変換されます。 このフェーズでは、デバイスとセンサーも検証されます。
 1. _照合_フェーズでは、実行するユーザー定義関数が検索されます。 事前定義したマッチャーによって、受信したテレメトリ メッセージからのデバイス、センサー、スペース情報に基づき、ユーザー定義関数が検索されます。
 1. _計算_フェーズでは、前のフェーズで一致したユーザー定義関数が実行されます。 これらの関数により、空間グラフノードで計算値が読み取られたり、更新されたりすることがあります。また、これらの関数ではカスタム通知を送信できます。
 1. _ディスパッチ_フェーズでは、計算フェーズからグラフに定義されているエンドポイントにカスタム通知が送信されます。
@@ -40,11 +40,11 @@ Azure Digital Twins のデータ処理は、_マッチャー_、_ユーザー定
 
 _マッチャー_で定義される一連の条件により、受信したセンサー テレメトリに基づいて実行するアクションが判断されます。 一致を判断するこのような条件には、センサー、センサーの親デバイス、センサーの親空間からのパラメーターが含まれることがあります。 条件は [JSON パス](http://jsonpath.com/)に対する比較として表現されます。概要を以下に示します。
 
-- データ型 `Temperature` のあらゆるセンサー。
+- データ型 **Temperature** のあらゆるセンサー。
 - ポートに `01` がある。
-- 拡張プロパティ キー `Manufacturer` が値 `GoodCorp` に設定されているデバイスに属する。
-- 型 `Venue` の空間に属する。
-- 親 `SpaceId` `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD` の子孫である。
+- 拡張プロパティ キー **Manufacturer** が値 `"GoodCorp"` に設定されているデバイスに属する。
+- 型 `"Venue"` の空間に属する。
+- 親 **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD` の子孫である。
 
 ```JSON
 {

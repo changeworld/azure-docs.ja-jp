@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 265d34c91a8c803256e718899f5b6ce2738a88e5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: daa1bba0aacdceb7d6655c5f491be587d388176a
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956432"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087374"
 ---
 # <a name="about-v20"></a>v2.0 について
 
@@ -56,9 +56,9 @@ v2.0 についての詳細な情報:
 
 * [v2.0 プロトコル リファレンス](active-directory-v2-protocols.md)
 * [アクセス トークン リファレンス](access-tokens.md)
-* [`id_tokens` リファレンス](id-tokens.md)
+* [ID トークン リファレンス](id-tokens.md)
 * [v2.0 認証ライブラリ リファレンス](reference-v2-libraries.md)
-* [v2.0 でのスコープと同意](v2-permissions-and-consent.md)
+* [v2.0 におけるアクセス許可と同意](v2-permissions-and-consent.md)
 * [Microsoft Graph API](https://graph.microsoft.io)
 
 > [!NOTE]

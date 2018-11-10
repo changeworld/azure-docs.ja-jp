@@ -1,18 +1,18 @@
 ---
-title: Site Recovery を使用して Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック | Microsoft Docs
-description: Azure Site Recovery を使用して、物理サーバーを Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します。
+title: Site Recovery を使用したディザスター リカバリーでの物理サーバーの Azure へのフェールオーバーとフェールバック | Microsoft Docs
+description: Azure Site Recovery を使用して、ディザスター リカバリーのために物理サーバーを Azure へフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 1a818d37efd370ce0b3e27bff73a153544763ebb
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 309da6f7753d95bc6830d61ecca7d86e002ddedf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456628"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214838"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 

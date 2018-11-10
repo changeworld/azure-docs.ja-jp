@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: 82d2316b3f72fbb0c5c3ee1ea9424afcc7661361
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fc19c77e90ffd2d300497fc496da02b2d2234d3a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833973"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244391"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用した Machine Learning ワークスペースのデプロイ
 ## <a name="introduction"></a>はじめに
@@ -138,7 +138,7 @@ $rgd.Outputs.mlWorkspaceToken.Value
 # List the primary and secondary tokens of all workspaces
 Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
 ```
-ワークスペースをプロビジョニングしたら、 [Azure Machine Learning の PowerShell モジュール](http://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
+ワークスペースをプロビジョニングしたら、 [Azure Machine Learning の PowerShell モジュール](https://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)について確認します。 

@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: dimazaid
-ms.openlocfilehash: 21ed7dd1120958576651703283a0732e3843546d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f2fa2b8b43a4840d8c6956efb7704327cca78d7c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777459"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232514"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs のリッチなプッシュ
 ## <a name="overview"></a>概要
@@ -136,7 +136,7 @@ ms.locfileid: "33777459"
 2. **[Capabilities]** をクリックし、**[Background Modes]** を [ON] にし、**[Remote Notifications]** チェックボックスをオンにします。
    
     ![][IOS3]
-3. **Main.storyboard**に移動し、「 [ユーザーへの通知](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) 」チュートリアルの View Controller (このチュートリアルでは Home View Controller) があることを確認します。
+3. **Main.storyboard** に移動し、「[ユーザーへの通知](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)」チュートリアルの View Controller (このチュートリアルでは Home View Controller) があることを確認します。
 4. **Navigation Controller** をストーリーボードに追加し、Home View Controller に control キーを押しながらドラッグして、ナビゲーションの**ルート ビュー**にします。 Attributes inspector の **[Is Initial View Controller]** が選択されているのが、Navigation Controller のみであることを確認します。
 5. **View Controller** をストーリボードに追加し、**Image View** を追加します。 これは、ユーザーが情報を得るために通知をクリックすると表示されるページです。 ストーリーボードは次のようになります。
    

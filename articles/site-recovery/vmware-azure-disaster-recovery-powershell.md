@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery で PowerShell を使用して VMware VM を Azure にレプリケートおよびフェールオーバーする | Microsoft Docs
-description: Azure Site Recovery で PowerShell を使用する VMware VM の Azure へのレプリケートおよびフェールオーバーをセットアップする方法を説明します。
-services: site-recovery
+title: Azure Site Recovery で PowerShell を使用して VMware VM の Azure へのディザスター リカバリーを設定する | Microsoft Docs
+description: Azure Site Recovery で PowerShell を使用して VMware VM のディザスター リカバリーのために Azure へのレプリケーションとフェールオーバーを設定する方法を説明します。
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 070e51b132828e4fdf597d28fc2ad602adf76692
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 631225e6e0a7bb3bc42741e2761e3746c001c217
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042804"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211640"
 ---
-# <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>PowerShell を使用して VMware VM を Azure にレプリケートおよびフェールオーバーする
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell を使用して VMware VM の Azure へのディザスター リカバリーを設定する
 
 この記事では、Azure PowerShell を使って VMware の仮想マシンを Azure にレプリケートおよびフェールオーバーする方法を説明します。 
 

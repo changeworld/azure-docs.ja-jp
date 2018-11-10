@@ -1,29 +1,22 @@
 ---
-title: Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して Dynamics AX をレプリケートして保護する方法について説明します
-services: site-recovery
-documentationcenter: ''
+title: Azure Site Recovery を使用して多層 Dynamics AX デプロイのディザスター リカバリーを設定する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して Dynamics AX のディザスター リカバリーを設定する方法について説明します
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: eb6f7d9b34e00ce1efd8c871439c2504e5f550d5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669444"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210824"
 ---
-# <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定 
 
-## <a name="overview"></a>概要
+
 
 
  Dynamics AX は、複数の場所のプロセスの標準化、リソースの管理、およびコンプライアンスの簡素化を行うために企業によって使用されている最も一般的な ERP ソリューションです。 アプリケーションは組織にとってきわめて重要であるため、障害が発生した場合でも、最小の時間で再起動して稼働させる必要があります。

@@ -1,19 +1,18 @@
 ---
-title: ターゲットを準備する (物理サーバーから Azure) | Microsoft Docs
-description: この記事では、Windows または Linux を実行している物理サーバーを Azure にレプリケートする前に、Azure 環境を準備する方法について説明します。
-services: site-recovery
+title: オンプレミスの物理サーバーの Azure へのディザスター リカバリーのためのターゲット環境を設定する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用した物理サーバーのディザスター リカバリーのためのターゲット Azure 環境を設定する方法について説明します。
 author: bsiva
 manager: abhemraj
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 370d245e39b848acade18d0e73f60a3246737629
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b89d04a6e2fd11a61de8b56690664f6204c208ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915522"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209294"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>ターゲットを準備する (VMware から Azure)
 

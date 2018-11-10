@@ -1,22 +1,19 @@
 ---
-title: Azure 仮想マシンを別の Azure リージョンにフェールオーバーする際に IP アドレスを保持する | Microsoft Docs
-description: Azure Site Recovery を使用した Azure フェールオーバーのシナリオで Azure の IP アドレスを保持する方法について説明します。
+title: Azure VM のフェールオーバーのために IP アドレスを保持する | Microsoft Docs
+description: ディザスター リカバリーのために、Azure Site Recovery を使用して Azure VM をセカンダリ リージョンへフェールオーバーする際に、IP アドレスを保持する方法について説明します
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/16/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 4260a4487480c42b518374965d8deda1e7803e62
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 86adaa21a069c168b512231ba231940bfa2ef9e8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353324"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213034"
 ---
-# <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Azure 仮想マシンのフェールオーバーでの IP アドレスの保持
+# <a name="ip-address-retention-for-azure-vm-failover"></a>Azure VM のフェールオーバーでの IP アドレスの保持
 
 Azure Site Recovery を使用すると、Azure VM のディザスター リカバリーを実行できます。 ある Azure リージョンから別の Azure リージョンへフェールオーバーする際、多くの状況で、IP 構成を維持することが必要になります。 既定では、ターゲット リージョンにリソースを作成する際に、Azure Site Recovery によってソース仮想ネットワークとサブネットの構造が模倣されます。 静的プライベート IP アドレスで構成された Azure VM の場合、Site Recovery は、その IP アドレスが Azure リソースやレプリケートされた VM によって事前にブロックされていなければ、できる限り同じプライベート IP アドレスをターゲット VM にプロビジョニングしようとします。
 

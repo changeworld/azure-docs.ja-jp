@@ -4,9 +4,6 @@ description: この記事では、Azure Traffic Manager の地理的ルーティ
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 45fa209b4417ce8b65d1fa4f2f59ff6c2d50f3a4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1609daa4edbc3db9384941d575c141faaa799fb6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28201498"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138244"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>地理的トラフィック ルーティング方法で Azure Traffic Manager によって使用される国/リージョン階層
 
-この記事では、Azure Traffic Manager の**地理的**トラフィック ルーティング方法で使用される国および地域の一覧を示します。 この情報は、[Azure Traffic Manager の REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を呼び出すことによってプログラムからも取得することができます。 
+この記事では、Azure Traffic Manager の**地理的**トラフィック ルーティング方法で使用される国および地域の一覧を示します。 この情報は、[Azure Traffic Manager の REST API](https://docs.microsoft.com/rest/api/trafficmanager/) を呼び出すことによってプログラムからも取得することができます。 
 
 - WORLD(世界)
 
@@ -65,7 +62,7 @@ ms.locfileid: "28201498"
 
         - FR(フランス)
 
-        - GB(英国)
+        - GB(イギリス)
 
         - GG(ガーンジー)
 
@@ -247,7 +244,7 @@ ms.locfileid: "28201498"
 
         - LC(セントルシア)
 
-        - MF(サンマルタン島)
+        - MF(サン・マルタン)
 
         - MQ(マルティニーク)
 
@@ -377,9 +374,9 @@ ms.locfileid: "28201498"
 
             - US-WY(ワイオミング)
 
-        - VC(セントビンセントおよびグレナディーン諸島)
+        - VC(セントビンセント及びグレナディーン諸島)
 
-        - VG(英領バージン諸島)
+        - VG(英領ヴァージン諸島)
 
         - VI(米領バージン諸島)
 
@@ -605,7 +602,7 @@ ms.locfileid: "28201498"
 
         - FK(フォークランド諸島)
 
-        - GF(フランス領ギアナ)
+        - GF(仏領ギアナ)
 
         - GS(サウスジョージア・サウスサンドウィッチ諸島)
 
@@ -669,7 +666,7 @@ ms.locfileid: "28201498"
 
         - NZ(ニュージーランド)
 
-        - PF(フランス領ポリネシア)
+        - PF(仏領ポリネシア)
 
         - PG(パプアニューギニア)
 
@@ -687,7 +684,7 @@ ms.locfileid: "28201498"
 
         - VU(バヌアツ)
 
-        - WF(ワリス・フテュナ諸島)
+        - WF(ウォリス・フツナ)
 
         - WS(サモア)
 

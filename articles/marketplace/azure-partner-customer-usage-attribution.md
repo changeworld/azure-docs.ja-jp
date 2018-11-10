@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365627"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157940"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -44,7 +44,7 @@ Microsoft パートナーは、顧客に代わって、プロビジョニング�
 
 グローバル一意識別子 (GUID) を追加するには、メイン テンプレート ファイルを 1 か所変更します。
 
-1. [GUID を作成](#create-guids)し (例: eb7927c8-dd66-43e1-b0cf-c346a422063)、[GUID を登録](#register-guids-and-offers)します。
+1. 提案された方法を使用して [GUID を作成](#create-guids)し、[GUID を登録](#register-guids-and-offers)します。
 
 1. Resource Manager テンプレートを開きます。
 
@@ -58,9 +58,26 @@ Microsoft パートナーは、顧客に代わって、プロビジョニング�
 
 1. [テンプレートのデプロイで GUID の成功を確認します](#verify-the-guid-deployment)。
 
-### <a name="sample-template-code"></a>サンプル テンプレートのコード
+### <a name="sample-resource-manager-template-code"></a>サンプル Resource Manager テンプレート コード
+メインのテンプレート ファイルに追加するときは、以下のサンプル コードを独自の入力で変更してください。
+リソースは、**mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみに追加する必要があります。入れ子またはリンクされたテンプレート内には必要ありません。
+```
+// Make sure to modify this sample code with your own inputs where applicable
 
-![サンプル テンプレートのコード](media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG)
+{ // add this resource to the mainTemplate.json (do not add the entire file)
+    "apiVersion": "2018-02-01",
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": []
+        }
+    }
+} // remove all comments from the file when complete
+```
 
 ## <a name="use-the-resource-manager-apis"></a>Resource Manager API を使用する
 
@@ -77,7 +94,7 @@ Resource Manager テンプレートを使用している場合は、上記の手
 > [!Note]
 > 文字列の形式は重要です。 プレフィックス **pid-** が含まれていないとデータを照会できません。 追跡方法は SDK ごとに異なります。 この方法を実装するには、使用する Azure SDK に合ったサポートと追跡の方法を確認してください。 
 
-### <a name="example-the-python-sdk"></a>例: Python SDK
+#### <a name="example-the-python-sdk"></a>例: Python SDK
 
 Python では、**config** 属性を使用します。 この属性は UserAgent に対してのみ追加できます。 次に例を示します。
 
@@ -104,7 +121,7 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 ## <a name="create-guids"></a>GUID の作成
 
-GUID は、32 桁の16 進数から成る一意の参照番号です。 追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 [Azure Storage の GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を使用することをお勧めします。 ただし、Azure Storage の GUID ジェネレーターを使用したくない場合は、複数の[オンライン GUID ジェネレーター](https://www.bing.com/search?q=guid%20generator)を使用できます。
+GUID は、32 桁の16 進数から成る一意の参照番号です。 追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 Azure Storage チームは、正しい形式の GUID を電子メールで送信し、さまざまなトラッキング システムで再利用できる [GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を作成しました。 
 
 > [!Note]
 > [Azure Storage の GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を使用して GUID を作成することを強くお勧めします。 詳細については、[FAQ](#faq) をご覧ください。

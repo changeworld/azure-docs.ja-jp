@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: d93ad4185be3d4875c5747fd10359baab69af95d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 00a2c0d50a2476995dfb0d16d0cdbc5bd0ec313b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958654"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138999"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -245,7 +245,7 @@ Key Vault では、シークレットの contentType フィールドもサポー
 
 - *exp*: IntDate、省略可能、既定値は**無期限**。 *exp* (expiration time: 有効期限) 属性は、[特定の条件](#date-time-controlled-operations)の場合を除き、それを過ぎたらシークレット データを取得してはならない日時を示します。 このフィールドは、特定のシークレットで使用できないキー コンテナー サービスをユーザーに通知するための**情報提供**のみを目的としています。 その値は、IntDate 値を含む数値でなければなりません。   
 - *nbf*: IntDate、省略可能、既定値は**現在**。 *nbf* (not before: 有効期間開始日時) 属性は、[特定の条件](#date-time-controlled-operations)の場合を除き、それより前はシークレット データを取得してはならない日時を示します。 このフィールドは**情報提供**のみを目的としています。 その値は、IntDate 値を含む数値でなければなりません。 
-- *enabled*: boolean、省略可能、既定値は **true**。 この属性は、シークレット データを取得できるかどうかを指定します。 enabled 属性は、nbf および *exp* と組み合わせて使います。nbf と exp の間で操作が発生する場合、enabled が **true** に設定されている場合にのみ許可されます。 *nbf* から *exp* までのウィンドウの外部での操作は、[特定の条件](#date-time-controlled-operations)下を除き、自動的に禁止されます。  
+- *enabled*: boolean、省略可能、既定値は **true**。 この属性は、シークレット データを取得できるかどうかを指定します。 enabled 属性は、*nbf* および *exp* と組み合わせて使います。*nbf* と *exp* の間で操作が発生する場合、enabled が **true** に設定されている場合にのみ許可されます。 *nbf* から *exp* までのウィンドウの外部での操作は、[特定の条件](#date-time-controlled-operations)下を除き、自動的に禁止されます。  
 
 シークレット属性を含むすべての応答に含まれる追加の読み取り専用属性があります。  
 

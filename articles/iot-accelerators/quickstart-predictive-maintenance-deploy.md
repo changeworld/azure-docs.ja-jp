@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 10ff6565ed8997a5cb87394aa0d743a0d94b67e0
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: c56bdb5968b5f5ada902aa9212282c3cfebe2eaf
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144314"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139841"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>クイック スタート: コネクテッド デバイスの予測メンテナンス分析を実行するクラウドベースのソリューションを試す
 
@@ -22,7 +22,7 @@ ms.locfileid: "39144314"
 
 このシミュレーションに登場する Fabrikam は、競争力のある価格での優れたカスタマー エクスペリエンスの提供に取り組んでいる地域航空会社です。 フライトの遅延の原因の 1 つは、メンテナンスです。また、航空機のエンジンのメンテナンスは特に困難です。 Fabrikam では、飛行中のエンジンの故障は、いかなる代価を払っても避ける必要があります。そのため、定期的にエンジンを検査し、計画に従ってメンテナンスのスケジュールを設定しています。 ただし、航空機のエンジンがすべて同じように損耗するわけではありません。 エンジンに対して、必要のないメンテナンスが実行される場合もあります。 さらに重要なことは、問題が発生すると、メンテナンスが実行されるまでは、航空機は飛行禁止になるということです。 適切な技術者がいなかったり予備の部品がなかったりする場所に航空機がある場合、このような問題では特に費用がかかることがあります。
 
-Fabrikam の航空機のエンジンは、飛行中のエンジンの状態を監視するセンサーを搭載しています。 長年にわたり、エンジンの運用データと障害データを蓄積した後、Fabrikam のデータ サイエンティストは、航空機エンジンの残存耐用年数 (RUL) を予測する方法をモデル化しました。 このモデルでは、4 つのエンジン センサーからのデータと最終的な障害につながるエンジンの損耗との相関関係を使用しています。 Fabrikam は、安全性を確保するための通常の検査を継続しつつ、このモデルにより、毎回の飛行後にそれぞれのエンジンの RUL を計算できるようになりました。 Fabrikam は将来の故障個所を予測し、メンテナンスを計画することで、乗客と乗組員の安全を確保しながら、航空機の飛行禁止時間を最小限に抑え、運用コストを削減することができるようになりました。
+Fabrikam の航空機のエンジンは、飛行中のエンジンの状態を監視するセンサーを搭載しています。 Fabrikam は長年にわたり、これらのセンサーからエンジンの運用データと障害データを蓄積してきました。 Fabrikam のデータ サイエンティストは、このデータを使用して、航空機エンジンの残存耐用年数 (RUL) を予測する方法をモデル化しました。 このモデルでは、4 つのエンジン センサーからのデータと最終的な障害につながるエンジンの損耗との相関関係を使用しています。 Fabrikam は、通常の安全点検を継続しつつ、このモデルにより、毎回の飛行後にそれぞれのエンジンの RUL を計算できるようになりました。 そのため、Fabrikam は、将来における障害の時期を予測し、メンテナンスのための計画を立てて、航空機の飛行禁止時間を最小化できるようになりました。 このプロセスによって、乗客と乗組員の安全を確保しながら、運用コストを削減することができます。
 
 このクイック スタートを完了するには、アクティブな Azure サブスクリプションが必要です。
 
@@ -32,11 +32,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ソリューション アクセラレータを Azure サブスクリプションにデプロイするときは、いくつかの構成オプションを設定する必要があります。
 
-Azure アカウントの資格情報を使用して、[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) にサインインします。
+[[Microsoft Azure IoT ソリューション アクセラレータ]](https://www.azureiotsolutions.com) に移動して、Azure アカウントの資格情報を使用してサインインします。
 
-**[予測メンテナンス]** タイルで **[今すぐ試す]** をクリックします。
+**[予測メンテナンス]** タイルをクリックします。 **[予測メンテナンス]** ページで **[Try Now]\(今すぐ試す\)** をクリックします。
 
-![予測メンテナンスを選択する](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
+![今すぐ試す](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
 
 **[Create Predictive Maintenance solution]\(予測メンテナンス ソリューションの作成\)** ページで予測メンテナンス ソリューション アクセラレータの一意の**ソリューション名**を入力します。 このクイック スタートでは、**MyPredictiveMaintenance** を使用します。
 

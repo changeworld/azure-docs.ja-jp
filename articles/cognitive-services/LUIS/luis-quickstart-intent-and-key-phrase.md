@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8fa183c22b9b6830c57b0a16b7f5d20ca38e3ef3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 126e081bae08d220b0e3921cdfec7d7f58eacea8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166522"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138295"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>チュートリアル 8: 発話のキー フレーズを抽出する
 このチュートリアルでは、事前構築済みの keyPhrase エンティティを使用して、発話から主題を抽出します。 発話に事前構築済みエンティティのラベルを付ける必要はありません。 このエンティティは自動的に検出されます。
@@ -45,7 +45,7 @@ ms.locfileid: "47166522"
 
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
 
 1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json)をダウンロードして保存します。
 
@@ -60,7 +60,7 @@ ms.locfileid: "47166522"
 
 2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
 
-3. **[Manage prebuilt entities]\(事前構築済みエンティティの管理\)** を選択します。
+3. **[Add prebuilt entity]\(作成済みエンティティの追加\)** を選択します。
 
 4. ポップアップ ダイアログで **[keyPhrase]** を選択し、**[完了]** を選択します。 
 

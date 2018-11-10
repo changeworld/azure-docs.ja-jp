@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144515"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139015"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>クイック スタート: 工業用 IoT デバイスを管理するクラウドベースのソリューションを試す
 
@@ -32,11 +32,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ソリューション アクセラレータを Azure サブスクリプションにデプロイするときは、いくつかの構成オプションを設定する必要があります。
 
-Azure アカウントの資格情報を使用して、[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) にサインインします。
+[[Microsoft Azure IoT ソリューション アクセラレータ]](https://www.azureiotsolutions.com) に移動して、Azure アカウントの資格情報を使用してサインインします。
 
-**[接続済みファクトリ]** タイルで **[今すぐ試してみる]** をクリックします。
+**[接続済みファクトリ]** タイルをクリックします。 **[接続済みファクトリ]** ページで **[Try Now]\(今すぐ試す\)** をクリックします。
 
-![接続済みファクトリを選択](./media/quickstart-connected-factory-deploy/connectedfactory.png)
+![今すぐ試す](./media/quickstart-connected-factory-deploy/connectedfactory.png)
 
 **[Create Connected Factory solution]\(接続済みファクトリ ソリューションの作成\)** ページで、接続済みファクトリ ソリューション アクセラレータに使用する一意の**ソリューション名**を入力します。 この名前は、すべてのソリューション アクセラレータ リソースを含む Azure リソース グループの名前です。 このクイック スタートでは、**MyDemoConnectedFactory** という名前を使用します。
 
@@ -66,7 +66,7 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 
 [![ソリューションのダッシュボード](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
-対象となる工業用 IoT デバイスを管理するには、ダッシュボードを使用します。 接続済みファクトリでは、グローバルなファクトリ構成が階層を使用して表示されます。 階層の最上位には、少なくとも 1 つの工場を含んだ企業があり、それぞれの工場には生産ラインがあり、各生産ラインはステーションから成ります。 それぞれのレベルで、OEE と KPI を表示したり、テレメトリに関する新しいノードを発行したり、アラームに対応したりすることができます。
+対象となる工業用 IoT デバイスを管理するには、ダッシュボードを使用します。 接続済みファクトリでは、グローバルなファクトリ構成が階層を使用して表示されます。 階層の最上位には、少なくとも 1 つの工場を含んだ企業があります。 それぞれの工場には生産ラインがあり、各生産ラインはステーションから成ります。 それぞれのレベルで、OEE と KPI を表示したり、テレメトリに関する新しいノードを発行したり、アラームに対応したりすることができます。
 
 以降、ダッシュボードで確認できる事柄について取り上げます。
 
@@ -122,7 +122,7 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 
 ### <a name="alarms"></a>アラーム
 
-**[アラーム]** パネルには、報告された値や計算された OEE/KPI 値が指定したしきい値を超えたために生成されたアラームが表示されます。 このパネルには、ステーションからエンタープライズまで、階層の各レベルでアラームが表示されます。 各アラームには、発生の回数、説明、日付、時刻、場所が含まれています。
+**[アラーム]** パネルには、レポートされた値や計算された OEE/KPI 値がしきい値を超えたために生成されたアラームが表示されます。 このパネルには、ステーションからエンタープライズまで、階層の各レベルでアラームが表示されます。 各アラームには、発生の回数、説明、日付、時刻、場所が含まれています。
 
 [![アラーム](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
@@ -137,7 +137,7 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 
 アラーム データをさらに詳しく分析するには、[アラーム] パネルでグラフをクリックします。
 
-これらのアラームは、ソリューション アクセラレータ内の構成ファイルで指定されたルールに基づいて生成されます。 このルールを使用して、OEE/KPI の数値または OPC UA ノードの値が指定されたしきい値を超えた場合にアラームを生成できます。
+これらのアラームは、ソリューション アクセラレータ内の構成ファイルで指定されたルールに基づいて生成されます。 このルールを使用して、OEE/KPI の数値または OPC UA ノードの値がしきい値を超えた場合にアラームを生成できます。 このしきい値は、ご自身で設定することができます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

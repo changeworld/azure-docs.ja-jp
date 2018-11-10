@@ -1,21 +1,22 @@
 ---
-title: Site Recovery でのフェールオーバー | Microsoft Docs
-description: Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、回復を調整します。 Azure またはセカンダリ データセンターへのフェールオーバーについて説明します。
+title: Azure Site Recovery を使用したディザスター リカバリー中にフェールオーバーする | Microsoft Docs
+description: Azure Site Recovery サービスを使用したディザスター リカバリー中の VM および物理サーバーのフェールオーバーについて説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/11/2018
-ms.author: ponatara
-ms.openlocfilehash: c9a2f258ca952ca36000e1ca0630fbde31ba7ba0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: 6e16529740377b9a082fda4f3e4409b57441715e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391319"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215159"
 ---
-# <a name="failover-in-site-recovery"></a>Site Recovery でのフェールオーバー
+# <a name="fail-over-vms-and-physical-servers"></a>VM と物理サーバーのフェールオーバー 
+
 この記事では、Site Recovery によって保護された仮想マシンと物理サーバーをフェールオーバーする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -114,7 +115,7 @@ Site Recovery を使用して保護されている仮想マシン/物理サー�
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
 
-フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[こちら](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)の表にまとめられている要件に従います。
+フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[こちら](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)の表に示されている要件に従います。
 
 フェールオーバー後の接続の問題をトラブルシューティングするには、[ここ](site-recovery-failover-to-azure-troubleshoot.md)で説明されている手順に従ってください。
 

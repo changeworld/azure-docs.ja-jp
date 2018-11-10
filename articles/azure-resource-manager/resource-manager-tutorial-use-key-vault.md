@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/10/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3a2edb898c8053627684818d7fe257fe3402df5f
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 601d022917adc71ff3a3c728c7b674ae47a632c4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645475"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238480"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する
 
 Azure Key Vault からシークレット値を取得し、Resource Manager のデプロイ時にシークレット値をパラメーターとして渡す方法を説明します。 値の Key Vault ID のみを参照するため、値が公開されることはありません。 詳しくは、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./resource-manager-keyvault-parameter.md)」を参照してください
 
-このチュートリアルでは、仮想マシンといくつかの依存リソースを[チュートリアル: 依存リソースでAzure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)で使用したのと同じテンプレートを使用して作成します。 仮想マシン管理者パスワードは Azure Key Vault から取得されます。
+[リソースのデプロイ順序の設定](./resource-manager-tutorial-create-templates-with-dependent-resources.md)に関するチュートリアルでは、仮想マシン、仮想ネットワーク、およびその他の依存リソースを作成します。 このチュートリアルでは、Azure Key Vault から仮想マシン管理者パスワードを取得するようテンプレートをカスタマイズします。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -42,13 +42,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)を持つ [Visual Studio Code](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/) と [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
+
+    ```azurecli-interactive
+    openssl rand -base64 32
+    ```
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager Template deployment で Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-the-key-vault"></a>Key Vault を準備する
 
 このセクションでは、Resource Manager テンプレートを使用して、Key Vault とシークレットを作成します。 このテンプレートを使用すると：
 
-* **enabledForTemplateDeployment**プロパティを有効にしKey Vault を作成する。 このプロパティは、テンプレートのデプロイプロセスがこの Key Vault で定義されているシークレットにアクセスできる前に true である必要があります。
+* `enabledForTemplateDeployment` プロパティを有効にしてキー コンテナーを作成する。 このプロパティは、テンプレートのデプロイプロセスがこの Key Vault で定義されているシークレットにアクセスできる前に true である必要があります。
 * Key Vault にシークレットを追加する。  シークレットは、仮想マシンの管理者パスワードを格納します。
 
 (仮想マシンのテンプレートをデプロイするユーザーとして) 所有者または Key Vault の共同作成者でない場合、Key Vault の所有者または共同作成者によって Microsoft.KeyVault/vaults/deploy/action 許可 へのアクセス権を与えられる必要があります。 詳しくは、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./resource-manager-keyvault-parameter.md)」を参照してください
@@ -59,7 +65,9 @@ Azure AD ユーザーオブジェクト ID は、
 1. 次の Azure PowerShellまたはAzure CLI コマンドを実行します。  
 
     ```azurecli-interactive
-    az ad user show --upn-or-object-id "<Your User Principle Name>" --query "objectId"
+    echo "Enter your email address that is associated with your Azure subscription):" &&
+    read upn &&
+    az ad user show --upn-or-object-id $upn --query "objectId" &&
     openssl rand -base64 32
     ```
     ```azurepowershell-interactive
@@ -96,21 +104,21 @@ Key Vault を作成するには：
     ```json
     "enabledForTemplateDeployment": true,
     ```
-    `enabledForTemplateDeployment`は Key Vault プロパティです。 デプロイ時にこの Key Vault からシークレットを取得する前に、このプロパティが true である必要があります。 
+    `enabledForTemplateDeployment`は Key Vault プロパティです。 デプロイ時にこの Key Vault からシークレットを取得する前に、このプロパティが true である必要があります。
 6. 89行目を参照。 これは、Key Vault シークレットの定義です。
 7. ページの下部にある**破棄する**を選択します。 何も変更を加えませんでした。
 8. 前のスクリーン ショットに示されるすべての値を指定したことを確認し、ページの下部にある**購入**をクリックします。
 9. ページの上部からベルのアイコン(通知)を選択して、**通知**ウィンドウを開きます。 リソースが正常にデプロイされるまで待機します。
-8. **通知**ウィンドウで **リソース グループに移動** を選択します。 
-9. Key Vault 名を選択して開きます。
-10. 左側のウィンドウで **アクセスポリシー**を選択します。 自分の名前(アクティブディレクトリ)を一覧表示、それ以外の場合 Key Vault にアクセスするアクセス許可がありません。
-11. **[クリックして高度なアクセス ポリシーを表示する]** を選択します。 通知**テンプレートの展開のため Azure Resource Manager へのアクセスを有効にする**が選択されています。 これは、Key Vault の統合が機能するための別の条件です。
+10. **通知**ウィンドウで **リソース グループに移動** を選択します。 
+11. Key Vault 名を選択して開きます。
+12. 左側のウィンドウで **アクセスポリシー**を選択します。 自分の名前(アクティブディレクトリ)を一覧表示、それ以外の場合 Key Vault にアクセスするアクセス許可がありません。
+13. **[クリックして高度なアクセス ポリシーを表示する]** を選択します。 通知**テンプレートの展開のため Azure Resource Manager へのアクセスを有効にする**が選択されています。 これは、Key Vault の統合が機能するための別の条件です。
 
-    ![Resource Manager テンプレートの Key Vault 統合アクセスポリシー](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-key-vault-access-policies.png)    
-12. 左側のウィンドウで**プロパティ**を選択します。
-13. **リソース ID**のコピーを作成します。 仮想マシンをデプロイする時に、この ID が必要です。  リソース ID の形式は:
+    ![Resource Manager テンプレートの Key Vault 統合アクセスポリシー](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-key-vault-access-policies.png)
+14. 左側のウィンドウで**プロパティ**を選択します。
+15. **リソース ID**のコピーを作成します。 仮想マシンをデプロイする時に、この ID が必要です。  リソース ID の形式は:
 
-    ```
+    ```json
     /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
     ```
 
@@ -125,8 +133,17 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. **[開く]** を選択して、ファイルを開きます。 これは、[チュートリアル: Azure Resource Manager テンプレートを依存リソースで作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)で使用されたものと同じシナリオです。
-4. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
-5. 次の URL を開くには手順1～4を繰り返して、ファイルを**azuredeploy.parameters.json**として保存します。
+4. テンプレートによって定義されたリソースは、5 つあります。
+
+    * `Microsoft.Storage/storageAccounts` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
+    * `Microsoft.Network/publicIPAddresses` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
+    * `Microsoft.Network/virtualNetworks` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
+    * `Microsoft.Network/networkInterfaces` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
+    * `Microsoft.Compute/virtualMachines` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+
+    カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+5. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
+6. 次の URL を開くには手順1～4を繰り返して、ファイルを**azuredeploy.parameters.json**として保存します。
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json

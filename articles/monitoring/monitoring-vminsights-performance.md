@@ -1,6 +1,6 @@
 ---
-title: VM 用 Azure Monitor を使用してパフォーマンスをグラフ化する方法 | Microsoft Docs
-description: パフォーマンスは、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、VM 用 Azure Monitor の機能です。 この記事では、さまざまなシナリオでその機能を使用する方法について詳細を説明します。
+title: Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法 (プレビュー) | Microsoft Docs
+description: パフォーマンスは、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、VM 用 Azure Monitor の機能です。 この記事では、さまざまなシナリオでこの機能を使用する方法について詳しく説明します。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: a63a9d22638231aa076cc4ced9030a378d0c36e4
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 776a8901696bd69eeee6fd4b3622c8992bfc25a3
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429492"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094314"
 ---
-# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>VM 用 Azure Monitor を使用してパフォーマンスをグラフ化する方法
+# <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法 (プレビュー)
 VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行されているかを判定するのに役立ついくつかの主要業績評価指標 (KPI) を対象とする一連のパフォーマンス グラフが含まれています。 グラフには一定期間にわたるリソース使用率が表示されるので、ボトルネックまたは異常を識別することができます。あるいは、各マシンを一覧表示するパースペクティブに切り替えて、選択したメトリックに基づくリソース使用率を表示することもできます。 パフォーマンスを扱うときに考慮すべき要素は数多くありますが、VM 用 Azure Monitor では、プロセッサ、メモリ、ネットワーク アダプター、およびディスクの視点からオペレーティング システムに重点を置いています。 パフォーマンスによって正常性の監視機能が補完されます。さらに、システム コンポーネントに障害がある可能性を示す問題を明らかにしたり、効率化のためのチューニングや最適化をサポートしたり、容量計画をサポートしたりするのにパフォーマンスは役立ちます。  
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Azure Monitor からのマルチ VM のパースペクティブ

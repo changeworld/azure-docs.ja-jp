@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: d240bafa543633999a74ef66efcfd7130a4a7b7a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1a135b0e17889c544a99ad677e9fa42ad6de994c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389277"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231884"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -74,9 +74,9 @@ Reset-StorageSyncServer
 このメッセージが表示されたときに、Azure ファイル共有が現在クラウド エンドポイントで使用されていない場合は、次の手順を完了して、Azure ファイル共有上の Azure File Sync メタデータをクリアします。
 
 > [!Warning]  
-> 現在クラウド エンドポイントによって使用されている Azure ファイル共有上のメタデータを削除すると、Azure File Sync の操作は失敗します。 
+> 現在クラウド エンドポイントによって使用されている Azure ファイル共有上のメタデータを削除すると、Azure File Sync の操作は失敗します。 
 
-1. Azure ポータルで、Azure ファイル共有に移動します。  
+1. Azure ポータルで、Azure ファイル共有に移動します。  
 2. Azure ファイル共有を右クリックし、**[メタデータの編集]** を選択します。
 3. **[SyncService]** を右クリックし、**[削除]** を選択します。
 
@@ -125,7 +125,7 @@ Set-AzureRmStorageSyncServerEndpoint `
     -CloudTiering true `
     -VolumeFreeSpacePercent 60
 ```
-<a id="server-endpoint-noactivity"></a>**サーバー エンドポイントの正常性状態が [アクティビティなし] または [保留中] で、登録済みサーバー ブレードのサーバーの状態が [オフラインのようです] になっている**  
+<a id="server-endpoint-noactivity"></a>**サーバー エンドポイントの正常性状態が "アクティビティなし" または "保留中" で、登録済みサーバー ブレードのサーバーの状態が "オフラインのようです" になっている**  
 
 この問題は、ストレージ同期モニター プロセスが実行されていない場合、またはプロキシやファイアウォールのためにサーバーが Azure File Sync サービスと通信できない場合に、発生する可能性があります。
 
@@ -280,7 +280,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **HRESULT** | 0x80072ee7 |
 | **HRESULT (10 進値)** | -2147012889 | 
 | **エラー文字列** | WININET_E_NAME_NOT_RESOLVED |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -300,7 +300,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (10 進値)** | -2134364065 |
 | **エラー文字列** | ECS_E_CANNOT_ACCESS_EXTERNAL_STORAGE_ACCOUNT |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは、Azure File Sync エージェントが Azure ファイル共有にアクセスできないために発生します。原因としては、Azure ファイル共有またはそれをホストしているストレージ アカウントが存在しなくなったことが考えられます。 次の手順を実行すると、このエラーを解決できます。
 
@@ -315,7 +315,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **HRESULT** | 0x80C83060 |
 | **HRESULT (10 進値)** | -2134364064 |
 | **エラー文字列** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 1. サーバーからストレージの DNS 名を解決できることを確認します。
 
@@ -331,7 +331,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **HRESULT** | 0x8e5e044e |
 | **HRESULT (10 進値)** | -1906441138 |
 | **エラー文字列** | JET_errWriteConflict |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは、Azure File Sync で使用される内部データベースに問題がある場合に発生します。この問題が発生した場合は、サポート要求を作成してください。問題解決のために Microsoft からご連絡を差し上げます。
 
@@ -341,7 +341,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **HRESULT** | 0x80C8306B |
 | **HRESULT (10 進値)** | -2134364053 |
 | **エラー文字列** | ECS_E_AGENT_VERSION_BLOCKED |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは、サーバーにインストールされている Azure File Sync エージェントのバージョンがサポートされていない場合に発生します。 この問題を解決するには、[サポートされているエージェントのバージョン]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)に[アップグレード]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths)します。
 
@@ -351,7 +351,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **HRESULT** | 0x80c8603e |
 | **HRESULT (10 進値)** | -2134351810 |
 | **エラー文字列** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは、Azure ファイル共有ストレージの上限に達したときに発生します。Azure ファイル共有にクォータが適用されている場合や、使用量が Azure ファイル共有の制限を超えた場合に発生する可能性があります。 詳細については、[Azure ファイル共有の現在の制限](storage-files-scale-targets.md)に関する記事を参照してください。
 
@@ -376,7 +376,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | **HRESULT** | 0x80c86030 |
 | **HRESULT (10 進値)** | -2134351824 |
 | **エラー文字列** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは、Azure ファイル共有にアクセスできない場合に発生します。 トラブルシューティング方法は次のとおりです。
 
@@ -391,7 +391,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80C83076 |
 | **HRESULT (10 進値)** | -2134364042 |
 | **エラー文字列** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは、Azure サブスクリプションが中断されている場合に発生します。 Azure サブスクリプションが復元されると、同期は再度有効になります。 詳細については、「[私の Azure サブスクリプションが無効になっています。その理由と、再度有効にする方法を教えてください。](../../billing/billing-subscription-become-disable.md)」を参照してください。
 
@@ -401,7 +401,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80c8306c |
 | **HRESULT (10 進値)** | -2134364052 |
 | **エラー文字列** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは、ストレージ アカウントにファイアウォールがあるか、またはストレージ アカウントが仮想ネットワークに属しているという理由により、Azure ファイル共有にアクセスできない場合に発生します。 Azure File Sync では、この機能がまだサポートされていません。 トラブルシューティング方法は次のとおりです。
 
@@ -431,7 +431,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x800b0109 |
 | **HRESULT (10 進値)** | -2146762487 |
 | **エラー文字列** | CERT_E_UNTRUSTEDROOT |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは、組織が SSL 終了のプロキシを使用している場合、または悪意のあるエンティティがサーバーと Azure File Sync サービス間のトラフィックを傍受している場合に発生する可能性があります。 (組織が SSL 終了のプロキシを使用していることから) これに相当すると確信できる場合は、レジストリのオーバーライドによって証明書検証をスキップします。
 
@@ -455,7 +455,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80072ee2 |
 | **HRESULT (10 進値)** | -2147012894 |
 | **エラー文字列** | WININET_E_TIMEOUT |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -465,7 +465,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80c80300 |
 | **HRESULT (10 進値)** | -2134375680 |
 | **エラー文字列** | ECS_E_SERVER_CREDENTIAL_NEEDED |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは一般に、サーバーの時刻が正しくないか、認証に使用される証明書が期限切れであるとことが原因で発生します。 サーバーの時刻が正しい場合は、次の手順を実行して期限切れの証明書を削除し (期限切れである場合)、サーバーの登録状態をリセットします。
 
@@ -488,12 +488,12 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x8e5e0211 |
 | **HRESULT (10 進値)** | -1906441711 |
 | **エラー文字列** | JET_errLogDiskFull |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 | | |
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (10 進値)** | -2134375654 |
 | **エラー文字列** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 このエラーは、ボリュームがいっぱいになったために発生します。 このエラーは一般に、サーバー エンドポイントの外部のファイルによってボリューム上の領域が使い果たされていることが原因で発生します。 サーバー エンドポイントを追加するか、別のボリュームにファイルを移動するか、またはサーバー エンドポイントが配置されているボリュームのサイズを大きくして、ボリューム上の領域を解放します。
 
@@ -515,17 +515,17 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80c8023b |
 | **HRESULT (10 進値)** | -2134364145 |
 | **エラー文字列** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 | | |
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (10 進値)** | -2134375908 |
-| **エラー文字列** | ECS_E_SYNC_METADATA_KNOWLEGE_LIMIT_REACHED |
-| **修復が必要か** | はい |
+| **エラー文字列** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
+| **修復が必要か** | [はい] |
 | | |
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (10 進値)** | -2134375853 |
 | **エラー文字列** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 ファイル単位の同期エラーが多数あると、同期セッションが失敗し始める可能性があります。 この状態のトラブルシューティング方法については、「[ファイル/ディレクトリ単位の同期エラーのトラブルシューティング](#troubleshooting-per-file-directory-sync-errors)」を参照してください。
 
@@ -538,7 +538,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **HRESULT** | 0x80c80019 |
 | **HRESULT (10 進値)** | -2134376423 |
 | **エラー文字列** | ECS_E_SYNC_INVALID_PATH |
-| **修復が必要か** | はい |
+| **修復が必要か** | [はい] |
 
 パスが存在し、ローカル NTFS ボリューム上にあって、再解析ポイントや既存のサーバー エンドポイントにはなっていないことを確認します。
 

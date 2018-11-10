@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: d4af3315cfca18da594730cc402236684f81bfc8
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 3ffef348467a34f40730c122afa6a7111ebad486
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957337"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416904"
 ---
 # <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>チュートリアル: Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する
 
@@ -25,7 +25,7 @@ Computer Vision API を使用する基本的な Java アプリケーションを
 
 このチュートリアルを使用するには、次の作業が必要となります。
 
-- JDK 7 または 8 をインストールします。
+- [JDK 7 または 8](https://aka.ms/azure-jdks) をインストールする
 - Maven をインストールします。
 
 ## <a name="install-the-custom-vision-service-sdk"></a>Custom Vision Service SDK をインストールする
@@ -36,7 +36,7 @@ Maven Central Repository から Custom Vision SDK をインストールできま
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision サイト](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision サイト](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
 
@@ -46,7 +46,7 @@ Maven Central Repository から Custom Vision SDK をインストールできま
 
 好みの Java IDE を使用して、`Vision/CustomVision` プロジェクトを開きます。 
 
-このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java OD Project__ という名前の新しいプロジェクトを作成します。 次に、画像をアップロードして物体検出器のトレーニングおよびテストを行います。 物体検出器は、__フォーク__または__ハサミ__を含むリージョンを特定します。
+このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java OD Project__ という名前の新しいプロジェクトを作成します。 次に、画像をアップロードして物体検出器のトレーニングおよびテストを行います。 物体検出器は、__フォーク__ または __ハサミ__ を含むリージョンを特定します。
 
 この例の主な機能は、以下のコード スニペットに実装されています。
 

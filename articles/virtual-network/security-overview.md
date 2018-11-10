@@ -4,9 +4,6 @@ description: ネットワークとアプリケーションのセキュリティ 
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 79ea839a5b57a2b64b80feba8324764a23c05697
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987018"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159079"
 ---
 # <a name="security-groups"></a>セキュリティ グループ
 <a name="network-security-groups"></a>
@@ -40,7 +37,7 @@ ms.locfileid: "46987018"
 |プロトコル     | TCP、UDP、または Any。Any には TCP、UDP、ICMP が含まれます。 ICMP だけを指定することはできないので、ICMP が必要な場合は、Any を使用します。 |
 |方向| 規則が受信トラフィックまたは送信トラフィックに適用されるかどうか。|
 |ポートの範囲     |個別のポートまたはポートの範囲を指定できます。 たとえば、80 や 10000-10005 などと指定できます。 範囲を指定すると、作成するセキュリティ規則の数を減らすことができます。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数のポートまたはポート範囲を指定することはできません。   |
-|アクションを表示します。     | 許可または拒否        |
+|Action     | 許可または拒否        |
 
 トラフィックを許可または拒否するために、5 組の情報 (送信元、送信元ポート、送信先、送信先ポート、プロトコル) を使用して、優先度に従ってネットワーク セキュリティ グループ セキュリティ規則が評価されます。 既存の接続に対するフロー レコードが作成されます。 そのフロー レコードの接続の状態に基づいて、通信が許可または拒否されます。 フロー レコードにより、ネットワーク セキュリティ グループはステートフルであることが可能になります。 たとえば、ポート 80 経由で任意のアドレスに送信セキュリティ規則を指定した場合、送信トラフィックへの応答に受信セキュリティ規則を指定する必要はありません。 通信が外部から開始された場合は、受信セキュリティ規則のみを指定する必要があります。 反対の場合も同じです。 ポートで受信トラフィックが許可されている場合、そのポートでのトラフィックに応答するために、送信セキュリティ規則を指定する必要はありません。
 フローを有効にしたセキュリティ規則を削除したときに、既存の接続が中断されない場合があります。 接続が停止され、少なくとも数分間、どちらの方向のトラフィックも流れていないときに、トラフィック フローが中断されます。
@@ -60,9 +57,9 @@ ms.locfileid: "46987018"
  セキュリティ規則の定義で使うことができるサービス タグは次のとおりです。 サービス タグの名前は、[Azure のデプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)により若干異なります。
 
 * **VirtualNetwork** (Resource Manager) (クラシックの場合は **VIRTUAL_NETWORK**): このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、および[ピアリング](virtual-network-peering-overview.md)された仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワークが含まれます。
-* **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**): このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブが開始される [Azure データセンター IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)に変換されます。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。
+* **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**): このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md##azure-platform-considerations) (168.63.129.16) に変換されます。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。
 * **Internet** (Resource Manager) (クラシックの場合は **INTERNET**): このタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。 [Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)がこのアドレス範囲に含まれます。
-* **AzureCloud** (Resource Manager のみ): このタグは、すべてのデータセンターのパブリック IP アドレスを含む Azure の IP アドレス空間を表します。 値として *AzureCloud* を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCloud に対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure AzureCloud へのアクセスのみを許可する場合は、サービス タグとして *AzureCloud.EastUS* と指定できます。 
+* **AzureCloud** (Resource Manager のみ): このタグは、すべての[データセンターのパブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)を含む Azure の IP アドレス空間を表します。 値として *AzureCloud* を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCloud に対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure AzureCloud へのアクセスのみを許可する場合は、サービス タグとして *AzureCloud.EastUS* と指定できます。 
 * **AzureTrafficManager** (Resource Manager のみ): このタグは、Azure Traffic Manager プローブ IP アドレスに対する IP アドレス空間を表します。 Traffic Manager プローブ IP アドレスについて詳しくは、[Azure Traffic Manager の FAQ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs) に関するページをご覧ください。 
 * **Storage** (Resource Manager のみ): このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージに対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure Storage へのアクセスのみを許可する場合は、サービス タグとして *Storage.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 このタグで表されるすべてのアドレス プレフィックスは、**Internet** タグでも表されます。 
 * **Sql** (Resource Manager のみ): このタグは、Azure SQL Database サービスおよび Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 値として *Sql* を指定した場合、SQL へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の SQL へのアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure SQL Database へのアクセスのみを許可する場合は、サービス タグとして *Sql.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 このタグで表されるすべてのアドレス プレフィックスは、**Internet** タグでも表されます。 
@@ -79,7 +76,6 @@ ms.locfileid: "46987018"
 * **GatewayManager** (Resource Manager のみ): このタグは、Azure Gateway Manager サービスのアドレス プレフィックスを表します。 値として *GatewayManager* を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の GatewayManager へのアクセスのみを許可する場合は、GatewayManager.[リージョン名] の形式でリージョンを指定できます。 
 * **AzureDataLake** (Resource Manager のみ): このタグは、Azure Data Lake サービスのアドレス プレフィックスを表します。 値として *AzureDataLake* を指定した場合、AzureDataLake へのトラフィックが許可または拒否されます。 
 * **AzureActiveDirectory** (Resource Manager のみ): このタグは、AzureActiveDirectory サービスのアドレス プレフィックスを表します。 値として *AzureActiveDirectory* を指定した場合、AzureActiveDirectory へのトラフィックが許可または拒否されます。  
-* **CorpNetSAW** (Resource Manager のみ): このタグは、Azure によって運用されている [CorpNetSAW デバイス](../security/azure-security-iaas.md)のアドレス プレフィックスを表します。 場合によっては、Azure サービスはこのサービス タグを使用して、お客様が管理するインスタンスへのアクセスを要求し、サポート性を向上させることができます。 値として *CorpNetSAW* を指定した場合、CorpNetSAW へのトラフィックが許可または拒否されます。 
 
 > [!NOTE]
 > Azure サービスのサービス タグは、使用されている特定のクラウドからのアドレス プレフィックスを表します。 リージョン サービス タグは国内クラウドではサポートされておらず、グローバル形式でのみサポートされます。 たとえば、*Storage*、*Sql* などです。

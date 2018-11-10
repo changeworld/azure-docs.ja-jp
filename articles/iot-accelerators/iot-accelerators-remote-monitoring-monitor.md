@@ -6,15 +6,15 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 07/19/2018
+ms.date: 10/26/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1f9e5885e79e184b621ba2be7e2a8f329e31a6b1
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 563c7a74d307a2c842680a031cf74b4a05ba800f
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284491"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138560"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>チュートリアル: IoT デバイスの監視
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![ダッシュボードに表示するトラックをフィルター処理する](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
-フィルターを適用すると、フィルター条件に一致するデバイスのみが **[ダッシュボード]** ページのマップとテレメトリ パネルに表示されます。 truck-02 を含む 2 台のトラックがソリューション アクセラレータに接続されていることがわかります。
+フィルターを適用すると、フィルター条件に一致するデバイスのみがマップとテレメトリ パネルに表示されます。 truck-02 を含む 2 台のトラックがソリューション アクセラレータに接続されていることがわかります。
 
 [![トラックのみがマップに表示される](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 

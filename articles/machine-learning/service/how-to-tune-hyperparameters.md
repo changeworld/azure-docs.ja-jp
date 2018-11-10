@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430021"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140808"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>モデルに合わせてハイパーパラメーターを調整する
 
@@ -238,16 +238,18 @@ early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, trun
 
 ### <a name="no-termination-policy"></a>終了なしポリシー
 
-すべてのトレーニング実行を完了まで実行するには、NoTerminationPolicy を使用します。 これには、早期終了ポリシーを一切適用しない効果があります。
+すべてのトレーニング実行を完了まで実行するには、ポリシーを [なし] に設定します。 これには、早期終了ポリシーを一切適用しない効果があります。
 
 ```Python
-from azureml.train.hyperdrive import NoTerminationPolicy
-early_termination_policy = NoTerminationPolicy()
+policy=None
 ```
 
 ### <a name="default-policy"></a>既定のポリシー
 
-ポリシーを指定していない場合、ハイパーパラメーター調整サービスには、既定で `evaluation_interval` 1 および `delay_evaluation` 5 の中央値の停止ポリシーが使用されます。 これらは保守的な設定であり、(評価データに基づいて) 主要メトリックに関する損失なしで約 25% から 35% の節約を実現できます。
+ポリシーを指定していない場合、ハイパーパラメーター調整サービスは、すべてのトレーニング実行を完了まで実行します。
+
+>[!NOTE] 
+>先のジョブまで終了せずに節約する保守的なポリシーが望ましい場合は、`evaluation_interval` 1 および `delay_evaluation` 5 を指定して中央値の停止ポリシーを使用できます。 これらは保守的な設定であり、(評価データに基づいて) 主要メトリックに関する損失なしで約 25% から 35% の節約を実現できます。
 
 ## <a name="allocate-resources"></a>リソースを割り当てる
 

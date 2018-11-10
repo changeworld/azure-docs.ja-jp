@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9bbbb797cd7e7d1cea52f1d5b1b491998b595db7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: fea70e2b1912bde94e23dbd98fa933784d2a69ac
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638086"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140317"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>パターンのエンティティ ロールはコンテキスト サブタイプです
 ロールは、[パターン](luis-concept-patterns.md)でのみ使用されるエンティティの名前付きコンテキスト サブタイプです。
@@ -42,13 +42,8 @@ ms.locfileid: "49638086"
 ## <a name="role-syntax-in-patterns"></a>パターンでのロールの構文
 エンティティとロールは、かっこ `{}` で囲まれています。 エンティティとロールは、コロンで区切られています。 
 
-## <a name="roles-versus-hierarchical-entities"></a>ロールと階層エンティティ
-階層エンティティはロールと同じコンテキスト情報を提供しますが、提供先は**意図**の発話だけになります。 同様に、ロールも階層エンティティと同じコンテキスト情報を提供します。ただし、その情報は、**パターン**でのみ提供されます。
 
-|コンテキストでの学習|使用される場所|
-|--|--|
-|階層エンティティ|意図|
-|roles|パターン|
+[!include[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
 
 ## <a name="roles-with-prebuilt-entities"></a>ロールと事前構築済みエンティティ
 
@@ -60,4 +55,4 @@ ms.locfileid: "49638086"
 
 ## <a name="next-steps"></a>次の手順
 
-* [ロール](luis-how-to-add-entities.md#add-role-to-pattern-based-entity)を追加する方法を確認します
+* [ロール](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity)を追加する方法を確認します

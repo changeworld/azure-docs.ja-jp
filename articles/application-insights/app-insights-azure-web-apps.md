@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/05/2017
+ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5743408b000dd7497a10f27db2a4ea9d87082b8d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 91b050c4e1ca37c0af208d6df1ce4f8272235294
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091797"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139773"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure Web アプリのパフォーマンスの監視
 [Azure Portal](https://portal.azure.com) では、[Azure Web アプリ](../app-service/app-service-web-overview.md)のアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
@@ -33,24 +33,32 @@ ms.locfileid: "47091797"
 Azure で Web アプリを既に実行している場合、要求率とエラー発生率を既に監視しています。 応答時間、依存関係の呼び出しの監視、スマート検出、強力な Log Analytics クエリ言語など、さらに多くの機能を利用するには、Application Insights を追加します。 
 
 1. Web アプリの Azure コントロール パネルで **[Application Insights] を選択**します。
-   
-    ![[監視] の [Application Insights] を選択する](./media/app-insights-azure-web-apps/05-extend.png)
-   
-   * このアプリの Application Insights リソースを別のルートで既に設定している場合を除き、新しいリソースの作成を選択します。
-2. Application Insights をインストールしたら、**Web アプリをインストルメント化**します。 
-   
-    ![Web アプリをインストルメント化する](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+
+    ![[設定] の [Application Insights] を選択する](./media/app-insights-azure-web-apps/settings-app-insights.png)
+
+   * このアプリケーションの Application Insights リソースを既に設定している場合を除き、新しいリソースの作成を選択します。 
+
+    > [!NOTE]
+    > **[OK]** をクリックして新しいリソースを作成すると、**監視の設定を適用する**ように求めるメッセージが表示されます。 **[続行]** を選択すると、新しい Application Insights リソースが Web アプリにリンクされ、**Web アプリの再起動がトリガー**されます。 
+
+    ![Web アプリをインストルメント化する](./media/app-insights-azure-web-apps/create-resource.png)
+
+2. リソースが作成されたら、**[Web アプリの Application Insights の拡張機能を確認して更新する]** を選択して、拡張機能が最新であることを確認します。
+
+     ![サイト拡張機能の確認と更新](./media/app-insights-azure-web-apps/check-and-update.png)
+
+3. Application Insights をインストールしたら、**Web アプリをインストルメント化**します。
 
    ページ ビューとユーザー テレメトリに対する**クライアント側の監視を有効にします**。
 
    * [設定]、[アプリケーションの設定] の順に選択します
-   * [アプリ設定] で、新しいキー値ペアを追加します。 
-   
-    キー: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
-    
+   * [アプリ設定] で、新しいキー値ペアを追加します。
+
+    キー: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+
     値: `true`
    * 設定を **[保存]** し、アプリを **[再起動]** します。
-3. **アプリを監視**し、  [データを検索](#explore-the-data)します。
+4. **[設定]** > **[Application Insights]** > **[Application Insights でさらに表示]** を選択して、アプリの監視データを探索します。
 
 後で必要に応じて、Application Insights でアプリを構築できます。
 
@@ -63,14 +71,14 @@ Application Insights では、アプリへの SDK のインストールによっ
 
 1. **Visual Studio** (2013 Update 2 以降) で、Application Insights SDK をプロジェクト用に構成します。
 
-    Web プロジェクトを右クリックし、**[追加] > [Application Insights]** または **[Application Insights の構成]** を選択します。
-   
+    Web プロジェクトを右クリックし、**[追加] > [Application Insights]** または **[プロジェクト]** > **[Application Insights]** > **[Application Insights の構成]** を選択します。
+
     ![Web プロジェクトを右クリックし、Application Insights の追加または構成を選択する](./media/app-insights-azure-web-apps/03-add.png)
-   
+
     サインインが要求されたら、Azure アカウントの資格情報を使用します。
-   
+
     この操作には、次の 2 つの効果があります。
-   
+
    1. Azure に Application Insights リソースが作成されます。このリソースでテレメトリが格納、分析、表示されます。
    2. Application Insights NuGet パッケージがコードに追加され (まだ追加されていない場合)、テレメトリを Azure リソースに送信するように構成されます。
 2. 開発用コンピューターでアプリを実行して (F5)、**テレメトリをテスト**します。
@@ -79,29 +87,6 @@ Application Insights では、アプリへの SDK のインストールによっ
 *送信先を別の Application Insights リソースに切り替えるにはどうすればよいですか。*
 
 * Visual Studio でプロジェクトを右クリックし、**[Application Insights の構成]** を選択して、目的のリソースを選択します。 新しいリソースを作成するオプションが表示されます。 リビルドして再デプロイします。
-
-## <a name="explore-the-data"></a>データを検索する
-1. Web アプリのコントロール パネルの Application Insights ブレードで Live Metrics を確認します。Live Metrics には、要求と失敗が発生後 1 ～ 2 秒以内に表示されます。 問題をすぐに確認できるため、この表示はアプリを再発行する際に非常に役立ちます。
-2. すべての Application Insights リソースをクリックします。
-
-    ![クリックする](./media/app-insights-azure-web-apps/view-in-application-insights.png)
-
-    Azure リソースのナビゲーションから直接移動することもできます。
-
-1. 任意のグラフをクリックすると、より詳細な情報が表示されます。
-   
-    ![On the Application Insights overview blade, click a chart](./media/app-insights-azure-web-apps/07-dependency.png)
-   
-    [メトリック ブレードをカスタマイズする](app-insights-metrics-explorer.md)ことができます。
-2. 個々のイベントとそのプロパティを表示するには、さらにクリックします。
-   
-    ![Click an event type to open a search filtered on that type](./media/app-insights-azure-web-apps/08-requests.png)
-   
-    "..." というリンクを使用すると、すべてのプロパティが開かれます。
-   
-    [検索をカスタマイズ](app-insights-diagnostic-search.md)できます。
-
-テレメトリに対してより強力な検索を行うには、[Log Analytics クエリ言語](app-insights-analytics-tour.md)を使用してください。
 
 ## <a name="more-telemetry"></a>テレメトリの追加
 

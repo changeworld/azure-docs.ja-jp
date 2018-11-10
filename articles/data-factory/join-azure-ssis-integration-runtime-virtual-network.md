@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 633717a9f5f74648f7418970dd8047079efe18b9
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649093"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094597"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 以下のシナリオでは、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワークに参加させます。 
@@ -28,6 +28,9 @@ ms.locfileid: "49649093"
 - Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance で SQL Server Integration Services (SSIS) のカタログ データベースをホストしている。 
 
  Azure Data Factory では、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルで作成された仮想ネットワークに Azure-SSIS 統合ランタイムを参加させることができます。 
+
+> [!IMPORTANT]
+> クラシック仮想ネットワークは現在非推奨とされているため、代わりに Azure Resource Manager 仮想ネットワークを使用してください。  既にクラシック仮想ネットワークを使っている場合は、できるだけ早期に Azure Resource Manager 仮想ネットワークを使用するよう切り替えてください。
 
 ## <a name="access-to-on-premises-data-stores"></a>オンプレミスのデータ ストアにアクセスする
 SSIS パッケージがパブリック クラウドのデータ ストアだけにアクセスする場合は、仮想ネットワークに Azure-SSIS IR を参加させる必要はありません。 SSIS パッケージがオンプレミスのデータ ストアにアクセスする場合は、オンプレミスのネットワークに接続されている仮想ネットワークに Azure-SSIS IR を参加させる必要があります。 
@@ -46,11 +49,13 @@ SSIS パッケージがパブリック クラウドのデータ ストアだけ�
 SSIS カタログが Azure SQL Database と仮想ネットワーク サービス エンドポイントまたは Managed Instance でホストされている場合は、次のものに Azure-SSIS IR を参加させることができます。 
 
 - 同じ仮想ネットワーク 
-- Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance に使用されているネットワークとの間にネットワーク間接続がある別の仮想ネットワーク 
+- Managed Instance のために使用される仮想ネットワークとの間にネットワーク間接続がある、別の仮想ネットワーク 
 
-Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加させる場合、必ず Azure-SSIS IR を Managed Instance とは異なるサブネットに配置します。 Managed Instance とは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリング (同じリージョンに限定される) または仮想ネットワーク接続への 1 つの仮想ネットワークのどちらかをお勧めします。 「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。
+仮想ネットワークのサービス エンドポイントがある Azure SQL Database で SSIS カタログをホストする場合は、Azure SSIS IR を、必ず同じ仮想ネットワークとサブネットに参加させるようにします。
 
-仮想ネットワークは、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルでデプロイできます。
+Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加させる場合は、Azure-SSIS IR を、必ず Managed Instance とは異なるサブネットに配置します。 Managed Instance とは異なる仮想ネットワークに Azure-SSIS IR を参加させる場合、仮想ネットワーク ピアリング (同じリージョンに限定される) または仮想ネットワーク接続への 1 つの仮想ネットワークのどちらかをお勧めします。 「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。
+
+すべての場合に、仮想ネットワークは Azure Resource Manager デプロイ モデルでのみデプロイすることができます。
 
 以降のセクションではさらに詳しく説明します。 
 
@@ -73,13 +78,13 @@ Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加さ
 
 Azure-SSIS 統合ランタイムを作成するユーザーは、次のアクセス許可を持っている必要があります。
 
-- SSIS IR を現在のバージョンの Azure 仮想ネットワークに参加させている場合は、次の 2 つのオプションがあります。
+- SSIS IR を Azure Resource Manager 仮想ネットワークに参加させようとしている場合は、次の 2 つのオプションがあります。
 
-  - *ネットワーク共同作成者*の組み込みロールを使用します。 ただし、このロールには、はるかに大きなスコープを持つ *Microsoft.Network/\** アクセス許可が必要です。
+  - 組み込みの*ネットワーク共同作成者*ロールを使用します。 このロールには、必要なスコープよりずっと大きなスコープを持つ *Microsoft.Network/\** アクセス許可が備わっています。
 
-  - *Microsoft.Network/virtualNetworks/\*/join/action* アクセス許可を含むカスタム ロールを作成します。 
+  - 必要な *Microsoft.Network/virtualNetworks/\*/join/action* アクセス許可のみを含むカスタム ロールを作成してください。 
 
-- SSIS IR をクラシック Azure 仮想ネットワークに参加させている場合は、*従来の仮想マシン共同作成者*の組み込みロールを使用することをお勧めします。 そうしない場合は、仮想ネットワークに参加するためのアクセス許可を含むカスタム ロールを定義する必要があります。
+- SSIS IR をクラシック仮想ネットワークに参加させようとしている場合は、組み込みの*従来の仮想マシン共同作成者*ロールを使用することをお勧めします。 そうしない場合は、仮想ネットワークに参加するためのアクセス許可を含むカスタム ロールを定義する必要があります。
 
 ### <a name="subnet"></a> サブネットを選択する
 -   仮想ネットワーク ゲートウェイ専用であるため、Azure SSIS Integration Runtime をデプロイするために GatewaySubnet を選択しないでください。 

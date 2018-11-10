@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 7/25/2018
 ms.author: erikre
-ms.openlocfilehash: 19d8fbf82410136fd6a50a2088dd9b774dd6cb27
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 08cdce23fe298bdac932d1ca8abb8166f4d7bbbd
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259213"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094815"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
@@ -139,7 +139,7 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 4.  **Logic Apps デザイナー**の検索ボックスに「JSON の解析」と入力して検索し、**[データ操作] - [JSON の解析]** [アクション](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)を見つけて選択します。 
     
     ![Azure - ロジック アプリ -JSON の解析アクションの追加](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png) 
-5.  JSON 解析ペイロードの**コンテンツ**名を「Payload」と入力します。
+5.  「JSON の解析」ペイロードの**コンテンツ**名として「Payload」と入力とするか、動的なコンテンツから "Body" タグを使用します。
 6.  **[JSON の解析]** ボックスで **[サンプルのペイロードを使用してスキーマを生成する]** オプションを選択します。
     
     ![Azure - ロジック アプリ - サンプル JSON データを使用してスキーマを生成する](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png) 

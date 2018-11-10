@@ -1,22 +1,21 @@
 ---
-title: Site Recovery を使ったパブリック IP アドレス |Microsoftドキュメント
+title: Azure Site Recovery を使用したフェールオーバー後にパブリック IP アドレスを使用する | Microsoft Docs
 description: ディザスター リカバリーと移行のために、Azure Site Recovery と Azure Traffic Manager を使用してパブリック IP アドレスを設定する方法について説明します
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: mayg
-ms.openlocfilehash: fd17c786515a6db1f8aa5c1aff7c0dcd42ed7dc6
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 80c38ecc766d60fba578e877998aeb216ea66012
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435829"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215278"
 ---
-# <a name="public-ip-address-with-site-recovery"></a>Site Recovery を使ったパブリック IP アドレス
+# <a name="set-up-public-ip-addresses-after-failover"></a>フェールオーバー後にパブリック IP アドレスを設定する
 
 インターネット リソースから Azure リソースに入ってくる通信には、パブリック IP アドレスが使用されます。 また、Azure リソースからインターネットに出て行く通信や、Azure リソースから公開 Azure サービス (リソースに IP アドレスが割り当てられている Azure サービス) に出て行く通信にも、パブリック IP アドレスが使用されます。
 - インターネットから、Azure Virtual Machines (VM)、Azure Application Gateway、Azure Load Balancer、Azure VPN Gateway などのリソースへの受信。 パブリック IP アドレスが割り当てられていないリソース (VM など) でも、インターネットから一部のリソースと通信することができます。ただし、そのリソースがロード バランサーのバックエンド プールの一部であり、ロード バランサーにパブリック IP アドレスが割り当てられている必要があります。

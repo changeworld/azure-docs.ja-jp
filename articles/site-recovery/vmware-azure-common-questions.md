@@ -1,23 +1,22 @@
 ---
-title: よくある質問 - Azure Site Recovery による VMware から Azure へのレプリケーション | Microsoft Docs
-description: この記事では、Azure Site Recovery を使ってオンプレミスの VMware VM を Azure にレプリケートする場合によくある質問をまとめます
-services: site-recovery
+title: よくある質問 - Azure Site Recovery を使用した VMware から Azure へのディザスター リカバリー | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用してオンプレミスの VMware VM の Azure へのディザスター リカバリーを設定する場合のよくある質問をまとめています
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 07/19/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 487e0c763ca4b247f1818b2beaf3282734fc4e27
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388444"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215448"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
-この記事では、オンプレミスの VMware VM を Azure にレプリケートするときによくある質問に回答します。 この記事の内容について質問がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
+この記事では、オンプレミスの VMware VM の Azure へのディザスター リカバリーをデプロイするときによくある質問に回答します。 この記事の内容について質問がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
 
 ## <a name="general"></a>全般
@@ -45,7 +44,7 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 
 
 
-## <a name="on-premises"></a>オンプレミスの
+## <a name="on-premises"></a>オンプレミス
 
 ### <a name="what-do-i-need-on-premises"></a>オンプレミスには何が必要ですか?
 オンプレミスでは、Site Recovery のコンポーネントが 1 つの VMware VM にインストールされている必要があります。 また、少なくとも 1 つの ESXi ホストを含む VMware インフラストラクチャも必要であり、vCenter サーバーをお勧めします。 さらに、レプリケートする 1 つ以上の VMware VM が必要です。 VMware から Azure へのアーキテクチャについて詳しくは、[こちら](vmware-azure-architecture.md)をご覧ください。

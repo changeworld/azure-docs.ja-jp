@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: f546ea5b5f9288849334d27cd1721f0c22fb8806
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fae68bccbeaa54ca1bab9d77510fe6baecd11fcc
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297777"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139722"
 ---
 # <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>方法: Azure Active Directory でグループ所有者を追加または削除する
 Azure Active Directory (Azure AD) グループを所有および管理するのはグループ所有者です。 グループ所有者には、グループとそのメンバーの管理をリソース所有者 (管理者) によって割り当てられます。 グループ所有者は、グループのメンバーである必要はありません。 割り当てられたグループ所有者を追加または削除できるのは、リソース所有者だけです。
@@ -29,7 +29,7 @@ Azure AD を使用して、追加のグループ所有者をグループに追�
 ### <a name="to-add-a-group-owner"></a>グループ所有者を追加するには
 1. ディレクトリのグローバル管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、**[グループ]** を選択して、所有者を追加するグループ (この例では、_MDM policy - West_) を選択します。
+2. **[Azure Active Directory]** を選択し、**[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
 
 3. **[MDM policy - West の概要]** ページで、**[所有者]** を選択します。
 
@@ -45,9 +45,9 @@ Azure AD を使用して、追加のグループ所有者をグループに追�
 Azure AD を使用してグループから所有者を削除します。
 
 ### <a name="to-remove-an-owner"></a>所有者を削除するには
-1. ディレクトリのグローバル管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、**[グループ]** を選択して、所有者を削除するグループ (この例では、_MDM policy - West_) を選択します。
+2. **[Azure Active Directory]** を選択し、**[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
 
 3. **[MDM policy - West の概要]** ページで、**[所有者]** を選択します。
 

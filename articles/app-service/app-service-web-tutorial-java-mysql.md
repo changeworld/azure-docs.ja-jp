@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: ec942d97e7671c0477d8d723afacb06b73565c1c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024377"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414559"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>チュートリアル: Azure で Java と MySQL Web アプリを構築する
 
@@ -47,7 +47,7 @@ ms.locfileid: "50024377"
 ## <a name="prerequisites"></a>前提条件
 
 1. [Git をダウンロードし、インストールします](https://git-scm.com/)
-1. [Java 7 JDK 以降をダウンロードし、インストールします](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [Java JDK をダウンロードし、インストールします](https://aka.ms/azure-jdks)
 1. [MySQL をダウンロード、インストール、および起動します](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>ローカル MySQL を準備する 
@@ -272,7 +272,7 @@ Web アプリ定義の準備が完了すると、Azure CLI によって次の例
 
 Cloud Shell で [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
 
-次のコマンドでは、最新の Java 8 JDK および [Apache Tomcat](http://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
+次のコマンドでは、最新の [Java 8 JDK](https://aka.ms/azure-jdks) および [Apache Tomcat](http://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
 
 ```azurecli-interactive
 az webapp config set --name <app_name> --resource-group myResourceGroup --java-version 1.8 --java-container Tomcat --java-container-version 8.0

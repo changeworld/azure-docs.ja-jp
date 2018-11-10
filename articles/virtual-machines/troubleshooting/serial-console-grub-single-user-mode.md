@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 411c743421af79ea066df3a5fc07f71b8b6cb993
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 43f9d7d39cfcdd7b670aca6184533def0b6966f5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855869"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211385"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
 GRUB は、GRand Unified Bootloader の略です。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。
@@ -33,15 +33,15 @@ GRUB は、GRand Unified Bootloader の略です。 GRUB からは、特にシ�
 ## <a name="general-grub-access"></a>GRUB の一般的なアクセス
 GRUB にアクセスするには、シリアル コンソール ブレードを開いた状態で VM を再起動する必要があります。 一部のディストリビューションでは GRUB を表示するのにキーボード入力が必要ですが、それ以外のディストリビューションでは数秒で GRUB が自動的に表示され、タイムアウトをキャンセルするためにユーザーにキーボード入力を許可します。 
 
-シングル ユーザー モードにアクセスできるようにするには、VM 上で GRUB が有効なことを確認する必要があります。 ディストリビューションによっては、GRUB が有効なことを確認するための設定作業があります。 ディストリビューションに固有の情報は、以下で入手できます。
+シングル ユーザー モードにアクセスできるようにするには、VM 上で GRUB が有効なことを確認する必要があります。 ディストリビューションによっては、GRUB が有効なことを確認するための設定作業があります。 ディストリビューションに固有の情報は、以下と[こちらのリンク](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)で入手できます。
 
 ### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>シリアル コンソールで VM を再起動して GRUB にアクセスする
 シリアル コンソール ブレードを開いたまま VM を再起動するには、SysRq `'b'` コマンドを使用 ([SysRq](./serial-console-nmi-sysrq.md) が有効になっている場合) するか、[概要] ブレードで [再起動] ボタンをクリックします (新しいブラウザー タブで VM を開いてシリアル コンソール ブレードを閉じずに再起動します)。 以下のディストリビューションに固有の手順に従って、再起動したときに GRUB でどのようなことが期待できるかを確認してください。
 
 ## <a name="general-single-user-mode-access"></a>シングル ユーザー モードの一般的なアクセス
-パスワード認証を使用するアカウントを構成していない場合は、シングル ユーザー モードに手動でアクセスする必要がある場合があります。 シングル ユーザー モードに手動で入るには、GRUB 構成を変更する必要があります。 これを完了したら、その後の手順について「[シングル ユーザー モードを使用してパスワードをリセットまたは追加する](#-Use-Single-User-Mode-to-reset-or-add-a-password)」を参照してください。
+パスワード認証を使用してアカウントを構成していない場合には、シングル ユーザー モードに手動でアクセスする必要がある場合があります。 シングル ユーザー モードに手動で入るには、GRUB 構成を変更する必要があります。 これを完了したら、その後の手順について「[シングル ユーザー モードを使用してパスワードをリセットまたは追加する](#-Use-Single-User-Mode-to-reset-or-add-a-password)」を参照してください。
 
-VM を起動できない場合、ディストリビューションは多くの場合、ユーザーを自動的にシングル ユーザー モードまたは緊急モードにします。 ただし、それ以外の場合では、ユーザーを自動的にシングル ユーザー モードまたは緊急モードにする前に、追加の設定が必要です (たとえば、root パスワードの設定)。
+VM を起動できない場合、ディストリビューションは多くの場合、ユーザーを自動的にシングル ユーザー モードまたは緊急モードにします。 ただし、それ以外の場合では、ユーザーを自動的にシングル ユーザー モードまたは緊急モードにする前に、追加のセットアップが必要です (root パスワードの設定など)。
 
 ### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>シングル ユーザー モードを使用してパスワードをリセットまたは追加する
 シングル ユーザー モードになったら、以下の手順に従って sudo 特権を持つ新しいユーザーを追加します。
@@ -186,6 +186,7 @@ Oracle Linux でシングル ユーザー モードを有効にするには、�
 
 ## <a name="next-steps"></a>次の手順
 * 主要なシリアル コンソールの Linux ドキュメントのページについては、[こちら](serial-console-linux.md)を参照してください。
+* シリアル コンソールを使用して[さまざまなディストリビューションで GRUB を有効にする](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)方法について説明します
 * [NMI および SysRq 呼び出し](serial-console-nmi-sysrq.md)のためにシリアル コンソールを使用する
 * シリアル コンソールは、[Windows](serial-console-windows.md) VM でも使用可能
 * [ブート診断](boot-diagnostics.md)の詳細を表示する

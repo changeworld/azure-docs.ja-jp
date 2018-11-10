@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e449703dd8d012037af9540397ecd3b7bc0c7e7f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: c5c2e4cd26954efb92d470f5432f709e4dc3f887
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114642"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240581"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 
@@ -129,5 +129,5 @@ Flow、Logic Apps、Functions の統合は、今後ますます強まってい�
 
 * [Christopher Anderson によるプレゼンテーション「Leveraging Azure Functions & Azure App Service for integration scenarios (統合シナリオで Azure Functions と Azure App Service を使用する)」](http://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [Charles Lamanna によるプレゼンテーション「Integrations Made Simple (統合をもっとシンプルに)」](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
-* [Logic Apps のライブ Web キャスト](http://aka.ms/logicappslive)
+* [Logic Apps のライブ Web キャスト](https://aka.ms/logicappslive)
 * [Microsoft Flow のよくある質問](https://flow.microsoft.com/documentation/frequently-asked-questions/)

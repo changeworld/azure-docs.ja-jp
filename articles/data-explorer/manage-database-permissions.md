@@ -8,18 +8,18 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0fb2cd79c0ee685ad2000c5444a84d53e462f24
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 287b95b59b0ec2b308d3e455c4f6ffce4baf4ff7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868277"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212881"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Azure データ エクスプローラーのデータベース アクセス許可を管理する
 
 Azure データ エクスプローラーを使用すると、"*ロールベースのアクセス制御*" モデルを使用して、データベースとテーブルへのアクセスを制御することができます。 このモデルでは、"*プリンシパル*" (ユーザー、グループ、およびアプリ) が "*ロール*" にマッピングされます。 プリンシパルは、割り当てられたロールに従ってリソースにアクセスできます。
 
-この記事では、利用可能なロールと、それらのロールにプリンシパルを割り当てる方法について説明します。
+この記事では、使用できるロールと、Azure portal と Azure Data Explorer の管理コマンドを使用して、これらのロールにプリンシパルを割り当てる方法について説明します。
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可
 

@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery での Azure へのテスト フェールオーバー | Microsoft Docs
-description: Azure Site Recovery サービスを使用して、オンプレミスから Azure へのテスト フェールオーバーの実行について説明します。
-services: site-recovery
+title: Azure Site Recovery を使用して Azure へのディザスター リカバリー訓練を実行する | Microsoft Docs
+description: Azure Site Recovery サービスを使用して、オンプレミスから Azure へのディザスター リカバリー訓練を実行することについて説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 09/11/2018
+ms.topic: conceptual
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 4c72a58cdc6082a40fe80b7a3cf8cf964199371e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 6eb1ee90b22b9e37dcae900cd80f80cb549090e9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391778"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213952"
 ---
-# <a name="test-failover-to-azure-in-site-recovery"></a>Azure Site Recovery での Azure へのテスト フェールオーバー
+# <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する 
 
 
 この記事では、Site Recovery テスト フェールオーバーを使用して Azure に対してディザスター リカバリー ドリルを実行する方法について説明します。  

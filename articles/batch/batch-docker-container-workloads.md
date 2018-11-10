@@ -8,14 +8,14 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 06/04/2018
+ms.date: 10/24/2018
 ms.author: danlep
-ms.openlocfilehash: a85db0315a2ee8aa9fd34b8c18893f4cb1068528
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 458b0f7bbf581c7f2490a8122f351dac612b4ff0
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090964"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155622"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
@@ -225,11 +225,15 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 ## <a name="container-settings-for-the-task"></a>タスク用のコンテナー設定
 
-コンピューティング ノードでコンテナー タスクを実行するには、タスク実行オプション、使用するイメージ、レジストリなど、コンテナー固有設定を指定する必要があります。
+コンピューティング ノードでコンテナー タスクを実行するには、コンテナー実行オプション、使用するイメージ、レジストリなど、コンテナー固有設定を指定する必要があります。
 
 コンテナー固有の設定を構成するには、タスク クラスの `ContainerSettings` プロパティを使用します。 これらの設定は、[TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) クラスによって定義されます。
 
 コンテナー イメージでタスクを実行する場合は、[クラウド タスク](/dotnet/api/microsoft.azure.batch.cloudtask)と[ジョブ マネージャー タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)にコンテナー設定が必要です。 ただし、[開始タスク](/dotnet/api/microsoft.azure.batch.starttask)、[ジョブの準備タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)、および[ジョブの解放タスク](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)にはコンテナー設定は不要です (つまり、コンテナーのコンテキスト内で、またはノード上で直接実行できます)。
+
+オプションの [ContainerRunOptions](/dotnet/api/microsoft.azure.batch.taskcontainersettings.containerrunoptions) は、コンテナーを作成するためにタスクが実行する `docker create` コマンドへの追加の引数です。
+
+### <a name="container-task-working-directory"></a>コンテナー タスクの作業ディレクトリ
 
 Azure Batch のコンテナー タスク用のコマンド ラインは、コンテナー内の作業ディレクトリで実行されます。これは、通常の (コンテナーでない) タスク用に Batch が設定する環境によく似ています。
 
@@ -237,9 +241,13 @@ Azure Batch のコンテナー タスク用のコマンド ラインは、コン
 * タスクの環境変数がすべて、コンテナー内にマップされます。
 * アプリケーションの作業ディレクトリは、通常のタスクの場合と同様に設定されます。そのため、 アプリケーション パッケージやリソース ファイルなどの機能が使用可能です。
 
-Batch は、コンテナー内の既定の作業ディレクトリを変更します。そのため、タスクは、通常のコンテナー エントリ ポイント (例えば、Windows コンテナーの場合は、既定で `c:\`、Linux の場合は `/`) とは別の場所で実行されます。 タスクのコマンド ラインまたはコンテナー エントリ ポイントでは、絶対パスが指定されるようにしてください (まだそのように構成されていない場合)。
+Batch は、コンテナー内の既定の作業ディレクトリを変更します。そのため、タスクは、通常のコンテナー作業ディレクトリとは別の場所で実行されます (たとえば、Windows コンテナーの場合は既定で `c:\`、Linux の場合は `/`、コンテナー イメージで構成されている場合は別のディレクトリです)。 コンテナー アプリケーションが Batch のコンテキスト内で正常に実行していることを確認するには、次のいずれかを行います。 
 
-次の Python スニペットは、Docker Hub からプルされた Ubuntu コンテナーで実行されている基本的なコマンド ラインを示しています。 コンテナーの実行オプションは、タスクが実行する `docker create` コマンドの追加引数です。 ここでは、タスクの終了後に `--rm` オプションがコンテナーを削除します。
+* タスクのコマンド ライン (またはコンテナーの作業ディレクトリ) で、絶対パスが指定されていることを確認する (まだそのように構成されていない場合)。
+
+* タスクの ContainerSettings で、コンテナー実行オプションに作業ディレクトリを設定する。 たとえば、「 `--workdir /app` 」のように入力します。
+
+次の Python スニペットは、Docker Hub からプルされた Ubuntu コンテナーで実行されている基本的なコマンド ラインを示しています。 ここでは、タスクの終了後に `--rm` コンテナー実行オプションがコンテナーを削除します。
 
 ```python
 task_id = 'sampletask'

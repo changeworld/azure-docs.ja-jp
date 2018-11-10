@@ -4,20 +4,22 @@ description: Update Management の問題をトラブルシューティングす�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405229"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092629"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
 この記事では、Update Management の使用時に発生する可能性がある問題の解決策について説明します。
+
+根本的な問題を特定するための Hybrid Worker エージェント用のエージェント トラブルシューティング ツールがあります。 このトラブルシューティング ツールの詳細については、[更新エージェントの問題のトラブルシューティング](update-agent-issues.md)に関する記事を参照してください。 その他のすべての問題については、考えられる問題に関する以下の詳細情報をご覧ください。
 
 ## <a name="general"></a>全般
 
@@ -110,6 +112,20 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 #### <a name="resolution"></a>解決策
 
 フォルダー **C:\ProgramData\Microsoft\Crypto\RSA** への読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
+
+### <a name="nologs"></a>シナリオ: マシンの Log Analytics に表示されない Update Management データ
+
+#### <a name="issue"></a>問題
+
+**[コンプライアンス]** の下に **[評価が行われていません]** と表示されるマシンがあるが、Hybrid Runbook Worker に対する Log Analytics 内にハートビート データが表示され、Update Management には表示されません。
+
+#### <a name="cause"></a>原因
+
+Hybrid Runbook Worker の再登録と再インストールが必要な可能性があります。
+
+#### <a name="resolution"></a>解決策
+
+「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」の手順に従って、Hybrid Worker を再インストールします。
 
 ### <a name="hresult"></a>シナリオ: マシンが未評価として表示され、HResult 例外が表示される
 

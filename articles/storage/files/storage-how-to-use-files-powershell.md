@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 16f557d48f8056d438d55fdd066395e7e36ed8a5
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 119853df5b5234b65bdade890df1fecb72c326b7
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945486"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157379"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用した Azure ファイル共有の作成および管理 
 このガイドでは、PowerShell を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -165,6 +165,57 @@ Get-AzureStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "
 ```
 
 `Start-AzureStorageFileCopy` コマンドレットは、Azure ファイル共有と Azure BLOB ストレージ コンテナーの間でのアドホック ファイル移動に便利です。ただし、(移動するファイルの数やサイズの点で) 移動の規模が大きい場合は AzCopy の使用をお勧めします。 [Windows 用の AzCopy](../common/storage-use-azcopy.md) と [Linux 用の AzCopy](../common/storage-use-azcopy-linux.md) についてご確認ください。 AzCopy はローカルにインストールする必要があります。Cloud Shell では使用できません。 
+
+## <a name="create-and-manage-share-snapshots"></a>共有スナップショットの作成と管理
+さらに、Azure ファイル共有で実行できる便利なタスクの 1 つとして、共有スナップショットの作成があります。 スナップショットでは、特定の時点の Azure ファイル共有が保存されます。 共有スナップショットは、場合によっては既に使い慣れている、次のようなオペレーティング システム テクノロジに類似しています。
+- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)
+- Linux システム用の[論理ボリューム マネージャー (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) スナップショット
+- macOS 用の [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) スナップショット。 
+ 共有の共有スナップショットは、ファイル共有の PowerShell オブジェクトに `Snapshot` メソッドを使用して作成できます。ファイル共有は、[Get-AzureStorageShare](/powershell/module/azure.storage/get-azurestorageshare) コマンドレットで取得します。 
+
+```azurepowershell-interactive
+$share = Get-AzureStorageShare -Context $storageAcct.Context -Name "myshare"
+$snapshot = $share.Snapshot()
+```
+
+### <a name="browse-share-snapshots"></a>共有スナップショットの参照
+スナップショットの参照 (`$snapshot`) を `Get-AzureStorageFile` コマンドレットの `-Share` パラメーターに渡すことで、共有スナップショットの内容を参照できます。
+
+```azurepowershell-interactive
+Get-AzureStorageFile -Share $snapshot
+```
+
+### <a name="list-share-snapshots"></a>共有スナップショットの一覧表示
+次のコマンドで、共有に関して取得したスナップショットの一覧を表示できます。
+
+```azurepowershell-interactive
+Get-AzureStorageShare -Context $storageAcct.Context | Where-Object { $_.Name -eq "myshare" -and $_.IsSnapshot -eq $true }
+```
+
+### <a name="restore-from-a-share-snapshot"></a>共有スナップショットからの復元
+先ほど使った `Start-AzureStorageFileCopy` コマンドを使用して、ファイルを復元できます。 このクイック スタートでは、先ほどアップロードした `SampleUpload.txt` ファイルを最初に削除します。そうすることで、スナップショットからそれを復元できます。
+
+```azurepowershell-interactive
+# Delete SampleUpload.txt
+Remove-AzureStorageFile `
+    -Context $storageAcct.Context `
+    -ShareName "myshare" `
+    -Path "myDirectory\SampleUpload.txt"
+ # Restore SampleUpload.txt from the share snapshot
+Start-AzureStorageFileCopy `
+    -SrcShare $snapshot `
+    -SrcFilePath "myDirectory\SampleUpload.txt" `
+    -DestContext $storageAcct.Context `
+    -DestShareName "myshare" `
+    -DestFilePath "myDirectory\SampleUpload.txt"
+```
+
+### <a name="delete-a-share-snapshot"></a>共有スナップショットの削除
+`$snapshot` 参照を `-Share` パラメーターに含めた変数で [Remove-AzureStorageShare](/powershell/module/azure.storage/remove-azurestorageshare) コマンドレットを使用すると、共有スナップショットを削除できます。
+
+```azurepowershell-interactive
+Remove-AzureStorageShare -Share $snapshot
+```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 完了したら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドレットを使用して、リソース グループとすべての関連リソースを削除できます。 

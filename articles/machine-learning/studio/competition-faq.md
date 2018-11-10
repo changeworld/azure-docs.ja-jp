@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 15d46f16c78b8fa757d7810542b3d6bfa9a95f3c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 693fd7b80d69c20971315d8636f27daeb0cacaee
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465629"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240887"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence コンペティションの FAQ
 **Microsoft Cortana Intelligence コンペティションとは何ですか。**
 
-Microsoft Cortana Intelligence コンペティションは、世界の最も複雑なデータ サイエンスの問題のいくつかを集団で解決することにより、データ研究者のグローバル コミュニティを統合します。 Cortana Intelligence コンペティションでは、世界中のデータ研究者が競い合って、高度に正確で合理的なデータ サイエンス モデルを構築できます。 これらのコンペティションは、初めて一般に使用可能になった固有のデータ セットに基づいています。 参加者は、報酬を得たり、トップ 10 パブリック ランキングを通じて知名度を高めたりすることができます。 [aka.ms/CIComp](http://aka.ms/CIComp) でコンペティションのホーム ページにアクセスすることができます。
+Microsoft Cortana Intelligence コンペティションは、世界の最も複雑なデータ サイエンスの問題のいくつかを集団で解決することにより、データ研究者のグローバル コミュニティを統合します。 Cortana Intelligence コンペティションでは、世界中のデータ研究者が競い合って、高度に正確で合理的なデータ サイエンス モデルを構築できます。 ホストされているコンペティションは、初めて一般に使用可能になった固有のデータ セットに基づいています。 参加者は、報酬を得たり、トップ 10 パブリック ランキングを通じて知名度を高めたりすることができます。 [aka.ms/CIComp](http://aka.ms/CIComp) でコンペティションのホーム ページにアクセスすることができます。
 
 **Microsoft は新しいコンペティションをどのくらいの頻度でリリースしますか。**
 

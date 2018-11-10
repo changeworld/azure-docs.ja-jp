@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6f9b85ec4821ff2454970136b3c8af2cb0f92154
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345890"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140825"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Azure Lab Services でラボ アカウントを管理する 
 Azure Lab Services では、ラボ アカウントは、クラスルーム ラボなどのマネージド ラボのコンテナーです。 管理者は、Azure Lab Services を使用してラボ アカウントを設定し、アカウントにラボを作成できるラボ所有者にアクセスを提供します。 この記事では、ラボ アカウントの作成、すべてのラボ アカウントの表示、またはラボ アカウントの削除を行う方法について説明します。
@@ -34,7 +34,7 @@ Azure Lab Services では、ラボ アカウントは、クラスルーム ラ�
     2. ラボ アカウントを作成する **[Azure サブスクリプション]** を選択します。
     3. **[リソース グループ]** で、**[新規作成]** を選択し、リソース グループの名前を入力します。
     4. **[場所]** で、ラボ アカウントが作成される場所/リージョンを選択します。 
-    5. **[作成]** を選択します。 
+    5. **作成**を選択します。 
 
         ![ラボ アカウントの作成ウィンドウ](../media/how-to-manage-lab-accounts/lab-account-settings.png)
 5. ラボ アカウント ページが表示されない場合は、**[通知]** ボタンを選択し、通知内の **[リソースに移動]** ボタンをクリックします。 
@@ -90,6 +90,28 @@ Azure Lab Services では、ラボ アカウントは、クラスルーム ラ�
 2. ツールバーから **[削除]** を選択します。 
 3. **[はい]** を選択して確認します。
 4. **[削除]** を選択します。 
+
+## <a name="view-and-manage-labs-in-the-lab-account"></a>ラボ アカウント内のラボの表示と管理
+
+1. **[ラボ アカウント]** ページで、左側のメニューの **[ラボ]** を選択します。
+
+    ![アカウント内のラボ](../media/how-to-manage-lab-accounts/labs-in-account.png)
+1. アカウント内の**ラボの一覧**に、次の情報が表示されます。 
+    1. ラボの名前。
+    2. ラボが作成された日付。 
+    3. ラボを作成したユーザーのメール アドレス。 
+    4. ラボ内で許可されるユーザーの最大数。 
+    5. ラボの状態。 
+
+## <a name="delete-a-lab-in-the-lab-account"></a>ラボ アカウント内のラボを削除する
+前のセクションの手順に従って、ラボ アカウント内のラボの一覧を表示します。
+
+1. **... (省略記号)** を選択し、**[削除]** を選択します。 
+
+    ![ラボを削除する - ボタン](../media/how-to-manage-lab-accounts/delete-lab-button.png)
+2. 警告メッセージで **[はい]** を選択します。 
+
+
 
 ## <a name="next-steps"></a>次の手順
 Azure Lab Services を使用してラボの設定を開始します。

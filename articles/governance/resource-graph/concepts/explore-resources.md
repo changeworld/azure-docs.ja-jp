@@ -4,16 +4,16 @@ description: Resource Graph のクエリ言語を使用して、リソースを�
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f488dfad8a38bbfab3b5b74e5b504463af09c089
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bcd25b95d1369ef98662384945123126ebbbd70f
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645934"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086898"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Resource Graph を使用してご利用の Azure リソースを探索する
 
@@ -216,7 +216,7 @@ Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' an
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>プレミアム マネージド ディスクに接続された仮想マシン
 
-これらの **Standard_B2s** 仮想マシンに接続されているプレミアム マネージド ディスクの詳細情報を得るには、これらのマネージド ディスクのリソース ID を提供するようにクエリを拡張します。
+これらの **Standard_B2S** 仮想マシンに接続されているプレミアム マネージド ディスクの詳細情報を得るには、これらのマネージド ディスクのリソース ID を提供するようにクエリを拡張します。
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -236,7 +236,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-結果としてディスク ID の一覧が返されます。
+結果は、ディスク ID の一覧です。
 
 ### <a name="managed-disk-discovery"></a>マネージド ディスクの確認
 
@@ -314,7 +314,7 @@ JSON 結果は次の例のように構成されます。
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>仮想マシンを探索してパブリック IP アドレスを確認する
 
-この複数の手順から成る Azure CLI の一連のクエリでは、最初に仮想マシンに接続されているすべてのネットワーク インターフェイス (NIC) リソースを見つけて格納し、NIC の一覧を使用して、パブリック IP アドレスである各 IP アドレス リソースを見つけてこれらの値を格納し、最後に実際のパブリック IP アドレスの一覧を表示します。
+この Azure CLI の一連のクエリは、最初に仮想マシンに接続されているすべてのネットワーク インターフェイス (NIC) リソースを検索し、それらを格納します。 次に、NIC の一覧を使用して、パブリック IP アドレスである各 IP アドレスのリソースを検索し、それらの値を格納します。 最後に、パブリック IP アドレスの一覧を提供します。
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nic' variable
@@ -324,7 +324,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 cat nics.txt
 ```
 
-`nics.txt` ファイルを取得したら、次のクエリで使用して、関連するネットワーク インターフェイス リソースの詳細情報を取得します。これには、NIC に接続されているパブリック IP アドレスが含まれます。
+次のクエリの中で `nics.txt` ファイルを使用して、関連するネットワーク インターフェイス リソースの詳細情報を取得します。これには、NIC にアタッチされているパブリック IP アドレスが含まれます。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file

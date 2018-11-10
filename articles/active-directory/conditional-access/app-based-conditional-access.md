@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory のアプリベースの条件付きアクセス | Microsoft Docs
-description: Azure Active Directory のアプリベースの条件付きアクセスのしくみについて学習します。
+title: Azure Active Directory で条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する方法 | Microsoft Docs
+description: Azure Active Directory で条件付きアクセスを使用して、クラウド アプリへのアクセスに承認されたクライアント アプリを要求する方法について説明します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: f34fc4c41094292db9bed1294ee7b26ec04c96c6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 68c2178440264aa6a6efce074b299f4e3deaa10f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630604"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415391"
 ---
-# <a name="azure-active-directory-app-based-conditional-access"></a>Azure Active Directory のアプリベースの条件付きアクセス  
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>方法: 条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する 
 
-従業員は個人的な作業と業務上の作業のどちらにもモバイル デバイスを使用します。 そこで、従業員の生産性を確保しながら、データの損失を防止する必要があります。 Azure Active Directory (Azure AD) のアプリベースの条件付きアクセスを使うと、クラウド アプリに対するアクセスを会社のデータを保護できるクライアント アプリだけに制限することができます。  
+従業員は個人的な作業と業務上の作業のどちらにもモバイル デバイスを使用します。 そこで、従業員の生産性を確保しながら、データの損失を防止する必要があります。 Azure Active Directory (Azure AD) の条件付きアクセスを使うと、クラウド アプリへのアクセスを、承認されたクライアント アプリだけに制限して、会社のデータを保護することができます。  
 
-このトピックでは、Azure AD のアプリベースの条件付きアクセスを構成する方法を説明します。
+このトピックでは、承認されたクライアント アプリを必要とする条件付きアクセス ポリシーを構成する方法について説明します。
 
 ## <a name="overview"></a>概要
 
@@ -36,7 +36,7 @@ ms.locfileid: "39630604"
 
 会社のデータの保護には、[Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy)を利用できます。 Intune のアプリ保護ポリシーでは、モバイル デバイス管理 (MDM) ソリューションデバイスは必要ありません。このため、デバイスをデバイス管理ソリューションに登録しているかどうかに関係なく、会社のデータを保護することができます。
 
-Azure Active Directory のアプリベースの条件付きアクセスを使うと、クラウド アプリに対するアクセスを Intune のアプリ保護ポリシーをサポートしているクライアント アプリのみに制限することができます。 たとえば、Exchange Online に対するアクセスを Outlook アプリのみに制限することができます。
+Azure Active Directory の条件付きアクセスを使うと、クラウド アプリに対するアクセスを Intune のアプリ保護ポリシーをサポートしているクライアント アプリのみに制限することができます。 たとえば、Exchange Online に対するアクセスを Outlook アプリのみに制限することができます。
 
 条件付きアクセスに関する用語では、このようなクライアント アプリを**承認されたクライアント アプリ**と呼んでいます。  
 
@@ -120,9 +120,9 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
     ![条件付きアクセス](./media/app-based-conditional-access/03.png)
 
-    b. **クライアント アプリ**として、**[モバイル アプリとデスクトップ アプリ]** を選択します。
+    b. **クライアント アプリ (プレビュー)** として、**[Mobile apps and desktop apps]** \(モバイル アプリとデスクトップ アプリ\) と **[先進認証クライアント]** を選択します。
 
-    ![条件付きアクセス](./media/app-based-conditional-access/04.png)
+    ![条件付きアクセス](./media/app-based-conditional-access/91.png)
 
 5. **アクセス コントロール**として、**[承認されたクライアント アプリが必要です (プレビュー)]** を選択する必要があります。
 
@@ -144,11 +144,11 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
     ![条件付きアクセス](./media/app-based-conditional-access/07.png)
 
-4. **条件:** **条件**として、**クライアント アプリ**を構成する必要があります。 
+4. **条件:** **条件**として、**クライアント アプリ (プレビュー)** を構成する必要があります。 
 
-    a. **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
+    a. **クライアント アプリ (プレビュー)** として、**[Mobile apps and desktop apps]** \(モバイル アプリとデスクトップ アプリ\) と **[Exchange ActiveSync クライアント]** を選択します。
 
-    ![条件付きアクセス](./media/app-based-conditional-access/08.png)
+    ![条件付きアクセス](./media/app-based-conditional-access/92.png)
 
     b. **アクセス コントロール**として、**[承認されたクライアント アプリが必要です (プレビュー)]** を選択する必要があります。
 
@@ -201,9 +201,9 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
     ![条件付きアクセス](./media/app-based-conditional-access/03.png)
 
-    b. **クライアント アプリ**として、**[モバイル アプリとデスクトップ アプリ]** を選択します。
+    b. **クライアント アプリ (プレビュー)** として、**[モバイル アプリとデスクトップ クライアント]** と **[先進認証クライアント]** を選択します。
 
-    ![条件付きアクセス](./media/app-based-conditional-access/04.png)
+    ![条件付きアクセス](./media/app-based-conditional-access/91.png)
 
 5. **アクセス コントロール**として、**[承認されたクライアント アプリが必要です (プレビュー)]** を選択する必要があります。
 
@@ -228,9 +228,9 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**クライアント アプリ**を構成する必要があります。
 
-    a. **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
+    a. **クライアント アプリ (プレビュー)** として、**[Mobile apps and desktop apps]** \(モバイル アプリとデスクトップ アプリ\) と **[Exchange ActiveSync クライアント]** を選択します。
 
-    ![条件付きアクセス](./media/app-based-conditional-access/08.png)
+    ![条件付きアクセス](./media/app-based-conditional-access/92.png)
 
     b. **アクセス コントロール**として、**[承認されたクライアント アプリが必要です (プレビュー)]** を選択する必要があります。
 
@@ -285,9 +285,9 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
     ![条件付きアクセス](./media/app-based-conditional-access/03.png)
 
-    b. **クライアント アプリ**として、**[モバイル アプリとデスクトップ アプリ]** を選択します。
+    b. **クライアント アプリ (プレビュー)** として、**[モバイル アプリとデスクトップ クライアント]** と **[先進認証クライアント]** を選択します。
 
-    ![条件付きアクセス](./media/app-based-conditional-access/04.png)
+    ![条件付きアクセス](./media/app-based-conditional-access/91.png)
 
 5. **アクセスコントロール**として、以下を選択する必要があります。
 
@@ -317,9 +317,9 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**クライアント アプリ**を構成する必要があります。 
 
-    **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
+    **クライアント アプリ (プレビュー)** として、**[Mobile apps and desktop apps]** \(モバイル アプリとデスクトップ アプリ\) と **[Exchange ActiveSync クライアント]** を選択します。
 
-    ![条件付きアクセス](./media/app-based-conditional-access/08.png)
+    ![条件付きアクセス](./media/app-based-conditional-access/91.png)
 
 5. **アクセス コントロール**として、**[承認されたクライアント アプリが必要です (プレビュー)]** を選択する必要があります。
  
@@ -381,9 +381,9 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
     ![条件付きアクセス](./media/app-based-conditional-access/03.png)
 
-    b. **クライアント アプリ**として、**[モバイル アプリとデスクトップ アプリ]** を選択します。
+    b. **クライアント アプリ (プレビュー)** として、**[Mobile apps and desktop apps]** \(モバイル アプリとデスクトップ アプリ\) と **[先進認証クライアント]** を選択します。
 
-    ![条件付きアクセス](./media/app-based-conditional-access/04.png)
+    ![条件付きアクセス](./media/app-based-conditional-access/91.png)
 
 5. **アクセスコントロール**として、以下を選択する必要があります。
 
@@ -411,11 +411,11 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
     ![条件付きアクセス](./media/app-based-conditional-access/07.png)
 
-4. **条件:** **条件**として、**クライアント アプリ**を構成する必要があります。 
+4. **条件:** **条件**として、**クライアント アプリ (プレビュー)** を構成する必要があります。 
 
-    **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
+    **クライアント アプリ (プレビュー)** として、**[Mobile apps and desktop apps]** \(モバイル アプリとデスクトップ アプリ\) と **[Exchange ActiveSync クライアント]** を選択します。
 
-    ![条件付きアクセス](./media/app-based-conditional-access/08.png)
+    ![条件付きアクセス](./media/app-based-conditional-access/92.png)
 
 5. **アクセスコントロール**として、以下を選択する必要があります。
 

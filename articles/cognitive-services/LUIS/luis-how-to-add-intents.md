@@ -7,140 +7,113 @@ author: diberry
 manager: cgronlun
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 9b7207a16a89e48ad64b2dbc48a5293d0cf8aa25
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 495b7e99319126b3ee9e655b2d9aa4af940e1d56
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036084"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139923"
 ---
-# <a name="manage-intents"></a>意図の管理 
+# <a name="add-intents"></a>意図の追加 
+
 [意図](luis-concept-intent.md)を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。 
 
-意図の管理は、上部のツール バーの **[Build]\(ビルド\)** セクションから行います。 左側のパネルからアクセスできる **[Intents]\(意図\)** ページで、意図を追加および管理します。 
+インテントを管理するには、上部のナビゲーション バーの **[ビルド]** セクションに移動し、左側のパネルの **[Intents]\(意図\)** を選択します。 
 
-次の手順では、TravelAgent アプリに "Bookflight" 意図を追加する方法を示します。
+## <a name="create-an-app"></a>アプリを作成する
+
+1. [LUIS](https://www.luis.ai) ポータルにサインインします。
+
+1. **[Create new app]\(新しいアプリの作成\)** を選択します。 
+
+1. 新しいアプリに `MyHumanResourcesApp` という名前を付けます。 **[英語]** カルチャを選択します。 説明は省略できます。 
+
+1. **[完了]** を選択します。 
 
 ## <a name="add-intent"></a>意図を追加する
 
-1. **[マイ アプリ]** ページでアプリ (TravelAgent など) の名前をクリックして開き、左側のパネルで **[Intents]\(意図\)** をクリックします。 
-2. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** をクリックします。
+1. アプリが開き、**[Intents]\(意図\)** リストが表示されます。
 
-3. **[Create new intent]\(意図の新規作成\)** ダイアログ ボックスで、意図の名前として「BookFlight」と入力し、**[完了]** をクリックします。
+1. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** を選びます。
+
+1. **[Create new intent]\(意図の新規作成\)** ダイアログ ボックスで、意図の名前 (`GetEmployeeInformation`) を入力し、**[完了]** をクリックします。
 
     ![意図の追加](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    新しく追加した意図の詳細ページで、[発話を追加](#add-an-utterance-on-intent-page)します。
+## <a name="add-an-example-utterance"></a>発話の例を追加する
 
-## <a name="rename-intent"></a>意図の名前を変更する
+発話の例とは、ユーザーの質問や命令のサンプル テキストです。 Language Understanding (LUIS) に学習させるには、意図に発話の例を追加する必要があります。
 
-1. **[Intent]\(意図\)** ページで、意図の名前の横にある名前の変更アイコン ![意図の名前の変更](./media/luis-how-to-add-intents/Rename-Intent-btn.png) をクリックします。 
-
-2. **[Intent]\(意図\)** ページで、現在の意図の名前がダイアログ ボックスに表示されます。 意図の名前を編集し、Enter キーを押します。 新しい名前が保存され、意図のページに表示されます。
-
-    ![意図の編集](./media/luis-how-to-add-intents/EditIntent-dialogbox.png)
-
-## <a name="delete-intent"></a>意図を削除する
-意図 [None]\(なし\) 以外の意図を削除するときは、すべての発話を意図 [None]\(なし\) に追加します。 これは、発話を削除するのではなく、移動する必要があるときに便利です。   
-
-1. **[Intent]\(意図\)** ページで、意図の名前の右側にある **[Delete Intent]\(意図の削除\)** をクリックします。 
-
-    ![[Delete Intent]\(意図の削除\) ボタン](./media/luis-how-to-add-intents/DeleteIntent.png)
-
-2. 確認のダイアログ ボックスで [OK] をクリックします。
-
-<!--
-    TBD: waiting for confirmation about which delete dialog is going to be in //BUILD
-
-    ![Delete Intent Dialog](./media/luis-how-to-add-intents/DeleteIntent-Confirmation.png)
--->
-
-
-## <a name="add-an-utterance-on-intent-page"></a>意図ページで発話を追加する
-
-意図ページで、意図の名前の下にあるテキスト ボックスに、該当するユーザーから想定される関連する発話 (`book 2 adult business tickets to Paris tomorrow on Air France` など) を入力します。 
+1. **[GetEmployeeInformation]** 意図詳細ページで、意図の名前の下にあるテキスト ボックスに、該当するユーザーから想定される関連する発話 (`Does John Smith work in Seattle?` など) を入力します。
  
->[!NOTE]
->LUIS によって、すべて発話が小文字に変換されます。
+    ![意図の詳細ページのスクリーンショット、発話が強調表示されています](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-![意図の詳細ページのスクリーンショット、発話が強調表示されています](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    LUIS では、すべての発話が小文字に変換され、ハイフンなどのトークンの前後にはスペースが追加されます。
 
-現在の意図の発話一覧に発話が追加されます。 発話が追加されたら、発話内で[任意のエンティティにラベルを付け](luis-how-to-add-example-utterances.md)て、ご自身のアプリを[トレーニング](luis-how-to-train.md)します。 
+## <a name="intent-prediction-discrepancy-errors"></a>意図予測の不一致エラー 
 
-## <a name="create-a-pattern-from-an-utterance"></a>発話からパターンを作成する
-[予測の正確さを向上するためにパターンを追加する方法](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page)に関するページをご覧ください。
+意図の発話では、選択した意図と予測スコアの間に意図予測の不一致が存在する場合があります。 このような不一致がある場合、LUIS では、サンプル発話の行の**ラベル付き意図**の周囲に、赤いボックスが表示されます。 
 
-## <a name="edit-an-utterance-on-intent-page"></a>意図ページで発話を編集する
+![意図の詳細ページのスクリーンショット、発話が強調表示されています](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
-発話を編集するには、その発話の行の右端にある省略記号 (***...***) ボタンを選択してから、**[編集]** を選択します。 テキストを編集し、キーボードで Enter キーを押します。
+上部のナビゲーションで、**[トレーニング]** を選択します。 これで、予測の不一致がなくなります。
 
-![省略記号 [...] ボタンが強調表示されている意図の詳細ページのスクリーンショット](./media/luis-how-to-add-intents/edit-utterance.png) 
+## <a name="add-a-custom-entity"></a>カスタム エンティティの追加
 
-## <a name="reassign-utterances-on-intent-page"></a>意図ページで発話を再割り当てする
-1 つまたは複数の発話の意図を変更するには、その発話を別の意図に再割り当てします。 
+意図に発話を追加したら、発話内からテキストを選択してカスタム エンティティを作成できます。 カスタム エンティティは、抽出するテキスト (および正しい意図) をタグ付けするためのものです。 
 
-1 つの発話を別の意図に再割り当てするには、発話の行の右端にある **[Labeled intent]\(ラベル付き意図\)** 列で、適切な意図の名前を選択します。 発話が、現在の意図の発話一覧から削除されます。 
+1. 発話内の単語 (`Seattle`) を選択します。 テキストを囲む角かっこが表示され、ドロップダウン メニューが表示されます。 
 
-![[Labeled intent]\(ラベル付き意図\) 列で発話の意図が選択されている BookFlight 意図ページのスクリーンショット](./media/luis-how-to-add-intents/reassign-1-utterance.png)
+    ![意図の詳細ページのスクリーンショット (カスタム エンティティの作成)](./media/luis-how-to-add-intents/create-custom-entity.png) 
 
-複数の発話の意図を変更するには、発話の左側にあるチェック ボックスをオンにして、**[Reassign intent]\(意図の再割り当て\)** を選択します。 一覧から適切な意図を選択します。
+    この例では、1 つの単語をエンティティとしてマークします。 エンティティとしてマークできるのは、1 つの単語や語句です。
 
-![発話がオンで、[Reassign intent]\(意図の再割り当て\) ボタンが強調表示されている BookFlight 意図ページのスクリーンショット](./media/luis-how-to-add-intents/delete-several-utterances.png) 
+1. メニューの上部のテキスト ボックスに「`Location`」と入力し、を選択し、**[新しいエンティティの作成]** を選択します。 
 
-## <a name="delete-utterances-on-intent-page"></a>意図ページで発話を削除する
+    ![意図の詳細ページのスクリーンショット (カスタム エンティティ名の作成)](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
 
-発話を削除するには、その発話の行の右端にある省略記号 (***...***) ボタンを選択してから、**[削除]** を選択します。 発話が、一覧および LUIS アプリから削除されます。
+1. エンティティ作成の **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか\)** ポップアップ ウィンドウで、**エンティティ名**が _Location_、**エンティティの種類**が "_簡易_" であることを確認します。 **[完了]** を選択します。
 
-![[削除] オプションが強調表示されている意図の詳細ページのスクリーンショット](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
+## <a name="entity-prediction-discrepancy-errors"></a>エンティティ予測の不一致エラー 
 
-複数の発話を削除するには、次の手順を実行します。
+エンティティに赤い下線が引かれ、[エンティティ予測不一致](luis-how-to-add-example-utterances.md#entity-status-predictions)があることが示されます。 これがエンティティの最初のオカレンスであるため、このテキストが正しいエンティティでタグ付けされていることを LUIS が自信を持って判断するための十分なサンプルがないことを意味しています。 この不一致は、アプリのトレーニングを実行すると解消されます。 
 
-1. 発話の左側にあるチェック ボックスをオンにして、**[Delete utterance(s)]\(発話の削除\)** を選択します。 
+![意図の詳細ページのスクリーンショット (カスタム エンティティ名が青で強調表示されている様子)](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
 
-    ![発話がオンで、[Delete utterance(s)]\(発話の削除\) ボタンが強調表示されている意図の詳細ページのスクリーンショット](./media/luis-how-to-add-intents/delete-several-utterances.png)
+テキストが青で強調表示され、それがエンティティであることが示されます。  
 
-2. **[Delete utterances?]\(発話を削除しますか\)** ポップアップ ダイアログで **[完了]** を選択します。
+## <a name="add-a-prebuilt-entity"></a>作成済みエンティティの追加
 
-## <a name="search-in-utterances-on-intent-page"></a>意図ページで発話を検索する
-意図の発話リスト内で、テキスト (単語またはフレーズ) を含む発話を検索できます。 たとえば、特定の単語を含むエラーに気が付き、その単語を含むすべての例を見つける必要があるとします。 
+詳しくは、「[事前構築済みのエンティティ](luis-how-to-add-entities.md#add-prebuilt-entity)」をご覧ください。
 
-1. ツール バーの虫眼鏡アイコンを選択します。
+## <a name="using-the-contextual-toolbar"></a>コンテキスト ツールバーの使用
 
-    ![虫眼鏡の検索アイコンが強調表示されている意図ページのスクリーンショット](./media/luis-how-to-add-intents/magnifying-glass.png)
+一覧で 1 つ以上のサンプル発話が選択されているときに発話の左側のチェックボックスをオンにすると、発話一覧の上部にあるツールバーを使用して次の操作を実行できます。
 
-2. 検索テキスト ボックスが表示されます。 発話一覧の右上隅の検索ボックスに単語またはフレーズを入力します。 発話一覧が更新され、入力した検索テキストを含む発話のみが表示されます。 
+* 意図の再割り当て: 発話を別の意図に移動します
+* 発話の削除
+* エンティティ フィルター: フィルター処理されたエンティティを含んでいる発話だけを表示します
+* すべて表示/エラーのみ: 予測エラーのある発話を表示するか、すべての発話を表示します
+* エンティティ/トークン ビュー: エンティティ名付きのエンティティ ビューを表示するか、発話の未加工テキストを表示します
+* 虫眼鏡: 特定のテキストを含んでいる発話を検索します
 
-    ![検索テキスト ボックスが強調表示されている意図ページのスクリーンショット](./media/luis-how-to-add-intents/search-textbox.png)
+## <a name="working-with-an-individual-utterance"></a>個別の発話の操作
 
-    検索を取り消して、発話の完全な一覧を復元するには、入力した検索テキストを削除します。 検索テキスト ボックスを閉じるには、ツール バーの虫眼鏡アイコンを再度選択します。
+次の操作は、発話の右側にある省略記号のメニューから、個別の発話に対して実行できます。
 
-## <a name="prediction-discrepancy-errors-on-intent-page"></a>意図ページの予測の不一致エラー
-意図の発話で、選択した意図と予測スコアの間に不一致が存在する場合があります。 LUIS では、この不一致がスコアと共に赤い枠内に表示されます。 
+* 編集: 発話のテキストを変更します
+* 削除: 発話を意図から削除します。 発話がまだ必要な場合は、その発話を **None** の意図に移動するほうが合理的です。 
+* パターンの追加: パターンを使用すると、共通の発話を使用して、置き換え可能なテキストと無視可能なテキストをマークし、意図内の発話の数を減らすことができます。 
 
-![予測不一致スコアが強調表示されている BookFlight 意図ページのスクリーンショット](./media/luis-how-to-add-intents/score-discrepancy.png) 
-
-## <a name="filter-by-intent-prediction-discrepancy-errors-on-intent-page"></a>意図ページで意図の予測の不一致エラーによってフィルター処理する
-意図の予測の不一致を含む発話のみが表示されるように発話一覧をフィルター処理するには、ツール バーで **[すべて表示]** から **[Errors only]\(エラーのみ\)** に切り替えます。 
-
-## <a name="filter-by-entity-type-on-intent-page"></a>意図ページでエンティティ型によってフィルター処理する
-ツール バーの **[Entity filters]\(エンティティ フィルター\)** ドロップダウンを使用して、発話をエンティティでフィルター処理します。 
-
-![エンティティ型フィルターが強調表示されている意図ページのスクリーンショット](./media/luis-how-to-add-intents/filter-by-entities.png) 
-
-フィルターを削除するには、ツール バーの下で、その単語またはフレーズが示されている青いフィルター ボックスを選択します。  
-<!-- TBD: waiting for ux fix - bug in ux of prebuit entity number -- when filtering by it, it doesn't show the list -->
-
-## <a name="switch-to-token-view-on-intent-page"></a>意図ページでトークン ビューに切り替える
-エンティティ型の名前ではなくトークンを表示するには、**[Tokens View]\(トークン ビュー\)** に切り替えます。 キーボードで **Control + E** キーを押して切り替えることもできます。 
-
-![[Token View]\(トークン ビュー\) が強調表示されている BookFlight 意図のスクリーンショット](./media/luis-how-to-add-intents/toggle-tokens-view.png)
+**[Labeled intent]\(ラベル付き意図\)** 列では、発話の意図を変更できます。
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>意図を含むモデルの変更後にアプリをトレーニングする
-意図を追加、編集、または削除したら、その変更がエンドポイントのクエリに反映されるようにアプリを[トレーニング](luis-how-to-train.md)して[発行](luis-how-to-publish-app.md)します。 
+
+意図を追加、編集、または削除したら、その変更がエンドポイントのクエリに反映されるように、アプリを[トレーニング](luis-how-to-train.md)して[発行](luis-how-to-publish-app.md)します。 
 
 ## <a name="next-steps"></a>次の手順
 
-意図をアプリに追加したら、次に、追加した意図に対して[発話の例](luis-how-to-add-example-utterances.md)を追加し始めます。 
+[発話の例](luis-how-to-add-example-utterances.md)にエンティティを追加する方法について学習する。 

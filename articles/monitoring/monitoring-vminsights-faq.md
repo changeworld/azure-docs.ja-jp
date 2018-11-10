@@ -1,6 +1,6 @@
 ---
-title: VM 用 Azure Monitor についてよく寄せられる質問 | Microsoft Docs
-description: VM 用 Azure Monitor は、Azure VM オペレーティング システムの正常性およびパフォーマンスの監視と、アプリケーション コンポーネントおよび他のリソースとの依存関係の自動検出を組み合わせ、それらの間の通信をマップする Azure のソリューションです。 この記事ではよくある質問の回答を示します。
+title: Azure Monitor for VMs (プレビュー) についてよく寄せられる質問 | Microsoft Docs
+description: Azure Monitor for VMs (プレビュー) は Azure のソリューションの 1 つです。このソリューションでは、Azure VM オペレーティング システムの正常性とパフォーマンスの監視が組み合わされているほか、アプリケーション コンポーネントと他のリソースとの依存関係が自動的に検出され、その間のやり取りがマップされます。 この記事ではよくある質問の回答を示します。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/19/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 282620342d2348868ceab5257de7415a9cb2147c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ff870f948acaae14ba772e14d48b27683f0bf07e
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388361"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091693"
 ---
-# <a name="azure-monitor-for-vms-frequently-asked-questions"></a>VM 用 Azure Monitor についてよく寄せられる質問
-この Microsoft FAQ では、Microsoft Azure の VM 用 Azure Monitor についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
+# <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Azure Monitor for VMs (プレビュー) についてよく寄せられる質問
+この Microsoft FAQ では、Azure Monitor for VMs についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>既存のワークスペースにオンボードすることはできますか?
 仮想マシンが Log Analytics ワークスペースに既に接続されている場合、ワークスペースが[こちら](monitoring-vminsights-onboard.md#prerequisites)に記載されたサポートされているリージョンのいずれかにあれば、VM 用 Azure Monitor にオンボードするときにそのワークスペースを引き続き使用できます。

@@ -1,21 +1,21 @@
 ---
-title: VMware から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
-description: この記事では、Azure Site Recovery Deployment Planner で生成されるレポートの分析について、VMware から Azure へのシナリオを想定して説明します。
-services: site-recovery
+title: VMware から Azure へのディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する | Microsoft Docs
+description: この記事では、Azure への VMware ディザスター リカバリーについて、Azure Site Recovery Deployment Planner によって生成されるレポートを分析する方法を説明します。
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: e6aa3a8c788fe06a528a9c363a28faffa0a9ca88
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d709b13aaf6b6ee9a913484ed503da1e76982d17
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094090"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213918"
 ---
-# <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポート
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する
+
 生成された Microsoft Excel レポートには、次のシートが含まれています。
 ## <a name="on-premises-summary"></a>On-Premises summary (オンプレミス サマリー)
 [On-premises summary]\(オンプレミス サマリー\) ワークシートには、プロファイリングの対象となった VMware 環境の概要が表示されます。

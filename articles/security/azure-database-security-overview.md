@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 460ef8a3d4436f240793025cbec874c624a2a6f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a61f3572037b1c62ea5ed4e0ac4496b057e2b96d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039022"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249053"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -65,6 +65,7 @@ SQL Database は、次の暗号化を提供することでデータを保護し�
 アプリケーションの接続文字列では、パラメーターを指定して接続を暗号化し、サーバー証明書を信頼しないようにする必要があります  (これは、Azure Portal 以外で接続文字列をコピーする場合に行います)。そうしないと、接続ではサーバーの ID が検証されず、"アクティブな中間者" の攻撃の影響を受けやすくなります。 たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、`Encrypt=True` および `TrustServerCertificate=False` です。
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化
+
 データベースを保護するために、いくつかの対策を講じることができます。 たとえば、セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築を行います。 しかし、物理メディア (ドライブやバックアップ テープなど) が盗まれるシナリオでは、悪意のある第三者がデータベースを復元するかアタッチするだけでデータを閲覧することができます。
 
 ソリューションの 1 つとして、データベース内の機密データを暗号化し、証明書を使用してデータを暗号化するために使用するキーを保護することが挙げられます。 このソリューションにより、キーを持たないユーザーによるデータの使用を防ぐことはできますが、このような保護方法は事前に計画しなければなりません。
@@ -92,6 +93,7 @@ Always Encrypted では、データの所有者 (データを表示できるユ�
 また、Always Encrypted では、暗号化がアプリケーションに対して透過的になります。 Always Encrypted 対応のドライバーをクライアント コンピューターにインストールすることにより、クライアント アプリケーション内の機密データを自動的に暗号化および暗号化解除できます。 ドライバーは、データベース エンジンにデータを渡す前に機密性の高い列のデータを暗号化します。 ドライバーは、アプリケーションに対するセマンティクスが保持されるように、自動的にクエリを書き換えます。 また、暗号化されたデータベース列に格納され、クエリ結果に含まれているデータを、同じように透過的に暗号化解除します。
 
 ## <a name="access-control"></a>アクセス制御
+
 セキュリティを提供するために、SQL Database は以下を使用してアクセスを制御します。
 
 - IP アドレスによって接続を制限するファイアウォール規則。
@@ -124,11 +126,13 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
   - 統合 Windows 認証や、Azure AD でサポートされる他の認証形式を有効にすることで、パスワードが保存されないようにすることができます。
 
 #### <a name="authorization"></a>Authorization
+
 [承認](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)とは、Azure SQL データベース内でユーザーが実行できる操作を指します。 ユーザー アカウントのデータベースの[ロール メンバーシップ](https://msdn.microsoft.com/library/ms189121)と[オブジェクトレベル権限](https://msdn.microsoft.com/library/ms191291.aspx)によって制御されます。 承認とは、プリンシパルがアクセスできるセキュリティ保護可能なリソースと、それらのリソースに対して実行できる操作を決めるプロセスです。
 
 ### <a name="application-access"></a>アプリケーション アクセス
 
 #### <a name="dynamic-data-masking"></a>動的データ マスク
+
 コール センターのサービス担当者は、複数桁の社会保障番号やクレジット カード番号によって発信者を識別する場合があります。 しかし、それらのデータ項目がサービス担当者に完全に公開されてはいけません。
 
 クエリの結果セットの社会保障番号やクレジット カード番号の末尾 4 桁を除くすべての数字をマスクするマスク ルールを定義できます。
@@ -141,11 +145,11 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 
 [動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)では、公開する機微なデータの量を指定することで、機微なデータに対する未承認のアクセスを防ぐことができ、アプリケーション レイヤーへの影響は最小限に抑えられます。 これはポリシー ベースのセキュリティ機能であり、指定されたデータベース フィールドに対するクエリの結果セットに含まれるデリケートなデータが表示されないようにします。データベース内のデータは変更されません。
 
-
 > [!Note]
 > 動的データ マスクを構成できるのは、Azure Database 管理者、サーバー管理者、またはセキュリティ責任者の各ロールです。
 
 #### <a name="row-level-security"></a>行レベルのセキュリティ
+
 マルチテナント データベースに共通するもう 1 つのセキュリティ要件として、[行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131.aspx)があります。 この機能を使用して、クエリを実行しているユーザーの特性に基づいて、データベース テーブル内の行へのアクセスを制御できます  (例の特性は、グループ メンバーシップと実行コンテキストです)。
 
 ![行レベルのセキュリティによって、ユーザーはクライアント アプリ経由でテーブル内の行にアクセスできる](./media/azure-databse-security-overview/azure-database-fig4.png)
@@ -155,18 +159,20 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 行レベルのセキュリティには、述語ベースのアクセス制御が取り入れられています。 柔軟かつ一元化された評価機能により、メタデータや、管理者が必要に応じて決めるその他の条件を考慮に入れて評価することができます。 述語は、データへの適切なアクセス権がユーザーにあるかどうかをユーザー属性に基づき判定するための条件として使用されます。 述語ベースのアクセス制御を使用することで、ラベルベースのアクセス制御を実装できます。
 
 ## <a name="proactive-monitoring"></a>プロアクティブな監視
+
 SQL Database には、データのセキュリティ保護に役立つ*監査*および*脅威検出*機能が用意されています。
 
 ### <a name="auditing"></a>監査
+
 [Azure SQL Database の監査](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) を利用することで、データベース内で発生するイベントや変更についての情報が把握しやすくなります。 例としては、データに対する更新や照会があります。
 
 SQL Database の監査では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。 監査は、標準準拠を強化し促進しますが、準拠を保証するものではありません。
 
 SQL Database 監査を使用して、以下を行うことができます。
 
--   **保持** 。 監査するデータベース活動のカテゴリを定義できます。
--   **レポート** 。 事前に構成したレポートとダッシュボードを使用して、活動とイベントのレポートをすぐに使用できます。
--   **分析** 。 疑わしいイベント、異常な活動、および傾向を発見できます。
+- **保持** 。 監査するデータベース活動のカテゴリを定義できます。
+- **レポート** 。 事前に構成したレポートとダッシュボードを使用して、活動とイベントのレポートをすぐに使用できます。
+- **分析** 。 疑わしいイベント、異常な活動、および傾向を発見できます。
 
 監査方法は 2 つあります。
 
@@ -174,13 +180,26 @@ SQL Database 監査を使用して、以下を行うことができます。
 -   **テーブルの監査**: Azure Table Storage にログが書き込まれます。
 
 ### <a name="threat-detection"></a>脅威の検出
-[Azure SQL Database の脅威の検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)では、潜在的なセキュリティ上の脅威を示す疑わしいアクティビティが検出されます。 脅威の検出を使用して、SQL インジェクションなどの疑わしいイベントがデータベース上で発生したときに、そのイベントに対処できます。 アラート機能を備えているほか、Azure SQL Database 監査 を使用して疑わしいイベントを調査することもできます。
+
+[Azure SQL Database の Advanced Threat Protection](https://docs.microsoft.com/azure/sql-database/sql-advanced-threat-protection)では、潜在的なセキュリティ上の脅威を示す疑わしいアクティビティが検出されます。 脅威の検出を使用して、SQL インジェクションなどの疑わしいイベントがデータベース上で発生したときに、そのイベントに対処できます。 アラート機能を備えているほか、Azure SQL Database 監査 を使用して疑わしいイベントを調査することもできます。
 
 ![外部からの攻撃者および悪意のある内部関係者による、SQL Database および Web アプリの脅威の検出](./media/azure-databse-security-overview/azure-database-fig5.jpg)
 
-たとえば、SQL インジェクションは Web アプリケーションの一般的なセキュリティ問題の 1 つです。 データ駆動型アプリケーションの攻撃に使用されます。 攻撃者は、アプリケーションの脆弱性を利用してアプリケーションの入力フィールドに悪意のある SQL ステートメントを挿入し、データベースのデータを侵害または変更します。
+SQL Advanced Threat Protection (ATP) は、データの探索と分類、脆弱性の評価、脅威の検出などの高度な SQL セキュリティ機能のセットを提供します。 
 
-セキュリティ責任者や他の指定された管理者は、不審なデータベースのアクティビティが発生すると、直ちに通知を受け取ることができます。 それぞれの通知では、不審なアクティビティの詳細情報と、脅威に対して推奨されるさらなる調査方法や軽減策が記載されています。        
+- [データの検出と分類](../sql-database/sql-database-data-discovery-and-classification.md)
+- [脆弱性評価](../sql-database/sql-vulnerability-assessment.md)  
+- [脅威の検出](../sql-database/sql-database-threat-detection.md)
+
+[Azure Database for PostgreSQL の Advanced Threat Protection](../postgresql/concepts-data-access-and-security-threat-protection.md) では、新しいセキュリティ レイヤーが提供されます。この利用によって、異常なアクティビティに関するセキュリティ アラートが提供されて、発生する潜在的脅威の検出と対応が可能になります。 不審なデータベース アクティビティ、潜在的な脆弱性、異常なデータベース アクセスやクエリのパターンが見つかった場合に、ユーザーはアラートを受信します。 Azure Database for PostgreSQL 用の Advanced Threat Protection では、アラートが Azure Security Center と統合されています。 アラートの種類には以下が含まれます。
+
+- 通常とは異なる場所からのアクセス
+- 通常とは異なる Azure データ センターからのアクセス 
+- 通常とは異なるプリンシパルからのアクセス 
+- 潜在的に有害なアプリケーションからのアクセス 
+- Azure Database for PostgreSQL 資格情報のブルート フォース 
+
+[Azure Database for MySQL の Advanced Threat Protection](/mysql/concepts-data-access-and-security-threat-protection.md) は、PostgreSQL の高度な保護のような保護を提供します。  
 
 ## <a name="centralized-security-management"></a>セキュリティの一元管理
 
@@ -188,12 +207,20 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 すべてのサーバーとデータベースのセキュリティを [Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-database) で可視化することによって、SQL Database に格納されているデータを保護することができます。 Security Center では、次のことを実行できます。
 
--   SQL Database の暗号化と監査のポリシーを定義する。
--   利用しているすべてのサブスクリプションを対象に SQL Database リソースのセキュリティを監視する。
--   セキュリティの問題をすばやく特定して修復する。
--   [Azure SQL Database 脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)からのアラートを統合する。
+- SQL Database の暗号化と監査のポリシーを定義する。
+- 利用しているすべてのサブスクリプションを対象に SQL Database リソースのセキュリティを監視する。
+- セキュリティの問題をすばやく特定して修復する。
+- [Azure SQL Database 脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)からのアラートを統合する。
 
 セキュリティ センターは、ロール ベースのアクセスをサポートしています。
+
+## <a name="sql-information-protection"></a>SQL Information Protection
+
+[SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) では、潜在的な機密データが自動的に検出されて分類され、分類属性を使用して機密データを永続的にタグ付けするためのラベル付けメカニズムが提供されます。データベースの分類状態を示す詳細ダッシュボードも提供されます。  
+
+さらに、SQL クエリの結果セットの機密性が計算されるので、機密データを抽出するクエリを明示的に監査し、データを保護できます。 SQL Information Protection について詳しくは、「Azure SQL Database のデータの検出と分類」をご覧ください。
+
+Azure Security Center で [SQL Information Protection](/security-center/security-center-info-protection-policy.md) のポリシーを構成できます。
 
 ## <a name="azure-marketplace"></a>Azure Marketplace
 

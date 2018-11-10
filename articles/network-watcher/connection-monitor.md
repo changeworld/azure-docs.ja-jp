@@ -13,23 +13,24 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639029"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093042"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
-仮想マシン (VM) と別の VM などのエンドポイント間の通信の成功は、組織にとってきわめて重要になることがあります。 場合によっては、通信を切断させる可能性がある構成の変更が導入されることがあります。 このチュートリアルで学習する内容は次のとおりです。
+仮想マシン (VM) と別の VM などのエンドポイント間の通信の成功は、組織にとってきわめて重要になることがあります。 場合によっては、通信を切断させる可能性がある構成の変更が導入されることがあります。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 2 つの VM を作成する
 > * Network Watcher の接続モニター機能によって VM 間の通信を監視する
+> * 接続モニターのメトリックに対するアラートを生成する
 > * 2 つの VM 間の通信の問題を診断し、解決方法を学習する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -55,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
-    |リージョン| **[米国東部]** を選択します。|
+    |Location| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、**[選択]** を選択します。
 5. **[設定]** で **[拡張機能]** を選択します。 次の図に示すように、**[拡張機能の追加]** を選択して、**[Network Watcher Agent for Windows]** を選択します。
@@ -114,12 +115,25 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
     次の情報をメモしておきます。
 
-    | 項目                     | 値                      | 詳細                                                     |
+    | Item                     | 値                      | 詳細                                                     |
     | ---------                | ---------                  |--------                                                     |
-    | 状態                   | 到達可能                  | エンドポイントが到達可能かどうかを知ることができます。|
+    | Status                   | 到達可能                  | エンドポイントが到達可能かどうかを知ることができます。|
     | 平均 往復時間          | 接続を作成するまでの往復時間 (ミリ秒) を知ることができます。 接続モニターは、60 秒ごとに接続をプローブするため、時間経過に伴う待機時間を監視できます。                                         |
     | Hops                     | 接続モニターにより、2 つのエンドポイント間のホップを知ることができます。 この例では、接続は、同じ仮想ネットワーク内の 2 つの VM 間であるため、10.0.0.5 IP アドレスへのホップが 1 つだけあります。 既存のシステムまたはカスタム ルートで、VPN ゲートウェイまたはまたはネットワーク仮想アプライアンスなどを経由して VM 間のトラフィックをルーティングする場合、追加のホップが一覧表示されます。                                                                                                                         |
     | 状態                   | 各エンドポイントの緑のチェック マークにより、各エンドポイントが正常であることを確認できます。    ||
+
+## <a name="generate-alerts"></a>アラートの作成
+
+アラートは Azure Monitor のアラート ルールによって作成され、保存済みのクエリまたはカスタム ログ検索を一定の間隔で自動的に実行できます。 生成されたアラートで、第三者への通知や別のプロセスの呼び出しなど、1 つまたは複数のアクションを自動的に実行できます。 アラート ルールを設定する際、対象となるリソースによって、アラートの生成に使用できる一連のメトリックが決まります。
+
+1. Azure portal で **Monitor** サービスを選択し、**[アラート]** > **[新しいアラート ルール]** の順に選択します。
+2. **[ターゲットの選択]** をクリックして、対象となるリソースを選択します。 **[サブスクリプション]** を選択し、**リソースの種類**を設定して、使用したい接続モニターをフィルターで絞り込みます。
+
+    ![ターゲットが選択された状態のアラート画面](./media/connection-monitor/set-alert-rule.png)
+1. 対象となるリソースを選択したら、**[条件の追加]** を選択します。Network Watcher には、[アラートの作成に使用できるメトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported)があります。 **[使用可能なシグナル]** を ProbesFailedPercent と AverageRoundtripMs の各メトリックに設定します。
+
+    ![シグナルが選択された状態のアラート ページ](./media/connection-monitor/set-alert-signals.png)
+1. アラート ルール名、説明、重大度などのアラートの詳細を指定します。 アラートにアクション グループを追加して、アラートへの対応を自動化したりカスタマイズしたりすることもできます。
 
 ## <a name="view-a-problem"></a>問題を表示する
 
@@ -136,7 +150,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
     | Setting                 | 値          |
     | ---                     | ---            |
     | 宛先ポート範囲 | 22             |
-    | アクションを表示します。                  | 拒否           |
+    | Action                  | 拒否           |
     | 優先順位                | 100            |
     | Name                    | DenySshInbound |
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/11/2018
 ms.author: trinadhk
-ms.openlocfilehash: 855b75652fca421df12766f7711152d1e3ca2aeb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f293f642db2bd526e761ff570ce97a33845808b7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012060"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412807"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
 Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
@@ -34,19 +34,29 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>バックアップ管理アクションへの組み込みバックアップ ロールのマッピング
 次の表に、バックアップ管理アクションと、その操作を実行するために必要な最小限の RBAC ロールを示します。
 
-| 管理操作 | 必要最小限 RBAC ロール |
-| --- | --- |
-| Recovery Services コンテナーの作成 | コンテナーのリソース グループの共同作成者 |
-| Azure VM のバックアップの有効化 | コンテナーを含むリソース グループのスコープで定義されたバックアップ オペレーター、VM の仮想マシン共同作成者 |
-| VM のオンデマンド バックアップ | バックアップ オペレーター |
-| VM の復元 | バックアップ オペレーター、VM がデプロイされるリソース グループの共同作成者、Vnet 上での読み取り、選択したサブネットへの参加 |
-| VM バックアップからのディスクや個々のファイルの復元 | バックアップ オペレーター、VM の仮想マシン共同作成者 |
-| Azure VM バックアップのバックアップ ポリシーの作成 | バックアップの共同作成者 |
-| Azure VM バックアップのバックアップ ポリシーの変更 | バックアップの共同作成者 |
-| Azure VM バックアップのバックアップ ポリシーの削除 | バックアップの共同作成者 |
-| VM バックアップでのバックアップの停止 (データを保持またはデータを削除) | バックアップの共同作成者 |
-| オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録 | バックアップ オペレーター |
-| オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録解除 | バックアップの共同作成者 |
+| 管理操作 | 必要最小限 RBAC ロール | 必要なスコープ |
+| --- | --- | --- |
+| Recovery Services コンテナーの作成 | Contributor | コンテナーを含むリソース グループ |
+| Azure VM のバックアップの有効化 | Backup Operator | コンテナーを含むリソース グループ |
+| | Virtual Machine Contributor | VM リソース |
+| VM のオンデマンド バックアップ | Backup Operator | 復旧コンテナー リソース |
+| VM の復元 | Backup Operator | VM がデプロイされるリソース グループ |
+| | Virtual Machine Contributor | VM がデプロイされるリソース グループ |
+| アンマネージド ディスク VM バックアップの復元 | Backup Operator | 復旧コンテナー リソース |
+| | Virtual Machine Contributor | VM リソース |
+| | Storage Account Contributor | ストレージ アカウント リソース |
+| VM バックアップからのマネージド ディスクの復元 | Backup Operator | 復旧コンテナー リソース |
+| | Virtual Machine Contributor | VM リソース |
+| | Storage Account Contributor | ストレージ アカウント リソース |
+| | Contributor | マネージド ディスクの復元先となるリソース グループ |
+| VM バックアップからの個々のファイルの復元 | Backup Operator | 復旧コンテナー リソース |
+| | Virtual Machine Contributor | VM リソース |
+| Azure VM バックアップのバックアップ ポリシーの作成 | Backup Contributor | 復旧コンテナー リソース |
+| Azure VM バックアップのバックアップ ポリシーの変更 | Backup Contributor | 復旧コンテナー リソース |
+| Azure VM バックアップのバックアップ ポリシーの削除 | Backup Contributor | 復旧コンテナー リソース |
+| VM バックアップでのバックアップの停止 (データを保持またはデータを削除) | Backup Contributor | 復旧コンテナー リソース |
+| オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録 | Backup Operator | 復旧コンテナー リソース |
+| オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録解除 | Backup Contributor | 復旧コンテナー リソース |
 
 ## <a name="next-steps"></a>次の手順
 * [ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md): Azure ポータルでの RBAC の基本について説明します。

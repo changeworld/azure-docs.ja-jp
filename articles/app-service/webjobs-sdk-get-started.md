@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: e2f9bee2adcebfd47ca088a1bbe76b870e285044
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580439"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140351"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -182,7 +182,7 @@ WebJobs SDK プロジェクトにログインするためのオプションは�
 
 ローカルで実行する Azure ストレージ エミュレーターには、WebJobs SDK に必要な機能がすべてあるわけではありません。 そのため、ここでは、Azure にストレージ アカウントを作成し、それを使用するようにプロジェクトを構成します。
 
-1. **サーバー エクスプローラー**を開き、Azure にサインインします。 **[Azure]** ノードを右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択します。
+1. Visual Studio で**サーバー エクスプローラー**を開き、Azure にサインインします。 **[Azure]** ノードを右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択します。
 
    ![Azure へのサインイン](./media/webjobs-sdk-get-started/sign-in.png)
 
@@ -245,7 +245,7 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 1. コンソール ウィンドウを閉じます。
 
-1. **サーバー エクスプローラー**で、新しいストレージ アカウントのノードを展開し、**[キュー]** を右クリックします。 
+1. Visual Studio の**サーバー エクスプローラー**で、新しいストレージ アカウントのノードを展開し、**[キュー]** を右クリックします。 
 
 1. **[キューの作成]** を選択します。 
 
@@ -310,7 +310,7 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 ### <a name="configure-app-settings"></a>アプリケーションの設定の構成 
 
-1. **サーバー エクスプローラー**で、**[Azure]** の下の **[App Service]** ノードを展開します。
+1. Visual Studio の**サーバー エクスプローラー**で、**[Azure]** の下の **[App Service]** ノードを展開します。
 
 1. App Service アプリがあるリソース グループを展開し、App Service アプリを右クリックします。
 
@@ -396,7 +396,7 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 ここでは、もう一度ローカルで実行して、ログ データが Application Insights とコンソールに記録されていることを確認します。
 
-1. 「*Hello App Insights!*」をメッセージ テキストとして入力すること以外は[前](#trigger-the-function)に行ったのと同じ方法で、**サーバー エクスプローラー**を使用してキュー メッセージを 作成します。
+1. 「*Hello App Insights!*」をメッセージ テキストとして入力すること以外は[前](#trigger-the-function)に行ったのと同じ方法で、Visual Studio の**サーバー エクスプローラー**を使用してキュー メッセージを 作成します。
 
 1. プロジェクトを実行します。
 
@@ -442,7 +442,6 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 1. ローカルで実行していないことを確認します (コンソール ウィンドウがまだ開いている場合は閉じます)。 そうしないと、作成するキュー メッセージが最初にローカル インスタンスによって処理される可能性があります。
 
-1. 「*Hello Azure!*」と入力すること以外は[前](#trigger-the-function)に行ったのと同じ方法で、**サーバー エクスプローラー**を使用してキュー メッセージを作成します。
 
 1. Visual Studio の **[キュー]** ページを更新すると、Azure App Service で実行されている関数で処理されるので、新しいメッセージが消えます。
 
@@ -485,7 +484,7 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 1. ストレージ アカウントで BLOB コンテナーを作成します。
 
-   a. **サーバー エクスプローラー**で、ストレージ アカウントのノードを展開し、**[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
+   a. Visual Studio の**サーバー エクスプローラー**で、ストレージ アカウントのノードを展開し、**[BLOB]** を右クリックして **[BLOB コンテナーの作成]** を選択します。
 
    b. **[BLOB コンテナーの作成]** ダイアログで、コンテナー名として「*container*」を入力し、**[OK]** をクリックします。
 

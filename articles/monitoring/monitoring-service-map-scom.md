@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
-ms.author: bwren;dairwin
-ms.openlocfilehash: b9146bfc284a469f12eb626c2434f4afe52335dc
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.author: bwren
+ms.openlocfilehash: 4fe075ec64fa3823bf6d89f5b2951c1d6fa83e91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250464"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240156"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>サービス マップと System Center Operations Manager の統合
   > [!NOTE]

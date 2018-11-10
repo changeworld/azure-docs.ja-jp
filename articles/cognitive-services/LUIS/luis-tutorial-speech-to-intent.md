@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f98d640f032fed5f91df8e9d4fb55d3f20550339
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c2581abc782558ca114cc3a5d4f6224d132bce5d
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883926"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139093"
 ---
 # <a name="integrate-speech-service"></a>音声サービスを統合する
 [音声サービス](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)を使用すると、1 回の要求を使用して音声を受け取り、LUIS 予測 JSON オブジェクトを返せます。 この記事では、C# プロジェクトをダウンロードして Visual Studio で使用し、マイクに向かって発話して LUIS 予測情報を受け取ります。 プロジェクトでは、参照として既に含まれている Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) パッケージを使用します。 
@@ -39,7 +39,7 @@ Azure Portal で、**Language Understanding** (LUIS) キーを[作成](luis-how-
 
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>KeyPhrase 事前構築済みエンティティを追加する
-アプリをインポートしたら、**[エンティティ]** を選択し、**[Manage prebuilt entities]\(構築済みのエンティティを管理\)** を選択します。 **KeyPhrase** エンティティを追加します。 KeyPhrase エンティティは、発話からキーの主題を抽出します。
+アプリをインポートしたら、**[エンティティ]** を選択し、**[Add prebuilt entity]\(作成済みエンティティの追加\)** を選択します。 **KeyPhrase** エンティティを追加します。 KeyPhrase エンティティは、発話からキーの主題を抽出します。
 
 ## <a name="train-and-publish-the-app"></a>アプリをトレーニングして公開する
 1. 右上のナビゲーション バーで、**[トレーニングする]** ボタンをクリックして LUIS アプリをトレーニングします。

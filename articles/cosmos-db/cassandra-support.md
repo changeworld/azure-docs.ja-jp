@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: e3de78bdf38a326498b984dc2a9f8eaa42233d22
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5a12a65e03e7ac104eb7b09b116f7c463bbb5b98
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091285"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240717"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -159,7 +159,7 @@ Azure Cosmos DB の Cassandra API では、読み取り操作の一貫性を選�
 
 ## <a name="permission-and-role-management"></a>アクセス許可とロールの管理
 
-Azure Cosmos DB は、ロール ベース アクセス制御 (RBAC) と、[Azure Portal] (https://portal.azure.com) から取得できる読み取り/書き込みおよび読み取り専用のパスワード/キーをサポートしています。 Azure Cosmos DB では、データ プレーン アクティビティのためのユーザーとロールはまだサポートされていません。 
+Azure Cosmos DB は、ロール ベース アクセス制御 (RBAC) と、[Azure portal](https://portal.azure.com) から取得できる読み取り/書き込みおよび読み取り専用のパスワードとキーをサポートしています。 Azure Cosmos DB では、データ プレーン アクティビティのためのユーザーとロールはまだサポートされていません。 
 
 ## <a name="planned-support"></a>計画されているサポート 
 * timestamp と TTL の併用  

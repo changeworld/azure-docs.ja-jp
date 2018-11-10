@@ -1,6 +1,6 @@
 ---
 title: 運用環境で Azure Machine Learning サービスのために Application Insights を有効にする
-description: Azure Kubernetes Service にデプロイされた Azure Machine Learning サービスのために Application Insights を設定する方法について説明します
+description: Azure Kubernetes Service へのデプロイ用の Azure Machine Learning サービスに対して Application Insights を設定する方法について説明します
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,69 +9,66 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 45871ab515c7ffd9520b1d77d3fd1e77abcc29ef
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: fa425a5ecd8cf8f4c7b3516534b4c4f0f4257850
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114568"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085344"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Application Insights を使用して運用環境の Azure Machine Learning モデルを監視する
 
-この記事では、**Azure Machine Learning** サービスのために **Application Insights** を設定する方法について説明します。 Application Insights を有効にすると、以下を監視できます。
-* 要求率、応答時間、失敗率
-* 依存率、応答時間、失敗率
-* 例外
+この記事では、Azure Machine Learning サービスのために Azure Application Insights を設定する方法について説明します。 Application Insights を使用して、以下を監視できます。
+* 要求率、応答時間、および失敗率。
+* 依存率、応答時間、および失敗率。
+* 例外。
 
-Application Insights の詳細については、[こちら](../../application-insights/app-insights-overview.md)を参照してください。 
+[Application Insights](../../application-insights/app-insights-overview.md) の詳細 
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-* Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境の構成方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
-* Azure Kubernetes Service (AKS) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[画像分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
+* Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、および Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関する記事を参照してください。
+* Azure Kubernetes Service (AKS) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
 * [AKS クラスター](how-to-deploy-to-aks.md)。
 
-## <a name="enable--disable-in-the-portal"></a>ポータルでの有効化と無効化
+## <a name="enable-and-disable-in-the-portal"></a>ポータルでの有効化と無効化
 
-Azure portal では Application Insights を有効または無効にすることができます。
+Azure portal で Application Insights を有効または無効にすることができます。
 
 ### <a name="enable"></a>有効化
 
 1. [Azure portal](https://portal.azure.com) でワークスペースを開きます。
 
-1. デプロイに移動し、Application Insights を有効にするサービスを選択します。
+1. **[デプロイ]** タブに移動し、Application Insights を有効にするサービスを選択します。
 
-   [![デプロイ](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![[デプロイ] タブ上のサービスの一覧](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
-3. **[編集]** をクリックし、**[詳細設定]** に移動します。
+3. **[編集]** を選択します。
 
-   [![編集](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![[編集] ボタン](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
-4. **[詳細設定]** で **[AppInsights 診断を有効にする]** をオンにします。
+4. **[詳細設定]** で、**[AppInsights 診断を有効にする]** チェック ボックスをオンにします。
 
-   [![編集](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. 画面下部の **[更新]** を選択して変更を適用します。 
-
-### <a name="disable"></a>Disable
-Azure portal で Application Insights を無効にするには、次の手順を実行します。
-
-1. https://portal.azure.com で Azure portal にサインインします。
-1. ワークスペースに移動します。
-1. **[デプロイ]**、**[サービスの選択]**、**[編集]** の順に選択します。
-
-   [![編集](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. **[詳細設定]** で、**[AppInsights 診断を有効にする]** オプションをオフにします。 
-
-   [![オフ](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![診断を有効にするために選択されたチェック ボックス](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. 画面下部の **[更新]** を選択して変更を適用します。 
 
-## <a name="enable--disable-from-the-sdk"></a>SDK からの有効化と無効化
+### <a name="disable"></a>無効化
+1. [Azure portal](https://portal.azure.com) でワークスペースを開きます。
+1. **[デプロイ]** を選択し、サービスを選択し、**[編集]** を選択します。
+
+   [![[編集] ボタン](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+
+1. **[詳細設定]** で、**[AppInsights 診断を有効にする]** チェック ボックスをオフにします。 
+
+   [![診断を有効にするためのチェック ボックスをオフ](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+
+1. 画面下部の **[更新]** を選択して変更を適用します。 
+
+## <a name="enable-and-disable-from-the-sdk"></a>SDK からの有効化と無効化
 
 ### <a name="update-a-deployed-service"></a>デプロイされたサービスを更新する
-1. ワークスペース内のサービスを特定する (ws = ワークスペースの名前)
+1. ワークスペースで、サービスを特定します。 `ws` の値は、ワークスペースの名前です。
 
     ```python
     aks_service= Webservice(ws, "my-service-name")
@@ -83,7 +80,7 @@ Azure portal で Application Insights を無効にするには、次の手順を
     ```
 
 ### <a name="log-custom-traces-in-your-service"></a>サービスのカスタム トレースをログに記録する
-カスタム トレースをログに記録する場合は、[AKS の標準的なデプロイ プロセス](how-to-deploy-to-aks.md)の手順に従い、以下を実行します。
+カスタム トレースをログに記録する場合は、[AKS の標準的なデプロイ プロセス](how-to-deploy-to-aks.md)の手順に従います。 その後、以下を実行します。
 
 1. print ステートメントを追加してスコアリング ファイルを更新します。
     
@@ -91,7 +88,7 @@ Azure portal で Application Insights を無効にするには、次の手順を
     print ("model initialized" + time.strftime("%H:%M:%S"))
     ```
 
-2. aks の構成を更新します。
+2. AKS の構成を更新します。
     
     ```python
     aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
@@ -110,19 +107,19 @@ Application Insights を無効にするには、次のコードを使用しま�
     
 
 ## <a name="evaluate-data"></a>データを評価する
-サービスのデータは、Azure Machine Learning サービス ワークスペースと同じリソース グループ内の Application Insights アカウントに保存されます。
+サービスのデータは、Azure Machine Learning サービスと同じリソース グループ内の Application Insights アカウントに保存されます。
 表示するには:
-1. [Azure portal](https://portal.azure.com) のリソース グループに移動し、Application Insights リソースをクリックします。 
+1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、Application Insights リソースを参照します。 
 2. **[概要]** タブには、サービスの基本的なメトリック セットが表示されます。
 
    [![概要](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-3. カスタム トレースを確認するには、**[分析]** をクリックします。
-4. スキーマ セクション内の **traces** をクリックしてから、クエリを**実行**します。 データは以下の表形式で表示され、スコアリング ファイルのカスタムの呼び出しにマップされます。 
+3. カスタム トレースを確認するには、**[分析]** を選択します。
+4. [スキーマ] セクションで **[トレース]** を選択します。 次に、**[実行]** を選択してクエリを実行します。 データは表形式で表示され、スコアリング ファイルのカスタムの呼び出しにマップされます。 
 
    [![カスタム トレース](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
-Application Insights の使用方法の詳細については、[こちら](../../application-insights/app-insights-overview.md)を参照してください。
+Application Insights の使用方法の詳細については、「[Application Insights とは何か?](../../application-insights/app-insights-overview.md)」を参照してください。
     
 
 ## <a name="example-notebook"></a>ノートブックの例

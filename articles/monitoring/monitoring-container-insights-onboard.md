@@ -1,5 +1,5 @@
 ---
-title: コンテナーに Azure Monitor をオンボードする方法 | Microsoft Docs
+title: コンテナーに Azure Monitor をオンボードする方法 (プレビュー) | Microsoft Docs
 description: この記事では、コンテナーがどのように動作し、動作状況に関してどのような問題が特定されているかを把握できるように、Azure Monitor をコンテナーにオンボードして構成する方法について説明します。
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fa0df0bbf363a7c751de460fd98740b4314f996
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 505abe8f3dc19458b3f0e18f349974199ae4ba58
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831196"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212116"
 ---
-# <a name="how-to-onboard-azure-monitor-for-containers"></a>コンテナーに Azure Monitor をオンボードする方法
+# <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>コンテナーに Azure Monitor をオンボードする方法 (プレビュー) 
 この記事では、Kubernetes 環境にデプロイされ、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) 上でホストされているワークロードのパフォーマンスを監視するために、コンテナーに対して Azure Monitor を設定する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件 

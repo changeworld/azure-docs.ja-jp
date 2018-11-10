@@ -1,34 +1,31 @@
 ---
-title: 'Azure Databricks: 一般的な質問とヘルプ | Microsoft Docs'
+title: 'Azure Databricks: 一般的な質問とヘルプ'
 description: Azure Databricks に関する一般的な質問の回答とトラブルシューティング情報を確認します。
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: c3ba235c60480c38a21ee3264c54b4a4dcdea340
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.topic: conceptual
+ms.date: 10/25/2018
+ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434603"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138363"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
 この記事には、Azure Databricks に関してよく寄せられる質問が記載されています。 また、Databricks の使用中に発生する可能性がある一般的な問題の一覧も示します。 詳しくは、「[Azure Databricks とは](what-is-azure-databricks.md)」をご覧ください。 
 
-## <a name="can-i-use-my-own-keys-for-local-encryption"></a>ローカル暗号化に独自のキーを使用できますか。 
-現在のリリースでは、Azure Key Vault の独自キーの使用はサポートされていません。 
+## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Azure Databricks で使うキー/シークレットを Azure Key Vault を使用して格納することはできますか。
+はい。 Azure Databricks で使うキー/シークレットは、Azure Key Vault を使用して格納できます。 詳細については、「[Azure Key Vault-backed scopes (Azure Key Vault を実体とするスコープ)](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss)」を参照してください。
 
-## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Databricks で Azure 仮想ネットワークを使えますか。
-Databricks のプロビジョニングの一部として、新しい仮想ネットワークが作成されます。 このリリースでは、独自の Azure 仮想ネットワークを使うことはできません。
+
+## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Databricks で Azure Virtual Network を使えますか。
+はい。 Azure Databricks で Azure Virtual Network (VNET) を使用することができます。 詳細については、「[Deploying Azure Databricks in your Azure Virtual Network (Azure Virtual Network に Azure Databricks をデプロイする)](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)」を参照してください。
 
 ## <a name="how-do-i-access-azure-data-lake-store-from-a-notebook"></a>ノートブックから Azure Data Lake Store にアクセスするにはどうすればよいですか。 
 
@@ -116,7 +113,7 @@ Azure のエラー コード: MissingSubscriptionRegistration Azure エラー �
 
 #### <a name="background"></a>バックグラウンド
 
-Azure Databricks は、Azure AD に完全に統合されています。 これにより、Azure AD からユーザーを指定することで、Azure Databricks 内 (たとえば、ノートブックまたはクラスター上) でアクセス許可を設定できます。 Azure Databricks が Azure AD からユーザーの名前の一覧を表示できるようにするには、その情報への読み取りアクセス許可が必要です。 これには、同意が必要です。 同意をまだ得られていない場合は、エラーが表示されます。
+Azure Databricks は、Azure Active Directory に統合されています。 Azure AD からユーザーを指定することで、Azure Databricks 内 (たとえば、ノートブックまたはクラスター上) でアクセス許可を設定できます。 Azure Databricks が Azure AD に存在するユーザーの名前の一覧を表示するためには、その情報に対する読み取りアクセス許可と同意を得る必要があります。 同意をまだ得られていない場合は、エラーが表示されます。
 
 #### <a name="solution"></a>解決策
 

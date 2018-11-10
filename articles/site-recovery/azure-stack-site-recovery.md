@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 10/09/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 9da64ebe675f9d481c7474a81fec294d50e49ce7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902826"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215210"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
-この記事では、[Azure Site Recovery サービス](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)を使用して、Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
+この記事では、[Azure Site Recovery サービス](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)を使用して、Azure への Azure Stack VM のディザスター リカバリーを設定する方法について説明します。
 
 Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦略に貢献します。 このサービスは、想定内または想定外の障害が発生した場合に、VM ワークロードが使用可能な状態を維持することを保証します。
 
@@ -189,7 +189,7 @@ VM を実行中のオペレーティング システムが、表にまとめら�
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> 構成サーバーは、コマンド ラインからインストールすることもできます。 [詳細情報](http://aka.ms/installconfigsrv)。
+> 構成サーバーは、コマンド ラインからインストールすることもできます。 [詳細情報](physical-manage-configuration-server.md#install-from-the-command-line)。
 
 > アカウント名がポータルに表示されるまでに 15 分以上かかることがあります。 すぐに更新するには、**[構成サーバー]** > ***[<サーバー名>]*** > **[サーバーを最新の情報に更新する]** の順に選択します。
 

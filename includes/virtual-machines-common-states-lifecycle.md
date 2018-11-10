@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: 603e7c3a0c30eb42cb75d6a6ff87a96d847b7c9f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: e1dc637d2f629b5002c2e8796fbd29a95478c392
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "40100409"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035325"
 ---
 Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは "*プロビジョニング状態*" と "*電源の状態*" に分類することができます。 この記事の目的は、各状態について説明し、ユーザーがインスタンスの使用料金を課金されるタイミングを具体的に明示することです。 
 
@@ -29,7 +29,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 <table>
 <tr>
 <th>
-State
+州
 </th>
 <th>
 説明
@@ -287,7 +287,7 @@ State
 
 インスタンス ビュー API によって、VM の実行状態に関する情報が提供されます。 詳細については、「[Virtual Machines - Instance View](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview)」(仮想マシン - インスタンス ビュー) の API ドキュメントをご覧ください。
 
-Azure リソース エクスプローラーは、VM の実行状態を表示するためのシンプルな UI を備えています ([リソース エクスプローラー] (https://resources.azure.com/))。
+Azure リソース エクスプローラーは、VM の実行状態を表示するためのシンプルな UI を備えています ([リソース エクスプローラー](https://resources.azure.com/))。
 
 プロビジョニング状態は、VM のプロパティとインスタンス ビューから確認できます。 電源の状態は、VM のインスタンス ビューから確認できます。 
 

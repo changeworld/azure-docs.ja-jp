@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/25/2018
 ms.author: jeedes
-ms.openlocfilehash: c611fd7893a96113a4a9f2454bcd0b11db02be29
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6e1f76548e2433f9bc4b0b26b0894a92b7ec0aa0
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605111"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>チュートリアル: Azure Active Directory と Snowflake の統合
 
@@ -39,7 +39,6 @@ Snowflake と Azure AD の統合を構成するには、次のものが必要で
 
 - Azure AD サブスクリプション
 - Snowflake でのシングル サインオンが有効なサブスクリプション
-- Snowflake アカウントをお持ちでなく、Azure AD アプリ ギャラリーを使用してお試しになりたいお客様は、[この](https://trial.snowflake.net/?cloud=azure&utm_source=azure-marketplace&utm_medium=referral&utm_campaign=self-service-azure-mp)リンクを参照してください。
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -50,12 +49,14 @@ Snowflake と Azure AD の統合を構成するには、次のものが必要で
 - Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
+
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Snowflake の追加
 2. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-snowflake-from-the-gallery"></a>ギャラリーからの Snowflake の追加
+
 Azure AD への Snowflake の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Snowflake を追加する必要があります。
 
 **ギャラリーから Snowflake を追加するには、次の手順に従います。**
@@ -67,7 +68,7 @@ Azure AD への Snowflake の統合を構成するには、ギャラリーから
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
-    
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[新しいアプリケーション] ボタン][3]
@@ -84,13 +85,13 @@ Azure AD への Snowflake の統合を構成するには、ギャラリーから
 
 Snowflake で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Snowflake テスト ユーザーの作成](#create-a-snowflake-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Snowflake で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Snowflake テスト ユーザーの作成](#creating-snowflake-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Snowflake で作成します。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にして、Snowflake アプリケーションでシングル サインオンを構成します。
 
@@ -100,89 +101,95 @@ Snowflake で Azure AD のシングル サインオンを構成してテスト�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/snowflake-tutorial/tutorial_snowflake_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードの **[選択]** をクリックして、シングル サインオンを有効にします。
 
-3. **[Snowflake のドメインと URL]** セクションで、次の手順を実行します。
+    ![Configure single sign-on](common/tutorial_general_301.png)
 
-    ![[Snowflake のドメインと URL] のシングル サインオン情報](./media/snowflake-tutorial/tutorial_snowflake_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+
+    ![Configure single sign-on](common/editconfigure.png)
+
+4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
+
+    ![[Snowflake のドメインと URL] のシングル サインオン情報](./media/snowflake-tutorial/tutorial_snowflake_url1.png)
 
     a. **[識別子]** ボックスに、`https://<SNOWFLAKE-URL>.snowflakecomputing.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/login` のパターンを使用して URL を入力します。
 
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Snowflake のドメインと URL] のシングル サインオン情報](./media/snowflake-tutorial/tutorial_snowflake_url1.png)
+    ![[Snowflake のドメインと URL] のシングル サインオン情報](./media/snowflake-tutorial/tutorial_snowflake_url2.png)
 
     **[サインオン URL]** ボックスに、`https://<SNOWFLAKE-URL>.snowflakecomputing.com` のパターンを使用して URL を入力します。
-     
-    > [!NOTE] 
+
+    > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。
 
-5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+6. **[SAML 署名証明書]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**証明書 (Base64)** をダウンロードし、証明書ファイルをコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](./media/snowflake-tutorial/tutorial_snowflake_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+7. **[Snowflake の設定]** セクションで、要件に従って適切な URL をコピーします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/snowflake-tutorial/tutorial_general_400.png)
-    
-7. **[Snowflake 構成]** セクションで、**[Snowflake を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+    a. ログイン URL
 
-    ![Snowflake 構成](./media/snowflake-tutorial/tutorial_snowflake_configure.png) 
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+    ![Snowflake 構成](common/configuresection.png)
 
 8. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Snowflake にログインします。
 
-9. 次に示されているように、**certificate** 値を**ダウンロードした証明書**に設定し、**ssoUrl** を Azure AD からコピーした **SAML シングル サインオン サービスの URL** の値に設定して、ワークシート上で次の SQL クエリを実行します。
+9. ページの右上で **[プロファイル]** をクリックして、**[Switch Role]\(ロールの切り替え\)** で **[ACCOUNTADMIN]** を選択します。
 
-    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png) 
+    > [!NOTE]
+    > これは、右上の [ユーザー名] で選択したコンテキストとは別のものです。
+    
+    ![Snowflake 管理者 ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+
+10. **ダウンロードした Base 64 証明書**をメモ帳で開きます。 “-----BEGIN CERTIFICATE-----” と “-----END CERTIFICATE-----" の間の値をコピーし、下の **certificate** の横の引用符の間に貼り付けます。 **[ssoUrl]** に、Azure portal からコピーした**ログイン URL** の値を貼り付けます。 **[All Queries]\(すべてのクエリ\)** を選択し、**[実行]** をクリックします。
+
+    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 
     ```
     use role accountadmin;
     alter account set saml_identity_provider = '{
     "certificate": "<Paste the content of downloaded certificate from Azure portal>",
-    "ssoUrl":"<SAML single sign-on service URL value which you have copied from the Azure portal>",
+    "ssoUrl":"<Login URL value which you have copied from the Azure portal>",
     "type":"custom",
     "label":"AzureAD"
     }';
     alter account set sso_login_page = TRUE;
     ```
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![Azure AD ユーザーの作成][100]
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/snowflake-tutorial/create_aaduser_01.png)
+    ![Azure AD のテスト ユーザーの作成](common/create_aaduser_01.png) 
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/snowflake-tutorial/create_aaduser_02.png)
+    ![Azure AD のテスト ユーザーの作成](common/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/snowflake-tutorial/create_aaduser_03.png)
+    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+    d. **作成**を選択します。
 
-    ![[ユーザー] ダイアログ ボックス](./media/snowflake-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
- 
-### <a name="create-a-snowflake-test-user"></a>Snowflake テスト ユーザーの作成
+### <a name="creating-snowflake-test-user"></a>Snowflake テスト ユーザーの作成
 
 Azure AD ユーザーが Snowflake にログインできるようにするには、そのユーザーを Snowflake にプロビジョニングする必要があります。 Snowflake では、プロビジョニングは手動のタスクです。
 
@@ -199,66 +206,55 @@ Azure AD ユーザーが Snowflake にログインできるようにするには
     ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
 
     ```
-
     use role accountadmin;
     CREATE USER britta_simon PASSWORD = '' LOGIN_NAME = 'BrittaSimon@contoso.com' DISPLAY_NAME = 'Britta Simon';
     ```
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Snowflake へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
-**Snowflake に Britta Simon を割り当てるには、次の手順を実行します。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
+    ![ユーザーの割り当て][201]
 
 2. アプリケーションの一覧で **[Snowflake]** を選択します。
 
-    ![アプリケーションの一覧の Snowflake のリンク](./media/snowflake-tutorial/tutorial_snowflake_app.png)  
+    ![Configure single sign-on](./media/snowflake-tutorial/tutorial_snowflake_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![ユーザーの割り当て][202]
 
 4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[割り当ての追加] ウィンドウ][203]
+    ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Snowflake のタイルをクリックすると、自動的に Snowflake アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
-[1]: ./media/snowflake-tutorial/tutorial_general_01.png
-[2]: ./media/snowflake-tutorial/tutorial_general_02.png
-[3]: ./media/snowflake-tutorial/tutorial_general_03.png
-[4]: ./media/snowflake-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/snowflake-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/snowflake-tutorial/tutorial_general_200.png
-[201]: ./media/snowflake-tutorial/tutorial_general_201.png
-[202]: ./media/snowflake-tutorial/tutorial_general_202.png
-[203]: ./media/snowflake-tutorial/tutorial_general_203.png
-
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

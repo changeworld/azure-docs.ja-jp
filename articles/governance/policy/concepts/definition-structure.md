@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: f5906a93e92691cb6046fb04a9fd83f3484e17b8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0ff56b86243956d1fa6b51a6dfd14af9e00d8367
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427401"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212779"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -228,8 +228,8 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ポリシーでは、次の種類の効果がサポートされています。
 
-- **deny** は監査ログでイベントを生成し、要求は失敗します。
-- **audit** は監査ログで警告イベントを生成しますが、要求は失敗しません。
+- **Deny** はアクティビティ ログでイベントを生成し、要求は失敗します
+- **Audit** はアクティビティ ログで警告イベントを生成しますが、要求は失敗しません
 - **append** は定義済みのフィールド セットを要求に追加します。
 - **AuditIfNotExists** は、リソースが存在しない場合に監査を有効にします。
 - **DeployIfNotExists** は、リソースが存在しない場合にリソースをデプロイします。

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: aab0ac2dfba47741eaf5a75ef46d9ca5f8873d50
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 72d48bd1716e1b62ae92f8317f3f9611ac463453
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434247"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211504"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Azure への SQL Server データベースのバックアップ
 
@@ -434,7 +434,7 @@ Azure Backup は、トランザクション ログ バックアップを使用�
 
 2. **[Recovery Services コンテナー]** ダッシュボードの **[使用量]** で、**[バックアップ項目]** を選択して **[バックアップ項目]** メニューを開きます。
 
-    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
+    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
 
 3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。 
 
@@ -658,23 +658,23 @@ Azure Backup では、すべてのバックアップ操作に SQL ネイティ�
 次の例は、**DB1** という名前のデータベースのすべてのバックアップ ジョブをフェッチするためのクエリです。 高度な監視を行うには、このクエリをカスタマイズします。
 
 ```
-select CAST (
+select CAST (
 Case type
-                when 'D' 
-                                 then 'Full'
-                when  'I'
-                               then 'Differential' 
-                ELSE 'Log'
-                END         
-                AS varchar ) AS 'BackupType',
-database_name, 
+                when 'D' 
+                                 then 'Full'
+                when  'I'
+                               then 'Differential' 
+                ELSE 'Log'
+                END         
+                AS varchar ) AS 'BackupType',
+database_name, 
 server_name,
 machine_name,
 backup_start_date,
 backup_finish_date,
-DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
-backup_size AS BackupSizeInBytes
-  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
+DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
+backup_size AS BackupSizeInBytes
+  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
  
 ```
 
@@ -703,7 +703,7 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 * 今後のバックアップ ジョブすべてを停止し、すべての復旧ポイントを削除する。
 * 今後のバックアップ ジョブすべてを停止するが、復旧ポイントはそのままにする。
 
-復旧ポイントをそのままにしておくと、コストが発生します。 SQL の復旧ポイントにより、SQL で保護されたインスタンス価格が請求されるだけでなく、ストレージ容量が消費されます。 SQL に対する Azure Backup の価格設定の詳細情報については、[Azure Backup の価格のページ](https://azure.microsoft.com/pricing/details/backup/)を参照してください。 
+データの保持についてバックアップの停止を選択した場合は、バックアップ ポリシーに従って復旧ポイントがクリーンアップされます。 すべての復旧ポイントがクリーンアップされるまでは、SQL で保護されたインスタンス価格が請求されるだけでなく、ストレージ容量も消費されます。 SQL に対する Azure Backup の価格設定の詳細情報については、[Azure Backup の価格のページ](https://azure.microsoft.com/pricing/details/backup/)を参照してください。 
 
 データベースの保護を停止するには、次の手順を実行します。
 
@@ -711,7 +711,7 @@ SQL Server データベースの保護を停止する場合、Azure Backup は�
 
 2. **[Recovery Services コンテナー]** ダッシュボードの **[使用量]** で、**[バックアップ項目]** を選択して **[バックアップ項目]** メニューを開きます。
 
-    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
+    ![[バックアップ項目] メニューを開く](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)。
 
 3. **[バックアップ項目]** メニューの **[バックアップの管理の種類]** で、**[SQL in Azure VM]\(Azure VM 内の SQL\)** を選択します。 
 

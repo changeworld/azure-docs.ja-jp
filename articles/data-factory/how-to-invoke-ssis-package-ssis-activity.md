@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b2e0b65f210774f760ce2d0898c601115ab3a94d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cda439973c584a57cadc30de7fb931732682de00
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960160"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092459"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 この記事では、SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
@@ -91,9 +91,11 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
 ### <a name="optionally-parameterize-the-activity"></a>必要に応じてアクティビティをパラメーター化する
 
-オプションで、SSIS パッケージの実行アクティビティ ボックスの一番下にある **[View Source Code] (ソース コードの表示)** ボタン、またはパイプライン領域の右上隅にある **[コード]** ボタンを使用して、Data Factory システム変数を参照できる値、式、または関数をプロジェクトまたはパッケージ パラメーターに JSON 形式で割り当てます。 たとえば、次のスクリーンショットに示すように、Data Factory パイプライン パラメーターを SSIS プロジェクトまたはパッケージ パラメーターに割り当てることができます。
+オプションで、SSIS パッケージの実行アクティビティ ボックスの一番下にある [ソース コードの表示] ボタン、またはパイプライン領域の右上隅にある [コード] ボタンを使用して、Data Factory システム変数を参照できる値、式、または関数をプロジェクトまたはパッケージ パラメーターに JSON 形式で割り当てます。 たとえば、次のスクリーンショットに示すように、Data Factory パイプライン パラメーターを SSIS プロジェクトまたはパッケージ パラメーターに割り当てることができます。
 
 ![SSIS パッケージの実行アクティビティの JSON スクリプトを編集する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+
+![SSIS パッケージの実行アクティビティにパラメーターを追加する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
 ![SSIS パッケージの実行アクティビティにパラメーターを追加する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
@@ -204,9 +206,9 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
                     "runtime": "x64",
                     "loggingLevel": "Basic",
                     "packageLocation": {
-                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
+                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
                     },
-                    "environmentPath":   "FolderName/EnvironmentName",
+                    "environmentPath":   "FolderName/EnvironmentName",
                     "projectParameters": {
                         "project_param_1": {
                             "value": "123"
@@ -244,7 +246,7 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
                         }
                     },
                     "propertyOverrides": {
-                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
+                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
                             "value": 8,
                             "isSensitive": false
                         }

@@ -8,13 +8,13 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 03/28/2018
-ms.openlocfilehash: 58d0d028c920faa7e86884c85f8fb677ce67c390
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.date: 10/24/2018
+ms.openlocfilehash: 0927ae14d232ec2ce3a46bb66ed535deabbe0138
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389923"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158688"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -24,19 +24,19 @@ ms.locfileid: "49389923"
 
 ### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Azure Machine Learning SDK for Python v0.1.68
 
-#### <a name="new-features"></a>新機能
- * 新しいワークスペースの作成時、マルチ テナントがサポートされます。
++ **新機能**
+  * 新しいワークスペースの作成時、マルチ テナントがサポートされます。
 
-#### <a name="breaking-changes"></a>重大な変更
- * **次期リリースで実施予定** *Workspace.compute_targets、datastores、experiments、images、models*、および *webservices* が、メソッドではなく、プロパティになります。 たとえば、*Workspace.compute_targets()* は、*Workspace.compute_targets* に置き換えます。
++ **重大な変更**
+  * **次期リリースで実施予定** *Workspace.compute_targets、datastores、experiments、images、models*、および *webservices* が、メソッドではなく、プロパティになります。 たとえば、*Workspace.compute_targets()* は、*Workspace.compute_targets* に置き換えます。
 
-#### <a name="bugs-fixed"></a>修正済みのバグ
- * Web サービスをデプロイするときに、pynacl ライブラリのバージョンをピン留めする必要がなくなりました。
++ **修正済みのバグ**
+  * Web サービスをデプロイするときに、pynacl ライブラリのバージョンをピン留めする必要がなくなりました。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Azure Machine Learning Data Prep SDK v0.3.0
 
-#### <a name="new-features"></a>新機能:
-* メソッド transform_partition_with_file(script_path) が追加されました。このメソッドにより、実行する Python ファイルのパスを渡すことができます。
++ **新機能**
+  * メソッド transform_partition_with_file(script_path) が追加されました。このメソッドにより、実行する Python ファイルのパスを渡すことができます。
 
 ## <a name="2018-10-01"></a>2018 年 10 月 1 日
 
@@ -45,56 +45,55 @@ ms.locfileid: "49389923"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
-#### <a name="breaking-changes"></a>重大な変更
- * Workspace.experiments、Workspace.models、Workspace.compute_targets、Workspace.images、Workspace.web_services 返却辞書、以前返却されたリスト。 [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API ドキュメントを参照してください。
++ **重大な変更**
+  * Workspace.experiments、Workspace.models、Workspace.compute_targets、Workspace.images、Workspace.web_services 返却辞書、以前返却されたリスト。 [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API ドキュメントを参照してください。
 
- * 自動化された機械学習で、正規化平均二乗誤差がプライマリ メトリックから削除されました。
+  * 自動化された機械学習で、正規化平均二乗誤差がプライマリ メトリックから削除されました。
 
++ **HyperDrive**
+  * ベイジアンに関する HyperDrive のさまざまなバグが修正されました。また、メトリックを取得する呼び出しのパフォーマンスが改善されました。 
+  * Tensorflow が 1.9 から 1.10 にアップグレードされました。 
+  * Docker イメージがコールド スタート用に最適化されました。 
+  * 終了時に 0 以外のエラー コードが発生した場合でも、ジョブの状態が正確に報告されます。 
+  * SDK で RunConfig 属性が検証されます。 
+  * HyperDrive 実行オブジェクトで、通常の実行と同様のキャンセルがサポートされます。パラメーターの受け渡しは不要です。 
+  * 分散実行および HyperDrive 実行でドロップダウンの値の状態が維持されるようにウィジェットが改善されました。 
+  * TensorBoard およびその他のログ ファイルのサポートが、パラメーター サーバー用に修正されました。 
+  * サービス側で Intel(R) MPI がサポートされます。 
+  * BatchAI での検証時における、分散実行修正用のパラメーター調整のバグが修正されました。 
+  * コンテキスト マネージャーがプライマリ インスタンスを識別するようになりました。 
 
-#### <a name="hyperdrive"></a>HyperDrive
- * ベイジアンに関する HyperDrive のさまざまなバグが修正されました。また、メトリックを取得する呼び出しのパフォーマンスが改善されました。 
- * Tensorflow が 1.9 から 1.10 にアップグレードされました。 
- * Docker イメージがコールド スタート用に最適化されました。 
- * 終了時に 0 以外のエラー コードが発生した場合でも、ジョブの状態が正確に報告されます。 
- * SDK で RunConfig 属性が検証されます。 
- * HyperDrive 実行オブジェクトで、通常の実行と同様のキャンセルがサポートされます。パラメーターの受け渡しは不要です。 
- * 分散実行および HyperDrive 実行でドロップダウンの値の状態が維持されるようにウィジェットが改善されました。 
- * TensorBoard およびその他のログ ファイルのサポートが、パラメーター サーバー用に修正されました。 
- * サービス側で Intel(R) MPI がサポートされます。 
- * BatchAI での検証時における、分散実行修正用のパラメーター調整のバグが修正されました。 
- * コンテキスト マネージャーがプライマリ インスタンスを識別するようになりました。 
++ **Azure portal での操作**
+  * [Run details]\(実行の詳細\) で log_table() と log_row() がサポートされます。 
+  * 1、2、または 3 個の数値列、および 1 個のカテゴリ列 (オプション) を含むテーブルおよび行のグラフが自動的に作成されます。
 
-#### <a name="azure-portal-experience"></a>Azure portal での操作
- * [Run details]\(実行の詳細\) で log_table() と log_row() がサポートされます。 
- * 1、2、または 3 個の数値列、および 1 個のカテゴリ列 (オプション) を含むテーブルおよび行のグラフが自動的に作成されます。
++ **自動化された機械学習**
+  * エラー処理とドキュメントが改善されました。 
+  * 実行プロパティ取得のパフォーマンスの問題が修正されました。 
+  * 実行の継続に関する問題が修正されました。 
+  * 繰り返しのアンサンブルに関する問題が修正されました。
+  * MAC OS 上でトレーニングがハングするバグが修正されました。
+  * カスタム検証シナリオで、マクロ平均 PR/ROC 曲線がダウンサンプリングされます。
+  * 余分なインデックス ロジックが削除されました。
+  * get_output API からフィルターが削除されました。
 
-#### <a name="automated-machine-learning"></a>自動化された機械学習
- * エラー処理とドキュメントが改善されました。 
- * 実行プロパティ取得のパフォーマンスの問題が修正されました。 
- * 実行の継続に関する問題が修正されました。 
- * 繰り返しのアンサンブルに関する問題が修正されました。
- * MAC OS 上でトレーニングがハングするバグが修正されました。
- * カスタム検証シナリオで、マクロ平均 PR/ROC 曲線がダウンサンプリングされます。
- * 余分なインデックス ロジックが削除されました。
- * get_output API からフィルターが削除されました。
++ **パイプライン**
+  * パイプラインを直接バブリッシュするメソッド Pipeline.publish() が追加され、最初の実行が不要になりました。   
+  * パブリッシュ済みのパイプラインから生成されたパイプライン実行をフェッチするメソッド PipelineRun.get_pipeline_runs() が追加されました。
 
-#### <a name="pipelines"></a>パイプライン
- * パイプラインを直接バブリッシュするメソッド Pipeline.publish() が追加され、最初の実行が不要になりました。   
- * パブリッシュ済みのパイプラインから生成されたパイプライン実行をフェッチするメソッド PipelineRun.get_pipeline_runs() が追加されました。
-
-#### <a name="project-brainwave"></a>Project Brainwave
- * FPGA 上で使用可能な新しい AI モデルのサポートが更新されました。
++ **Project Brainwave**
+  * FPGA 上で使用可能な新しい AI モデルのサポートが更新されました。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Azure Machine Learning Data Prep SDK v0.2.0
 [バージョン 0.2.0](https://pypi.org/project/azureml-dataprep/0.2.0/) には、以下の機能とバグ修正が組み込まれています。
 
-**新機能:** 
- * ワンホット エンコードがサポートされます。
- * 分位変換がサポートされます。
++ **新機能**
+  * ワンホット エンコードがサポートされます。
+  * 分位変換がサポートされます。
    
-**バグ修正:**
- * どのバージョンの Tornado でも機能します。Tornado のバージョンをダウングレードする必要はありません。
- * 上位 3 つの値だけでなく、すべての値のカウントが評価されます。
++ **バグ修正:**
+  * どのバージョンの Tornado でも機能します。Tornado のバージョンをダウングレードする必要はありません。
+  * 上位 3 つの値だけでなく、すべての値のカウントが評価されます。
 
 ## <a name="2018-09-public-preview-refresh"></a>2018 年 9 月 (パブリック プレビューを更新)
 

@@ -14,17 +14,17 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c1c884e05d357db7e23574dbd31f206d6c3fe23c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41920729"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414485"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>リビジョンを使用して互換性に影響しない変更を安全に行う
 API の準備が整って開発者に使用され始めると、その API の変更が必要になることがありますが、API の呼び出し元を混乱させないように注意する必要もあります。 また、行った変更内容を開発者に知らせると有効です。 Azure API Management で**リビジョン**を使用することで、これを実現できます。 詳細については、「[Versions & revisions (バージョンとリビジョン)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)」と「[API Versioning with Azure API Management (Azure API Management での API のバージョン管理)](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/)」を参照してください。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 新しいリビジョンの追加
@@ -36,10 +36,13 @@ API の準備が整って開発者に使用され始めると、その API の�
 
 ## <a name="prerequisites"></a>前提条件
 
++ [Azure API Management の用語](api-management-terminology.md)について学習します。
 + [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
 + また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
 
 ## <a name="add-a-new-revision"></a>新しいリビジョンの追加
+
+![API リビジョンを追加する](media/api-management-getstarted-revise-api/07-AddRevisions-01-AddNewRevision.png)
 
 1. **[API]** ページを選択します。
 2. API の一覧で **[Demo Conference API]\(デモ会議 API\)** (または、リビジョンを追加する他の API) を選択します。
@@ -48,8 +51,6 @@ API の準備が整って開発者に使用され始めると、その API の�
 
     > [!TIP]
     > また、API のコンテキスト メニュー (**[...]**) で **[リビジョンの追加]** を選択することもできます。
-    
-    ![画面の上部付近のリビジョン メニュー](media/api-management-getstarted-revise-api/TopMenu.PNG)
 
 5. 新しいリビジョンの使用目的を示す説明を入力します。
 6. **[作成]**
@@ -59,6 +60,8 @@ API の準備が整って開発者に使用され始めると、その API の�
     > 元の API は**リビジョン 1** のままとなります。 別のリビジョンが最新にされない限り、ユーザーはこのリビジョンを呼び出し続けます。
 
 ## <a name="make-non-breaking-changes-to-your-revision"></a>リビジョンに互換性に影響しない変更を加える
+
+![リビジョンを変更する](media/api-management-getstarted-revise-api/07-AddRevisions-02-MakeChanges.png)
 
 1. API の一覧で **[Demo Conference API]\(デモ会議 API\)** を選択します。
 2. 画面の上部付近の **[Design] \(デザイン\)** タブを選択します。
@@ -78,6 +81,7 @@ API の準備が整って開発者に使用され始めると、その API の�
 1. ページの上部付近にあるメニューから **[リビジョン]** タブを選択します。
 
     ![リビジョン画面の [リビジョン] メニュー。](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
+
 2. **リビジョン 2** のコンテキスト メニュー (**...**) を開きます。
 3. **[Make Current] \(最新にする\)** を選択します。
 4. この変更に関するメモを投稿する場合は、**[Post to Public Change log for this API]\(この API のパブリック変更ログを投稿する\)** をオンにします。 開発者が参照できるように、変更内容の説明を入力します。たとえば、「**テスト用リビジョン。新しい "test" 操作を追加しました。**」と入力します。
@@ -96,7 +100,7 @@ API の準備が整って開発者に使用され始めると、その API の�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * 新しいリビジョンの追加

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 863e465d888774730b9d9269024665a097a1207b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ab238e31ba022427dc55fec842f3e89e72fa530a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429302"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238881"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -135,8 +135,8 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
   
 |テーブル|DAX 数式|  
 |-----------|--------------------|  
-|リージョン|=Region[Country]=”USA”|  
-|ProductCategory|=ProductCategory[Name]=”Bicycles”|  
+|リージョン|=Region[Country]="USA"|  
+|ProductCategory|=ProductCategory[Name]="Bicycles"|  
 |トランザクション|=Transactions[Year]=2016|  
   
  実際の効果は、メンバーがクエリできるのは、お客様が米国に住んでいて、製品カテゴリが自転車で、2016 年のデータの行です。 ユーザーは、米国外のトランザクション、自転車以外のトランザクション、2016 年以外のトランザクションをクエリできません。ただし、これらのアクセス許可が付与されている別のロールのメンバーはこの制約を受けません。

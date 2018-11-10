@@ -1,23 +1,22 @@
 ---
-title: Azure Site Recovery を使用した Azure への VMware レプリケーションの容量とスケーリングを計画する | Microsoft Docs
-description: この記事では、Azure Site Recovery で Azure に VMware VM をレプリケートする場合の容量とスケーリングを計画する方法について説明します
-services: site-recovery
+title: Azure Site Recovery を使用した Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して Azure に VMware VM のディザスター リカバリーを設定する場合の容量とスケーリングを計画します
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 833000cb09d315a996ebc9e2d66210c805160f2a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 9bc0d5976cf01eb61c2a09a35ccd3a834313ca00
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067555"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210501"
 ---
-# <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Azure Site Recovery を使用した VMware レプリケーションの容量とスケーリングの計画
+# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-auzre"></a>Auzre への VMware ディザスター リカバリーの容量とスケーリングを計画する
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM および物理サーバーを Azure にレプリケートする場合に容量とスケーリングを計画する方法を説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用してオンプレミスの VMware VM および物理サーバーを Azure にレプリケートする場合に容量とスケーリングを計画する方法について説明します。
 
 ## <a name="how-do-i-start-capacity-planning"></a>容量計画はどのように開始すればよいか
 

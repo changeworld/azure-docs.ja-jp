@@ -1,20 +1,17 @@
 ---
-title: Azure Site Recovery でフェールオーバーと復旧用の復旧計画を作成してカスタマイズする | Microsoft Docs
-description: Azure Site Recovery で復旧計画を作成してカスタマイズする方法を説明します。 この記事では、VM と物理サーバーをフェールオーバーして復旧する方法について説明します。
-services: site-recovery
-documentationcenter: ''
-author: rayne-wiselman
+title: Azure Site Recovery を使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする | Microsoft Docs
+description: Azure Site Recovery サービスを使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする方法について説明します。
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 145b23aa7b8e48a0301676595c8d59a64bebdd0b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 5253b5743216fdb7cea9e3d387f64fdba8f56d8a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226670"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212337"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
 

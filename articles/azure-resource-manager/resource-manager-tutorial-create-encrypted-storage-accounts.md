@@ -10,27 +10,28 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 79572a364c2346ffd567cab7d3633ae398715210
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945792"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239953"
 ---
-# <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>チュートリアル: 暗号化されたストレージ アカウントをデプロイするための Azure Resource Manager テンプレートの作成
+# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>チュートリアル: Resource Manager テンプレートを使用して、暗号化された Azure ストレージ アカウントをデプロイする
 
-Azure Resource Manager テンプレートを完成させる情報を調べる方法について説明します。
+テンプレート スキーマ情報を見つける方法のほか、その情報を使用して Azure Resource Manager テンプレートを作成する方法について説明します。
 
-このチュートリアルでは、Azure クイック スタート テンプレートからのベース テンプレートを使用して Azure Storage アカウントを作成します。  テンプレート リファレンス ドキュメントを使用し、基本テンプレートをカスタマイズして暗号化されたストレージ アカウントを作成します。
+このチュートリアルでは、Azure クイック スタート テンプレートから入手したベース テンプレートを使用します。 テンプレート リファレンス ドキュメントを使用し、テンプレートをカスタマイズして、暗号化されたストレージ アカウントを作成します。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
 > * クイック スタート テンプレートを開く
 > * テンプレートの理解
+> * テンプレート リファレンスの検索
 > * テンプレートの編集
 > * テンプレートのデプロイ
 
@@ -44,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) と呼ばれます。 テンプレートにより、Azure ストレージ アカウント リソースが定義されます。
+[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)は、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) と呼ばれます。 テンプレートにより、Azure ストレージ アカウント リソースが定義されます。
 
 1. Visual Studio Code から、**[ファイル]**>**[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
@@ -57,58 +58,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="understand-the-schema"></a>スキーマの概要
 
-VS Code から、テンプレートをルート レベルに折りたたみます。 次の要素を含む最も単純な構造があります。
+1. VS Code から、テンプレートをルート レベルに折りたたみます。 次の要素を含む最も単純な構造があります。
 
-![Resource Manager テンプレートの最も単純な構造](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
+    ![Resource Manager テンプレートの最も単純な構造](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
 
-* **$schema**: テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所を指定します。
-* **contentVersion**: この要素に値を指定して、テンプレートの大きな変更を記述します。
-* **parameters**: リソースのデプロイをカスタマイズするためにデプロイを実行するときに提供される値を指定します。
-* **variables**: テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値を指定します。
-* **resources**: リソース グループ内でデプロイまたは更新されるリソースの種類を指定します。
-* **outputs**: デプロイ後に返される値を指定します。
+    * **$schema**: テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所を指定します。
+    * **contentVersion**: この要素に値を指定して、テンプレートの大きな変更を記述します。
+    * **parameters**: リソースのデプロイをカスタマイズするためにデプロイを実行するときに提供される値を指定します。
+    * **variables**: テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値を指定します。
+    * **resources**: リソース グループ内でデプロイまたは更新されるリソースの種類を指定します。
+    * **outputs**: デプロイ後に返される値を指定します。
 
-## <a name="use-parameters"></a>パラメーターを使用する
+2. **resources** を展開します。 `Microsoft.Storage/storageAccounts` リソースが定義されています。 テンプレートによって、暗号化されていないストレージ アカウントが作成されます。
 
-特定の環境に合った値をパラメーターに渡すことで、デプロイをカスタマイズすることができます。 ストレージ アカウントの値を設定するときに、テンプレートで定義されているパラメーターを使用します。
+    ![Resource Manager テンプレートのストレージ アカウント定義](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resource.png)
 
-![Resource Manager テンプレートのパラメーター](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-parameters.png)
-
-このテンプレートでは、2 つのパラメーターが定義されます。 location.defaultValue 内でテンプレート関数が使用されていることにご注意ください。
-
-```json
-"defaultValue": "[resourceGroup().location]",
-```
-
-resourceGroup() 関数は、現在のリソース グループを表すオブジェクトを返します。 テンプレート関数の一覧については、「[Azure Resource Manager テンプレートの関数](./resource-group-template-functions.md)」をご覧ください。
-
-テンプレートで定義されたパラメーターを使用するには:
-
-```json
-"location": "[parameters('location')]",
-"name": "[parameters('storageAccountType')]"
-```
-
-## <a name="use-variables"></a>変数を使用する
-
-変数では、テンプレート内で使用できる値を作成できます。 変数は、テンプレートの複雑さを軽減するのに役立ちます。
-
-![Resource Manager テンプレートの変数](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-variables.png)
-
-このテンプレートでは、1 つの変数 *storageAccountName* を定義します。 定義では、2 つのテンプレート関数が使用されます。
-
-- **concat()**: 文字列を連結します。 詳しくは、「[concat](./resource-group-template-functions-string.md#concat)」をご覧ください。
-- **uniqueString()**: パラメーターとして渡された値に基づいて、決定論的ハッシュ文字列を作成します。 各 Azure ストレージ アカウントには、すべての Azure にわたって一意の名前が必要です。 この関数は、一意の文字列を提供します。 その他の文字列関数については、[文字列関数](./resource-group-template-functions-string.md)に関する記事をご覧ください。
-
-テンプレートで定義された変数を使用するには:
-
-```json
-"name": "[variables('storageAccountName')]"
-```
-
-## <a name="edit-the-template"></a>テンプレートの編集
-
-このチュートリアルの目的は、暗号化されたストレージ アカウントを作成するテンプレートを定義することです。  サンプル テンプレートは、基本的な暗号化されていないストレージ アカウントのみを作成します。 暗号化関連の構成を検索するには、Azure Storage アカウントのテンプレート リファレンスを使用できます。
+## <a name="find-the-template-reference"></a>テンプレート リファレンスの検索
 
 1. [Azure テンプレート](https://docs.microsoft.com/azure/templates/)を参照します。
 2. **[タイトルでフィルター処理します]** で、**ストレージ アカウント**を入力します。
@@ -120,17 +85,52 @@ resourceGroup() 関数は、現在のリソース グループを表すオブジ
 
     ```json
     "encryption": {
-        "keySource": "Microsoft.Storage",
+      "services": {
+        "blob": {
+          "enabled": boolean
+        },
+        "file": {
+          "enabled": boolean
+        }
+      },
+      "keySource": "string",
+      "keyvaultproperties": {
+        "keyname": "string",
+        "keyversion": "string",
+        "keyvaulturi": "string"
+      }
+    },
+    ```
+
+    同じ Web ページの次の説明によって、暗号化されたストレージ アカウントを作成するために `encryption` オブジェクトが使用されることが確認されます。
+
+    ![Resource Manager テンプレート リファレンスのストレージ アカウントの暗号化](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption.png)
+
+    暗号化キーを管理するには 2 つの方法があります。 Storage Service Encryption には Microsoft が管理する暗号化キーのほか、ユーザー独自の暗号化キーを使うことができます。 このチュートリアルの簡潔さを維持するため、`Microsoft.Storage` オプションを使用します。そのため、Azure キー コンテナーを作成する必要がありません。
+
+    ![Resource Manager テンプレート リファレンスのストレージ アカウントの暗号化オブジェクト](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption-object.png)
+
+    暗号化オブジェクトは次のようになります。
+
+    ```json
+    "encryption": {
         "services": {
             "blob": {
                 "enabled": true
+            },
+            "file": {
+              "enabled": true
             }
-        }
+        },
+        "keySource": "Microsoft.Storage"
     }
     ```
-5. Visual Studio code で、最終的なリソース要素が次のようになるようにテンプレートを変更します。
-    
-    ![Resource Manager テンプレートの暗号化されたストレージ アカウントの resources](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+
+## <a name="edit-the-template"></a>テンプレートの編集
+
+Visual Studio code で、リソース要素が次のようになるようにテンプレートを変更します。
+
+![Resource Manager テンプレートの暗号化されたストレージ アカウントの resources](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

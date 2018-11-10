@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 62f71f29f813cd30c7d8e3c7f37f41677cf07364
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7e1f2411db828917d7a3c5e21348b553a5a5a3bb
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956376"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087510"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティ保護
 
@@ -96,11 +96,11 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 このタスクは Azure Resource Manager と PowerShell で実行できます。 PowerShell で、次のコマンドレットを実行します。
 
-1. `Switch-AzureMode AzureResourceManager`
+1. `Add-AzureRmAccount`
 
-2. `Add-AzureAccount`
+2. `$SecurePassword = Read-Host -AsSecureString` (パスワードを入力し、Enter キーを押します)
 
-3. `New-AzureADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password "identity-password"`
+3. `New-AzureRmADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
 
 4. **テナント ID** (Azure AD テナントの GUID)、**アプリケーション ID**、使用したパスワードを必ずコピーします。
 
@@ -188,11 +188,11 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 | 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| tenant | [はい] | Azure AD テナントの GUID | 
-| 対象となる読者 | [はい] | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 
-| clientId | [はい] | アクセスを要求するクライアントの GUID。ロジック アプリのアプリケーション ID からのクライアント ID です | 
-| secret | [はい] | アクセス トークンを要求しているクライアントのアプリケーション ID からのキーまたはパスワード | 
-| type | [はい] | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
+| tenant | はい | Azure AD テナントの GUID | 
+| 対象となる読者 | はい | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 
+| clientId | はい | アクセスを要求するクライアントの GUID。ロジック アプリのアプリケーション ID からのクライアント ID です | 
+| secret | はい | アクセス トークンを要求しているクライアントのアプリケーション ID からのキーまたはパスワード | 
+| type | はい | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
 |||| 
 
 例: 
@@ -234,9 +234,9 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 | 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| type | [はい] | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 | 
-| password | [はい] | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード | 
-| pfx | [はい] | Base64 でエンコードされた、クライアント証明書のコンテンツ (PFX ファイル) | 
+| type | はい | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 | 
+| password | はい | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード | 
+| pfx | はい | Base64 でエンコードされた、クライアント証明書のコンテンツ (PFX ファイル) | 
 |||| 
 
 <a name="basic"></a>
@@ -251,9 +251,9 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 | 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
-| type | [はい] | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
-| username | [はい] | 認証に使用するユーザー名 | 
-| password | [はい] | 認証に使用するパスワード | 
+| type | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
+| username | はい | 認証に使用するユーザー名 | 
+| password | はい | 認証に使用するパスワード | 
 |||| 
 
 <a name="azure-ad-code"></a>

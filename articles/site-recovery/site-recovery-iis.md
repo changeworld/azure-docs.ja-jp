@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery を使用して IIS ベースの多層 Web アプリケーションをレプリケートする | Microsoft Docs
+title: Azure Site Recovery を使用して多層 IIS ベース Web アプリケーションのディザスター リカバリーを設定する | Microsoft Docs
 description: Azure Site Recovery を使用して IIS Web ファームの仮想マシンをレプリケートする方法について説明します。
-services: site-recovery
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 830ced767a34302a635b9e685a2aee60c95fc81f
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920850"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211827"
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションをレプリケートする
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 
 アプリケーション ソフトウェアは、組織のビジネス生産性の原動力です。 さまざまな Web アプリケーションが組織のさまざまな目的に役立ちます。 アプリケーションによっては、組織にとって不可欠なものとなる場合もあります (給与処理、財務、顧客向け Web サイトに使用されるアプリケーションなど)。 生産性の低下を防ぐには、それらのアプリケーションを常時稼働させる必要があります。 さらに、それらのアプリケーションを一貫性をもって使用できるようにすることは、組織のブランドやイメージが損なわれるのを防ぐことにもつながります。
 

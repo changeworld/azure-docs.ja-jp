@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 751175e46e13d6046cd6f459e1405a876fdce39a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: aff3ce4bc290f6e4ad2fb11a586372862d0c1462
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145609"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240734"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) が提供されます。 Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
@@ -33,7 +33,7 @@ Azure Automation のほとんどの Runbook では、ユーザーに対するエ
 ## <a name="output-stream"></a>出力ストリーム
 出力ストリームはスクリプトまたはワークフローが正しく実行された場合に作成されるオブジェクト出力のためのものです。 Azure Automation では、このストリームは、 [現在の Runbook を呼び出す親 Runbook](automation-child-runbooks.md)が使用するオブジェクトに主に使用されます。 親 Runbook から [Runbook をインラインで呼び出す](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution)と、出力ストリームのデータが親に返されます。 ユーザーに一般情報を返すときは、その Runbook が別の Runbook から呼び出されないことがわかっている場合にのみ、出力ストリームを使用してください。 ただし通常は、ベストプラクティスとして、 [詳細ストリーム](#verbose-stream) を使用してユーザーに一般情報を伝えてください。
 
-出力ストリームへのデータの書き込みは、 [Write-Output](http://technet.microsoft.com/library/hh849921.aspx) を使用するか、Runbook の行にオブジェクトを配置することで実行できます。
+出力ストリームへのデータの書き込みは、 [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) を使用するか、Runbook の行にオブジェクトを配置することで実行できます。
 
 ```PowerShell
 #The following lines both write an object to the output stream.
@@ -75,7 +75,7 @@ Runbook ジョブの詳細ストリームは次のようになります。
 Runbook を発行したら、それを開始する前に、詳細ストリーム出力を取得するために Runbook の設定で詳細ログを有効にする必要もあります。
 
 ### <a name="declaring-output-data-type"></a>出力のデータ型の宣言
-ワークフローでは、 [OutputType 属性](http://technet.microsoft.com/library/hh847785.aspx)を使用して、その出力のデータ型を指定できます。 この属性は実行時に影響はありませんが、設計時にRunbook 作成者に対して Runbook の予想される出力を通知します。 Runbook 用のツールセットは進化し続けるため、設計時に出力のデータ型を宣言することの重要性は高まり続けます。 その結果、ベスト プラクティスは、作成するすべての Runbook にこの宣言を含めることです。
+ワークフローでは、 [OutputType 属性](https://technet.microsoft.com/library/hh847785.aspx)を使用して、その出力のデータ型を指定できます。 この属性は実行時に影響はありませんが、設計時にRunbook 作成者に対して Runbook の予想される出力を通知します。 Runbook 用のツールセットは進化し続けるため、設計時に出力のデータ型を宣言することの重要性は高まり続けます。 その結果、ベスト プラクティスは、作成するすべての Runbook にこの宣言を含めることです。
 
 出力例の種類の一覧を次に示します。
 
@@ -120,7 +120,7 @@ Workflow Test-Runbook
 ### <a name="warning-and-error-streams"></a>警告およびエラー ストリーム
 警告およびエラー ストリームは、Runbook で発生する問題をログ記録するためのものです。 それらは、Runbook が実行されたときにジョブ履歴に書き込まれ、Runbook がテストされたときに Azure Portal の [テスト出力] ウィンドウに表示されます。 既定では、Runbook は警告またはエラーの後も引き続き実行されます。 警告またはエラー時に Runbook を中断するように指定することができます。これを行うには、メッセージを作成する前に、Runbook の[ユーザー設定変数](#preference-variables)を設定します。 たとえば、Runbook を例外の場合と同様、エラーで中断するようにするには、**$ErrorActionPreference** を Stop に設定します。
 
-警告またはエラー メッセージを作成するには、[Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) または [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) コマンドレットを使用します。 アクティビティによってストリームに書き込むことができる場合もあります。
+警告またはエラー メッセージを作成するには、[Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) または [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) コマンドレットを使用します。 アクティビティによってストリームに書き込むことができる場合もあります。
 
 ```PowerShell
 #The following lines create a warning message and then an error message that will suspend the runbook.
@@ -135,7 +135,7 @@ Write-Error –Message "This is an error message that will stop the runbook beca
 
 [Runbook のテスト時](automation-testing-runbook.md)には、Runbook が詳細レコードを記録するように構成されている場合でも、詳細メッセージは表示されません。 [Runbook のテスト時](automation-testing-runbook.md)に詳細メッセージを表示するには、$VerbosePreference 変数を Continue に設定する必要があります。 この変数が設定されると、Azure Portal の [テスト出力] ウィンドウに詳細メッセージが表示されます。
 
-詳細メッセージを作成するには、 [Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) コマンドレットを使用します。
+詳細メッセージを作成するには、 [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) コマンドレットを使用します。
 
 ```PowerShell
 #The following line creates a verbose message.
@@ -149,10 +149,10 @@ Write-Verbose –Message "This is a verbose message."
 ## <a name="progress-records"></a>進捗状況レコード
 Runbook を (Azure ポータルの Runbook の [構成] タブで) 進捗状況レコードが記録されるように構成すると、各アクティビティの実行前後にレコードがジョブ履歴に書き込まれます。 ほとんどの場合、パフォーマンスを最大化するために、進行状況レコードを記録しないという Runbook の既定の設定を保持する必要があります。 このオプションを有効にするのは、Runbook のトラブルシューティングやデバッグをする場合のみです。 Runbook のテスト時には、Runbook が進歩状況レコードを記録するように構成されている場合でも、進歩状況メッセージは表示されません。
 
-[Write-Progress](http://technet.microsoft.com/library/hh849902.aspx) コマンドレットは、対話ユーザー向けに使用するものであるため、Runbook では無効です。
+[Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) コマンドレットは、対話ユーザー向けに使用するものであるため、Runbook では無効です。
 
 ## <a name="preference-variables"></a>ユーザー設定変数
-Windows PowerShell では [ユーザー設定変数](http://technet.microsoft.com/library/hh847796.aspx) を使用して、異なる出力ストリームに送信されるデータへの応答方法を決定します。 これらの変数を Runbook で設定することで、異なるストリームに送信されるデータへの応答方法を制御できます。
+Windows PowerShell では [ユーザー設定変数](https://technet.microsoft.com/library/hh847796.aspx) を使用して、異なる出力ストリームに送信されるデータへの応答方法を決定します。 これらの変数を Runbook で設定することで、異なるストリームに送信されるデータへの応答方法を制御できます。
 
 次の表は、Runbook で使用できるユーザー設定変数と、それらの有効値と既定値を示しています。 この表には、Runbook で有効な値のみが含まれています。 Windows PowerShell を Azure Automation の外部で使用する場合は、ユーザー設定変数で有効なその他の値があります。
 

@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ae5218bae12b9489d67b0264f0e5fdb6d833cb9e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 23b36fb647c2949dca1c5efe7f8194ec5a397965
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187769"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140402"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>接続済みファクトリ ソリューション アクセラレータのチュートリアル
 
@@ -53,7 +53,7 @@ ms.locfileid: "39187769"
 
 工場生産ラインは、シミュレートされたステーションと、シミュレートされた生産実行システム (MES) で構成されます。 シミュレートされたデバイスと OPC Publisher モジュールは、OPC Foundation が公開した [OPC UA .NET 標準][lnk-OPC-UA-NET-Standard]に基づいています。
 
-OPC Proxy と OPC Publisher は、[Azure IoT Edge][lnk-Azure-IoT-Gateway] に基づくモジュールとして実装されます。 シミュレートされた生産ラインごとに、指定されたゲートウェイが接続されています。
+OPC Proxy と OPC Publisher は、[Azure IoT Edge][lnk-Azure-IoT-Gateway] に基づくモジュールとして実装されます。 シミュレートされた生産ラインごとに、ゲートウェイが接続されています。
 
 シミュレーション コンポーネントはすべて、Azure Linux VM でホストされている Docker コンテナーで実行されます。 このシミュレーションは、シミュレートされた生産ラインを既定で 8 つ実行するように構成されています。
 
@@ -61,7 +61,7 @@ OPC Proxy と OPC Publisher は、[Azure IoT Edge][lnk-Azure-IoT-Gateway] に基
 
 生産ラインではパーツを製造します。 これは、組立ステーション、テスト ステーション、梱包ステーションという各種ステーションで構成されます。
 
-このシミュレーションが実行されると、OPC UA ノードを通じて公開されるデータが更新されます。 シミュレートされた生産ラインのステーションはすべて、OPC UA を通じて MES によって調整されます。
+このシミュレーションが実行されると、OPC UA ノードを通じて使用可能なデータが更新されます。 シミュレートされた生産ラインのステーションはすべて、OPC UA を通じて MES によって調整されます。
 
 ## <a name="simulated-manufacturing-execution-system"></a>シミュレートされた生産実行システム
 
@@ -69,7 +69,11 @@ MES は、OPC UA を通じて生産ラインの各ステーションを監視し
 
 ## <a name="gateway-opc-publisher-module"></a>Gateway OPC Publisher モジュール
 
-OPC Publisher モジュールは、ステーションの OPC UA サーバーに接続し、発行する OPC ノードにサブスクライブします。 このモジュールにより、ノードのデータは JSON 形式に変換されて暗号化され、OPC UA の発行/サブスクライブ メッセージとして IoT Hub に送信されます。
+OPC Publisher モジュールは、ステーションの OPC UA サーバーに接続し、発行する OPC ノードにサブスクライブします。 モジュール:
+
+1. ノード データを JSON 形式に変換します。
+1. JSON を暗号化します。
+1. OPC UA 発行/定期メッセージとして JSON を IoT Hub に送信します。
 
 OPC Publisher モジュールは、送信 HTTPS ポート (443) のみを必要とし、既存のエンタープライズ インフラストラクチャで使用できます。
 
@@ -77,7 +81,7 @@ OPC Publisher モジュールは、送信 HTTPS ポート (443) のみを必要�
 
 Gateway OPC UA Proxy モジュールは、バイナリの OPC UA コマンドと制御メッセージをトンネリングし、送信 HTTPS ポート (443) のみを必要とします。 これは、Web プロキシなど、既存のエンタープライズ インフラストラクチャで使用できます。
 
-このモジュールは、IoT Hub デバイスのメソッドを使用して、アプリケーション層でパケット化された TCP/IP データを転送したうえで、SSL/TLS を使用してエンドポイントの信頼、データの暗号化、整合性を確保します。
+このモジュールは、IoT Hub デバイスのメソッドを使用して、アプリケーション層でパケット化された TCP/IP データを転送し、SSL/TLS を使用してエンドポイントの信頼、データの暗号化、整合性を確保します。
 
 プロキシ自体を介して中継される OPC UA バイナリ プロトコルは、UA 認証および暗号化を使用します。
 
@@ -95,11 +99,11 @@ IoT Hub は、Azure TSI にイベント ソースを提供します。 TSI は�
 
 現在、TSI では、顧客がデータの保有期間をカスタマイズすることは許可されていません。
 
-TSI は、**SearchSpan** (**Time.From**, **Time.To**) を使用してノード データに対してクエリを実行し、**OPC UA ApplicationUri**、**OPC UA NodeId**、または **OPC UA DisplayName** 別に集計します。
+TSI は、時間ベースの **SearchSpan** を使用してノード データに対してクエリを実行し、**OPC UA ApplicationUri**、**OPC UA NodeId**、または **OPC UA DisplayName** 別に集計します。
 
-OEE および KPI ゲージのデータと時系列のグラフを取得するために、データは、イベントの数、Sum、Avg、Min、Max 別に集計されます。
+OEE および KPI ゲージのデータと時系列のグラフを取得するために、ソリューションは、イベントの数、**Sum**、**Avg**、**Min**、**Max** 別にデータを集計します。
 
-時系列は、さまざまなプロセスを使用して構築されます。 OEE と KPI は、ステーションのベース データから計算され、アプリケーション内のトポロジ (生産ライン、工場、企業) に対して通知されます。
+時系列は、さまざまなプロセスを使用して構築されます。 ソリューションは、ステーション ベース データから OEE と KPI の値を計算し、生産ライン、ファクトリ、およびエンタープライズ用に値のバブルを作成します。
 
 さらに、表示された期間が準備できているかどうかに関係なく、OEE および KPI トポロジの時系列がアプリで計算されます。 たとえば、日単位の表示は 1 時間ごとに更新されます。
 
@@ -116,7 +120,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 このソリューションでは、Azure Blob Storage を VM のディスク ストレージとして使用したり、デプロイ データの保存に使用したりします。
 
 ## <a name="web-app"></a>Web アプリ
-ソリューション アクセラレータの一部としてデプロイされた Web アプリは、統合された OPC UA クライアント、アラートの処理、テレメトリの視覚化で構成されています。
+ソリューション アクセラレータの一部としてデプロイされた Web アプリには、統合された OPC UA クライアント、アラートの処理、テレメトリの視覚化が含まれています。
 
 ## <a name="telemetry-data-flow"></a>テレメトリ データ フロー
 
@@ -161,7 +165,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
     - このステップは、データセンターの内部処理です。
 
 11. Web ブラウザーが、接続済みファクトリ WebApp に接続します。
-    - 接続済みファクトリ ダッシュボードをレンダリングします。
+    - 接続済みファクトリ ダッシュボードを表示します。
     - HTTPS で接続します。
     - 接続済みファクトリ アプリにアクセスするには、Azure Active Directory を介したユーザーの認証が必要です。
     - 接続済みファクトリ アプリへのすべての Web API 呼び出しは、偽造防止トークンによって保護されます。
@@ -182,9 +186,9 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 
 2. OPC Proxy (サーバー コンポーネント) が、IoT Hub に自身を登録します。
     - IoT Hub から既知のすべてのデバイスを読み取ります。
-    - Socket または Secure Websocket 上で MQTT over TLS を使用します。
+    - Socket または Secure WebSocket 上で MQTT over TLS を使用します。
 
-3. Web ブラウザーが、接続済みファクトリ WebApp に接続し、接続済みファクトリ ダッシュボードをレンダリングします。
+3. Web ブラウザーが、接続済みファクトリ WebApp に接続し、接続済みファクトリ ダッシュボードを表示します。
     - HTTPS を使用します。
     - ユーザーが、接続先の OPC UA サーバーを選択します。
 
@@ -212,7 +216,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
     - このデータは、接続済みファクトリ アプリの OPC UA スタックに配信されます。
 
 11. 接続済みファクトリ WebApp が、OPC UA サーバーから受信した OPC UA に固有の情報が付加された OPC ブラウザー UX を、レンダリングのために Web ブラウザーに返します。
-    - OPC ブラウザー UX のクライアント部分が、OPC アドレス空間を介してブラウズし、OPC アドレス空間内のノードに機能を適用する一方で、偽造防止トークンで保護された HTTPS で AJAX 呼び出しを使用して、接続済みファクトリ WebApp からデータを取得します。
+    - ユーザーは、OPC アドレス空間を介してブラウズし、OPC アドレス空間内のノードに機能を適用する一方で、OPC ブラウザー UX クライアントが、偽造防止トークンで保護された HTTPS で AJAX 呼び出しを使用して、接続済みファクトリ WebApp からデータを取得します。
     - クライアントは、必要に応じて、ステップ 4 ～ 10 で説明した通信を使用して、OPC UA サーバーと情報を交換します。
 
 > [!NOTE]

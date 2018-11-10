@@ -10,23 +10,23 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 30a1f2be1917ba6ea404a2862daaf5f51f35ac3f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2c4255b70ae9eb3b31b6fdfce33853f0d517aa1f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394886"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215482"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>コンピューティング ターゲットを選択して使用し、モデルをトレーニングする
 
-Azure Machine Learning サービスでは、いくつかの異なる環境でモデルをトレーニングできます。 __コンピューティング ターゲット__ と呼ばれるこれらの環境はローカルまたはクラウドにできます。 このドキュメントでは、サポートされているコンピューティング ターゲットとその使用方法について学びます。
+Azure Machine Learning サービスでは、さまざまな環境でモデルをトレーニングできます。 __コンピューティング ターゲット__ と呼ばれるこれらの環境はローカルまたはクラウドにできます。 このドキュメントでは、サポートされているコンピューティング ターゲットとその使用方法について学びます。
 
 コンピューティング ターゲットは、トレーニング スクリプトを実行または Web サービスとしてモデルがデプロイされたときにモデルをホストするリソースです。 コンピューティング ターゲットは、Azure Machine Learning SDK または CLI を使用して作成および管理できます。 別のプロセス (たとえば、Azure Portal または Azure CLI) で作成されたコンピューティング ターゲットがある場合、これを Azure Machine Learning サービス ワークスペースに接続して使用できます。
 
 マシン上でのローカル実行から始め、GPU や Azure Batch AI を備えたリモート データ サイエンス仮想マシンなどの別の環境にスケールアップおよびスケールアウトできます。 
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 0.168 でテストされました。 
+> この記事のコードは、Azure Machine Learning SDK バージョン 0.168 を使用してテストされました 
 
 ## <a name="supported-compute-targets"></a>サポートされているコンピューティング ターゲット
 
@@ -36,8 +36,13 @@ Azure Machine Learning サービスは、次のコンピューティング タ�
 |----|:----:|:----:|:----:|:----:|
 |[ローカル コンピューター](#local)| その可能性はあります | &nbsp; | ✓ | &nbsp; |
 |[データ サイエンス仮想マシン (DSVM)](#dsvm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Batch AI](#batch)| ✓ | ✓ | ✓ | ✓ | ✓ |
+|[Azure Batch AI](#batch)| ✓ | ✓ | ✓ | ✓ |
+|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Azure Data Lake Analytics](#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+
+> [!IMPORTANT]
+> <a id="pipeline-only"></a>* パイプラインで使用できるのは、Azure Databricks と Azure Data Lake Analytics __のみ__です。 パイプラインの詳細については、「[パイプラインと Azure Machine Learning](concept-ml-pipelines.md)」のドキュメントを参照してください。
 
 __[Azure Container Instances (ACI)](#aci)__ はモデルのトレーニングにも使用できます。 安価で簡単に作成および操作できるサーバーレス クラウド サービスです。 ACI は、GPU アクセラレーション、自動化されたハイパーパラメーターのチューニング、自動化されたモデル選択をサポートしません。 また、パイプラインでは使用できません。
 
@@ -52,7 +57,7 @@ Azure Machine Learning SDK、Azure CLI、または Azure Portal を使用して�
 > [!IMPORTANT]
 > 既存の Azure コンテナー インスタンスはワークスペースに接続できません。 代わりに、新しいインスタンスを作成する必要があります。
 >
-> ワークスペース内に Azure HDInsight クラスターを作成することはできません。 代わりに、既存のクラスターを接続する必要があります。
+> ワークスペース内に Azure HDInsight、Azure Databricks、または Azure Data Lake Store を作成することはできません。 代わりに、リソースを作成してから、それをワークスペースに接続する必要があります。
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -178,6 +183,7 @@ run_config_system_managed.environment.python.conda_dependencies = CondaDependenc
     run_config.environment.docker.enabled = True
 
     # Use CPU base image
+    # If you want to use GPU in DSVM, you must also use GPU base Docker image azureml.core.runconfig.DEFAULT_GPU_IMAGE
     run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
     print('Base Docker image is:', run_config.environment.docker.base_image)
 
@@ -295,7 +301,6 @@ run_config.environment.docker.enabled = True
 
 # set Docker base image to the default CPU-based image
 run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
-#run_config.environment.docker.base_image = 'microsoft/mmlspark:plus-0.9.9'
 
 # use conda_dependencies.yml to create a conda environment in the Docker image
 run_config.environment.python.user_managed_dependencies = False
@@ -310,6 +315,106 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
 ACI のコンピューティング ターゲットの作成には、数秒から数分 かかります。
 
 Azure コンテナー インスタンスでのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb) を参照してください。
+
+## <a id="databricks"></a>Azure Databricks
+
+Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境です。 これは、Azure Machine Learning パイプラインでモデルをトレーニングする際に、コンピューティング ターゲットとして使用できます。
+
+> [!IMPORTANT]
+> Azure Databricks コンピューティング ターゲットは、Machine Learning パイプラインでのみ使用できます。
+>
+> モデルのトレーニングに使用する前に、Azure Databricks ワークスペースを作成する必要があります。 これらのリソースを作成するには、[Azure Databricks での Spark ジョブの実行](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)に関するドキュメントを参照してください。
+
+コンピューティング ターゲットとして Azure Databricks に接続するには、Azure Machine Learning SDK を使用し、次の情報を提供する必要があります。
+
+* __コンピューティング名__: このコンピューティング リソースに割り当てる名前。
+* __リソース ID__: Azure Databricks ワークスペースのリソース ID。 次のテキストは、この値の形式の例です。
+
+    ```text
+    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.Databricks/workspaces/<databricks-workspace-name>
+    ```
+
+    > [!TIP]
+    > リソース ID を取得するには、次の Azure CLI コマンドを使います。 `<databricks-ws>` を Databricks ワークスペースの名前に置き換えます。
+    > ```azurecli-interactive
+    > az resource list --name <databricks-ws> --query [].id
+    > ```
+
+* __アクセス トークン__: Azure Databricks に対する認証に使用するアクセス トークン。 アクセス トークンを生成するには、[認証](https://docs.azuredatabricks.net/api/latest/authentication.html)に関するドキュメントを参照してください。
+
+次のコードは、コンピューティング ターゲットとして Azure Databricks に接続する方法を示しています。
+
+```python
+databricks_compute_name = os.environ.get("AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
+databricks_resource_id = os.environ.get("AML_DATABRICKS_RESOURCE_ID", "<databricks_resource_id>")
+databricks_access_token = os.environ.get("AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
+
+try:
+    databricks_compute = ComputeTarget(workspace=ws, name=databricks_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('databricks_compute_name {}'.format(databricks_compute_name))
+    print('databricks_resource_id {}'.format(databricks_resource_id))
+    print('databricks_access_token {}'.format(databricks_access_token))
+    databricks_compute = DatabricksCompute.attach(
+             workspace=ws,
+             name=databricks_compute_name,
+             resource_id=databricks_resource_id,
+             access_token=databricks_access_token
+         )
+    
+    databricks_compute.wait_for_completion(True)
+```
+
+## <a id="adla"></a>Azure Data Lake Analytics
+
+Azure Data Lake Analytics は、Azure クラウド内のビッグ データ分析プラットフォームです。 これは、Azure Machine Learning パイプラインでモデルをトレーニングする際に、コンピューティング ターゲットとして使用できます。
+
+> [!IMPORTANT]
+> Azure Data Lake Analytics コンピューティング ターゲットは、Machine Learning パイプラインでのみ使用できます。
+>
+> モデルのトレーニングに使用する前に、Azure Data Lake Analytics ワークスペースを作成する必要があります。 このリソースを作成するには、「[Azure Data Lake Analytics の使用を開始する](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)」を参照してください。
+
+コンピューティング ターゲットとして Data Lake Analytics に接続するには、Azure Machine Learning SDK を使用し、次の情報を提供する必要があります。
+
+* __コンピューティング名__: このコンピューティング リソースに割り当てる名前。
+* __リソース ID__: Data Lake Analytics アカウントのリソース ID。 次のテキストは、この値の形式の例です。
+
+    ```text
+    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.DataLakeAnalytics/accounts/<datalakeanalytics-name>
+    ```
+
+    > [!TIP]
+    > リソース ID を取得するには、次の Azure CLI コマンドを使います。 `<datalakeanalytics>` を Data Lake Analytics アカウントの名前に置き換えます。
+    > ```azurecli-interactive
+    > az resource list --name <datalakeanalytics> --query [].id
+    > ```
+
+次のコードは、コンピューティング ターゲットとして Data Lake Analytics に接続する方法を示しています。
+
+```python
+adla_compute_name = os.environ.get("AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
+adla_resource_id = os.environ.get("AML_ADLA_RESOURCE_ID", "<adla_resource_id>")
+
+try:
+    adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('adla_compute_name {}'.format(adla_compute_name))
+    print('adla_resource_id {}'.format(adla_resource_id))
+    adla_compute = AdlaCompute.attach(
+             workspace=ws,
+             name=adla_compute_name,
+             resource_id=adla_resource_id
+         )
+    
+    adla_compute.wait_for_completion(True)
+```
+
+> [!TIP]
+> Azure Machine Learning パイプラインは、Data Lake Analytics アカウントの既定のデータ ストアに格納されたデータのみ使用できます。 使用する必要があるデータが既定以外のストアにある場合は、[`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) を使用して、トレーニングの前にデータをコピーできます。
 
 ## <a id="hdinsight"></a>HDInsight クラスターの接続 
 
@@ -351,8 +456,19 @@ run_config.auto_prepare_environment = True
 ```
 
 ## <a name="submit-training-run"></a>トレーニングの実行の送信
-    
-トレーニングの実行を送信するコードは、コンピューティング ターゲットに関係なく同じです。
+
+トレーニングの実行を送信するには、2 つの方法があります。
+
+* `ScriptRunConfig` オブジェクトを送信する。
+* `Pipeline` オブジェクトを送信する。
+
+> [!IMPORTANT]
+> Azure Databricks、Azure Datalake Analytics、および Azure HDInsight のコンピューティング ターゲットは、パイプラインでのみ使用できます。
+> ローカルのコンピューティング ターゲットは、パイプラインでは使用できません。
+
+### <a name="submit-using-scriptrunconfig"></a>`ScriptRunConfig` を使用して送信する
+
+`ScriptRunConfig` を使用してトレーニングの実行を送信するコード パターンは、コンピューティング ターゲットに関係なく同じです。
 
 * コンピューティング ターゲットの実行構成を使用して `ScriptRunConfig` オブジェクトを作成します。
 * 実行を送信します。
@@ -360,13 +476,46 @@ run_config.auto_prepare_environment = True
 
 次の例では、このドキュメントで作成済みのシステム管理のローカル コンピューティング ターゲットの構成を使用します。
 
-```pyghon
+```python
 src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
 Spark on HDInsight でのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb) を参照してください。
+
+### <a name="submit-using-a-pipeline"></a>パイプラインを使用して送信する
+
+パイプラインを使用してトレーニングの実行を送信するコード パターンは、コンピューティング ターゲットに関係なく同じです。
+
+* コンピューティング リソースに対するパイプラインに 1 つのステップを追加します。
+* パイプラインを使用して実行を送信します。
+* 実行が完了するのを待ちます。
+
+次の例では、このドキュメントで作成済みの Azure Databricks コンピューティング ターゲットを使用します。
+
+```python
+dbStep = DatabricksStep(
+    name="databricksmodule",
+    inputs=[step_1_input],
+    outputs=[step_1_output],
+    num_workers=1,
+    notebook_path=notebook_path,
+    notebook_params={'myparam': 'testparam'},
+    run_name='demo run name',
+    databricks_compute=databricks_compute,
+    allow_reuse=False
+)
+# list of steps to run
+steps = [dbStep]
+pipeline = Pipeline(workspace=ws, steps=steps)
+pipeline_run = Experiment(ws, 'Demo_experiment').submit(pipeline)
+pipeline_run.wait_for_completion()
+```
+
+機械学習パイプラインの詳細については、「[パイプラインと Azure Machine Learning](concept-ml-pipelines.md)」のドキュメントを参照してください。
+
+パイプラインを使用してトレーニングを示す Jupyter Notebook の例については、[https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline) を参照してください。
 
 ## <a name="view-and-set-up-compute-using-the-azure-portal"></a>Azure Portal を使用した計算の表示および設定
 
@@ -387,11 +536,18 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
 
 1. コンピューティング ターゲットの名前を入力します。
 1. __トレーニング__ に接続する計算の種類を選択します。 
+
+    > [!IMPORTANT]
+    > Azure portal を使用してすべてのコンピューティングの種類を作成できるわけではありません。 現在トレーニング用に作成できる種類は次のとおりです。
+    > 
+    > * 仮想マシン
+    > * Batch AI
+
 1. __[新規作成]__ を選択し、必要なフォームに入力します。 
 1. __[作成]__
 1. 一覧からコンピューティング ターゲットを選択することによって、状態作成操作を表示できます。
 
-    ![計算一覧の表示](./media/how-to-set-up-training-targets/View_list.png) その計算の詳細が表示されます。
+    ![計算一覧の表示](./media/how-to-set-up-training-targets/View_list.png) コンピューティング ターゲットの詳細が表示されます。
     ![詳細の表示](./media/how-to-set-up-training-targets/vm_view.PNG)
 1. 上述のように、これらのターゲットに対して実行を送信できるようになりました。
 
@@ -401,8 +557,16 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
 
 1. **+** 記号をクリックし、コンピューティング ターゲットを追加します。
 2. コンピューティング ターゲットの名前を入力します。
-3. トレーニング用に接続する計算の種類を選択します。 Batch AI と Virtual Machines はトレーニング用のポータルで現在サポートされています。
-4. [既存を使用] を選択します。
+3. トレーニング用に接続する計算の種類を選択します。
+
+    > [!IMPORTANT]
+    > ポータルを使用してすべてのコンピューティングの種類を接続できるわけではありません。
+    > 現在トレーニング用に接続できる種類は次のとおりです。
+    > 
+    > * 仮想マシン
+    > * Batch AI
+
+1. [既存を使用] を選択します。
     - Batch AI クラスターに接続するときにドロップダウン リストからコンピューティング ターゲットを選択し、Batch AI ワークスペースおよび Batch AI クラスターを選択し、**[作成]** をクリックします。
     - 仮想マシンに接続するときに IP アドレス、ユーザー名/パスワードの組み合わせ、秘密/公開キー、およびポートを入力し、[作成] をクリックします。
 
@@ -412,7 +576,7 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
     > * [Linux または macOS で SSH キーを作成して使用する]( https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
     > * [Windows で SSH キーを作成して使用する]( https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
-5. プロビジョニング状態のステータスを表示するには、計算の一覧からコンピューティング ターゲットを選択します。
+5. プロビジョニング状態のステータスを表示するには、一覧からコンピューティング ターゲットを選択します。
 6. これらのターゲットに対して実行を送信できるようになりました。
 
 ## <a name="examples"></a>例

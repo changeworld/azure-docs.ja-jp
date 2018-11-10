@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 7cd2aecf21a86bb58452e48fcdf1d79f1d3a2104
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: d2cf2fec50e3dd803d828537ddd724ee61015c71
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321225"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248288"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers-preview"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法 (プレビュー)
 
 AKS クラスターの監視を有効にした後、それ以上監視する必要がないと判断した場合は、"*オプトアウト*" できます。この記事では、Azure CLI を使用して、または提供されている Azure Resource Manager テンプレートで、これを行う方法を示します。  
 
@@ -111,7 +111,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 4. **aksResourceId** と **aksResourceLocation** の値を、選択したクラスターの **[プロパティ]** ページに表示されている AKS クラスターの値を使用して編集します。
 
-    ![コンテナーのプロパティ ページ](./media/monitoring-container-health/container-properties-page.png)
+    ![コンテナーのプロパティ ページ](media/monitoring-container-insights-optout/container-properties-page.png)
 
     **[プロパティ]** ページの **[ワークスペース リソース ID]** もコピーします。 この値は、後で Log Analytics ワークスペースを削除する場合に必要になります。 このプロセスでは、Log Analytics ワークスペースの削除は行いません。 
 

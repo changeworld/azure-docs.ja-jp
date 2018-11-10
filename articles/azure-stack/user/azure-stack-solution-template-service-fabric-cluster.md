@@ -14,18 +14,20 @@ ms.topic: tutorial
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: 0b5f7442604dd31f730b0105d19231407e2b6f1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: abb77f59e49a98c1195dcd2e7b622b2b8e3fd7b8
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946115"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087286"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Service Fabric クラスターを Azure Stack にデプロイする
 
 セキュリティで保護された Service Fabric クラスターを Azure Stack にデプロイするには、Azure Marketplace の **[Service Fabric クラスター]** 項目を使用します。 
 
 Service Fabric を使った作業の詳細については、Azure のドキュメントで「[Azure Service Fabric の概要](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)」および「[Service Fabric クラスターのセキュリティに関するシナリオ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)」を参照してください。
+
+Azure Stack の Service Fabric クラスターには、リソース プロバイダー Microsoft.ServiceFabric が使用されていません。 正確に言うと、Azure Stack における Service Fabric クラスターは、DSC (Desired State Configuration) を使用してソフトウェア一式がプレインストールされた仮想マシン スケール セットです。
 
 ## <a name="prerequisites"></a>前提条件
 

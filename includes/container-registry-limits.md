@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: include
 ms.date: 08/30/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: bddb17a5163333a5aeb86b296a21867f0611d12f
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4021d1ac5a0b3d9d9bf19e9fb7f74952f2471c30
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43303861"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "49458845"
 ---
 | リソース | Basic | 標準 | Premium |
 |---|---|---|---|---|

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: jeedes
-ms.openlocfilehash: c9134ceebca696ed2b3376a69e26c2ea06f4f0f6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: c33edf13a8bcafd4a6c3d4885553fc856ec941d8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507123"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-4me"></a>チュートリアル: Azure Active Directory と 4me の統合
 
@@ -218,7 +218,7 @@ Azure AD への 4me の統合を構成するには、ギャラリーから管理
 このセクションの目的は、4me で Britta Simon というユーザーを作成することです。 4me では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない 4me ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[4me サポート チーム](mailto:support@4me.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [4me サポート チーム](mailto:support@4me.com)に問い合わせてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -255,7 +255,7 @@ Azure AD への 4me の統合を構成するには、ギャラリーから管理
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで 4me のタイルをクリックすると、4me アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

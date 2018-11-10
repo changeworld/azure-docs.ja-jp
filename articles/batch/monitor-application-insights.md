@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 5e0358ebf525c39c09df4268971fa71c02457821
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fb0760f24b8f384818db8154ffe871d7fd4ce429
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094195"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138346"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
 
@@ -25,6 +25,10 @@ ms.locfileid: "47094195"
 この記事では、Azure Batch .NET ソリューションに Application Insights ライブラリを追加して構成し、アプリケーション コードをインストルメント化する方法を示します。 Azure Portal 経由でアプリケーションを監視し、カスタム ダッシュボードを構築する方法も示します。 他の言語での Application Insights のサポートについては、[言語、プラットフォーム、統合に関するドキュメント](../application-insights/app-insights-platforms.md)をご覧ください。
 
 この記事に付属するサンプル C# ソリューションとコードは、[GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) にあります。 この例では、Application Insights インストルメンテーション コードを [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) の例に追加します。 この例をよく理解していない場合は、最初に TopNWords を構築し、実行してみてください。 そうすることで、複数のコンピューティング ノードで一連の入力 BLOB を並列に処理する基本的な Batch ワークフローを理解できます。 
+
+> [!TIP]
+> VM パフォーマンス カウンターなどの Application Insights データを Batch Explorer で表示するように Batch ソリューションを構成する方法もあります。 [Batch Explorer](https://github.com/Azure/BatchExplorer) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Mac、Linux、または Windows 用の[インストール パッケージ](https://azure.github.io/BatchExplorer/)をダウンロードしてください。 Application Insights のデータを Batch Explorer で有効にする簡単な手順については、[batch-insights リポジトリ](https://github.com/Azure/batch-insights)を参照してください。 
+>
 
 ## <a name="prerequisites"></a>前提条件
 * [Visual Studio 2017](https://www.visualstudio.com/vs)

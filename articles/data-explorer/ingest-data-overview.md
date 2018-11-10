@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 94f96d949f2a05f71e9565fdcbc7b48ed2c2a5c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1df22c505bffdfaf60bf9c6eec3ad4e698fff02
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972661"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139528"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure データ エクスプローラーでのデータ インジェスト
 
@@ -60,9 +60,15 @@ Kusto では、データの取り込みとクエリに使用できるクライ�
 
 * [Java SDK](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library)
 
+* [Node SDK]
+
 * [REST API](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **プログラムによるインジェストの手法**:
+
+* Azure データ エクスプローラーのデータ管理サービスを介したデータの取り込み (高スループットで信頼性の高いインジェスト)
+
+  * [**バッチ インジェスト**](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (SDK によって提供): クライアントは Azure Blob Storage にデータをアップロードし (Azure データ エクスプローラーのデータ管理サービスで指定)、通知を Azure キューに投稿します。 これは、大量で信頼性が高く低コストのデータ インジェストに推奨される手法です。
 
 * Azure データ エクスプローラー エンジンへのデータの直接取り込み (探索とプロトタイプ作成に最適)。
 
@@ -71,10 +77,6 @@ Kusto では、データの取り込みとクエリに使用できるクライ�
   * **クエリからの取り込み**: クエリ結果を指す制御コマンド (.set、.set-or-append、.set-or-replace) は、レポートまたは小さい一時テーブルを生成するために使用されます。
 
   * **ストレージからの取り込み**: 外部に格納されたデータ (例: Azure Blob Storage) を使用する制御コマンド (.ingest into) では、データを効率的に一括インジェストできます。
-
-* Azure データ エクスプローラーのデータ管理サービスを介したデータの取り込み (高スループットで信頼性の高いインジェスト)
-
-  * [**バッチ インジェスト**](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (SDK によって提供): クライアントは Azure Blob Storage にデータをアップロードし (Azure データ エクスプローラーのデータ管理サービスで指定)、通知を Azure キューに投稿します。 これは、大量で信頼性が高く低コストのデータ インジェストに推奨される手法です。
 
 **さまざまな方法の待機時間**:
 
@@ -125,7 +127,7 @@ Event Hub などのメッセージング サービスに基づく既存のイン
 
 ## <a name="next-steps"></a>次の手順
 
-[クイック スタート: イベント ハブから Azure データ エクスプローラーにデータを取り込む](ingest-data-event-hub.md)
+[クイック スタート: イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
 
 [クイック スタート: Azure データ エクスプローラーの Python ライブラリを使用してデータを取り込む](python-ingest-data.md)
 

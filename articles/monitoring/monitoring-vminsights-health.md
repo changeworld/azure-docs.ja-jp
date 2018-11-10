@@ -1,5 +1,5 @@
 ---
-title: VM の Azure Monitor を使用して仮想マシンの正常性を監視する | Microsoft Docs
+title: VM の Azure Monitor を使用して仮想マシンの正常性を監視する (プレビュー) | Microsoft Docs
 description: この記事では、VM の Azure Monitor を使用して仮想マシンと基になるオペレーティング システムの正常性を理解する方法について説明します。
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 84314f64d8a96e65f63cb5c6051f7f5e902cd682
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 059667787c905f47f6629afdb249a2273ceed585
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387823"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094229"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>VM の Azure Monitor を使用して Azure 仮想マシンの正常性を把握する
+# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>VM の Azure Monitor を使用して Azure 仮想マシンの正常性を把握する (プレビュー)
 Azure には監視領域において特定の役割やタスクを個別に実行する複数のサービスが含まれますが、Azure 仮想マシン上でホストされているオペレーティング システムの詳細な正常性情報を提供することはできませんでした。  Log Analytics または Azure Monitor を使用してさまざまな条件を監視することはできますが、仮想マシンのコア コンポーネントの正常性または全体的な正常性をモデル化して表現するようには設計されていませんでした。  VM の Azure Monitor 正常性機能では、主要なコンポーネントとその関係、それらのコンポーネントの正常性を測定する方法を指定する基準、および異常な状態が検出されたときのアラートを表すモデルを使用して、Windows または Linux ゲスト OS の可用性とパフォーマンスが事前に監視されます。  
 
 Azure VM と基になるオペレーティング システムの全体的な正常性状態は、VM の Azure Monitorm の正常性では、仮想マシンからの直接的な観点と、Azure Monitor からのリソース グループ内の全 VM に対する観点という 2 つの観点で観察できます。
@@ -35,7 +35,7 @@ VM の Azure Monitor の構成については、[VM の Azure Monitor の有効�
 
 ### <a name="windows-vms"></a>Windows VM
 
-- Available Megabytes of Memory (メモリの使用可能なメガバイト数) 
+- Available Megabytes of Memory (メモリの使用可能なメガバイト数) 
 - Average Disk Seconds Per Write (Logical Disk) (ディスクの平均書き込み秒数 (論理ディスク))
 - Average Disk Seconds Per Write (Disk) (ディスクの平均書き込み秒数 (ディスク))
 - Average Logical Disk Seconds Per Read (論理ディスクの平均読み取り秒数)

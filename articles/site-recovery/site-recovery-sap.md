@@ -1,27 +1,23 @@
 ---
-title: Azure Site Recovery を使用して多層 SAP NetWeaver アプリケーションのデプロイを保護する | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して SAP NetWeaver アプリケーションのデプロイを保護する方法について説明します。
-services: site-recovery
-documentationcenter: ''
+title: Azure Site Recovery を使用して多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して SAP NetWeaver アプリケーション デプロイのディザスター リカバリーを設定する方法について説明します。
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318692"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211725"
 ---
-# <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Site Recovery を使用して多層 SAP NetWeaver アプリケーションのデプロイを保護する
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する
 
 多くの場合、大規模および中規模の SAP デプロイには、何らかの形式のディザスター リカバリー ソリューションを使用します。 SAP のようなアプリケーションに移行するコア ビジネス プロセスが増えているため、堅牢でテスト可能なディザスター リカバリー ソリューションの重要性は高まっています。 Azure Site Recovery は SAP アプリケーションに対するテストを実施したうえで統合済みです。 また、Site Recovery はほとんどのオンプレミス ディザスター リカバリー ソリューションよりも優れた機能で、競合するソリューションよりも低い総保有コスト (TCO) です。
 
@@ -62,7 +58,7 @@ Site Recovery をデプロイする前に、このインフラストラクチャ
 
 この参照用アーキテクチャは、高可用性を備えた Azure の Windows 環境での SAP NetWeaver の実行を示しています。  このアーキテクチャは特定の仮想マシン (VM) サイズでデプロイされ、お客様の組織のニーズに合わせて変更できます。
 
-![一般的な SAP デプロイ パターンの図](./media/site-recovery-sap/reference_sap.png)
+![一般的な SAP デプロイ パターンの図](./media/site-recovery-sap/sap-netweaver_latest.png)
 
 ## <a name="disaster-recovery-considerations"></a>ディザスター リカバリーの考慮事項
 

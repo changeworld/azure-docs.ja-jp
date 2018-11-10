@@ -4,17 +4,17 @@ description: いくつかの初歩的なクエリを実行するには、Azure R
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ba3df8f0f7fa0443e64972647b6f146f756e62d6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d5b2bb719bcd5c2145740a02bc408385953ff739
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646630"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084532"
 ---
 # <a name="starter-resource-graph-queries"></a>Resource Graph の初歩的なクエリ
 
@@ -58,7 +58,7 @@ Search-AzureRmGraph -Query "summarize count()"
 
 ## <a name="list-resources"></a>名前で並べ替えられたリソースの一覧表示
 
-このクエリは、あらゆる種類のリソースまたは特定の一致するプロパティを制限することなく、Azure リソースの**名前**、**種類**および**場所**のみを返しますが、`order by`**名前**プロパティを昇順 (`asc`) で整理するために使用します。
+このクエリは、あらゆる種類のリソースを返しますが、返されるプロパティは **name**、**type**、**location** に限られます。 `order by` を使用することにより、これらのプロパティが **name** プロパティの昇順 (`asc`) で並べ替えらえます。
 
 ```Query
 project name, type, location
@@ -75,8 +75,7 @@ Search-AzureRmGraph -Query "project name, type, location | order by name asc"
 
 ## <a name="show-vms"></a>降順の名前で順序付けられたすべての仮想マシンの表示
 
-すべての Azure リソースを取得する代わりに、仮想マシン(`Microsoft.Compute/virtualMachines`型) の一覧のみが必要な場合は、結果においてプロパティ**の種類**と照合することができます。
-前のクエリと同様に、`desc` は `order by` を降順に変更します。 `=~`の種類一致により、Resource Graph では大文字と小文字が区別されないことを示します。
+仮想マシン (`Microsoft.Compute/virtualMachines`型) のみを一覧表示したければ、結果において **type** プロパティと突き合わせます。 前のクエリと同様に、`desc` は `order by` を降順に変更します。 `=~`の種類一致により、Resource Graph では大文字と小文字が区別されないことを示します。
 
 ```Query
 project name, location, type
@@ -165,7 +164,8 @@ Search-AzureRmGraph -Query "where type contains 'storage' | distinct type"
 
 ## <a name="list-publicip"></a>パブリック IP アドレスの一覧表示
 
-前のクエリと同様に、 **publicIPAddresses** を含む種類を全て見つけます。 このクエリは、**properties.ipAddress** が null の場合、**properties.ipAddress** のみを返す場合、および上位 100 件の結果を`limit`する場合に結果を除外するパターンで拡張します。 選択したシェルによって引用符のエスケープが必要となる場合があります。
+前のクエリと同様に、type に **publicIPAddresses** という語を含むものをすべて検索します。
+このクエリは、**properties.ipAddress** が null の場合、**properties.ipAddress** のみを返す場合、および上位 100 件の結果を`limit`する場合に結果を除外するパターンで拡張します。 選択したシェルによって引用符のエスケープが必要となる場合があります。
 
 ```Query
 where type contains 'publicIPAddresses' and properties.ipAddress != ''
@@ -200,7 +200,7 @@ Search-AzureRmGraph -Query "where type contains 'publicIPAddresses' and properti
 
 ## <a name="list-tag"></a>特定のタグ値が付いたリソースの一覧表示
 
-タグなどの Azure リソースの種類以外のプロパティによる結果を制限することができます。 この例では、**内部**の値をもつ**環境**のタグ名を使用して Azure リソースをフィルター処理しています。
+タグなどの Azure リソースの種類以外のプロパティによる結果を制限することができます。 この例では、**Internal** という値を持つ、**Environment** というタグ名の Azure リソースをフィルターで抽出しています。
 
 ```Query
 where tags.environment=~'internal'
@@ -215,7 +215,7 @@ az graph query -q "where tags.environment=~'internal' | project name"
 Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name"
 ```
 
-そのリソースが持っていたタグおよびそれらのタグの値を提供する必要があった場合も、この例ではプロパティ **タグ** を `project` キーワードに追加することにより拡張することができました。
+そのリソースが持っているタグとその値も得る必要がある場合は、`project` キーワードに **tags** プロパティを追加します。
 
 ```Query
 where tags.environment=~'internal'
@@ -232,8 +232,7 @@ Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name, t
 
 ## <a name="list-specific-tag"></a>特定のタグ値を持つすべてのストレージ アカウントの一覧表示
 
-前例のフィルター機能と** 種類 **プロパティによる Azure リソースの種類を組み合わせることにより、
-特定のタグ名と値をもつ特定の種類の Azure リソースの検索を制限することができます。
+前の例のフィルター機能を組み合わせて、**type** プロパティで Azure リソースの種類をフィルター処理してみましょう。 このクエリでは、特定の種類の Azure リソースを抽出する検索が、さらに特定のタグ名と値で制限されています。
 
 ```Query
 where type =~ 'Microsoft.Storage/storageAccounts'

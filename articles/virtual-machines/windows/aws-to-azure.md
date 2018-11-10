@@ -1,6 +1,6 @@
 ---
 title: Windows AWS VM から Azure への移行 | Microsoft Docs
-description: Azure PowerShell を使用して、アマゾン ウェブ サービス (AWS) EC2 Windows インスタンスを Azure Virtual Machines に移行します。
+description: アマゾン ウェブ サービス (AWS) EC2 Windows インスタンスを Azure 仮想マシンに移行します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: cb5b68e7bd0a1b247327e7147fe38eae19395f50
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3fa890b02c791f26f3f25bf2418b105d1116ca75
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726535"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094428"
 ---
-# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>PowerShell を使用してアマゾン ウェブ サービス (AWS) から Azure に Windows VM を移行する
+# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows VM をアマゾン ウェブ サービス (AWS) から Azure 仮想マシンに移行する
 
 ワークロードのホストについて Azure 仮想マシンを評価する場合、既存のアマゾン ウェブ サービス (AWS) EC2 Windows VM インスタンスをエクスポートしてから、仮想ハード ディスク (VHD) を Azure にアップロードできます。 VHD のアップロード後、その VHD から Azure に新しい VM を作成できます。 
 

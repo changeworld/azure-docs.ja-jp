@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144482"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139688"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Azure Active Directory テナントの削除
 テナントを削除すると、そのテナントに含まれるリソースもすべて削除されます。 テナントを削除する前の準備として、その関連リソースを最小限にする必要があります。 ポータルから Azure AD テナントを削除できるのは、Azure Active Directory (Azure AD) グローバル管理者だけです。

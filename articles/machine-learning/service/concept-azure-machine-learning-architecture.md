@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 09/24/2018
-ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.date: 10/24/2018
+ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237978"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210688"
 ---
-# <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>アーキテクチャと概念: Azure Machine Learning サービスのしくみ 
+# <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning サービスのしくみ: アーキテクチャと概念
 
 このドキュメントでは、Azure Machine Learning サービスのアーキテクチャと概念について説明します。 次の図は、サービスの主要なコンポーネントと、サービスを使用するときの一般的なワークフローを示したものです。 
 
@@ -25,13 +25,13 @@ ms.locfileid: "48237978"
 ワークフローの一般的な手順は次のとおりです。
 
 1. __Python__ で機械学習トレーニング スクリプトを開発します。
-1. __コンピューティング ターゲット__ を作成して構成します。
+1. __コンピューティング ターゲット__を作成して構成します。
 1. 構成したコンピューティング ターゲットに __スクリプトを送信__ して、その環境で実行します。 トレーニングの間に、コンピューティング ターゲットは実行レコードを __データストア__ に格納します。 レコードは __実験__ に保存されます。
-1. 現在と過去の実行から __実験をクエリ__ してログに記録されたメトリックを取得します。 メトリックが目的の結果を示していない場合は、ステップ 1 に戻ってスクリプトを繰り返します。
-1. 満足できる実行が見つかった場合は、永続化されたモデルを __モデル レジストリ__ に登録します。
+1. 現在と過去の実行から__実験をクエリ__してログに記録されたメトリックを取得します。 メトリックが目的の結果を示していない場合は、ステップ 1 に戻ってスクリプトを繰り返します。
+1. 満足できる実行が見つかった場合は、永続化されたモデルを__モデル レジストリ__に登録します。
 1. スコアリング スクリプトを開発します。
-1. __イメージを作成__ し、それを __イメージ レジストリ__ に登録します。 
-1. Azure に __Web サービス__ として __イメージをデプロイ__ します。
+1. __イメージを作成__し、それを__イメージ レジストリ__に登録します。 
+1. Azure に __Web サービス__として__イメージをデプロイ__します。
 
 
 [!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
@@ -156,16 +156,28 @@ Azure IoT Edge はモジュールが実行されるのを保証し、モジュ�
 
 実験の使用の例については、「[クイック スタート: Azure Machine Learning サービスの基本操作](quickstart-get-started.md)」をご覧ください。
 
+## <a name="pipelines"></a>パイプライン
+
+パイプラインの用途は、機械学習のフェーズをつなぎ合わせるワークフローを作成して管理することです。 たとえば、パイプラインにはデータ準備、モデル トレーニング、モデル デプロイ、推論の各フェーズが含まれることが考えられます。 それぞれのフェーズには、複数のステップを含めることができ、各ステップは、さまざまなコンピューティング先において無人実行することができます。
+
+このサービスを使用した機械学習パイプラインの詳細については、「[パイプラインと Azure Machine Learning](concept-ml-pipelines.md)」の記事を参照してください。
+
 ## <a name="compute-target"></a>コンピューティング ターゲット
 
-コンピューティング ターゲットは、トレーニング スクリプトを実行するために、または Web サービスのデプロイをホストするために使用されるコンピューティング リソースです。 サポートされているコンピューティング ターゲットを次に示します。 
+コンピューティング ターゲットは、トレーニング スクリプトを実行するために、またはサービスのデプロイをホストするために使用されるコンピューティング リソースです。 サポートされているコンピューティング ターゲットを次に示します。 
 
-* ユーザーのローカル コンピューター
-* Azure の Linux VM (Data Science Virtual Machine など)
-* Azure Batch AI クラスター
-* Apache Spark for HDInsight
-* Azure コンテナー インスタンス
-* Azure Kubernetes Service
+| コンピューティング ターゲット | トレーニング | Deployment |
+| ---- |:----:|:----:|
+| ユーザーのローカル コンピューター | ✓ | &nbsp; |
+| Azure の Linux VM</br>(Data Science Virtual Machine など) | ✓ | &nbsp; |
+| Azure Batch AI クラスター | ✓ | &nbsp; |
+| Azure Databricks | ✓ | &nbsp; | &nbsp; |
+| Azure Data Lake Analytics | ✓ | &nbsp; |
+| Apache Spark for HDInsight | ✓ | &nbsp; |
+| Azure コンテナー インスタンス | ✓ | ✓ |
+| Azure Kubernetes Service | &nbsp; | ✓ |
+| Azure IoT Edge | &nbsp; | ✓ |
+| Project Brainwave</br>(フィールド プログラマブル ゲート アレイ) | &nbsp; | ✓ |
 
 コンピューティング ターゲットはワークスペースに接続されています。 ローカル コンピューター以外のコンピューティング ターゲットは、ワークスペースのユーザーによって共有されます。
 
@@ -187,7 +199,7 @@ Azure IoT Edge はモジュールが実行されるのを保証し、モジュ�
 
 モデルをトレーニングするには、トレーニング スクリプトおよび関連ファイルが格納されているディレクトリを指定します。 実験名も指定します。これは、トレーニング中に収集された情報を格納するために使用されます。 トレーニングでは、ディレクトリ全体がトレーニング環境 (コンピューティング ターゲット) にコピーされて、実行構成で指定されているスクリプトが開始されます。 ディレクトリのスナップショットも、ワークスペース内の実験の下に格納されます。
 
-スクリプトを使用したモデルのトレーニングの例については、[Python を使用したワークスペースの作成](quickstart-get-started.md)に関するページをご覧ください。
+例については、[Python でワークスペースを作成する方法](quickstart-get-started.md)に関するページを参照してください。
 
 ## <a name="logging"></a>ログの記録
 

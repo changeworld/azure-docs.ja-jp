@@ -1,6 +1,6 @@
 ---
-title: Site Recovery コンテナーを削除する
-description: サイトの回復シナリオに基づいて、Azure Site Recovery コンテナーを削除する方法を説明します。
+title: Azure Site Recovery サービス用に構成された Recovery Services コンテナーを削除する
+description: Azure Site Recovery 用に構成された Recovery Services コンテナーを削除する方法について説明します
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 9c4a88d8a3d63555a57bd5553b721cfbcd77df2c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f351bd715baf86407c249e13aa02cf3c37e374c4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971190"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212422"
 ---
-# <a name="delete-a-site-recovery-vault"></a>Site Recovery コンテナーを削除する
+# <a name="delete-a-site-recovery-recovery-services-vault"></a>Site Recovery Recovery Services コンテナーを削除する
 
 依存関係により、Azure Site Recovery コンテナーが削除できない場合があります。 実行する必要のあるアクションは、サイトの回復シナリオによって異なります。 Azure Backup で使用されているコンテナーを削除するには、「[Azure のバックアップ コンテナーを削除する](../backup/backup-azure-delete-vault.md)」を参照してください。
 

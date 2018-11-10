@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f70cd5de29cc3050142dfff905acae2008dab115
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379124"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157362"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box Gateway のシステム要件 (プレビュー)
 
@@ -56,7 +56,7 @@ Data Box Gateway に接続されるクライアントまたはホストでサポ
 
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
-Data Box Gateway でサポートされるストレージの種類の一覧を次に示します。
+Data Box Gateway でサポートされるストレージ アカウントの一覧を次に示します。
 
 | **ストレージ アカウント** | **メモ** |
 | --- | --- |

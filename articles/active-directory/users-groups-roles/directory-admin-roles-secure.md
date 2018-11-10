@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 55ce6398d89e56f92874d0ec135377d2a08cf075
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f42e7c2e564f660df1e88c63c00a9f04db7c8116
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297811"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240105"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -388,7 +388,7 @@ Office 365 を使用している場合。
 
 8. 潜在的なフォレンジック調査と法的調査のために関連ログのバックアップを保存してください。
 
-Microsoft Office 365 がセキュリティ インシデントを処理する方法について詳しくは、[Microsoft Office 365 でのセキュリティ インシデント管理](http://aka.ms/Office365SIM)に関するドキュメントをご覧ください。
+Microsoft Office 365 がセキュリティ インシデントを処理する方法について詳しくは、[Microsoft Office 365 でのセキュリティ インシデント管理](https://aka.ms/Office365SIM)に関するドキュメントをご覧ください。
 
 ## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>よくあるご質問: 特権アクセスの保護についてよく寄せられる質問  
 

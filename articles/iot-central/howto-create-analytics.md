@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c170f573a473d3fdfca5c916b4be594dc93d6b27
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368088"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156325"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>分析を使用してデバイス データを分析する方法
 
@@ -21,7 +21,7 @@ ms.locfileid: "46368088"
 *この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
 
-Microsoft Azure IoT Central には、大量のデバイス データを理解するための豊富な分析機能が用意されています。 最初に、左側のナビゲーション メニューで **[分析]** を選択します。 
+Azure IoT Central には、大量のデバイス データを理解するための豊富な分析機能が用意されています。 最初に、左側のナビゲーション メニューで **[分析]** を選択します。 
 
   ![分析 への IoT Central ナビゲーション](media\howto-create-analytics\analytics-navigation.png)
 

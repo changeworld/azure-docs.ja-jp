@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 69818fdb8124b9afa176ccd4dfd74cf0f2f4b346
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498506"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233805"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -29,12 +29,15 @@ ms.locfileid: "46498506"
 
 * Azure のネットワーク
 * ネットワーク アクセス制御
+* Azure Firewall
 * セキュリティで保護されたリモート アクセスとクロスプレミス接続
 * 可用性
 * 名前解決
 * 境界ネットワーク (DMZ) のアーキテクチャ
-* 監視と脅威の検出
 * Azure の DDoS 保護
+* Azure Front Door
+* Traffic Manager
+* 監視と脅威の検出
 
 ## <a name="azure-networking"></a>Azure のネットワーク
 
@@ -126,6 +129,19 @@ NSG、UDR、および強制トンネリングを使用すると、 [OSI モデ�
 
 Azure パートナー ソリューションを使用すれば、これらの拡張ネットワーク セキュリティ機能を利用できます。 最新の Azure パートナー ネットワーク セキュリティ ソリューションについては、[Azure Marketplace](https://azure.microsoft.com/marketplace/) にアクセスし、"security" および "network security" を検索すると見つかります。
 
+## <a name="azure-firewall"></a>Azure Firewall
+
+Azure Firewall は、Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 これは、組み込みの高可用性とクラウドによる無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。 機能の一部を以下に示します。
+
+* 高可用性
+* クラウドのスケーラビリティ
+* アプリケーションの FQDN のフィルタリング規則
+* ネットワーク トラフィックのフィルタリング規則
+
+詳細情報:
+
+* [Azure Firewall の概要](../firewall/overview.md)
+
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>セキュリティで保護されたリモート アクセスとクロスプレミス接続
 
 Azure リソースのセットアップ、構成、管理は、リモートで実行する必要があります。 また、オンプレミスと Azure パブリック クラウドの両方にコンポーネントがある [ハイブリッド IT](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) ソリューションをデプロイする場合もあります。 こうしたシナリオの場合、セキュリティで保護されたリモート アクセスが必要になります。
@@ -139,9 +155,15 @@ Azure のネットワークは、セキュリティで保護されたリモー�
 
 ### <a name="connect-individual-workstations-to-a-virtual-network"></a>個々のワークステーションから仮想ネットワークへの接続
 
-Azure の仮想マシンとサービスの管理を個々の開発者や運用担当者に許可する必要がある場合があります。 たとえば、仮想ネットワーク上の仮想マシンにアクセスする必要があるとします。 しかし、セキュリティ ポリシーでは、RDP や SSH を使って個々 の仮想マシンにリモート アクセスすることが許可されていません。 この場合、ポイント対サイト VPN 接続を使用できます。
+Azure の仮想マシンとサービスの管理を個々の開発者や運用担当者に許可する必要がある場合があります。 たとえば、仮想ネットワーク上の仮想マシンにアクセスする必要があるとします。 しかし、セキュリティ ポリシーでは、RDP や SSH を使って個々 の仮想マシンにリモート アクセスすることが許可されていません。 この場合、[ポイント対サイト VPN](../vpn-gateway/point-to-site-about.md) 接続を使用できます。
 
-ポイント対サイト VPN 接続では [SSTP VPN](https://technet.microsoft.com/library/cc731352.aspx) プロトコルにより、ユーザーと仮想ネットワークの間にセキュリティで保護されたプライベート接続をセットアップできます。 VPN 接続が確立されると、ユーザーは RDP や SSH を VPN リンク経由で使用して、仮想ネットワーク上の任意の仮想マシンにアクセスできるようになります (ユーザーが認証可能で、かつ承認済みである場合)。
+ポイント対サイト VPN 接続では、ユーザーと仮想ネットワークの間にセキュリティで保護されたプライベート接続を設定できます。 VPN 接続が確立されると、ユーザーは RDP や SSH を VPN リンク経由で使用して、仮想ネットワーク上の任意の仮想マシンにアクセスできるようになります (ユーザーが認証可能で、かつ承認済みである場合)。ポイント対サイト VPN は以下をサポートしています。
+
+* Secure Socket トンネリング プロトコル (SSTP)。これは、SSL ベースの独自の VPN プロトコルです。 SSL VPN ソリューションはファイアウォールを通過できます。これは、ほとんどのファイアウォールで開かれている TCP ポート 443 が SSL で使用されるためです。 SSTP は、Windows デバイスでのみサポートされます。 Azure では、SSTP を備えたすべてのバージョンの Windows (Windows 7 以降) がサポートされています。
+
+* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。
+
+* [OpenVPN](https://azure.microsoft.com/updates/openvpn-support-for-azure-vpn-gateways/)
 
 詳細情報:
 
@@ -165,11 +187,13 @@ Azure の仮想マシンとサービスの管理を個々の開発者や運用�
 * VPN 接続ではデータがインターネット上を移動します。 そのため、パブリック ネットワークを移動するデータに潜在的なセキュリティ問題が発生します。 また、インターネット接続については信頼性と可用性を保証することはできません。
 * 仮想ネットワークへの VPN 接続では、最大発信速度が 200 Mbps 前後であるため、アプリケーションや目的によっては、十分な帯域幅が確保できません。
 
-クロスプレミス接続で最高レベルのセキュリティと可用性を必要とする企業は、専用 WAN リンクを使用してリモート サイトに接続するのが一般的です。 Azure では、専用の WAN リンクを使用して、オンプレミスのネットワークを仮想ネットワークに接続できます。 それを可能にするのが、Azure ExpressRoute です。
+クロスプレミス接続で最高レベルのセキュリティと可用性を必要とする企業は、専用 WAN リンクを使用してリモート サイトに接続するのが一般的です。 Azure では、専用の WAN リンクを使用して、オンプレミスのネットワークを仮想ネットワークに接続できます。 Azure ExpressRoute、ExpressRoute Direct、および Express Route Global Reach によって、これが可能になっています。
 
 詳細情報:
 
 * [ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)
+* [ExpressRoute Direct](../expressroute/expressroute-erdirect-about.md)
+* [ExpressRoute Global Reach](..//expressroute/expressroute-global-reach.md)
 
 ### <a name="connect-virtual-networks-to-each-other"></a>仮想ネットワークどうしの接続
 
@@ -287,6 +311,46 @@ Azure は、Azure DNS という形で可用性とパフォーマンスの高い�
 
 * [Microsoft クラウド サービスとネットワーク セキュリティ](../best-practices-network-security.md)
 
+## <a name="azure-ddos-protection"></a>Azure の DDoS 保護
+
+分散型サービス拒否 (DDoS) 攻撃は、アプリケーションをクラウドに移行している顧客が直面する可用性とセキュリティに関する最大の関心事の一部です。 DDoS 攻撃は、アプリケーションのリソースを使い果たして、そのアプリケーションを正当なユーザーから使用不能にしようとします。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
+Microsoft では、Azure Platform の一部として、**Basic** と呼ばれる DDoS Protection を提供しています。 これは無料で提供され、一般的なネットワーク レベル攻撃の監視とリアルタイムの対応策に常に含まれています。 DDoS Protection **Basic** に含まれている保護に加え、**Standard** オプションを有効にできます。 DDoS Protection Standard の機能には、次のものが含まれます。
+
+* **ネイティブ プラットフォームの統合:** Azure にネイティブに統合します。 Azure Portal による構成が含まれます。 DDoS Protection Standard は、ユーザーのリソースおよびリソース構成を理解しています。
+* **ターンキー保護:** DDoS Protection Standard が有効になるとすぐに、簡略化された構成によって、仮想ネットワーク上のすべてのリソースが直ちに保護されます。 ユーザーが介入したり、ユーザーが定義したりする必要はありません。 DDoS Protection Standard では、攻撃が検出されるとすぐに自動で軽減されます。
+* **常時接続のトラフィック監視:** DDoS 攻撃の兆候を検出するために、アプリケーションのトラフィック パターンが 24 時間 365 日監視されます。 軽減策は、保護ポリシーを超えた場合に実行されます。
+* **攻撃の軽減策レポート:** 攻撃の軽減策レポートでは、集約されたネットワーク フロー データを使用して、リソースを対象とした攻撃に関する詳細な情報を提供します。
+* **攻撃の軽減フロー ログ:** 攻撃の軽減フロー ログを使用すると、アクティブな DDoS 攻撃中に、破棄されたトラフィック、転送されたトラフィック、およびその他の攻撃データをほぼリアルタイムに確認できます。
+* **アダプティブ チューニング:** インテリジェント トラフィック プロファイリングが一定期間にわたってアプリケーションのトラフィックを学習し、そのサービスに最も適したプロファイルを選択して更新します。 このプロファイルは、時間の経過とともにトラフィックが変化すると調整されます。 レイヤー 3 からレイヤー 7 までの保護: Web アプリケーション ファイアウォールと併用すると、全スタックにわたって DDoS 保護が提供されます。
+* **広範囲にわたる軽減スケール:** 60 種類を超える攻撃を軽減することができ、地球規模の容量を利用して、過去最大の DDoS 攻撃からも保護されます。
+* **攻撃メトリック:** 各攻撃から要約されたメトリックに Azure Monitor 経由でアクセスできます。
+* **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Log Analytics、Splunk、Azure Storage、電子メール、Azure Portal などの運用ソフトウェアに統合されます。
+* **コストの保証:** データ転送とアプリケーションは、ドキュメント化された DDoS 攻撃のサービス クレジットをスケールアウトします。
+* **DDoS への迅速な対応:** DDoS Protection Standard のお客様は、アクティブな攻撃中に Rapid Response チームを利用できるようになりました。 DRR では、攻撃の調査、攻撃中の独自の軽減策、攻撃後の分析に関して支援できます。
+
+
+詳細情報:
+
+* [DDOS 保護の概要](../virtual-network/ddos-protection-overview.md)
+
+## <a name="azure-front-door"></a>Azure Front Door
+
+Azure Front Door サービスでは、Web トラフィックのグローバルなルーティングを定義、管理、監視することができます。 最適なパフォーマンスと高可用性を得るため、トラフィックのルーティングが最適化されます。 Azure Front Door を使用すると、アクセス制御のためのカスタムの Web アプリケーション ファイアウォール (WAF) 規則を作成して、クライアント IP アドレス、国番号、および http パラメーターに基づいて HTTP/HTTPS ワークロードを不正使用から保護することができます。 さらに、Front Door では悪意のあるボット トラフィックと戦うためのレート制限ルールを作成することもできます。これには、SSL オフロードと、HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が含まれます。
+
+Front Door プラットフォーム自体は、Azure DDoS Protection Basic によって保護されます。 さらに保護するために、Azure DDoS Protection Standard を VNET で有効にし、自動チューニングとリスク軽減によってネットワーク層 (TCP または UDP) 攻撃からリソースを保護することもできます。 Front Door はレイヤー 7 のリバース プロキシであり、既定では Web トラフィックに、バックエンド サーバーへのパススルーのみを許可し、他の種類のトラフィックはブロックします。
+
+詳細情報:
+
+* Azure Front Door 機能セット全体の詳細については、[Azure Front Door の概要](../frontdoor/front-door-overview.md)に関する記事で確認できます
+
+## <a name="azure-traffic-manager"></a>Azure Traffic Manager
+
+Azure Traffic Manager は、世界中の Azure リージョン間でサービスへのトラフィックを最適に配分しつつ、高可用性と応答性を実現する DNS ベースのトラフィック ロード バランサーです。 Traffic Manager は、DNS を使用し、トラフィック ルーティング方法とエンドポイントの正常性に基づいて最適なサービス エンドポイントにクライアント要求を誘導します。 エンドポイントは、Azure の内部または外部でホストされている、インターネットに公開されたサービスです。 Traffic Manager はエンドポイントを監視し、使用できないエンドポイントにはトラフィックを転送しません。
+
+詳細情報:
+
+* [Azure Traffic Manager の概要](../traffic-manager/traffic-manager-overview.md)
+
 ## <a name="monitoring-and-threat-detection"></a>監視と脅威の検出
 
 Azure では、この重要な分野で、早期検出、監視、ネットワーク トラフィックの収集および確認に役立つ機能を提供しています。
@@ -318,6 +382,14 @@ Security Center は、ネットワーク セキュリティの最適化と監視
 
 * [Azure Security Center 入門](../security-center/security-center-intro.md)
 
+### <a name="virtual-network-tap"></a>仮想ネットワーク TAP
+
+Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) を使用すると、仮想マシン ネットワークのトラフィックをネットワーク パケット コレクターまたは分析ツールに連続してストリーミングできます。 コレクターまたは分析ツールは、ネットワーク仮想アプライアンス パートナーから提供されています。 同じ仮想ネットワーク TAP リソースを使用して、同じサブスクリプションまたは異なるサブスクリプションの複数のネットワーク インターフェイスからのトラフィックを集計できます。
+
+詳細情報:
+
+* [仮想ネットワーク TAP](../virtual-network/virtual-network-tap-overview.md)
+
 ### <a name="logging"></a>ログの記録
 
 ネットワーク レベルにおけるログ記録は、あらゆるネットワーク セキュリティ シナリオの主要な機能です。 Azure では、NSG に関して入手した情報をログに記録して、ネットワーク レベルのログ情報を取得できます。 NSG ログ記録によって、次のログから情報を取得します。
@@ -330,21 +402,3 @@ Security Center は、ネットワーク セキュリティの最適化と監視
 詳細情報:
 
 * [ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md)
-
-## <a name="azure-ddos-protection"></a>Azure の DDoS 保護
-
-分散型サービス拒否 (DDoS) 攻撃は、アプリケーションをクラウドに移行している顧客が直面する可用性とセキュリティに関する最大の関心事の一部です。 DDoS 攻撃は、アプリケーションのリソースを使い果たして、そのアプリケーションを正当なユーザーから使用不能にしようとします。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
-Microsoft では、Azure Platform の一部として、**Basic** と呼ばれる DDoS Protection を提供しています。 これは無料で提供され、一般的なネットワーク レベル攻撃の監視とリアルタイムの対応策に常に含まれています。 DDoS Protection **Basic** に含まれている保護に加え、**Standard** オプションを有効にできます。 DDoS Protection Standard の機能には、次のものが含まれます。
-
-* **ネイティブ プラットフォームの統合:** Azure にネイティブに統合します。 Azure Portal による構成が含まれます。 DDoS Protection Standard は、ユーザーのリソースおよびリソース構成を理解しています。
-* **ターンキー保護:** DDoS Protection Standard が有効になるとすぐに、簡略化された構成によって、仮想ネットワーク上のすべてのリソースが直ちに保護されます。 ユーザーが介入したり、ユーザーが定義したりする必要はありません。 DDoS Protection Standard では、攻撃が検出されるとすぐに自動で軽減されます。
-* **常時接続のトラフィック監視:** DDoS 攻撃の兆候を検出するために、アプリケーションのトラフィック パターンが 24 時間 365 日監視されます。 軽減策は、保護ポリシーを超えた場合に実行されます。
-* **アダプティブ チューニング:** インテリジェント トラフィック プロファイリングが一定期間にわたってアプリケーションのトラフィックを学習し、そのサービスに最も適したプロファイルを選択して更新します。 このプロファイルは、時間の経過とともにトラフィックが変化すると調整されます。 レイヤー 3 からレイヤー 7 までの保護: Web アプリケーション ファイアウォールと併用すると、全スタックにわたって DDoS 保護が提供されます。
-* **広範囲にわたる軽減スケール:** 60 種類を超える攻撃を軽減することができ、地球規模の容量を利用して、過去最大の DDoS 攻撃からも保護されます。
-* **攻撃メトリック:** 各攻撃から要約されたメトリックに Azure Monitor 経由でアクセスできます。
-* **攻撃アラート:** 組み込みの攻撃メトリックを使用して、攻撃の開始時と停止時、およびその攻撃の期間にわたってアラートを構成できます。 アラートは、Microsoft Azure Log Analytics、Splunk、Azure Storage、電子メール、Azure Portal などの運用ソフトウェアに統合されます。
-* **コストの保証:** データ転送とアプリケーションは、ドキュメント化された DDoS 攻撃のサービス クレジットをスケールアウトします。
-
-詳細情報:
-
-* [DDOS 保護の概要](../virtual-network/ddos-protection-overview.md)

@@ -1,22 +1,20 @@
 ---
-title: 'Azure Site Recovery エージェントのエラーのトラブルシューティング: ゲスト エージェントの状態を確認できない | Microsoft Docs'
-description: エージェントと拡張機能に関連する Azure Site Recovery のエラーの症状、原因、解決策
-services: site-recovery
+title: Azure Site Recovery エージェントに関する問題のトラブルシューティング | Microsoft Docs
+description: Azure Site Recovery エージェントのエラーの症状、原因、解決策に関する情報を提供します。
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: troubleshooting
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: c0429e87f6c58ef2b9c7a268bee596d769e95910
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3090dd9e0d9681dbf77f052e9d324f2add0a1910
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919806"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215040"
 ---
-# <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Azure Site Recovery 拡張機能のエラーのトラブルシューティング: エージェントまたは拡張機能の問題
+# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Azure Site Recovery エージェントに関する問題のトラブルシューティング
 
 この記事では、VM エージェントと拡張機能に関連する Azure Site Recovery のエラーの解決に役立つ可能性のあるトラブルシューティング手順について説明します。
 

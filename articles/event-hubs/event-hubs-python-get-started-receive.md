@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: sethm
-ms.openlocfilehash: f5388f2de599d94f68a1d24a7d701a2cb4795915
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9707f0cf5a76c0ac4006b53ca8166d3b42fc9af4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703338"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240564"
 ---
 # <a name="receive-events-from-event-hubs-using-python"></a>Python を使用して Event Hubs からイベントを受信する
 
@@ -108,14 +108,7 @@ start python recv.py
 ```
  
 ## <a name="next-steps"></a>次の手順
-
-イベントの送信については、[対応する送信の記事](event-hubs-python-get-started-send.md)を参照してください。
-
-Event Hubs の詳細については、次のページを参照してください。
-
-* [Event Hubs の概要][Event Hubs overview]
-* [イベント ハブの作成](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+このクイック スタートでは、イベント ハブからメッセージを受信した Python アプリケーションを作成しました。 Python を使用してイベント ハブにイベントを送信する方法については、[Python を使用してイベント ハブからイベントを送信する方法](event-hubs-python-get-started-send.md)に関するページをご覧ください。
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

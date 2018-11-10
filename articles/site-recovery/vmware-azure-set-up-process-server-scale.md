@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery を使用した VMware VM および物理サーバーのフェールバックのために Azure でプロセス サーバーを設定する | Microsoft Docs
-description: この記事では、Azure VM を VMware にフェールバックするために Azure でプロセス サーバーを設定する方法について説明します。
-services: site-recovery
+title: Azure Site Recovery を使用した VMware VM および物理サーバーのディザスター リカバリー時にフェールバックするプロセス サーバーを Azure で設定する | Microsoft Docs
+description: この記事では、VMware VM と物理サーバーのディザスター リカバリー時に Azure からオンプレミスにフェールバックするプロセス サーバーを Azure で設定する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 641f671f23dde0bcc32ad1ef8343a5a84227c67f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 330f0197b8a7735043e93f00dc4baa5578f50228
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955383"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212235"
 ---
-# <a name="set-up-additional-process-servers-for-scalability"></a>スケーラビリティのために追加のプロセス サーバーを設定する
+# <a name="scale-for-failback-with-additional-process-servers"></a>追加のプロセス サーバーによるフェールバックのスケール
 
 既定では、[Site Recovery](site-recovery-overview.md) を使用して VMware VM または物理サーバーを Azure にレプリケートするときに、構成サーバー マシン上にプロセス サーバーがインストールされ、Site Recovery とオンプレミスのインフラストラクチャ間のデータ転送を調整するために使用されます。 容量を増加させ、レプリケーションのデプロイをスケールアウトするために、別のスタンドアロン プロセス サーバーを追加できます。 この記事では、その方法について説明します。
 

@@ -1,5 +1,5 @@
 ---
-title: VM 用 Azure Monitor の既知の問題 | Microsoft Docs
+title: Azure Monitor for VMs (プレビュー) の既知の問題 | Microsoft Docs
 description: VM 用 Azure Monitor は Azure のソリューションの 1 つです。このソリューションでは、Azure VM オペレーティング システムの正常性とパフォーマンスの監視が組み合わされているほか、アプリケーション コンポーネントと他のリソースとの依存関係が自動的に検出され、その間のやり取りがマップされます。 この記事では、次の既知の問題について説明します。
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: eba9e26f12fd9e1862727adec4f8c8f594e8f659
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385093"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091676"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms"></a>VM 用 Azure Monitor の既知の問題
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) の既知の問題
 
 VM 用 Azure Monitor の正常性機能に関する既知の問題を次に示します。
 

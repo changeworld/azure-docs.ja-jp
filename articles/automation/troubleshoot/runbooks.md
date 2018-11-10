@@ -8,12 +8,12 @@ ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 33c2bd48084c3d0e73fe2f4a1ce922e7a66b944f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955431"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094866"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -93,8 +93,9 @@ The subscription named <subscription name> cannot be found.
 
 Azure で正しく認証され、選択しようとしているサブスクリプションにアクセスできることを次の手順で確認します。  
 
-1. **Select-AzureSubscription** コマンドレットを実行する前に、必ず **Add-AzureAccount** コマンドレットを実行してください。  
-2. それでもエラー メッセージが表示される場合は、**Add-AzureAccount** コマンドレットの後に **-AzureRmContext** パラメーターを追加してコードを変更してから、コードを実行します。
+1. Azure Automation の外部でスクリプトをテストし、スクリプトがスタンドアロンで機能することを確認します。
+2. **Select-AzureSubscription** コマンドレットを実行する前に、必ず **Add-AzureAccount** コマンドレットを実行してください。  
+3. それでもエラー メッセージが表示される場合は、**Add-AzureAccount** コマンドレットの後に **-AzureRmContext** パラメーターを追加してコードを変更してから、コードを実行します。
 
    ```powershell
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -104,7 +105,7 @@ Azure で正しく認証され、選択しようとしているサブスクリ�
    $context = Get-AzureRmContext
 
    Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
-   ```
+    ```
 
 ### <a name="auth-failed-mfa"></a>シナリオ: 多要素認証が有効になっているために Azure に対する認証が失敗した
 
@@ -305,7 +306,7 @@ Runbook ジョブがエラーで失敗します。
 * コマンドレット名を正しく入力していることを確認します。  
 * Automation アカウントにコマンドレットが存在し、競合がないことを確認します。 コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、`Get-Command <CommandName>` を実行します。 コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。  
 * 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。 たとえば、**ModuleName\CmdletName** を使用できます。  
-* ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているマシンにインストールされていることを確認します。
+* ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュールとコマンドレットがハイブリッド worker をホストしているマシンにインストールされていることを確認します。
 
 ### <a name="long-running-runbook"></a>シナリオ: 実行時間の長い Runbook が完了しない
 

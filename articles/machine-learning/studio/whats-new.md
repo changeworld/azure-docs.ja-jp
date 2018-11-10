@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning の新機能 | Microsoft Docs
-description: Azure Machine Learning で利用できる新しい機能。
+title: Azure Machine Learning Studio の新機能 | Microsoft Docs
+description: Azure Machine Learning Studio で利用できる新しい機能。
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -14,19 +14,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2017
-ms.openlocfilehash: 61bea7fde96b239a50ec25a702a73ecfb62ce717
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.date: 10/28/2018
+ms.openlocfilehash: 2f990ce30b66392e8a649e4e88b21457d9fe223b
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836074"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212660"
 ---
-# <a name="whats-new-in-azure-machine-learning"></a>Azure Machine Learning の新機能
+# <a name="whats-new-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio の新機能
 
-### <a name="the-march-2017-release-of-microsoft-azure-machine-learning-updates-provides-the-following-feature"></a>2017年 3 月、Microsoft Azure Machine Learning の更新プログラムで次の機能が提供されました。
+## <a name="october-2018"></a>2018 年 10 月
 
+[R スクリプトの実行](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script)モジュールの R 言語エンジンで、新しい R ランタイム バージョンである Microsoft R Open (MRO) 3.4.4 が追加されました。 MRO 3.4.4 はオープン ソースの CRAN R 3.4.4 に基づいているため、その R のバージョンで動作するパッケージと互換性があります。サポートされている R パッケージの詳細については、「[R Packages supported by Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning#bkmk_List)」(Azure Machine Learning Studio でサポートされている R パッケージ) を参照してください。
 
+## <a name="march-2017"></a>2017 年 3 月 
+この Microsoft Azure Machine Learning の更新プログラムのリリースで次の機能が提供されました。
 
 * Azure Machine Learning BES ジョブ専用の容量
 
@@ -35,14 +38,16 @@ ms.locfileid: "34836074"
     詳細については、「[Machine Learning ジョブ用の Azure Batch サービス](dedicated-capacity-for-bes-jobs.md)」を参照してください。
 
 
-### <a name="the-august-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>2016年 8 月、Microsoft Azure Machine Learning の更新プログラムで次の機能が提供されました。
+## <a name="august-2016"></a>2016 年 8 月 
+この Microsoft Azure Machine Learning の更新プログラムのリリースで次の機能が提供されました。
 * クラシック Web サービスを、新しい [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/) ポータル (Web サービスのすべての側面を管理するための 1 つの場所) で管理できるようになりました。    
   * Web サービスの [使用状況の統計](manage-new-webservice.md)が提供されます。
   * サンプル データを使用して Azure Machine Learning リモート要求呼び出しのテストが簡略化されます。
   * サンプル データとジョブの送信履歴が表示される新しいバッチ実行サービス テスト ページが提供されます。
   * エンドポイントの管理が容易になります。
 
-### <a name="the-july-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>2016年 7 月、Microsoft Azure Machine Learning の更新プログラムで次の機能が提供されました。
+## <a name="july-2016"></a>2016 年 7 月 
+この Microsoft Azure Machine Learning の更新プログラムのリリースで次の機能が提供されました。
 * Web サービスは Azure のリソースとして [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) インターフェイスから管理されるようになり、次の拡張機能を使用できるようになりました。
   * Resource Manager ベースの Web サービスをデプロイおよび管理するための新しい [REST API](https://msdn.microsoft.com/library/azure/Dn950030.aspx)
   * Web サービスのすべての側面を管理するための 1 つの場所を提供する新しい [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/) ポータル

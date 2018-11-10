@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 7fbaff5ed1b60a4434ba2eb0c78c6aa1f3fd6645
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 8094965da5fb0a5fad0313fd96e2878f86d78aa7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323979"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215499"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数を使用する方法
 
@@ -27,8 +27,8 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management
 
 | カスタム属性の名前 | 置換後の文字列 |
 | --- | --- |
-| `yourInstanceName` | Azure Digital Twins インスタンスの名前 |
-| `yourLocation` | インスタンスをホストするサーバーのリージョン |
+| *yourInstanceName* | Azure Digital Twins インスタンスの名前 |
+| *yourLocation* | インスタンスをホストするサーバーのリージョン |
 
 ## <a name="client-library-reference"></a>クライアント ライブラリ リファレンス
 
@@ -50,9 +50,9 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management
 - `SensorDevice`
 - `SensorSpace`
 
-次の例のマッチャーは、データ型の値が `Temperature` であるすべてのセンサー テレメトリ イベントに対して true と評価されます。 ユーザー定義関数に対して複数のマッチャーを作成できます。
+次の例のマッチャーは、データ型の値が `"Temperature"` であるすべてのセンサー テレメトリ イベントに対して true と評価されます。 ユーザー定義関数に対して複数のマッチャーを作成できます。
 
-```text
+```plaintext
 POST https://yourManagementApiUrl/api/v1.0/matchers
 {
   "Name": "Temperature Matcher",
@@ -70,8 +70,8 @@ POST https://yourManagementApiUrl/api/v1.0/matchers
 
 | カスタム属性の名前 | 置換後の文字列 |
 | --- | --- |
-| `yourManagementApiUrl` | Management API の完全な URL パス  |
-| `yourSpaceIdentifier` | インスタンスをホストするサーバーのリージョン |
+| *yourManagementApiUrl* | Management API の完全な URL パス  |
+| *yourSpaceIdentifier* | インスタンスをホストするサーバーのリージョン |
 
 ## <a name="create-a-user-defined-function-udf"></a>ユーザー定義関数 (UDF) の作成
 
@@ -90,7 +90,7 @@ POST https://yourManagementApiUrl/api/v1.0/userdefinedfunctions with Content-Typ
 
 | カスタム属性の名前 | 置換後の文字列 |
 | --- | --- |
-| `yourManagementApiUrl` | Management API の完全な URL パス  |
+| *yourManagementApiUrl* | Management API の完全な URL パス  |
 
 本文は次のようになります。
 
@@ -118,14 +118,14 @@ function process(telemetry, executionContext) {
 
 | カスタム属性の名前 | 置換後の文字列 |
 | --- | --- |
-| `yourSpaceIdentifier` | 空間識別子  |
-| `yourMatcherIdentifier` | 使用するマッチャーの ID |
+| *yourSpaceIdentifier* | 空間識別子  |
+| *yourMatcherIdentifier* | 使用するマッチャーの ID |
 
 ### <a name="example-functions"></a>関数の例
 
-データ型 `Temperature` のセンサー (sensor.DataType) に対して、センサー テレメトリの測定値を直接設定します。
+データ型 **Temperature** のセンサー (`sensor.DataType`) に対して、センサー テレメトリの測定値を直接設定します。
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Get sensor metadata
@@ -139,9 +139,21 @@ function process(telemetry, executionContext) {
 }
 ```
 
-センサー テレメトリの測定値が定義済みのしきい値を超えた場合は、メッセージを記録します。 Digital Twins インスタンスで診断設定が有効になっている場合は、ユーザー定義関数からのログが転送されます。
+*telemetry* パラメーターは、**SensorId** 属性と **Message** 属性 (センサーから送信されたメッセージに対応) を公開します。 *executionContext* パラメーターは、次の属性を公開します。
 
-```javascript
+```csharp
+var executionContext = new UdfExecutionContext
+{
+    EnqueuedTime = request.HubEnqueuedTime,
+    ProcessorReceivedTime = request.ProcessorReceivedTime,
+    UserDefinedFunctionId = request.UserDefinedFunctionId,
+    CorrelationId = correlationId.ToString(),
+};
+```
+
+次の例では、センサー テレメトリの測定値が定義済みのしきい値を超えた場合は、メッセージを記録します。 Digital Twins インスタンスで診断設定が有効になっている場合は、ユーザー定義関数からのログも転送されます。
+
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Retrieve the sensor value
@@ -156,7 +168,7 @@ function process(telemetry, executionContext) {
 
 次のコードでは、温度レベルが定義済みの定数を超えた場合に通知がトリガーされます。
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Retrieve the sensor value
@@ -184,7 +196,7 @@ function process(telemetry, executionContext) {
 
 ユーザー定義関数の実行に使用する役割の割り当てを作成する必要があります。 作成しない場合、ユーザー定義関数は、Management API とやり取りしてグラフ オブジェクトに対してアクションを実行するための適切なアクセス許可が得られません。 ユーザー定義関数が実行するアクションは、Digital Twins Management API 内の役割ベースのアクセス制御の対象から除外されません。 これらのアクションは、特定の役割または特定のアクセス制御パスを指定することによって、範囲を限定できます。 詳細については、[役割ベースのアクセス制御](./security-role-based-access-control.md)に関するページを参照してください。
 
-- 役割に対してクエリを実行し、UDF に割り当てる役割の ID を取得して、それを次の RoleId に渡します。
+1. 役割に対してクエリを実行し、UDF に割り当てる役割の ID を取得して、それを次の **RoleId** に渡します。
 
 ```plaintext
 GET https://yourManagementApiUrl/api/v1.0/system/roles
@@ -192,10 +204,11 @@ GET https://yourManagementApiUrl/api/v1.0/system/roles
 
 | カスタム属性の名前 | 置換後の文字列 |
 | --- | --- |
-| `yourManagementApiUrl` | Management API の完全な URL パス  |
+| *yourManagementApiUrl* | Management API の完全な URL パス  |
 
-- ObjectId は先ほど作成した UDF ID になります。
-- 空間に対して完全なパスを使用してクエリを実行することで、`Path` を見つけ、`spacePaths` 値をコピーします。 UDF の役割の割り当てを作成するときに、それを次のパスに貼り付けます。
+2. **ObjectId** は先ほど作成した UDF ID になります。
+3. `fullpath` を使用して空間でクエリを実行して、**Path** の値を見つけます。
+4. 返された `spacePaths` 値をコピーします。 次のように使用します。
 
 ```plaintext
 GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=fullpath
@@ -203,8 +216,10 @@ GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=ful
 
 | カスタム属性の名前 | 置換後の文字列 |
 | --- | --- |
-| `yourManagementApiUrl` | Management API の完全な URL パス  |
-| `yourSpaceName` | 使用する空間の名前 |
+| *yourManagementApiUrl* | Management API の完全な URL パス  |
+| *yourSpaceName* | 使用する空間の名前 |
+
+4. ここで、返された `spacePaths` 値を **Path** に貼り付けて、UDF の役割の割り当てを作成します。
 
 ```plaintext
 POST https://yourManagementApiUrl/api/v1.0/roleassignments
@@ -218,10 +233,10 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | カスタム属性の名前 | 置換後の文字列 |
 | --- | --- |
-| `yourManagementApiUrl` | Management API の完全な URL パス  |
-| `yourDesiredRoleIdentifier` | 目的の役割の識別子 |
-| `yourUserDefinedFunctionId` | 使用する UDF の ID |
-| `yourAccessControlPath` | アクセス制御パス |
+| *yourManagementApiUrl* | Management API の完全な URL パス  |
+| *yourDesiredRoleIdentifier* | 目的の役割の識別子 |
+| *yourUserDefinedFunctionId* | 使用する UDF の ID |
+| *yourAccessControlPath* | アクセス制御パス |
 
 ## <a name="send-telemetry-to-be-processed"></a>処理するテレメトリを送信する
 
@@ -241,7 +256,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| id  | `guid` | 空間識別子 |
+| *id*  | `guid` | 空間識別子 |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
 
@@ -251,7 +266,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| id  | `guid` | センサーの識別子 |
+| *id*  | `guid` | センサーの識別子 |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
 
@@ -261,7 +276,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| id  | `guid` | デバイスの識別子 |
+| *id* | `guid` | デバイスの識別子 |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue(sensorId, dataType) ⇒ `value`
 
@@ -271,8 +286,8 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | センサーの識別子 |
-| dataType  | `string` | センサーのデータ型 |
+| *sensorId*  | `guid` | センサーの識別子 |
+| *dataType*  | `string` | センサーのデータ型 |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue(spaceId, valueName) ⇒ `value`
 
@@ -282,8 +297,8 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空間識別子 |
-| valueName  | `string` | 空間プロパティの名前 |
+| *spaceId*  | `guid` | 空間識別子 |
+| *valueName* | `string` | 空間プロパティの名前 |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
 
@@ -293,8 +308,8 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | センサーの識別子 |
-| dataType  | `string` | センサーのデータ型 |
+| *sensorId* | `guid` | センサーの識別子 |
+| *dataType* | `string` | センサーのデータ型 |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues(spaceId, dataType) ⇒ `value[]`
 
@@ -304,8 +319,8 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空間識別子 |
-| valueName  | `string` | 空間プロパティの名前 |
+| *spaceId* | `guid` | 空間識別子 |
+| *valueName* | `string` | 空間プロパティの名前 |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -315,7 +330,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空間識別子 |
+| *spaceId* | `guid` | 空間識別子 |
 
 ### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
 
@@ -325,7 +340,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空間識別子 |
+| *spaceId* | `guid` | 空間識別子 |
 
 ### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
 
@@ -335,7 +350,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空間識別子 |
+| *spaceId* | `guid` | 空間識別子 |
 
 ### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
 
@@ -345,7 +360,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| deviceId  | `guid` | デバイスの識別子 |
+| *deviceId* | `guid` | デバイスの識別子 |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -355,7 +370,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| childSpaceId  | `guid` | 空間識別子 |
+| *childSpaceId* | `guid` | 空間識別子 |
 
 ### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
@@ -365,7 +380,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| childSensorId  | `guid` | センサーの識別子 |
+| *childSensorId* | `guid` | センサーの識別子 |
 
 ### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
 
@@ -375,7 +390,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| childDeviceId  | `guid` | デバイスの識別子 |
+| *childDeviceId* | `guid` | デバイスの識別子 |
 
 ### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
@@ -385,7 +400,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| childSensorId  | `guid` | センサーの識別子 |
+| *childSensorId* | `guid` | センサーの識別子 |
 
 ### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty(spaceId, propertyName) ⇒ `extendedProperty`
 
@@ -395,8 +410,8 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空間識別子 |
-| propertyName  | `string` | 空間プロパティの名前 |
+| *spaceId* | `guid` | 空間識別子 |
+| *propertyName* | `string` | 空間プロパティの名前 |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
 
@@ -406,8 +421,8 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | センサーの識別子 |
-| propertyName  | `string` | センサー プロパティの名前 |
+| *sensorId* | `guid` | センサーの識別子 |
+| *propertyName* | `string` | センサー プロパティの名前 |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
 
@@ -417,8 +432,8 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| deviceId  | `guid` | デバイスの識別子 |
-| propertyName  | `string` | デバイス プロパティの名前 |
+| *deviceId* | `guid` | デバイスの識別子 |
+| *propertyName* | `string` | デバイス プロパティの名前 |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
 
@@ -428,9 +443,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| sensorId  | `guid` | センサーの識別子 |
-| dataType  | `string` | センサーのデータ型 |
-| value  | `string` | value |
+| *sensorId* | `guid` | センサーの識別子 |
+| *dataType*  | `string` | センサーのデータ型 |
+| *value*  | `string` | value |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
@@ -440,9 +455,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| spaceId  | `guid` | 空間識別子 |
-| dataType  | `string` | データ型 |
-| value  | `string` | value |
+| *spaceId* | `guid` | 空間識別子 |
+| *dataType* | `string` | データ型 |
+| *value* | `string` | value |
 
 ### <a name="logmessage"></a>log(message)
 
@@ -452,7 +467,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| message  | `string` | 記録されるメッセージ |
+| *message* | `string` | 記録されるメッセージ |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
 
@@ -462,9 +477,9 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| topologyObjectId  | `Guid` | グラフのオブジェクト識別子 (例:  空間/センサー/デバイス ID)|
-| topologyObjectType  | `string` | (例:  空間/センサー/デバイス)|
-| payload  | `string` | 通知と共に送信される json ペイロード |
+| *topologyObjectId*  | `guid` | グラフのオブジェクト識別子 (例:  空間/センサー/デバイス ID)|
+| *topologyObjectType*  | `string` | (例:  空間/センサー/デバイス)|
+| *payload*  | `string` | 通知と共に送信される JSON ペイロード |
 
 ## <a name="return-types"></a>戻り値の型
 
@@ -503,7 +518,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| propertyName | `string` | 拡張プロパティの名前 |
+| *propertyName* | `string` | 拡張プロパティの名前 |
 
 #### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
 
@@ -511,7 +526,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| valueName | `string` | 値の名前 |
+| *valueName* | `string` | 値の名前 |
 
 #### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
 
@@ -519,7 +534,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| valueName | `string` | 値の名前 |
+| *valueName* | `string` | 値の名前 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
@@ -527,7 +542,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| payload | `string` | 通知に含める json ペイロード |
+| *payload* | `string` | 通知に含める JSON ペイロード |
 
 ### <a name="device"></a>Device
 
@@ -563,7 +578,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| propertyName | `string` | 拡張プロパティの名前 |
+| *propertyName* | `string` | 拡張プロパティの名前 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
@@ -571,7 +586,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| payload | `string` | 通知に含める json ペイロード |
+| *payload* | `string` | 通知に含める JSON ペイロード |
 
 ### <a name="sensor"></a>センサー
 
@@ -611,7 +626,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| propertyName | `string` | 拡張プロパティの名前 |
+| *propertyName* | `string` | 拡張プロパティの名前 |
 
 #### <a name="value--value"></a>Value() ⇒ `value`
 
@@ -627,7 +642,7 @@ POST https://yourManagementApiUrl/api/v1.0/roleassignments
 
 | Param  | type                | 説明  |
 | ------ | ------------------- | ------------ |
-| payload | `string` | 通知に含める json ペイロード |
+| *payload* | `string` | 通知に含める JSON ペイロード |
 
 ### <a name="value"></a>値
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: b05e23019e7b0a03965e51052bf334d0cbff041d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 6ba3d8e4273d0f2ce2626d8876c386a3714d5355
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269345"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159096"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 
@@ -188,7 +188,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
+|StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 204: No content - これ以上メッセージはありません。|  
 |statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  
@@ -308,7 +308,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
+|StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 204: No content - これ以上メッセージはありません。|  
 |statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む **amqp-value** セクションで構成されている必要があります。  
@@ -344,7 +344,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
+|StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 204: No content - これ以上メッセージはありません。|  
 |statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれたマップを含む **amqp-value** セクションで構成されている必要があります。  
@@ -449,7 +449,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 0xcc: No content - これ以上メッセージはありません。|  
+|StatusCode|int|[はい]|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - さらにメッセージがあります。<br /><br /> 204: No content - これ以上メッセージはありません。|  
 |statusDescription|string|いいえ |ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  

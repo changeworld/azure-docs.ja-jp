@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 10c2ed359fa77ad00945ddcfbc55dc0901ba8bff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7dfc4329b338a65169c81521360264753bafa9d6
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697107"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239918"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
+
 Azure には、そのクラウド サービスと仮想マシン (VM) の管理と監視を支援するセキュリティ メカニズムが備わっています。 この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。 それぞれの詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
 
 Microsoft クラウド サービスのセキュリティは、パートナーシップに基づくものであり、お客様と Microsoft が共有する責任です。 Microsoft は、Azure プラットフォームおよびそのデータ センターの (入室に ID カードが必要なドア、フェンス、守衛などのセキュリティ保護の使用による) 物理的なセキュリティの責任を負います。 Azure のソフトウェア レイヤーには強力なレベルのクラウド セキュリティが備わっており、セキュリティ、プライバシー、コンプライアンスに関する顧客のニーズを満たすことができます。
@@ -35,6 +36,7 @@ Microsoft クラウド サービスのセキュリティは、パートナーシ
 セキュリティの管理について詳しくは、「[Azure のセキュリティ管理](azure-security-management.md)」をご覧ください。
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+
 ロールベースのアクセス制御 (RBAC) は、Azure リソースのアクセス権を詳細に管理できるようにします。 RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。 RBAC は、ユーザーが組織を離れるときに、クラウド内のリソースへのアクセス権を失うようにするためにも役立ちます。
 
 詳細情報:
@@ -43,6 +45,7 @@ Microsoft クラウド サービスのセキュリティは、パートナーシ
 * [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>マルウェア対策
+
 Azure では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などの主要セキュリティ ベンダーのマルウェア対策ソフトウェアを使用できます。 このソフトウェアは、悪意のあるファイル、アドウェア、他の脅威から仮想マシンを保護するのに役立ちます。
 
 Azure Cloud Services および Virtual Machines の Microsoft マルウェア対策は、PaaS ロールと仮想マシンの両方のためのマルウェア対策エージェントをインストールする機能を提供します。 この機能は、System Center Endpoint Protection に基づいており、実績のあるオンプレミス セキュリティ テクノロジをクラウドに持ち込みます。
@@ -60,6 +63,7 @@ Symantec Endpoint Protection (SEP) も、Azure でサポートされています
 * [Azure Virtual Machines を保護するための新しいマルウェア対策オプション](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+
 Azure Multi-Factor Authentication は、複数の検証方法の使用を要求する認証の方法です。 ユーザーのサインインとトランザクションに重要な第 2 のセキュリティ レイヤーを追加できます。 
 
 Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護できます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OATH トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
@@ -71,11 +75,12 @@ Multi-Factor Authentication を使えば、シンプルなサインイン プロ
 * [Azure Multi-Factor Authentication のしくみ](../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
+
 Azure ExpressRoute を使うと、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Azure、Office 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。 以下のものから接続できます。
 
-- 任意の環境間 (VPN IP) ネットワーク。
-- ポイント ツー ポイントのイーサネット ネットワーク。
-- コロケーション施設の接続プロバイダー経由での仮想クロス接続。 
+* 任意の環境間 (VPN IP) ネットワーク。
+* ポイント ツー ポイントのイーサネット ネットワーク。
+* コロケーション施設の接続プロバイダー経由での仮想クロス接続。 
 
 ExpressRoute 接続はパブリックなインターネットを経由しません。 ExpressRoute 接続は一般的なインターネットでの接続よりも信頼性が高く、高速で、待ち時間が短く、セキュリティの高い接続を提供できます。
 
@@ -84,6 +89,7 @@ ExpressRoute 接続はパブリックなインターネットを経由しませ�
 * [ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)
 
 ## <a name="virtual-network-gateways"></a>仮想ネットワーク ゲートウェイ
+
 VPN ゲートウェイ (Azure 仮想ネットワーク ゲートウェイとも呼ばれます) は、仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックを送信するために使用されます。 また、Azure 内で複数の仮想ネットワーク間のトラフィック送信にも使用されます (ネットワーク間)。 VPN ゲートウェイは、Azure とお使いのインフラストラクチャの間の安全なクロスプレミス接続を提供します。
 
 詳細情報:
@@ -92,6 +98,7 @@ VPN ゲートウェイ (Azure 仮想ネットワーク ゲートウェイとも�
 * [Azure のネットワーク セキュリティの概要](security-network-overview.md)
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
+
 ユーザーは、Azure のリソース、または他の SaaS アプリケーションで、特権操作を実行することが必要になる場合があります。 通常は、組織がユーザーに Azure Active Directory (Azure AD) で永続的な特権アクセスを付与します。 
 
 しかし、この措置では、ユーザーが特権アクセスを使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。 また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害が組織のクラウド セキュリティ全体に影響を与える可能性もあります。 Azure AD Privileged Identity Management では、特権の公開期間を短縮し、使用状況の可視性を向上させることによって、このリスクの解決を支援します。  
@@ -104,11 +111,12 @@ Privileged Identity Management は、ロールまたは "ジャスト イン タ
 * [Azure AD Privileged Identity Management の使用](../active-directory/privileged-identity-management/pim-getting-started.md)
 
 ## <a name="identity-protection"></a>Identity Protection
+
 Azure AD Identity Protection は、ビジネスを保護するために、不審なサインイン アクティビティと潜在的な脆弱性の統合ビューを提供します。 Identity Protection は、次のようなシグナルに基づいて、ユーザーおよび特権 (管理者) ID に対する不審なアクティビティを検出します。
 
-- ブルート フォース攻撃。
-- 漏洩した資格情報。
-- 未知の場所および感染したデバイスからのサインイン。
+* ブルート フォース攻撃。
+* 漏洩した資格情報。
+* 未知の場所および感染したデバイスからのサインイン。
 
 Identity Protection は、通知と推奨される修復を提供することで、リスクをリアルタイムで軽減できるようにします。 ユーザー リスクの重大度を計算します。 ユーザーはリスク ベースのポリシーを構成して、アプリケーションのアクセスが将来の脅威から自動的に保護されるようにすることができます。
 
@@ -118,6 +126,7 @@ Identity Protection は、通知と推奨される修復を提供することで
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
+
 Azure Security Center は、脅威の防御、検出、対応を可能にする機能です。 Security Center により、Azure リソースのセキュリティの可視化を向上させ、コントロールすることができます。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
 
 Security Center は、Azure リソースのセキュリティの最適化と監視に役立つ次の機能を備えています。
@@ -131,6 +140,14 @@ Security Center は、Azure リソースのセキュリティの最適化と監�
 詳細情報:
 
 * [Azure Security Center 入門](../security-center/security-center-intro.md)
+* [Azure Security Center 上のセキュリティ スコアの向上](../security-center/security-center-secure-score.md)
+
+## <a name="intelligent-security-graph"></a>インテリジェント セキュリティ グラフ
+
+インテリジェント セキュリティ グラフは、Microsoft 製品およびサービスでリアルタイムの脅威の防止を行います。 これは、膨大な量の脅威インテリジェンスとセキュリティ データをリンクする高度な分析を使用して、組織のセキュリティを強化することができる分析情報を提供します。 Microsoft はより豊富な分析情報を提供するため、高度な分析を使用しながら、1 か月に 4,500 億件以上の認証を処理したり、4,000 億件以上のメールをスキャンしてマルウェアやフィッシングの有無を確認したり、10 億台以上のデバイスを更新したりしています。 これらの分析情報は、組織が攻撃を検出して迅速に対応することに役立ちます。
+
+* [インテリジェント セキュリティ グラフ](https://www.microsoft.com/security/intelligence)
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
+

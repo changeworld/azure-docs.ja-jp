@@ -4,8 +4,6 @@ description: この記事では、Azure CLI を使用して Standard Load Balanc
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: a6d442452fe5ffc61648b3c004c03f1756f8f57e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0759b6a8e3deb9bc1d04e41598e4eef9304ecd83
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160657"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416411"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
 
@@ -63,7 +61,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-outbound-public-ip-address"></a>送信パブリック IP アドレスの作成 
 
-[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) を使用して、*myresourcegroupoutbound* に Load Balancer のフロントエンド送信構成の Standard IP アドレス (*mypublicipoutbound* という名前) を作成します。
+[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) を使用して、Load Balancer のフロントエンド送信構成の Standard IP アドレスを作成します。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
@@ -81,7 +79,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-load-balancer"></a>Load Balancer の作成
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) を使用して、受信 IP アドレスを持つ *lb* という名前の Load Balancer を作成します。これには、*myfrontendinbound* という名前の受信フロントエンド IP 構成と、前の手順で作成したパブリック IP アドレス *mypublicipinbound* に関連付けられている *bepool* という名前のバックエンド プールを含めます。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) を使用して、受信 IP アドレスを持つ *lb* という名前の Load Balancer を作成します。これには、受信フロントエンド IP 構成と、前の手順で作成したパブリック IP アドレス *mypublicipinbound* に関連付けられているバックエンド プールを含めます。
 
 ```azurecli-interactive
   az network lb create \

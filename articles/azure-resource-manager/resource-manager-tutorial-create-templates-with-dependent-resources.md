@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/19/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5e198310dd18cc8574b5510b9318ff4badaffca3
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2b8cc34e5ace5e252acae94a16858a69edc63a1c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646312"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240241"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する
 
@@ -29,10 +29,8 @@ Azure Resource Manager テンプレートを作成して、複数のリソース
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
-> * セキュリティで保護された環境変数を設定する
 > * クイック スタート テンプレートを開く
 > * テンプレートを調べる
-> * パラメーター ファイルを編集する
 > * テンプレートのデプロイ
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
@@ -41,8 +39,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)。  「[拡張機能のインストールに関する記事](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)」を参照してください。
-* パスワードのスプレー攻撃を防ぐためには、仮想マシンの管理者アカウントのパスワードを生成します。 例を次に示します。
+* Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)。  [拡張機能のインストールに関する記事](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)を参照してください。
+* セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```azurecli-interactive
     openssl rand -base64 32
@@ -66,37 +64,45 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 このセクションでテンプレートを調べるときは、次の質問に回答するようにしてください。
 
-- このテンプレートに定義されている Azure リソースの数はいくつか。
-- リソースの 1 つは、Azure Storage アカウントです。  定義は前回のチュートリアルで使用されたものと同じか。
-- このテンプレートに定義されているリソースのテンプレート 参照を見つけることができるか。
-- リソースの依存関係を見つけることができるか。
+* このテンプレートに定義されている Azure リソースの数はいくつか。
+* リソースの 1 つは、Azure Storage アカウントです。  定義は前回のチュートリアルで使用されたものと同じか。
+* このテンプレートに定義されているリソースのテンプレート 参照を見つけることができるか。
+* リソースの依存関係を見つけることができるか。
 
 1. Visual Studio Code で、**resources** 内の最初のレベルの要素と 2 番目のレベルの要素のみが表示されるまで要素を折り畳みます。
 
     ![Visual Studio Code Azure Resource Manager テンプレート](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     テンプレートによって定義されたリソースは、5 つあります。
-2. 最初のリソースを展開します。 それはストレージ アカウントです。 定義は、前回のチュートリアルの先頭で使用されたものと同じです。
+
+    * `Microsoft.Storage/storageAccounts` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
+    * `Microsoft.Network/publicIPAddresses` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
+    * `Microsoft.Network/virtualNetworks` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
+    * `Microsoft.Network/networkInterfaces` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
+    * `Microsoft.Compute/virtualMachines` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+
+    カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+
+2. 最初のリソースを展開します。 それはストレージ アカウントです。 リソース定義と[テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)を比較します。
 
     ![Visual Studio Code の Azure Resource Manager テンプレートのストレージ アカウント定義](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. 2 番目のリソースを展開します。 リソースの種類は **Microsoft.Network/publicIPAddresses** です。 テンプレート リファレンスを見つけるには、[テンプレート リファレンス](https://docs.microsoft.com/azure/templates/)に移動し、**[タイトルでフィルター]** フィールドに **1 つのパブリック ID アドレス**または**複数のパブリック IP アドレス**を入力します。 リソース定義とテンプレート リファレンスを比較します。
+3. 2 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/publicIPAddresses` です。 リソース定義と[テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)を比較します。
 
     ![Visual Studio Code の Azure Resource Manager テンプレートのパブリック IP アドレス定義](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. 最後の手順を繰り返して、このテンプレートに定義されている他のリソースのテンプレート参照を見つけます。  リソース定義とリファレンスを比較します。
-5. 4 番目の要素を展開します。
+4. 4 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/networkInterfaces` です。  
 
     ![Visual Studio Code Azure Resource Manager テンプレートの dependson](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
-    dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 この例では、このリソースは、networkInterface です。  次に示す他の 2 つのリソースに依存しています。
+    dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 このリソースは他の 2 つのリソースに依存しています。
 
-    * publicIPAddress
-    * virtualNetwork
+    * `Microsoft.Network/publicIPAddresses`
+    * `Microsoft.Network/virtualNetworks`
 
-6. 5 番目の要素を展開します。 このリソースは、仮想マシンです。 次に示す他の 2 つのリソースに依存しています。
+5. 5 番目の要素を展開します。 このリソースは、仮想マシンです。 次に示す他の 2 つのリソースに依存しています。
 
-    * storageAccount
-    * networkInterface
+    * `Microsoft.Storage/storageAccounts`
+    * `Microsoft.Network/networkInterfaces`
 
 次の図は、このテンプレートのリソースと依存関係の情報を示しています。
 
@@ -129,22 +135,23 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     ```bash
     cat azuredeploy.json
     ```
-7. Cloud Shell から、次の PowerShell コマンドを実行します。 セキュリティを強化するには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
+7. Cloud Shell から、次の PowerShell コマンドを実行します。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
 
     ```azurepowershell
     $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
-    $adminPassword = Read-Host -Prompt "Enter the admin password"
-    $dnsLablePrefix = Read-Host -Prompt "Enter the DNS label prefix"
+    $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
+    $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
 
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     New-AzureRmResourceGroupDeployment -Name $deploymentName `
         -ResourceGroupName $resourceGroupName `
-        -adminUsername = $adminUsername `
-        -adminPassword = $adminPassword `
-        -dnsLabelPrefix = $dnsLabelPrefix `
-        -TemplateFile azuredeploy.json 
+        -adminUsername $adminUsername `
+        -adminPassword $adminPassword `
+        -dnsLabelPrefix $dnsLabelPrefix `
+        -TemplateFile azuredeploy.json
     ```
 8. 次の PowerShell コマンドを実行して、新しく作成された仮想マシンの一覧を表示します。
 
@@ -155,7 +162,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
     仮想マシンの名前は、テンプレート内に **SimpleWinVM** としてハードコーディングされています。
 
-9. 仮想マシンにサインインして、管理者の資格情報をテストします。 
+9. 仮想マシンの確認を目的とする仮想マシンへの RDP が、正常に作成されました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -170,7 +177,5 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 このチュートリアルでは、テンプレートを作成してデプロイし、仮想マシン、仮想ネットワーク、および依存リソースを作成しました。 条件に基づいて Azure リソースをデプロイする方法については、以下を参照してください。
 
-
 > [!div class="nextstepaction"]
 > [使用条件](./resource-manager-tutorial-use-conditions.md)
-

@@ -1,19 +1,19 @@
 ---
-title: Site Recovery を使用した、セカンダリ データ センターにレプリケートされた Hyper-V VM のフェールオーバーとフェールバック | Microsoft Docs
-description: Azure Site Recovery を使用して、Hyper-V VM をセカンダリ オンプレミス サイトにフェールオーバーし、プライマリ サイトにフェールバックする方法を説明します。
+title: Azure Site Recovery を使用したディザスター リカバリー時にセカンダリ データ センターにレプリケートされた Hyper-V VM のフェールオーバーとフェールバック | Microsoft Docs
+description: Azure Site Recovery を使用したディザスター リカバリー時に Hyper-V VM をセカンダリ オンプレミス サイトにフェールオーバーし、プライマリ サイトにフェールバックする方法を説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 782ddc3ebb7b3c533d0eb5c4b7735a13cbaf268c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 80a26f7f2c97fdbc5342d8845277facd79f22a62
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077682"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210008"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>セカンダリ オンプレミス サイトにレプリケートされた Hyper-V VM のフェールオーバーとフェールバック
 

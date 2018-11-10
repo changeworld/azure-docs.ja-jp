@@ -8,37 +8,45 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/25/2018
 ms.author: tulasim
-ms.openlocfilehash: efefd595c43d7f46ff1ead91577d070cf8fb90e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9597b878eb3d92727b352ba42a9e5557bb1cc799
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164618"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211436"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ## <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>指定した URL/ファイルから質問とその回答のペアが抽出されません。なぜでしょうか?
 
-QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コンテンツを自動抽出できない場合があります。 そのような場合は、QnA コンテンツを .txt ファイルに貼り付けて、ツールによる取り込みが可能かどうかを確認できます。 ナレッジ ベースに編集という形でコンテンツを追加することもできます。
+QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コンテンツを自動抽出できない場合があります。 そのような場合は、QnA コンテンツを .txt ファイルに貼り付けて、ツールによる取り込みが可能かどうかを確認できます。 または、[QnA Maker ポータル](https://qnamaker.ai)経由でナレッジ ベースに編集という形でコンテンツを追加することもできます。
 
 ## <a name="how-large-a-knowledge-base-can-i-create"></a>作成できるナレッジ ベースの最大サイズはどれくらいですか。
 
 ナレッジ ベースのサイズは、QnA Maker サービスの作成時に選択した Azure Search の SKU により異なります。 詳細については、[こちら](./Tutorials/choosing-capacity-qnamaker-deployment.md)を参照してください。
 
-## <a name="why-do-i-not-see-anything-in-the-drop-down-for-when-i-try-to-create-a-new-knowledge-base"></a>新しいナレッジ ベースを作成しようとしているのですが、ドロップダウンに選択肢が表示されません。なぜでしょうか?
+## <a name="why-cant-i-see-anything-in-the-drop-down-when-i-try-to-create-a-new-knowledge-base"></a>新しいナレッジ ベースを作成しようとしたときに、ドロップダウンに選択肢が表示されません。なぜでしょうか?
 
 まだ Azure に QnA Maker サービスが作成されていません。 その方法については、[こちら](./How-To/set-up-qnamaker-service-azure.md)を参照してください。
 
-## <a name="how-do-i-share-a-knowledge-base-with-other"></a>複数人でナレッジ ベースを共有するにはどうすればよいですか?
+## <a name="how-do-i-share-a-knowledge-base-with-others"></a>複数人でナレッジ ベースを共有するにはどうすればよいですか?
 
 共有は、QnA Maker サービス レベルで行われます。つまり、サービス内のすべてのナレッジ ベースが共有されます。 ナレッジ ベースの共同作業の方法については、[こちら](./How-To/collaborate-knowledge-base.md)を参照してください。
+
+## <a name="can-you-share-a-kb-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-kb"></a>KB を変更するために、同じ AAD テナントに含まれない共同作成者と KB を共有できますか? 
+
+共有は Azure ロールベースのアクセス制御 (RBAC) に基づきます。 Azure で他のユーザーと_任意の_リソースを共有できる場合、QnA Maker を共有することもできます。
+
+## <a name="if-you-have-an-app-service-plan-with-5-qnamaker-kbs-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-kb"></a>5 つの QnAMaker KB で 1 つの App Service プランがある場合。 それぞれ 1 つだけの QnAMaker KB にアクセスできるように、5 人のユーザーに読み取り/書き込み権限を割り当てることができますか?
+
+個々の KB ではなく、QnAMaker サービス全体を共有できます。
 
 ## <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>適切な一致が見つからなかったときの既定のメッセージを変更するにはどうすればよいですか?
 
 既定のメッセージは、App Service の設定に含まれています。
-- Azure portal の App Service リソースに移動します。
+- Azure portal の App Service リソースに移動します
 
 ![QnA Maker App Service](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
 - **[設定]** オプションをクリックします。
@@ -56,7 +64,7 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 ## <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>ナレッジ ベースに対して行った更新が発行時に反映されません。 なぜでしょうか?
 
-編集内容を公開するには、テーブルの更新、テスト、設定のいずれであってもすべて保存する必要があります。 編集操作後は、必ず [Save and train]\(保存してトレーニング\) ボタンをクリックしてください。
+編集内容を公開するには、テーブルの更新、テスト、設定のいずれであってもすべて保存する必要があります。 編集操作後は、必ず  **[Save and train]** \(保存してトレーニング\) ボタンをクリックしてください。
 
 ## <a name="when-should-i-refresh-my-endpoint-keys"></a>エンドポイント キーは、どのようなときに更新すべきでしょうか?
 
@@ -74,13 +82,17 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 多言語コンテンツが含まれる場合は、言語ごとにサービスを作成してください。
 
+## <a name="can-i-use-the-same-azure-search-resource-for-kbs-using-multiple-languages"></a>複数の言語を使用した KB に同じ Azure Search リソースを使用できますか?
+
+複数の言語と複数の KB を使用するには、言語ごとに QnA Maker リソースを作成する必要があります。 これにより、言語ごとに個別の Azure Search サービスが作成されます。 1 つの Azure Search サービスに異なる言語の KB を混在させると、結果の関連性が低下します。
+
 ## <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>QnA Maker を利用するには Bot Framework を使う必要がありますか?
 
 いいえ。QnA Maker に関して Bot Framework を使用する必要はありません。 ただし、QnA Maker は Azure Bot Service に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
 
 ## <a name="how-can-i-create-a-bot-with-qna-maker"></a>QnA Maker でボットを作成するにはどうすればよいですか?
 
-Azure Bot でボットを作成するには、[こちら](./Tutorials/create-qna-bot.md)のドキュメントの手順に従ってください。
+Azure Bot Service でボットを作成するには、[こちら](./Tutorials/create-qna-bot.md)のドキュメントの手順に従ってください。
 
 ## <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>QnA Maker サービスを Web サイトに埋め込むにはどうすればよいですか?
 

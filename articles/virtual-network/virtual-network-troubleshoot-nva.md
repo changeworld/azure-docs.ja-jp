@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2018
+ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: d16f106fa1776b0d11a97f71ffe16cf89fb9584a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 2a0f6b75c540f319848805e8a9bda7b166d5d709
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143244"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138661"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
 
@@ -77,14 +77,14 @@ PowerShell の使用
 **トラフィックを NVA にルーティングできるかどうかを確認する**
 
 1. [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、**[次ホップ]** を選択します。
-2. 次ホップの NVA にする VM、および次ホップを表示する宛先 IP アドレスを指定します。 
+2. トラフィックを NVA にリダイレクトするように構成された VM と、次ホップを表示する宛先 IP アドレスを指定します。 
 3. NVA が **[次ホップ]** として一覧表示されていない場合は、Azure ルート テーブルを確認して更新します。
 
 **トラフィックで NVA に到達できるかどうかを確認する**
 
 1.  [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、**[IP フローの確認]** を選択します。 
 2.  VM および NVA の IP アドレスを指定して、トラフィックが任意のネットワーク セキュリティ グループ (NSG) によってブロックされるかどうかを確認します。
-3.  トラフィックをブロックする NSG ルールがある場合は、**有効なセキュリティ**規則で NSG を検索して、トラフィックで通過できるように更新します。 次に、もう一度 **[IP フローの確認]** を実行して **[接続チェック]** を使用し、VM からご利用の内部または外部の IP アドレスへの TCP 通信をテストします。
+3.  トラフィックをブロックする NSG ルールがある場合は、**有効なセキュリティ**規則で NSG を検索して、トラフィックで通過できるように更新します。 次に、もう一度 **[IP フローの確認]** を実行して **[接続のトラブルシューティング]** を使用し、VM からご利用の内部または外部の IP アドレスへの TCP 通信をテストします。
 
 **NVA および VM が予想されるトラフィックをリッスンしているかどうかを確認する**
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: d3adb6c27d3550777f0a5b34b3e7e329f42432ab
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831026"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138465"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>チュートリアル 5: 文脈的に関連するデータを抽出する
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索します。 たとえば、あるビルやオフィスから別のビルやオフィスへの物理的な移動の出発地と到着地が関連します。 作業指示を生成するには、両方のデータが必要である可能性があり、これらは互いに関連しています。  
@@ -119,7 +119,7 @@ mv Jill Jones from a-2349 to b-1298
 
 1. 左側のナビゲーション メニューの **[Entities]\(エンティティ\)** を選択します。
 
-2. **[Manage prebuilt entities]\(事前構築済みエンティティの管理\)** を選択します。
+2. **[Add prebuilt entity]\(作成済みエンティティの追加\)** ボタンを選択します。
 
 3. 事前構築済みエンティティの一覧から **[number]\(番号\)** を選択し、**[完了]** を選択します。
 
@@ -248,6 +248,10 @@ mv Jill Jones from a-2349 to b-1298
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="hierarchical-entities-versus-roles"></a>階層エンティティとロール
+
+詳細については、「[ロールと階層エンティティ](luis-concept-roles.md#roles-versus-hierarchical-entities)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、新しい意図を作成し、出発地と到着地のコンテキストから学習されたデータに関する発話の例を追加しました。 アプリがトレーニングおよび発行されたら、クライアント アプリケーションはその情報を使用して、関連する情報を含む移動チケットを作成できます。

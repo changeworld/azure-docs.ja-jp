@@ -4,21 +4,21 @@ description: この記事では、Azure CLI の Resource Graph 拡張機能を�
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: df01a57cda063e301efbc4d99f3bac8dbb4b2e66
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: a252dd6698a5e4f724fcbbf821b01f63ab4f529b
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054168"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086813"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-cli"></a>Azure CLI を使用して最初の Resource Graph クエリを実行します
 
-Azure Resource Graph を使用する最初の手順では、[ Azure CLI ](/cli/azure/)の拡張機能がインストールされていることを確認します。 このクイック スタートでは、Azure CLI のインストールに拡張機能を追加するプロセスについて説明します。 ローカルにインストールされている Azure CLI または [Azure Cloud Shell](https://shell.azure.com) により拡張機能を使用することができます。
+Azure Resource Graph を使用する最初の手順では、[Azure CLI](/cli/azure/) の拡張機能がインストールされていることを確認します。 このクイック スタートでは、Azure CLI のインストールに拡張機能を追加するプロセスについて説明します。 ローカルにインストールされている Azure CLI または [Azure Cloud Shell](https://shell.azure.com) により拡張機能を使用することができます。
 
 このプロセスの最後では、選択した Azure CLI のインストールに拡張機能を追加して、最初の Resource Graph クエリを実行します。
 
@@ -49,7 +49,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-Azure CLI 拡張機能は、選択した環境に追加されていますので、簡単な Resource Graph クエリを試してみましょう。 クエリは、各リソースの**名前**および**リソースの種類**を使用して、最初の 5 つの Azure リソースを返します。
+選択した環境に Azure CLI 拡張機能が追加されたので、簡単な Resource Graph クエリを試してみましょう。 クエリは、各リソースの**名前**および**リソースの種類**を使用して、最初の 5 つの Azure リソースを返します。
 
 1. `graph`拡張機能と`query`コマンドを使用して、最初の Azure Resource Graph クエリを実行します。
 
@@ -73,14 +73,14 @@ Azure CLI 拡張機能は、選択した環境に追加されていますので�
   > [!NOTE]
   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 これによりクエリの結果をまず制限し、それからそれらを注文します。
 
-1. 最初に`order by`**名前**のプロパティに対しクエリを更新し、それから`limit`上位 5 件の結果に対してクエリを更新します。
+1. 最初に**名前**プロパティで並べ替え (`order by`) を行ってから結果を上位 5 件に制限 (`limit`) するようにクエリを更新します。
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    az graph query -q 'project name, type | order by name asc | limit 5'
    ```
 
-最終的なクエリが複数回実行される場合、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおり--**名前**のプロパティによって順位付けされますが、依然上位 5 件の結果に制限されます。
+最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は**名前**プロパティで並べ替えられますが、上位 5 件に制限されます。
 
 ## <a name="cleanup"></a>クリーンアップ
 

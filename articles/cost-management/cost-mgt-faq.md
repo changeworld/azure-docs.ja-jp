@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/26/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ba6d8250d70320b33822d73c9213e9005128633f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221980"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157209"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn に関してよく寄せられる質問
 
-この記事では、Cloudyn についてよく寄せられる質問にお答えします。 Cloudyn について質問がある場合は、[Cloudyn に関する FAQ](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn) のページで質問してください。
+この記事では、Cloudyn についてよく寄せられる質問にお答えします。 Cloudyn について質問がある場合は、[Cloudyn に関する FAQ](https://social.msdn.microsoft.com/Forums/home?forum=faqs-for-azure-cost-management-by-cloudyn) のページで質問してください。
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>間接加入契約のエンタープライズ設定に関する問題全般を解決するにはどうすればよいですか
 
@@ -35,9 +35,9 @@ Cloudyn ポータルを始めて使用する際、Enterprise Agreement または
 
 1. 再販業者がユーザーのアカウントの "_マークアップ_" を有効にする。 手順については、「[間接加入契約者向けオンボード ガイド](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)」をご覧ください。
 
-2. ユーザーが Cloudyn で使用する Azure Enterprise Agreement キーを生成する。 手順については、「[Adding Your Azure EA (Azure EA を追加する)](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA)」または[自分の EA 登録 ID と API キーを探す方法](https://youtu.be/u_phLs_udig)に関するビデオをご覧ください。
+2. ユーザーが Cloudyn で使用する Azure Enterprise Agreement キーを生成する。 手順については、「[Adding Your Azure EA (Azure EA を追加する)](quick-register-ea.md#register-with-cloudyn)」または[自分の EA 登録 ID と API キーを探す方法](https://youtu.be/u_phLs_udig)に関するビデオをご覧ください。
 
-Cloudyn を有効にできるのは Azure のサービス管理者のみです。 共同管理者のアクセス許可では不十分です。
+Cloudyn を有効にできるのは、Azure サービス管理者だけです。 共同管理者のアクセス許可では不十分です。
 
 Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前に、次の手順に従って Azure Billing API を有効にする必要があります。
 
@@ -100,7 +100,7 @@ Cloudyn のダイレクト URL https://app.cloudyn.com は使用しないでく�
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Azure の資格情報でアクティブになっていないアカウントをアクティブにする方法を教えてください
 
-Cloudyn で Azure のアカウントが見つかるとすぐに、コスト データがコストベースのレポートに提供されます。 ただし、Cloudyn が使用状況データとパフォーマンス データを提供するには、そのアカウントの Azure の資格情報を登録する必要があります。 手順については、[Azure Resource Manager の追加](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager)に関するページを参照してください。
+Cloudyn で Azure のアカウントが見つかるとすぐに、コスト データがコストベースのレポートに提供されます。 ただし、Cloudyn が使用状況データとパフォーマンス データを提供するには、そのアカウントの Azure の資格情報を登録する必要があります。 手順については、「[アカウントを追加するか、サブスクリプションを更新する](activate-subs-accounts.md#add-an-account-or-update-a-subscription)」を参照してください。
 
 アカウントの Azure の資格情報を追加するには、Cloudyn ポータルで、サブスクリプションではなく、アカウント名の右にある編集記号を選択します。
 
@@ -108,10 +108,7 @@ Cloudyn にお使いの Azure の資格情報が追加されるまで、アカ�
 
 ## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>既存のサブスクリプションに複数のアカウントやエンティティを追加するにはどうすればよいですか
 
-追加のエンティティは、Cloudyn のサブスクリプションに Enterprise Agreement をさらに追加するために使用されます。 エンティティをさらに追加する方法については、次のリンクで説明されています。
-
-- 「[Adding an Entity (エンティティを追加する)](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity)」の記事
-- [コスト エンティティでの階層の定義](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities)に関するビデオ
+追加のエンティティは、Cloudyn のサブスクリプションに Enterprise Agreement をさらに追加するために使用されます。 詳細については、「[エンティティを作成および管理する](tutorial-user-access.md#create-and-manage-entities)」を参照してください。
 
 CSP の場合:
 

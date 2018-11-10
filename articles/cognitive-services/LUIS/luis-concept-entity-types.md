@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650113"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085865"
 ---
 # <a name="entities-in-luis"></a>LUIS のエンティティ
 
@@ -96,8 +96,9 @@ LUIS には、事前構築済みのエンティティ、機械学習済みのカ
 ## <a name="entity-limits"></a>エンティティの制限
 [制限](luis-boundaries.md#model-boundaries)を確認して、モデルに追加できるエンティティの種類ごとの数を把握してください。
 
-## <a name="entity-roles"></a>エンティティのロール
-エンティティ [ロール](luis-concept-roles.md)はカスタムおよび事前構築済みのエンティティに適用され、パターン内でのみ使用されます。 
+## <a name="roles-versus-hierarchical-entities"></a>ロールと階層エンティティ
+
+詳細については、「[ロールと階層エンティティ](luis-concept-roles.md#roles-versus-hierarchical-entities)」を参照してください。
 
 ## <a name="composite-vs-hierarchical-entities"></a>複合エンティティと階層構造エンティティの比較
 複合エンティティと階層構造エンティティは、どちらも親子関係を持ち、機械学習されます。 機械学習により、LUIS では、異なるコンテキスト (単語の配置) に基づいてエンティティを理解できます。 複合エンティティでは、子としてさまざまな種類のエンティティを使用できるため、より柔軟です。 階層構造エンティティの子は、シンプルなエンティティのみです。 

@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 10/25/2018
 ms.author: iainfou
-ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c3256b2b1e8be0e883d0f7b47e66ab1fee95b042
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406043"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138170"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -42,7 +42,7 @@ Log Analytics の有効化と管理は、Azure Portal で行います。 AKS ク
 ![AKS クラスターの Log Analytics に使用する Log Analytics ワークスペースを有効にする](media/view-master-logs/enable-oms-log-analytics.png)
 
 >[!NOTE]
->OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。 
+>OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS クラスター上のテスト ポッドのスケジュール設定
 
@@ -82,7 +82,7 @@ pod/nginx created
 
 ![AKS クラスターの Log Analytics ワークスペースを選択する](media/view-master-logs/select-log-analytics-workspace.png)
 
-左側で、**[ログ検索]** を選択します。 *kube-apiserver* を表示するには、テキスト ボックスに次のクエリを入力します。
+左側で、**[ログ]** を選択します。 *kube-apiserver* を表示するには、テキスト ボックスに次のクエリを入力します。
 
 ```
 AzureDiagnostics

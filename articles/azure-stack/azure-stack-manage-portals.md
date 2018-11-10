@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
-ms.openlocfilehash: 058e1f9abbf094fb49a21191f60195df53615451
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 4453516626c39f73deea8fce0d744fcecbd5c3fc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985296"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085826"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Azure Stack の管理者ポータルの使用
 
@@ -40,6 +40,8 @@ Azure Stack には、管理者ポータルとユーザー ポータル (*テナ�
 | | |
 
  ![管理者ポータル](media/azure-stack-manage-portals/admin-portal.png)
+
+すべての Azure Stack デプロイの既定のタイム ゾーンは、協定世界時 (UTC) に設定されることに注意してください。 Azure Stack のインストール時にタイム ゾーンを選択できますが、インストール中に自動的に既定として UTC に戻されます。
 
 管理者ポータルでは、次のような操作を行えます。
 

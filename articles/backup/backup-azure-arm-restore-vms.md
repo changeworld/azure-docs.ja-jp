@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 450314dddd49825bae689701b694f9a26758835e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 7de9d1674860a6369c1dc09462a06def672fbdf2
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377641"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420525"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Azure Portal を使用して仮想マシンを復元する
 定義された間隔でデータのスナップショットを取得してデータを保護します。 こうしたスナップショットは復旧ポイントと呼ばれ、Recovery Services コンテナーに格納されます。 仮想マシン (VM) を修復または再構築する必要がある場合は、保存されている復旧ポイントのいずれかから VM を復元できます。 復旧ポイントを復元すると、次のことが可能です。
@@ -151,7 +151,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 イン**プレース復元**は、**[既存の以下のものを置き換えます]** タブを通じて実行します。
 
 ## <a name="replace-existing-disks-from-a-restore-point"></a>既存のディスクを復元ポイントから置き換える
-**[既存の以下のものを置き換えます]** オプションを使用すると、現在の VM の既存のディスクを、選択した復元ポイントに置き換えることができます。 この操作は、現在の VM が存在する場合にのみ実行できます。 何らかの理由で削除された場合は、この操作を実行することはできません。その場合は、VM またはディスクの**新規作成**を行って、復元操作を続行することを勧めします。 既存ディスクの置き換え操作時には、ディスクの置き換え操作を開始する前に、予防措置としてデータがバックアップされます。 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM に反映されます。 現在のところ、[既存の以下のものを置き換えます] オプションは、マネージド ディスクと非暗号化 VM についてのみサポートされています。  
+**[既存の以下のものを置き換えます]** オプションを使用すると、現在の VM の既存のディスクを、選択した復元ポイントに置き換えることができます。 この操作は、現在の VM が存在する場合にのみ実行できます。 何らかの理由で削除された場合は、この操作を実行することはできません。その場合は、VM またはディスクの**新規作成**を行って、復元操作を続行することを勧めします。 既存ディスクの置き換え操作時には、ディスクの置き換え操作を開始する前に、予防措置としてデータがバックアップされます。 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM に反映されます。 現在のところ、**[既存の以下のものを置き換えます]** オプションは、アンマネージド ディスクと暗号化 VM ではサポートされていません。 [汎用化された VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) と、[カスタム イメージ](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)を使用して作成された VM でもサポートされていません。  
 
  **[復元の構成]** ブレードで選択する必要があるのは、**[ステージングの場所]** だけです。
 
@@ -170,7 +170,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 
 **[バックアップ ジョブ]** ブレードが開き、ジョブの一覧が表示されます。
 
-![コンテナーの VM の一覧](./media/backup-azure-arm-restore-vms/restore-job-completed.png)
+![コンテナーの VM の一覧](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
 ## <a name="use-templates-to-customize-a-restored-vm"></a>テンプレートを使用して復元 VM をカスタマイズする
 [ディスクの復元操作が完了](#Track-the-restore-operation)したら、復元操作の一環として生成されたテンプレートを使用して、バックアップ構成とは異なる構成で新しい VM を作成します。 復元ポイントから新しい VM を作成しているときに作成されたリソースの名前を、そのテンプレートを使用してカスタマイズすることもできます。

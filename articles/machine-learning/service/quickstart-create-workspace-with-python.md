@@ -9,16 +9,17 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: e4624b115143f9f2e6dd77aa8ee79597c86ba31c
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e8ebfbfe1d12af892208f67e67c69f25631acb28
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456203"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158841"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>クイック スタート: Python を使用して Azure Machine Learning の利用を開始する
 
-このクイック スタートでは、Azure Machine Learning SDK for Python を使用して Machine Learning サービスの[ワークスペース](concept-azure-machine-learning-architecture.md)を作成して使用します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。
+このクイック スタートでは、Azure Machine Learning SDK for Python を使用して Machine Learning サービスの[ワークスペース](concept-azure-machine-learning-architecture.md)を作成して使用します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。 このクイック スタートでは、まず独自の Python 環境と Jupyter Notebook サーバーを構成します。 インストールなしで実行する場合は、「[クイック スタート: Azure portal を使用した Azure Machine Learning の基本操作](quickstart-get-started.md)」を参照してください。
+
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 

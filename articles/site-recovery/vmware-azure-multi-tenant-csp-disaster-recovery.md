@@ -1,21 +1,20 @@
 ---
-title: Site Recovery とクラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境での Azure への VMware レプリケーションをセットアップする | Microsoft Docs
-description: CSP を使用してテナント サブスクリプションを作成および管理し、Azure Site Recovery をマルチテナント設定でデプロイする方法について説明します。
-services: site-recovery
+title: Site Recovery とクラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境で Azure への VMware ディザスター リカバリーを設定する | Microsoft Docs
+description: Azure Site Recovery を使用したマルチ テナント環境での VMware ディザスター リカバリーを設定する方法について説明します。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354123"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50208903"
 ---
-# <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>クラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境での VMware レプリケーションをセットアップする
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>クラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境での VMware ディザスター リカバリーを設定する
 
 [CSP プログラム](https://partner.microsoft.com/en-US/cloud-solution-provider)は、Office 365、Enterprise Mobility Suite、Microsoft Azure など、Microsoft クラウド サービス向けの優れた連携による事例を促進します。 CSP により、パートナーは顧客とのエンド ツー エンドの関係を築き、顧客にとって最も重要な担当者になることができます。 パートナーは顧客の Azure サブスクリプションをデプロイし、サブスクリプションをカスタマイズされた独自の付加価値サービスと組み合わせることができます。
 

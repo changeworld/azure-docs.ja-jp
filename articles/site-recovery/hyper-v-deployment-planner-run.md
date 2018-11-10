@@ -1,20 +1,20 @@
 ---
-title: Hyper-V から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
-description: この記事では、Hyper-V から Azure へのレプリケーションのために Site Recovery Deployment Planner を実行する方法について説明します。
+title: Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する | Microsoft Docs
+description: この記事では、Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する方法について説明します。
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 9da79884973c620bbf8b6a191f3dd6db5bd19064
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1df8f7025787eb864b7e9ad6f41105df8fb2cc8a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094192"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213340"
 ---
-# <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Azure Site Recovery Deployment Planner の実行 (Hyper-V から Azure)
+# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
 
 Site Recovery Deployment Planner のコマンドライン ツール (ASRDeploymentPlanner.exe) は、次の 4 つのモードのいずれかで実行できます。 
 -   [仮想マシン (VM) の一覧の取得](#get-vm-list-for-profiling-hyper-v-vms)

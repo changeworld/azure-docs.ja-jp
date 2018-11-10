@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 57446f068945d74351a77f21e16874d9e24ddcab
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801932"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086949"
 ---
 # <a name="how-to-configure-password-writeback"></a>方法: パスワード ライトバックを構成する
 
@@ -72,13 +72,14 @@ SSPR の範囲内に入るには、Azure AD Connect ユーティリティで指�
 3. 左側のパネルで、ドメインのルートを表すオブジェクトを右クリックし、**[プロパティ]** > **[セキュリティ]** > **[詳細設定]** の順に選びます。
 4. **[アクセス許可]** タブで **[追加]** を選びます。
 5. (Azure AD Connect のセットアップから) アクセス許可を適用するアカウントを選びます。
-6. **[適用対象]** ドロップダウン ボックスの一覧で、**[Descendent user]\(下位ユーザー\)** オブジェクトを選びます。
+6. **[適用対象]** ドロップダウン ボックスの一覧で、**[ユーザーの子孫オブジェクト]** オブジェクトを選びます。
 7. **[アクセス許可]** で次のオプションのボックスを選択します。
-    * **パスワードのリセット**
     * **[パスワードの変更]**
+    * **パスワードのリセット**
+8. **[プロパティ]** で次のオプションのボックスを選択します。
     * **Write lockoutTime**
     * **Write pwdLastSet**
-8. **[適用]/[OK]** を選んで変更を適用し、開いているすべてのダイアログ ボックスを終了します。
+9. **[適用]/[OK]** を選んで変更を適用し、開いているすべてのダイアログ ボックスを終了します。
 
 ## <a name="next-steps"></a>次の手順
 
