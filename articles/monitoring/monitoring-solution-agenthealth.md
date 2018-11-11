@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: e9ac4b7f7a0900f8b49f95c0db9ba5e9c962fa0e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c76b922d311a0e0bc5af2b4c8a95c2ef2ec09ba1
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404037"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914160"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Azure での Agent Health ソリューション
 Azure の Agent Health ソリューションを使用すると、Log Analytics ワークスペースに対して、または Log Analytics に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、運用データを送信しているエージェントと応答していないエージェントを効率的に把握できます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
@@ -39,7 +39,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」を参照してください。
 
 ## <a name="configuration"></a>構成
-[ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページの手順に従って、Agent Health ソリューションを Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
+[ソリューションの追加](monitoring-solutions.md)に関するページの手順に従って、Agent Health ソリューションを Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
 
 
 ## <a name="data-collection"></a>データ収集
@@ -118,4 +118,4 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 
 ## <a name="next-steps"></a>次の手順
 
-* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../log-analytics/log-analytics-alerts.md) に関するページを参照してください。
+* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) に関するページを参照してください。

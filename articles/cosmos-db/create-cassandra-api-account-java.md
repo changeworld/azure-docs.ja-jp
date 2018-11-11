@@ -9,14 +9,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: b5e3d87e026b65a602b7bdf2e52365d13b21f62f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1220bcc8445f13a4573f1a6d3181c172799638fb
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166833"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741787"
 ---
-# <a name="create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Java アプリケーションを使用して Azure Cosmos DB Cassandra API のアカウント、データベース、テーブルを作成する
+# <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>チュートリアル: Java アプリケーションを使用して Azure Cosmos DB Cassandra API のアカウント、データベース、およびテーブルを作成する
 
 このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB に Cassandra API アカウントを作成し、データベース (キースペースとも呼ばれます) とテーブルを追加する方法について説明します。 Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザーの住所などの詳細情報を格納するユーザー データベースを作成します。  
 
@@ -33,7 +33,7 @@ ms.locfileid: "49166833"
 
 * Azure サブスクリプションをお持ちでない場合は、始める前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。  または、Azure サブスクリプションを使わず、課金も契約もなしで  [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/) こともできます。 
 
-* 最新バージョンの [Java Development Kit (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) を入手します 
+* 最新バージョンの [Java Development Kit (JDK)](https://aka.ms/azure-jdks) を入手します 
 
 * [Maven](http://maven.apache.org/) バイナリ アーカイブを[ダウンロード](http://maven.apache.org/download.cgi)して[インストール](http://maven.apache.org/install.html)します 
   - Ubuntu では、 `apt-get install maven` を実行して Maven をインストールできます。 
@@ -60,7 +60,7 @@ ms.locfileid: "49166833"
 
 ## <a name="get-the-connection-details-of-your-account"></a>アカウントの接続の詳細を取得する  
 
-Azure portal から接続文字列情報を取得し、Java の構成ファイルにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
+Azure portal から接続文字列情報を取得し、Java の構成ファイルにコピーします。 アプリはこの接続文字列によって、ホストされているデータベースと通信できます。 
 
 1.  [Azure portal](http://portal.azure.com/) から Cosmos DB アカウントに移動します。 
 
