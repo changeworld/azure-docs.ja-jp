@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ad3deaad8c069cfb11bb0eb997d886807ecdb0f8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415264"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006500"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 
@@ -58,7 +58,7 @@ Log Analytics には、収集されたデータの量、データの送信元、
 3. Log Analytics ワークスペースの一覧からワークスペースを選択します。
 4. 左側のウィンドウにある一覧から **[使用量と推定コスト]** を選択します。
 5. **[使用量と推定コスト]** ダッシュボードでは、**[時間: 過去 24 時間]** を選択して時間の範囲を変更したり、期間を変更したりすることができます。<br><br> ![期間](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. 確認したい領域が示されている使用量カテゴリ ブレードを確認します。 ブレードを選択し、その項目をクリックして、[[ログ検索]](log-analytics-log-searches.md) に詳細を表示します。<br><br> ![データ使用量 KPI の例](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+6. 確認したい領域が示されている使用量カテゴリ ブレードを確認します。 ブレードを選択し、その項目をクリックして、[[ログ検索]](log-analytics-queries.md) に詳細を表示します。<br><br> ![データ使用量 KPI の例](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
 7. [ログ検索] ダッシュボードで、検索によって返された結果を確認します。<br><br> ![使用量のログの検索の例](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>収集したデータの量が予測よりも多い場合のアラートを作成する
@@ -78,7 +78,7 @@ Azure アラートでは、検索クエリを使用する[ログ アラート](.
 
 別のデータ量でアラートを生成するには、クエリの 100 をアラートを生成する GB 数に変更します。
 
-[新しいログ アラートの作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関するページで説明されている手順を使用して、収集したデータの量が予測を超えた場合に通知されるようにします。
+[新しいログ アラートの作成](../monitoring-and-diagnostics/alert-metric.md)に関するページで説明されている手順を使用して、収集したデータの量が予測を超えた場合に通知されるようにします。
 
 最初のクエリ (24 時間でデータが 100 GB を超えた場合) のアラートを作成するには、次のように設定します。  
 
@@ -163,19 +163,19 @@ Azure アラートでは、検索クエリを使用する[ログ アラート](.
 | イベント ログ                 | [イベント ログの構成](log-analytics-data-sources-windows-events.md)を次のように変更します。 <br> - 収集対象のイベント ログの数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" レベルのイベントを収集しないようにします。 |
 | syslog                     | [syslog の構成](log-analytics-data-sources-syslog.md)を次のように変更します。 <br> - 収集対象の施設の数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" と "*デバッグ*" レベルのイベントを収集しないようにします。 |
 | AzureDiagnostics           | リソース ログの収集を次のように変更します。 <br> - Log Analytics へのリソース送信ログの数を減らす <br> - 必要なログのみを収集する |
-| ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
+| ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../monitoring/monitoring-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>ノード数が予想を超えているかどうかの確認
 "*ノード単位 (Log Analytics)*" の価格レベルを使用している場合は、使用するノードとソリューションの数に基づいて料金が発生します。 使用されている各プランのノード数は、使用量ダッシュボードの "*オファリング*" セクションで確認できます。<br><br> ![[使用量] ダッシュボード](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 **[すべて表示]** をクリックすると、選択したプランでデータを送信しているコンピューターの完全な一覧が表示されます。
 
-[ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。
+[ソリューションのターゲット設定](../monitoring/monitoring-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。
 
 ## <a name="next-steps"></a>次の手順
-* 検索言語の使用方法については、[Log Analytics のログ検索](log-analytics-log-searches.md)に関する記事を参照してください。 検索クエリを使用して、使用量データをさらに分析できます。
-* [新しいログ アラートの作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関するページで説明されている手順を使用して、検索条件が満たされた場合に通知されるようにします。
-* [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。
+* 検索言語の使用方法については、[Log Analytics のログ検索](log-analytics-queries.md)に関する記事を参照してください。 検索クエリを使用して、使用量データをさらに分析できます。
+* [新しいログ アラートの作成](../monitoring-and-diagnostics/alert-metric.md)に関するページで説明されている手順を使用して、検索条件が満たされた場合に通知されるようにします。
+* [ソリューションのターゲット設定](../monitoring/monitoring-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。
 * 効果的なセキュリティ イベント収集ポリシーを構成するには、[Azure Security Center のフィルタリング ポリシー](../security-center/security-center-enable-data-collection.md)に関するページを参照してください。
 * [パフォーマンス カウンターの構成](log-analytics-data-sources-performance-counters.md)を変更します。
 * イベントの収集設定を変更する方法については、[イベント ログの構成](log-analytics-data-sources-windows-events.md)に関するページを参照してください。
