@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 2172acfd61188c09693b9c7dacf37ff7a638d7f4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9d64ad70ea49f7fbffd8bd6a5a77177fe490b832
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169943"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229664"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Azure でディープ ラーニング 仮想マシンをプロビジョニングする 
 
-ディープ ラーニング仮想マシン (DLVM) は、ディープ ラーニング モデルの迅速なトレーニングに GPU ベースの VM インスタンスを容易に使用できるように、一般的な[データ サイエンス仮想マシン](http://aka.ms/dsvm) (DSVM) を特別に構成したバリアントです。 ベースとして Windows 2016 または Ubuntu DSVM によってサポートされています。 DLVM は、同じコア VM イメージ、したがって DSVM で使用可能なすべての機能豊富なツールセットを共有しています。 
+ディープ ラーニング仮想マシン (DLVM) は、ディープ ラーニング モデルの迅速なトレーニングに GPU ベースの VM インスタンスを容易に使用できるように、一般的な[データ サイエンス仮想マシン](https://aka.ms/dsvm) (DSVM) を特別に構成したバリアントです。 ベースとして Windows 2016 または Ubuntu DSVM によってサポートされています。 DLVM は、同じコア VM イメージ、したがって DSVM で使用可能なすべての機能豊富なツールセットを共有しています。 
 
 DLVM には、Microsoft Cognitive Toolkit、TensorFlow、Keras、Caffe2、Chainer など、人気のディープ ラーニング フレームワークの GPU エディションを含む AI 用のツール、イメージ、テキスト データを取得し前処理するためのツール、Microsoft R Server Developer Edition、Anaconda Python、Python 用および R 用 Jupyter Notebook、Python 用および R 用 IDE などのデータ サイエンス モデリングおよび開発アクティビティ用のツール、SQL データベース、およびその他のデータ サイエンスと ML のツールがいくつか含まれます。 
 

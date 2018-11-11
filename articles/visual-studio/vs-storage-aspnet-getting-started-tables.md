@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: c9d9cd9616b263ca002e6fe7ad6c875cce10289b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 518e14b991aa110a6ed55f984a66cd386a618f0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246776"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228965"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Azure Table Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -173,7 +173,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
   
     ![[テーブルの作成]](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
-    前述したように、**CloudTable.CreateIfNotExists** メソッドは、テーブルが存在しないため作成された場合にのみ **true** を返します。 そのため、テーブルが存在するときにアプリを実行した場合、メソッドは **false** を返します。 アプリを複数回実行するには、アプリを再実行する前にテーブルを削除する必要があります。 テーブルの削除は、**CloudTable.Delete** メソッドを使用して行うことができます。 また、[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) または [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用して削除することもできます。  
+    前述したように、**CloudTable.CreateIfNotExists** メソッドは、テーブルが存在しないため作成された場合にのみ **true** を返します。 そのため、テーブルが存在するときにアプリを実行した場合、メソッドは **false** を返します。 アプリを複数回実行するには、アプリを再実行する前にテーブルを削除する必要があります。 テーブルの削除は、**CloudTable.Delete** メソッドを使用して行うことができます。 また、[Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) または [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用して削除することもできます。  
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
 

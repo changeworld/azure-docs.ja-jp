@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f851d43d69999a848dea01c9457a379adb63353b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4b1c2d9390890618a9aa61eb425fbd132917f414
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172383"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229050"
 ---
 # <a name="introduction-to-entities"></a>エンティティの概要
 
@@ -23,7 +23,7 @@ ms.locfileid: "39172383"
 
 ## <a name="video"></a>ビデオ
 
-[![チュートリアル 3 のプレビュー](http://aka.ms/cl-tutorial-03-preview)](http://aka.ms/blis-tutorial-03)
+[![チュートリアル 3 のプレビュー](https://aka.ms/cl-tutorial-03-preview)](https://aka.ms/blis-tutorial-03)
 
 ## <a name="requirements"></a>必要条件
 
@@ -50,7 +50,7 @@ ms.locfileid: "39172383"
 
 1. [エンティティ] をクリックし、[新しいエンティティ] をクリックします。
 2. [エンティティ名] に「city」と入力します。
-3. Click Create
+3. Create をクリックしてください。
 
 > [!NOTE]
 > エンティティ型は 'custom' です。つまり、そのエンティティをトレーニングできます。  また、動作を調整できないことを意味する既製のエンティティもあります。既製のエンティティについては、別のチュートリアルで取り上げます。

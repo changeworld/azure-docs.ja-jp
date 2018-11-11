@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4f063299a0bb454c8eaf3d38a0cb0a5fb20abcc8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 60195f135b8b0e102a36c3573a341432f2e0c784
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094085"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959309"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
 
@@ -27,7 +27,7 @@ ms.locfileid: "47094085"
 
 * [.NET アプリ](app-insights-asp-net-troubleshoot-no-data.md)
 * [既に実行中のアプリの監視](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Azure 診断](app-insights-azure-diagnostics.md)
+* [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Java Web アプリ](app-insights-java-troubleshoot.md)
 
 *サーバーからデータを取得できません。*
@@ -111,7 +111,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 
 [クライアントの Web ページ](app-insights-javascript.md)から:
 
-* [ページ ビュー数](app-insights-web-track-usage.md)
+* [ページ ビュー数](app-insights-usage-overview.md)
 * [AJAX 呼び出し](app-insights-asp-net-dependencies.md)。実行中のスクリプトから行われる要求。
 * ページ ビューの読み込みデータ
 * ユーザー数とセッション数
@@ -119,7 +119,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 
 その他のソースから (構成する場合):
 
-* [Azure 診断](app-insights-azure-diagnostics.md)
+* [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Docker コンテナー](app-insights-docker.md)
 * [Analytics へのインポート テーブル](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)

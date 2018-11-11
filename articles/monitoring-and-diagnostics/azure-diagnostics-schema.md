@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 2c3b2ecc1467a09ae490d23c45e7a000f4afe49a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 603ed12bf74f2d75543fd7e60834e695138c991d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976909"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963803"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure 診断拡張機能の構成スキーマのバージョンと履歴
 このページでは、Microsoft Azure SDK に付属する Azure 診断拡張機能のスキーマのバージョン一覧を示します。  
@@ -29,7 +29,7 @@ ms.locfileid: "46976909"
 >
 > このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 
-Azure 診断拡張機能は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。 詳細については、[Microsoft の監視ツールの概要に関するページ](monitoring-overview.md)を参照してください。
+Azure 診断拡張機能は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。 詳細については、[Microsoft の監視ツールの概要に関するページ](../azure-monitor/overview.md)を参照してください。
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK のバージョンと診断のバージョンの一覧  
 
