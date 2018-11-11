@@ -92,20 +92,14 @@ items:
       href: conflict-resolution-policies.md
     - name: グローバル配信 - 内部のしくみ
       href: global-dist-under-the-hood.md
-  - name: パーティション分割
+  - name: Throughput
     items:
     - name: 概要
-      href: partitioning-overview.md
-    - name: 論理パーティション
-      href: partition-data.md
-    - name: 合成パーティション キーの作成
-      href: synthetic-partition-keys.md
-  - name: プロビジョニング スループット
-    items:
-    - name: 要求ユニット
       href: request-units.md
-    - name: コンテナーとデータベースのスループットのプロビジョニング
+    - name: スループットの取得と設定
       href: set-throughput.md
+  - name: パーティション分割とデータ分散
+    href: partition-data.md
   - name: インデックス作成
     href: indexing-policies.md
   - name: Change Feed
@@ -435,18 +429,6 @@ items:
       href: how-to-manage-consistency.md
     - name: 競合の管理
       href: how-to-manage-conflicts.md
-  - name: プロビジョニング スループット
-    items:
-    - name: コンテナーのスループットのプロビジョニング
-      href: how-to-provision-container-throughput.md
-    - name: データベースのスループットのプロビジョニング
-      href: how-to-provision-database-throughput.md
-  - name: コンテナーとアイテムの操作
-    items:
-    - name: コンテナーを作成する
-      href: how-to-create-container.md
-    - name: コンテナーの照会
-      href: how-to-query-container.md
   - name: ベスト プラクティス
     items:
     - name: パフォーマンスに関するヒント
@@ -535,9 +517,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 139bf5c5edfb808e912f2da07ea1bcab57636c55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 37c3638ab42036e21a7544e7cfa0ca4e4d99ef4f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244272"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014637"

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 193b66cf8bdaaefed5f073bec3ecb9050d076f19
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2e168867ed342fb0b0545b5fdc330ba790f78de0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299076"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243557"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
 [Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
@@ -33,9 +33,9 @@ ms.locfileid: "38299076"
 - データ ディスクをアタッチできるのは、実行中の VM だけです。 データ ディスクのアタッチを試みる前に、VM が実行されていることを確認してください。
 
 ### <a name="attach-a-new-disk"></a>新しいディスクの接続
-Azure DevTest Labs で新しい管理対象データ ディスクを作成して VM にアタッチするには、次の手順に従います。
+Azure DevTest Labs で新しいマネージド データ ディスクを作成して VM にアタッチするには、次の手順に従います。
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。 
 1. **[自分の仮想マシン]** の一覧で、実行中の VM を選択します。
@@ -99,7 +99,7 @@ VM にアタッチされたデータ ディスクは、不要になった場合�
    >
 
 ## <a name="upgrade-an-unmanaged-data-disk"></a>非管理対象データ ディスクのアップグレード
-非管理対象データ ディスクが使用される既存の VM がある場合、管理対象ディスクが使用されるよう VM を簡単に変換できます。 このプロセスでは、OS ディスクと接続されたすべてのデータ ディスクの両方を変換します。
+アンマネージド データ ディスクが使用される既存の VM がある場合、マネージド ディスクが使用されるよう VM を簡単に変換できます。 このプロセスでは、OS ディスクと接続されたすべてのデータ ディスクの両方を変換します。
 
 非管理対象データ ディスクをアップグレードするには、この記事の手順に従って、非管理対象 VM から[データ ディスクをデタッチ](#detach-a-data-disk)します。 次に、データ ディスクが非管理対象から管理対象に自動的にアップグレードされるように、管理対象 VM に[ディスクを再アタッチ](#attach-an-existing-disk)します。
 

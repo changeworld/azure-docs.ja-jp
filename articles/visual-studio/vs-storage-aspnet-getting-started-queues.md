@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: a114833b40fe834aa0108d1a2f3821f0b7cbddbc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 5234f5c82e98fcb402cadf9a8a469a15bbb7ac6d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321854"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250817"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 
@@ -141,7 +141,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
   
     ![キューの作成](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
-    前述したように、**CloudQueue.CreateIfNotExists** メソッドは、キューが存在しないため作成された場合にのみ **true** を返します。 そのため、キューが存在するときにアプリを実行した場合、メソッドは **false** を返します。 アプリを複数回実行するには、アプリを再実行する前にキューを削除する必要があります。 キューの削除は、**CloudQueue.Delete** メソッドを使用して行うことができます。 また、[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) または [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用してキューを削除することもできます。  
+    前述したように、**CloudQueue.CreateIfNotExists** メソッドは、キューが存在しないため作成された場合にのみ **true** を返します。 そのため、キューが存在するときにアプリを実行した場合、メソッドは **false** を返します。 アプリを複数回実行するには、アプリを再実行する前にキューを削除する必要があります。 キューの削除は、**CloudQueue.Delete** メソッドを使用して行うことができます。 また、[Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) または [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用してキューを削除することもできます。  
 
 ## <a name="add-a-message-to-a-queue"></a>メッセージをキューに追加する
 

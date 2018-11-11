@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: aa9e91614152aed6a04fa748521991920a0ed569
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2a64b9fc7e2f13c3b9974e95d914a3d3b675d883
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413062"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006807"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Log Analytics のビュー デザイナー タイルへのリファレンス ガイド
 Azure Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペース内にさまざまなデータ視覚化を提供するカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能なタイルの設定へのリファレンス ガイドです。
@@ -179,5 +179,5 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 
 
 ## <a name="next-steps"></a>次の手順
-* 各タイルのクエリをサポートする[ログ検索](log-analytics-log-searches.md)について学習します。
+* 各タイルのクエリをサポートする[ログ検索](log-analytics-queries.md)について学習します。
 * カスタム ビューに[視覚化パーツ](log-analytics-view-designer-parts.md)を追加します。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 9d77952a96bff6cc2d50ecbd4bde7e499f20de6d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23036737"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420034"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 
@@ -39,7 +39,7 @@ ms.locfileid: "23036737"
 
 ### <a name="install-suricata"></a>Suricata のインストール
 
-その他すべてのインストール方法については、http://suricata.readthedocs.io/en/latest/install.html を参照してください。
+その他すべてのインストール方法については、 http://suricata.readthedocs.io/en/latest/install.html を参照してください。
 
 1. VM のコマンドライン ターミナルで、次のコマンドを実行します。
 
@@ -81,7 +81,8 @@ Suricata によって作成されたログには、ネットワークで発生�
 
 #### <a name="install-elasticsearch"></a>Elasticsearch のインストール
 
-1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Oracle の Web サイト](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)のドキュメントを参照してください。
+1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Azure でサポートされている JDK](https://aka.ms/azure-jdks) に関するドキュメントを参照してください。
+
 1. お使いのシステムに適合するバイナリ パッケージをダウンロードします。
 
     ```

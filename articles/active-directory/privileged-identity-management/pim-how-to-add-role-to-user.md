@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 07/23/2018
+ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 33bfe28bf612c47c9f42345dabccc017337c3d45
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 5f0b5d1695603a7cd2a3c7ac1dbc484e44257d88
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190158"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249613"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールを割り当てる
 
@@ -112,6 +112,39 @@ ms.locfileid: "43190158"
     ![ロールの削除](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     ロールの割り当てが削除されました。
+
+## <a name="authorization-error-when-assigning-roles"></a>ロールの割り当て時の承認エラー
+
+サブスクリプション用に PIM を最近有効化し、ユーザーをディレクトリ ロールの対象にしようとして承認エラーが発生した場合、MS PIM サービス プリンシパルにまだ適切なアクセス許可がないためである可能性があります。 MS PIM サービス プリンシパルには、他のユーザーにロールを割り当てるための[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールが必要です。 MS PIM にユーザー アクセス管理者ロールが割り当てられるまで待つ代わりに、それを手動で割り当てることができます。
+
+以下の手順に従って、MS PIM サービス プリンシパルにサブスクリプション用のユーザー アクセス管理者ロールを割り当てます。
+
+1. Azure Portal にグローバル管理者としてサインインします。
+
+1. **[すべてのサービス]**、**[サブスクリプション]** の順に選択します。
+
+1. サブスクリプションを選択します。
+
+1. **[アクセス制御 (IAM)]** を選択すると、サブスクリプションをスコープとするロールの割り当ての現在の一覧が表示されます。
+
+   ![サブスクリプションの [アクセス制御 (IAM)] ブレード](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
+
+1. **MS PIM**サービス プリンシパルに**ユーザー アクセス管理者**ロールが割り当てられているかどうかを確認します。
+
+1. 割り当てられていない場合は、**[追加]** を選択して **[アクセス許可の追加]** ウィンドウを開きます。
+
+1. **[ロール]** ドロップダウン リストで、**[ユーザー アクセス管理者]** ロールを選択します。
+
+1. **[選択]** リストで、**[MS PIM]** サービス プリンシパルを見つけて選択します。
+
+   ![MS PIM のアクセス許可を追加する](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
+
+1. **[保存]** を選択して、ロールを割り当てます。
+
+   しばらくすると、MS PIM サービス プリンシパルに、サブスクリプション スコープでユーザー アクセス管理者ロールが割り当てられます。
+
+   ![MS-PIM のユーザー アクセス管理者ロール](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
+
 
 ## <a name="next-steps"></a>次の手順
 

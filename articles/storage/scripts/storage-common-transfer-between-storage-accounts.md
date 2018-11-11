@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 970315c5d597d691454f9dea0a76f2c0dc4a40ec
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 58e2275398216f29764d54d1a230959e86eda0b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "29360719"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253263"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Windows での AzCopy を使用したストレージ アカウント間での BLOB の移行
 
@@ -30,7 +30,7 @@ ms.locfileid: "29360719"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-サンプルでは、[AzCopy on Windows](http://aka.ms/downloadazcopy) の最新バージョンも必要です。 既定のインストール ディレクトリは `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\` です。
+サンプルでは、[AzCopy on Windows](https://aka.ms/downloadazcopy) の最新バージョンも必要です。 既定のインストール ディレクトリは `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\` です。
 
 このサンプルは、ソース ストレージ アカウント名とキー、ターゲット ストレージ アカウント名とキー、および AzCopy.exe の完全ファイルパス (既定のディレクトリにインストールされていない場合) を受け取ります。
 

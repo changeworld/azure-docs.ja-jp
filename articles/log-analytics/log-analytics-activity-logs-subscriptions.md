@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c078320ce31e0c51c7aef0bc0a2aa14e68ac2fc3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 41e627d895f0276d372ee42df3e0a43fdadc4051
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042863"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016065"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する
 
@@ -29,7 +29,7 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
 ## <a name="overview"></a>概要
 
-このシナリオで使用される戦略では、Azure アクティビティ ログがイベントを[イベント ハブ](../event-hubs/event-hubs-what-is-event-hubs.md)に送信するようにします。そこから、[ロジック アプリ](../logic-apps/logic-apps-overview.md) が Log Analytics ワークスペースにイベントを送信します。 
+このシナリオで使用される戦略では、Azure アクティビティ ログがイベントを[イベント ハブ](../event-hubs/event-hubs-about.md)に送信するようにします。そこから、[ロジック アプリ](../logic-apps/logic-apps-overview.md) が Log Analytics ワークスペースにイベントを送信します。 
 
 ![アクティビティ ログから Log Analytics へのデータ フローの画像](media/log-analytics-activity-logs-subscriptions/data-flow-overview.png)
 

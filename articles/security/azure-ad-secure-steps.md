@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 94d96cab28f738984b3d05d5eee0754e8c5e75b6
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: d52431b50e37101b0272e3ce4bbf91011a477775
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341581"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252089"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -182,4 +182,4 @@ ID インフラストラクチャのセキュリティについては多数の�
 Microsoft は、お客様が ID セキュリティの重要性を認識していることを理解しています。ぜひ、このドキュメントを、組織のセキュリティ体制を強化するためのロードマップとしてお役立てください。
 
 ## <a name="next-steps"></a>次の手順
-推奨アクションの計画と展開にサポートが必要な場合は、[Azure AD プロジェクト デプロイ計画](http://aka.ms/deploymentplans)をヘルプとして参照してください。
+推奨アクションの計画と展開にサポートが必要な場合は、[Azure AD プロジェクト デプロイ計画](https://aka.ms/deploymentplans)をヘルプとして参照してください。

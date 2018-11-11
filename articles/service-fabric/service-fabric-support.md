@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: e22a2431ecae68278276b069bc199cfea60cd413
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 5d2edd3b4d8655133ef2835f0d0e579280123ae7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347360"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249423"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
@@ -27,7 +27,7 @@ ms.locfileid: "44347360"
 
 ## <a name="report-production-issues-or-request-paid-support-for-azure"></a>運用上の問題を報告するか、Azure の有料サポートを要求する
 
-Azure にデプロイされた Service Fabric クラスター上の問題を報告する場合は、[Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) または [Microsoft サポート ポータル](http://support.microsoft.com/oas/default.aspx?prid=16146)でサポートのチケットを開きます。
+Azure にデプロイされた Service Fabric クラスター上の問題を報告する場合は、[Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) または [Microsoft サポート ポータル](https://support.microsoft.com/oas/default.aspx?prid=16146)でサポートのチケットを開きます。
 
 各項目の詳細情報
  
@@ -38,7 +38,7 @@ Azure にデプロイされた Service Fabric クラスター上の問題を報�
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>運用上の問題を報告するか、スタンドアロン Service Fabric クラスターの有料サポートを要求する
 
-オンプレミスまたは他のクラウドにデプロイされた Service Fabric クラスター上の問題を報告する場合は、[Microsoft サポート ポータル](http://support.microsoft.com/oas/default.aspx?prid=16146)でサポートのチケットを開きます。
+オンプレミスまたは他のクラウドにデプロイされた Service Fabric クラスター上の問題を報告する場合は、[Microsoft サポート ポータル](https://support.microsoft.com/oas/default.aspx?prid=16146)でサポートのチケットを開きます。
 
 各項目の詳細情報
 

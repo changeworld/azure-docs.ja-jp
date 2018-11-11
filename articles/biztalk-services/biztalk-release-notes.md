@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f990aa086997d51e59df4285aabeccd31dcce822
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576472"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253433"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
 
@@ -188,7 +188,7 @@ BizTalk サービス プロジェクトで名前ベースの動作を使用し�
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>SQL Database がオフラインの場合でも、ブリッジがメッセージの処理を続行する
 (デプロイされたアーティファクトやパイプラインなどの実行中の情報が格納されている) Microsoft Azure SQL Database がオフラインになっても、BizTalk Services ブリッジはしばらくの間メッセージの処理を続行します。 これは、BizTalk Services がキャッシュされたアーティファクトとブリッジ構成を使用しているためです。
-SQL Database がオフラインのときにブリッジがメッセージを処理しないようにするには、BizTalk Services PowerShell コマンドレットを使用して、BizTalk サービスを停止または一時停止します。 操作を管理するための Windows PowerShell コマンドレットについては、 [Azure BizTalk Services 管理のサンプル](http://go.microsoft.com/fwlink/p/?LinkID=329019) に関するページを参照してください。  
+SQL Database がオフラインのときにブリッジがメッセージを処理しないようにするには、BizTalk Services PowerShell コマンドレットを使用して、BizTalk サービスを停止または一時停止します。 操作を管理するための Windows PowerShell コマンドレットについては、 [Azure BizTalk Services 管理のサンプル](https://go.microsoft.com/fwlink/p/?LinkID=329019) に関するページを参照してください。  
 
 ### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>ブリッジのカスタム コード コンポーネント内の XML メッセージを読み込むと、余分な BOM 文字が追加される
 ブリッジのカスタム コード内の XML メッセージを読み込むシナリオが該当します。 .NET API System.Text.Encoding.UTF8.GetString(bytes) を使用すると、余分な BOM 文字が出力メッセージの先頭に追加されます。 そのため、出力に余分な BOM 文字が追加されないようにするには、 ```System.IO.StreamReader().ReadToEnd()```を使用する必要があります。

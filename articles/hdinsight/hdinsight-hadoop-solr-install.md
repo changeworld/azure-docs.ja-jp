@@ -2,19 +2,19 @@
 title: スクリプト アクションを使用して Hadoop クラスターに Solr をインストールする - Azure
 description: Script Action を使って HDInsight クラスターを Solr でカスタマイズする方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e0c1f2ecbe86eda5161324bfe84c7cf8f7d31d60
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6a3f9928fa685c36a0495ba5d423c3be7bff2bea
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110756"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009168"
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Windows ベースの HDInsight クラスターに Solr をインストールして使用する
 

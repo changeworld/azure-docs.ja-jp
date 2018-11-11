@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d359ad0e619e4d7784d763e70599ce784aa852cd
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 97ca4f69f4bf2aa814d51cc17970c1aead8399e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945815"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414405"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -190,7 +190,8 @@ REST API を使用してこの操作を実行する方法については、「 [
     "DelegationEnabled": "False",
     "DelegationUrl": "",
     "DelegatedSubscriptionEnabled": "False",
-    "DelegationValidationKey": ""
+    "DelegationValidationKey": "",
+    "RequireUserSigninEnabled": "false"
   },
   "$ref-policy": "api-management/policies/global.xml"
 }
@@ -200,10 +201,11 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 | ID の設定 | 対応する設定 |
 | --- | --- |
-| RegistrationEnabled |**[匿名ユーザーをサインイン ページにリダイレクトする]** チェック ボックス |
+| RegistrationEnabled |**ユーザー名とパスワード** ID プロバイダーの存在 |
 | UserRegistrationTerms |**[ユーザー サインアップの使用条件]** ボックス |
 | UserRegistrationTermsEnabled |**[サインアップ ページに使用条件を表示する]** チェック ボックス |
 | UserRegistrationTermsConsentRequired |**[同意を要求する]** チェック ボックス |
+| RequireUserSigninEnabled |**[匿名ユーザーをサインイン ページにリダイレクトする]** チェック ボックス |
 
 その次の 4 つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、**[セキュリティ]** セクションの **[委任]** タブにある次の設定に対応します。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: johndeu;
-ms.openlocfilehash: 78ec0e3ee4304e820bf64afa26440380887630a1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6330de2aa67fd83a5d4762c2c13d4916f642743d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786061"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250936"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更
 
@@ -30,7 +30,7 @@ ms.locfileid: "33786061"
 この記事では、Smooth Streaming マニフェストでの HEVC ビデオ コーデックの信号通知のための技術的な実装要件を提供します。引用規格は、現在の MPEG 規格を参照するように更新されています。この規格には、最新の仕様と一致するように更新されている、HEVC、HEVC の Common Encryption、および ISO Base Media File Format のボックス名が含まれます。 
 
 参照先の Smooth Streaming Protocol [MS-SSTR] の仕様書は、オーディオやビデオなどのデジタル メディアを、次の方法で、ライブ配信およびオンデマンド配信するためのワイヤ形式について説明しています: エンコーダーから Web サーバー、サーバーから別のサーバー、およびサーバーから HTTP クライアント。
-HTTP 経由での MPEG-4 ([[MPEG4-RA])](http://go.microsoft.com/fwlink/?LinkId=327787) ベースのデータ構造の配信を使用すると、圧縮されたメディア コンテンツの異なる品質レベル間のシームレスな切り替えがほぼリアルタイムで可能になります。 その結果、クライアント コンピューターまたはデバイスのネットワークとビデオ レンダリングの条件が変更された場合でも、HTTP クライアントのエンド ユーザーの再生エクスペリエンスは変わりません。
+HTTP 経由での MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787) ベースのデータ構造の配信を使用すると、圧縮されたメディア コンテンツの異なる品質レベル間のシームレスな切り替えがほぼリアルタイムで可能になります。 その結果、クライアント コンピューターまたはデバイスのネットワークとビデオ レンダリングの条件が変更された場合でも、HTTP クライアントのエンド ユーザーの再生エクスペリエンスは変わりません。
 
 ## <a name="11-glossary"></a>1.1 Glossary (用語集) 
 
@@ -40,11 +40,11 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](http://go.microsoft.com/fwlink/?LinkId=3
 
 次の用語は、このドキュメントに固有のものです。
 
->  **コンポジション時間:** [[ISO/IEC-14496-12]](http://go.microsoft.com/fwlink/?LinkId=183695) で定義されている、サンプルがクライアントで示される時間。
+>  **コンポジション時間:** [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) で定義されている、サンプルがクライアントで示される時間。
 
 >   **CENC**: Common Encryption、[ISO/IEC 23001-7] Second Edition で定義。
 
->   **デコード時間:** クライアントでサンプルをデコードするのに要する時間。[[ISO/IEChttp://go.microsoft.com/fwlink/?LinkId=18369514496-12] で定義。](http://go.microsoft.com/fwlink/?LinkId=183695)
+>   **デコード時間:** クライアントでサンプルをデコードするのに要する時間。[[ISO/IEC http://go.microsoft.com/fwlink/?LinkId=18369514496-12] で定義。](https://go.microsoft.com/fwlink/?LinkId=183695)
 
 **フラグメント:** 1 つまたは複数の**サンプル**を構成する**メディア**の個別にダウンロード可能な単位。
 
@@ -52,11 +52,11 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](http://go.microsoft.com/fwlink/?LinkId=3
 
 >   **マニフェスト**:クライアントが**メディア**を要求することを許可する、**プレゼンテーション**に関するメタデータ。 **メディア:** **プレゼンテーション**を再生するためにクライアントによって使用されるオーディオ、ビデオ、およびテキストの圧縮データ。 **メディア フォーマット:** オーディオまたはビデオを圧縮された**サンプル**として表すために適切に定義されたフォーマット。
 
->   **プレゼンテーション:** 1 つのムービーを再生するために必要なすべての**ストリーム**と関連メタデータのセット。 **要求:** [[RFC2616]](http://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、クライアントからサーバーに送信される HTTP メッセージ。 **応答:** [[RFC2616]](http://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ。
+>   **プレゼンテーション:** 1 つのムービーを再生するために必要なすべての**ストリーム**と関連メタデータのセット。 **要求:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、クライアントからサーバーに送信される HTTP メッセージ。 **応答:** [[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) で定義されている、サーバーからクライアントに送信される HTTP メッセージ。
 
 >   **サンプル:** **メディア**が格納および処理される最小の基本単位 (フレームなど)。
 
->   **MAY、SHOULD、MUST、SHOULD NOT、MUST NOT:** これらの用語 (すべて大文字) は、[[RFC2119]](http://go.microsoft.com/fwlink/?LinkId=90317) に記載されているとおりに使用されています。 省略可能なビヘイビアーのすべてのステートメントでは、MAY、SHOULD、または SHOULD NOT のいずれかを使用します。
+>   **MAY、SHOULD、MUST、SHOULD NOT、MUST NOT:** これらの用語 (すべて大文字) は、[[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317) に記載されているとおりに使用されています。 省略可能なビヘイビアーのすべてのステートメントでは、MAY、SHOULD、または SHOULD NOT のいずれかを使用します。
 
 ## <a name="12-references"></a>1.2 References (参照) 
 -----------
@@ -65,7 +65,7 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](http://go.microsoft.com/fwlink/?LinkId=3
 
  ### <a name="121-normative-references"></a>1.2.1 Normative References (標準リファレンス) 
 
->  [MS-SSTR] Smooth Streaming Protocol *v20140502* [http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/[MS-SSTR].pdf](http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
+>  [MS-SSTR] Smooth Streaming Protocol *v20140502* [http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/[MS-SSTR].pdf](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
 >   [ISO/IEC 14496-12] International Organization for Standardization, "Information technology -- Coding of audio-visual objects -- Part 12: ISO Base Media File Format", ISO/IEC 14496-12:2014, Edition 4, Plus Corrigendum 1, Amendments 1 & 2.
 >   <http://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
@@ -79,17 +79,17 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](http://go.microsoft.com/fwlink/?LinkId=3
 
 >   [RFC-6381] IETF RFC-6381, “The 'Codecs' and 'Profiles' Parameters for   "Bucket" Media Types” <http://tools.ietf.org/html/rfc6381>
 
->   [MPEG4-RA] The MP4 Registration Authority, "MP4REG", [http://www.mp4ra.org   ](http://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] The MP4 Registration Authority, "MP4REG", [http://www.mp4ra.org   ](https://go.microsoft.com/fwlink/?LinkId=327787)
 
->   [RFC2119] Bradner, S., "Key words for use in RFCs to Indicate Requirement   Levels", BCP 14, RFC 2119, March 1997,   [http://www.rfc-editor.org/rfc/rfc2119.txt   ](http://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, S., "Key words for use in RFCs to Indicate Requirement   Levels", BCP 14, RFC 2119, March 1997,   [http://www.rfc-editor.org/rfc/rfc2119.txt   ](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 Informative References (参考文献) 
 
 >   [MS-GLOS] Microsoft Corporation, "*Windows Protocols Master Glossary*."
 
->   [RFC3548] Josefsson, S., Ed., "The Base16, Base32, and Base64 Data   Encodings", RFC 3548, July 2003, [http://www.ietf.org/rfc/rfc3548.txt   ](http://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, S., Ed., "The Base16, Base32, and Base64 Data   Encodings", RFC 3548, July 2003, [http://www.ietf.org/rfc/rfc3548.txt   ](https://go.microsoft.com/fwlink/?LinkId=90432)
 
->   [RFC5234] Crocker, D., Ed., and Overell, P., "Augmented BNF for Syntax   Specifications: ABNF", STD 68, RFC 5234, January 2008,   [http://www.rfc-editor.org/rfc/rfc5234.txt   ](http://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker, D., Ed., and Overell, P., "Augmented BNF for Syntax   Specifications: ABNF", STD 68, RFC 5234, January 2008,   [http://www.rfc-editor.org/rfc/rfc5234.txt   ](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1.3 Overview (概要) 
@@ -115,7 +115,7 @@ HTTP 経由での MPEG-4 ([[MPEG4-RA])](http://go.microsoft.com/fwlink/?LinkId=3
 >   次のメソッドは、HEVC ビデオ形式を使用してストリームを識別するために使用するものとします。
 
 >   * **Custom Descriptive Codes for Media Formats:** この機能は、セクション *2.2.2.5* で規定されているように、**FourCC** フィールドで提供されます。
->   [[ISO/IEC-14496-12] ](http://go.microsoft.com/fwlink/?LinkId=183695)で規定されているように、実装者は拡張コードを MPEG4-RA に登録することで、拡張機能が競合しないことを保証できます。
+>   [[ISO/IEC-14496-12] ](https://go.microsoft.com/fwlink/?LinkId=183695)で規定されているように、実装者は拡張コードを MPEG4-RA に登録することで、拡張機能が競合しないことを保証できます。
 
 ## <a name="19-standards-assignments"></a>1.9 Standards Assignments (標準の割り当て) 
 ----------------------
@@ -163,7 +163,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 >   * TrackElement で HEVC ビデオを記述する場合、**FourCC** フィールドは **"hev1"** と等しいものとします。
 
->   **CodecPrivateData** フィールドには、次のバイト シーケンスの 16 進数でコード化された文字列表現が含まれているものとします。ABNF [[RFC5234]](http://go.microsoft.com/fwlink/?LinkId=123096) で規定 (MS SSTR から変更なし)
+>   **CodecPrivateData** フィールドには、次のバイト シーケンスの 16 進数でコード化された文字列表現が含まれているものとします。ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) で規定 (MS SSTR から変更なし)
 
 >   * %x00 %x00 %x00 %x01 SPSField %x00 %x00 %x00 %x01 PPSField
 
@@ -195,7 +195,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 #### <a name="2244-tfxdbox"></a>2.2.4.4 TfxdBox 
 
->   **TfxdBox** は、使用されていません。また、その関数は、[ISO/IEC 14496-12] セクション 8.8.12 で規定されている、Track Fragment Decode Time Box (‘tfdt’) に置き換えられました。
+>   **TfxdBox** は非推奨になっています。また、その関数は、[ISO/IEC 14496-12] セクション 8.8.12 で規定されている、Track Fragment Decode Time Box (‘tfdt’) に置き換えられました。
 
 >   **注**: クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。
 
@@ -203,27 +203,27 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 #### <a name="2245-tfrfbox"></a>2.2.4.5 TfrfBox 
 
->   **TfrfBox** は、使用されていません。また、その関数は、[ISO/IEC 14496-12] セクション 8.8.12 で指定されている、Track Fragment Decode Time Box (‘tfdt’) に置き換えられました。
+>   **TfrfBox** は非推奨になっています。また、その関数は、[ISO/IEC 14496-12] セクション 8.8.12 で指定されている、Track Fragment Decode Time Box (‘tfdt’) に置き換えられました。
 
->   **注**: クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。 Look ahead アドレスは、ライブ ストリーミングを遅延させるため、使用されなくなりました。
+>   **注**: クライアントは、Track Run Box (‘trun’) にリストされているサンプル期間を合計するか、サンプル時間を規定のサンプル期間と乗算することで、フラグメントの期間を計算できます。 'tfdt' の baseMediaDecodeTime とフラグメント期間を足すと、次のフラグメントの URL time パラメーターと等しくなります。 Look ahead アドレスは、ライブ ストリーミングを遅延させるため、非推奨となりました。
 
 #### <a name="2246-tfhdbox"></a>2.2.4.6 TfhdBox 
 
->   **TfhdBox** と関連フィールドは、サンプル メタデータごとに既定値をフラグメントにカプセル化します。 **TfhdBox** フィールドの構文は、[[ISO/IEC-14496-12]](http://go.microsoft.com/fwlink/?LinkId=183695) セクション 8.8.7 で定義されている、Track Fragment Header Box の厳密なサブセットです。
+>   **TfhdBox** と関連フィールドは、サンプル メタデータごとに既定値をフラグメントにカプセル化します。 **TfhdBox** フィールドの構文は、[[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) セクション 8.8.7 で定義されている、Track Fragment Header Box の厳密なサブセットです。
 
 >   **BaseDataOffset (8 バイト):** **MdatBox** フィールドの先頭から **MdatBox** フィールド内のサンプル フィールドまでのオフセット (バイト)。 この制限を信号で知らせるには、default-base-is-moof フラグ (0x020000) を設定する必要があります。
 
 #### <a name="2247-trunbox"></a>2.2.4.7 TrunBox 
 
->   **TrunBox** と関連フィールドは、要求されたフラグメントのサンプル メタデータごとにカプセル化します。 **TrunBox** の構文は、[[ISO/IEC-14496-](http://go.microsoft.com/fwlink/?LinkId=183695)*12]* セクション 8.8.8 で定義されている、Version 1 Track Fragment Run Box の厳密なサブセットです。
+>   **TrunBox** と関連フィールドは、要求されたフラグメントのサンプル メタデータごとにカプセル化します。 **TrunBox** の構文は、[[ISO/IEC-14496-](https://go.microsoft.com/fwlink/?LinkId=183695)*12]* セクション 8.8.8 で定義されている、Version 1 Track Fragment Run Box の厳密なサブセットです。
 
 >   **SampleCompositionTimeOffset (4 バイト):** フラグメントで最初に表示されたサンプルのプレゼンテーション時間が最初にデコードされたサンプルのデコード時間と同じになるように調整された、各サンプルの Sample Composition Time オフセット。 ビデオ サンプル コンポジションの負のオフセットは、
 
->   [[ISO/IEC-14496-12]](http://go.microsoft.com/fwlink/?LinkId=183695) で規定されているとおりに使用するものとします。
+>   [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) で規定されているとおりに使用するものとします。
 
 >   注: これにより、ビデオの音声遅延がデコード済み画像バッファの最大除去遅延と等しくなることで生じるビデオ同期エラーを回避し、異なる除去遅延を持つ可能性のある別のフラグメント間のプレゼンテーション タイミングを保持します。
 
->   このセクション (ABNF [[RFC5234]](http://go.microsoft.com/fwlink/?LinkId=123096) で規定) で定義されているフィールドの構文は、以下を除いて変わりません。
+>   このセクション (ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) で規定) で定義されているフィールドの構文は、以下を除いて変わりません。
 
 >   SampleCompositionTimeOffset = SIGNED_INT32
 
@@ -239,7 +239,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 
 #### <a name="2271-filetype"></a>2.2.7.1 FileType 
 
->   **FileType (変数):** MPEG-4 ([[MPEG4-RA])](http://go.microsoft.com/fwlink/?LinkId=327787) ファイルと高度な属性のサブタイプと用途を指定します。
+>   **FileType (変数):** MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787) ファイルと高度な属性のサブタイプと用途を指定します。
 
 >   **MajorBrand (変数):** メディア ファイルのメジャー ブランド。 "isml" に設定する必要があります。
 
@@ -248,7 +248,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
 >   **CompatibleBrands (変数):** MPEG-4 のサポートされているブランドを指定します。
 >   "ccff" と "iso8" を含める必要があります。
 
->   このセクションで定義されているフィールドの構文 (ABNF [[RFC5234]](http://go.microsoft.com/fwlink/?LinkId=123096) で規定) は、次のとおりです。
+>   このセクションで定義されているフィールドの構文 (ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) で規定) は、次のとおりです。
 
     FileType = MajorBrand MinorVersion CompatibleBrands
     MajorBrand = STRING_UINT32
@@ -299,7 +299,7 @@ ProtectionElement は、Common Encryption (CENC) がビデオまたはオーデ�
     MajorVersion = 2
     MinorVersion = 2
 
->   LookaheadCount = 0 (注: Boxes は使用されていない)
+>   LookaheadCount = 0 (注: Boxes は非推奨)
 
 >   プレゼンテーションは以下も設定する必要があります。
 

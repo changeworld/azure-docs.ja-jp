@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 9b61362525962c5e01d7fef6d317cf9861dfd0a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 565a484d2eae0879b625e79ef7ffbdd8eb5e4455
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977895"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251038"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) を使用すると、ASP.NET MVC Web アプリ
     - [.NET MVC プロジェクトの作業開始](vs-active-directory-dotnet-getting-started.md)
     - [WebAPI プロジェクトの作業開始](vs-active-directory-webapi-getting-started.md)
 
-1. Active Directory ドメインは [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) でも確認できます。
+1. Active Directory ドメインは [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) でも確認できます。
 
 ## <a name="how-your-project-is-modified"></a>プロジェクトを変更する方法
 

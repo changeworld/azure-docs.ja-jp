@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5a36c239e296d6f393c49932f1a369d8aae80b83
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a9a7848069300d5f52d16585a55313643e02bc72
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304681"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244459"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
 この記事では、Azure Active Directory (Azure AD) Connect を使用して、Active Directory フェデレーション サービス (AD FS) を管理およびカスタマイズする方法について説明します。 また、AD FS ファームの完全な構成のために必要となる可能性のある他の一般的な AD FS タスクについても説明します。
@@ -51,7 +51,7 @@ Azure AD Connect を使用して、AD FS と Azure AD の信頼の現在の正�
    ![[AAD と ADFS 信頼を修復します]](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. **[Azure AD に接続]** ページで、Azure AD の全体管理者の資格情報を入力し、**[次へ]** をクリックします。
-   ![Connect to Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![Azure への接続](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. **[リモート アクセスの資格情報]** ページで、ドメイン管理者の資格情報を入力します。
 
@@ -81,7 +81,7 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
 
     ![2012R2 の KB の欠落を知らせる警告](./media/how-to-connect-fed-management/kbwarning.png)
 
-    KB が欠落している場合、構成を修正するには、必要な [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590)をインストールしたあと、[[AAD と AD FS 信頼を修復します]](#repairthetrust) を使用して信頼を修復します。
+    KB が欠落している場合、構成を修正するには、必要な [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590)をインストールしたあと、[[AAD と AD FS 信頼を修復します]](#repairthetrust) を使用して信頼を修復します。
 
 > [!NOTE]
 > 代替 ID および手動構成の手順の詳細については、「[代替ログイン ID の構成](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)」を参照してください。
