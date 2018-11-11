@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a759aad346e25fa42f16d9ccfdb42d9fd5b1cd38
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a76b22feee84820f3acc963af70ec24669a216d7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413487"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251970"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
-Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフォーマンス診断データを収集するのに役立ちます。 この拡張機能では、分析を実行し、仮想マシンでのパフォーマンスの問題を特定して解決するための結果と推奨事項のレポートを提供します。 この拡張機能では、[PerfInsights](http://aka.ms/perfinsights) と呼ばれるトラブルシューティング ツールがインストールされます。
+Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフォーマンス診断データを収集するのに役立ちます。 この拡張機能では、分析を実行し、仮想マシンでのパフォーマンスの問題を特定して解決するための結果と推奨事項のレポートを提供します。 この拡張機能では、[PerfInsights](https://aka.ms/perfinsights) と呼ばれるトラブルシューティング ツールがインストールされます。
 
 > [!NOTE]
     > クラシックではない VM に対して Azure portal から VM の診断を実行する場合は、新しいエクスペリエンスを使用することをお勧めします。 詳細については、「[Performance Diagnostics for Azure virtual machines](performance-diagnostics.md)」(Azure 仮想マシンのパフォーマンス診断) を参照してください。 
@@ -230,7 +230,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ````
 
 ## <a name="information-on-the-data-captured"></a>キャプチャされるデータについて
-PerfInsights ツールは、選んだシナリオに応じて、さまざまなログ、構成、診断データを収集します。 詳細については、[PerfInsights のドキュメント](http://aka.ms/perfinsights)をご覧ください。
+PerfInsights ツールは、選んだシナリオに応じて、さまざまなログ、構成、診断データを収集します。 詳細については、[PerfInsights のドキュメント](https://aka.ms/perfinsights)をご覧ください。
 
 ## <a name="view-and-share-the-results"></a>結果を表示および共有する
 

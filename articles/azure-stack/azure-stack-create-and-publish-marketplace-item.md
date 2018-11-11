@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: 40ecb474b4faa4031cb364dfc1151c6fe6f09dd6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c07e1282a755962b6fe6bc980207a510bd3287a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856451"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253773"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Marketplace アイテムを作成および発行する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 ## <a name="create-a-marketplace-item"></a>Marketplace アイテムの作成
-1. Azure Gallery Packager ツールおよびサンプルの Azure Stack Marketplace アイテムを[ダウンロード](http://www.aka.ms/azurestackmarketplaceitem)します。
+1. Azure Gallery Packager ツールおよびサンプルの Azure Stack Marketplace アイテムを[ダウンロード](https://www.aka.ms/azurestackmarketplaceitem)します。
 2. サンプルの Marketplace アイテムを開き、**SimpleVMTemplate** フォルダーの名前を変更します。 (自分の Marketplace アイテムと同じ名前を使用します。例: **Contoso.TodoList**)このフォルダーには、以下が格納されています。
    
    ```shell
@@ -128,19 +128,19 @@ ms.locfileid: "48856451"
 ### <a name="identity-information"></a>ID 情報
 | Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
-| Name |○ |String |[A-Za-z0-9]+ | |
-| 発行元 |○ |String |[A-Za-z0-9]+ | |
-| Version |○ |String |[SemVer v2](http://semver.org/) | |
+| Name |X |String |[A-Za-z0-9]+ | |
+| 発行元 |X |String |[A-Za-z0-9]+ | |
+| Version |X |String |[SemVer v2](http://semver.org/) | |
 
 ### <a name="metadata"></a>Metadata
 | Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
-| DisplayName |○ |String |推奨 80 文字 |80 文字より長い場合、ポータルでアイテム名が適切に表示されないことがあります。 |
-| PublisherDisplayName |○ |String |推奨 30 文字 |30 文字より長い場合、ポータルで発行者名が適切に表示されないことがあります。 |
-| PublisherLegalName |○ |String |最大 256 文字 | |
-| まとめ |○ |String |60 ～ 100 文字 | |
-| LongSummary |○ |String |140 ～ 256 文字 |Azure Stack ではまだ適用なし。 |
-| 説明 |○ |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 ～ 5,000 文字 | |
+| DisplayName |X |String |推奨 80 文字 |80 文字より長い場合、ポータルでアイテム名が適切に表示されないことがあります。 |
+| PublisherDisplayName |X |String |推奨 30 文字 |30 文字より長い場合、ポータルで発行者名が適切に表示されないことがあります。 |
+| PublisherLegalName |X |String |最大 256 文字 | |
+| まとめ |X |String |60 ～ 100 文字 | |
+| LongSummary |X |String |140 ～ 256 文字 |Azure Stack ではまだ適用なし。 |
+| 説明 |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 ～ 5,000 文字 | |
 
 ### <a name="images"></a>イメージ
 Marketplace では、次のアイコンを使用します。
@@ -161,16 +161,16 @@ Marketplace の各アイテムは、そのアイテムのポータル UI にお�
 
 | Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
-| DisplayName |○ |String |最大 64 文字 | |
-| Uri |○ |URI | | |
+| DisplayName |X |String |最大 64 文字 | |
+| Uri |X |URI | | |
 
 ### <a name="additional-properties"></a>追加のプロパティ
 前述のメタデータに加えて、Marketplace 作成者は次の形式でカスタムのキー/値のペアでデータを指定することができます。
 
 | Name | 必須 | type | 制約 | 説明 |
 | --- | --- | --- | --- | --- |
-| DisplayName |○ |String |最大 25 文字 | |
-| 値 |○ |String |最大 30 文字 | |
+| DisplayName |X |String |最大 25 文字 | |
+| 値 |X |String |最大 30 文字 | |
 
 ### <a name="html-sanitization"></a>HTML のサニタイズ
 HTML を許可するフィールドでは、次の要素と属性が許可されます。

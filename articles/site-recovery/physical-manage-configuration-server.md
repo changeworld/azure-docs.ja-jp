@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 0e8dbf47c40339c90a0e28c3ef497a8da963e481
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231023"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213255"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -42,7 +42,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 
 ## <a name="download-the-latest-installation-file"></a>最新のインストール ファイルのダウンロード
 
-構成サーバーのインストール ファイルの最新バージョンは、Site Recovery ポータルで入手できます。 また、[Microsoft ダウンロード センター](https://aka.ms/unifiedsetup)から直接ダウンロードできます。
+構成サーバーのインストール ファイルの最新バージョンは、Site Recovery ポータルで入手できます。 また、[Microsoft ダウンロード センター](http://aka.ms/unifiedsetup)から直接ダウンロードできます。
 
 1. Azure Portal にログオンし、Recovery Services コンテナーを参照します。
 2. **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** \([For VMware & Physical Machines] \(VMware および物理マシン) の下) に移動します。

@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: e4eea3cb4b16460c7e17bb6575c4e6cf8dda5a0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047256"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251004"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL データベースのエクスポート
 
-この記事では、[Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) を使用して U-SQL データベースを 1 つの U-SQL スクリプトとダウンロードされたリソースとしてエクスポートする方法について説明します。 同じプロセスで、エクスポートされたデータベースをローカル アカウントにインポートできます。
+この記事では、[Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) を使用して U-SQL データベースを 1 つの U-SQL スクリプトとダウンロードされたリソースとしてエクスポートする方法について説明します。 同じプロセスで、エクスポートされたデータベースをローカル アカウントにインポートできます。
 
 お客様は、通常、開発、テストおよび運用のために複数の環境を管理しています。 これらの環境は、開発者のローカル コンピューター上のローカル アカウントと、Azure 上の Azure Data Lake Analytics アカウントの両方でホストされています。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "43047256"
    
     ![サーバー エクスプローラー - データベースのエクスポート](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     **[エクスポート]** メニュー オプションが使用可能でない場合は、[ツールを最新リリースに更新](http://aka.ms/adltoolsvs)する必要があります。
+     **[エクスポート]** メニュー オプションが使用可能でない場合は、[ツールを最新リリースに更新](https://aka.ms/adltoolsvs)する必要があります。
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>手順 2: エクスポートするオブジェクトを構成する
 

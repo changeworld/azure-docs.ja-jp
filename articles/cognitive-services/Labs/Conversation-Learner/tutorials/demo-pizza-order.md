@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 052ef249f3367a562e5598b90533c0e52ed75df4
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: e23ff60a0a2ea10ace09130ba115e72b4e1c9ad7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171386"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249814"
 ---
 # <a name="demo-pizza-order"></a>デモ - ピザの注文
 このデモでは、ピザ注文ボットの例を紹介します。 次の機能を使ってピザの単品を注文することができます。
@@ -26,7 +26,7 @@ ms.locfileid: "39171386"
 
 ## <a name="video"></a>ビデオ
 
-[![ピザのデモのプレビュー](http://aka.ms/cl-demo-pizza-preview)](http://aka.ms/blis-demo-pizza)
+[![ピザのデモのプレビュー](https://aka.ms/cl-demo-pizza-preview)](https://aka.ms/blis-demo-pizza)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、ピザ注文ボットが実行されている必要があります。
@@ -47,7 +47,7 @@ Web UI の [モデル] 一覧で、[TutorialDemo Pizza Order] (TutorialDemo ピ�
 
 ![](../media/tutorial_pizza_entities.PNG)
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 
 ピザに乗せるものをユーザーに尋ねたり、これまでに追加されたものをユーザーに伝えたりするなどの、一連のアクションを作成しました。
 

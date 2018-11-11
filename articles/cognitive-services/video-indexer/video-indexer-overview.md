@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: overview
 ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9936cd301cc8dad88ce1a2431f9253a15ab2da7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077919"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251256"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 
@@ -65,7 +65,7 @@ Video Indexer が役に立ついくつかのシナリオを以下に示します
 
 - ユーザー エンゲージメント – Video Indexer で解明した分析情報は、ユーザーに関連のあるビデオ モーメントをユーザーに提供してユーザー エンゲージメントを向上させるために使用できます。 たとえば、最初の 30 分間は球について説明し、次の 30 分間はピラミッドについて説明する教育ビデオについて考えてみましょう。 ピラミッドについて読んでいる学生にとっては、このビデオの 30 分マーカーから始まるようにビデオが配置されれば役立ちます。
 
-詳しくは、こちらの[ブログ](http://aka.ms/videoindexerblog)をご覧ください。
+詳しくは、こちらの[ブログ](https://aka.ms/videoindexerblog)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

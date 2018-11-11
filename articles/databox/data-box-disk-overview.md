@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 09/04/2018
+ms.date: 10/30/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 322c398bd6384821697e2b672825cc0805eb43ad
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 47cffbabf073fac3fc24fc070b8d5164fecf3f9c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092900"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418757"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Azure Data Box Disk とは (プレビュー)
 
@@ -112,7 +112,7 @@ Data Box Disk は、ネットワークに影響を与えずに大量のデータ
 
 ## <a name="pricing"></a>価格
 
-プレビュー期間中は、Data Box Disk を無料で利用できます。 これは、Data Box Disk が一般公開されたときに変更されます。
+価格については、[プレビューの価格のページ](https://azure.microsoft.com/pricing/details/storage/databox/disk/)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

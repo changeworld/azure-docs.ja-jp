@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: e88d38e6d95459cc1c41adecee6b7ece659eac99
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 91b050c4e1ca37c0af208d6df1ce4f8272235294
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957252"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139773"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure Web アプリのパフォーマンスの監視
 [Azure Portal](https://portal.azure.com) では、[Azure Web アプリ](../app-service/app-service-web-overview.md)のアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
@@ -100,9 +100,9 @@ Application Insights では、アプリへの SDK のインストールによっ
 ## <a name="next-steps"></a>次の手順
 * [実行中のアプリに対してプロファイラーを実行](app-insights-profiler.md)します。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights で Azure Functions を監視する
-* [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) が Application Insights に送信されるように設定します。
-* [サービスの正常性メトリックを監視](../monitoring/monitoring-data-collection.md)して、サービスの可用性と応答性を確認します。
-* 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../monitoring-and-diagnostics/monitoring-overview-alerts.md)ます。
+* [Azure 診断](app-insights-azure-diagnostics.md) が Application Insights に送信されるように設定します。
+* [サービスの正常性メトリックを監視](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
+* 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)ます。
 * [JavaScript のアプリや Web ページに Application Insights](app-insights-javascript.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
 * [可用性 Web テストを設定](app-insights-monitor-web-app-availability.md) して、サイトがダウンした場合にアラートを送信するようにします。
 

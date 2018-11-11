@@ -2,19 +2,19 @@
 title: Apache Kafka のミラーリングに関するトピック - Azure HDInsight
 description: Apache Kafka のミラーリング機能を使用してセカンダリ クラスターにトピックをミラーリングすることにより、HDInsight クラスターに Kafka のレプリカを保持する方法について説明します。
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 9f8204eb29566aaae9170c21b8dde33aa3178384
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 21fa41db2e205a7b17deae6d018308fe6e7ff213
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042705"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006772"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -188,7 +188,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
         wn0-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn1-dest.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092
 
-4. `producer.properties` ファイルは、__移行先__ クラスターとの通信に使われます。 ファイルを作成するには、次のコマンドを使います。
+4. `producer.properties` ファイルは、__移行先__クラスターとの通信に使われます。 ファイルを作成するには、次のコマンドを使います。
 
     ```bash
     nano producer.properties

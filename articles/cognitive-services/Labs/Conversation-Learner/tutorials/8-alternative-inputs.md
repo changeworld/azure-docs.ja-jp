@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8d3b3f419ceacbb9a6fe2b19cf68ea6873de536f
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171019"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252549"
 ---
 # <a name="how-to-use-alternative-inputs"></a>代替入力を使用する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "39171019"
 
 ## <a name="video"></a>ビデオ
 
-[![チュートリアル 8 のプレビュー](http://aka.ms/cl-tutorial-08-preview)](http://aka.ms/blis-tutorial-08)
+[![チュートリアル 8 のプレビュー](https://aka.ms/cl-tutorial-08-preview)](https://aka.ms/blis-tutorial-08)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -51,7 +51,7 @@ ms.locfileid: "39171019"
 1. [アクション] をクリックし、[新しいアクション] をクリックします。
 2. [応答] に「Which city do you want?」と入力します。
 3. [Disqualifying Entities]\(不適格エンティティ\) に「$city」と入力します。
-3. Click Create
+3. Create をクリックしてください。
 
 次に、アクションをもう 1 つ作成します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "39171019"
 3. [応答] に「Try asking for the weather」と入力します。
     - これは、"what can the system do?" といったユーザーの質問に対する応答として使用されます。
 4. [Disqualifying Entities]\(不適格エンティティ\) に「$city」と入力します。
-4. Click Create
+4. Create をクリックしてください。
 
 これでアクションが 3 つできました。
 

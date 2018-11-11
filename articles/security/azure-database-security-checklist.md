@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: f6e8ed1725b7ba2a0cba8523ae03c0306337aba0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: db976fb61c5659fbdcb7ba30aa4f619d52d441c4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402509"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252396"
 ---
 # <a name="azure-database-security-checklist"></a>Azure のデータベース セキュリティのチェックリスト
 
@@ -47,7 +47,7 @@ Azure データベースには、セキュリティ向上を促進するため�
 | ------------ | -------- |
 |**データの保護**||
 | <br> 移動/転送時の暗号化| <ul><li>[トランスポート層セキュリティ](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)は、データがネットワークに移動するときのデータの暗号化を目的としています。</li><li>データベースは、TLS (トランスポート層セキュリティ) 経由の [TDS (表形式データ ストリーム)](https://msdn.microsoft.com/library/dd357628.aspx) プロトコルに基づく、クライアントからのセキュリティで保護された通信を必要とします。</li></ul> |
-|<br>保存時の暗号化| <ul><li>[Transparent Data Encryption](http://go.microsoft.com/fwlink/?LinkId=526242)。非アクティブなデータがデジタル形式で物理的に保存されているとき。</li></ul>|
+|<br>保存時の暗号化| <ul><li>[Transparent Data Encryption](https://go.microsoft.com/fwlink/?LinkId=526242)。非アクティブなデータがデジタル形式で物理的に保存されているとき。</li></ul>|
 |**アクセスの制御**||  
 |<br> データベース アクセス | <ul><li>[認証](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) (Azure Active Directory 認証)。AD 認証は、Azure Active Directory によって管理されている ID を使用します。</li><li>[承認](https://docs.microsoft.com/azure/sql-database/sql-database-control-access)によって、必要最小限の特権がユーザーに付与されます。</li></ul> |
 |<br>アプリケーション アクセス| <ul><li>[行レベル セキュリティ](https://msdn.microsoft.com/library/dn765131) (セキュリティ ポリシーを使用。同時にユーザーの ID、ロール、または実行コンテキストに基づいて行レベルのアクセスを制限)。</li><li>[動的データ マスク](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) (アクセス許可とポリシーを使用。特権のないユーザーに対して機密データをマスクすることでデータの公開を制限)</li></ul>|

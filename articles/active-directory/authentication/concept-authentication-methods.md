@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 67f99e68bc4091d076e27aee06c2851bc77e6fc7
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378926"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249695"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -122,7 +122,7 @@ Microsoft では、ユーザーの Azure AD パスワードがなくてもアク
 
 Microsoft Authenticator アプリは、Azure AD の職場または学校アカウント、あるいは Microsoft アカウントに追加のセキュリティ レベルを提供します。
 
-Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。
+Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。
 
 > [!NOTE]
 > セルフ サービスによるパスワードのリセットの登録時、ユーザーは、モバイル アプリを登録するオプションを選択できません。 代わりに、ユーザーは、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) またはセキュリティ情報登録プレビュー ([https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo)) でモバイル アプリを登録できます。
