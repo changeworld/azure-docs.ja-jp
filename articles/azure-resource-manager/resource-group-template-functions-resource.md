@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4e454030f77a22236da18c8d8a5215667784f7c5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 6da2f7792df564ea3a41df37ab9b00574a205e5b
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301442"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219547"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -118,11 +118,10 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
             "type": "string",
             "defaultValue": "southcentralus"
         },
-        "requestContent": {
+        "accountSasProperties": {
             "type": "object",
             "defaultValue": {
                 "signedServices": "b",
-                "signedResourceType": "c",
                 "signedPermission": "r",
                 "signedExpiry": "2018-08-20T11:00:00Z",
                 "signedResourceTypes": "s"
@@ -164,7 +163,7 @@ listKeys から返されるオブジェクトの形式は次のとおりです�
         },
         "accountSAS": {
             "type": "object",
-            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('requestContent'))]"
+            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties'))]"
         }
     }
 }
