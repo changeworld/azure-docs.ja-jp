@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 997aa1a85068c403f1b6fa209c97413a881b1cb9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4035e93b8eed0a7bc1dd0cddbc42f41e9c26f333
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156308"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218867"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -76,13 +76,13 @@ ms.locfileid: "50156308"
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
-    <add key="Tenant" value="TenantId" />
+    <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
     ```
 
 > [!div renderon="docs"]
 > 各値の説明:
 > - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
-> - `TenantId` - 以下のいずれかのオプション。
+> - `Enter_the_Tenant_Info_Here` - 以下のいずれかのオプション。
 >   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を **[テナント ID]** または **[テナント名]** (例: contoso.microsoft.com) に置き換えます。
 >   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
 >   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。

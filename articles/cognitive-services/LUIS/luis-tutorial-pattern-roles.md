@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3274c25227637d3b23ccd7fd21df01dc05400c11
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086439"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277838"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>チュートリアル 4: 文脈的に関連するパターンを抽出する
 
@@ -49,7 +49,7 @@ ms.locfileid: "50086439"
 > * 都市のフレーズ リストを作成する
 > * エンドポイントから意図とエンティティを取得する
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>既存のアプリを使用する
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
@@ -64,7 +64,7 @@ ms.locfileid: "50086439"
 
 ## <a name="create-new-entities"></a>新しいエンティティの作成
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 左側のナビゲーションから **[エンティティ]** を選択します。 
 
@@ -254,7 +254,7 @@ ms.locfileid: "50086439"
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. アドレスの URL の末尾に移動し、「`Move wayne berry from miami to mount vernon`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 70ee244599f926f4d6c4a36f6065a1f743de2466
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8b83650acfee638ae2a667cd0925fd91d44b80b2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971826"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282698"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>Log Analytics クエリの workspace() 式
 
@@ -74,4 +74,4 @@ union
 ## <a name="next-steps"></a>次の手順
 
 - Application Insights アプリを参照するには、[アプリ式](workspace-expression.md)に関するページを参照してください。
-- [Log Analytics データ](../../log-analytics/log-analytics-log-search.md)の格納方法に関するページをご覧ください。
+- [Log Analytics データ](../../log-analytics/log-analytics-queries.md)の格納方法に関するページをご覧ください。

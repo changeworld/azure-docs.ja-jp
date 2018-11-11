@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46e6ea791752045b0f1afbf1e83e43f498415e54
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 21e280740d5d7f467ee70952febf858e0dc0b89d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887462"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278210"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
 > 本記事は、現在プレビュー段階である Azure の管理ソリューションの作成に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。  
 
-Azure での管理ソリューションは、[Resource Manager テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されます。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../azure-resource-manager/resource-group-authoring-templates.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソースを構成する方法について、詳細を説明します。
+Azure での管理ソリューションは、[Resource Manager テンプレート](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)として実装されます。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../azure-resource-manager/resource-group-authoring-templates.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソースを構成する方法について、詳細を説明します。
 
 
 ## <a name="tools"></a>ツール
@@ -34,7 +34,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ソリューション ファイルの操作には任意のテキスト エディターを使用できますが、次の記事で説明するように Visual Studio や Visual Studio Code で提供される機能を活用することをお勧めします。
 
 - [Visual Studio での Azure リソース グループの作成とデプロイ](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Visual Studio Code で Azure Resource Manager テンプレートを操作する](../azure-resource-manager/resource-manager-vs-code.md)
+- [Visual Studio Code で Azure Resource Manager テンプレートを操作する](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -69,7 +69,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 次の表で、パラメーターの属性について説明します。
 
-| Attribute | [説明] |
+| Attribute | 説明 |
 |:--- |:--- |
 | type |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
 | category |パラメーターの任意のカテゴリ。  同じカテゴリのパラメーターはグループ化されます。 |
@@ -84,14 +84,14 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 >
 >
 
-| パラメーター | type | [説明] |
+| パラメーター | type | 説明 |
 |:--- |:--- |:--- |
-| accountName |文字列 |Azure automation アカウント名。 |
-| pricingTier |文字列 |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
-| regionId |文字列 |Azure Automation アカウントのリージョン。 |
-| solutionName |文字列 |ソリューションの名前。  クイックスタート テンプレートを使用してソリューションをデプロイする場合は、solutionName をパラメーターとして定義し、ユーザーに指定を求める代わりに文字列を定義できるようにする必要があります。 |
-| workspaceName |文字列 |Log Analytics ワークスペース名。 |
-| workspaceRegionId |文字列 |Log Analytics ワークスペースのリージョン。 |
+| accountName |string |Azure automation アカウント名。 |
+| pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
+| regionId |string |Azure Automation アカウントのリージョン。 |
+| solutionName |string |ソリューションの名前。  クイックスタート テンプレートを使用してソリューションをデプロイする場合は、solutionName をパラメーターとして定義し、ユーザーに指定を求める代わりに文字列を定義できるようにする必要があります。 |
+| workspaceName |string |Log Analytics ワークスペース名。 |
+| workspaceRegionId |string |Log Analytics ワークスペースのリージョン。 |
 
 
 次に、コピーして、ソリューション ファイルに貼り付けることができる標準パラメーターの構造を示します。  
@@ -209,10 +209,10 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ### <a name="dependencies"></a>依存関係
 ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 形式での、Log Analytics ワークスペースの ID。 |
 | referencedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
@@ -223,7 +223,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ### <a name="plan"></a>プラン
 ソリューション リソースの**プラン** エンティティには、次の表のプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | name |ソリューションの名前。 |
 | version |作成者によって決定されるソリューションのバージョン。 |

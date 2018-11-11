@@ -3,7 +3,7 @@ title: Azure AD Connect Health - アラート "Health サービス データが�
 description: このドキュメントでは、アラート "Health サービス データが最新ではありません" の原因と、そのトラブルシューティングを実行する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: zhiweiw
+author: zhiweiwangmsft
 manager: maheshu
 editor: ''
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: zhiweiw
-ms.openlocfilehash: ca9f23703315424fcf08350ae3111a20dd94c160
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 93f0d31f5daa13d0598367e2a4ddab67ff3dbc66
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233227"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279719"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>アラート "Health サービス データが最新ではありません"
 
@@ -39,7 +39,7 @@ ms.locfileid: "50233227"
 
 | データ要素 | トラブルシューティングの手順 |
 | --- | --- | 
-| PerfCounter | - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [送信トラフィックの SSL 検査のフィルタリングまたは無効化](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [IE のセキュリティ強化が有効な場合の指定 Web サイトの許可](https://technet.microsoft.com/en-us/windows/ms537180(v=vs.60)) |
+| PerfCounter | - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [送信トラフィックの SSL 検査のフィルタリングまたは無効化](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [IE のセキュリティ強化が有効な場合の指定 Web サイトの許可](https://technet.microsoft.com/windows/ms537180(v=vs.60)) |
 | AadSyncService-SynchronizationRules、 <br /> AadSyncService-Connectors、 <br /> AadSyncService-GlobalConfigurations、 <br /> AadSyncService-RunProfileResults、 <br /> AadSyncService-ServiceConfigurations、 <br /> AadSyncService-ServiceStatus | - IP アドレスに基づく送信接続、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。 <br /> - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
 
 ### <a name="connect-health-for-adfs"></a>Connect Health for ADFS
@@ -48,14 +48,14 @@ AD FS を検証し、[AD FS ヘルプ](https://adfshelp.microsoft.com/Troublesho
 
 | データ要素 | トラブルシューティングの手順 |
 | --- | --- | 
-| PerfCounter、TestResult | - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [送信トラフィックの SSL 検査のフィルタリングまたは無効化](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [IE のセキュリティ強化が有効な場合の指定 Web サイトの許可](https://technet.microsoft.com/en-us/windows/ms537180(v=vs.60)) |
+| PerfCounter、TestResult | - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [送信トラフィックの SSL 検査のフィルタリングまたは無効化](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [IE のセキュリティ強化が有効な場合の指定 Web サイトの許可](https://technet.microsoft.com/windows/ms537180(v=vs.60)) |
 |  Adfs-UsageMetrics | IP アドレスに基づく送信接続、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。 | 
 
 ### <a name="connect-health-for-adds"></a>Connect Health for ADDS
 
 | データ要素 | トラブルシューティングの手順 |
 | --- | --- | 
-| PerfCounter、Adds-TopologyInfo-Json、Common-TestData-Json | - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [送信トラフィックの SSL 検査のフィルタリングまたは無効化](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [IE のセキュリティ強化が有効な場合の指定 Web サイトの許可](https://technet.microsoft.com/en-us/windows/ms537180(v=vs.60)) <br />  - IP アドレスに基づく送信接続、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。  |
+| PerfCounter、Adds-TopologyInfo-Json、Common-TestData-Json | - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [送信トラフィックの SSL 検査のフィルタリングまたは無効化](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [IE のセキュリティ強化が有効な場合の指定 Web サイトの許可](https://technet.microsoft.com/windows/ms537180(v=vs.60)) <br />  - IP アドレスに基づく送信接続、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。  |
 
 
 ## <a name="next-steps"></a>次の手順

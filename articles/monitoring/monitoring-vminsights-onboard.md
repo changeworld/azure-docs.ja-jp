@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8591e723cad1c44e9cc8d00008485e6b304fc4d3
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f55f81d1e28a7626dfe00f6bea349bf74e3a1d24
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283370"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092776"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) を配布準備する方法
 この記事では、お使いの Azure 仮想マシンのオペレーティング システムの正常性を監視し、その仮想マシンでホストされている可能性があるアプリケーションの依存関係を検出してマップするために、Azure Monitor for VMs を設定する方法について説明します。  
@@ -65,20 +65,20 @@ Log Analytics ワークスペースが現在サポートされているのは、
 
 次の表は、VM 用 Azure Monitor でサポートされている Windows および Linux オペレーティング システムの一覧を示しています。  サポートされているメジャーおよびマイナーの Linux OS リリースとカーネル バージョンを詳細に示す完全な一覧は、このセクションの後の方で示されます。
 
-|OS バージョン |[パフォーマンス] |マップ |Health |  
+|OS バージョン |パフォーマンス |マップ |正常性 |  
 |-----------|------------|-----|-------|  
-|Windows Server 2016 1803 | X | X | X |
-|Windows Server 2016 | X | X | X |  
-|Windows Server 2012 R2 | X | X | |  
-|Windows Server 2012 | X | X | |  
-|Windows Server 2008 R2 | X | X| |  
-|RHEL 7、6| X | X| X |  
-|Ubuntu 18.04、16.04、14.04 | X | X | X |  
-|Cent OS Linux 7、6 | X | X | X |  
-|SLES 12 | X | X | X |  
-|Oracle Linux 7 | X<sup>1</sup> | | X |  
-|Oracle Linux 6 | X | X | X |  
-|Debian 9.4、8 | X<sup>1</sup> | | X | 
+|Windows Server 2016 1803 | ○ | ○ | ○ |
+|Windows Server 2016 | ○ | ○ | ○ |  
+|Windows Server 2012 R2 | ○ | ○ | |  
+|Windows Server 2012 | ○ | ○ | |  
+|Windows Server 2008 R2 | ○ | ○| |  
+|RHEL 7、6| ○ | ○| ○ |  
+|Ubuntu 18.04、16.04、14.04 | ○ | ○ | ○ |  
+|Cent OS Linux 7、6 | ○ | ○ | ○ |  
+|SLES 12 | ○ | ○ | ○ |  
+|Oracle Linux 7 | X<sup>1</sup> | | ○ |  
+|Oracle Linux 6 | ○ | ○ | ○ |  
+|Debian 9.4、8 | X<sup>1</sup> | | ○ | 
 
 <sup>1</sup> Azure Monitor for VMs のパフォーマンスの機能は、Azure Monitor からのみ使用できます。Azure VM の左側のウィンドウから直接アクセスした場合には、この機能は使用できません。  
 
@@ -153,8 +153,8 @@ Azure Monitor for VMs マップは、Microsoft Dependency Agent からデータ�
 
 | 接続先ソース | サポートされています | 説明 |
 |:--|:--|:--|
-| Windows エージェント | [はい] | [Windows の Log Analytics エージェント](../log-analytics/log-analytics-concept-hybrid.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
-| Linux エージェント | [はい] | [Linux の Log Analytics エージェント](../log-analytics/log-analytics-concept-hybrid.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
+| Windows エージェント | はい | [Windows の Log Analytics エージェント](../log-analytics/log-analytics-concept-hybrid.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
+| Linux エージェント | はい | [Linux の Log Analytics エージェント](../log-analytics/log-analytics-concept-hybrid.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
 | System Center Operations Manager 管理グループ | いいえ  | |  
 
 Windows では、監視データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 System Center Operations Manager と Log Analytics では、エージェントのすぐに使用できるバージョンが異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。  
@@ -165,7 +165,7 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 Dependency Agent は、次の場所からダウンロードできます。
 
-| ファイル | OS | Version | SHA-256 |
+| ファイル | OS | バージョン | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.1 | 55030ABF553693D8B5112569FB2F97D7C54B66E9990014FC8CC43EFB70DE56C6 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
@@ -337,7 +337,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     ```
 
 ### <a name="enable-using-azure-policy"></a>Azure Policy を使用して有効にする
-大規模な Azure Monitor for VMs を有効にして、一貫性のあるコンプライアンスを保証し、プロビジョニングされた新しい VM に対して自動有効化を確実に実施するには、[Azure Policy](../governance/policy/overview.md) をお勧めします。 該当するポリシーを以下に示します。
+大規模な Azure Monitor for VMs を有効にして、一貫性のあるコンプライアンスを保証し、プロビジョニングされた新しい VM に対して自動有効化を確実に実施するには、[Azure Policy](../azure-policy/azure-policy-introduction.md) をお勧めします。 該当するポリシーを以下に示します。
 
 * Log Analytics エージェントと Dependency Agent をデプロイする 
 * コンプライアンス結果を報告する 
@@ -352,7 +352,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 以下の表は、用意されているポリシー定義を示しています。  
 
-|Name |説明 |type |  
+|名前 |説明 |種類 |  
 |-----|------------|-----|  
 |[プレビュー]: Azure Monitor for VMs の有効化 |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) で、Azure Monitor for VMs を有効にします。 Log Analytics ワークスペースをパラメーターとして取得します。 |イニシアティブ |  
 |[プレビュー]: Audit Dependency Agent のデプロイ - 一覧にない VM イメージ (OS) |定義された一覧に VM イメージ (OS) がなく、エージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |  
@@ -364,7 +364,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 スタンドアロンのポリシー (イニシアチブに含まれません) 
 
-|Name |説明 |type |  
+|名前 |説明 |種類 |  
 |-----|------------|-----|  
 |[プレビュー]: VM 用 Audit Log Analytics ワークスペース - 不一致の報告 |ポリシー/イニシアチブの割り当てに指定された LA ワークスペースにログインしていない場合、VM を非準拠として報告します。 |ポリシー |
 
@@ -622,7 +622,7 @@ Dependency Agent が起動しない場合は、詳細なエラー情報のログ
 
 Dependency Agent のファイルは、次のディレクトリに保存されます。
 
-| ファイル | Location |
+| ファイル | 場所 |
 |:--|:--|
 | コア ファイル | /opt/microsoft/dependency-agent |
 | ログ ファイル | /var/opt/microsoft/dependency-agent/log |

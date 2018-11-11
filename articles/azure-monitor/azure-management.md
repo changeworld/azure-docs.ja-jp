@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 46c59d02294dea34a4713f44f31733035c68d66e
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 30898be58db228484bcd85e8896da10d0bfc29dd
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057785"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277462"
 ---
 # <a name="azure-management---monitoring"></a>Azure の管理 - 監視
 
@@ -41,7 +41,7 @@ Azure の管理には、その一部として監視が含まれています。  
 構成は、アプリケーションおよびリソースの初期デプロイと構成のほか、パッチと更新プログラムによる継続的なメンテナンスを指します。  スクリプトとポリシーを通じてこれらのタスクを自動化すれば、冗長性を排除し、時間と手間を最小限に抑えて正確性と効率性を高めることができます。  [Azure Automation](..\automation\automation-intro.md) は、構成タスクを自動化するためのサービスを多数提供します。  プロセスを自動化する Runbook に加えて、構成および更新管理を提供します。これは、ポリシーを通じて構成を管理したり、更新プログラムの特定とデプロイを行ったりする際に役に立ちます。
 
 ## <a name="govern"></a>ガバナンス
-ガバナンスは、Azure のアプリケーションとリソースに対するコントロールを維持するメカニズムとプロセスを提供します。  これには、イニシアチブの計画と戦略的な優先順位の設定が含まれます。  Azure におけるガバナンスは、主に 2 つのサービスで実装されます。  [Azure Policy](../azure-policy/azure-policy-introduction.md) では、ポリシー定義を作成、割り当て、管理できます。このポリシー定義で、リソースにさまざまなルールとアクションを適用し、会社の標準とサービス レベル アグリーメントへのリソースの準拠が維持されるようにします。 [Azure Cost Management by Cloudyn](../cost-management/overview.md) では、クラウドの使用状況と、Azure リソースおよび AWS や Google などの他のクラウド プロバイダーに対する支出を追跡することができます。
+ガバナンスは、Azure のアプリケーションとリソースに対するコントロールを維持するメカニズムとプロセスを提供します。  これには、イニシアチブの計画と戦略的な優先順位の設定が含まれます。  Azure におけるガバナンスは、主に 2 つのサービスで実装されます。  [Azure Policy](../governance/policy/overview.md) では、ポリシー定義を作成、割り当て、管理できます。このポリシー定義で、リソースにさまざまなルールとアクションを適用し、会社の標準とサービス レベル アグリーメントへのリソースの準拠が維持されるようにします。 [Azure Cost Management by Cloudyn](../cost-management/overview.md) では、クラウドの使用状況と、Azure リソースおよび AWS や Google などの他のクラウド プロバイダーに対する支出を追跡することができます。
 
 ## <a name="secure"></a>セキュリティ保護
 アプリケーション、リソース、データのセキュリティを管理するには、脅威を評価し、セキュリティ データの収集と分析を行うと同時に、アプリケーションおよびリソースの設計と構成の安全性を確保する必要があります。  セキュリティの監視と脅威の分析は、[Azure Security Center](../security-center/security-center-intro.md) によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。  また、Azure のセキュリティに関する包括的な情報と、Azure リソースを安全に構成するためのガイダンスについて、「[Azure Security の概要](../security/azure-security.md)」を参照することをお勧めします。

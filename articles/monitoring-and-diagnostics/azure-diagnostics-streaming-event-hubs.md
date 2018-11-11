@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: c87a4acb8ca333af73643a38ae1338c9c8769d13
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d21b6235c91a7d2f14b8b39c07891efe967ef572
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341237"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278244"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure 診断データをストリーム配信する
 Azure 診断では柔軟な方法でクラウド サービスの仮想マシン (VM) からメトリックとログを収集し、その結果を Azure Storage に転送できます。 2016 年 3 月 (SDK 2.9) の期間から、診断をカスタムのデータ ソースに送信し、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) を利用してホット パス データを数秒で転送できるようになりました。
@@ -40,9 +40,9 @@ Azure 診断からデータを受け取る Event Hubs は、Azure SDK 2.9 以降
 * Azure 診断拡張 1.6 ([Azure SDK for .NET 2.9 以降](https://azure.microsoft.com/downloads/) では既定でこれが対象となります)
 * [Visual Studio 2013 以降](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * *.wadcfgx* ファイルと次のいずれかの方法の利用した Azure 診断の構成がアプリケーションに存在する
-  * Visual Studio: [Azure クラウド サービスおよび仮想マシン用の診断の構成](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
+  * Visual Studio: [Azure クラウド サービスおよび仮想マシン用の診断の構成](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
   * Windows PowerShell: [PowerShell を使用した Azure Cloud Services での診断の有効化](../cloud-services/cloud-services-diagnostics-powershell.md)
-* 「[Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)」に従ってプロビジョニングされた Event Hubs 名前空間
+* 「[Event Hubs の使用](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)」に従ってプロビジョニングされた Event Hubs 名前空間
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure 診断を Event Hubs シンクに接続する
 既定では、Azure 診断では常に、ログとメトリックが Azure Storage アカウントに送信されます。 *.wadcfgx* ファイルの **PublicConfig**  / セクションの **WadCfg** 要素に新しい **Sinks** セクションを追加することで、アプリケーションでデータを Event Hubs に送信することもできます。 Visual Studio の場合、*.wadcfgx* ファイルは **[Cloud Service Project (クラウド サービス プロジェクト)]** > **[ロール]** > **[(ロール名)]** > **diagnostics.wadcfgx** ファイルに保存されています。
@@ -70,7 +70,7 @@ Azure 診断からデータを受け取る Event Hubs は、Azure SDK 2.9 以降
 
 この例では、イベント ハブの URL はイベント ハブの完全修飾名前空間に設定されています (Event Hubs 名前空間 + "/" + イベント ハブ名)。  
 
-イベント ハブの URL は [Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=213885) の Event Hubs ダッシュボードに表示されます。  
+イベント ハブの URL は [Azure ポータル](https://go.microsoft.com/fwlink/?LinkID=213885) の Event Hubs ダッシュボードに表示されます。  
 
 構成ファイルで同じ値が一貫して使用される限り、 **シンク** 名には任意の有効な文字列を設定できます。
 
@@ -220,7 +220,7 @@ Visual Studio には、アプリケーションと Event Hubs シンク構成を
 ## <a name="view-hot-path-data"></a>ホット パス データの表示
 先に説明したように、Event Hubs データのリッスンと処理にはさまざまな使用例があります。
 
-1 つの簡単な手法は、イベント ハブをリッスンして出力ストリームを表示する、テスト用の簡単なコンソール アプリケーションを作成することです。 コンソール アプリケーションに次のコードを配置します。コードの詳細については、「[Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)」をご覧ください。  
+1 つの簡単な手法は、イベント ハブをリッスンして出力ストリームを表示する、テスト用の簡単なコンソール アプリケーションを作成することです。 コンソール アプリケーションに次のコードを配置します。コードの詳細については、「[Event Hubs の使用](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)」をご覧ください。  
 
 コンソール アプリケーションには [Event Processor Host NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を含める必要があることにご注意ください。  
 
@@ -508,7 +508,7 @@ Public 設定:
 ## <a name="next-steps"></a>次の手順
 Event Hubs の詳細については、次のリンク先を参照してください:
 
-* [Event Hubs の概要](../event-hubs/event-hubs-what-is-event-hubs.md)
+* [Event Hubs の概要](../event-hubs/event-hubs-about.md)
 * [イベント ハブの作成](../event-hubs/event-hubs-create.md)
 * [Event Hubs の FAQ](../event-hubs/event-hubs-faq.md)
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ff5a47f977f34535c5ad1fde7e6cac5995e7f7dd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 95d1c4ffe76cf4c652f347014a838f1250c0ca15
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031460"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277479"
 ---
 # <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>チュートリアル 9: 発話全体から感情を抽出する
 このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から抽出する方法を示すアプリを作成します。 感情は発話全体から決定されます。
@@ -60,7 +60,7 @@ ms.locfileid: "47031460"
 ## <a name="employeefeedback-intent"></a>EmployeeFeedback 意図 
 新しい意図を追加して、会社のメンバーから従業員のフィードバックをキャプチャします。 
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。
 

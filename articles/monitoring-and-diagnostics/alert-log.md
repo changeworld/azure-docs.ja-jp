@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f7122c6147af2ed1af1f3b5e08458fd73f9aef6d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419369"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279106"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する  
 
@@ -57,7 +57,7 @@ ms.locfileid: "50419369"
 
    > [!NOTE]
 
-   > アラート リストは上の図に示すように、分析クエリをシグナルの種類 - **[Log (Saved Query)]\(ログ (保存されたクエリ)\)** としてインポートできます。 したがって、ユーザーは Analytics でクエリを完成させ、将来使用するためにクエリをアラートに保存することができます。保存クエリの使用について詳しくは、[ログ分析でのログ検索の使用](../log-analytics/log-analytics-log-searches.md)または [Application Insights 分析 での共有クエリ](../log-analytics/log-analytics-overview.md)に関する記事を参照してください。 
+   > アラート リストは上の図に示すように、分析クエリをシグナルの種類 - **[Log (Saved Query)]\(ログ (保存されたクエリ)\)** としてインポートできます。 したがって、ユーザーは Analytics でクエリを完成させ、将来使用するためにクエリをアラートに保存することができます。保存クエリの使用について詳しくは、[ログ分析でのログ検索の使用](../log-analytics/log-analytics-queries.md)または [Application Insights 分析 での共有クエリ](../log-analytics/log-analytics-queries.md)に関する記事を参照してください。 
 
 1.  *[ログ アラート]*: 選択すると、アラート設定のクエリを **[検索クエリ]** フィールドで宣言できます。クエリ構文が正しくない場合は、フィールドに赤文字でエラーが表示されます。 クエリ構文が正しい場合は、直近の 6 時間から最後の週までさまざまな時間枠を微調整するオプションとともに、宣言されたクエリの履歴データが参考としてグラフで表示されます。
 
@@ -132,7 +132,7 @@ ms.locfileid: "50419369"
 ### <a name="azure-resource-template-for-log-analytics"></a>Log Analytics の Azure リソース テンプレート
 Log Analytics のアラートは、保存された検索条件を定期的に実行するアラート ルールによって作成されます。 クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、1 つまたは複数のアクションが実行されます。 
 
-Log Analytics の保存された検索と Log Analytics のアラートのリソース テンプレートは、ドキュメントの Log Analytics のセクションで入手できます。 詳細については、[Log Analytics の保存された検索とアラート](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)に関するページを参照してください。図を含むサンプルとスキーマの詳細が記載されています。
+Log Analytics の保存された検索と Log Analytics のアラートのリソース テンプレートは、ドキュメントの Log Analytics のセクションで入手できます。 詳細については、[Log Analytics の保存された検索とアラート](../monitoring/monitoring-solutions-resources-searches-alerts.md)に関するページを参照してください。図を含むサンプルとスキーマの詳細が記載されています。
 
 ### <a name="azure-resource-template-for-application-insights"></a>Application Insights の Azure リソース テンプレート
 Application Insights リソースのログ アラートの種類は、`Microsoft.Insights/scheduledQueryRules/` です。 このリソースの種類の詳細については、[Azure Monitor - Scheduled Query Rules API の API リファレンス](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)を参照してください。
@@ -246,5 +246,5 @@ az group deployment create --resource-group myRG --template-file sampleScheduled
 * [Azure アラートのログ アラート](monitor-alerts-unified-log.md)について学習します。
 * [ログ アラートの Webhook アクション](monitor-alerts-unified-log-webhook.md)を理解します。
 * [Application Insights](../application-insights/app-insights-analytics.md) についてさらに学習します。
-* [Log Analytics](../log-analytics/log-analytics-overview.md) についてさらに学習します。 
+* [Log Analytics](../log-analytics/log-analytics-queries.md) についてさらに学習します。 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: a810de5c3c70322560bb45bcc2aee5cf0798cea9
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8aa79d66801ff30fedc725913696d5cfa3c9626f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248712"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282831"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor によって収集される監視データ
 [Azure Monitor](../azure-monitor/overview.md) は、アプリケーションと、それらが依存するリソースを監視するのに役立つサービスです。 この機能の中心にあるのは、監視対象のリソースからのテレメトリとその他のデータのストレージです。 この記事では、このデータが Azure Monitor によってどのように格納され、使用されるかを詳細に説明します。
@@ -98,7 +98,7 @@ Azure Monitor によって収集されるメトリックのソースには、基
 メトリックを使用して実行できるタスクには、以下が含まれます。
 
 - [メトリックス エクスプローラー](../monitoring-and-diagnostics/monitoring-metric-charts.md)を使用して、収集されたメトリックを分析し、それらをグラフにプロットします。 グラフを [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)にピン留めすることで、VM、Web サイト、ロジック アプリなどのリソースのパフォーマンスを追跡します。
-- メトリックがしきい値を超えたときに、通知を送信するか[自動化されたアクション](../monitoring-and-diagnostics/monitoring-action-groups.md)を実行する[メトリック アラート ルール](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)を構成します。
+- メトリックがしきい値を超えたときに、通知を送信するか[自動化されたアクション](../monitoring-and-diagnostics/monitoring-action-groups.md)を実行する[メトリック アラート ルール](../monitoring-and-diagnostics/alert-metric.md)を構成します。
 - [自動スケーリング](../monitoring-and-diagnostics/monitoring-overview-autoscale.md)を使用して、しきい値を超えるメトリックに基づいてリソースを増加または減少させます。
 - メトリックを Log Analytics にルーティングし、メトリック データをログ データと一緒に分析して、93 日よりも長くメトリック値を格納します。 
 - メトリックを[イベント ハブ](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)にストリーム配信して、それらを [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) または外部システムにルーティングします。
@@ -138,7 +138,7 @@ Azure Monitor によって収集されたログは、さまざまなソースか
 Log Analytics は、Azure 内とオンプレミス リソースからの両方の、さまざまなソースからデータを収集できます。 Log Analytics に書き込まれるデータのソースには、以下が含まれます。
 
 - Azure リソースからの、それらの構成と正常性に関する情報を含む[アクティビティ ログ](../log-analytics/log-analytics-activity.md)と、それらの操作に関する分析情報を提供する[診断ログ](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md)。
-- ユーザーが構成する[データ ソース](../log-analytics/log-analytics-data-sources.md)に応じて、ゲスト オペレーティング システムやアプリケーションから Log Analytics にテレメトリを送信する、[Windows](../log-analytics/log-analytics-windows-agent.md) 仮想マシンと [Linux](../log-analytics/log-analytics-linux-agents.md) 仮想マシン上のエージェント。
+- ユーザーが構成する[データ ソース](../log-analytics/log-analytics-data-sources.md)に応じて、ゲスト オペレーティング システムやアプリケーションから Log Analytics にテレメトリを送信する、[Windows](../log-analytics/log-analytics-windows-agent.md) 仮想マシンと [Linux](../log-analytics/log-analytics-quick-collect-linux-computer.md) 仮想マシン上のエージェント。
 - [Application Insights](https://docs.microsoft.com/azure/application-insights/) によって収集されるアプリケーション データ。
 - 特定のアプリケーションまたはサービスに関する分析情報を提供する、コンテナーの洞察、VM Insights、リソース グループの分析情報などの[監視ソリューション](../monitoring/monitoring-solutions.md)または機能からのデータ。
 - [Azure Security Center](https://docs.microsoft.com/azure/security-center/) によって収集されたセキュリティ データ。
