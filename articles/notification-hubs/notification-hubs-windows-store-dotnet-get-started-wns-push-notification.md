@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c3bb170800508d5a546573850f445b2a8991ea8c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 37d9f433f39b60609870913a13f23e5a6e419476
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597746"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246499"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する
 
@@ -57,7 +57,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 1. アプリの名前を入力し、**[Reserve product name] (製品名を予約)** を選択します。 これでアプリの新しい Windows ストア登録が作成されます。
 
     ![ストア アプリ名](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-1. **[アプリの管理]** を展開して、**[WNS/MPNS]** を選択し、**[WNS/MPNS]** を選択してから、**[Live Services site] (Live Services サイト)** を選択します。 Microsoft アカウントにサインインする。 **アプリケーション登録ポータル**が新しいタブで開きます。あるいは、[アプリケーション登録ポータル](http://apps.dev.microsoft.com)に直接移動し、アプリケーション名を選択してこのページを表示できます。
+1. **[アプリの管理]** を展開して、**[WNS/MPNS]** を選択し、**[WNS/MPNS]** を選択してから、**[Live Services site] (Live Services サイト)** を選択します。 Microsoft アカウントにサインインする。 **アプリケーション登録ポータル**が新しいタブで開きます。あるいは、[アプリケーション登録ポータル](https://apps.dev.microsoft.com)に直接移動し、アプリケーション名を選択してこのページを表示できます。
 
     ![[WNS MPNS] ページ](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
 1.   **アプリケーション シークレット** パスワードと**パッケージ セキュリティ ID (SID)** をメモします。

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 75d630b91a1380102fd285edfb11effa22f47859
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 29af7ad8b582682189320185c460597af53cf6d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413233"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243915"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
-[PerfInsights](http://aka.ms/perfinsightsdownload) は、診断データを収集および解析するセルフヘルプ診断ツールで、Azure での Windows 仮想マシンのパフォーマンス問題をトラブルシューティングする際に役立ちます。 PerfInsights は、仮想マシンでスタンドアロン ツールとして実行できます。または [Azure 仮想マシンのパフォーマンス診断](performance-diagnostics.md)を使用するか [Azure パフォーマンス診断 VM 拡張機能](performance-diagnostics-vm-extension.md)をインストールすることで、ポータルから直接実行できます。
+[PerfInsights](https://aka.ms/perfinsightsdownload) は、診断データを収集および解析するセルフヘルプ診断ツールで、Azure での Windows 仮想マシンのパフォーマンス問題をトラブルシューティングする際に役立ちます。 PerfInsights は、仮想マシンでスタンドアロン ツールとして実行できます。または [Azure 仮想マシンのパフォーマンス診断](performance-diagnostics.md)を使用するか [Azure パフォーマンス診断 VM 拡張機能](performance-diagnostics-vm-extension.md)をインストールすることで、ポータルから直接実行できます。
 
 仮想マシンでパフォーマンスの問題が発生している場合は、サポートに連絡する前にこのツールを実行してください。
 
@@ -190,7 +190,7 @@ PerfInsights は、[Azure パフォーマンス診断 VM 拡張機能](performan
 PerfInsights ツールを実行するには、次の手順に従います。
 
 
-1. [PerfInsights.zip](http://aka.ms/perfinsightsdownload) をダウンロードします。
+1. [PerfInsights.zip](https://aka.ms/perfinsightsdownload) をダウンロードします。
 
 2. PerfInsights.zip ファイルのブロックを解除します。 これを行うには、PerfInsights.zip ファイルを右クリックし、**[プロパティ]** を選択します。 **[全般]** タブで **[ブロックの解除]** を選択し、**[OK]** を選択します。 これにより、追加のセキュリティ プロンプトは表示されずに、確実にツールが実行されます。  
 

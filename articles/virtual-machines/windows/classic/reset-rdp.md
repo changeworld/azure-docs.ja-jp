@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-ms.openlocfilehash: bbe8059b3a239570c2c9b25586dae9adbe25312d
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e91f75299dddf0ac173499a531ea959292082a9f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931380"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246550"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 > [!IMPORTANT]
@@ -59,7 +59,7 @@ $vm = Get-AzureVM -ServiceName "myCloudService" -Name "myVM"
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-**write-host** コマンドで **True** が表示される場合は、VM エージェントがインストールされています。 **False**が表示される場合は、Azure ブログの [VM エージェントと拡張機能に関する記事のパート 2](http://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) で手順とダウンロード用リンクをご確認ください。
+**write-host** コマンドで **True** が表示される場合は、VM エージェントがインストールされています。 **False**が表示される場合は、Azure ブログの [VM エージェントと拡張機能に関する記事のパート 2](https://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) で手順とダウンロード用リンクをご確認ください。
 
 ポータルで仮想マシンを作成した場合、 `$vm.GetInstance().ProvisionGuestAgent` を実行して **True**が返されるかどうかを確認します。 作成していない場合は、次のコマンドを使用して設定できます。
 
@@ -108,7 +108,7 @@ Azure VM アクセス拡張機能が応答せず、パスワードをリセッ�
 
 [Azure VM 拡張機能とその機能](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[RDP または SSH を使用した Azure Virtual Machines への接続](http://msdn.microsoft.com/library/azure/dn535788.aspx)
+[RDP または SSH を使用した Azure Virtual Machines への接続](https://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [Windows ベースの Azure Virtual Machines へのリモート デスクトップ接続に関するトラブルシューティング](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

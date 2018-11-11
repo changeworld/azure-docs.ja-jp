@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: dca9d7900ce229b1cddbef8d0dee44bc0061dc42
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 29a2335a3a4077866b71e4303c240ad8352371ba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611308"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243779"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
-このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
+このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
 
 Azure Resource Manager テンプレートを使用して、Azure リソースのデプロイと構成を簡単に自動化できます。  このチュートリアルでは、Web アプリケーションをデプロイし、Azure Cosmos DB アカウントの接続情報を自動的に構成する方法を説明します。
 
@@ -35,7 +35,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 > 
 > 
 
-このチュートリアルの手順を実行する前に、Azure サブスクリプションを取得する必要があります。 Azure はサブスクリプション方式のプラットフォームです。  サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー プラン](https://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
+このチュートリアルの手順を実行する前に、Azure サブスクリプションを取得する必要があります。 Azure はサブスクリプション方式のプラットフォームです。  サブスクリプションの入手方法の詳細については、[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)、[メンバー オファー](https://azure.microsoft.com/pricing/member-offers/)、または[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 
 ## <a id="CreateDB"></a>手順 1: テンプレート ファイルをダウンロードする
 このチュートリアルに必要なサンプル ファイルをダウンロードすることから始めましょう。
@@ -114,7 +114,7 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 9. Azure Cosmos DB エンドポイントとそれぞれの Azure Cosmos DB マスター キーに関するアプリケーション設定がどのように表示されているのかを確認します。
 
     ![アプリケーションの設定のスクリーンショット](./media/create-website/TemplateDeployment10.png)  
-10. Azure Portal の操作を引き続き確認したり、Azure Cosmos DB の[サンプル](http://go.microsoft.com/fwlink/?LinkID=402386)に従って独自の Azure Cosmos DB アプリケーションを作成したり、自由に試してみてください。
+10. Azure Portal の操作を引き続き確認したり、Azure Cosmos DB の[サンプル](https://go.microsoft.com/fwlink/?LinkID=402386)に従って独自の Azure Cosmos DB アプリケーションを作成したり、自由に試してみてください。
 
 <a name="NextSteps"></a>
 
@@ -122,14 +122,14 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 お疲れさまでした。 Azure Resource Manager テンプレートを使用して、Azure Cosmos DB、App Service Web アプリ、サンプル Web アプリケーションをデプロイしました。
 
 * Azure Cosmos DB の詳細については、[こちら](http://azure.com/docdb)をご覧ください。
-* Azure App Service Web Apps の詳細については、 [ここ](http://go.microsoft.com/fwlink/?LinkId=325362)をクリックしてください。
+* Azure App Service Web Apps の詳細については、 [ここ](https://go.microsoft.com/fwlink/?LinkId=325362)をクリックしてください。
 * Azure リソース マネージャーのテンプレートの詳細については、 [ここ](https://msdn.microsoft.com/library/azure/dn790549.aspx)をクリックしてください。
 
 ## <a name="whats-changed"></a>変更内容
-* Web サイトから App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
+* Web サイトから App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
-> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 

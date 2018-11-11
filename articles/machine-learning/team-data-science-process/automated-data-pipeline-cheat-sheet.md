@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: cd08f6a31f431900a2cb7ed9ed222409f9583b55
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 32c7fca1b56e5426bc422b816279dd0919599f0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393373"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244001"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
 **Microsoft Azure Machine Learning 自動化データ パイプライン チート シート** は、予測分析モデルによってデータをスコア付けできる Machine Learning Web サービスに対してデータを送信するために使用できるテクノロジを確認するのに役立ちます。
@@ -31,7 +31,7 @@ ms.locfileid: "49393373"
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Machine Learning 自動化データ パイプライン チート シートをダウンロードする
 ダウンロードしたチート シートは、タブロイド サイズ (11 x 17 インチ) で印刷できます。
 
-チート シートをダウンロードする: **[Microsoft Azure Machine Learning 自動化データ パイプライン チート シート](http://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+チート シートをダウンロードする: **[Microsoft Azure Machine Learning 自動化データ パイプライン チート シート](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Microsoft Azure Machine Learning Studio 機能の概要][op-cheat-sheet]
 

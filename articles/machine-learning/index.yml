@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f40835256ca75fa6fb2e53723b165a73e84b170b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7dec034812647a883fa8ead05f1a7ed6675b4821
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739646"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282749"
 documentType: LandingData
 title: Azure Machine Learning のドキュメント
 metadata:
@@ -111,7 +111,7 @@ sections:
         src: /azure/machine-learning/media/index/tdsp.png
       title: Team Data Science Process
     - href: /azure/machine-learning/data-science-virtual-machine/
-      html: <p>これらのデータ サイエンス (DSVM) 仮想マシンとディープ ラーニング (DLVM) 仮想マシンを使用して、ソフトウェアのインストールや構成を気にせずに実験を行います。 一般的なデータ分析ツール、機械学習ツール、AI ツールがプレインストールされています。</p>
+      html: <p>データ サイエンス (DSVM) 仮想マシンとディープ ラーニング (DLVM) 仮想マシンを使用して、ソフトウェアをインストールまたは構成せずに実験を行います。 一般的なデータ分析ツール、機械学習ツール、AI ツールがプレインストールされています。</p>
       image:
         src: /azure/machine-learning/media/index/virtualmachine.svg
       title: データ サイエンス仮想マシン

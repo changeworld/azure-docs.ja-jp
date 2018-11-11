@@ -9,19 +9,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: saurse;trinadhk
-ms.openlocfilehash: 177e44bce7d8f159892d78c7003945ba55ef4b84
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cf27848b6ca63f06c7d452ac67908cb85dbafd47
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577883"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239843"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Azure Backup エージェントについての質問
 この記事では、Azure Backup エージェントの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
 
 ## <a name="configure-backup"></a>バックアップの構成
 ### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>最新の Azure Backup エージェントはどこでダウンロードできますか。 <br/>
-Windows Server、System Center DPM、または Windows クライアントをバックアップするための最新のエージェントは、 [こちら](http://aka.ms/azurebackup_agent)からダウンロードできます。 仮想マシンをバックアップする場合は、VM エージェントを使用してください (適切な拡張機能が自動的にインストールされます)。 VM エージェントは、Azure ギャラリーから作成された仮想マシン内に既に存在しています。
+Windows Server、System Center DPM、または Windows クライアントをバックアップするための最新のエージェントは、 [こちら](https://aka.ms/azurebackup_agent)からダウンロードできます。 仮想マシンをバックアップする場合は、VM エージェントを使用してください (適切な拡張機能が自動的にインストールされます)。 VM エージェントは、Azure ギャラリーから作成された仮想マシン内に既に存在しています。
 
 ### <a name="when-configuring-the-azure-backup-agent-i-am-prompted-to-enter-the-vault-credentials-do-vault-credentials-expire"></a>Azure Backup エージェントを構成するときに、コンテナー資格情報の入力が求められます。 コンテナー資格情報には有効期限がありますか。
 はい。コンテナー資格情報は 48 時間後に有効期限が切れます。 ファイルの有効期限が切れた場合は、Azure Portal にサインインし、コンテナーからコンテナー資格情報ファイルをダウンロードしてください。
@@ -50,7 +50,7 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 * スパース ストリーム: サポートされていません。スキップされます。
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>VM 拡張機能を使用して Azure Backup サービスで既にバックアップされている Azure VM に Azure Backup エージェントをインストールすることはできますか。 <br/>
-そして、 はい。Azure Backup では、VM 拡張機能を使用している Azure VM には VM レベルのバックアップを提供します。 ゲスト Windows OS 上のファイルとフォルダーを保護するには、ゲスト Windows OS に Azure Backup エージェントをインストールします。
+そして、 Azure Backup では、VM 拡張機能を使用している Azure VM には VM レベルのバックアップを提供します。 ゲスト Windows OS 上のファイルとフォルダーを保護するには、ゲスト Windows OS に Azure Backup エージェントをインストールします。
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>Azure VM に Azure Backup エージェントをインストールし、Azure VM で提供される一時ストレージ上のファイルとフォルダーをバックアップすることはできますか。 <br/>
 はい。 ゲスト Windows OS に Azure Backup エージェントをインストールして、ファイルやフォルダーを一時的なストレージにバックアップすることはできますが、 一時的なストレージのデータが消去されるとバックアップ ジョブは失敗します。また、一時的なストレージのデータが削除された場合、復元先に指定できるのは非揮発性ストレージのみになります。
@@ -68,7 +68,7 @@ Windows Server、System Center DPM、または Windows クライアントをバ�
 ### <a name="what-features-of-microsoft-azure-recovery-services-mars-agent-require-net-framework-452-and-higher"></a>.NET framework 4.5.2 以上が必要となるのは、Microsoft Azure Recovery Services (MARS) エージェントのどの機能ですか?
 *データの回復*ウィザードから個別のファイルやフォルダーを復元できる[インスタント リストア](backup-azure-restore-windows-server.md#use-instant-restore-to-recover-data-to-the-same-machine)機能では、.NET Framework 4.5.2 以上が必要になります。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>バックアップ
 ### <a name="how-do-i-change-the-cache-location-specified-for-the-azure-backup-agentbr"></a>Azure Backup エージェント用に指定されたキャッシュの場所を変更する方法を教えてください。<br/>
 キャッシュの場所は、以下の手順で変更します。
 

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: 53e737f35904a90bb56ec15c8a8282f8775e3c3a
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 45ed1867d6d151250340bb21450b4b0d9b00e993
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393493"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243149"
 ---
 # <a name="what-is-the-azure-machine-learning-cli"></a>Azure Machine Learning CLI とは
 
@@ -25,7 +25,7 @@ Azure Machine Learning コマンド ライン インターフェイス (CLI) の
 
 + 機械学習モデルのライフサイクルをパッケージ化、デプロイ、追跡します
 
-この機械学習 CLI は [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) の拡張機能であり、Azure Machine Learning サービス用の Python ベースの <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> を基にして開発されました。
+この機械学習 CLI は [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) の拡張機能であり、Azure Machine Learning サービス用の Python ベースの <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> を基にして開発されました。
 
 > [!NOTE]
 > この CLI は現在は早期プレビュー版であり、今後更新されます。

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 1ec6228993c516ce2974c64bfa5b6dcdf63e7f91
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343828"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242094"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Azure Marketplace イメージを使用して Azure リソースのマネージド ID を使用する Terraform Linux 仮想マシンを作成する
 
@@ -97,9 +97,9 @@ SSH を使用して仮想マシンに接続したら、仮想マシン上の Azu
 この記事では、Azure で Terraform Linux 仮想マシンをセットアップする方法について説明しました。 Azure 上の Terraform の詳細については、次のリソースもご覧ください。 
 
  [Microsoft.com の Terraform ハブ](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure プロバイダーのドキュメント](http://aka.ms/terraform)  
- [Terraform Azure プロバイダーのソース](http://aka.ms/tfgit)  
- [Terraform Azure モジュール](http://aka.ms/tfmodules)
+ [Terraform Azure プロバイダーのドキュメント](https://aka.ms/terraform)  
+ [Terraform Azure プロバイダーのソース](https://aka.ms/tfgit)  
+ [Terraform Azure モジュール](https://aka.ms/tfmodules)
  
 
 

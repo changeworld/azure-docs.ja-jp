@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: ca0fb177c8b6a16cf624fd4533c9c9040e6d9dee
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: f84eda2269df0bbe7186a2f1a9abb9c594b75455
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365236"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245071"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>クイック スタート: Azure portal を使用して Azure Data Box Disk をデプロイする (プレビュー)
 
@@ -31,11 +31,11 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 作業を開始する前に、次のことを行います。
 
-- ご利用のサブスクリプションで Azure Data Box サービスが有効になっていることを確認してください。 ご利用のサブスクリプションでこのサービスを有効にするには、[サービスにサインアップ](http://aka.ms/azuredataboxfromdiskdocs)してください。
+- ご利用のサブスクリプションで Azure Data Box サービスが有効になっていることを確認してください。 ご利用のサブスクリプションでこのサービスを有効にするには、[サービスにサインアップ](https://aka.ms/azuredataboxfromdiskdocs)してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://aka.ms/azuredataboxfromdiskdocs](http://aka.ms/azuredataboxfromdiskdocs)) にサインインします。
+Azure Portal ([http://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs)) にサインインします。
 
 ## <a name="order"></a>順序
 
@@ -70,11 +70,11 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
     3. Data Box Disk ロック解除ツールを実行して、このパスキーを指定します。 ディスクの再挿入に対応するには、ロック解除ツールをもう一度実行し、パスキーを指定します。 **BitLocker ダイアログまたは BitLocker キーを使用したディスクのロック解除は行わないでください。** ディスクのロック解除方法の詳細については、[Windows クライアントでのディスクのロック解除]()または [Linux クライアントでのディスクのロック解除]()に関するページを参照してください。
     4. ディスクに割り当てられたドライブ文字が、ツールによって表示されます。 ディスクのドライブ文字をメモしておいてください。 以降の手順で使用します。
 
-## <a name="copy-data-and-verify"></a>データのコピーと確認
+## <a name="copy-data-and-validate"></a>データをコピーし、検証する
 
 この工程にかかる時間は、実際のデータのサイズによって異なります。 
 
-1. ドライブには、*PageBlob*、*BlockBlob*、*AzureImportExport* の各フォルダーが格納されています。 ブロック BLOB としてインポートするデータは、*BlockBlob* フォルダーにドラッグ アンド ドロップでコピーします。 同様に、VHD/VHDX などのデータは、*PageBlob* フォルダーにドラッグ アンド ドロップします。
+1. ドライブには、*PageBlob*、*BlockBlob*、*DataBoxDiskImport* の各フォルダーが格納されています。 ブロック BLOB としてインポートするデータは、*BlockBlob* フォルダーにドラッグ アンド ドロップでコピーします。 同様に、VHD/VHDX などのデータは、*PageBlob* フォルダーにドラッグ アンド ドロップします。
 
     Azure Storage アカウントには、*BlockBlob* フォルダー下および *PageBlob* フォルダー下のサブフォルダーごとにコンテナーが 1 つ作成されます。 *BlockBlob* フォルダー下のファイルと *PageBlob* フォルダー下のファイルはすべて、Azure Storage アカウントの既定のコンテナー `$root` にコピーされます。
 
@@ -82,7 +82,7 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
     > - すべてのコンテナーと BLOB は、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)に準拠している必要があります。 これらの規則に従っていない場合、Azure へのデータのアップロードに失敗します。
     > - ファイルが約 4.75 TiB (ブロック BLOB の場合) および約 8 TiB (ページ BLOB の場合) を超えないようにしてください。
 
-2. (省略可) コピーが完了したら、*AzureImportExport* フォルダーに格納されている `DataBoxDiskValidation.cmd` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
+2. (省略可) コピーが完了したら、*DataBoxDiskImport* フォルダーに格納されている `DataBoxDiskValidation.cmd` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
 3. ドライブを取り外します。 
 
 

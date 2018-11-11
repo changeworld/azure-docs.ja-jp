@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 2d4091d8ad6a778405ee6bb916c399e0b144f21d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4156071c36b06be586b05ee98e9eeb0a9138e4bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441529"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246858"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する
 Windows Server を実行するヘッド ノードとサポートされる Linux ディストリビューションを実行する計算ノードを含む [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) クラスターを Azure に設定します。 クラスターの Linux ノードと Windows ヘッド ノードの間でデータを移動するオプションを調べます。 クラスターに Linux HPC ジョブを送信する方法について説明します。
@@ -179,15 +179,14 @@ Linux ノードは、 **[ヒート マップ]** ビューにも表示されま�
 ## <a name="how-to-move-data-in-a-cluster-with-linux-nodes"></a>Linux ノードのあるクラスターにデータを移動する方法
 クラスターの Linux ノードと Windows ヘッド ノードの間でデータを移動するにはいくつかの方法があります。 3 つの一般的な方法を次に示します。これらについては、次のセクションで詳しく説明しています。
 
-* 
-  **Azure ファイル** - Azure Storage にデータ ファイルを格納する管理された SMB ファイル共有を公開します。 デプロイされている仮想ネットワークが異なる場合でも、Windows ノードと Linux ノードではドライブまたはフォルダーとして同時に Azure File 共有をマウントできます。
+* **Azure ファイル** - Azure Storage にデータ ファイルを格納する管理された SMB ファイル共有を公開します。 デプロイされている仮想ネットワークが異なる場合でも、Windows ノードと Linux ノードではドライブまたはフォルダーとして同時に Azure File 共有をマウントできます。
 * **ヘッド ノード SMB 共有** - Linux ノードにヘッド ノードの標準 Windows 共有フォルダーをマウントします。
 * **ヘッド ノード NFS サーバー** - Windows と Linux の混在環境にファイル共有ソリューションを提供します。
 
 ### <a name="azure-file-storage"></a>Azure File ストレージ
 [Azure File](https://azure.microsoft.com/services/storage/files/) サービスは、標準の SMB 2.1 プロトコルを使用してファイル共有を公開します。 Azure の VM とクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。また、オンプレミスのアプリケーションでは、File ストレージ API を介して、共有内のファイル データにアクセスできます。 
 
-Azure File 共有を作成してヘッド ノードにマウントする詳細な手順については、「 [Windows で Azure File Storage を使用する](../../../storage/files/storage-how-to-use-files-windows.md)」を参照してください。 Linux ノードで Azure File 共有をマウントするには、「[Linux で Azure File Storage を使用する方法](../../../storage/files/storage-how-to-use-files-linux.md)」をご覧ください。 固定接続を設定するには、「 [Microsoft Azure Files への接続の保持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」を参照してください。
+Azure File 共有を作成してヘッド ノードにマウントする詳細な手順については、「 [Windows で Azure File Storage を使用する](../../../storage/files/storage-how-to-use-files-windows.md)」を参照してください。 Linux ノードで Azure File 共有をマウントするには、「[Linux で Azure File Storage を使用する方法](../../../storage/files/storage-how-to-use-files-linux.md)」をご覧ください。 固定接続を設定するには、「 [Microsoft Azure Files への接続の保持](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)」を参照してください。
 
 次の例では、ストレージ アカウントへの Azure File 共有を作成します。 ヘッド ノードに共有をマウントするには、コマンド プロンプトを開き、次のコマンドを入力します。
 
@@ -272,7 +271,7 @@ NFS サービスでは、SMB プロトコルを利用して Windows Server 2012 
 
 HPC Pack GUI ツールと HPC Web ポータル経由で Azure のクラスターにジョブを送信する方法は Windows コンピューティング ノードの場合と同じです。 「[HPC ジョブ マネージャー](https://technet.microsoft.com/library/ff919691.aspx)」および「[オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する](../../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
-REST API でジョブを送信する方法については、「 [Creating and Submitting Jobs by Using the REST API in Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)」を参照してください。 Linux クライアントからジョブを送信する場合は、 [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756)の Python サンプルも参照してください。
+REST API でジョブを送信する方法については、「 [Creating and Submitting Jobs by Using the REST API in Microsoft HPC Pack](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)」を参照してください。 Linux クライアントからジョブを送信する場合は、 [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756)の Python サンプルも参照してください。
 
 ## <a name="clusrun-for-linux-nodes"></a>Linux ノードの clusrun
 HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) ツールを使用して、コマンド プロンプトまたは HPC クラスター マネージャーを介して Linux ノードでコマンドを実行できます。 基本的な例の一部を次に示します。

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 554c575f338ebaa415ed21be8dc8b27eb79c3c0c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634406"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244527"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -150,9 +150,9 @@ AWS DSC Toolkit を使用して Azure Automation State Configuration による�
 
 オンプレミスの Windows マシンと (アマゾン ウェブ サービスなどの) Azure 以外のクラウド内の Windows マシンも、インターネットへの発信アクセスが可能な限り、いくつかの簡単な手順で Azure Automation State Configuration にオンボードすることができます。
 
-1. Azure Automation State Configuration にオンボードするマシンに最新バージョンの [WMF 5](http://aka.ms/wmf5latest) がインストールされていることを確認します。
+1. Azure Automation State Configuration にオンボードするマシンに最新バージョンの [WMF 5](https://aka.ms/wmf5latest) がインストールされていることを確認します。
 1. 以下の「[**DSC メタ構成の生成**](#generating-dsc-metaconfigurations)」のセクションの指示に従って、必要な DSC メタ構成が含まれるフォルダーを生成します。
-1. 以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。 **このコマンドを実行するマシンには最新バージョンの [WMF 5](http://aka.ms/wmf5latest) がインストールされている必要があります。**
+1. 以下を使用して、オンボードするマシンに PowerShell DSC メタ構成をリモートで適用します。 **このコマンドを実行するマシンには最新バージョンの [WMF 5](https://aka.ms/wmf5latest) がインストールされている必要があります。**
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
@@ -190,7 +190,7 @@ AWS DSC Toolkit を使用して Azure Automation State Configuration による�
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-このコマンドを実行するマシンには最新バージョンの [WMF 5](http://aka.ms/wmf5latest) がインストールされている必要があります。
+このコマンドを実行するマシンには最新バージョンの [WMF 5](https://aka.ms/wmf5latest) がインストールされている必要があります。
 
 1. PowerShell DSC メタ構成をリモートで適用できない場合は、オンボードする各 Linux マシンについて、手順 5. のフォルダーからそのマシンに対応するメタ構成を Linux マシンにコピーします。 次に、以下を使用して、Azure Automation State Configuration にオンボードする各 Linux マシンで `SetDscLocalConfigurationManager.py` をローカルで呼び出します。
 
@@ -207,7 +207,7 @@ AWS DSC Toolkit を使用して Azure Automation State Configuration による�
 
 ### <a name="using-a-dsc-configuration"></a>DSC 構成の使用
 
-1. ローカル環境のマシンで、管理者として VSCode (または、使い慣れたエディター) を開きます。 マシンには最新バージョンの [WMF 5](http://aka.ms/wmf5latest) がインストールされている必要があります。
+1. ローカル環境のマシンで、管理者として VSCode (または、使い慣れたエディター) を開きます。 マシンには最新バージョンの [WMF 5](https://aka.ms/wmf5latest) がインストールされている必要があります。
 1. 次のスクリプトをローカルにコピーします。 このスクリプトには、メタ構成を作成するための PowerShell DSC 構成と、メタ構成の作成を開始するためのコマンドが含まれています。
 
 > [!NOTE]

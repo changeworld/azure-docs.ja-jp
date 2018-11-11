@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 70b8f25bd699cbdb069892d65bf766ef3953f59d
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 271141f24ff729fc99210af67ad769a5ef83a65c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170873"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242723"
 ---
 # <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Conversation Learner で "Hello World" モデルを作成する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "39170873"
 
 ## <a name="video"></a>ビデオ
 
-[![チュートリアル 1 のプレビュー](http://aka.ms/cl-tutorial-01-preview)](http://aka.ms/blis-tutorial-01)
+[![チュートリアル 1 のプレビュー](https://aka.ms/cl-tutorial-01-preview)](https://aka.ms/blis-tutorial-01)
 
 
 ## <a name="requirements"></a>必要条件
@@ -40,7 +40,7 @@ Web UI のホーム ページから始めます。
 ### <a name="create-the-model"></a>モデルの作成
 1. [新しいモデル] をクリックする
 2. [名前] フィールドに「Hello World」と入力します。
-3. Click Create
+3. Create をクリックしてください。
 
 ### <a name="create-an-action"></a>アクションを作成する
 
@@ -49,7 +49,7 @@ Web UI のホーム ページから始めます。
     - アクションは、Conversation Learner からユーザーに返されるテキスト メッセージ、API 呼び出し、カードのいずれかになります。
 3. [応答] に「Hello World!」と入力します。
     - これは、ボットから返されることになる応答です。
-4. Click Create
+4. Create をクリックしてください。
 
 ボットでできる初めてのこと、つまりテキスト応答を返す機能を作成しました。
 

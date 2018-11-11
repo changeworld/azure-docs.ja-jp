@@ -52,6 +52,10 @@ items:
       href: concepts-business-continuity.md
     - name: バックアップと復元
       href: concepts-backup.md
+  - name: 開発
+    items:
+    - name: 接続の回復性
+      href: concepts-connectivity.md
   - name: レプリケーション
     items:
     - name: データイン レプリケーション
@@ -90,6 +94,12 @@ items:
     items:
     - name: データイン レプリケーションの構成
       href: howto-data-in-replication.md
+  - name: トラブルシューティング
+    items:
+    - name: 接続エラーのトラブルシューティング
+      href: howto-troubleshoot-common-connection-issues.md
+    - name: クエリ パフォーマンスのトラブルシューティング
+      href: howto-troubleshoot-query-performance.md
 - name: リファレンス
   items:
   - name: REST API
@@ -109,14 +119,14 @@ items:
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-database-mariadb
   - name: 機能をリクエストする
-    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+    href: https://feedback.azure.com/forums/915439-azure-database-for-mariadb
   - name: 利用可能なリージョン
     href: https://azure.microsoft.com/regions/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 2ba86afb2bb0aeff5ab83cfb9e3ee1b27ce3b3f5
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: aca88da087f0d51b0c6759e4cecd91889210b614
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986349"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344354"

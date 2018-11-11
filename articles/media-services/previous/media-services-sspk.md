@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: xpouyat
-ms.openlocfilehash: b4472f522571e0056ce6b28d67a69b0dcabba8a6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71cb4ff7c5948067dfb039caf69241cfa9e22408
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785821"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243898"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licensing Microsoft® Smooth Streaming Client Porting Kit
 ## <a name="overview"></a>概要
@@ -29,7 +29,7 @@ Microsoft Smooth Streaming Client Porting Kit (**SSPK** ) は、組み込みデ�
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>[説明]
+## <a name="description"></a>説明
 SSPK は、高い事業価値を提供する契約条件に基づいて使用許諾されます。 SSPK のライセンスが業界にもたらす利点を次に示します。
 
 * Smooth Streaming Porting Kit ソース (C++) 
@@ -43,7 +43,7 @@ SSPK は、高い事業価値を提供する契約条件に基づいて使用許
   * ハードウェア A/V デコーダー (デコード、レンダリング) との連携を可能にするプログラミング インターフェイス
 * DRM (デジタル著作権管理) インターフェイス 
   * DRM アブストラクション レイヤー (DAL) を介して DRM を処理するためのプログラミング インターフェイス
-  * Microsoft PlayReady Porting Kit は別々に出荷されますが、このインターフェイスを介して連携します。 Microsoft PlayReady デバイスのライセンスの詳細については、 [ここ](http://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)をクリックしてください。
+  * Microsoft PlayReady Porting Kit は別々に出荷されますが、このインターフェイスを介して連携します。 Microsoft PlayReady デバイスのライセンスの詳細については、 [ここ](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)をクリックしてください。
 * 実装サンプル 
   * サンプル PAL 実装 (Linux)
   * サンプル HAL 実装 (GStreamer)

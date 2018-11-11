@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: 35c3027f2b592f6b24075005829ae9376a7fca82
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 28ea626adf87ad9f115b5acc5452dfc91ad833c5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987037"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245009"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>エンドポイントの追加、削除、有効化、無効化
 
@@ -80,5 +80,5 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 * [ルーティング方法の構成](traffic-manager-configure-routing-method.md)
 * [Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
 * [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
-* [Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/p/?LinkID=313584)
+* [Traffic Manager の操作 (REST API リファレンス)](https://go.microsoft.com/fwlink/p/?LinkID=313584)
 

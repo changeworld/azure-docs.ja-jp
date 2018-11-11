@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: b71ba12f6c533d67b04366f05b9334e1993823fa
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 2c0c8b49d3f7122b71a08bc57ac615ba9e0c0108
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382030"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239442"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Always On 可用性グループの概要 #
 
 この記事では、Azure Virtual Machines での SQL Server 可用性グループについて説明します。 
 
-Azure Virtual Machines での Always On 可用性グループは、オンプレミスの Always On 可用性グループに似ています。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。 
+Azure Virtual Machines での Always On 可用性グループは、オンプレミスの Always On 可用性グループに似ています。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。 
 
 次の図は、Azure Virtual Machines での完全な SQL Server 可用性グループの一部を示したものです。
 

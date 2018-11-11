@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 3b979a9a7e93992ba593697fa9465fdadc1e58b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869314"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240394"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>SQL Database Managed Instance を使用したレプリケーション
 
@@ -77,7 +77,7 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 ## <a name="configure-publishing-and-distribution-example"></a>パブリッシングとディストリビューションの構成例
 
 1. ポータルで [Azure SQL Database Managed Instance を作成](sql-database-managed-instance-create-tutorial-portal.md)します。
-2. 作業ディレクトリの [Azure ストレージ アカウントを作成](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)します。
+2. 作業ディレクトリの [Azure ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)します。
 
    ストレージ キーを必ずコピーしてください。 [ストレージ アクセス キーの表示とコピー](../storage/common/storage-account-manage.md#access-keys
 )に関する記事をご覧ください。
@@ -85,11 +85,11 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 
    下記のサンプル スクリプトでは、`<Publishing_DB>` をこのデータベースの名前に置き換えます。
 
-4. ディストリビューターの SQL 認証を使用するデータベース ユーザーを作成します。 「[データベース ユーザーの作成](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)」をご覧ください。 セキュリティで保護されたパスワードを使用します。
+4. ディストリビューターの SQL 認証を使用するデータベース ユーザーを作成します。 「[データベース ユーザーの作成](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)」をご覧ください。 セキュリティで保護されたパスワードを使用します。
 
    下記のサンプル スクリプトでは、`<SQL_USER>` と `<PASSWORD>` にこの SQL Server アカウントのデータベース ユーザーとパスワードを使用します。
 
-5. [SQL Database Managed Instance に接続](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)します。
+5. [SQL Database Managed Instance に接続](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)します。
 
 6. 次のクエリを実行して、ディストリビューターとディストリビューション データベースを追加します。
 
@@ -197,4 +197,4 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 
 ## <a name="see-also"></a>関連項目
 
-- [マネージド インスタンスとは](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)
+- [マネージド インスタンスとは](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

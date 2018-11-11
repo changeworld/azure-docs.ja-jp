@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: cd7da8d2bbd684df29432bb924bdae3cd9ac7e64
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044439"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246686"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI ワークスペース コレクションのサンプルの使用
 
@@ -26,9 +26,9 @@ ms.locfileid: "43044439"
 
 先に進む前に、次のリソースを保存してください。これらは、サンプル アプリや独自のアプリに Power BI レポートを統合する際に役立ちます。
 
-* [サンプル ワークスペース Web アプリ](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [サンプル ワークスペース Web アプリ](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Power BI ワークスペース コレクション API リファレンス](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [Power BI .NET SDK](http://go.microsoft.com/fwlink/?LinkId=746472) (NuGet から入手可能)
+* [Power BI .NET SDK](https://go.microsoft.com/fwlink/?LinkId=746472) (NuGet から入手可能)
 * [JavaScript レポート埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
@@ -38,7 +38,7 @@ ms.locfileid: "43044439"
 
 サンプル アプリの実行に必要なコンポーネントにアクセスするための Visual Studio 開発環境の設定手順を説明します。
 
-1. GitHub でサンプル [Power BI ワークスペース コレクション - Web アプリへのレポートの統合](http://go.microsoft.com/fwlink/?LinkId=761493)をダウンロードして解凍します。
+1. GitHub でサンプル [Power BI ワークスペース コレクション - Web アプリへのレポートの統合](https://go.microsoft.com/fwlink/?LinkId=761493)をダウンロードして解凍します。
 2. Visual Studio で **PowerBI-embedded.sln** を開きます。 NuGet パッケージ マネージャー コンソールで **Update-Package** コマンドを実行して、このソリューションで使用するパッケージを更新する必要がある場合があります。
 3. ソリューションをビルドします。
 4. **ProvisionSample** コンソール アプリを実行します。 サンプルのコンソール アプリで、ワークスペースのプロビジョニングを行って、PBIX ファイルをインポートします。
@@ -51,7 +51,7 @@ ms.locfileid: "43044439"
 8. 新しく作成された **ワークスペース ID** を、この記事の後半で使用するためにコピーして保存します。 作成された**ワークスペース ID** は **Azure Portal** で確認できます。
 
     ![Azure Portal 内のワークスペース ID](media/get-started-sample/workspace-id.png)
-9. PBIX ファイルを**ワークスペース**にインポートするために、オプション **[6.Import PBIX Desktop file into an existing workspace]** を選択します。 PBIX ファイルがない場合は、[Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードできます。
+9. PBIX ファイルを**ワークスペース**にインポートするために、オプション **[6.Import PBIX Desktop file into an existing workspace]** を選択します。 PBIX ファイルがない場合は、[Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547) をダウンロードできます。
 10. メッセージが表示されたら、分かりやすい **データセット**名を入力します。
 
 次のように、応答が表示されます。
@@ -83,7 +83,7 @@ Checking import state... Succeeded
     ```
 3. **EmbedSample** Web アプリケーションを実行します。
 
-**EmbedSample** Web アプリケーションを実行すると、左側のナビゲーション パネルに **[レポート]** メニューが表示されます。 インポートしたレポートを表示するには、**[レポート]** を展開して、レポートをクリックします。 [Retail Analysis Sample PBIX](http://go.microsoft.com/fwlink/?LinkID=780547) をインポートした場合、サンプル Web アプリは次のように表示されます。
+**EmbedSample** Web アプリケーションを実行すると、左側のナビゲーション パネルに **[レポート]** メニューが表示されます。 インポートしたレポートを表示するには、**[レポート]** を展開して、レポートをクリックします。 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547) をインポートした場合、サンプル Web アプリは次のように表示されます。
 
 ![サンプル アプリケーション内の左側のナビゲーション](media/get-started-sample/sample-left-nav.png)
 

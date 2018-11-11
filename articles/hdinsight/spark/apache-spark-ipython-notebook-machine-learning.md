@@ -3,18 +3,18 @@ title: 'チュートリアル: Azure HDInsight で Spark Machine Learning アプ
 description: Apache Spark Machine Learning アプリケーションを HDInsight Spark クラスター内に Jupyter Notebook を使用して作成するための詳細な手順。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 05/07/2018
-ms.author: jasonh
-ms.openlocfilehash: 4da8b0ddd8f8197d9aa8a79e5b63ac8fd90b4172
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: eac44d3b8daae27afec8aa24f4767bdb5dbf991a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043339"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239561"
 ---
 # <a name="tutorial-build-a-spark-machine-learning-application-in-hdinsight"></a>チュートリアル: HDInsight で Spark Machine Learning アプリケーションを作成する 
 
@@ -22,7 +22,7 @@ ms.locfileid: "43043339"
 
 [MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) は、分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Spark のスケーラブル Machine Learning ライブラリです。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Apache Spark Machine Learning アプリケーションを開発する
 
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         return LabeledDocument((values[6]), textValue, hot)
 
     # Load the raw HVAC.csv file, parse it using the function
-    data = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+    data = sc.textFile("/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
     documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
     training = documents.toDF()
@@ -188,7 +188,7 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 * Apache Spark Machine Learning アプリケーションを開発する
 

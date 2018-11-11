@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e25f98f1189f71943ece4a7877a86e29698689a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22706650"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240513"
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: エディション チャート
 
@@ -57,13 +57,13 @@ Standard エディションのすべての機能が含まれており、ハイ�
         <th>Free (プレビュー)</th>
         <th>開発者</th>
         <th>Basic</th>
-        <th>Standard</th>
-        <th>プレミアム</th>
+        <th>標準</th>
+        <th>Premium</th>
 </tr>
 
 <tr>
 <td><strong>開始価格</strong></td>
-<td colspan="5"><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の価格</a> <br/><br/> <a HREF="http://azure.microsoft.com/pricing/calculator/?scenario=full">Azure 料金計算ツール</a></td>
+<td colspan="5"><a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の価格</a> <br/><br/> <a HREF="https://azure.microsoft.com/pricing/calculator/?scenario=full">Azure 料金計算ツール</a></td>
 </tr>
 <tr>
 <td><strong>既定の最小構成</strong></td>
@@ -153,7 +153,7 @@ TPM 契約の有無</td>
 <tr>
 <td><strong>高可用性</strong>
 <br/><br/>
-サービス レベル アグリーメント (SLA) については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の価格</a>に関するページをご覧ください。
+サービス レベル アグリーメント (SLA) については、<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011">Azure BizTalk Services の価格</a>に関するページをご覧ください。
 </td>
 <td>なし</td>
 <td>なし</td>
@@ -242,10 +242,10 @@ Free エディションは、別のレベルに移行 ("スケールアップ") 
 他のエディションでは、バックアップと復元を使用して、レベル間でアーティファクトを移行できます。 たとえば、Standard レベルでアーティファクトをバックアップし、Premium レベルに復元できます。 [BizTalk Services のバックアップと復元](biztalk-backup-restore.md) に関するページに、サポートされている移行パスと、バックアップされるアーティファクトの一覧が記載されています。 ハイブリッド接続はバックアップされないので注意してください。 バックアップして新しいレベルに復元した後で、もう一度ハイブリッド接続を作成してください。  
 
 #### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>BizTalk Adapter サービスはサービスに含まれていますか。 ソフトウェアはどのようにして取得しますか。
-はい、BizTalk Adapter Pack 付きの BizTalk Adapter サービスは、Azure BizTalk Services SDK の [ダウンロード](http://www.microsoft.com/download/details.aspx?id=39087)に含まれています。
+はい、BizTalk Adapter Pack 付きの BizTalk Adapter サービスは、Azure BizTalk Services SDK の [ダウンロード](https://www.microsoft.com/download/details.aspx?id=39087)に含まれています。
 
-## <a name="next-steps"></a>次のステップ
-Azure BizTalk Services を Azure ポータルで作成するには、 [BizTalk Services の Azure ポータルを使用したプロビジョニング](biztalk-provision-services.md)に関するページに進んでください。 アプリケーションの作成を開始するには、 [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
+## <a name="next-steps"></a>次の手順
+Azure BizTalk Services を Azure ポータルで作成するには、 [BizTalk Services の Azure ポータルを使用したプロビジョニング](biztalk-provision-services.md)に関するページに進んでください。 アプリケーションの作成を開始するには、 [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [BizTalk Services の Azure ポータルを使用したプロビジョニング](biztalk-provision-services.md)<br/>
@@ -254,5 +254,5 @@ Azure BizTalk Services を Azure ポータルで作成するには、 [BizTalk S
 * [BizTalk Services: Backup and restore](biztalk-backup-restore.md)<br/>
 * [BizTalk サービス: 調整](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
-* [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Visual Studio でのプロジェクトの作成](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

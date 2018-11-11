@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/18/2018
-ms.author: bwren, vinagara
+ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ec5f1cef3f9ca82953093d2086b615087db1a7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 427ac67b812da449333e4868e54ca36d2c6f54af
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024774"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282334"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
@@ -27,13 +27,13 @@ ms.locfileid: "50024774"
 > 本記事は、現在プレビュー段階である管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。   
 
 
-通常、[管理ソリューション](monitoring-solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../log-analytics/log-analytics-log-searches.md)が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../log-analytics/log-analytics-alerts.md)も定義できます。  この記事では、[管理ソリューション](monitoring-solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../resource-manager-template-walkthrough.md)で定義する方法について説明します。
+通常、[管理ソリューション](monitoring-solutions.md)には、ソリューションによって収集されたデータを分析するため、Log Analytics の[保存された検索条件](../log-analytics/log-analytics-queries.md)が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、[アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)も定義できます。  この記事では、[管理ソリューション](monitoring-solutions-creating.md)に含めることができるように、Log Analytics の保存された検索条件とアラートを[リソース管理テンプレート](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)で定義する方法について説明します。
 
 > [!NOTE]
 > この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Azure での管理ソリューションの設計とビルド](monitoring-solutions-creating.md)」で説明しています。  
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、[管理ソリューションの作成方法](monitoring-solutions-creating.md)および [Resource Manager テンプレート](../resource-group-authoring-templates.md)とソリューション ファイルの構造を理解していることを前提としています。
+この記事では、[管理ソリューションの作成方法](monitoring-solutions-creating.md)および [Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)とソリューション ファイルの構造を理解していることを前提としています。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
@@ -54,9 +54,9 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 
 ## <a name="saved-searches"></a>保存された検索条件
-ソリューションによって収集されたデータをユーザーが照会できるように、[保存された検索条件](../log-analytics/log-analytics-log-searches.md)をソリューションに含めます。  保存された検索条件は、Azure portal の **[保存された検索条件]** に表示されます。  保存された検索条件は、各アラートにも必要です。   
+ソリューションによって収集されたデータをユーザーが照会できるように、[保存された検索条件](../log-analytics/log-analytics-queries.md)をソリューションに含めます。  保存された検索条件は、Azure portal の **[保存された検索条件]** に表示されます。  保存された検索条件は、各アラートにも必要です。   
 
-[Log Analytics の保存された検索条件](../log-analytics/log-analytics-log-searches.md)リソースは、`Microsoft.OperationalInsights/workspaces/savedSearches` 型であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
+[Log Analytics の保存された検索条件](../log-analytics/log-analytics-queries.md)リソースは、`Microsoft.OperationalInsights/workspaces/savedSearches` 型であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",

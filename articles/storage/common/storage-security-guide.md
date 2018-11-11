@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cd7b475dc2bd4dade822a82f285c2e96c8d532d2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138190"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243796"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -479,7 +479,7 @@ CORS と CORS を有効にする方法については、次のリソースをご
 * [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services on MSDN (MSDN の Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート)](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
   Azure Storage サービスの CORS サポートに関する参照ドキュメントです。 各ストレージ サービスに適用される記事のリンクと例が紹介されています。また、CORS ファイルの各要素についても説明しています。
-* [Microsoft Azure Storage: Introducing CORS (Microsoft Azure Storage: CORS の概要)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+* [Microsoft Azure Storage: Introducing CORS (Microsoft Azure Storage: CORS の概要)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   CORS を発表し、CORS の使用方法を示す初期のブログ記事へのリンクです。
 
@@ -490,7 +490,7 @@ CORS と CORS を有効にする方法については、次のリソースをご
 
    トランスポート レベルのセキュリティを提供する HTTPS を使用できる場合は、MD5 チェックを使用することは冗長となり、不要です。
 
-   詳細については、 [Azure BLOB MD5 の概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)に関するブログ記事をご覧ください。
+   詳細については、 [Azure BLOB MD5 の概要](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)に関するブログ記事をご覧ください。
 2. **米国政府の FIPS 準拠はどうなっていますか**
 
    米国連邦情報処理規格 (FIPS) には、機密データの保護のために、米国連邦政府のコンピューター システムで使用することが承認されている暗号化アルゴリズムが定義されています。 Windows Server またはデスクトップで FIPS モードを有効にすると、FIPS が検証された暗号化アルゴリズムのみを使用するように OS に指示されます。 アプリケーションが準拠していないアルゴリズムを使用している場合、アプリケーションは停止します。 .NET Framework バージョン 4.5.2 以降の場合、コンピューターを FIPS モードにすると、FIPS に準拠しているアルゴリズムを使用するようにアプリケーションの暗号化アルゴリズムが自動的に切り替わります。

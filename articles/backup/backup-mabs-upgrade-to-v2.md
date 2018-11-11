@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: adigan
-ms.openlocfilehash: a458a46f3775a593f369d5acb967fc90d61efde8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4f1e0c14d3a835b9f6d739511186bdcc19917a7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628343"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230993"
 ---
 # <a name="install-azure-backup-server-v2"></a>Azure Backup Server v2 のインストール
 
@@ -89,7 +89,7 @@ Backup Server にボリュームを追加する場合、ボリュームにフレ
 
 管理者コンソールでボリュームを追加するには、次の手順を実行します。
 
-1. Azure Backup Server の管理者コンソールで、**[Management]** \(管理) > **[Disk Storage]** \(ディスク ストレージ) > **[Add]** \(追加) の順に選択します。
+1. Azure Backup Server の管理者コンソールで、**[Management]**(管理) > **[Disk Storage]**(ディスク ストレージ) > **[Add]**(追加) の順に選択します。
 
   ![[ディスク ストレージの追加] ウィザードを開きます](./media//backup-mabs-upgrade-to-v2/open-add-disk-storage-wizard.png)
 
@@ -97,13 +97,13 @@ Backup Server にボリュームを追加する場合、ボリュームにフレ
 
 2. **[Add Disk Storage]** \(ディスク ストレージの追加) ページの **[Available volumes]** \(使用可能なボリューム) ボックスで、ボリュームを選択し、**[Add]** \(追加) を選択します。
 
-3. **[Selected volumes]** \(選択したボリューム) ボックスに、ボリュームのフレンドリ名を入力し、**[OK]** を選択します。
+3. **[Selected volumes]**(選択したボリューム) ボックスに、ボリュームのフレンドリ名を入力し、**[OK]** を選択します。
 
   ![[ディスク ストレージの追加] ウィザード - ボリュームの追加](./media/backup-mabs-upgrade-to-v2/add-volume.png)
 
   ディスクを追加する場合は、そのディスクは従来の記憶域を持つ保護グループに属している必要があります。 これらのディスクは、このような保護グループにのみ使用できます。 Backup Server に従来の保護を持つソースない場合、ディスクは表示されません。
 
-  ディスクの追加の詳細については、[ディスクを追加して従来の記憶域を増やす](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage)方法に関するページを参照してください。 ディスクには、フレンドリ名を割り当てることはできません。
+  ディスクの追加の詳細については、[ディスクを追加して従来の記憶域を増やす](https://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage)方法に関するページを参照してください。 ディスクには、フレンドリ名を割り当てることはできません。
 
 
 ### <a name="assign-workloads-to-volumes"></a>ワークロードをボリュームに割り当てる
@@ -130,7 +130,7 @@ PowerShell を使用して行ったすべての変更は、UI に反映されま
 
 保護グループを作成する手順は次のとおりです。
 
-1. Backup Server の管理者コンソールで、**[Protection]** \(保護) を選択します。
+1. Backup Server の管理者コンソールで、**[Protection]**(保護) を選択します。
 
 2. ツール リボンで、**[New]** \(新規) を選択します。
 
@@ -160,9 +160,9 @@ PowerShell を使用して行ったすべての変更は、UI に反映されま
 
   ![[ディスク ストレージの割り当ての確認] ページ](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-6.png)
 
-  記憶域のボリュームは、(PowerShell を使用して設定される) ワークロードのボリュームの割り当てと使用可能記憶域に基づいています。 ドロップダウン メニューでその他のボリュームを選択して、記憶域ボリュームを変更できます。 **[ターゲット記憶域]** の値を変更する場合、**[使用可能なディスクの記憶域]** の値は動的に変化し、**[空き領域]** と **[Underprovisioned Space]** \(過小にプロビジョニングされた領域) の値を反映します。
+  記憶域のボリュームは、(PowerShell を使用して設定される) ワークロードのボリュームの割り当てと使用可能記憶域に基づいています。 ドロップダウン メニューでその他のボリュームを選択して、記憶域ボリュームを変更できます。 **[ターゲット記憶域]** の値を変更する場合、**[使用可能なディスクの記憶域]** の値は動的に変化し、**[空き領域]** と **[Underprovisioned Space]**(過小にプロビジョニングされた領域) の値を反映します。
 
-  データ ソースが計画どおりに増えると、**[使用可能なディスクの記憶域]** の **[Underprovisioned Space]** \(過小にプロビジョニングされた領域) の値は、必要な追加記憶域の量を反映します。 この値を使用して、スムーズなバックアップに必要な記憶域のニーズの計画に役立ててください。 値が 0 の場合、近い将来に記憶域に問題が発生する可能性はありません。 値が 0 以外の数値の場合は、保護ポリシーと保護されたメンバーのデータ サイズに基づいた十分な記憶域が割り当てられていません。
+  データ ソースが計画どおりに増えると、**[使用可能なディスクの記憶域]** の **[Underprovisioned Space]**(過小にプロビジョニングされた領域) の値は、必要な追加記憶域の量を反映します。 この値を使用して、スムーズなバックアップに必要な記憶域のニーズの計画に役立ててください。 値が 0 の場合、近い将来に記憶域に問題が発生する可能性はありません。 値が 0 以外の数値の場合は、保護ポリシーと保護されたメンバーのデータ サイズに基づいた十分な記憶域が割り当てられていません。
 
   ![過少割り当てされたディスク ストレージ](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-7.png)
 
@@ -175,13 +175,13 @@ Modern Backup Storage を使用するように保護グループを更新する�
 
 1. System Center 2016 DPM 管理者コンソールで、**[保護]** 機能を選択します。 **[保護グループ メンバー]** 一覧で、メンバーを右クリックし、**[Stop protection of member]** \(メンバーの保護を停止する) を選択します。
 
-  ![メンバーの保護の停止](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+  ![メンバーの保護の停止](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. **[グループから削除]** ダイアログ ボックスで、記憶域プールの使用済みディスク領域と利用可能な空き領域を確認します。 既定では、ディスク上の復旧ポイントをそのままにし、関連付けられている保有ポリシーごとの有効期限が切れるようにします。 **[OK]** を選択します。
 
   空き記憶域プールに使用済みディスク領域をすぐに返す場合は、**[ディスク上のレプリカを削除]** チェック ボックスを選択し、そのメンバーに関連付けられているバックアップ データ (および復旧ポイント) を削除します。
 
-  ![[グループ] ダイアログ ボックスから削除](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+  ![[グループ] ダイアログ ボックスから削除](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Modern Backup Storage を使用する保護グループを作成します。 保護されていないデータ ソースが含めます。
 
@@ -194,7 +194,7 @@ Backup Server で従来の記憶域を使用する場合、ディスクを追加
 
 1. System Center 2016 DPM 管理者コンソールで、**[管理]** > **[ディスク記憶域]** > **[追加]** の順に選択します。
 
-  ![[Add Disk Storage]\(ディスク ストレージの追加) ダイアログ](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+  ![[Add Disk Storage]\(ディスク ストレージの追加) ダイアログ](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. **[ディスク記憶域の追加]** ダイアログ ボックスで **[ディスクの追加]** を選択します。
 
@@ -219,7 +219,7 @@ Backup Server は、System Center Data Protection Manager 保護エージェン�
 
 ### <a name="update-a-protection-agent-on-a-client-computer-that-is-not-connected"></a>接続されていないクライアント コンピューターの保護エージェントの更新
 
-1. Backup Server の管理者コンソールで、**[Management]** \(管理) > **[Agents]** \(エージェント) の順に選択します。
+1. Backup Server の管理者コンソールで、**[Management]**(管理) > **[Agents]**(エージェント) の順に選択します。
 
 2. 表示ウィンドウで、保護エージェントを更新するクライアント コンピューターを選択します。
 

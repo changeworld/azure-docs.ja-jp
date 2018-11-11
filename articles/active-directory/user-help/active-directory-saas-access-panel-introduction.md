@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d0d07e235c33877ede7f47a6095482b2acec18d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719989"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239842"
 ---
 # <a name="what-is-the-myapps-portal"></a>MyApps ポータルとは
 
@@ -137,7 +137,7 @@ Azure 管理者がディレクトリのアカウントを使って Azure portal 
 "*別の*" ユーザー アカウントをテストするには、次の操作を行います。
 
 1. Azure portal または MyApps ポータルの右上で、**[サインアウト]** を選択します。 
-2. [MyApps ポータル](http://myapps.microsoft.com)に移動します。
+2. [MyApps ポータル](https://myapps.microsoft.com)に移動します。
 3. サインイン ページで、テストするディレクトリのアカウントのユーザー名とパスワードを入力します。
 
 

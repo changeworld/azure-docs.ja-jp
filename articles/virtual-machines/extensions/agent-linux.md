@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73e5e54e40223f7cd972e2bd2752add9ca82ff2b
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452345"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243881"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
 
@@ -73,7 +73,7 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
 次のシステムがテスト済みで、Azure Linux エージェントで機能することがわかっています。
 
 > [!NOTE]
-> この一覧は、Microsoft Azure Platform でサポートされるシステムの公式の一覧とは異なる場合があります (Microsoft Azure Platform でサポートされるシステムの一覧: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216))
+> この一覧は、Microsoft Azure Platform でサポートされるシステムの公式の一覧とは異なる場合があります (Microsoft Azure Platform でサポートされるシステムの一覧: [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216))
 > 
 > 
 
@@ -344,6 +344,6 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 
 * 詳しくは､プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成するための次のリソースを参照してください。
   
-  * [Ubuntu Wiki: スワップ パーティションの構成に関するページ](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Wiki: スワップ パーティションの構成に関するページ](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Azure の仮想マシンにカスタム データを挿入する](../windows/classic/inject-custom-data.md)
 

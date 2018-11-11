@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 2b88bd3c86d520b10c27746319f807d2f6208bfa
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 77d5d6fa9b9494c934f850d5b82a0328cead67b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048177"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245173"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Node.js から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -123,7 +123,7 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 * **PartitionKey** - エンティティが格納されるパーティションを決定します。
 * **RowKey** - パーティション内のエンティティを一意に識別します。
 
-**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。 詳細については、「 [Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+**PartitionKey** と **RowKey** は両方とも文字列値にする必要があります。 詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
 エンティティを定義する例を次に示します。 **dueDate** が **Edm.DateTime** の型として定義されている点に注意してください。 型の指定は省略可能です。型を指定しなかった場合、型は推測されます。
 

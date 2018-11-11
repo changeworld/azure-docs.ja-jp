@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: 9a4d7200a2bc2445fcdfefc0332d67a045b5a2e1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fa8c8da34a687edd1bd92c1d516183ee5d3e1bd0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038019"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240122"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>新しい Azure Stack テナント アカウントをAzure Active Directory に追加する
 
@@ -40,10 +40,10 @@ Azure ポータルを使用するには Azure サブスクリプションが必�
 
     ![新しいユーザーの追加 (ユーザー情報が入力された [ユーザー] ページ)](media/azure-stack-add-new-user-aad/new-user-user.png)
 
-    - **名前 (必須)。** 新しいユーザーの氏名です。 たとえば、Mary Parker などです。
-    - **ユーザー名 (必須)。** 新しいユーザーのユーザー名です。 たとえば、「 mary@contoso.com 」のように入力します。
-        ユーザー名のドメイン部分には、既定の初期ドメイン名の <_yourdomainname_>.onmicrosoft.com、またはカスタム ドメイン名 (contoso.com など) のいずれかを使用する必要があります。 カスタム ドメイン名の作成方法については、「[クイック スタート: カスタム ドメイン名を Azure Active Directory に追加する](../active-directory/fundamentals/add-custom-domain.md)」を参照してください。
-    - **プロファイル。** オプションで、ユーザーに関する詳細情報を追加することができます。 後でユーザー情報を追加することもできます。 ユーザー情報の追加方法については、「[ユーザー プロファイル情報の追加または変更方法](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。
+    - **[名前] (必須)。** 新しいユーザーの氏名です。 たとえば、Mary Parker などです。
+    - **[ユーザー名] (必須)。** 新しいユーザーのユーザー名です。 たとえば、「 mary@contoso.com 」のように入力します。
+        ユーザー名のドメイン部分には、既定の初期ドメイン名の <_yourdomainname_>.onmicrosoft.com、またはカスタム ドメイン名 (contoso.com など) のいずれかを使用する必要があります。 カスタム ドメイン名の作成方法の詳細については、[Azure Active Directory にカスタム ドメイン名を追加する方法](../active-directory/fundamentals/add-custom-domain.md)に関するページを参照してください。
+    - **[プロファイル]。** オプションで、ユーザーに関する詳細情報を追加することができます。 後でユーザー情報を追加することもできます。 ユーザー情報の追加方法については、「[ユーザー プロファイル情報の追加または変更方法](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。
     - **ディレクトリ ロール。**  **[ユーザー]** を選択します。
 
 5. **[パスワードの表示]** チェックボックスを選択し、**[パスワード]** ボックスに表示される自動生成されたパスワードをコピーします。 このパスワードは、最初のサインイン プロセスで必要になります。
@@ -65,7 +65,7 @@ Azure サブスクリプションがない場合は、Azure Portal を使用し�
 > 
 
 1. [IT プロフェッショナル 用 Microsoft Online Services サインイン アシスタント RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950) をインストールします。
-2. [Windows PowerShell 用 Azure Active Directory Module (64 ビット版)](http://go.microsoft.com/fwlink/p/?linkid=236297) をインストールして開きます。
+2. [Windows PowerShell 用 Azure Active Directory Module (64 ビット版)](https://go.microsoft.com/fwlink/p/?linkid=236297) をインストールして開きます。
 3. 次のコマンドレットを実行します。
 
     ```powershell

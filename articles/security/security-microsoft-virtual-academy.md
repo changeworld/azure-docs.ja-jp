@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: dfcd248be48109203e91c93231d89d1d650a4b96
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 21f5aba3acfebdcd2e93825ea34226adee5455d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540050"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248080"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Microsoft Virtual Academy の Azure セキュリティ関連コース
 Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。
@@ -48,7 +48,7 @@ Microsoft クラウド データ プラットフォーム ソリューション�
 
 [Security in a Cloud-Enabled World (クラウド対応世界のセキュリティ)](https://mva.microsoft.com/en-us/training-courses/security-in-a-cloudenabled-world-12725?l=CfLHobAcB_3904300474)
 
-[エンタープライズ アーキテクト向けの Microsoft Cloud セキュリティ](http://www.microsoft.com/download/48121)についてのポスターで、お客様の責任に関するロードマップをエキスパートが説明します。 エキスパートはセキュリティ対策の各部を最新化するための推奨事項も示します。たとえば、ガバナンス、コンテインメント戦略、セキュリティ操作、高価値資産保護、情報保護、ユーザーおよびデバイスのセキュリティなどについて、特に管理制御の保護に重点を置いて説明します。 Microsoft サイバーセキュリティ チームがお客様のクラウドのセキュリティの評価やセキュリティ ロードマップの作成に使用しているのと同じフレームワークを基にして学習します。
+[エンタープライズ アーキテクト向けの Microsoft Cloud セキュリティ](https://www.microsoft.com/download/48121)についてのポスターで、お客様の責任に関するロードマップをエキスパートが説明します。 エキスパートはセキュリティ対策の各部を最新化するための推奨事項も示します。たとえば、ガバナンス、コンテインメント戦略、セキュリティ操作、高価値資産保護、情報保護、ユーザーおよびデバイスのセキュリティなどについて、特に管理制御の保護に重点を置いて説明します。 Microsoft サイバーセキュリティ チームがお客様のクラウドのセキュリティの評価やセキュリティ ロードマップの作成に使用しているのと同じフレームワークを基にして学習します。
 
 [Microsoft Azure IaaS Deep Dive (Microsoft Azure IaaS の詳細)](https://mva.microsoft.com/en-us/training-courses/microsoft-azure-iaas-deep-dive-14339?l=PtppYVQgB_8300115888)
 

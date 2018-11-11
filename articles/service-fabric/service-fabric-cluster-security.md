@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541906"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240598"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 承認されていないユーザーが接続できないように、クラスターをセキュリティで保護する必要があります。 クラスターで実稼働ワークロードを実行している場合、セキュリティで保護されたクラスターは特に重要です。 セキュリティで保護されていないクラスターを作成することはできますが、パブリック インターネットに管理エンドポイントを公開している場合に、匿名ユーザーがそのクラスターに接続できるようになります。 セキュリティで保護されていないクラスターは、運用ワークロードでサポートされません。 
@@ -85,7 +85,7 @@ Azure クラスターについては、クライアントの認証に Azure AD �
 クラスターを作成するときに、管理者およびユーザー クライアント ロールを設定します。 ロールを割り当てるには、ロールの種類ごとに別の ID を指定します (たとえば、証明書または Azure AD を使用します)。 既定のアクセス制御の設定と、既定の設定を変更する方法の詳細については、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)](service-fabric-cluster-security-roles.md)」を参照してください。
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 証明書と Service Fabric
-一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証に使用されています。 また、メッセージの暗号化やデジタル署名にも使用されます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 X.509 デジタル証明書の詳細については、「[証明書の使用](http://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。 [Key Vault](../key-vault/key-vault-get-started.md) を使用して、Azure の Service Fabric クラスターの証明書を管理します。
+一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証に使用されています。 また、メッセージの暗号化やデジタル署名にも使用されます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 X.509 デジタル証明書の詳細については、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。 [Key Vault](../key-vault/key-vault-get-started.md) を使用して、Azure の Service Fabric クラスターの証明書を管理します。
 
 次のような、考慮すべき重要な点がいくつかあります。
 
@@ -109,7 +109,7 @@ Azure クラスターについては、クライアントの認証に Azure AD �
 
 * **サブジェクト** フィールドには、複数の値を指定することができます。 各値には、値の型を示す初期設定が先頭に付いています。 通常、初期設定は、*共通名*を示す **CN** です。たとえば、**CN = www.contoso.com** です。 
 * **サブジェクト** フィールドは空白にすることができます。 
-* 省略可能な**サブジェクト代替名**フィールドに入力する場合は、証明書の共通名と、1 つの SAN につき 1 つのエントリを指定する必要があります。 これらの値は **DNS 名**値として入力します。 SAN を含む証明書を生成する方法については、「[セキュリティで保護された LDAP 証明書にサブジェクトの別名を追加する方法](http://support.microsoft.com/kb/931351)」を参照してください。
+* 省略可能な**サブジェクト代替名**フィールドに入力する場合は、証明書の共通名と、1 つの SAN につき 1 つのエントリを指定する必要があります。 これらの値は **DNS 名**値として入力します。 SAN を含む証明書を生成する方法については、「[セキュリティで保護された LDAP 証明書にサブジェクトの別名を追加する方法](https://support.microsoft.com/kb/931351)」を参照してください。
 * 証明書の**目的**フィールド値には、**サーバー認証** や **クライアント認証** などの適切な値を含めるようにしてください。
 
 ### <a name="application-certificates-optional"></a>アプリケーション証明書 (省略可能)

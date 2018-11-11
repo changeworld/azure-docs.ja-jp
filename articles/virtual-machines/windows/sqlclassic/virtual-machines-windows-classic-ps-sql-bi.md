@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: a41dcd5f2c93e5c1279e1c7511e10e6d72574b3b
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 2b2f5a441209b76f4c90c1a4682215d388b2d53a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098748"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242893"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
 > [!IMPORTANT] 
@@ -336,7 +336,7 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 ![Azure VM の BI アプリケーションに対して開くポート](./media/virtual-machines-windows-classic-ps-sql-bi/IC654385.gif)
 
 ## <a name="resources"></a>リソース
-* Azure 仮想マシン環境で使用される、マイクロソフト サーバー ソフトウェアのサポート ポリシーを確認します。 BitLocker、フェールオーバー クラスタリング、ネットワーク負荷分散などの機能のサポートについては、 「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](http://support.microsoft.com/kb/2721672)」を参照してください。
+* Azure 仮想マシン環境で使用される、マイクロソフト サーバー ソフトウェアのサポート ポリシーを確認します。 BitLocker、フェールオーバー クラスタリング、ネットワーク負荷分散などの機能のサポートについては、 「[Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/kb/2721672)」を参照してください。
 * [Azure Virtual Machines における SQL Server の概要](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [Azure での SQL Server 仮想マシンのプロビジョニング](../sql/virtual-machines-windows-portal-sql-server-provision.md)

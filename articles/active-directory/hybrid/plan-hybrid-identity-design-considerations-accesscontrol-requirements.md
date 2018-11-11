@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 8a40acda189507c1589373a48166ed1668e30650
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a92d3237300fcd29fecf49d78b2866f8bd7e6a6b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308331"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247706"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのアクセス制御要件の決定
 組織がハイブリッド ID ソリューションを設計する場合、その機会に、ユーザーに使用できるようにする予定のリソースについて、アクセス要件を見直すこともできます。 データは、次に示す ID の 4 本の柱全体にかかっています。
@@ -34,7 +34,7 @@ ms.locfileid: "46308331"
 ここでは、認証と承認の詳細と、管理と監査がハイブリッド ID のライフサイクルに含まれていることを説明します。 これらの機能の詳細については、「 [ハイブリッド ID 管理タスクの決定](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) 」を参照してください。
 
 > [!NOTE]
-> 個々の柱の詳細については、 [ID の 4 本の柱: ハイブリッド ID の段階における ID 管理](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) に関するページを参照してください。
+> 個々の柱の詳細については、 [ID の 4 本の柱: ハイブリッド ID の段階における ID 管理](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) に関するページを参照してください。
 > 
 > 
 

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: overview
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 495fc0fff39a04dee4fc707bd0d2f6b3571cc46a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 204d0032516886c2d954965c7c4561d967bae705
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582066"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232190"
 ---
 # <a name="azure-table-storage-overview"></a>Azure Table Storage の概要
 
@@ -35,6 +35,6 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 
 * 利用可能な API の詳細については、Table service のリファレンス ドキュメントを参照してください。
 
-    * [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [.NET 用ストレージ クライアント ライブラリ リファレンス](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API リファレンス](https://msdn.microsoft.com/library/azure/dd179355)

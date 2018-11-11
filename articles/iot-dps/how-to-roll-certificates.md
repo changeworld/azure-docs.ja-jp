@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387890"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247723"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>デバイスの X.509 証明書を展開する方法
 
 IoT ソリューションのライフサイクルの間に、証明書を展開する必要があります。 証明書を展開する主な理由としては、セキュリティ違反および証明書の期限切れの 2 つが挙げられます。 
 
-セキュリティ違反が発生した際にシステムを保護するためのセキュリティのベスト プラクティスは、証明書を展開することです。 「[Assume Breach Methodology](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)」(侵害想定の方法) の一環として、マイクロソフトは予防措置に加えて事後対応型のセキュリティ プロセスの必要性を提唱しています。 デバイスの証明書の展開は、これらのセキュリティ プロセスの一部として含まれる必要があります。 証明書を展開する頻度は、ソリューションのセキュリティのニーズに左右されます。 非常に機密性の高いデータを扱うソリューションを持つ顧客は証明書を毎日展開する場合がある一方で、数年ごとに展開する顧客もいます。
+セキュリティ違反が発生した際にシステムを保護するためのセキュリティのベスト プラクティスは、証明書を展開することです。 「[Assume Breach Methodology](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)」(侵害想定の方法) の一環として、マイクロソフトは予防措置に加えて事後対応型のセキュリティ プロセスの必要性を提唱しています。 デバイスの証明書の展開は、これらのセキュリティ プロセスの一部として含まれる必要があります。 証明書を展開する頻度は、ソリューションのセキュリティのニーズに左右されます。 非常に機密性の高いデータを扱うソリューションを持つ顧客は証明書を毎日展開する場合がある一方で、数年ごとに展開する顧客もいます。
 
 デバイスの証明書の展開は、デバイスに格納されている証明書や IoT ハブの更新が関与します。 後ほど、デバイスはデバイス プロビジョニング サービスの通常の[自動プロビジョニング](concepts-auto-provisioning.md)を使用して、IoT ハブと再プロビジョニングします。
 

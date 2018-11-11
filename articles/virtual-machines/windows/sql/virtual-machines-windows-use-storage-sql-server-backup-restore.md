@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 39d4f452143454a345bd91f550e44c93651ff933
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0fdf768008161fbb72e48dae937a4172222dbb63
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29399051"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239748"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage を使用した SQL Server のバックアップと復元
 ## <a name="overview"></a>概要
 SQL Server 2012 SP1 CU2 以降で、SQL Server のバックアップを Azure BLOB ストレージ サービスに直接書き込めるようになりました。 この機能を使用すると、オンプレミスの SQL Server データベースまたは Azure 仮想マシンの SQL Server データベースを使用する Azure Blob service との間でバックアップおよび復元できます。 クラウドへのバックアップには、高い可用性、無制限の社外ストレージのgeo レプリケーション、クラウドとの間でのデータ移行の容易さという利点があります。 Transact-SQL または SMO を使用して BACKUP または RESTORE ステートメントを発行できます。
 
-SQL Server 2016 に導入された新しい機能である [ファイル スナップショット バックアップ](http://msdn.microsoft.com/library/mt169363.aspx) を使用して、ほぼ瞬時のバックアップと非常に簡単な復元を実行できます。
+SQL Server 2016 に導入された新しい機能である [ファイル スナップショット バックアップ](https://msdn.microsoft.com/library/mt169363.aspx) を使用して、ほぼ瞬時のバックアップと非常に簡単な復元を実行できます。
 
 このトピックでは、SQL のバックアップに Azure Storage の使用をお勧めする理由を説明し、その後で関連するコンポーネントについて説明します。 この記事の最後に示すリソースから、このサービスを SQL Server のバックアップで使い始めるためのチュートリアルと追加情報にアクセスできます。
 
@@ -37,26 +37,26 @@ SQL Server をバックアップするときに直面する課題はいくつか
 * **ハードウェアの管理**: Azure サービスではハードウェア管理のオーバーヘッドはありません。 Azure サービスのハードウェア管理では、ハードウェア障害に対する冗長性実現と保護のためにgeo レプリケーションが行われます。
 * **無制限のストレージ**: Azure BLOB への直接バックアップを有効にすると、実質的に無制限のストレージにアクセスできます。 代わりに、Azure の仮想マシンのディスクにバックアップすると、マシンのサイズに基づく制限があります。 バックアップ用に Azure 仮想マシンにアタッチできるディスクの数には制限があります。 この制限はインスタンス サイズが XL の場合は 16 ディスクです。インスタンス サイズが小さくなるほど、このディスク数は少なくなります。
 * **バックアップの可用性**: Azure BLOB に格納されたバックアップはいつでもどこでも使用でき、データベースのアタッチ/デタッチまたは VHD のダウンロードやアタッチの必要なく、オンプレミスの SQL Server、または Azure 仮想マシンで実行されている別の SQL Server に復元するために簡単にアクセスできます。
-* **コスト**: 使用するサービスに対してのみ課金されます。 社外ストレージやバックアップ アーカイブ用にこのサービスを選択することで、高い費用対効果を得られます。 詳細については、[Azure 料金計算ツール](http://go.microsoft.com/fwlink/?LinkId=277060 "料金計算ツール")および[Azure の料金に関する記事](http://go.microsoft.com/fwlink/?LinkId=277059 "料金に関する記事")をご覧ください。
-* **ストレージ スナップショット**: データベース ファイルが Azure BLOB に格納され、SQL Server 2016 を使用している場合は、 [ファイル スナップショット バックアップ](http://msdn.microsoft.com/library/mt169363.aspx) を使用して、ほぼ瞬時のバックアップと非常に簡単な復元を実行できます。
+* **コスト**: 使用するサービスに対してのみ課金されます。 社外ストレージやバックアップ アーカイブ用にこのサービスを選択することで、高い費用対効果を得られます。 詳細については、[Azure 料金計算ツール](https://go.microsoft.com/fwlink/?LinkId=277060 "料金計算ツール")および[Azure の料金に関する記事](https://go.microsoft.com/fwlink/?LinkId=277059 "料金に関する記事")をご覧ください。
+* **ストレージ スナップショット**: データベース ファイルが Azure BLOB に格納され、SQL Server 2016 を使用している場合は、 [ファイル スナップショット バックアップ](https://msdn.microsoft.com/library/mt169363.aspx) を使用して、ほぼ瞬時のバックアップと非常に簡単な復元を実行できます。
 
-詳細については、「 [Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](http://go.microsoft.com/fwlink/?LinkId=271617)」を参照してください。
+詳細については、「 [Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://go.microsoft.com/fwlink/?LinkId=271617)」を参照してください。
 
 次の 2 つのセクションで、必要な SQL Server コンポーネントを含め、Azure BLOB ストレージ サービスについて紹介します。 重要なのは、それらのコンポーネントとその相互作用を理解して、Azure Blob Storage サービスでバックアップまたは復元を正しく利用することです。
 
 ## <a name="azure-blob-storage-service-components"></a>Azure Blob Storage サービスのコンポーネント
 Azure BLOB ストレージ サービスにバックアップする際に、次の Azure コンポーネントを使用します。
 
-| コンポーネント | [説明] |
+| コンポーネント | 説明 |
 | --- | --- |
 | **ストレージ アカウント** |ストレージ アカウントはすべてのストレージ サービスの出発点となります。 Azure Blob Storage サービスにアクセスするには、まず Azure のストレージ アカウントを作成します。 Azure BLOB ストレージ サービスの詳細については、「 [How to use the Azure Blob Storage Service (Azure BLOB ストレージ サービスを使用する方法)](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
 | **コンテナー** |コンテナーは一連の BLOB のグループ化に使用され、格納できる BLOB の数に制限はありません。 SQL Server のバックアップを Azure Blob service に書き込むには、少なくとも root コンテナーが作成されている必要があります。 |
-| **BLOB** |任意の種類およびサイズのファイルです。 BLOB は、次の URL 形式を使用してアドレスを指定できます。**https://[ストレージ アカウント].blob.core.windows.net/[コンテナー]/[BLOB]** ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。 |
+| **BLOB** |任意の種類およびサイズのファイルです。 BLOB は、次の URL 形式を使用してアドレスを指定できます。**https://[ストレージ アカウント].blob.core.windows.net/[コンテナー]/[BLOB]** ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。 |
 
 ## <a name="sql-server-components"></a>SQL Server のコンポーネント
 Azure BLOB ストレージ サービスにバックアップする際に、次の SQL Server コンポーネントを使用します。
 
-| コンポーネント | [説明] |
+| コンポーネント | 説明 |
 | --- | --- |
 | **URL** |URL は一意のバックアップ ファイルへの Uniform Resource Identifier (URI) を参照します。 URL を使用して SQL Server バックアップ ファイルの場所と名前を指定します。 URL は、コンテナーだけでなく実際の BLOB を参照する必要があります。 BLOB が存在しない場合は作成されます。 既存の BLOB を指定した場合、> WITH FORMAT オプションを指定していないと、BACKUP は失敗します。 BACKUP コマンドで URL を指定する例を次に示します。**http[s]://[ストレージ アカウント].blob.core.windows.net/[コンテナー]/[ファイル名.bak]** HTTPS は必須ではありませんが、使用することをお勧めします。 |
 | **資格情報** |Azure BLOB ストレージ サービスに対する接続と認証に必要な情報は資格情報として保存されます。  SQL Server から Azure BLOB に対してバックアップを書き込んだり復元したりするには、SQL Server 資格情報を作成する必要があります。 詳細については、 [SQL Server 資格情報](https://msdn.microsoft.com/library/ms189522.aspx)に関するページを参照してください。 |

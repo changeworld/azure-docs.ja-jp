@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 3178a09dab1cb972a3460d54dc9908fb95cce68b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d6429766b6aac547fd99279659acb1067298e77c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998297"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244680"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>ゲスト OS ファミリ 1 の提供終了に関する通知
 OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表されました。
@@ -28,7 +28,7 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 
 **2014 年 11 月 3 日** : ゲスト OS ファミリ 1 の延長サポートが終了し、完全に提供終了となりました。 ファミリ 1 を利用しているすべてのサービスは、この影響を受けます。 これらのサービスは、突然停止される可能性があります。 自分で手動でこれらのサービスをアップグレードしない限り、サービスが継続される保証はありません。
 
-質問がある場合は、[Cloud Services フォーラム](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、[Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+質問がある場合は、[Cloud Services フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、[Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 ## <a name="are-you-affected"></a>利用中のサービスが影響を受けるか
 次のいずれかの条件に該当する場合、利用中の Cloud Services は影響を受けます。
@@ -37,7 +37,7 @@ OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表さ
 2. クラウド サービスの ServiceConfiguration.cscfg ファイル内で osFamily の値が明示的に指定されていない。 現在、この場合、既定値として "1" が使用されます。
 3. Azure Portal で、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。
 
-クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell](/powershell/azureps-cmdlets-docs) を設定する必要があります。 スクリプトの詳細については、「[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)」を参照してください。
+クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell](/powershell/azureps-cmdlets-docs) を設定する必要があります。 スクリプトの詳細については、「[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)」を参照してください。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -72,5 +72,5 @@ foreach($subscription in Get-AzureSubscription) {
 ## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>2014 年 11 月 3 日付けでゲスト OS ファミリ 1 の延長サポートが終了
 ゲスト OS ファミリ 1 のクラウド サービスはサポートされていません。 サービスの中断を回避するには、できるだけ早くファミリ 1 から移行してください。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 最新の [ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。

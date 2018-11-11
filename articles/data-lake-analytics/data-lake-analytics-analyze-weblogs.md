@@ -9,19 +9,19 @@ ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 5d25aed196dd6b4ce92ae1cf18e556d1c32295d3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4f9a30bf25cea1e80f53596be9eea6ae57a79889
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051969"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246465"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用する Web サイト ログの分析
 Data Lake Analytics を使用して Web サイトのログを分析する方法について、特に、Web サイトへのアクセスを試みたときにエラーが発生した参照元の特定に重点を置いて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 * **Visual Studio 2013 または Visual Studio 2015**
-* **[Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs)**。
+* **[Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs)**。
 
     Data Lake Tools for Visual Studio がインストールされると、Visual Studio の **[ツール]** メニューに **[Data Lake]** が表示されます。
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.component: common
-ms.openlocfilehash: 91eb9c12a8913c0a96ee7c3133dc5f982c42cad7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025309"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242978"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Storage でのコンカレンシー制御の管理
 ## <a name="overview"></a>概要
@@ -45,7 +45,7 @@ Storage サービスでは、格納されているすべてのオブジェクト
 4. BLOB の現在の ETag の値が、要求の **If-Match** 条件ヘッダーの ETag の値と異なっている場合、サービスはクライアントに 412 エラーを返します。 これは、クライアントがこの BLOB を取得した後に、別のプロセスがこれを更新したことを示しています。
 5. BLOB の現在の ETag の値が、要求の **If-Match** 条件ヘッダーの ETag と同じバージョンである場合、サービスは要求された処理を実行し、この BLOB の新しいバージョンが作成されたことを示すために現在の ETag の値を更新します。  
 
-次に示す C# スニペット (Client Storage Library 4.2.0 を使用) は、事前に取得または挿入された BLOB のプロパティからアクセスされる ETag の値に基づいて **If-Match AccessCondition** を構築する簡単な例です。 BLOB を更新するときには **AccessCondition** オブジェクトを使用します。**AccessCondition** オブジェクトは **If-Match** ヘッダーを要求に追加します。 別のプロセスが BLOB を更新した場合、BLOB のサービスによって HTTP 412 (Precondition Failed) のステータス メッセージが返されます。 完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。  
+次に示す C# スニペット (Client Storage Library 4.2.0 を使用) は、事前に取得または挿入された BLOB のプロパティからアクセスされる ETag の値に基づいて **If-Match AccessCondition** を構築する簡単な例です。 BLOB を更新するときには **AccessCondition** オブジェクトを使用します。**AccessCondition** オブジェクトは **If-Match** ヘッダーを要求に追加します。 別のプロセスが BLOB を更新した場合、BLOB のサービスによって HTTP 412 (Precondition Failed) のステータス メッセージが返されます。 完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -80,7 +80,7 @@ catch (StorageException ex)
 }  
 ```
 
-Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、**If-None-Match** の各条件ヘッダーとその組み合わせもサポートしています。 詳細については、MSDN の「[BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/library/azure/dd179371.aspx)」を参照してください。  
+Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、**If-None-Match** の各条件ヘッダーとその組み合わせもサポートしています。 詳細については、MSDN の「[BLOB サービス操作の条件ヘッダーの指定](https://msdn.microsoft.com/library/azure/dd179371.aspx)」を参照してください。  
 
 次の表は、要求に含まれている **If-Match** などの条件ヘッダーを受け取り、ETag の値を返すコンテナー操作をまとめたものです。  
 
@@ -122,11 +122,11 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 (*) Lease BLOB では、BLOB の ETag は変更されません。  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>BLOB でのペシミスティック コンカレンシー制御
-BLOB をロックして排他的に使用する場合は、[リース](http://msdn.microsoft.com/library/azure/ee691972.aspx)を取得します。 リースを取得すると、必要に応じてリース期間を 15 ～ 60 秒または無制限に設定できます。この期間、BLOB が排他的にロックされます。 リース期間が有限の場合は、これを延長することができます。また、完了したリースは解放できます。 期限が切れた有限のリースは、BLOB サービスで自動的に解放されます。  
+BLOB をロックして排他的に使用する場合は、[リース](https://msdn.microsoft.com/library/azure/ee691972.aspx)を取得します。 リースを取得すると、必要に応じてリース期間を 15 ～ 60 秒または無制限に設定できます。この期間、BLOB が排他的にロックされます。 リース期間が有限の場合は、これを延長することができます。また、完了したリースは解放できます。 期限が切れた有限のリースは、BLOB サービスで自動的に解放されます。  
 
 リースでは、排他的書き込みと共有読み取り、排他的書き込みと排他的読み取り、共有書き込みと排他的読み取りなど、さまざまな同期戦略がサポートされています。 リースが存在する場合、Storage サービスは排他的書き込み (put、set、delete の各操作) を強制的に実行しますが、読み込み操作の排他性を確保するために、開発者はすべてのクライアント アプリケーションがリース ID を使用し、また有効なリース ID は同時に 1 つのクライアントのみが保持するようにする必要があります。 読み込み操作にリース ID を使用しない場合、共有読み取りになります。  
 
-次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。 BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、BLOB サービスは "HTTP (409) Conflict" 状態を結果として返します。 また、下記のスニペットでは、Storage サービスに BLOB の更新を要求するときに、**AccessCondition** オブジェクトを使用してリースの情報をカプセル化します。  完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
+次の C# スニペットの例では、ある BLOB で 30 秒間の排他的リースを取得し、BLOB の内容を更新します。その後でリースを解放します。 BLOB が既に有効なリースを保持している場合、新しいリースを取得しようとすると、BLOB サービスは "HTTP (409) Conflict" 状態を結果として返します。 また、下記のスニペットでは、Storage サービスに BLOB の更新を要求するときに、**AccessCondition** オブジェクトを使用してリースの情報をカプセル化します。  完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -155,7 +155,7 @@ catch (StorageException ex)
 }  
 ```
 
-リース ID を渡さずにリースを取得した BLOB に対して書き込み操作を要求すると、412 エラーで失敗します。 **UploadText** メソッドを呼び出す前にリース期間が終了したにもかかわらずリース ID を渡そうとすると、その要求も **412** エラーで失敗します。 リースの有効期限とリース ID の管理の詳細については、「[Lease Blob](http://msdn.microsoft.com/library/azure/ee691972.aspx)」の REST ドキュメントを参照してください。  
+リース ID を渡さずにリースを取得した BLOB に対して書き込み操作を要求すると、412 エラーで失敗します。 **UploadText** メソッドを呼び出す前にリース期間が終了したにもかかわらずリース ID を渡そうとすると、その要求も **412** エラーで失敗します。 リースの有効期限とリース ID の管理の詳細については、「[Lease Blob](https://msdn.microsoft.com/library/azure/ee691972.aspx)」の REST ドキュメントを参照してください。  
 
 次の BLOB 操作では、ペシミスティック コンカレンシー制御の管理にリースを使用できます。  
 
@@ -191,9 +191,9 @@ catch (StorageException ex)
 
 詳細については、次を参照してください。  
 
-* [BLOB サービス操作の条件ヘッダーの指定](http://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Lease Container](http://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Lease Blob ](http://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [BLOB サービス操作の条件ヘッダーの指定](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Lease Container](https://msdn.microsoft.com/library/azure/jj159103.aspx)
+* [Lease Blob ](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>Table サービスでのコンカレンシー制御の管理
 エンティティを扱っている場合、Table サービスではオプティミスティック コンカレンシーの確認が既定の動作として使用されます。一方、BLOB サービスの場合は、オプティミスティック コンカレンシーの確認を実行するように明示的に選択する必要があります。 これ以外の相違点としては、Table サービスではエンティティのコンカレンシー制御しか管理できませんが、BLOB サービスではコンテナーと BLOB の両方のコンカレンシー制御を管理できる点があります。  
@@ -208,7 +208,7 @@ catch (StorageException ex)
 
 BLOB サービスとは異なり、Table サービスではクライアントが更新要求に必ず **If-Match** ヘッダーを含める必要があります。 ただし、クライアントが要求の **If-Match** ヘッダーにワイルドカード文字 (*) を設定していた場合、無条件の更新 (最終書き込み者優先戦略) を実行し、コンカレンシー制御の確認を省略することができます。  
 
-次の C# スニペットは、前に電子メール アドレスが更新されたときに作成または取得された顧客エンティティを示しています。 最初の挿入操作または取得操作で、顧客のオブジェクトに ETag の値が格納されます。このサンプルでは置換操作を実行するときに同じオブジェクトのインスタンスを使用するため、ETag の値が自動的に Table サービスに返され、サービスがコンカレンシー制御の違反を確認できるようになっています。 別のプロセスが Table ストレージ内のエンティティを更新した場合、サービスから HTTP 412 (Precondition Failed) のステータス メッセージが返されます。  完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
+次の C# スニペットは、前に電子メール アドレスが更新されたときに作成または取得された顧客エンティティを示しています。 最初の挿入操作または取得操作で、顧客のオブジェクトに ETag の値が格納されます。このサンプルでは置換操作を実行するときに同じオブジェクトのインスタンスを使用するため、ETag の値が自動的に Table サービスに返され、サービスがコンカレンシー制御の違反を確認できるようになっています。 別のプロセスが Table ストレージ内のエンティティを更新した場合、サービスから HTTP 412 (Precondition Failed) のステータス メッセージが返されます。  完全なサンプルは、[Azure Storage でのコンカレンシー制御の管理](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)からダウンロードできます。
 
 ```csharp
 try
@@ -251,7 +251,7 @@ customer.ETag = "*";
 
 詳細については、次を参照してください。  
 
-* [エンティティに対する操作](http://msdn.microsoft.com/library/azure/dd179375.aspx)  
+* [エンティティに対する操作](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>キュー サービスでのコンカレンシー制御の管理
 キュー サービスでのコンカレンシー制御について注意が必要なケースとして、複数のクライアントが 1 つのキューからメッセージを取得する場合があります。 キューからメッセージを取得するときの応答には、メッセージと、メッセージを削除するときに必要な pop receipt 値が含まれます。 メッセージはキューから自動的に削除されることはありませんが、取得された後、visibilitytimeout パラメーターで指定された期間は他のクライアントに表示されなくなります。 メッセージを取得するクライアントは、メッセージの処理後、応答の TimeNextVisible 要素で指定された時刻までにメッセージを削除します。この時刻は visibilitytimeout パラメーターの値に基づいて算出されます。 visibilitytimeout の値をメッセージの取得時刻に加算することで、TimeNextVisible の値が決定されます。  
@@ -260,8 +260,8 @@ customer.ETag = "*";
 
 詳細については、次を参照してください。  
 
-* [キュー サービスの REST API](http://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Get Messages](http://msdn.microsoft.com/library/azure/dd179474.aspx)  
+* [キュー サービスの REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-the-file-service"></a>ファイル サービスでのコンカレンシー制御の管理
 ファイル サービスでは、SMB と REST の 2 種類のプロトコルを使用してエンドポイントにアクセスできます。 REST サービスではオプティミスティック同時実行制御とペシミスティック同時実行制御のいずれもサポートされておらず、すべての更新操作は最終書き込み者優先戦略に従います。 ファイル共有をマウントする SMB クライアントではファイル システムのロック機構を使用して、共有ファイルへのアクセスを管理できます。ペシミスティック同時実行制御も実行できます。 SMB クライアントがファイルを開くときに、ファイルのアクセス権と共有モードの両方が指定されます。 ファイルのアクセス権のオプションが "Write" または "Read/Write" に設定され、同時にファイル共有モードが "None" に設定された場合、そのファイルは閉じられるまで SMB クライアントによってロックします。 SMB クライアントがロックしているファイルに REST 操作を実行しようとすると、REST サービスはステータス コード 409 (Conflict) およびエラー コード SharingViolation を返します。  
@@ -270,19 +270,19 @@ SMB クライアントがファイルを開いて削除する場合、そのフ�
 
 詳細については、次を参照してください。  
 
-* [ファイルのロックの管理](http://msdn.microsoft.com/library/azure/dn194265.aspx)  
+* [ファイルのロックの管理](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
 ## <a name="summary-and-next-steps"></a>概要と次のステップ
 Microsoft Azure Storage サービスは、非常に複雑なオンライン アプリケーションのニーズに対応するように設計されていますが、開発者は、コンカレンシー制御やデータの整合性など、当然のように想定されるようになった主要設計項目を再検討したり、妥協したりする必要がありません。  
 
 このブログで参照したサンプル アプリケーションの完全版は、次のページからダウンロードできます。  
 
-* [Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+* [Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
 
 Azure Storage の詳細については、以下を参照してください。  
 
 * [Microsoft Azure Storage のホーム ページ](https://azure.microsoft.com/services/storage/)
 * [Azure ストレージの概要](storage-introduction.md)
 * Storage Getting Started for [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [Table](../../cosmos-db/table-storage-how-to-use-dotnet.md), [Queues](../storage-dotnet-how-to-use-queues.md), and [Files](../storage-dotnet-how-to-use-files.md) (Storage の入門ガイド: .NET から BLOB ストレージを使用する方法、.NET からテーブル ストレージを使用する方法、.NET からキュー ストレージを使用する方法、.NET から ファイル ストレージを使用する方法)
-* Storage のアーキテクチャ – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (Azure Storage: 高い整合性を持つ高可用クラウド ストレージ サービス)](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Storage のアーキテクチャ – [Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency (Azure Storage: 高い整合性を持つ高可用クラウド ストレージ サービス)](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

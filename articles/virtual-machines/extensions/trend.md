@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 134105ee2446f3c7bf0f19e2f9611597ee9bedfe
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: ddb999c252f0802ef57942de694340ae29f2d8ba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240360"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "47451954"
 
 Azure Portal、Azure CLI、または PowerShell を使って作成された既存の仮想マシンには、VM エージェントがありません。 VM エージェントがない既存の仮想マシンの場合は、最初に VM エージェントをダウンロードしてインストールする必要があります。 この記事では、この両方の場合について説明します。
 
-Trend Micro のオンプレミスのソリューション用サブスクリプションが既にある場合は、それを使用して Azure の仮想マシンを保護できます。 サブスクリプションがない場合には、サインアップして試用サブスクリプションを利用できます。 このソリューションの詳細については、Trend Micro ブログの Deep Security 用の [Microsoft Azure VM エージェント拡張機能](http://go.microsoft.com/fwlink/p/?LinkId=403945)に関する投稿を参照してください。
+Trend Micro のオンプレミスのソリューション用サブスクリプションが既にある場合は、それを使用して Azure の仮想マシンを保護できます。 サブスクリプションがない場合には、サインアップして試用サブスクリプションを利用できます。 このソリューションの詳細については、Trend Micro ブログの Deep Security 用の [Microsoft Azure VM エージェント拡張機能](https://go.microsoft.com/fwlink/p/?LinkId=403945)に関する投稿を参照してください。
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>新しい VM に Deep Security Agent をインストールする
 
@@ -67,7 +67,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 クラウド サービスや仮想マシンの名前がわからない場合は、**Get-AzureVM** を実行します。現在のサブスクリプションのすべての仮想マシンの情報が表示されます。
 
-**write-host** コマンドによって **True** が返された場合は、VM エージェントがインストールされています。 **False**が返された場合は、Azure ブログの [VM エージェントと拡張機能に関する記事のパート 2](http://go.microsoft.com/fwlink/p/?LinkId=403947)で、手順とダウンロード用リンクをご確認ください。
+**write-host** コマンドによって **True** が返された場合は、VM エージェントがインストールされています。 **False**が返された場合は、Azure ブログの [VM エージェントと拡張機能に関する記事のパート 2](https://go.microsoft.com/fwlink/p/?LinkId=403947)で、手順とダウンロード用リンクをご確認ください。
 
 VM エージェントがインストールされている場合は、次のコマンドを実行します。
 
@@ -78,9 +78,9 @@ VM エージェントがインストールされている場合は、次のコ�
 ## <a name="next-steps"></a>次の手順
 エージェントがインストールされると、起動までに数分かかります。 起動後、仮想マシン上で Deep Security をアクティブにする必要があります。これは Deep Security Manager で管理できるようにするためです。 詳しくは、次の記事をご覧ください。
 
-* このソリューションに関する Trend の記事「 [Instant-On Cloud Security for Microsoft Azure (Microsoft Azure 用の Instant-On クラウド セキュリティ)](http://go.microsoft.com/fwlink/?LinkId=404101)
-* 仮想マシンを構成するための [Windows PowerShell サンプル スクリプト](http://go.microsoft.com/fwlink/?LinkId=404100)
-* [説明](http://go.microsoft.com/fwlink/?LinkId=404099) 
+* このソリューションに関する Trend の記事「 [Instant-On Cloud Security for Microsoft Azure (Microsoft Azure 用の Instant-On クラウド セキュリティ)](https://go.microsoft.com/fwlink/?LinkId=404101)
+* 仮想マシンを構成するための [Windows PowerShell サンプル スクリプト](https://go.microsoft.com/fwlink/?LinkId=404100)
+* [説明](https://go.microsoft.com/fwlink/?LinkId=404099) 
 
 ## <a name="additional-resources"></a>その他のリソース
 [Windows Server が実行されている仮想マシンにログオンする方法]

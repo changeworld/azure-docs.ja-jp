@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 221d5d05906e7e162013c0d4cdddc01a95f4024c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5b302be582bd22a7b38601c90f5fe475062afb26
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302704"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239673"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>他のサービスを SQL Data Warehouse と統合する
 SQL Data Warehouse では、コア機能に加えて Azure 内の他のサービスの多くを統合できます。 次のようなサービスがあります。
@@ -33,7 +33,7 @@ Power BI との統合によって、SQL Data Warehouse のコンピューティ�
 * **Direct Connect**: SQL Data Warehouse に対する論理的プッシュダウンを備えた、さらに高度な接続です。 プッシュダウンにより、分析の速度と規模を高めることができます。
 * **Power BI で開く**: [Power BI で開く] ボタンは、簡単に接続できるように Power BI にインスタンス情報を渡します。
 
-詳しくは、[Power BI との統合](sql-data-warehouse-get-started-visualize-with-power-bi.md)に関する記事、または[Power BI のドキュメント](http://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx)をご覧ください。
+詳しくは、[Power BI との統合](sql-data-warehouse-get-started-visualize-with-power-bi.md)に関する記事、または[Power BI のドキュメント](https://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx)をご覧ください。
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory は、抽出と読み込みの複雑なパイプラインを作成するための管理されたプラットフォームを提供します。 SQL Data Warehouse と Azure Data Factory の統合には、次が含まれます。

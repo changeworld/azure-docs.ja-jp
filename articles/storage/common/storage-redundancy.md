@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 618e1f5249f2e05c26e91231b4283d82546a880b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7afbdaba46674b69aa601355e80160e7c72ff373
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954489"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240972"
 ---
 # <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
 
@@ -39,7 +39,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 | リージョン全体の停止                                                                                     | いいえ                               | いいえ                                | 可能                                   | [はい]                                  |
 | リージョン全体が使用できなくなった場合に (リモートの geo 冗長化されたリージョンの) データへの読み取りアクセス | いいえ                               | いいえ                                | いいえ                                    | [はい]                                  |
 | 指定された 1 年間にわたって \_\_ オブジェクトの持続性を提供するように設計                                          | 99.999999999% (イレブン ナイン) 以上 | 99.9999999999% (トゥエルブ ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 |
-| サポートされるストレージ アカウントの種類                                                                   | GPv2、GPv1、BLOB                | GPv2、GPv1 (PowerShell、Azure CLI、またはリソース プロバイダー API 経由)                             | GPv2、GPv1、BLOB                     | GPv2、GPv1、BLOB                     |
+| サポートされるストレージ アカウントの種類                                                                   | GPv2、GPv1、BLOB                | GPv2                             | GPv2、GPv1、BLOB                     | GPv2、GPv1、BLOB                     |
 | 読み取り要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.99% 以上 (クール アクセス層の場合、99.9%) |
 | 書き込み要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) |
 
@@ -68,5 +68,5 @@ GRS から LRS に変更する場合、追加のコストは発生しません�
 - [geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)
 - [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
 - [RA-GRS ストレージを使用した高可用性アプリケーションの設計](../storage-designing-ha-apps-with-ragrs.md)
-- [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

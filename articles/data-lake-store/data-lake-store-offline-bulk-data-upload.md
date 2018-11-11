@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6430bf524ac81af242bf7afb4c2c8196309806ab
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: fc70089517bbc1aa90f95f1e0231f2c67f930090
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391680"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242196"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Azure Import/Export サービスを使用した Azure Data Lake Storage Gen1 へのデータのオフライン コピー
 この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Storage Gen1 にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
@@ -52,7 +52,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 
 1. Azure Import/Export サービスでの使用要件を満たしているハード ディスクを調達します。
 2. Azure ストレージ アカウントを指定します。データは、Azure データセンターへの発送後そのアカウントにコピーされます。
-3. コマンドライン ユーティリティの一種である [Azure Import/Export ツール](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)を使用します。 ツールの使用方法を示すサンプル スニペットを次に示します。
+3. コマンドライン ユーティリティの一種である [Azure Import/Export ツール](https://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)を使用します。 ツールの使用方法を示すサンプル スニペットを次に示します。
 
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
