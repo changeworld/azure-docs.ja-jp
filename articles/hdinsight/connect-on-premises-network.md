@@ -1,19 +1,19 @@
 ---
 title: オンプレミス ネットワークへの HDInsight の接続 - Azure HDInsight
 description: Azure Virtual Network で HDInsight クラスターを作成して、ご使用のオンプレミス ネットワークに接続する方法について説明します。 カスタム DNS サーバーを使用して、HDInsight とオンプレミス ネットワークとの間で名前解決を構成する方法について説明します。
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: jasonh
-ms.openlocfilehash: b9b744edbcb2abce70487c84c85a0aae71494e52
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: d8ab61d99b617f21557b6f1ef476418e25bcee55
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105870"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016932"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -92,7 +92,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
     * __仮想ネットワーク__: 前に作成した仮想ネットワークを選択します。
 
-    * __サブネット__: 仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__。
+    * __サブネット__: 仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択__しないでください__。
 
     * __診断ストレージ アカウント__: 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。
 
@@ -102,13 +102,13 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 5. __[購入]__ セクションで、__[購入]__ ボタンを選択して仮想マシンを作成します。
 
-6. 仮想マシンが作成されると、__[概要]__ セクションが表示されます。 左側の一覧で、__[プロパティ]__ を選択します。 __パブリック IP アドレス__ と __プライベート IP アドレス__ の値を保存します。 これは次のセクションで使用します。
+6. 仮想マシンが作成されると、__[概要]__ セクションが表示されます。 左側の一覧で、__[プロパティ]__ を選択します。 __パブリック IP アドレス__と__プライベート IP アドレス__の値を保存します。 これは次のセクションで使用します。
 
     ![パブリックおよびプライベート IP アドレス](./media/connect-on-premises-network/vm-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Bind (DNS ソフトウェア) をインストールして構成する
 
-1. SSH を使用して、仮想マシンの __パブリック IP アドレス__ にアクセスします。 次の例では、40.68.254.142 の仮想マシンに接続します。
+1. SSH を使用して、仮想マシンの__パブリック IP アドレス__にアクセスします。 次の例では、40.68.254.142 の仮想マシンに接続します。
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -180,7 +180,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
         dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__ です。 この値を保存します。これは後で使用します。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__です。 この値を保存します。これは後で使用します。
 
 5. 仮想ネットワークでリソースの DNS 名を解決するように Bind を構成するには、`/etc/bind/named.conf.local` ファイルの内容として、次のテキストを使用します。
 
@@ -217,7 +217,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     > [!IMPORTANT]
     > `dns.mynetwork.net` は、オンプレミス ネットワークのリソースの完全修飾ドメイン名 (FQDN) で置き換えます。
     >
-    > `10.0.0.4` は、仮想ネットワークのカスタム DNS サーバーの __内部 IP アドレス__ に置き換えます。
+    > `10.0.0.4` は、仮想ネットワークのカスタム DNS サーバーの__内部 IP アドレス__に置き換えます。
 
     次のテキストのような応答が表示されます。
 
@@ -234,7 +234,7 @@ Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用
 
 1. [Azure Portal](https://portal.azure.com) で、仮想ネットワークを選択し、__[DNS サーバー]__ を選択します。
 
-2. __[カスタム]__ を選択し、カスタム DNS サーバーの __内部 IP アドレス__ を入力します。 最後に、__[保存]__ を選択します。
+2. __[カスタム]__ を選択し、カスタム DNS サーバーの__内部 IP アドレス__を入力します。 最後に、__[保存]__ を選択します。
 
     ![ネットワークのカスタム DNS サーバーを設定する](./media/connect-on-premises-network/configure-custom-dns.png)
 
@@ -242,7 +242,7 @@ Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用
 
 前のセクションでは、オンプレミス DNS サーバーに要求を転送するように、カスタム DNS サーバーを構成しました。 次は、カスタム DNS サーバーに要求を転送するように、オンプレミス DNS サーバーを構成する必要があります。
 
-DNS サーバーを構成する具体的な手順については、DNS サーバー ソフトウェアのドキュメントを参照してください。 __条件付きフォワーダー__ を構成する手順を検索してください。
+DNS サーバーを構成する具体的な手順については、DNS サーバー ソフトウェアのドキュメントを参照してください。 __条件付きフォワーダー__を構成する手順を検索してください。
 
 条件付き転送では、特定の DNS サフィックスの要求のみが転送されます。 この場合は、仮想ネットワークの DNS サフィックスのフォワーダーを構成する必要があります。 このサフィックスの要求は、カスタム DNS サーバーの IP アドレスに転送する必要があります。 
 
@@ -274,7 +274,7 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 2. 手順 1 で識別された IP アドレスについて、その IP アドレスからの受信トラフィックを許可します。
 
-   * __NSG__ を使用している場合: IP アドレスについて、__443__ ポートでの __受信__ トラフィックを許可します。
+   * __NSG__ を使用している場合: IP アドレスについて、__443__ ポートでの__受信__トラフィックを許可します。
    * __UDR__ を使用している場合: IP アドレスについて、ルートの __次ホップ__ の種類を __インターネット__ に設定します。
 
 Azure PowerShell または Azure CLI を使用して NSG を作成する例については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg)」を参照してください。

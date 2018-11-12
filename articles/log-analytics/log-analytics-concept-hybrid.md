@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 03133c6d6518444f8e6fb15cfa425969dbafdedc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b50e6de9de6498f57fd9b599c45a35f2367b84ba
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406876"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012141"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Log Analytics エージェントを使用してハイブリッド環境でデータを収集する
 
@@ -127,6 +127,6 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 
 * [データ ソース](log-analytics-data-sources.md)を見直して、Windows または Linux コンピューターからデータを収集するために使用できるデータ ソースを理解します。 
 
-* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ検索](log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 
-* Log Analytics に機能を追加し、Log Analytics ワークスペースにデータを収集する[ソリューション](log-analytics-add-solutions.md)について学習します。
+* Log Analytics に機能を追加し、Log Analytics ワークスペースにデータを収集する[ソリューション](../monitoring/monitoring-solutions.md)について学習します。

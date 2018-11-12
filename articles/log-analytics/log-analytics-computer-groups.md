@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f96d18c2e1a00008f2e391302a41d145d6b47efd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408542"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016607"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
-Log Analytics では、コンピューター グループを使用して、[ログ検索](log-analytics-log-search-new.md)の範囲を特定のコンピューターの集合に限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログの検索に含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
+Log Analytics では、コンピューター グループを使用して、[ログ検索](log-analytics-queries.md)の範囲を特定のコンピューターの集合に限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログの検索に含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
 
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
 Log Analytics のコンピューター グループは、以下の表に示した方法のいずれかで作成できます。  それぞれの方法について、以降のセクションで詳しく説明します。 
@@ -136,5 +136,5 @@ Active Directory または WSUS から作成されたコンピューター グ�
 | TimeGenerated |コンピューター グループが作成または更新された日時。 |
 
 ## <a name="next-steps"></a>次の手順
-* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
+* [ログ検索](log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 

@@ -3,19 +3,19 @@ title: Hortonworks Sandbox と Azure Toolkit for IntelliJ の使用
 description: Hortonworks Sandbox と一緒に Azure Toolkit for IntelliJ の HDInsight ツールを使用する方法について説明します。
 keywords: Hadoop ツール, Hive クエリ, Intellij, Hortonworks Sandbox, Azure Toolkit for IntelliJ
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 02adeb46ad7533f3668f5a46ffc19b6ce5b86b6f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.author: hrasheed
+ms.openlocfilehash: 2f09bd7055b987a8647a24d4ebb6ea5a27888a53
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420729"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015589"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 

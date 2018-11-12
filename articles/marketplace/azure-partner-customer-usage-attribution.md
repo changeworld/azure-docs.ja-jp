@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280675"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157940"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -66,7 +66,7 @@ Microsoft パートナーは、顧客に代わって、プロビジョニング�
 
 { // add this resource to the mainTemplate.json (do not add the entire file)
     "apiVersion": "2018-02-01",
-    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
         "mode": "Incremental",
@@ -145,7 +145,7 @@ GUID を追跡対象に含めるためには、その GUID が登録されてい
 
 テンプレートまたはユーザー エージェントに GUID を追加し、CPP に GUID を登録すると、すべてのデプロイが追跡されます。 
 
-1. [Azure Marketplace](https://aka.ms/listonazuremarketplace) に申し込んで、CPP へのアクセス権を取得します。
+1. [Azure Marketplace](http://aka.ms/listonazuremarketplace) に申し込んで、CPP へのアクセス権を取得します。
 
    * パートナーは、[CPP にプロファイルを有している](https://docs.microsoft.com/azure/marketplace/become-publisher)ことが必要です。 Azure Marketplace または AppSource にプランを登録することをお勧めします。
    * パートナーは複数の GUID を登録できます。

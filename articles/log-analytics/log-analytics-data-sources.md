@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: b8c3a2cc67c47753957963fc04b52f934b10ddfc
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d514728b892126522a73827bb79952612f34704b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041715"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014025"
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics のデータ ソース
 Log Analytics は、接続されたソースからデータを収集して Log Analytics ワークスペースに格納します。  Log Analytics が収集するデータは、構成するデータ ソースによって定義されます。  Log Analytics のデータは、レコード セットとして格納されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
 
 ![Log Analytics のデータ収集](./media/log-analytics-data-sources/overview.png)
 
-データ ソースは[管理ソリューション](log-analytics-add-solutions.md)とは異なり、接続されたソースからのデータの収集と Log Analytics へのレコードの作成も行います。  データの収集に加え、ソリューションには、通常は、アプリケーションやサービスの操作を分析するのに役立つログ検索とビューが含まれます。
+データ ソースは[管理ソリューション](../monitoring/monitoring-solutions.md)とは異なり、接続されたソースからのデータの収集と Log Analytics へのレコードの作成も行います。  データの収集に加え、ソリューションには、通常は、アプリケーションやサービスの操作を分析するのに役立つログ検索とビューが含まれます。
 
 
 ## <a name="summary-of-data-sources"></a>データ ソースの概要
@@ -68,5 +68,5 @@ Log Analytics によって収集されたすべてのデータは、レコード
 
 ## <a name="next-steps"></a>次の手順
 * Log Analytics に機能を追加し、ワークスペースにデータを収集する[ソリューション](../monitoring/monitoring-solutions.md)について学習します。
-* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
-* データ ソースやソリューションから収集された重要なデータについて事前に通知する[アラート](log-analytics-alerts.md)を構成します。
+* [ログ検索](log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
+* データ ソースやソリューションから収集された重要なデータについて事前に通知する[アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)を構成します。

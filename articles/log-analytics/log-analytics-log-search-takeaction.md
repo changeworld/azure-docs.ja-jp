@@ -15,24 +15,24 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 297967f165e921fedbc7e7e952366a399fedc642
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: c6206d4aa98ab3c9744f1f82840817b4bdb000ef
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043942"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016337"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Log Analytics のログ検索結果から Automation Runbook を使用してアクションを実行する
 
 Azure Log Analytics のログ検索結果から、**[Take action] \(アクションの実行)** を選択して Automation Runbook を実行できるようになりました。  Runbook を使用すると、問題を修正したり、トラブルシューティング情報の収集、電子メールの送信、サービス要求の作成などのその他の何らかのアクションを実行したりできます。 
 
 ## <a name="components-and-features-used"></a>使用されるコンポーネントと機能
-* [Azure Automation アカウント](../automation/automation-offering-get-started.md)
-* [Log Analytics ワークスペース](../log-analytics/log-analytics-overview.md)
+* [Azure Automation アカウント](../automation/automation-quickstart-create-account.md)
+* [Log Analytics ワークスペース](log-analytics-queries.md)
 
 ## <a name="to-initiate-runbook-from-log-search"></a>ログ検索から Runbook を開始するには
 
-イベントに対してアクションを実行し、ログ検索結果から Runbook を開始するには、ログ検索の作成から始め、その結果から Runbook をオンデマンドで呼び出すことができます。  これは、[Azure Portal](../log-analytics/log-analytics-log-search-new.md) のログ検索機能から実現できます。  この例では、この機能の基本的なデモンストレーションを使用して Azure Portal からログ検索を実行します。
+イベントに対してアクションを実行し、ログ検索結果から Runbook を開始するには、ログ検索の作成から始め、その結果から Runbook をオンデマンドで呼び出すことができます。  これは、[Azure Portal](log-analytics-queries.md) のログ検索機能から実現できます。  この例では、この機能の基本的なデモンストレーションを使用して Azure Portal からログ検索を実行します。
 
 1. Azure Portal で、**[すべてのサービス]** をクリックし、**[Log Analytics]** を選択します。  
 2. Log Analytics ワークスペースを選択します。
@@ -47,9 +47,9 @@ Azure Log Analytics のログ検索結果から、**[Take action] \(アクショ
 
 6. **[実行]** をクリックすると、Runbook ジョブ ページが開き、ジョブの状態を確認できるようになります。   
 
-[Log Analytics アラートから呼び出される](../automation/automation-invoke-runbook-from-omsla-alert.md)ように構成された Runbook を選択した場合、その Runbook には、**[オブジェクト]** の種類である **WebhookData** という名前の入力パラメータがあります。  その入力パラメータが必須である場合は、Runbook が JSON 形式の文字列をオブジェクトの種類に変換することによってユーザーが Runbook アクティビティで参照する特定の項目に対してフィルター処理できるように、検索結果を Runbook に渡す必要があります。  これは、ドロップダウン リストから **[Search result (Object)] \(検索結果 (オブジェクト))** を選択することによって実行します。<br><br> ![Runbook パラメーターの Webhook データ オブジェクトを選択する](media/log-analytics-log-search-takeaction/select-runbook-and-properties.png)   
+[Log Analytics アラートから呼び出される](../automation/automation-create-alert-triggered-runbook.md)ように構成された Runbook を選択した場合、その Runbook には、**[オブジェクト]** の種類である **WebhookData** という名前の入力パラメータがあります。  その入力パラメータが必須である場合は、Runbook が JSON 形式の文字列をオブジェクトの種類に変換することによってユーザーが Runbook アクティビティで参照する特定の項目に対してフィルター処理できるように、検索結果を Runbook に渡す必要があります。  これは、ドロップダウン リストから **[Search result (Object)] \(検索結果 (オブジェクト))** を選択することによって実行します。<br><br> ![Runbook パラメーターの Webhook データ オブジェクトを選択する](media/log-analytics-log-search-takeaction/select-runbook-and-properties.png)   
     
 ## <a name="next-steps"></a>次の手順
 
-* Log Analytics で使用できるすべての検索フィールドとファセットは、 [Log Analytics のログ検索のリファレンス](log-analytics-search-reference.md) でご覧いただけます。
-* Automation Runbook を自動的に呼び出す方法を学習するには、「[calling an Azure Automation runbook from a Log Analytics alert (Log Analytics アラートから Azure Automation Runbook を呼び出す)](../automation/automation-invoke-runbook-from-omsla-alert.md)」をレビューしてください。  
+* Log Analytics で使用できるすべての検索フィールドとファセットは、 [Log Analytics のログ検索のリファレンス](log-analytics-queries.md) でご覧いただけます。
+* Automation Runbook を自動的に呼び出す方法を学習するには、「[calling an Azure Automation runbook from a Log Analytics alert (Log Analytics アラートから Azure Automation Runbook を呼び出す)](../automation/automation-create-alert-triggered-runbook.md)」をレビューしてください。  
