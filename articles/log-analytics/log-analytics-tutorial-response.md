@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: e15f440fd1818e2d5ce1e72881b8a0f769dec8fc
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 2fbf3c902416935f0b1fff0bc423a2535f3ba077
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829904"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012998"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Azure Monitor のアラートを使用してイベントに応答する
 Azure Monitor のアラートは、Log Analytics リポジトリ内の重要な情報を特定できます。 アラートは定期的にログ検索を自動的に実行するアラート ルールによって作成され、ログ検索の結果が特定の条件と一致している場合はアラート レコードが作成され、自動化された応答を実行するように構成できます。  このチュートリアルは、「[Log Analytics データのダッシュボードを作成して共有する](log-analytics-tutorial-dashboards.md)」チュートリアルの続きです。   

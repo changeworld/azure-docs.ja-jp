@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: be0a12bbb84db1e4016bd7126a38e750e6c0c3ad
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d8f2fd40712017cb7f44156b8735ee93e123fcd2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412824"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016150"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics の Azure Key Vault Analytics ソリューション
 
@@ -38,7 +38,7 @@ Log Analytics の Azure Key Vault ソリューションを使用して、Azure K
 ## <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 Azure Key Vault ソリューションのインストールと構成は、次の手順で行います。
 
-1. Azure Key Vault ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って有効にしてください。
+1. Azure Key Vault ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../monitoring/monitoring-solutions.md)に関するページで説明されている手順に従って有効にしてください。
 2. [ポータル](#enable-key-vault-diagnostics-in-the-portal)か [PowerShell](#enable-key-vault-diagnostics-using-powershell) を使用して、監視する Key Vault リソースの診断ログを有効にします。
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>ポータルで Key Vault 診断を有効にする
@@ -136,7 +136,7 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 最新のソリューションを使用するには、次の操作を行います。
 
 1. [Key Vault から Log Analytics に診断が直接送信されるように構成します。](#enable-key-vault-diagnostics-in-the-portal)  
-2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って Azure Key Vault ソリューションを有効にします。
+2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](../monitoring/monitoring-solutions.md)」に説明されている手順に従って Azure Key Vault ソリューションを有効にします。
 3. 新しいデータ型を使用するように、保存されたクエリ、ダッシュボード、またはアラートを更新します。
   + KeyVaults から AzureDiagnostics に型を変更します。 ResourceType を使用して、Key Vault のログをフィルター処理できます。
   - `KeyVaults` の代わりに `AzureDiagnostics | where ResourceType'=="VAULTS"` を使用してください。
@@ -153,4 +153,4 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、詳細な Azure Key Vault データを確認してください。
+* [Log Analytics のログ検索機能](log-analytics-queries.md)を使用して、詳細な Azure Key Vault データを確認してください。

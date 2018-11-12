@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dd404bf8766082148a2c5a1ae55189f5f82f9021
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fab4bcb62d15be11ab0a588b7a58447f05b4466a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404071"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014671"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Log Analytics での Azure アクティビティ ログの収集と分析
 
@@ -54,8 +54,8 @@ Free 価格レベルの場合は、アクティビティ ログに毎日のデ�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| [Windows エージェント](log-analytics-windows-agent.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
+| [Windows エージェント](log-analytics-agent-windows.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
+| [Linux エージェント](log-analytics-quick-collect-linux-computer.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
 | [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ  | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | ソリューションでは、Azure Storage の情報は収集しません。 |
 
@@ -67,7 +67,7 @@ Free 価格レベルの場合は、アクティビティ ログに毎日のデ�
 
 ワークスペースの Activity Log Analytics ソリューションを構成するには、次の手順を実行します。
 
-1. Activity Log Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って有効にしてください。
+1. Activity Log Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../monitoring/monitoring-solutions.md)に関するページで説明されている手順に従って有効にしてください。
 2. Log Analytics ワークスペースに接続するようにアクティビティ ログを構成します。
     1. Azure Portal で、ワークスペースを選択し、**[Azure Activity log]**(Azure アクティビティ ログ) をクリックします。
     2. サブスクリプションごとに、サブスクリプションの名前をクリックします。  
@@ -100,5 +100,5 @@ Activity Log Analytics ソリューションをワークスペースに追加す
 
 ## <a name="next-steps"></a>次の手順
 
-- 特定のアクティビティが発生した場合に[アラート](log-analytics-alerts-creating.md)を作成します。
-- [ログ検索](log-analytics-log-searches.md)を使用して、アクティビティ ログの詳細情報を表示します。
+- 特定のアクティビティが発生した場合に[アラート](../monitoring-and-diagnostics/alert-metric.md)を作成します。
+- [ログ検索](log-analytics-queries.md)を使用して、アクティビティ ログの詳細情報を表示します。

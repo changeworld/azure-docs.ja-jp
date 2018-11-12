@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 31ee14369cc3f1c03d13c59e1239aa567bce3552
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f3c24dbc0f5bb4d5b595799da4f1212b26f8c02a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419777"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016762"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Log Analytics のビュー デザイナー 視覚化パーツのリファレンス ガイド
 Azure Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペースからのデータのさまざまな視覚化を含むカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドです。
@@ -363,4 +363,4 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 | 色 |しきい値の値を示す色。 |
 
 ## <a name="next-steps"></a>次の手順
-* 視覚エフェクト パーツのクエリをサポートする[ログ検索](log-analytics-log-searches.md)について学びます。
+* 視覚エフェクト パーツのクエリをサポートする[ログ検索](log-analytics-queries.md)について学びます。
