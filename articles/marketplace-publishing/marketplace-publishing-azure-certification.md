@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hascipio
-ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 300b94aea0c06092a5fb6bdecd49771ef1cd517d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714006"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234189"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Microsoft Azure 認定プログラムを介した事前承認
 この記事では、ご自身のソリューションを Azure Marketplace に発行して、マーケティング メリットを得られるように、Microsoft Azure 認定を受ける方法について説明します。 Microsoft Azure 認定プログラムとその利点の詳細については、[http://azure.com/certified](http://azure.com/certified) をご覧ください。
@@ -34,12 +34,11 @@ ms.locfileid: "39714006"
 3. パートナー アカウント マネージャーまたは DX パートナー マネージャーと協力している場合は、お客様のソリューションを Azure 認定プログラムにノミネートするように依頼してください。または、[Microsoft Azure 認定](http://createopportunity.azurewebsites.net) Web ページに移動し、申し込みフォームに入力したうえで、[Microsoft Sponsor Contact (Microsoft スポンサーの取引先担当者)] フィールドに、パートナー アカウント マネージャーまたは DX パートナー マネージャーの電子メールを入力します。
 
 > [!IMPORTANT]
-> **"販売元" の国**: Microsoft Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの "販売元" の国に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 「販売元」の国の範囲は今後拡大される予定です。 完全な一覧については、 [Azure Marketplace 参加ポリシー](http://go.microsoft.com/fwlink/?LinkID=526833)のセクション 1b を参照してください。
+> **"販売元" の国**: Microsoft Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの "販売元" の国に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 「販売元」の国の範囲は今後拡大される予定です。 完全な一覧については、 [Azure Marketplace 参加ポリシー](https://go.microsoft.com/fwlink/?LinkID=526833)のセクション 1b を参照してください。
 
 
 ## <a name="next-step"></a>次のステップ
 Microsoft Azure 認定プログラムから事前承認を受けたら、[Microsoft 販売者としての Microsoft アカウント登録](marketplace-publishing-accounts-creation-registration.md)に関するページにに進むことができます。
 
 ## <a name="see-also"></a>関連項目
-* 
-  [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)

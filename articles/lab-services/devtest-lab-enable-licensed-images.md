@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0e5de93f8a10d27c28b3f07567f9b6fa7e41d482
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 42f3378196b4e3e1dfe1234e801e87875f9c61fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781841"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247655"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボのライセンスされたイメージの有効化
 
@@ -28,7 +28,7 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
 ## <a name="determining-whether-a-licensed-image-is-available-to-users"></a>ライセンスされたイメージをユーザーが使用できるかどうかを確認する
 ライセンスされたイメージからユーザーが VM を作成できるようにする最初の手順として、ライセンスされたイメージの使用条件に同意していることを確認します。 次の手順では、ライセンスされたイメージのオファーの状態を表示し、必要に応じて使用条件に同意する方法を示します。
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
@@ -54,7 +54,7 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
 
 次の手順に従って、ライセンスされたイメージのプログラムによるデプロイを有効にすることができます。
 
-1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) で、**Marketplace イメージ**の一覧に移動します。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) で、**Marketplace イメージ**の一覧に移動します。
 
 1. ユーザーがアクセスできるようにしたいが条件に同意されていないライセンスされたイメージを特定します。 たとえば、**[同意した条件]** または **[確認が必要な条件]** のいずれかの状態を示すデータ サイエンス仮想マシンが表示される可能性があります。
 

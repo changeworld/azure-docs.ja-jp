@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: d4ae0c4d5924fab8fcdaf1b4da5c8183a3a5fd0f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 19f928d854618a5e29841dc45d7846faf7fb83b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092475"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253127"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN で Web コンテンツ有効期限を管理する
 > [!div class="op_single_selector"]
@@ -109,7 +109,7 @@ Web サーバーの `Cache-Control` ヘッダーを設定するための推奨�
 **cacheControlMaxAge** 属性を使用するには、**cacheControlMode** 属性の値を `UseMaxAge` に設定する必要があります。 この設定により、HTTP ヘッダーとディレクティブ、`Cache-Control: max-age=<nnn>` が応答に追加されます。 **cacheControlMaxAge** 属性の期間の値の形式は `<days>.<hours>:<min>:<sec>` です。 その値は秒に変換され、`Cache-Control` `max-age` ディレクティブの値として使用されます。 `<clientCache>` 要素の詳細については、[クライアント キャッシュ<clientCache>](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)に関するページをご覧ください。  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>プログラムによる Cache-Control ヘッダーの設定
-ASP.NET アプリケーションでは、.NET API の **HttpResponse.Cache** プロパティを設定することによって、CDN のキャッシュ動作をプログラムで制御します。 **HttpResponse.Cache** プロパティの詳細については、[HttpResponse.Cache プロパティ](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx)に関するページと [HttpCachePolicy クラス](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)に関するページをご覧ください。  
+ASP.NET アプリケーションでは、.NET API の **HttpResponse.Cache** プロパティを設定することによって、CDN のキャッシュ動作をプログラムで制御します。 **HttpResponse.Cache** プロパティの詳細については、[HttpResponse.Cache プロパティ](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx)に関するページと [HttpCachePolicy クラス](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)に関するページをご覧ください。  
 
 アプリケーションのコンテンツを ASP.NET でプログラムでキャッシュするには、次の手順に従います。
    1. `HttpCacheability` を `Public` に設定することで、コンテンツをキャッシュ可能とマークします。 
@@ -132,6 +132,6 @@ Web コンテンツの TTL 設定を簡単に確認できます。 ブラウザ�
 
 ## <a name="next-steps"></a>次の手順
 * [**clientCache** 要素の詳細を確認する](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [**HttpResponse.Cache** プロパティのドキュメントを参照する](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
-* [**HttpCachePolicy クラス**のドキュメントを参照する](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
+* [**HttpResponse.Cache** プロパティのドキュメントを参照する](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
+* [**HttpCachePolicy クラス**のドキュメントを参照する](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
 * [キャッシュの概念を学習する](cdn-how-caching-works.md)

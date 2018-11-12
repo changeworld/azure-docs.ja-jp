@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: dwgeo
-ms.openlocfilehash: b6aca2928465b73e35ac15f01bb776b1f69add0b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 204a2122f38306f2c883436fb13397b45fd91980
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783121"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254623"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>クライアントが Azure Media Services キー配信サービスにトークンを渡す方法
 プレーヤーがキーを取得できるよう検証を受けるために Azure Media Services キー配信サービスにトークンを渡す方法についてお客様から質問を受けることがよくあります。 Media Services は、単純 Web トークン (SWT) 形式と JSON Web トークン (JWT) 形式をサポートしています。 システムで共通暗号化または Advanced Encryption Standard (AES) エンベロープ暗号化のどちらが使われていても、すべての種類のキーにトークン認証が適用されます。
@@ -52,7 +52,7 @@ ms.locfileid: "33783121"
     ```
     認証トークンを Token 要素の中に置きます。
 
-- 代替 HTTP ライブ ストリーミング (HLS) 再生リストを使います。 iOS/Safari での AES + HLS 再生用にトークン認証を構成する必要がある場合は、トークンで直接送信する方法はありません。 代わりに再生リストを使ってこのシナリオを有効にする方法について詳しくは、こちらの[ブログ投稿](http://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)をご覧ください。
+- 代替 HTTP ライブ ストリーミング (HLS) 再生リストを使います。 iOS/Safari での AES + HLS 再生用にトークン認証を構成する必要がある場合は、トークンで直接送信する方法はありません。 代わりに再生リストを使ってこのシナリオを有効にする方法について詳しくは、こちらの[ブログ投稿](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

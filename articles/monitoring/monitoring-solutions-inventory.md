@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 82cfa9e62dcc6b3a72dcb1ccf97f1f52a88a75c4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9adc285ecdc7a88d03aef9abf0132c51f60b445a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404105"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247434"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure での管理ソリューションのデータ収集の詳細
 この記事には、Microsoft で利用可能な[管理ソリューションの](monitoring-solutions.md)一覧を、詳細なドキュメントへのリンクと共に示します。  また、Log Analytics へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を理解できます。 
@@ -44,7 +44,7 @@ ms.locfileid: "49404105"
 | [アクティビティ ログ分析](../log-analytics/log-analytics-activity.md) | Azure | | | | | | 通知時 |
 | [AD 評価](../log-analytics/log-analytics-ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 日 |
 | [AD レプリケーションの状態](../log-analytics/log-analytics-ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 日 |
-| [Agent Health](../operations-management-suite/oms-solution-agenthealth.md) | Windows および Linux | &#8226; | &#8226; | | | &#8226; | 1 分 |
+| [Agent Health](monitoring-solution-agenthealth.md) | Windows および Linux | &#8226; | &#8226; | | | &#8226; | 1 分 |
 | [アラート管理](../log-analytics/log-analytics-solution-alert-management.md) (Nagios) |Linux |&#8226; | | | | |着信時 |
 | [アラート管理](../log-analytics/log-analytics-solution-alert-management.md) (Zabbix) |Linux |&#8226; | | | | |1 分 |
 | [アラート管理](../log-analytics/log-analytics-solution-alert-management.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 分 |
@@ -57,20 +57,20 @@ ms.locfileid: "49404105"
 | [Azure SQL Analytics (プレビュー)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 分 |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | 通知時 |
 | [Capacity and Performance (プレビュー)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |着信時 |
-| [変更の追跡](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |
-| [変更の追跡](../log-analytics/log-analytics-change-tracking.md) |Linux |&#8226; | | | | |1 時間に 1 回 |
+| [変更の追跡](../automation/automation-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |
+| [変更の追跡](../automation/automation-change-tracking.md) |Linux |&#8226; | | | | |1 時間に 1 回 |
 | [Containers](../log-analytics/log-analytics-containers.md) | Windows および Linux | &#8226; | &#8226; |  |  |  | 3 分 |
 | [Key Vault Analytics](../log-analytics/log-analytics-azure-key-vault.md) |Windows | | | | | |通知時 |
-| [マルウェアの評価](../log-analytics/log-analytics-malware.md) |Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |
+| [マルウェアの評価](../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |
 | [ネットワーク パフォーマンス監視](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP ハンドシェイク (5 秒ごと)、データ送信 (3 分ごと) |
-| [Office 365 Analytics (プレビュー)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |通知時 |
+| [Office 365 Analytics (プレビュー)](monitoring-solution-office-365.md) |Windows | | | | | |通知時 |
 | **管理ソリューション** | **プラットフォーム** | **Microsoft Monitoring Agent** | **Operations Manager エージェント** | **Azure Storage** | **Operations Manager が必要か** | **管理グループ経由で送信される Operations Manager エージェント データ** | **収集の頻度** |
 | [Service Fabric 分析](../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 分 |
-| [サービス マップ](../operations-management-suite/operations-management-suite-service-map.md) | Windows および Linux | &#8226; | &#8226; |  |  |  | 15 秒 |
+| [サービス マップ](monitoring-service-map.md) | Windows および Linux | &#8226; | &#8226; |  |  |  | 15 秒 |
 | [SQL の評価](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 日 |
 | [SurfaceHub](../log-analytics/log-analytics-surface-hubs.md) |Windows |&#8226; | | | | |着信時 |
 | [System Center Operations Manager Assessment (プレビュー)](../log-analytics/log-analytics-scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | 7 日 |
-| [更新管理](../operations-management-suite/oms-solution-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |1 日に少なくとも 2 回、更新プログラムのインストールの 15 分後 |
+| [更新管理](../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |1 日に少なくとも 2 回、更新プログラムのインストールの 15 分後 |
 | [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 日 |
 | [VMware Monitoring (非推奨)](../log-analytics/log-analytics-vmware.md) | Linux | &#8226; |  |  |  |  | 3 分 |
 | [Wire Data 2.0 (プレビュー)](../log-analytics/log-analytics-wire-data.md) |Windows (2012 R2/8.1 以降) |&#8226; |&#8226; | | | | 1 分 |
@@ -79,4 +79,4 @@ ms.locfileid: "49404105"
 
 
 ## <a name="next-steps"></a>次の手順
-* [クエリを作成](../log-analytics/log-analytics-log-searches.md)して、管理ソリューションで収集したデータを分析する方法を確認します。
+* [クエリを作成](../log-analytics/log-analytics-queries.md)して、管理ソリューションで収集したデータを分析する方法を確認します。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 90cf2d0ddbba47a856bf1299a101c5185873b5d8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214414"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230293"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk サービス: バックアップと復元に関するページ
 
@@ -48,7 +48,7 @@ Azure BizTalk サービスには、バックアップ機能と復元機能が備
 ## <a name="create-a-backup"></a>バックアップの作成
 バックアップはいつでも取得でき、完全にユーザーによって制御されます。 バックアップを作成するには、[Azure で BizTalk Services を管理するための REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx) を使用します。
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>復元
 バックアップを復元するには、[Azure で BizTalk Services を管理するための REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx) を使用します。
 
 ### <a name="postrestore"></a>バックアップの復元後
@@ -132,18 +132,18 @@ BizTalk サービスは常に、**[中断]** 状態で復元されます。 こ�
 </table>
 
 ## <a name="next"></a>次へ
-Azure BizTalk Services を作成するには、[BizTalk Services: プロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)に関するページに進みます。 アプリケーションの作成を開始するには、 [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
+Azure BizTalk Services を作成するには、[BizTalk Services: プロビジョニング](https://go.microsoft.com/fwlink/p/?LinkID=302280)に関するページに進みます。 アプリケーションの作成を開始するには、 [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
-* [BizTalk サービスのバックアップ](http://go.microsoft.com/fwlink/p/?LinkID=325584)
-* [バックアップからの BizTalk サービスの復元](http://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk Services: プロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk Services: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk サービス: 調整](http://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [BizTalk サービスのバックアップ](https://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [バックアップからの BizTalk サービスの復元](https://go.microsoft.com/fwlink/p/?LinkID=325582)
+* [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk Services: プロビジョニング](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: サービスの状態のチャート](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk サービス: 調整](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk サービス: 発行者名および発行者キー](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [Visual Studio でのプロジェクトの作成](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png

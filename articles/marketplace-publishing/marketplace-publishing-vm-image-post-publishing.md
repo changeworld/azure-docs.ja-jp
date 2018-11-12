@@ -14,33 +14,28 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d4c7dce1876e9838fe986aebb7e38a09e8a82baf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715017"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252974"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Azure Marketplace の仮想マシン プランの作成後ガイド
 この記事では、Azure Marketplace の発行済みの仮想マシン プランを更新する方法について説明します。 既存のプランに 1 つ以上の新しい SKU を追加するプロセスについて説明します。 Azure Marketplace から発行済みの仮想マシン プランまたは SKU を削除するプロセスについても説明します。
 
 プラン/SKU が [Azure ポータル](http://portal.azure.com)にステージングされた後は、以下のテキスト ボックスを変更することはできません。
 
-* 
-  **プラン識別子:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[VM イメージ]** > **[プラン識別子]** をクリックします。
-* 
-  **SKU 識別子:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[SKU]** > **[Add a SKU]\(SKU の追加\)** をクリックします。
+* **プラン識別子:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[VM イメージ]** > **[プラン識別子]** をクリックします。
+* **SKU 識別子:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[SKU]** > **[Add a SKU]\(SKU の追加\)** をクリックします。
 * **Publisher Namespace**: 発行ポータルで、**[仮想マシン]** > **[ウォークスルー]** > **[会社についてお聞かせください]** (“手順 2. 会社を登録する” にあります) > **[Publisher Namespace]** > **[Namespace]** に移動します。
 
-プラン/SKU が [Marketplace](http://azure.microsoft.com/marketplace) に表示された後は、以下のテキスト ボックスを変更することはできません。
+プラン/SKU が [Marketplace](https://azure.microsoft.com/marketplace) に表示された後は、以下のテキスト ボックスを変更することはできません。
 
-* 
-  **プラン識別子:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[VM イメージ]** > **[プラン識別子]** をクリックします。
-* 
-  **SKU 識別子:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[SKU]** > **[Add a SKU]\(SKU の追加\)** をクリックします。
+* **プラン識別子:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[VM イメージ]** > **[プラン識別子]** をクリックします。
+* **SKU 識別子:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[SKU]** > **[Add a SKU]\(SKU の追加\)** をクリックします。
 * **Publisher Namespace**: 発行ポータルで、**[仮想マシン]** > **[ウォークスルー]** > **[会社についてお聞かせください]** (“手順 2. 会社を登録する” にあります) > **[Publisher Namespace]** > **[Namespace]** に移動します。
-* 
-  **ポート:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[VM イメージ]** > **[Open Ports]\(ポートを開く\)** をクリックします。
+* **ポート:** 発行ポータルで、**[仮想マシン]** に移動し、プランを選択します。 次に、**[VM イメージ]** > **[Open Ports]\(ポートを開く\)** をクリックします。
 * **表示されている SKU の価格の変更**
 * **表示されている SKU の課金モデルの変更**
 * **表示されている SKU の課金リージョンの削除**
@@ -50,8 +45,7 @@ ms.locfileid: "39715017"
 表示されている SKU に新しいバージョンを追加してプランを再発行するには、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[VM イメージ]** タブをクリックします。
 4. **[SKU]** セクションで、更新する SKU を探します。
 5. SKU の新しいバージョン番号を追加し、**[+]** ボタンをクリックします。 新しいバージョンは、X.Y.Z 形式にする必要があります (X、Y、Z は整数)。 バージョンは、増分変更のみでなければなりません。
@@ -62,8 +56,7 @@ ms.locfileid: "39715017"
    >
    >
 7. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
     ![VM イメージ](media/marketplace-publishing-vm-image-post-publishing/img01_07.png)
 
@@ -74,11 +67,10 @@ Marketplace に発行済みのプランまたは SKU の技術面以外の (マ�
 プランの詳細を更新してプランを再発行するには、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[マーケティング]** タブをクリックします。
 4. **[英語 (米国)]** をクリックします。
-5. **[詳細]** タブをクリックします。**[説明]** セクションで、プランの **[タイトル]**、**[概要]** および **[概要 (長文)]** を更新し、変更を保存します。
+5. **[詳細]** タブをクリックします。[説明] セクションで、プランの **[タイトル]**、**[概要]** および **[概要 (長文)]** を更新し、変更を保存します。
 
    > [!NOTE]
    > SKU の詳細を更新する場合は、以下の制約に注意してください。 
@@ -96,8 +88,7 @@ Marketplace に発行済みのプランまたは SKU の技術面以外の (マ�
    >
    >
 7. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
     ![ロゴ](media/marketplace-publishing-vm-image-post-publishing/img02.1_08.png)
 
@@ -105,11 +96,10 @@ Marketplace に発行済みのプランまたは SKU の技術面以外の (マ�
 SKU の詳細を更新してプランを再発行するには、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[マーケティング]** タブをクリックします。
 4. **[英語 (米国)]** をクリックします。
-5. **[プラン]** タブをクリックします。**[SKU]** セクションで、SKU の **[タイトル]**、**[概要]** および **[説明]** を更新し、変更を保存します。
+5. **[プラン]** タブをクリックします。[SKU] セクションで、SKU の **[タイトル]**、**[概要]** および **[説明]** を更新し、変更を保存します。
 
    > [!NOTE]
    > SKU の詳細を更新する場合は、以下の制約に注意してください。 
@@ -119,8 +109,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
    >
    >
 6. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-7. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+7. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
     ![プラン](media/marketplace-publishing-vm-image-post-publishing/img02.2_07.png)
 
@@ -128,8 +117,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 既存のリンクを変更するか新しいリンクを追加してプランを再発行するには、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[マーケティング]** タブをクリックします。
 4. **[英語 (米国)]** をクリックします。
 5. **[リンク]** タブをクリックします。
@@ -141,8 +129,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
    >
    >
 8. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-9. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+9. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
     ![リンク](media/marketplace-publishing-vm-image-post-publishing/img02.3_09-01.png)
 
@@ -157,8 +144,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 >
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[マーケティング]** タブをクリックします。
 4. **[英語 (米国)]** をクリックします。
 5. **[サンプル イメージ]** タブをクリックします。
@@ -168,8 +154,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
    > サンプル イメージを含める手順は省略可能です。
    >
 7. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
     ![サンプル イメージ](media/marketplace-publishing-vm-image-post-publishing/img02.4_09.png)
 
@@ -177,15 +162,13 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 法的情報コンテンツを更新してプランを再発行するには、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[マーケティング]** タブをクリックします。
 4. **[英語 (米国)]** をクリックします。
 5. **[法的情報]** タブをクリックします。**[法的情報]** セクションで、ポリシー/使用条件を更新します。 **[使用条件]** ボックスにポリシー/使用条件を入力するか貼り付けた後、変更を保存します。
 6. 使用条件の文字制限は、百万字です。
 7. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+8. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
     ![法的情報](media/marketplace-publishing-vm-image-post-publishing/img02.5_08.png)
 
@@ -193,8 +176,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 サポート情報を更新してプランを再発行するには、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[サポート]** タブをクリックします。
 4. **[エンジニアリング連絡先]** セクションで、エンジニアリング連絡先の詳細を更新します。 これらの詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。
 5. **[カスタマー サポート]** セクションで、サポートの連絡先の詳細と **[サポート URL]** を更新します。 これらの詳細は、パートナーとマイクロソフト間の内部コミュニケーションにのみに使用されます。
@@ -204,8 +186,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
    >
    >
 6. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-7. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+7. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
     ![サポート](media/marketplace-publishing-vm-image-post-publishing/img02.6_07.png)
 
@@ -213,14 +194,11 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 プランの [カテゴリ] セクションを更新してプランを再発行するには、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[カテゴリ]** タブをクリックします。
-4. 
-  **[カテゴリ]** セクションで、プランのカテゴリを更新し、変更を保存できます。 Azure Marketplace ギャラリーのカテゴリを最大 5 つ選択できます。
+4. **[カテゴリ]** セクションで、プランのカテゴリを更新し、変更を保存できます。 Azure Marketplace ギャラリーのカテゴリを最大 5 つ選択できます。
 5. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-6. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+6. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
     ![Categories](media/marketplace-publishing-vm-image-post-publishing/img02.7_06.png)
 
@@ -228,8 +206,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 発行済みのプランに新しい SKU を追加するには、次の手順を実行します。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[SKU]** タブをクリックします。次に、**[SKU の追加]** をクリックします。 
 4. ダイアログ ボックスに **[SKU 識別子]** を小文字で入力します。 新しい SKU をライセンス持ち込み課金モデル (BYOL) で発行する場合は、**[BYOL 課金モデル]** チェック ボックスをオンにします。 それ以外の場合はチェック ボックスをオフにします。 新しい SKU を作成するには、チェック マークをクリックします。 BYOL 課金モデルを選択しなかった場合、課金モデルは自動敵に 1 時間単位に設定されます。 時間単位の課金モデルの 30 日間の無料試用版を提供する場合は、**[Is a free trial available?]\(無料試用版を提供しますか?\)** に対して **[1 か月]** を選択します。 それ以外の場合は、**[No Trial]\(試用なし\)** を選択します。 (**[Is a free trial available?]\(無料試用版を提供しますか?\)** は、新しい SKU の作成中に BYOL を選択していない場合にのみ表示されます)。
 
@@ -242,8 +219,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 6. 新しい SKU のマーケティング資料を追加するには、「[Marketplace のマーケティング コンテンツを指定する](marketplace-publishing-push-to-staging.md#step-1-provide-marketplace-marketing-content)」を参照してください。
 7. 新しい SKU の価格情報を追加するには、「[価格を設定する](marketplace-publishing-push-to-staging.md#step-2-set-your-prices)」を参照してください。
 8. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-9. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+9. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
     ![SKU](media/marketplace-publishing-vm-image-post-publishing/img03_09-01.png)
 
@@ -257,8 +233,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 
 1. [[インシデントの作成]](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=635993707583706681) ページで、サポート チケットを作成します。
 
-2. 
-  **[問題の種類]** で **[Managing offers]\(プランの管理\)** を選択し、**[カテゴリ]** で **[Modifying an offer and/or SKU already in production]\(既に運用中のプランまたは SKU の変更\)** を選択します
+2. **[問題の種類]** で **[Managing offers]\(プランの管理\)** を選択し、**[カテゴリ]** で **[Modifying an offer and/or SKU already in production]\(既に運用中のプランまたは SKU の変更\)** を選択します
 3. 要求を送信します。
 
 サポート チームがプラン/SKU の削除手順を説明します。
@@ -273,12 +248,10 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
 
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のウィンドウで、**[SKU]** タブをクリックします。
 4. 削除する SKU を選択し、**[削除]** ボタンをクリックします。
-5. 発行ポータルで **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+5. 発行ポータルで **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 6. Marketplace にプランが再発行されると、SKU が Marketplace と Azure ポータルから削除されます。
 
 ## <a name="delete-the-current-version-of-a-listed-sku-from-the-marketplace"></a>表示されている SKU の現在のバージョンを Azure Marketplace から削除する
@@ -286,20 +259,17 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
 
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[VM イメージ]** タブをクリックします。
 4. 現在のバージョンを削除する SKU を選択し、**[削除]** ボタンをクリックします。
-5. 発行ポータルで **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+5. 発行ポータルで **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 6. Marketplace でプランが再発行されると、SKU の現在のバージョンが Marketplace と Azure ポータルから削除されます。 SKU は、以前のバージョンにロールバックされます。
 
 ## <a name="revert-the-listing-price-to-production-values"></a>表示価格を運用時の値に戻す
 表示価格を運用時の値に戻すには、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[価格]** タブをクリックします。
 4. 価格をリセットするリージョンを選択します。
 
@@ -331,32 +301,28 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 
     ![概要と変更の表示](media/marketplace-publishing-vm-image-post-publishing/img08-11.png)
 12. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-13. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+13. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
 ## <a name="revert-the-billing-model-to-production-values"></a>課金モデルを運用時の値に戻す
 課金モデルを運用時の値に戻すには、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
 
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[SKU]** タブをクリックします。
 4. 課金モデルを元に戻すには、**[編集]** ボタンをクリックします。 開いたウィンドウで、**[Billing and licensing is done externally from Azure (Azure 外部のライセンス]\(ライセンス持ち込み) を使用して課金を行う\)** をオンまたはオフにします。
 
     ![課金を編集する](media/marketplace-publishing-vm-image-post-publishing/img09-04.png)
 5. この記事の「表示価格を運用時の値に戻す」で説明されている手順に従います。
 6. **[発行]** タブに移動し、**[PUSH TO STAGING]\(ステージング環境にプッシュ\)** をクリックします。 ステージング環境でプランをテストする方法に関する詳細なガイダンスについては、[Marketplace 向けの VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)に関するページを参照してください。
-7. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 
-  **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
+7. ステージング環境でプランをテストしたら、発行ポータルの **[発行]** タブに移動します。 **[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認の要求\)** をクリックして、プランを Marketplace に再発行します。
 
 ## <a name="revert-the-visibility-setting-of-a-listed-sku-to-the-production-value"></a>表示されている SKU の可視性の設定を運用時の値に戻す
 表示されている SKU の可視性の設定を運用時の値に戻には、次の手順に従います。
 
 1. [発行ポータル](https://publish.windowsazure.com)にサインインします。
 
-2. 
-  **[仮想マシン]** タブに移動し、プランを選択します。
+2. **[仮想マシン]** タブに移動し、プランを選択します。
 3. 左側のメニューで、**[SKU]** タブをクリックします。
 4. SKU を選択し、SKU の可視性の設定を運用時の値に戻します。
 
@@ -364,8 +330,7 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 5. 変更が終わったら、**[REQUEST APPROVAL TO PUSH TO PRODUCTION]\(運用環境にプッシュするための承認を要求\)** をクリックして、プランを Marketplace に再発行します。
 
 ## <a name="see-also"></a>関連項目
-* 
-  [概要: Azure Marketplace にプランを発行する](marketplace-publishing-getting-started.md)
+* [概要: Azure Marketplace にプランを発行する](marketplace-publishing-getting-started.md)
 * [支払いレポートを理解する](marketplace-publishing-report-payout.md)
 * [Cloud Solution Provider のリセラー インセンティブを変更する](marketplace-publishing-csp-incentive.md)
 * [Marketplace での発行に関してよくある問題のトラブルシューティングを行う](marketplace-publishing-support-common-issues.md)

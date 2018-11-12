@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211895"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232173"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
@@ -44,7 +44,7 @@ Site Recovery を使用して、ドメイン コントローラーまたは DNS 
 Site Recovery を使用してレプリケートされたドメイン コントローラーは、[テスト フェールオーバー](#test-failover-considerations)に使用されます。 次の要件を満たしていることを確認してください。
 
 1. ドメイン コントローラーがグローバル カタログ サーバーである。
-2. ドメイン コントローラーが、テスト フェールオーバー中に必要なロールに対応する FSMO ロール所有者である。 そうでない場合、フェールオーバー後にこれらのロールを[強制する](http://aka.ms/ad_seize_fsmo)必要があります。
+2. ドメイン コントローラーが、テスト フェールオーバー中に必要なロールに対応する FSMO ロール所有者である。 そうでない場合、フェールオーバー後にこれらのロールを[強制する](https://aka.ms/ad_seize_fsmo)必要があります。
 
 ### <a name="configure-vm-network-settings"></a>VM のネットワーク設定の構成
 ドメイン コントローラーまたは DNS をホストする仮想マシンに関して、Site Recovery で、レプリケートされる仮想マシンの **[コンピューティングとネットワーク]** 設定でネットワーク設定を構成します。 これにより、仮想マシンがフェールオーバー後に適切なネットワークに接続されます。
@@ -93,7 +93,7 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 
 
 ### <a name="remove-references-to-other-domain-controllers"></a>他のドメイン コントローラーへの参照の削除
-テスト フェールオーバーを開始するときは、テスト ネットワークにすべてのドメイン コントローラーを含めないでください。 運用環境に存在する他のドメイン コントローラーへの参照を削除するには、場合によっては、使用しないドメイン コントローラーに [Active Directory の FSMO ロールを強制](http://aka.ms/ad_seize_fsmo)し、[メタデータのクリーンアップ](https://technet.microsoft.com/library/cc816907.aspx)を実行する必要があります。
+テスト フェールオーバーを開始するときは、テスト ネットワークにすべてのドメイン コントローラーを含めないでください。 運用環境に存在する他のドメイン コントローラーへの参照を削除するには、場合によっては、使用しないドメイン コントローラーに [Active Directory の FSMO ロールを強制](https://aka.ms/ad_seize_fsmo)し、[メタデータのクリーンアップ](https://technet.microsoft.com/library/cc816907.aspx)を実行する必要があります。
 
 
 ### <a name="issues-caused-by-virtualization-safeguards"></a>仮想化のセーフガードが原因で発生する問題
@@ -180,7 +180,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    詳細については、「[Disable the requirement that a global catalog server be available to validate user logons](http://support.microsoft.com/kb/241789)」(ユーザーのログオンを有効にするためにグローバル カタログ サーバーを利用可能にする要件を無効にする) をご覧ください。
+    詳細については、「[Disable the requirement that a global catalog server be available to validate user logons](https://support.microsoft.com/kb/241789)」(ユーザーのログオンを有効にするためにグローバル カタログ サーバーを利用可能にする要件を無効にする) をご覧ください。
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS とドメイン コントローラーが異なるマシン上に存在する場合
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 61776b19ba0ee273b78e3b0a6f610e5701251dd0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fe56b84b881b2afce9da9a7f7dfe4637c3494aa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26632722"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261963"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Azure ポータルを使用して BizTalk Services を作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "26632722"
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 > [!TIP]
-> Azure ポータルにサインインするには、Azure アカウントと Azure サブスクリプションが必要です。 アカウントがない場合は、無料の試用アカウントを数分で作成することができます。 [Azure 無料評価版のサイト](http://go.microsoft.com/fwlink/p/?LinkID=239738)を参照してください。
+> Azure ポータルにサインインするには、Azure アカウントと Azure サブスクリプションが必要です。 アカウントがない場合は、無料の試用アカウントを数分で作成することができます。 [Azure 無料評価版のサイト](https://go.microsoft.com/fwlink/p/?LinkID=239738)を参照してください。
 
 
 ## <a name="CreateService"></a>BizTalk サービスを作成する
@@ -84,7 +84,7 @@ Access Control サービス ID は、アプリケーションまたはクライ�
 <br/><br/>
 1 つの Azure アカウントで複数のサブスクリプションを契約することもでき、管理は許可を受けたユーザーであればだれでも行うことができます。 たとえば、Azure アカウント保有者が <em>BizTalkServiceSubscription</em> という名前のサブスクリプションを作成して、社内の BizTalk 管理者 (たとえば ContosoBTSAdmins@live.com) にこのサブスクリプションへのアクセスを許可するとします。 このシナリオでは、BizTalk 管理者は、Azure にサインインすると、Azure BizTalk Services を含む、サブスクリプション内のすべてのホステッド サービスに対する完全な管理者権限を持つことになります。 BizTalk 管理者は Azure アカウント保有者ではないため、課金情報へはアクセスできません。
 <br/><br/>詳細については、
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">Azure でのサブスクリプションとストレージ アカウントの管理</a>に関するページをご覧ください。
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=267577">Azure でのサブスクリプションとストレージ アカウントの管理</a>に関するページをご覧ください。
 </td>
 </tr>
 <tr>
@@ -93,7 +93,7 @@ Access Control サービス ID は、アプリケーションまたはクライ�
 <br/><br/>
 BizTalk サービスを作成するときは、既存の Azure SQL Server や Azure SQL Database を使用するか、新しいサーバーやデータベースを自動的に作成することができます。
 <br/><br/>
-SQL Database のスケールは自動的に構成されます。 一般的に、BizTalk サービスのスケールは既定の設定で十分です。 スケールを変更すると、料金に影響が及びます。 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=234930">Azure SQL Database のアカウントと課金</a>に関するページをご覧ください
+SQL Database のスケールは自動的に構成されます。 一般的に、BizTalk サービスのスケールは既定の設定で十分です。 スケールを変更すると、料金に影響が及びます。 <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=234930">Azure SQL Database のアカウントと課金</a>に関するページをご覧ください
 <br/><br/>
 <strong>メモ</strong>
 <br/>
@@ -123,7 +123,7 @@ BizTalk サービスのストレージ設定は、既定の設定で十分です
 <br/><br/>
 ストレージ アカウントを作成すると、プライマリ キーおよびセカンダリ キーが自動的に作成されます。 これらのキーは、ストレージ アカウントへのアクセスを制御します。 BizTalk サービスは自動的にプライマリ キーを使用します。
 <br/><br/>
-詳細については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285671">Storage</a> に関するページをご覧ください。
+詳細については、<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285671">Storage</a> に関するページをご覧ください。
 </td>
 </tr>
 
@@ -164,8 +164,8 @@ Azure BizTalk サービスを作成するときに、 **[ハイブリッド接�
 
  ハイブリッド接続の作成と管理の方法などの情報については、「 [ハイブリッド接続](integration-hybrid-connection-overview.md) 」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
-BizTalk サービスが作成されたので、 [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)のページでこれらのタブについての理解を深めてください。 BizTalk サービスをアプリケーションで使用する準備ができました。 アプリケーションの作成を開始するには、 [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
+## <a name="next-steps"></a>次の手順
+BizTalk サービスが作成されたので、 [BizTalk サービス: [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)のページでこれらのタブについての理解を深めてください。 BizTalk サービスをアプリケーションで使用する準備ができました。 アプリケーションの作成を開始するには、 [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 * [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)<br/>
@@ -173,8 +173,8 @@ BizTalk サービスが作成されたので、 [BizTalk サービス: [ダッ�
 * [BizTalk サービス: バックアップと復元に関するページ](biztalk-backup-restore.md)<br/>
 * [BizTalk サービス: 調整](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk サービス: 発行者名および発行者キー](biztalk-issuer-name-issuer-key.md)<br/>
-* [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [ハイブリッド接続](integration-hybrid-connection-overview.md)
+* [Visual Studio でのプロジェクトの作成](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [VNet](integration-hybrid-connection-overview.md)
 
 [NewBizTalkService]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png
 [NEWButton]: ./media/biztalk-provision-services/WABS_New.png

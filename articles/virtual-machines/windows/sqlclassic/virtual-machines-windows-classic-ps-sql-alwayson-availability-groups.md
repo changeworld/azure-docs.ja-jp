@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成 | Microsoft Docs
-description: このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用します。 PowerShell を使用して、Azure に AlwaysOn 可用性グループを作成します。
+description: このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用します。 PowerShell を使用して、Azure に AlwaysOn 可用性グループを作成します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: fe7384baa6740d316fb5a8ec7b1894f337d88080
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 584fca3df4fee24a4f1c7b93d5371c48be059f7b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29401292"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257937"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
@@ -482,7 +482,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. [Azure VM での AlwaysOn 可用性グループのフェールオーバー クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)に関するページから、**CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。 このスクリプトを使用すると、機能的なフェールオーバー クラスターを作成できます。 Windows フェールオーバー クラスタリングと Azure ネットワークのやり取りに関する重要な情報については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」をご覧ください。
+7. [Azure VM での AlwaysOn 可用性グループのフェールオーバー クラスターの作成](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)に関するページから、**CreateAzureFailoverCluster.ps1** をローカルの作業ディレクトリにダウンロードします。 このスクリプトを使用すると、機能的なフェールオーバー クラスターを作成できます。 Windows フェールオーバー クラスタリングと Azure ネットワークのやり取りに関する重要な情報については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」をご覧ください。
 8. 作業ディレクトリに移動し、ダウンロードしたスクリプトを使用してフェールオーバー クラスターを作成します。
 
         Set-ExecutionPolicy Unrestricted -Force

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236586"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253450"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>最新バージョンの Azure Machine Learning サービスに移行する 
 
@@ -38,7 +38,7 @@ Azure Machine Learning サービスの最初のプレビューで作成された
 |登録済み|いいえ |新しいワークスペースに展開 Docker イメージを再作成します。|
 |デプロイ済み Web サービス|いいえ |なし。 引き続きそのとおり機能します。 <br/>または[最新バージョンを使用して再びデプロイします](#services)。|
 |実験および <br/>モデル管理アカウント|いいえ |代わりに[ワークスペース](#resources)を作成します。|
-|Machine Learning CLI および SDK|いいえ |新しい作業に新しい [CLI](reference-azure-machine-learning-cli.md) と [SDK](http://aka.ms/aml-sdk) を使用します。|
+|Machine Learning CLI および SDK|いいえ |新しい作業に新しい [CLI](reference-azure-machine-learning-cli.md) と [SDK](https://aka.ms/aml-sdk) を使用します。|
 
 
 詳細については、「[このリリースでの変更点](overview-what-happened-to-workbench.md)」を参照してください。
@@ -62,7 +62,7 @@ Azure Machine Learning サービスの最初のプレビューで作成された
 
 プロジェクトをクラウドのワークスペースに配置する代わりに、最新リリースでは、プロジェクトはローカル コンピューター上のディレクトリに配置されるようになりました。 [最新アーキテクチャ](concept-azure-machine-learning-architecture.md)の図をご覧ください。 
 
-ファイルとスクリプトを含むローカル ディレクトリを使用し続けるには、ディレクトリの名前を ['experiment.submit'](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python コマンドで指定するか、または 'az ml project attach' CLI コマンドを使用します。
+ファイルとスクリプトを含むローカル ディレクトリを使用し続けるには、ディレクトリの名前を ['experiment.submit'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python コマンドで指定するか、または 'az ml project attach' CLI コマンドを使用します。
 
 例: 
 ```python

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 07faf5efd1c7eec3e209a5d971185655cc949bb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423495"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250783"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -227,7 +227,7 @@ Azure の使用で重要になることの 1 つが請求情報を表示する�
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>料金計算ツールでコストを予測する
 
-Azure では、サービスごとに価格が異なります。 多くの Azure サービスでは、Basic、Standard、Premium という価格層を提供しています。 通常、階層ごとにいくつかの価格レベルとパフォーマンス レベルが用意されています。 [オンライン料金計算ツール](http://azure.microsoft.com/pricing/calculator)を利用すれば、価格を見積もることができます。 このツールでは、1 つのリソースまたはリソース グループのコストを柔軟に見積もることができます。
+Azure では、サービスごとに価格が異なります。 多くの Azure サービスでは、Basic、Standard、Premium という価格層を提供しています。 通常、階層ごとにいくつかの価格レベルとパフォーマンス レベルが用意されています。 [オンライン料金計算ツール](https://azure.microsoft.com/pricing/calculator)を利用すれば、価格を見積もることができます。 このツールでは、1 つのリソースまたはリソース グループのコストを柔軟に見積もることができます。
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -403,7 +403,7 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
 
 詳細については、「[Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md)」をご覧ください。
 
-#### <a name="queue-storage"></a>Queue Storage
+#### <a name="queue-storage"></a>ストレージ
 
 Azure Queue Storage は、アプリケーション コンポーネント間のクラウド メッセージングを提供します。 拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。 Queue Storage は、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミスのサーバー、モバイル デバイスのいずれで実行されている場合でも、アプリケーション コンポーネント間の通信に非同期メッセージングを提供します。 Queue Storage ではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
 

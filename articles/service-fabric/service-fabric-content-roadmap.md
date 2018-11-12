@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: c55e67e24c8f5ff6e243c67b614592874b2cc459
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 6cf2aa31e8a7207b041b9789ddde23b616f47150
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870657"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258447"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -218,7 +218,7 @@ Service Fabric には、正常性ストアに集計された[正常性レポー�
 * [サービスを監視および診断する](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)方法を学びます。 
 * [アプリとサービスをテストする](service-fabric-testability-overview.md)方法を学びます。
 * [クラスター リソースを管理および調整する](service-fabric-cluster-resource-manager-introduction.md)方法を学びます。
-* [Service Fabric サンプル](http://aka.ms/servicefabricsamples)を確認します。
+* [Service Fabric サンプル](https://aka.ms/servicefabricsamples)を確認します。
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 * [チームのブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)で記事やお知らせを読みます。
 

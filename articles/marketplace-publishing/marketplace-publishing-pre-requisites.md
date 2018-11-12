@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: hascipio
-ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: ef19380372354b8f34343f9f94ebf6b384996f14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714191"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261556"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Azure Marketplace 向けプラン作成の一般的な前提条件
 プランの作成プロセスに必要な、ビジネス処理中心の一般的な前提条件を理解します。
@@ -27,10 +27,8 @@ ms.locfileid: "39714191"
 ## <a name="ensure-that-you-are-registered-as-a-seller-with-microsoft"></a>Microsoft 販売者として登録されていることを確認します。
 Microsoft で販売者アカウントを登録する方法の詳細な手順については、「 [アカウントの作成および登録](marketplace-publishing-accounts-creation-registration.md)」を参照してください。
 
-* 
-  **デベロッパー センターで会社が既に販売者として登録されており、新しいプランを作成する必要がある場合は** 、デベロッパー センター登録で使用した電子メール ID で発行ポータルにログインします。 この手順により、デベロッパー センターと発行ポータルが相互に関連付けられます。
-* 
-  **デベロッパー センターで会社が既に販売者として登録されており、既存のプランを編集する必要がある場合は、** 管理者アカウントか、発行ポータルで共同管理者として追加されているアカウントを使用して、発行ポータルにログインします。 共同管理者アカウントを追加する手順は次のとおりです。
+* **デベロッパー センターで会社が既に販売者として登録されており、新しいプランを作成する必要がある場合は** 、デベロッパー センター登録で使用した電子メール ID で発行ポータルにログインします。 この手順により、デベロッパー センターと発行ポータルが相互に関連付けられます。
+* **デベロッパー センターで会社が既に販売者として登録されており、既存のプランを編集する必要がある場合は、** 管理者アカウントか、発行ポータルで共同管理者として追加されているアカウントを使用して、発行ポータルにログインします。 共同管理者アカウントを追加する手順は次のとおりです。
 
 ## <a name="steps-to-add-a-co-admin-in-the-publishing-portal"></a>発行ポータルで共同管理者を追加する手順
 発行ポータルの管理者が、アプリケーションで作業している会社の他のメンバーを、発行ポータルの共同管理者として後で追加できます。 **管理者である必要があります** 。
@@ -72,7 +70,7 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 
 ## <a name="sell-from-countries"></a>「販売元」の国
 > [!WARNING]
-> Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの「販売元」の国からのものである必要があります。 この制限は、支払いおよび課税上の理由から生じます。 「販売元」の国の範囲は今後拡大される予定です。 完全な一覧については、 [Azure Marketplace 参加ポリシー](http://go.microsoft.com/fwlink/?LinkID=526833)のセクション 1b を参照してください。
+> Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの「販売元」の国からのものである必要があります。 この制限は、支払いおよび課税上の理由から生じます。 「販売元」の国の範囲は今後拡大される予定です。 完全な一覧については、 [Azure Marketplace 参加ポリシー](https://go.microsoft.com/fwlink/?LinkID=526833)のセクション 1b を参照してください。
 > 
 > 
 
@@ -83,6 +81,5 @@ Microsoft で販売者アカウントを登録する方法の詳細な手順に�
 * [ソリューション テンプレートの技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md)
 
 ## <a name="see-also"></a>関連項目
-* 
-  [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+* [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 

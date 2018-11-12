@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bdcd1d0cc9f9979d898410180d364716b344d641
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807846"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254470"
 ---
 <a name="create-a-microsoft-developer-account"></a>Microsoft 開発者アカウントの作成
 ====================================
@@ -133,7 +133,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 
    ![支払いの登録](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
 
-10. アカウント情報を見直し、すべて正しいことを確認します。 [Microsoft Azure Marketplace 発行者契約](http://go.microsoft.com/fwlink/?LinkID=699560)の契約条件を読んで同意します。 チェック ボックスをオンにすると、これらの条件を読んで同意したと見なされます。
+10. アカウント情報を見直し、すべて正しいことを確認します。 [Microsoft Azure Marketplace 発行者契約](https://go.microsoft.com/fwlink/?LinkID=699560)の契約条件を読んで同意します。 チェック ボックスをオンにすると、これらの条件を読んで同意したと見なされます。
 
 11. **[完了]** をクリックし、登録内容を確認します。 確認メッセージがユーザーのメール アドレスに送信されます。
 

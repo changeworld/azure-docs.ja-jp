@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/30/2018
 ms.author: spelluru
-ms.openlocfilehash: bde5629fdd500896e557f89ce6b819169366df97
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 33dda074bd1aeb6b6187ca01347f31219ac86e91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407685"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250205"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -67,7 +67,7 @@ Premium メッセージングは簡単に使い始めることができ、その
 
 Service Bus メッセージングの詳細については、次のリンクをご覧ください。
 
-* [Azure Service Bus Premium メッセージングの概要 (ブログの投稿)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Azure Service Bus Premium メッセージングの概要 (ブログの投稿)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Azure Service Bus Premium メッセージングの概要 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 00a2c0d50a2476995dfb0d16d0cdbc5bd0ec313b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c5677dc07326fa16960e0d748f88e26f259c0485
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138999"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262277"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -398,7 +398,7 @@ Key Vault で証明書発行者を作成するには、その前に、次の前�
 
     -   キー コンテナー内のプロバイダーの発行者オブジェクトの作成に使用される構成を提供します  
 
-証明書ポータルから発行者オブジェクトを作成する方法について詳しくは、[Key Vault 証明書のブログ](http://aka.ms/kvcertsblog)をご覧ください  
+証明書ポータルから発行者オブジェクトを作成する方法について詳しくは、[Key Vault 証明書のブログ](https://aka.ms/kvcertsblog)をご覧ください  
 
 Key Vault では、異なる発行者プロバイダー構成で複数の発行者オブジェクトを作成できます。 発行者オブジェクトが作成されたら、その名前を 1 つまたは複数の証明書ポリシーで参照できます。 発行者オブジェクトを参照することで、証明書の作成と更新中に CA プロバイダーに X509 証明書を要求するときに、発行者オブジェクトで指定されている構成を使用するよう Key Vault に指示します。  
 

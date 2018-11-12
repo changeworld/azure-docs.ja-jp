@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
-ms.openlocfilehash: 83f7f29471d49c4dbbf1630b4e8e9006144638cc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5b7f454fed6206ac57799d6f1e86152cd52dc9e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797789"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254419"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>.NET SDK を使用した Azure Search インデックスの照会
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "31797789"
 このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んで](search-what-is-data-import.md)います。
 
 > [!NOTE]
-> この記事のサンプル コードはすべて C# で記述されています。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
+> この記事のサンプル コードはすべて C# で記述されています。 [GitHub](https://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Azure Search サービスのクエリ API キーの識別
 Azure Search インデックスの作成は済んでいるので、.NET SDK を使用してクエリを発行する準備はほとんどできています。 まず、プロビジョニングした検索サービス用に生成されたクエリ API キーの 1 つを取得する必要があります。 .NET SDK は、サービスに対する要求ごとに、この API キーを送信します。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
@@ -49,7 +49,7 @@ Azure Search インデックスの作成は済んでいるので、.NET SDK を�
 ## <a name="create-an-instance-of-the-searchindexclient-class"></a>SearchIndexClient クラスのインスタンスの作成
 Azure Search .NET SDK を使用してクエリを発行するには、`SearchIndexClient` クラスのインスタンスを作成する必要があります。 このクラスにはいくつかのコンストラクターがあります。 目的のコンストラクターは、検索サービスの名前、インデックスの名前、および `SearchCredentials` オブジェクトをパラメーターとして使用します。 `SearchCredentials` は API キーをラップします。
 
-次のコードは、アプリケーションの構成ファイル ([サンプル アプリケーション](http://aka.ms/search-dotnet-howto)では `appsettings.json`) に保存されている検索サービスの名前と API キーを表す値を使用して、"hotels" というインデックス (「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md)」で作成したもの) の `SearchIndexClient` を新たに作成します。
+次のコードは、アプリケーションの構成ファイル ([サンプル アプリケーション](https://aka.ms/search-dotnet-howto)では `appsettings.json`) に保存されている検索サービスの名前と API キーを表す値を使用して、"hotels" というインデックス (「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md)」で作成したもの) の `SearchIndexClient` を新たに作成します。
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)

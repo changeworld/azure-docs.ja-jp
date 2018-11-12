@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: e6e2c0b82f306e399454c1672c56e2933e3f1158
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: eed970d46c8a895001ce0a6d7d7f37acf6c02a55
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040867"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249202"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI ワークスペース コレクションに関するよくある質問
 
@@ -61,7 +61,7 @@ Power BI ワークスペース コレクション サービスの使用方法に
 はい。 既存の Azure サブスクリプションを使用して、Microsoft Power BI ワークスペース コレクション サービスをプロビジョニングし、使用することができます。
 
 ## <a name="does-my-application-end-user-need-a-power-bi-license"></a>アプリケーションのエンドユーザーに Power BI ライセンスは必要ですか。
-いいえ。 アプリケーションのエンドユーザーは、アプリ内のデータ視覚エフェクトを利用するために、Power BI サブスクリプションを別途購入する必要はありません。 Power BI ワークスペース コレクション モデルでは、Azure の従量課金メーターを使用して、アプリケーション プロバイダーにサービス料金が請求されます。 詳細については、[料金とライセンス](http://go.microsoft.com/fwlink/?LinkId=760527)に関するページをご覧ください。
+いいえ。 アプリケーションのエンドユーザーは、アプリ内のデータ視覚エフェクトを利用するために、Power BI サブスクリプションを別途購入する必要はありません。 Power BI ワークスペース コレクション モデルでは、Azure の従量課金メーターを使用して、アプリケーション プロバイダーにサービス料金が請求されます。 詳細については、[料金とライセンス](https://go.microsoft.com/fwlink/?LinkId=760527)に関するページをご覧ください。
 
 ## <a name="how-does-user-authentication-work-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでのユーザー認証の仕組みを教えてください。
 Power BI ワークスペース コレクション サービスでは、明示的なエンドユーザー認証ではなく、アプリケーション トークンを使用して認証と承認を行います。 アプリケーション トークン モデルでは、アプリケーションがエンド ユーザーの認証と承認を管理します。 次に、アプリケーションは、必要に応じて
@@ -80,7 +80,7 @@ Power BI ワークスペース コレクション モデルでは、Azure AD テ
 [Power BI ワークスペース コレクションのドキュメント ページ](get-started.md)をご覧ください。 このサービスの最新情報については、[Power BI のブログ](https://powerbi.microsoft.com/blog/)または Power BI デベロッパー センター (dev.powerbi.com) をご覧ください。 [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi)で質問することもできます。
 
 ## <a name="how-do-i-get-started"></a>開始するには?
-今すぐ無料で開始できます。 Azure サブスクリプションを所有している場合は、Azure Portal から直接 Power BI ワークスペース コレクションをプロビジョニングできます。 また、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成することも可能です。 Power BI ワークスペース コレクション サービスをプロビジョニングしたら、簡単に Power BI REST API を直接使用したり、[GitHub](http://go.microsoft.com/fwlink/?LinkID=746472) で提供されている Developer SDK を使用したりできます。 Developer SDK を活用する方法については、サンプルが提供されます。
+今すぐ無料で開始できます。 Azure サブスクリプションを所有している場合は、Azure Portal から直接 Power BI ワークスペース コレクションをプロビジョニングできます。 また、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成することも可能です。 Power BI ワークスペース コレクション サービスをプロビジョニングしたら、簡単に Power BI REST API を直接使用したり、[GitHub](https://go.microsoft.com/fwlink/?LinkID=746472) で提供されている Developer SDK を使用したりできます。 Developer SDK を活用する方法については、サンプルが提供されます。
 
 ## <a name="see-also"></a>関連項目
 

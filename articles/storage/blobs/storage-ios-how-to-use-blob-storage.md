@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.component: blobs
-ms.openlocfilehash: 35cfa36aba8042bcc753c1005c8fd8dbcdb70e79
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 43e9acb79b363e8f2cb00f6a4676d450c097bf3e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397674"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261997"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 
@@ -382,8 +382,8 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 * [iOS 用 Azure Storage クライアント ライブラリ](https://github.com/azure/azure-storage-ios)
 * [Azure Storage iOS リファレンス ドキュメント](http://azure.github.io/azure-storage-ios/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage)
+* [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage)
 
-このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) または [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
+このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) または [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
 Azure Storage の機能についてご提案がある場合は、 [Azure Storage のフィードバック](https://feedback.azure.com/forums/217298-storage/)に投稿してください。
 

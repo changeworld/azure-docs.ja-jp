@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d7dbb808205c78b53277c6d916f5166a41c7e93d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 227ef61ee4809d376c6ac5e8e8c1a7f9c364b7fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638428"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255764"
 ---
 # <a name="azure-storage-account-overview"></a>Azure ストレージ アカウントの概要
 
@@ -107,7 +107,7 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 使用可能なアクセス層は次のとおりです。
 
 > [!NOTE]
-> [Premium アクセス層](../blobs/storage-blob-storage-tiers.md#premium-access-tier)は、北ヨーロッパ、米国東部 2、米国中部、および米国西部の各リージョンで、ローカル冗長ストレージ (LRS) アカウントとして、限定プレビューで利用できます。 プレビューに登録する方法については、「[Azure Premium Blob Storage の概要](http://aka.ms/premiumblob)」を参照してください。
+> [Premium アクセス層](../blobs/storage-blob-storage-tiers.md#premium-access-tier)は、北ヨーロッパ、米国東部 2、米国中部、および米国西部の各リージョンで、ローカル冗長ストレージ (LRS) アカウントとして、限定プレビューで利用できます。 プレビューに登録する方法については、「[Azure Premium Blob Storage の概要](https://aka.ms/premiumblob)」を参照してください。
 
 * **ホット** アクセス層は、ストレージ アカウント内のオブジェクトへの頻繁なアクセスに対応するように最適化されています。 ホット層でのデータのアクセスは、費用対効果は最も高くなりますが、ストレージ コストは若干高くなります。 新しいストレージ アカウントは、既定ではホット層に作成されます。
 * **クール**  ストレージ層は、アクセスされる頻度が低いデータで、少なくとも 30 日以上保管される大量のデータの格納に適しています。 クール層でのデータの格納は、費用対効果が高くなりますが、データへのアクセスがホット層でのデータへのアクセスよりも若干高くなる場合があります。

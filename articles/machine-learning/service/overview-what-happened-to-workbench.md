@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: d90f1791a05d575caedfdd5c696bb1e6d6c29376
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: b8263c399f287be79590860cce7036207ef2e3f7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091918"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243745"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Azure Machine Learning の Workbench の変更点 (プレビュー)
 
-Workbench アプリケーションとその他のいくつかの初期機能は、2018 年 9 月のリリースでリプレースされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)に移行されました。 このリリースには、エクスペリエンスの向上のための顧客からのフィールドによって促進された、多くの重要な更新プログラムが含まれています。 実験の実行からモデルのデプロイまでのコア機能は変更されていませんが、機械学習のタスクとパイプラインを実現するために堅牢 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> と [CLI](reference-azure-machine-learning-cli.md) を使用できるようになりました。  
+Workbench アプリケーションとその他のいくつかの初期機能は、2018 年 9 月のリリースでリプレースされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)に移行されました。 このリリースには、エクスペリエンスの向上のための顧客からのフィールドによって促進された、多くの重要な更新プログラムが含まれています。 実験の実行からモデルのデプロイまでのコア機能は変更されていませんが、機械学習のタスクとパイプラインを実現するために堅牢 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> と [CLI](reference-azure-machine-learning-cli.md) を使用できるようになりました。  
 
 この記事では、Azure Machine Learning サービスの変更点と、既存の作業に与える影響について説明します。
 
@@ -27,7 +27,7 @@ Workbench アプリケーションとその他のいくつかの初期機能は�
 Azure Machine Learning サービスの最終リリースには、次のものが含まれています。
 + [簡略化された Azure リソースのモデル](concept-azure-machine-learning-architecture.md)
 + [新しいポータル UI](how-to-track-experiments.md) による、実験とコンピューティング ターゲットの管理
-+ 新しい、より包括的な Python <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>
++ 新しい、より包括的な Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)
 
 この[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすさを考慮して再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-azure-machine-learning-architecture.md#workspace)だけです。  ワークスペースは、[Azure portal](quickstart-get-started.md) ですばやく作成することができます。  1 つのワークスペースを複数のユーザーが、トレーニングやデプロイのコンピューティングのターゲット、モデルの実験、Docker イメージ、デプロイしたモデルなどを格納するために使用することができます。
@@ -49,7 +49,7 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 |1|"_Azure Machine Learning 実験アカウント_" と "_モデル管理アカウント_" を Azure portal と CLI で作成する機能は終了となります。 CLI から ML コンピューティング環境を作成する機能も終了となります。 既存のアカウントをお持ちの場合、CLI とデスクトップ Workbench はこの段階では引き続き機能します。|
 |2|残りの API やデスクトップ Workbench など、その他すべてのサポートはこの段階で終了します。|
 
-今すぐ[移行を始めてください](how-to-migrate.md)。 最新の機能はすべて、新しい <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md)、[Portal](quickstart-get-started.md) でご利用いただけます。
+今すぐ[移行を始めてください](how-to-migrate.md)。 最新の機能はすべて、新しい <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md)、[Portal](quickstart-get-started.md) でご利用いただけます。
 
 ## <a name="what-about-run-histories"></a>実行履歴について教えてください。
 
@@ -66,9 +66,9 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 もう Workbench がないため、既存のデータ準備ファイルは最新のリリースに移植されません。 ただし、引き続きモデリング用にデータを準備することができます。  
 
-小さいデータセットでは、<a href="http://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Data Prep SDK</a> を使用して、モデリングの前にデータをすばやく準備することができます。 
+小さいデータセットでは、<a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Data Prep SDK</a> を使用して、モデリングの前にデータをすばやく準備することができます。 
 
-大きいデータセットでこれと同じ <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> を使用することも、Azure Databricks を使用して大きいデータセットを準備することもできます。 
+大きいデータセットでこれと同じ <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> を使用することも、Azure Databricks を使用して大きいデータセットを準備することもできます。 
 
 ## <a name="will-projects-persist"></a>プロジェクトは保持されますか。
 
@@ -94,7 +94,7 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 はい。それらは、しばらくの間は引き続き使用できます (上の[タイムライン](#timeline)を参照)。 最新の SDK や CLI を使用して、新しい実験とモデルの作成を開始することをお勧めします。
 
-最新のリリースでは、新しい Python SDK を使用して、Python 環境で Azure Machine Learning サービスを操作することができます。 最新の <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> のインストール方法を確認してください。  また、[更新された Azure CLI 機械学習拡張機能](reference-azure-machine-learning-cli.md)と充実した `az ml` コマンドのセットを使用して、Azure portal クラウド シェルなどのコマンドライン環境でサービスを操作することもできます。
+最新のリリースでは、新しい Python SDK を使用して、Python 環境で Azure Machine Learning サービスを操作することができます。 最新の <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> のインストール方法を確認してください。  また、[更新された Azure CLI 機械学習拡張機能](reference-azure-machine-learning-cli.md)と充実した `az ml` コマンドのセットを使用して、Azure portal クラウド シェルなどのコマンドライン環境でサービスを操作することもできます。
 
 ## <a name="what-about-vs-code-tools-for-ai"></a>VS Code Tools for AI について教えてください。
 
@@ -104,7 +104,7 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 ## <a name="what-about-domain-packages"></a>ドメイン パッケージについて教えてください。
 
-[Computer Vision、Text Analytics、および Forecasting](../desktop-workbench/reference-python-package-overview.md) のドメイン パッケージは、最新バージョンの Azure Machine Learning では使用できません。 ただし、コンピューター ビジョン、テキスト、および予測のモデルは、最新の Azure Machine Learning Python <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> を使用して引き続き構築およびトレーニングできます。 Computer Vision、Text Analytics、および Forecasting のパッケージを使用して構築された既存のモデルに移行する方法については、[AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com) までお問い合わせください。
+[Computer Vision、Text Analytics、および Forecasting](../desktop-workbench/reference-python-package-overview.md) のドメイン パッケージは、最新バージョンの Azure Machine Learning では使用できません。 ただし、コンピューター ビジョン、テキスト、および予測のモデルは、最新の Azure Machine Learning Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> を使用して引き続き構築およびトレーニングできます。 Computer Vision、Text Analytics、および Forecasting のパッケージを使用して構築された既存のモデルに移行する方法については、[AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com) までお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 

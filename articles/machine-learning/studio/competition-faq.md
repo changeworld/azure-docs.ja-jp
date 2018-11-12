@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 693fd7b80d69c20971315d8636f27daeb0cacaee
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 28be219c35d382cbd141bb050b35893da02ab775
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240887"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256452"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence コンペティションの FAQ
 **Microsoft Cortana Intelligence コンペティションとは何ですか。**
 
-Microsoft Cortana Intelligence コンペティションは、世界の最も複雑なデータ サイエンスの問題のいくつかを集団で解決することにより、データ研究者のグローバル コミュニティを統合します。 Cortana Intelligence コンペティションでは、世界中のデータ研究者が競い合って、高度に正確で合理的なデータ サイエンス モデルを構築できます。 ホストされているコンペティションは、初めて一般に使用可能になった固有のデータ セットに基づいています。 参加者は、報酬を得たり、トップ 10 パブリック ランキングを通じて知名度を高めたりすることができます。 [aka.ms/CIComp](http://aka.ms/CIComp) でコンペティションのホーム ページにアクセスすることができます。
+Microsoft Cortana Intelligence コンペティションは、世界の最も複雑なデータ サイエンスの問題のいくつかを集団で解決することにより、データ研究者のグローバル コミュニティを統合します。 Cortana Intelligence コンペティションでは、世界中のデータ研究者が競い合って、高度に正確で合理的なデータ サイエンス モデルを構築できます。 ホストされているコンペティションは、初めて一般に使用可能になった固有のデータ セットに基づいています。 参加者は、報酬を得たり、トップ 10 パブリック ランキングを通じて知名度を高めたりすることができます。 [aka.ms/CIComp](https://aka.ms/CIComp) でコンペティションのホーム ページにアクセスすることができます。
 
 **Microsoft は新しいコンペティションをどのくらいの頻度でリリースしますか。**
 
@@ -37,7 +37,7 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 
 **コンペティションに参加するにはどうすればよいですか?**
 
-[Azure AI Gallery](https://gallery.cortanaintelligence.com/) で[コンペティション](https://gallery.cortanaintelligence.com/competitions)のホーム ページにアクセスするか、[http://aka.ms/CIComp](http://aka.ms/CIComp) に移動してください。 ホーム ページには、現在実行されているすべてのコンペティションが一覧表示します。 各コンペティションのサインアップ ページに、詳細な指示と参加ルール、賞品、および期間が記載されています。
+[Azure AI Gallery](https://gallery.cortanaintelligence.com/) で[コンペティション](https://gallery.cortanaintelligence.com/competitions)のホーム ページにアクセスするか、[http://aka.ms/CIComp](https://aka.ms/CIComp) に移動してください。 ホーム ページには、現在実行されているすべてのコンペティションが一覧表示します。 各コンペティションのサインアップ ページに、詳細な指示と参加ルール、賞品、および期間が記載されています。
 
 1. 参加を希望するコンペティションを探し、すべての指示を読み、チュートリアル ビデオをご覧ください。 その後、**[Enter Competition]** ボタンをクリックし、Starter Experiment を既存の Azure Machine Learning ワークスペースにコピーします。 ワークスペースにアクセスしたことがない場合は、事前に作成しておく必要があります。 Starter Experiment を実行し、パフォーマンス メトリックを観察してから、クリエイティビティを発揮してモデルのパフォーマンスを向上させてください。 通常は、この段階に時間の大半を費やします。   
 
@@ -98,7 +98,7 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 
 **コンペティションで受賞した場合、賞金を入手するにはどうすればよいですか。**
 
-コンペティションで受賞した場合、資格、ライセンス、リリースの宣言に署名する必要があります。 このフォームには、コンペティション規則が繰り返し記載されています。 受賞者は、米国の納税申告フォーム W-9 (米国の納税者ではない場合はフォーム W-8BEN) に記入する必要があります。 すべての受賞者には、登録電子メールを使用して、賞金支払いプロセスの一環としてご連絡いたします。 詳細については、[契約条件](http://aka.ms/comptermsandconditions) を参照してください。
+コンペティションで受賞した場合、資格、ライセンス、リリースの宣言に署名する必要があります。 このフォームには、コンペティション規則が繰り返し記載されています。 受賞者は、米国の納税申告フォーム W-9 (米国の納税者ではない場合はフォーム W-8BEN) に記入する必要があります。 すべての受賞者には、登録電子メールを使用して、賞金支払いプロセスの一環としてご連絡いたします。 詳細については、[契約条件](https://aka.ms/comptermsandconditions) を参照してください。
 
 **複数のエントリが同じスコアを取得した場合はどうなりますか。**
 
@@ -114,5 +114,5 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 
 **ユーザーのコンペティション ソリューションおよびエントリは保持されますか。**
 
-ユーザーのエントリは、受賞ソリューションを特定するための評価目的でのみ保持されます。 詳細については、 [契約条件](http://aka.ms/comptermsandconditions) を参照してください。
+ユーザーのエントリは、受賞ソリューションを特定するための評価目的でのみ保持されます。 詳細については、 [契約条件](https://aka.ms/comptermsandconditions) を参照してください。
 

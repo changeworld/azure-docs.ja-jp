@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/11/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c84470936dfc9610f23dacb55d8d8643a2651f71
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f60fde6f0066cf88bd1bd942e475fe410ff16581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948402"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256530"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Linux コンテナーをデプロイする
 
@@ -52,7 +52,7 @@ cd service-fabric-containers/Linux/container-tutorial/Voting
 
 Azure にアプリケーションをデプロイするには、アプリケーションを実行する Service Fabric クラスターが必要です。 パーティー クラスターには、Service Fabric クラスターをすばやく作成する簡単な方法が用意されています。 パーティー クラスターは、Azure でホストされ、Service Fabric チームによって実行される期間限定の無料 Service Fabric クラスターです。 パーティ クラスターは、アプリケーションをデプロイしてプラットフォームについて学習するために使用できます。 このクラスターでは、ノード間のセキュリティおよびクライアントとノードの間のセキュリティに単一の自己署名証明書が使用されます。
 
-サインインして、[Linux クラスター](http://aka.ms/tryservicefabric)に参加します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 **[ReadMe]** リンクをクリックして、証明書パスワードと、証明書を使用するさまざまな環境を構成する方法についての手順を探します。 **ウェルカム** ページと **ReadMe** ページをどちらも開いたままにして、次の手順にある指示のいくつかを使用します。
+サインインして、[Linux クラスター](https://aka.ms/tryservicefabric)に参加します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 **[ReadMe]** リンクをクリックして、証明書パスワードと、証明書を使用するさまざまな環境を構成する方法についての手順を探します。 **ウェルカム** ページと **ReadMe** ページをどちらも開いたままにして、次の手順にある指示のいくつかを使用します。
 
 > [!Note]
 > 1 時間あたりに使用可能なパーティ クラスターの数には制限があります。 パーティ クラスターへのサインアップ時にエラーが発生する場合は、少し待ってからやり直してください。または、[Azure での Service Fabric クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)に関するページの手順に従って、サブスクリプションにクラスターを作成することもできます。

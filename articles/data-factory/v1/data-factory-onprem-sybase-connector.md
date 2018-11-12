@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 75fbfe1e682f0022385bb5c406d772bb217180fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0832d5a3f5b529a815046bb6f12755ad733ff03c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045271"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260569"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +42,7 @@ Sybase データベースが Azure IaaS VM でホストされている場合で�
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Data Management Gateway で Sybase データベースに接続するには、[Sybase iAnywhere.Data.SQLAnywhere のデータ プロバイダー](http://go.microsoft.com/fwlink/?linkid=324846)の 16 以降を Data Management Gateway と同じシステムにインストールする必要があります。 
+Data Management Gateway で Sybase データベースに接続するには、[Sybase iAnywhere.Data.SQLAnywhere のデータ プロバイダー](https://go.microsoft.com/fwlink/?linkid=324846)の 16 以降を Data Management Gateway と同じシステムにインストールする必要があります。 
 
 SAP Sybase SQL Anywhere (ASA) バージョン 16 以降がサポートされます。IQ および ASE はサポートされません。
 
@@ -94,7 +94,7 @@ source の種類が **RelationalSource** (Sybase を含む) である場合は�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 
 ## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON の使用例: Sybase から Azure Blob へのデータのコピー

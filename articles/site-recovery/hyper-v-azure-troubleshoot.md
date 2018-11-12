@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: ramamill
-ms.openlocfilehash: 753f666c9ac0167f672353ff33e28d0f7e68b755
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c7626c6edceddcfbd4d95ff6efc4678836a4502c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212949"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247995"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -167,6 +167,6 @@ Hyper-V レプリケーション イベントはすべて、**Applications and S
 
 これらのツールは、高度なトラブルシューティングに役立ちます。
 
--   VMM の場合は、[サポート診断プラットフォーム (SDP) ツール](http://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx)を使用して Site Recovery のログ収集を実行します。
+-   VMM の場合は、[サポート診断プラットフォーム (SDP) ツール](https://social.technet.microsoft.com/wiki/contents/articles/28198.asr-data-collection-and-analysis-using-the-vmm-support-diagnostics-platform-sdp-tool.aspx)を使用して Site Recovery のログ収集を実行します。
 -   VMM なしの Hyper-V の場合は、[このツールをダウンロードし](https://dcupload.microsoft.com/tools/win7files/DIAG_ASRHyperV_global.DiagCab)、Hyper-V ホスト上でそれを実行してログを収集します。
 

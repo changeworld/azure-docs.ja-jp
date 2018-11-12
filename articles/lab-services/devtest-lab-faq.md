@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 370700f8d146dd626e6e13deceb09dcaea34a9f3
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983952"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262031"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -100,7 +100,7 @@ Azure DevOps を使用している場合は、[DevTest Labs Tasks の拡張機�
 * [Azure DevOps Services から既存の DevTest Labs ラボに新しい VM をデプロイする](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 * [Azure DevOps Services のリリース管理を使用した DevTest Labs への継続的なデプロイ](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-他の継続的インテグレーション (CI)/継続的デリバリー (CD) ツールチェーンの場合、[Azure PowerShell コマンドレット](../azure-resource-manager/resource-group-template-deploy.md)と [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) を使用して [Azure Resource Manager テンプレート](https://aka.ms/dtlquickstarttemplate)をデプロイすることによって、同じシナリオを実現できます。 [DevTest Labs 用 REST API](http://aka.ms/dtlrestapis) を使用して、お使いのツールチェーンと統合することもできます。  
+他の継続的インテグレーション (CI)/継続的デリバリー (CD) ツールチェーンの場合、[Azure PowerShell コマンドレット](../azure-resource-manager/resource-group-template-deploy.md)と [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) を使用して [Azure Resource Manager テンプレート](https://aka.ms/dtlquickstarttemplate)をデプロイすることによって、同じシナリオを実現できます。 [DevTest Labs 用 REST API](https://aka.ms/dtlrestapis) を使用して、お使いのツールチェーンと統合することもできます。  
 
 
 **仮想マシン**
@@ -141,7 +141,7 @@ Azure での開発またはテストに Windows クライアント OS イメー�
 
 ラボに関連付けられているコピー先ストレージ アカウントを検索するには、次の手順に従います。
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 2. 左側のメニューの **[リソース グループ]** を選択します。
 3. ラボに関連付けられているリソース グループを見つけて選択します。
 4. **[概要]** で、いずれかのストレージ アカウントを選択します。

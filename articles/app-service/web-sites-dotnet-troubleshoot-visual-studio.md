@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2028de68b3c50f24c46bfafd804b00e84301a9d7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125246"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256597"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のトラブルシューティング
 ## <a name="overview"></a>概要
-このチュートリアルでは、Visual Studio のツールを活用し、[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web アプリを[デバッグ モード](https://docs.microsoft.com/visualstudio/debugger/)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
+このチュートリアルでは、Visual Studio のツールを活用し、[App Service](https://go.microsoft.com/fwlink/?LinkId=529714) の Web アプリを[デバッグ モード](https://docs.microsoft.com/visualstudio/debugger/)でリモートから実行するか、アプリケーションのログと Web サーバーのログを参照することによってデバッグする方法を説明します。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "43125246"
 * Web サーバーのログ (詳細なエラー メッセージ、失敗した要求トレースを含む) を確認する方法。
 * Azure のストレージ アカウントに診断ログを送り、そこでログを確認する方法。
 
-Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) を使用することもできます。 IntelliTrace については、このチュートリアルでは説明しません。
+Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](https://msdn.microsoft.com/library/vstudio/dd264915.aspx) を使用することもできます。 IntelliTrace については、このチュートリアルでは説明しません。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、[Azure と ASP.NET の使用](app-service-web-get-started-dotnet-framework.md)に関するページで設定した開発環境、Web プロジェクト、および Azure Web アプリを使用します。 Web ジョブのセクションでは、[Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
@@ -48,7 +48,7 @@ Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](http:
 ストリーミング ログ機能は、.NET Framework 4 以降を対象とするアプリケーションでのみ動作します。
 
 ## <a name="sitemanagement"></a>Web アプリの構成と管理
-Visual Studio は、[Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) で利用できる Web アプリ管理機能や構成設定に一部アクセスできるようになっています。 このセクションでは、**サーバー エクスプローラー**を使用することで、その対象となる機能や設定について取り上げます。 最新の Azure の統合機能を確認するために、 **Cloud Explorer** もお試しください。 どちらのウィンドウも **[表示]** メニューから開くことができます。
+Visual Studio は、[Azure Portal](https://go.microsoft.com/fwlink/?LinkId=529715) で利用できる Web アプリ管理機能や構成設定に一部アクセスできるようになっています。 このセクションでは、**サーバー エクスプローラー**を使用することで、その対象となる機能や設定について取り上げます。 最新の Azure の統合機能を確認するために、 **Cloud Explorer** もお試しください。 どちらのウィンドウも **[表示]** メニューから開くことができます。
 
 1. まだ Visual Studio で Azure にサインインしていない場合は、**サーバー エクスプ ローラー**で、**[Azure]** を右クリックし、**Microsoft Azure サブスクリプション**への接続を選択します。
 
@@ -59,7 +59,7 @@ Visual Studio は、[Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715
    >
    >
 
-    Visual Studio から Azure リソースへの接続の詳細については、「 [アカウント、サブスクリプション、管理ロールの管理](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)」を参照してください。
+    Visual Studio から Azure リソースへの接続の詳細については、「 [アカウント、サブスクリプション、管理ロールの管理](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)」を参照してください。
 2. **サーバー エクスプローラー**で **[Azure]** を展開し、**[App Service]** を展開します。
 3. [Azure に ASP.NET Web アプリを作成する](app-service-web-get-started-dotnet-framework.md)方法に関するページで作成した Web アプリを含むリソース グループを展開し、Web アプリ ノードを右クリックして、**[設定の表示]** をクリックします。
 
@@ -253,13 +253,13 @@ public ActionResult About()
 ```
 * デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。  詳しくは、「[Specify whether to debug only user code using Just My Code in Visual Studio (Visual Studio で [マイコードのみ] を使用してユーザー コードのみをデバッグするかどうかを指定する)](https://docs.microsoft.com/visualstudio/debugger/just-my-code)」をご覧ください。
 * リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。 この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。 必要に応じて、この機能を何回でも簡単に有効に戻すことができます。 積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
-* 手動でデバッガーを Web アプリケーション プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「 [Visual Studio でのデバッグ](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」を参照してください。
+* 手動でデバッガーを Web アプリケーション プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「 [Visual Studio でのデバッグ](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」を参照してください。
 
 ## <a name="logsoverview"></a>診断ログの概要
 Azure の Web アプリケーションで動作する ASP.NET アプリケーションでは、次の種類のログが作成されます。
 
 * **アプリケーション トレース ログ**<br/>
-  アプリケーションが [System.Diagnostics.Trace](http://msdn.microsoft.com/library/system.diagnostics.trace.aspx) クラスのメソッドを呼び出すことによって作成されます。
+  アプリケーションが [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx) クラスのメソッドを呼び出すことによって作成されます。
 * **Web サーバー ログ**<br/>
   Web サーバーは、Web アプリに届くすべての HTTP 要求について、それぞれログ エントリを作成します。
 * **詳細なエラー メッセージ ログ**<br/>
@@ -340,7 +340,7 @@ public ActionResult Contact()
 ```
 
 `WebPageTraceListener` を使用すると、ブラウザーから `/trace.axd` にアクセスすることでトレース出力を表示できます。
-3. Web.config ファイルの `<system.web>` に、次のような <a href="http://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trace 要素</a>を追加します。
+3. Web.config ファイルの `<system.web>` に、次のような <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trace 要素</a>を追加します。
 
 ``` xml
 <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -475,7 +475,7 @@ Azure ポータルを使用して、Azure ストレージ アカウントへの 
     ![ダウンロードされたファイル](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
 
    * アプリケーション トレース ログは、*LogFiles\Application* フォルダーの *.txt* ファイルに記録されます。
-   * Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。 これらのファイルの閲覧と操作は、 [Log Parser](http://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。
+   * Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。 これらのファイルの閲覧と操作は、 [Log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。
    * 詳細なエラー メッセージのログは、*LogFiles\DetailedErrors* フォルダーの *.html* ファイルに記録されます。
 
     (*deployments* フォルダーは、ソース管理の発行によって作成されたファイルに使用されます。Visual Studio の発行に関連したファイルは保存されません。 *Git* フォルダーは、ログ ファイル ストリーミング サービスやソース管理の発行に関連したトレースに使用されます。)  
@@ -554,7 +554,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 
      ![Storage logs in table view](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracelogtableview.png)
 
-     This view shows additional fields you don't see in any other views. This view also enables you to filter logs by using special Query Builder UI for constructing a query. For more information, see Working with Table Resources - Filtering Entities in [Browsing Storage Resources with Server Explorer](http://msdn.microsoft.com/library/ff683677.aspx).
+     This view shows additional fields you don't see in any other views. This view also enables you to filter logs by using special Query Builder UI for constructing a query. For more information, see Working with Table Resources - Filtering Entities in [Browsing Storage Resources with Server Explorer](https://msdn.microsoft.com/library/ff683677.aspx).
 14. To look at the details for a single row, double-click one of the rows.
 
      ![Trace table in Server Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png)
@@ -624,17 +624,17 @@ Azure の Web アプリケーションで作成されたログは Visual Studio 
 Azure App Service の Web アプリのトラブルシューティングの詳細については、以下のリソースを参照してください。
 
 * [Web アプリを監視する方法](web-sites-monitor.md)
-* [Visual Studio 2013 を使用した Azure の Web Apps でのメモリ リークの調査](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 マネージド メモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
+* [Visual Studio 2013 を使用した Azure の Web Apps でのメモリ リークの調査](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 マネージド メモリの問題の分析に役立つ Visual Studio の機能に関する Microsoft ALM のブログ記事
 * [Azure web apps online tools you should know about (知っておくべき Azure Web アプリのオンライン ツール)](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 Amit Apple によるブログの投稿です。
 
 具体的なトラブルシューティングについての質問は、次のいずれかのフォーラムで投稿してください。
 
 * [ASP.NET サイト上の Azure フォーラム](http://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET)。
-* [MSDN 上の Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/)。
+* [MSDN 上の Azure フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/)。
 * [StackOverflow.com](http://www.stackoverflow.com)。
 
 ### <a name="debugging-in-visual-studio"></a>Visual Studio でのデバッグ
-Visual Studio のデバッグ モードの使い方については、「[Visual Studio でのデバッグ](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」と [Visual Studio 2010 でのデバッグのヒントに関するページ](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx)を参照してください。
+Visual Studio のデバッグ モードの使い方については、「[Visual Studio でのデバッグ](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」と [Visual Studio 2010 でのデバッグのヒントに関するページ](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx)を参照してください。
 
 ### <a name="remote-debugging-in-azure"></a>Azure でのリモート デバッグ
 Azure の Web アプリと Web ジョブのリモート デバッグの詳細については、以下のリソースを参照してください。
@@ -644,21 +644,21 @@ Azure の Web アプリと Web ジョブのリモート デバッグの詳細に
 * [Introduction to Remote Debugging on Azure App Service Web Apps part 3 - Multi-Instance environment and GIT (Azure App Service Web Apps のリモート デバッグの概要 3 - マルチインスタンス環境と GIT)](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [WebJobs Debugging (Web ジョブのデバッグ) (ビデオ)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-Web アプリで Azure Web API または Mobile Services バックエンドを使用し、デバッグを実行する必要がある場合は [Visual Studio での .NET のデバッグに関するページ](http://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)を参照してください。
+Web アプリで Azure Web API または Mobile Services バックエンドを使用し、デバッグを実行する必要がある場合は [Visual Studio での .NET のデバッグに関するページ](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)を参照してください。
 
 ### <a name="tracing-in-aspnet-applications"></a>ASP.NET アプリケーションでのトレース
 ASP.NET トレースに関しては、最新かつ必要な情報をすべて網羅した解説がインターネットには存在しません。 そのため、過去に作成された入門者向けの資料を参考にするのが最善の方法となります。MVC がまだ存在していなかったために Web フォームを想定して書かれていますが、具体的な問題については、最新のブログで情報を補うことができます。 たとえば、以下のリソースが参考になります。
 
 * [監視と利用統計情報 (Azure での実際のクラウド アプリケーションのビルド) に関するページ](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)。<br>
   Azure クラウド アプリケーションをトレースするためのベスト プラクティスを掲載した E-Book の章。
-* [ASP.NET トレース](http://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [ASP.NET トレース](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
   最新とは言えませんが、基本的な事柄がわかりやすくまとめられています。
-* [トレース リスナー](http://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
-  トレース リスナーについて書かれていますが、[WebPageTraceListener](http://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx) には触れていません。
-* [チュートリアル: ASP.NET トレースと System.Diagnostics トレースの統合](http://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [トレース リスナー](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
+  トレース リスナーについて書かれていますが、[WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx) には触れていません。
+* [チュートリアル: ASP.NET トレースと System.Diagnostics トレースの統合](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
   この記事も古い情報ですが、入門記事では扱っていないような詳しい情報が記載されています。
-* [ASP.NET MVC Razor ビューでのトレース](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。 Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例](http://msdn.microsoft.com/library/bb397417.aspx)」で紹介されている Global.asax サンプルを参照してください。 MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
+* [ASP.NET MVC Razor ビューでのトレース](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+  Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。 Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例](https://msdn.microsoft.com/library/bb397417.aspx)」で紹介されている Global.asax サンプルを参照してください。 MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
 
 ``` c#
 try
@@ -684,12 +684,12 @@ catch (Exception ex)
 ### <a name="analyzing-web-server-logs"></a>Web サーバーのログの分析
 Web サーバーのログの分析の詳細については、次のリソースを参照してください。
 
-* [LogParser](http://www.microsoft.com/download/details.aspx?id=24659)<br/>
+* [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Web サーバーのログ (*.log* ファイル) に記録されているデータを表示するためのツールです。
 * [IIS のパフォーマンスの問題やアプリケーション エラーを LogParser でトラブルシューティングする](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Web サーバーのログを分析する際に活用できる Log Parser ツールについて基本的な事柄が説明されています。
-* [LogParser の使用に関して Robert McMurray が執筆したブログ記事](http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
-* [IIS 7.0、IIS 7.5、IIS 8.0 における HTTP 状態コード](http://support.microsoft.com/kb/943891)
+* [LogParser の使用に関して Robert McMurray が執筆したブログ記事](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [IIS 7.0、IIS 7.5、IIS 8.0 における HTTP 状態コード](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>失敗した要求トレース ログの分析
 失敗した要求トレース ログの活用方法については、Microsoft TechNet Web サイトの「[Using Failed Request Tracing](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」 (失敗した要求トレースの使用) セクションなどが参考になります。 ただし、このドキュメントで扱う内容は、失敗した要求トレースを IIS で構成する作業が主体です。この作業を Azure Web Apps で行うことはできません。

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 353caf2bca68513a1153fe7b569c85606f72e753
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 55c8d3ff394fcf2df92bc80886bc86d29441e547
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631040"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254691"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -220,7 +220,7 @@ Azure Resource Manager では、すべての Azure リソースを Azure リソ�
 
 Azure Resource Manager では、1 つのクラスターに複数の SAP システム識別子 (SID) ASCS/SCS インスタンスをインストールすることができます。 各 Azure 内部ロード バランサーで複数の IP アドレスがサポートされているため、マルチ SID インスタンスが可能になります。
 
-Azure クラシック デプロイ モデルを使用するには、Azure での SAP NetWeaver に関する [Azure 上の Windows Server フェールオーバー クラスターと SIOS DataKeeper を使用した SAP ASCS/SCS インスタンスのクラスタリング](http://go.microsoft.com/fwlink/?LinkId=613056)のドキュメントに記載されている手順に従う必要があります。
+Azure クラシック デプロイ モデルを使用するには、Azure での SAP NetWeaver に関する [Azure 上の Windows Server フェールオーバー クラスターと SIOS DataKeeper を使用した SAP ASCS/SCS インスタンスのクラスタリング](https://go.microsoft.com/fwlink/?LinkId=613056)のドキュメントに記載されている手順に従う必要があります。
 
 > [!IMPORTANT]
 > SAP のインストールには、Azure Resource Manager デプロイ モデルを使用することを強くお勧めします。 クラシック デプロイ モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   

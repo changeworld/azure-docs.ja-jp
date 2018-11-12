@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: ningk
-ms.openlocfilehash: 447532452a848c88fd927f42e4263cef4742dd89
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0ba85e82824bc257869d9801f342bd6dbb0402d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841505"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247451"
 ---
 # <a name="optimize-mysql-performance-on-azure-linux-vms"></a>Azure Linux VM 上での MySQL のパフォーマンスを最適化する
 Azure では、仮想ハードウェアの選択およびソフトウェアの構成の両方で MySQL のパフォーマンスに影響を与える多くの要素があります。 この記事では、ストレージ、システム、およびデータベースの構成でのパフォーマンスの最適化について説明します。
@@ -30,7 +30,7 @@ Azure では、仮想ハードウェアの選択およびソフトウェアの�
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ## <a name="utilize-raid-on-an-azure-virtual-machine"></a>Azure 仮想マシン上での RAID の使用
-ストレージは、クラウド環境でのデータベース パフォーマンスに影響を与える重要な要素です。 RAID は、1 つのディスクと比較して、同時実行制御を使用して高速アクセスを提供できます。 詳細については、「[Standard RAID levels](http://en.wikipedia.org/wiki/Standard_RAID_levels)」(標準の RAID レベル) を参照してください。   
+ストレージは、クラウド環境でのデータベース パフォーマンスに影響を与える重要な要素です。 RAID は、1 つのディスクと比較して、コンカレンシー制御を使用して高速アクセスを提供できます。 詳細については、「[Standard RAID levels](http://en.wikipedia.org/wiki/Standard_RAID_levels)」(標準の RAID レベル) を参照してください。   
 
 Azure でのディスク I/O スループットと I/O 応答時間は、RAID によって改善できます。 ラボ テストでは、RAID のディスクの数が 2 倍 (2 から 4、4 から 8 など) になると、平均でスループットが 2 倍になり I/O 応答時間は半分に短縮されました。 詳細については、 [付録 A](#AppendixA) を参照してください。  
 
@@ -38,7 +38,7 @@ Azure でのディスク I/O スループットと I/O 応答時間は、RAID �
 
 チャンク サイズの検討が必要になることもあります。 一般に、チャンクのサイズを大きくした場合、特に大量の書き込みに対してオーバーヘッドが低くなります。 ただし、チャンク サイズが大きすぎるとオーバーヘッドが増大し、RAID を活用できなくなる場合があります。 現在の既定のサイズは 512 KB であり、最も一般的な運用環境に最適であることがわかっています。 詳細については、 [付録 C](#AppendixC) を参照してください。   
 
-仮想マシン タイプの種類ごとに、追加できるディスクの数に制限があります。 これらの制限の詳細については、[Azure の仮想マシンおよびクラウド サービスのサイズ](http://msdn.microsoft.com/library/azure/dn197896.aspx)に関するトピックを参照してください。 この記事での RAID 例の説明には 4 つのデータ ディスクを接続する必要がありますが、より少ないディスクで RAID を設定することもできます。  
+仮想マシン タイプの種類ごとに、追加できるディスクの数に制限があります。 これらの制限の詳細については、[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)に関するトピックを参照してください。 この記事での RAID 例の説明には 4 つのデータ ディスクを接続する必要がありますが、より少ないディスクで RAID を設定することもできます。  
 
 この記事では、Linux 仮想マシンを既に作成していること、および MYSQL をインストールして構成していることを前提としています。 作業の開始の詳細については、「MySQL を Azure でインストールする方法」を参照してください。  
 
@@ -180,8 +180,8 @@ Atime のログ記録を無効にするには、ファイル システムの構�
 
 ![アクセス変更後のコード][6]
 
-## <a name="increase-the-maximum-number-of-system-handles-for-high-concurrency"></a>高い同時実行性を実現するためにシステム処理の最大数を増やす
-MySQL は同時実行性の高いデータベースです。 同時実行処理の既定数は、Linuxでは 1024 ですが、必ずしも十分ではありません。 次の手順で、システムの同時実行処理の最大数を増やして、MySQL の高い同時実行性をサポートします。
+## <a name="increase-the-maximum-number-of-system-handles-for-high-concurrency"></a>高いコンカレンシーを実現するためにシステム処理の最大数を増やす
+MySQL はコンカレンシーの高いデータベースです。 同時実行処理の既定数は、Linuxでは 1024 ですが、必ずしも十分ではありません。 次の手順で、システムのコンカレント処理の最大数を増やして、MySQL の高いコンカレンシーをサポートします。
 
 ### <a name="modify-the-limitsconf-file"></a>Limits.conf ファイルを変更します。
 許可される同時実行処理の最大数を増やすには、/etc/security/limits.conf ファイルに次の 4 つの行を追加します。 システムがサポートできる最大数は 65536 であることに注意してください。   

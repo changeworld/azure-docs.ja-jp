@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 00143ab1f4aaba0f700e084d9225570c28713d0d
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 020923a76c94b10165e95bb4c5950419595dff0b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140519"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252345"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の開始
 次の表は、特定のシナリオに最も適している、Azure Automation の Runbook を開始する方法を決定するときに役立ちます。 この記事には、Azure ポータルと Windows PowerShell を使用して Runbook を開始する詳細情報が含まれます。 他の方法の詳細情報については、以下のリンクからアクセスできる他のドキュメントに記されています。
@@ -66,7 +66,7 @@ While ($doLoop) {
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-Runbook でパラメーターが必要な場合には、それらを [Hashtable](http://technet.microsoft.com/library/hh847780.aspx) として指定する必要があります。その Hashtable のキーがパラメーター名、値がパラメーター値になります。 次の例は、FirstName と LastName という 2 つの文字列パラメーターと、RepeatCount という名前の整数、および Show という名前のブール型パラメーターが含まれる Runbook を開始する方法を示します。 パラメーターについて詳しくは、次の「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
+Runbook でパラメーターが必要な場合には、それらを [Hashtable](https://technet.microsoft.com/library/hh847780.aspx) として指定する必要があります。その Hashtable のキーがパラメーター名、値がパラメーター値になります。 次の例は、FirstName と LastName という 2 つの文字列パラメーターと、RepeatCount という名前の整数、および Show という名前のブール型パラメーターが含まれる Runbook を開始する方法を示します。 パラメーターについて詳しくは、次の「[Runbook のパラメーター](#Runbook-parameters)」をご覧ください。
 
 ```
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}

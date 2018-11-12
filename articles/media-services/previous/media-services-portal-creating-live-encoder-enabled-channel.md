@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: b9ac1696594ab9f7cb67bb0e340c6a80158e67e2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d53e2e76253bdccfeb43f6c718d9fe3ae7f3f21a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940984"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251987"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Azure Media Services を使用してライブ ストリーミングを実行し、Azure Portal でマルチビットレートのストリームを作成する方法
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ ms.locfileid: "33940984"
 > 
 > 
 
-1. ビデオ カメラをコンピューターに接続します。 オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーはシングル ビットレート ストリームを RTMP またはスムーズ ストリーミングで出力できます。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
+1. ビデオ カメラをコンピューターに接続します。 オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーはシングル ビットレート ストリームを RTMP またはスムーズ ストリーミングで出力できます。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
    
     この手順は、チャネルを作成した後でも実行できます。
 2. チャネルを作成し、起動します。 
@@ -138,7 +138,7 @@ ms.locfileid: "33940984"
 
 ストリーミングとアーカイブを開始する準備ができたら、イベントまたはプログラムを開始します。 イベントのストリーミングとアーカイブを停止するには、任意のタイミングでイベントを停止します。 
 
-アーカイブ済みコンテンツを削除するには、イベントを停止して削除したうえで、関連付けられた資産を削除します。 イベントが資産を使用している場合は資産を削除できません。まずイベントを削除する必要があります。 
+アーカイブ済みコンテンツを削除するには、イベントを停止して削除したうえで、関連付けられたアセットを削除します。 イベントが資産を使用している場合は資産を削除できません。まずイベントを削除する必要があります。 
 
 イベントを停止して削除した後も、資産を削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。
 
@@ -186,11 +186,11 @@ ms.locfileid: "33940984"
 * ライブ イベントのアーカイブをオンデマンド ストリームとして提供し続けるのでない限り、ストリーミング エンドポイントを停止できます。 チャネルが停止状態の場合は、いかなる課金も発生しません。
 
 ## <a name="view-archived-content"></a>アーカイブ済みコンテンツを視聴する
-イベントを停止して削除した後も、資産を削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントが資産を使用している場合は資産を削除できません。まずイベントを削除する必要があります。 
+イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。  
 
-資産を管理するには、**[設定]** を選択し、**[資産]** をクリックします。
+アセットを管理するには、**[設定]** を選択し、**[アセット]** をクリックします。
 
-![資産](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
+![アセット](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>考慮事項
 * 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。

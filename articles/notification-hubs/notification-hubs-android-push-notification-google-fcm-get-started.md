@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 2bc085989ff3bbbc50042c46b338f748a10aa87e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ec429407324210fca824ebd0734ddb39bce56ac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232798"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256563"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>チュートリアル: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "38232798"
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。
 
-* このチュートリアルでは、上記のアクティブな Azure アカウント以外に、最新版の [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)が必要です。
+* このチュートリアルでは、上記のアクティブな Azure アカウント以外に、最新版の [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797)が必要です。
 * Android 2.3 以上 (Firebase Cloud Messaging 対応)。
 * Firebase Cloud Messaging には Google Repository revision 27 以上が必要です。
 * Google Play Services 9.0.2 以上 (Firebase Cloud Messaging 対応)。

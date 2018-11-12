@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/10/2018
 ms.author: genli
-ms.openlocfilehash: f9b950b1d85f50331d556a54b4237d78ec5c07ac
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4d30cca0106e52706326bfd91a2d0dfb0a64ca04
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388168"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258461"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの**第 1 世代の VM のみ**がサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
@@ -48,7 +48,7 @@ Azure VM のサポート ポリシーの詳細については、[Microsoft Azure
 >この記事のコマンドは、管理者特権の PowerShell セッションで実行する必要があります。
 
 ### <a name="convert-disk-by-using-powershell"></a>PowerShell を使用したディスクの変換
-仮想ディスクは、Windows PowerShell で [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) コマンドを使用して変換できます。 PowerShell の起動時に、**[管理者として実行]** を選択します。 
+仮想ディスクは、Windows PowerShell で [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) コマンドを使用して変換できます。 PowerShell の起動時に、**[管理者として実行]** を選択します。 
 
 次の例では、VHDX から VHD に、および容量可変ディスクから容量固定ディスクに変換するコマンドを示します。
 
@@ -58,7 +58,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 このコマンドでは、"-Path" の値を、変換する仮想ハードディスクへのパスで置き換え、"-DestinationPath" の値を、新しいパスと変換されたディスクの名前で置き換えます。
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK ディスク フォーマットからの変換
-[VMDK ファイル形式](https://en.wikipedia.org/wiki/VMDK)の Windows VM イメージがある場合は、[Microsoft VM Converter](https://www.microsoft.com/download/details.aspx?id=42497) を使用して VHD に変換できます。 詳細については、ブログ記事「[How to Convert a VMware VMDK to Hyper-V VHD (VMware VMDK から Hyper-V VHD への変換方法)](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx)」を参照してください。
+[VMDK ファイル形式](https://en.wikipedia.org/wiki/VMDK)の Windows VM イメージがある場合は、[Microsoft VM Converter](https://www.microsoft.com/download/details.aspx?id=42497) を使用して VHD に変換できます。 詳細については、ブログ記事「[How to Convert a VMware VMDK to Hyper-V VHD (VMware VMDK から Hyper-V VHD への変換方法)](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx)」を参照してください。
 
 ## <a name="set-windows-configurations-for-azure"></a>Azure 用の Windows 構成を設定する
 
@@ -314,10 +314,10 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 
     このポリシーには、次のグループが表示されている必要があります。
 
-    - Administrators
+    - 管理者
     - Backup Operators
     - Everyone
-    - Users
+    - ユーザー
 
 10. VM を再起動して、Windows が引き続き正常であり、RDP 接続を使用してアクセス可能であることを確認します。 この時点で、ローカル Hyper-V に VM を作成して、VM が完全に開始されていることを確認し、この VM が RDP でアクセス可能であるかどうかをテストできます。
 
@@ -328,9 +328,9 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 ### <a name="install-windows-updates"></a>Windows 更新プログラムのインストール
 理想的な構成は、**マシンのパッチ レベルが最新である**構成です。 これが不可能である場合は、以下の構成プログラムがインストールされていることを確認してください。
 
-| コンポーネント               | バイナリ         | Windows 7 SP1、Windows Server 2008 R2  SP1 | Windows 8、Windows Server 2012               | Windows 8.1、Windows Server 2012 R2 | Windows 10 バージョン 1607、Windows Server 2016 バージョン 1607 | Windows 10 バージョン 1703    | Windows 10 1709、Windows Server 2016 バージョン 1709 | Windows 10 1803、Windows Server 2016 バージョン 1803 |
+| コンポーネント               | Binary         | Windows 7 SP1、Windows Server 2008 R2  SP1 | Windows 8、Windows Server 2012               | Windows 8.1、Windows Server 2012 R2 | Windows 10 バージョン 1607、Windows Server 2016 バージョン 1607 | Windows 10 バージョン 1703    | Windows 10 1709、Windows Server 2016 バージョン 1709 | Windows 10 1803、Windows Server 2016 バージョン 1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
-| ストレージ                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
+| Storage                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
 |                         | ntfs.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
@@ -377,7 +377,7 @@ sysrep は、Windows インストールに組み込むことができるプロ�
 - [特殊化されたディスクからの VM の作成](create-vm-specialized.md)
 - [特殊化された VHD ディスクからの VM の作成](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-一般化されたイメージを作成する場合は、sysprep を実行する必要があります。 Sysprep の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
+一般化されたイメージを作成する場合は、sysprep を実行する必要があります。 Sysprep の詳細については、「[Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
 
 Windows ベースのコンピューターにインストールされているロールまたはアプリケーションには、この一般化をサポートしていないものもあります。 そのため、この手順を実行する前に、以下の記事を参照して、そのコンピューターのロールが sysprep でサポートされていることを確認してください。 詳しくは、「[Sysprep Support for Server Roles (サーバー ロールの sysprep サポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。
 
@@ -401,7 +401,7 @@ Windows ベースのコンピューターにインストールされているロ
 ## <a name="complete-recommended-configurations"></a>推奨される構成を完了する
 次の設定は、VHD のアップロードに影響しません。 ただし、これらを構成しておくことを強くお勧めします。
 
-* [Azure VM エージェント](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をインストールします。 その後で、VM 拡張機能を有効にできます。 VM 拡張機能によって、パスワードのリセットや RDP の構成など、VM で使用する重要な機能のほとんどが実装されます。 詳細については、次を参照してください。
+* [Azure VM エージェント](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をインストールします。 その後で、VM 拡張機能を有効にできます。 VM 拡張機能によって、パスワードのリセットや RDP の構成など、VM で使用する重要な機能のほとんどが実装されます。 詳細については、次を参照してください。
 
     - [VM エージェントおよび拡張機能 – パート 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
     - [VM エージェントおよび拡張機能 – パート 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)

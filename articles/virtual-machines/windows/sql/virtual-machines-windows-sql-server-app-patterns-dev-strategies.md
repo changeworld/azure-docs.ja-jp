@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 18de5b3d71922effa72414a6a52b126a34076cf3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9ccf7d85b52759a3f2cd64facc6ee8d7255f0fac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722131"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253178"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -236,7 +236,7 @@ Azure では、Active Directory を組織のスタンドアロン クラウド �
 
 n 層ハイブリッド アプリケーション パターンでは、指定の順序で次のワークフローを実装できます。
 
-1. [Microsoft Assessment and Planning (MAP) Toolkit](http://microsoft.com/map)を使用して、クラウドに移行する必要があるエンタープライズ データベース アプリケーションを特定します。 MAP Toolkit では、仮想化を検討しているコンピューターからインベントリとパフォーマンス データを収集し、容量と評価の計画に関する推奨事項を提示します。
+1. [Microsoft Assessment and Planning (MAP) Toolkit](https://microsoft.com/map)を使用して、クラウドに移行する必要があるエンタープライズ データベース アプリケーションを特定します。 MAP Toolkit では、仮想化を検討しているコンピューターからインベントリとパフォーマンス データを収集し、容量と評価の計画に関する推奨事項を提示します。
 2. ストレージ アカウントや仮想マシンなど、Azure プラットフォームで必要なリソースと構成を計画します。
 3. オンプレミスの企業ネットワークと [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md)間のネットワーク接続をセットアップします。 オンプレミスの企業ネットワークと Azure の仮想マシン間の接続をセットアップするには、次の 2 つの方法のどちらかを使用します。
    

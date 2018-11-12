@@ -9,16 +9,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 6de0d29895a6d12d3a5aa761c0c4c5148f62dd81
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025941"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256274"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Azure VM をバックアップする準備をする
 
-この記事では、Azure Resource Manager でデプロイされた仮想マシン (VM) をバックアップできるように環境を準備する手順について説明します。 手順の各ステップでは、Azure ポータルを使用します。 仮想マシンをバックアップするときに、バックアップ データや回復ポイントは Recovery Services Backup コンテナーに格納されます。 
+この記事では、Azure Resource Manager でデプロイされた仮想マシン (VM) をバックアップできるように環境を準備する手順について説明します。 手順の各ステップでは、Azure ポータルを使用します。 仮想マシンをバックアップするときに、バックアップ データや回復ポイントは Recovery Services Backup コンテナーに格納されます。
 
 
 
@@ -45,7 +45,7 @@ Resource Manager でデプロイされた仮想マシンを保護 (またはバ�
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>VM のバックアップと復元に関する制限
 環境を準備する前に、制限事項を把握してください。
 
-* 32 台を超えるデータ ディスクを搭載した仮想マシンのバックアップはサポートされません。
+* データ ディスクを 16 個よりも多く搭載した仮想マシンのバックアップはサポートされません。
 * Linux Unified Key Setup (LUKS) 暗号化を使用して暗号化された Linux VM のバックアップはサポートされていません。
 * クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバー構成を含む VM のバックアップはお勧めしません。 行った場合、CSV ライターの障害が発生します。 スナップショット タスク中は、クラスター構成に含まれるすべての VM が必要になります。 Azure Backup では、マルチ VM 整合性をサポートしていません。
 * バックアップ データには、ネットワーク経由でマウントされて VM に接続されているドライブは含まれません。
@@ -182,8 +182,8 @@ Azure VM のバックアップで問題が発生する場合は、次の表を�
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
-| VM エージェントのインストール |[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 |<li> 最新の [Linux エージェント](../virtual-machines/extensions/agent-linux.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからエージェントをインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることは**お勧めしません**。  |
-| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 ディストリビューション リポジトリからエージェントを更新することをお勧めします。 GitHub から直接 Linux VM エージェントを更新することは**お勧めしません**。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
+| VM エージェントのインストール |[エージェント MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 |<li> 最新の [Linux エージェント](../virtual-machines/extensions/agent-linux.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからエージェントをインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることは**お勧めしません**。  |
+| VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 ディストリビューション リポジトリからエージェントを更新することをお勧めします。 GitHub から直接 Linux VM エージェントを更新することは**お勧めしません**。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
 | VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 |該当なし |
 
 ### <a name="backup-extension"></a>バックアップ拡張機能
@@ -194,7 +194,7 @@ VM エージェントが仮想マシンにインストールされると、Azure
 ## <a name="establish-network-connectivity"></a>ネットワーク接続を確立する
 拡張機能が VM スナップショットを管理するためには、Azure のパブリック IP アドレスへの接続が必要です。 適切なインターネット接続を利用できない場合、仮想マシンからの HTTP 要求はタイムアウトになり、バックアップ操作は失敗します。 (たとえば、ネットワーク セキュリティ グループ (NSG) を使用して) デプロイにアクセス制限が適用されている場合は、次のいずれかのオプションを選択して、バックアップ トラフィックの明確なパスを指定する必要があります。
 
-* [Azure データ センターの IP の範囲をホワイトリストに登録する](http://www.microsoft.com/en-us/download/details.aspx?id=41653)。
+* [Azure データ センターの IP の範囲をホワイトリストに登録する](https://www.microsoft.com/download/details.aspx?id=41653)。
 * トラフィックをルーティングする HTTP プロキシ サーバーをデプロイする。
 
 どのオプションを使用するか決める場合は、次に示す管理の容易さ、細かな制御、およびコストの間のトレードオフを考慮します。
@@ -205,7 +205,7 @@ VM エージェントが仮想マシンにインストールされると、Azure
 | HTTP プロキシを使用する |許可するストレージ URL をプロキシで詳細に制御可能。<br><br>VM に対するインターネット アクセスを単一の場所で実現。<br><br>Azure の IP アドレスの変更の影響を受けない。 |プロキシ ソフトウェアで VM を実行するための追加のコストが発生する。 |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Azure データ センターの IP の範囲をホワイトリストに登録する
-Azure データ センターの IP 範囲をホワイトリストに登録する場合、IP 範囲の詳細と手順については、[Azure の Web サイト](http://www.microsoft.com/en-us/download/details.aspx?id=41653)を参照してください。
+Azure データ センターの IP 範囲をホワイトリストに登録する場合、IP 範囲の詳細と手順については、[Azure の Web サイト](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください。
 
 [サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、特定のリージョンのストレージに接続できます。 ストレージ アカウントへのアクセスを許可するルールが、インターネット アクセスをブロックするルールよりも優先度が高いことを確認してください。
 
@@ -305,7 +305,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ```
 
 ## <a name="questions"></a>疑問がある場合
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
+ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](https://aka.ms/azurebackup_feedback)。
 
 ## <a name="next-steps"></a>次の手順
 これで VM をバックアップするために環境の準備が整いました。次のステップとして、バックアップの作成を行ってください。 計画に関する記事で、VM のバックアップについて詳細を説明します。

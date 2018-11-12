@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 3821e13fd968e458e463e90ef338da6637d8d8f2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 698cae13b9e78de6318c28bde998e195540c513c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622016"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256801"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services のロールに .NET をインストールする
 この記事では、Azure ゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 ゲスト OS にインストールした .NET を使用して、クラウド サービスの Web ロールおよび worker ロールを構成できます。
@@ -34,7 +34,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 ## <a name="add-the-net-installer-to-your-project"></a>プロジェクトに .NET インストーラーを追加する
 .NET Framework の Web インストーラーをダウンロードするには、次のうち、インストールするバージョンを選択します。
 
-* [.NET 4.7.2 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET 4.7.2 Web インストーラー](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET 4.6.2 Web インストーラー](https://www.microsoft.com/download/details.aspx?id=53345)
 
 *Web* ロールのインストールを追加するには、次の操作を実行します。

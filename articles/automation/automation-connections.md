@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dbf816d4fd0d9f6044ebeea9a23a60adcc5bc8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 1e9ca18d2075d40f6f55bc84723f79ae7e10850b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044605"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261215"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
 
 Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。 これには、URL やポートなどの接続情報に加えて、ユーザー名とパスワードなど認証に必要な情報も含まれる場合があります。 接続の値は、複数の変数を作成する場合とは対照的に、1 つの資産内の特定のアプリケーションに接続するためのプロパティをすべて保持します。 ユーザーは、1 つの場所で接続のための値を編集でき、1 つのパラメーターで Runbook または DSC 構成に接続の名前を渡すことができます。 Runbook または DSC 構成では、 **Get-AutomationConnection** アクティビティで接続のプロパティにアクセスできます。 
 
-接続を作成するときは、 *接続の種類*を指定する必要があります。 接続の種類は、一連のプロパティを定義しているテンプレートです。 接続では、その接続の種類で定義されている各プロパティの値を定義します。 接続の種類は Azure Automation の統合モジュールに追加されるか、[Azure Automation API](http://msdn.microsoft.com/library/azure/mt163818.aspx) によって作成され (統合モジュールに接続の種類が含まれていない場合)、Automation アカウントにインポートされます。 それ以外の場合は、Automation の接続の種類を指定するメタデータ ファイルを作成する必要があります。  詳細については、「[Azure Automation 統合モジュール](automation-integration-modules.md)」を参照してください。  
+接続を作成するときは、 *接続の種類*を指定する必要があります。 接続の種類は、一連のプロパティを定義しているテンプレートです。 接続では、その接続の種類で定義されている各プロパティの値を定義します。 接続の種類は Azure Automation の統合モジュールに追加されるか、[Azure Automation API](https://msdn.microsoft.com/library/azure/mt163818.aspx) によって作成され (統合モジュールに接続の種類が含まれていない場合)、Automation アカウントにインポートされます。 それ以外の場合は、Automation の接続の種類を指定するメタデータ ファイルを作成する必要があります。  詳細については、「[Azure Automation 統合モジュール](automation-integration-modules.md)」を参照してください。  
 
 >[!NOTE]
 >Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。
@@ -70,7 +70,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>Windows PowerShell で新しい接続を作成するには
 
-Windows PowerShell の [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) コマンドレットを使用して新しい接続を作成します。 このコマンドレットには、接続の種類で定義されている各プロパティの値を定義している **ハッシュ テーブル** を受け取る [ConnectionFieldValues](http://technet.microsoft.com/library/hh847780.aspx) という名前のパラメーターがあります。
+Windows PowerShell の [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) コマンドレットを使用して新しい接続を作成します。 このコマンドレットには、接続の種類で定義されている各プロパティの値を定義している **ハッシュ テーブル** を受け取る [ConnectionFieldValues](https://technet.microsoft.com/library/hh847780.aspx) という名前のパラメーターがあります。
 
 Automation の [Run As アカウント](automation-sec-configure-azure-runas-account.md)でサービス プリンシパルを使用した Runbook の認証に慣れている場合は、ポータルから Run As アカウントを作成するための代替方法として用意されている PowerShell スクリプトを使用して、新しい接続資産を作成できます。次のサンプル コマンドを使用できます。  
 
@@ -84,7 +84,7 @@ New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAcc
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Runbook または DSC 構成での接続の使用
 
-**Get-AutomationConnection** コマンドレットを使用して、Runbook または DSC 構成の接続を取得します。  [Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) アクティビティは使用できません。  このアクティビティは、接続のさまざまなフィールド値を取得し、その値を[ハッシュ テーブル](http://go.microsoft.com/fwlink/?LinkID=324844)として返します。このハッシュ テーブルは、Runbook または DSC 構成の適切なコマンドで使用できます。
+**Get-AutomationConnection** コマンドレットを使用して、Runbook または DSC 構成の接続を取得します。  [Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) アクティビティは使用できません。  このアクティビティは、接続のさまざまなフィールド値を取得し、その値を[ハッシュ テーブル](https://go.microsoft.com/fwlink/?LinkID=324844)として返します。このハッシュ テーブルは、Runbook または DSC 構成の適切なコマンドで使用できます。
 
 ### <a name="textual-runbook-sample"></a>テキストの Runbook のサンプル
 

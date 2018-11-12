@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2126ff7ffd503e1d7b30997f3f32f30429cffefb
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144961"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257267"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
@@ -52,8 +52,8 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 
 構成チェックリストでは、StorSimple Virtual Array でソフトウェアを構成する前に収集する必要のある情報について説明します。 事前にこの情報を準備することで、環境内に StorSimple デバイスをデプロイするプロセスを効率化できます。 StorSimple Virtual Array を、ファイル サーバーとしてデプロイする場合と iSCSI サーバーとしてデプロイする場合とでは、チェックリストの内容が異なります。
 
-* [StorSimple Virtual Array のファイル サーバー構成チェックリスト](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)をダウンロード
-* [StorSimple Virtual Array の iSCSI サーバー構成チェックリスト](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)をダウンロード
+* [StorSimple Virtual Array のファイル サーバー構成チェックリスト](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)をダウンロード
+* [StorSimple Virtual Array の iSCSI サーバー構成チェックリスト](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)をダウンロード
 
 ## <a name="prerequisites"></a>前提条件
 

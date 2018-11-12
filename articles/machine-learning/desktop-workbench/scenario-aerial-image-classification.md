@@ -12,12 +12,12 @@ services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e71de2d543c8f29b7195e74d574855bcbe739162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967610"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260552"
 ---
 # <a name="aerial-image-classification"></a>航空画像の分類
 
@@ -154,7 +154,7 @@ ms.locfileid: "46967610"
     az storage share create --account-name %STORAGE_ACCOUNT_NAME% --account-key %STORAGE_ACCOUNT_KEY% --name baitshare
     ```
 1. 使い慣れたテキスト エディターで、Azure Machine Learning Workbench プロジェクトの "Code" サブディレクトリから `settings.cfg` ファイルを読み込み、指示されたストレージ アカウント名とキーを挿入します。 `settings.cfg` ファイルを保存して閉じます。
-1. まだ完了していない場合は、[AzCopy](http://aka.ms/downloadazcopy) ユーティリティをダウンロードしてインストールします。 「AzCopy」と入力し、Enter キーを押してドキュメントを表示して、AzCopy の実行可能ファイルがシステム パス上にあることを確認します。
+1. まだ完了していない場合は、[AzCopy](https://aka.ms/downloadazcopy) ユーティリティをダウンロードしてインストールします。 「AzCopy」と入力し、Enter キーを押してドキュメントを表示して、AzCopy の実行可能ファイルがシステム パス上にあることを確認します。
 1. 次のコマンドを発行して、すべてのサンプル データ、事前トレーニング済みモデル、およびモデル トレーニング スクリプトをストレージ アカウントの適切な場所にコピーします。
 
     ```

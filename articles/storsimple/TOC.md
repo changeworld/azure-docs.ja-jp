@@ -61,6 +61,7 @@
 
 ## 概要
 ### [ソリューションとは](storsimple-overview.md)
+### [データ転送オプションの比較](storsimple-8000-choose-storage-solution.md)
 ### [StorSimple 学習マップ](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [セキュリティに関する考慮事項](storsimple-8000-security.md)
 ### [利用可能なリージョン](storsimple-regions.md)
@@ -92,7 +93,7 @@
 
 ## 方法
 
-### [管理]
+### 管理
 
 #### [StorSimple Manager サービスの使用](storsimple-8000-manager-service-administration.md)
 ##### [バックアップから復元する](storsimple-8000-restore-from-backup-set-u2.md)
@@ -183,7 +184,7 @@
 #### [5000/7000 シリーズのデバイスから](storsimple-8000-migration-options.md)
 ##### [StorSimple 8000 シリーズ デバイスへ](storsimple-8000-migrate-from-5000-7000.md)
 ##### [Azure File Sync へ](storsimple-5000-7000-afs-migration.md)
-#### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+#### [他のストレージ デバイスから](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### アップデート
 #### [Update 5 のインストール - 最新](storsimple-8000-install-update-5.md)
@@ -248,8 +249,8 @@
 ## [料金](https://azure.microsoft.com/pricing/details/storsimple/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=storsimple)
-## [サポート ブログ](http://blogs.msdn.com/b/storsimple/)
-## [サード パーティに関する通知](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [サポート ブログ](https://blogs.msdn.com/b/storsimple/)
+## [サード パーティに関する通知](https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 

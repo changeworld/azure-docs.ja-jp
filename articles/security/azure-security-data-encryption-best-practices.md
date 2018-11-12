@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: barclayn
-ms.openlocfilehash: 263c04fd15240f365f2325c69d5cb25aa1a539f0
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 86724ca49884f1072297ffcf4fc6498db5ae8ac3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465879"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254640"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 クラウド内のデータを保護するには、データが発生する可能性がある特定の状態と、その状態に対してどのような制御を利用できるのかを把握する必要があります。 Azure のデータ セキュリティと暗号化のベスト プラクティスは、次のデータの状態に関連しています。
@@ -132,7 +132,7 @@ Azure VPN Gateway、SSL/TLS、および HTTPS の使用に固有のベスト プ
 - ビジネス要件を反映しているラベルを適用する。 たとえば、機密性が高いデータを含むすべてのドキュメントと電子メールに "極秘" という名前のラベルを適用して、このデータを分類して保護します。 その後、承認されたユーザーのみが、指定された制限内でデータにアクセスできます。
 - [Azure RMS の使用状況ログ](https://docs.microsoft.com/azure/information-protection/log-analyze-usage)を構成して、組織が保護サービスをどのように使用しているかを監視できるようにします。
 
-[データ分類](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)やファイル保護が不十分な組織は、データ漏洩やデータ誤用のリスクが高くなる可能性があります。 適切なファイル保護を使用すれば、データ フローを分析して、ビジネスの分析情報の取得、危険な行為の検出と是正措置の実行、ドキュメントへのアクセスの追跡などを行うことができます。
+[データ分類](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)やファイル保護が不十分な組織は、データ漏洩やデータ誤用のリスクが高くなる可能性があります。 適切なファイル保護を使用すれば、データ フローを分析して、ビジネスの分析情報の取得、危険な行為の検出と是正措置の実行、ドキュメントへのアクセスの追跡などを行うことができます。
 
 ## <a name="next-steps"></a>次の手順
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)」を参照してください。

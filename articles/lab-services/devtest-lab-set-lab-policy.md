@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 212afbd605e3a16da7be2c04492ec41875ff5b75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 378eb8c1f2070e8f4b28c221369938e2ff04e2f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666841"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255180"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボのすべてのポリシーを管理
 
@@ -27,7 +27,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 ## <a name="set-allowed-virtual-machine-sizes"></a>許可される仮想マシン サイズの設定
 許可される VM サイズを設定するポリシーでは、ラボで使用可能な VM サイズを指定できるので、ラボの無駄を最小限に抑えるのに役立ちます。 このポリシーを有効にすると、この一覧の VM サイズだけを使用して VM を作成できます。
 
-1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) でラボを選択し、**[構成とポリシー]** を選択します。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) でラボを選択し、**[構成とポリシー]** を選択します。
 
     ![ラボの [構成とポリシー] にアクセスする](./media/devtest-lab-set-lab-policy/policies-menu.png)
 

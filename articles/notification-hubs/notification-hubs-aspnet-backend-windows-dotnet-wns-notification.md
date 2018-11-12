@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
 ms.author: dimazaid
-ms.openlocfilehash: ee0e78402515a733731e6faf21b09886674cda51
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d2d0e878aed5b200852e56a29ce0430305d4efc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452415"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251544"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して特定のユーザーに通知を送信する
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
@@ -126,7 +126,7 @@ ms.locfileid: "38452415"
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-12. **WindowsApp** プロジェクトの **MainPage.xaml.cs** で、`MainPage` クラスに次のメンバーを追加します。 `<Enter Your Backend Endpoint>` を、前に取得した実際のバックエンド エンドポイントに必ず置き換えてください。 たとえば、「`http://mybackend.azurewebsites.net`」のように入力します。
+12. **WindowsApp** プロジェクトの **MainPage.xaml.cs** で、`MainPage` クラスに次のメンバーを追加します。 `<Enter Your Backend Endpoint>` を、前に取得した実際のバックエンド エンドポイントに必ず置き換えてください。 たとえば、「 `http://mybackend.azurewebsites.net` 」のように入力します。
     
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
@@ -222,7 +222,7 @@ ms.locfileid: "38452415"
     ```
 1. **[WindowsApp]** プロジェクトを右クリックし、**[追加]** をクリックしてから、**[クラス]** をクリックします。 クラスに **RegisterClient.cs** という名前を付け、**[OK]** をクリックしてクラスを生成します。
    
-   このクラスは、プッシュ通知用に登録するために、アプリ バックエンドに接続するために必要な REST 呼び出しをラップします。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](http://msdn.microsoft.com/library/dn743807.aspx)もローカルに格納されます。 **[ログインして登録]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
+   このクラスは、プッシュ通知用に登録するために、アプリ バックエンドに接続するために必要な REST 呼び出しをラップします。 「 *アプリ バックエンドからの登録* 」で説明しているとおり、Notification Hubs によって作成された [registrationIds](https://msdn.microsoft.com/library/dn743807.aspx)もローカルに格納されます。 **[ログインして登録]** ボタンをクリックすると、ローカル ストレージに格納されている承認トークンが使用されます。
 2. 次の `using` ステートメントを、RegisterClient.cs file ファイルの先頭に追加します。
 
     ```csharp   

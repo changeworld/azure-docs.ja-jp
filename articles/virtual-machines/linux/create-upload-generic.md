@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 67796cc3cbb925bb18a917d17b8abb7c085de370
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638205"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235974"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -76,7 +76,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
 
 * The VHD http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd にサポートされていない仮想サイズ 21475270656 バイトがあります)。 The size must be a whole number (in MBs) (サイズは整数 (MB) である必要があります)。
 
-この場合、HYPER-V マネージャー コンソールまたは [Resize-VHD](http://technet.microsoft.com/library/hh848535.aspx) PowerShell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、`qemu-img` を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
+この場合、HYPER-V マネージャー コンソールまたは [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell コマンドレットを使用して、VM のサイズを変更できます。  Windows 環境で実行していない場合は、`qemu-img` を使用して変換し (必要な場合)、VHD のサイズを変更することをお勧めします。
 
 > [!NOTE]
 > qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないという[バグ](https://bugs.launchpad.net/qemu/+bug/1490611)があることがわかっています。 この問題は QEMU 2.6 で修正されています。 バージョン 2.2.0 以前またはバージョン 2.6 以降のいずれかの `qemu-img` を使用することをお勧めします。
@@ -125,7 +125,7 @@ Azure の VHD イメージは、1 MB に整列された仮想サイズが必要�
 
 Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、アップストリームの Linux カーネルに直接提供されています。 最新の Linux カーネル バージョン (3.x など) を含む多くのディストリビューションでこれらのドライバーが含まれています。含まれていない場合は、これらのドライバーのバックポートされたバージョンがカーネルと共に提供されます。  これらのドライバーは、アップストリームのカーネル内で新しい修正と機能を含んだ形で常に更新されているため、可能な場合は、これらの修正と更新を含む[動作保証済みディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を実行することをお勧めします。
 
-Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行する場合は、[Hyper-V 用の最新の LIS ドライバー](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)をインストールする必要があります。 RHEL 6.4 以降 (および派生版) では、LIS ドライバーは既にカーネルに含まれているため、追加のインストール パッケージは必要ありません。
+Red Hat Enterprise Linux バージョン 6.0 ～ 6.3 のバリアントを実行する場合は、[Hyper-V 用の最新の LIS ドライバー](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)をインストールする必要があります。 RHEL 6.4 以降 (および派生版) では、LIS ドライバーは既にカーネルに含まれているため、追加のインストール パッケージは必要ありません。
 
 カスタム カーネルが必要な場合は、最新のカーネル バージョン (3.8 以降など) をお勧めします。 独自のカーネルを維持するディストリビューションまたはベンダーの場合は、アップストリームのカーネルの LIS ドライバーをカスタム カーネルに定期的にバックポートする必要があります。  比較的新しいカーネル バージョンを既に実行している場合でも、LIS ドライバーのアップストリームの修正を常に追跡し、必要に応じてパックポートすることを強くお勧めします。 LIS ドライバーのソース ファイルの場所は、次の Linux カーネルのソース ツリーの [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) ファイルに記載されています。
 ```

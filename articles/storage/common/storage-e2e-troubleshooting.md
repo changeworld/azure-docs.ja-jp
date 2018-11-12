@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 41e7f5b4c36ad0bfed0ef5a9a31565474cf4d823
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038525"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262320"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -37,7 +37,7 @@ Microsoft Azure Storage を使用してクライアント アプリケーショ�
   
     Azure Portal での監視の構成については、「[Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)」をご覧ください。
 * **AzCopy**。 Azure Storage のサーバー ログは BLOB として格納されているので、AzCopy を使用してログ BLOB をローカル ディレクトリにコピーし、Microsoft Message Analyzer による分析に使用することができます。 AzCopy の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。
-* **Microsoft Message Analyzer**。 Message Analyzer はログ ファイルを使用してログ データを画像形式で表示するツールです。これにより、ログ データのフィルター処理や検索のほか、エラーやパフォーマンス問題の分析に使用できる有用なデータ セットへのグループ化が容易になります。 Message Analyzer の詳細については、[Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)を参照してください。
+* **Microsoft Message Analyzer**。 Message Analyzer はログ ファイルを使用してログ データを画像形式で表示するツールです。これにより、ログ データのフィルター処理や検索のほか、エラーやパフォーマンス問題の分析に使用できる有用なデータ セットへのグループ化が容易になります。 Message Analyzer の詳細については、[Microsoft Message Analyzer の操作ガイド](https://technet.microsoft.com/library/jj649776.aspx)を参照してください。
 
 ## <a name="about-the-sample-scenario"></a>サンプル シナリオについて
 このチュートリアルでは、Azure Storage を呼び出すアプリケーションの成功率に関して、Azure Storage メトリックが低い割合を示すシナリオについて調べます。 低い成功率メトリック (**PercentSuccess** として [Azure Portal](https://portal.azure.com) とメトリック テーブル内に表示される) では、成功した操作を追跡しますが、299 を超える数字の HTTP 状態コードを返します。 サーバー側のストレージ ログ ファイルには、これらの操作が **ClientOtherErrors**のトランザクション状態で記録されます。 低い成功率メトリックの詳細については、「 [メトリックの示す PercentSuccess が低い、または分析ログ エントリの中にトランザクション ステータスが ClientOtherErrors の操作がある](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success)」を参照してください。
@@ -51,7 +51,7 @@ Azure Storage の操作では、その通常の機能の一部として 299 を�
 ### <a name="some-causes-of-400-range-errors"></a>400 番台のエラーの原因
 以下の例では、Azure Blob Storage への要求に関するいくつかの 400 番台のエラーと、その考えられる原因を示します。 これらのエラーは、300 および 500 番台のエラーと同様に、いずれも低い成功率の一因となる可能性があります。
 
-以下の一覧は不完全であるという点に注意してください。 通常の Azure Storage エラーおよび各ストレージ サービスに特有のエラーの詳細については、MSDN の「 [状態コードとエラー コード](http://msdn.microsoft.com/library/azure/dd179382.aspx) 」を参照してください。
+以下の一覧は不完全であるという点に注意してください。 通常の Azure Storage エラーおよび各ストレージ サービスに特有のエラーの詳細については、MSDN の「 [状態コードとエラー コード](https://msdn.microsoft.com/library/azure/dd179382.aspx) 」を参照してください。
 
 **ステータス コード 404 (Not Found) の例**
 
@@ -79,7 +79,7 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 * **HTTP ネットワーク トレース ログ**は、HTTP/HTTPS の要求および応答データを収集しますが、これには Azure Storage に対する操作についてのデータも含まれます。 このチュートリアルでは、Message Analyzer を使用してネットワーク トレースを生成します。
 
 ### <a name="configure-server-side-logging-and-metrics"></a>サーバー側のログとメトリックを構成する
-まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。 [Azure Portal](https://portal.azure.com) や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。 ログとメトリックの構成について詳しくは、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](http://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](http://msdn.microsoft.com/library/azure/dn782840.aspx)」をご覧ください。
+まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。 [Azure Portal](https://portal.azure.com) や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。 ログとメトリックの構成について詳しくは、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](https://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/azure/dn782840.aspx)」をご覧ください。
 
 **Azure Portal の使用**
 
@@ -124,7 +124,7 @@ Azure の PowerShell を使用するには、 [Azure PowerShell のインスト�
     ```
 
 ### <a name="configure-net-client-side-logging"></a>.NET のクライアント側のログを構成する
-.NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。 詳しくは、MSDN の「[.NET ストレージ クライアント ライブラリと、クライアント側のログ記録](http://msdn.microsoft.com/library/azure/dn782839.aspx)」および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](http://msdn.microsoft.com/library/azure/dn782844.aspx)」をご覧ください。
+.NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。 詳しくは、MSDN の「[.NET ストレージ クライアント ライブラリと、クライアント側のログ記録](https://msdn.microsoft.com/library/azure/dn782839.aspx)」および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](https://msdn.microsoft.com/library/azure/dn782844.aspx)」をご覧ください。
 
 クライアント側のログには、クライアントが要求を準備し、応答を受信して処理する方法についての詳細情報が含まれます。
 
@@ -160,7 +160,7 @@ Message Analyzer を使用して、クライアント アプリケーション�
 > 
 > 
 
-詳細については、Technet の [ネットワーク トレース機能の使用](http://technet.microsoft.com/library/jj674819.aspx) に関するページを参照してください。
+詳細については、Technet の [ネットワーク トレース機能の使用](https://technet.microsoft.com/library/jj674819.aspx) に関するページを参照してください。
 
 ## <a name="review-metrics-data-in-the-azure-portal"></a>Azure Portal でメトリック データを確認する
 アプリケーションが動作を開始してから一定の時間が経過すると、[Azure Portal](https://portal.azure.com) に表示されるメトリック チャートを確認し、サービスがどのように動作しているかを観察することができます。
@@ -186,15 +186,15 @@ AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest
 ```
 AzCopy は、 [Azure ダウンロード](https://azure.microsoft.com/downloads/) のページからダウンロードできます。 AzCopy の使用方法の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。
 
-サーバー側のログのダウンロードの詳細については、「 [ストレージ ログのログ データのダウンロード](http://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」をご覧ください。
+サーバー側のログのダウンロードの詳細については、「 [ストレージ ログのログ データのダウンロード](https://msdn.microsoft.com/library/azure/dn782840.aspx#DownloadingStorageLogginglogdata)」をご覧ください。
 
 ## <a name="use-microsoft-message-analyzer-to-analyze-log-data"></a>Microsoft Message Analyzer を使用してログ データを分析する
-Microsoft Message Analyzer は、トラブルシューティングや診断のシナリオにおいて、プロトコル メッセージング トラフィック、イベント、およびその他のシステムやアプリケーションに対してキャプチャ、表示、分析を実施するためのツールです。 また、Message Analyzer では、ログや保存したトレース ファイルからのデータの読み込み、集計、分析ができます。 Message Analyzer の詳細については、 [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)に関するページを参照してください。
+Microsoft Message Analyzer は、トラブルシューティングや診断のシナリオにおいて、プロトコル メッセージング トラフィック、イベント、およびその他のシステムやアプリケーションに対してキャプチャ、表示、分析を実施するためのツールです。 また、Message Analyzer では、ログや保存したトレース ファイルからのデータの読み込み、集計、分析ができます。 Message Analyzer の詳細については、 [Microsoft Message Analyzer の操作ガイド](https://technet.microsoft.com/library/jj649776.aspx)に関するページを参照してください。
 
 Message Analyzer には、サーバー、クライアント、およびネットワーク ログの分析に役立つ、Azure Storage 向けのアセットが含まれています。 このセクションでは、それらのツールを使用して、ストレージ ログにおける低い成功率の問題に対処する方法を説明します。
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Message Analyzer と Azure Storage アセットをダウンロードしてインストールする
-1. [Message Analyzer](http://www.microsoft.com/download/details.aspx?id=44226) を Microsoft ダウンロード センターからダウンロードし、インストーラーを実行します。
+1. [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) を Microsoft ダウンロード センターからダウンロードし、インストーラーを実行します。
 2. Message Analyzer を起動します。
 3. **[ツール]** メニューの **[資産マネージャー]** を選択します。 **[資産マネージャー]** ダイアログで、**[ダウンロード]** を選択し、**Azure Storage** をフィルター処理します。 以下の画像のように、Azure Storage アセットが表示されます。
 4. **[Sync All Displayed Items]** をクリックして、Azure Storage アセットをインストールします。 以下に利用できるアセットを挙げます。
@@ -231,7 +231,7 @@ Message Analyzer はログ ファイルをメモリに読み込むという点�
 
 まだサイズの大きいログ データが残っている場合は、セッション フィルターを指定して、読み込む前にログ データをフィルター処理する必要があります。 **[Session Filter]** ボックスで、**[Library]** をクリックして定義済みのフィルターを選択します。たとえば、Azure Storage フィルターから **[Global Time Filter I]** を選択して、時間間隔によるフィルターを適用します。 その後、フィルター条件を編集し、確認したい時間間隔について開始および終了時のタイムスタンプを指定することができます。 特定の状態コードによってフィルターを適用することもできます。たとえば、状態コードが 404 のログ エントリのみを読み込むように選択できます。
 
-Microsoft Message Analyzer に対するログ データのインポートの詳細については、TechNet の [メッセージ データの取得](http://technet.microsoft.com/library/dn772437.aspx) に関するページを参照してください。
+Microsoft Message Analyzer に対するログ データのインポートの詳細については、TechNet の [メッセージ データの取得](https://technet.microsoft.com/library/dn772437.aspx) に関するページを参照してください。
 
 ### <a name="use-the-client-request-id-to-correlate-log-file-data"></a>クライアント要求 ID を使用してログ ファイル データを関連付ける
 Azure ストレージ クライアント ライブラリは、すべての要求に対して自動的に一意のクライアント要求 ID を生成します。 この値はクライアント ログ、サーバー ログ、ネットワーク トレースに書き込まれるため、Message Analyzer 内の 3 種類のログすべてにわたって、この値をデータの関連付けに使用することができます。 クライアント要求 ID の詳細については、「 [クライアント要求 ID](storage-monitoring-diagnosing-troubleshooting.md#client-request-id) 」を参照してください。
@@ -337,7 +337,7 @@ Message Analyzer は、検索条件がクライアント要求 ID に一致す�
 404 エラーを引き起こした BLOB のアドレスが判明したら、さらに調査を進めることができます。 同じ BLOB に対する操作に関連付けられた他のメッセージのログ エントリを検索した場合、クライアントが事前にそのエンティティを削除していたかどうかが確認できます。
 
 ## <a name="analyze-other-types-of-storage-errors"></a>他の種類のストレージ エラーを分析する
-Message Analyzer を使用したログ データの分析に慣れてきたところで、ビュー レイアウト、カラー ルール、検索、フィルター処理を使用して他の種類のログ データを分析することもできます。 以下の表は、発生する可能性のある問題と、それらの特定に使用できるフィルター条件の一覧です。 フィルターの作成方法および Message Analyzer フィルタリング言語の詳細については、 [メッセージ データのフィルター処理](http://technet.microsoft.com/library/jj819365.aspx)に関するページを参照してください。
+Message Analyzer を使用したログ データの分析に慣れてきたところで、ビュー レイアウト、カラー ルール、検索、フィルター処理を使用して他の種類のログ データを分析することもできます。 以下の表は、発生する可能性のある問題と、それらの特定に使用できるフィルター条件の一覧です。 フィルターの作成方法および Message Analyzer フィルタリング言語の詳細については、 [メッセージ データのフィルター処理](https://technet.microsoft.com/library/jj819365.aspx)に関するページを参照してください。
 
 | 調査目的… | 使用するフィルター式… | 式を適用するログ (クライアント、サーバー、ネットワーク、すべて) |
 | --- | --- | --- |
@@ -361,7 +361,7 @@ Message Analyzer を使用したログ データの分析に慣れてきたと�
 Azure Storage におけるエンド ツー エンド シナリオのトラブルシューティングの詳細については、次のリソースを参照してください。
 
 * [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
-* [Storage Analytics](http://msdn.microsoft.com/library/azure/hh343270.aspx)
+* [Storage Analytics](https://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
-* [Microsoft Message Analyzer の操作ガイド](http://technet.microsoft.com/library/jj649776.aspx)
+* [Microsoft Message Analyzer の操作ガイド](https://technet.microsoft.com/library/jj649776.aspx)
