@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2ae2ea14bc712563867f32b83eddbd9d4129ac1d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c7d8ab8beced055d10cebcecf36d957b155c63b7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409494"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256223"
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="introduction"></a>はじめに
@@ -74,7 +74,7 @@ Log Analytics のコア機能は、Azure で実行される一連のサービス
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象リソースから中央リポジトリにデータを収集する監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) は、管理対象リソースから中央リポジトリにデータを収集する監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
 
 
 この方法を使用すると、さまざまなソースからのデータを統合できるため、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、データの収集とそのデータに対して実行される操作は明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
@@ -92,7 +92,7 @@ Log Analytics サービスは次の方法でクラウドベースのデータを
 
 ### <a name="azure-backup"></a>Azure Backup
 
-Log Analytics スイートの製品およびサービスの一部である [Azure Backup](http://azure.microsoft.com/documentation/services/backup) は、データのバックアップと復元サービスを提供します。
+Log Analytics スイートの製品およびサービスの一部である [Azure Backup](https://azure.microsoft.com/documentation/services/backup) は、データのバックアップと復元サービスを提供します。
 アプリケーション データを保護し、長年にわたってデータを保管できます。設備投資は不要で、運用コストも最小限で済みます。 SQL Server や SharePoint などのアプリケーション ワークロードだけでなく、Windows の物理サーバーや仮想サーバーのデータもバックアップできます。 また、[System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) で Azure Backup を使用することで、保護データを Azure にレプリケートし、冗長性と長期保存を実現しています。
 
 

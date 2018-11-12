@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: ffb7af5cd772f663d71f8641ed79839c3ff9ac6a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: be08be43269dfb332dca1d5f62ce661940d311cc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407792"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259379"
 ---
 # <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを完了するには、以下がインストールされていることを確認してください。
 
-- [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](http://www.visualstudio.com/vs) 以降。
+- [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
 
 ## <a name="log-on-to-the-azure-portal"></a>Azure Portal にログオンする

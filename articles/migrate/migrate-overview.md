@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1aeaff486ed9f7cb99ea0b95451fc765344847a1
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 85873dc023e63b7cc9f5ba3ff87214c49ac16e34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086677"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246737"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -30,7 +30,7 @@ Azure Migrate によって次のことが可能になります。
 ## <a name="current-limitations"></a>現時点での制限事項
 
 - Azure VM への移行に関して、オンプレミスの VMware 仮想マシン (VM) だけを評価することができます。 VMware VM は、vCenter Server (バージョン 5.5、6.0、または 6.5) で管理する必要があります。
-- Hyper-V 仮想マシンと物理サーバーを評価する必要がある場合、Hyper-V には [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) を、物理マシンには Microsoft の [パートナーのツール](https://azure.microsoft.com/migration/partners/)を使用してください。
+- Hyper-V 仮想マシンと物理サーバーを評価する必要がある場合、Hyper-V には [Azure Site Recovery Deployment Planner](https://aka.ms/asr-dp-hyperv-doc) を、物理マシンには Microsoft の [パートナーのツール](https://azure.microsoft.com/migration/partners/)を使用してください。
 - 1 回の検出で最大 1,500 個の VM を検出でき、1 つのプロジェクトで最大 1,500 個の VM を検出できます。 さらに、一度に最大 1,500 個の VM を評価できます。
 - より大規模な環境を検出する場合は、検出を分割して、複数のプロジェクトを作成できます。 [詳細情報](how-to-scale-assessment.md)。 Azure Migrate では、サブスクリプションあたり最大 20 個のプロジェクトをサポートしています。
 - Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。

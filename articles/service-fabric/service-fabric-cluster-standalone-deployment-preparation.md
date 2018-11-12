@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 7357577ea7aff467288578673110b1a6dda7ccef
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c505feb20321d785a86cad0422470aa5c9a4311b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391049"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259090"
 ---
 <a id="preparemachines"></a>
 
@@ -74,7 +74,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 クラスターのデプロイと構成を行うクラスター管理者には、個々のマシンに対する [管理者特権](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロードする
-[Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)し、クラスターに属していないデプロイ用のマシンか、これからクラスターに追加するマシンのいずれかにパッケージ ファイルを解凍します。
+[Windows Server 用の Service Fabric スタンドアロン パッケージをダウンロード](https://go.microsoft.com/fwlink/?LinkId=730690)し、クラスターに属していないデプロイ用のマシンか、これからクラスターに追加するマシンのいずれかにパッケージ ファイルを解凍します。
 
 ## <a name="modify-cluster-configuration"></a>クラスターの構成を変更する
 スタンドアロン クラスターを作成するには、クラスターの仕様を示すスタンドアロン クラスター構成ファイル ClusterConfig.json を作成する必要があります。 構成ファイルについては、次のリンクにあるテンプレートを参考にしてください。 <br>

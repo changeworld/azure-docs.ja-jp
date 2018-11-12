@@ -3,19 +3,19 @@ title: Hadoop での Apache Sqoop - Azure HDInsight
 description: Apache Sqoop を使用して、Hadoop on HDInsight と Azure SQL Database の間でインポートおよびエクスポートを行う方法について説明します。
 keywords: hadoop sqoop,sqoop
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.openlocfilehash: e9ee4ceb51b2de58010f3e6cf7feba9df64b9bad
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6aa5627a0b5e8cb29f0ec68b948084a0bed30529
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050171"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259447"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight の Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -125,7 +125,7 @@ Sqoop を使用して、SQL Server からデータのインポートとエクス
 
 * SQL 認証を許可するよう、SQL Server を構成する必要があります。 詳細については、[認証モードの選択](https://msdn.microsoft.com/ms144284.aspx)に関するドキュメントを参照してください。
 
-* リモート接続を許可するよう、SQL Server を構成する必要がある場合があります。 詳細については、[SQL Server データベース エンジンへの接続に関するトラブルシューティングの方法](http://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx)のドキュメントを参照してください。
+* リモート接続を許可するよう、SQL Server を構成する必要がある場合があります。 詳細については、[SQL Server データベース エンジンへの接続に関するトラブルシューティングの方法](https://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx)のドキュメントを参照してください。
 
 * 次の Transact-SQL ステートメントを使用して、**mobiledata** テーブルを作成します。
 

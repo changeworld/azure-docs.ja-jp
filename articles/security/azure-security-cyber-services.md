@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 5502f315a29e6bcc31038c7c05e779925fe295f0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: eed545c88b840f942ad763793595ef5b9c3cd19d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181033"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233696"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>サイバーセキュリティの Microsoft サービス
 
@@ -31,13 +31,13 @@ Microsoft サービスでは、セキュリティ、ID およびサイバー セ
 
 Microsoft サービスで提供されるサービスについては、次をご覧ください。
 
-* [Security Risk Assessment (セキュリティ リスクの評価)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
-* [Dynamic Identity Framework Assessment (動的 ID フレームワークの評価)](http://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
-* [Offline Assessment for Active Directory Services (Active Directory Services のオフライン評価)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
-* [Enhanced Security Administration Environment (セキュリティ管理環境の強化)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
-* [Azure AD Implementation Services (Azure AD の実装サービス)](http://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [Securing Against Lateral Account Movement (アカウントの横移動に対するセキュリティ保護)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-* [Microsoft Threat Detection Services (Microsoft 脅威検出サービス)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-threat-detection-services-solution-brief.pdf)
-* [Incident Response and Recovery (インシデントの対応と回復)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
+* [Security Risk Assessment (セキュリティ リスクの評価)](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
+* [Dynamic Identity Framework Assessment (動的 ID フレームワークの評価)](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
+* [Offline Assessment for Active Directory Services (Active Directory Services のオフライン評価)](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
+* [Enhanced Security Administration Environment (セキュリティ管理環境の強化)](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
+* [Azure AD Implementation Services (Azure AD の実装サービス)](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
+* [Securing Against Lateral Account Movement (アカウントの横移動に対するセキュリティ保護)](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
+* [Microsoft Threat Detection Services (Microsoft 脅威検出サービス)](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-threat-detection-services-solution-brief.pdf)
+* [Incident Response and Recovery (インシデントの対応と回復)](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
 
 [こちら](https://aka.ms/cyberserv) をご覧ください。

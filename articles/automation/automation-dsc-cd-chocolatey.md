@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 43f4a37ce0425503337cffa58570f3468fca6b29
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f685b584b701d2772ec5b3915facb97f0d15658a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634254"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259175"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用例: Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ
 
@@ -87,7 +87,7 @@ Azure Portal に最近追加された別の手法を使用すると、新しい�
 ユーザーが少し調整する必要があります。 しかし、難しくはありません。リソースごとに一度行うだけです (将来的にアップグレードする場合を除く)。PowerShell 統合モジュールの作成の詳細については、この [Azure Automation 用の統合モジュールの作成](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)に関する記事を参照してください。
 
 - 次のように、ワークステーションに必要なモジュールをインストールします。
-  - [Windows Management Framework v5](http://aka.ms/wmf5latest) をインストールします (Windows 10 では不要)。
+  - [Windows Management Framework v5](https://aka.ms/wmf5latest) をインストールします (Windows 10 では不要)。
   - `Install-Module –Name MODULE-NAME`    <—PowerShell ギャラリーからモジュールを取得します
 - `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` からモジュール フォルダーを一時フォルダーにコピーします。
 - メイン フォルダーからサンプルとドキュメントを削除します。

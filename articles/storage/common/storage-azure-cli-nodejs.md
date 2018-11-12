@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 28c9e342aec3eb3ba61b46f4f80c7d097b0653b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979330"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258716"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Azure Storage での Azure クラシック CLI の使用
 
@@ -122,7 +122,7 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 ```
 
 ## <a name="create-and-manage-blobs"></a>BLOB を作成および管理する
-Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。 このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。 詳しくは、「[.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md)」と「[BLOB サービスの概念](http://msdn.microsoft.com/library/azure/dd179376.aspx)」をご覧ください。
+Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。 このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。 詳しくは、「[.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md)」と「[BLOB サービスの概念](https://msdn.microsoft.com/library/azure/dd179376.aspx)」をご覧ください。
 
 ### <a name="create-a-container"></a>コンテナーを作成する
 Azure Storage のすべての BLOB はコンテナーに格納する必要があります。 次の `azure storage container create` コマンドを使用して、プライベート コンテナーを作成できます。
@@ -137,7 +137,7 @@ azure storage container create mycontainer
 >
 
 ### <a name="upload-a-blob-into-a-container"></a>コンテナーに BLOB をアップロードする
-Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。 詳細については、「 [ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
+Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。 詳細については、「 [ブロック BLOB、追加 BLOB、ページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」を参照してください。
 
 BLOB をコンテナーにアップロードするには、 `azure storage blob upload`を使用できます。 既定では、このコマンドにより、ローカル ファイルがブロック BLOB にアップロードされます。 BLOB の種類を指定するには、 `--blobtype` パラメーターを使用できます。
 

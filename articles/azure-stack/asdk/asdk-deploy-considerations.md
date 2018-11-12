@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 41d27b9a173cc019549f1dea0c66ffcaa51fbb10
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719445"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238628"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack のデプロイ計画に関する考慮事項
 Azure Stack Development Kit (ASDK) をデプロイする前に、開発キットのホスト コンピューターがこの記事で説明されている要件を満たしていることをご確認ください。
@@ -82,7 +82,7 @@ AD FS のオプションを使ってデプロイする場合は、Azure Stack �
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory アカウント
 Azure AD アカウントを使って Azure Stack をデプロイするには、デプロイ用の PowerShell スクリプトを実行する前に、Azure AD アカウントを準備する必要があります。 このアカウントは、Azure AD テナントの全体管理者になります。 このアカウントは、Azure Active Directory および Graph API と対話するすべての Azure Stack サービス用のアプリケーションおよびサービス プリンシパルのプロビジョニングと委任に使われます。 また、既定のプロバイダー サブスクリプションの所有者としても使われます (これは後で変更できます)。 このアカウントを使って、Azure Stack システムの管理ポータルにログインできます。
 
-1. 少なくとも 1 つの Azure AD のディレクトリ管理者である Azure AD アカウントを作成します。 既にある場合は、それを使うことができます。 それ以外の場合は、[https://azure.microsoft.com/free/](http://azure.microsoft.com/pricing/free/) で無料で作成できます (中国では、代わりに <http://go.microsoft.com/fwlink/?LinkID=717821> にアクセスしてください)。 後で [Azure Stack を Azure に登録する](asdk-register.md)予定の場合は、この新規作成したアカウントでのサブスクリプションも必要です。
+1. 少なくとも 1 つの Azure AD のディレクトリ管理者である Azure AD アカウントを作成します。 既にある場合は、それを使うことができます。 それ以外の場合は、[https://azure.microsoft.com/free/](https://azure.microsoft.com/pricing/free/) で無料で作成できます (中国では、代わりに <http://go.microsoft.com/fwlink/?LinkID=717821> にアクセスしてください)。 後で [Azure Stack を Azure に登録する](asdk-register.md)予定の場合は、この新規作成したアカウントでのサブスクリプションも必要です。
    
     サービス管理者として使うためにこれらの資格情報を保存します。 このアカウントは、リソース クラウド、ユーザー アカウント、テナント プラン、クォータ、価格を構成、管理することができます。 ポータルで、Web サイト クラウド、仮想マシン プライベート クラウドを作成したり、プランの作成やユーザーのサブスクリプションの管理を行えます。
 1. テナントとして開発キットにサインインできるように、Azure AD で少なくとも 1 つのテスト ユーザー アカウントを作成します。
@@ -97,7 +97,7 @@ Azure AD アカウントを使って Azure Stack をデプロイするには、�
 デプロイの後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に再配置するか、*既定のプロバイダー サブスクリプション*の所有者である個別の全体管理者アカウントを使用するかのいずれかを行うことができます。
 
 ## <a name="network"></a>ネットワーク
-### <a name="switch"></a>スイッチ
+### <a name="switch"></a>Switch
 スイッチの 1 つのポートを開発キット マシン用に使用できること。  
 
 開発キット マシンでは、スイッチのアクセス ポートまたはトランク ポートへの接続がサポートされています。 スイッチでは特別な機能は必要ありません。 トランク ポートを使用している場合、または VLAN ID を構成する必要がある場合は、デプロイ パラメーターとして VLAN ID を指定する必要があります。

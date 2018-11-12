@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: 6ffa09343560e4ac55b1fd62325fd4e3bd370848
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c51df7aeef136fee42b061cd422cc62d67f33e96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242179"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258920"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -287,7 +287,7 @@ HDFS または Azure Blob Storage 内のファイルを参照する外部テー�
 
 ### <a name="replication"></a>レプリケーション
 
-マネージド インスタンスのパブリック プレビューで、レプリケーションを使用できます。 レプリケーションについては、「[SQL Server のレプリケーション](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)」をご覧ください。
+マネージド インスタンスのパブリック プレビューで、レプリケーションを使用できます。 レプリケーションについては、「[SQL Server のレプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)」をご覧ください。
 
 ### <a name="restore-statement"></a>RESTORE ステートメント
 

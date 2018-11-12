@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: overview
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: cf37db9bffa8b2a54a6327c29ec806e0eefc8c91
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e48a0a056628e0c863330de792f8edfaa48aae34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225414"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261861"
 ---
 # <a name="what-is-bing-video-search"></a>Bing Video Search とは
 
@@ -47,7 +47,7 @@ Host: api.cognitive.microsoft.com
 
 いずれかの Bing API を初めて呼び出す場合は、クライアント ID ヘッダーを含めないでください。 クライアント ID を含めるのは、過去に Bing API を呼び出したことがあり、かつユーザーとデバイスの組み合わせに対応するクライアント ID が Bing から返されたことがある場合だけです。
 
-特定のドメインから動画を取得するには、[site:](http://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
+特定のドメインから動画を取得するには、[site:](https://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
@@ -131,7 +131,7 @@ Video Search API の既定の動作では、クエリとの関連性が高い動
 - [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videolength)&mdash; 動画の長さで動画をフィルタリング (例: 長さが 5 分未満の動画など)
 - [freshness](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#freshness)&mdash; 新しさで動画をフィルタリング (例: この 1 週間に Bing によって検出された動画など)
 
-特定のドメインから動画を得るには、クエリ文字列に [site:](http://msdn.microsoft.com/library/ff795613.aspx) クエリ演算子を含めます。
+特定のドメインから動画を得るには、クエリ文字列に [site:](https://msdn.microsoft.com/library/ff795613.aspx) クエリ演算子を含めます。
 
 > [!NOTE]
 > クエリによっては、`site:` クエリ演算子を使用した場合、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#safesearch) 設定にかかわらず、成人向けのコンテンツが応答に含まれることがあります。 `site:` の使用は、そのサイト上のコンテンツを承知していて、なおかつ成人向けのコンテンツが含まれていても問題がないシナリオに限定してください。

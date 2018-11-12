@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 0ec2e31ae3127d27e0f494222385e7f6d456aa65
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 248fd094a8655af2a21035267a6b8f69f268683d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231867"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262167"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して Chrome アプリにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -362,7 +362,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
    * **registerWithGCM** は、現在の Chrome アプリ インスタンスを登録するために、GCM に対して `chrome.gcm.register` を呼び出す最初のボタン クリック ハンドラーです。
    * **registerCallback** は、GCM 登録の呼び出しから戻った時点で呼び出されるコールバック関数です。
    * **registerWithNH** は 2 番目のボタン クリック ハンドラーで、Notification Hubs への登録を行います。 また、ユーザーが指定した `hubName` と `connectionString` を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。
-   * **splitConnectionString** と **generateSaSToken** は、すべての REST API 呼び出しで使用する必要のある SaS トークン作成プロセスの JavaScript の実装です。 詳細については、「 [一般的な概念](http://msdn.microsoft.com/library/dn495627.aspx)」を参照してください。
+   * **splitConnectionString** と **generateSaSToken** は、すべての REST API 呼び出しで使用する必要のある SaS トークン作成プロセスの JavaScript の実装です。 詳細については、「 [一般的な概念](https://msdn.microsoft.com/library/dn495627.aspx)」を参照してください。
    * **sendNHRegistrationRequest** は、Azure Notification Hubs に対して HTTP REST 呼び出しを実行する関数です。
    * **registrationPayload** は、登録の XML ペイロードを定義します。 詳細については、「 [登録の作成]」をご覧ください。 そこでは、GCM から受信された値を使用して登録 ID を更新します。
    * **client** は、HTTP POST 要求に使用する **XMLHttpRequest** のインスタンスです。 `sasToken` を使用して `Authorization` ヘッダーを更新します。 この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
@@ -390,7 +390,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 テストを行うために、.NET コンソール アプリケーションを使用して Chrome プッシュ通知を送信します。 
 
 > [!NOTE]
-> プッシュ通知は、パブリック <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を介してどのバックエンドからでも Notification Hubs を使用して送信できます。 クロスプラットフォームの詳しい例については、Microsoft の[ドキュメント ポータル](https://azure.microsoft.com/documentation/services/notification-hubs/)を参照してください。
+> プッシュ通知は、パブリック <a href="https://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を介してどのバックエンドからでも Notification Hubs を使用して送信できます。 クロスプラットフォームの詳しい例については、Microsoft の[ドキュメント ポータル](https://azure.microsoft.com/documentation/services/notification-hubs/)を参照してください。
 > 
 > 
 

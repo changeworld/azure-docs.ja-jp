@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: ef2b5fe6c9b70eaea5ab4db2d4a0ca59ff82dbb9
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 2c7e624344605b24e78962ac2b6d23278c06c0cc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391897"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255150"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
 
@@ -27,7 +27,7 @@ ms.locfileid: "44391897"
 
 Azure Data Lake Storage Gen1 には、POSIX アクセス制御と Azure Active Directory (Azure AD) のユーザー、グループ、およびサービス プリンシパルの詳細な監査が用意されています。 これらのアクセス制御は既存のファイルやフォルダーに設定できます。 アクセス制御は、新しいファイルやフォルダーに適用できる既定値を作成するためにも使用できます。 既存のフォルダーや子オブジェクトにアクセス許可が設定されると、そのアクセス許可は各オブジェクトに再帰的に伝達される必要があります。 ファイルの数が多い場合、アクセス許可の伝達に時間がかかることがあります。 1 秒に 30 ～ 50 オブジェクトが処理されます。 このため、フォルダー構造とユーザー グループは適切に計画する必要があります。 計画しないと、データを操作するときに予期しない遅延や問題が発生することがあります。 
 
-あるフォルダーに 100,000 の子オブジェクトがあるとします。 1 秒に下限の 30 オブジェクトが処理されると仮定すると、全フォルダーのアクセス許可の更新には 1 時間かかります。 Data Lake Storage Gen1 の ACL の詳細は、「[Azure Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)」で確認できます。 ACL を再帰的に割り当てるパフォーマンスを改善するには、Azure Data Lake のコマンドライン ツールを使用します。 ツールは複数のスレッドと再帰的なナビゲーション ロジックを作成し、数百万のファイルに ACL を短時間で適用します。 ツールは Linux と Windows で使用できます。このツールの[ドキュメント](https://github.com/Azure/data-lake-adlstool)や[ダウンロード](http://aka.ms/adlstool-download)は GitHub に用意されています。 以上と同じパフォーマンス改善が、Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) と [Java](data-lake-store-get-started-java-sdk.md) SDK で記述された独自のツールで可能です。
+あるフォルダーに 100,000 の子オブジェクトがあるとします。 1 秒に下限の 30 オブジェクトが処理されると仮定すると、全フォルダーのアクセス許可の更新には 1 時間かかります。 Data Lake Storage Gen1 の ACL の詳細は、「[Azure Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)」で確認できます。 ACL を再帰的に割り当てるパフォーマンスを改善するには、Azure Data Lake のコマンドライン ツールを使用します。 ツールは複数のスレッドと再帰的なナビゲーション ロジックを作成し、数百万のファイルに ACL を短時間で適用します。 ツールは Linux と Windows で使用できます。このツールの[ドキュメント](https://github.com/Azure/data-lake-adlstool)や[ダウンロード](https://aka.ms/adlstool-download)は GitHub に用意されています。 以上と同じパフォーマンス改善が、Data Lake Storage Gen1 [.NET](data-lake-store-data-operations-net-sdk.md) と [Java](data-lake-store-get-started-java-sdk.md) SDK で記述された独自のツールで可能です。
 
 ### <a name="use-security-groups-versus-individual-users"></a>セキュリティ グループの使用と個々のユーザーの違い 
 
@@ -57,7 +57,7 @@ Data Lake Storage Gen1 の最も強力な機能の 1 つは、データ スル�
 
 ### <a name="improve-throughput-with-parallelism"></a>並列処理のスループットを向上させる 
 
-最適な読み取り/書き込みスループットのために、1 つのコアに 8 ～ 12 のスレッドを指定することを検討してください。 これは、単一のスレッドで読み取り/書き込みがブロックされることによるもので、スレッドを増やすことで仮想マシンでより多くの同時実行を許可できます。 レベルが正常で並列処理を増やすことができるように、仮想マシンの CPU 使用率を監視してください。   
+最適な読み取り/書き込みスループットのために、1 つのコアに 8 ～ 12 のスレッドを指定することを検討してください。 これは、単一のスレッドで読み取り/書き込みがブロックされることによるもので、スレッドを増やすことで仮想マシンでより多くのコンカレンシーを許可できます。 レベルが正常で並列処理を増やすことができるように、仮想マシンの CPU 使用率を監視してください。   
 
 ### <a name="avoid-small-file-sizes"></a>小さなファイル サイズを避ける
 

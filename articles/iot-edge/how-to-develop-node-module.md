@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a1459e3cbd433e2997ffd822b961ac781a72ca90
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: b05492941defc6ac3aa252d6bb29043d55e6b66c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423529"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261776"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-nodejs-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge の Node.js モジュールを開発およびデバッグする
 
@@ -43,7 +43,7 @@ ms.locfileid: "47423529"
    pip install --upgrade iotedgehubdev
    ```
 
-デバイス上でモジュールをテストするには、アクティブな IoT ハブが必要であり、1 つ以上の IoT Edge デバイス ID が作成されている必要があります。 開発コンピューター上で IoT Edge デーモンを実行しているなら、場合によっては、次の手順に移動する前に EdgeHub と EdgeAgent を停止する必要があります。 
+デバイス上でモジュールをテストするには、アクティブな IoT ハブが必要であり、1 つ以上の IoT Edge デバイス ID が作成されている必要があります。 開発コンピューター上で IoT Edge デーモンを実行しているときは、場合によっては、次の手順に移動する前に EdgeHub と EdgeAgent を停止する必要があります。 
 
 ## <a name="create-a-new-solution-template"></a>新しいソリューション テンプレートを作成する
 
@@ -123,7 +123,7 @@ IoT Edge Node.js モジュールは Azure IoT Node.js Device SDK に依存しま
 
 5. VS Code 統合ターミナルで、次のコマンドを実行して「**Hello World**」というメッセージをモジュールに送信します。 これは、前述の手順で IoT Edge シミュレーターの設定に成功すると表示されるコマンドです。 現在の統合ターミナルがブロックされているとき、場合によっては、別の統合ターミナルを作成するか、別の統合ターミナルに切り替える必要があります。
 
-    ```cmd
+    ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
     ```
 

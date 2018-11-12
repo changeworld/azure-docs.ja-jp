@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 35650eec65fa9181d035c52e6b466985b483500c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 98eee29dc6810d35ee1792c601e6d2f147602cae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036509"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262184"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -151,7 +151,7 @@ Web アプリケーションが、一般的な既知の脆弱性を悪用した�
 ## <a name="monitor-the-performance-of-your-applications"></a>アプリケーションのパフォーマンスを監視する
 監視とは、アプリケーションのパフォーマンス、正常性、可用性を見極めるために、データを収集し、分析することを指します。 効果的な監視戦略を策定することで、アプリケーションのコンポーネントの動作状況を詳細に把握できます。 問題が顕在化する前に解決できるように重大な問題を通知して、アップタイムを向上させることができます。 セキュリティに関連する可能性がある異常を検出することもできます。
 
-[Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) を使用すると、クラウドにホストされているかオンプレミスかにかかわらず、アプリケーションの可用性、パフォーマンス、使用状況を監視できます。 Application Insights を使用することによって、アプリケーションのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断できます。 収集した情報を活用すれば、アプリケーションのメンテナンスや機能強化に関する選択を十分な情報に基づいて判断することができます。
+[Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) を使用すると、クラウドにホストされているかオンプレミスかにかかわらず、アプリケーションの可用性、パフォーマンス、使用状況を監視できます。 Application Insights を使用することによって、アプリケーションのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断できます。 収集した情報を活用すれば、アプリケーションのメンテナンスや機能強化に関する選択を十分な情報に基づいて判断することができます。
 
 Application Insights には、収集されたデータを操作するための豊富なツールが用意されています。 Application Insights では、そのデータは共通リポジトリに格納されます。 アラート、ダッシュボード、Log Analytics クエリ言語を使用した詳細分析などの共有機能を活用できます。
 
@@ -167,11 +167,11 @@ Application Insights には、収集されたデータを操作するための�
 - Azure Service Bus
 - Web アプリケーション ファイアウォール
 
-Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure security best practices and patterns](security-best-practices-and-patterns.md)」 (Azure セキュリティのベスト プラクティスとパターン) を参照してください。
+Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)」を参照してください。
 
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
-* [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています
-* [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください
+* [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
+* [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください。
 
 <!--Image references-->
 [1]: ./media/security-paas-deployments/advantages-of-cloud.png

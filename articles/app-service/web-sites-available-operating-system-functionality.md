@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 9b4c87bd0889718fcb8938a9e3bb9207b8fe727a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7cf7078353de27c35a607fa8ef1921d6ed4b54b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420458"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247349"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
-この記事では、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
+この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
 
 > [!NOTE] 
 > App Service の [Linux アプリ](containers/app-service-linux-intro.md)は、独自のコンテナーで実行されます。 ホスト オペレーティング システムへのアクセスは許可されていません。コンテナーにはルート アクセスが可能です。 同様に、[Windows コンテナーで実行されるアプリ](app-service-web-get-started-windows-container.md)ではコンテナーへの管理アクセスが可能ですが、ホスト オペレーティング システムにはアクセスできません。 

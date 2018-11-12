@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 25c64b3ac2d051aac5998d23f07e149a1dd57bc9
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9f0a6a910ab9b9589e09b6c8e1e7b16f7e63c5c8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456233"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258971"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用したイベント ハブの作成
 
@@ -29,7 +29,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 このチュートリアルを完了するには、以下のものが必要です。
 
 - Azure のサブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成][]してください。
-- [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](http://www.visualstudio.com/vs) 以降。
+- [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
 - [.NET Standard SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

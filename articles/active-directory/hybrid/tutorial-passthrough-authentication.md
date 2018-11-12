@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6154164aadd8ed508bfae8de8b6f3c8255111a73
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fed1078b9a4e0ca4d0674db522f73705fa3efd0a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308071"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254489"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル: パススルー認証 (PTA) を使用して単一の AD フォレストを統合する
 
@@ -78,7 +78,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 仮想マシンの作成を完了するには、オペレーティング システムのインストールを完了する必要があります。
 
 1. Hyper-V マネージャーで仮想マシンをダブルクリックします。
-2. [起動] ボタンをクリックします。
+2. [スタート] ボタンをクリックします。
 3.  "Press any key to boot from CD or DVD" というメッセージが表示されます。 キーを押して続行します。
 4. Windows Server の起動画面で言語を選択し、**[次へ]** をクリックします。
 5. **[今すぐインストール]** をクリックします。
@@ -190,13 +190,13 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 5. **組織の名前**と**初期ドメイン名**を入力します。 **[作成]** を選択します。 これにより、ディレクトリが作成されます。
 6. これが完了したら、**こちら**のリンクをクリックし、ディレクトリを管理します。
 
-## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD で全体管理者を作成する
+## <a name="create-a-global-administrator-in-azure-ad"></a>Azure AD でグローバル管理者を作成する
 Azure AD テナントを作成したので、次は全体管理者アカウントを作成します。  このアカウントは、Azure AD Connect のインストール時に Azure AD コネクタ アカウントを作成するために使用されます。  Azure AD コネクタ アカウントは、Azure AD に情報を書き込むために使用されます。   全体管理者アカウントを作成するには、以下を実行します。
 
-1.  **[管理]** にある **[Users]** を選択します。</br>
+1.  **[管理]** にある **[ユーザー]** を選択します。</br>
 ![作成](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  **[すべてのユーザー]** を選択し、**+ [新しいユーザー]** を選択します。
-3.  このユーザーの名前およびユーザー名を入力します。 これがテナントの全体管理者になります。 また、**[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、**[作成]** を選択します。</br>
+3.  このユーザーの名前およびユーザー名を入力します。 これがテナントのグローバル管理者になります。 また、**[ディレクトリ ロール]** を **[全体管理者]** に変更してください。 一時パスワードを表示することもできます。 完了したら、**[作成]** を選択します。</br>
 ![作成](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. これが完了したら、新しい Web ブラウザーを開き、新しい全体管理者アカウントと一時パスワードを使用して myapps.microsoft.com にサインインします。
 5. 全体管理者のパスワードを覚えやすいものに変更します。
@@ -227,15 +227,15 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 7. [Azure AD に接続] 画面で、上で作成した全体管理者のユーザー名とパスワードを入力し、**[次へ]** をクリックします。
 2. [ディレクトリの接続] 画面で、**[ディレクトリの追加]** をクリックします。  次に **[新しい AD アカウントを作成]** を選択し、contoso\Administrator のユーザー名とパスワードを入力して **[OK]** をクリックします。
 3. **[次へ]** をクリックします。
-4. [Azure AD サインインの構成] 画面で、**[Continue without matching all UPN suffixes to verified domains]\(一部の UPN サフィックスが確認済みドメインに一致していなくても続行する\)** を選択し、**[次へ]** をクリックします。
+4. [Azure AD サインインの構成] 画面で、**[一部の UPN サフィックスが確認済みドメインに一致していなくても続行する]** を選択し、**[次へ]** をクリックします。
 5. [ドメインと OU のフィルタリング] 画面で、**[次へ]** をクリックします。
-6. [Uniquely identifying your users]\(ユーザーを一意に識別\) 画面で、**[次へ]** をクリックします。
+6. [一意のユーザー識別] 画面で、**[次へ]** をクリックします。
 7. [ユーザーおよびデバイスのフィルタリング] 画面で、**[次へ]** をクリックします。
 8. [オプション機能] 画面で、**[次へ]** をクリックします。
 9. [Enable single sign-on credentials]\(シングル サインオン資格情報を有効にする\) ページで、contoso\Administrator のユーザー名とパスワードを入力し、**[次へ]** をクリックします。
 10. [構成の準備完了] 画面で、 **[インストール]** をクリックします。
 11. インストールが完了したら、 **[終了]** をクリックします。
-12. インストールの完了後、Synchronization Service Manager または同期規則エディターを使用する前に、サインアウトしてもう一度サインインします。
+12. インストールの完了後、Sychronization Service Manager または同期規則エディターを使用する前に、サインアウトしてもう一度サインインします。
 
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>ユーザーが作成され、同期が実行されていることを確認する
@@ -244,12 +244,12 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。
 2. 左側の **[Azure Active Directory]** を選択します。
-3. **[管理]** にある **[Users]** を選択します。
+3. **[管理]** にある **[ユーザー]** を選択します。
 4. テナントの ![[同期]](media/tutorial-password-hash-sync/synch1.png) に新しいユーザーが表示されていることを確認します。
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>いずれかのユーザーでサインインをテストする
 
-1.  [http://myapps.microsoft.com](http://myapps.microsoft.com) に移動します。
+1.  [http://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
 2. 新しいテナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。
 ![確認](media/tutorial-password-hash-sync/verify1.png)
 

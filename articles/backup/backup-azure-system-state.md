@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
-ms.openlocfilehash: 61ee1ce7d5cc6dc2aa4b7a8b02c2e5ba77539725
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a28e3fb18f2c0b65557034e388d08918c622b8f4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606071"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255866"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows のシステム状態を Resource Manager デプロイメントにバックアップする
 この記事では、Windows Server のシステム状態を Azure にバックアップする方法について説明します。 基本事項に関するチュートリアルです。
@@ -208,7 +208,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![Windows Server を今すぐバックアップする](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. 表示される **[Select Backup Item](バックアップ項目の選択)** 画面で **[システム状態]** を選択し、**[次へ]** をクリックします。
+3. 表示される **[Select Backup Item]\(バックアップ項目の選択)** 画面で **[システム状態]** を選択し、**[次へ]** をクリックします。
 
 4. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]** をクリックします。
 
@@ -220,7 +220,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
   ![IR complete](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
 ## <a name="questions"></a>疑問がある場合
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
+ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](https://aka.ms/azurebackup_feedback)。
 
 ## <a name="next-steps"></a>次の手順
 * [Windows コンピューターのバックアップ](backup-configure-vault.md)の詳細を参照してください。

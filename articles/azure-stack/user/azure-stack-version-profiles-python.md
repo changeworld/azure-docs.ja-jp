@@ -14,12 +14,12 @@ ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: c4600eda74fbc0ae53f30dac00e0127a984a4fff
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 657eefcd5b7793f2f181d074084a272e65943681
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093417"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246448"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Azure Stack での Python による API バージョンのプロファイルの使用
 
@@ -154,4 +154,4 @@ os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 - [Azure Python 開発センター](https://azure.microsoft.com/develop/python/)
 - [Azure Virtual Machines 関係のドキュメント](https://azure.microsoft.com/services/virtual-machines/)
 - [Virtual Machines のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- Microsoft Azure のサブスクリプションをお持ちでない場合は､[ここ](http://go.microsoft.com/fwlink/?LinkId=330212)から無料の試用アカウントを入手できます｡
+- Microsoft Azure のサブスクリプションをお持ちでない場合は､[ここ](https://go.microsoft.com/fwlink/?LinkId=330212)から無料の試用アカウントを入手できます｡

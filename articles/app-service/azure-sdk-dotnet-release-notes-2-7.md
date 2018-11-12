@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 9a69253129cdedc4f5d7e736d5bd8d6a68f95a1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01a02296354ebe3d60f0e1fda6a6da8554a265fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986577"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239068"
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート
 ## <a name="overview"></a>概要
@@ -28,7 +28,7 @@ ms.locfileid: "22986577"
 
 Azure SDK 2.7 は、Visual Studio 2015 と Visual Studio 2013 でのみサポートされています。 [Azure SDK 2.6](https://azure.microsoft.com/downloads/) は、Visual Studio 2012 でサポートされる最後の SDK です。
 
-このリリースの詳細については、[Azure SDK 2.7 の発表に関する投稿](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)と[Azure SDK 2.7.1 の発表に関する投稿](http://go.microsoft.com/fwlink/?LinkId=623850)をご覧ください。
+このリリースの詳細については、[Azure SDK 2.7 の発表に関する投稿](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)と[Azure SDK 2.7.1 の発表に関する投稿](https://go.microsoft.com/fwlink/?LinkId=623850)をご覧ください。
 
 ## <a name="azure-sdk-for-net-27"></a>Azure SDK for .NET 2.7
 ### <a name="sign-in-improvements-for-visual-studio-2015"></a>Visual Studio 2015 のサインインの機能強化
@@ -43,7 +43,7 @@ Azure SDK 2.7 に含まれているサインインの機能強化は、Visual St
 一般的なバグの修正と機能強化。 更新プログラムと機能の詳細については、最新の [Service Bus NuGet](http://www.nuget.org/packages/WindowsAzure.ServiceBus/)のリリース ノートをご覧ください。
 
 ### <a name="hdinsight-tools"></a>HDInsight ツール
-このリリースでは、次の更新が行われました。 これらの更新プログラムはプレビュー段階です。 詳細については、 [このブログ](http://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
+このリリースでは、次の更新が行われました。 これらの更新プログラムはプレビュー段階です。 詳細については、 [このブログ](https://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
 
 * Tez ジョブでの Hive 用の Hive グラフ
 * 完全な Hive DML IntelliSense のサポート
@@ -51,8 +51,8 @@ Azure SDK 2.7 に含まれているサインインの機能強化は、Visual St
 * Azure サービス用の Storm テンプレート
 
 #### <a name="breaking-changes"></a>重大な変更
-* このバージョンのツールを使用する場合は、以前の **Storm** プロジェクトをアップグレードする必要があります。 詳細については、 [このブログ](http://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
-* Visual Studio Web Express はサポートされなくなりました。 詳細については、 [このブログ](http://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
+* このバージョンのツールを使用する場合は、以前の **Storm** プロジェクトをアップグレードする必要があります。 詳細については、 [このブログ](https://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
+* Visual Studio Web Express はサポートされなくなりました。 詳細については、 [このブログ](https://go.microsoft.com/fwlink/?LinkId=619108)をご覧ください。
 
 ### <a name="azure-app-service-tools"></a>Azure App Service ツール
 このリリースでは、Web ツールの拡張機能に対して次の更新が行われました。 詳細については、[このブログ](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)をご覧ください。 
@@ -84,11 +84,11 @@ Azure リソース マネージャー ツールは、ロール ベースの Acce
 SDK 2.7 を使用して以前のバージョンの SDK から Azure リソース グループのプロジェクトを使用している場合は、従来のストレージの代わりに新しいストレージ アカウントを使用してデプロイするために、新しいデプロイメント スクリプトが必要です。  プロジェクトに変更を加えて新しいスクリプトを追加する前に、プロンプトが表示されます。  古いスクリプトは名前が変更されます。新しいスクリプトに手動で変更を加える必要があります。
 
 ### <a name="storage-explorer-tools"></a>ストレージ エクスプローラー ツール
-* 追加の BLOB を表示するためのサポート。 詳細については、 [このブログの投稿](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/13/introducing-azure-storage-append-blob.aspx)をご覧ください。 
+* 追加の BLOB を表示するためのサポート。 詳細については、 [このブログの投稿](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/04/13/introducing-azure-storage-append-blob.aspx)をご覧ください。 
 * サーバー エクスプローラーから Premium Storage アカウントを表示するためのサポート。 サーバー エクスプローラーには、Premium Storage アカウントをサポートする唯一の種類である、Premium Storage アカウントのページ BLOB のみが表示されます。
 
 ### <a name="azure-data-factory-tools-for-visual-studio"></a>Visual Studio の Azure Data Factory ツール
-Visual Studio 用の **Azure Data Factory ツール** が導入されています。 次に、有効な機能を示します。 詳細については、 [このブログ](http://go.microsoft.com/fwlink/?LinkId=617530) をご覧ください。
+Visual Studio 用の **Azure Data Factory ツール** が導入されています。 次に、有効な機能を示します。 詳細については、 [このブログ](https://go.microsoft.com/fwlink/?LinkId=617530) をご覧ください。
 
 * **テンプレートに基づく作成**: 使用事例ベースのテンプレート、データ移動のテンプレート、データ処理のテンプレートを選択して、エンド ツー エンドのデータ統合ソリューションをデプロイし、Data Factory を使用して簡単に作業を開始できます。 
 * **Data Factory エンティティの作成とデプロイのためのソリューション エクスプローラーとの統合**: パイプラインと関連エンティティを Visual Studio プロジェクトとして作成し、デプロイします。 
@@ -102,7 +102,7 @@ Visual Studio 用の **Azure Data Factory ツール** が導入されていま�
 次のセクションには、the Azure SDK for .NET 2.7.1 に導入された更新が含まれています。
 
 ### <a name="hdinsight-tools"></a>HDInsight ツール
-HDInsight ツールの更新の詳細については、 [このブログ](http://go.microsoft.com/fwlink/?LinkId=623831)をご覧ください。
+HDInsight ツールの更新の詳細については、 [このブログ](https://go.microsoft.com/fwlink/?LinkId=623831)をご覧ください。
 
 * Hive ジョブ演算子ビュー (新機能)
   
@@ -120,7 +120,7 @@ HDInsight ツールの更新の詳細については、 [このブログ](http:/
   
     ユーザー フレンドリーな候補を追加することによって IntelliSense の機能を強化しました。 たとえば、テーブルのエイリアスも IntelliSense の候補として表示されるため、クエリをより簡単に記述できるようになりました。 さらに、Hive メタデータの読み込み機能も強化されているため、Hive メタストアのすべてのデータベース、テーブル、列がほんの数秒で表示されます。
 
-HDInsight ツールの更新の詳細については、 [このブログ](http://go.microsoft.com/fwlink/?LinkId=623831)をご覧ください。
+HDInsight ツールの更新の詳細については、 [このブログ](https://go.microsoft.com/fwlink/?LinkId=623831)をご覧ください。
 
 ### <a name="improvements-in-visual-studio-2013"></a>Visual Studio 2013 での機能強化
 * Azure SDK 2.7.1 では、Visual Studio 2013 は、ロール ベースの Access Control、クラウド ソリューション プロバイダー、および Dreamspark を通して Azure アカウントとサブスクリプションにアクセスできます。
@@ -132,7 +132,7 @@ Visual Studio Community 2013 用のAzure SDK 2.6 または 2.7.1 を英語版以
 LightSwitch プロジェクトはこのリリースと互換性がありません。 この問題は、次の SDK のリリースで解決されます。
 
 ## <a name="also-see"></a>関連トピック
-[Azure SDK 2.7.1 の発表に関する投稿](http://go.microsoft.com/fwlink/?LinkId=623850)
+[Azure SDK 2.7.1 の発表に関する投稿](https://go.microsoft.com/fwlink/?LinkId=623850)
 
 [Azure SDK 2.7 アナウンスの投稿](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)
 

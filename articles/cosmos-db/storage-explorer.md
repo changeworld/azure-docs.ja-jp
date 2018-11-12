@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: b45328425cff978377d5e05de487d42e786c063b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345109"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261162"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Azure Cosmos DB を Azure Storage Explorer で管理する
 
@@ -130,7 +130,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
 2. パーティション キーを指定できるように **[無制限]** を選択し、**[OK]** をクリックして完了します。
 
-    コレクションの作成時にパーティション キーを使用している場合は、作成が完了した後でコレクションのパーティション キー値を変更することはできません。 パーティション キーの設定については、「[パーティション分割のための設計](partition-data.md#designing-for-partitioning)」を参照してください。
+    コレクションの作成時にパーティション キーを使用している場合は、作成が完了した後でコレクションのパーティション キー値を変更することはできません。
 
     ![パーティション キー](./media/storage-explorer/partitionkey.png)
 

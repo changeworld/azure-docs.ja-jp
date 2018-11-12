@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: 7db7e00ec3f93695cc6bc3369fe1b00582740d0e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 400c8ac229e00e818e336f1c47b126d3e8a2d155
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578074"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253841"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法
 次の例では、Azure でホストされる Web ページから SendGrid を使用して電子メールを送信する方法を示しています。 次のスクリーンショットに示すように、作成されたアプリケーションは電子メールに関する値の入力をユーザーに求めます。
@@ -38,7 +38,7 @@ ms.locfileid: "45578074"
 
 また、電子メールを送信するには、SendGrid のユーザー名とパスワードを取得している必要があります。 SendGrid を利用し始めるには、「 [Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email.md)」を参照してください。
 
-さらに、 [Microsoft Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/hh690944)にある情報に精通すること、または、Eclipse を使用していない場合は、Microsoft Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
+さらに、 [Microsoft Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](https://msdn.microsoft.com/library/windowsazure/hh690944)にある情報に精通すること、または、Eclipse を使用していない場合は、Microsoft Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
 
 ## <a name="create-a-web-form-for-sending-email"></a>電子メール送信用の Web フォームの作成
 次のコードでは、電子メール送信用のユーザー データを取得する Web フォームの作成方法を示しています。 このコンテンツでは、JSP ファイルに **emailform.jsp**という名前を付けています。
@@ -214,7 +214,7 @@ ms.locfileid: "45578074"
 Azure 上で Java から SendGrid を使用する方法を示すために、このコードが用意されています。 運用環境で Azure に展開する前に、エラー処理やその他の機能をさらに追加することができます。 例:  
 
 * Web フォームを使用する代わりに、Azure ストレージ BLOB または SQL データベースを使用して、電子メール アドレスと電子メール メッセージを保存するようにします。 Java で Azure ストレージ BLOB を使用する方法の詳細については、 [Java から BLOB ストレージ サービスを使用する方法に関するページ](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/)を参照してください。 Java で SQL データベースを使用する方法の詳細については、 [Java での SQL データベースの使用に関するページ](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-java)を参照してください。
-* `RoleEnvironment.getConfigurationSettings` を使用して、SendGrid のユーザー名とパスワードを Web フォームからではなく、展開の構成設定から取得することもできます。 `RoleEnvironment` クラスについては、[JSP での Azure サービス ランタイム ライブラリの使用に関するページ](http://msdn.microsoft.com/library/windowsazure/hh690948)および Azure サービス ランタイム パッケージのドキュメント (<http://dl.windowsazure.com/javadoc>) を参照してください。
+* `RoleEnvironment.getConfigurationSettings` を使用して、SendGrid のユーザー名とパスワードを Web フォームからではなく、展開の構成設定から取得することもできます。 `RoleEnvironment` クラスについては、[JSP での Azure サービス ランタイム ライブラリの使用に関するページ](https://msdn.microsoft.com/library/windowsazure/hh690948)および Azure サービス ランタイム パッケージのドキュメント (<http://dl.windowsazure.com/javadoc>) を参照してください。
 * Java での SendGrid の使用については、「 [Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email.md)」を参照してください。
 
 [emailform]: ./media/store-sendgrid-java-how-to-send-email-example/SendGridJavaEmailform.jpg

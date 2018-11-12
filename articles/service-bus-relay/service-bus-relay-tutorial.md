@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 12902fef0a27aa0af5995d2fd6ab87d951413d1d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857977"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262014"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Azure WCF Relay のチュートリアル
 
@@ -35,7 +35,7 @@ ms.locfileid: "48857977"
 
 このチュートリアルを完了するには、次のものが必要です。
 
-* [Microsoft Visual Studio 2015 以上](http://visualstudio.com)。 このチュートリアルでは、Visual Studio 2017 を使用します。
+* [Microsoft Visual Studio 2015 以上](https://visualstudio.com)。 このチュートリアルでは、Visual Studio 2017 を使用します。
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、無料アカウントを数分で作成できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。
 
 ## <a name="create-a-service-namespace"></a>サービス名前空間の作成
@@ -81,7 +81,7 @@ ms.locfileid: "48857977"
     ```
 
    > [!NOTE]
-   > 通常、サービス コントラクトの名前空間には、バージョン情報を含む名前付けスキームが含まれています。 サービス コントラクトの名前空間にバージョン情報を含めると、サービスは、新しいサービス コントラクトを新しい名前空間を使用して定義し、それを新しいエンドポイントで公開することで、主要な変更を分離できます。 この方法では、クライアントは、古いサービス コントラクトを更新する必要なく、使用し続けることができます。 バージョン情報は、日付またはビルド番号で構成できます。 詳細については、[「サービスのバージョン管理」](http://go.microsoft.com/fwlink/?LinkID=180498)を参照してください。 このチュートリアルの目的では、サービス コントラクトの名前空間の名前付けスキームにバージョン情報は含まれません。
+   > 通常、サービス コントラクトの名前空間には、バージョン情報を含む名前付けスキームが含まれています。 サービス コントラクトの名前空間にバージョン情報を含めると、サービスは、新しいサービス コントラクトを新しい名前空間を使用して定義し、それを新しいエンドポイントで公開することで、主要な変更を分離できます。 この方法では、クライアントは、古いサービス コントラクトを更新する必要なく、使用し続けることができます。 バージョン情報は、日付またはビルド番号で構成できます。 詳細については、[「サービスのバージョン管理」](https://go.microsoft.com/fwlink/?LinkID=180498)を参照してください。 このチュートリアルの目的では、サービス コントラクトの名前空間の名前付けスキームにバージョン情報は含まれません。
    >
    >
 8. `IEchoContract` インターフェイス内で、`IEchoContract` コントラクトがインターフェイスで公開している単一操作のメソッドを宣言し、次に示すように、パブリック WCF Relay コントラクトの一部として公開するメソッドに `OperationContractAttribute` 属性を適用します。

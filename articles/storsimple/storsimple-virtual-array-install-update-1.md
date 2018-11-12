@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: a85290f3f56eb1e1bf57524c43c6d4fea36129f7
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 34439268163b4da6ac45af09101f4f609de7e9ee
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24010825"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248165"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array に Update 1.0 をインストールする
 
@@ -36,7 +36,7 @@ StorSimple Virtual Array を最新の状態に保つために、ソフトウェ�
 >
 > - 仮想アレイで Update 0.6 を実行している場合にのみ、Azure Portal で Update 1 を入手できます。 仮想アレイで Update 0.6 よりも前のバージョンを実行している場合は、最初に Update 0.6 をインストールしてから、Update 1 を適用してください。
 
-## <a name="use-the-azure-portal"></a>Azure Portal の使用
+## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
 Update 0.2 以降を実行している場合は、Azure Portal から更新プログラムをインストールすることをお勧めします。 ポータルの手順では、ユーザーは更新プログラムをスキャン、ダウンロード、およびインストールする必要があります。 仮想アレイで実行されるソフトウェアのバージョンによって、Azure Portal から適用するアップデートが異なります。
 
@@ -66,7 +66,7 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>更新プログラムまたは修正プログラムをダウンロードするには
 
-1. Internet Explorer を起動し、 [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com)に移動します。
+1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) に移動します。
 
 2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、 **[インストール]** をクリックします。
 
@@ -127,6 +127,6 @@ Update 0.2 以降を実行している場合は、Azure Portal から更新プ�
 > [!NOTE]
 > Update 0.6 より前のバージョンを実行しているデバイスに直接 Update 1 を適用すると、一部の更新プログラムはインストールされません。 Microsoft サポートに対処法をお問い合わせください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。

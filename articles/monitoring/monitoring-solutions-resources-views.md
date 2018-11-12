@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: b4f54358f4bc1db973d6fe7163411e3a313c3cf4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a0d543ebe435b616306690bfb5e3de63ecc1ff6c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887432"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259124"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理ソリューションのビュー (プレビュー)
 > [!NOTE]
@@ -90,7 +90,7 @@ ms.locfileid: "33887432"
 * 変数はソリューションで定義され、適切なプロパティで使用する必要があります。
 
 ### <a name="log-analytics-api-version"></a>Log Analytics API バージョン
-Resource Manager テンプレートで定義された Log Analytics リソースはすべて、そのリソースで使用する API のバージョンを定義するプロパティ **apiVersion** を保持しています。  このバージョンは、[レガシおよびアップグレードされたクエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)を使うクエリのあるビューでは異なります。  
+Resource Manager テンプレートで定義された Log Analytics リソースはすべて、そのリソースで使用する API のバージョンを定義するプロパティ **apiVersion** を保持しています。  このバージョンは、[レガシおよびアップグレードされたクエリ言語](../log-analytics/log-analytics-queries.md)を使うクエリのあるビューでは異なります。  
 
  次の表では、レガシ ワークスペースとアップグレードされたワークスペースでのビューに対する Log Analytics API のバージョンを指定します。 
 

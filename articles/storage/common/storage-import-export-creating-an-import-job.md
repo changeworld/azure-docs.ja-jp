@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: c1effeba7e4b0750d5af3a5a82b755704379af68
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021848"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258012"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのインポート ジョブの作成
 
@@ -35,7 +35,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
 インポート ジョブのドライブを準備する手順は、ジョブの作成にポータルを使用する場合でも、REST API を使用する場合でも同じです。
 
-次に示すのは、ドライブ準備作業の概要です。 詳しい手順については、「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。 Azure Import/Export ツールは、[こちら](http://go.microsoft.com/fwlink/?LinkID=301900)からダウンロードできます。
+次に示すのは、ドライブ準備作業の概要です。 詳しい手順については、「[Azure Import-Export ツールの参照](storage-import-export-tool-how-to-v1.md)」をご覧ください。 Azure Import/Export ツールは、[こちら](https://go.microsoft.com/fwlink/?LinkID=301900)からダウンロードできます。
 
 ドライブの準備には次の手順が含まれます。
 

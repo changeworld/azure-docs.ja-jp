@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 16e4af4dd7f5c2bd14d70cc28225dfc750ce3bea
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b90603490af851d9b7ca735b00ee7d6ca5d53951
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838512"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233526"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Scala および Azure 上の Spark を使用したデータ サイエンス
-この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](http://aka.ms/datascienceprocess)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
+この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](https://aka.ms/datascienceprocess)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
 
 * 回帰問題: タクシー営業でのチップ金額 (ドル) の予測
 * 二項分類: タクシー営業でチップが支払われるかどうか (1/0) の予測
@@ -60,7 +60,7 @@ Jupyter Notebook は Azure ポータルから起動できます。 ダッシュ�
 
 ![クラスター ダッシュボードと Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
-Jupyter Notebook には、https://&lt;クラスター名&gt;.azurehdinsight.net/jupyter でアクセスすることもできます。 *clustername* はクラスターの名前に置き換えてください。 Jupyter Notebook にアクセスするには、管理者アカウントのパスワードが必要です。
+Jupyter Notebook には、 https://&lt;クラスター名&gt;.azurehdinsight.net/jupyter でアクセスすることもできます。 *clustername* はクラスターの名前に置き換えてください。 Jupyter Notebook にアクセスするには、管理者アカウントのパスワードが必要です。
 
 ![クラスター名による Jupyter Notebook へのアクセス](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
@@ -1104,7 +1104,7 @@ Python matplotlib を使用してプロットを作成します。
 セルの実行時間: 61 秒。
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Spark で構築した機械学習モデルの Scala での使用を自動化する
-Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [Team Data Science Process](http://aka.ms/datascienceprocess)に関するページをご覧ください。
+Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [Team Data Science Process](https://aka.ms/datascienceprocess)に関するページをご覧ください。
 
 [Team Data Science Process のチュートリアル](walkthroughs.md) 」に記載されています。 これらのチュートリアルでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法についても説明します。
 

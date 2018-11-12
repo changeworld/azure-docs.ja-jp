@@ -11,18 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/24/2018
-ms.openlocfilehash: 24d3cf0c4b1a1283e7a6a7f61f0bb23dae7143d5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 7322b07740d5dec85b6217e122fb262647527c96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43113528"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258410"
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Azure Machine Learning モデルの Azure IoT Edge デバイスへの展開
 
 Azure Machine Learning モデルは、Docker ベースの Web サービスとしてコンテナー化することができます。 Azure IoT Edge を使用すると、コンテナーをリモートでデバイスにデプロイできます。 これらのサービスを一緒に使用すると、エッジでモデルを実行して応答時間を短縮し、データ転送を減らすことができます。 
 
-追加のスクリプトと手順については、「[AI Toolkit for Azure IoT Edge (Azure IoT Edge の AI Toolkit)](http://aka.ms/AI-toolkit)」をご覧ください。
+追加のスクリプトと手順については、「[AI Toolkit for Azure IoT Edge (Azure IoT Edge の AI Toolkit)](https://aka.ms/AI-toolkit)」をご覧ください。
 
 ## <a name="operationalize-the-model"></a>モデルの運用化
 

@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: f03872a125e4e4d2f1e0b458a31d67a07802f2c8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b1fb9be6c05edbd85a709632a001fe1c1b8b4c6c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387449"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247791"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -69,7 +69,7 @@ Active Directory ベースの認証およびアクセス制御リスト (ACL) �
 
 Azure Files の詳細については、「[Azure Files の概要](../files/storage-files-introduction.md)」を参照してください。
 
-## <a name="queue-storage"></a>Queue Storage
+## <a name="queue-storage"></a>ストレージ
 
 Azure Queue サービスは、メッセージの保管と取得に使用します。 キューに許容されるメッセージ サイズは最大 64 KB で、1 つのキューに数百万件のメッセージを格納することができます。 一般に、非同期的に処理するメッセージのリストを格納するのがキューの用途となります。
 
@@ -201,7 +201,7 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 ### <a name="tools-and-utilities"></a>ツールとユーティリティ
 * [ストレージ用 Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azure.storage)
 * [ストレージ用 Azure CLI コマンドレット](https://docs.microsoft.com/cli/azure/storage)
-* [AzCopy コマンド ライン ユーティリティ](http://aka.ms/downloadazcopy)
+* [AzCopy コマンド ライン ユーティリティ](https://aka.ms/downloadazcopy)
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Azure Storage クライアント ツール](../storage-explorers.md)
 * [Azure 開発者ツール](https://azure.microsoft.com/tools/)

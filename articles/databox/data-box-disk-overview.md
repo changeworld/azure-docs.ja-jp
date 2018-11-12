@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/30/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 47cffbabf073fac3fc24fc070b8d5164fecf3f9c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418757"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229613"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Azure Data Box Disk とは (プレビュー)
 
@@ -25,7 +25,7 @@ Azure portal で Data Box サービスを使用して、ディスクの構成、
 
 > [!IMPORTANT]
 > - Data Box Disk はプレビュー段階にあります。 このソリューションを展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
-> - このサービスにサインアップする必要があります。 サインアップするには、[プレビュー ポータル](http://aka.ms/azuredataboxfromdiskdocs)に移動します。
+> - このサービスにサインアップする必要があります。 サインアップするには、[プレビュー ポータル](https://aka.ms/azuredataboxfromdiskdocs)に移動します。
 > - プレビュー期間中、Data Box Disk は、米国および欧州連合のお客様に出荷できます。 詳細については、「[Region availability (利用可能なリージョン)](#region-availability)」をご覧ください。
 
 ## <a name="use-cases"></a>ユース ケース

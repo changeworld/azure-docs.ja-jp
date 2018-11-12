@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: c21741ebb8f68797b31a2ba1de4bb6f0f8d32cb7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 621c2844b6952e5ea1f6b9f7c8bc2ed170fee310
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297129"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246788"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Bing Image Search API で Web から画像を取得する
 
@@ -38,7 +38,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="get-images-from-a-specific-web-domain"></a>特定の Web ドメインから画像を取得する
 
-特定のドメインから画像を取得するには、[site:](http://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
+特定のドメインから画像を取得するには、[site:](https://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
@@ -71,7 +71,7 @@ Host: api.cognitive.microsoft.com
 * [license](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#license) - サイトに関連付けられているライセンスの種類で画像をフィルタリング。
 * [size](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#size) - 画像をサイズでフィルタリング (最大 200 x 200 ピクセルの小さな画像など)。
 
-特定のドメインから画像を取得するには、[site:](http://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
+特定のドメインから画像を取得するには、[site:](https://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
 
  > [!NOTE]
  > `site:` 演算子を使用したクエリへの応答には、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) の設定に関係なく成人向けのコンテンツが含まれることがあります。 `site:` の使用は、対象となるドメイン上のコンテンツを把握している場合に限定してください。

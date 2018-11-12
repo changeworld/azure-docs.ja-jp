@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318539"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260382"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
 
@@ -150,7 +150,7 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 ### <a name="database-level-policy-audit-logs"></a>データベースレベルのポリシーの監査ログ
 データベースレベルの監査ログは、設定時に選択した Azure ストレージ アカウントで、**SQLDBAuditLogs** というプレフィックスが付いたストア テーブルのコレクションに集計されます。 [Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com)などのツールを使用してログ ファイルを表示できます。
 
-事前に構成されたダッシュボード レポート テンプレートが[ダウンロードできる Excel スプレッドシート](http://go.microsoft.com/fwlink/?LinkId=403540)として用意されているので、ログ データをすぐに分析できます。 監査ログでテンプレートを使用するには、Excel 2013 以降および Power Query ([ここ](http://www.microsoft.com/download/details.aspx?id=39379)でダウンロードできます) が必要です。
+事前に構成されたダッシュボード レポート テンプレートが[ダウンロードできる Excel スプレッドシート](https://go.microsoft.com/fwlink/?LinkId=403540)として用意されているので、ログ データをすぐに分析できます。 監査ログでテンプレートを使用するには、Excel 2013 以降および Power Query ([ここ](https://www.microsoft.com/download/details.aspx?id=39379)でダウンロードできます) が必要です。
 
 テンプレートでは架空のサンプル データを使用しています。Power Query を設定して Azure ストレージ アカウントから監査ログを直接インポートできます。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 14b9a4ed66995a73f00234f4b25f52fccbcbe556
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e055b51af19ad3958c0c9155490c598ed0f4a80e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38562606"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235209"
 ---
 # <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "38562606"
 > [!NOTE]
 > Notification Hubs Windows Phone SDK では、Windows Phone 8.1 Silverlight アプリで Windows プッシュ通知サービス (WNS) を使用できません。 Windows Phone 8.1 Silverlight アプリで (MPNS ではなく) WNS を使用する場合は、REST API を使用する [Notification Hubs - Windows Phone Silverlight チュートリアル]の手順に従ってください。
 
-このチュートリアルで学習する内容は次のとおりです。 
+このチュートリアルでは、以下の内容を学習します。 
 
 > [!div class="checklist"]
 > * 通知ハブを作成する
@@ -61,7 +61,7 @@ ms.locfileid: "38562606"
     これでハブが作成され、Windows Phone に向けて非認証通知を送信するように構成されました。
 
     > [!NOTE]
-    > このチュートリアルでは、非認証モードで MPNS を使用します。 MPNS 非認証モードでは、各チャネルに送信できる通知に制限があります。 Notification Hubs では、証明書のアップロードを可能にすることで、 [MPNS 認証モード](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) をサポートします。
+    > このチュートリアルでは、非認証モードで MPNS を使用します。 MPNS 非認証モードでは、各チャネルに送信できる通知に制限があります。 Notification Hubs では、証明書のアップロードを可能にすることで、 [MPNS 認証モード](https://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) をサポートします。
 
 ## <a name="create-a-windows-phone-application"></a>Windows Phone アプリケーションを作成する
 このセクションでは、自身を通知ハブに登録する Windows Phone アプリケーションを作成します。 

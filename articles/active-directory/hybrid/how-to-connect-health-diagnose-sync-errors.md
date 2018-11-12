@@ -3,7 +3,7 @@ title: Azure AD Connect Health - 重複する属性の同期エラーの診断 |
 description: このドキュメントでは、重複属性同期エラーの診断プロセスと、孤立したオブジェクトのシナリオを Azure portal から直接修正できる可能性について説明します。
 services: active-directory
 documentationcenter: ''
-author: zhiweiw
+author: zhiweiwangmsft
 manager: maheshu
 editor: billmath
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 2d525056f42b35c573943a4db281c8a74605a4c5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c077e8592157b5c09dd1bc99934afd9f687b1da1
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310611"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282528"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>重複属性同期エラーを診断して修正する
 

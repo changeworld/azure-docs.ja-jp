@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ce8e2457c1d575e890174de3b9cf7faf6e16a7cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421136"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258818"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,7 +37,7 @@ Azure の [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) �
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>手順 1: ヘッド ノードに Web コンポーネントをインストールし、構成する
 REST インターフェイスを有効にして HTTPS でクラスターにジョブを送信するために、HPC Pack ヘッド ノードに HPC Pack Web コンポーネントが構成されていることを確認します。 Web コンポーネントがインストールされていない場合は、最初に HpcWebComponents.msi インストール ファイルを実行して Web コンポーネントをインストールします。 次に、HPC PowerShell スクリプト **Set-HPCWebComponents.ps1**を実行し、コンポーネントを構成します。
 
-詳細な手順については、「 [Microsoft HPC Pack Web コンポーネントのインストール](http://technet.microsoft.com/library/hh314627.aspx)」を参照してください。
+詳細な手順については、「 [Microsoft HPC Pack Web コンポーネントのインストール](https://technet.microsoft.com/library/hh314627.aspx)」を参照してください。
 
 > [!TIP]
 > 一部の HPC Pack クラスター用 Azure クイックスタート テンプレートでは、Web コンポーネントが自動的にインストールされ、構成されます。
@@ -143,7 +143,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
    
     c. インターネット アドレス (たとえば、 https://&lt;HeadNodeDnsName&gt;.cloudapp.net/HpcScheduler、 https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com/HpcScheduler) と、クラスター管理者または構成済みの別のクラスター ユーザーのユーザー名 (&lt;DomainName&gt;\\&lt;UserName&gt; 形式) とパスワードを指定します。
 1. クライアント コンピューターで、HPC ジョブ マネージャーを起動します。
-1. **[ヘッド ノードの選択]** ダイアログ ボックスで、Azure のヘッド ノードへの URL (たとえば、 https://&lt;HeadNodeDnsName&gt;.cloudapp.net、https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com) を入力します。
+1. **[ヘッド ノードの選択]** ダイアログ ボックスで、Azure のヘッド ノードへの URL (たとえば、 https://&lt;HeadNodeDnsName&gt;.cloudapp.net、 https://&lt;HeadNodeDnsName&gt;.&lt;region&gt;.cloudapp.azure.com) を入力します。
    
     HPC ジョブ マネージャーが開き、ヘッド ノードでジョブの一覧が表示されます。
 
@@ -169,7 +169,7 @@ HPC Pack クライアント ツールを使用し、ジョブをヘッド ノー
 1. 送信したジョブの結果を表示するには、ジョブ ID をクリックし、**[タスクの表示]** をクリックしてコマンドの出力を表示します (**[出力]** の下で)。
 
 ## <a name="next-steps"></a>次の手順
-* [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)を使用し、Azure クラスターにジョブを送信することもできます。
+* [HPC Pack REST API](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)を使用し、Azure クラスターにジョブを送信することもできます。
 * Linux クライアントからクラスター ジョブを送信する場合は、 [HPC Pack 2012 R2 SDK およびサンプル コード](https://www.microsoft.com/download/details.aspx?id=41633)の Python サンプルをご覧ください。
 
 <!--Image references-->

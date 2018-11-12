@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 05/23/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5fe16ecb2725cf306b5b57c9d45d8601581a3ece
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 13d81e655b98771d985277974bd3081437e2a3e8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578902"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255781"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -61,9 +61,9 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 
 影響を受けたアカウントの問題を解決し、環境を保護するために、以下の操作を実行してください。
 
-1.  多要素認証とセルフサービスのパスワード リセットに関する情報が正しいことを[検証](http://aka.ms/MFAValid)します。 
-2.  すべてのユーザーの多要素認証を[有効](http://aka.ms/MFAuth)にします。 
-3.  この[修復スクリプト](http://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行することができます。 
+1.  多要素認証とセルフサービスのパスワード リセットに関する情報が正しいことを[検証](https://aka.ms/MFAValid)します。 
+2.  すべてのユーザーの多要素認証を[有効](https://aka.ms/MFAuth)にします。 
+3.  この[修復スクリプト](https://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行することができます。 
 
     a. パスワードをリセットしてアカウントを保護し、アクティブなセッションを強制終了します。
 
@@ -87,10 +87,10 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 
 他にも、以下の作業が必要です。
 
-- 異常なアクティビティへの対処について、この[ガイダンス](http://aka.ms/fixaccount)を読み、実装します。 
-- テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](http://aka.ms/improvesecurity)にします。 そのようにすると、監査ストアにすべてのアクティビティ ログが読み込まれるようになります。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査](http://aka.ms/sccsearch)を活用することもできます。 
-- この[スクリプト](http://aka.ms/mailboxaudit1)を使用して、すべてのアカウントのメールボックスの監査を有効にします。 
-- すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](http://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
+- 異常なアクティビティへの対処について、この[ガイダンス](https://aka.ms/fixaccount)を読み、実装します。 
+- テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](https://aka.ms/improvesecurity)にします。 そのようにすると、監査ストアにすべてのアクティビティ ログが読み込まれるようになります。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査](https://aka.ms/sccsearch)を活用することもできます。 
+- この[スクリプト](https://aka.ms/mailboxaudit1)を使用して、すべてのアカウントのメールボックスの監査を有効にします。 
+- すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](https://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
 
 
 

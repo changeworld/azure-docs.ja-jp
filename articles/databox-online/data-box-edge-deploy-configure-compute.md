@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/19/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: ba77fc4596d9bb245b3cea2538804b1816e9ad14
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e970f7cc0d4c4620f2da69286be36d0c22e0d747
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466972"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260365"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>チュートリアル: Edge を使用してデータを変換する (プレビュー)
 
@@ -80,7 +80,7 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
 
     ![コンピューティング ロールを設定する](./media/data-box-edge-deploy-configure-compute/setup-compute-5.png)
  
-5. Edge コンピューティング ロールを作成するときに使用した IoT Hub に移動します。 **[IoT devices](IoT デバイス)** に移動します。 今回は IoT デバイスが有効になっていることを確認できます。 
+5. Edge コンピューティング ロールを作成するときに使用した IoT Hub に移動します。 **[IoT devices]\(IoT デバイス)** に移動します。 今回は IoT デバイスが有効になっていることを確認できます。 
 
     ![コンピューティング ロールを設定する](./media/data-box-edge-deploy-configure-compute/setup-compute-6.png)
 
@@ -223,6 +223,6 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
 次のチュートリアルに進み、Edge を管理する方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [ローカル Web UI を使用して Edge を管理する](http://aka.ms/dbg-docs)
+> [ローカル Web UI を使用して Edge を管理する](https://aka.ms/dbg-docs)
 
 

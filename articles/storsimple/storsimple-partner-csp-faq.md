@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 4dc5ae7d3feae769a8366f68f412f3b79fa8eb00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76b89c15a12810f98e6324ca93cf581f9b852c88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109060"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259940"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>クラウド ソリューション プロバイダー プログラムの StorSimple: よく寄せられる質問
 
@@ -72,7 +72,7 @@ CSP 用の StorSimple Virtual Array は、現在 StorSimple が利用可能な�
 パートナー センターを通じて StorSimple Virtual Array サブスクリプションを顧客のアカウントに追加できます。 さらに、Azure Portal を使用してユーザーをサブスクリプションに追加できます。
 
 ### <a name="is-the-azure-portal-approach-the-same-as-other-services-for-csp"></a>Azure Portal を使うアプローチは、CSP の他のサービスと同じですか。 
-はい。 CSP の StorSimple Virtual Array の場合、パートナーが Azure Portal にアクセスする方法として最も便利なのは、顧客とサブスクリプションを管理できる[パートナー センター](http://partnercenter.microsoft.com/)を経由する方法です。 StorSimple のサブスクリプションを管理するには、パートナーまたは (付与されたアクセス許可によっては) 顧客が Azure Portal にログインする必要があります。 
+はい。 CSP の StorSimple Virtual Array の場合、パートナーが Azure Portal にアクセスする方法として最も便利なのは、顧客とサブスクリプションを管理できる[パートナー センター](https://partnercenter.microsoft.com/)を経由する方法です。 StorSimple のサブスクリプションを管理するには、パートナーまたは (付与されたアクセス許可によっては) 顧客が Azure Portal にログインする必要があります。 
 
 ### <a name="is-microsoft-shipping-a-new-portal-for-storsimple-for-csp"></a>CSP の StorSimple 用の新しいポータルが Microsoft によって用意される予定はありますか。 
 いいえ。 CSP の StorSimple Virtual Array は Azure Portal を使用して管理できるようになります。
@@ -94,8 +94,8 @@ CSP の StorSimple のサポート モデルは、CSP の他の Azure サービ�
 CSP の StorSimple の詳細については、以下を参照してください。
 
 - [Microsoft クラウド ソリューション プロバイダー プログラム](https://partner.microsoft.com/Membership)
-- [パートナー センター](http://partnercenter.microsoft.com/) 
+- [パートナー センター](https://partnercenter.microsoft.com/) 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 StorSimple をデプロイする準備ができている場合は、[CSP での StorSimple のデプロイ](storsimple-partner-csp-deploy.md)に関するページに進みます。

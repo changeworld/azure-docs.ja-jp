@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: a17260770f0b2e0a73585ce4108bd5625ac22229
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 79841887ce8413970cb7dff0ca0099d4e0745a68
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436150"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259311"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](app-service-deploy-local-git.md)と [FTP/S デプロイ](app-service-deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらは Azure Active Directory の資格情報とは異なります。
+[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](app-service-deploy-local-git.md)と [FTP/S デプロイ](app-service-deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらは Azure Active Directory の資格情報とは異なります。
 
 * **ユーザー レベルの資格情報**: Azure アカウント全体の資格情報セットです。 これを使用して、Azure アカウントがアクセス許可を持っているすべてのアプリをサブスクリプションに関係なく App Service にデプロイできます。 これは、**[App Services]**  >  **&lt;app_name >**  >  **[デプロイ資格情報]** をクリックして構成する既定の資格情報セットです。 ポータルの GUI (アプリの[リソース ページ](../azure-resource-manager/resource-group-portal.md#manage-resources)の **[概要]** や **[プロパティ]** など) に表示される既定のセットでもあります。
 

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 8ff5c52b324c95bb48de0f9bbb1011ede737efb0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387669"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238864"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>エネルギーの需要予測のための Cortana Intelligence ソリューション テンプレートに関する技術ガイド
 ## <a name="overview"></a>**概要**
@@ -47,7 +47,7 @@ ms.locfileid: "49387669"
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) サービスを使用して、[Azure Event Hub](#azure-event-hub) サービスからの入力ストリームをほぼリアルタイムで分析し、結果を [Power BI](https://powerbi.microsoft.com) ダッシュボードに公開するほか、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスで処理するために、未加工のすべての受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブできます。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight カスタム集計
-Azure HDInsight サービスを使用して、[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプト (Azure Data Factory によって調整される) を実行し、Azure Stream Analytics サービスによってアーカイブされた未加工のイベントの集計を行います。
+Azure HDInsight サービスを使用して、[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプト (Azure Data Factory によって調整される) を実行し、Azure Stream Analytics サービスによってアーカイブされた未加工のイベントの集計を行います。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) サービスを使用して (Azure Data Factory によって調整される)、受け取った入力から、特定の地域の将来の電力消費を予測します。
@@ -102,14 +102,14 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 ![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
-このファクトリのパイプラインのうち 5 つには、データのパーティション分割と集計に使用される [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトが含まれます。 このスクリプトは、セットアップ時に作成される [Azure ストレージ](https://azure.microsoft.com/services/storage/) アカウントに置かれます。 それらの場所は demandforecasting\\\\script\\\\hive\\\\ (または https://[Your solution name].blob.core.windows.net/demandforecasting) になります。
+このファクトリのパイプラインのうち 5 つには、データのパーティション分割と集計に使用される [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトが含まれます。 このスクリプトは、セットアップ時に作成される [Azure ストレージ](https://azure.microsoft.com/services/storage/) アカウントに置かれます。 それらの場所は demandforecasting\\\\script\\\\hive\\\\ (または https://[Your solution name].blob.core.windows.net/demandforecasting) になります。
 
-[Azure Stream Analytics](#azure-stream-analytics-1) クエリと同様に、[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは、受信データ形式に関して暗黙的に認識するため、これらのクエリをデータ形式と[特徴エンジニアリング](machine-learning/team-data-science-process/create-features.md)要件に基づいて変更する必要がある場合があります。
+[Azure Stream Analytics](#azure-stream-analytics-1) クエリと同様に、[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは、受信データ形式に関して暗黙的に認識するため、これらのクエリをデータ形式と[特徴エンジニアリング](machine-learning/team-data-science-process/create-features.md)要件に基づいて変更する必要がある場合があります。
 
 #### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-この[パイプライン](data-factory/concepts-pipelines-activities.md)には 1 つのアクティビティが含まれます。これは [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用する [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) アクティビティで、[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行し、10 秒ごとに変電所レベルでストリームに入る需要データを 1 時間ごとに地域レベルに集計し、Azure Stream Analytics ジョブによって [Azure Storage](https://azure.microsoft.com/services/storage/) に格納します。
+この[パイプライン](data-factory/concepts-pipelines-activities.md)には 1 つのアクティビティが含まれます。これは [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用する [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) アクティビティで、[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行し、10 秒ごとに変電所レベルでストリームに入る需要データを 1 時間ごとに地域レベルに集計し、Azure Stream Analytics ジョブによって [Azure Storage](https://azure.microsoft.com/services/storage/) に格納します。
 
-このパーティション分割タスク用の [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateDemandRegion1Hr.hql*** です。
+このパーティション分割タスク用の [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateDemandRegion1Hr.hql*** です。
 
 #### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
 この[パイプライン](data-factory/concepts-pipelines-activities.md)には、次の 2 つのアクティビティが含まれます。
@@ -117,7 +117,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 * [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用する [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) アクティビティは、Hive スクリプトを実行し、変電所レベルの 1 時間ごとの履歴需要データを 1 時間ごとに地域レベルに集計し、Azure Stream Analytics ジョブの実行中に Azure Storage に格納します。
 * [コピー](https://msdn.microsoft.com/library/azure/dn835035.aspx) アクティビティは、集計されたデータを Azure Storage BLOB から、ソリューション テンプレートのインストールの一環としてプロビジョニングされた Azure SQL Database に移動します。
 
-このタスク用の [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateDemandHistoryRegion.hql*** です。
+このタスク用の [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateDemandHistoryRegion.hql*** です。
 
 #### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
 これらの[パイプライン](data-factory/concepts-pipelines-activities.md)には、複数のアクティビティが含まれ、それらの最終結果は、このソリューション テンプレートに関連付けられている Azure Machine Learning の実験からのスコア付けされた予測です。 これらはほぼ同じですが、それぞれで処理される地域のみが異なります。これは、ADF パイプラインに渡された各種 RegionID と各地域の Hive スクリプトによって処理されます。  
@@ -231,7 +231,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 各自のサブスクリプションでエネルギーの需要予測ソリューション テンプレートを実行する場合に関連する合計コストを詳しく知るために役立つ次の 2 つのツールがあります。
 
 * [Microsoft Azure 料金計算ツール (オンライン)](https://azure.microsoft.com/pricing/calculator/)
-* [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [Microsoft Azure 料金計算ツール (デスクトップ)](https://www.microsoft.com/download/details.aspx?id=43376)
 
 ## <a name="acknowledgements"></a>**謝辞**
 この記事は、Microsoft のデータ サイエンティスト Yijing Chen とソフトウェア エンジニア Qiu Min によって作成されています。

@@ -9,12 +9,12 @@ ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: d9ec9929de6b21aeddf35faf72cf1b2f1bb4c88a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 380a7be6a42109f90da5dbd39ea557c06be4be6a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39561952"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253705"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -471,10 +471,10 @@ Azure Files の詳細については、次のリンクをご覧ください。
 
 ### <a name="reference"></a>リファレンス
 * [.NET 用ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)
-* [File サービスの REST API リファレンス](http://msdn.microsoft.com/library/azure/dn167006.aspx)
+* [File サービスの REST API リファレンス](https://msdn.microsoft.com/library/azure/dn167006.aspx)
 
 ### <a name="blog-posts"></a>ブログ記事
 * [Azure Files が一般公開されました](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 * [Azure Files の内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Microsoft Azure File サービスの概要](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Microsoft Azure Files への接続の維持](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 3203ae48163ba325c8dad2f29c9f566e330928b5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 905f9ee07a28954c38666193daf9e3bf6d323c10
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214292"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246431"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -110,7 +110,7 @@ RDM | 該当なし
 
 **最新** | **更新プログラム**
 --- | --- | --- | --- | ---
-5.1.19 ([ポータルから入手可能](http://aka.ms/downloaddra) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
+5.1.19 ([ポータルから入手可能](https://aka.ms/downloaddra) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
 
 
 

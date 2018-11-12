@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 1cbb46f5238c2019225ab724abaf49e878d19598
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6dff1b2fe40acdef1fde95444d70f0bcfc120a64
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353868"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230038"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
@@ -167,7 +167,7 @@ SQL データベースではさまざまな種類のラッチを使うことが�
 
 ラッチの競合を処理する方法の 1 つは、連続したインデックス キーを連番でないキーに置き換えて、インデックスの範囲に挿入を均等に分散することです。 通常、インデックスの先頭列がワークロードを比例的に配分します。 検討すべきもうひとつの方法は、テーブル パーティションです。 パーティション テーブルの計算列でハッシュ パーティション分割のスキーマを作成することは、ラッチの過剰な競合を軽減するための一般的な方法です。 ページラッチの IO 競合の場合、インデックスの導入がパフォーマンスの問題の軽減に役立ちます。 
 
-詳しくは、「[Diagnose and resolve latch contention on SQL Server](http://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf)」(SQL Server でのラッチの競合の診断と対応) (PDF をダウンロード) をご覧ください。
+詳しくは、「[Diagnose and resolve latch contention on SQL Server](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf)」(SQL Server でのラッチの競合の診断と対応) (PDF をダウンロード) をご覧ください。
 
 ## <a name="missing-index"></a>インデックスの不足
 

@@ -3,18 +3,18 @@ title: HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
 description: HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する方法を説明します。 Kafka Connect Azure IoT Hub プロジェクトは、Kafka にソース コネクタとシンク コネクタを提供します。 ソース コネクタは IoT Hub からデータを読み取ることができ、シンク コネクタは IoT Hub に書き込みます。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/15/2018
-ms.openlocfilehash: 282fc6a1525238fba05c4f472b74d7eb55a49130
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: 8941a7332c19b1a9d5c04abb0e4b03ae83e98016
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042883"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260484"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>HDInsight 上の Apache Kafka を Azure IoT Hub と共に使用する
 
@@ -195,7 +195,7 @@ Connect API について詳しくは、[https://kafka.apache.org/documentation/#
         "Partitions": 2
         ```
 
-2. __共有アクセス ポリシー__ と __キー__ を取得します。 たとえば、__サービス__ キーを使用します。 この情報を取得するには、次のいずれかの方法を使用します。
+2. __共有アクセス ポリシー__と__キー__を取得します。 たとえば、__サービス__ キーを使用します。 この情報を取得するには、次のいずれかの方法を使用します。
 
     * __[Azure Portal](https://portal.azure.com/) で__、次の手順に従います。
 

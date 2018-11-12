@@ -15,18 +15,18 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 64fdb6dceb1ca10e68411f95c310fdd9a2e25202
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 08cbff7bc58f5925dee9b77ff195d362af4379d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444133"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245739"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
 
 ## <a name="overview"></a>概要
 
-このトピックでは、Visual Studio を使用して、コンソール アプリケーション プロジェクトを [Azure Web ジョブ](http://go.microsoft.com/fwlink/?LinkId=390226)として [App Service](app-service-web-overview.md) の Web アプリにデプロイする方法について説明します。 [Azure ポータル](https://portal.azure.com)を使用して Web ジョブをデプロイする方法については、「[Web ジョブでバックグラウンド タスクを実行する](web-sites-create-web-jobs.md)」を参照してください。
+このトピックでは、Visual Studio を使用して、コンソール アプリケーション プロジェクトを [Azure Web ジョブ](https://go.microsoft.com/fwlink/?LinkId=390226)として [App Service](app-service-web-overview.md) の Web アプリにデプロイする方法について説明します。 [Azure ポータル](https://portal.azure.com)を使用して Web ジョブをデプロイする方法については、「[Web ジョブでバックグラウンド タスクを実行する](web-sites-create-web-jobs.md)」を参照してください。
 
 Visual Studio では Web ジョブ対応のコンソール アプリケーション プロジェクトをデプロイする場合に、2 つのタスクを実行します。
 

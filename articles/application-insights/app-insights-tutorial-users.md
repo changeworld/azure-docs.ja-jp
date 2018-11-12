@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: db61c300ad82270e59d315fa3372d9e4390c7a21
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 6d4f96a2c1d288648543a92614cab0f8cf5ee2ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
-ms.locfileid: "24099023"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256002"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Azure Application Insights を使用して顧客がアプリケーションをどのように使用しているかを理解する
 
@@ -38,18 +38,18 @@ Azure Application Insights は、ユーザーがアプリケーションとど�
 - 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
-- [Visual Studio Snapshot Debugger](http://aka.ms/snapshotdebugger) をダウンロードしてインストールします。
+- [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) をダウンロードしてインストールします。
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。 
 - [アプリケーションからのテレメトリの送信](app-insights-usage-overview.md#send-telemetry-from-your-app)を実行して、カスタム イベント/ページ ビューに追加します。
 - [ユーザー コンテキスト](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)を送信して、一定期間にユーザーが何をしているかを追跡し、使用状況機能をフルに活用します。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
 
 ## <a name="get-information-about-your-users"></a>ユーザーに関する情報を取得する
 **[ユーザー]** パネルでは、ユーザーに関する重要な詳細をさまざまな方法で理解することができます。 このパネルを使用して、ユーザーがどこから接続しているか、ユーザーのクライアントの詳細、ユーザーがアプリケーションのどの領域にアクセスしているかといった情報を理解できます。 
 
-1. **[Application Insights]** を選択し、サブスクリプションを選択します。
+1. **[Application Insights]** を選択してから、ご利用のサブスクリプションを選択します。
 2. メニューの **[ユーザー]** を選択します。
 3. 既定のビューには、過去 24 時間でアプリケーションに接続していた一意のユーザーの数が表示されます。  この時間枠は変更でき、この情報をフィルター処理するためのさまざまな条件を設定できます。
 
@@ -163,7 +163,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 6.  **[ユーザーの追加]** をクリックして、ユーザー情報をグラフを追加します。  必要に応じてグラフの詳細を編集した後、**[編集の完了]** をクリックして保存します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここでは、ユーザーを分析する方法を学習しました。次のチュートリアルに進んで、この情報をアプリケーションに関するその他の有用なデータと組み合わせるカスタム ダッシュ ボードの作成方法を学習してください。
 
 > [!div class="nextstepaction"]

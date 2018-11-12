@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f12a15a0d739ae6e98be3871fa8bb4104f49565c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 74cde720af012b3355b813cf6da2b2bdf10b9b8e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48808552"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257209"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Cloud パートナー ポータルを使用して Cortana Intelligence オファーを発行する
 
@@ -29,7 +29,7 @@ ms.locfileid: "48808552"
 
 Cloud パートナー ポータルはポータルへのロールベース アクセスをサポートしているため、共同作成者は協力してオファーを発行することができます。 詳細は、「[Cloud ポータルでのユーザーの管理](./cloud-partner-portal-manage-users.md)」を参照してください。
 
-パブリッシャー アカウントを代表してオファーを発行する前に、\"所有者\"ロールを持つ人の 1 人が、[使用条件](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft のプライバシーに関する声明](http://www.microsoft.com/privacystatement/default.aspx)、[Microsoft Azure 認定プログラム契約](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)を遵守することに同意する必要があります。
+パブリッシャー アカウントを代表してオファーを発行する前に、\"所有者\"ロールを持つ人の 1 人が、[使用条件](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft のプライバシーに関する声明](https://www.microsoft.com/privacystatement/default.aspx)、[Microsoft Azure 認定プログラム契約](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)を遵守することに同意する必要があります。
 
 ## <a name="to-start-creating-a-cortana-inteligence-offer"></a>Cortana Intelligence オファーの作成を開始する
 
@@ -53,9 +53,9 @@ Cloud パートナー ポータルはポータルへのロールベース アク
 ### <a name="offer-id"></a>プラン ID
 
 これは、パブリッシャー プロファイル内で一意のプラン識別子です。
-この ID は製品 URL に含まれます。 小文字の英数字またはハイフン (-) のみで構成できます。 この ID はハイフンで終えることはできず、長さは最大で 50 文字です。 
+この ID は製品 URL に含まれます。 小文字の英数字またはハイフン (-) のみで構成できます。 この ID はダッシュで終えることはできず、長さは最大で 50 文字です。 
 >[!Note]
->このフィールドは、オファーの運用が開始されるとロックされます。
+>このフィールドは、プランの運用が開始されるとロックされます。
 
 **例:**
 
@@ -66,7 +66,7 @@ Cloud パートナー ポータルはポータルへのロールベース アク
 パブリッシャー プロファイルのドロップダウン リストです。 このオファーを発行するパブリッシャー プロファイルを選択するために使用します。
 
 >[!Note]
->このフィールドは、オファーの運用が開始されるとロックされます。
+>このフィールドは、プランの運用が開始されるとロックされます。
 
 ### <a name="name"></a>Name
 
@@ -183,7 +183,7 @@ Cloud パートナー ポータルはポータルへのロールベース アク
 
 ### <a name="industries"></a>業界
 
-アプリに最も適している業界を選択します。 アプリが複数の業界に関連しているなら、このフィールドを空のままにします。
+アプリに最も適している業種を選択します。 アプリが複数の業界に関連しているなら、このフィールドを空のままにします。
 
 ### <a name="categories"></a>Categories
 
@@ -216,7 +216,7 @@ AppSource でアプリがサポートする試用版の種類を選択します�
 
         - [Neal Analytics Inventory Optimization](https://appsource.microsoft.com/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview&tag=CISHome)
 
-- **[Request for trial (試用のリクエスト)]** (**パートナー主導の試用/PLT**) オプションでは、パートナーがフォローアップできるように顧客が連絡先情報フォームに入力することが必要です。 パートナーがフォローアップし、アプリのデモを見せるか、試用版を提供します。 概要については、「[AppSource 試用版チュートリアル](http://aka.ms/trialexperienceforwebapps)」ビデオを参照してください。
+- **[Request for trial (試用のリクエスト)]** (**パートナー主導の試用/PLT**) オプションでは、パートナーがフォローアップできるように顧客が連絡先情報フォームに入力することが必要です。 パートナーがフォローアップし、アプリのデモを見せるか、試用版を提供します。 概要については、「[AppSource 試用版チュートリアル](https://aka.ms/trialexperienceforwebapps)」ビデオを参照してください。
 
 >[!Note]
 >データによれば、**カスタマー主導の試用**は**パートナー主導の試用**に比べてリードが見つかる可能性が高くなります。

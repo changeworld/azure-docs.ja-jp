@@ -4,9 +4,6 @@ description: パブリックな Basic Load Balancer でアラート イベント
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-tags: azure-resource-manager
-ms.assetid: 56656d74-0241-4096-88c8-aa88515d676d
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: 5c196a24d5cc9e4343762e55b5885c1264c2fcad
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e8d38aaff2e7f20a3935608bcf4d610828d2b84f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144964"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261504"
 ---
 # <a name="log-analytics-for-public-basic-load-balancer"></a>パブリックな Basic Load Balancer の Log Analytics
 
@@ -54,7 +51,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 5. **[診断]** ウィンドウの **[状態]** で、**[オン]** を選択します。
 6. **[ストレージ アカウント]** をクリックします。
 7. **[ログ]** で既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。 スライダーを使用して、イベント データをイベント ログに格納しておく日数を指定します。 
-8. **[保存]** をクリックします。
+8. **[Save]** をクリックします。
 
 診断は、指定されたストレージ アカウントで Table Storage に保存されます。 ログが保存されていない場合は、関連ログが生成されていないためです。
 
@@ -146,7 +143,7 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Power BI を使用した Azure 監査ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) に関するブログ記事
+* [Power BI を使用した Azure 監査ログの視覚化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) に関するブログ記事
 * [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) に関するブログ記事
 
 ## <a name="next-steps"></a>次の手順

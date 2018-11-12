@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 3e26e40c26a27fdab1ec565dd4112b40acdd17d2
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ae212bebf5a34e9a80f49a750735137d7a8814be
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213369"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232666"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 
@@ -32,7 +32,7 @@ ms.locfileid: "39213369"
 Site Recovery がレプリケートできるように Azure [VM エージェント](../virtual-machines/extensions/agent-windows.md)を VM にインストールする必要があります。
 
 
-1. Windows を実行する VM に VM エージェントをインストールするには、[エージェント インストーラー](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードして実行します。 インストールを完了するには、VM の管理者特権が必要です。
+1. Windows を実行する VM に VM エージェントをインストールするには、[エージェント インストーラー](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードして実行します。 インストールを完了するには、VM の管理者特権が必要です。
 2. Linux を実行する VM に VM エージェントをインストールするには、最新の [Linux エージェント](../virtual-machines/extensions/agent-linux.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることはお勧めしません。 
 
 

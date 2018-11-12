@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ecfaf24d1122b711a93e1335b79acbbc4235bdae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: eedab085098c34cdac3c49a3892f7cb0d5824f1b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049951"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259923"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボへお知らせを投稿する
 
@@ -35,7 +35,7 @@ ms.locfileid: "39049951"
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>既存のラボにお知らせを投稿する手順
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. 必要に応じて、**[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 (お使いのラボは、**[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります)。
 1. ラボの一覧から、お知らせを投稿するラボを選択します。  
 1. ラボの **[概要]** で、**[Configuration and policies]\(構成とポリシー\)** を選択します。  
@@ -70,7 +70,7 @@ ms.locfileid: "39049951"
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>ユーザーがお知らせを表示するための手順
 
-1. [[Azure ポータル]](http://go.microsoft.com/fwlink/p/?LinkID=525040) から、ラボを選択します。
+1. [[Azure ポータル]](https://go.microsoft.com/fwlink/p/?LinkID=525040) から、ラボを選択します。
 
 1. ラボにお知らせが投稿された場合は、ラボの [概要] ページの上部に情報通知が表示されます。 この情報通知は、お知らせの作成時に指定されたお知らせのタイトルです。
 
@@ -160,7 +160,7 @@ ms.locfileid: "39049951"
 
 次のいずれかの方法を使用して、Azure Resource Manager テンプレートをデプロイできます。
 
-- [Azure ポータル](../azure-resource-manager/resource-group-template-deploy-portal.md)
+- [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 - [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 - [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
 - [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)

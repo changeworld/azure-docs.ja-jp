@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.openlocfilehash: ff30afdcfebe51d914d2f7504ab3bf530309c222
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d201d8848891038355fad01f610070259ad1e42a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145613"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259192"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのアプリケーション ライフサイクル管理
 Azure Machine Learning Studio は、Azure クラウド プラットフォームで運用できる機械学習の実験を開発するツールです。 Visual Studio IDE に似ており、1 つのプラットフォームにマージされているスケーラブルなクラウド サービスです。 さまざまな資産のバージョン管理から、自動化された実行とデプロイまで、標準的なアプリケーション ライフサイクル管理 (ALM) プラクティスを Azure Machine Learning Studio に組み込むことができます。 この記事では、一部のオプションとアプローチについて説明します。
@@ -43,7 +43,7 @@ Azure Machine Learning Studio の学習実験の実行モデルでは、実験�
 実験を削除すると、その実験でのすべてのスナップショットが削除されます。
 
 ### <a name="exportimport-experiment-in-json-format"></a>JSON 形式で実験のエクスポートとインポート
-実行履歴のスナップショットは、実行のために送信されるたびに実験の変更不可バージョンを Azure Machine Learning Studio に保持します。 実験のローカル コピーを保存し、Team Foundation Server などのお気に入りのソース管理システムにチェックインして、後でそのローカル ファイルから実験を再作成することもできます。 [Azure Machine Learning PowerShell](http://aka.ms/amlps) コマンドレット [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) と [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) を使用して、それを実行できます。
+実行履歴のスナップショットは、実行のために送信されるたびに実験の変更不可バージョンを Azure Machine Learning Studio に保持します。 実験のローカル コピーを保存し、Team Foundation Server などのお気に入りのソース管理システムにチェックインして、後でそのローカル ファイルから実験を再作成することもできます。 [Azure Machine Learning PowerShell](https://aka.ms/amlps) コマンドレット [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) と [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) を使用して、それを実行できます。
 
 JSON ファイルは実験グラフのテキスト表現ですが、データセットやトレーニング済みのモデルなど、ワークスペース内の資産への参照を含む場合があります。 その資産のシリアル化されたバージョンは含みません。 このため、JSON ドキュメントをワークスペースにもう一度インポートしようとする場合、これらの参照先資産は実験で参照されているのと同じ資産 ID で既に存在する必要があります。 そうでない場合は、インポートされた実験にアクセスできません。
 
@@ -85,7 +85,7 @@ Azure Machine Learning の実験から、2 種類の Web サービスをデプ�
 WSD ファイルをエクスポートしてそれをバージョン管理した後で、別の Azure リージョンで別の Web サービス プランの新しい Web サービスとして WSD をデプロイすることもできます。 適切なストレージ アカウント構成だけではなく、新しい Web サービス プラン ID を指定してください。 異なる iLearner ファイルにパッチを適用するには、WSD ファイルを変更し、トレーニング済みのモデルの場所の参照を更新して、それを新しい Web サービスとしてデプロイできます。
 
 ## <a name="automate-experiment-execution-and-deployment"></a>実験の実行とデプロイの自動化
-ALM の重要な側面は、アプリケーションの実行とデプロイのプロセスを自動化できるようにすることです。 Azure Machine Learning では、[PowerShell モジュール](http://aka.ms/amlps)を使用してこれを実現できます。 ここでは、[Azure Machine Learning Studio PowerShell モジュール](http://aka.ms/amlps)を使用することによる、標準的な ALM 自動化実行/デプロイ プロセスに関連するエンド ツー エンドの手順の例を示します。 各手順は、その手順の実行に使用できる 1 つまたは複数の PowerShell コマンドレットにリンクされています。
+ALM の重要な側面は、アプリケーションの実行とデプロイのプロセスを自動化できるようにすることです。 Azure Machine Learning では、[PowerShell モジュール](https://aka.ms/amlps)を使用してこれを実現できます。 ここでは、[Azure Machine Learning Studio PowerShell モジュール](https://aka.ms/amlps)を使用することによる、標準的な ALM 自動化実行/デプロイ プロセスに関連するエンド ツー エンドの手順の例を示します。 各手順は、その手順の実行に使用できる 1 つまたは複数の PowerShell コマンドレットにリンクされています。
 
 1. [データセットをアップロード](https://github.com/hning86/azuremlps#upload-amldataset)します。
 2. [ワークスペース](https://github.com/hning86/azuremlps#copy-amlexperiment)または[ギャラリー](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery)からワークスペースにトレーニング実験をコピーするか、[エクスポート](https://github.com/hning86/azuremlps#export-amlexperimentgraph)された実験をローカル ディスクから[インポート](https://github.com/hning86/azuremlps#import-amlexperimentgraph)します。
@@ -99,6 +99,6 @@ ALM の重要な側面は、アプリケーションの実行とデプロイの�
 10. Web サービス [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) または [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) エンドポイントをテストします。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps) モジュールをダウンロードし、ALM タスクの自動化を開始します。
+* [Azure Machine Learning Studio PowerShell](https://aka.ms/amlps) モジュールをダウンロードし、ALM タスクの自動化を開始します。
 * PowerShell と再トレーニング API を通じて、[1 つの実験を使用して多数の ML モデルを作成、管理](create-models-and-endpoints-with-powershell.md)する方法を説明します。
 * [Azure Machine Learning Web サービスのデプロイ](publish-a-machine-learning-web-service.md)の詳細について説明します。

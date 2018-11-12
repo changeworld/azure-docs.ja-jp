@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 3ec67488b238118067e771baf3dd5124308a84cf
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b1ae61b5372fa1061448c02e7b5c589a167888c9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296195"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237215"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティング
-この記事は、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
+この記事は、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。
 

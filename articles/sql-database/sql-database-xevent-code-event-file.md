@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 302607df2292fe7a67a8b6860dab19eef7f391a9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8577b6a1d0f57820cbdd4096b0e8412096ff3af3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160368"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232078"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 
@@ -25,7 +25,7 @@ ms.locfileid: "47160368"
 
 拡張イベントに関する情報を確かな方法で取得し、レポートするための完全なコード サンプルが必要です。
 
-Microsoft SQL Server では、イベント出力をローカル ハード ドライブ ファイルに保存するために [イベント ファイル ターゲット](http://msdn.microsoft.com/library/ff878115.aspx) が使用します。 ただし、このファイルは Azure SQL Database で利用できません。 代わりに、イベント ファイル ターゲットをサポートする Azure ストレージ サービスを使用します。
+Microsoft SQL Server では、イベント出力をローカル ハード ドライブ ファイルに保存するために [イベント ファイル ターゲット](https://msdn.microsoft.com/library/ff878115.aspx) が使用します。 ただし、このファイルは Azure SQL Database で利用できません。 代わりに、イベント ファイル ターゲットをサポートする Azure ストレージ サービスを使用します。
 
 このトピックでは、2 段階のコード サンプルを使用します。
 
@@ -44,9 +44,9 @@ Microsoft SQL Server では、イベント出力をローカル ハード ドラ
 * SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。 
   最新の ssms.exe をダウンロードすることができる。
   
-  * 「 [SQL Server Management Studio のダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
-  * [ダウンロードへの直接リンク。](http://go.microsoft.com/fwlink/?linkid=616025)
-* [Azure PowerShell モジュール](http://go.microsoft.com/?linkid=9811175) をインストールしておく必要があります。
+  * 「 [SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
+  * [ダウンロードへの直接リンク。](https://go.microsoft.com/fwlink/?linkid=616025)
+* [Azure PowerShell モジュール](https://go.microsoft.com/?linkid=9811175) をインストールしておく必要があります。
   
   * このモジュールから **New-AzureStorageAccount**などのコマンドが提供されます。
 
@@ -506,11 +506,11 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 前述のTransact-SQL スクリプトでは、event_file の読み取りに次のシステム関数を使用します。
 
-* [sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+* [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 拡張イベントのデータ表示の高度なオプションについての説明は、次で入手できます。
 
-* [Advanced Viewing of Target Data from Extended Events (拡張イベントのターゲット データの高度な表示)](http://msdn.microsoft.com/library/mt752502.aspx)
+* [Advanced Viewing of Target Data from Extended Events (拡張イベントのターゲット データの高度な表示)](https://msdn.microsoft.com/library/mt752502.aspx)
 
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>SQL Server で実行できるようにコード サンプルを変換する
@@ -528,10 +528,10 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 Azure ストレージ サービスのアカウントとコンテナーに関する詳細については、次を参照してください。
 
 * [.NET から BLOB ストレージを使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [コンテナー、BLOB、メタデータの名前付けと参照](http://msdn.microsoft.com/library/azure/dd135715.aspx)
-* [ルート コンテナーの使用](http://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [レッスン 1: 保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](http://msdn.microsoft.com/library/dn466430.aspx)
-  * [レッスン 2: Shared Access Signature を使用して SQL Server 資格情報を作成する](http://msdn.microsoft.com/library/dn466435.aspx)
+* [コンテナー、BLOB、メタデータの名前付けと参照](https://msdn.microsoft.com/library/azure/dd135715.aspx)
+* [ルート コンテナーの使用](https://msdn.microsoft.com/library/azure/ee395424.aspx)
+* [レッスン 1: 保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [レッスン 2: Shared Access Signature を使用して SQL Server 資格情報を作成する](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Microsoft SQL Server の拡張イベント](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

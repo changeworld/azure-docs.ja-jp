@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/30/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 081b2be82b15c36566e8eb9fe4af0037804d0e7e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: be6c13b998664cda65b1002c23726cbe89359a59
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951197"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261198"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Windows コンテナーをデプロイする
 
@@ -86,7 +86,7 @@ Microsoft は、異なるバージョンの Windows Server 上に構築された
 
 Azure のクラスターにアプリケーションをデプロイする場合、パーティ クラスターに参加できます。 パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。  このクラスターでは、ノード間のセキュリティおよびクライアントとノードの間のセキュリティに単一の自己署名証明書が使用されます。 パーティ クラスターでは、コンテナーがサポートされます。 独自のクラスターをセットアップして使用する場合は、コンテナーをサポートする SKU (Windows Server 2016 Datacenter with Containers など) でクラスターを実行する必要があります。
 
-サインインし、[Windows クラスターに参加](http://aka.ms/tryservicefabric)します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 **[How to connect to a secure Party cluster?]\(セキュリティで保護されたパーティ クラスターに接続する方法\)** リンクをクリックして、証明書のパスワードをコピーします。 証明書、証明書のパスワード、**[接続のエンドポイント]** の値は、次の手順で使用します。
+サインインし、[Windows クラスターに参加](https://aka.ms/tryservicefabric)します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 **[How to connect to a secure Party cluster?]\(セキュリティで保護されたパーティ クラスターに接続する方法\)** リンクをクリックして、証明書のパスワードをコピーします。 証明書、証明書のパスワード、**[接続のエンドポイント]** の値は、次の手順で使用します。
 
 ![PFX と接続エンドポイント](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
 
@@ -115,7 +115,7 @@ Thumbprint                                Subject
 
 ソリューション エクスプローラーで **[MyFirstContainer]** を右クリックして、**[発行]** を選択します。 [発行] ダイアログが表示されます。
 
-パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「`zwin7fh14scd.westus.cloudapp.azure.com:19000`」のように入力します。 **[詳細な接続パラメーター]** をクリックし、接続パラメーターの情報を確認します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順でインストールした証明書の拇印に一致する必要があります。
+パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「 `zwin7fh14scd.westus.cloudapp.azure.com:19000` 」のように入力します。 **[詳細な接続パラメーター]** をクリックし、接続パラメーターの情報を確認します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順でインストールした証明書の拇印に一致する必要があります。
 
 ![[発行] ダイアログ](./media/service-fabric-quickstart-containers/publish-app.png)
 
@@ -123,7 +123,7 @@ Thumbprint                                Subject
 
 クラスター内の各アプリケーションには、一意の名前が必要です。  パーティ クラスターはパブリックの共有環境ですが、既存のアプリケーションと競合している可能性があります。  名前の競合が発生している場合は、Visual Studio プロジェクトの名前を変更し、もう一度デプロイします。
 
-ブラウザーを開き、パーティ クラスター ページで指定した**接続エンドポイント**に移動します。 URL には、必要に応じて先頭にスキーム ID (`http://`) を、末尾にポート (`:80`) を追加してください。 たとえば、「http://zwin7fh14scd.westus.cloudapp.azure.com:80」のように入力します。 IIS の既定の Web ページが表示されます。![IIS の既定の Web ページ][iis-default]
+ブラウザーを開き、パーティ クラスター ページで指定した**接続エンドポイント**に移動します。 URL には、必要に応じて先頭にスキーム ID (`http://`) を、末尾にポート (`:80`) を追加してください。 たとえば、「 http://zwin7fh14scd.westus.cloudapp.azure.com:80 」のように入力します。 IIS の既定の Web ページが表示されます。![IIS の既定の Web ページ][iis-default]
 
 ## <a name="next-steps"></a>次の手順
 

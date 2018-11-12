@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 83ba02aedebe69e15736975fbd73c7c7f221634f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9fb28d618a9375dec19e75d04ef0a6bc5de334b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785811"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242638"
 ---
 # <a name="create-content-keys-with-rest"></a>REST でコンテンツ キーを作成する
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Media Services では、暗号化されたアセットを送信できます。 *
 3. X.509 証明書の公開キーでコンテンツ キーを暗号化します。 
    
    Media Services .NET SDK では、暗号化の際に OAEP と RSA を使用します。  具体例については、「 [EncryptSymmetricKeyData function](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)」 (EncryptSymmetricKeyData 関数) を参照してください。
-4. そのキー識別子とコンテンツ キーを使って計算される、(PlayReady AES キー checksum アルゴリズムに基づく) checksum 値を作成します。 詳細については、 [ここ](http://www.microsoft.com/playready/documents/)にある、『PlayReady Header Object』(PlayReady のヘッダー オブジェクト) ドキュメントの「PlayReady AES Key Checksum Algorithm」(PlayReady AES キーの checksum アルゴリズム) セクションを参照してください。
+4. そのキー識別子とコンテンツ キーを使って計算される、(PlayReady AES キー checksum アルゴリズムに基づく) checksum 値を作成します。 詳細については、 [ここ](https://www.microsoft.com/playready/documents/)にある、『PlayReady Header Object』(PlayReady のヘッダー オブジェクト) ドキュメントの「PlayReady AES Key Checksum Algorithm」(PlayReady AES キーの checksum アルゴリズム) セクションを参照してください。
    
    次の .NET の例では、キー識別子の GUID 部とクリアなコンテンツ キーを使用して checksum を計算しています。
    
@@ -179,7 +179,7 @@ X.509 証明書を取得して、その公開キーを使ってコンテンツ �
 
 次の例では、**ContentKeyType** をストレージの暗号化 ("1") に設定し、保護キー ID が X.509 証明書の拇印であることを示すために **ProtectionKeyType** を "0" に設定して、**ContentKey** を作成する方法を示します。  
 
-要求
+Request
 
     POST https://media.windows.net/api/ContentKeys HTTP/1.1
     Content-Type: application/json

@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 695da176d2bc86fd67608cc28d14cf15a7728980
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 58b109651408a51ca7505c92d3875de63aae2cc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161490"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261929"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Entity Framework による Elastic Database クライアント ライブラリ
-このドキュメントでは、 [Elastic Database ツール](sql-database-elastic-scale-introduction.md)と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。 ここでは、Entity Framework の **Code First** アプローチを使用して、[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)と[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)を構成する方法を重点的に説明します。 このドキュメント全体の実例として、EF 向けの[新しいデータベースの Code First](http://msdn.microsoft.com/data/jj193542.aspx) チュートリアルをご覧ください。 このドキュメントに付属するサンプル コードは、Visual Studio のコード サンプルに含まれるエラスティック データベース ツールのサンプルの一部です。
+このドキュメントでは、 [Elastic Database ツール](sql-database-elastic-scale-introduction.md)と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。 ここでは、Entity Framework の **Code First** アプローチを使用して、[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)と[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)を構成する方法を重点的に説明します。 このドキュメント全体の実例として、EF 向けの[新しいデータベースの Code First](https://msdn.microsoft.com/data/jj193542.aspx) チュートリアルをご覧ください。 このドキュメントに付属するサンプル コードは、Visual Studio のコード サンプルに含まれるエラスティック データベース ツールのサンプルの一部です。
 
 ## <a name="downloading-and-running-the-sample-code"></a>サンプル コードのダウンロードと実行
 この記事のコードをダウンロードするには:
@@ -169,9 +169,9 @@ Microsoft Patterns & Practices チームでは、「[The Transient Fault Handlin
             } 
         }); 
 
-上記のコードの **SqlDatabaseUtils.SqlRetryPolicy** は **SqlDatabaseTransientErrorDetectionStrategy** として定義され、再試行回数が 10 回、再試行間の待機時間が 5 秒に設定されています。 この方法は、EF とユーザーによって開始されたトランザクション向けのガイダンスに似ています (「 [Limitations with Retrying Execution Strategies (EF6 onwards) (再試行実行戦略の制限 (EF6 以降))](http://msdn.microsoft.com/data/dn307226)」をご覧ください)。 トランザクションを開き直す場合、または (示されているように) エラスティック データベース クライアント ライブラリを使用する適切なコンストラクターからコンテキストを再作成する場合のどちらの状況でも、一時的な例外から制御が返されるスコープをアプリケーション プログラムが制御する必要があります。
+上記のコードの **SqlDatabaseUtils.SqlRetryPolicy** は **SqlDatabaseTransientErrorDetectionStrategy** として定義され、再試行回数が 10 回、再試行間の待機時間が 5 秒に設定されています。 この方法は、EF とユーザーによって開始されたトランザクション向けのガイダンスに似ています (「 [Limitations with Retrying Execution Strategies (EF6 onwards) (再試行実行戦略の制限 (EF6 以降))](https://msdn.microsoft.com/data/dn307226)」をご覧ください)。 トランザクションを開き直す場合、または (示されているように) エラスティック データベース クライアント ライブラリを使用する適切なコンストラクターからコンテキストを再作成する場合のどちらの状況でも、一時的な例外から制御が返されるスコープをアプリケーション プログラムが制御する必要があります。
 
-一時的な例外が返されるスコープを制御する必要があることは、EF に組み込まれている **SqlAzureExecutionStrategy** の使用も除外します。 **SqlAzureExecutionStrategy** は接続を再度開きますが、**OpenConnectionForKey** を使用しないため、**OpenConnectionForKey** 呼び出しの一部として実行されるすべての検証をバイパスします。 代わりに、コード例では、同様に EF に組み込まれている **DefaultExecutionStrategy** を使用します。 **SqlAzureExecutionStrategy** とは対照的に、それは、一時障害処理の再試行ポリシーと組み合わせて正常に動作します。 実行ポリシーは **ElasticScaleDbConfiguration** クラスに設定されます。 **DefaultSqlExecutionStrategy** の使用は、一時的な例外が発生した場合に **SqlAzureExecutionStrategy** が使用されることを意味します。これによって前述の不適切な動作が引き起こされるため、DefaultSqlExecutionStrategy は使用しないことを決定したことに注意してください。 さまざまな再試行ポリシーと EF の詳細については、「[Connection Resiliency in EF (EF における接続の弾力性)](http://msdn.microsoft.com/data/dn456835.aspx)」をご覧ください。     
+一時的な例外が返されるスコープを制御する必要があることは、EF に組み込まれている **SqlAzureExecutionStrategy** の使用も除外します。 **SqlAzureExecutionStrategy** は接続を再度開きますが、**OpenConnectionForKey** を使用しないため、**OpenConnectionForKey** 呼び出しの一部として実行されるすべての検証をバイパスします。 代わりに、コード例では、同様に EF に組み込まれている **DefaultExecutionStrategy** を使用します。 **SqlAzureExecutionStrategy** とは対照的に、それは、一時障害処理の再試行ポリシーと組み合わせて正常に動作します。 実行ポリシーは **ElasticScaleDbConfiguration** クラスに設定されます。 **DefaultSqlExecutionStrategy** の使用は、一時的な例外が発生した場合に **SqlAzureExecutionStrategy** が使用されることを意味します。これによって前述の不適切な動作が引き起こされるため、DefaultSqlExecutionStrategy は使用しないことを決定したことに注意してください。 さまざまな再試行ポリシーと EF の詳細については、「[Connection Resiliency in EF (EF における接続の弾力性)](https://msdn.microsoft.com/data/dn456835.aspx)」をご覧ください。     
 
 #### <a name="constructor-rewrites"></a>コンストラクターの書き直し
 上記のコード例は、アプリケーションがデータ依存ルーティングを Entity Framework で使用するために、既定のコンストラクターを書き直す必要があることを示しています。 次の表では、この方法を他のコンストラクター向けに一般化しています。 

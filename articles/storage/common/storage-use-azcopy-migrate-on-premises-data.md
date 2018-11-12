@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: fc3a594e6757f6a49cb88bdfca9a64889a97d042
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 347092fd7d5865379911265b19477ac16e3bcd69
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740197"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261385"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>チュートリアル: AzCopy を使用したオンプレミス データのクラウド ストレージへの移行
 
@@ -36,7 +36,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、AzCopy on [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) または [Windows](http://aka.ms/downloadazcopy) の最新バージョンをダウンロードしてください。
+このチュートリアルを完了するには、AzCopy on [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) または [Windows](https://aka.ms/downloadazcopy) の最新バージョンをダウンロードしてください。
 
 Windows の場合、このチュートリアルでタスクをスケジュールするために使用する [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) が必要になります。 Linux ユーザーは、代わりに crontab コマンドを使用します。
 

@@ -14,12 +14,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: db008953b9aa596a64aceccacc0e4632ebfff596
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 72665ed4c25d2719ac5030bce59157a3ccd9dec7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720125"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236008"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
 シングル サインオンとは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
@@ -102,7 +102,7 @@ Azure AD 内でユーザーを削除するかまたはユーザー情報を変�
 サポートされている機能によってアプリを検索するためのヒントを次に示します。
 
 * Azure AD は、 [Azure Active Directory アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)のすべての "おすすめ" アプリについて、自動プロビジョニングおよびプロビジョニング解除をサポートしています。
-* SAML、WS-Federation、OpenID Connect などのプロトコルを使用してフェデレーション シングル サインオンをサポートするフェデレーション アプリケーションの一覧については、 [このページ](http://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx)を参照してください。
+* SAML、WS-Federation、OpenID Connect などのプロトコルを使用してフェデレーション シングル サインオンをサポートするフェデレーション アプリケーションの一覧については、 [このページ](https://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx)を参照してください。
 
 アプリケーションが見つかったら、アプリケーション ギャラリーおよび Azure portal の指示に従ってシングル サインオンを有効にします。
 

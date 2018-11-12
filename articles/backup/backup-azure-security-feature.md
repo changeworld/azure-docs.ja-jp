@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: 32eba23202eca1c71c4f3b01dcb364281cb2eb60
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 62b2744494fcd4d98bf75892dc95d86130dd04bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246696"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261742"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃を防ぐために、Azure Backup にはハイブリッド バックアップを保護するセキュリティ機能が用意されています。 この記事では、Azure Recovery Services エージェントと Azure Backup Server を使用して、これらの機能を有効にして使用する方法について説明します。 次のような機能が該当します。
@@ -114,6 +114,6 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Recovery Services コンテナーの使用を開始](backup-azure-vms-first-look-arm.md)して、これらの機能を有効にします。
-* [最新の Azure Recovery Services Agent をダウンロード](http://aka.ms/azurebackup_agent)して、Windows コンピューターを保護し、バックアップ データに対する攻撃を防ぎます。
+* [最新の Azure Recovery Services Agent をダウンロード](https://aka.ms/azurebackup_agent)して、Windows コンピューターを保護し、バックアップ データに対する攻撃を防ぎます。
 * [最新の Azure Backup Server をダウンロード](https://aka.ms/latest_azurebackupserver)して、ワークロードを保護し、攻撃からバックアップ データを保護します。
 * [System Center 2012 R2 Data Protection Manager の UR12 をダウンロード](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager)するか、[System Center 2016 Data Protection Manager の UR2 をダウンロード](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager)して、ワークロードを保護し、バックアップ データに対する攻撃を防ぎます。

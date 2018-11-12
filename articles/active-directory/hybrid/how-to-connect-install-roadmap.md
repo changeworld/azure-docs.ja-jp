@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 04d950b0a8001fd76e3754b73a9d7c4c5fe2893d
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 5da946ff0c9bdda91668999db2fccdd12a67c0d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318641"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253195"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect と Azure AD Connect Health のインストール ロードマップ
 
@@ -26,7 +26,7 @@ ms.locfileid: "49318641"
 > [!IMPORTANT]
 > 公式に文書化されているアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。 サポートされていないアクションを行うと、Azure AD Connect Sync が不整合な状態になったり、サポートされていない状態になったりする可能性があります。結果的に、Microsoft ではこのようなデプロイについてテクニカル サポートを提供できなくなります。
 
-Azure AD Connect は [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=615771)からダウンロードできます。
+Azure AD Connect は [Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?LinkId=615771)からダウンロードできます。
 
 | 解決策 | シナリオ |
 | --- | --- |
@@ -41,7 +41,7 @@ Azure AD Connect は [Microsoft ダウンロード センター](http://go.micro
 ### <a name="next-steps-to-install-azure-ad-connect"></a>Azure AD Connect のインストールの次のステップ
 |トピック |Link|  
 | --- | --- |
-|Azure AD Connect のダウンロード | [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)|
+|Azure AD Connect のダウンロード | [Azure AD Connect のダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Express 設定を使用したインストール | [Azure AD Connect の高速インストール](./how-to-connect-install-express.md)|
 |カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](./how-to-connect-install-custom.md)|
 |DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](./how-to-dirsync-upgrade-get-started.md)|
@@ -141,12 +141,12 @@ Azure AD Connect Health の使用を開始するには、次の手順に従い�
 ## <a name="download-and-install-azure-ad-connect-health-agent"></a>Azure AD Connect Health エージェントのダウンロードとインストール
 * Azure AD Connect Health の[要件を必ず満たし](how-to-connect-health-agent-install.md#requirements)てください。
 * Azure AD Connect Health for AD FS の使用を開始します
-    * [Azure AD Connect Health for AD FS エージェントをダウンロードします](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [Azure AD Connect Health for AD FS エージェントをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=518973)
     * [インストール手順を参照します](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)。
 * Azure AD Connect Health for sync の使用を開始します
-    * [最新バージョンの Azure AD Connect をダウンロードしてインストールします](http://go.microsoft.com/fwlink/?linkid=615771)。 同期用の Health エージェントは、Azure AD Connect のインストールの一環としてインストールされます (バージョン 1.0.9125.0 以上)。
+    * [最新バージョンの Azure AD Connect をダウンロードしてインストールします](https://go.microsoft.com/fwlink/?linkid=615771)。 同期用の Health エージェントは、Azure AD Connect のインストールの一環としてインストールされます (バージョン 1.0.9125.0 以上)。
 * Azure AD Connect Health for AD DS の使用を開始します
-    * [Azure AD Connect Health for AD DS エージェントをダウンロードします](http://go.microsoft.com/fwlink/?LinkID=820540)。
+    * [Azure AD Connect Health for AD DS エージェントをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=820540)。
     * [インストール手順を参照します](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
 
 

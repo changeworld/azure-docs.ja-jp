@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 1/10/2017
 ms.author: saurse
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff30dd0e4c7cadabddbeddc38c28a773db68d8ff
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59236774f98af927082c78f4b75a1f5880a7cac4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606496"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259606"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>テープから Azure クラウドに長期ストレージを移動する
 Azure Backup と System Center Data Protection Manager のユーザーは以下を実行できます。
@@ -23,7 +23,7 @@ Azure Backup と System Center Data Protection Manager のユーザーは以下�
 * 長期間にわたるバックアップ データの保持
 * 長期間保有する必要があるものを (テープの代わりに) Azure で保持。
 
-この記事では、顧客がバックアップと保有ポリシーを有効にする方法について説明します。 その長期間保有のニーズに対処するためにこれまでテープ使用してきた顧客にとっては、この機能を使用するための強力かつ有効な代替方法を活用できるようになりました。 Azure Backup の最新のリリース ( [ここ](http://aka.ms/azurebackup_agent)からアクセスできます) では、この機能が有効になっています。 System Center DPM の顧客は、Azure Backup サービスで DPM を使用する前に、少なくとも DPM 2012 R2 UR5 に更新する必要があります。
+この記事では、顧客がバックアップと保有ポリシーを有効にする方法について説明します。 その長期間保有のニーズに対処するためにこれまでテープ使用してきた顧客にとっては、この機能を使用するための強力かつ有効な代替方法を活用できるようになりました。 Azure Backup の最新のリリース ( [ここ](https://aka.ms/azurebackup_agent)からアクセスできます) では、この機能が有効になっています。 System Center DPM の顧客は、Azure Backup サービスで DPM を使用する前に、少なくとも DPM 2012 R2 UR5 に更新する必要があります。
 
 ## <a name="what-is-the-backup-schedule"></a>Backup スケジュールとは
 Backup スケジュールは、バックアップ操作の頻度を示します。 たとえば、次の画面の設定は、毎日午後 6 時と、午前 0 時にバックアップが実行されることを示しています。

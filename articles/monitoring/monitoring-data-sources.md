@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: b10236a1e0307c9464d58e50eb0c7b4e6a60b5e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5e9dc207d84a9a66d83f01f49c3aefe2d77a64fa
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987782"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281440"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor で使用するデータのソース
 この記事では、リソースとそれらで実行されているアプリケーションの正常性とパフォーマンスを監視するために Azure Monitor によって収集されるデータのソースについて説明します。 これらのリソースは、Azure、別のクラウド、またはオンプレミスに存在する可能性があります。  このデータが保存されるしくみと、データを表示する方法の詳細については、[Azure Monitor によって収集されるデータ](monitoring-data-collection.md)に関する記事をご覧ください。
@@ -63,10 +63,10 @@ Azure 自体の正常性と操作に関連するテレメトリには、Azure �
 ### <a name="resource-diagnostic-logs"></a>リソース診断ログ
 アクティビティ ログは Azure リソースで実行される操作に関する情報を提供しますが、リソース レベルの[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)はリソース自体の操作に関する分析情報を提供します。   これらのログの構成の要件とコンテンツは[リソースの種類によって異なります](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md)。
 
-診断ログを Azure Portal で直接表示することはできませんが、[診断ログを Azure Storage に送信してアーカイブ](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)したり、[イベント ハブ](../event-hubs/event-hubs-what-is-event-hubs.md)にエクスポートして他のサービスにリダイレクトしたり、[Log Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) にコピーして解析に使用したりできます。 Log Analytics に直接書き込むことのできるリソースと、ストレージ アカウントに書き込んでから [Log Analytics](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage) にインポートするリソースがあります。
+診断ログを Azure Portal で直接表示することはできませんが、[診断ログを Azure Storage に送信してアーカイブ](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)したり、[イベント ハブ](../event-hubs/event-hubs-about.md)にエクスポートして他のサービスにリダイレクトしたり、[Log Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) にコピーして解析に使用したりできます。 Log Analytics に直接書き込むことのできるリソースと、ストレージ アカウントに書き込んでから [Log Analytics](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage) にインポートするリソースがあります。
 
 ### <a name="monitoring-solutions"></a>監視ソリューション
- [監視ソリューション](../monitoring/monitoring-solutions.md)は、データを収集して、特定のサービスやアプリケーションの操作に関する追加の分析情報を提供します。 これらのソリューションでは、データを Log Analytics に収集します。収集されたデータは、[クエリ言語](../log-analytics/log-analytics-log-search.md)や通常はソリューションに含まれている[ビュー](../log-analytics/log-analytics-view-designer.md)を使用して分析できます。
+ [監視ソリューション](monitoring-solutions.md)は、データを収集して、特定のサービスやアプリケーションの操作に関する追加の分析情報を提供します。 これらのソリューションでは、データを Log Analytics に収集します。収集されたデータは、[クエリ言語](../log-analytics/log-analytics-queries.md)や通常はソリューションに含まれている[ビュー](../log-analytics/log-analytics-view-designer.md)を使用して分析できます。
 
 ## <a name="guest-operating-system"></a>ゲスト オペレーティング システム
 Azure、他のクラウド、オンプレミスのコンピューティング リソースには、監視対象のゲスト オペレーティング システムがあります。 1 つ以上のエージェントをインストールすると、ゲストから同じ監視ツール (たとえば、Azure サービス自体) にテレメトリを収集できます。
@@ -78,10 +78,10 @@ Azure、他のクラウド、オンプレミスのコンピューティング �
 
 
 ### <a name="log-analytics-agent"></a>Log Analytics エージェント
-任意の [Windows](../log-analytics/log-analytics-agent-windows.md)/[Linux]() 仮想マシンまたは物理コンピューターに Log Analytics エージェントをインストールできます。 仮想マシンは Azure、別のクラウド、またはオンプレミスで実行できます。  エージェントは Log Analytics に直接または[接続済みの System Center Operations Manager 管理グループ](../log-analytics/log-analytics-om-agents.md)を経由して接続します。エージェントを使用すると、設定した[データ ソース](../log-analytics/log-analytics-data-sources.md)または仮想マシンで実行されているアプリケーションに関する追加の分析情報を提供する[管理ソリューション](../monitoring/monitoring-solutions.md)からデータを収集できます。
+任意の [Windows](../log-analytics/log-analytics-agent-windows.md)/[Linux]() 仮想マシンまたは物理コンピューターに Log Analytics エージェントをインストールできます。 仮想マシンは Azure、別のクラウド、またはオンプレミスで実行できます。  エージェントは Log Analytics に直接または[接続済みの System Center Operations Manager 管理グループ](../log-analytics/log-analytics-om-agents.md)を経由して接続します。エージェントを使用すると、設定した[データ ソース](../log-analytics/log-analytics-data-sources.md)または仮想マシンで実行されているアプリケーションに関する追加の分析情報を提供する[管理ソリューション](monitoring-solutions.md)からデータを収集できます。
 
 ### <a name="service-map"></a>サービス マップ
-[Service Map](../operations-management-suite/operations-management-suite-service-map.md) には、Windows および Linux 仮想マシン上の Dependency Agent が必要です。 これは Log Analytics エージェントと連携して、仮想マシンで実行されているプロセスおよび外部プロセスとの依存関係に関するデータを収集します。 このデータは Log Analytics に格納されます。Service Map には、収集したデータおよび Log Analytics に格納されているその他のデータを視覚的に表示するコンソールが用意されています。
+[Service Map](../monitoring/monitoring-service-map.md) には、Windows および Linux 仮想マシン上の Dependency Agent が必要です。 これは Log Analytics エージェントと連携して、仮想マシンで実行されているプロセスおよび外部プロセスとの依存関係に関するデータを収集します。 このデータは Log Analytics に格納されます。Service Map には、収集したデータおよび Log Analytics に格納されているその他のデータを視覚的に表示するコンソールが用意されています。
 
 ## <a name="applications"></a>[アプリケーション]
 アプリケーションがゲスト オペレーティング システムに書き込むことのできるテレメトリに加え、アプリケーションの詳細な監視が [Application Insights](https://docs.microsoft.com/azure/application-insights/) を使用して行われます。 Application Insights では、さまざまなプラットフォームで実行されているアプリケーションからデータを収集できます。 アプリケーションは Azure、別のクラウド、またはオンプレミスで実行できます。

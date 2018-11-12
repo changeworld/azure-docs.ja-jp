@@ -12,12 +12,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 92db2a86f5f698945cd2252476e951d658dc75ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3aa1bfe2cc1513d636452031de62da814af6cd7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959208"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262303"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio のアルゴリズムの選択方法
 
@@ -121,7 +121,7 @@ ms.locfileid: "46959208"
 | [デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
 | [decision jungle](https://msdn.microsoft.com/library/azure/dn905976.aspx) (デシジョン ジャングル) |● |○ | |6 |低メモリ フットプリント |
 | [ブースト デシジョン ツリー](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |メモリ フットプリントが大きい |
-| [neural network](https://msdn.microsoft.com/library/azure/dn905947.aspx) (ニューラル ネットワーク) |● | | |9 |[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [neural network](https://msdn.microsoft.com/library/azure/dn905947.aspx) (ニューラル ネットワーク) |● | | |9 |[追加カスタマイズ可能](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [averaged perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) (平均化パーセプトロン) |○ |○ |● |4 | |
 | [support vector machine](https://msdn.microsoft.com/library/azure/dn905835.aspx) (サポート ベクター マシン) | |○ |● |5 |大きい特徴セットに好適 |
 | [locally deep support vector machine](https://msdn.microsoft.com/library/azure/dn913070.aspx) (ローカル詳細サポート ベクター マシン) |○ | | |8 |大きい特徴セットに好適 |
@@ -130,7 +130,7 @@ ms.locfileid: "46959208"
 | [ロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
 | [decision jungle](https://msdn.microsoft.com/library/azure/dn905963.aspx) (デシジョン ジャングル)  |● |○ | |6 |低メモリ フットプリント |
-| [ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[追加カスタマイズ可能](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) (一対全) |- |- |- |- |選択した 2 クラス法のプロパティを参照してください |
 | **Regression** (回帰) | | | | | |
 | [linear](https://msdn.microsoft.com/library/azure/dn905978.aspx) (線形) | |● |● |4 | |
@@ -138,7 +138,7 @@ ms.locfileid: "46959208"
 | [decision forest](https://msdn.microsoft.com/library/azure/dn905862.aspx) (デシジョン フォレスト) |● |○ | |6 | |
 | [boosted decision tree](https://msdn.microsoft.com/library/azure/dn905801.aspx) (ブースト デシジョン ツリー) |● |○ | |5 |メモリ フットプリントが大きい |
 | [fast forest quantile](https://msdn.microsoft.com/library/azure/dn913093.aspx) (高速フォレスト分位) |● |○ | |9 |ポイント予測ではなく分布 |
-| [ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[追加カスタマイズ可能](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx) (ポワソン) | | |● |5 |技術的には対数線形。 カウント予測用 |
 | [ordinal](https://msdn.microsoft.com/library/azure/dn906029.aspx) (序数) | | | |0 |ランク順序予測用 |
 | **Anomaly detection** (異常検出) | | | | | |
@@ -190,7 +190,7 @@ Boosted decision tree は、分割できる回数、および各領域に許可�
 Neural network は脳にインスパイアされた学習アルゴリズムで、[多クラス](https://msdn.microsoft.com/library/azure/dn906030.aspx)、[2 クラス](https://msdn.microsoft.com/library/azure/dn905947.aspx)、および[回帰](https://msdn.microsoft.com/library/azure/dn905924.aspx)の問題を対象とします。 無限の多様性がありますが、Azure Machine Learning の neural network はすべてが無閉路有効グラフの形式です。 つまり、入力特徴はレイヤーのシーケンスを前方に通過して (戻ることはありません) 出力に変換されます。 各レイヤーでは、入力はさまざまな組み合わせで加重され、合計されて、次の層に渡されます。 この単純な計算の組み合わせにより、一見マジックのように、高度なクラス境界とデータ傾向を学習できます。 この種の多レイヤー ネットワークでは、多くの技術レポートと SF の基になっている「ディープ ラーニング」が実行されます。
 
 ただし、この高パフォーマンスにはコストがかかります。 Neural network はトレーニングに時間がかかり、多数の特徴を持つ大規模なデータ セットの場合は特にそうです。 また、ほとんどのアルゴリズムよりパラメーターが多く、パラメーター スイープによってトレーニング時間が大幅に延びます。
-また、 [独自のネットワーク構造を指定](http://go.microsoft.com/fwlink/?LinkId=402867)しようとがんばると、無限の可能性があります。
+また、 [独自のネットワーク構造を指定](https://go.microsoft.com/fwlink/?LinkId=402867)しようとがんばると、無限の可能性があります。
 
 ![Neural network によって学習された境界][6]
 ***Neural network によって学習される境界は複雑で不規則になる場合があります***

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 2af93d149948071f78d0c684b812e84fa68db341
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6ac0895ac31a815f00ca6c5fa1dfd325be2e3963
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251126"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245819"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド: スケーラブルな設計とハイパフォーマンスなテーブル
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -122,7 +122,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 </table>
 
 
-今のところ、この設計は、リレーショナル データベースのテーブルと非常によく似ており、異なるキーが必須の列となっていて、同じテーブルに複数の種類のエンティティを格納できます。 さらに、**FirstName** や **Age** などのユーザー定義プロパティには、リレーショナル データベース内の列のように、整数や文字列などのデータ型があります。 ただし、リレーショナル データベースとは違って、Table service にはスキーマがないため、エンティティごとにプロパティのデータ型は同じである必要ありません。 1 つのプロパティに複雑なデータ型を格納するには、JSON や XML などのシリアル化された形式を使う必要があります。 サポート対象のデータ型と日付の範囲、名付け規則、サイズ制限などの Table サービスの詳細については、「 [Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+今のところ、この設計は、リレーショナル データベースのテーブルと非常によく似ており、異なるキーが必須の列となっていて、同じテーブルに複数の種類のエンティティを格納できます。 さらに、**FirstName** や **Age** などのユーザー定義プロパティには、リレーショナル データベース内の列のように、整数や文字列などのデータ型があります。 ただし、リレーショナル データベースとは違って、Table service にはスキーマがないため、エンティティごとにプロパティのデータ型は同じである必要ありません。 1 つのプロパティに複雑なデータ型を格納するには、JSON や XML などのシリアル化された形式を使う必要があります。 サポート対象のデータ型と日付の範囲、名付け規則、サイズ制限などの Table サービスの詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
 お分かりかと思いますが、テーブル デザインの基盤には、**PartitionKey** と **RowKey** の選択が適しています。 テーブルに格納されている各エンティティは、**PartitionKey** と **RowKey** の一意の組み合わせである必要があります。 リレーショナル データベース テーブル内のキーと同様に、**PartitionKey** と **RowKey** の値には、高速検索を可能にするクラスター化インデックスを作成するためのインデックスが作成されています。ただし、Table service はセカンダリ インデックスを作成しないため、これら 2 つだけがインデックス付きプロパティとなります (制限については、数パターンを後述しています)。  
 
@@ -133,7 +133,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 
 Table service では、個々のノードが 1 つ以上の完全なパーティションを提供し、サービスのスケーリングはノード間でパーティションの負荷を動的に分散させることで行われます。 ノードに負荷がかかる場合は、テーブル サービスのパーティション範囲を 別のノードと*分割*し、トラフィックが少ないときにサービスを*マージ*して、パーティション範囲を複数のトラフィックの少ないノードから 1 つのノードに戻すことができます。  
 
-Table service の内部詳細、特に、サービスのパーティション管理方法については、ホワイト ペーパー [Microsoft Azure のストレージ: 強力な一貫性を備えた高使用可能なクラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)を参照してください。  
+Table service の内部詳細、特に、サービスのパーティション管理方法については、ホワイト ペーパー [Microsoft Azure のストレージ: 強力な一貫性を備えた高使用可能なクラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)を参照してください。  
 
 ### <a name="entity-group-transactions"></a>エンティティ グループ トランザクション
 エンティティ グループ トランザクション (EGT) は、Table service で複数のエンティティ間でアトミックな更新を行うための唯一の組み込みのメカニズムです。 EGT は、一部のドキュメントでは*バッチ トランザクション*とも呼ばれています。 EGT では、同じパーティションに格納されたエンティティしか処理できないため (特定のテーブルで同じパーティション キーを共有)、複数のエンティティにまたがるアトミックなトランザクションが必要な場合は、それらのエンティティを同じパーティションに格納する必要があります。 これが、異なる種類のエンティティに複数のテーブルを使わずに、異なる種類のエンティティを同じテーブル (とパーティション) に格納する主な理由です。 単一の EGT で最大 100 個のエンティティを処理できます。  複数の並行処理 EGT を送信する場合は、それらの EGT が EGT 間の共通であるエンティティには動作しないことを確認することが重要です。さもないと、処理が遅くなる可能性があります。
@@ -153,7 +153,7 @@ EGT により、設計で評価が必要なトレードオフが生じる可能�
 | **RowKey** |最大 1 KB の文字列 |
 | エンティティ グループ トランザクションのサイズ |トランザクションには最大で 100 個のエンティティを含めることができ、ペイロードは 4 MB 未満にする必要があります。 EGT では 1 回に 1 つのエンティティしか更新できません。 |
 
-詳細については、「 [Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。  
+詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。  
 
 ### <a name="cost-considerations"></a>コストに関する考慮事項
 テーブル ストレージは比較的安価ですが、Table service を使うソリューションの評価の一環として、容量の使用とトランザクションの量を踏まえてコストを見積もる必要があります。 ただし、多くのシナリオでは、ソリューションのパフォーマンスとスケーラビリティを向上させるために、非正規化されたデータまたは重複するデータを格納するのも有効です。 価格の詳細については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。  
@@ -208,7 +208,7 @@ Table service ソリューションでは、読み取り、書き込み、また
 | **Age** |整数 |
 | **EmailAddress** |String |
 
-最初の方のセクション「[Azure Table service の概要](#overview)」では、クエリの設計に直接影響を与える Azure Table service の主な機能の一部について説明します。 ここから、Table service のクエリを設計する際には、次のような一般的なガイドラインが考えられます。 以下の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx)」(エンティティの照会) を参照してください。  
+最初の方のセクション「[Azure Table service の概要](#overview)」では、クエリの設計に直接影響を与える Azure Table service の主な機能の一部について説明します。 ここから、Table service のクエリを設計する際には、次のような一般的なガイドラインが考えられます。 以下の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities](https://msdn.microsoft.com/library/azure/dd179421.aspx)」(エンティティの照会) を参照してください。  
 
 * ***ポイント クエリ***は、最も効率的な検索です。大量の参照または短い待機時間が求められる参照に使用することをお勧めします。 このようなクエリでは、**PartitionKey** と **RowKey** 値の両方を指定することでインデックスを使用し、個別のエンティティを効率よく検索することができます。 例: $filter (PartitionKey eq 'Sales') = および (RowKey eq '2')  
 * 2 番目に良い方法は、**PartitionKey** を使用する***範囲クエリ***と、**RowKey 値**の範囲にフィルターをかけ、1 つ以上のエンティティを返す です。 **PartitionKey** 値は特定のパーティションを識別し、**RowKey** 値はそのパーティション内のエンティティのサブセットを識別します。 例: $filter=PartitionKey eq 'Sales' および RowKey ge 'S' および RowKey lt 'T'  
@@ -437,7 +437,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * Sales 部署において、従業員 ID、000100 から 000199 を指定して、すべての従業員を検索するには: $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000100') and (RowKey le 'empid_000199') を使用します。  
 * Sales 部署において、'a' で始まる電子メール アドレスを持つすべての従業員を検索するには:$filter=(PartitionKey eq 'Sales') and (RowKey ge 'email_a') and (RowKey lt 'email_b') を使用します。  
   
-  上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、[エンティティのクエリ](http://msdn.microsoft.com/library/azure/dd179421.aspx)に関するページを参照してください。  
+  上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、[エンティティのクエリ](https://msdn.microsoft.com/library/azure/dd179421.aspx)に関するページを参照してください。  
 
 #### <a name="issues-and-considerations"></a>問題と注意事項
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
@@ -491,7 +491,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 従業員 ID 順で格納された、従業員 ID が**000100** から **000199** の範囲の Sales 部署のすべての従業員を検索するには、$filter=(PartitionKey eq 'empid_Sales') と (RowKey ge '000100') および (RowKey le '000199') を使用します。  
 * Sales 部署において、電子メール アドレス順で格納された電子メール アドレスで、'a' で始まる電子メール アドレスを持つすべての従業員を検索するには: $filter=(PartitionKey eq 'email_Sales') and (RowKey ge 'a') and (RowKey lt 'b') を使用します。  
 
-上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx)」(エンティティの照会) を参照してください。  
+上記の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities](https://msdn.microsoft.com/library/azure/dd179421.aspx)」(エンティティの照会) を参照してください。  
 
 #### <a name="issues-and-considerations"></a>問題と注意事項
 このパターンの実装方法を決めるときには、以下の点に注意してください。  
@@ -1002,7 +1002,7 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 
 そのようなときには必ず、アプリケーションのパフォーマンスを綿密にテストする必要があります。  
 
-Table サービスに対してクエリを実行した場合、一度に返されるエンティティの数は最大 1,000 件、クエリの実行時間は最大 5 秒間です。 結果として返されるエンティティが 1,000 件を超える場合、クエリが 5 秒以内に完了しなかった場合、またはクエリがパーティションの境界をまたいで実行される場合には、Table service によって継続トークンが返されます。クライアント アプリケーションはこのトークンを使って、続きとなるエンティティを要求します。 継続トークンの詳細については、「[クエリのタイムアウトと改ページ](http://msdn.microsoft.com/library/azure/dd135718.aspx)」をご覧ください。  
+Table サービスに対してクエリを実行した場合、一度に返されるエンティティの数は最大 1,000 件、クエリの実行時間は最大 5 秒間です。 結果として返されるエンティティが 1,000 件を超える場合、クエリが 5 秒以内に完了しなかった場合、またはクエリがパーティションの境界をまたいで実行される場合には、Table service によって継続トークンが返されます。クライアント アプリケーションはこのトークンを使って、続きとなるエンティティを要求します。 継続トークンの詳細については、「[クエリのタイムアウトと改ページ](https://msdn.microsoft.com/library/azure/dd135718.aspx)」をご覧ください。  
 
 ストレージ クライアント ライブラリを使用している場合には、Table service からエンティティが返されるたびに継続トークンが自動で処理されます。 以下の C# コード サンプルではストレージ クライアント ライブラリを使用しているため、Table サービスが応答で返した継続トークンが自動的に処理されます。  
 

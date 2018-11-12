@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 13535dae82ef2c8896dad7d6221553d15e4e6a95
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e616df772bf11d1247f96c78bea2392252f5e5d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573813"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259753"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Azure DevTest Labs で、ラボの月間推定コスト傾向を表示する
 DevTest ラボのコスト管理機能は、ラボのコストを追跡するのに役立ちます。 この記事では、 **月間推定コスト傾向** グラフを使用して、現在のカレンダー月の現時点までの推定コストおよび現在のカレンダー月の月末の予測コストを表示する方法を示します。 この記事では、支出の目標としきい値を設定し、それに達した場合に DevTest Labs をトリガーして結果をレポートすることで、ラボのコスト管理を改善する方法について説明します。
@@ -27,7 +27,7 @@ DevTest ラボのコスト管理機能は、ラボのコストを追跡するの
 ## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>月間推定コスト傾向グラフを表示する
 月間推定コスト傾向グラフを表示するには、次の手順に従います: 
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. 必要に応じて、**[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 (お使いのラボは、**[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります)。
 1. ラボの一覧で目的のラボを選択します。  
 1. ラボの **[概要]** で、**[Configuration and policies]\(構成とポリシー\)** を選択します。   

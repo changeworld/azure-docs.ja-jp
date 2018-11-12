@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 6422482a31ad8022b795cb357c37ad8560781767
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: e99a3a7db7a934a8a72695c38ab952786579a640
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166595"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232208"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>Azure Data Box Edge (プレビュー) とは 
 
@@ -60,7 +60,7 @@ Data Box Edge には次の機能があります。
 |機能 |説明  |
 |---------|---------|
 |高性能     | 完全に自動化され、高度に最適化されたデータ転送と帯域幅。|
-|サポートされるプロトコル     | データ インジェストのために、標準の SMB プロトコルと NFS プロトコルをサポートします。 <br> サポート対象のバージョンについては、「[Data Box Edge のシステム要件](http://aka.ms/dbe-docs)」を参照してください。|
+|サポートされるプロトコル     | データ インジェストのために、標準の SMB プロトコルと NFS プロトコルをサポートします。 <br> サポート対象のバージョンについては、「[Data Box Edge のシステム要件](https://aka.ms/dbe-docs)」を参照してください。|
 |コンピューティング       |データの分析、処理、フィルター処理が可能です。|
 |データ アクセス     | クラウドでデータをさらに処理するために、クラウド API を使用して、Azure Storage Blob と Azure ファイルからデータを直接アクセスします。|
 |高速アクセス     | 最近使用されたファイルを高速にアクセスするために、デバイス上でローカル キャッシュを行います。|
@@ -96,13 +96,13 @@ Data Box Edge ソリューションは、Data Box Edge リソース、Data Box E
 
     <!--![The Data Box Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    詳細については、「[Data Box Edge サービスを使用した Data Box Edge デバイスの管理](http://aka.ms/dbe-docs)」を参照してください。
+    詳細については、「[Data Box Edge サービスを使用した Data Box Edge デバイスの管理](https://aka.ms/dbe-docs)」を参照してください。
 
 * **Data Box ローカル Web UI** - ローカル Web UI を使用して、診断の実行、Data Box Edge デバイスのシャットダウンと再起動し、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
 
     <!--![The Data Box Edge local web UI](media/data-box-Edge-overview/data-box-Edge-local-web-ui.png)-->
 
-    Web ベース UI の使用については、「[Web ベース UI を使用した Data Box の管理](http://aka.ms/dbe-docs)」を参照してください。
+    Web ベース UI の使用については、「[Web ベース UI を使用した Data Box の管理](https://aka.ms/dbe-docs)」を参照してください。
 
 
 ## <a name="region-availability"></a>利用可能なリージョン
@@ -137,9 +137,9 @@ Data Box Edge はプレビュー段階であり、サインアップする必要
 
 ## <a name="next-steps"></a>次の手順
 
-- [Data Box Edge のシステム要件](http://aka.ms/dbe-docs) を確認する。
-- [Data Box Edge の制限事項](http://aka.ms/dbe-docs) を理解する。
-- Azure portal で [Azure Data Box Edge](http://aka.ms/dbe-docs) を配置する。
+- [Data Box Edge のシステム要件](https://aka.ms/dbe-docs) を確認する。
+- [Data Box Edge の制限事項](https://aka.ms/dbe-docs) を理解する。
+- Azure portal で [Azure Data Box Edge](https://aka.ms/dbe-docs) を配置する。
 
 
 

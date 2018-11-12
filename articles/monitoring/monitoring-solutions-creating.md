@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a07a17105b4d84b51689e9636cfacc7a3b5428ad
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 09dd046f9dc7d6b73207ab1ab739e913a8ed5b92
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528029"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282052"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure での管理ソリューションの設計とビルド (プレビュー)
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.locfileid: "39528029"
 
 ## <a name="what-is-a-management-solution"></a>管理ソリューションとは
 
-管理ソリューションには、連携して特定の管理シナリオを実現する Azure のリソースが含まれています。  管理ソリューションは、[リソース管理テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されます。テンプレートには、ソリューションがインストールされたときに、含まれているリソースをインストールして構成する方法の詳細が含まれています。
+管理ソリューションには、連携して特定の管理シナリオを実現する Azure のリソースが含まれています。  管理ソリューションは、[リソース管理テンプレート](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)として実装されます。テンプレートには、ソリューションがインストールされたときに、含まれているリソースをインストールして構成する方法の詳細が含まれています。
 
 管理ソリューションの構築は、基本的には、Azure 環境内で個々のコンポーネントを作成することから開始します。  正常に機能したら、それらのコンポーネントを[管理ソリューション ファイル]( monitoring-solutions-solution-file.md)にパッケージ化できます。 
 
@@ -49,16 +49,16 @@ ms.locfileid: "39528029"
 利用できるどのデータ ソースからもアクセスできないデータが必要な場合は、[HTTP データ コレクター API](../log-analytics/log-analytics-data-collector-api.md) を使用できます。この API を使用すると、REST API を呼び出すことができる任意のクライアントから Log Analytics リポジトリにデータを書き込むことができます。  管理ソリューションにおけるカスタム データ収集の最も一般的な方法は、Azure または外部のリソースから必要なデータを収集し、データ コレクター API を使用してリポジトリに書き込む [Azure Automation の Runbook](../automation/automation-runbook-types.md) を作成することです。  
 
 ### <a name="log-searches"></a>ログ検索
-[ログ検索](../log-analytics/log-analytics-log-searches.md)は、Log Analytics リポジトリ内のデータの抽出および分析に使用します。  ビューやアラートで使用されるほか、ユーザーがリポジトリ内のデータに対してアドホック分析を実行することもできます。  
+[ログ検索](../log-analytics/log-analytics-queries.md)は、Log Analytics リポジトリ内のデータの抽出および分析に使用します。  ビューやアラートで使用されるほか、ユーザーがリポジトリ内のデータに対してアドホック分析を実行することもできます。  
 
 ビューやアラートで使用されていない場合でも、ユーザーにとって便利だと思われるすべてのクエリを定義する必要があります。  こうしたクエリはポータルで保存された検索として利用でき、カスタム ビューの [[クエリのリスト] 視覚エフェクト パーツ](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part)に含めることもできます。
 
 ### <a name="alerts"></a>アラート
-[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)では、リポジトリ内のデータに対する[ログ検索](#log-searches)によって問題を特定します。  アラートが発生した場合、ユーザーに通知するか、アクションを自動的に実行します。 アプリケーションのさまざまなアラートの状態を特定し、対応するアラート ルールをソリューション ファイルに含める必要があります。
+[Log Analytics のアラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)では、リポジトリ内のデータに対する[ログ検索](#log-searches)によって問題を特定します。  アラートが発生した場合、ユーザーに通知するか、アクションを自動的に実行します。 アプリケーションのさまざまなアラートの状態を特定し、対応するアラート ルールをソリューション ファイルに含める必要があります。
 
 自動化されたプロセスで問題を修正できる可能性がある場合は、通常、その修復を実行する Azure Automation の Runbook を作成します。  ほとんどの Azure サービスは、[コマンドレット](/powershell/azure/overview)を使用して管理できます。Runbook では、コマンドレットを活用して、そうした機能を実行します。
 
-アラートに対する応答でソリューションに外部の機能が必要な場合は、[webhook の応答](../log-analytics/log-analytics-alerts-actions.md)を使用できます。  これにより、アラートから情報を送信する外部 Web サービスを呼び出すことができます。
+アラートに対する応答でソリューションに外部の機能が必要な場合は、[webhook の応答](../monitoring-and-diagnostics/alert-metric.md)を使用できます。  これにより、アラートから情報を送信する外部 Web サービスを呼び出すことができます。
 
 ### <a name="views"></a>ビュー
 Log Analytics のビューは、Log Analytics リポジトリのデータを視覚化するために使用します。  各ソリューションには、通常、ユーザーのメイン ダッシュボードに表示される[タイル](../log-analytics/log-analytics-view-designer-tiles.md)を使用した 1 つのビューを含めます。  ビューには任意の数の[視覚エフェクト パーツ](../log-analytics/log-analytics-view-designer-parts.md)を含めて、収集したデータをさまざまな形で視覚化してユーザーに表示できます。

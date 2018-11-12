@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 1b8c1ba80b4c69f36e8304cbe978452a359ac911
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1f19d5918d81acb76936edf8989a556335a3c0df
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698079"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261266"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Ansible を使用した Azure の動的インベントリの管理
 Ansible を使用して、(Azure などのクラウド ソースを含む) さまざまなソースから "*動的インベントリ*" にインベントリ情報をプルすることができます。 この記事では、[Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) を使用して、Ansible Azure 動的インベントリを構成します。この動的インベントリに 2 つの仮想マシンを作成した後、そのうちの 1 つの仮想マシンにタグを付け、タグを付けた仮想マシンに Nginx をインストールします。
@@ -26,7 +26,7 @@ Ansible を使用して、(Azure などのクラウド ソースを含む) さ�
 
 ## <a name="create-the-test-virtual-machines"></a>テスト用仮想マシンの作成
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。
 

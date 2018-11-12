@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 555672df5b0b86858d460ff7606bc6ca23f4f103
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834357"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261112"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Azure Machine Learning でカスタム R モジュールを作成する
 このトピックでは、Azure Machine Learning でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
@@ -41,7 +41,7 @@ ms.locfileid: "34834357"
 カスタム モジュールからアクセスできる機能を提供する追加の補助ファイルも .zip ファイルに含まれる場合があります。 このオプションについては、クイックスタートの例を紹介した後、リファレンス セクション「**XML 定義ファイルの要素**」の「**引数**」で説明します。
 
 ## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>クイックスタートの例: カスタム R モジュールの定義、パッケージ化、登録
-この例では、カスタム R モジュールに必要なファイルを作成し、それらのファイルを zip ファイルにパッケージ化して、Machine Learning ワークスペースにモジュールを登録する方法を示します。 この例の zip パッケージとサンプル ファイルは、 [ここ](http://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)からダウンロードできます。
+この例では、カスタム R モジュールに必要なファイルを作成し、それらのファイルを zip ファイルにパッケージ化して、Machine Learning ワークスペースにモジュールを登録する方法を示します。 この例の zip パッケージとサンプル ファイルは、 [ここ](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)からダウンロードできます。
 
 ## <a name="the-source-file"></a>ソース ファイル
 2 つのデータセット (データ フレーム) の行 (監視) を連結するために使用される **Add Rows** モジュールの標準実装を変更する **Custom Add Rows** モジュールの例について考えてみます。 標準の **Add Rows** モジュールは、`rbind` アルゴリズムを使用して、最初の入力データセットの末尾に、2 番目の入力データセットの行を追加します。 カスタマイズされた `CustomAddRows` 関数も 2 つのデータセットを同様に受け入れますが、追加の入力としてブール型スワップ パラメーターも受け取ります。 スワップ パラメーターが **FALSE** に設定されている場合は、標準実装と同じデータセットが返されますが、 **TRUE** の場合、関数は、最初の入力データセットの行を、2 番目のデータセットの末尾に追加します。 **Custom Add Rows** モジュールによって公開される R `CustomAddRows` 関数の実装が含まれる CustomAddRows.R ファイルには、次の R コードが含まれます。
@@ -292,7 +292,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * Categorical
     * String
     * Label
-    * Feature
+    * 機能
     * Score
     * All
   * **default** - 列の選択の有効な既定の選択内容は次のとおりです。 
@@ -317,7 +317,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * AllLabel
     * AllFeature
     * AllScore
-    * All
+    * すべて
 
 **DropDown**: ユーザーが指定した列挙型 (ドロップダウン) リスト。 ドロップダウン項目は、**Properties** 要素内で **Item** 要素を使用して指定します。 各 **Item** の **id** は、一意で有効な R 変数である必要があります。 **Item** の **name** は、表示されるテキストであり、R 関数に渡される値でもあります。
 

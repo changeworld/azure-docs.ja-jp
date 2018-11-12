@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: d08ac9f2cbdf98493b3132fa9dd3a3e973576451
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e2d65c107d57d50bc15d5a1cd1698491bb607e25
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098819"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262235"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング
 
@@ -54,7 +54,7 @@ Media Services 2.10 リリース以降では、チャネルを作成するとき
 ## <a id="scenario"></a>一般的なライブ ストリーミング シナリオ
 次の手順では、一般的なライブ ストリーミング アプリケーションの作成に関連するタスクを示します。
 
-1. ビデオ カメラをコンピューターに接続します。 マルチビットレートの RTMP やフラグメント化 MP4 (スムーズ ストリーミング) ストリームを出力として返すオンプレミスのライブ エンコーダーを起動して構成します。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
+1. ビデオ カメラをコンピューターに接続します。 マルチビットレートの RTMP やフラグメント化 MP4 (スムーズ ストリーミング) ストリームを出力として返すオンプレミスのライブ エンコーダーを起動して構成します。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
 
     この手順は、チャネルを作成した後でも実行できます。
 2. チャネルを作成し、起動します。
@@ -105,7 +105,7 @@ Media Services は、ストリーミング プロトコルとして、マルチ�
 
     このシナリオでは、両方のエンコーダーがプライマリとセカンダリの両方の URL にデータをプッシュします。 これは、データの冗長性だけでなく、最高の信頼性とフォールト トレランスを提供します。 このシナリオは、両方のエンコーダーの障害に対応でき、1 つのエンコーダーが動作しなくなった場合でも切断できます。 このシナリオでは、エンコーダーは時間を同期し、全く同じデータを提供するものとします。  
 
-RTMP ライブ エンコーダーの詳細については、「 [Azure Media Services の RTMP サポートとライブ エンコーダー (ブログの投稿)](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
+RTMP ライブ エンコーダーの詳細については、「 [Azure Media Services の RTMP サポートとライブ エンコーダー (ブログの投稿)](https://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
 
 #### <a name="ingest-urls-endpoints"></a>取り込み URL (エンドポイント)
 チャネルは、ライブ エンコーダーで指定した入力エンドポイント (取り込み URL) を提供するため、エンコーダーはご使用のチャネルにストリームをプッシュできます。   

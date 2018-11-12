@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: de892afee57b9a39b841f6cfc93f8470d831c2a6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: afee3254ebdd325d756bfc5027cca531442c5689
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045934"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257369"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページをご覧ください。 
+> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[コピー アクティビティのチュートリアル](../quickstart-create-data-factory-dot-net.md)に関するページを参照してください。 
 
 ## <a name="overview"></a>概要
 Data Factory .NET SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理できます。 この記事には、Data Factory の作成と監視を行うサンプルの .NET コンソール アプリケーションを作成できるチュートリアルが含まれています。 
@@ -33,7 +33,7 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 
 ## <a name="prerequisites"></a>前提条件
 * Visual Studio 2012 または 2013 または 2015
-* [Azure .NET SDK](http://azure.microsoft.com/downloads/)のダウンロードとインストール。
+* [Azure .NET SDK](https://azure.microsoft.com/downloads/)のダウンロードとインストール。
 * Azure PowerShell。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) 」に記載されている手順に従って、コンピューターに Azure PowerShell をインストールします。 Azure PowerShell を使用して、Azure Active Directory アプリケーションを作成します。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する

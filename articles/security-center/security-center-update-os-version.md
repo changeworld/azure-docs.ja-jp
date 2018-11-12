@@ -3,7 +3,7 @@ title: Azure Security Center で OS バージョンを更新する | Microsoft D
 description: この記事では、**OS バージョンの更新**という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: aa372492-ecdb-4368-8fdd-d8ed31e216ee
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2016
-ms.author: terrylan
-ms.openlocfilehash: cab773412005093f8acabe9bd6e93e8740b14ece
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 1898926e0488722d18a105697bead18e29e6a35d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298408"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254895"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Azure Security Center で OS バージョンを更新する
 Azure Security Center では、クラウド サービス内の仮想マシン (VM) で使用しているオペレーティング システム (OS) の最新バージョンが提供されている場合、そのバージョンに更新するよう推奨されます。  監視されるのは、運用スロットで実行されているクラウド サービスの Web ロールと worker ロールだけです。
@@ -49,7 +49,7 @@ Azure Security Center では、クラウド サービス内の仮想マシン (V
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-update-os-version/update-os-version.png

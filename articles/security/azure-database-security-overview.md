@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: a61f3572037b1c62ea5ed4e0ac4496b057e2b96d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249053"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262201"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -35,7 +35,7 @@ Microsoft では、エンタープライズ データの暗号化方法として
 
 Azure SQL Database Auditing を利用することにより、企業ではイベントを Azure Storage 内の監査ログに記録できます。 また SQL Database の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。
 
-Azure SQL Database は、大部分の規制要件やセキュリティ要件 (特に HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft Azure セキュリティ センターのサイト](http://azure.microsoft.com/support/trust-center/services/)で確認できます。
+Azure SQL Database は、大部分の規制要件やセキュリティ要件 (特に HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft Azure セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。
 
 この記事では、Microsoft Azure SQL Database の構造化データ、表形式データ、リレーショナル データをセキュリティで保護する基本的な手順について紹介します。 特にこの記事では、データの保護、アクセスの制御、プロアクティブな監視を行うためのリソースの概要を説明します。
 
@@ -44,7 +44,7 @@ Azure SQL Database は、大部分の規制要件やセキュリティ要件 (�
 SQL Database は、次の暗号化を提供することでデータを保護します。
 
 - 移動中のデータの場合、[Transport Layer Security (TLS)](https://support.microsoft.com/kb/3135244)。
-- 保存データの場合、[Transparent Data Encryption](http://go.microsoft.com/fwlink/?LinkId=526242)。
+- 保存データの場合、[Transparent Data Encryption](https://go.microsoft.com/fwlink/?LinkId=526242)。
 - 使用中のデータの場合、[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)。
 
 その他の方法でデータを暗号化するには、次を検討してください。

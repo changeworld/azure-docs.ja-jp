@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: e6601093577eb9e3dfba4ed27e1e0510cad17de7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b703cb4d3ddd8b62895c9c40c7fa2fba728e884e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421051"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262280"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>車両テレメトリ分析ソリューション テンプレートの Power BI ダッシュボードのセットアップ手順
 このメニューは、このプレイブック内の各章にリンクされています。 
@@ -30,7 +30,7 @@ ms.locfileid: "39421051"
 
 ## <a name="prerequisites"></a>前提条件
 * [車両テレメトリ分析](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90)ソリューションをデプロイします。 
-* [Power BI Desktop をインストール](http://www.microsoft.com/download/details.aspx?id=45331)します。
+* [Power BI Desktop をインストール](https://www.microsoft.com/download/details.aspx?id=45331)します。
 * [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)を取得します。 Azure サブスクリプションがない場合は、Azure 無料サブスクリプションで開始します。
 * Power BI アカウントを開きます。
 
@@ -348,7 +348,7 @@ ms.locfileid: "39421051"
 
 ### <a name="configure-power-bi-reports"></a>Power BI レポートを構成
 
-1. Power BI Desktop を使用して、デザイナー ファイル **ConnectedCarsPbiReport.pbix** を開きます。 Power BI Desktop をまだインストールしていない場合は、[Power BI Desktop のインストール](http://www.microsoft.com/download/details.aspx?id=45331)に関する Web サイトからインストールします。
+1. Power BI Desktop を使用して、デザイナー ファイル **ConnectedCarsPbiReport.pbix** を開きます。 Power BI Desktop をまだインストールしていない場合は、[Power BI Desktop のインストール](https://www.microsoft.com/download/details.aspx?id=45331)に関する Web サイトからインストールします。
 
 1. **[クエリを編集]** を選択します。
 

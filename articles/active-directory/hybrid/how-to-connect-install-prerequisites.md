@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4dd3253b1d7ee159914f2d1fd6a8644bbc69c1f0
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 5205d7797e7d45266a4f54b842ad56f353abc6d6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092793"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252991"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -41,7 +41,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 ### <a name="on-premises-active-directory"></a>オンプレミスの Active Directory
 * AD スキーマのバージョンとフォレストの機能レベルは、Windows Server 2003 以降である必要があります。 ドメイン コントローラーは、スキーマとフォレスト レベルの要件を満たしていれば、任意のバージョンを実行できます。
-* **パスワード ライトバック**機能を使用する場合、ドメイン コントローラーが (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。 ドメイン コントローラーが 2008 (R2 より前のバージョン) にインストールされている場合は、[修正プログラム KB2386717](http://support.microsoft.com/kb/2386717) も適用する必要があります。
+* **パスワード ライトバック**機能を使用する場合、ドメイン コントローラーが (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。 ドメイン コントローラーが 2008 (R2 より前のバージョン) にインストールされている場合は、[修正プログラム KB2386717](https://support.microsoft.com/kb/2386717) も適用する必要があります。
 * Azure AD で使用されるドメイン コントローラーは、書き込み可能である必要があります。 RODC (読み取り専用ドメイン コントローラー) は**使用できません**。Azure AD Connect では、書き込みのリダイレクトを行いません。
 * "ドット形式" (名前にピリオド "." が含まれる) の NetBios 名を使用するオンプレミスのフォレスト/ドメインは**使用できません**。
 * [Active Directory のごみ箱を有効にする](how-to-connect-sync-recycle-bin.md)ことをお勧めします。
@@ -123,11 +123,11 @@ Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存していま
   * Microsoft PowerShell は既定でインストールされています。 操作は必要ありません。
   * .NET Framework 4.5.1 以降のリリースは、Windows Update によって提供されます。 コントロール パネルで、Windows Server に最新の更新プログラムがインストールされていることを確認します。
 * Windows Server 2008R2 と Windows Server 2012
-  * Microsoft PowerShell の最新バージョンは、 **Microsoft ダウンロード センター**の [Windows Management Framework 4.0](http://www.microsoft.com/downloads)で入手できます。
-  * .NET Framework 4.5.1 以降のリリースは、 [Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できます。
+  * Microsoft PowerShell の最新バージョンは、 **Microsoft ダウンロード センター**の [Windows Management Framework 4.0](https://www.microsoft.com/downloads)で入手できます。
+  * .NET Framework 4.5.1 以降のリリースは、 [Microsoft ダウンロード センター](https://www.microsoft.com/downloads)で入手できます。
 * Windows Server 2008
-  * PowerShell の最新のサポート バージョンは、 **Microsoft ダウンロード センター**の [Windows Management Framework 3.0](http://www.microsoft.com/downloads)で入手できます。
-  * .NET Framework 4.5.1 以降のリリースは、 [Microsoft ダウンロード センター](http://www.microsoft.com/downloads)で入手できます。
+  * PowerShell の最新のサポート バージョンは、 **Microsoft ダウンロード センター**の [Windows Management Framework 3.0](https://www.microsoft.com/downloads)で入手できます。
+  * .NET Framework 4.5.1 以降のリリースは、 [Microsoft ダウンロード センター](https://www.microsoft.com/downloads)で入手できます。
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Azure AD Connect 用に TLS 1.2 を有効にする
 バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジン サーバーと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 これを変更するには、サーバーで TLS 1.2 を既定で使用するように .NET アプリケーションを構成します。 TLS 1.2 の詳細については、「[Microsoft セキュリティ アドバイザリ 2960358](https://technet.microsoft.com/security/advisory/2960358)」を参照してください。

@@ -4,7 +4,7 @@ description: このトピックでは、setRuntimeProperties を使って複数�
 services: media-services
 documentationcenter: ''
 author: xpouyat
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 7fb35bdd-9891-4401-a65b-ef3cc8190e8a
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 66aec76e5af399e1909446b8ddf7a79aa1384d52
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 31bd3d54b085922de0ec822731eae79fe9a9943b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783761"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262099"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用
 ## <a name="overview"></a>概要
@@ -80,7 +80,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ビデオにテキストを重ね合わせるワークフローを設計したとします。そのテキスト (たとえば、現在の日付) は実行時に設定することが想定されています。 これを行うには、オーバーレイ コンポーネントの text プロパティの新しい値として設定するテキストをエンコード タスクから送信します。 このメカニズムを使用して、ワークフロー内のコンポーネントの他のプロパティ (オーバーレイの位置や色、AVC エンコーダーのビットレートなど) を変更することができます。
 
-**setRuntimeProperties** は、ワークフローのコンポーネントのプロパティを上書きするときに使用されます。
+**setRuntimeProperties** は、ワークフローのコンポーネントのプロパティをオーバーライドするときに使用されます。
 
 例:
 
@@ -153,7 +153,7 @@ XML 値が想定されるプロパティを設定するには、 `<![CDATA[ and 
 * すべてのメディア ファイルが、同じ *メディア資産* に含まれている必要があります。 複数のメディア アセットを使用することはできません。
 * このメディア アセット (理想的には、エンコーダーによる処理が求められているメイン ビデオ ファイル) で、プライマリ ファイルを設定する必要があります。
 * **setRuntimeProperties**、**transcodeSource** などの要素を含む構成データを、プロセッサに渡す必要があります。
-  * **setRuntimeProperties** は、ワークフローのコンポーネントでファイル名などのプロパティを上書きするときに使用されます。
+  * **setRuntimeProperties** は、ワークフローのコンポーネントでファイル名などのプロパティをオーバーライドするときに使用されます。
   * **transcodeSource** は、クリップ リスト XML コンテンツを指定するときに使用されます。
 
 ワークフロー内での接続は次のようになります。
@@ -198,7 +198,7 @@ XML 値が想定されるプロパティを設定するには、 `<![CDATA[ and 
   </transcodeRequest>
 ```
 
-このプロパティを使用して "式" で出力ファイルに名前を付けるために、/primarySourceFile プロパティを指定する必要がある場合は、/primarySourceFile の設定によってクリップ リストが上書きされないように、/primarySourceFile プロパティの *"後"* に、クリップ リスト XML をプロパティとして渡すことをお勧めします。
+このプロパティを使用して "式" で出力ファイルに名前を付けるために、/primarySourceFile プロパティを指定する必要がある場合は、/primarySourceFile の設定によってクリップ リストがオーバーライドされないように、/primarySourceFile プロパティの *"後"* に、クリップ リスト XML をプロパティとして渡すことをお勧めします。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -466,12 +466,12 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 * エンコードされた資産には複数の言語オーディオ トラックが含まれ、これらのトラックを Azure Media Player で選択できるようになります。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-* [Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+* [Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+* [Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Azure Media Services を使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md#media-encoder-premium-workflow)
 * [メディア エンコーダー プレミアム ワークフローの形式とコーデック](media-services-premium-workflow-encoder-formats.md)
 * [サンプルのワークフロー ファイル](https://github.com/Azure/azure-media-services-samples)
-* [Azure Media Services Explorer ツール](http://aka.ms/amse)
+* [Azure Media Services Explorer ツール](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

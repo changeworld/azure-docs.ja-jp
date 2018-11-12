@@ -8,12 +8,12 @@ services: devops
 custom: jenkins
 ms.date: 07/31/2018
 ms.component: common
-ms.openlocfilehash: b7ac5c277b45ae5c005a284d5c38e55099c11e33
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 040f7ef8d9b50998ac2b84ed9d4e3712f4ed5835
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735564"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246873"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Jenkins 継続的インテグレーション ソリューションでの Azure Storage の使用
 
@@ -129,7 +129,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 * **ストレージ アカウント**: Azure Storage にアクセスするときは必ずストレージ アカウントを使用します。 ストレージ アカウントは、BLOB にアクセスするための最高レベルの名前空間です。 アカウントに格納できるコンテナーの数は、コンテナーの合計サイズが 100 TB (テラバイト) 未満である限り無制限です。
 * **コンテナー**: コンテナーは、一連の BLOB をグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。
-* **BLOB** : 任意の種類およびサイズのファイルです。 Azure Storage に格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。 ほとんどのファイルはブロック BLOB です。 1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。 このチュートリアルでは、 ブロック BLOB を使用します。 もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。 BLOB の詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
+* **BLOB** : 任意の種類およびサイズのファイルです。 Azure Storage に格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。 ほとんどのファイルはブロック BLOB です。 1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。 このチュートリアルでは、 ブロック BLOB を使用します。 もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。 BLOB の詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
 * **URL 形式**: BLOB は、次の URL 形式を使用してアドレス指定できます。
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
@@ -149,6 +149,6 @@ Jenkins プラグインでバグが発生した場合は、[Jenkins JIRA](https:
 * [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
 * [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)
 
 詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。

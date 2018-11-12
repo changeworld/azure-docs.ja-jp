@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bcd2b2199628a7f717a7ce1d8eba032f5778379b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301463"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262371"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN: autocomplete 属性](http://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](http://msdn.microsoft.com/library/ms533032.aspx)、[HTML サニタイズの脆弱性](http://technet.microsoft.com/security/bulletin/MS10-071)、[オートコンプリートをまた有効にするのですか](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **参照**              | [MSDN: autocomplete 属性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML サニタイズの脆弱性](https://technet.microsoft.com/security/bulletin/MS10-071)、[オートコンプリートをまた有効にするのですか](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **手順** | autocomplete 属性は、フォームがオートコンプリートをオンまたはオフにするかどうかを指定します。 オートコンプリートがオンのとき、ブラウザーは前にユーザーが入力した値に基づいて値を自動的に完成させます。 たとえば、新しい名前とパスワードがフォームに入力されて、フォームが送信されるとき、ブラウザーはパスワードを保存する必要があるかどうかを尋ねます。その後、フォームが表示されるとき、名前とパスワードは自動的に入力されるか、または名前が入力されると完成されます。 ローカルにアクセスできる攻撃者は、ブラウザーのキャッシュからクリア テキストのパスワードを入手する可能性があります。 既定ではオートコンプリートは有効なので、明示的に無効にする必要があります。 |
 
 ### <a name="example"></a>例

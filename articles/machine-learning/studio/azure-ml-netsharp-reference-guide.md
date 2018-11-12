@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 2571420e3497e85ec1bf37b340015b061e8c91d4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8a96cfdedcde9b4037627f3e61af862c0600ca20
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833915"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258479"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Azure Machine Learning のための Net# ニューラル ネットワーク仕様言語について
 
@@ -230,7 +230,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 畳み込みネットワークとそのアプリケーションの詳細については、以下の記事を参照してください。 
 
 + [http://deeplearning.net/tutorial/lenet.html ](http://deeplearning.net/tutorial/lenet.html)
-+ [http://research.microsoft.com/pubs/68920/icdar03.pdf](http://research.microsoft.com/pubs/68920/icdar03.pdf) 
++ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf) 
 + [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)  
 
 ## <a name="pooling-bundles"></a>プーリング バンドル
@@ -460,7 +460,8 @@ output Digit [10] from Hid3 all;
 + カーネルごとの重みの数は `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26` です。 または、`26 * 50 = 1300` です。
 + それぞれの隠れ層のノードは、次のように計算できます。
 
-    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5` `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + ノードの合計数は、レイヤーの宣言済みディメンショナリティ [50, 5, 5] を使用して、次のように計算できます: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + `Sharing[d]` は、`d == 0` の場合にのみ False であるため、カーネルの数は `MapCount * NodeCount\[0] = 10 * 5 = 50` です。 

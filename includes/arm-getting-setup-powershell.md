@@ -19,7 +19,7 @@ Windows PowerShell Version 3.0 または 4.0 があることを確認します�
     PSRemotingProtocolVersion      2.2
 
 
-**PSVersion** の値が 3.0 または 4.0 であることを確認します。 3.0 または 4.0 でない場合は、[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)のダウンロード ページを参照してください。
+**PSVersion** の値が 3.0 または 4.0 であることを確認します。 3.0 または 4.0 でない場合は、[Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)のダウンロード ページを参照してください。
 
 ### <a name="set-your-azure-account-and-subscription"></a>Azure アカウントとサブスクリプションを設定する
 Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。

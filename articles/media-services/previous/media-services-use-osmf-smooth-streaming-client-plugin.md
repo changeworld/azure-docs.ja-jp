@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 6a4ae0697e59eb00e216fc29b154408e4d7a99b8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1664dc16e93fa825962690ec3ed5681478005d59
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785921"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229630"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法
 ## <a name="overview"></a>概要
@@ -47,7 +47,7 @@ OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが�
 * このバージョンでは OSMF 2.0 のみをサポート
 
 ## <a name="supported-features-and-known-issues"></a>サポートされている機能と既知の問題
-サポートされる機能、サポートされていない機能、および既知の問題の一覧については、「 [このドキュメント](http://download.microsoft.com/download/3/1/B/31B63D97-574E-4A8D-BF8D-170744181724/Smooth_Streaming_Plugin_for_OSMF.pdf)を参照してください。
+サポートされる機能、サポートされていない機能、および既知の問題の一覧については、「 [このドキュメント](https://download.microsoft.com/download/3/1/B/31B63D97-574E-4A8D-BF8D-170744181724/Smooth_Streaming_Plugin_for_OSMF.pdf)を参照してください。
 
 ## <a name="loading-the-plugin"></a>プラグインの読み込み
 OSMF プラグインは、静的 (コンパイル時) または動的 (実行時) に読み込むことができます。 OSMF 用スムーズ ストリーミング プラグインのダウンロードには、静的バージョンと動的バージョンの両方が含まれています。

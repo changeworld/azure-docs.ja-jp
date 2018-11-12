@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: e9b4ca959b93e097bb52a841cec02cc476ef5f48
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 463ef5f4a655617074915078fb4ced9e596f8957
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29401261"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257716"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー
 
@@ -93,7 +93,7 @@ Azure の RFC に準拠していない DHCP サービスが原因で、特定の
 5. NODE2 が NODE1 との接続を確立しようとするときに、NODE1 宛てのパケットは、NODE1 の IP アドレスが NODE2 の IP アドレスに解決されるため、NODE2 から送信されません。 NODE2 が NODE1 との接続を確立できず、クォーラムを失って、クラスターがシャットダウンされます。
 6. 一方、NODE1 は NODE2 にパケットを送信できますが、NODE2 は応答できません。 NODE1 はクォーラムを失い、クラスターをシャットダウンします。
 
-このシナリオは、クラスター ネットワーク名をオンラインにするために、クラスター ネットワーク名にリンク ローカル IP アドレス (169.254.1.1 など) のような未使用の静的 IP アドレスを割り当てることによって回避できます。 このプロセスを簡略化するには、[可用性グループのための Azure での Windows フェールオーバー クラスターの構成](http://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)に関するページを参照してください。
+このシナリオは、クラスター ネットワーク名をオンラインにするために、クラスター ネットワーク名にリンク ローカル IP アドレス (169.254.1.1 など) のような未使用の静的 IP アドレスを割り当てることによって回避できます。 このプロセスを簡略化するには、[可用性グループのための Azure での Windows フェールオーバー クラスターの構成](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)に関するページを参照してください。
 
 詳細については、「[Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)」を参照してください。
 
@@ -120,7 +120,7 @@ ADO.NET または SQL Server Native Client を使用する、このデータベ�
 
 * [SQL Server Native Client での接続文字列キーワードの使用](https://msdn.microsoft.com/library/ms130822.aspx)
 * [データベース ミラーリング セッションへのクライアントの接続 (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [ハイブリッド IT での可用性グループ リスナーへの接続](http://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
+* [ハイブリッド IT での可用性グループ リスナーへの接続](https://blogs.msdn.com/b/sqlalwayson/archive/2013/02/14/connecting-to-availability-group-listener-in-hybrid-it.aspx)
 * [可用性グループ リスナー、クライアント接続、およびアプリケーションのフェールオーバー (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
 * [可用性グループでのデータベース ミラーリング接続文字列の使用](https://technet.microsoft.com/library/hh213417.aspx)
 
@@ -139,5 +139,5 @@ Azure VM での SQL Server の実行に関するその他のトピックにつ�
 
 ### <a name="other-resources"></a>その他のリソース
 * [Azure での新しい Active Directory フォレストのインストール](../../../active-directory/active-directory-new-forest-virtual-machine.md)
-* [Azure VM での可用性グループのフェールオーバー クラスターの作成](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
+* [Azure VM での可用性グループのフェールオーバー クラスターの作成](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)
 

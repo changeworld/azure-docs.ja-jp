@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 48555dc8d1cc027cb771e0ba0678c6cb12d6785f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 233296a825653938da158fc70952c7fe7931498c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697977"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261827"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Azure Cosmos DB と Async Java のパフォーマンスに関するヒント
 
@@ -65,7 +65,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
 5. **GetRetryAfterInMilliseconds の間隔でバックオフを実装する**
 
-    パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 スロットル状態になった場合は、クライアント アプリケーションでバックオフ値を適用し、サーバー側によって指定された再試行間隔を後退させる必要があります。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。 詳しくは、「[予約されたスループット上限の超過](request-units.md#RequestRateTooLarge)」および DocumentClientException.getRetryAfterInMilliseconds をご覧ください。
+    パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 スロットル状態になった場合は、クライアント アプリケーションでバックオフ値を適用し、サーバー側によって指定された再試行間隔を後退させる必要があります。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。 
 6. **クライアント ワークロードをスケールアウトする**
 
     高スループット レベル (1 秒あたりの要求ユニット数が 50,000 超) でテストを行っている場合、コンピューターが CPU 使用率またはネットワーク使用率の上限に達したことでクライアント アプリケーションがボトルネックになることがあります。 この状態に達しても、クライアント アプリケーションを複数のサーバーにスケールアウトすることで引き続き同じ Azure Cosmos DB アカウントで対応できます。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c8cb51093142146fc7d43b51a62d949f6cc38988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109580"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238932"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム用の StorSimple Virtual Array をデプロイする
 
@@ -34,13 +34,13 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 開始する前に、次の要件が満たされていることを確認します。
 
 - CSP プログラムに登録していること。
-- 有効な[パートナー センター](http://partnercenter.microsoft.com/) ログイン資格情報があること。 資格情報を使用すると、Microsoft Partners Web にサインインして、新規顧客の追加、顧客の検索、顧客アカウントへの移動をパートナー ダッシュボードから行うことができます。 CSP は、Azure Portal で顧客に代わって StorSimple 管理者の役目を果たすことができます。
+- 有効な[パートナー センター](https://partnercenter.microsoft.com/) ログイン資格情報があること。 資格情報を使用すると、Microsoft Partners Web にサインインして、新規顧客の追加、顧客の検索、顧客アカウントへの移動をパートナー ダッシュボードから行うことができます。 CSP は、Azure Portal で顧客に代わって StorSimple 管理者の役目を果たすことができます。
                              
 ## <a name="add-a-customer"></a>顧客の追加
 
 顧客を追加すると、サブスクリプションが自動的に作成されます。 顧客を追加 (およびサブスクリプションを自動的に作成) するには、Microsoft Partners Web で次の手順を実行します。
 
-1. [パートナー センター](http://partnercenter.microsoft.com/)に移動し、CSP の資格情報を使用してサインインします。 **[ダッシュボード]** をクリックします。
+1. [パートナー センター](https://partnercenter.microsoft.com/)に移動し、CSP の資格情報を使用してサインインします。 **[ダッシュボード]** をクリックします。
 
      ![パートナー センターのダッシュボード](./media/storsimple-partner-csp-deploy/image1.png)
                               
@@ -77,7 +77,7 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
 場合によっては、既存の顧客にサブスクリプションを追加することが必要になります。 既存の顧客にサブスクリプションを追加するには、Microsoft Partners Web で次の手順を実行します。
 
-1. [パートナー センター](http://partnercenter.microsoft.com/)に移動し、CSP の資格情報を使用してサインインします。 **[ダッシュボード]** をクリックします。
+1. [パートナー センター](https://partnercenter.microsoft.com/)に移動し、CSP の資格情報を使用してサインインします。 **[ダッシュボード]** をクリックします。
 
      ![パートナー センターのダッシュボード](./media/storsimple-partner-csp-deploy/image1.png)
                               
@@ -85,7 +85,7 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
     ![顧客](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. サブスクリプションの **[優先プラン]** で **[Microsoft Azure]** をオンにし、**[送信]** をクリックします。 これにより、新しいサブスクリプションが作成されます。
+3. サブスクリプションの **[優先オファー]** で **[Microsoft Azure]** をオンにし、**[送信]** をクリックします。 これにより、新しいサブスクリプションが作成されます。
 
     ![新しいサブスクリプションの追加](./media/storsimple-partner-csp-deploy/image11.png)
 
@@ -101,7 +101,7 @@ StorSimple Virtual Array は、お客様のクラウド ソリューション �
 
     ![StorSimple デバイス マネージャー サービスの作成](./media/storsimple-partner-csp-deploy/image8.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - CSP の StorSimple について他に疑問がある場合は、[CSP の StorSimple: よく寄せられる質問](storsimple-partner-csp-faq.md)に関するページに進みます。
 - StorSimple をデプロイする準備ができている場合は、[CSP での StorSimple のデプロイ](storsimple-partner-csp-deploy.md)に関するページに進みます。

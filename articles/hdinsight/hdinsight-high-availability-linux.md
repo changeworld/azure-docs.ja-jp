@@ -3,19 +3,19 @@ title: Hadoop の高可用性 - Azure HDInsight
 description: HDInsight クラスターで、追加のヘッド ノードを使用することで、信頼性と可用性を改善する方法について説明します。 その結果が Ambari や Hive などの Hadoop サービスに与える影響、SSH を使用して各ヘッド ノードに個別に接続する方法についても説明します。
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 keywords: Hadoop の高可用性
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: jasonh
-ms.openlocfilehash: 33458794ad74b367f1278364d7b4ace30f7d13a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: d3326ef4bba5649f5420c1d92b6117d44edba47b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953590"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281984"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>HDInsight における Hadoop クラスターの可用性と信頼性
 
@@ -23,8 +23,7 @@ HDInsight クラスターは 2 つのヘッド ノードを備え、実行中の
 
 Hadoop は、クラスター内の複数のノードにわたってサービスやデータを複製することにより、高い可用性と信頼性を実現します。 ただし、Hadoop の標準ディストリビューションに含まれるヘッド ノードは、通常 1 つのみです。 この 1 つのヘッド ノードで障害が発生すると、クラスターが動作を停止する可能性があります。 Hadoop の可用性と信頼性を向上させるために、HDInsight では 2 つのヘッド ノードが提供されます。
 
-> [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="availability-and-reliability-of-nodes"></a>ノードの高可用性と信頼性
 

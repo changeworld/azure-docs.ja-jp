@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0a9ac1700d635365ebea0c5966489ed3d2d797b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420247"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235906"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的�
 Azure AD Connect からのアップグレード手順 | Azure AD Connect の [以前のバージョンから最新バージョンにアップグレード](how-to-upgrade-previous-version.md) するさまざまな方法を説明しています。
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](reference-connect-accounts-permissions.md#upgrade)に関するページを参照してください。
 
-ダウンロード | [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)します。
+ダウンロード | [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)します。
 
 ## <a name="12650"></a>1.2.65.0 
 
@@ -48,7 +48,6 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 
 
 - ホストされているボイス メールが期待どおりに動作していることを確認するために、属性の書き戻し機能が変更されました。  一部のシナリオでは、Azure AD は、null 値での書き戻し中に msExchUcVoicemailSettings 属性を上書きしていました。  これで Azure AD は、クラウドの値が設定されていない場合は、この属性のオンプレミスの値をクリアしないようになりました。
-- 変更された既定のルールの処理が強化されました。 既定のルールに変更を加えた場合は通知され、既定のルールを修復するオプションが表示されるようになりました。 
 - Azure AD への接続の問題を調査および特定するため、Azure AD Connect ウィザードに診断が追加されました。 これらと同じ診断は、Test- AdSyncAzureServiceConnectivity コマンドレットを使用して Powershell を介して直接実行することもできます。 
 - AD への接続の問題を調査および特定するため、Azure AD Connect ウィザードに診断が追加されました。 これらと同じ診断は、ADConnectivityTools Powershell モジュールの Start-ConnectivityValidation 関数を使用して、Powershell を介して直接実行することもできます。  詳細については、[ADConnectivityTool PowerShell モジュール](how-to-connect-adconnectivitytools.md)に関するページを参照してください
 - ハイブリッド Azure Active Directory Join とデバイスの書き戻し用の AD スキーマのバージョンの事前チェックが追加されました 

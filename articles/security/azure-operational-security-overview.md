@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 547943b04fdfb03a3eccf12a66772992f7fa6212
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 478228ccb12fbfe3ca527bf4d16af05735b7ba92
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249375"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238541"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -51,7 +51,7 @@ Azure Backup には複数のコンポーネントが用意されており、お�
 
 ### <a name="site-recovery"></a>Site Recovery
 
-[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) を使用すると、オンプレミスの仮想マシンと物理マシンを Azure (またはセカンダリ サイト) にレプリケートする際の調整を行って、ビジネス継続性を実現できます。 プライマリ サイトが使用できなくなった場合には、ユーザーが作業を継続できるよう、セカンダリの場所にフェールオーバーできます。 システムが使用できる状態に戻ったら、プライマリにフェールバックできます。 さらにインテリジェントで効果的な脅威の検出を実行するには、Azure Security Center を使います。
+[Azure Site Recovery](https://azure.microsoft.com/documentation/services/site-recovery) を使用すると、オンプレミスの仮想マシンと物理マシンを Azure (またはセカンダリ サイト) にレプリケートする際の調整を行って、ビジネス継続性を実現できます。 プライマリ サイトが使用できなくなった場合には、ユーザーが作業を継続できるよう、セカンダリの場所にフェールオーバーできます。 システムが使用できる状態に戻ったら、プライマリにフェールバックできます。 さらにインテリジェントで効果的な脅威の検出を実行するには、Azure Security Center を使います。
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 

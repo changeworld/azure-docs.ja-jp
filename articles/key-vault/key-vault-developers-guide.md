@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: 3dc80c97a43c35295deacefc37a76471912c9b42
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 9ab399ae50f9b04acad411b225797f89547a2824
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603993"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237538"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -48,8 +48,8 @@ Key Vault の新機能のパブリック プレビューは定期的にリリー
 
 このビデオで説明されているリソース:
 
-- [Azure PowerShell](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Azure Key Vault のサンプル コード](http://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
+- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
+- [Azure Key Vault のサンプル コード](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Key Vaults の作成と管理
 
@@ -151,8 +151,8 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 ## <a name="social"></a>ソーシャル
 
-- [Key Vault Blog](http://aka.ms/kvblog)
-- [Key Vault Forum](http://aka.ms/kvforum)
+- [Key Vault Blog](https://aka.ms/kvblog)
+- [Key Vault Forum](https://aka.ms/kvforum)
 
 ## <a name="supporting-libraries"></a>対応ライブラリ
 

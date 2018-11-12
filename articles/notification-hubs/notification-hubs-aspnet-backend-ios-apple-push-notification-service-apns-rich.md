@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: dimazaid
-ms.openlocfilehash: f2fa2b8b43a4840d8c6956efb7704327cca78d7c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 8aad769da4d1c831dc0222c39daf86801a4f850b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232514"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244289"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs のリッチなプッシュ
 ## <a name="overview"></a>概要
@@ -94,7 +94,7 @@ ms.locfileid: "50232514"
         }
    
    > [!NOTE]
-   > (省略可能) プロジェクト リソースの追加および取得方法についての詳細は、「[How to embed and access resources by using Visual C# (Visual C# を使用してリソースの埋め込みとアクセスを行う方法)](http://support.microsoft.com/kb/319292)」を参照してください。
+   > (省略可能) プロジェクト リソースの追加および取得方法についての詳細は、「[How to embed and access resources by using Visual C# (Visual C# を使用してリソースの埋め込みとアクセスを行う方法)](https://support.microsoft.com/kb/319292)」を参照してください。
    > 
    > 
 7. **NotificationsController.cs** で次のスニペットを使用して **NotificationsController** を再定義します。 これによりデバイスに最初のリッチなサイレント通知の ID が送信され、クライアント側で画像の取得が可能になります。

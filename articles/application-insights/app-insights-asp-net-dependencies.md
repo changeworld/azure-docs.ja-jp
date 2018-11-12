@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f1a1c0bd759a88b2e84584f1d52458ac6f56d97f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c54d8b870d6d8c187dcf145b56e3cbae257889a5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999703"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259294"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights の設定: 依存関係の追跡
 *依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](app-insights-overview.md) では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度が測定されます。 特定の呼び出しを調査し、要求や例外に関連付けることができます。
@@ -44,7 +44,7 @@ ms.locfileid: "46999703"
 
 | プラットフォーム | Install |
 | --- | --- |
-| IIS サーバー |[サーバーに Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)するか、[アプリを .NET Framework 4.6 以降にアップグレード](http://go.microsoft.com/fwlink/?LinkId=528259)して [Application Insights SDK](app-insights-asp-net.md) をアプリにインストールします。 |
+| IIS サーバー |[サーバーに Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)するか、[アプリを .NET Framework 4.6 以降にアップグレード](https://go.microsoft.com/fwlink/?LinkId=528259)して [Application Insights SDK](app-insights-asp-net.md) をアプリにインストールします。 |
 | Azure Web アプリ |Web アプリのコントロール パネルで [[Application Insights] ブレードを開き](app-insights-azure-web-apps.md)、メッセージが表示された場合は [Install (インストール)] を選択します。 |
 | Azure Cloud Services |[スタートアップ タスクを使用](app-insights-cloudservices.md)するか、[.NET Framework 4.6 以降をインストール](../cloud-services/cloud-services-dotnet-install-dotnet.md)します。 |
 
@@ -207,7 +207,7 @@ ms.locfileid: "46999703"
 
 | プラットフォーム | Install |
 | --- | --- |
-| IIS サーバー |[Status Monitor をサーバーにインストールします](app-insights-monitor-performance-live-website-now.md)。 または、[アプリを .NET Framework 4.6 以降にアップグレード](http://go.microsoft.com/fwlink/?LinkId=528259)して、[Application Insights SDK](app-insights-asp-net.md) をアプリにインストールします。 |
+| IIS サーバー |[Status Monitor をサーバーにインストールします](app-insights-monitor-performance-live-website-now.md)。 または、[アプリを .NET Framework 4.6 以降にアップグレード](https://go.microsoft.com/fwlink/?LinkId=528259)して、[Application Insights SDK](app-insights-asp-net.md) をアプリにインストールします。 |
 | Azure Web アプリ |Web アプリのコントロール パネルで [[Application Insights] ブレードを開き](app-insights-azure-web-apps.md)、メッセージが表示された場合は [Install (インストール)] を選択します。 |
 | Azure Cloud Services |[スタートアップ タスクを使用](app-insights-cloudservices.md)するか、[.NET Framework 4.6 以降をインストール](../cloud-services/cloud-services-dotnet-install-dotnet.md)します。 |
 

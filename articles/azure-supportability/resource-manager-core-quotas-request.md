@@ -7,18 +7,18 @@ ms.date: 6/13/2018
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7456785815dbefb2436713814965d90ba0e789ee
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 1be05ac7216a65922927b94d1cc4ba2a893433b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037236"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250987"
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>Resource Manager の vCPU クォータを増やす要求
 
 Resource Manager の vCPU クォータは、リージョン レベルおよび SKU のファミリ レベルで適用されます。
-クォータを適用する方法について詳しくは、[Azure のサブスクリプションとサービスの制限](http://aka.ms/quotalimits)に関するページをご覧ください。
-SKU のファミリについては、[Virtual Machines の料金](http://aka.ms/pricingcompute)ページでコストとパフォーマンスを比較できます。
+クォータを適用する方法について詳しくは、[Azure のサブスクリプションとサービスの制限](https://aka.ms/quotalimits)に関するページをご覧ください。
+SKU のファミリについては、[Virtual Machines の料金](https://aka.ms/pricingcompute)ページでコストとパフォーマンスを比較できます。
 
 引き上げを依頼するには、以下の手順に従い、Azure portal で使用できる Azure の [使用量 + クォータ] ブレードでサポート要求を作成します。 
 

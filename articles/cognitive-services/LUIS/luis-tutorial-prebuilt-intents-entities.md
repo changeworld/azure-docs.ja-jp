@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d42aed76ecdbc2bd840e17517db2ca0b6ba11aa0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d73284ecf40b2dfcd4954c1ddee82bf92a8931b9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034435"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281797"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>チュートリアル 2: 一般的な意図とエンティティを識別する
 このチュートリアルでは、Human Resources アプリに変更を加えます。 Human Resources チュートリアル アプリに事前構築済みの意図とエンティティを追加して、意図の予測の取得とデータの抽出を迅速化します。 エンティティは自動的に検出されるため、事前構築済みのエンティティがある発話にはラベルを付ける必要がありません。
@@ -48,7 +48,7 @@ ms.locfileid: "47034435"
 ## <a name="add-prebuilt-intents"></a>事前構築済み意図を追加する
 LUIS には、ユーザーの一般的な意図を使用する際に役立つ事前構築済み意図が用意されています。  
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Add prebuilt intent]\(事前構築済み意図の追加\)** を選択します。 
 

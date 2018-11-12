@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 443d37f5b45db9495c09d68300c9ea4978466eb9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: fe6df20d294a3b1802d396085c36a6587dc45730
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388230"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249083"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル: Azure のクラスターに Service Fabric アプリケーションをデプロイする
 
@@ -87,7 +87,7 @@ Azure サブスクリプションの場合は、[PowerShell スクリプト](./s
 
 パーティー クラスターは、Azure でホストされ、Service Fabric チームによって実行される期間限定の無料 Service Fabric クラスターです。 だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 このクラスターでは、ノード間のセキュリティと、クライアントとノード間のセキュリティの両方に、単一の自己署名証明書が使用されます。
 
-サインインし、[Windows クラスターに参加](http://aka.ms/tryservicefabric)します。 PFX 証明書をコンピューターにダウンロードするには、**[PFX]** リンクを選択します。 **[How to connect to a secure Party cluster?]\(セキュリティで保護されたパーティ クラスターに接続する方法\)** リンクを選択して、証明書のパスワードをコピーします。 証明書、証明書のパスワード、**[接続のエンドポイント]** の値は、次の手順で使用します。
+サインインし、[Windows クラスターに参加](https://aka.ms/tryservicefabric)します。 PFX 証明書をコンピューターにダウンロードするには、**[PFX]** リンクを選択します。 **[How to connect to a secure Party cluster?]\(セキュリティで保護されたパーティ クラスターに接続する方法\)** リンクを選択して、証明書のパスワードをコピーします。 証明書、証明書のパスワード、**[接続のエンドポイント]** の値は、次の手順で使用します。
 
 ![PFX と接続エンドポイント](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 
