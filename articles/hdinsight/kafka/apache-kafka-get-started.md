@@ -3,17 +3,17 @@ title: Apache Kafka の開始 - Azure HDInsight クイック スタート
 description: このクイックス タートでは、Azure portal を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 0ed594afd8a41d9158bc565a8566672275852740
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9edb85fcaa2c3f9c58cc74c55d52e4dbbf751727
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458158"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014518"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>クイック スタート: HDInsight クラスターに Apache Kafka を作成する
 

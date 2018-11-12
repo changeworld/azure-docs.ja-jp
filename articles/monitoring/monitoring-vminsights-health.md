@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 059667787c905f47f6629afdb249a2273ceed585
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0f149d09b310553ecd5b03e94601408f279d9c0c
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094229"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914313"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>VM の Azure Monitor を使用して Azure 仮想マシンの正常性を把握する (プレビュー)
 Azure には監視領域において特定の役割やタスクを個別に実行する複数のサービスが含まれますが、Azure 仮想マシン上でホストされているオペレーティング システムの詳細な正常性情報を提供することはできませんでした。  Log Analytics または Azure Monitor を使用してさまざまな条件を監視することはできますが、仮想マシンのコア コンポーネントの正常性または全体的な正常性をモデル化して表現するようには設計されていませんでした。  VM の Azure Monitor 正常性機能では、主要なコンポーネントとその関係、それらのコンポーネントの正常性を測定する方法を指定する基準、および異常な状態が検出されたときのアラートを表すモデルを使用して、Windows または Linux ゲスト OS の可用性とパフォーマンスが事前に監視されます。  
@@ -271,7 +271,7 @@ VM の Azure Monitor 正常性機能は [Azure アラート](../monitoring-and-d
 |サービスの監視 |サービスを選択するか、または *[すべて]* を選択してすべてのサービスを含めます。 この機能では *VM Insights* からのアラートのみがサポートされます。| 
 |時間範囲| このビューには、選択された時間枠内に発生したアラートのみが含まれます。 サポートされる値は、過去 1 時間、過去 24 時間、過去 7 日間、および過去 30 日間です。 | 
 
-アラートを選択すると **[アラートの詳細]** ページが表示され、アラートの詳細が提供されて、その状態を変更することができます。 アラートの管理の詳細については、「[Azure Monitor を使用してアラートを作成、表示、管理する](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)」をご覧ください。  
+アラートを選択すると **[アラートの詳細]** ページが表示され、アラートの詳細が提供されて、その状態を変更することができます。 アラートの管理の詳細については、「[Azure Monitor を使用してアラートを作成、表示、管理する](../monitoring-and-diagnostics/alert-metric.md)」をご覧ください。  
 
 >[!NOTE]
 >現時点では、ポータルからの、正常性条件に基づく新しいアラートの作成、または Azure Monitor の既存の正常性アラート ルールの変更は、サポートされていません。  

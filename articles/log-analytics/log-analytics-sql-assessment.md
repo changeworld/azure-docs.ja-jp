@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4f9882ce94827e490b676fdf421095eae40420d5
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 96163188fad464bc4b94457f7061a78b3f4997a9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407726"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014501"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Log Analytics で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -53,7 +53,7 @@ SQL 正常性チェック ソリューションを使用して、サーバー環
 
 SQL Server サーバーに対して正常性チェックを実行するには、エージェントと、次のサポートされるいずれかの方法を使用して Log Analytics に接続できる必要があります。
 
-1. サーバーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) をインストールします。
+1. サーバーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](log-analytics-agent-windows.md) をインストールします。
 2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、監視グループが Log Analytics サービスと統合されていない場合は、サーバーを Log Analytics とマルチホームしてデータを収集し、サービスに転送して、Operations Manager で引き続き監視することができます。  
 3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
 
@@ -184,7 +184,7 @@ Log Analytics の評価ソリューションを使用するには、ソリュー
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-queries.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Log Analytics の評価ソリューションを使用するには、ソリュー
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-queries.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Log Analytics の評価ソリューションを使用するには、ソリュー
 * はい。前のセクション「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* [ログの検索](log-analytics-log-searches.md)で、詳細な SQL 正常性チェック データと推奨事項を分析する方法を学びます。
+* [ログの検索](log-analytics-queries.md)で、詳細な SQL 正常性チェック データと推奨事項を分析する方法を学びます。

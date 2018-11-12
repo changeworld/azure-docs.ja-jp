@@ -2,19 +2,19 @@
 title: Azure HDInsight での Hive クエリの最適化
 description: HDInsight で Hive クエリを最適化する方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 1fd3ff89fc8428f03d22f4aa195dabf0e988ef57
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 6faf7fe57b1e562f8cb6d850a781c4403950ebff
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106489"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014620"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Hive クエリの最適化
 

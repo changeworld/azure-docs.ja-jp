@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d8f2701ca62eee261beaa49fe2a0719be7423a5b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 087e11f906fe7f5c2fe67c43a597de8551dfc951
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408491"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013056"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
 
@@ -36,7 +36,7 @@ ms.locfileid: "49408491"
 - Service Fabric
 - Red Hat OpenShift
 
-Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境にデプロイされているワークロードのパフォーマンスを監視する方法については、[Azure Kubernetes サービスの監視](../monitoring/monitoring-container-health.md)に関するページを参照してください。 コンテナー監視ソリューションは、そのプラットフォームの監視には対応していません。  
+Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境にデプロイされているワークロードのパフォーマンスを監視する方法については、[Azure Kubernetes サービスの監視](../monitoring/monitoring-container-insights-overview.md)に関するページを参照してください。 コンテナー監視ソリューションは、そのプラットフォームの監視には対応していません。  
 
 次のダイアグラムは、Log Analytics を使用するさまざまなコンテナー ホストとエージェント間の関係を示しています。
 
@@ -97,11 +97,11 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-1. コンテナー監視ソリューションを Log Analytics ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。
+1. コンテナー監視ソリューションを Log Analytics ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../monitoring/monitoring-solutions.md)に関するページで説明されている手順に従って追加してください。
 
 2. Log Analytics エージェントを使って Docker をインストールし､使用します｡ ご使用のオペレーティング システムと Docker Orchestrator に基づいて、次のメソッドを使用してエージェントを構成できます。
   - スタンドアロン ホストの場合
-    - サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、[Log Analytics エージェント for Linux](log-analytics-agent-linux.md) をインストールして構成します。  
+    - サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、[Log Analytics エージェント for Linux](log-analytics-quick-collect-linux-computer.md) をインストールして構成します。  
     - CoreOS で、Log Analytics エージェント for Linux を実行することはできません。 代わりに、コンテナー化されたバージョンの Log Analytics エージェント Linux を実行できます。 Azure Government Cloud のコンテナーで作業をしている場合は、[CoreOS を含む Linux コンテナー ホスト](#for-all-linux-container-hosts-including-coreos)または [CoreOS を含む Azure Government Linux コンテナー](#for-all-azure-government-linux-container-hosts-including-coreos)に関する記事をご覧ください。
     - Windows Server 2016 および Windows 10 では、Docker エンジンとクライアントをインストールした後、エージェントを接続して情報を収集し、Log Analytics に送信します。 Windows 環境をご利用の場合は、「[Windows コンテナー ホストをインストールして構成する](#install-and-configure-windows-container-hosts)」を確認します。
   - Docker の複数ホストのオーケストレーションの場合
@@ -117,7 +117,7 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 > [!IMPORTANT]
-> Docker は、コンテナー ホストに [Log Analytics エージェント for Linux](log-analytics-agent-linux.md) をインストールする**前**に起動しておく必要があります。 Docker をインストールした後で Log Analytics エージェント for Linux をインストールしている場合は、エージェントをインストールし直す必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
+> Docker は、コンテナー ホストに [Log Analytics エージェント for Linux](log-analytics-quick-collect-linux-computer.md) をインストールする**前**に起動しておく必要があります。 Docker をインストールした後で Log Analytics エージェント for Linux をインストールしている場合は、エージェントをインストールし直す必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
 
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux コンテナー ホストをインストールして構成する
@@ -146,7 +146,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **インストール済みの Linux エージェントからコンテナー内のエージェントの使用への切り替え**
 
-直接インストールしたエージェントを過去に使用したことがあり、代わりにコンテナーで実行されているエージェントを使用したい場合は、まず Log Analytics エージェント for Linux を削除する必要があります。 Log Analytics エージェント for Linux を正しくアンインストール方法については、「[Log Analytics エージェント for Linux のアンインストール](log-analytics-agent-linux.md)」をご覧ください。  
+直接インストールしたエージェントを過去に使用したことがあり、代わりにコンテナーで実行されているエージェントを使用したい場合は、まず Log Analytics エージェント for Linux を削除する必要があります。 Log Analytics エージェント for Linux を正しくアンインストール方法については、「[Log Analytics エージェント for Linux のアンインストール](log-analytics-quick-collect-linux-computer.md)」をご覧ください。  
 
 #### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Log Analytics エージェント for Docker Swarm を構成する
 
@@ -190,8 +190,8 @@ Docker Swarm の場合、ワークスペース ID と主キーのシークレッ
 #### <a name="configure-a-log-analytics-agent-for-red-hat-openshift"></a>Log Analytics エージェント for Red Hat OpenShift を構成する
 Red Hat OpenShift に Log Analytics エージェントを追加してコンテナーの監視データの収集を開始するには、次の 3 通りの方法があります｡
 
-* OpenShift の各ノードに直接 [Log Analytics エージェント for Linux をインストールする](log-analytics-agent-linux.md)  
-* Azure 内に存在する OpenShift の各ノードで [Log Analytics VM 拡張機能を有効にする](log-analytics-azure-vm-extension.md)  
+* OpenShift の各ノードに直接 [Log Analytics エージェント for Linux をインストールする](log-analytics-quick-collect-linux-computer.md)  
+* Azure 内に存在する OpenShift の各ノードで [Log Analytics VM 拡張機能を有効にする](log-analytics-quick-collect-azurevm.md)  
 * Log Analytics エージェントを OpenShift デーモン セットとしてインストールする  
 
 このセクションでは、Log Analytics エージェントを OpenShift デーモン セットとしてインストールするために必要な手順を説明します。  
@@ -476,15 +476,15 @@ Helm を使用して Linux Kubernetes 環境内に Log Analytics エージェン
     LAST DEPLOYED: Tue Sep 19 20:37:46 2017
     NAMESPACE: default
     STATUS: DEPLOYED
- 
+ 
     RESOURCES:
     ==> v1/Secret
-    NAME            TYPE    DATA  AGE
-    omsagent-msoms  Opaque  3     17m
- 
+    NAME            TYPE    DATA  AGE
+    omsagent-msoms  Opaque  3     17m
+ 
     ==> v1beta1/DaemonSet
-    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
-    omsagent-msoms  3        3        3      3           3          <none>         17m
+    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
+    omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
 詳細については、[コンテナー ソリューション Helm チャート](https://aka.ms/omscontainerhelm)に関するページを参照してください。
 
@@ -524,9 +524,9 @@ Windows コンテナーで使用する Docker デーモン構成の詳細につ�
 
 #### <a name="install-windows-agents"></a>Windows エージェントのインストール
 
-Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターに Microsoft Monitoring Agent (MMA) をインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合、[Log Analytics への Windows コンピューターの接続](log-analytics-windows-agent.md)に関する記事をご覧ください。 Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用して Log Analytics に接続します。
+Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターに Microsoft Monitoring Agent (MMA) をインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合、[Log Analytics への Windows コンピューターの接続](log-analytics-agent-windows.md)に関する記事をご覧ください。 Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-quick-collect-azurevm.md)を使用して Log Analytics に接続します。
 
-Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](log-analytics-azure-vm-extension.md)と[オンプレミス環境で Windows を実行するコンピューター](log-analytics-windows-agent.md)のみです。
+Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](log-analytics-quick-collect-azurevm.md)と[オンプレミス環境で Windows を実行するコンピューター](log-analytics-agent-windows.md)のみです。
 
 Windows でコンテナー監視ソリューションが正しく設定されていることを確認できます。 管理パックが正常にダウンロードされているかどうかを確認するには、*ContainerManagement.xxx* を探します。 ファイルは C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs フォルダーにあります。
 
@@ -542,9 +542,9 @@ Azure ポータルから *[ソリューション ギャラリー]* に移動し�
 
 データは、次のエージェントの種類によって 3 分ごとに収集されます。
 
-- [Log Analytics エージェント for Linux](log-analytics-linux-agents.md)
-- [Windows エージェント](log-analytics-windows-agent.md)
-- [Log Analytics VM 拡張機能](log-analytics-azure-vm-extension.md)
+- [Log Analytics エージェント for Linux](log-analytics-quick-collect-linux-computer.md)
+- [Windows エージェント](log-analytics-agent-windows.md)
+- [Log Analytics VM 拡張機能](log-analytics-quick-collect-azurevm.md)
 
 
 ### <a name="container-records"></a>コンテナー レコード
@@ -604,7 +604,7 @@ Log Analytics ポータルでソリューションを有効にすると、コン
 
 ![コンテナーの [ログ検索]](./media/log-analytics-containers/containers-log-search.png)
 
-ここで検索クエリを編集して、関心のある情報のみが見つかるように変更できます。 ログ検索の詳細については、「[Log Analytics におけるログの検索](log-analytics-log-searches.md)」を参照してください。
+ここで検索クエリを編集して、関心のある情報のみが見つかるように変更できます。 ログ検索の詳細については、「[Log Analytics におけるログの検索](log-analytics-queries.md)」を参照してください。
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>失敗したコンテナーを特定してトラブルシューティングを行う
 
@@ -672,4 +672,4 @@ Perf <containerName>
 作成したクエリが便利であることがわかったら、**[ログ検索]** ページの上部にある [お気に入り] をクリックして保存してください。 後で **[マイ ダッシュボード]** ページで簡単にアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
-* [ログを検索](log-analytics-log-searches.md) して、詳細なコンテナー データ レコードを確認します。
+* [ログを検索](log-analytics-queries.md) して、詳細なコンテナー データ レコードを確認します。

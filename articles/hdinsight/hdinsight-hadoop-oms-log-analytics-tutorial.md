@@ -2,19 +2,19 @@
 title: Log Analytics を使用して Azure HDInsight クラスターを監視する
 description: Azure Log Analytics を使って HDInsight クラスターで実行中のジョブを監視する方法を説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: jasonh
-ms.openlocfilehash: 1a526bfdd951e4dc2897ec52c03bfbe96ee14d4c
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.author: hrasheed
+ms.openlocfilehash: a91acadbc2187f3e6ddffcd29c6f32500dd45c3f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403680"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015181"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics を使用して Azure HDInsight クラスターを監視する
 
