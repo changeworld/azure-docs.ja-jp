@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: f07d830e90045c11d870a921d091b45de6d2a89b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a6752f9127a176eef9fd03e7ffddfa7450772def
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418536"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037682"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>App Service on Linux の Java 開発者ガイド
 
@@ -147,7 +147,7 @@ App Service for Linux で実行される Java アプリケーションは、他�
 >[!NOTE]
 > アプリケーションで Spring Boot または Spring Framework を使用している場合は、Spring データ JPA のデータベース接続情報を環境変数として設定できます [アプリケーションのプロパティ ファイル内]。 その後、Azure portal または CLI で、[アプリ設定](/azure/app-service/web-sites-configure#app-settings)を使用してアプリケーションに対してこれらの値を定義することができます。
 
-このセクションの構成スニペットの例では、MySQL データベースを使用します。 詳細については、[MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html)、[SQL Server JDBC](https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017)、および [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html) の構成ドキュメントを参照してください。
+このセクションの構成スニペットの例では、MySQL データベースを使用します。 詳細については、[MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html)、[SQL Server JDBC](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017)、および [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html) の構成ドキュメントを参照してください。
 
 Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用して、データベースへのマネージド接続を使用するよう Tomcat を構成するには、まず起動時に Tomcat によって読み取られる CATALINA_OPTS 環境変数をカスタマイズします。 App Service Maven プラグインで、アプリ設定を使用してこれらの値を設定します。
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 18/30/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 08174a6781772abdebd9e203a3433a1a4ac82859
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 925f45f8d251882cfc8acf4b04902cea45451dd4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378365"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007265"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー)
 

@@ -3,18 +3,18 @@ title: Azure HDInsight における Storm の SCP.NET プログラミング ガ�
 description: SCP.NET を使用して、Azure HDInsight で実行されている Storm で使用するための .NET ベースの Storm トポロジを作成する方法について説明します。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonwhowell
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: daf9efb2f9044ed1395b0f2aa3663c2471406e2f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e6025ba2645c284cca87483b48b2d79a9558d574
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045466"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012532"
 ---
 # <a name="scp-programming-guide"></a>SCP プログラミング ガイド
 SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](http://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されました。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](http://zookeeper.apache.org/)を利用しています。 
@@ -205,7 +205,7 @@ ACK をサポートする非トランザクション ボルトには、受け取
     public abstract void Fail(SCPTuple tuple);
 
 ### <a name="statestore"></a>StateStore
-`StateStore` は、メタデータ サービス、モノトニックなシーケンスの生成、および wait-free 調整を提供します。 高度なレベルでの分散同時実行の抽象化は、`StateStore` に基づいて構築されています。これには、分散ロック、分散キュー、バリア、およびトランザクション サービスが含まれます。
+`StateStore` は、メタデータ サービス、モノトニックなシーケンスの生成、および wait-free 調整を提供します。 高度なレベルでの分散コンカレンシーの抽象化は、`StateStore` に基づいて構築されています。これには、分散ロック、分散キュー、バリア、およびトランザクション サービスが含まれます。
 
 SCP アプリケーションでは、 `State` オブジェクトを使用して、ZooKeeper に情報 (特にトランザクション トポロジの情報) を保持できます。 それによって、トランザクション スパウトがクラッシュして再起動する場合、ZooKeeper から必要な情報を取得し、パイプラインを再起動できます。
 

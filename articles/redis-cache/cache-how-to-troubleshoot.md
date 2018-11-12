@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: b41fc5c41b2e0d1e5d5ba3e39c7f6063cf57c6c2
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: ff2076d678b16f4de421a2634d751d26956a400d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205784"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228863"
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>Azure Redis Cache のトラブルシューティング方法
 この記事では、次のカテゴリの Azure Redis Cache の問題をトラブルシューティングする場合のガイダンスを提供します。
@@ -229,7 +229,7 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
    * `CPU` [キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視して、サーバーに CPU 制約を適用しているかどうかを確認します。 Redis に CPU 制約が適用されている場合、送信された要求はタイムアウトになることがあります。 この状況に対処するために、Premium キャッシュの複数のシャードに負荷を分散させるか、より大きいサイズまたは価格レベルにアップグレードすることができます。 詳細については、「 [サーバー側の帯域幅の超過](#server-side-bandwidth-exceeded)」を参照してください。
 5. サーバー上での処理に時間がかかるコマンドはありますか? Redis サーバーの処理に長い時間がかかるコマンドの実行時間が長いと、タイムアウトが発生する場合があります。 実行時間の長いコマンドの例として、キーの数が多い `mget`、`keys *`、適切に記述されていない lua スクリプトなどがあります。 redis-cli クライアントを使用して Azure Redis Cache インスタンスに接続するか、[Redis コンソール](cache-configure.md#redis-console)を使用して [SlowLog](http://redis.io/commands/slowlog) コマンドを実行し、予想より時間がかかっている要求がないかを確認できます。 Redis サーバーと StackExchange.Redis は、少数の大きい要求ではなく、多数の小さい要求用に最適化されています。 データをより小さいチャンクに分割することで、この状態が改善される場合があります。 
    
-    redis-cli と stunnel を使用する Azure Redis Cache SSL エンドポイントへの接続については、「 [Redis のプレビュー リリースの ASP.NET セッション状態プロバイダーの通知](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) 」というブログ投稿を参照してください。 詳細については、「 [SlowLog](http://redis.io/commands/slowlog)」を参照してください。
+    redis-cli と stunnel を使用する Azure Redis Cache SSL エンドポイントへの接続については、「 [Redis のプレビュー リリースの ASP.NET セッション状態プロバイダーの通知](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) 」というブログ投稿を参照してください。 詳細については、「 [SlowLog](http://redis.io/commands/slowlog)」を参照してください。
 6. Redis サーバーの負荷が高いとタイムアウトが生じる場合があります。 `Redis Server Load` [キャッシュ パフォーマンス メトリック](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)を監視することで、サーバーの負荷を監視できます。 100 (最大値) のサーバーの負荷は、Redis サーバーが要求を処理しており、ビジー状態であり、アイドル時間がないことを示します。 特定の要求がサーバーを占有しているかどうかを確認するには、前の段落で説明したように、SlowLog コマンドを実行します。 詳細については、「 [CPU 使用率またはサーバーの負荷が高い](#high-cpu-usage-server-load)」を参照してください。
 7. ネットワーク ブリップの原因と思われる、クライアント側のイベントは他にありますか?  クライアント (Web、worker ロールまたは IaaS VM) で、クライアント インスタンス数のスケール アップまたはダウンなどのイベントが存在するかどうか、あるいは新しいバージョンのクライアントまたは自動スケールのデプロイが有効になっているかどうかを確認してください。弊社のテストでは、自動スケールまたはスケール アップ/ダウンが原因で送信ネットワーク接続が数秒間失われたことが判明しました。 StackExchange.Redis コードはこのようなイベントに対応し、再接続します。 この再接続時間中に、キュー内の要求がタイムアウトになる場合があります。
 8. タイムアウトになった Redis Cache に対するいくつかの小さい要求の前に大きい要求がありましたか?  エラー メッセージの `qs` パラメーターは、クライアントからサーバーに送信されたが、まだ応答が処理されていない要求の数を示します。 StackExchange.Redis は単一の TCP 接続を使用し、一度に読み取ることができる応答は 1 つのみであるため、この値が増え続ける可能性があります。 最初の操作がタイムアウトになった場合でも、サーバーに対するデータの送受信は続行され、大きな要求が完了するまで他の要求はブロックされるため、タイムアウトになります。 1 つの解決策は、キャッシュがワークロードに対して十分な大きさであることを確認し、大きい値をより小さいチャンクに分割して、タイムアウトの可能性を最小限に抑えることです。 この他に考えられる解決策は、クライアントで `ConnectionMultiplexer` オブジェクトのプールを使用し、新しい要求の送信時に負荷が最も少ない `ConnectionMultiplexer` を選択することです。 そうすれば、1 つのタイムアウトが原因で他の要求もタイムアウトになることはありません。
@@ -258,8 +258,7 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
    詳細については、「 [サーバーのメモリ不足](#memory-pressure-on-the-server)」を参照してください。
 
 ## <a name="additional-information"></a>追加情報
-* 
-  [Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
+* [Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 * [キャッシュのベンチマークを実行およびテストする方法](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)
 * [Azure Redis Cache の監視方法](cache-how-to-monitor.md)

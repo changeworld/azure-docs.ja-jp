@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7c850eee67224d09ea2715a58c3cd8eca4ab07af
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 08d17566faa61c5dcac01a49f99f0f39eb280946
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041903"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009744"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Log Analytics で Active Directory レプリケーションの状態を監視する
 
@@ -34,7 +34,7 @@ AD レプリケーションの状態ソリューション パックは、レプ�
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 * 評価されるドメインのメンバーであるドメイン コントローラーに、エージェントをインストールする必要があります。 または、メンバー サーバーにエージェントをインストールし、AD レプリケーションのデータを Log Analytics に送信するように、そのエージェントを構成する必要があります。 Windows コンピューターを Log Analytics に接続する方法の詳細については、[Log Analytics への Windows コンピューターの接続](log-analytics-windows-agent.md)に関するページを参照してください。 ドメイン コントローラーが、Log Analytics に接続する既存の System Center Operations Manager 環境の一部である場合、「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
-* Active Directory のレプリケーションの状態を Log Analytics ワークスペースに追加するには、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従います。  さらに手動で構成する必要はありません。
+* Active Directory のレプリケーションの状態を Log Analytics ワークスペースに追加するには、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../monitoring/monitoring-solutions.md)に関するページで説明されている手順に従います。  さらに手動で構成する必要はありません。
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD レプリケーションの状態データの収集に関する詳細
 次の表は、AD レプリケーションの状態のデータの収集手段と、データの収集方法に関する各種情報をまとめたものです。
@@ -110,7 +110,7 @@ AD レプリケーションの状態データが Log Analytics に送信され�
 
 ![検索結果内の AD レプリケーションの状態エラー](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-ここで、さらにフィルタリングを行い、検索クエリなどの修正を行います。 ログ検索の使用方法の詳細については、「 [ログ検索](log-analytics-log-searches.md)」を参照してください。
+ここで、さらにフィルタリングを行い、検索クエリなどの修正を行います。 ログ検索の使用方法の詳細については、「 [ログ検索](log-analytics-queries.md)」を参照してください。
 
 **[HelpLink]** フィールドには、その特定のエラーの追加情報を含む TechNet ページの URL が表示されます。 このエラーをトラブルシューティングして修正するには、このリンクをブラウザー ウィンドウにコピーして貼り付け、情報を確認します。
 
@@ -154,4 +154,4 @@ AD レプリケーションの状態ソリューション パックでデータ�
 ドメイン コントローラーを Log Analytics または System Center Operations Manager に直接接続しない場合は、「[ドメイン コントローラー以外から AD データを Log Analytics に送信できるようにするには](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を使用してください。
+* Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](log-analytics-queries.md) 」を使用してください。

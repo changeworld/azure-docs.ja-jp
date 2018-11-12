@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9ac8d876e9c79e5aadfcf834e18e94f6ac8b3a30
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: bd72b93d31a25a6aa848fc08a7db4d9d0fcece9f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408474"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010747"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -44,8 +44,8 @@ DNS 分析ソリューションは、Windows DNS の分析ログと監査ログ�
 
 | **接続先ソース** | **サポート** | **説明** |
 | --- | --- | --- |
-| [Windows エージェント](log-analytics-windows-agent.md) | [はい] | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
+| [Windows エージェント](log-analytics-agent-windows.md) | [はい] | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
+| [Linux エージェント](log-analytics-quick-collect-linux-computer.md) | いいえ  | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
 | [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) | [はい] | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | ソリューションでは、Azure Storage は使用されません。 |
 
@@ -57,8 +57,8 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 次の情報を使用して、ソリューションを構成します。
 
-- 監視対象の各 DNS サーバーに [Windows](log-analytics-windows-agent.md) エージェントまたは [Operations Manager](log-analytics-om-agents.md) エージェントが必要です。
-- [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) から、DNS Analytics ソリューションを Log Analytics ワークスペースに追加できます。 [ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページの手順も使用できます。
+- 監視対象の各 DNS サーバーに [Windows](log-analytics-agent-windows.md) エージェントまたは [Operations Manager](log-analytics-om-agents.md) エージェントが必要です。
+- [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) から、DNS Analytics ソリューションを Log Analytics ワークスペースに追加できます。 [ソリューション ギャラリーからの Log Analytics ソリューションの追加](../monitoring/monitoring-solutions.md)に関するページの手順も使用できます。
 
 さらに構成を行わなくても、ソリューションはデータの収集を開始します。 ただし、次の構成を使用してデータ収集をカスタマイズできます。
 
@@ -190,4 +190,4 @@ Operations Manager 管理グループが Log Analytics ワークスペースに�
 
 ## <a name="next-steps"></a>次の手順
 
-[ログを検索](log-analytics-log-searches.md)して、詳細な DNS ログ レコードを確認します。
+[ログを検索](log-analytics-queries.md)して、詳細な DNS ログ レコードを確認します。

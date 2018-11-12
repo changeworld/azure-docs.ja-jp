@@ -1,5 +1,5 @@
 ---
-title: Log Analytics から Azure にアラートを拡張する
+title: Log Analytics から Azure へのアラートの拡張
 description: この記事では、アラートを Log Analytics から Azure アラートに拡張するためのツールと API について説明します。
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a470299df86f6b8f7fd61279af0334d01ef94f8d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415703"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957423"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>アラートを Log Analytics から Azure アラートに拡張する
 Azure Log Analytics のアラート機能は、Azure アラートに置き換わりつつあります。 この移行の一環として、Log Analytics で最初に構成したアラートは Azure に拡張されます。 アラートが自動的に Azure に移動されるのを待ちたくない場合は、次の方法でプロセスを開始できます。
@@ -470,7 +470,7 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 
 - **エラー: Policy is present at subscription/resource group level (サブスクリプション/リソース グループ レベルにポリシーが存在します)**:   ![ポリシーのエラー メッセージが強調表示されている Operation Management Suite ポータルの [アラートの設定] ページのスクリーンショット](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
-    [Azure Policy](../azure-policy/azure-policy-introduction.md) が適用されている場合、Log Analytics (Operation Management Suite) ワークスペースを含むサブスクリプションまたはリソース グループの新しいリソースがすべて制限されます。 システムによる Azure へのアラートの拡張は行われず、必要なアクション グループが作成されません。
+    [Azure Policy](../governance/policy/overview.md) が適用されている場合、Log Analytics (Operation Management Suite) ワークスペースを含むサブスクリプションまたはリソース グループの新しいリソースがすべて制限されます。 システムによる Azure へのアラートの拡張は行われず、必要なアクション グループが作成されません。
     
     これを解決するには、ワークスペースを含むサブスクリプションまたはリソース グループでの新しいリソースの作成を妨げている *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* エラーの原因であるポリシーを編集します。 この操作は Azure portal、PowerShell、Azure CLI、または API から実行できます。 アクションを監査して、障害の原因になっている適切なポリシーを見つけることができます。 詳細については、[アクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)に関するページをご覧ください。 
     

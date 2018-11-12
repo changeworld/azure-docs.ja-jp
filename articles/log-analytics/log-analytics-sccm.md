@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dfa0a4b637153d6fa3cce5c9b402587950686341
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418077"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016711"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Configuration Manager を Log Analytics に接続する
 お使いの System Center Configuration Manager 環境を Azure Log Analytics に接続して、デバイス コレクション データを同期し、Log Analytics と Azure Automation でこれらのコレクションを参照することができます。  
@@ -69,7 +69,7 @@ Log Analytics 接続を追加するには、Configuration Manager 環境に[サ�
    
 2. **[全般]** 画面で、以下の操作が完了していることと、各項目の詳細を把握していることを確認し、**[次へ]** を選択します。
 
-   1. Azure Portal で、Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、[登録からクライアント ID](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) を取得した。
+   1. Azure Portal で、Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、[登録からクライアント ID](../active-directory/develop/quickstart-v1-add-azure-ad-app.md) を取得した。
    2. Azure Portal で、Azure Active Directory に登録したアプリのアプリ秘密鍵を作成した。  
    3. Azure portal で、登録した Web アプリに Log Analytics へのアクセス許可を付与した。  
       ![Log Analytics への接続ウィザードの [全般] ページ](./media/log-analytics-sccm/sccm-console-general01.png)
@@ -113,7 +113,7 @@ Log Analytics 接続を Configuration Manager に追加し、Configuration Manag
 
 ![コンピューター グループ - [SCCM] タブ](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-いずれかをクリックすると、[検索] が開き、インポートされたすべてのグループか、各グループに属しているすべてのコンピューターが表示されます。 [ログの検索](log-analytics-log-searches.md)を使用して、Configuration Manager のデータの詳細な分析を開始することができます。
+いずれかをクリックすると、[検索] が開き、インポートされたすべてのグループか、各グループに属しているすべてのコンピューターが表示されます。 [ログの検索](log-analytics-queries.md)を使用して、Configuration Manager のデータの詳細な分析を開始することができます。
 
 ## <a name="next-steps"></a>次の手順
-* [ログの検索](log-analytics-log-searches.md)を使用して、Configuration Manager のデータに関する詳細な情報を表示します。
+* [ログの検索](log-analytics-queries.md)を使用して、Configuration Manager のデータに関する詳細な情報を表示します。

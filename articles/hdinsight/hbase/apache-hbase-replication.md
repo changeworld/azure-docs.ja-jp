@@ -2,19 +2,19 @@
 title: Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
 description: 負荷分散、高可用性、ダウンタイムなしの移行と更新、およびディザスター リカバリーを実現するために、ある HDInsight バージョンから別のバージョンへの HBase レプリケーションを設定する方法について説明します。
 services: hdinsight,virtual-network
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 51f5f3b9742de45b1b72104c8cf08079d0719763
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b978adcdcc025c24746167ef5ab92aebe94aca8b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224383"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016235"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
 
@@ -183,7 +183,7 @@ Bind をインストールするには、次の手順に従います。
 
         vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__ です。 この値を保存します。これは後で使用します。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` テキストは、この仮想ネットワークの __DNS サフィックス__です。 この値を保存します。これは後で使用します。
 
     他の DNS サーバーの DNS サフィックスも見つけておく必要があります。 次の手順で必要になります。
 
@@ -245,7 +245,7 @@ Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用
 
 1. [Azure Portal](https://portal.azure.com) で、仮想ネットワークを選択し、__[DNS サーバー]__ を選択します。
 
-2. __[カスタム]__ を選択し、カスタム DNS サーバーの __内部 IP アドレス__ を入力します。 最後に、__[保存]__ を選択します。
+2. __[カスタム]__ を選択し、カスタム DNS サーバーの__内部 IP アドレス__を入力します。 最後に、__[保存]__ を選択します。
 
 6. vnet1 の DNS サーバー仮想マシンを開き、**[再起動]** をクリックします。  DNS 構成が有効であることを確認するには、仮想ネットワーク内のすべての仮想マシンを再起動する必要があります。
 7. 手順を繰り返して、vnet2 のカスタムの DNS サーバーを構成します。
