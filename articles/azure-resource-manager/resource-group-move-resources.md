@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: e99d5d36fa46e9972e706d580e4dfb1d5f9e8bbc
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e2d1ccbc6532da3600c952236c3904c9e55294c8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093829"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279420"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -112,7 +112,7 @@ ms.locfileid: "50093829"
 
 ## <a name="validate-move"></a>移動の検証
 
-[移動の検証操作](/rest/api/resources/resources/resources_validatemoveresources)を使用すると、実際にリソースを移動することなく、必要な移動のシナリオをテストすることができます。 この操作は、正常に移動されるかどうかを事前に確かめる目的で使用します。 この操作を実行するには、次の要件を満たす必要があります。
+[移動の検証操作](/rest/api/resources/resources/validatemoveresources)を使用すると、実際にリソースを移動することなく、必要な移動のシナリオをテストすることができます。 この操作は、正常に移動されるかどうかを事前に確かめる目的で使用します。 この操作を実行するには、次の要件を満たす必要があります。
 
 * 移動元のリソース グループの名前
 * 移動先のリソース グループのリソース ID

@@ -128,6 +128,8 @@ items:
       href: directory-assign-admin-roles.md
     - name: ロールの表示と割り当て
       href: directory-manage-roles-portal.md
+    - name: タスク別の最小特権ロール
+      href: roles-delegate-by-task.md
     - name: 管理者ロールのセキュリティ
       items:
       - name: ロール セキュリティの計画
@@ -159,9 +161,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell for Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: a9c4a93bfea82ff205d483dfe9a4ed189400b81f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 23625fb345d3d27b5966be3a193e21b46408c525
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241516"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514216"

@@ -121,31 +121,34 @@ items:
       href: plan-your-environment.md
   - name: データの取得と理解
     items:
-    - name: データ ロジスティックの管理
+    - name: データの取り込み
+      displayName: move data, manage data logistics
       items:
       - name: 概要
         href: ingest-data.md
-      - name: BLOB ストレージ
-        href: move-azure-blob.md
-      - name: Storage Explorer を使用する
-        href: move-data-to-azure-blob-using-azure-storage-explorer.md
-      - name: AzCopy を使用する
-        href: move-data-to-azure-blob-using-azcopy.md
-      - name: Python の使用
-        href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
-        maintainContext: true
-      - name: SSIS を使用する
-        href: move-data-to-azure-blob-using-ssis.md
-      - name: VM に移動する
+      - name: Blob Storage との間の移動
+        items:
+        - name: 概要
+          href: move-azure-blob.md
+        - name: Storage Explorer を使用する
+          href: move-data-to-azure-blob-using-azure-storage-explorer.md
+        - name: AzCopy を使用する
+          href: move-data-to-azure-blob-using-azcopy.md
+        - name: Python の使用
+          href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
+          maintainContext: true
+        - name: SSIS を使用する
+          href: move-data-to-azure-blob-using-ssis.md
+      - name: VM 上の SQL への移動
         href: move-sql-server-virtual-machine.md
-      - name: SQL Database に移動する
+      - name: Azure SQL Database への移動
         href: move-sql-azure.md
-      - name: Hive テーブルに読み込む
+      - name: Hive テーブルへの移動
         href: move-hive-tables.md
-      - name: オンプレミスの SQL から読み込む
-        href: move-sql-azure-adf.md
-      - name: SQL パーティション テーブルから読み込む
+      - name: SQL パーティション テーブルへの移動
         href: parallel-load-sql-partitioned-tables.md
+      - name: オンプレミスの SQL からの移動
+        href: move-sql-azure-adf.md
     - name: データの調査と視覚化
       items:
       - name: データを準備する
@@ -154,11 +157,11 @@ items:
         items:
         - name: 概要
           href: explore-data.md
-        - name: Pandas を使用する
+        - name: Azure BLOB Storage の調査
           href: explore-data-blob.md
-        - name: SQL VM を使用する
+        - name: VM 上の SQL の調査
           href: explore-data-sql-server.md
-        - name: Hive テーブルを使用する
+        - name: Hive テーブルの調査
           href: explore-data-hive-tables.md
       - name: サンプル データ
         items:
@@ -235,9 +238,9 @@ items:
       items:
       - name: 概要
         href: cortana-analytics-playbook-vehicle-telemetry.md
-      - name: プレイブック
+      - name: プレイブックの詳細情報
         href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
-      - name: セットアップ
+      - name: Power BI の設定
         href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: リソース
   items:
@@ -269,9 +272,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/azure-machine-learning
     - name: ビデオ
       href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: 7a0e7527b62fec7e3c0d65ad59f53709a13039eb
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 64047bdb6dc25a2e31c2c5e282e7706194ff0733
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092476"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344673"

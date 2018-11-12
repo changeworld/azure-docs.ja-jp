@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d3adb6c27d3550777f0a5b34b3e7e329f42432ab
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3903f247df0bc9dc4bc27d61b195492c585d7634
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138465"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282273"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>チュートリアル 5: 文脈的に関連するデータを抽出する
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索します。 たとえば、あるビルやオフィスから別のビルやオフィスへの物理的な移動の出発地と到着地が関連します。 作業指示を生成するには、両方のデータが必要である可能性があり、これらは互いに関連しています。  
@@ -57,7 +57,7 @@ ms.locfileid: "50138465"
 ## <a name="remove-prebuilt-number-entity-from-app"></a>事前構築済みの番号エンティティをアプリから削除する
 発話全体を表示して、階層の子をマークするには、事前構築済みの番号エンティティを一時的に削除します。
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
 
@@ -83,7 +83,7 @@ ms.locfileid: "50138465"
 
     [リスト エンティティ](luis-quickstart-intent-and-list-entity.md) チュートリアルでは、従業員は名前、メール アドレス、内線番号、携帯電話番号、または米国連邦政府の社会保障番号で指定されます。 これらの従業員番号は発話で使用されます。 前の発話の例では、さまざまな言葉で出発地と目的地が表されており、その言葉は太字で示されています。 目的地のみの発話も 2 つあります。 これは、出発地が指定されていないときに、これらの場所が発話の中でどのように配置されているかを LUIS に認識させるうえで役立ちます。     
 
-    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="create-a-location-entity"></a>場所エンティティを作成する
 発話で出発地と目的地にラベルを付けて、LUIS に場所を認識させる必要があります。 トークン (未加工) のビューで発話を表示する必要がある場合は、発話の上にあるバーで、**[Entities view]\(エンティティ ビュー\)** というラベルが付いた切り替えコントロールを選択します。 スイッチを切り替えると、コントロールのラベルは **[Tokens View]\(トークン ビュー)** になります。

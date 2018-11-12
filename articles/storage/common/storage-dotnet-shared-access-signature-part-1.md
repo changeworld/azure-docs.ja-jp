@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c7d2c16ef135644c1ff23d7a71c66bec27ac930d
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 1bc93b083b0f6f0d813f209c9371ce38e8a9daa6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241047"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228812"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) の使用
 
@@ -223,7 +223,7 @@ Shared Access Signature の使用に関する次の推奨事項に従うと、�
 7. **アカウントは、SAS によるものも含め、すべての使用について課金されます。** BLOB への書き込みアクセスを許可した場合は、ユーザーが 200 GB の BLOB をアップロードする可能性があります。 ユーザーに読み取りアクセスも許可すると、この BLOB を 10 回ダウンロードする可能性があり、2 TB (テラバイト) の送信料金が発生します。 したがって、悪意のあるユーザーによるリスクが軽減されるように、制限付きアクセス許可を付与してください。 このような脅威が軽減されるように、短期間の SAS を使用してください (ただし、終了時刻のクロック スキューには注意してください)。
 8. **SAS を使用して書き込まれたデータを検証します。** クライアント アプリケーションがストレージ アカウントにデータを書き込む場合は、そのデータに問題がある可能性に注意してください。 データが検証後または認証後に使用可能になることをアプリケーションが要求する場合は、書き込まれたデータをアプリケーションが使用する前に、この検証を実行する必要があります。 これを実行すると、ユーザーが SAS を正当に入手している場合でも、漏えいした SAS を利用している場合でも、破損データまたは悪意によるデータの書き込みからアカウントが保護されます。
 9. **場合によっては SAS を使用しないようにします。** ストレージ アカウントに対する特定の操作に関連するリスクが、SAS の利点より重大である場合もあります。 このような操作については、ビジネス ルールの検証、認証、および監査を実行した後にストレージ アカウントに書き込む中間層サービスを作成します。 また、別の方法でアクセスを管理した方が容易である場合もあります。 たとえば、コンテナー内のすべての BLOB が一般ユーザーに読み取り可能である場合は、すべてのクライアントにアクセス用の SAS を提供するのではなく、コンテナーをパブリックにします。
-10. **Storage Analytics を使用してアプリケーションを管理します。** SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を、ログやメトリックを使用して監視できます。 詳細については、 [Microsoft Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) を参照してください。
+10. **Storage Analytics を使用してアプリケーションを管理します。** SAS プロバイダー サービスが中断したり、保存されているアクセス ポリシーを不注意で削除したりしたために発生する認証失敗の急増を、ログやメトリックを使用して監視できます。 詳細については、 [Microsoft Azure Storage チームのブログ](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) を参照してください。
 
 ## <a name="sas-examples"></a>SAS の例
 次に、アカウント SAS とサービス SAS の 2 種類の Shared Access Signature の例をいくつか示します。
@@ -423,5 +423,5 @@ Shared Access Signature は、アカウント キーを知らせずに、スト�
 ## <a name="next-steps"></a>次の手順
 * [Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)
-* [Shared Access Signature を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-* [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+* [Shared Access Signature を使用したアクセスの委任](https://msdn.microsoft.com/library/azure/ee395415.aspx)
+* [テーブルおよびキュー SAS についての MSDN ブログ](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

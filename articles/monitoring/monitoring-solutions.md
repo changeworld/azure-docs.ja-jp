@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 53020eeb96927143b2fb7394aee64f9b7ea55df9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752923"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248964"
 ---
 # <a name="management-solutions-in-azure"></a>Azure の管理ソリューション
 管理ソリューションは、Azure のサービスを活用して、特定のアプリケーションまたはサービスの操作に対して詳細な分析情報を提供します。 この記事では、Azure の管理ソリューションの簡単な概要と、管理ソリューションの使用とインストールの詳細について説明します。
@@ -104,5 +104,5 @@ Log Analytics ワークスペースと Automation アカウント間のリンク
 
 ## <a name="next-steps"></a>次の手順
 * [Microsoft の管理ソリューションの一覧](monitoring-solutions-inventory.md)を取得します。
-* [クエリを作成](../log-analytics/log-analytics-log-searches.md)して、管理ソリューションで収集したデータを分析する方法を確認します。
+* [クエリを作成](../log-analytics/log-analytics-queries.md)して、管理ソリューションで収集したデータを分析する方法を確認します。
 

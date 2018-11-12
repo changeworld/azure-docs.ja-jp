@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f5f8ed885791a648f30790434be56d966bbf2e47
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0ee38eb32886c050eb87b2d6ed91252ee7bcfea0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989296"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280705"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でログ アラートを作成する](alert-log.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](monitoring-action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -79,7 +79,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 このセクションでは、ペイロードが標準の場合やカスタムの場合など、ログ アラートの webhook のサンプル ペイロードを紹介します。
 
 > [!NOTE]
-> 旧バージョンとの互換性を確保するために、Azure Log Analytics を使用するアラートの標準 webhook ペイロードは、[Log Analytics のアラート管理](../log-analytics/log-analytics-alerts-creating.md)と同じです。 ただし、[Application Insights](../application-insights/app-insights-analytics.md) を使用するログ アラートの場合、標準 webhook ペイロードはアクション グループ スキーマに基づいています。
+> 旧バージョンとの互換性を確保するために、Azure Log Analytics を使用するアラートの標準 webhook ペイロードは、[Log Analytics のアラート管理](../monitoring-and-diagnostics/alert-metric.md)と同じです。 ただし、[Application Insights](../application-insights/app-insights-analytics.md) を使用するログ アラートの場合、標準 webhook ペイロードはアクション グループ スキーマに基づいています。
 
 ### <a name="standard-webhook-for-log-alerts"></a>ログ アラートの標準 webhook 
 以下のサンプルはどちらも、2 つの列と 2 つの行のみで構成されたダミー ペイロードを示しています。
@@ -201,4 +201,4 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 - [Azure のログ アラートの管理](alert-log.md)について理解します。
 - [Azure でのアクション グループ](monitoring-action-groups.md)の作成および管理
 - [Application Insights](../application-insights/app-insights-analytics.md) についてさらに学習します。
-- [Log Analytics](../log-analytics/log-analytics-overview.md) についてさらに学習します。 
+- [Log Analytics](../log-analytics/log-analytics-queries.md) についてさらに学習します。 

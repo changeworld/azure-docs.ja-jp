@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 45a6bd349169265ef411d01a3601a27551847633
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 37dc96cf965181c5acba74449c684a08035e37b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227140"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264225"
 ---
 この記事では、クラシック デプロイ モデルで作成された Azure Virtual Machines についてユーザーからよく寄せられる質問に回答します。
 
@@ -22,9 +22,9 @@ ms.locfileid: "50227140"
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Azure VM では何を実行できますか。
 すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。 最近のバージョンの Windows Server だけでなく、さまざまな Linux ディストリビューションを実行できます。 サポートの詳細については、次の項目を参照してください。
 
-• Windows VM の場合 -- [Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](http://go.microsoft.com/fwlink/p/?LinkId=393550)
+• Windows VM の場合 -- [Microsoft Azure Virtual Machines のマイクロソフト サーバー ソフトウェアのサポート](https://go.microsoft.com/fwlink/p/?LinkId=393550)
 
-• Linux VM の場合 -- [Azure での動作保証済み Linux ディストリビューション](http://go.microsoft.com/fwlink/p/?LinkId=393551)
+• Linux VM の場合 -- [Azure での動作保証済み Linux ディストリビューション](https://go.microsoft.com/fwlink/p/?LinkId=393551)
 
 Windows クライアント イメージについては、 MSDN Azure 特典のサブスクライバーと MSDN 開発テスト用従量課金制プラン (開発およびテスト用) のサブスクライバーを対象に、特定のバージョンの Windows 7 および Windows 8.1 が利用可能となっています。 詳細については、「 [Windows Client images for MSDN subscribers](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)」を参照してください
 
@@ -38,10 +38,10 @@ Azure Resource Manager デプロイメント モデルと Azure Portal では、
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>仮想マシンではどれくらいのストレージ容量を使用できますか。
 各データ ディスクで最大 1 TB (テラバイト) を利用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージを利用できます。 各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。 価格の詳細については、「 [Azure Storage の価格](http://go.microsoft.com/fwlink/p/?LinkId=396819)」を参照してください。
+Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージを利用できます。 各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。 価格の詳細については、「 [Azure Storage の価格](https://go.microsoft.com/fwlink/p/?LinkId=396819)」を参照してください。
 
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>どのようなタイプの仮想ハード ディスクを使用できますか。
-Azure では、VHD 形式の仮想ハード ディスク (固定型) のみをサポートしています。 Azure で VHDX を使用する場合は、最初に、Hyper-V Manager または [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) コマンドレットを使用して形式を変換する必要があります。 その後、 [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを (サービス管理モードで) 使用して、Azure のストレージ アカウントに VHD をアップロードし、仮想マシンで使用できるようにしてください。
+Azure では、VHD 形式の仮想ハード ディスク (固定型) のみをサポートしています。 Azure で VHDX を使用する場合は、最初に、Hyper-V Manager または [convert-VHD](https://go.microsoft.com/fwlink/p/?LinkId=393656) コマンドレットを使用して形式を変換する必要があります。 その後、 [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを (サービス管理モードで) 使用して、Azure のストレージ アカウントに VHD をアップロードし、仮想マシンで使用できるようにしてください。
 
 * Linux での手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
 
@@ -50,7 +50,7 @@ Azure では、VHD 形式の仮想ハード ディスク (固定型) のみを�
 
 * Azure では、仮想マシンにアクセスするためのコンソールが提供されません。 起動が完了するまで、VM にアクセスする方法はありません。
 * ほとんどの[サイズ](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)の Azure VM では、仮想ネットワーク アダプターが 1 つしかないため、外部 IP アドレスも 1 つしか使用できません。 (A8 サイズと A9 サイズでは、インスタンス間でのアプリケーション通信に 2 つ目のネットワーク アダプターが使用される場合があります。)
-* Azure Vm では、第 2 世代の HYPER-V VM の機能はサポートされていません。 これらの機能の詳細については、[Hyper-V の仮想マシンの仕様](http://technet.microsoft.com/library/dn592184.aspx)に関するページおよび「[第 2 世代仮想マシンの概要](https://technet.microsoft.com/library/dn282285.aspx)」を参照してください。
+* Azure Vm では、第 2 世代の HYPER-V VM の機能はサポートされていません。 これらの機能の詳細については、[Hyper-V の仮想マシンの仕様](https://technet.microsoft.com/library/dn592184.aspx)に関するページおよび「[第 2 世代仮想マシンの概要](https://technet.microsoft.com/library/dn282285.aspx)」を参照してください。
 
 ## <a name="can-these-virtual-machines-use-my-existing-on-premises-networking-infrastructure"></a>これらの仮想マシンで、既存のオンプレミス ネットワーク インフラストラクチャを使用することはできますですか。
 クラシック デプロイ モデルで作成された仮想マシンの場合は、Azure Virtual Network を使用して既存のインフラストラクチャを拡張できます。 このアプローチは、ブランチ オフィスのセットアップに似ています。 Azure 上で仮想プライベート ネットワーク (VPN) をプロビジョニングして管理できるだけでなく、それらの VPN をオンプレミスの IT インフラストラクチャにセキュアに接続することもできます。 詳細については、「 [仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
@@ -85,7 +85,7 @@ Windows 仮想マシンでは、ページ ファイルを移動してドライ�
 * Linux VM の場合、配布には適切なパッケージ管理ツールと手順を使用してください。
 * Windows 仮想マシンの場合、Windows Server 移行ツールのようなものを使用してサーバーを移行する必要があります。 ゲスト OS が Azure 上に存在する状態でアップグレードを行うことは避けてください。 仮想マシンへのアクセスが失われる恐れがあるため、この操作はサポートされていません。 アップグレード中に問題が発生すると、リモート デスクトップ セッションを開始できなくなり、問題のトラブルシューティングができなくなる可能性があります。
 
-Windows Server の移行に関するツールとプロセスの詳細については、「 [Windows Server への役割と機能の移行](http://go.microsoft.com/fwlink/p/?LinkId=396940)」を参照してください。
+Windows Server の移行に関するツールとプロセスの詳細については、「 [Windows Server への役割と機能の移行](https://go.microsoft.com/fwlink/p/?LinkId=396940)」を参照してください。
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>仮想マシンでの既定のユーザー名とパスワードを教えてください。
 Azure によって提供されるイメージには、事前に構成されたユーザー名とパスワードはありません。 これらのイメージのいずれかを使用して仮想マシンを作成する際は、仮想マシンへのサインインに使用するユーザー名とパスワードを指定する必要があります。
@@ -100,8 +100,8 @@ Azure によって提供されるイメージには、事前に構成された�
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Azure では、仮想マシン上でウイルス対策を実行できますか。
 Azure ではウイルス対策ソリューションとしていくつかのオプションが提供されていますが、管理はユーザーに委ねられています。 これは、マルウェア対策ソフトウェアを個別のサブスクリプションで導入したい場合や、スキャン実行、更新プログラム インストールのタイミングを指定したい場合などを考慮したものです。 ユーザーは、Windows 仮想マシンの作成時やそれ以降のタイミングで、Microsoft マルウェア対策、Symantec Endpoint Protection、または TrendMicro Deep Security Agent 用の VM 拡張機能により、ウイルス対策サポートを追加することができます。 Symantec と TrendMicro 用の拡張機能では、無償の期間限定の試用版サブスクリプションか、既存のエンタープライズ サブスクリプションを使用することができます。 Microsoft マルウェア対策は無償です。 詳細については、次のリンクを参照してください。
 
-* [Azure VM に Symantec Endpoint Protection をインストールし、構成する方法](http://go.microsoft.com/fwlink/p/?LinkId=404207)
-* [Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](http://go.microsoft.com/fwlink/p/?LinkId=404206)
+* [Azure VM に Symantec Endpoint Protection をインストールし、構成する方法](https://go.microsoft.com/fwlink/p/?LinkId=404207)
+* [Azure VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](https://go.microsoft.com/fwlink/p/?LinkId=404206)
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>バックアップと回復についてはどのようなオプションがありますか。

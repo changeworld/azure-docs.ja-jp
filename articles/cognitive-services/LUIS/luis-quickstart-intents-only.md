@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: b229dbc90f3f6ecc226c88ee393114f233bcf1a2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc631f139e7f11d82f2caac83770754060353d07
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035410"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277717"
 ---
 # <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>チュートリアル 1: ユーザーの意図を特定するカスタム アプリを構築する
 
@@ -71,7 +71,7 @@ LUIS は、JSON 応答を返した後は、この要求の処理を終えてい�
 
     [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "MyStore 意図用の新しい発話を入力しているスクリーンショット")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
+    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
 
 ## <a name="none-intent"></a>None 意図 
@@ -156,11 +156,11 @@ LUIS の Web サイトに戻り、ユーザーの発話が、仕事への応募�
 
 ## <a name="train-again"></a>再度のトレーニング
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-again"></a>再度の発行
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
+[!INCLUDE[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="get-intent-again"></a>再度の意図の取得
 

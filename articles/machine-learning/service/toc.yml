@@ -4,7 +4,7 @@ items:
 - name: 概要
   items:
   - name: Azure Machine Learning サービスの概要
-    displayName: AML, services
+    displayName: AML, services, overview
     href: overview-what-is-azure-ml.md
   - name: サービスのしくみ
     displayName: architecture
@@ -17,6 +17,7 @@ items:
   - name: 作業の開始 - ポータル
     href: quickstart-get-started.md
   - name: 作業の開始 - Python
+    displayName: create workspace
     href: quickstart-create-workspace-with-python.md
 - name: チュートリアル
   items:
@@ -25,6 +26,7 @@ items:
   - name: 'モデルのデプロイ: パート 2'
     href: tutorial-deploy-models-with-aml.md
   - name: 自動化された ML モデルをトレーニングする
+    displayName: automl
     href: tutorial-auto-train-models.md
 - name: サンプル
   items:
@@ -34,6 +36,7 @@ items:
 - name: 概念
   items:
   - name: モデル管理
+    displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
   - name: FPGA による高速化
     href: concept-accelerate-with-fpgas.md
@@ -51,13 +54,14 @@ items:
     - name: 環境を構成する
       href: how-to-configure-environment.md
     - name: VS Code Tools for AI
+      displayName: Visual Studio Code, vscode
       items:
       - name: 作業開始
         href: how-to-vscode-tools.md
       - name: トレーニングとデプロイ
         href: how-to-vscode-train-deploy.md
   - name: データを準備する
-    displayName: data prep, etl, elt
+    displayName: data prep, etl, elt, data preparation
     href: how-to-data-prep.md
     items:
     - name: データを読み込む
@@ -69,6 +73,7 @@ items:
   - name: モデルをトレーニングする
     items:
     - name: トレーニング環境をセットアップする
+      displayName: compute target, train
       href: how-to-set-up-training-targets.md
     - name: トレーニング中のデータにアクセスする
       href: how-to-access-data.md
@@ -79,13 +84,12 @@ items:
         href: how-to-train-pytorch.md
       - name: TensorFlow
         href: how-to-train-tensorflow.md
-  - name: モデルを調整する
-    items:
     - name: ハイパーパラメーターを調整する
       href: how-to-tune-hyperparameters.md
     - name: 実験とメトリックを追跡する
       href: how-to-track-experiments.md
   - name: 機械学習の自動化
+    displayName: automl
     href: how-to-automated-ml.md
     items:
     - name: 自動トレーニングを構成する
@@ -101,8 +105,10 @@ items:
     - name: モデルをデプロイする場所
       href: how-to-deploy-and-where.md
     - name: ACI にデプロイする
+      displayName: Azure Container Instances
       href: how-to-deploy-to-aci.md
     - name: AKS にデプロイする
+      displayName: Azure Kubernetes
       href: how-to-deploy-to-aks.md
     - name: FPGA にデプロイする
       href: how-to-deploy-fpga-web-service.md
@@ -347,9 +353,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 以前の問題
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 23e715064db714765a11771182248978f9493bd2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 06fb6198395fbf57d9c56aeedea7d96be3ab1c86
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095077"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287627"

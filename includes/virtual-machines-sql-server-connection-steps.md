@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: c7c3aea53a1bbdbfc39bad568b2879311e365acd
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4d77e9b57301bea30d8a33985071c28e972a81a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227287"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264332"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く
 1. リモート デスクトップを使用して仮想マシンに接続します。 VM への接続の詳しい手順については、[リモート デスクトップを使用して SQL VM を開く方法](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop)に関するページを参照してください。
@@ -38,7 +38,7 @@ ms.locfileid: "50227287"
    
     ![規則の名前](./media/virtual-machines-sql-server-connection-steps/17Rule-Name.png)
 
-必要に応じて他のコンポーネント用に追加のポートを開きます。 詳細については、「 [SQL Server のアクセスを許可するための Windows ファイアウォールの構成](http://msdn.microsoft.com/library/cc646023.aspx)」を参照してください。
+必要に応じて他のコンポーネント用に追加のポートを開きます。 詳細については、「 [SQL Server のアクセスを許可するための Windows ファイアウォールの構成](https://msdn.microsoft.com/library/cc646023.aspx)」を参照してください。
 
 ### <a name="configure-sql-server-to-listen-on-the-tcp-protocol"></a>TCP プロトコルでリッスンするように SQL Server を構成する
 
@@ -94,5 +94,5 @@ ms.locfileid: "50227287"
    ![[sysadmin]](./media/virtual-machines-sql-server-connection-steps/25sysadmin.png)
 9. [OK] をクリックします。
 
-SQL Server のログインの詳細については、「 [ログインの作成](http://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
+SQL Server のログインの詳細については、「 [ログインの作成](https://msdn.microsoft.com/library/aa337562.aspx)」を参照してください。
 

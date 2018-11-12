@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: b4fdf094653a4b16dead6397fe8e1a9f1a0258b9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 2ce6e7c796faf0c7377a33dabe1e8c05e81fde2f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162085"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280710"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>チュートリアル 4: 完全なテキスト一致を抽出する
 このチュートリアルでは、事前に定義された項目の一覧に一致するデータを取得する方法について説明します。 一覧の各項目には、シノニムの一覧を含めることができます。 人事アプリの場合、従業員は、名前、電子メール、電話番号、米国連邦税 ID などのいくつかの重要な情報で識別できます。 
@@ -41,7 +41,7 @@ ms.locfileid: "47162085"
 > * [発行]
 > * エンドポイントから意図とエンティティを取得する
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>既存のアプリを使用する
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
@@ -57,7 +57,7 @@ ms.locfileid: "47162085"
 
 ## <a name="moveemployee-intent"></a>MoveEmployee 意図
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "47162085"
 
     番号と datetimeV2 が前のチュートリアルで追加され、いずれかの発話の例に見つかると自動的にラベルが付けられることに注意してください。
 
-    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="employee-list-entity"></a>従業員のリスト エンティティ
 これで **MoveEmployee** 意図に発話の例が含まれたので、LUIS は従業員が何かを理解する必要があります。 

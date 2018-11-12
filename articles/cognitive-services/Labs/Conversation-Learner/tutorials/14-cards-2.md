@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 1c7c88742c69041594006add76f7e3c642c64dec
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 99c474978d4da1d80669505330b2dc6220d7ca5f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170574"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226636"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>カードを使用する方法 (パート 1/2)
 このチュートリアルでは、ご利用のボットに、記入式のフォーム カードを追加する方法について説明します。 フォームのフィールドが各エンティティに対してどのように移動するかを紹介します。
@@ -24,7 +24,7 @@ Conversation Learner では、カード定義ファイルが、ボットの起�
 
 ## <a name="video"></a>ビデオ
 
-[![チュートリアル 14 のプレビュー](http://aka.ms/cl-tutorial-14-preview)](http://aka.ms/blis-tutorial-14)
+[![チュートリアル 14 のプレビュー](https://aka.ms/cl-tutorial-14-preview)](https://aka.ms/blis-tutorial-14)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -47,7 +47,7 @@ Web UI の [モデル] 一覧で、[Tutorial-14-Cards-2] をクリックしま�
 
 ![](../media/tutorial14_card.PNG)
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 
 アクションは 3 つ作成してあります。 次に示したように、1 つ目のアクションはカードです。
 
@@ -65,7 +65,7 @@ Web UI の [モデル] 一覧で、[Tutorial-14-Cards-2] をクリックしま�
 
 ![](../media/tutorial14_entities.PNG)
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 
 アクションは 2 つ定義しました。
 

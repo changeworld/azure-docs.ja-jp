@@ -36,6 +36,8 @@ items:
         href: data-box-gateway-manage-users.md
       - name: 帯域幅のスケジュール
         href: data-box-gateway-manage-bandwidth-schedules.md
+      - name: アクセス、電源、接続性
+        href: data-box-gateway-manage-access-power-connectivity-mode.md
     - name: トラブルシューティング
       href: data-box-gateway-troubleshoot.md
   - name: リリース ノート
@@ -60,6 +62,10 @@ items:
       href: data-box-edge-deploy-add-shares.md
     - name: 5 - コンピューティングの構成
       href: data-box-edge-deploy-configure-compute.md
+  - name: 概念
+    items:
+    - name: 要件を確認する
+      href: data-box-edge-system-requirements.md
   - name: 方法
     items:
     - name: C# モジュールの開発
@@ -72,9 +78,9 @@ items:
     href: https://azure.microsoft.com/services/storage/databox/edge/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: abcc59f405b6d9fe43cb2864fcf42276604391c9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: dd349fb32ae6d360d1fbf986fe0642503939ce69
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428982"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514505"

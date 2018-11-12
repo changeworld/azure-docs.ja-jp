@@ -3,7 +3,7 @@ title: Azure AD Connect Health エージェントのインストール | Microso
 description: このページでは、Azure AD Connect Health for AD FS と for Sync のエージェントのインストールについて説明します。
 services: active-directory
 documentationcenter: ''
-author: zhiweiw
+author: zhiweiwangmsft
 manager: mtillman
 editor: curtand
 ms.assetid: 1cc8ae90-607d-4925-9c30-6770a4bd1b4e
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: c57e6d3e35994bea99e15f37ed0fb6aa2d108f74
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb3ecff394aa8f2f80c61499e848d7d63806b37d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303929"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279774"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 このドキュメントでは、Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。 エージェントは [こちら](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)からダウンロードできます。
@@ -37,7 +37,7 @@ ms.locfileid: "46303929"
 | 送信トラフィックの SSL 検査がフィルタリングまたは無効化されていること | ネットワーク層で送信トラフィックの SSL 検査または SSL 終了が設定されている場合、エージェントの登録手順が失敗する可能性があります。 詳細については、[SSL 検査のセットアップ方法](https://technet.microsoft.com/library/ee796230.aspx)に関するページをご覧ください |
 | エージェントを実行するサーバー上のファイアウォール ポート |エージェントが Azure AD Health サービス エンドポイントと通信するには、次のファイアウォール ポートが開いている必要があります。</br></br><li>TCP ポート 443</li><li>TCP ポート 5671</li> </br>詳細については、[ファイアウォール ポートの有効化](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx)に関するページを参照してください。 |
 | IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること |エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。</br></br><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー  例: https:\//sts.contoso.com</li> 詳細については、[IE の構成方法](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)に関するページを参照してください。 |
-| PowerShell v4.0 以降がインストールされていること | <li>Windows Server 2008 R2 には PowerShell v2.0 が付属しますが、それだけではエージェントの要件が満たされません。  後出の「[Windows Server 2008 R2 サーバーへのエージェントのインストール](#agent-installation-on-windows-server-2008-r2-servers)」の説明に従って PowerShell を更新してください。</li><li>Windows Server 2012 には PowerShell v3.0 が付属しますが、それだけではエージェントの要件が満たされません。  Windows Management Framework を[更新](http://www.microsoft.com/download/details.aspx?id=40855)します。</li><li>Windows Server 2012 R2 以降には、要件を満たした新しいバージョンの PowerShell が付属します。</li>|
+| PowerShell v4.0 以降がインストールされていること | <li>Windows Server 2008 R2 には PowerShell v2.0 が付属しますが、それだけではエージェントの要件が満たされません。  後出の「[Windows Server 2008 R2 サーバーへのエージェントのインストール](#agent-installation-on-windows-server-2008-r2-servers)」の説明に従って PowerShell を更新してください。</li><li>Windows Server 2012 には PowerShell v3.0 が付属しますが、それだけではエージェントの要件が満たされません。  Windows Management Framework を[更新](https://www.microsoft.com/download/details.aspx?id=40855)します。</li><li>Windows Server 2012 R2 以降には、要件を満たした新しいバージョンの PowerShell が付属します。</li>|
 |FIPS の無効化|FIPS は Azure AD Connect Health エージェントでサポートされていません。|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure サービスのエンドポイントに対する送信接続
@@ -53,12 +53,12 @@ ms.locfileid: "46303929"
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Azure AD Connect Health エージェントのダウンロードとインストール
 * Azure AD Connect Health の[要件を必ず満たし](how-to-connect-health-agent-install.md#requirements)てください。
 * Azure AD Connect Health for AD FS の使用を開始します
-    * [Azure AD Connect Health for AD FS エージェントをダウンロードします](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [Azure AD Connect Health for AD FS エージェントをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=518973)
     * [インストール手順を参照します](#installing-the-azure-ad-connect-health-agent-for-ad-fs)。
 * Azure AD Connect Health for sync の使用を開始します
-    * [最新バージョンの Azure AD Connect をダウンロードしてインストールします](http://go.microsoft.com/fwlink/?linkid=615771)。 同期用の Health エージェントは、Azure AD Connect のインストールの一環としてインストールされます (バージョン 1.0.9125.0 以上)。
+    * [最新バージョンの Azure AD Connect をダウンロードしてインストールします](https://go.microsoft.com/fwlink/?linkid=615771)。 同期用の Health エージェントは、Azure AD Connect のインストールの一環としてインストールされます (バージョン 1.0.9125.0 以上)。
 * Azure AD Connect Health for AD DS の使用を開始します
-    * [Azure AD Connect Health for AD DS エージェントをダウンロードします](http://go.microsoft.com/fwlink/?LinkID=820540)。
+    * [Azure AD Connect Health for AD DS エージェントをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=820540)。
     * [インストール手順を参照します](#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Azure AD Connect Health エージェント for AD FS のインストール
@@ -105,7 +105,7 @@ Windows Server 2008 R2 サーバーでの手順:
    * ([Windows の機能] から) PowerShell ISE をインストールします。
    * [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855)
    * Internet Explorer Version 10 以降をサーバーにインストールします。 (ヘルス サービスが、ユーザーの Azure Admin 資格情報を使用してユーザーを認証するために必須となります。)
-4. Windows Server 2008 R2 への Windows PowerShell 4.0 のインストールに関するさらに詳しい情報については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx)の wiki 記事を参照してください。
+4. Windows Server 2008 R2 への Windows PowerShell 4.0 のインストールに関するさらに詳しい情報については、[こちら](https://social.technet.microsoft.com/wiki/contents/articles/20623.step-by-step-upgrading-the-powershell-version-4-on-2008-r2.aspx)の wiki 記事を参照してください。
 
 ### <a name="enable-auditing-for-ad-fs"></a>AD FS の監査の有効化
 > [!NOTE]
@@ -175,7 +175,7 @@ Windows Server 2008 R2 サーバーでの手順:
 > 同期サーバーは、AD FS サーバーと異なる必要があります。 AD FS サーバーに同期エージェントをインストールしないでください。
 >
 
-Azure AD Connect Health エージェント for Sync は、最新ビルドの Azure AD Connect に自動的にインストールされます。 Azure AD Connect for Sync を使用するには、最新バージョンの Azure AD Connect をダウンロードし、インストールする必要があります。 最新バージョンは [こちら](http://www.microsoft.com/download/details.aspx?id=47594)からダウンロードできます。
+Azure AD Connect Health エージェント for Sync は、最新ビルドの Azure AD Connect に自動的にインストールされます。 Azure AD Connect for Sync を使用するには、最新バージョンの Azure AD Connect をダウンロードし、インストールする必要があります。 最新バージョンは [こちら](https://www.microsoft.com/download/details.aspx?id=47594)からダウンロードできます。
 
 エージェントがインストール済みであることを確認するには、サーバーで以下のサービスを探します。 構成が完了していれば、これらのサービスが既に実行されているはずです。 そうでない場合は、構成が完了するまで停止しています。
 

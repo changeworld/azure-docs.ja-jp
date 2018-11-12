@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bf73f64cc1e1789b770d7fae5f62e0ec27425263
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915217"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264128"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>証明書の署名要求ファイルを生成する
 
@@ -41,7 +41,7 @@ Apple が署名済みのプッシュ証明書を生成するために使用す�
 
 iOS アプリケーションにプッシュ通知を送信できるようにするには、アプリケーションを Apple に登録し、プッシュ通知にも登録する必要があります。  
 
-1. アプリをまだ登録していない場合は、Apple Developer センターで [iOS Provisioning Portal](http://go.microsoft.com/fwlink/p/?LinkId=272456) に移動し、Apple ID でサインインして、**[Identifiers]** をクリックし、**[App IDs]** をクリックします。最後に、**+** 記号をクリックして新しいアプリを登録します。
+1. アプリをまだ登録していない場合は、Apple Developer センターで [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) に移動し、Apple ID でサインインして、**[Identifiers]** をクリックし、**[App IDs]** をクリックします。最後に、**+** 記号をクリックして新しいアプリを登録します。
 
     ![iOS Provisioning Portal の [App IDs]\(アプリ ID\) ページ](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
@@ -111,7 +111,7 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>アプリケーションのプロビジョニング プロファイルを作成する
 
-1. [iOS Provisioning Portal](http://go.microsoft.com/fwlink/p/?LinkId=272456) に戻って **[Provisioning Profiles]\(プロビジョニング プロファイル\)** を選択し、**[All]\(すべて\)** を選択してから **+** (プラス) ボタンをクリックして、新しいプロファイルを作成します。 これにより、**Add iOS Provisiong Profile \(iOS プロビジョニング プロファイルの追加\)** ウィザードが表示されます
+1. [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) に戻って **[Provisioning Profiles]\(プロビジョニング プロファイル\)** を選択し、**[All]\(すべて\)** を選択してから **+** (プラス) ボタンをクリックして、新しいプロファイルを作成します。 これにより、**Add iOS Provisiong Profile \(iOS プロビジョニング プロファイルの追加\)** ウィザードが表示されます
 
     ![プロビジョニング プロファイル リスト](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
 

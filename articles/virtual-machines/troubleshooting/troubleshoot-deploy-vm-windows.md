@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 688c7fed65fc2ceae2f508fc46e24ded76f5a54f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 6362b243bff91233c3cd08f26904866dd7be9ebd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412846"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248879"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 
@@ -75,7 +75,7 @@ Enterprise Agreement の場合:
 
  - [Azure Hybrid Use Benefit の概要](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
- - [ダウンロード可能な FAQ](http://download.microsoft.com/download/4/2/1/4211AC94-D607-4A45-B472-4B30EDF437DE/Windows_Server_Azure_Hybrid_Use_FAQ_EN_US.pdf)
+ - [ダウンロード可能な FAQ](https://download.microsoft.com/download/4/2/1/4211AC94-D607-4A45-B472-4B30EDF437DE/Windows_Server_Azure_Hybrid_Use_FAQ_EN_US.pdf)
 
  - [Windows Server および Windows クライアント向け Azure Hybrid Use Benefit](../windows/hybrid-use-benefit-licensing.md)
 

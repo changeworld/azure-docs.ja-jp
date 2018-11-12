@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: cce6555c71829110781a6dd13757078b105dbb41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665724"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230633"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -106,7 +106,7 @@ MySQL (ClearDB) を使用して新しい Web アプリケーションを作成�
 EA Azure の登録管理者は、Azure Marketplace のサード パーティ サービスへのアクセスを管理することができます。 エンタープライズ ポータルの [アカウント] セクションの下にある [アカウントとサブスクリプションの管理] で、ストアでのサード パーティ サービスの購入を無効または再度有効にします。
 
 ## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>EA サブスクリプションでの ClearDB サービスの料金については、どこに問い合わせればよいですか。
-EA 登録での料金に関するご質問は、 [エンタープライズ カスタマー サポート](http://aka.ms/AzureEntSupport) にお問い合わせください。 EA ポータル サポート チームがご質問に回答し、問題解決のお手伝いをします。
+EA 登録での料金に関するご質問は、 [エンタープライズ カスタマー サポート](https://aka.ms/AzureEntSupport) にお問い合わせください。 EA ポータル サポート チームがご質問に回答し、問題解決のお手伝いをします。
 
 ## <a name="more-information"></a>詳細情報
 [Azure Marketplace FAQ](https://azure.microsoft.com/marketplace/faq/)

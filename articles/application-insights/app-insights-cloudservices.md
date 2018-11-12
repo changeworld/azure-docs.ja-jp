@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b06ec3b10edc39d770e5a724125e70afd5e5477
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 2b43e3487493f8568903ee0799fdd3d86e9a6542
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783514"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279672"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services 向けの Application Insights
 [Microsoft Azure Cloud Services アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況は、[Application Insights][start] で監視できます。それには、Application Insights の SDK から得られるデータと、Cloud Services から得られる [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データとを組み合わせて使用します。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -96,7 +96,7 @@ Application Insights がクラウド サービスに追加され、2 つの woke
 
 これにより、Application Insights のインストルメンテーション キーが `ServiceConfiguration.*.cscfg` という名前のファイルに挿入されます  ([サンプル コード](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg))。
 
-Application Insights に送信される診断情報のレベルを変更する場合は、[`.cscfg` ファイルを直接編集](app-insights-azure-diagnostics.md)できます。
+Application Insights に送信される診断情報のレベルを変更する場合は、[`.cscfg` ファイルを直接編集](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)できます。
 
 ## <a name="sdk"></a>各プロジェクトに SDK をインストールする
 このオプションを選択すると、アプリケーションの使用状況やパフォーマンスを詳しく分析するためにカスタム ビジネス テレメトリを任意のロールに追加できるようになります。
@@ -151,7 +151,7 @@ Application Insights では、[Azure 診断](https://docs.microsoft.com/azure/mo
 
 ![Azure 診断のデータ](./media/app-insights-cloudservices/23-wad.png)
 
-[検索](app-insights-diagnostic-search.md)または [Analytics クエリ](app-insights-analytics-tour.md)を使用して、Azure 診断によって送信されるさまざまなトレース ログを検索します。 たとえば、ハンドルされない例外が発生して、ロールがクラッシュし、リサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 ユーザーは、検索を使用して Windows イベント ログのエラーを確認し、例外の完全なスタック トレースを取得できます。 この機能は、問題の根本原因の発見に役立ちます。
+[検索](app-insights-diagnostic-search.md)または [Analytics クエリ](../log-analytics/query-language/get-started-analytics-portal.md)を使用して、Azure 診断によって送信されるさまざまなトレース ログを検索します。 たとえば、ハンドルされない例外が発生して、ロールがクラッシュし、リサイクルされたとします。 その情報は、Windows イベント ログのアプリケーション チャンネルに表示されます。 ユーザーは、検索を使用して Windows イベント ログのエラーを確認し、例外の完全なスタック トレースを取得できます。 この機能は、問題の根本原因の発見に役立ちます。
 
 ![Azure 診断の検索](./media/app-insights-cloudservices/25-wad.png)
 
@@ -231,14 +231,14 @@ Web ロールの場合、以下のカウンターも収集されます。
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>次の手順
-* [Application Insights に Azure 診断を送信するための構成](app-insights-azure-diagnostics.md)
+* [Application Insights に Azure 診断を送信するための構成](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Application Insights リソースの作成の自動化](app-insights-powershell.md)
 * [Azure 診断の自動化](app-insights-powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
 [api]: app-insights-api-custom-events-metrics.md
 [availability]: app-insights-monitor-web-app-availability.md
-[azure]: app-insights-azure.md
+[azure]: app-insights-overview.md
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [netlogs]: app-insights-asp-net-trace-logs.md
