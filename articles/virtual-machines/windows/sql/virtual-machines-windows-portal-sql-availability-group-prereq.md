@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: d75bb780a17653aaacbc74413fb4240a8052a983
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371487"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253076"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 仮想マシンで Always On 可用性グループを作成するための前提条件を満たす
 
@@ -35,7 +35,7 @@ ms.locfileid: "43371487"
 
 ## <a name="review-availability-group-documentation"></a>可用性グループのドキュメントの確認
 
-このチュートリアルでは、SQL Server Always On 可用性グループに関する基本的な知識があることを前提としています。 このテクノロジに詳しくない場合は、「[Overview of Always On Availability Groups (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx)」(Always On 可用性グループの概要 (SQL Server)) を参照してください。
+このチュートリアルでは、SQL Server Always On 可用性グループに関する基本的な知識があることを前提としています。 このテクノロジに詳しくない場合は、「[Overview of Always On Availability Groups (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)」(Always On 可用性グループの概要 (SQL Server)) を参照してください。
 
 
 ## <a name="create-an-azure-account"></a>Azure アカウントの作成
@@ -349,7 +349,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 
 ## <a name="create-sql-server-vms"></a>SQL Server VM の作成
 
-3 つの仮想マシンを追加で作成します。 ソリューションには、SQL Server のインスタンスを持つ 2 つの仮想マシンが必要です。 3 番目の仮想マシンは、監視として機能します。 Windows Server 2016 は、[クラウド監視](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)を使用できますが、以前のオペレーティング システムとの整合性のため、このドキュメントでは監視に仮想マシンを使用します。  
+3 つの仮想マシンを追加で作成します。 ソリューションには、SQL Server のインスタンスを持つ 2 つの仮想マシンが必要です。 3 番目の仮想マシンは、監視として機能します。 Windows Server 2016 は、[クラウド監視](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness)を使用できますが、以前のオペレーティング システムとの整合性のため、このドキュメントでは監視に仮想マシンを使用します。  
 
 続行する前に、次の設計上の決定を検討してください。
 

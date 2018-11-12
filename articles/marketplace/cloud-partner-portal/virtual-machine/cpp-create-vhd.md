@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e06b6412061702e7f2d57dc1528ebf043a815516
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 84e0d02f2608a6ee94ee409345e530357d394671
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639145"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233186"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Azure と互換性のある VHD の作成
 
@@ -33,7 +33,7 @@ ms.locfileid: "49639145"
 VM イメージのオペレーティング システム VHD は、Azure 承認の基本イメージに基づいている必要があります (Windows Server、SQL Server など)。
 始めに、Microsoft Azure portal にある次のイメージの 1 つから VM を作成します。
 
--   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/)、[2012 Datacenter](http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/)、[2008 R2 SP1](http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/))
+-   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/)、[2012 Datacenter](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/)、[2008 R2 SP1](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/))
 -   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise、Standard、Web)
 -   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise、Standard、Web)
 

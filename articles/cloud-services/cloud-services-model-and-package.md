@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 90d810916599db50249a3e2ec677046c5af42a09
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7e43a32a415e58925bda5195b3943afca315f9be
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005851"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238184"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>クラウド サービス モデルとそのパッケージ化について
 クラウド サービスは、サービス定義 *(.csdef)*、サービスの構成 *(.cscfg)*、サービス パッケージ *(.cspkg)* の 3 つのコンポーネントから作成されます。 **ServiceDefinition.csdef** ファイルと **ServiceConfig.cscfg** ファイルはどちらも XML をベースとし、クラウド サービスの構造と構成方法について記述したファイルであり、まとめてモデルと呼ばれています。 **ServicePackage.cspkg** は、**ServiceDefinition.csdef** とその他のものから生成される zip ファイルで、必要なすべてのバイナリベースの依存関係が含まれます。 Azure では、**ServicePackage.cspkg** と **ServiceConfig.cscfg** の両方からクラウド サービスが作成されます。
@@ -144,7 +144,7 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 ここで使用する XML スキーマの詳細については、[サービスの構成スキーマ](https://msdn.microsoft.com/library/azure/ee758710.aspx)に関するページをご覧ください。ここでは、各要素について簡単に説明します。
 
 **インスタンス**  
-は、ロールの実行するインスタンスの数を設定します。 アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールのインスタンスは複数デプロイすることをお勧めします。 複数のインスタンスをデプロイすることにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure Compute サービス レベル アグリーメント (SLA)](http://azure.microsoft.com/support/legal/sla/) ガイドラインに従っていることになります。
+は、ロールの実行するインスタンスの数を設定します。 アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールのインスタンスは複数デプロイすることをお勧めします。 複数のインスタンスをデプロイすることにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure Compute サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/) ガイドラインに従っていることになります。
 
 **ConfigurationSettings**  
 は、ロールの実行中のインスタンスの設定を構成します。 `<Setting>` 要素の名前は、サービス定義ファイルの設定の定義と一致する必要があります。

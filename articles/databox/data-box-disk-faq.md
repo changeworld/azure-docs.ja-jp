@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 09/28/2018
+ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: 8acb808e4b60926fbe6b3faa3fa6a7174a190884
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094243"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238133"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Azure Data Box Disk とは (プレビュー)
 
@@ -44,10 +44,10 @@ Microsoft BitLocker ドライブ暗号化によってディスクが暗号化さ
 A. Azure に転送したいデータが 40 TB (またはそれより少なくても) あれば、Data Box Disk を有効活用できると考えられます。
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>Q. Data Box Disk の価格を教えてください。
-A. プレビュー期間中は、Data Box Disk を無料で利用できます。 発送も無料ですが、Azure Storage については料金が適用されます。
+A. Data Box Disk の価格については、[プレビューの価格のページ](https://azure.microsoft.com/pricing/details/storage/databox/disk/)を参照してください。
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>Q. Data Box Disk の入手方法は? 
-A.  Azure Data Box Disk を入手するには、まず [Data Box Disk プレビュー](http://aka.ms/AzureDataBox)にサインアップしてください。 次に、Azure portal にログインして、Data Box ディスクの注文を作成します。 連絡先情報と通知の詳細を指定してください。 発注後、利用の可否に応じて、10 日以内にディスクが発送されます。   
+A.  Azure Data Box Disk を入手するには、まず [Data Box Disk プレビュー](https://aka.ms/AzureDataBox)にサインアップしてください。 次に、Azure portal にログインして、Data Box ディスクの注文を作成します。 連絡先情報と通知の詳細を指定してください。 発注後、利用の可否に応じて、10 日以内にディスクが発送されます。   
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>Q. Data Box Disk の 1 回のやり取りで転送できる最大データ量を教えてください。
 A. 1 台につき 8 TB (使用可能な容量は 7 TB) のディスクが 5 台で、使用可能な最大容量は 35 TB となります。 したがって、1 回のやり取りで転送できるデータは 35 TB となります。  それを超えるデータを転送するには、さらに多くのディスクを注文する必要があります。

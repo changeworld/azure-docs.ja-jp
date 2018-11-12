@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/03/2018
 ms.author: spelluru
-ms.openlocfilehash: ea145a1f5ccad98c19b3f779ea297644350b984b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d48d658883324637e1026ac00312ade86ccc1400
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393317"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230582"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
@@ -35,7 +35,7 @@ ms.locfileid: "47393317"
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](http://www.visualstudio.com/vs) 以降。
+1. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
 2. Azure サブスクリプション。
 

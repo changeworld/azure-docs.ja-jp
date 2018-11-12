@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: e4f786eeb8994e44f827e5158811cae4a60453cc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2bb56ff6eaf311bee33b07ecb319127645db9961
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780638"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235107"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Azure Portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST ()](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
@@ -35,7 +35,7 @@ ms.locfileid: "33780638"
 チュートリアルを完了するには次のものが必要です。
 
 * Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
-* Media Services アカウント。 Media Services アカウントを作成するには、[Media Services アカウントを作成する方法](media-services-portal-create-account.md)に関するページを参照してください。
+* Media Services アカウント。 Media Services アカウントを作成するには、「 [Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
 * Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](http://www.telestream.net/wirecast/overview.htm)。
 
 次の記事の確認を強くお勧めします。
@@ -50,7 +50,7 @@ ms.locfileid: "33780638"
 >[!NOTE]
 >コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。 
     
-1. ビデオ カメラをコンピューターに接続します。 マルチビットレート RTMP またはフラグメント化 MP4 ストリームを出力するオンプレミスのライブ エンコーダーを起動して構成します。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](http://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
+1. ビデオ カメラをコンピューターに接続します。 マルチビットレート RTMP またはフラグメント化 MP4 ストリームを出力するオンプレミスのライブ エンコーダーを起動して構成します。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
    
     この手順は、チャネルを作成した後でも実行できます。
 2. パススルー チャネルを作成し、開始します。
@@ -62,7 +62,7 @@ ms.locfileid: "33780638"
     この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
 5. ライブ イベントまたはライブ プログラムを作成します。 
    
-    Azure ポータルを使用する場合、ライブ イベントを作成するとアセットも作成されます。  
+    Azure ポータルを使用する場合、ライブ イベントを作成すると資産も作成されます。 
 
 6. ストリーミングとアーカイブを開始する準備ができたら、イベントまたはプログラムを開始します。
 7. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。
@@ -84,7 +84,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 
 プログラムの **アーカイブ ウィンドウ** の長さを設定することで、録画されたコンテンツの保持時間を指定できます。 この値は、最小 5 分から最大 25 時間までの範囲で設定できます。 クライアントが現在のライブ位置からさかのぼって検索できる最長時間も、Archive Window (アーカイブ ウィンドウ)の長さによって決まります。 イベントは、指定された時間の長さまでは放送できますが、アーカイブ ウィンドウの長さを過ぎたコンテンツは絶えず破棄されていきます。 さらに、このプロパティの値によって、クライアント マニフェストが肥大した場合の最大サイズも決まります。
 
-各イベントはアセットに関連付けられています。 イベントを発行するには、関連付けられたアセットの OnDemand ロケーターを作成する必要があります。 このロケーターを作成すると、ストリーミング URL を構築してクライアントに提供できます。
+各イベントは資産に関連付けられています。 イベントを発行するには、関連付けられた資産の OnDemand ロケーターを作成する必要があります。 このロケーターを作成すると、ストリーミング URL を構築してクライアントに提供できます。
 
 チャネルは、最大 3 つの同時実行イベントをサポートするので、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。 これを実現するには、2 つの同時実行プログラムを作成する必要があります。 1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。 もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
 
@@ -92,7 +92,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 
 ストリーミングとアーカイブを開始する準備ができたら、イベントを開始します。 イベントのストリーミングとアーカイブを停止するときにプログラムを停止します。 
 
-アーカイブ済みコンテンツを削除するには、イベントを停止して削除したうえで、関連付けられたアセットを削除します。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。  
+アーカイブ済みコンテンツを削除するには、イベントを停止して削除したうえで、関連付けられた資産を削除します。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。  
 
 イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。
 
@@ -145,7 +145,7 @@ Azure ポータルからの通知とエラーを表示するには、通知ア�
 
 アセットを管理するには、**[設定]** を選択し、**[アセット]** をクリックします。
 
-![アセット](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
+![資産](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
 ## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。

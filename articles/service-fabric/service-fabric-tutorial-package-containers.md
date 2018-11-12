@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 952550225f2bdd8559d72a9d283993451ae7f60b
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7d622b834cef31552cac60b359cdd8404592eda9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616345"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255559"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル: Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
 
@@ -229,7 +229,7 @@ r = redis.StrictRedis(host=redis_server, port=6379, db=0)
 
 Azure 内のクラスターにアプリケーションをデプロイするには、独自のクラスターを作成します。
 
-パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによって実行され、誰でもアプリケーションをデプロイして、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。
+パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによって実行され、誰でもアプリケーションをデプロイして、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](https://aka.ms/tryservicefabric)。
 
 セキュリティで保護されたパーティ クラスターに対する管理操作は、Service Fabric Explorer、CLI、Powershell のいずれかを使用して実行できます。 Service Fabric Explorer を使用するには、パーティ クラスターの Web サイトから PFX ファイルをダウンロードし、ご使用の証明書ストア (Windows または Mac) またはブラウザー本体 (Ubuntu) に証明書をインポートする必要があります。 パーティ クラスターの自己署名証明書についてはパスワードは不要です。
 
@@ -332,7 +332,7 @@ sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19
          </ContainerHost>
       </EntryPoint>
       <EnvironmentVariables>
-      </EnvironmentVariables>
+      </EnvironmentVariables>
    </CodePackage>
 
   <Resources>
@@ -367,7 +367,7 @@ sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19
          </ContainerHost>
       </EntryPoint>
       <EnvironmentVariables>
-      </EnvironmentVariables>
+      </EnvironmentVariables>
    </CodePackage>
      <Resources>
     <Endpoints>

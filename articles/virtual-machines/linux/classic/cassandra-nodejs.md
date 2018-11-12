@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 3066da9a492fc12dd8b333a089b8aabbbb647414
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 3f7b216be79be1307a5668d6686fd73a27ae5574
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421358"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237861"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Azure 内の Linux 上にある Cassandra クラスターを Node.js で実行する
 
@@ -49,7 +49,7 @@ Cassandra は、単一の Azure リージョンにデプロイすることも、
 ### <a name="single-region-deployment"></a>単一リージョン デプロイ
 まず単一リージョン デプロイから学習し、その後、複数リージョン モデルを作成しましょう。 Azure の仮想ネットワークは、上記で説明したネットワーク セキュリティ要件を実現するための分離サブネットの作成に使用されます。  単一リージョン デプロイの作成について説明したプロセスでは、Ubuntu 14.04 LTS と Cassandra 2.08 を使用しています。 ただし、このプロセスはその他の Linux バリアントにも簡単に導入することができます。 単一リージョン デプロイのシステムの特徴を次に示します。  
 
-**高可用性:** 図 1 の Cassandra ノードは 2 つの可用性セットにデプロイされており、ノードが複数の障害ドメインに分散されて高可用性が確保されるようになっています。 各可用性セットが注釈として付与された VM は、2 つの障害ドメインにマップされています。 Azure では、計画外のダウン タイム (たとえばハードウェア障害やソフトウェア障害) を管理するために、障害ドメインの概念が使用されます。 スケジュールされたダウンタイムの管理には、アップグレード ホストの概念が使用されます (たとえば、ホストまたはゲスト OS の修正プログラム適用やアップグレード、アプリケーションのアップグレードなど)。 高可用性を実現する上での障害ドメインおよびアップグレード ドメインの役割については、「 [Azure アプリケーションの障害復旧と高可用性](http://msdn.microsoft.com/library/dn251004.aspx) 」を参照してください。
+**高可用性:** 図 1 の Cassandra ノードは 2 つの可用性セットにデプロイされており、ノードが複数の障害ドメインに分散されて高可用性が確保されるようになっています。 各可用性セットが注釈として付与された VM は、2 つの障害ドメインにマップされています。 Azure では、計画外のダウン タイム (たとえばハードウェア障害やソフトウェア障害) を管理するために、障害ドメインの概念が使用されます。 スケジュールされたダウンタイムの管理には、アップグレード ホストの概念が使用されます (たとえば、ホストまたはゲスト OS の修正プログラム適用やアップグレード、アプリケーションのアップグレードなど)。 高可用性を実現する上での障害ドメインおよびアップグレード ドメインの役割については、「 [Azure アプリケーションの障害復旧と高可用性](https://msdn.microsoft.com/library/dn251004.aspx) 」を参照してください。
 
 ![単一リージョン デプロイ](./media/cassandra-nodejs/cassandra-linux1.png)
 

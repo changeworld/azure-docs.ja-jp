@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: d0be0cbd9ff16acc1ecb209997a0c87cd4e43b36
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955103"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238401"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Azure Key Vault の概要
 この記事では、PowerShell を使用した Azure Key Vault の操作について取り上げると共に、次のアクティビティの手順を紹介します。
@@ -36,7 +36,7 @@ Azure Key Vault は、ほとんどのリージョンで使用できます。 詳
 
 - **Azure サブスクリプション**。 このサブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。
 - **Azure PowerShell** **1.1.0 以降のバージョン**。 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。 Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「 `(Get-Module azure -ListAvailable).Version`」と入力します。 Azure PowerShell バージョン 0.9.1 ～ 0.9.8 がインストールされている場合は、少し変更を加えるだけで、引き続きこのチュートリアルを利用できます。 たとえば、 `Switch-AzureMode AzureResourceManager` コマンドを使用する必要があったり、Azure Key Vault のコマンドの一部が変更されていたりします。 バージョン 0.9.1 ～ 0.9.8 の Key Vault コマンドレットの一覧については、「[Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](/powershell/module/azurerm.keyvault/#key_vault)」を参照してください。
-- **Key Vault を使用するように構成できるアプリケーション**。 サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/download/details.aspx?id=45343)から入手できます。 手順については、付属の **Readme** ファイルをご覧ください。
+- **Key Vault を使用するように構成できるアプリケーション**。 サンプル アプリケーションは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=45343)から入手できます。 手順については、付属の **Readme** ファイルをご覧ください。
 
 >[!NOTE]
 この記事では、PowerShell と Azure を基本的に理解していることを前提としています。 PowerShell の詳細については、「[Windows PowerShell ファースト ステップ ガイド](https://technet.microsoft.com/library/hh857337.aspx)」を参照してください。

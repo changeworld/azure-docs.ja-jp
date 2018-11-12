@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 0b9f55d69c824e86245738a082f95fc529583f58
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6aa2684a900dffecd481d51b8876b0e674c1a6ea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "22985957"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235532"
 ---
 # <a name="azure-sdk-for-net-28-281-and-282"></a>Azure SDK for .NET 2.8、2.8.1、2.8.2
 ## <a name="overview"></a>概要
@@ -28,13 +28,13 @@ ms.locfileid: "22985957"
 
 ## <a name="azure-sdk-for-net-28"></a>Azure SDK for .NET 2.8
 ### <a name="download-azure-sdk-for-net-28"></a>Azure SDK for .NET 2.8 のダウンロード
-[Visual Studio 2015 用 Azure SDK for .NET 2.8](http://go.microsoft.com/fwlink/?LinkId=699285) 
+[Visual Studio 2015 用 Azure SDK for .NET 2.8](https://go.microsoft.com/fwlink/?LinkId=699285) 
 
-[Visual Studio 2013 用 Azure SDK for .NET 2.8](http://go.microsoft.com/fwlink/?LinkId=699287)
+[Visual Studio 2013 用 Azure SDK for .NET 2.8](https://go.microsoft.com/fwlink/?LinkId=699287)
 
 ### <a name="net-452-support"></a>.NET 4.5.2 のサポート
 #### <a name="known-issues"></a>既知の問題
-Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージを作成できます。 ただし、.NET 4.5.2 フレームワークは、2016 年 1 月のゲスト OS のリリースまで既定のゲスト OS イメージにはインストールされません。 それまでは、.NET 4.5.2 フレームワークは別のゲスト OS リリース バージョン (November 2015-02) で利用できます。 イメージのリリース日を追跡した「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」ページをご覧ください。  November 2015-02 イメージがリリースされたら、クラウド サービス構成ファイル (.cscfg) を更新することでこのイメージを使用できます。 このサービス構成ファイルで、ServiceConfiguration 要素の osVersion 属性を "WA-GUEST-OS-4.26_201511-02" という文字列に設定します。 このイメージを使用するようにした場合、ゲスト OS に対する自動更新プログラムを取得できなくなります。 自動更新プログラムを取得するには、osVersion を "*" に設定する必要があります、.NET 4.5.2 は 2016 年 1 月の自動更新プログラムによってのみ利用できるようになります。
+Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージを作成できます。 ただし、.NET 4.5.2 フレームワークは、2016 年 1 月のゲスト OS のリリースまで既定のゲスト OS イメージにはインストールされません。 それまでは、.NET 4.5.2 フレームワークは別のゲスト OS リリース バージョン (November 2015-02) で利用できます。 イメージのリリース日を追跡した「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」ページをご覧ください。  November 2015-02 イメージがリリースされたら、クラウド サービス構成ファイル (.cscfg) を更新することでこのイメージを使用できます。 このサービス構成ファイルで、ServiceConfiguration 要素の osVersion 属性を "WA-GUEST-OS-4.26_201511-02" という文字列に設定します。 このイメージを使用するようにした場合、ゲスト OS に対する自動更新プログラムを取得できなくなります。 自動更新プログラムを取得するには、osVersion を "*" に設定する必要があります。.NET 4.5.2 は 2016 年 1 月の自動更新プログラムによってのみ利用できるようになります。
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 #### <a name="known-issues"></a>既知の問題
@@ -48,7 +48,7 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージ
 
 2.8 SDK を使用している場合、以前のバージョンの SDK で作成されたプロジェクトのスクリプトは、Visual Studio 内から実行できません。  すべてのスクリプトは、適切なバージョンの Azure PowerShell コマンドレットを使用して、Visual Studio の外部で引き続き動作します。  
 
-2.8 SDK には、Azure PowerShell コマンドレットのバージョン 1.0 が必要です。  他のすべてのバージョンの SDK には、Azure PowerShell コマンドレットのバージョン 0.9.8 が必要です。  詳細については、 [このブログ](http://go.microsoft.com/fwlink/?LinkID=623011) をご覧ください。
+2.8 SDK には、Azure PowerShell コマンドレットのバージョン 1.0 が必要です。  他のすべてのバージョンの SDK には、Azure PowerShell コマンドレットのバージョン 0.9.8 が必要です。  詳細については、 [このブログ](https://go.microsoft.com/fwlink/?LinkID=623011) をご覧ください。
 
 ### <a name="web-tools-extensions"></a>Web ツールの拡張機能
 #### <a name="known-issues"></a>既知の問題

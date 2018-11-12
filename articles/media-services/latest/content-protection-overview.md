@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: f8ef92a335dd6faee076356dbffc873b08afbdc0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 1c7454aead07c728d55ff2c309cca83a792aac88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394277"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238351"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要
 
@@ -59,7 +59,7 @@ Azure Media Services を使用すると、メディアがコンピューター�
 
     AES または CENC (Widevine および PlayReady) で暗号化されたコンテンツをテストするには、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) を使用できます。 必ず [詳細オプション] をクリックし、暗号化オプションを確認します。
 
-    FairPlay で暗号化されたコンテンツをテストする場合は、[このテストプレイヤー](http://aka.ms/amtest)を使用してください。 プレーヤーは、Widevine、PlayReady、FairPlay DRM、および AES-128 クリア キー暗号化をサポートしています。 Chrome/Opera/Firefox for Widevine、MS Edge/IE11 for PlayReady、Safari for macOS for FairPlay などのさまざまな DRM をテストするには、適切なブラウザーを選択する必要があります。
+    FairPlay で暗号化されたコンテンツをテストする場合は、[このテストプレイヤー](https://aka.ms/amtest)を使用してください。 プレーヤーは、Widevine、PlayReady、FairPlay DRM、および AES-128 クリア キー暗号化をサポートしています。 Chrome/Opera/Firefox for Widevine、MS Edge/IE11 for PlayReady、Safari for macOS for FairPlay などのさまざまな DRM をテストするには、適切なブラウザーを選択する必要があります。
 
 3. バックエンド リソース アクセス用のアクセス トークンとして JSON Web トークン (JWT) を発行するセキュア トークン サービス (STS)。 バックエンド リソースとして AMS ライセンス配信サービスを使用することができます。 STS は以下を定義する必要があります。
 
@@ -168,8 +168,8 @@ JWT トークンを使用してライセンスまたはキーを要求する前�
 1. 運用環境では、HTTPS 要求時に JWT トークンを発行する Secure Token Services (STS) (Web サービス) が必要です。 テスト環境では、[Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) で定義されている **GetTokenAsync** メソッドに示されているコードを使用できます。
 2. プレーヤーは、ユーザーが認証された後、そのようなトークンの要求を STS に対して作成し、それをトークンの値として割り当てる必要があります。 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使用できます。
 
-* 対称キーと非対称キーのどちらかを使用して STS を実行する例については、[http://aka.ms/jwt](http://aka.ms/jwt) を参照してください。 
-* このような JWT トークンを使用する Azure Media Player に基づくプレーヤーの例については、[http://aka.ms/amtest](http://aka.ms/amtest) を参照してください ("player_settings" リンクを展開すると、トークンの入力が表示されます)。
+* 対称キーと非対称キーのどちらかを使用して STS を実行する例については、[http://aka.ms/jwt](https://aka.ms/jwt) を参照してください。 
+* このような JWT トークンを使用する Azure Media Player に基づくプレーヤーの例については、[http://aka.ms/amtest](https://aka.ms/amtest) を参照してください ("player_settings" リンクを展開すると、トークンの入力が表示されます)。
 
 ### <a name="question"></a>質問
 

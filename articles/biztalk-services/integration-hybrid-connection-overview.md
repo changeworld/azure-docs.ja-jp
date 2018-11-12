@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 819af52bb10c9ffcb7e1133437f6d0afbe6105ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa38d0ef3d00bf5fdb886703cd882ec5ba552b95
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26629688"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234036"
 ---
 # <a name="hybrid-connections-overview"></a>ハイブリッド接続の概要
 
@@ -31,7 +31,7 @@ ms.locfileid: "26629688"
 ## <a name="what-is-a-hybrid-connection"></a>ハイブリッド接続とは
 ハイブリッド接続は Azure BizTalk Services の機能の一種です。 ハイブリッド接続は、Azure App Service の Web Apps 機能 (以前の Websites) と Azure App Service (以前の Mobile Services) の Mobile Apps 機能をファイアウォールの後ろにあるオンプレミスのリソースに簡単に接続する便利な方法を提供します。
 
-![Hybrid Connections][HCImage]
+![ハイブリッド接続と][HCImage]
 
 ハイブリッド接続には、以下の利点があります。
 
@@ -90,11 +90,11 @@ ms.locfileid: "26629688"
 | 5671 |ポート 9352 がデータ トラフィックに使用される場合、ポート 5671 は制御チャンネルとして使用されます。 <br/><br/>これらのポートへの発信接続を許可します。 |
 | 80、443 |これらのポートは Azure へのデータ要求に使用されます。 また、ポート 9352 とポート 5671 を使用できない場合に、 *ポート* 80 とポート 443 がデータ転送と制御チャネルに使用される代替ポートになります。<br/><br/>これらのポートへの発信接続を許可します。 <br/><br/>**注** これらを他の TCP ポートの代替ポートとして使用することは推奨されません。 HTTP/WebSocket はデータ チャンネルのネイティブ TCP ではなくプロトコルとして使用されます。 パフォーマンスの低下を招く可能性があります。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)
 
 ## <a name="see-also"></a>関連項目
-[Microsoft Azure での BizTalk Services 管理の REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[Microsoft Azure での BizTalk Services 管理の REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)  
 [BizTalk サービスを作成する](biztalk-provision-services.md)  
 [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)  

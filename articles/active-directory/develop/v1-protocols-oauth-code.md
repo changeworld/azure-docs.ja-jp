@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e896392404c23e88d697d45146f802576d6045d3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b7b8ccf7e84239db4eef0914346c453a2f205f91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870827"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237895"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
 
@@ -183,7 +183,7 @@ Web API リソースから `invalid_token` エラー コードが返された場
 | refresh_token |OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得することができます。 更新トークンは有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 |
 | id_token |[ID トークン](id-tokens.md)を表す符号なしの JSON Web トークン (JWT)。 このトークンのセグメントを base64Url でデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 |
 
-JSON Web トークンに関する詳細については、[JWT の IETF ドラフト仕様](http://go.microsoft.com/fwlink/?LinkId=392344)に関するページを参照してください。   `id_tokens` について詳しくは、[v1.0 OpenID Connect のフロー](v1-protocols-openid-connect-code.md)に関するページをご覧ください。
+JSON Web トークンに関する詳細については、[JWT の IETF ドラフト仕様](https://go.microsoft.com/fwlink/?LinkId=392344)に関するページを参照してください。   `id_tokens` について詳しくは、[v1.0 OpenID Connect のフロー](v1-protocols-openid-connect-code.md)に関するページをご覧ください。
 
 ### <a name="error-response"></a>エラー応答
 クライアントがトークン発行エンドポイントを直接呼び出すため、トークン発行エンドポイントは HTTP エラー コードです。 HTTP 状態コードだけでなく、Azure AD トークン発行エンドポイントも、エラーを説明するオブジェクトを含む JSON ドキュメントを返します。

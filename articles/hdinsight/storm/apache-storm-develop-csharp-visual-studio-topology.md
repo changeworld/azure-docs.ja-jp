@@ -3,18 +3,18 @@ title: Visual Studio と C# を使った Apache Storm トポロジ - Azure HDIns
 description: C# で Storm トポロジを作成する方法について説明します。 Hadoop Tools for Visual Studio を使用して、Visual Studio で簡単なワード カウント トポロジを作成します。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2765021d80701826644f095d22c650160001e907
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5dcc9dcada981a6a4174ce34748356d49582f598
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414898"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237572"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -43,7 +43,7 @@ SCP.NET による C# トポロジの開発は、次のいずれかのバージ�
 
 * Visual Studio 2012 Update 4
 
-* Visual Studio 2013 Update 4 または [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+* Visual Studio 2013 Update 4 または [Visual Studio 2013 Community](https://go.microsoft.com/fwlink/?LinkId=517284)
 
 * Visual Studio 2015 または [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
 

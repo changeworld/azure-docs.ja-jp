@@ -3,18 +3,18 @@ title: Azure HDInsight (Hadoop) での Apache Sqoop ジョブの実行
 description: コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。
 ms.reviewer: jasonh
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 7834c6365753e290c7d9e232f716e4b1d39f3db5
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 85753376e33f5392be06f7d3ea89a04367e3c9ab
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042576"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009863"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Sqoop の使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -41,14 +41,14 @@ HDInsight クラスターにはサンプル データがいくつか付属して
   
   | フィールド | データ型 |
   | --- | --- |
-  | clientid |文字列 |
-  | querytime |文字列 |
-  | market |文字列 |
-  | deviceplatform |文字列 |
-  | devicemake |文字列 |
-  | devicemodel |文字列 |
-  | state |文字列 |
-  | country |文字列 |
+  | clientid |string |
+  | querytime |string |
+  | market |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | state |string |
+  | country |string |
   | querydwelltime |double |
   | sessionid |bigint |
   | sessionpagevieworder |bigint |

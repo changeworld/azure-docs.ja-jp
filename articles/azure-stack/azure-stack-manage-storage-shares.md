@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452328"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249899"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する 
 
@@ -138,7 +138,7 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 > コンテナーの BLOB の移行は、PowerShell の使用を要求するオフライン操作です。 移行が完了するまで、移行するコンテナーのすべての BLOB はオフラインのままであり、使用することはできません。 また、進行中の移行作業がすべて完了するまで、Azure Stack をアップグレードすることは避けてください。
 
 #### <a name="to-migrate-containers-using-powershell"></a>PowerShell を使用してコンテナーを移行するには
-1. [Azure PowerShell のインストールと構成](http://azure.microsoft.com/documentation/articles/powershell-install-configure/)が行われていることを確認します。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](http://go.microsoft.com/fwlink/?LinkId=394767)をご覧ください。
+1. [Azure PowerShell のインストールと構成](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)が行われていることを確認します。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](https://go.microsoft.com/fwlink/?LinkId=394767)をご覧ください。
 2.  コンテナーを調べて、移行する予定の共有にどのようなデータがあるかを把握します。 ボリューム内の移行に最適な候補コンテナーを識別するには、**Get AzsStorageContainer** コマンドレットを使用します。
 
     ````PowerShell  

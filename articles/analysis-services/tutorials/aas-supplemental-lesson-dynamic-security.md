@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a62440b9fe44dfed14cfd9887d4d3cc2e4dbb92
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6a0c4158b85a6bc6c9276eff19466fb742c6f442
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430240"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235925"
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>補足のレッスン - 動的なセキュリティ
 
@@ -21,7 +21,7 @@ ms.locfileid: "49430240"
   
 動的なセキュリティを実装するには、モデルに接続してモデル オブジェクトやデータを参照できるユーザーのユーザー名が含まれているテーブルをモデルに追加します。 このチュートリアルを使用して作成するモデルは、Adventure Works のコンテキスト内にありますが、このレッスンを完了するには、自分のドメインのユーザーが含まれているテーブルを追加する必要があります。 追加するユーザー名のパスワードは必要ありません。 自分のドメインの少人数のサンプル ユーザーを使用して EmployeeSecurity テーブルを作成するには、貼り付け機能を使用して、Excel のスプレッドシートから従業員データを貼り付けます。 実際のシナリオでは、ユーザー名が含まれたテーブルは通常、データ ソースとしての実際のデータベースのテーブルです (たとえば、実際の DimEmployee テーブルなど)。  
   
-動的なセキュリティを実装するには、[USERNAME 関数 (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) および [LOOKUPVALUE 関数 (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab) という 2 つの DAX 関数を使用します。 行フィルター式に適用されるこれらの関数は、新しいロールで定義されています。 LOOKUPVALUE 関数を使用した場合、この数式は EmployeeSecurity テーブルの値を指定します。 次に、その値を USERNAME 関数に渡し、ログオンしたユーザーのユーザー名がこのロールに属していることを指定します。 ユーザーは、ロールの行フィルターによって指定されたデータのみを参照できます。 このシナリオでは、販売担当者がインターネット上で自分の販売区域の売上データのみを参照できるように指定します。  
+動的なセキュリティを実装するには、[USERNAME 関数 (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) および [LOOKUPVALUE 関数 (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab) という 2 つの DAX 関数を使用します。 行フィルター式に適用されるこれらの関数は、新しいロールで定義されています。 LOOKUPVALUE 関数を使用した場合、この数式は EmployeeSecurity テーブルの値を指定します。 次に、その値を USERNAME 関数に渡し、ログオンしたユーザーのユーザー名がこのロールに属していることを指定します。 ユーザーは、ロールの行フィルターによって指定されたデータのみを参照できます。 このシナリオでは、販売担当者がインターネット上で自分の販売区域の売上データのみを参照できるように指定します。  
   
 この Adventure Works 表形式モデルのシナリオに固有の作業で、実際のシナリオに必ずしも適用されないものは、そのように記載されています。 各作業には、作業の目的を説明する追加情報が含まれています。  
   

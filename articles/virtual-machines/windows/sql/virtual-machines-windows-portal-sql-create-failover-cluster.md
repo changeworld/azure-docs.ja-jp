@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 382027782044a5a1011976560b7460047544f521
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144381"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237966"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
-この記事では、Resource Manager モデルを使用して、Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンス (FCI) を作成する方法について説明します。 このソリューションでは、ストレージ (データ ディスク) を Windows クラスター内のノード (Azure VM) 間で同期させるためのソフトウェア ベースの仮想 SAN として、[Windows Server 2016 Datacenter Edition 記憶域スペース ダイレクト \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) を使用します。 S2D は、Windows Server 2016 の新機能です。
+この記事では、Resource Manager モデルを使用して、Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンス (FCI) を作成する方法について説明します。 このソリューションでは、ストレージ (データ ディスク) を Windows クラスター内のノード (Azure VM) 間で同期させるためのソフトウェア ベースの仮想 SAN として、[Windows Server 2016 Datacenter Edition 記憶域スペース ダイレクト \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) を使用します。 S2D は、Windows Server 2016 の新機能です。
 
 次の図は、Azure Virtual Machines での完全なソリューションを示しています。
 
@@ -44,7 +44,7 @@ ms.locfileid: "42144381"
    >[!NOTE]
    >この図では、すべての Azure リソースが同じリソース グループに含まれています。
 
-S2D の詳細については、[Windows Server 2016 Datacenter Edition 記憶域スペース ダイレクト \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) に関する記事を参照してください。
+S2D の詳細については、[Windows Server 2016 Datacenter Edition 記憶域スペース ダイレクト \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) に関する記事を参照してください。
 
 S2D では、コンバージド型とハイパー コンバージド型の 2 種類のアーキテクチャがサポートされています。 このドキュメントでのアーキテクチャは、ハイパー コンバージド型です。 ハイパー コンバージド インフラストラクチャでは、クラスター化されたアプリケーションをホストしている同じサーバーにストレージが配置されます。 このアーキテクチャでは、ストレージは各 SQL Server FCI ノード上にあります。
 
@@ -52,13 +52,13 @@ S2D では、コンバージド型とハイパー コンバージド型の 2 種
 
 Azure Virtual Machines では、従量課金制 (PAYG) またはライセンス持ち込み (BYOL) VM イメージを使用して SQL Server をライセンスできます。 選択するイメージの種類が課金方法に影響を与えます。
 
-PAYG ライセンスでは、Azure Virtual Machines 上の SQL Server のフェールオーバー クラスター インスタンス (FCI) により、FCI のすべてのノード (パッシブ ノードを含む) に対する課金が発生します。 詳細については、「[SQL Server Enterprise Virtual Machines の料金](http://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/)」を参照してください。 
+PAYG ライセンスでは、Azure Virtual Machines 上の SQL Server のフェールオーバー クラスター インスタンス (FCI) により、FCI のすべてのノード (パッシブ ノードを含む) に対する課金が発生します。 詳細については、「[SQL Server Enterprise Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/)」を参照してください。 
 
-ソフトウェア アシュアランスの Enterprise Agreement を締結している顧客には、アクティブ ノードごとに 1 つの無料のパッシブ FCI ノードを使用する権利があります。 Azure でこの利点を利用するには、BYOL VM イメージを使用した後、FCI のアクティブ ノードとパッシブ ノードの両方で同じライセンスを使用します。 詳細については、[Enterprise Agreement](http://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx) に関するページを参照してください。
+ソフトウェア アシュアランスの Enterprise Agreement を締結している顧客には、アクティブ ノードごとに 1 つの無料のパッシブ FCI ノードを使用する権利があります。 Azure でこの利点を利用するには、BYOL VM イメージを使用した後、FCI のアクティブ ノードとパッシブ ノードの両方で同じライセンスを使用します。 詳細については、[Enterprise Agreement](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx) に関するページを参照してください。
 
 SQL Server on Azure Virtual Machines の PAYG ライセンスと BYOL ライセンスを比較するには、[SQL VM の概要](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)に関するページを参照してください。
 
-SQL Server のライセンスに関する完全な情報については、[価格](http://www.microsoft.com/sql-server/sql-server-2017-pricing)に関するページを参照してください。
+SQL Server のライセンスに関する完全な情報については、[価格](https://www.microsoft.com/sql-server/sql-server-2017-pricing)に関するページを参照してください。
 
 ### <a name="example-azure-template"></a>Azure テンプレートの例
 
@@ -71,12 +71,12 @@ SQL Server のライセンスに関する完全な情報については、[価�
 ### <a name="what-to-know"></a>必要な知識
 次のテクノロジについて、運用上の理解が必要です。
 
-- [Windows クラスター テクノロジ](http://technet.microsoft.com/library/hh831579.aspx)
-- [SQL Server フェールオーバー クラスター インスタンス](http://msdn.microsoft.com/library/ms189134.aspx)
+- [Windows クラスター テクノロジ](https://technet.microsoft.com/library/hh831579.aspx)
+- [SQL Server フェールオーバー クラスター インスタンス](https://msdn.microsoft.com/library/ms189134.aspx)
 
 さらに、次のテクノロジの概要について理解しておくことが必要です。
 
-- [Windows Server 2016 の記憶域スペース ダイレクトを使用したハイパー コンバージド ソリューション](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
+- [Windows Server 2016 の記憶域スペース ダイレクトを使用したハイパー コンバージド ソリューション](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 - [Azure リソース グループ](../../../azure-resource-manager/resource-group-portal.md)
 
 > [!IMPORTANT]
@@ -225,11 +225,11 @@ SQL Server のライセンスに関する完全な情報については、[価�
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-次の手順は「[Windows Server 2016 で記憶域スペース ダイレクトを使用するハイパーコンバージド ソリューション](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct)」の手順 3. の説明に従ったものですので、参考にしてください。
+次の手順は「[Windows Server 2016 で記憶域スペース ダイレクトを使用するハイパーコンバージド ソリューション](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct)」の手順 3. の説明に従ったものですので、参考にしてください。
 
 ### <a name="validate-the-cluster"></a>クラスターを検証する
 
-このガイドは、[クラスターの検証](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation)に関するセクションの手順に沿っています。
+このガイドは、[クラスターの検証](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation)に関するセクションの手順に沿っています。
 
 UI または PowerShell を使用して、クラスターを検証します。
 
@@ -259,7 +259,7 @@ PowerShell を使用してクラスターを検証するには、いずれかの
 
 ### <a name="create-the-failover-cluster"></a>フェールオーバー クラスターを作成する
 
-このガイドは、[フェールオーバー クラスターの作成](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster)に関するセクションの手順に沿っています。
+このガイドは、[フェールオーバー クラスターの作成](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster)に関するセクションの手順に沿っています。
 
 フェールオーバー クラスターを作成するには、以下が必要です。
 - クラスター ノードになる仮想マシンの名前。
@@ -276,19 +276,19 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 クラウド監視とは、Azure Storage Blob に格納されている、新しい種類のクラスター クォーラム監視です。 これにより、監視の共有をホストする個別の VM が不要になります。
 
-1. [フェールオーバー クラスターのクラウド監視を作成](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)します。
+1. [フェールオーバー クラスターのクラウド監視を作成](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)します。
 
 1. BLOB コンテナーを作成します。
 
 1. アクセス キーと、コンテナーの URL を保存します。
 
-1. フェールオーバー クラスターのクォーラム監視を構成します。 [ユーザー インターフェイスでクォーラム監視を構成する方法](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)に関するページを参照してください。
+1. フェールオーバー クラスターのクォーラム監視を構成します。 [ユーザー インターフェイスでクォーラム監視を構成する方法](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)に関するページを参照してください。
 
 ### <a name="add-storage"></a>ストレージを追加する
 
-S2D 用のディスクは、空で、パーティションやその他のデータもない状態である必要があります。 ディスクを消去するには、[このガイドの手順](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks)に従います。
+S2D 用のディスクは、空で、パーティションやその他のデータもない状態である必要があります。 ディスクを消去するには、[このガイドの手順](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks)に従います。
 
-1. [記憶域スペース ダイレクト \(S2D\) を有効化します](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct)。
+1. [記憶域スペース ダイレクト \(S2D\) を有効化します](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct)。
 
    次の PowerShell を実行すると、記憶域スペース ダイレクトが有効化されます。  
 
@@ -298,7 +298,7 @@ S2D 用のディスクは、空で、パーティションやその他のデー�
 
    **[フェールオーバー クラスター マネージャー]** に、記憶域プールが表示されるようになります。
 
-1. [ボリュームを作成します](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes)。
+1. [ボリュームを作成します](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes)。
 
    S2D の機能の 1 つに、ユーザーが有効化した場合に、記憶域プールを自動的に作成するというものがあります。 これでボリュームを作成する準備が整いました。 PowerShell コマンドレット `New-Volume` は、書式設定、クラスターへの追加、クラスターの共有ボリューム (CSV) 作成などのボリューム作成プロセスを自動化するものです。 次の例では、800 ギガバイト (GB) の CSV を作成します。
 
@@ -343,7 +343,7 @@ S2D 用のディスクは、空で、パーティションやその他のデー�
 1. **[SQL Server フェールオーバー クラスターにノードを追加]** をクリックします。 ウィザードの指示に従って SQL Server をインストールし、このサーバーを FCI に追加します。
 
    >[!NOTE]
-   >SQL Server で Azure Marketplace ギャラリー イメージを使用した場合、SQL Server のツールはイメージに含まれています。 このイメージを使用しなかった場合、SQL Server のツールは別途インストールしてください。 「[SQL Server Management Studio (SSMS) のダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)」を参照してください。
+   >SQL Server で Azure Marketplace ギャラリー イメージを使用した場合、SQL Server のツールはイメージに含まれています。 このイメージを使用しなかった場合、SQL Server のツールは別途インストールしてください。 「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」を参照してください。
 
 ## <a name="step-5-create-azure-load-balancer"></a>手順 5. Azure ロード バランサーを作成する
 
@@ -478,7 +478,7 @@ FCI のフェールオーバーをテストして、クラスターの機能を�
 接続をテストするには、同じ仮想ネットワーク内の別の仮想マシンにログインします。 **SQL Server Management Studio** を開き、SQL Server FCI 名に接続します。
 
 >[!NOTE]
->必要に応じて、[SQL Server Management Studio をダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)できます。
+>必要に応じて、[SQL Server Management Studio をダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)できます。
 
 ## <a name="limitations"></a>制限事項
 
@@ -491,10 +491,10 @@ Azure Virtual Machines では、次の理由から、MSDTC はWindows Server 201
 
 ## <a name="see-also"></a>関連項目
 
-[リモート デスクトップでの S2D のセットアップ (Azure)](http://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
+[リモート デスクトップでの S2D のセットアップ (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 
-[記憶域スペース ダイレクトを使用するハイパーコンバージド ソリューション](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
+[記憶域スペース ダイレクトを使用するハイパーコンバージド ソリューション](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 
-[記憶域スペース ダイレクトの概要](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
+[記憶域スペース ダイレクトの概要](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
 
 [SQL Server での S2D のサポート](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)

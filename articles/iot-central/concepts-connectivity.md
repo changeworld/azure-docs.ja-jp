@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157702"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238736"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
 
@@ -150,7 +150,7 @@ X509 証明書を使用してデバイスを IoT Central に接続するには�
     
     以下のユーティリティ コマンド ライン ツールを使用して CA 証明書とデバイス証明書を生成できます。
 
-    * MxChip を使用している場合は、この[コマンド ライン ユーティリティ](http://aka.ms/iotcentral-docs-dicetool)を使用して CA 証明書を生成し、IoT Central アプリに追加して、証明書を検証します。 
+    * MxChip を使用している場合は、この[コマンド ライン ユーティリティ](https://aka.ms/iotcentral-docs-dicetool)を使用して CA 証明書を生成し、IoT Central アプリに追加して、証明書を検証します。 
 
     *   この[コマンド ライン ツール](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md )を使用して以下を行います
         * 証明書チェーンを作成します (GitHub のドキュメントの手順 2)。 
@@ -165,7 +165,7 @@ X509 証明書を使用してデバイスを IoT Central に接続するには�
     スイッチを入れたときに接続詳細と IoT Central アプリ割り当てを取得するようにプロビジョニング サービス情報でデバイスをプログラムします。    
 
     **詳細参照** 
-    *   [RaspberryPi](http://aka.ms/iotcentral-docs-Raspi-releases) のサンプル実装。  
+    *   [RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases) のサンプル実装。  
 
     *   [C のサンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)。
 

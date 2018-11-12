@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 0fe3116934ac4ab9b1e3fd3b5efcd6627df0ed3d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 072fa8978bd4f08494191708d9a71c6c112a0629
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046931"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252055"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションの新機能
 
@@ -72,5 +72,5 @@ ms.locfileid: "43046931"
 * サンプル アプリケーションが更新され、すべての **v1.0** API 呼び出しに対応しました。
 * Power BI ワークスペース コレクションで Azure SDK、PowerShell、CLI がサポートされます。
 * 視覚化データを **.csv**にエクスポートできるようになりました。
-* Power BI ワークスペース コレクションが Microsoft Azure と同じ言語/ロケールでサポートされるようになりました。 詳細については、[Azure の言語](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)に関するページをご覧ください。
+* Power BI ワークスペース コレクションが Microsoft Azure と同じ言語/ロケールでサポートされるようになりました。 詳細については、[Azure の言語](https://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx)に関するページをご覧ください。
 

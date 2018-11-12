@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: wesmc
-ms.openlocfilehash: a6c3314a981b46aa6f1cbca1f34392d1e1ae6c9a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6ea237c406a9d09b500a12755cd1fa99bb7d41cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431646"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234427"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー
 Redis 出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。 このデータは、完全な HTTP 応答専用です (ページ出力キャッシュ)。 プロバイダーは、ASP.NET 4 で導入された新しい出力キャッシュ プロバイダー拡張機能ポイントに接続します。
@@ -89,8 +89,8 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
   * 既定では、新しいキャッシュに対して非 SSL ポートは無効になっています。 SSL ポートを使用するには、この設定に true を指定します。 非 SSL ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。
 * **databaseId** : キャッシュ出力データに使用するデータベースを指定します。 指定されていない場合は、既定値の 0 が使用されます。
 * **applicationName**: キーが `<AppName>_<SessionId>_Data` として Redis に格納されます。 この命名規則により、複数のアプリケーションで同じキーを共有できます。 このパラメーターは省略可能です。指定されていない場合は、既定値が使用されます。
-* **connectionTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの connectTimeout 設定をオーバーライドすることができます。 指定されていない場合は、connectTimeout 設定の既定値である 5000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](http://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
-* **operationTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの syncTimeout 設定をオーバーライドすることができます。 指定されていない場合は、syncTimeout 設定の既定値である 1000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](http://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
+* **connectionTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの connectTimeout 設定をオーバーライドすることができます。 指定されていない場合は、connectTimeout 設定の既定値である 5000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](https://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
+* **operationTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの syncTimeout 設定をオーバーライドすることができます。 指定されていない場合は、syncTimeout 設定の既定値である 1000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](https://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
 
 出力をキャッシュする各ページに、OutputCache ディレクティブを追加します。
 
@@ -98,7 +98,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-前の例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。 OutputCache ディレクティブの詳細については、「 [@OutputCache](http://go.microsoft.com/fwlink/?linkid=320837)に関するページを参照してください。
+前の例では、キャッシュされたページ データが 60 秒間キャッシュに保持され、パラメーターの組み合わせごとに異なるバージョンのページがキャッシュされます。 OutputCache ディレクティブの詳細については、「 [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)に関するページを参照してください。
 
 ここまでの手順を実行すると、アプリケーションは Redis 出力キャッシュ プロバイダーを使用するように構成されます。
 

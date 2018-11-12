@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0ca988fba91cd1d4a97ca376a6f3ff45fae214ac
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: af638c01121aa3a7f1d533cd8b50403f909d6b8e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418978"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235617"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>テンプレートを使用したパブリック ロード バランサーの作成
 
@@ -34,7 +34,7 @@ ms.locfileid: "50418978"
 
 ## <a name="deploy-the-template-by-using-click-to-deploy"></a>[クリックしてデプロイ] を使用してテンプレートをデプロイする
 
-パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。 "クリックしてデプロイ" を使用してこのテンプレートをデプロイするには、 [このリンク](http://go.microsoft.com/fwlink/?LinkId=544801)に従って、 **[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
+パブリック リポジトリで使用できるサンプル テンプレートは、上記のシナリオの生成に使用した既定値を含むパラメーター ファイルを使用します。 "クリックしてデプロイ" を使用してこのテンプレートをデプロイするには、 [このリンク](https://go.microsoft.com/fwlink/?LinkId=544801)に従って、 **[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。
 
 ## <a name="deploy-the-template-by-using-powershell"></a>PowerShell を使用してテンプレートをデプロイする
 

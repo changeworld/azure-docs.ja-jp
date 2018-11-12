@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 58992c80344902674b2b21a71b07925c752911a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145239"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230947"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -145,7 +145,7 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 
 双方向 SMS でのテキスト メッセージの配信と応答の受信は保証されませんが、これはサービスの信頼性に影響しかねない制御不能な要因があるためです。 これらの要因には、相手国、携帯電話会社、信号の強さなどがあります。
 
-テキスト メッセージがユーザーに確実に届かない問題が頻発する場合は、代わりにモバイル アプリか電話呼び出しによる認証方法を使用するようユーザーに指示してください。 モバイル アプリは、携帯電話と Wi-fi 接続の両方で通知を受け取ることができます。 さらに、デバイスに信号がまったくない場合でも、モバイル アプリは検証コードを生成できます。 Microsoft Authenticator アプリは、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073)、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。
+テキスト メッセージがユーザーに確実に届かない問題が頻発する場合は、代わりにモバイル アプリか電話呼び出しによる認証方法を使用するようユーザーに指示してください。 モバイル アプリは、携帯電話と Wi-fi 接続の両方で通知を受け取ることができます。 さらに、デバイスに信号がまったくない場合でも、モバイル アプリは検証コードを生成できます。 Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](https://go.microsoft.com/fwlink/?Linkid=825073)、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。
 
 テキスト メッセージを使用する必要がある場合は、できるだけ双方向の SMS ではなく一方向の SMS を使用することをお勧めします。 一方向の SMS は、信頼性が高く、別の国から送信されたテキスト メッセージに応答して高額な国際 SMS 料金をユーザーが課金されるのを防ぐことができます。
 

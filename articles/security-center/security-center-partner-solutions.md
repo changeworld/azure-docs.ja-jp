@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 3174f2d6562030702b14ef1fa3708a1a4e8e373b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 103e0e353efeaf493fb1d72f03eb6ce6469cd683
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301951"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235668"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Azure Security Center での接続されたパートナー ソリューションの管理
 この記事では、Azure Security Center で接続されたセキュリティ ソリューションを管理および監視する方法について説明します。
@@ -65,7 +65,7 @@ ms.locfileid: "44301951"
 * [パートナーとソリューションの統合](security-center-partner-integration.md) - 他のセキュリティ ソリューションとの統合について概説します。
 * [セキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) -- セキュリティの警告の管理と対応の方法について説明します。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [1]: ./media/security-center-partner-solutions/partner-solutions-tile.png

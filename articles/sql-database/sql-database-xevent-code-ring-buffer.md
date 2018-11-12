@@ -12,18 +12,18 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: c9c3383719ed8001167a6dce42d2df3e58b6ca74
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0da4626943a7223b24baac80121b5da0062c0d73
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161966"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237079"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database での拡張イベント向けリング バッファー ターゲット コード
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。 拡張イベントのデータの最も簡単なターゲットは、 [リング バッファー ターゲット](http://msdn.microsoft.com/library/ff878182.aspx)です。
+テスト中の拡張イベントに関する情報を、最も簡単な方法で取得およびレポートするための完全なコード サンプルが必要です。 拡張イベントのデータの最も簡単なターゲットは、 [リング バッファー ターゲット](https://msdn.microsoft.com/library/ff878182.aspx)です。
 
 このトピックでは、以下を実行する TRANSACT-SQL コードのサンプルについて説明します。
 
@@ -50,8 +50,8 @@ ms.locfileid: "47161966"
 * SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。 
   最新の ssms.exe をダウンロードすることができる。
   
-  * 「 [SQL Server Management Studio のダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
-  * [ダウンロードへの直接リンク。](http://go.microsoft.com/fwlink/?linkid=616025)
+  * 「 [SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
+  * [ダウンロードへの直接リンク。](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>サンプル コード
 
@@ -353,6 +353,6 @@ Azure SQL Database での拡張イベントに関する主なトピックは次�
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

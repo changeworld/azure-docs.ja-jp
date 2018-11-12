@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434757"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238150"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -44,11 +44,11 @@ ms.locfileid: "47434757"
 
 | データ保護オプション | クラウド内の保存データ | オンプレミスの保存データ | 転送中のデータ |
 | --- | --- | --- | --- |
-| BitLocker ドライブ暗号化 |○ |○ | |
-| SQL Server によるデータベースの暗号化 |○ |○ | |
-| VM 間での暗号化 | | |○ |
-| SSL/TLS | | |○ |
-| VPN | | |○ |
+| BitLocker ドライブ暗号化 |X |X | |
+| SQL Server によるデータベースの暗号化 |X |X | |
+| VM 間での暗号化 | | |X |
+| SSL/TLS | | |X |
+| VPN | | |X |
 
 > [!NOTE]
 > 各 Azure サービスが準拠している認定の詳細については、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)の[製品ごとのコンプライアンス](https://azure.microsoft.com/support/trust-center/services/)をお読みください。
@@ -74,7 +74,7 @@ Azure AD を使用してハイブリッド ID インフラストラクチャを�
 * ライセンスの追加または削除
 
 > [!NOTE]
-> Azure のログ記録機能の詳細については、 [Microsoft Azure のセキュリティおよび監査ログの管理](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) に関するドキュメントをお読みください。
+> Azure のログ記録機能の詳細については、 [Microsoft Azure のセキュリティおよび監査ログの管理](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) に関するドキュメントをお読みください。
 > 「 [コンテンツ管理要件の決定](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)」での質問への回答に基づいて、ハイブリッド ID ソリューションでのコンテンツの管理方法を判断できます。 表 6 で公開されているオプションは、すべて Azure AD に統合できますが、ビジネス ニーズに適したオプションを定義することが重要です。
 >
 >

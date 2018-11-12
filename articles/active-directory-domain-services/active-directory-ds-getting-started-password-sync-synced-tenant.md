@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: ergreenl
-ms.openlocfilehash: 751c9df8dc3826b54baab6166cd63a0dd8cff4f5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 813d1d17f2d9b80c2e96f771fc346e553c59e95b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155951"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234206"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード同期を有効にする
 前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要な資格情報ハッシュを Azure AD Domain Services との間で同期できるようにします。 資格情報の同期が設定されると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。
@@ -50,7 +50,7 @@ ms.locfileid: "50155951"
 ### <a name="install-or-update-azure-ad-connect"></a>Azure AD Connect のインストールまたは更新
 Azure AD Connect の最新の推奨リリースをドメイン参加コンピューターにインストールします。 Azure AD Connect の既存のインスタンスが設定されている場合は、Azure AD Connect の最新バージョンを使用するように更新する必要があります。 既に修正されている既知の問題/バグを回避するために、常に最新バージョンの Azure AD Connect を使用してください。
 
-**[Azure AD Connect のダウンロード](http://www.microsoft.com/download/details.aspx?id=47594)**
+**[Azure AD Connect のダウンロード](https://www.microsoft.com/download/details.aspx?id=47594)**
 
 推奨バージョン: **1.1.614.0** - 2017 年 9 月 5 日公開
 

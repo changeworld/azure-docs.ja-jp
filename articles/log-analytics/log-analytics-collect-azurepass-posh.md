@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 800fcc131cc6dc7b86444a00d60ad6c52599d334
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 681f0eeff0d93e6af341d2dddaf7da4475c13d9d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955098"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007197"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Log Analytics を使用した Azure PaaS リソース メトリックの収集を構成する
 
@@ -81,7 +81,7 @@ Log Analytics ワークスペースに既にデータを送信しているリソ
 
 ## <a name="next-steps"></a>次の手順
 
-* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ検索](log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 
 * [カスタム フィールド](log-analytics-custom-fields.md)を使用して、イベント レコードを個別のフィールドに解析します。
 

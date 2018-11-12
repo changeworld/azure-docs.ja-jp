@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: adigan
-ms.openlocfilehash: 8fbe3e716971f4d82e6d24fb866334ffd626bf32
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 7e95fa0cc6b5f9476df68ab44e5dbc8bb5432d52
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945979"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234458"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 この記事では、Microsoft Exchange Server を Azure Backup にバックアップするために System Center 2012 R2 Data Protection Manager (DPM) サーバーを構成する方法を説明します。  
 
 ## <a name="updates"></a>更新プログラム
-Azure Backup に DPM サーバーを正常に登録するには、System Center 2012 R2 DPM 用の最新の更新プログラムのロールアップと、Azure Backup エージェントの最新バージョンをインストールする必要があります。 [Microsoft カタログ](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager)から最新の更新プログラムのロールアップを取得します。
+Azure Backup に DPM サーバーを正常に登録するには、System Center 2012 R2 DPM 用の最新の更新プログラムのロールアップと、Azure Backup エージェントの最新バージョンをインストールする必要があります。 [Microsoft カタログ](https://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager)から最新の更新プログラムのロールアップを取得します。
 
 > [!NOTE]
 > この記事の例では、Azure Backup エージェントのバージョン 2.0.8719.0 と、System Center 2012 R2 DPM に対する更新プログラムのロールアップ 6 がインストールされています。

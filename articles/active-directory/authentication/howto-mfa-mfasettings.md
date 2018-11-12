@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: a66a7537632aac2190cd39f13665bcd8d4ed6ce7
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: bae31b245cb83821490564c60f67e88898af06b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114991"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233288"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -363,8 +363,8 @@ _選択可能な検証方法_機能を使用して、ユーザーが使用でき
 |:--- |:--- |
 | 電話の呼び出し |自動音声通話を行います。 ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。 電話番号は、オンプレミスの Active Directory には同期されません。 |
 | 電話へのテキスト メッセージ |確認コードを含むテキスト メッセージを送信します。 ユーザーは、この確認コードをサインイン インターフェイスに入力するように求められます。 このプロセスを一方向の SMS といいます。 双方向の SMS は、ユーザーが特定のコードを返信する必要があることを意味します。 双方向の SMS は非推奨となり、2018 年 11 月 14 日以降はサポートされなくなります。 双方向 SMS 用に構成されているユーザーは、その時点で_電話の呼び出し_認証に自動的に切り替わります。|
-| モバイル アプリでの通知 |電話または登録されたデバイスにプッシュ通知を送信します。 ユーザーは通知を表示し、**[確認]** を選択して認証を完了します。 Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
-| モバイル アプリからの確認コード |Microsoft Authenticator アプリは、30 秒ごとに新しい OATH 確認コードを生成します。 ユーザーは確認コードをサインイン インターフェイスに入力します。 Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
+| モバイル アプリでの通知 |電話または登録されたデバイスにプッシュ通知を送信します。 ユーザーは通知を表示し、**[確認]** を選択して認証を完了します。 Microsoft Authenticator アプリは、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](https://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
+| モバイル アプリからの確認コード |Microsoft Authenticator アプリは、30 秒ごとに新しい OATH 確認コードを生成します。 ユーザーは確認コードをサインイン インターフェイスに入力します。 Microsoft Authenticator アプリは、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071)、[Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](https://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
 
 ### <a name="enable-and-disable-verification-methods"></a>検証方法を有効または無効にする
 

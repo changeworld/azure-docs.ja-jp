@@ -2,19 +2,19 @@
 title: HDInsight での Mono のインストールまたは更新 - Azure
 description: HDInsight クラスターで Mono の特定のバージョンを使用する方法について説明します。 Mono を使用して、Linux ベースの HDInsight クラスターで .NET アプリケーションを実行します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: hdinsightactive
-ms.openlocfilehash: 54e5a5b72627dc9cd2d842ccb24d10e2f9ab9dce
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9daf0d45c9bb24192750991e7bf84fa3614c970d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957178"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011036"
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>HDInsight での Mono のインストールまたは更新
 
@@ -40,7 +40,7 @@ __スクリプトの場所__: [https://hdiconfigactions.blob.core.windows.net/in
 
 __要件__:
 
-* このスクリプトは、__ヘッド ノード__ と __ワーカー ノード__ に適用する必要があります。
+* このスクリプトは、__ヘッド ノード__と__ワーカー ノード__に適用する必要があります。
 
 ## <a name="to-use-the-script"></a>スクリプトを使用するには
 

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: e19f1a63c478d17154a24c14f6700e2fb07f2467
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ea69befb1084b08352eb3cf38db0364c5c82c45b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42146463"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237062"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -28,7 +28,7 @@ ms.locfileid: "42146463"
 - グループ識別子フィルターでの検索要求を発行します
 
 >[!NOTE]
-> この記事のサンプル コード スニペットは、C# で書かれています。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 
+> この記事のサンプル コード スニペットは、C# で書かれています。 [GitHub](https://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 
 
 ## <a name="prerequisites"></a>前提条件
 

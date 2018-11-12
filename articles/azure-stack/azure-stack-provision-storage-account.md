@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: ae6539900e201f0559d998ad2d9be24c39d42e3b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 608525a1f06a396c7df7d764f236f33af77dccc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713495"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235345"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Azure Stack のストレージ アカウント
 ストレージ アカウントには、BLOB や Table service、およびストレージ データ オブジェクトの一意の名前空間が含まれます。 既定では、アカウントのデータはストレージ アカウント所有者だけが使用できます。
@@ -34,8 +34,8 @@ ms.locfileid: "44713495"
     ![](media/azure-stack-provision-storage-account/image03.png)
 
 ### <a name="next-steps"></a>次の手順
-[Azure Resource Manager テンプレートの使用](user/azure-stack-arm-templates.md)
+[Azure リソース マネージャー テンプレートの使用](user/azure-stack-arm-templates.md)
 
 [Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)
 
-[Azure Stack Azure 互換ストレージの検証ガイドのダウンロード](http://aka.ms/azurestacktp1doc)
+[Azure Stack Azure 互換ストレージの検証ガイドのダウンロード](https://aka.ms/azurestacktp1doc)

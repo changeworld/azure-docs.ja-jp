@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: yurid
-ms.openlocfilehash: a0a218fc18c1c9ede71de590179b0c93221eb80c
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 5f0f6a6d2c3e919c59f030e3cf47fc208f14caea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161035"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233424"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure Security Center の検出機能
 このドキュメントでは、Azure Security Center の高度な検出機能について取り上げます。この機能を使用すると、Microsoft Azure リソースが今さらされている脅威を特定し、迅速に対応するうえで必要な知見を得ることができます。
@@ -89,5 +89,5 @@ Azure Security Center に寄与するセキュリティ リサーチ チーム�
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 

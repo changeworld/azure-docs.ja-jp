@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d193cfcd03eb4e686ba829e121fbf77e2e0c18a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577333"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233016"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>マーケットプレースでのビジネスの拡大 
 Azure AppSource または Azure Marketplace へのオファー公開後は、Microsoft との共同の Go-To-Market (GTM) アクティビティの出発点として、オファーのリストを使用できます。 たとえば、Marketplace のオファーにトラフィックを呼び込み、Marketplace のリードを育成することは、ビジネスの拡大を加速する優れた方法です。 
@@ -229,7 +229,7 @@ MPN は、以下に関するガイダンスを提供しています。
 
 | メリット | リソース |
 |:--- |:--- |
-| 基本特典を利用する | Microsoft Partner Network では、一連の基本特典を利用し、時間とコストの節約に役立てることができます。 この特典は、スキルの強化や顧客サービスの改善、またつながりの構築によるビジネス チャンスの最大化にも役立ちます。<br>基本特典の詳細については、[基本特典と要件](http://partner.microsoft.com/membership/core-benefits)のページを参照してください。 |
+| 基本特典を利用する | Microsoft Partner Network では、一連の基本特典を利用し、時間とコストの節約に役立てることができます。 この特典は、スキルの強化や顧客サービスの改善、またつながりの構築によるビジネス チャンスの最大化にも役立ちます。<br>基本特典の詳細については、[基本特典と要件](https://partner.microsoft.com/membership/core-benefits)のページを参照してください。 |
 | クラウド プラットフォーム コンピテンシーを獲得する | コンピテンシーを獲得することで、他の Microsoft パートナー間で自社を差別化できます。 また、技術的な専門知識や、顧客の成功事例を説明するうえでも役立ちます。 コンピテンシーは、Co-Sell など、多くの重要なパートナー プログラムの前提条件となっています。<br> クラウド プラットフォーム コンピテンシーの詳細については、[クラウド プラットフォーム コンピテンシー](https://partner.microsoft.com/membership/cloud-platform-competency)のページを参照してください。 |
 | IP Co-Sell の準備が整う | パートナーは IP Co-Sell 準備プログラムの利用条件を満たすことができ、対象顧客の営業案件およびアカウント計画について、Microsoft の販売者および他のパートナーと直接連携することができます。 ソリューションは、販売者のソリューション カタログ内に Microsoft 販売者に向けて表示されます。 Microsoft 販売者は、パートナーとコラボレートし、ビジネスを連携的に成功させることで報酬を得ます。<br> 利用条件についての要件を含めた Co-Sell の準備プログラムの詳細については、「[ビジネスを推進する](https://partner.microsoft.com/reach-customers/promote-your-business)」を参照してください。 |
 

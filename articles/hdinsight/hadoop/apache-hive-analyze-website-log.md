@@ -2,19 +2,19 @@
 title: Web サイトのログ分析のための Hadoop での Hive の使用 - Azure HDInsight
 description: Web サイトのログを分析するために HDInsight で Hive を使用する方法を説明します。 HDInsight テーブルへの入力にログ ファイルを使用し、HiveQL を使用してデータを照会します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/17/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 47175ed4bc01a43d1f21cbfc84b8a788f11b7338
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c0a15bacd3aaf97a3caa54ee8bf70a9c4cf54663
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048026"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233600"
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Web サイトのログを分析するための Windows ベースの HDInsight での Hive の使用
 Web サイトのログを分析するために HDInsight で HiveQL を使用する方法を説明します。 Web サイトのログ分析は、類似するアクティビティに基づく対象ユーザーの区分、人口統計によるサイト訪問者の分類、参照されたコンテンツや訪問元の Web サイトの確認などのために使用できます。
@@ -34,7 +34,7 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 ## <a name="prerequisites"></a>前提条件
 * Azure HDInsight 上で Hadoop クラスターをプロビジョニングしておく必要があります。 手順については、[HDInsight クラスターのプロビジョニング](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 * Microsoft Excel 2013 または Microsoft Excel 2010 がインストールされていること。
-* Hive から Excel にデータをインポートするための [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/download/details.aspx?id=40886) があること。
+* Hive から Excel にデータをインポートするための [Microsoft Hive ODBC ドライバー](https://www.microsoft.com/download/details.aspx?id=40886) があること。
 
 ## <a name="to-run-the-sample"></a>サンプルを実行するには
 1. [Azure ポータル](https://portal.azure.com/)のスタート画面 (ポータルにクラスターをピン留めした場合) で、サンプルを実行するクラスターのタイルをクリックします。

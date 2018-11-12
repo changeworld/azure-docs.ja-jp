@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e13ba0bcbd24dcc3cd08a0d2886f1da9d85de79
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970925"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249916"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Team Data Science Process テンプレートでのプロジェクトの体系化
 
@@ -54,7 +54,7 @@ TDSP の詳細については、[Team Data Science Process の概要](../team-da
 * コンテンツ ("docs" フォルダー内に既に存在するもの以外) のサイズは 25 MB 未満である必要があります。 この一覧の後の注意事項を確認してください。
 * sample\_data フォルダーは、コードをテストする場合や開発を早期に開始する場合に使用できる小さなデータ ファイル (5 MB 未満) 専用です。
 * Word や PowerPoint などのファイルを格納すると、"docs" フォルダーのサイズが大幅に増加する可能性があります。 このようなファイルを格納するには、コラボレーション Wiki、[SharePoint](https://products.office.com/sharepoint/collaboration)、またはその他のコラボレーション リソースを探すことをお勧めします。
-* Machine Learning で大きなファイルと出力を処理する方法については、「[変更の保持と大規模なファイルの処理](http://aka.ms/aml-largefiles)」をご覧ください。
+* Machine Learning で大きなファイルと出力を処理する方法については、「[変更の保持と大規模なファイルの処理](https://aka.ms/aml-largefiles)」をご覧ください。
 
 > [!NOTE]
 > readme.md ファイルを除き、プロジェクトの実行中には*使用されない*すべてのドキュメント関連コンテンツ (テキスト、マークダウン、イメージ、その他のドキュメント ファイル) が "docs" (すべて小文字) という名前のフォルダーに存在している必要があります。 "docs" フォルダーは Machine Learning の実行で無視される特殊なフォルダーであるため、このフォルダー内のコンテンツは計算のターゲットに不必要にコピーされません。 このフォルダーのオブジェクトは、プロジェクト サイズの 25 MB の上限にカウントされません。 たとえば、"docs" フォルダーは、ドキュメントに必要な大きいイメージ ファイルを保存する場所です。 これらのファイルは、実行履歴を通じて Git によって追跡されます。 

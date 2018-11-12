@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 5dba091f62e320d6f9a48bea0208ef74db351402
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: df3062349ac384b92eeaf9483310cd5d3b48921f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095507"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238558"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用した Azure SQL Database の監視
 
@@ -682,7 +682,7 @@ SQL Database 分析の場合、[sys.resource_stats](https://msdn.microsoft.com/l
 
 ## <a name="monitoring-query-performance"></a>クエリのパフォーマンスの監視
 
-クエリが低速または実行時間が長いと、大量のシステム リソースが消費される可能性があります。 ここでは、動的管理ビューを使用して、いくつかの一般的なクエリ パフォーマンスの問題を検出する方法について説明します。 Microsoft TechNet の [SQL Server 2008 のパフォーマンスに関する問題のトラブルシューティング](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) についての記事が、古いものの今でもトラブルシューティングに役立ちます。
+クエリが低速または実行時間が長いと、大量のシステム リソースが消費される可能性があります。 ここでは、動的管理ビューを使用して、いくつかの一般的なクエリ パフォーマンスの問題を検出する方法について説明します。 Microsoft TechNet の [SQL Server 2008 のパフォーマンスに関する問題のトラブルシューティング](https://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) についての記事が、古いものの今でもトラブルシューティングに役立ちます。
 
 ### <a name="finding-top-n-queries"></a>上位 N 個のクエリの検索
 

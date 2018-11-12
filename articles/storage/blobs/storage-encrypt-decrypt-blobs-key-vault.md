@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 5139f41832446add3431fc0f4e321af806342da2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 092ffa5ed34a8e0a05b69c3fae86ab7299760ac2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296978"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233101"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
 ## <a name="introduction"></a>はじめに
@@ -225,4 +225,4 @@ C# での Microsoft Azure Storage の使用について詳しくは、「[.NET �
 
 BLOB REST API について詳しくは、「[BLOB サービス REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)」をご覧ください。
 
-Microsoft Azure Storage の最新情報については、[Microsoft Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)をご覧ください。
+Microsoft Azure Storage の最新情報については、[Microsoft Azure Storage チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)をご覧ください。

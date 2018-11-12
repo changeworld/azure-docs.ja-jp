@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: be6bda4f5c420d1e631690fc648f982d4910e198
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 6688432342ff08d2ca177570cc6bbbe0095ccbe0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585987"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229067"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake を使用したスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル
-このチュートリアルでは、NYC タクシー乗車と料金のデータセットを例にして、Azure Data Lake を使用してデータ探索タスクと二項分類タスクを実行し、料金ごとにチップが支払われるかどうかを予測します。 また、データの取得から、モデルのトレーニング、モデルを公開する Web サービスのデプロイまで、 [Team Data Science Process](http://aka.ms/datascienceprocess)のエンド ツー エンドの手順について説明します。
+このチュートリアルでは、NYC タクシー乗車と料金のデータセットを例にして、Azure Data Lake を使用してデータ探索タスクと二項分類タスクを実行し、料金ごとにチップが支払われるかどうかを予測します。 また、データの取得から、モデルのトレーニング、モデルを公開する Web サービスのデプロイまで、 [Team Data Science Process](https://aka.ms/datascienceprocess)のエンド ツー エンドの手順について説明します。
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) には、データ科学者が、拡張性が高く、コスト効率がよい方法で、任意のサイズ、形状、および速度のデータを格納し、データ処理、高度な分析、および機械学習モデリングを行うために必要なすべての機能が揃っています。   データが実際に処理されたときにのみ、ジョブごとに課金されます。 Azure Data Lake Analytics には U-SQL が含まれています。U-SQL は、SQL の宣言型の性質と C# の表現力を兼ね備え、スケーラブルな分散クエリ機能を持つ言語です。 読み取り時にスキーマを適用して非構造化データを処理し、カスタム ロジックとユーザー定義関数 (UDF) を挿入できます。また、規模に応じて実行する方法を細かく制御できる拡張性もあります。 U-SQL の背景にある設計理念の詳細については、[Visual Studio ブログの投稿](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)を参照してください。
@@ -684,7 +684,7 @@ Web サービス ダッシュボードがすぐに表示されます。
 このチュートリアルを終了すると、Azure Data Lake でスケーラブルなエンド ツー エンド ソリューションを構築するデータ サイエンス環境を作成することができます。 この環境を使用して、大規模なパブリック データセットが分析されました。モデル トレーニングによるデータの取得から、Web サービスとしてのモデルのデプロイまで、データ サイエンス プロセスの正規の手順を使用して行われました。 データの処理、調査、およびサンプリングには、U-SQL が使用されました。 予測モデルの構築とデプロイには、Azure Machine Learning Studio と共に、Python と Hive が使用されました。
 
 ## <a name="whats-next"></a>次の手順
-[Team Data Science Process (TDSP)](http://aka.ms/datascienceprocess) のラーニング パスには、高度な分析プロセスの各手順を説明するトピックへのリンクが用意されています。 「[Team Data Science Process のチュートリアル](walkthroughs.md)」ページには一連のチュートリアルがあります。チュートリアルには、さまざまな予測分析シナリオでリソースとサービスを使用する方法が示されています。
+[Team Data Science Process (TDSP)](https://aka.ms/datascienceprocess) のラーニング パスには、高度な分析プロセスの各手順を説明するトピックへのリンクが用意されています。 「[Team Data Science Process のチュートリアル](walkthroughs.md)」ページには一連のチュートリアルがあります。チュートリアルには、さまざまな予測分析シナリオでリソースとサービスを使用する方法が示されています。
 
 * [Team Data Science Process の活用: SQL Data Warehouse の使用](sqldw-walkthrough.md)
 * [Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](hive-walkthrough.md)

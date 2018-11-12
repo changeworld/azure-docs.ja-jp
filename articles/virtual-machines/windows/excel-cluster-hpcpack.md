@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.openlocfilehash: 4a6327fcfe6f6e6f3b8b5c6ecbd14b832b4134c5
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5b8d3aa69d6a141394395f012e5cc57873cafaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421214"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235940"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Excel と SOA ワークロードを実行する
 この記事では、Azure クイックスタート テンプレートまたは必要に応じて Azure PowerShell デプロイ スクリプトを使用して、Azure Virtual Machines に Microsoft HPC Pack 2012 R2 クラスターをデプロイする方法を示します。 クラスターは、HPC Pack で Microsoft Excel またはサービス指向アーキテクチャ (SOA) のワークロードを実行するように設計されている Azure Marketplace VM イメージを使用します。 クラスターを使用して、オンプレミスのクライアント コンピューターから Excel HPC サービスおよび SOA サービスを実行できます。 Excel の HPC サービスには、Excel ブックのオフロードと Excel ユーザー定義関数、または UDF が含まれます。
@@ -225,7 +225,7 @@ VM イメージにインストールされる Office Professional Plus 2013 は�
         </startup>
     </configuration>
     ```
-1. クライアントをセットアップし、HPC Pack クラスターにジョブを送信します。 1 つの方法としては、 [HPC Pack 2012 R2 Update 3 インストール](http://www.microsoft.com/download/details.aspx?id=49922) の完全版をダウンロードして HPC Pack クライアントをインストールします。 別の方法としては、[HPC Pack 2012 R2 Update 3 クライアント ユーティリティ](https://www.microsoft.com/download/details.aspx?id=49923)とコンピューターに適した Visual C++ 2010 再頒布可能パッケージをダウンロードしてインストールします ([x64](http://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555))。
+1. クライアントをセットアップし、HPC Pack クラスターにジョブを送信します。 1 つの方法としては、 [HPC Pack 2012 R2 Update 3 インストール](https://www.microsoft.com/download/details.aspx?id=49922) の完全版をダウンロードして HPC Pack クライアントをインストールします。 別の方法としては、[HPC Pack 2012 R2 Update 3 クライアント ユーティリティ](https://www.microsoft.com/download/details.aspx?id=49923)とコンピューターに適した Visual C++ 2010 再頒布可能パッケージをダウンロードしてインストールします ([x64](https://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555))。
 1. この例では、ConvertiblePricing_Complete.xlsb という名前のサンプル Excel ブックを使用します。 [こちら](https://www.microsoft.com/en-us/download/details.aspx?id=2939)からダウンロードできます。
 1. Excel ブックを D:\Excel\Run などの作業フォルダーにコピーします。
 1. Excel ブックを開きます。 **[開発]** リボンで **[COM アドイン]** をクリックし、HPC Pack Excel COM アドインが正常に読み込まれていることを確認します。
@@ -262,7 +262,7 @@ Excel の UDF を実行するには、前記の手順 1 ～ 3 に従ってクラ
 > 
 > 
 
-クラスターが正常にデプロイされた後、引き続き以下の手順に従って、サンプルの組み込み Excel UDF を実行します。 Excel UDF をカスタマイズした場合は、 [リソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) を参考にして、XLL を作成し、IaaS クラスターにそれをデプロイしてください。
+クラスターが正常にデプロイされた後、引き続き以下の手順に従って、サンプルの組み込み Excel UDF を実行します。 Excel UDF をカスタマイズした場合は、 [リソース](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) を参考にして、XLL を作成し、IaaS クラスターにそれをデプロイしてください。
 
 1. 新しい Excel ブックを開きます。 **[開発]** リボンで **[アドイン]** をクリックします。次に、ダイアログ ボックスで **[参照]** をクリックし、%CCP_HOME%Bin\XLL32 フォルダーに移動して、サンプルの ClusterUDF32.xll を選択します。 ClusterUDF32 がクライアント コンピューターに存在しない場合は、ヘッド ノードの %CCP_HOME%Bin\XLL32 フォルダーからコピーします。
    
@@ -280,7 +280,7 @@ Excel の UDF を実行するには、前記の手順 1 ～ 3 に従ってクラ
 一般的な SOA アプリケーションを HPC Pack IaaS クラスターで実行するには、まず、手順 1 のいずれかの方法に従い、クラスターをデプロイします。 この場合、コンピューティング ノードでは Excel が必要ないため、汎用コンピューティング ノード イメージを指定します。 次に、以下の手順に従います。
 
 1. クラスター証明書を取得した後、クライアント コンピューターで Cert:\CurrentUser\Root にインポートします。
-1. [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) および [HPC Pack 2012 R2 Update 3 クライアント ユーティリティ](https://www.microsoft.com/download/details.aspx?id=49923)をインストールします。 これらのツールを使用すると、SOA クライアント アプリケーションをデプロイして実行できます。
+1. [HPC Pack 2012 R2 Update 3 SDK](https://www.microsoft.com/download/details.aspx?id=49921) および [HPC Pack 2012 R2 Update 3 クライアント ユーティリティ](https://www.microsoft.com/download/details.aspx?id=49923)をインストールします。 これらのツールを使用すると、SOA クライアント アプリケーションをデプロイして実行できます。
 1. HelloWorldR2 [サンプル コード](https://www.microsoft.com/download/details.aspx?id=41633)をダウンロードします。 Visual Studio 2010 または 2012 で HelloWorldR2.sln を開きます。 (このサンプルは、現在より新しいバージョンの Visual Studio には対応していません)。
 1. 最初に EchoService プロジェクトをビルドします。 次に、オンプレミスのクラスターにデプロイするのと同じ方法で、IaaS クラスターにサービスをデプロイします。 詳細な手順については、HelloWordR2 の Readme.doc を参照してください。 次のセクションで説明するように HellWorldR2 および他のプロジェクトを変更してビルドし、Azure IaaS クラスター上で実行する SOA クライアント アプリケーションを生成します。
 
@@ -343,7 +343,7 @@ NetTcp バインディングを使用するための構成は、オンプレミ�
 SOA クライアント アプリケーションでは、IaaS クラスターの完全な名前にヘッド名を変更する以外の変更は不要です。
 
 ## <a name="next-steps"></a>次の手順
-* HPC Pack での Excel ワークロードの実行に関する詳細については、 [これらのリソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) を参照してください。
+* HPC Pack での Excel ワークロードの実行に関する詳細については、 [これらのリソース](https://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) を参照してください。
 * HPC Pack での SOA サービスのデプロイと管理について詳しくは、「 [サービス](https://technet.microsoft.com/library/ff919412.aspx) 」を参照してください。
 
 <!--Image references-->

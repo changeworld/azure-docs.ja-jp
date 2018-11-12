@@ -8,19 +8,19 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: c51ce44d1f6c2dcacaed09a490e46ad3af1ec9dc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 916b2177e6963ce51e644c2bcf9204cb1e110349
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406689"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236586"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-gdpr"></a>Azure のセキュリティとコンプライアンスのブループリント: GDPR のための PaaS Web アプリケーション
 
 ## <a name="overview"></a>概要
 一般データ保護規則 (GDPR) には、個人情報の収集、保管、および使用に関する多くの要件があり、個人データの特定と保護、透明性要件への対応、個人データの侵害の検知と報告、およびプライバシー管理者と他の従業員のトレーニングを組織がどのように実施するかについての要件が含まれています。 GDPR は、個人による個人データの管理能力を強め、個人データの収集、処理、または分析を行う組織に対して多数の新しい義務を課しています。 GDPR は、欧州連合 (EU) の居住者に商品やサービスを提供する組織、または EU の居住者に結び付くデータの収集と分析を行う組織を対象とする新しい規則です。 GDPR は、組織の所在地に関係なく適用されます。
 
-Microsoft では、業界をリードするセキュリティ対策とプライバシー ポリシーを用いてクラウド内のデータを保護するように Azure を設計しています。この中に、GDPR によって識別される個人データのカテゴリも含まれています。 Microsoft の[契約条項](http://aka.ms/Online-Services-Terms)は、Microsoft がデータ処理者の要件に準拠していることを明言しています。
+Microsoft では、業界をリードするセキュリティ対策とプライバシー ポリシーを用いてクラウド内のデータを保護するように Azure を設計しています。この中に、GDPR によって識別される個人データのカテゴリも含まれています。 Microsoft の[契約条項](https://aka.ms/Online-Services-Terms)は、Microsoft がデータ処理者の要件に準拠していることを明言しています。
 
 このAzure のセキュリティとコンプライアンスのブループリントでは、インターネットに接続する単純な Web アプリケーションに適している サービスとしてのプラットフォーム (PaaS) 環境をデプロイするためのガイダンスを提供します。 このソリューションは、GDPR の特定のセキュリティとコンプライアンスの要件を満たすことができる方法を例示し、Azure で独自の PaaS Web アプリケーション ソリューションをビルドして構成するための基礎として機能します。 この参照アーキテクチャを活用し、Microsoft の [4 段階のプロセス](https://aka.ms/gdprebook)に従うことで、GDPR への準拠を実現できます。
 1. 検出: どのような個人データがどこに存在するかを識別します。

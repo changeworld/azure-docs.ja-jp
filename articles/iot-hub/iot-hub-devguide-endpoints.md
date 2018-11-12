@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 12dd93edce365509488631e4ca27462256abfca8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452668"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251442"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -57,7 +57,7 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 
 * **サービス エンドポイント**。 各 IoT Hub では、ソリューション バックエンドに対して一連のエンドポイントを公開し、デバイスと通信を行います。 唯一の例外は、これらのエンドポイントが [AMQP](https://www.amqp.org/) プロトコルを使用して公開のみが行われる場合です。 メソッド呼び出しのエンドポイントは、HTTPS プロトコルを介して公開されます。
   
-  * *D2C メッセージの受信*。 このエンドポイントには、[Azure Event Hubs](http://azure.microsoft.com/documentation/services/event-hubs/)との互換性があります。 バックエンド サービスはこのエンドポイントを使用して、デバイスによって送信された[デバイスからクラウドへのメッセージ](iot-hub-devguide-messages-d2c.md)を読み取ることができます。 この組み込みのエンドポイントに加え、IoT Hub のカスタム エンドポイントを作成することもできます。
+  * *D2C メッセージの受信*。 このエンドポイントには、[Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)との互換性があります。 バックエンド サービスはこのエンドポイントを使用して、デバイスによって送信された[デバイスからクラウドへのメッセージ](iot-hub-devguide-messages-d2c.md)を読み取ることができます。 この組み込みのエンドポイントに加え、IoT Hub のカスタム エンドポイントを作成することもできます。
   
   * *C2D メッセージの送信と、配信の確認メッセージの受信*。 これらのエンドポイントにより、ソリューション バックエンドは、信頼性の高い [Cloud-to-device メッセージ](iot-hub-devguide-messages-c2d.md)を送信し、対応する配信または有効期限の確認メッセージを受信できます。
   

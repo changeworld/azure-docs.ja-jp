@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 65307eab0bf1b5f502f11c14c369826cd12e0966
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: b2a93c7d3b512a34ab5d2e4fd020415739466c2e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311086"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235294"
 ---
 # <a name="enterprise-plan-details"></a>Enterprise プランの詳細
 
 Azure Application Insights には、Basic と Enterprise の 2 つの価格プランがあります。 [Basic](app-insights-pricing.md) 価格プランは既定のプランです。 これには、Enterprise プランのすべての機能が追加コストなしで含まれます。 Basic プランでは基本的に、取り込まれるデータの量に基づいて請求されます。 
 
-Enterprise プランはノードあたりの料金で、各ノードが 1 日あたりの無料データ利用分を受け取ります。 Enterprise 価格プランでは、含まれる無料利用分を超えて取り込まれたデータに対して課金されます。 Operations Management Suite を使用している場合は、Enterprise プランを選択する必要があります。 
+Enterprise プランはノードあたりの料金で、各ノードに 1 日あたりの無料データ利用分があります。 Enterprise 価格プランでは、含まれる無料利用分を超えて取り込まれたデータに対して課金されます。 Operations Management Suite を使用している場合は、Enterprise プランを選択する必要があります。 
 
-お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格](http://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+お客様の通貨およびリージョンでの現在の価格については、「[Application Insights の価格](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
 
 > [!NOTE]
 > 2018 年 4 月に、Azure Monitoring 用の新しい価格モデルを[導入](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)しました。 このモデルでは、監視サービスのポートフォリオ全体で単純な "従量課金制" モデルを採用しています。 [新しい価格モデル](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs)の詳細、使用パターンに基づいて[このモデルへの移行の影響を評価](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model)する方法、[新しいモデルを有効にする方法](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)をご確認ください。
@@ -34,7 +34,7 @@ Enterprise プランはノードあたりの料金で、各ノードが 1 日あ
 ## <a name="how-the-enterprise-plan-works"></a>Enterprise プランのしくみ
 
 * Enterprise プランでは、アプリに対してテレメトリを送信するノードごとに料金が課金されます。
- * *ノード*とは、アプリをホストする物理または仮想サーバー マシン (または Platform-as-a-Service (PaaS) ロール インスタンス) のことです。
+ * *ノード*とは、アプリをホストする物理または仮想サーバー マシン (または、サービスとしてのプラットフォーム (PaaS) ロール インスタンス) のことです。
  * 開発マシン、クライアントのブラウザー、およびモバイル デバイスはノードとしてカウントされません。
  * テレメトリを送信するコンポーネント (Web サービスやバックエンド ワーカーなど) がアプリに複数ある場合、それらは個別にカウントされます。
  * [ライブ メトリック ストリーム](app-insights-live-stream.md) データは、課金対象としてカウントされません。 サブスクリプション内では、料金はノード単位で計算されます (アプリ単位ではありません)。 12 のアプリに対して 5 つのノードがテレメトリを送信する場合、料金は 5 ノード分になります。
@@ -56,6 +56,6 @@ Enterprise プランはノードあたりの料金で、各ノードが 1 日あ
 
 * 正確なノード カウントは、アプリケーションで使用している Application Insights SDK によって異なります。 
   * SDK バージョン 2.2 以降では、Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) と [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) の両方が、各アプリケーション ホストをノードとして報告します。 例としては、物理サーバーと VM ホストのコンピューター名やクラウド サービスのインスタンス名があります。  唯一の例外は、[.NET Core](https://dotnet.github.io/) と Application Insights Core SDK のみを使用するアプリケーションです。 その場合は、ホスト名が使用できないためすべてのホストに対して 1 つのノードが報告されます。 
-  * 以前のバージョンの SDK である [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく 1 つのノードのみ報告します。 
+  * 以前のバージョンの SDK では、[Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく 1 つのノードのみ報告します。 
   * アプリケーションで SDK を使用して**ロール インスタンス**をカスタム値に設定すると、既定ではノード カウントの決定に同じ値が使用されます。 
   * クライアント コンピューターやモバイル デバイスから実行されているアプリで新しいバージョンの SDK を使用している場合は、ノード カウントが (クライアント コンピューターやモバイル デバイスの数が多いため) 非常に大きい数値を返す可能性があります。 

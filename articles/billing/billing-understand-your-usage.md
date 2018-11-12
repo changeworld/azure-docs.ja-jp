@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: a037f4837be65eb7eac76977a3728c7357e09463
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394439"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230463"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Microsoft Azure の詳細な利用料金の用語を理解する 
 
@@ -77,7 +77,7 @@ CSV ファイルの毎日の使用状況セクションには、請求金額に�
 |使用サービス |使用した Azure プラットフォーム サービス |
 |リソース グループ |デプロイされたメーターが実行されるリソース グループ。 <br/><br/>詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」を参照してください。 |
 |インスタンス ID | メーターの識別子。 <br/><br/> 識別子には、メーターの作成時に指定した名前が含まれています。 リソース名または完全修飾リソース ID のいずれかです。 詳細については、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) に関するページを参照してください。 |
-|タグ | ユーザーがメーターに割り当てるタグです。 タグは、課金記録のグループ化に使用できます。<br/><br/>たとえば、タグを使用して、メーターを使用する部門ごとにコストを配分することができます。 タグの生成をサポートするサービスは、仮想マシン、記憶域、および [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) を使用してプロビジョニングされたネットワーク サービスです。 詳細については、[タグを使用した Azure リソースの整理](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)に関するページを参照してください。 |
+|タグ | ユーザーがメーターに割り当てるタグです。 タグは、課金記録のグループ化に使用できます。<br/><br/>たとえば、タグを使用して、メーターを使用する部門ごとにコストを配分することができます。 タグの生成をサポートするサービスは、仮想マシン、記憶域、および [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources) を使用してプロビジョニングされたネットワーク サービスです。 詳細については、[タグを使用した Azure リソースの整理](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)に関するページを参照してください。 |
 |追加情報 |サービス固有のメタデータ。 たとえば、仮想マシンのイメージの種類です。 |
 |サービス情報 1 |サブスクリプションでサービスが属しているプロジェクトの名前 |
 |サービス情報 2 |これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 43a3458ba0f08d73931b5ecddf6a2c7b1ae259f4
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e339d50a379015d7aebe19b25127e9804d8efc52
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044817"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237249"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 クラウド サービスを作成するときに、Azure は **cloudapp.net**のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは http://contoso.cloudapp.net のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。
@@ -36,7 +36,7 @@ CNAME レコードと A レコードについてすでに理解している場�
 <p/>
 
 > [!TIP]
-> より速く進める --新しい Azure の使用 [チュートリアル ガイド](http://support.microsoft.com/kb/2990804)!  Azure Cloud Services  または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
+> より速く進める --新しい Azure の使用 [チュートリアル ガイド](https://support.microsoft.com/kb/2990804)!  Azure Cloud Services  または Azure Websites を使用したカスタム ドメイン名の関連付けおよび通信 (SSL) のセキュリティ保護がすばやく行えます。
 > 
 > 
 
@@ -66,7 +66,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
 
 1. これらの手段のいずれかを使用して、クラウド サービスに割り当てられた **.cloudapp.net** ドメイン名を見つけます。
    
-   * [Azure ポータル] にログインし、クラウド サービスを選択して、**[要点]** セクションを確認して **[サイトの URL]** エントリを見つけます。
+   * [Azure Portal] にログインし、クラウド サービスを選択して、**[要点]** セクションを確認して **[サイトの URL]** エントリを見つけます。
      
        ![サイトの URL を表示する [概要] セクション][csurl]
      
@@ -101,7 +101,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 
 1. 次の手段のいずれかを使用して、クラウド サービスの IP アドレスを取得します。
    
-   * [Azure ポータル] にログインし、クラウド サービスを選択して、**[要点]** セクションを確認して **[パブリック IP アドレス]** エントリを見つけます。
+   * [Azure Portal] にログインし、クラウド サービスを選択して、**[要点]** セクションを確認して **[パブリック IP アドレス]** エントリを見つけます。
      
        ![VIP を表示する [概要] セクション][vip]
      
@@ -145,6 +145,6 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure ポータル]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png

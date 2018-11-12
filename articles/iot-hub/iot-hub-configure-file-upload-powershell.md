@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: f468567aa67560eed972fb53669638a17778b307
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b99874ce87c6e161fcd62ec871c6aee277ec946e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189956"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232296"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>PowerShell を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "43189956"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](http://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
 
 * [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b45acebf95d5bf24ff2045f5739c8584f374842
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 70c19b394b5c5702a0ec0f18aa3bbd0c05e39dfd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320460"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249797"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証: クイック スタート
 
@@ -142,7 +142,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>次の手順
-- [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
+- [AD FS からパススルー認証への移行](https://aka.ms/adfstoptadp) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
 - [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成する方法を確認します。
 - [現在の制限](how-to-connect-pta-current-limitations.md): パススルー認証でサポートされているシナリオと、サポートされていないシナリオを確認します。
 - [技術的な詳細](how-to-connect-pta-how-it-works.md): パススルー認証機能のしくみを理解します。

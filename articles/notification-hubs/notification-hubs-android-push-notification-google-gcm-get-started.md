@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/05/2018
 ms.author: dimazaid
-ms.openlocfilehash: 1e9ed9d3500b112f98492e6a85d02a1f1843c7c3
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ab47db7629c92b0e6a5b268c9d233135485a37a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365579"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237717"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>チュートリアル: Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -46,7 +46,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 ## <a name="prerequisites"></a>前提条件
 
 - **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 
-- [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)。
+- [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797)。
 
 ## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>Google Cloud Messaging をサポートするプロジェクトを作成する
 [!INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
@@ -524,7 +524,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. 通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成します。 接続文字列のキー データを解析してから、「[共通概念](http://msdn.microsoft.com/library/azure/dn495627.aspx)」の REST API リファレンスの説明に従って SaS トークンを作成します。 次のコードでは、実装例を示します。
+6. 通知ハブにメッセージを送信するには、POST 要求を認証するためのソフトウェア アクセス署名 (SaS) トークンを作成します。 接続文字列のキー データを解析してから、「[共通概念](https://msdn.microsoft.com/library/azure/dn495627.aspx)」の REST API リファレンスの説明に従って SaS トークンを作成します。 次のコードでは、実装例を示します。
    
     `MainActivity.java` で、接続文字列を解析する次のメソッドを `MainActivity` クラスに追加します。
    

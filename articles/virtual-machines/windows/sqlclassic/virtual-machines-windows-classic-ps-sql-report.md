@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be46fb0c41909ce8a8014b13843970555d366f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143829"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233084"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
@@ -90,7 +90,7 @@ ms.locfileid: "42143829"
 
 VM で HTTPS を使用するには、信頼済み SSL 証明書が必要です。 シナリオに応じて、次の 2 つの方法のいずれかを使用できます。
 
-* 証明機関 (CA) が発行し、Microsoft が信頼する有効な SSL 証明書。 CA ルート証明書が Microsoft ルート証明書プログラムによって配布されている必要があります。 このプログラムの詳細については、「[Windows and Windows Phone 8 SSL Root Certificate Program (Member CAs)](http://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx)」 (Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA))、および「[Introduction to The Microsoft Root Certificate Program](http://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx)」 (Microsoft ルート証明書プログラムの概要) を参照してください。
+* 証明機関 (CA) が発行し、Microsoft が信頼する有効な SSL 証明書。 CA ルート証明書が Microsoft ルート証明書プログラムによって配布されている必要があります。 このプログラムの詳細については、「[Windows and Windows Phone 8 SSL Root Certificate Program (Member CAs)](https://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx)」 (Windows および Windows Phone 8 SSL ルート証明書プログラム (メンバー CA))、および「[Introduction to The Microsoft Root Certificate Program](https://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx)」 (Microsoft ルート証明書プログラムの概要) を参照してください。
 * 自己署名証明書。 運用環境では、自己署名証明書を使用しないことをお勧めします。
 
 ### <a name="to-use-a-certificate-created-by-a-trusted-certificate-authority-ca"></a>信頼された証明機関 (CA) によって作成された証明書を使用するには

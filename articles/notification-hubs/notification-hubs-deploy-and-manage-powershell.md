@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 8312841b5f8e4b9979de8abf32ce1009b4243f06
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 7107c4ebd3f7df5966dd4c66aa8f453bd4f3d1d6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388165"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228353"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>PowerShell を使用した Notification Hubs のデプロイと管理
 ## <a name="overview"></a>概要
@@ -147,8 +147,8 @@ else
 
 ## <a name="additional-resources"></a>その他のリソース
 * [PowerShell で Service Bus を管理する](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-* [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [PowerShell スクリプトを使用してService Bus キュー、トピック、サブスクリプションを作成する方法 (ブログの投稿)](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [PowerShell スクリプトを使用して Service Bus の名前空間と Event Hub を作成する方法 (ブログの投稿)](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
 既製のスクリプトも次のページからダウンロードできます。
 

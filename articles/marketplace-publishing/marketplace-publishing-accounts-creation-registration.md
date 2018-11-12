@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3b1d0a7476cff2be00aa44bb8b859261099298d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579617"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236691"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Microsoft 開発者アカウントの作成
 この記事では、Azure Marketplace の承認済みの Microsoft 開発者になるために必要なアカウントの作成と登録のプロセスについて説明します。
@@ -98,7 +98,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
     ![図](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **"販売元" の国:** Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの "販売元" の国に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 「販売元」の国の範囲は今後拡大される予定です。 詳細については、「[Microsoft Azure Marketplace 参加ポリシー](http://go.microsoft.com/fwlink/?LinkID=526833)」を参照してください。
+   > **"販売元" の国:** Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの "販売元" の国に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 「販売元」の国の範囲は今後拡大される予定です。 詳細については、「[Microsoft Azure Marketplace 参加ポリシー](https://go.microsoft.com/fwlink/?LinkID=526833)」を参照してください。
    >
    >
 5. [アカウントの種類] として、**[会社]** を選択し、**[次へ]** をクリックします。
@@ -127,7 +127,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 9. アカウントの料金を支払うための支払い情報を入力します。 登録コストが免除されるプロモーション コードがある場合は、ここで入力できます。 ない場合は、クレジット カード情報 (またはサポートされている市場であれば PayPal 情報) を入力します。 完了したら、**[次へ]** をクリックし、**確認画面**に移動します。
 
     ![図](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
-10. アカウント情報を見直し、すべて正しいことを確認します。 次に、 [Microsoft Azure Marketplace 発行者契約](http://go.microsoft.com/fwlink/?LinkID=699560)の契約条件を読んで同意します。 チェック ボックスをオンにすると、これらの条件を読んで同意したと見なされます。
+10. アカウント情報を見直し、すべて正しいことを確認します。 次に、 [Microsoft Azure Marketplace 発行者契約](https://go.microsoft.com/fwlink/?LinkID=699560)の契約条件を読んで同意します。 チェック ボックスをオンにすると、これらの条件を読んで同意したと見なされます。
 11. **[完了]** をクリックし、登録内容を確認します。 確認メッセージが電子メール アドレスに送信されます。
 12. 無料オファーの発行のみを計画している場合は、**[Azure Marketplace 発行ポータルに移動する]** をクリックします。また、このドキュメントのセクション 3「[発行ポータルでのアカウントの登録](#3-register-your-account-in-the-publishing-portal)」にスキップできます。
 

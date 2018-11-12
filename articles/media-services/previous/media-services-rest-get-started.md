@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: fbfb52b758089acf65f89c62f716d46d62b0f289
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 794c2cf6c52ead465d35d3d551cfe76e87c06787
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233822"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237606"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -460,7 +460,7 @@ Media Services では、メディア プロセッサは、メディア コンテ
 ### <a name="create-a-job"></a>ジョブを作成する
 各ジョブは実行する処理の種類に応じて 1 つまたは複数のタスクを持つことができます。 REST API を使って、2 つの方法のいずれかでジョブとそれに関連するタスクを作成できます。タスクは、Job エンティティのタスク ナビゲーション プロパティまたは OData バッチ処理を使用して、インラインで定義できます。 Media Services SDK は、バッチ処理を使用します。 ただし、この記事のコード例では、読みやすくするためにタスクをインラインで定義します。 バッチ処理の詳細については、 [Open Data Protocol (OData) のバッチ処理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)に関するページを参照してください。
 
-次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。 次のドキュメント セクションには、Media Encoder Standard プロセッサがサポートしている [タスク プリセット](http://msdn.microsoft.com/library/mt269960) の一覧が含まれています。  
+次の例では、1 つのタスクが設定されたジョブを作成して公開し、特定の解像度と質でビデオをエンコードする方法について説明します。 次のドキュメント セクションには、Media Encoder Standard プロセッサがサポートしている [タスク プリセット](https://msdn.microsoft.com/library/mt269960) の一覧が含まれています。  
 
 **HTTP 要求**
 

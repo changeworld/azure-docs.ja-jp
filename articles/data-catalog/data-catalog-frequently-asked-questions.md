@@ -8,12 +8,12 @@ ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 9aaba38b7dc0cd2bf659c9d91c9d7660bd17a6dd
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409186"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231466"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。
@@ -99,7 +99,7 @@ Data Catalog からオブジェクトを削除するには、ポータルでオ�
 エキスパートは、データ オブジェクトに関して、情報に基づいた、ある観点を持つ個人です。 オブジェクトには、複数のエキスパートを指定できます。 エキスパートは、オブジェクトの "所有者" である必要はありませんが、単純に、データをどのように使用でき、使用すべきかを知っている者です。
 
 ## <a name="how-do-i-share-information-with-the-data-catalog-team-if-i-encounter-problems"></a>問題が発生した場合に、Data Catalog チームに情報を伝えるにはどうすればよいですか?
-問題の報告、情報の共有、質問の投稿を行うには、[Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスします。
+問題の報告、情報の共有、質問の投稿を行うには、[Azure Data Catalog フォーラム](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスします。
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>カタログは興味がある別のデータ ソースを処理しますか?
 Data Catalog へのデータ ソースの追加には積極的に取り組んでいるところです。 サポートされている具体的なデータ ソースを確認する場合は、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) に移動して、それを提案 (または、それが既に提案されている場合は、その支持を表明) してください。
@@ -127,4 +127,4 @@ Data Catalog で、データ資産を選択し、**[所有権の取得]** ボタ
 カタログに既に登録されているデータ資産のメタデータを更新するには、その資産を含むデータ ソースを再登録するだけです。 テーブルまたはビューの列の追加や削除などのデータ ソースのすべての変更は、カタログで更新されますが、ユーザーによって提供されたすべての注釈は維持されます。
 
 ## <a name="my-question-isnt-answered-here-where-can-i-go-for-answers"></a>ここに質問の答えがありません。 どうすればいいですか?
-[Azure Data Catalog フォーム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。 そこで寄せられている質問に、ここでの方法が見つかります。
+[Azure Data Catalog フォーム](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスしてください。 そこで寄せられている質問に、ここでの方法が見つかります。

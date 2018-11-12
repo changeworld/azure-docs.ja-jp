@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: bc2b93312ed005154aa7d2530fb5493278a15c67
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7d93b8e37c2025ebe47f9351da26f0913107585d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418604"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009370"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics の Azure Networking 監視ソリューション
 
@@ -86,7 +86,7 @@ Application Gateway に関しては、次のメトリックがサポートされ
 ### <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 Azure Application Gateway 分析ソリューションのインストールと構成は、次の手順で行います。
 
-1. Azure Application Gateway 分析ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って有効にしてください。
+1. Azure Application Gateway 分析ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../monitoring/monitoring-solutions.md)に関するページで説明されている手順に従って有効にしてください。
 2. 監視する [Application Gateway](../application-gateway/application-gateway-diagnostics.md) の診断ログを有効にします。
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Azure Application Gateway の診断を Azure Portal で有効にする
@@ -157,7 +157,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ### <a name="install-and-configure-the-solution"></a>ソリューションのインストールと構成
 Azure Networking Analytics ソリューションのインストールと構成は、次の手順で行います。
 
-1. Azure ネットワーク セキュリティ グループ分析ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関する手順で説明されている手順に従って有効にしてください。
+1. Azure ネットワーク セキュリティ グループ分析ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../monitoring/monitoring-solutions.md)に関する手順で説明されている手順に従って有効にしてください。
 2. 監視する[ネットワーク セキュリティ グループ](../virtual-network/virtual-network-nsg-manage-log.md)のリソースの診断ログを有効にします。
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Azure Portal で Azure ネットワーク セキュリティ グループの診断を有効にする
@@ -215,7 +215,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 
 1. [Azure Application Gateway から Log Analytics に診断が直接送信されるように構成します。](#enable-azure-application-gateway-diagnostics-in-the-portal)
 2. [Azure ネットワーク セキュリティ グループから Log Analytics に診断が直接送信されるように構成します。](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って *Azure Application Gateway 分析*ソリューションと *Azure ネット ワーク セキュリティ グループ分析*ソリューションを有効にします。
+2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](../monitoring/monitoring-solutions.md)」に説明されている手順に従って *Azure Application Gateway 分析*ソリューションと *Azure ネット ワーク セキュリティ グループ分析*ソリューションを有効にします。
 3. 新しいデータ型を使用するように、保存されたクエリ、ダッシュボード、またはアラートを更新します。
   + 型を AzureDiagnostics にします。 ResourceType を使用して、Azure ネットワーク ログをフィルター処理できます。
 
@@ -236,4 +236,4 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、詳細な Azure 診断データを確認してください。
+* [Log Analytics のログ検索機能](log-analytics-queries.md)を使用して、詳細な Azure 診断データを確認してください。

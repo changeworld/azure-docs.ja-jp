@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 5a622eb5ae14a6c6b0c2dd4eceb6ffdb9733dcff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4f093251ce3c711cc060369abb27770157024d91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681538"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238694"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Government ポータルでのオンプレミスの StorSimple デバイスのデプロイ
 
@@ -67,7 +67,7 @@ StorSimple デバイスを構成し、StorSimple デバイス マネージャー
 ## <a name="deployment-configuration-checklist"></a>デプロイの構成チェック リスト
 StorSimple デバイスをデプロイする前に、デバイスにソフトウェアを構成するための情報を収集する必要があります。 事前にこれらの情報の一部を準備することで、環境内に StorSimple デバイスをデプロイするプロセスを効率化できます。 このチェック リストをダウンロードし、デバイスのデプロイ時に構成の詳細情報をメモするために使用してください。
 
-[StorSimple デプロイ構成チェックリストをダウンロードする](http://www.microsoft.com/download/details.aspx?id=49159)
+[StorSimple デプロイ構成チェックリストをダウンロードする](https://www.microsoft.com/download/details.aspx?id=49159)
 
 ## <a name="deployment-prerequisites"></a>デプロイの前提条件
 ここでは、StorSimple デバイス マネージャー サービスと StorSimple デバイスの構成の前提条件について説明します。

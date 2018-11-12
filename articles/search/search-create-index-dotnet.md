@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: 7e7d1f8110d8470fe7596633563529f397c5551e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a1c9340acdc2521b9b74f47b0e17d0e4d37aea77
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794754"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236569"
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>.NET SDK を使用した Azure Search インデックスの作成
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "31794754"
 このガイドに従ってインデックスを作成する前に、既に [Azure Search サービスを作成済み](search-create-service-portal.md)です。
 
 > [!NOTE]
-> この記事のサンプル コードはすべて C# で記述されています。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
+> この記事のサンプル コードはすべて C# で記述されています。 [GitHub](https://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
 
 
 ## <a name="identify-your-azure-search-services-admin-api-key"></a>Azure Search サービスの管理者 API キーの識別
@@ -53,7 +53,7 @@ Azure Search サービスのプロビジョニングが完了すると、あと�
 ## <a name="create-an-instance-of-the-searchserviceclient-class"></a>SearchServiceClient クラスのインスタンスの作成
 Azure Search .NET SDK を使い始めるには、`SearchServiceClient` クラスのインスタンスを作成する必要があります。 このクラスにはいくつかのコンストラクターがあります。 目的のコンストラクターは、パラメーターとして検索サービスの名前と `SearchCredentials` オブジェクトを使用します。 `SearchCredentials` は API キーをラップします。
 
-次のコードは、アプリケーションの構成ファイル ([サンプル アプリケーション](http://aka.ms/search-dotnet-howto)では `appsettings.json`) に格納されている検索サービスの名前と API キーの値を使用して新しい `SearchServiceClient` を作成します。
+次のコードは、アプリケーションの構成ファイル ([サンプル アプリケーション](https://aka.ms/search-dotnet-howto)では `appsettings.json`) に格納されている検索サービスの名前と API キーの値を使用して新しい `SearchServiceClient` を作成します。
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)

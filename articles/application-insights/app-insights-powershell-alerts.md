@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: e7e0f6747beea43b55ae1a20da44cde3c070cd89
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 678a31b8c07b21e4bb2c43b8e8bc286d66ee4bab
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091374"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233747"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 [Application Insights](app-insights-overview.md) では、[アラート](app-insights-alerts.md)の構成を自動化できます。
@@ -35,7 +35,7 @@ ms.locfileid: "47091374"
 
 スクリプトを実行するコンピューターに Azure PowerShell モジュールをインストールします。
 
-* [Microsoft Web Platform Installer (v5 以上)](http://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
+* [Microsoft Web Platform Installer (v5 以上)](https://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
 * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
 
 ## <a name="connect-to-azure"></a>Azure への接続

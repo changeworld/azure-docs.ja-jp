@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0205552c073bf03c40da4d108256fa09e71fbbe3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309891"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237097"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
@@ -51,9 +51,9 @@ Azure AD は、フェデレーション メタデータを監視し、その結�
 > [!IMPORTANT]
 > AD FS を使用している場合、ビジネス継続性を確保するために、既知の問題による認証エラーを防止する更新プログラムがサーバーに適用されていることを確認してください。該当する更新プログラムは次のとおりです。 以後、更新期間における AD FS プロキシ サーバーの既知の問題が軽減されます。
 >
-> Server 2012 R2 - [Windows Server 2014 年 5 月の更新プログラム ロールアップ](http://support.microsoft.com/kb/2955164)
+> Server 2012 R2 - [Windows Server 2014 年 5 月の更新プログラム ロールアップ](https://support.microsoft.com/kb/2955164)
 >
-> Server 2008 R2 および 2012 - [Windows Server 2012 または Windows 2008 R2 SP1 で、プロキシ経由の認証に失敗する](http://support.microsoft.com/kb/3094446)
+> Server 2008 R2 および 2012 - [Windows Server 2012 または Windows 2008 R2 SP1 で、プロキシ経由の認証に失敗する](https://support.microsoft.com/kb/3094446)
 >
 >
 
@@ -95,7 +95,7 @@ AD FS と Azure AD との間の信頼関係のプロパティで証明書が構�
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>手順 3: 証明書の有効期限が迫っているかどうかを確認する
 Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"有効期間の終了時刻" の日付を確認します。 今日の日付から 30 日未満である場合、期限切れに対処する必要があります。
 
-| AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | アクションを表示します。 |
+| AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | Action |
 |:---:|:---:|:---:|:---:|:---:|
 | [はい] |はい |[はい] |- |対処は必要ありません。 「 [トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。 |
 | [はい] |いいえ  |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |

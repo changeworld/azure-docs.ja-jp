@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: f972495fe1a5a0744cf6d7046b555349e5bc8c54
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416428"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235039"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Azure Load Balancer での Azure Resource Manager のサポートの使用
 
@@ -50,9 +50,9 @@ Azure Load Balancer を使用したクイックスタート テンプレート�
 
 テンプレートの例を次に示します。
 
-* [ロード バランサー内の 2 台の VM と負荷分散規則](http://go.microsoft.com/fwlink/?LinkId=544799)
-* [内部ロード バランサーを使用した VNET 内の 2 台の VM と負荷分散規則](http://go.microsoft.com/fwlink/?LinkId=544800)
-* [ロード バランサー内の 2 台の VM と LB の NAT 規則の構成](http://go.microsoft.com/fwlink/?LinkId=544801)
+* [ロード バランサー内の 2 台の VM と負荷分散規則](https://go.microsoft.com/fwlink/?LinkId=544799)
+* [内部ロード バランサーを使用した VNET 内の 2 台の VM と負荷分散規則](https://go.microsoft.com/fwlink/?LinkId=544800)
+* [ロード バランサー内の 2 台の VM と LB の NAT 規則の構成](https://go.microsoft.com/fwlink/?LinkId=544801)
 
 ## <a name="setting-up-azure-load-balancer-with-a-powershell-or-cli"></a>CLI または PowerShell を使用した Azure Load Balancer の設定
 

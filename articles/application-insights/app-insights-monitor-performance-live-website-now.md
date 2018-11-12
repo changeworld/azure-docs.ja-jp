@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 54a335cf1386ab29c0e0214bccf1f53a076da02b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 275eb5f32def94fa974f0cb180b9de9dcedf1a00
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783513"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230922"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Application Insights を使用した実行時の Web アプリのインストルメント化
 
@@ -57,7 +57,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 
     ![Application Insights のクリック](./media/app-insights-monitor-performance-live-website-now/azure-web-view-more.png)
 
-[クラウドと VM アプリの監視](app-insights-azure.md)
+[クラウドと VM アプリの監視](app-insights-overview.md)
 
 ### <a name="enable-client-side-monitoring-in-azure"></a>Azure でクライアント側の監視を有効にする
 
@@ -78,7 +78,7 @@ Application Insights JavaScript SDK が各 Web ページに挿入されるよう
 アプリが IIS サーバーでホストされている場合は、Status Monitor を使用して Application Insights を有効にします。
 
 1. IIS Web サーバーで、管理者の資格情報を使用してサインインします。
-2. Application Insights Status Monitor がまだインストールされていない場合は、[Status Monitor インストーラー](http://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードして実行します (または [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、Application Insights Status Monitor を検索します)。
+2. Application Insights Status Monitor がまだインストールされていない場合は、[Status Monitor インストーラー](https://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードして実行します (または [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、Application Insights Status Monitor を検索します)。
 3. Status Monitor で、監視するインストール済みの Web アプリケーションまたは Web サイトを選択します。 Azure の資格情報でサインインします。
 
     Application Insights ポータルで結果を表示するときに使用するリソースを構成します。 (通常は、新しいリソースを作成するのが最良です。 このアプリに対して [Web テスト][availability]や [クライアントの監視][client]を既に設定している場合は、既存のリソースを選択します。) 

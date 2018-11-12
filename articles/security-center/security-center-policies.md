@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: c68b55beba445b7f5d30efe7155a47e7f6f76690
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 713deee8ead1fb5cdc1ca48e4c832fc295dedc15
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161290"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236654"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Azure Security Center でのセキュリティ ポリシーの設定
 この記事は、Security Center でのセキュリティ ポリシーを構成する場合に役立ちます。
@@ -75,6 +75,6 @@ Security Center では、各 Azure サブスクリプションの既定のセキ
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md): セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md): このサービスの使用に関してよく寄せられる質問に対する回答を確認します。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 Azure Policy について詳しくは、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」をご覧ください。

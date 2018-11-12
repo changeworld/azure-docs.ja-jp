@@ -9,12 +9,12 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f3822386d0d16b1feaf16853424329558a18f910
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0fc04fb64e6d34c46f20b4ba5ff8a1ffc8da9c31
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782651"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237912"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Azure Media Clipper を使用したクリップの作成
 Azure Media Clipper は無料の JavaScript ライブラリで、Web 開発者はこれを使ってユーザーにメディア クリップを作成するためのインターフェイスを提供できます。 このツールを任意の Web ページに統合して、アセットを読み込み、クリッピング ジョブを送信するための API を提供できます。
@@ -28,7 +28,7 @@ Azure Media Clipper では次のことが可能です。
 - 画像グループ (GOP) の精度で既存のライブおよび VOD アセットの動的マニフェスト フィルターを生成する 
 - お使いのメディア サービスのアカウントでアセットに対するエンコード ジョブを作成する
 
-新機能のリクエスト、アイデアの提供、またはフィードバックは、[Azure Media Services の UserVoice](http://aka.ms/amsvoice/)に関するページにお送りください。 特定の問題や質問がある場合、またはバグを発見した場合は、Media Services チーム (amcinfo@microsoft.com) にご連絡ください。
+新機能のリクエスト、アイデアの提供、またはフィードバックは、[Azure Media Services の UserVoice](https://aka.ms/amsvoice/)に関するページにお送りください。 特定の問題や質問がある場合、またはバグを発見した場合は、Media Services チーム (amcinfo@microsoft.com) にご連絡ください。
 
 次の図は、Clipper のインターフェイスです。![Azure Media Clipper](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
 

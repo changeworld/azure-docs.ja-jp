@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: d24902b894a632e9fe8c57f2fb2b652b44ab128c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 932b4c80912fa516a08c18cd581f96b5ea91e1dc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41946436"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232309"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Azure Stack 用の Red Hat ベースの仮想マシンの準備
 
@@ -30,7 +30,7 @@ Red Hat Enterprise Linux のサポート情報については、「[Red Hat and 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Hyper-V マネージャーからの Red Hat ベースの仮想マシンの準備
 
-このセクションは、Red Hat の Web サイトから取得した ISO ファイルの RHEL イメージが仮想ハード ディスク (VHD) にインストール済みであることを前提としています。 Hyper-V マネージャーを使用してオペレーティング システム イメージをインストールする方法の詳細については、[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)に関するページを参照してください。
+このセクションは、Red Hat の Web サイトから取得した ISO ファイルの RHEL イメージが仮想ハード ディスク (VHD) にインストール済みであることを前提としています。 Hyper-V マネージャーを使用してオペレーティング システム イメージをインストールする方法の詳細については、[Hyper-V の役割のインストールと仮想マシンの構成](https://technet.microsoft.com/library/hh846766.aspx)に関するページを参照してください。
 
 ### <a name="rhel-installation-notes"></a>RHEL のインストールに関する注記
 

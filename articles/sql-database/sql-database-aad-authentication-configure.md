@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e0cc8759de6e204ec419053a70d263e21ca0dcf6
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 75108853929ea514a6b8660388d71736e74013e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868635"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234733"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL による Azure Active Directory 認証の構成と管理
 
@@ -202,7 +202,7 @@ CLI コマンドの詳細については、「[SQL - az sql](https://docs.micros
 Azure AD の ID を使用して Azure SQL Database または Azure SQL Data Warehouse に接続するアプリケーションまたはユーザーが存在するすべてのクライアント コンピューターには、次のソフトウェアをインストールする必要があります。
 
 - [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) の .NET Framework 4.6 以降。
-- SQL Server 用の Azure Active Directory 認証ライブラリ (**ADALSQL.DLL**)。ダウンロード センターの「[Microsoft SQL Server 用の Microsoft Active Directory 認証ライブラリ](http://www.microsoft.com/download/details.aspx?id=48742)」から複数の言語版 (x86 と amd64 の両方) を入手できます。
+- SQL Server 用の Azure Active Directory 認証ライブラリ (**ADALSQL.DLL**)。ダウンロード センターの「[Microsoft SQL Server 用の Microsoft Active Directory 認証ライブラリ](https://www.microsoft.com/download/details.aspx?id=48742)」から複数の言語版 (x86 と amd64 の両方) を入手できます。
 
 これらの要件は、次の操作を行うことで満たすことができます。
 
@@ -249,14 +249,14 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!TIP]
 > 使用している Azure サブスクリプションに関連付けられている Azure Active Directory とは別の Azure Active Directory から、ユーザーを直接作成することはできません。 ただし、別の Active Directory のメンバーのうち、関連付けられている Active Directory にインポート済みのユーザー (外部ユーザーと呼ばれます) は、テナント Active Directory の Active Directory グループに追加できます。 外部の Active Directory のユーザーは、この AD グループの包含データベース ユーザーを作成することで SQL Database にアクセスできるようになります。
 
-Azure Active Directory の ID に基づく包含データベース ユーザーの作成の詳細については、「 [CREATE USER (Transact-SQL)](http://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
+Azure Active Directory の ID に基づく包含データベース ユーザーの作成の詳細については、「 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
 
 > [!NOTE]
 > Azure SQL Server の Azure Active Directory 管理者を削除すると、Azure AD 認証ユーザーはサーバーに接続できなくなります。 必要に応じて、SQL Database 管理者は不要な Azure AD ユーザーを手動で削除できます。
 > [!NOTE]
 > "**接続がタイムアウトしました**" と表示された場合は、接続文字列の `TransparentNetworkIPResolution` パラメーターを false に設定することが必要になる場合があります。 詳しくは、「[Connection timeout issue with .NET Framework 4.6.1 - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/)」(.NET Framework 4.6.1 での接続タイムアウトの問題 - TransparentNetworkIPResolution) をご覧ください。
 
-データベース ユーザーを作成すると、そのユーザーには **CONNECT** アクセス許可が付与され、**PUBLIC** ロールのメンバーとしてそのデータベースに接続できるようになります。 最初にこのユーザーが利用できるアクセス許可は、**PUBLIC** ロールに付与されているアクセス許可か、またはそのユーザーが属している Azure AD グループに付与されているアクセス許可のみです。 Azure AD ベースの包含データベース ユーザーをプロビジョニングすると、他の種類のユーザーにアクセス許可を付与する場合と同様に、そのユーザーに追加のアクセス許可を付与できます。 通常は、データベース ロールにアクセス許可を付与し、そのロールにユーザーを追加します。 詳細については、 [データベース エンジンのアクセス許可の基本知識](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)に関するページを参照してください。 特殊な SQL Database ロールの詳細については、「 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」を参照してください。
+データベース ユーザーを作成すると、そのユーザーには **CONNECT** アクセス許可が付与され、**PUBLIC** ロールのメンバーとしてそのデータベースに接続できるようになります。 最初にこのユーザーが利用できるアクセス許可は、**PUBLIC** ロールに付与されているアクセス許可か、またはそのユーザーが属している Azure AD グループに付与されているアクセス許可のみです。 Azure AD ベースの包含データベース ユーザーをプロビジョニングすると、他の種類のユーザーにアクセス許可を付与する場合と同様に、そのユーザーに追加のアクセス許可を付与できます。 通常は、データベース ロールにアクセス許可を付与し、そのロールにユーザーを追加します。 詳細については、 [データベース エンジンのアクセス許可の基本知識](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)に関するページを参照してください。 特殊な SQL Database ロールの詳細については、「 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」を参照してください。
 外部ユーザーとしてマネージド ドメインにインポートされるフェデレーション ドメイン ユーザー アカウントは、マネージド ドメインの ID を使用する必要があります。
 
 > [!NOTE]
@@ -354,7 +354,7 @@ conn.Open();
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-次のステートメントは、sqlcmd のバージョン 13.1 を使用して接続しています。これは、[ダウンロード センター](http://go.microsoft.com/fwlink/?LinkID=825643)から入手できます。
+次のステートメントは、sqlcmd のバージョン 13.1 を使用して接続しています。これは、[ダウンロード センター](https://go.microsoft.com/fwlink/?LinkID=825643)から入手できます。
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

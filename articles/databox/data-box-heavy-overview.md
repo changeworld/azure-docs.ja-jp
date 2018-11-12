@@ -15,12 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 8ecef86841bcf13a469f9c0dc81f114bd54acdba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a5b7f93f9ac6cc5b1076881727a42fd5b95ff4b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946518"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235158"
 ---
 # <a name="what-is-azure-data-box-heavy-preview"></a>Azure Data Box Heavy とは (プレビュー)
 
@@ -31,7 +31,7 @@ Data Box Heavy は現在プレビュー段階にあり、Azure portal を介し�
 
 > [!IMPORTANT]
 > - Data Box Heavy はプレビュー段階です。 このソリューションを展開する前に、[プレビューに関する Azure のサービス利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
-> - デバイスを要求するには、[Preview portal](http://aka.ms/) でサインアップします。
+> - デバイスを要求するには、[Preview portal](https://aka.ms/) でサインアップします。
 > - プレビュー期間中、Data Box Heavy は、米国および欧州連合のお客様に出荷できます。 詳細については、「[Region availability (利用可能なリージョン)](#region-availability)」をご覧ください。
 
 ## <a name="use-cases"></a>ユース ケース

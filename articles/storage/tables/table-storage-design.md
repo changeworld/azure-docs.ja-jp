@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.component: tables
-ms.openlocfilehash: 783522997a752c4eac575316983bc6ef853c3f43
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c5b18bce9d0cf78569d0c2fa02ad14c96ad09bd1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526914"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237776"
 ---
 # <a name="design-scalable-and-performant-tables"></a>高性能で拡張性の高いテーブルの設計
 
@@ -24,7 +24,7 @@ ms.locfileid: "39526914"
 ## <a name="about-the-azure-table-service"></a>Azure Table service
 このセクションでは、パフォーマンスとスケーラビリティを重視した設計に関連する Table service の主要機能を取り上げます。 初めて Azure Storage と Table service を利用する場合は、「[Microsoft Azure Storage の概要](../../storage/common/storage-introduction.md)」と「[.NET を使用して Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md)」を読んでから、この記事を読み進めてください。 このガイドで主に取り上げるのは Table service についてですが、Azure のキューや Blob service と、それらのサービスを Table service と共に使用する方法についても触れます。  
 
-Table service とは 名前が示すとおり、Table service ではデータの格納にテーブル形式を使います。 名前からおわかりのように、Table service は表形式を使用してデータを格納します。 各エンティティは、それ自体を一意に識別するためのキーのペアと、Table サービスがエンティティの最終更新日時をトラッキングするためのタイムスタンプ列を持ちます (エンティティの更新は自動的に行われます。 すべてのエンティティには、エンティティを一意に識別するキーと、エンティティの最終更新時を追跡するために Table service が使用するタイムスタンプ列のペアがあります。 タイムスタンプは自動的に適用されます。タイムスタンプを手動で任意の値に上書きすることはできません。 Table service では、この最終更新日時のタイムスタンプ (LMT) を使ってオプティミスティック同時実行を管理します。  
+Table service とは 名前が示すとおり、Table service ではデータの格納にテーブル形式を使います。 名前からおわかりのように、Table service は表形式を使用してデータを格納します。 各エンティティは、それ自体を一意に識別するためのキーのペアと、Table サービスがエンティティの最終更新日時をトラッキングするためのタイムスタンプ列を持ちます (エンティティの更新は自動的に行われます。 すべてのエンティティには、エンティティを一意に識別するキーと、エンティティの最終更新時を追跡するために Table service が使用するタイムスタンプ列のペアがあります。 タイムスタンプは自動的に適用されます。タイムスタンプを手動で任意の値に上書きすることはできません。 Table service では、この最終更新日時のタイムスタンプ (LMT) を使ってオプティミスティック コンカレンシーを管理します。  
 
 > [!NOTE]
 > Table service REST API 操作により、LMT から派生する **ETag** 値も返されます。 このドキュメントでは、ETag と LMT という用語を区別なく使います。基となる同じデータを表しているためです。  
@@ -121,7 +121,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 </table>
 
 
-今のところ、データはリレーショナル データベースのテーブルと似ており、異なるキーが必須の列となっていて、同じテーブルに複数の種類のエンティティを格納できます。 また、**FirstName** や **Age** などのユーザー定義プロパティには、リレーショナル データベース内の列のように、整数や文字列などのデータ型があります。 ただし、リレーショナル データベースとは違って、Table service にはスキーマがないため、エンティティごとにプロパティのデータ型は同じである必要ありません。 1 つのプロパティに複雑なデータ型を格納するには、JSON や XML などのシリアル化された形式を使う必要があります。 サポート対象のデータ型と日付の範囲、名付け規則、サイズ制限などの Table サービスの詳細については、「 [Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+今のところ、データはリレーショナル データベースのテーブルと似ており、異なるキーが必須の列となっていて、同じテーブルに複数の種類のエンティティを格納できます。 また、**FirstName** や **Age** などのユーザー定義プロパティには、リレーショナル データベース内の列のように、整数や文字列などのデータ型があります。 ただし、リレーショナル データベースとは違って、Table service にはスキーマがないため、エンティティごとにプロパティのデータ型は同じである必要ありません。 1 つのプロパティに複雑なデータ型を格納するには、JSON や XML などのシリアル化された形式を使う必要があります。 サポート対象のデータ型と日付の範囲、名付け規則、サイズ制限などの Table サービスの詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
 
 テーブル デザインの基盤には、**PartitionKey** と **RowKey** の選択が適しています。 テーブルに格納されている各エンティティは、**PartitionKey** と **RowKey** の一意の組み合わせである必要があります。 リレーショナル データベース テーブル内のキーと同様に、**PartitionKey** と **RowKey** の値には、高速検索を可能にするクラスター化インデックスを作成するためのインデックスが作成されています。 ただし、Table service はセカンダリ インデックスを作成しないため、**PartitionKey** と **RowKey** のみがインデックス付きプロパティになります。 「[テーブルの設計パターン](table-storage-design-patterns.md)」で説明されているいくつかのパターンから、この明確な制限を回避する方法がわかります。  
 
@@ -132,7 +132,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 
 Table service では、個々のノードが 1 つ以上の完全なパーティションを提供し、サービスのスケーリングはノード間でパーティションの負荷を動的に分散させることで行われます。 ノードに負荷がかかる場合は、テーブル サービスのパーティション範囲を 別のノードと*分割*し、トラフィックが少ないときにサービスを*マージ*して、パーティション範囲を複数のトラフィックの少ないノードから 1 つのノードに戻すことができます。  
 
-Table service の内部詳細、特に、サービスのパーティション管理方法については、ホワイト ペーパー [Microsoft Azure のストレージ: 強力な一貫性を備えた高使用可能なクラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)を参照してください。  
+Table service の内部詳細、特に、サービスのパーティション管理方法については、ホワイト ペーパー [Microsoft Azure のストレージ: 強力な一貫性を備えた高使用可能なクラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)を参照してください。  
 
 ## <a name="entity-group-transactions"></a>エンティティ グループ トランザクション
 エンティティ グループ トランザクション (EGT) は、Table service で複数のエンティティ間でアトミックな更新を行うための唯一の組み込みのメカニズムです。 EGT は、*バッチ トランザクション*とも呼ばれています。 EGT では、同じパーティションに格納されたエンティティしか処理できません (つまり、特定のテーブルで同じパーティション キーを共有しています)。 そのため、複数のエンティティにまたがるアトミックなトランザクションが必要な場合は、それらのエンティティを同じパーティションに格納する必要があります。 これが、異なる種類のエンティティに複数のテーブルを使わずに、異なる種類のエンティティを同じテーブル (とパーティション) に格納する主な理由です。 単一の EGT で最大 100 個のエンティティを処理できます。  複数の並行処理 EGT を送信する場合は、それらの EGT が EGT 間の共通であるエンティティには動作しないことを確認することが重要です。さもないと、処理が遅くなる可能性があります。
@@ -152,7 +152,7 @@ Table service の内部詳細、特に、サービスのパーティション管
 | **RowKey** |最大 1 KB の文字列 |
 | エンティティ グループ トランザクションのサイズ |トランザクションには最大で 100 個のエンティティを含めることができ、ペイロードは 4 MB 未満にする必要があります。 EGT では 1 回に 1 つのエンティティしか更新できません。 |
 
-詳細については、「 [Table サービス データ モデルについて](http://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。  
+詳細については、「 [Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。  
 
 ## <a name="cost-considerations"></a>コストに関する考慮事項
 テーブル ストレージは比較的安価ですが、Table service ソリューションの評価の一環として、容量の使用とトランザクションの量を踏まえてコストを見積もる必要があります。 ただし、多くのシナリオでは、ソリューションのパフォーマンスとスケーラビリティを向上させるために、非正規化されたデータまたは重複するデータを格納するのも有効です。 価格の詳細については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。  

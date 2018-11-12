@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eeecf37a6cc7a0f86662f002b6f0efab5ef8c35c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417465"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235277"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -45,9 +45,9 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
 ## <a name="solution"></a>解決策
 
 >[!NOTE]
->サイト間 VPN と強制トンネリングを使用している場合は、「[Use Azure custom routes to enable KMS activation with forced tunneling (強制トンネリングで KMS ライセンス認証を有効にするために Azure カスタム ルートを使用する)](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)」を参照してください。 
+>サイト間 VPN と強制トンネリングを使用している場合は、「[Use Azure custom routes to enable KMS activation with forced tunneling (強制トンネリングで KMS ライセンス認証を有効にするために Azure カスタム ルートを使用する)](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)」を参照してください。 
 >
->ExpressRoute を使用していて、既定のルートを公開している場合は、「[Azure VM may fail to activate over ExpressRoute (Azure VM が ExpressRoute 経由でのライセンス認証に失敗する場合がある)](http://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)」を参照してください。
+>ExpressRoute を使用していて、既定のルートを公開している場合は、「[Azure VM may fail to activate over ExpressRoute (Azure VM が ExpressRoute 経由でのライセンス認証に失敗する場合がある)](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx)」を参照してください。
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>手順 1: 適切な KMS クライアント セットアップ キーを構成する (Windows Server 2016 および Windows Server 2012 R2 用)
 
@@ -125,7 +125,7 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Windows ライセンス認証が期限切れになるとどうなりますか? 
  
-猶予期間が終了し、Windows がまだライセンス認証されていない場合、Windows Server 2008 R2 以降のバージョンの Windows OS では、ライセンス認証に関する追加の通知が表示されます。 デスクトップの壁紙は黒のままで、Windows Update はセキュリティ更新プログラムと重要な更新プログラムだけをインストールし、オプションの更新プログラムはインストールしません。 [ライセンスの条件](http://technet.microsoft.com/library/ff793403.aspx)に関するページの下部の「Notifications (通知)」のセクションを参照してください。   
+猶予期間が終了し、Windows がまだライセンス認証されていない場合、Windows Server 2008 R2 以降のバージョンの Windows OS では、ライセンス認証に関する追加の通知が表示されます。 デスクトップの壁紙は黒のままで、Windows Update はセキュリティ更新プログラムと重要な更新プログラムだけをインストールし、オプションの更新プログラムはインストールしません。 [ライセンスの条件](https://technet.microsoft.com/library/ff793403.aspx)に関するページの下部の「Notifications (通知)」のセクションを参照してください。   
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 991e4b86a1d3e75c02e5ed8fe97727c625f174a4
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: fc4b2d0beef1c91cd937ba901974796441657441
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055708"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234767"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>車両テレメトリ分析ソリューション プレイブック: ソリューションの詳細
 このメニューは、このプレイブック内の各セクションにリンクされています。 
@@ -123,7 +123,7 @@ Stream Analytics ジョブは以下の処理を行います。
 
 
 ### <a name="batch-analysis"></a>一括分析
-さまざまな一括分析のために、シミュレートされた車両信号と診断データセットの追加のボリュームも生成されます。 この追加のボリュームは、バッチ処理で適切な代表的データ ボリュームを使用するために必要です。 そのために、Data Factory ワークフローで PrepareSampleDataPipeline を使用して、1 年分のシミュレートされた車両信号と診断データセットが生成されます。 Data Factory カスタム .NET アクティビティ Visual Studio ソリューションをダウンロードし、要件に基づいてカスタマイズするには、[Data Factory カスタム アクティビティ](http://go.microsoft.com/fwlink/?LinkId=717077)に関する Web ページをご覧ください。 
+さまざまな一括分析のために、シミュレートされた車両信号と診断データセットの追加のボリュームも生成されます。 この追加のボリュームは、バッチ処理で適切な代表的データ ボリュームを使用するために必要です。 そのために、Data Factory ワークフローで PrepareSampleDataPipeline を使用して、1 年分のシミュレートされた車両信号と診断データセットが生成されます。 Data Factory カスタム .NET アクティビティ Visual Studio ソリューションをダウンロードし、要件に基づいてカスタマイズするには、[Data Factory カスタム アクティビティ](https://go.microsoft.com/fwlink/?LinkId=717077)に関する Web ページをご覧ください。 
 
 このワークフローでは、バッチ処理用に準備されているサンプル データを示します。
 
@@ -674,4 +674,4 @@ Power BI は、このソリューションに機能豊富なダッシュボー�
 * [ストリームの挿入に関する Azure Event Hubs SDK](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 * [Azure Data Factory のデータ移動機能](../../data-factory/copy-activity-overview.md)
 * [Azure Data Factory .NET アクティビティ](../../data-factory/transform-data-using-dotnet-custom-activity.md)
-* [サンプル データを準備するための Azure Data Factory .NET アクティビティ Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717077) 
+* [サンプル データを準備するための Azure Data Factory .NET アクティビティ Visual Studio ソリューション](https://go.microsoft.com/fwlink/?LinkId=717077) 

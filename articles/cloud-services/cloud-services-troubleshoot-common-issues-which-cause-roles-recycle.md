@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 20b98fa9656c9c66a81ff98a70fcdbfb29d4dad6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2a9214b918883e493ebe5c93fc7f56e7ce9c77ec
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093182"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234496"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>ロールのリサイクルを引き起こす一般的な問題
 この記事では、デプロイメントに伴う問題の一般的な原因と問題解決に役立つトラブルシューティングのヒントを紹介します。 アプリケーションに存在する問題の兆候として、ロール インスタンスが起動に失敗したり、初期化、ビジー、停止という状態を繰り返したりすることが挙げられます。
@@ -64,7 +64,7 @@ Web ロールを SSL で実行する場合は、エクスポートした管理�
 ## <a name="next-steps"></a>次の手順
 クラウド サービスの他の [トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) を参照します。
 
-他のロール リサイクル シナリオを確認するには、 [Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
+他のロール リサイクル シナリオを確認するには、 [Kevin Williamson によるブログ シリーズ](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx

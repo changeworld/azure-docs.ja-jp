@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7dbbfb2d97b7015118edca3db3ae050ad07c51ee
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667449"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238077"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -35,7 +35,7 @@ ms.locfileid: "43667449"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、SQL Server Always On 可用性グループの基本的な知識があることを前提としています。 詳しくは、「[Always On 可用性グループの概要 (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx)」をご覧ください。
+このチュートリアルでは、SQL Server Always On 可用性グループの基本的な知識があることを前提としています。 詳しくは、「[Always On 可用性グループの概要 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)」をご覧ください。
 
 次の表に、このチュートリアルを開始する前に完了している必要がある前提条件を示します。
 
@@ -119,7 +119,7 @@ ms.locfileid: "43667449"
 
 ### <a name="add-a-cluster-quorum-file-share"></a>クラスター クォーラム ファイル共有を追加する
 
-この例では、Windows クラスターはファイル共有を使ってクラスター クォーラムを作成します。 このチュートリアルでは、"ノードおよびファイル共有マジョリティ" クォーラムを使います。 詳しくは、「[フェールオーバー クラスターのクォーラム構成について](http://technet.microsoft.com/library/cc731739.aspx)」をご覧ください。
+この例では、Windows クラスターはファイル共有を使ってクラスター クォーラムを作成します。 このチュートリアルでは、"ノードおよびファイル共有マジョリティ" クォーラムを使います。 詳しくは、「[フェールオーバー クラスターのクォーラム構成について](https://technet.microsoft.com/library/cc731739.aspx)」をご覧ください。
 
 1. リモート デスクトップ セッションでファイル共有監視メンバー サーバーに接続します。
 
@@ -168,7 +168,7 @@ ms.locfileid: "43667449"
 1. **[クォーラム監視の選択]** で、**[ファイル共有監視を構成する]** をクリックします。
 
    >[!TIP]
-   >Windows Server 2016 では、クラウド監視がサポートされています。 この種類の監視を選んだ場合は、ファイル共有監視は必要ありません。 詳しくは、「[Deploy a cloud witness for a Failover Cluster](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)」(フェールオーバー クラスターにクラウド監視を展開する) をご覧ください。 このチュートリアルでは、以前のオペレーティング システムでサポートされているファイル共有監視を使います。
+   >Windows Server 2016 では、クラウド監視がサポートされています。 この種類の監視を選んだ場合は、ファイル共有監視は必要ありません。 詳しくは、「[Deploy a cloud witness for a Failover Cluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)」(フェールオーバー クラスターにクラウド監視を展開する) をご覧ください。 このチュートリアルでは、以前のオペレーティング システムでサポートされているファイル共有監視を使います。
 
 1. **[ファイル共有監視の構成]** で、作成した共有のパスを入力します。 **[次へ]** をクリックします。
 
@@ -515,7 +515,7 @@ SQL Server Management Studio で、リスナー ポートを設定します。
 SQLCMD 接続では、プライマリ レプリカをホストしている SQL Server インスタンスに対して自動的に接続されます。
 
 > [!TIP]
-> 指定したポートは、両方の SQL Server のファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のサーバーに必要となります。 詳しくは、「[ファイアウォール規則を追加または編集する](http://technet.microsoft.com/library/cc753558.aspx)」をご覧ください。
+> 指定したポートは、両方の SQL Server のファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のサーバーに必要となります。 詳しくは、「[ファイアウォール規則を追加または編集する](https://technet.microsoft.com/library/cc753558.aspx)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

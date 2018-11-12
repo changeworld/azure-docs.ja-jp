@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 5eab8e4bf6b1aa90a9eef3e26dfc3020e3e3179b
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: c8ae6ab818fe88aa5fb79a8911c0242ea3a0ec3b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423512"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012022"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics のカスタム ログ
 Log Analytics のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。  収集後、Log Analytics の [カスタム フィールド](log-analytics-custom-fields.md)機能を利用し、ログの各レコードを個別のフィールドに解析できます。
@@ -182,4 +182,4 @@ Log Analytics は約 5 分おきに各カスタム ログから新しいエン�
 
 ## <a name="next-steps"></a>次の手順
 * [カスタム フィールド](log-analytics-custom-fields.md)を使用して、カスタム ログのエントリを個別のフィールドに解析します。
-* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* [ログ検索](log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。

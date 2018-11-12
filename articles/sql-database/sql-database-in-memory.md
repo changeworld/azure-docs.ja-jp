@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: 8fd430aa710c7e36133b40c7079b9d727774c68f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d850aff8ddb2a8b6cdd68620ae823d582c527581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166930"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229092"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
@@ -57,11 +57,11 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 テクノロジについての詳細な情報:
 
 - [インメモリ OLTP の概要と使用シナリオ](https://msdn.microsoft.com/library/mt774593.aspx) (開始するためのお客様の導入事例と情報への参照)
-- [インメモリ OLTP のドキュメント](http://msdn.microsoft.com/library/dn133186.aspx)
+- [インメモリ OLTP のドキュメント](https://msdn.microsoft.com/library/dn133186.aspx)
 - [列ストア インデックスの説明](https://msdn.microsoft.com/library/gg492088.aspx)
 - [リアルタイム運用分析](https://msdn.microsoft.com/library/dn817827.aspx)とも呼ばれる、ハイブリッド トランザクション/分析処理 (HTAP)
 
-インメモリ OLTP の簡単な手引き: [クイック スタート 1: T-SQL のパフォーマンスを高速化するためのインメモリ OLTP テクノロジ](http://msdn.microsoft.com/library/mt694156.aspx) (作業の開始に役立つ記事)
+インメモリ OLTP の簡単な手引き: [クイック スタート 1: T-SQL のパフォーマンスを高速化するためのインメモリ OLTP テクノロジ](https://msdn.microsoft.com/library/mt694156.aspx) (作業の開始に役立つ記事)
 
 テクノロジについての詳細なビデオ:
 
@@ -158,7 +158,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 1. [Azure Portal](https://portal.azure.com/) で、サーバー上に Premium または Business Critical データベースを作成します。 **ソース** を AdventureWorksLT サンプル データベースに設定します。 詳細な手順については、[最初の Azure SQL データベースの作成](sql-database-get-started-portal.md)に関する記事を参照してください。
 
-2. SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx)を使用して、データベースに接続します。
+2. SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)を使用して、データベースに接続します。
 
 3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) をクリップボードにコピーします。 この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
 
@@ -236,7 +236,7 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 ostress.exe を実行する場合、次の両方について指定したパラメーター値を渡すことをお勧めします。
 
-- 多数の同時接続を実行するには、-n100 を使用します。
+- 多数のコンカレント接続を実行するには、-n100 を使用します。
 - 各接続を数百回ループさせるには、-r500 を使用します。
 
 
@@ -291,9 +291,9 @@ Azure 仮想マシン (VM) で ostress.exe を実行する計画を立てるの�
 VM または選択した任意のホストに、Replay Markup Language (RML) ユーティリティをインストールします。 このユーティリティに ostress.exe が含まれています。
 
 詳細については、次を参照してください。
-- 「[インメモリ OLTP のサンプル データベース](http://msdn.microsoft.com/library/mt465764.aspx)」にある ostress.exe の説明。
-- [インメモリ OLTP のサンプル データベース](http://msdn.microsoft.com/library/mt465764.aspx)。
-- [ostress.exe のインストールに関するブログ](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)。
+- 「[インメモリ OLTP のサンプル データベース](https://msdn.microsoft.com/library/mt465764.aspx)」にある ostress.exe の説明。
+- [インメモリ OLTP のサンプル データベース](https://msdn.microsoft.com/library/mt465764.aspx)。
+- [ostress.exe のインストールに関するブログ](https://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)。
 
 
 
@@ -379,7 +379,7 @@ EXECUTE Demo.usp_DemoReset;
 このセクションでは、列ストア インデックスと従来の B ツリー インデックスを使用した場合の IO と統計情報の結果を比較します。
 
 
-OLTP ワークロードのリアルタイム分析では、多くの場合、非クラスター化列ストア インデックスを使用するのが最適です。 詳細については、[列ストア インデックスの説明](http://msdn.microsoft.com/library/gg492088.aspx)に関するページを参照してください。
+OLTP ワークロードのリアルタイム分析では、多くの場合、非クラスター化列ストア インデックスを使用するのが最適です。 詳細については、[列ストア インデックスの説明](https://msdn.microsoft.com/library/gg492088.aspx)に関するページを参照してください。
 
 
 
@@ -493,7 +493,7 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 
 ## <a name="next-steps"></a>次の手順
 
-- [クイック スタート 1: T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](http://msdn.microsoft.com/library/mt694156.aspx)
+- [クイック スタート 1: T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](https://msdn.microsoft.com/library/mt694156.aspx)
 
 - [既存の Azure SQL アプリケーションにおけるインメモリ OLTP の使用](sql-database-in-memory-oltp-migration.md)
 
@@ -508,17 +508,17 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 
 - [Azure SQL Database のインメモリ OLTP に関するブログ記事](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [インメモリ OLTP の詳細情報](http://msdn.microsoft.com/library/dn133186.aspx)
+- [インメモリ OLTP の詳細情報](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [列ストア インデックスの詳細情報](https://msdn.microsoft.com/library/gg492088.aspx)
 
-- [リアルタイム運用分析の詳細情報](http://msdn.microsoft.com/library/dn817827.aspx)
+- [リアルタイム運用分析の詳細情報](https://msdn.microsoft.com/library/dn817827.aspx)
 
-- (インメモリ OLTP によってパフォーマンスが大幅に向上する一般的なワークロード パターンが記載されている) [一般的なワークロード パターンと移行の考慮事項](http://msdn.microsoft.com/library/dn673538.aspx)に関するホワイトペーパーを参照してください
+- (インメモリ OLTP によってパフォーマンスが大幅に向上する一般的なワークロード パターンが記載されている) [一般的なワークロード パターンと移行の考慮事項](https://msdn.microsoft.com/library/dn673538.aspx)に関するホワイトペーパーを参照してください
 
 #### <a name="application-design"></a>アプリケーションの設計
 
-- [インメモリ OLTP (インメモリ最適化)](http://msdn.microsoft.com/library/dn133186.aspx)
+- [インメモリ OLTP (インメモリ最適化)](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [既存の Azure SQL アプリケーションにおけるインメモリ OLTP の使用](sql-database-in-memory-oltp-migration.md)
 
@@ -528,4 +528,4 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
-- [SQL Server Data Tools (SSDT)](http://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

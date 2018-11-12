@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: edaff86531a9c40064d25a046bbbb70f48b75c84
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b53f679f6f93dd5d4889fbe51f8b5caf62fc1a36
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027131"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236723"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export サービス: よく寄せられる質問 
 以下では、Azure Import/Export サービスを使用してデータを Azure Storage に転送するときによくある質問と、それに対する回答を示します。 質問と回答は次の各カテゴリに分類されます。
@@ -131,7 +131,7 @@ Azure ストレージ アカウントのデータにアクセスするには、A
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure Import/Export は AES-256 暗号化をサポートしていますか?
 Azure Import/Export サービスは、AES-128 BitLocker 暗号化を既定で使用します。 データをコピーする前に BitLocker を使用して手動で暗号化することにより、これを AES-256 に変更できます。 
 
-- [WAImportExport V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) を使用している場合のサンプル コマンドは次のとおりです
+- [WAImportExport V1](https://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) を使用している場合のサンプル コマンドは次のとおりです
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
     ```

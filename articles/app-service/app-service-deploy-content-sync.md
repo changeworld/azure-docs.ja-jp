@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 3781010c74daa51c92813db85ee03eaa4c02a4cf
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 3796f5c8956b633a4789baaf31a439746dc96b96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233589"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233764"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>クラウド フォルダーから Azure App Service へのコンテンツの同期
-この記事では、Dropbox と OneDrive のコンテンツを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) と同期する方法を示します。 
+この記事では、Dropbox と OneDrive のコンテンツを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) と同期する方法を示します。 
 
 オンデマンド コンテンツ同期デプロイでは、App Service の [Kudu デプロイ エンジン](https://github.com/projectkudu/kudu/wiki) を利用しています。 指定したクラウド フォルダーのアプリ コードとコンテンツを操作した後、ボタンのクリックで App Service に同期できます。 コンテンツの同期では、Kudu ビルド サーバーが使用されます。 
 

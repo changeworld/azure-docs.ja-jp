@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 351809cd5f165a863dc02bfadf78fa59cbaabfd7
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 3f4763b5e15d4b9b84e868262a9e8538b8a407a2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24103363"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228829"
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>[ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブの確認
 
@@ -39,20 +39,20 @@ BizTalk サービスのエディションによっては、ここに示したオ
         <td><strong>ツールの入手</strong></td>
         <td>BizTalk サービス SDK をダウンロードし、Visual Studio プロジェクト テンプレートを内部設置型の開発用コンピューターにインストールします。 これらのテンプレートでは、BizTalk Services にデプロイされる <strong>BizTalk Services</strong> (ブリッジ) と <strong>BizTalk Services アーティファクト</strong> (変換) Visual Studio プロジェクトを作成します。
         <br/><br/>作業を開始する手順については、
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">Azure BizTalk Services SDK を使い始める方法</a>に関するページと、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Azure BizTalk Services SDK のインストール</a>に関するページをご覧ください。
+        <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302335">Azure BizTalk Services SDK を使い始める方法</a>に関するページと、<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=241589">Azure BizTalk Services SDK のインストール</a>に関するページをご覧ください。
         </td>
     </tr>
     <tr>
         <td><strong>パートナー契約の作成</strong></td>
         <td>Azure でホストされている Azure BizTalk サービス ポータルを開きます。ここで、パートナーを追加し、X12 契約、AS2 契約、および EDIFACT EDI 契約を作成します。
         <br/><br/>作業を開始する手順については、
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk Services ポータルでの EDI メッセージングのコンポーネントの構成</a>に関するページをご覧ください。
+        <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk Services ポータルでの EDI メッセージングのコンポーネントの構成</a>に関するページをご覧ください。
         </td>
     </tr>
 
 <tr>
         <td><strong>BizTalk Services の詳細</strong></td>
-        <td>Azure BizTalk Services の詳細については、<a HREF="http://azure.microsoft.com/documentation/services/biztalk-services/">学習センター</a>を参照してください。</td>
+        <td>Azure BizTalk Services の詳細については、<a HREF="https://azure.microsoft.com/documentation/services/biztalk-services/">学習センター</a>を参照してください。</td>
 </tr>
 </table>
 
@@ -67,14 +67,14 @@ BizTalk サービスのエディションによっては、ここに示したオ
 <br/><br/>
 これは、<strong>[クイック スタート]</strong> タブの <strong>[パートナー契約の作成]</strong> と同じです。
 <br/><br/>BizTalk Services ポータルに関する詳細情報については、
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk Services ポータルにおける EDI メッセージングのコンポーネントの構成</a>に関するページを参照してください。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk Services ポータルにおける EDI メッセージングのコンポーネントの構成</a>に関するページを参照してください。</td>
 </tr>
 
 <tr>
 <td>Access Control 名前空間の<strong>接続情報</strong></td>
 <td>[接続情報] を選択すると、[Access Control 名前空間]、[既定の発行者]、および [既定のキー] が表示されます。 この値はコピーできます。
 <br/><br/>
-Access Control ポータルを開くこともできます。 Access Control ポータルの詳細については、<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">Access Control 名前空間の作成</a>に関するページを参照してください。</td>
+Access Control ポータルを開くこともできます。 Access Control ポータルの詳細については、<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285670">Access Control 名前空間の作成</a>に関するページを参照してください。</td>
 </tr>
 
 <tr>
@@ -122,7 +122,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 </tr>
 <tr>
 <td><strong>SSL 証明書の更新</strong></td>
-<td>BizTalk サービスで使用される SSL 証明書を別のものに更新できます。 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk サービスを作成</a>するときに自己署名 SSL 証明書が自動的に作成されます。</td>
+<td>BizTalk サービスで使用される SSL 証明書を別のものに更新できます。 <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302280">BizTalk サービスを作成</a>するときに自己署名 SSL 証明書が自動的に作成されます。</td>
 </tr>
 <tr>
 <td><strong>証明書のダウンロード</strong></td>
@@ -130,7 +130,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 </tr>
 <tr>
 <td><strong>状態</strong></td>
-<td>BizTalk サービスの現在の状態が表示されます。 <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=329870">BizTalk Services におけるサービスの状態のグラフ</a>に関するページを参照してください。 </td>
+<td>BizTalk サービスの現在の状態が表示されます。 <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=329870">BizTalk Services におけるサービスの状態のグラフ</a>に関するページを参照してください。 </td>
 </tr>
 <tr>
 <td><strong>サービス URL</strong></td>
@@ -160,13 +160,13 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 <td><strong>トラッキング データベース</strong></td>
 <td>BizTalk サービスで使用される追跡テーブルを格納する Azure SQL データベース名です。 
 <br/><br/>「
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">要件の説明</a>」に、トラッキング データベースの詳しい説明があります。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302280">要件の説明</a>」に、トラッキング データベースの詳しい説明があります。</td>
 </tr>
 <tr>
 <td><strong>ストレージの監視/アーカイブ</strong></td>
 <td>BizTalk サービスの監視出力を格納する Azure ストレージ アカウント名です。
 <br/><br/>「
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302280">要件の説明</a>」に、ストレージ アカウントの詳しい説明があります。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=302280">要件の説明</a>」に、ストレージ アカウントの詳しい説明があります。</td>
 </tr>
 <tr>
 <td><strong>サブスクリプション名</strong></td>
@@ -178,7 +178,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 </tr>
 </table>
 
-[BizTalk Services: プロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)に関するページに、BizTalk サービスを作成する手順が記載されています。
+[BizTalk Services: プロビジョニング](https://go.microsoft.com/fwlink/p/?LinkID=302280)に関するページに、BizTalk サービスを作成する手順が記載されています。
 
 ##### <a name="manage-connection-information-sync-keys-and-delete-in-the-task-bar"></a>タスク バーの [管理]、[接続情報]、[キーの同期]、[削除]:
 <table border="1">
@@ -189,7 +189,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 <br/><br/>
 これは、<strong>[クイック スタート]</strong> タブの <strong>[パートナー契約の作成]</strong> と同じです。
 <br/><br/>BizTalk Services ポータルに関する詳細情報については、
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk Services ポータルにおける EDI メッセージングのコンポーネントの構成</a>に関するページを参照してください。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=303653">BizTalk Services ポータルにおける EDI メッセージングのコンポーネントの構成</a>に関するページを参照してください。</td>
 </tr>
 <tr>
 <td>Access Control 名前空間の<strong>接続情報</strong></td>
@@ -197,7 +197,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 <br/><br/>
 Access Control ポータルを開くこともできます。 Access Control ポータルは、左のナビゲーション ウィンドウで [Active Directory] オプションを使用するのと同じです。
 <br/><br/>
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285670">ACS 名前空間の管理</a>に関するページでは、Access Control ポータルについて詳しく説明されています。</td>
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285670">ACS 名前空間の管理</a>に関するページでは、Access Control ポータルについて詳しく説明されています。</td>
 </tr>
 <tr>
 <td>ストレージ アカウントの<strong>キーの同期</strong></td>
@@ -342,11 +342,11 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 * [BizTalk サービス: バックアップと復元に関するページ](biztalk-backup-restore.md)
 
 ## <a name="see-also"></a>関連項目
-* [ハイブリッド接続](integration-hybrid-connection-overview.md)  
+* [VNet](integration-hybrid-connection-overview.md)  
 * [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)  
 * [BizTalk Services: プロビジョニング](biztalk-provision-services.md)  
 * [BizTalk サービス: BizTalk サービスの状態のグラフに関するページ](biztalk-service-state-chart.md)  
-* [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Visual Studio でのプロジェクトの作成](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [Quickstart]: ./media/biztalk-dashboard-monitor-scale-tabs/QuickStartIcon.png
 [AddMetrics]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_AddMetrics.png

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 22e28e208d46a23a2dd7e36e1c3ba4be13be928a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 93d5cbdb44d3014b547141d59ce96cf607276846
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091955"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234614"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>汎用化した VHD をアップロードして Azure で新しい VM を作成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "49091955"
 > 
 
 1. Windows 仮想マシンへのサインイン
-2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを %windir%\system32\sysprep に変更し、`sysprep.exe` を実行します。
+2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを `sysprep.exe`%windir%\system32\sysprep に変更し、を実行します。
 3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
 4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
 5. **[OK]** を選択します。
@@ -100,7 +100,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
  
 次のいずれかの方法を使用して、ストレージ アカウントに VHD をアップロードすることもできます。
 
-- [AzCopy](http://aka.ms/downloadazcopy)
+- [AzCopy](https://aka.ms/downloadazcopy)
 - [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 - [Azure ストレージ エクスプローラーでの BLOB のアップロード](https://azurestorageexplorer.codeplex.com/)
 - [Storage Import/Export Service REST API リファレンス](https://msdn.microsoft.com/library/dn529096.aspx)

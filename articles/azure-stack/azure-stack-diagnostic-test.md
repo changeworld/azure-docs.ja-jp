@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/02/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 0720edeab7577f41ddbaa67e4643f1dfe57ebac0
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: af601005c7c8bd8fa7fe335879991caa34187927
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740316"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236977"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Azure Stack の検証テストを実行する
 
@@ -73,7 +73,7 @@ Azure Stack の状態を検証します。 このコマンドレットは、Azur
 | BackupShareCredential   | PSCredential    | いいえ        | 該当なし      |
 
 
-Test-AzureStack コマンドレットは、Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable、および OutVariable の一般的なパラメーターをサポートしています。 詳細については、「[About Common Parameters (一般的なパラメーターについて)](http://go.microsoft.com/fwlink/?LinkID=113216)」を参照してください。 
+Test-AzureStack コマンドレットは、Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable、および OutVariable の一般的なパラメーターをサポートしています。 詳細については、「[About Common Parameters (一般的なパラメーターについて)](https://go.microsoft.com/fwlink/?LinkID=113216)」を参照してください。 
 
 ### <a name="examples-of-test-azurestack"></a>Test-AzureStack の例
 
@@ -144,7 +144,7 @@ PEP セッションで、次を実行します。
 特定のテストを除外するには:
 
 ````PowerShell
-    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint  -Credential $localcred
+    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
     Test-AzureStack -Ignore AzsInfraPerformance
 ````
 
@@ -161,7 +161,7 @@ PEP セッションで、次を実行します。
 バックアップを構成した後、PEP セッションの実行から AzsBackupShareAccessibility を実行して、ERCS から共有にアクセスできることを検証できます。
 
 ````PowerShell
-    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint  -Credential $localcred
+    Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint -Credential $localcred
     Test-AzureStack -Include AzsBackupShareAccessibility
 ````
 

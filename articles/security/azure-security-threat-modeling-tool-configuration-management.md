@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 07a86345e49081320663d7706310a71a40ace134
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fe6251f70ae62440bbbefc8c3aa5d92d934d8ba0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302109"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249355"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム: 構成管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -210,7 +210,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [IE8 のセキュリティ パート V: 包括的な保護](http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME タイプ](http://en.wikipedia.org/wiki/Mime_type) |
+| **参照**              | [IE8 のセキュリティ パート V: 包括的な保護](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)、[MIME タイプ](http://en.wikipedia.org/wiki/Mime_type) |
 | **手順** | X-Content-Type-Options ヘッダーは、コンテンツを MIME スニッフィングしないことを開発者が指定できる HTTP ヘッダーです。 このヘッダーは、MIME スニッフィング攻撃を軽減することを目的としています。 ユーザーが制御可能なコンテンツが含まれている可能性のある各ページで、X-Content-Type-Options:nosniff HTTP ヘッダーを使用する必要があります。 この必須のヘッダーをアプリケーションのすべてのページでグローバルに有効にするには、次のいずれかを実行します|
 
 ### <a name="example"></a>例

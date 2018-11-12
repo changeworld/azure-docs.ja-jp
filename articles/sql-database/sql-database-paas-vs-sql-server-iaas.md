@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: ff6b535b67608d9331e134ff3b3d943601e73a48
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 90427402d348fdbcec9f573848ed7cc0c5b03e2d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364491"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254657"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
 
@@ -90,7 +90,7 @@ Azure クラウドでホストされる、サービスとしてのリレーシ�
 | **リソース:** | 基盤となるインフラストラクチャの構成と管理のために IT リソースを使用するつもりがなく、アプリケーション層に的を絞りたい。 | SQL Database と同じです。 | 構成と管理のための IT リソースが存在する。 自動化された機能がいくつか用意されているため、構成と管理が劇的に簡素化されます。 |
 | **総保有コスト:** | ハードウェアのコストを削減し、管理コストを削減します。 | SQL Database と同じです。 | ハードウェアのコストを削減します。 |
 | **ビジネス継続性:** |Azure SQL Database は、[組み込みのフォールト トレランスのインフラストラクチャ機能](sql-database-high-availability.md)以外にも、ビジネス継続性を向上させるために、[自動バックアップ](sql-database-automated-backups.md)、[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)、[geo リストア](sql-database-recovery-using-backups.md#geo-restore)、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)などの機能を提供します。 詳細については、 [SQL Database のビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。 | SQL Database と同じ機能に加えて、ユーザーによって開始されるコピーのみのバックアップを使用できます。 | Azure VM 上の SQL Server では、データベース固有のニーズに合わせて、高可用性とディザスター リカバリーのソリューションを設定できます。 そのため、アプリケーション向けにシステムを大幅に最適化できます。 必要なときに自分でフェールオーバーをテストして実行できます。 詳細については、「 [Azure Virtual Machines における SQL Server の高可用性と障害復旧](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。 |
-| **ハイブリッド クラウド:** |オンプレミス アプリケーションから Azure SQL Database 内のデータにアクセスできます。 | Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットワークの実装](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration)と接続。 | Azure VM 上の SQL Server を使用して、アプリケーションの一部をクラウド上で実行し、一部をオンプレミスで実行することができます。 たとえば、 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)を介してオンプレミス ネットワークと Active Directory ドメインをクラウドに拡張できます。 さらに、 [Azure の SQL Server データ ファイル](http://msdn.microsoft.com/library/dn385720.aspx)を使用して、Azure Storage にオンプレミスのデータ ファイルを格納することができます。 詳細については、「 [SQL Server 2014 ハイブリッド クラウドの概要](http://msdn.microsoft.com/library/dn606154.aspx)」を参照してください。 |
+| **ハイブリッド クラウド:** |オンプレミス アプリケーションから Azure SQL Database 内のデータにアクセスできます。 | Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットワークの実装](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration)と接続。 | Azure VM 上の SQL Server を使用して、アプリケーションの一部をクラウド上で実行し、一部をオンプレミスで実行することができます。 たとえば、 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)を介してオンプレミス ネットワークと Active Directory ドメインをクラウドに拡張できます。 さらに、 [Azure の SQL Server データ ファイル](https://msdn.microsoft.com/library/dn385720.aspx)を使用して、Azure Storage にオンプレミスのデータ ファイルを格納することができます。 詳細については、「 [SQL Server 2014 ハイブリッド クラウドの概要](https://msdn.microsoft.com/library/dn606154.aspx)」を参照してください。 |
 |  | サブスクライバーとして、データをレプリケートするための [SQL Server のトランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx) がサポートされます。 | Azure SQL Database Managed Instance では、レプリケーションはサポートされていません。 | データをレプリケートするための [SQL Server のトランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx)、[Always On 可用性グループ](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)、Integration Services、ログ配布が完全にサポートされます。 また、従来の SQL Server バックアップも完全にサポートされます。 | |
 |  | | |
 

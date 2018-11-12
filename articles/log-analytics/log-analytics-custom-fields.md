@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: e86b79cb57b9d4a590d69a98eca591679ee10334
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: fdac7d1fd7fbcea28d6ce8e614e4968f168566ba
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042939"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010589"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics のカスタム フィールド
 Log Analytics の**カスタム フィールド**機能を使用すると、独自の検索可能なフィールドを追加して、Log Analytics の既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
@@ -46,9 +46,9 @@ Log Analytics の**カスタム フィールド**機能を使用すると、独�
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>手順 1 - カスタム フィールドを追加するレコードを指定する
-最初の手順は、カスタム フィールドを追加するレコードの指定です。  まず[標準のログ検索](log-analytics-log-searches.md)から始めて、Log Analytics が認識する、モデルとして動作するレコードを選択します。  データをカスタム フィールドに抽出しようとすると、**フィールド抽出ウィザード**が開きます。この画面で、条件を検証し、調整します。
+最初の手順は、カスタム フィールドを追加するレコードの指定です。  まず[標準のログ検索](log-analytics-queries.md)から始めて、Log Analytics が認識する、モデルとして動作するレコードを選択します。  データをカスタム フィールドに抽出しようとすると、**フィールド抽出ウィザード**が開きます。この画面で、条件を検証し、調整します。
 
-1. **ログ検索** を開き、 [クエリを使用してカスタム フィールドを追加するレコードを取得](log-analytics-log-searches.md) します。
+1. **ログ検索** を開き、 [クエリを使用してカスタム フィールドを追加するレコードを取得](log-analytics-queries.md) します。
 2. Log Analytics でカスタム フィールドを設定するデータを抽出する際に、モデルとして機能するために使用するレコードを選択します。  このレコードから抽出するデータを特定すると、Log Analytics はその情報を使用して、すべての同様のレコードのカスタム フィールドを設定します。
 3. レコードのテキスト プロパティの左にあるボタンをクリックし、 **[フィールドの抽出]** を選択します。
 4. **フィールドの抽出ウィザード**が開き、選択したレコードが **[メインの例]** 列に表示されます。  選択したプロパティと同じ値を持つ、そのレコードのカスタム フィールドが定義されます。  
@@ -140,6 +140,6 @@ DPMRA サービスを含むレコードまでスクロールし、同じプロ�
 ![クエリによるグループ化](media/log-analytics-custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>次の手順
-* 基準のカスタム フィールドを使用してクエリを作成するための、 [ログ検索](log-analytics-log-searches.md) について説明します。
+* 基準のカスタム フィールドを使用してクエリを作成するための、 [ログ検索](log-analytics-queries.md) について説明します。
 * カスタム フィールドを使用して解析対象の[カスタム ログ ファイル](log-analytics-data-sources-custom-logs.md)を監視します。
 

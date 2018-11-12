@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 22f1579b2df2acdc736ed4c1d5cee64d096c320a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a91e14afa8325e75507b2f65cd9d71ab38df4524
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635339"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235243"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>VM からカスタム イメージを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "38635339"
 
 プロビジョニングされた VM からカスタム イメージを作成し、その後、そのカスタム イメージを使用して同一の VM を作成できます。 次の手順では、VM からカスタム イメージを作成する方法を説明します。
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 

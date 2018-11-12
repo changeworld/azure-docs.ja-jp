@@ -3,7 +3,7 @@ title: Azure Security Center でのセキュリティ構成の修復 | Microsoft
 description: このドキュメントでは、"セキュリティ構成の修復" という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 74bfc3435ad6d247dabd3a7cbf2910ede5f8c8ca
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296246"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238779"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Azure Security Center でのセキュリティ構成の修復
 Azure Security Center では、仮想マシン (VM) とコンピューターのオペレーティング システム (OS) を日々分析して、VM とコンピューターの攻撃に対する脆弱性を高める可能性のある構成を特定します。 Security Center では、OS 構成が推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決するよう推奨し、これらの脆弱性に対処するための構成変更を推奨します。
@@ -107,7 +107,7 @@ Security Center の詳細については、次のリソースを参照してく�
 * セキュリティの警告の管理と対応の方法については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」をご覧ください。
 * パートナー ソリューションの正常性状態を監視する方法については、[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)に関するページをご覧ください。
 * このサービスの使用に関してよく寄せられる質問に対する回答については、「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」をご覧ください。
-* Azure のセキュリティとコンプライアンスについてのブログ記事は、[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)をご覧ください。
+* Azure のセキュリティとコンプライアンスについてのブログ記事は、[Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)をご覧ください。
 
 <!--Image references-->
 [1]: ./media/security-center-remediate-os-vulnerabilities/compute-blade.png

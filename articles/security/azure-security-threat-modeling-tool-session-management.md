@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841815"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232744"
 ---
 # <a name="security-frame-session-management"></a>セキュリティ フレーム: セッション管理
 | 製品/サービス | 記事 |
@@ -157,7 +157,7 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - OnPrem |
-| **参照**              | [httpCookies 要素 (ASP.NET 設定スキーマ)](http://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、 [HttpCookie.Secure プロパティ](http://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **参照**              | [httpCookies 要素 (ASP.NET 設定スキーマ)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、 [HttpCookie.Secure プロパティ](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
 | **手順** | 通常、cookie はそれがスコープ指定されたドメインからのみアクセスできます。 残念ながら、"domain" の定義にはプロトコルが含まれないため、HTTPS 経由で作成された cookie に HTTP 経由でアクセスできます。 "secure" 属性は、cookie を HTTPS 経由でのみ使用できるようにする必要があることをブラウザーに示します。 HTTPS で設定されるすべての cookie が、**secure** 属性を使うようにする必要があります。 この要件は、web.config ファイルで requireSSL 属性を true に設定することによって適用できます。 これは、コードを変更することなく、現在および将来のすべての cookie に **secure** 属性を強制できるので、推奨される方法です。|
 
 ### <a name="example"></a>例

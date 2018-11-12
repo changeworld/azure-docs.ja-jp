@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: 60920aaa62d8472eaca8f929c62ce1c0af08f9a4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4b7192b0c406d2c5df42e3bb3e604f26c56c7bd4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385636"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235192"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -56,7 +56,7 @@ ms.locfileid: "49385636"
         -   プロバイダー  
         -   資格情報 - CA アカウント資格情報。 各 CA が固有の特定のデータを持ちます。  
 
-     CA プロバイダーでのアカウントの作成について詳しくは、[Key Vault のブログ](http://aka.ms/kvcertsblog)で関連する投稿をご覧ください。  
+     CA プロバイダーでのアカウントの作成について詳しくは、[Key Vault のブログ](https://aka.ms/kvcertsblog)で関連する投稿をご覧ください。  
 
 **手順 3.1** - 通知用の[証明書連絡先](/rest/api/keyvault/setcertificatecontacts)を設定します。 これは、Key Vault ユーザーの連絡先です。 Key Vault はこの手順を適用しません。  
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: 71d8b020fe96094c15965fd82615e3182e333990
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d7f55022dc526f44251814ac953787d6652e6f90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783461"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237045"
 ---
 # <a name="develop-video-player-applications"></a>ビデオ プレーヤー アプリケーションの開発
 ## <a name="overview"></a>概要
@@ -29,17 +29,17 @@ Azure Media Services には、ほとんどのプラットフォーム (iOS デ�
 >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
  
 ## <a name="azure-media-player"></a>Azure Media Player
-[Azure Media Player](http://aka.ms/ampinfo) は、さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生できる組み込みの Web ビデオ プレーヤーです。 Azure Media Player では、HTML5、Media Source Extensions (MSE)、Encrypted Media Extensions (EME) といった業界標準を使用して、強化されたアダプティブ ストリーミングを提供します。 デバイスやブラウザーでこれらの標準を使用できない場合、Azure Media Player は Flash や Silverlight をフォールバック テクノロジとして使用します。 使用する再生テクノロジにかかわらず、開発者は統一された JavaScript インターフェイスを使用して API にアクセスできます。 これにより、Azure Media Services で提供されるコンテンツを、さまざまなデバイスやブラウザーで追加作業なしで再生できるようになります。
+[Azure Media Player](https://aka.ms/ampinfo) は、さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生できる組み込みの Web ビデオ プレーヤーです。 Azure Media Player では、HTML5、Media Source Extensions (MSE)、Encrypted Media Extensions (EME) といった業界標準を使用して、強化されたアダプティブ ストリーミングを提供します。 デバイスやブラウザーでこれらの標準を使用できない場合、Azure Media Player は Flash や Silverlight をフォールバック テクノロジとして使用します。 使用する再生テクノロジにかかわらず、開発者は統一された JavaScript インターフェイスを使用して API にアクセスできます。 これにより、Azure Media Services で提供されるコンテンツを、さまざまなデバイスやブラウザーで追加作業なしで再生できるようになります。
 
 Microsoft Azure Media Services では、DASH、スムーズ ストリーミング、HLS ストリーミングなどの形式でコンテンツを提供して再生できます。 Azure Media Player はこれらの多用な形式を考慮し、プラットフォームやブラウザーの性能に基づいて最適なリンクを自動的に再生します。 また、Microsoft Azure Media Services では PlayReady 暗号化や AES-128 ビットエンベロープ暗号化を使用した資産の動的暗号化も可能です。 Azure Media Player では、コンテンツが適切に構成されていれば、PlayReady 暗号化や AES-128 ビットエンベロープ暗号化されたコンテンツの暗号化を解除できます。 
 
 詳細:
 
-* [Azure Media Player](http://aka.ms/ampinfo)
-* [Azure Media Player のドキュメント](http://aka.ms/ampdocs) 
+* [Azure Media Player](https://aka.ms/ampinfo)
+* [Azure Media Player のドキュメント](https://aka.ms/ampdocs) 
 * [Azure Media Player の概要に関するブログ](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)
-* [Azure Media Player を最新の状態に維持するためのサインアップのページ](http://aka.ms/ampsignup)
-* [新しい機能に関する要望、アイデア、フィードバックを追加するページ](http://aka.ms/ampuservoice) 
+* [Azure Media Player を最新の状態に維持するためのサインアップのページ](https://aka.ms/ampsignup)
+* [新しい機能に関する要望、アイデア、フィードバックを追加するページ](https://aka.ms/ampuservoice) 
 
 ## <a name="other-tools-for-creating-player-applications"></a>プレーヤー アプリケーションを作成するためのその他のツール
 次のような SDK を使用することもできます。
@@ -49,8 +49,8 @@ Microsoft Azure Media Services では、DASH、スムーズ ストリーミン�
 * [Microsoft Media Platform: プレーヤー フレームワーク](http://playerframework.codeplex.com/) 
 * [HTML5 プレーヤー フレームワークに関するドキュメント](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [OSMF 用 Microsoft Smooth Streaming Plugin](https://www.microsoft.com/download/details.aspx?id=36057) 
-* [Licensing Microsoft® Smooth Streaming Client Porting Kit](http://aka.ms/sspk) 
-* [Xbox ビデオ アプリケーションの開発](http://xbox.create.msdn.com/) 
+* [Licensing Microsoft® Smooth Streaming Client Porting Kit](https://aka.ms/sspk) 
+* [Xbox ビデオ アプリケーションの開発](https://xbox.create.msdn.com/) 
 
 ## <a name="advertising"></a>広告
 Azure Media Services では、Windows メディア プラットフォームのプレーヤー フレームワークを通じて広告の挿入がサポートされています。 広告がサポートされるプレーヤー フレームワークは、Windows 8、Silverlight、Windows Phone 8、iOS デバイスで使用できます。 各プレーヤー フレームワークには、プレーヤー アプリケーションの実装方法を示すサンプル コードが含まれています。 メディアには、3 種類の広告を挿入できます。

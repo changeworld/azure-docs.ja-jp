@@ -9,18 +9,18 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 54646a7d4962c5dfe255d28bdb91d272062530dd
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b7befb46da8674e0bec7d3f73ad33a12529ffc3a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364276"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232381"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>マルチテナント SaaS アプリケーションと Azure Search の設計パターン
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。
 
 ## <a name="azure-search-concepts"></a>Azure Search の概念
-Search-as-a-service (サービスとしての検索) ソリューションである Azure Search を使用すると、開発者はインフラストラクチャを管理したり、情報取得のエキスパートになったりしなくても、豊富な検索機能をアプリケーションに追加できます。 データはこのサービスにアップロードされた後、クラウドに保存されます。 Azure Search API への簡単な要求を使用して、データの変更や検索を行うことができます。 このサービスの概要については、 [こちらの記事](http://aka.ms/whatisazsearch)をご覧ください。 設計パターンについて説明する前に、Azure Search のいくつかの概念を理解しておく必要があります。
+Search-as-a-service (サービスとしての検索) ソリューションである Azure Search を使用すると、開発者はインフラストラクチャを管理したり、情報取得のエキスパートになったりしなくても、豊富な検索機能をアプリケーションに追加できます。 データはこのサービスにアップロードされた後、クラウドに保存されます。 Azure Search API への簡単な要求を使用して、データの変更や検索を行うことができます。 このサービスの概要については、 [こちらの記事](https://aka.ms/whatisazsearch)をご覧ください。 設計パターンについて説明する前に、Azure Search のいくつかの概念を理解しておく必要があります。
 
 ### <a name="search-services-indexes-fields-and-documents"></a>検索サービス、インデックス、フィールド、ドキュメント
 Azure Search を使用する場合、" *検索サービス*" にサブスクライブします。 データは、Azure Search にアップロードされると、検索サービス内の " *インデックス* " に格納されます。 1 つのサービス内に多数のインデックスを作成できます。 データベースのなじみのある概念に照らし合わせた場合、検索サービスはデータベースに例えることができ、サービス内のインデックスはデータベース内のテーブルに例えることができます。
@@ -69,8 +69,7 @@ Azure Search は、テナントのデータとワークロードの分離に使�
 マルチテナント シナリオの場合、アプリケーション開発者は 1 つ以上の検索サービスを利用し、サービス、インデックス、またはその両方でテナントを分けます。 Azure Search には、マルチテナント シナリオをモデル化する際の一般的なパターンがいくつかあります。
 
 1. *テナントごとのインデックス:* " 各テナントは、他のテナントと共有する検索サービス内に独自のインデックスを持ちます。
-2. 
-  *テナントごとのサービス:* " テナントはそれぞれ専用の Azure Search サービスを使用することで、データとワークロードの最高レベルの分離を実現します。
+2. *テナントごとのサービス:* " テナントはそれぞれ専用の Azure Search サービスを使用することで、データとワークロードの最高レベルの分離を実現します。
 3. *両パターンの組み合わせ:* " 大規模でアクティブなテナントには専用のサービスを割り当て、小規模なテナントには共有サービス内の個々のインデックスを割り当てます。
 
 ## <a name="1-index-per-tenant"></a>1.テナントごとのインデックス
@@ -127,7 +126,7 @@ Azure Search でマルチテナント シナリオをモデル化する前述の
 > 
 
 ## <a name="next-steps"></a>次の手順
-Azure Search は、多くのアプリケーションにとって魅力的な選択肢です。このサービスの信頼性の高い機能の詳細については、[こちら](http://aka.ms/whatisazsearch)をご覧ください。 マルチテナント アプリケーションの各種設計パターンを評価するときは、[さまざまな価格レベル](https://azure.microsoft.com/pricing/details/search/)とそれぞれの[サービスの制限](search-limits-quotas-capacity.md)を検討して、あらゆる規模のアプリケーション ワークロードやアーキテクチャに合わせて Azure Search を最適に調整してください。
+Azure Search は、多くのアプリケーションにとって魅力的な選択肢です。このサービスの信頼性の高い機能の詳細については、[こちら](https://aka.ms/whatisazsearch)をご覧ください。 マルチテナント アプリケーションの各種設計パターンを評価するときは、[さまざまな価格レベル](https://azure.microsoft.com/pricing/details/search/)とそれぞれの[サービスの制限](search-limits-quotas-capacity.md)を検討して、あらゆる規模のアプリケーション ワークロードやアーキテクチャに合わせて Azure Search を最適に調整してください。
 
 Azure Search とマルチテナント シナリオに関するご質問があれば、azuresearch_contact@microsoft.com までお問い合わせください。
 

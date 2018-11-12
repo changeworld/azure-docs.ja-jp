@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3b1fb14fbb21876d0b3f7d98327353d54bb1cfb2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 56d5f3b480ddb000f9118fbcc36e39817cb0bce8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42024059"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238507"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
 
@@ -34,41 +34,40 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 ## <a name="features"></a>機能の比較
 次の表では、最善の選択ができるように、App Service、Cloud Services、Virtual Machines、および Service Fabric の機能を比較しています。 それぞれのホスティング方法に関する最新の SLA 情報については、 [Azure サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)を参照してください。
 
-| Feature | App Service (Web Apps) | Cloud Services (Web ロール) | Virtual Machines | Service Fabric | メモ |
+| 機能 | App Service (Web Apps) | Cloud Services (Web ロール) | Virtual Machines | Service Fabric | メモ |
 | --- | --- | --- | --- | --- | --- |
-| ほぼ即時のデプロイ |○ | | |○ |アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。 |
-| 再デプロイなしでの大型マシンへのスケールアップ |○ | | |○ | |
-| Web サーバーのインスタンスは、コンテンツと構成を共有します。つまり、スケールする際に、デプロイまたは構成をやり直す必要はありません。 |○ | | |○ | |
-| 複数のデプロイ環境 (運用環境とステージング環境) |○ |○ | |○ |Service Fabric を使用すると、アプリ用の複数の環境を所有したり、アプリの複数のバージョンを並行してデプロイしたりできます。 |
-| OS の自動更新の管理 |○ |○ | | |パッチ オーケストレーション アプリケーション (POA) を介して部分的にサポート。将来的には完全にサポート。 |
-| シームレスなプラットフォームの切り替え (32 ビットと 64 ビット間で簡単に移動) |○ |○ | | | |
-| GIT、FTP によるコードのデプロイ |○ | |○ | | |
-| Web デプロイによるコードのデプロイ |○ | |○ | |Cloud Services では、Web 配置を使用して、個々のロール インスタンスに更新プログラムをデプロイできます。 ただし、ロールの初回デプロイに Web 配置を使用することはできません。また、更新プログラムに Web 配置を使用する場合は、各ロールのインスタンスに対して個別にデプロイする必要があります。 運用環境で Cloud Services の SLA を満たすには、複数のインスタンスが必要です。 |
-| WebMatrix サポート |○ | |○ | | |
-| Service Bus、Storage、SQL Database のようなサービスへのアクセス |○ |○ |○ |○ | |
-| 多層アーキテクチャの Web 層または Web サービス層のホスト |○ |○ |○ |○ | |
-| 多層アーキテクチャの中間層のホスト |○ |○ |○ |○ |REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。 Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。 |
-| 統合されたサービスとしての MySQL のサポート |○ |○ | | | |
-| ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート |○ |○ |○ |○ |Service Fabric では、[ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) を使用した Web フロントエンドの作成がサポートされています。または、あらゆる種類のアプリケーション (Node.js、Java など) を[ゲスト実行可能ファイル](../service-fabric/service-fabric-guest-executables-introduction.md)としてデプロイできます。 |
-| 再デプロイなしでの複数インスタンスへのスケールアウト |○ |○ |○ |○ |Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。マシン間で要求をルーティングするようにロード バランサーを構成し、[可用性セット](../virtual-machines/windows/manage-availability.md) 内に複数の VM インスタンスがあるようにする必要があります。 |
-| SSL のサポート |○ |○ |○ |○ |App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。 Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](app-service-web-tutorial-custom-ssl.md)に関するページを参照してください。 |
-| Visual Studio 統合 |○ |○ |○ |○ | |
-| リモート デバッグ |○ |○ |○ | | |
-| TFS によるコードのデプロイ |○ |○ |○ |○ | |
-| [Azure Virtual Network](/azure/virtual-network/) |○ |○ |○ |○ |「 [Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
-| [Azure Traffic Manager](/azure/traffic-manager/) |○ |○ |○ |○ | |
-| 統合エンドポイント監視 |○ |○ |○ | | |
-| サーバーへのリモート デスクトップ アクセス | |○ |○ |○ | |
-| カスタム MSI のインストール | |○ |○ |○ |Service Fabric を使用すると、任意の実行可能ファイルを [ゲスト実行可能ファイル](../service-fabric/service-fabric-guest-executables-introduction.md) としてホストしたり、任意のアプリを VM にインストールしたりできます。 |
-| スタートアップ タスクの定義と実行 | |○ |○ |○ | |
-| ETW イベントのリッスン | |○ |○ |○ | |
+| ほぼ即時のデプロイ |X | | |X |アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。 |
+| 再デプロイなしでの大型マシンへのスケールアップ |X | | |X | |
+| Web サーバーのインスタンスは、コンテンツと構成を共有します。つまり、スケールする際に、デプロイまたは構成をやり直す必要はありません。 |X | | |X | |
+| 複数のデプロイ環境 (運用環境とステージング環境) |X |X | |X |Service Fabric を使用すると、アプリ用の複数の環境を所有したり、アプリの複数のバージョンを並行してデプロイしたりできます。 |
+| OS の自動更新の管理 |X |X | | |パッチ オーケストレーション アプリケーション (POA) を介して部分的にサポート。将来的には完全にサポート。 |
+| シームレスなプラットフォームの切り替え (32 ビットと 64 ビット間で簡単に移動) |X |X | | | |
+| GIT、FTP によるコードのデプロイ |X | |X | | |
+| Web デプロイによるコードのデプロイ |X | |X | |Cloud Services では、Web 配置を使用して、個々のロール インスタンスに更新プログラムをデプロイできます。 ただし、ロールの初回デプロイに Web 配置を使用することはできません。また、更新プログラムに Web 配置を使用する場合は、各ロールのインスタンスに対して個別にデプロイする必要があります。 運用環境で Cloud Services の SLA を満たすには、複数のインスタンスが必要です。 |
+| WebMatrix サポート |X | |X | | |
+| Service Bus、Storage、SQL Database のようなサービスへのアクセス |X |X |X |X | |
+| 多層アーキテクチャの Web 層または Web サービス層のホスト |X |X |X |X | |
+| 多層アーキテクチャの中間層のホスト |X |X |X |X |REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](https://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。 Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。 |
+| 統合されたサービスとしての MySQL のサポート |X |X | | | |
+| ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート |X |X |X |X |Service Fabric では、[ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) を使用した Web フロントエンドの作成がサポートされています。または、あらゆる種類のアプリケーション (Node.js、Java など) を[ゲスト実行可能ファイル](../service-fabric/service-fabric-guest-executables-introduction.md)としてデプロイできます。 |
+| 再デプロイなしでの複数インスタンスへのスケールアウト |X |X |X |X |Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。マシン間で要求をルーティングするようにロード バランサーを構成し、[可用性セット](../virtual-machines/windows/manage-availability.md) 内に複数の VM インスタンスがあるようにする必要があります。 |
+| SSL のサポート |X |X |X |X |App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。 Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](app-service-web-tutorial-custom-ssl.md)に関するページを参照してください。 |
+| Visual Studio 統合 |X |X |X |X | |
+| リモート デバッグ |X |X |X | | |
+| TFS によるコードのデプロイ |X |X |X |X | |
+| [Azure Virtual Network](/azure/virtual-network/) |X |X |X |X |「 [Azure Websites Virtual Network Integration (Azure Websites Virtual Network の統合)](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/) |
+| [Azure Traffic Manager](/azure/traffic-manager/) |X |X |X |X | |
+| 統合エンドポイント監視 |X |X |X | | |
+| サーバーへのリモート デスクトップ アクセス | |X |X |X | |
+| カスタム MSI のインストール | |X |X |X |Service Fabric を使用すると、任意の実行可能ファイルを [ゲスト実行可能ファイル](../service-fabric/service-fabric-guest-executables-introduction.md) としてホストしたり、任意のアプリを VM にインストールしたりできます。 |
+| スタートアップ タスクの定義と実行 | |X |X |X | |
+| ETW イベントのリッスン | |X |X |X | |
 
 ## <a name="scenarios"></a>シナリオと推奨事項
 以降、一般的なアプリケーションのシナリオをいくつか取り上げると共に、それぞれのシナリオで最適と思われる Azure Web ホスティングの選択肢を紹介します。
 
 * [Web フロント エンドとバックエンド (バックグラウンド処理とデータベース) を組み合わせて、ビジネス アプリケーションをオンプレミスの資産と連係させたいのですが。](#onprem)
-* 
-  [拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。](#corp)
+* [拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。](#corp)
 * [Windows Server 2003 上で動作する IIS6 アプリケーションがあるのですが。](#iis6)
 * [スモール ビジネスのオーナーです。サイトをホストするための安価な方法が必要ですが、将来の成長も考慮する必要があります。](#smallbusiness)
 * [Web デザイナーまたはグラフィック デザイナーです。顧客の Web サイトをデザインしたり構築したりする必要があります。](#designer)
@@ -87,9 +86,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 * ISO、SOC2、PCI に準拠している。
 * Active Directory と連係する。
 
-### 
-  <a id="corp">
-  </a> 拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。
+### <a id="corp"></a> 拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。
 Azure App Service は、企業 Web サイトをホスティングするためのソリューションとしてきわめて優れた特長を持っています。 グローバルなデータセンターのネットワークを活かして Web アプリのスケールを短期間で拡張し、すぐに需要に応えることができます。 また、ローカル リーチ、フォールト トレランス、インテリジェントなトラフィック管理が実現されています。 そのすべてが、ワールドクラスの管理ツールを備えたプラットフォームに集約され、サイトの稼働状態とトラフィックの状況を速やかにかつ簡単に把握できます。 Azure App Service は Web アプリの 99.9% の稼働率が SLA で保証されています。Azure App Service でできることを次に示します。
 
 * 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上で Web サイトを実行し、高い信頼性を確保する。
@@ -122,8 +119,7 @@ Web 開発者とデザイナーのために、Azure App Service は、Git や FT
 * [タスクの自動化][scripting]のためのコマンド ライン ツールを使用できます。
 * [.Net][dotnet]、[PHP][PHP]、[Node.js][nodejs]、[Python][Python] など、一般的な言語で作業できます。
 * 非常に高い容量に拡張するための 3 つの異なる拡張レベルを選択できます。
-* 
-  [SQL Database][sqldatabase]、[Service Bus][servicebus]、[Storage][Storage] などの他の Azure サービスや、MySQL、MongoDB など、[Azure Store][azurestore] からのパートナーの製品と統合できます。
+* [SQL Database][sqldatabase]、[Service Bus][servicebus]、[Storage][Storage] などの他の Azure サービスや、MySQL、MongoDB など、[Azure Store][azurestore] からのパートナーの製品と統合できます。
 * Visual Studio、Git、WebMatrix、WebDeploy、TFS、FTP などのツールと統合できます。
 
 ### <a id="multitier"></a>Web フロント エンドを含む多層アプリケーションをクラウドに移行しています。

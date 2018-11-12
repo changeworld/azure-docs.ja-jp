@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 8dcd89415bdd48b2d8d5c8e1e699159e9d1129e5
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139477"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237929"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
@@ -178,7 +178,7 @@ Traffic Manager プロファイルごとに 1 つのトラフィック ルーテ
 入れ子になったエンドポイントは、親プロファイルで特定のエンドポイントの種類 "NestedEndpoints" を使って構成します。 入れ子になったエンドポイントを指定する場合は、次のことが当てはまります。
 
 * エンドポイントは、'targetResourceId' パラメーターを使用して指定する必要があります。
-* 'Performance' トラフィック ルーティング方法を使用する場合、'EndpointLocation' が必須です。 それ以外の場合は省略可能です。 値には、[有効な Azure リージョン名](http://azure.microsoft.com/regions/)を指定する必要があります。
+* 'Performance' トラフィック ルーティング方法を使用する場合、'EndpointLocation' が必須です。 それ以外の場合は省略可能です。 値には、[有効な Azure リージョン名](https://azure.microsoft.com/regions/)を指定する必要があります。
 * Azure エンドポイントについては、'Weight' と 'Priority' は省略可能です。
 * 'MinChildEndpoints' パラメーターは省略可能で、 既定値は '1' です。 利用可能なエンドポイントの数がこのしきい値を下回った場合、親プロファイルは子プロファイルを '機能低下' と見なし、トラフィックを親プロファイルの他のエンドポイントにトラフィックを振り向けます。
 

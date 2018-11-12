@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/13/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: a0e2400163433ba5290525d0fe807ede624a31ed
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: c0672ddb3e6791fae3b9b8c04e9ff98827c9e22f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42146453"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256733"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
@@ -233,7 +233,7 @@ AzCopy を使用して BLOB をある場所から別の場所にコピーする�
 AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https://myaccount.blob.core.windows.net/mycontainer2 /SourceKey:key /DestKey:key /Pattern:abc.txt
 ```
 
-ストレージ アカウント内の 1 つの BLOB をコピーすると、 [サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) 操作が実行されます。
+ストレージ アカウント内の 1 つの BLOB をコピーすると、 [サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) 操作が実行されます。
 
 ### <a name="copy-a-single-blob-from-one-storage-account-to-another"></a>ストレージ アカウント間で 1 つの BLOB をコピーする
 
@@ -241,7 +241,7 @@ AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer1 /Dest:https:
 AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /SourceKey:key1 /DestKey:key2 /Pattern:abc.txt
 ```
 
-複数のストレージ アカウントに 1 つの BLOB をコピーすると、 [サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) 操作が実行されます。
+複数のストレージ アカウントに 1 つの BLOB をコピーすると、 [サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) 操作が実行されます。
 
 ### <a name="copy-a-single-blob-from-the-secondary-region-to-the-primary-region"></a>セカンダリ リージョンからプライマリ リージョンに 1 つの BLOB をコピーする
 
@@ -337,21 +337,21 @@ AzCopy を使用して、Azure ファイル共有のファイルをコピーす�
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare1/ /Dest:https://myaccount2.file.core.windows.net/myfileshare2/ /SourceKey:key1 /DestKey:key2 /S
 ```
-ファイル共有をまたがってファイルをコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
+ファイル共有をまたがってファイルをコピーすると、[サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
 
 ### <a name="copy-from-an-azure-file-share-to-blob-storage"></a>Azure ファイル共有から Blob Storage にコピーする
 
 ```azcopy
 AzCopy /Source:https://myaccount1.file.core.windows.net/myfileshare/ /Dest:https://myaccount2.blob.core.windows.net/mycontainer/ /SourceKey:key1 /DestKey:key2 /S
 ```
-ファイル共有から BLOB にファイルをコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
+ファイル共有から BLOB にファイルをコピーすると、[サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
 
 ### <a name="copy-a-blob-from-blob-storage-to-an-azure-file-share"></a>BLOB を Blob Storage から Azure ファイル共有にコピーする
 
 ```azcopy
 AzCopy /Source:https://myaccount1.blob.core.windows.net/mycontainer/ /Dest:https://myaccount2.file.core.windows.net/myfileshare/ /SourceKey:key1 /DestKey:key2 /S
 ```
-BLOB からファイル共有にファイルをコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
+BLOB からファイル共有にファイルをコピーすると、[サーバー側でコピー](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
 
 ### <a name="synchronously-copy-files"></a>ファイルを同期的にコピーする
 
@@ -432,7 +432,7 @@ AzCopy は、次の名前付け規則を使用して JSON データ ファイル
 
     <account name>_<table name>_<timestamp>_<volume index>_<CRC>.json
 
-生成される JSON データ ファイルは、最小のメタデータ用のペイロード形式に準じます。 このペイロード形式の詳細については、「 [テーブル サービス操作のペイロード形式](http://msdn.microsoft.com/library/azure/dn535600.aspx)」を参照してください。
+生成される JSON データ ファイルは、最小のメタデータ用のペイロード形式に準じます。 このペイロード形式の詳細については、「 [テーブル サービス操作のペイロード形式](https://msdn.microsoft.com/library/azure/dn535600.aspx)」を参照してください。
 
 BLOB にテーブルをエクスポートすると、AzCopy は Table エンティティをローカルの一時データ ファイルにダウンロードしてから、そのエンティティを BLOB にアップロードします。 この一時データ ファイルは、既定のパスが "<code>%LocalAppData%\Microsoft\Azure\AzCopy</code>" のジャーナル ファイル フォルダーに格納されます。オプション /Z:[ジャーナル ファイルのフォルダー] を指定してジャーナル ファイル フォルダーの場所を変更することもできます。この場合、一時データ ファイルの場所も変わります。 一時データ ファイルのサイズは、テーブル エンティティのサイズと、オプション /SplitSize で指定したサイズによって決まります。ローカル ディスクの一時データ ファイルは BLOB にアップロードされた後すぐに削除されますが、そのような一時データ ファイルを格納するのに十分なローカル ディスク領域が存在することを事前に確認しておく必要があります。
 
@@ -997,10 +997,10 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 
 ### <a name="azure-storage-blog-posts"></a>Azure Storage に関するブログの投稿:
 * [Azure Storage Data Movement Library プレビューの概要](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [AzCopy: Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [AzCopy: Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](http://go.microsoft.com/fwlink/?LinkId=507682)
-* [AzCopy - Support for read-access geo-redundant storage (AzCopy - 地理冗長ストレージの読み取りアクセスのサポート)](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [AzCopy - Transfer data with restartable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [AzCopy: Introducing synchronous copy and customized content type (AzCopy: 同期コピーとカスタマイズしたコンテンツの種類の概要)](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [AzCopy: Announcing General Availability of AzCopy 3.0 plus preview release of AzCopy 4.0 with Table and File support (AzCopy: AzCopy 3.0 の一般公開とテーブルおよびファイルのサポートを伴う AzCopy 4.0 のプレビュー リリースのお知らせ)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Optimized for Large-Scale Copy Scenarios (AzCopy: 大量のコピーのシナリオ用の最適化)](https://go.microsoft.com/fwlink/?LinkId=507682)
+* [AzCopy - Support for read-access geo-redundant storage (AzCopy - 地理冗長ストレージの読み取りアクセスのサポート)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [AzCopy - Transfer data with restartable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

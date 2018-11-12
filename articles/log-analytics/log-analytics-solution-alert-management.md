@@ -15,28 +15,28 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 29cc2cdc13d07d97bb1da872cbf53ea5353a0e16
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: fa76ccf7019097c5f27aa126b0a5a7dc81ffbd41
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044588"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008149"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
 ![Alert Management icon](media/log-analytics-solution-alert-management/icon.png)
 
-Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](log-analytics-alerts.md)ものや、[Nagios や Zabbix からインポートされた](log-analytics-linux-agents.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](log-analytics-om-agents.md)からもインポートされます。
+Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)ものや、[Nagios や Zabbix からインポートされた](log-analytics-quick-collect-linux-computer.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](log-analytics-om-agents.md)からもインポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションでは、Log Analytics リポジトリ内の **Alert** タイプのすべてのレコードが分析されます。そのため、これらのレコードを収集するために必要な構成をすべて行う必要があります。
 
-- Log Analytics のアラートの場合は、[アラート ルールを作成](log-analytics-alerts.md)して、リポジトリに直接アラート レコードを作成します。
-- Nagios と Zabbix のアラートの場合は、[これらのサーバーを構成](log-analytics-linux-agents.md)して、Log Analytics にアラートを送信します。
+- Log Analytics のアラートの場合は、[アラート ルールを作成](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)して、リポジトリに直接アラート レコードを作成します。
+- Nagios と Zabbix のアラートの場合は、[これらのサーバーを構成](log-analytics-quick-collect-linux-computer.md)して、Log Analytics にアラートを送信します。
 - System Center Operations Manager のアラートの場合は、[Log Analytics ワークスペースに Operations Manager 管理グループを接続](log-analytics-om-agents.md)します。  System Center Operations Manager で作成されたすべてのアラートが Log Analytics にインポートされます。  
 
 ## <a name="configuration"></a>構成
-[ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して、Log Analytics ワークスペースに Alert Management ソリューションを追加します。 さらに手動で構成する必要はありません。
+[ソリューションの追加](../monitoring/monitoring-solutions.md)に関するページで説明されているプロセスを使用して、Log Analytics ワークスペースに Alert Management ソリューションを追加します。 さらに手動で構成する必要はありません。
 
 ## <a name="management-packs"></a>管理パック
 System Center Operations Manager 管理グループが Log Analytics ワークスペースに接続されている場合は、このソリューションを追加したときに次の管理パックが System Center Operations Manager にインストールされます。  これらの管理パックに伴う構成や保守は不要です。
@@ -51,8 +51,8 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 
 | 接続先ソース | サポート | 説明 |
 |:--- |:--- |:--- |
-| [Windows エージェント](log-analytics-windows-agent.md) | いいえ  |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | いいえ  |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
+| [Windows エージェント](log-analytics-agent-windows.md) | いいえ  |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
+| [Linux エージェント](log-analytics-quick-collect-linux-computer.md) | いいえ  |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
 | [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) |[はい] |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
 
 
@@ -74,7 +74,7 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 | アクティブ SCOM アラート |Operations Manager によって収集された *[Closed]\(終了\)* 状態を除くすべてのアラートが、その生成元ごとにグループ化されて表示されます。 |
 | すべてのアクティブなアラート |重大度に関係なくすべてのアラートがその名前別に表示されます。 対象となるのは *[Closed]\(終了\)* 状態以外の Operations Manager アラートだけです。 |
 
-右へスクロールすると、使用頻度の高いいくつかのクエリがダッシュボードに一覧表示されます。そのクエリをクリックすると、アラート データを探すための[ログ検索](log-analytics-log-searches.md)が実行されます。
+右へスクロールすると、使用頻度の高いいくつかのクエリがダッシュボードに一覧表示されます。そのクエリをクリックすると、アラート データを探すための[ログ検索](log-analytics-queries.md)が実行されます。
 
 ![Alert Management dashboard](media/log-analytics-solution-alert-management/dashboard.png)
 
@@ -123,4 +123,4 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 
 ## <a name="next-steps"></a>次の手順
-* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](log-analytics-alerts.md) に関するページを参照してください。
+* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) に関するページを参照してください。

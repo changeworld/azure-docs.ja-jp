@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 4a836e0f5e47d6ef91e11fd1a0076859b54ed8e6
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: afd5361774af3379dc0d4054509e318e8263dcc5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243029"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250188"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>ホスト名の表示と変更
 ロール インスタンスをホスト名で参照できるようにするには、各ロールのサービス構成ファイルでホスト名の値を設定する必要があります。 そのためには、使用するホスト名を **Role** 要素の **vmName** 属性に追加します。 **vmName** 属性の値は、各ロール インスタンスのホスト名に対するベースとして使用されます。 たとえば、**vmName** が *webrole* であり、そのロールに 3 つのインスタンスがある場合、インスタンスのホスト名は *webrole0*、*webrole1*、*webrole2* になります。 仮想マシンのホスト名は仮想マシン名に基づいて設定されるため、構成ファイルで仮想マシンのホスト名を指定する必要はありません。 Microsoft Azure サービスの構成の詳細については、「 [Azure Service Configuration Schema (.cscfg File) (Azure サービス構成スキーマ (.cscfg ファイル))](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -58,7 +58,7 @@ REST クライアントから次の手順を実行します。
 
 [Azure サービス構成スキーマ (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network の構成スキーマ](https://go.microsoft.com/fwlink/?LinkId=248093)
 
 [ネットワーク構成ファイルを使用した DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 

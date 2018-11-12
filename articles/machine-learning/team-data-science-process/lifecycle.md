@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: dca71a13db33f44fed551e4791625c5667cfdc21
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 611793297559c99ffa46f7c0266ed6865eb650fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837499"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234274"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクル
 
@@ -33,7 +33,7 @@ TDSP ライフサイクルは、繰り返し実行される 5 つの主なステ
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [デプロイ](lifecycle-deployment.md)
+   4. [Deployment](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -53,4 +53,4 @@ TDSP ライフサイクルは、繰り返し行う一連のステップとして
 
 特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
-Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](http://aka.ms/datascienceprocess)」を参照してください。
+Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://aka.ms/datascienceprocess)」を参照してください。

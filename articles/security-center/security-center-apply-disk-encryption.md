@@ -3,7 +3,7 @@ title: Azure Security Center で Disk Encryption を適用する | Microsoft Doc
 description: このドキュメントでは、**ディスク暗号化の適用**という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 6cc7824a-8d6b-4a5f-ab40-e3bbaebc4a91
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
-ms.author: terrylan
-ms.openlocfilehash: 20b55f993e8a570c737d5849af957b4c40089f61
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: d78e5ba030a8b68b99a92be8a830a365c2870c1f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301627"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235889"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Azure Security Center で Disk Encryption を適用する
 お使いの Windows または Linux VM ディスクが Azure Disk Encryption を使用して暗号化されていない場合、Azure Security Center により、ディスク暗号化を適用することが推奨されます。 Disk Encryption を使用すると、Windows および Linux IaaS VM ディスクを暗号化できます。  VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。
@@ -61,7 +61,7 @@ Azure Virtual Machines に使用できる方法はたくさんあります。 �
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
 * [Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png

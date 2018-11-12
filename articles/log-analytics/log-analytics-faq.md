@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 08a85cea75d692573f9e9e6c4bcd8bb61e03867f
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: c79a44422944fd2049c47a6729a86d063dbcd15e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041971"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232343"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -88,7 +88,7 @@ A: このリージョンは一時的な容量の上限に達しています。 �
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Q. Log Analytics で使用されるエージェントは Azure Security Center のエージェントと同じですか?
 
-A: 2017 年 6 月上旬より、Azure Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、[Azure Security Center のプラットフォームの移行についての FAQ](../security-center/security-center-platform-migration-faq.md) に関するページを参照してください。
+A: 2017 年 6 月上旬より、Azure Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、[Azure Security Center のプラットフォームの移行についての FAQ](../security-center/security-center-enable-data-collection.md) に関するページを参照してください。
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>Q. AD および SQL Assessment ソリューションでは、どのようなチェックが行われますか?
 
@@ -135,7 +135,7 @@ Log Analytics は UTC 時間を使用し、各日は UTC 午前 0 時に開始�
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>Q. データ収集が停止したときに通知を受けるにはどうすればよいですか?
 
-A: データ収集が停止したときに通知を受けるには、[新しいログ アラートの作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関する記事で説明されている手順を使用します。
+A: データ収集が停止したときに通知を受けるには、[新しいログ アラートの作成](../monitoring-and-diagnostics/alert-metric.md)に関する記事で説明されている手順を使用します。
 
 データ収集が停止したときのアラートを作成する場合は、次のように設定します。
 
@@ -158,7 +158,7 @@ A. いいえ。Azure ストレージ内の任意のテーブルまたはコン�
 
 ### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>Q. Log Analytics サービスはどのような IP アドレスを使用しますか? ファイアウォールが確実に Log Analytics サービスへのトラフィックのみを許可するようにするにはどうすればよいですか?
 
-A. Log Analytics サービスは、Azure に基づいて構築されています。 Log Analytics の IP アドレスは、[Microsoft Azure データセンターの IP 範囲](http://www.microsoft.com/download/details.aspx?id=41653)内にあります。
+A. Log Analytics サービスは、Azure に基づいて構築されています。 Log Analytics の IP アドレスは、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)内にあります。
 
 サービスのデプロイが行われると、Log Analytics サービスの実際の IP アドレスは変更されます。 ファイアウォールの通過を許可する DNS 名については、[ネットワーク要件](log-analytics-concept-hybrid.md#network-firewall-requirements)に関するセクションをご覧ください。
 
@@ -170,7 +170,7 @@ Log Analytics へのトラフィックには、パブリックピアリング Ex
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>Q. 既存の Log Analytics ワークスペースを別の Log Analytics ワークスペース/Azure サブスクリプションに移動するためのシンプルで簡単な方法はありますか?
 
-A. `Move-AzureRmResource` コマンドレットを使用すると、Log Analytics ワークスペースを移動できるほか、Automation アカウントを Azure サブスクリプション間で移動することもできます。 詳細については、「[Move-AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx)」を参照してください。
+A. `Move-AzureRmResource` コマンドレットを使用すると、Log Analytics ワークスペースを移動できるほか、Automation アカウントを Azure サブスクリプション間で移動することもできます。 詳細については、「[Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx)」を参照してください。
 
 この変更は、Azure ポータルで行うこともできます。
 
@@ -231,4 +231,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
+* [Log Analytics の起動と開始](../azure-monitor/overview.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。

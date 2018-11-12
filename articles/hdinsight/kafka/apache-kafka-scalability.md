@@ -3,18 +3,18 @@ title: Apache Kafka のスケーラビリティの向上 - Azure HDInsight
 description: スケーラビリティが向上するように Azure HDInsight 上の Apache Kafka クラスター用のマネージド ディスクを構成する方法を説明します。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: f74bc5732bbcf05423698603113998204b7514a9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9ad7330960540e0bddc0130736265df402d582ff
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046676"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009329"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する
 

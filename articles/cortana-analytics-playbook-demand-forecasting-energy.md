@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 43a75c31c0f094bdcb7008a39140226815bda163
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390297"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231534"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>エネルギー需要予測のための Cortana Intelligence Solution Template Playbook
 ## <a name="executive-summary"></a>概要
@@ -43,7 +43,7 @@ ms.locfileid: "49390297"
 
 さらに、この分野とテクノロジについて深く理解するのに役立つ参照資料も紹介します。
 
-このドキュメントは、データ サイエンス プロセスや、その数学的、技術的な側面について詳しく説明するものではありませんので、ご注意ください。 これらの詳細については、[Azure ML に関するドキュメント](http://azure.microsoft.com/services/machine-learning/)と[ブログ](http://blogs.microsoft.com/blog/tag/azure-machine-learning/)を参照してください。
+このドキュメントは、データ サイエンス プロセスや、その数学的、技術的な側面について詳しく説明するものではありませんので、ご注意ください。 これらの詳細については、[Azure ML に関するドキュメント](https://azure.microsoft.com/services/machine-learning/)と[ブログ](https://blogs.microsoft.com/blog/tag/azure-machine-learning/)を参照してください。
 
 ### <a name="target-audience"></a>対象読者
 このドキュメントの対象読者は、Machine Learning ベースのソリューションと、特にエネルギー予測分野でそのソリューションを利用する方法について押さえておきたいビジネス担当者と技術担当者です。
@@ -176,7 +176,7 @@ Azure の Cortana Intelligence Suite は、クラウドにある統合環境で�
 
 Cortana Intelligence Suite では従量課金制価格モデルが提供されるため、この数式に固定コスト コンポーネントを追加する必要はありません。 この数式は、日、月、または年単位で計算できます。
 
-Cortana Intelligence Suite と Azure ML の現行の価格プランについては、 [こちら](http://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。
+Cortana Intelligence Suite と Azure ML の現行の価格プランについては、 [こちら](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。
 
 ### <a name="solution-development-process"></a>ソリューション開発プロセス
 エネルギー需要予測ソリューションの開発サイクルは、通常、4 つのフェーズに分かれています。そのすべてのフェーズで、Cortana Intelligence Suite のクラウド ベースのテクノロジとサービスを利用します。
@@ -187,7 +187,7 @@ Cortana Intelligence Suite と Azure ML の現行の価格プランについて�
 
 次の段落では、この 4 段階のプロセスについて説明します。
 
-1. **データ収集** – 高度な分析ベースのソリューションはすべてデータに依存します (「**データの把握**」を参照してください)。 具体的には、予測分析と予測については、継続的で動的なデータ フローに依存します。 エネルギー需要予測の場合は、このデータをスマート メーターから直接取得することや、オンプレミスのデータベースで集計することができます。 また、天気や気温など、外部ソースからの他のデータにも依存します。 この継続的なデータ フローを調整、スケジュール、保存する必要があります。 [Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) は、このタスクを実行するための主要なサービスです。
+1. **データ収集** – 高度な分析ベースのソリューションはすべてデータに依存します (「**データの把握**」を参照してください)。 具体的には、予測分析と予測については、継続的で動的なデータ フローに依存します。 エネルギー需要予測の場合は、このデータをスマート メーターから直接取得することや、オンプレミスのデータベースで集計することができます。 また、天気や気温など、外部ソースからの他のデータにも依存します。 この継続的なデータ フローを調整、スケジュール、保存する必要があります。 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) は、このタスクを実行するための主要なサービスです。
 2. **モデリング** – 正確で信頼性の高いエネルギー需要予測を実現するには、履歴データを使用し、データから意味のある予測パターンを抽出する優れたモデルを開発 (トレーニング) および管理する必要があります。 機械学習 (ML) の分野は、より高度なアルゴリズムが定期的に開発され、急速に成長しています。 Azure ML Studio は、包括的なワークフロー内で最も高度な ML アルゴリズムを利用できる優れたユーザー エクスペリエンスを提供します。 そのワークフローは、直感的なフロー図で示され、データの準備、特徴の抽出、モデリング、およびモデルの評価で構成されます。 ユーザーは、この環境に含まれている何百ものさまざまなモデルを利用できます。 このフェーズの終わりまでには、データ サイエンティストが完全に評価され、デプロイの準備が整った作業モデルを用意します。
    
    次の図は、一般的なワークフローを示しています。
@@ -387,7 +387,7 @@ Azure ML でデプロイできる主な構成要素は、Web サービスです�
 7. 予測データがエンド消費クライアントからアクセスできるデータベースに格納されます。
 8. 消費クライアントが予測を取得し、電力網に適用して、必要なユース ケースに従って利用します。
 
-このサイクル全体が完全に自動化され、スケジュールに従って実行されることに注目してください。 このデータ サイクル全体のオーケストレーションは、 [Azure Data Factory](http://azure.microsoft.com/services/data-factory/)などのツールを使用して実行できます。
+このサイクル全体が完全に自動化され、スケジュールに従って実行されることに注目してください。 このデータ サイクル全体のオーケストレーションは、 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)などのツールを使用して実行できます。
 
 ### <a name="end-to-end-deployment-architecture"></a>End to End Deployment Architecture
 実際に Cortana Intelligence にエネルギー需要予測ソリューションをデプロイするには、必要なコンポーネントが適切に構築、構成されていることを確認する必要があります。

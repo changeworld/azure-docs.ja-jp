@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 59743df45cf2c7810404d9e6c636790c2855cf74
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 77c2247281fde4aa2b67388464b386b276fe6437
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023119"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233339"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>方法: Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 新しい Azure AD テナントにはすべて、*domainname*.onmicrosoft.com という初期ドメイン名が付いてきます。 初期ドメイン名を変更または削除することはできませんが、一覧に実際の組織の名前を追加することができます。 カスタム ドメイン名を追加することで、*alain@contoso.com* など、ユーザーになじみのあるユーザー名を作成する助けとなります。
@@ -33,7 +33,7 @@ ms.locfileid: "50023119"
     ![Azure portal 画面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
     >[!TIP]
-    > オンプレミスの Windows Server AD を Azure AD とフェデレーションする予定の場合は、ディレクトリを同期するために Azure AD Connect ツールを実行する際に **[このドメインを構成して、ローカル Active Directory にシングル サインオンします]** チェックボックスをオンにする必要があります。 また、ウィザードの **[Azure AD ドメイン]** の手順で、オンプレミスのディレクトリとフェデレーションするために選択したのと同じドメイン名を登録する必要があります。 ウィザードの手順の表示内容は [こちらの手順](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)で確認できます。 Azure AD Connect ツールをお持ちでない場合は、 [こちらからダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)できます。
+    > オンプレミスの Windows Server AD を Azure AD とフェデレーションする予定の場合は、ディレクトリを同期するために Azure AD Connect ツールを実行する際に **[このドメインを構成して、ローカル Active Directory にシングル サインオンします]** チェックボックスをオンにする必要があります。 また、ウィザードの **[Azure AD ドメイン]** の手順で、オンプレミスのディレクトリとフェデレーションするために選択したのと同じドメイン名を登録する必要があります。 ウィザードの手順の表示内容は [こちらの手順](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)で確認できます。 Azure AD Connect ツールをお持ちでない場合は、 [こちらからダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)できます。
 
 2. [組織の新しいテナントを作成する](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization)ことに関するページの手順に従って、新しいディレクトリを作成します。
 

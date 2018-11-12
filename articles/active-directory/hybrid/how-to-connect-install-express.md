@@ -14,17 +14,17 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1af54e3b0237d1d62ae7fb47939e7786fa1219b8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 14ed452759aa74abf5eaa2ae37a39f6172889313
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434672"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233322"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>簡単設定を使用した Azure AD Connect の開始
 Azure AD Connect の**簡単設定**は、トポロジのフォレストが 1 つであり、認証に[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)を使用する場合に使います。 **簡単設定** は既定のオプションであり、ごく一般的なデプロイ シナリオで使用されます。 数回クリックするだけで、オンプレミスのディレクトリをクラウドに拡張できます。
 
-Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](how-to-connect-install-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。
+Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](how-to-connect-install-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。
 
 簡単設定が対象のトポロジに適さない場合は、「 [関連ドキュメント](#related-documentation) 」でその他のシナリオを確認してください。
 

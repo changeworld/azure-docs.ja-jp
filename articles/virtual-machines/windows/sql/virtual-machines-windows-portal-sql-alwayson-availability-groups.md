@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a612ffd5a68e34cb0a367a6a883495ef26aeb4bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29401023"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238167"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager
 
@@ -42,12 +42,12 @@ ms.locfileid: "29401023"
 
 このチュートリアルを開始する前に、次を確認してください。
 
-* Azure アカウントを既に所有している。 お持ちでない場合は、 [試用版アカウントにサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
+* Azure アカウントを既に所有している。 お持ちでない場合は、 [試用版アカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。
 * GUI を使用して、仮想マシン ギャラリーから SQL Server 仮想マシンをプロビジョニングする方法を知っている。 詳細については、「[Azure ポータルでの SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
-* 可用性グループについて十分に理解している。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
+* 可用性グループについて十分に理解している。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
 
 > [!NOTE]
-> SharePoint での SQL Server 可用性グループの使用に関心がある場合は、「 [SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](http://technet.microsoft.com/library/jj715261.aspx)」をご覧ください。
+> SharePoint での SQL Server 可用性グループの使用に関心がある場合は、「 [SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」をご覧ください。
 >
 >
 
@@ -125,7 +125,7 @@ Click **OK**.
 * **[SQL Server virtual machine size] \(SQL Server 仮想マシンのサイズ)** は、SQL Server を実行する両方の仮想マシンのサイズです。 ワークロードに適した仮想マシンのサイズを選択します。 このチュートリアル用に環境を構築する場合は **DS2** を使用します。 実稼働ワークロードでは、ワークロードをサポートできる仮想マシン サイズを選択します。 多くの実稼働ワークロードでは、**DS4** 以上が必要です。 このテンプレートでは、このサイズの仮想マシンを 2 つ構築し、それぞれに SQL Server をインストールします。 詳細については、 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 > [!NOTE]
-> Azure によって、SQL Server Enterprise Edition がインストールされます。 価格は、エディションと仮想マシンのサイズによって異なります。 現在の価格の詳細については、「[Virtual Machines の料金](http://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」を参照してください。
+> Azure によって、SQL Server Enterprise Edition がインストールされます。 価格は、エディションと仮想マシンのサイズによって異なります。 現在の価格の詳細については、「[Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)」を参照してください。
 >
 >
 
@@ -161,8 +161,8 @@ Click **OK**.
 
 記憶域スペースと記憶域プールの詳細については、次のページを参照してください。
 
-* [記憶域スペースの概要](http://technet.microsoft.com/library/hh831739.aspx)
-* [Windows Server バックアップと記憶域プール](http://technet.microsoft.com/library/dn390929.aspx)
+* [記憶域スペースの概要](https://technet.microsoft.com/library/hh831739.aspx)
+* [Windows Server バックアップと記憶域プール](https://technet.microsoft.com/library/dn390929.aspx)
 
 SQL Server の構成のベスト プラクティスについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
 
@@ -209,6 +209,6 @@ SQL Server に RDP 接続するには、次の手順に従います。
 4. **sqlserver-0** のブレードで **[接続]** をクリックします。 ブラウザーから、リモート接続オブジェクトを開くか保存するかをたずねられます。 **[開く]** をクリックします。
 5. **リモート デスクトップ接続** で、このリモート接続の発行元が識別できないことが通知される場合があります。 **[接続]** をクリックします。
 6. Windows のセキュリティによって、プライマリ ドメイン コントローラーの IP アドレスに接続するための資格情報の入力が求められます。 **[別のアカウントを使用する]** をクリックします。 **[ユーザー名]** に「**contoso\DomainAdmin**」と入力します。 このアカウントは、テンプレートで管理者ユーザー名を設定したときに構成したものです。 テンプレートを構成したときに選択した複雑なパスワードを使用します。
-7. **リモート デスクトップ** により、セキュリティ証明書の問題のためこのリモート コンピューターを認証できなかったという警告が表示される場合があります。 そのセキュリティ証明書の名前が表示されます。 このチュートリアルに従った場合、名前は **sqlserver-0.contoso.com** になります。**[はい]** をクリックします。
+7. **リモート デスクトップ** により、セキュリティ証明書の問題のためこのリモート コンピューターを認証できなかったという警告が表示される場合があります。 そのセキュリティ証明書の名前が表示されます。 このチュートリアルに従った場合、名前は **sqlserver-0.contoso.com** になります。 **[はい]** をクリックします。
 
 これで SQL Server 仮想マシンに RDP 接続できました。 SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続して、可用性グループが構成済みであることを確認できます。

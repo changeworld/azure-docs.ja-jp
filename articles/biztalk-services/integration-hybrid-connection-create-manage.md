@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 1751d33b5f6f6a506654daedd15bbd75ae271483
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1c05a50f82f5c235c76ff234efe183172e0863bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26628847"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232982"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>ハイブリッド接続の作成と管理
 
@@ -105,7 +105,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 「[Azure App Services からのハイブリッド接続](../app-service/app-service-hybrid-connections.md)」もよいリソースです。
 
 #### <a name="use-group-policy-to-control-the-on-premises-resources-used-by-a-hybrid-connection"></a>ハイブリッド接続で使用するオンプレミス リソースを管理するグループ ポリシーの使用
-1. [Hybrid Connection Manager の管理用テンプレート](http://www.microsoft.com/download/details.aspx?id=42963)をダウンロードします。
+1. [Hybrid Connection Manager の管理用テンプレート](https://www.microsoft.com/download/details.aspx?id=42963)をダウンロードします。
 2. ファイルを解凍します。
 3. グループ ポリシーを変更するコンピューターで、以下の手順を実行します。  
    
@@ -118,7 +118,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [ハイブリッド接続の概要](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>関連項目
-[Microsoft Azure での BizTalk Services 管理の REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[Microsoft Azure での BizTalk Services 管理の REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)  
 [BizTalk サービスを作成する](biztalk-provision-services.md)  
 [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)

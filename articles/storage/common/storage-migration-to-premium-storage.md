@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.component: common
-ms.openlocfilehash: c6256fc209a4ffa5308dc3b24794f8295c57f4ef
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4ec0d4058c512ce420cd6e1bdc393b8043dbf1b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521780"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232559"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
@@ -54,10 +54,10 @@ Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](../../virt
 #### <a name="disk-sizes"></a>ディスク サイズ
 VM で使用できるディスクには 5 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM のディスクの種類を選択する場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
 
-| Premium ディスクの種類  | P10   | P20   | P30            | P40            | P50            | 
+| Premium ディスクの種類  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
-| ディスク サイズ           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
-| ディスクあたりの IOPS       | 500   | 2300  | 5000           | 7500           | 7500           | 
+| ディスク サイズ           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| ディスクあたりの IOPS       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | ディスクあたりのスループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 |
 
 ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
@@ -94,14 +94,14 @@ Azure VM を作成するときに、特定の VM の設定を構成するよう�
 
 * Azure サブスクリプション、ストレージ アカウント、および VHD のコピー先にできるそのストレージ アカウント内のコンテナー。 コピー先のストレージ アカウントには、要件に応じて Standard Storage アカウントまたは Premium Storage アカウントを使用できることに注意してください。
 * VHD から複数の VM インスタンスを作成する予定の場合にその VHD を一般化するツール。 たとえば、Windows の sysprep や Ubuntu の virt-sysprep があります。
-* ストレージ アカウントに VHD ファイルをアップロードするツール。 「[AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)」を参照するか、[Azure ストレージ エクスプローラー](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)を使用してください。 このガイドでは、AzCopy ツールを使用して VHD をコピーする手順について説明します。
+* ストレージ アカウントに VHD ファイルをアップロードするツール。 「[AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)」を参照するか、[Azure ストレージ エクスプローラー](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)を使用してください。 このガイドでは、AzCopy ツールを使用して VHD をコピーする手順について説明します。
 
 > [!NOTE]
 > AzCopy で同期コピー オプションを選ぶ場合、パフォーマンスを最適化するには、コピー先のストレージ アカウントと同じリージョンにある Azure VM からこれらのツールのいずれかを実行して VHD をコピーします。 別のリージョンの Azure VM から VHD をコピーする場合は、パフォーマンスが減速することがあります。
 >
 > 制限された帯域幅で大量のデータをコピーするには、[Azure Import/Export サービスを使用してデータを Blob Storage へ転送](../storage-import-export-service.md)することを検討してください。この方法であれば、ハード ディスク ドライブを Azure データセンターへ送付してデータを転送することができます。 Azure Import/Export サービスを使用すると、データを Standard Storage アカウントのみにコピーできます。 データが Standard Storage アカウントに配置されたら、[Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx) または AzCopy を使用して、そのデータを Premium Storage アカウントに転送できます。
 >
-> Microsoft Azure でサポートされているのは、固定サイズの VHD ファイルのみです。 VHDX ファイルまたは動的 VHD はサポートされていません。 動的 VHD を使用している場合は、 [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) コマンドレットを使用して固定サイズに変換できます。
+> Microsoft Azure でサポートされているのは、固定サイズの VHD ファイルのみです。 VHDX ファイルまたは動的 VHD はサポートされていません。 動的 VHD を使用している場合は、 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) コマンドレットを使用して固定サイズに変換できます。
 >
 >
 
@@ -123,7 +123,7 @@ Azure VM を作成するときに、特定の VM の設定を構成するよう�
 複数の汎用的な Azure VM インスタンスの作成に使用する VHD をアップロードする場合は、最初に、Sysprep ユーティリティを使用して VHD を一般化する必要があります。 これは、オンプレミスまたはクラウド内の VHD に適用されます。 sysprep は、コンピューター固有の情報を VHD から削除します。
 
 > [!IMPORTANT]
-> VHD を一般化する前に、スナップショットを取得または VM をバックアップします。 sysprep を実行すると、VM インスタンスは停止し、割り当てを解除されます。 次の手順に従って、Windows OS VHD に Sysprep を実行します。 Sysprep コマンドを実行する場合、仮想マシンをシャットダウンする必要があります。 Sysprep の詳細については、「[Sysprep (システム準備) の概要](http://technet.microsoft.com/library/hh825209.aspx)」または「[Sysprep テクニカル リファレンス](http://technet.microsoft.com/library/cc766049.aspx)」を参照してください。
+> VHD を一般化する前に、スナップショットを取得または VM をバックアップします。 sysprep を実行すると、VM インスタンスは停止し、割り当てを解除されます。 次の手順に従って、Windows OS VHD に Sysprep を実行します。 Sysprep コマンドを実行する場合、仮想マシンをシャットダウンする必要があります。 Sysprep の詳細については、「[Sysprep (システム準備) の概要](https://technet.microsoft.com/library/hh825209.aspx)」または「[Sysprep テクニカル リファレンス](https://technet.microsoft.com/library/cc766049.aspx)」を参照してください。
 >
 >
 
@@ -163,7 +163,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>オプション 1: AzCopy を使って VHD をコピーする (非同期コピー)
 AzCopy を使うと、インターネット経由で VHD を簡単にアップロードできます。 VHD のサイズによっては、この処理に時間がかかる場合があります。 このオプションを使用する場合は、ストレージ アカウントの送受信制限を確認することを忘れないでください。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。
 
-1. 次のリンクから AzCopy をダウンロードしてインストールします: [AzCopy の最新バージョン](http://aka.ms/downloadazcopy)
+1. 次のリンクから AzCopy をダウンロードしてインストールします: [AzCopy の最新バージョン](https://aka.ms/downloadazcopy)
 2. Azure PowerShell を開き、AzCopy がインストールされているフォルダーに移動します。
 3. 次のコマンドを使用して、"Source" から "Destination" に VHD ファイルをコピーします。
 
@@ -257,7 +257,7 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>オプション 2: AzCopy を使って .vhd ファイルをアップロードする
 AzCopy を使うと、インターネット経由で VHD を簡単にアップロードできます。 VHD のサイズによっては、この処理に時間がかかる場合があります。 このオプションを使用する場合は、ストレージ アカウントの送受信制限を確認することを忘れないでください。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。
 
-1. 次のリンクから AzCopy をダウンロードしてインストールします: [AzCopy の最新バージョン](http://aka.ms/downloadazcopy)
+1. 次のリンクから AzCopy をダウンロードしてインストールします: [AzCopy の最新バージョン](https://aka.ms/downloadazcopy)
 2. Azure PowerShell を開き、AzCopy がインストールされているフォルダーに移動します。
 3. 次のコマンドを使用して、"Source" から "Destination" に VHD ファイルをコピーします。
 

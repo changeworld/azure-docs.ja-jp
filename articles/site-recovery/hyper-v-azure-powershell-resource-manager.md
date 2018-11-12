@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: f8f690a4f94ee56cfaa5532fa090fada1a33bddf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4b008cc119951e50567218e332818585fb017e5a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214785"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229409"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して Azure に対する Hyper-V VM のディザスター リカバリーを設定する
 
@@ -24,7 +24,7 @@ ms.locfileid: "50214785"
 
 Azure PowerShell は、Windows PowerShell を使用して Azure を管理するためのコマンドレットを提供します。 Azure 内のサーバーに対する保護と復旧は、Azure PowerShell 用 Azure Resource Manager に用意されている Site Recovery の PowerShell コマンドレットを使って行うことができます。
 
-この記事の内容を使用するには PowerShell の専門家である必要はありませんが、モジュール、コマンドレット、セッションなどの基本的な概念を理解していることを前提としています。 [Windows PowerShell の概要](http://technet.microsoft.com/library/hh857337.aspx)に関するページと [Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)に関するページをご覧ください。
+この記事の内容を使用するには PowerShell の専門家である必要はありませんが、モジュール、コマンドレット、セッションなどの基本的な概念を理解していることを前提としています。 [Windows PowerShell の概要](https://technet.microsoft.com/library/hh857337.aspx)に関するページと [Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)に関するページをご覧ください。
 
 > [!NOTE]
 > クラウド ソリューション プロバイダー (CSP) プログラムに参加しているマイクロソフト パートナーは、顧客のサーバーの保護を、それぞれの CSP サブスクリプション (テナント サブスクリプション) に対して構成および管理することができます。

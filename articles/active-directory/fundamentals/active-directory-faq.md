@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 5ff9d1cf76188ff38f59e8b74d4bfd380c8c88e1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d58e5816c3b0e7c951c7d6bcfc6bfe4d0789f47a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408712"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233798"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -86,7 +86,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 - - -
 **Q: Azure AD には、所属する組織のユーザーのためのセルフサービス ポータルが用意されていますか?**
 
-**A:** はい。Azure AD には、ユーザーによるアプリケーションのセルフ サービス アクセス用に [Azure AD アクセス パネル](http://myapps.microsoft.com)が用意されています。 Office 365 を利用している方は、これと同じ機能の多くを Office 365 ポータルで使用できます。
+**A:** はい。Azure AD には、ユーザーによるアプリケーションのセルフ サービス アクセス用に [Azure AD アクセス パネル](https://myapps.microsoft.com)が用意されています。 Office 365 を利用している方は、これと同じ機能の多くを Office 365 ポータルで使用できます。
 
 詳細については、「[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」を参照してください。
 

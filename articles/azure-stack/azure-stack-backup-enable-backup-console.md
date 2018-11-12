@@ -12,14 +12,15 @@ ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
-ms.openlocfilehash: fdcc4f51f49e8eb133deeeecd070c55511cda464
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.reviewer: hectorl
+ms.openlocfilehash: d7d47b61c926c6704a06dacc55f00d77a1266988
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985798"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038367"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>管理ポータルで Azure Stack のバックアップを有効にする
 Azure Stack でバックアップを生成できるように、管理ポータルでインフラストラクチャ バックアップ サービスを有効にします。 [壊滅的な障害](.\azure-stack-backup-recover-data.md)が発生した場合、これらのバックアップとクラウドの復旧を使って環境を復元できます。 クラウドを復旧する目的は、復旧の完了後に、作業者とユーザーがポータルに再度ログインできるということを確認することです。 ユーザーのサブスクリプションが復元され、これにはロールベースのアクセス許可とロール、当初のプラン、オファー、および以前に定義されていたコンピューティング、ストレージ、およびネットワークのクォータが含まれます。

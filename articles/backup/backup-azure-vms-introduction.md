@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: 9e2ef16cffb044409b6f7f8e7785010097bcda87
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ae02a1bcbf00a022cfd884b02141ce084f1fffa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286654"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232462"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Azure における VM バックアップ インフラストラクチャの計画を立てる
 この記事では、パフォーマンスとリソースに関する提案を行い、VM のバックアップ インフラストラクチャを計画するお手伝いをします。 さらに、Backup サービスの主要な側面を定義します。これらの側面は、アーキテクチャの決定、容量計画、スケジューリングの際の重要な要素になることがあります。 [必要な環境の準備](backup-azure-arm-vms-prepare.md)が済んだら、[VM のバックアップ](backup-azure-arm-vms.md)を開始する前に行う次の手順は計画の作成です。 Azure 仮想マシンについて詳しい情報が必要な場合は、「[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)」を参照してください。 
@@ -146,7 +146,7 @@ VM をバックアップするための価格は、仮想マシンに接続さ�
 指定された仮想マシンに対する課金は、保護が停止され、かつすべてのバックアップ データが削除されている場合にのみ停止します。 保護が停止してアクティブなバックアップ ジョブがないとき、最後に成功した VM バックアップのサイズは、毎月の課金に使用する保護インスタンスのサイズになります。
 
 ## <a name="questions"></a>疑問がある場合
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
+ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](https://aka.ms/azurebackup_feedback)。
 
 ## <a name="next-steps"></a>次の手順
 * [仮想マシンのバックアップ](backup-azure-arm-vms.md)

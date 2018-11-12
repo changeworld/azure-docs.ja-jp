@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ce2b4304ea53be7e9a7be42b8a7fb30f713d85f8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f11012c90ab2b82e945fdb67e224783c3f05c6dd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405210"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237555"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -62,7 +62,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 | [必須のセキュリティ トレーニング、バック グラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [データ保管場所の管理](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](http://azuredatacentermap.azurewebsites.net/)|
 | [侵入テスト](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)、[不正侵入検出、DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)、[監査、ログ記録](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [条件に応じたアクセス権の付与](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [クラウド サービス向けデリジェンス チェックリスト](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[データにアクセスできるユーザーとその条件](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [最新のデータ センター、](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)、物理的なセキュリティ、[セキュリティで保護されたネットワーク](https://docs.microsoft.com/azure/security/security-network-overview) | [法執行機関への対応](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [サービス、場所、および業界ごとのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
-|  [セキュリティ インシデント対応](http://aka.ms/SecurityResponsepaper)、[責任の分担](http://aka.ms/sharedresponsibility) |[厳格なプライバシー基準](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
+|  [セキュリティ インシデント対応](https://aka.ms/SecurityResponsepaper)、[責任の分担](https://aka.ms/sharedresponsibility) |[厳格なプライバシー基準](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
 
 

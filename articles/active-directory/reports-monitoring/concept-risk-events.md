@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/14/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fe5bcce06ef02bae75bf9fdaf5702a99f485885c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: e4aa4a87bec8f737405c90bb42bdb5fc60cb379a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145167"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232999"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
@@ -155,7 +155,7 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 
 ユーザーに連絡して、ユーザーのすべてのデバイスをスキャンして安全を確認することをお勧めします。 また、ユーザーの個人デバイスが感染している可能性、または前に説明したようにユーザーと同じ IP アドレスから他のユーザーがウイルスに感染したデバイスを使用していた可能性もあります。 感染したデバイスは、ウイルス対策ソフトウェアによってまだ識別されていないマルウェアに感染していることが多く、デバイスが感染する原因になるユーザーの悪い習慣を示していることもあります。
 
-マルウェア感染に対処する方法の詳細については、 [マルウェア対策センター](http://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409)を参照してください。
+マルウェア感染に対処する方法の詳細については、 [マルウェア対策センター](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409)を参照してください。
 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>不審なアクティビティのある IP アドレスからのサインイン

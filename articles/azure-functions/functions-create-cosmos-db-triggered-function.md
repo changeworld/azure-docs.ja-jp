@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: eb909384805c96ce656cacf86adceedc55613c0f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 4fc1c0b87aa5312be0ccac50681e952dc7f1c4ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113660"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251731"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -108,7 +108,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
     | **[コレクション ID]** | 項目 | 新しいコレクションの名前。 これは、関数バインドで定義された名前と一致する必要があります。  |
     | **[ストレージ容量]** | 固定 (10 GB)|既定値を使用します。 この値は、データベースの記憶域容量です。 |
     | **スループット** |400 RU| 既定値を使用します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。 |
-    | **[[パーティション キー]](../cosmos-db/partition-data.md#best-practices-when-choosing-a-partition-key)** | /category|各パーティションに均等にデータを分散するパーティション キー。 効率の良いコレクションを作成するためには、正しいパーティション キーを選択することが大切です。 | 
+    | **[[パーティション キー]](../cosmos-db/partition-data.md)** | /category|各パーティションに均等にデータを分散するパーティション キー。 効率の良いコレクションを作成するためには、正しいパーティション キーを選択することが大切です。 | 
 
 1. **[OK]** をクリックして、Items コレクションを作成します。 コレクションが作成されるまで多少時間がかかる場合があります。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5710ebc1c52737e27aafa88eef5e9ae402f8e53f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579847"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239051"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -111,7 +111,7 @@ Azure Active Directory のその他の機能を次に示します。
 - [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) は、数億個の ID を扱うコンシューマー向けアプリケーション用の高可用性グローバル ID 管理サービスを提供します。 モバイルと Web の両方のプラットフォームにわたる統合を実現できます。 コンシューマーは、既に持っているソーシャル アカウントを使用するか、資格情報を作成して、すべてのアプリケーションにサインインできます。その場合のエクスペリエンスは、カスタマイズすることができます。
 
 ### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Microsoft 管理者およびデータ削除からの分離
-マイクロソフトは、許可されていない人物による不適切なアクセスや使用からデータを保護するために強硬な手段を取ります。 このような運用プロセスと管理は、データへのアクセスを管理する契約責任を提供する[オンライン サービス条件](http://aka.ms/Online-Services-Terms)によって裏付けされます。
+マイクロソフトは、許可されていない人物による不適切なアクセスや使用からデータを保護するために強硬な手段を取ります。 このような運用プロセスと管理は、データへのアクセスを管理する契約責任を提供する[オンライン サービス条件](https://aka.ms/Online-Services-Terms)によって裏付けされます。
 
 -   マイクロソフトのエンジニアが、クラウド内のお客様のデータに対して既定のアクセス権を持つことはありません。 代わりに、監視の下で必要な場合にのみアクセス権が付与されます。 アクセス権は注意深く管理されてログに記録され、不要になったときは取り消されます。
 
@@ -119,7 +119,7 @@ Azure Active Directory のその他の機能を次に示します。
 
 ISO/IEC 27001 など監査済み認証を備えたビジネス サービスは、マイクロソフトおよび認可された監査機関によって定期的に検証されます。これらは、サンプル監査を実行して、正当なビジネスの目的のみでアクセスが行われていることを証明します。 自らの顧客データにはいつでもどのような理由でもアクセスできます。
 
-お客様がデータを削除すると、Microsoft Azure によって、キャッシュされたデータやバックアップ コピーも含めて、データが削除されます。 対象サービスでは、この削除はリテンション期間終了後 90 日以内に行われます (対象サービスは、[オンライン サービス条件](http://aka.ms/Online-Services-Terms)の「データ処理条件」セクションで定義されています)。
+お客様がデータを削除すると、Microsoft Azure によって、キャッシュされたデータやバックアップ コピーも含めて、データが削除されます。 対象サービスでは、この削除はリテンション期間終了後 90 日以内に行われます (対象サービスは、[オンライン サービス条件](https://aka.ms/Online-Services-Terms)の「データ処理条件」セクションで定義されています)。
 
 格納に使用されるディスク ドライブでハードウェア障害が発生した場合、ディスク ドライブを確実に[消去または破棄](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data)してから、交換または修理のために製造元に返します。 ドライブ上のデータは上書きされ、どのような手段でもデータを回復できないようにされます。
 

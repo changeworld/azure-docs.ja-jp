@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3b6b505be4a0084059d8c37a21099a784cacbed1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: af36f033dbca6c9f594b3568bfe7567a959e2d2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414133"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237154"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
 この記事では、Windows ベースの Azure 仮想マシンの複雑なリモート デスクトップのエラーを診断して修正するための詳細なトラブルシューティング手順を説明します。
@@ -130,7 +130,7 @@ RDP 接続には以下のコンポーネントが関連しています。
 * Windows ファイアウォールまたは他のローカルのファイアウォールで、リモート デスクトップのトラフィックを妨げている送信ルールが設定されている。
 * Azure 仮想マシンで実行されている侵入検出ソフトウェアまたは監視ソフトウェアが、リモート デスクトップ接続を妨げている。
 
-クラシック デプロイ モデルを使用して作成された VM の場合は、Azure 仮想マシンへのリモート Azure PowerShell セッションを使用できます。 最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。 [Azure Virtual Machines への安全なリモート PowerShell アクセスの構成](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) に関するページを参照し、 **InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上にダウンロードします。
+クラシック デプロイ モデルを使用して作成された VM の場合は、Azure 仮想マシンへのリモート Azure PowerShell セッションを使用できます。 最初に、仮想マシンをホストするクラウド サービスの証明書をインストールする必要があります。 [Azure Virtual Machines への安全なリモート PowerShell アクセスの構成](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) に関するページを参照し、 **InstallWinRMCertAzureVM.ps1** スクリプト ファイルを、ローカル コンピューター上にダウンロードします。
 
 次に、まだ Azure PowerShell がインストールされていなければ、インストールします。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
