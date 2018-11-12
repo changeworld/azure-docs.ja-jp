@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 932dcf485f6fe1a365f3bc0910c2223a118e9add
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: bdfc78757c799f5255488d06c30de4414b39459c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024530"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009999"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -81,7 +81,7 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
 
 ## <a name="how-to-export-and-delete-private-data"></a>プライベート データをエクスポートして削除する方法
 
-「[個人データの処理に関する戦略](#strategy-for-personal-data-handling)」セクションで先ほど述べたとおり、可能な場合はデータ収集ポリシーを再構築することが __強く__ 推奨されます。プライベート データの収集を無効にするか、難読化または匿名化を行ってください。そうでなければ、"プライベート" と見なされるデータがなくなるよう修正してください。 データの処理を行う場合、戦略を定義して自動化するコスト、顧客が問題なくデータを操作できるインターフェイスを作成するコスト、継続的なメンテナンス コストがまず、お客様とそのチームにかかります。 そのうえ、Log Analytics と Application Insights で多額の計算コストがかかります。また、クエリ API または消去 API の同時呼び出しが大量に発生して、Log Analytics 機能に対するすべての他の操作に悪影響が及ぶ可能性があります。 とは言え、プライベート データを収集する必要があるシナリオが有効な場合が確かにあります。 このような場合、このセクションで説明されているとおりデータを処理する必要があります。
+「[個人データの処理に関する戦略](#strategy-for-personal-data-handling)」セクションで先ほど述べたとおり、可能な場合はデータ収集ポリシーを再構築することが__強く__推奨されます。プライベート データの収集を無効にするか、難読化または匿名化を行ってください。そうでなければ、"プライベート" と見なされるデータがなくなるよう修正してください。 データの処理を行う場合、戦略を定義して自動化するコスト、顧客が問題なくデータを操作できるインターフェイスを作成するコスト、継続的なメンテナンス コストがまず、お客様とそのチームにかかります。 そのうえ、Log Analytics と Application Insights で多額の計算コストがかかります。また、クエリ API または消去 API の同時呼び出しが大量に発生して、Log Analytics 機能に対するすべての他の操作に悪影響が及ぶ可能性があります。 とは言え、プライベート データを収集する必要があるシナリオが有効な場合が確かにあります。 このような場合、このセクションで説明されているとおりデータを処理する必要があります。
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 

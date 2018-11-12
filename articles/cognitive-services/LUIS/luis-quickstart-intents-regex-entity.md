@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 06e212ef756fda9224b38b41c69c7c4eccfb9796
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 82d7e5ab57d9cf12c6917386282182faacb07725
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159858"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282392"
 ---
 # <a name="tutorial-3-extract-well-formatted-data"></a>チュートリアル 3: 正しい形式のデータを抽出する
 このチュートリアルでは、**正規表現**エンティティを使用して一貫した形式のデータを発話から抽出するよう、Human Resources アプリを修正します。
@@ -48,7 +48,7 @@ HRF-456098 title?
 > * [発行]
 > * エンドポイントから意図とエンティティを取得する
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>既存のアプリを使用する
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
@@ -63,7 +63,7 @@ HRF-456098 title?
 
 ## <a name="findform-intent"></a>FindForm 意図
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
@@ -90,7 +90,7 @@ HRF-456098 title?
 
     アプリケーションには、前のチュートリアルで追加された事前構築済みの番号エンティティがあるため、各フォーム番号がタグ付けされています。 クライアント アプリケーションにとってはこれで十分な場合がありますが、番号は、番号の種類と共にラベル付けされません。 適切な名前で新しいエンティティを作成すると、クライアント アプリケーションは、LUIS から返されたときに適切にエンティティを処理できます。
 
-    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="regular-expression-entity"></a>正規表現エンティティ 
 フォーム番号と一致する正規表現のエンティティは `hrf-[0-9]{6}` です。 この正規表現はリテラル文字の `hrf-` と一致しますが、大文字小文字およびカルチャのバリアントは無視します。 0 ～ 9 の 6 桁の数字と正確に一致します。

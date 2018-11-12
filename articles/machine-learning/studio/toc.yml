@@ -4,12 +4,16 @@ items:
 - name: 概要
   items:
   - name: Machine Learning Studio
+    displayName: overview
     href: what-is-ml-studio.md
   - name: ML Studio の機能
+    displayName: overview
     href: studio-overview-diagram.md
   - name: ML Studio の基本 (インフォグラフィック)
+    displayName: algorithm, algorithms
     href: basics-infographic-with-algorithm-examples.md
   - name: よく寄せられる質問
+    displayName: FAQ
     href: faq.md
   - name: 新機能
     href: whats-new.md
@@ -17,6 +21,7 @@ items:
 - name: 作業の開始
   items:
   - name: 初めての実験を作成する
+    displayName: quickstart
     href: create-experiment.md
   - name: 例のチュートリアル
     items:
@@ -31,8 +36,10 @@ items:
     - name: 4 - トレーニングと評価
       href: walkthrough-4-train-and-evaluate-models.md
     - name: 5 - Web サービスをデプロイする
+      displayName: publish
       href: walkthrough-5-publish-web-service.md
     - name: 6 - Web サービスにアクセスする
+      displayName: consume
       href: walkthrough-6-access-web-service.md
   - name: 初心者向けデータ サイエンス解説
     items:
@@ -56,13 +63,14 @@ items:
       items:
       - name: Create
         href: create-workspace.md
-      - name: '[管理]'
+      - name: 管理
         href: manage-workspace.md
       - name: トラブルシューティング
         href: troubleshooting-creating-ml-workspace.md
       - name: ARM を使用してデプロイする
         href: deploy-with-resource-manager-template.md
       - name: Studio アカウント データの表示と削除
+        displayName: export
         href: export-delete-personal-data-dsr.md
   - name: データの取得と理解
     items:
@@ -77,6 +85,7 @@ items:
       - name: 実験から
         href: import-data-from-an-experiment.md
       - name: オンプレミスの SQL を使用する
+        displayName: on-premises
         href: use-data-from-an-on-premises-sql-server.md
   - name: モデルの開発
     items:
@@ -87,6 +96,7 @@ items:
       - name: 実験イテレーションの管理
         href: manage-experiment-iterations.md
       - name: PowerShell でモデルを作成する
+        displayName: endpoint, endpoints
         href: create-models-and-endpoints-with-powershell.md
       - name: アルゴリズムを選択する
         items:
@@ -103,6 +113,7 @@ items:
         - name: パフォーマンスの評価
           href: evaluate-model-performance.md
         - name: パラメーターを最適化する
+          displayName: optimization
           href: algorithm-parameters-optimize.md
         - name: 結果を解釈する
           href: interpret-model-results.md
@@ -117,20 +128,25 @@ items:
         - name: Python スクリプトを実行する
           href: execute-python-scripts.md
   - name: モデルの運用化
+    displayName: deploy
     items:
     - name: 概要
+      displayName: deploy, consume, web service
       href: deploy-consume-web-service-guide.md
     - name: モデルをデプロイする
       items:
       - name: Web サービスのデプロイ
+        displayName: publish
         href: publish-a-machine-learning-web-service.md
       - name: 動作のしくみ
         href: model-progression-experiment-to-web-service.md
       - name: デプロイの準備をする
         href: convert-training-experiment-to-scoring-experiment.md
       - name: 外部データを使用する
+        displayName: import, export
         href: web-services-that-use-import-export-modules.md
       - name: 複数のリージョンにデプロイする
+        displayName: multiple regions
         href: how-to-deploy-to-multiple-regions.md
       - name: Web サービス パラメーターを使用する
         href: web-service-parameters.md
@@ -141,6 +157,7 @@ items:
       - name: Web サービス ポータルを使用する
         href: manage-new-webservice.md
       - name: API で管理する
+        displayName: endpoint, endpoints
         href: manage-web-service-endpoints-using-api-management.md
       - name: エンドポイントを作成する
         href: create-endpoint.md
@@ -238,9 +255,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: b7c5cea35e8b1441bc8a08e8d8582141cd430868
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 77caf4b0144b8c7d7a7a48053d55864bfa9ae286
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431527"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287593"

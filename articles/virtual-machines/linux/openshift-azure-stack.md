@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: a2a61015f82cc27dcadf96fbd608e2d3420218ee
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 2b111967548dd90a8795af617a80a23d763861fe
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50088265"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037694"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Azure Stack で OpenShift Container Platform または OKD をデプロイする
 
@@ -46,21 +46,21 @@ Resource Manager テンプレートを使用している場合、適切なブラ
 ```
 
 どのオプションでも、Red Hat サブスクリプションが必要です。 デプロイ中に、Red Hat Enterprise Linux インスタンスは Red Hat サブスクリプションに登録され、OpenShift Container Platform の資格を含むプール ID に接続されます。
-有効な Red Hat Subscription Manager (RHSM) のユーザー名、パスワード、プール ID があることを確認してください。 あるいは、ライセンス認証キー、組織 ID、プール ID を使用できます。  これらの情報は、 https://access.redhat.com にサインインして確認できます。
+有効な Red Hat Subscription Manager (RHSM) のユーザー名、パスワード、およびプール ID があることを確認してください。 あるいは、ライセンス認証キー、組織 ID、プール ID を使用できます。  これらの情報は、 https://access.redhat.com にサインインして確認できます。
 
 ## <a name="azure-stack-prerequisites"></a>Azure Stack の前提条件
 
 OpenShift クラスターをデプロイするには、RHEL イメージ (OpenShift Container Platform) または CentOS イメージ (OKD) を Azure Stack 環境に追加する必要があります。 Azure Stack 管理者に連絡し、これらのイメージを追加してください。 手順は次の場所にあります。
 
-- https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-add-vm-image
-- https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-marketplace-azure-items
-- https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-redhat-create-upload-vhd
+- https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image
+- https://docs.microsoft.com/azure/azure-stack/azure-stack-marketplace-azure-items
+- https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd
 
 ## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>OpenShift Container Platform または OKD Resource Manager テンプレートを使用したデプロイ
 
 Resource Manager テンプレートを使用してデプロイするには、パラメーター ファイルを使用して入力パラメーターを指定します。 デプロイをさらにカスタマイズするには、GitHub リポジトリをフォークし、適切な項目を変更します。
 
-一部の一般的なカスタマイズ オプションには、以下のような項目があります。
+一般的なカスタマイズ オプションには以下のような項目がありますが、この限りではありません。
 
 - Bastion VM サイズ (azuredeploy.json 内の変数)
 - 名前付け規則 (azuredeploy.json 内の変数)

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 48a5356b03e38e864ba76f048febdb0b040893f5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d6da1ee603c85556693b145ba17d1e0cd0dfabd7
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669299"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034542"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>トピックを管理し、イベント ドメインを使用してイベントを発行する
 
@@ -84,7 +84,7 @@ az eventgrid event-subscription create \
 
 ## <a name="manage-access-to-topics"></a>トピックへのアクセスを管理する
 
-トピックへのアクセスの管理は、[ロールの割り当て](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-cli)を使用して行われます。 ロールの割り当てではロールベースのアクセス確認を使用して、Azure リソースに対する操作を、特定のスコープの承認されたユーザーに制限します。
+トピックへのアクセスの管理は、[ロールの割り当て](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)を使用して行われます。 ロールの割り当てではロールベースのアクセス確認を使用して、Azure リソースに対する操作を、特定のスコープの承認されたユーザーに制限します。
 
 Event Grid には、ドメイン内のさまざまなトピックへのアクセスを特定のユーザーに割り当てるために使用できる 2 つの組み込みロールがあります。 これらのロールは、サブスクリプションの作成と削除を許可する `EventGrid EventSubscription Contributor (Preview)` と、イベント サブスクリプションのリストのみを許可する `EventGrid EventSubscription Reader (Preview)` です。
 

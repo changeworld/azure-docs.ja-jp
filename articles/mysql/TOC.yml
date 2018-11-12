@@ -94,6 +94,8 @@ items:
       href: concepts-compatibility.md
     - name: アプリケーション開発
       href: concepts-database-application-development.md
+    - name: 接続の回復性
+      href: concepts-connectivity.md
   - name: レプリケーション
     items:
     - name: データイン レプリケーション
@@ -158,6 +160,16 @@ items:
       href: howto-data-in-replication.md
     - name: Azure portal を使用した読み取りレプリカの作成
       href: howto-read-replicas-portal.md
+    - name: 読み取りレプリカ Azure CLI の作成
+      href: howto-read-replicas-cli.md
+  - name: トラブルシューティング
+    items:
+    - name: 接続エラーのトラブルシューティング
+      href: howto-troubleshoot-common-connection-issues.md
+    - name: クエリ パフォーマンスのトラブルシューティング
+      href: howto-troubleshoot-query-performance.md
+    - name: sys スキーマでビューを使用する方法
+      href: howto-troubleshoot-sys-schema.md
   - name: 高度な脅威保護
     items:
     - name: Azure ポータル
@@ -214,9 +226,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 5e81e536ec941d7822dae39ecf5548a21b2e7a5d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 39c05df6c48a1a6fe42c1c2e75cbc79441e42bc5
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986561"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287525"

@@ -2,19 +2,19 @@
 title: HDInsight の Hadoop クラスターに Giraph をインストールして使用する - Azure
 description: Giraph を使用して HDInsight クラスターをカスタマイズする方法と Giraph の使用方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0cf866ee472717c6021922927713ef0bf8817271
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6138cc337c35924405fa3f6489e7e40bfc5779c9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093246"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007010"
 ---
 # <a name="install-and-use-giraph-on-windows-based-hdinsight-clusters"></a>Windows ベースの HDInsight クラスターに Giraph をインストールして使用する
 
@@ -73,7 +73,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
     tiny_graph.txt ファイルを HDInsight クラスターのプライマリ ストレージにアップロードします。 データをアップロードする方法の詳細については、「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 
-    このデータは、[source\_id, source\_value,[[dest\_id], [edge\_value],...]] の形式を使用して有向グラフ内のオブジェクト間の関係を示しています。各行は、**source\_id** オブジェクトと 1 つ以上の **dest\_id** オブジェクトとの関係を表現しています。 **edge\_value** (重み) は、**source_id** と **dest\_id** の間のつながりの強さまたは距離であると考えられます。
+    このデータは、[source\_id, source\_value,[[dest\_id], [edge\_value],...]] の形式を使用して有向グラフ内のオブジェクト間の関係を示しています。各行は、sourceid** オブジェクトと 1 つ以上の **dest\_id** オブジェクトとの関係を表現しています。 **edge\_value** (重み) は、**source_id** と **dest\_id** の間のつながりの強さまたは距離であると考えられます。
 
     この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
 
@@ -157,7 +157,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。  このサンプルでは、Azure PowerShell を使用して Spark をインストールする方法を示します。 スクリプトをカスタマイズして、[https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1) を使用する必要があります。
 
 ## <a name="install-giraph-using-net-sdk"></a>.NET SDK を使用して Giraph をインストールする
-「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。 このサンプルでは、.NET SDK を使用して Spark をインストールする方法を示します。 スクリプトをカスタマイズして、[https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1) を使用する必要があります。
+「 [スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call-scripts-using-azure-powershell)」を参照してください。 このサンプルでは、.NET SDK を使用して Spark をインストールする方法を示します。 スクリプトをカスタマイズして、[https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1) を使用する必要があります。
 
 ## <a name="see-also"></a>関連項目
 * [HDInsight Hadoop クラスターに Giraph をインストールする (Linux)](hdinsight-hadoop-giraph-install-linux.md)

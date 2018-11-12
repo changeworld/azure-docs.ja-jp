@@ -1,3 +1,5 @@
+# [Database Migration Service のドキュメント](index.yml)
+
 # 概要
 ## [Database Migration Service について](dms-overview.md)
 

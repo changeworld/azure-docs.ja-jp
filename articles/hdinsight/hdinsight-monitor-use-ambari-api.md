@@ -2,19 +2,19 @@
 title: Ambari API を使用した HDInsight の Hadoop クラスターの監視 - Azure
 description: Apache Ambari API は、Hadoop クラスターの作成、管理、および監視を目的として使用します。 直観的なオペレーター ツールと API によって、Hadoop の複雑さに悩まされずに作業を進められます。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 23da477fc24eaea4a6f987f13ad055022d2ba032
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4be14cd1804c27eedc49cc17e33298c6134f6a37
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108639"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008744"
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Ambari API を使用した HDInsight の Hadoop クラスターの監視
 Ambari API を使用して HDInsight クラスターを監視する方法について説明します。

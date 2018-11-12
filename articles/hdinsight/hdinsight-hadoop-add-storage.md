@@ -2,19 +2,19 @@
 title: HDInsight に Azure ストレージ アカウントを追加する
 description: 既存の HDInsight クラスターに Azure ストレージ アカウントを追加する方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: bdf4c7527e2c0056b2de2321fbae280e9008cb1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 31461e1d316953c2e69d252f1313180c57562dfd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990675"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009193"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -54,7 +54,7 @@ __スクリプトの場所__: [https://hdiconfigactions.blob.core.windows.net/li
 
 __要件__:
 
-* スクリプトを __ヘッド ノード__ に適用する必要があります。
+* スクリプトを__ヘッド ノード__に適用する必要があります。
 
 ## <a name="to-use-the-script"></a>スクリプトを使用するには
 
@@ -107,7 +107,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
 ストレージ アカウントのキーを変更すると、HDInsight はストレージ アカウントにアクセスできなくなります。 HDInsight は、クラスターの core-site.xml 内のキャッシュされたキーのコピーを使用します。 このキャッシュされたコピーは、新しいキーに一致するように更新する必要があります。
 
-スクリプト アクションを再実行しても、キーは __更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認します。 エントリが既に存在する場合、いかなる変更もしません。
+スクリプト アクションを再実行しても、キーは__更新されません__。スクリプトはストレージ アカウントのエントリが既に存在するかどうかを確認します。 エントリが既に存在する場合、いかなる変更もしません。
 
 この問題を回避するには、ストレージ アカウントの既存のエントリを削除する必要があります。 既存のエントリを削除するには、次の手順を実行します。
 

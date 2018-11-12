@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: bed0c15504323aba4ebf680273870720a8ff833a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 461c6e3cbdfcc5ef8207277b08ad4a8cf492f796
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388312"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282800"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成  
 
 ## <a name="overview"></a>概要
-Azure Monitor では、[クラシック アラート](insights-alerts-portal.md)よりも多くの利点を備えた[メトリック アラート](monitoring-near-real-time-metric-alerts.md)をサポートしています。 メトリックは[さまざまな Azure サービスで](monitoring-supported-metrics.md)利用できます。 この記事では、リソース (`Microsoft.OperationalInsights/workspaces`) のサブセットの使用方法について説明します。 
+Azure Monitor では、[クラシック アラート](alert-metric-classic.md)よりも多くの利点を備えた[メトリック アラート](monitoring-near-real-time-metric-alerts.md)をサポートしています。 メトリックは[さまざまな Azure サービスで](monitoring-supported-metrics.md)利用できます。 この記事では、リソース (`Microsoft.OperationalInsights/workspaces`) のサブセットの使用方法について説明します。 
 
 メトリック アラートは、Azure またはオンプレミスのリソースを含むログからのメトリックの一部として、メトリックとして抽出された一般的な Log Analytics ログで使用できます。 サポートされている Log Analytics ソリューションは次のとおりです。
 - Windows および Linux マシンの[パフォーマンス カウンター](../log-analytics/log-analytics-data-sources-performance-counters.md)
-- [Agent Health のためのハートビート レコード](../operations-management-suite/oms-solution-agenthealth.md)
-- [更新管理](../operations-management-suite/oms-solution-update-management.md)レコード
+- [Agent Health のためのハートビート レコード](../monitoring/monitoring-solution-agenthealth.md)
+- [更新管理](../automation/automation-update-management.md)レコード
 - [イベント データ](../log-analytics/log-analytics-data-sources-windows-events.md) ログ
  
 **ログのメトリック アラート**には、Azure のクエリ ベースの[ログ アラート](alert-log.md)よりも多くの利点があります。その一部を次に示します。
@@ -47,7 +47,7 @@ Azure Monitor では、[クラシック アラート](insights-alerts-portal.md)
 Log Analytics データで収集されたログのメトリックを機能させるには、以下を設定し、使用できるようにしておく必要があります。
 1. **アクティブな Log Analytics ワークスペース**: 有効かつアクティブな Log Analytics ワークスペースが存在する必要があります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-create-workspace.md)に関するページをご覧ください。
 2. **Log Analytics ワークスペースのエージェントを構成する**: 前の手順で使用した Log Analytics ワークスペースにデータを送信するために、Azure VM およびオンプレミスの VM でエージェントを構成する必要があります。 詳細については、[Log Analytics エージェントの概要](../monitoring/monitoring-overview-azure-agents.md)に関する記事をご覧ください。
-3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成し、Log Analytics ワークスペースにデータを送信する必要があります。サポートされているソリューションは、[Windows および Linux のパフォーマンス カウンター](../log-analytics/log-analytics-data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../operations-management-suite/oms-solution-agenthealth.md)、Update Management、[イベント データ](../log-analytics/log-analytics-data-sources-windows-events.md)です。
+3. **サポートされている Log Analytics ソリューションをインストールする**: Log Analytics ソリューションを構成し、Log Analytics ワークスペースにデータを送信する必要があります。サポートされているソリューションは、[Windows および Linux のパフォーマンス カウンター](../log-analytics/log-analytics-data-sources-performance-counters.md)、[Agent Health のハートビート レコード](../monitoring/monitoring-solution-agenthealth.md)、Update Management、[イベント データ](../log-analytics/log-analytics-data-sources-windows-events.md)です。
 4. **ログを送信するように構成された Log Analytics ソリューション**: Log Analytis ソリューションでは、[Log Analytics ワークスペースでサポートされるメトリック](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)に対応するログ/データが必要です。 たとえば、*% Available Memory* の場合、[パフォーマンス カウンター](../log-analytics/log-analytics-data-sources-performance-counters.md) ソリューションでこのメトリックのカウンターを構成しておく必要があります。
 
 ## <a name="configuring-metric-alert-for-logs"></a>ログのメトリック アラートの構成

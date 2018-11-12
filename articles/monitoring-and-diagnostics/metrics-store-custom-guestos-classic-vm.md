@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: 9569a9da81848c279db6d6d45b7621f84060387b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 06b3d97f4b2b7867f09a8c4e5fe974615e9b0c70
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958629"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093422"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor データ ストアに送信する
 
@@ -45,7 +45,7 @@ Azure Monitor [診断拡張機能](https://docs.microsoft.com/azure/monitoring-a
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-[サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページの手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 このプロセスを進める際には、次の点に注意してください。 
+[サービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページの手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 このプロセスを進める際には、次の点に注意してください。 
 - このアプリ用に新しいクライアント シークレットを作成します。
 - 後の手順で使用するために、キーとクライアント ID を保存します。
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bc16b71ad20e2cf2bc61a046336fe6a3618bc403
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 704f6341573fd49cba57a319956ccc5f502bae77
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269566"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038554"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語の関数リファレンス
 
@@ -535,7 +535,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*hours*> | [はい] | 整数 | 追加する正または負の時間数 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -577,7 +577,7 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*minutes*> | [はい] | 整数 | 追加する正または負の分数 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -649,7 +649,7 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*seconds*> | [はい] | 整数 | 追加する正または負の秒数 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -692,7 +692,7 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*interval*> | [はい] | 整数 | 追加する指定した時間単位の数 | 
 | <*timeUnit*> | [はい] | String | *interval* で使用する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -1129,7 +1129,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*destinationTimeZone*> | [はい] | String | ターゲット タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -1172,7 +1172,7 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*sourceTimeZone*> | [はい] | String | ソース タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 | 
 | <*destinationTimeZone*> | [はい] | String | ターゲット タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -1214,7 +1214,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*sourceTimeZone*> | [はい] | String | ソース タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -1751,7 +1751,7 @@ first([<collection>])
 
 ```
 first('hello')
-first([0, 1, 2])
+first(createArray(0, 1, 2))
 ```
 
 次の結果を返します。 
@@ -1802,7 +1802,7 @@ formatDateTime('<timestamp>', '<format>'?)
 | パラメーター | 必須 | type | 説明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -1896,7 +1896,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | --------- | -------- | ---- | ----------- | 
 | <*interval*> | [はい] | 整数 | 減算する指定した時間単位の数 | 
 | <*timeUnit*> | [はい] | String | *interval* で使用する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -1938,7 +1938,7 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | --------- | -------- | ---- | ----------- | 
 | <*interval*> | [はい] | 整数 | 減算する指定した時間単位の数 | 
 | <*timeUnit*> | [はい] | String | *interval* で使用する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -2312,7 +2312,7 @@ intersection('<collection1>', '<collection2>', ...)
 この例は、次のすべての配列に共通する項目を検索します。  
 
 ```
-intersection([1, 2, 3], [101, 2, 1, 10], [6, 8, 1, 2])
+intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
 そして、それらの項目 `[1, 2]` "*のみ*" を含む配列を返します。
@@ -2343,7 +2343,7 @@ join([<collection>], '<delimiter>')
 この例は、指定した文字で区切られた、次の配列のすべての項目を含む文字列を作成します。
 
 ```
-join([a, b, c], '.')
+join(createArray('a', 'b', 'c'), '.')
 ```
 
 返される結果: `"a.b.c"`
@@ -2375,7 +2375,7 @@ last([<collection>])
 
 ```
 last('abcd')
-last([0, 1, 2, 3])
+last(createArray(0, 1, 2, 3))
 ```
 
 次の結果を返します。 
@@ -2441,7 +2441,7 @@ length([<collection>])
 
 ```
 length('abcd')
-length([0, 1, 2, 3])
+length(createArray(0, 1, 2, 3))
 ```
 
 返される結果: `4`
@@ -2569,7 +2569,7 @@ max([<number1>, <number2>, ...])
 
 ```
 max(1, 2, 3)
-max([1, 2, 3])
+max(createArray(1, 2, 3))
 ```
 
 返される結果: `3`
@@ -2602,7 +2602,7 @@ min([<number1>, <number2>, ...])
 
 ```
 min(1, 2, 3)
-min([1, 2, 3])
+min(createArray(1, 2, 3))
 ```
 
 返される結果: `1`
@@ -3007,7 +3007,7 @@ skip([<collection>], <count>)
 この例は、指定した配列の先頭から 1 つの項目 (番号 0) を削除します。 
 
 ```
-skip([0, 1, 2, 3], 1)
+skip(createArray(0, 1, 2, 3), 1)
 ```
 
 そして、残りの項目を含む配列 `[1,2,3]` を返します。
@@ -3056,7 +3056,7 @@ startOfDay('<timestamp>', '<format>'?)
 | パラメーター | 必須 | type | 説明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -3087,7 +3087,7 @@ startOfHour('<timestamp>', '<format>'?)
 | パラメーター | 必須 | type | 説明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -3118,7 +3118,7 @@ startOfMonth('<timestamp>', '<format>'?)
 | パラメーター | 必須 | type | 説明 | 
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -3295,7 +3295,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*interval*> | [はい] | 整数 | 減算する指定した時間単位の数 | 
 | <*timeUnit*> | [はい] | String | *interval* で使用する時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -3351,7 +3351,7 @@ take([<collection>], <count>)
 
 ```
 take('abcde`, 3)
-take([0, 1, 2, 3, 4], 3)
+take(createArray(0, 1, 2, 3, 4), 3)
 ```
 
 次の結果を返します。
@@ -3626,7 +3626,7 @@ union([<collection1>], [<collection2>], ...)
 この例は、以下のコレクションから "*すべての*" 項目を取得します。 
 
 ```
-union([1, 2, 3], [1, 2, 10, 101])
+union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 ```
 
 返される結果: `[1, 2, 3, 10, 101]`
@@ -3921,7 +3921,7 @@ utcNow('<format>')
 
 | パラメーター | 必須 | type | 説明 | 
 | --------- | -------- | ---- | ----------- | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 | 
 ||||| 
 
 | 戻り値 | type | 説明 | 

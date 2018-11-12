@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: cc7bcefe43eed524f50fcad09d7fb31a80d22b83
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e06b9ff2134c0bd1fb1ee8515827e9e8c06a3108
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025805"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008472"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Log Analytics でクロス リソースのログ検索を実行する  
 
@@ -38,7 +38,7 @@ ms.locfileid: "50025805"
 
 * リソース名 - 人間が判読できるワークスペースの名前。"*コンポーネント名*" と呼ばれることもあります。 
 
-    `workspace("contosoretail").Update | count`
+    `workspace("contosoretail-it").Update | count`
  
     >[!NOTE]
     >ワークスペースを名前で識別する場合、その名前は、アクセス可能なすべてのサブスクリプション間で一意であることが前提とされます。 指定した名前を持つ複数のアプリケーションが存在する場合は、あいまいさのためにクエリが失敗します。 この場合、その他の識別子のいずれかを使用する必要があります。
@@ -59,7 +59,7 @@ ms.locfileid: "50025805"
 
     例: 
     ``` 
-    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Update | count
+    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
 
 ### <a name="identifying-an-application"></a>アプリケーションの識別
