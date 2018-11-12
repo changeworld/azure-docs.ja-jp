@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 10/31/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e6d097749dae49cf6f1d710bcf01cf99dcd98a4c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 65f3388074ff7a84c6e0516a64665019d5883ab1
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243897"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913174"
 ---
 # <a name="log-analytics-query-language-differences"></a>Log Analytics クエリ言語の違い
 
@@ -63,11 +63,5 @@ ms.locfileid: "50243897"
 
 ## <a name="next-steps"></a>次の手順
 
-<<<<<<< HEAD:articles/log-analytics/query-language/data-explorer-difference.md
-- [Log Analytics クエリを記述するためのさまざまなリソース](kusto.md)の参照を取得します。
+- [Log Analytics クエリを記述するためのさまざまなリソース](query-language.md)の参照を取得します。
 - 完全な[データ エクスプローラーのクエリ言語のリファレンス ドキュメント](/azure/kusto/query/)にアクセスします。
-=======
-- [Log Analytics](../log-analytics-queries.md) のクエリの詳細を確認します。
-- [Log Analytics クエリ](/log-analytics/query-language/get-started-queries.md)の記述についてのレッスンを見ていきます。
-- 完全な [Kusto のリファレンス ドキュメント](/azure/kusto/query/)にアクセスします。
->>>>>>> 4bccab5ecb17c887658a4d2ed1bab6b22bf29ffd:articles/log-analytics/query-language/kusto.md

@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: f15590f1a626709722235ef499d22d9999f5b662
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 33499b378a2d74d94a77dda81f0179d6cb0700c3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094781"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957927"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
 

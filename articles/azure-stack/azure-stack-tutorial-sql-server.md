@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
-ms.reviewer: ''
+ms.reviewer: quying
 ms.custom: mvc
-ms.openlocfilehash: 35f4d2adfe3ca64496139cdd708fb5f52f8721ee
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ae32138dffa296a4aad9917897e180d364f189fc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023479"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037835"
 ---
 # <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>チュートリアル: SQL データベースを Azure Stack ユーザーから使用できるようにする
 
@@ -76,7 +76,7 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * SQL Server リソース プロバイダーのデプロイ
