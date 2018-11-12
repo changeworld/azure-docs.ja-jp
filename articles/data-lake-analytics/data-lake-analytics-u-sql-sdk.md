@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: ae5334dcb93e34569131ab51dca99c310831082d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052089"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238796"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL の実行およびテストする
 
@@ -36,7 +36,7 @@ Data Lake U-SQL SDK には、以下の依存関係が必要です。
 
     ![Data Lake Tools for Visual Studio ローカル実行の Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - [Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) をインストールします。 事前にパッケージ化された Visual C++ および Windows SDK ファイルが、C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK で見つかります。 この場合、U-SQL ローカル コンパイラでは依存関係が自動検出されないため、 CppSDK パスを指定する必要があります。 このファイルは別の場所にコピーすることも、そのまま使用することもできます。
+    - [Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) をインストールします。 事前にパッケージ化された Visual C++ および Windows SDK ファイルが、C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK で見つかります。 この場合、U-SQL ローカル コンパイラでは依存関係が自動検出されないため、 CppSDK パスを指定する必要があります。 このファイルは別の場所にコピーすることも、そのまま使用することもできます。
 
 ## <a name="understand-basic-concepts"></a>基本的な概念を理解する
 
@@ -336,30 +336,30 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|出力メッセージ用。コンソールで使用するには null に設定します|
 
-**Properties**
+**プロパティ**
 
 |プロパティ|type|説明|
 |--------|----|-----------|
-|AlgebraPath|文字列|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
-|CodeBehindReferences|文字列|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
-|CppSdkDir|文字列|CppSDK ディレクトリ|
-|CurrentDir|文字列|現在のディレクトリ|
-|DataRoot|文字列|データ ルート パス|
-|DebuggerMailPath|文字列|デバッガーのメール スロットのパス|
+|AlgebraPath|string|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
+|CodeBehindReferences|string|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
+|CppSdkDir|string|CppSDK ディレクトリ|
+|CurrentDir|string|現在のディレクトリ|
+|DataRoot|string|データ ルート パス|
+|DebuggerMailPath|string|デバッガーのメール スロットのパス|
 |GenerateUdoRedirect|bool|アセンブリ読み込みリダイレクトのオーバーライド構成を生成するかどうかを示します|
 |HasCodeBehind|bool|スクリプトに分離コードがあるかどうか|
-|InputDir|文字列|入力データ用のディレクトリ|
-|MessagePath|文字列|メッセージ ダンプ ファイルのパス|
-|OutputDir|文字列|出力データ用のディレクトリ|
+|InputDir|string|入力データ用のディレクトリ|
+|MessagePath|string|メッセージ ダンプ ファイルのパス|
+|OutputDir|string|出力データ用のディレクトリ|
 |Parallelism|int|代数を実行する並列処理|
 |ParentPid|int|サービスの監視が終了する親の PID。無視する場合は 0 または負数を設定します|
-|ResultPath|文字列|結果ダンプ ファイルのパス|
-|RuntimeDir|文字列|ランタイム ディレクトリ|
-|ScriptPath|文字列|スクリプトの検出場所|
+|ResultPath|string|結果ダンプ ファイルのパス|
+|RuntimeDir|string|ランタイム ディレクトリ|
+|ScriptPath|string|スクリプトの検出場所|
 |Shallow|bool|簡易コンパイルかどうか|
-|TempDir|文字列|一時ディレクトリ|
-|UseDataBase|文字列|分離コードの一時アセンブリ登録に使用するデータベース。既定では master|
-|WorkDir|文字列|任意の作業ディレクトリ|
+|TempDir|string|一時ディレクトリ|
+|UseDataBase|string|分離コードの一時アセンブリ登録に使用するデータベース。既定では master|
+|WorkDir|string|任意の作業ディレクトリ|
 
 
 **メソッド**

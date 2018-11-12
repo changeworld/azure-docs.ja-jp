@@ -12,12 +12,12 @@ ms.author: daleche
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a34745c5586fa90d3e167bb3be22e93dfa83b7af
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 99c7e73bb133349ef1c14295a49f278d64a15226
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041732"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257961"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Azure SQL Database との接続に関する一般的な問題のトラブルシューティング
 Azure SQL Database との接続に失敗すると、[エラー メッセージ](sql-database-develop-error-messages.md)が表示されます。 この記事では、Azure SQL Database の接続に関する問題のトラブルシューティングに役立つトピックを紹介します。 ここでは接続の問題の[一般的な原因](#cause)を説明し、問題の特定に役立つ[トラブルシューティング ツール](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues)を紹介しています。また、[一時的なエラー](#troubleshoot-transient-errors)、および[永続的または一時的でないエラー](#troubleshoot-persistent-errors)を解決するトラブルシューティングの手順についてもご紹介します。 
@@ -79,8 +79,8 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 4. ダッシュ ボードでサービスの正常性を確認します。 リージョンの障害があると思われる場合は、新しいリージョンへの回復手順を [障害からの回復](sql-database-disaster-recovery.md) のトピックで参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* [Microsoft Azure ドキュメントの検索](http://azure.microsoft.com/search/documentation/)
-* [Azure SQL Database サービスの更新情報](http://azure.microsoft.com/updates/?service=sql-database)
+* [Microsoft Azure ドキュメントの検索](https://azure.microsoft.com/search/documentation/)
+* [Azure SQL Database サービスの更新情報](https://azure.microsoft.com/updates/?service=sql-database)
 
 ## <a name="additional-resources"></a>その他のリソース
 * [SQL Database の開発: 概要](sql-database-develop-overview.md)

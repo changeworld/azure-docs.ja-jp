@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 988a2433f098f41bca4796299825293efd4de44b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: da261beeec4f02dfa7c7cf9071e51dc17cf5c7cd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171137"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254385"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>カードを使用する方法 (パート 1/2)
 
@@ -26,7 +26,7 @@ ms.locfileid: "39171137"
 
 ## <a name="video"></a>ビデオ
 
-[![チュートリアル 13 のプレビュー](http://aka.ms/cl-tutorial-13-preview)](http://aka.ms/blis-tutorial-13)
+[![チュートリアル 13 のプレビュー](https://aka.ms/cl-tutorial-13-preview)](https://aka.ms/blis-tutorial-13)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -53,7 +53,7 @@ Web UI の [モデル] 一覧で、[Tutorial-13-Cards-1] をクリックしま�
 > テキスト フィールド内の本文の型 `TextBlock` と `{{question}}` プレースホルダーに注意してください。
 > 2 つの提出ボタンがあり、さらに、それぞれについて提出されるテキストが存在します。
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 
 アクションは 3 つ作成してあります。 次に示したように、1 つ目のアクションはカードです。
 

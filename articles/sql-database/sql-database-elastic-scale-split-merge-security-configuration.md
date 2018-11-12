@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: ca93d97c3e0ddab0377ef437a04e7e3e31197b97
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166376"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231399"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 Split/Merge サービスを使用するには、セキュリティが正しく構成されていなければなりません。 このサービスは、Microsoft Azure SQL Database の Elastic Scale 機能の一部です。 詳しくは、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」をご覧ください。
@@ -29,21 +29,21 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 2. [クライアント証明書を構成するには](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>証明書を取得するには
-証明書はパブリック証明機関 (CA) または [Windows Certificate Service](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)から取得できます。 これは証明書を取得するための推奨方法です。
+証明書はパブリック証明機関 (CA) または [Windows Certificate Service](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)から取得できます。 これは証明書を取得するための推奨方法です。
 
 これらの方法が利用可能でない場合は、 **自己署名証明書**を生成できます。
 
 ## <a name="tools-to-generate-certificates"></a>証明書を生成するツール
-* [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>ツールを実行するには
-* Visual Studio の開発者コマンド プロンプトで、「 [Visual Studio コマンド プロンプト](http://msdn.microsoft.com/library/ms229859.aspx) 
+* Visual Studio の開発者コマンド プロンプトで、「 [Visual Studio コマンド プロンプト](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     インストールされている場合は、次のように参照します。
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* 「 [Windows 8.1: キットとツールのダウンロード](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* 「 [Windows 8.1: キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>SSL 証明書を構成するには
 通信の暗号化やサーバーの認証には SSL 証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。

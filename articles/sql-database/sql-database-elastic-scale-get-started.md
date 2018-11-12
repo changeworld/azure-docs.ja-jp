@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: ''
 manager: craigg
 ms.date: 08/27/2018
-ms.openlocfilehash: 74bbaeeee390952bf42407a53684bc33a7cfc543
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ad07b0a9ae2d0c90f63d4f3a842a5d386ac4c59b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242775"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249865"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 このドキュメントでは、サンプル アプリを実行することで、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の開発を体験できます。 サンプル アプリでは単純なシャーディング アプリケーションを作成し、Azure SQL Database の Elastic Database ツールの主な機能について詳しく見て行きます。 また、[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)、[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)のユース ケースに重点を置いています。 このクライアント ライブラリは .NET と Java で使用できます。 
@@ -67,7 +67,7 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 
 ## <a name="elastic-database-tools-for-net"></a>.NET 用 Elastic Database ツール 
 ### <a name="prerequisites"></a>前提条件
-* Visual Studio 2012 以降 (C#)。 「 [Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償評価版をダウンロードしてください。
+* Visual Studio 2012 以降 (C#)。 「 [Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償評価版をダウンロードしてください。
 * NuGet 2.7 以降。 最新版を入手するには、「[Installing NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)(NuGet のインストール)」をご覧ください。
 
 ### <a name="download-and-run-the-sample-app"></a>サンプル アプリケーションのダウンロードと実行
@@ -95,13 +95,13 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 > 
 
 ## <a name="key-pieces-of-the-code-sample"></a>コード サンプルの主要部
-* **シャードとシャード マップの管理**: このコードは、シャード、範囲、マッピングが *ShardManagementUtils.cs* ファイルでどのように機能するかを示します。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](http://go.microsoft.com/?linkid=9862595)」をご覧ください。  
+* **シャードとシャード マップの管理**: このコードは、シャード、範囲、マッピングが *ShardManagementUtils.cs* ファイルでどのように機能するかを示します。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。  
 
-* **データ依存ルーティング**: トランザクションの適切なシャードへのルーティングは、*DataDependentRoutingSample.cs* ファイルに示されます。 詳細については、「[データ依存ルーティング](http://go.microsoft.com/?linkid=9862596)」をご覧ください。 
+* **データ依存ルーティング**: トランザクションの適切なシャードへのルーティングは、*DataDependentRoutingSample.cs* ファイルに示されます。 詳細については、「[データ依存ルーティング](https://go.microsoft.com/?linkid=9862596)」をご覧ください。 
 
-* **複数のシャードにまたがるクエリ実行**: 複数のシャードに対するクエリの実行は、*MultiShardQuerySample.cs* ファイルに示されます。 詳細については、「[マルチシャード クエリ実行](http://go.microsoft.com/?linkid=9862597)」をご覧ください。
+* **複数のシャードにまたがるクエリ実行**: 複数のシャードに対するクエリの実行は、*MultiShardQuerySample.cs* ファイルに示されます。 詳細については、「[マルチシャード クエリ実行](https://go.microsoft.com/?linkid=9862597)」をご覧ください。
 
-* **空のシャードの追加**: 新しい空のシャードの反復追加は、*CreateShardSample.cs* ファイルのコードによって実行されます。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](http://go.microsoft.com/?linkid=9862595)」をご覧ください。
+* **空のシャードの追加**: 新しい空のシャードの反復追加は、*CreateShardSample.cs* ファイルのコードによって実行されます。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。
 
 ## <a name="other-elastic-scale-operations"></a>他の Elastic Scale の操作
 * **既存のシャードの分割**: シャードを分割する機能は、分割/マージ ツールで提供されます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。
@@ -119,12 +119,12 @@ Elastic Database ツール ライブラリは無料です。 Elastic Database �
 Elastic Database ツールについて詳しくは、以下の記事をご覧ください。
 
 * コード サンプル 
-  * Elastic Database ツール ([.NET](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
-  * [Azure SQL 用 Elastic Database ツール - Entity Framework の統合](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
+  * Elastic Database ツール ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * [Azure SQL 用 Elastic Database ツール - Entity Framework の統合](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [スクリプト センターのシャードの弾力性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * ブログ: [Elastic Scale の発表](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 * チャンネル 9: [Elastic Scale の概要に関するビデオ](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* ディスカッション フォーラム: [Azure SQL Database フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* ディスカッション フォーラム: [Azure SQL Database フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * パフォーマンスを測定するには: [シャード マップ マネージャーのパフォーマンス カウンター](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->

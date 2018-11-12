@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: cf0e94b859b49eddb8e2471d5319b3cc4a2c17ba
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d8e390fc185c3cb0b63bcea56feb4b133652673d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720295"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258835"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -49,7 +49,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
 
 - - -
@@ -62,8 +62,8 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
+| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
 | **outputFormat** |必須 |String |出力日付の形式。 |
 
 - - -
@@ -91,7 +91,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |通常、属性の名前。 |
+| **source セクション** |必須 |String |通常、属性の名前。 |
 | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
 | **length** |必須 |integer |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
@@ -105,7 +105,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String | 通常は、名または姓の属性 |
+| **source セクション** |必須 |String | 通常は、名または姓の属性 |
 
 - - -
 ### <a name="not"></a>Not
@@ -117,7 +117,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
+| **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
 - - -
 ### <a name="replace"></a>Replace
@@ -143,7 +143,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 **パラメーター:**<br> 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
+| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
 | **regexPattern** |省略可能 |String |**source**に含まれる置換前の値の正規表現パターン。 または、replacementPropertyName を使用するときは、置換プロパティから値を抽出するパターン。 |
 | **regexGroupName** |省略可能 |String |**regexPattern**内のグループの名前。 ReplacementPropertyName を使用した場合にのみ、置換プロパティから replacementValue としてこのグループの値を抽出します。 |
@@ -173,7 +173,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |**source** 値。 |
+| **source セクション** |必須 |String |**source セクション セクション** 値。 |
 
 - - -
 ### <a name="switch"></a>Switch
@@ -185,7 +185,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |**Source** 値。 |
+| **source セクション** |必須 |String |**Source** 値。 |
 | **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
 | **key** |必須 |String |**source** 値と比較する **key**。 |
 | **値** |必須 |String |key と一致する **source** の置換値。 |

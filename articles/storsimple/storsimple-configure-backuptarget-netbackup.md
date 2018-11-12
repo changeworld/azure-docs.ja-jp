@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.openlocfilehash: b1878c181a77ac6d54654fc55228907743243c45
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 361ab36d3029dbc00e8d1e53ef9f9af42be3e1eb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23112840"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255845"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup を使用したバックアップ ターゲットとしての StorSimple
 
@@ -350,7 +350,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
 11.  新しく作成したスケジュールを右クリックし、**[Change (変更)]** を選択します。
 
-12.  **[Attributes (属性)]** タブで **[Override policy storage selection (ポリシー ストレージの選択を上書きする)]** チェック ボックスをオンにし、月曜日の増分バックアップが格納されるボリュームを選択します。
+12.  **[Attributes (属性)]** タブで **[Override policy storage selection (ポリシー ストレージの選択をオーバーライドする)]** チェック ボックスをオンにし、月曜日の増分バックアップが格納されるボリュームを選択します。
 
     ![NetBackup 管理コンソール、スケジュールを変更する](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
@@ -457,9 +457,9 @@ NetBackup にはストレージおよびメディア管理用のさまざまな�
 
     ![NetBackup 管理コンソール、[Change Schedule (スケジュールの変更)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9.  **[Override policy storage selection (ポリシー ストレージの選択を上書きする)]** チェック ボックスをオンにし、手順 1. ～ 6. で作成した SLP 保持ポリシーを選択します。
+9.  **[Override policy storage selection (ポリシー ストレージの選択をオーバーライドする)]** チェック ボックスをオンにし、手順 1. ～ 6. で作成した SLP 保持ポリシーを選択します。
 
-    ![NetBackup 管理コンソール、ポリシー ストレージの選択を上書きする](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
+    ![NetBackup 管理コンソール、ポリシー ストレージの選択をオーバーライドする](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
 10.  **[OK]** を選択し、次に増分バックアップ スケジュールに対し同じ手順を繰り返します。
 
@@ -536,9 +536,9 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 この記事では次のドキュメントを参考にしています。
 
 - [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](http://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [GPT ドライブを使用する (Using GPT drives)](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [共有フォルダーのシャドウ コピーのセットアップ](http://technet.microsoft.com/library/cc771893.aspx)
+- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
+- [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
 
 ## <a name="next-steps"></a>次の手順
 

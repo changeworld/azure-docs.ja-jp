@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fae415d158a9fced0c63078cd09c0cc070c88372
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ca3c29101e17a7970ba782b5c49267bf9f18482e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630003"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257158"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration での DSC 構成のコンパイル
 
@@ -171,7 +171,7 @@ Node ($AllNodes.Where{$_.Role -eq 'WebServer'}).NodeName
 
 ## <a name="configurationdata"></a>ConfigurationData
 
-**ConfigurationData** によって、PowerShell DSC の使用中に環境固有の構成と構造上の構成を分離することができます。 [ConfigurationData](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) の詳細については、 **PowerShell DSC で "環境" から "物" を分離する**ことに関する記事を参照してください。
+**ConfigurationData** によって、PowerShell DSC の使用中に環境固有の構成と構造上の構成を分離することができます。 [ConfigurationData](https://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) の詳細については、 **PowerShell DSC で "環境" から "物" を分離する**ことに関する記事を参照してください。
 
 > [!NOTE]
 > Azure Portal ではなく、Azure PowerShell を使用して Azure Automation State Configuration でコンパイルする場合に、**ConfigurationData** を使用できます。

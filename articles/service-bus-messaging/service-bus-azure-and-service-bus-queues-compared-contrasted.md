@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f48e9a5600dca1e13d6ee94a675d5bc824915118
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393963"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261062"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -70,7 +70,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | 順序の保証 |**いいえ** <br/><br>詳細については、追加情報セクションの最初のメモをご覧ください。</br> |**はい - 先入れ先出し法 (FIFO)**<br/><br>(メッセージング セッションを使用) |
 | 配信保証 |**At-Least-Once** |**At-Least-Once**<br/><br/>**At-Most-Once** |
 | 分割不可能な操作のサポート |**いいえ** |**はい**<br/><br/> |
-| 受信動作 |**非ブロッキング**<br/><br/>(新しいメッセージがない場合はすぐに完了します) |**タイムアウトあり/なしのブロッキング**<br/><br/>(長いポーリングまたは ["Comet 手法"](http://go.microsoft.com/fwlink/?LinkId=613759) を提供します)<br/><br/>**非ブロッキング**<br/><br/>(.NET マネージド API のみを使用) |
+| 受信動作 |**非ブロッキング**<br/><br/>(新しいメッセージがない場合はすぐに完了します) |**タイムアウトあり/なしのブロッキング**<br/><br/>(長いポーリングまたは ["Comet 手法"](https://go.microsoft.com/fwlink/?LinkId=613759) を提供します)<br/><br/>**非ブロッキング**<br/><br/>(.NET マネージド API のみを使用) |
 | プッシュ型 API |**いいえ** |**はい**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) と **OnMessage** セッション .NET API |
 | 受信モード |**Peek & Lease** |**Peek & Lock**<br/><br/>**Receive & Delete** |
 | 排他アクセス モード |**リース ベース** |**ロック ベース** |
@@ -134,14 +134,14 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
 | メッセージの最大 TTL |**無限** (api-version 2017-07-27 の時点) |**TimeSpan.Max** |
 | キューの最大数 |**無制限** |**10,000**<br/><br/>(サービス名前空間あたり) |
-| 同時クライアントの最大数 |**無制限** |**無制限**<br/><br/>(最大 100 の同時接続数の制限は TCP プロトコル ベースの通信にのみ適用されます) |
+| 同時クライアントの最大数 |**無制限** |**無制限**<br/><br/>(最大 100 のコンカレント接続数の制限は TCP プロトコル ベースの通信にのみ適用されます) |
 
 ### <a name="additional-information"></a>追加情報
 * Service Bus では、キューのサイズが制限されます。 キューの最大サイズは、キューの作成時に 1 ～ 80 GB の値を指定できます。 キューの作成時に設定したキュー サイズの値に達すると、その後の受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 Service Bus でのクォータの詳細情報については、「[Service Bus のクォータ](service-bus-quotas.md)」をご覧ください。
 * パーティション分割は [Premium レベル](service-bus-premium-messaging.md)ではサポートされていません。 Standard レベルでは、Service Bus キューを 1 GB、2 GB、3 GB、4 GB、5 GB のサイズで作成できます (既定値は 1 GB)。 Standard レベルでは、パーティション分割を有効にすると (既定)、Service Bus は指定した各 GB あたり 16 個のパーティションを作成できます。 そのため、5 GB のキューを作成すると、16 個のパーティションで、キューの最大サイズは (5 * 16) = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][Azure portal] の各エントリで確認できます。
 * Storage キューでは、内容が XML セーフでないメッセージに対しては **Base64** エンコードを使用する必要があります。 メッセージを **Base64** エンコードを使用する場合、ユーザー ペイロードの上限は 64 KB ではなく 48 KB になります。
 * Service Bus キューでは、キューに格納される各メッセージはヘッダーと本文の 2 つの部分で構成されます。 メッセージの合計サイズが、サービス レベルでサポートされる最大メッセージ サイズを超えることはできません。
-* クライアントが TCP プロトコルで Service Bus キューと通信する場合は、1 つの Service Bus キューに対する同時接続の最大数が 100 に制限されます。 この数は送信側と受信側で共有されます。 このクォータに達すると、その後の接続要求は拒否され、呼び出し元のコードが例外を受け取ります。 この制限は、REST ベースの API を使用してキューに接続するクライアントには適用されません。
+* クライアントが TCP プロトコルで Service Bus キューと通信する場合は、1 つの Service Bus キューに対するコンカレント接続の最大数が 100 に制限されます。 この数は送信側と受信側で共有されます。 このクォータに達すると、その後の接続要求は拒否され、呼び出し元のコードが例外を受け取ります。 この制限は、REST ベースの API を使用してキューに接続するクライアントには適用されません。
 * 1 つの Service Bus Service の名前空間で 10,000 を超える数のキューが必要な場合は、Azure サポート チームに連絡してキューの数を増やすことができます。 Service Bus でキューの数を 10,000 より多くするために、[Azure Portal][Azure portal] を使用して追加の名前空間を作成することもできます。
 
 ## <a name="management-and-operations"></a>管理と操作

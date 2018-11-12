@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: a961565815ca0d89dc98a8d6a3e14b338b649398
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9d009847856936d14a182b234910fb717c084d11
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687810"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248063"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>VHD ファイルからカスタム イメージを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "38687810"
 
 次の手順で、Azure Portal を使用して VHD ファイルからカスタム イメージを作成します。
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
@@ -61,8 +61,7 @@ ms.locfileid: "38687810"
 1. カスタム イメージの作成に使用されるイメージがライセンスされていない (Microsoft によって公開されていない) イメージの場合でも、プラン名、プランの提供、プランの公開元を入力できます。
 
    - **プラン名:** このカスタム イメージの作成元の Marketplace イメージの名前 (SKU) を入力します。 
-   - 
-  **プランの提供:** このカスタム イメージの作成元の Marketplace イメージ の製品 (オファー) を入力します。 
+   - **プランの提供:** このカスタム イメージの作成元の Marketplace イメージ の製品 (オファー) を入力します。 
    - **プランの公開元:** このカスタム イメージの作成元の Marketplace イメージ の公開元を入力します。
 
    > [!NOTE]

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 5cd56abd02c55dbf72c92ed070f9988fae2b6762
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 7ab12c86e01a34e4ba2a9673364c0e1104f6cdba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365256"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231625"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Azure App Service の Web アプリの診断ログの有効化
 ## <a name="overview"></a>概要
-Azure では、組み込みの診断機能により、 [App Service Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)のデバッグを容易に行うことができます。 この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
+Azure では、組み込みの診断機能により、 [App Service Web アプリ](https://go.microsoft.com/fwlink/?LinkId=529714)のデバッグを容易に行うことができます。 この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
 この記事では、[Azure Portal](https://portal.azure.com)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。 Visual Studio で診断ログを使用する方法の詳細については、「 [Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
 
@@ -37,10 +37,10 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 * **詳細なエラー ログ** - 障害 (状態コード 400 以上) を示す HTTP 状態コードの詳細なエラー情報。 これには、サーバーがエラー コードを返した理由を特定するために役立つ情報が記録されている場合があります。
 * **失敗した要求トレース** - 要求の処理に使用された IIS コンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細情報。 これが便利なのは、サイトのパフォーマンスを向上させたり、特定の HTTP エラーが返される理由を特定したりする場合です。
-* **Web サーバーのログ記録** - [W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用した、HTTP トランザクションに関する情報。 これが便利なのは、全体的なサイト指標、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
+* **Web サーバーのログ記録** - [W3C 拡張ログ ファイル形式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用した、HTTP トランザクションに関する情報。 これが便利なのは、全体的なサイト指標、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
 
 ### <a name="application-diagnostics"></a>アプリケーション診断
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。 例: 
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。 例: 
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -97,7 +97,7 @@ Web アプリケーション ファイル システムに保存された診断�
 * **アプリケーション ログ** : /LogFiles/Application/。 このフォルダーには、アプリケーション ログによって生成された情報を含む 1 つ以上のテキスト ファイルが格納されます。
 * **失敗した要求トレース** : /LogFiles/W3SVC#########/。 このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。 この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 * **詳細なエラー ログ** : /LogFiles/DetailedErrors/。 このフォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
-* **Web サーバー ログ** : /LogFiles/http/RawLogs。 このフォルダーには、 [W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して形式が設定された 1 つ以上のテキスト ファイルが格納されます。
+* **Web サーバー ログ** : /LogFiles/http/RawLogs。 このフォルダーには、 [W3C 拡張ログ ファイル形式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して形式が設定された 1 つ以上のテキスト ファイルが格納されます。
 * **デプロイ ログ** : /LogFiles/Git。 このフォルダーには、Git デプロイのログだけでなく、Azure Web Apps が使用する内部デプロイ プロセスによって生成されたログも格納されます。 デプロイ ログは D:\home\site\deployments にもあります。
 
 ### <a name="ftp"></a>FTP
@@ -171,7 +171,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 使用可能なパスの一覧を表示するには、-ListPath パラメーターを使用します。
 
 > [!NOTE]
-> Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure PowerShell の使用方法](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)に関するページを参照してください。
+> Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure PowerShell の使用方法](https://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)に関するページを参照してください。
 >
 >
 
@@ -264,7 +264,7 @@ BLOB に格納されるデータは次の例のようになります。
 詳細なエラー ログは、発生した HTTP エラーに関する詳細な情報を提供する HTML ドキュメントです。 単なる HTML ドキュメントであるため、Web ブラウザーを使用して表示できます。
 
 ### <a name="web-server-logs"></a>Web サーバー ログ
-Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)(.aspx) で書式設定されます。 この情報は、テキスト エディターを使用して表示したり、 [Log Parser](http://go.microsoft.com/fwlink/?LinkId=246619)などのユーティリティで解析したりできます。
+Web サーバー ログは [W3C 拡張ログ形式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)(.aspx) で書式設定されます。 この情報は、テキスト エディターを使用して表示したり、 [Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619)などのユーティリティで解析したりできます。
 
 > [!NOTE]
 > Azure Web Apps によって生成されるログでは、**s-computername**、**s-ip**、または **cs-version** のフィールドはサポートされていません。
@@ -274,7 +274,7 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 ## <a name="nextsteps"></a> 次のステップ
 * [Web Apps を監視する方法](web-sites-monitor.md)
 * [Visual Studio での Azure の Web Apps のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)
-* [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [HDInsight での Web アプリ ログの分析](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。

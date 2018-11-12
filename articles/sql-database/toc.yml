@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: SQL Database サービス
   items:
-  - name: SQL DB について
+  - name: SQL DB とは
     href: sql-database-technical-overview.md
   - name: Azure SQL のバージョンを選択する
     href: sql-database-paas-vs-sql-server-iaas.md
@@ -58,6 +58,8 @@ items:
       href: sql-database-connect-query-python.md
     - name: Ruby
       href: sql-database-connect-query-ruby.md
+    - name: R
+      href: sql-database-connect-query-r.md
   expanded: true
 - name: チュートリアル
   items:
@@ -342,7 +344,7 @@ items:
       - name: 高度な監視
         items:
         - name: Azure SQL Analytics の監視
-          href: https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql
+          href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
         - name: 診断テレメトリのログ記録
           href: sql-database-metrics-diag-logging.md
       - name: 自動化されたトラブルシューティング
@@ -475,6 +477,8 @@ items:
       items:
       - name: SQL データ同期
         href: sql-database-sync-data.md
+      - name: データ同期エージェント
+        href: sql-database-data-sync-agent.md
       - name: スキーマ変更のレプリケート
         href: sql-database-update-sync-schema.md
       - name: OMS で監視する
@@ -638,9 +642,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 691918eab050f99353e2a1061b9bfdd17e33ef52
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4b68124c28a6854bfcdb5a4c5cd9cad557e7d1c4
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240122"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289038"

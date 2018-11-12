@@ -15,17 +15,17 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95a0ffc6deecb7fd3bd6fce740f578352fdf2d66
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a1cdf332e34df5f0b3d2058ba5980b67582f14a2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888146"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248828"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
 
-Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](how-to-connect-install-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。 また、「 [Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md)」で説明されているとおりに必要なアカウントが利用できることを確認してください。
+Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](how-to-connect-install-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。 また、「 [Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md)」で説明されているとおりに必要なアカウントが利用できることを確認してください。
 
 カスタマイズした設定が対象のトポロジに適さない場合は (DirSync をアップグレードする場合など)、「 [関連ドキュメント](#related-documentation) 」でその他のシナリオを確認してください。
 

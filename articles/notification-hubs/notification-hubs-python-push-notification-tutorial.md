@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: b0aa61c86b08a4fe2eddb5eb1fb5b33c4cb901a0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 68754f85347fe6bc075af513580697d1e7a83c18
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386589"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247417"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST API)](http://msdn.microsoft.com/library/dn223264.aspx)」の記事にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
+MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST API)](https://msdn.microsoft.com/library/dn223264.aspx)」の記事にあるように、Notification Hubs の REST インターフェイスを使用して、Java/PHP/Python/Ruby バックエンドから Notification Hubs のすべての機能にアクセスできます。
 
 > [!NOTE]
 > これは Python で、通知の送信を実装するためのサンプル参照実装であり、正式にサポートされている通知ハブの Python SDK ではありません。
@@ -47,7 +47,7 @@ MSDN のトピック「 [Notification Hubs REST API (Notification Hubs の REST 
 > 
 
 ## <a name="client-interface"></a>クライアント インターフェイス
-メイン クライアント インターフェイスは、 [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx)で利用可能なものと同じメソッドを提供できます。 このインターフェイスにより、現在このサイトで使用可能であり、インターネット上のコミュニティによって提供されたすべてのチュートリアルとサンプルを直接変換できます。
+メイン クライアント インターフェイスは、 [.NET Notification Hubs SDK](https://msdn.microsoft.com/library/jj933431.aspx)で利用可能なものと同じメソッドを提供できます。 このインターフェイスにより、現在このサイトで使用可能であり、インターネット上のコミュニティによって提供されたすべてのチュートリアルとサンプルを直接変換できます。
 
 [Python REST ラッパー サンプル]で利用可能なすべてのコードを検索できます。
 
@@ -64,7 +64,7 @@ Windows トースト通知を送信する場合:
 ## <a name="implementation"></a>実装
 まだ実行していない場合は、「[Notification Hubs の使用]」のチュートリアルの、バックエンドを実装する必要のある最後のセクションまで従ってください。
 
-REST ラッパーすべての実装の詳細については、 [MSDN の記事](http://msdn.microsoft.com/library/dn530746.aspx)を参照してください。 このセクションでは、Notification Hubs REST エンドポイントにアクセスし、通知を送信するために必要な主要な手順の Python 実装について説明します。
+REST ラッパーすべての実装の詳細については、 [MSDN の記事](https://msdn.microsoft.com/library/dn530746.aspx)を参照してください。 このセクションでは、Notification Hubs REST エンドポイントにアクセスし、通知を送信するために必要な主要な手順の Python 実装について説明します。
 
 1. 接続文字列を解析する
 2. 認証トークンを生成する
@@ -96,7 +96,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 
 
 ### <a name="create-security-token"></a>セキュリティ トークンを作成する
-セキュリティ トークンの作成の詳細については、 [こちら](http://msdn.microsoft.com/library/dn495627.aspx)をご覧ください。
+セキュリティ トークンの作成の詳細については、 [こちら](https://msdn.microsoft.com/library/dn495627.aspx)をご覧ください。
 現在の要求の URI と接続文字列から抽出された資格情報に基づいてトークンを作成するには、**NotificationHub** クラスに次のメソッドを追加します。
 
     @staticmethod
@@ -148,7 +148,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 
 このクラスは、ネイティブ通知の本文またはテンプレート通知の一連のプロパティ、形式 (ネイティブなプラットフォームまたはテンプレート) とプラットフォーム固有のプロパティ (Apple の有効期限プロパティや WNS ヘッダーなど) を含む一連のヘッダーのコンテナーです。
 
-使用可能なすべてのオプションについては、[Notification Hubs REST API のドキュメント](http://msdn.microsoft.com/library/dn495827.aspx)および特定の通知プラットフォームの形式を参照してください。
+使用可能なすべてのオプションについては、[Notification Hubs REST API のドキュメント](https://msdn.microsoft.com/library/dn495827.aspx)および特定の通知プラットフォームの形式を参照してください。
 
 次に、このクラスを使用して、**NotificationHub** クラス内に通知の送信メソッドを記述します。
 

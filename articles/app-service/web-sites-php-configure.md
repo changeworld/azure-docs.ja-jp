@@ -13,18 +13,18 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 39c40482017ae0c0dedcfb1b65ff3767c4e45169
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1e5f7ed2fb4c77e0a738cbe6ee6c84b46bc59bb8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999190"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230837"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での PHP の構成方法
 
 ## <a name="introduction"></a>はじめに
 
-このガイドでは、ビルトインの PHP ランタイムを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web Apps で構成する方法、カスタムの PHP ランタイムを提供する方法、および拡張機能を有効にする方法を示します。 App Service を使用するには、 [無料試用版]にサインアップしてください。 このガイドを最大限に活用するには、まず App Service で PHP Web アプリを作成する必要があります。
+このガイドでは、ビルトインの PHP ランタイムを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) の Web Apps で構成する方法、カスタムの PHP ランタイムを提供する方法、および拡張機能を有効にする方法を示します。 App Service を使用するには、 [無料試用版]にサインアップしてください。 このガイドを最大限に活用するには、まず App Service で PHP Web アプリを作成する必要があります。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 

@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: facd9a98b2f2d866574dd1f9bf180fa2a9618f31
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d004ad1f24448da0c7404761ca0865826b3000b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301332"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261283"
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 用の抽出、読み込み、変換 (ELT) の設計
 
@@ -41,7 +41,7 @@ SQL Data Warehouse 用 ELT の実装にはさまざまな方法があります�
 
 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」を参照してください。
 
-詳細については、[読み込みパターンに関するブログ](http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/)をご覧ください。 
+詳細については、[読み込みパターンに関するブログ](https://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/)をご覧ください。 
 
 ## <a name="options-for-loading-with-polybase"></a>PolyBase を使用してデータを読み込むためのオプション
 

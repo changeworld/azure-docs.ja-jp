@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: ab8a289ea0de263871b76788514052c09a6bf4da
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 3d2687f56b69174fde783060d994e3c01763ec94
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295739"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256631"
 ---
 # <a name="security-policy-settings"></a>セキュリティ ポリシー設定
 この記事では、Security Center でのセキュリティ ポリシー設定の概要を示します。
@@ -56,4 +56,4 @@ Security Center ではロールベースのアクセス制御 (RBAC) が使用�
 * 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」: パートナー ソリューションの正常性状態を監視する方法について説明しています。
 - [Azure Security Center のデータ セキュリティ](security-center-data-security.md): Security Center でデータがどのように管理および保護されているかを説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md): このサービスの使用に関してよく寄せられる質問に対する回答を確認します。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティに関する最新のニュースと情報を入手できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティに関する最新のニュースと情報を入手できます。

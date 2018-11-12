@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: lmolkova
-ms.openlocfilehash: 2e4ff84c957540aa6863cd9836b1744e73c5b2f5
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 770d8950e25431e1edc496e0710cf199b45e5847
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854883"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283837"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 
@@ -181,7 +181,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 #### <a name="logging-additional-properties"></a>その他のプロパティのログ
 
-`Activty.Current` は、現在の操作とその親について詳しいコンテキストを提供します。 詳しくは、[Activity のドキュメント](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)をご覧ください。
+`Activity.Current` は、現在の操作とその親について詳しいコンテキストを提供します。 詳しくは、[Activity のドキュメント](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)をご覧ください。
 Service Bus インストルメンテーションによって追加の情報が `Activity.Current.Tags` に提供されます。これは、入手できる場合は常に `MessageId` と `SessionId` を保持します。
 
 'Receive'、'Peek'、'ReceiveDeferred' の各イベントを追跡するアクティビティには、`RelatedTo` タグが含まれることもあります。 これは、結果として受信されたメッセージの `Diagnostic-Id` が重複しないリストを保持します。

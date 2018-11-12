@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 94c7bd50b9c331370aaac802e0a453c5cdd8b7c1
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 80d96bcb6b6073987f07ed6954f25023ab1133a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145603"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247519"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-c-backend-and-c-device"></a>C バックエンドおよび C デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -31,7 +31,7 @@ ms.locfileid: "42145603"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント  (アカウントがない場合は、[Azure 無料アカウント](http://azure.microsoft.com/pricing/free-trial/)を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[Azure 無料アカウント](https://azure.microsoft.com/pricing/free-trial/)を数分で作成できます)。
 * IoT Hub。
 * 最新の[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
 
