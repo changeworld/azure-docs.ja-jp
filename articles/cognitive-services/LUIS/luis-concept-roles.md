@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8a92852a2721bd391ddf7c3cf3489b820c4a1400
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: fea70e2b1912bde94e23dbd98fa933784d2a69ac
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277617"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140317"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>パターンのエンティティ ロールはコンテキスト サブタイプです
 ロールは、[パターン](luis-concept-patterns.md)でのみ使用されるエンティティの名前付きコンテキスト サブタイプです。
@@ -43,7 +43,7 @@ ms.locfileid: "51277617"
 エンティティとロールは、かっこ `{}` で囲まれています。 エンティティとロールは、コロンで区切られています。 
 
 
-[!INCLUDE[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+[!include[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
 
 ## <a name="roles-with-prebuilt-entities"></a>ロールと事前構築済みエンティティ
 

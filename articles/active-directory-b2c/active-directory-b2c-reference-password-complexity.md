@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4b027f6cd57dfa48ba2e230371ffcad97b1f8ec4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b16ac10e10655bbc7e41d9336378228097ca19ff
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445111"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014722"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: パスワードの複雑さの要件を構成する
 
@@ -38,11 +38,10 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 ## <a name="how-to-configure-password-complexity"></a>パスワードの複雑さを構成する方法
 
-1. 次の手順に従って [Azure AD B2C の設定に移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)します。
 1. **[サインアップまたはサインイン ポリシー]** を開きます。
-1. ポリシーを選び、**[編集]** をクリックします。
-1. **[パスワードの複雑さ]** を開きます。
-1. このポリシーのパスワードの複雑さを **[シンプル]**、**[強]**、**[カスタム]** のいずれかに変更します。
+2. ポリシーを選び、**[編集]** をクリックします。
+3. **[パスワードの複雑さ]** を開きます。
+4. このポリシーのパスワードの複雑さを **[シンプル]**、**[強]**、**[カスタム]** のいずれかに変更します。
 
 ### <a name="comparison-chart"></a>比較チャート
 

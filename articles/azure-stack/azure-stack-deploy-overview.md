@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/15/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.custom: mvc
-ms.openlocfilehash: bf07fe56c65e53f5485b9927e0d704f80842cf3a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.reviewer: misainat
+ms.openlocfilehash: 8b33937a4da807578d371a95f2c06de451404036
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338705"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037466"
 ---
 # <a name="quickstart-evaluate-the-azure-stack-development-kit"></a>クイック スタート: Azure Stack Development Kit の評価
 

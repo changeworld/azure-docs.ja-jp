@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242910"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242570"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 
@@ -41,7 +41,7 @@ ms.locfileid: "51242910"
 
 - Visual Studio (2012 以降) を使用します。
 - 3 つの Azure SQL データベースを作成します
-- サンプル プロジェクトをダウンロードします: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](https://go.microsoft.com/?linkid=9888163)
+- サンプル プロジェクトをダウンロードします: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](http://go.microsoft.com/?linkid=9888163)
   - **Program.cs** 
 
 このプロジェクトでは、 [Azure SQL の弾力性 DB ツールの Entity Framework 統合](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) に関するページで説明したプロジェクトを、マルチテナント シャード データベースのサポートを追加して拡張します。 このプロジェクトでは、ブログや記事を作成するための単純なコンソール アプリケーションを作成します。 プロジェクトには、4 つのテナントのほか、2 つのマルチテナント シャード データベースが含まれます。 この構成は、上の図に示されています。 
@@ -254,7 +254,7 @@ GO
 ```
 
 > [!TIP]
-> 複雑なプロジェクトでは、何百ものテーブルに述語を追加することが必要になる場合がありますが、これは冗長になる可能性があります。 セキュリティ ポリシーを自動的に生成して、スキーマ内のすべてのテーブルに述語を追加するヘルパー ストアド プロシージャが存在します。 詳細については、[ヘルパー スクリプトを使用してすべてのテーブルに行レベルのセキュリティを適用する](https://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)方法に関するブログ記事を参照してください。
+> 複雑なプロジェクトでは、何百ものテーブルに述語を追加することが必要になる場合がありますが、これは冗長になる可能性があります。 セキュリティ ポリシーを自動的に生成して、スキーマ内のすべてのテーブルに述語を追加するヘルパー ストアド プロシージャが存在します。 詳細については、[ヘルパー スクリプトを使用してすべてのテーブルに行レベルのセキュリティを適用する](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)方法に関するブログ記事を参照してください。
 
 ここでサンプル アプリケーションを再び実行すると、そのテナントに属している行だけが表示されます。 さらに、アプリケーションは、シャード データベースに現在接続されているテナント以外のテナントに属する行を挿入できません。 また、アプリから見える行であっても TenantId は一切更新できません。 アプリケーションがどちらかの操作を実行しようとすると、DbUpdateException が発生します。
 
@@ -342,7 +342,7 @@ GO
 ### <a name="maintenance"></a>メンテナンス 
 
 - **新しいシャードの追加**: すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行します。この操作を行わないと、これらのシャードに対するクエリはフィルター処理されません。
-- **新しいテーブルの追加**: 新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーに FILTER 述語と BLOCK 述語を追加します。 そうしないと、新しいテーブルに対するクエリはフィルター処理されません。 この追加は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する方法に関するブログ記事](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)を参照してください。
+- **新しいテーブルの追加**: 新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーに FILTER 述語と BLOCK 述語を追加します。 そうしないと、新しいテーブルに対するクエリはフィルター処理されません。 この追加は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する方法に関するブログ記事](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)を参照してください。
 
 ## <a name="summary"></a>まとめ
 
@@ -358,7 +358,7 @@ GO
 
 ## <a name="questions-and-feature-requests"></a>質問と機能に関する要望
 
-ご質問がある場合は、[SQL Database フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。 また、機能に関するご要望は、[SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)までお寄せください。
+ご質問がある場合は、[SQL Database フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。 また、機能に関するご要望は、[SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)までお寄せください。
 
 
 <!--Image references-->

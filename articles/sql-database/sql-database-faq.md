@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: c9b343bba59776ca735fa5c2cbddf03ec5c92b47
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7bb692735cb3541fb05b2c39dd7325fa74a00034
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242825"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232207"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database に関してよく寄せられる質問 (FAQ)
 
@@ -27,7 +27,7 @@ SQL Database の現在のバージョンは V12 です。 バージョン V11 �
 
 ## <a name="what-is-the-sla-for-sql-database"></a>SQL Database の SLA はどうなっていますか
 
-Microsoft は、サービス レベルに関係なく、お使いの Microsoft Azure SQL Database と Microsoft のインターネット ゲートウェイの間で 99.99% 以上の時間接続できることを保証します。 0.01% は、修正プログラム、アップグレード、およびフェールオーバー用に予約されています。 詳細については、[SLA](https://azure.microsoft.com/support/legal/sla/) のページを参照してください。 Azure SQL Database の可用性アーキテクチャの詳細については、「[高可用性と Azure SQL Database](sql-database-high-availability.md)」を参照してください。
+Microsoft は、サービス レベルに関係なく、お使いの Microsoft Azure SQL Database と Microsoft のインターネット ゲートウェイの間で 99.99% 以上の時間接続できることを保証します。 0.01% は、修正プログラム、アップグレード、およびフェールオーバー用に予約されています。 詳細については、[SLA](http://azure.microsoft.com/support/legal/sla/) のページを参照してください。 Azure SQL Database の可用性アーキテクチャの詳細については、「[高可用性と Azure SQL Database](sql-database-high-availability.md)」を参照してください。
 
 ## <a name="can-i-control-when-patching-downtime-occurs"></a>いつ修正プログラムの適用によるダウンタイムを発生させるかを制御できますか。
 
