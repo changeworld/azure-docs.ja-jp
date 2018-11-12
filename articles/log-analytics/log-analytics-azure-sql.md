@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: 3c80007a8188fb239a13aaa0ccc9ef2237a2d8d1
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b20a142007b3422d071de47410f4c9cdd1ff62a7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025671"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006738"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -46,8 +46,8 @@ Azure SQL Analytics は、Azure SQL Database、マネージド インスタン�
 | --- | --- | --- |
 | **[Azure 診断](log-analytics-azure-storage.md)** | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Log Analytics に送信されます。 |
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | Log Analytics は、ストレージ アカウントからデータを読み取ることはしません。 |
-| [Windows エージェント](log-analytics-windows-agent.md) | いいえ  | このソリューションでは、直接の Windows エージェントは使用されません。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | このソリューションでは、直接の Linux エージェントは使用されません。 |
+| [Windows エージェント](log-analytics-agent-windows.md) | いいえ  | このソリューションでは、直接の Windows エージェントは使用されません。 |
+| [Linux エージェント](log-analytics-quick-collect-linux-computer.md) | いいえ  | このソリューションでは、直接の Linux エージェントは使用されません。 |
 | [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ  | このソリューションでは、SCOM エージェントから Log Analytics への直接接続は使用しません。 |
 
 ## <a name="configuration"></a>構成
@@ -192,7 +192,7 @@ Azure SQL Analytics のデータ分析のカスタム クエリやカスタム �
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Azure SQL Database のアラートの作成
 
-Azure SQL Database リソースから送られるデータを使用して簡単に[アラートを作成](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)できます。 ログ アラートで使用できる実用的な[ログ検索](log-analytics-log-searches.md)クエリをいくつか示します。
+Azure SQL Database リソースから送られるデータを使用して簡単に[アラートを作成](../monitoring-and-diagnostics/alert-metric.md)できます。 ログ アラートで使用できる実用的な[ログ検索](log-analytics-queries.md)クエリをいくつか示します。
 
 *高 CPU (Azure SQL Database 上)*
 
@@ -289,6 +289,6 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>次の手順
 
-- Log Analytics の[ログ検索](log-analytics-log-searches.md)機能を使用して、詳細な Azure SQL データを確認します。
+- Log Analytics の[ログ検索](log-analytics-queries.md)機能を使用して、詳細な Azure SQL データを確認します。
 - Azure SQL データを表示する[独自のダッシュ ボードを作成](log-analytics-dashboards.md)します。
-- Azure SQL の特定のイベントが発生した場合の[アラートを作成](log-analytics-alerts.md)します。
+- Azure SQL の特定のイベントが発生した場合の[アラートを作成](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)します。
