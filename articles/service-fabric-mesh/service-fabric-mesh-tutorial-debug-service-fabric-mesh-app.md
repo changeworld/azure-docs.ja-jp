@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - ローカル開発クラスター内で実行している Azure Service Fabric Mesh Web アプリケーションをデバッグする
-description: このチュートリアルでは、ローカル クラスター上で実行している Azure Service Fabric mesh アプリケーションをデバッグします。
+description: このチュートリアルでは、ローカル クラスター上で実行している Azure Service Fabric Mesh アプリケーションをデバッグします。
 services: service-fabric-mesh
 documentationcenter: .net
 author: TylerMSFT
@@ -29,7 +29,7 @@ ms.locfileid: "46997014"
 このチュートリアルでは、次の事項について説明します。
 
 > [!div class="checklist"]
-> * Azure Service Fabric mesh アプリケーションをビルドする際の動作
+> * Azure Service Fabric Mesh アプリケーションをビルドする際の動作
 > * サービス間の呼び出しを確認するためのブレークポイントを設定する方法
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
@@ -90,19 +90,19 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 ### <a name="debug-in-visual-studio"></a>Visual Studio でのデバッグ
 
-Visual Studio で Service Fabric mesh アプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 バックエンド サービスから To Do 項目が取得される方法を表示するには、OnGet() メソッドをデバッグします。
+Visual Studio で Service Fabric Mesh アプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 バックエンド サービスから To Do 項目が取得される方法を表示するには、OnGet() メソッドをデバッグします。
 1. **WebFrontEnd** プロジェクト内で **[Pages]** > **[Index.cshtml]** > **[Index.cshtml.cs]** の順に開き、**Get** メソッド (17 行目) 内にブレークポイントを設定します。
 2. **ToDoService** プロジェクト内で **[TodoController.cs]** を開き、**OnGet** メソッド (15 行目) 内にブレークポイントを設定します。
 3. ブラウザーに戻り、ページを更新します。 Web フロントエンドの `OnGet()` メソッドでブレークポイントに到達します。 `backendUrl` 変数を検査すると、**service.yaml** ファイル内で定義した環境変数が、バックエンド サービスに接続するために使用する URL にどのように組み込まれているかを確認できます。
 4. `client.GetAsync(backendUrl).GetAwaiter().GetResult())` の呼び出しをステップ オーバー (F10) し、コントローラーの `Get()` ブレークポイントに到達します。 このメソッドでは、メモリ内のリストから To Do 項目のリストがどのように取得されているかを確認できます。
 5. 完了したら、Visual Studio で **Shift + F5** キーを押して、プロジェクトのデバッグを停止します。
- 
+
 ## <a name="next-steps"></a>次の手順
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Service Fabric mesh アプリケーションをビルドする際の動作
+> * Azure Service Fabric Mesh アプリケーションをビルドする際の動作
 > * サービス間の呼び出しを確認するためのブレークポイントを設定する方法
 
 次のチュートリアルに進みます。
