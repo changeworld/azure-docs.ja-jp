@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 1a8f04f39568816252175fc9e0893f1ab3e2cdc6
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 48cfba6f62d75470efd27e3a4cdcb995e716798b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224819"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037143"
 ---
 # <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル: Enterprise セキュリティ パッケージで HDInsight に Kafka ポリシーを構成する (プレビュー)
 
@@ -33,7 +33,7 @@ Enterprise セキュリティ パッケージ (ESP) の Kafka クラスター用
 
 * [Azure Portal](https://portal.azure.com/) にサインインします。
 
-* [Enterprise セキュリティ パッケージで HDInsight Kafka クラスター](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-run-hive)を作成します。
+* [Enterprise セキュリティ パッケージで HDInsight Kafka クラスター](apache-domain-joined-configure-using-azure-adds.md)を作成します。
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger 管理 UI への接続
 
@@ -117,15 +117,18 @@ Enterprise セキュリティ パッケージ (ESP) の Kafka クラスター用
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
-   
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
+> [!Note]
+> 開発環境をまだ設定していない場合は、先に進む前に設定してください。 SSH クライアントと scp、Java JDK、Apache Maven などのコンポーネントが必要となります。 詳細については、これらの[設定手順](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)を参照してください。
+1. [Apache Kafka Domain-Joined Producer Consumer サンプル](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)をダウンロードします。
 
-4. 次のコマンドを実行します。 
+1. 「[チュートリアル: Apache Kafka Producer および Consumer API の使用](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)」の「**例を構築してデプロイする**」にある手順 2. と手順 3. を行います。
+
+1. 次のコマンドを実行します。
 
    ```bash
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
