@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 6279e088b8abd574bbd8ef6488d986d42c91123c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1c321d96efc7af387fb30b6ed608eb871cb7de5f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046056"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230497"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-onprem-postgresql-connector.md)
-> * [最新バージョン](connector-postgresql.md)
+> * [現在のバージョン](connector-postgresql.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、PostgreSQL データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -37,7 +37,7 @@ PostgreSQL データベースのデータを、サポートされているシン
 
 お使いの PostgreSQL データベースにパブリックにアクセスできない場合は、セルフホステッド IR を設定する必要があります。 セルフホステッド統合ランタイムの詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事を参照してください。 Integration Runtime のバージョン 3.7 以降には PostgreSQL ドライバーが組み込まれているため、ドライバーを手動でインストールする必要はありません。
 
-バージョン 3.7 より前のセルフホステッド IR では、Integration Runtime コンピューターに、[PostgreSQL 用の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)のバージョン 2.0.12 から 3.1.9 までをインストールする必要があります。
+バージョン 3.7 より前のセルフホステッド IR では、Integration Runtime コンピューターに、[PostgreSQL 用の Ngpsql データ プロバイダー](https://go.microsoft.com/fwlink/?linkid=282716)のバージョン 2.0.12 から 3.1.9 までをインストールする必要があります。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -148,7 +148,7 @@ PostgreSQL からデータをコピーするには、コピー アクティビ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 > [!NOTE]
 > スキーマ名とテーブル名は、大文字と小文字が区別されます。 クエリ内では、これらを `""` (二重引用符) で囲んでください。

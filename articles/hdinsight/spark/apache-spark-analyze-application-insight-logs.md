@@ -2,19 +2,19 @@
 title: Spark を使用した Application Insights ログの分析 - Azure HDInsight
 description: Application Insight のログを BLOB ストレージにエクスポートし、HDInsight 上の Spark を使用してこのログを分析する方法について説明します。
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 51123fee9a3ab3c79e57af12a64e1c0b05daf79a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a1b21afb02cffe608ece8687359a021c84b05e1e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041607"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014297"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>HDInsight の Spark を使用した Application Insights テレメトリ ログの分析
 
@@ -364,7 +364,7 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
 Spark でのデータ処理および Azure の各サービスの使用例については、次のドキュメントを参照してください。
 
-* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
+* [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
 * [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)

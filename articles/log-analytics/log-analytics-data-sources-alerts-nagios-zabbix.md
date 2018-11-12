@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb129ebe6d63396934cbcda509d711cc63a5ee1b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 469d97385fd86952c2d287e2b5d15d7470a9e34e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402942"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008336"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントの Log Analytics で Nagios と Zabbix からのアラートを収集する 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 [他のソースからのアラート](log-analytics-alerts.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
+[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 [他のソースからのアラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
  
 ## <a name="prerequisites"></a>前提条件
 Linux 用 Log Analytics エージェントは、Nagios バージョン 4.2.x までと Zabbix バージョン 2.x までのアラートの収集をサポートします。
@@ -80,7 +80,7 @@ Zabbix サーバーからのアラートを収集するには、ユーザーと�
 
 
 ## <a name="alert-records"></a>アラート レコード
-Log Analytics で[ログ検索](log-analytics-log-searches.md)を使用して、Nagios と Zabbix からアラート レコードを取得できます。
+Log Analytics で[ログ検索](log-analytics-queries.md)を使用して、Nagios と Zabbix からアラート レコードを取得できます。
 
 ### <a name="nagios-alert-records"></a>Nagios のアラート レコード
 
@@ -118,5 +118,5 @@ Zabbix によって収集されたアラート レコードには、**アラー�
 
 
 ## <a name="next-steps"></a>次の手順
-* Log Analytics での[アラート](log-analytics-alerts.md)について学習します。
-* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* Log Analytics での[アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)について学習します。
+* [ログ検索](log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 

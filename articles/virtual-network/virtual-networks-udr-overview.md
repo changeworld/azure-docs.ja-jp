@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 97e192312619455c0055a917df880cc48eb082dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9efb08922f3e6f78266baaf8ae623dd241c09522
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978918"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037619"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -167,7 +167,7 @@ BGP ルートの伝達は、ルート テーブルのプロパティを使用し
         - ネットワーク アドレス変換を実行し、転送することができる。または、サブネット内の宛先リソースへのトラフィックをプロキシし、トラフィックをインターネットに送信できる。 
     - **仮想ネットワーク ゲートウェイ**: ゲートウェイが ExpressRoute 仮想ネットワーク ゲートウェイの場合、インターネットに接続されたオンプレミスのデバイスは、ネットワーク アドレス変換を実行し、転送することができます。また、ExpressRoute の[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering)を使用して、サブネット内の宛先リソースへのトラフィックをプロキシすることもできます。 
 
-仮想ネットワークが Azure VPN ゲートウェイに接続されている場合は、宛先が 0.0.0.0/0 であるルートを含む[ゲートウェイ サブネット](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)にルート テーブルを関連付けないでください。 関連付けると、ゲートウェイが正しく機能しない可能性があります。 詳細については、「[VPN Gateway の FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#why-are-certain-ports-opened-on-my-vpn-gateway)」の質問「*VPN ゲートウェイで特定のポートが開いているのはなぜですか*」を参照してください。
+仮想ネットワークが Azure VPN ゲートウェイに接続されている場合は、宛先が 0.0.0.0/0 であるルートを含む[ゲートウェイ サブネット](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)にルート テーブルを関連付けないでください。 関連付けると、ゲートウェイが正しく機能しない可能性があります。 詳細については、「[VPN Gateway の FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports)」の質問「*VPN ゲートウェイで特定のポートが開いているのはなぜですか*」を参照してください。
 
 インターネットと Azure 間で仮想ネットワーク ゲートウェイおよび仮想アプライアンスを使用する場合の実装の詳細については、[Azure とオンプレミス データセンターの間の DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事および [Azure とインターネットの間の DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事をご覧ください。
 
@@ -208,7 +208,7 @@ BGP ルートの伝達は、ルート テーブルのプロパティを使用し
 
 図の *Subnet1* のルート テーブルには、次のルートが含まれています。
 
-|ID  |ソース |State  |アドレス プレフィックス    |次ホップの種類          |次ホップの IP アドレス|ユーザー定義ルートの名前| 
+|ID  |ソース |州  |アドレス プレフィックス    |次ホップの種類          |次ホップの IP アドレス|ユーザー定義ルートの名前| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |既定値|無効|10.0.0.0/16         |仮想ネットワーク        |                   |              |
 |2   |User   |アクティブ |10.0.0.0/16         |仮想アプライアンス      |10.0.100.4         |Within-VNet1  |
@@ -242,7 +242,7 @@ BGP ルートの伝達は、ルート テーブルのプロパティを使用し
 
 図の *Subnet2* のルート テーブルには、次のルートが含まれています。
 
-|ソース  |State  |アドレス プレフィックス    |次ホップの種類             |次ホップの IP アドレス|
+|ソース  |州  |アドレス プレフィックス    |次ホップの種類             |次ホップの IP アドレス|
 |------- |-------|------              |-------                   |--------           
 |既定値 |アクティブ |10.0.0.0/16         |仮想ネットワーク           |                   |
 |既定値 |アクティブ |10.1.0.0/16         |VNET ピアリング              |                   |

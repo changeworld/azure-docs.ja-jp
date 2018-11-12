@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 432f61adaf736180a720aa23a7275e96fed4c733
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 22f8384105ed31ac2b11e0c6094b01549a270144
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696933"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230871"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB クエリのチート シート
 
@@ -25,7 +25,7 @@ ms.locfileid: "43696933"
 
 ## <a name="letter-sized-cheat-sheets"></a>レター サイズのチート シート
 
-レター サイズの用紙 (8.5 x 11 インチ) を印刷しようとしている場合は、[Azure Cosmos DB レター サイズ クエリ チート シート](http://go.microsoft.com/fwlink/?LinkId=623215)をダウンロードします。
+レター サイズの用紙 (8.5 x 11 インチ) を印刷しようとしている場合は、[Azure Cosmos DB レター サイズ クエリ チート シート](https://go.microsoft.com/fwlink/?LinkId=623215)をダウンロードします。
 
 ![Azure Cosmos DB クエリ チート シート - レター サイズ、SQL API、JavaScript、MongoDB API、Gremlin API、Table API のクエリと関数を使用](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
 

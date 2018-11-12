@@ -2,19 +2,19 @@
 title: Azure Stack ストレージの開発ツールの概要 | Microsoft Docs
 description: Azure Stack ストレージの開発ツールの使用方法の概要
 services: azure-stack
-author: mabriggs
+author: mattbriggs
 ms.author: mabrigg
-ms.date: 10/10/2018
+ms.date: 11/05/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 3eefa13a7283febbebd2adc16047b28ffcae55fe
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a914a95831176a51cc6b5e2c5bf69ef1ad60bcc0
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078377"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035927"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack ストレージの開発ツールの概要
 
@@ -184,7 +184,7 @@ Azure Stack に、次の Azure Blob ストレージのチュートリアルを�
 * [Python から Azure BLOB ストレージを使用する方法](../../storage/blobs/storage-python-how-to-use-blob-storage.md)
 * [Ruby から BLOB ストレージを使用する方法](../../storage/blobs/storage-ruby-how-to-use-blob-storage.md)
 
-## <a name="queue-storage"></a>Queue Storage
+## <a name="queue-storage"></a>ストレージ
 
 Azure Stack に、次の Azure キュー ストレージのチュートリアルを応用できます Azure Stack のエンドポイントのサフィックスの具体的な要件については、前の[例](#examples)のセクションを参照してください。
 

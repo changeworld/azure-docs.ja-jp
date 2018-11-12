@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: 76f3db3631e1d66413bdce8d3f2379c2735a2eaf
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 4641dce6fe8518016ee85cd480de6d11354fe170
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945605"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037220"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする
 
