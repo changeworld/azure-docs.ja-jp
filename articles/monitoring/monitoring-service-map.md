@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 0f3bc7302bc28a9bef288e5e5e0b9b891a08b8dd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 32cd373499a1ac6dd8cc02e666b0f6ff70688157
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252923"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215261"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -277,7 +277,7 @@ Service Map と Update Management との統合は、両方のソリューショ�
 ![[Machine Change Tracking]\(マシン変更の追跡\) ウィンドウ](media/monitoring-service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
-Service Map のコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../log-analytics/log-analytics-queries.md)できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
+Service Map のコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../log-analytics/log-analytics-log-searches.md)できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
 プロセスまたはコンピューターが起動されたとき、あるいは Service Map にオンボードされたときに生成されるレコードに加え、一意のコンピューターとプロセスごとに 1 時間あたり 1 つのレコードが生成されます。 これらのレコードは、次の表に示したプロパティを持ちます。 ServiceMapComputer_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のマシン リソースのフィールドにマップされます。 ServiceMapProcess_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のプロセス リソースのフィールドにマップされます。 ResourceName_s フィールドは、対応する Resource Manager リソースの名前フィールドと一致します。 
 
@@ -504,7 +504,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 
 ## <a name="next-steps"></a>次の手順
-Log Analytics の[ログ検索](../log-analytics/log-analytics-queries.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
+Log Analytics の[ログ検索](../log-analytics/log-analytics-log-searches.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
