@@ -15,17 +15,17 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: mvc
-ms.openlocfilehash: 3fc9677d72dacd06bde2fcfa4812cf4613efef01
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e1c327051982ce36e94cd1fe0f824db5ec424da1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394286"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226993"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 ## <a name="overview"></a>概要
 
-Web アプリケーション ファイアウォール (WAF) は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査することもできます。 App Service 環境が提供する分離と追加スケーリングと組み合わせることで、悪意のある要求と大量のトラフィックに対処する必要がある、ビジネスに不可欠な Web アプリケーションをホストする理想的な環境が用意されます。 Azure では、[Application Gateway](http://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) で WAF 機能が提供されます。  App Service Environment と Application Gateway を統合する方法については、[ILB ASE と Application Gateway の統合](http://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)に関するドキュメントを参照してください。
+Web アプリケーション ファイアウォール (WAF) は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査することもできます。 App Service 環境が提供する分離と追加スケーリングと組み合わせることで、悪意のある要求と大量のトラフィックに対処する必要がある、ビジネスに不可欠な Web アプリケーションをホストする理想的な環境が用意されます。 Azure では、[Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) で WAF 機能が提供されます。  App Service Environment と Application Gateway を統合する方法については、[ILB ASE と Application Gateway の統合](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)に関するドキュメントを参照してください。
 
 Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.barracuda.com/programs/azure) のように [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) で入手できるマーケットプレース オプションがいくつかあります。 このドキュメントの残りの部分では、App Service Environment と Barracuda WAF デバイスを統合する方法について説明します。
 

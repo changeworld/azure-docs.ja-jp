@@ -13,15 +13,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: dccdd6518dd97299150892a5629809ea7f708838
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: afb6c8345cd71e7d39b7f3a0b2307c99cf31b449
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209357"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253338"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
-[ダウンロードした](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
+[ダウンロードした](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。
 
 | **ファイル名** | **簡単な説明** |
 | --- | --- |
@@ -33,7 +33,7 @@ ms.locfileid: "34209357"
 | TestConfiguration.ps1 |Cluster.json で指定されたインフラストラクチャを分析するための PowerShell スクリプト。 |
 | DownloadServiceFabricRuntimePackage.ps1 |デプロイするコンピューターがインターネットに接続されていない場合に、帯域外の最新のランタイム パッケージをダウンロードするために使用される PowerShell スクリプト。 |
 | DeploymentComponentsAutoextractor.exe |スタンドアロン パッケージ スクリプトによって使用されるデプロイ コンポーネントが格納されている自己解凍アーカイブ。 |
-| EULA_ENU.txt |Microsoft Azure Service Fabric のスタンドアロン Windows Server パッケージの使用に関するライセンス条項。 [使用許諾契約書のコピーのダウンロード](http://go.microsoft.com/fwlink/?LinkID=733084) ができるようになりました。 |
+| EULA_ENU.txt |Microsoft Azure Service Fabric のスタンドアロン Windows Server パッケージの使用に関するライセンス条項。 [使用許諾契約書のコピーのダウンロード](https://go.microsoft.com/fwlink/?LinkID=733084) ができるようになりました。 |
 | Readme.txt |リリース ノートや基本的なインストール手順へのリンク。 このドキュメントに記載の説明も一部含まれています。 |
 | ThirdPartyNotice.rtf |パッケージに同梱されるサードパーティ製ソフトウェアに関する注意。 |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |必要に応じて実行され、サポートのためにトレース ログを収集して Microsoft にアップロードする StandaloneLogCollector.exe。 |

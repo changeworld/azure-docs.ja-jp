@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 65a0d8074b8dcf89d8fc713cb4b2272c6576e8fb
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 400cb16e4f4440283a783116c4ee843bc0a7344c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043956"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248573"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
-[R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) は、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と [Visual Studio 2015 Update 3](http://go.microsoft.com/fwlink/?LinkId=691129) 以降の両方の Community Edition (無料)、Professional Edition、Enterprise Edition 向けの無料のオープンソース拡張機能です。
+[R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) は、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 以降の両方の Community Edition (無料)、Professional Edition、Enterprise Edition 向けの無料のオープンソース拡張機能です。
 
 RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、IntelliSense (コード補完)、ggplot2 や ggviz などの R ライブラリを介した[プロットの視覚化](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data)、[R コードのデバッグ](https://docs.microsoft.com/visualstudio/rtvs/debugging)などの多彩なツールを提供することにより、R ワークフローを強化します。
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a70bb09edb5ccaf4e216785933af80e2fcb2153a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 924fea7a8a8e6fb1ab25584a49f38b25156d1ec6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363608"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230514"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -76,7 +76,7 @@ VM をカスタマイズするために、基本的な Web サーバーをイン
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-カスタム イメージとして使用する VM を準備するための最後の手順は、VM を汎用化することです。 Sysprep を使用すると、すべての個人アカウント情報と構成を削除して、将来のデプロイのために VM をクリーンな状態にリセットできます。 Sysprep の詳細については、「[How to Use Sysprep: An Introduction (Sysprep の使用方法: 紹介)](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+カスタム イメージとして使用する VM を準備するための最後の手順は、VM を汎用化することです。 Sysprep を使用すると、すべての個人アカウント情報と構成を削除して、将来のデプロイのために VM をクリーンな状態にリセットできます。 Sysprep の詳細については、「[How to Use Sysprep: An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 VM を汎用化するには、Sysprep を実行して、すぐに使用できるように VM を設定します。 終了したら、VM をシャットダウンするよう Sysprep に指示します。
 

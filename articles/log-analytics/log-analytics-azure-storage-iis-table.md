@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9f4aae578606e14711deaac87e232bad0158bfe9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 83c7862e8a9e3ce069765f81607bfbbeee272be2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041491"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278652"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する
 
@@ -53,7 +53,7 @@ Log Analytics でこれらの Azure 診断ログを収集するためには、�
 >
 >
 
-仮想マシンの場合、[Log Analytics エージェント](log-analytics-azure-vm-extension.md)を仮想マシンにインストールして、追加のインサイトを有効にすることもできます。 IIS ログとイベント ログを分析できるだけでなく、構成の変更の追跡、SQL の評価、更新の評価などの追加の分析を実行することもできます。
+仮想マシンの場合、[Log Analytics エージェント](log-analytics-quick-collect-azurevm.md)を仮想マシンにインストールして、追加のインサイトを有効にすることもできます。 IIS ログとイベント ログを分析できるだけでなく、構成の変更の追跡、SQL の評価、更新の評価などの追加の分析を実行することもできます。
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>イベント ログと IIS ログの収集のために仮想マシンで Azure 診断を有効にする
 イベント ログと IIS ログを収集するために、Microsoft Azure Portal を使用して、仮想マシンで Azure 診断を有効にするには、次の手順に従います。
@@ -151,7 +151,7 @@ Log Analytics で収集する他のストレージ アカウントとデータ�
 「[Azure 診断で収集されたデータのインデックスを作成するように Log Analytics を構成する](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics)」の手順に従い、PowerShell を使用してテーブル ストレージに書き込まれた Azure 診断データから読み取ります。
 
 Azure PowerShell を使用すると、Azure Storage に書き込むイベントをより細かく指定できます。
-詳細については、「[Azure Virtual Machines での診断の有効化](../virtual-machines-dotnet-diagnostics.md)」をご覧ください。
+詳細については、「[Azure Virtual Machines での診断の有効化](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)」をご覧ください。
 
 次の PowerShell スクリプトを使用して、Azure 診断を有効にし、更新できます。
 このスクリプトでカスタム ログ構成を使用することもできます。
@@ -194,5 +194,5 @@ Azure PowerShell を使用すると、Azure Storage に書き込むイベント�
 
 ## <a name="next-steps"></a>次の手順
 * サポートされている Azure サービスの[ログとメトリックを収集](log-analytics-azure-storage.md)します。
-* [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
-* [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
+* [ソリューションを有効](../monitoring/monitoring-solutions.md) にして、データに対する洞察を得ます。
+* [検索クエリを使用](log-analytics-queries.md) して、データを分析します。

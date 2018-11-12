@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2fd00d53755e44e3a3d86782c40aa6a53ff4d378
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: df6499410da3ae67715ade29dbc3cc4146fc2265
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171403"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231993"
 ---
 # <a name="how-to-use-negatable-entities-with-a-conversation-learner-model"></a>Conversation Learner モデルで否定可能エンティティを使用する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "39171403"
 
 ## <a name="video"></a>ビデオ
 
-[![チュートリアル 5 のプレビュー](http://aka.ms/cl-tutorial-05-preview)](http://aka.ms/blis-tutorial-05)
+[![チュートリアル 5 のプレビュー](https://aka.ms/cl-tutorial-05-preview)](https://aka.ms/blis-tutorial-05)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
@@ -61,13 +61,13 @@ ms.locfileid: "39171403"
 1. [アクション] をクリックし、[新しいアクション] をクリックします。
 2. [応答] に「I don't know your name」と入力します。
 3. [Disqualifying Entities]\(不適格エンティティ\) に「name」と入力します。
-3. Click Create
+3. Create をクリックしてください。
 
 次に、アクションをもう 1 つ作成します。
 
 1. [アクション] をクリックし、[新しいアクション] をクリックして 2 つ目のアクションを作成します。
 3. [応答] に「I know your name.  It is $name」と入力します。
-4. Click Create
+4. Create をクリックしてください。
 
 これでアクションが 2 つできました。
 

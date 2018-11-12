@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c0045af02b307bff686d47dd8fc4aabb290711a4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dadff0dc501c20ef525fdfb7578cb391f29b3302
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400215"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264121"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium 管理ディスクおよび非管理ディスクについてよく寄せられる質問
 
@@ -183,7 +183,7 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 **Standard SSD ディスクは "単一インスタンス VM SLA" をサポートしますか?**
 いいえ、Standard SSD には単一インスタンス VM SLA はありません。 単一インスタンス VM SLA が必要な場合、Premium SSD ディスクを使用します。
 
-## <a name="migrate-to-managed-disks"></a>管理ディスクに移行する
+## <a name="migrate-to-managed-disks"></a>マネージド ディスクに移行する
 
 **Managed Disks への移行前後に、既存の Azure Backup サービス構成にどのような変更が必要でしょうか?**
 
@@ -292,7 +292,7 @@ Premium ディスクと Standard ディスクのどちらの場合も、Azure �
 
 **オペレーティング システムとデータ ディスクでサポートされている最大マネージド ディスク サイズはどれくらいですか?**
 
-オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。 MBR 形式では、最大で 2 TiB のディスク サイズがサポートされています。 オペレーティング システム ディスクについて Azure でサポートされている最大サイズは、2 TiB です。 マネージド データ ディスクについては、Azure では最大で 32 TiB までサポートされています。 4 TiB を超えるマネージド ディスク サイズはプレビュー段階です。 これらの詳細については、[こちらのブログ記事を参照してください](http://aka.ms/azure-large-disk-32TB-preview-blog)。
+オペレーティング システム ディスクについて Azure でサポートされているパーティションの種類は、マスター ブート レコード (MBR) です。 MBR 形式では、最大で 2 TiB のディスク サイズがサポートされています。 オペレーティング システム ディスクについて Azure でサポートされている最大サイズは、2 TiB です。 マネージド データ ディスクについては、Azure では最大で 32 TiB までサポートされています。 4 TiB を超えるマネージド ディスク サイズはプレビュー段階です。 これらの詳細については、[こちらのブログ記事を参照してください](https://aka.ms/azure-large-disk-32TB-preview-blog)。
 
 **オペレーティング システムとデータ ディスクでサポートされている最大アンマネージド ディスク サイズはどれくらいですか?**
 
@@ -309,7 +309,7 @@ Azure でサポートされている最大ページ BLOB サイズは、8 TB (8,
 |Azure ツール      | サポートされているバージョン                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | バージョン番号 4.1.0: 2017 年 6 月以降のリリース|
-|Azure CLI v1     | バージョン番号 0.10.13: 2017 年 5 月以降のリリース|
+|Azure CLI v1     | バージョン番号 0.10.13: 2017 年 5 月以降のリリース|
 |Azure CLI v2     | バージョン番号 2.0.12: 2017 年 7 月以降のリリース|
 |AzCopy           | バージョン番号 6.1.0: 2017 年 6 月以降のリリース|
 

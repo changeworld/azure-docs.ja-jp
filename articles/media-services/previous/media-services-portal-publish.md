@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: d93bfc548134f730f4fad49a37593c861d6b6cbb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71b7e724158255cc979e9a08cd14c7f4412c4382
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785771"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253399"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [REST](media-services-rest-deliver-streaming-content.md)
+> * [REST ()](media-services-rest-deliver-streaming-content.md)
 > 
 > 
 
@@ -35,7 +35,7 @@ ms.locfileid: "33785771"
 > 
 > 
 
-コンテンツのストリーミングまたはダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成してアセットを発行する必要があります。 資産ファイルには、ロケーターを通じてアクセスできます。 Azure Media Services では、次の 2 種類のロケーターがサポートされています。  
+コンテンツのストリーミングまたはダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成してアセットを発行する必要があります。 資産ファイルには、ロケーターを通じてアクセスできます。 Azure Media Services では、次の 2 種類のロケーターがサポートされています。 
 
 * **ストリーミング (OnDemandOrigin) ロケーター**。 ストリーミング ロケーターは、アダプティブ ストリーミングに使用されます。 アダプティブ ストリーミングの例としては、Apple HTTP Live Streaming (HLS)、Microsoft Smooth Streaming、Dynamic Adaptive Streaming over HTTP (DASH。MPEG-DASH とも呼ばれます) などがあります。 ストリーミング ロケーターを作成するには、アセットに .ism ファイルが含まれている必要があります。 たとえば、「 http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest 」のように入力します。
 * **プログレッシブ (Shared Access Signature) ロケーター**。 プログレッシブ ロケーターは、プログレッシブ ダウンロードを通じてビデオを配信する場合に使用されます。
@@ -44,7 +44,7 @@ HLS ストリーミング URL を作成するには、次のように、*(format
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
-Smooth Streaming アセットを再生するためのストリーミング URL を作成するには、次の URL 形式を使用します。
+Smooth Streaming 資産を再生するためのストリーミング URL を作成するには、次の URL 形式を使用します。
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
 
@@ -63,14 +63,14 @@ MPEG-DASH ストリーミング URL を作成するには、*(format=mpd-time-cs
 > 
 > 
 
-ロケーターの有効期限を更新するには、[REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) または [.NET API](http://go.microsoft.com/fwlink/?LinkID=533259) を使用することができます。 
+ロケーターの有効期限を更新するには、[REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) または [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259) を使用することができます。 
 
 > [!NOTE]
 > Shared Access Signature ロケーターの有効期限を更新すると、URL が変更されます。
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用してアセットを発行するには
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[アセット]** を参照してください。 発行するアセットを選択します。
+2. **[設定]** > **[資産]** を参照してください。 発行する資産を選択します。
 3. **[発行]** を選択します。
 4. ロケーターの種類を選択します。
 5. **[追加]** を選択します。

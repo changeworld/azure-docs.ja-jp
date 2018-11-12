@@ -2,6 +2,7 @@
 
 # 概要
 ## [Azure AD Domain Services とは](active-directory-ds-overview.md)
+## [FAQ](active-directory-ds-faqs.md)
 ## 適しているかの判断
 ### [Windows Server AD との比較](active-directory-ds-comparison.md)
 ### [Azure AD Join との比較](active-directory-ds-compare-with-azure-ad-join.md)
@@ -55,7 +56,6 @@
 ## [Secure LDAP のトラブルシューティングを行う](active-directory-ds-ldaps-troubleshoot.md)
 
 # トラブルシューティング
-## [FAQ](active-directory-ds-faqs.md)
 ## [トラブルシューティング ガイド](active-directory-ds-troubleshooting.md)
 ## [アラートのトラブルシューティング](active-directory-ds-troubleshoot-alerts.md)
 ### [壊れた NSG 構成の修正](active-directory-ds-troubleshoot-nsg.md)

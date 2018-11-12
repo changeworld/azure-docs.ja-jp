@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 3674a6d629789392aba341f470bae83867331dfe
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 6fa59a176eaea08b612eb32eeb608fa7373d5c36
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394716"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249746"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Spark を使用した高度なデータ探索とモデリング
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
-このチュートリアルでは、HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。2013 年の NYC タクシーの乗車と料金に関するデータセットのサンプルに対し、クロス検証とハイパーパラメーターの最適化を使用しています。 チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](http://aka.ms/datascienceprocess)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB にデータとモデルを保存します。 プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。 ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。 これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。 
+このチュートリアルでは、HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。2013 年の NYC タクシーの乗車と料金に関するデータセットのサンプルに対し、クロス検証とハイパーパラメーターの最適化を使用しています。 チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](https://aka.ms/datascienceprocess)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB にデータとモデルを保存します。 プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。 ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。 これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。 
 
 * **二項分類** タスクでは、乗車でチップが支払われるかどうかを予測します。 
 * **回帰** タスクでは、チップの他の特徴に基づいてチップの金額を予測します。 

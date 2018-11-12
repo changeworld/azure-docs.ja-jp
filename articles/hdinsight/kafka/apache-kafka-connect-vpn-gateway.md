@@ -3,18 +3,18 @@ title: 仮想ネットワークを使用して Kafka へ接続する - Azure HDI
 description: Azure Virtual Network 経由で HDInsight 上の Kafka へ直接接続する方法について説明します。 VPN ゲートウェイを使用して開発環境のクライアントから、または VPN ゲートウェイ デバイスを使用してオンプレミス ネットワークから Kafka へ接続する方法について説明します。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
-ms.openlocfilehash: 973563a0c9a986bb4dec785b4521566acb657d15
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5f47ce84203d88604183d13f6e9282e2bb846451
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042396"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006007"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Kafka に接続する
 
@@ -336,7 +336,7 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
 
     * __ソフトウェア VPN クライアント__ を使用している場合、`kafka_broker` エントリはワーカー ノードの IP アドレスに置き換えます。
 
-    * __カスタム DNS サーバー経由での名前解決を有効化__ している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
+    * __カスタム DNS サーバー経由での名前解決を有効化__している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
 
     > [!NOTE]
     > このコードは、文字列 `test message` をトピック `testtopic` に送信します。 HDInsight 上の Kafka の既定の構成では、トピックが存在しない場合は作成します。

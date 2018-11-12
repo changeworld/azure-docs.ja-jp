@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 995e93290e7c305e217c1f44609d383f69d83a9a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2570e779f258e702f04166dffc3087195d01a983
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420559"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283639"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Scale Sets 向けの Resource Manager テンプレートを使用した高度な自動スケール構成
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
 
 > [!NOTE]
-> このチュートリアルでは VM Scale Sets の手順について説明しますが、この情報は [Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)の自動スケーリングにも適用されます。CPU などシンプルなパフォーマンス メトリックに基づいて VM スケール セットに単純なスケールイン/スケールアウトを設定する方法については、[Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) や [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) のドキュメントを参照してください。
+> このチュートリアルでは VM Scale Sets の手順について説明しますが、この情報は [Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)の自動スケーリングにも適用されます。CPU などシンプルなパフォーマンス メトリックに基づいて VM スケール セットに単純なスケールイン/スケールアウトを設定する方法については、[Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) や [Windows](../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) のドキュメントを参照してください。
 >
 >
 

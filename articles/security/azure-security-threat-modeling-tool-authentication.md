@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 23e219fa49146158c97f392427eee7c42c347a7a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307422"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251561"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
 | 製品/サービス | 記事 |
@@ -156,7 +156,7 @@ ms.locfileid: "43307422"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | OnPrem、SQL Azure |
 | **属性**              | SQL バージョン - MSSQL2012、SQL バージョン - V12 |
-| **参照**              | [包含データベースでのセキュリティのベスト プラクティス](http://msdn.microsoft.com/library/ff929055.aspx) |
+| **参照**              | [包含データベースでのセキュリティのベスト プラクティス](https://msdn.microsoft.com/library/ff929055.aspx) |
 | **手順** | パスワード ポリシーが適用されていないと、包含データベースで脆弱な資格情報が作成される可能性が高くなる場合があります。 Windows 認証を使用してください。 |
 
 ## <a id="authn-sas-tokens"></a>SaS トークンを使用したデバイスごとの認証資格情報を使用する

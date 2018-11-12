@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 442371ffc63e32906d9faafc3b803bb5e6386905
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419794"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283446"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問
 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。  このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。
@@ -35,7 +35,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 ![Log Analytics ワークスペース](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>アクセス許可の管理方法を教えてください
-Azure portal における Log Analytics ワークスペースへのアクセス権がない場合は、[Azure のロールベースのアクセス](../active-directory/role-based-access-control-configure.md)を使用してアクセス許可を構成する必要があります。 ワークスペースのアクセス許可の管理について詳しくは、[ワークスペースの管理](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users)に関するページを参照してください。 アラートに関するアクセス許可の管理については、「[Azure Monitor での役割、アクセス許可、およびセキュリティの使用](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md)」を参照してください。
+Azure portal における Log Analytics ワークスペースへのアクセス権がない場合は、[Azure のロールベースのアクセス](../role-based-access-control/role-assignments-portal.md)を使用してアクセス許可を構成する必要があります。 ワークスペースのアクセス許可の管理について詳しくは、[ワークスペースの管理](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users)に関するページを参照してください。 アラートに関するアクセス許可の管理については、「[Azure Monitor での役割、アクセス許可、およびセキュリティの使用](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md)」を参照してください。
 
 ## <a name="how-do-i-create-a-new-workspace"></a>新しいワークスペースの作成方法を教えてください 
 Azure portal でワークスペースの一覧から、ワークスペースの一覧の **[追加]** をクリックします。  詳細については、「[Azure portal で Log Analytics ワークスペースを作成する](../log-analytics/log-analytics-quick-create-workspace.md)」を参照してください。
@@ -82,7 +82,7 @@ Log Analytics のクエリに基づくアラート ルールは現在、[一元�
 | Linux サーバー   | ワークスペースの **[詳細設定]** メニュー。 |
 | Azure Storage     | ワークスペースの **[詳細設定]** メニュー。 |
 | System Center     | ワークスペースの **[詳細設定]** メニュー。 |
-| Office 365        | 構成の詳細については、[Office 365 管理ソリューションのドキュメント](../operations-management-suite/oms-solution-office-365.md)を参照してください。 |
+| Office 365        | 構成の詳細については、[Office 365 管理ソリューションのドキュメント](../monitoring/monitoring-solution-office-365.md)を参照してください。 |
 | Windows のテレメトリ | ソリューションの [設定] メニュー。 構成の詳細については、[Azure portal での Windows Analytics](/windows/deployment/update/windows-analytics-azure-portal) に関するページを参照してください。 |
 | ITSM Connector    | ITSM サービスを Log Analytics に接続する手順については、「[ITSM 製品/サービスを IT Service Management Connector に追加する](../log-analytics/log-analytics-itsmc-connections.md)」を参照してください。 |
 
@@ -110,7 +110,7 @@ Log Analytics のクエリに基づくアラート ルールは現在、[一元�
 OMS ポータルでは、ソリューション ギャラリーから管理ソリューションをインストールし、その削除は **[設定]** から行います。 Azure portal では、[管理ソリューションのインストール](../monitoring/monitoring-solutions.md#install-a-management-solution)を Azure Marketplace から行います。 インストールされているソリューションの一覧から[ソリューションを削除](../monitoring/monitoring-solutions.md#remove-a-management-solution)してください。
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>アラートの作成と管理の方法を教えてください
-Log Analytics のクエリに基づくアラート ルールは現在、[一元化されたアラート機能](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)で管理するようになっています。 Azure portal でのアラートの構成と使用について詳しくは、[Log Analytics から Azure にアラートを拡張する方法](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md)に関するページを参照してください。
+Log Analytics のクエリに基づくアラート ルールは現在、[一元化されたアラート機能](../monitoring-and-diagnostics/alert-metric.md)で管理するようになっています。 Azure portal でのアラートの構成と使用について詳しくは、[Log Analytics から Azure にアラートを拡張する方法](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md)に関するページを参照してください。
 
 ## <a name="how-do-i-access-my-dashboards"></a>ダッシュボードへのアクセス方法を教えてください
 Log Analytics の [[マイ ダッシュボード]](../log-analytics/log-analytics-dashboards.md) 機能は非推奨になりました。 この機能では、[ビュー デザイナー] 部分の個人のコレクションを利用できました。後継は、組み込みの Azure ダッシュボード機能になります。 共有ビューには [[ビュー デザイナー]](../log-analytics/log-analytics-view-designer.md) を使用して、Log Analytics のデータを引き続き視覚化できます。 これらのビューからの視覚表現や、Azure ダッシュボードへの[個々のクエリ](../log-analytics/log-analytics-tutorial-dashboards.md)に対する視覚表現を固定することも可能です。
