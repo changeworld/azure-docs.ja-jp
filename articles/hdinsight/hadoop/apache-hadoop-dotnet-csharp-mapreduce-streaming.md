@@ -2,19 +2,19 @@
 title: HDInsight の Hadoop において MapReduce で C# を使用する - Azure
 description: Azure HDInsight の Hadoop で C# を使用して MapReduce ソリューションを作成する方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 91558ae4fd592c7490aef0a0f2fd930e970f498c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 4cf68ba16cf19a20686f323832ccd7e7d1b543bb
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049065"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010951"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop において MapReduce ストリーミングで C# を使用する
 
@@ -55,7 +55,7 @@ __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-pro
 
 ## <a name="create-the-mapper"></a>マッパーの作成
 
-Visual Studio で、 __マッパー__ と呼ばれる新しい __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、__マッパー__と呼ばれる新しい__コンソール アプリケーション__を作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -92,7 +92,7 @@ namespace mapper
 
 ## <a name="create-the-reducer"></a>レジューサの作成
 
-Visual Studio で、 __レジューサ__ と呼ばれる新しい __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、__レジューサ__と呼ばれる新しい__コンソール アプリケーション__を作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -155,13 +155,13 @@ namespace reducer
 
     ![クラスターのストレージ アカウントを表示するサーバー エクスプローラー](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/storage.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__ を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
+    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、__[(既定のコンテナー)]__ をダブルクリックします。
 
     * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Store__ を使用します。 クラスターの既定のストレージにファイルを表示するには、__(既定のストレージ アカウント)__ エントリをダブルクリックします。
 
 5. .exe file をアップロードするには、次のいずれかの手順に従ってください。
 
-    * __Azure Storage アカウント__ を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
+    * __Azure Storage アカウント__を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
 
         ![アップロード アイコン](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
@@ -181,7 +181,7 @@ namespace reducer
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
         ```
     
-    * 既定のストレージとして __Azure Storage__ を使用している場合:
+    * 既定のストレージとして__Azure Storage__ を使用している場合:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout

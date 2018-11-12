@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0cf5ace29dabd3a55524fe38403a07e3916ea7d6
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7e218cea543b48371647531cf6d62d8c10a07978
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390894"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230752"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコピーする
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "44390894"
 >
 >
 
-Azure Data Lake Storage Gen1 には、次のソースからデータをコピーするコマンド ライン ツール [AdlCopy](http://aka.ms/downloadadlcopy) が用意されています。
+Azure Data Lake Storage Gen1 には、次のソースからデータをコピーするコマンド ライン ツール [AdlCopy](https://aka.ms/downloadadlcopy) が用意されています。
 
 * Azure Storage BLOB から Data Lake Storage Gen1 に。 AdlCopy を使用して Data Lake Storage Gen1 から Azure Storage BLOB にデータをコピーすることはできません。
 * 2 つの Azure Data Lake Storage Gen1 アカウント間で。
@@ -43,7 +43,7 @@ AdlCopy ツールは 2 つの異なるモードで使用できます。
 * **Azure Storage Blobs** コンテナー。
 * **Azure Data Lake Storage Gen1 アカウント**。 これを作成する方法については、「[Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。
 * **Azure Data Lake Analytics アカウント (省略可能)** - Data Lake Analytics アカウントを作成する方法については、「[Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)」を参照してください。
-* **AdlCopy ツール**。 [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy) から AdlCopy ツールをインストールします。
+* **AdlCopy ツール**。 [http://aka.ms/downloadadlcopy](https://aka.ms/downloadadlcopy) から AdlCopy ツールをインストールします。
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>AdlCopy ツールの構文
 AdlCopy ツールを操作するには、次の構文を使用します。

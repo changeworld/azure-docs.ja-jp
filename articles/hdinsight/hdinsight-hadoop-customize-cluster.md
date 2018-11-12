@@ -2,19 +2,19 @@
 title: スクリプト アクションを使って HDInsight クラスターをカスタマイズする - Azure
 description: スクリプト アクションを使って HDInsight クラスターをカスタマイズする方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/05/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c4652e65f0f320063d989f97a5428510913005b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8923dcb4c35bbf90a6f68bd296bb9a862c5ff07d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105926"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230803"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
 **Script Action** を使用して、クラスターに追加のソフトウェアをインストールするクラスター作成プロセス中に [カスタム スクリプト](hdinsight-hadoop-script-actions.md) を起動できます。
@@ -279,7 +279,7 @@ HDInsight は、HDInsight クラスターで、次のコンポーネントをイ
 5. **F5** キーを押してアプリケーションを実行します。
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight クラスターで使用するオープン ソース ソフトウェアのサポート
-Microsoft Azure HDInsight サービスは柔軟性に優れたプラットフォームであり、Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用し、クラウド内でビッグ データ アプリケーションを構築できます。 **Azure サポート FAQ Web サイト** の <a href="http://azure.microsoft.com/support/faq/" target="_blank">サポート範囲</a>のセクションでも説明しているように、Microsoft Azure では、オープン ソース テクノロジについて一般的なレベルのサポートを提供しています。 HDInsight サービスでは、次に説明するいくつかのコンポーネントについてさらに高いレベルのサポートを受けることができます。
+Microsoft Azure HDInsight サービスは柔軟性に優れたプラットフォームであり、Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用し、クラウド内でビッグ データ アプリケーションを構築できます。 **Azure サポート FAQ Web サイト** の <a href="https://azure.microsoft.com/support/faq/" target="_blank">サポート範囲</a>のセクションでも説明しているように、Microsoft Azure では、オープン ソース テクノロジについて一般的なレベルのサポートを提供しています。 HDInsight サービスでは、次に説明するいくつかのコンポーネントについてさらに高いレベルのサポートを受けることができます。
 
 HDInsight サービスで利用できるオープン ソース コンポーネントには、2 つの種類があります。
 

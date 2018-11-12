@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 8b28143dc92fa526b631baf6d47e4a9f2367ee0e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: abcf51c6bd196c2ffb0bb35e2df161531a53972d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612158"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229392"
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントの管理方法
 グローバルな整合性の設定、キーの操作、Azure Cosmos DB アカウントの削除を Azure Portal で行う方法について説明します。
@@ -96,7 +96,7 @@ Azure Cosmos DB アカウントを使用するアプリケーションまたは�
 ![Azure Portal で Azure Cosmos DB アカウントを削除する方法](./media/manage-account/delete-account-confirm.png)
 
 ## <a id="next"></a>次のステップ
-[Azure Cosmos DB アカウントの概要](http://go.microsoft.com/fwlink/p/?LinkId=402364)について学ぶ。
+[Azure Cosmos DB アカウントの概要](https://go.microsoft.com/fwlink/p/?LinkId=402364)について学ぶ。
 
 <!--Image references-->
 [5]: ./media/manage-account/documentdb_change_consistency-1.png

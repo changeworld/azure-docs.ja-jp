@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3328a7c80a05a48b3c04ad5492a7eafe62059681
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a940b1d2184961d907f72ad072270dad3571e844
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622467"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229255"
 ---
 # <a name="use-case---product-recommendations"></a>使用事例 - 製品に関する推奨事項
-Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。  このスイートの詳細については、 [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) のページを参照してください。 このドキュメントでは、Azure ユーザーが Azure Data Factory と他の Cortana Intelligence コンポーネント サービスを使用して、既に解決および実装している一般的な使用事例について説明します。
+Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。  このスイートの詳細については、 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) のページを参照してください。 このドキュメントでは、Azure ユーザーが Azure Data Factory と他の Cortana Intelligence コンポーネント サービスを使用して、既に解決および実装している一般的な使用事例について説明します。
 
 ## <a name="scenario"></a>シナリオ
 一般的に、オンライン小売業者は、顧客が最も興味を持ち、結果として購入する可能性が最も高い製品を提示することで、顧客の購入意欲を高めます。 そのために、個人用に設定された製品推奨を使用して、顧客のオンライン エクスペリエンスをカスタマイズする必要があります。 個人用に設定された推奨は、ユーザーの現在および過去の購入行動データ、製品情報、新規取り扱いのブランド、製品と顧客のセグメント データを基に作成されます。  さらに、全ユーザーの全体的な使用行動の分析に基づいて、ユーザーに製品推奨を提供することができます。

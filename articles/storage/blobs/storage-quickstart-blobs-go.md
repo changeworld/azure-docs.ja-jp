@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/23/2018
 ms.author: seguler
-ms.openlocfilehash: f0176b526bd2debae911f52d6fd364a87daabc1f
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d3f6f2c9a1ca5016eb9a6597ba32dc1471f77cb4
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986449"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038326"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>クイック スタート: Go を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -165,7 +165,7 @@ file, err := os.Open(fileName)
 handleErrors(err)
 
 // You can use the low-level Upload (PutBlob) API to upload files. Low-level APIs are simple wrappers for the Azure Storage REST APIs.
-// Note that Upload can upload up to 256MB data in one shot. Details: https://docs.microsoft.com/en-us/rest/api/storageservices/put-blob
+// Note that Upload can upload up to 256MB data in one shot. Details: https://docs.microsoft.com/rest/api/storageservices/put-blob
 // To upload more than 256MB, use StageBlock (PutBlock) and CommitBlockList (PutBlockList) functions. 
 // Following is commented out intentionally because we will instead use UploadFileToBlockBlob API to upload the blob
 // _, err = blobURL.Upload(ctx, file, azblob.BlobHTTPHeaders{ContentType: "text/plain"}, azblob.Metadata{}, azblob.BlobAccessConditions{})

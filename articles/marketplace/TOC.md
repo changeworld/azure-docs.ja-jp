@@ -1,5 +1,5 @@
-# [Azure Marketplace と AppSource のドキュメント](index.md)  
-
+# [Azure Marketplace と AppSource のドキュメント](index.md)
+## [ポリシーの評価とレビュー](./rating-review-policies.md)   
 ## [Azure Marketplace と AppSource の概要とベネフィット](./marketplace-publishers-guide.md)  
 
 ### [マーケットプレースで公開元になる](./become-publisher.md)  
@@ -34,6 +34,14 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [クラウド パートナー ポータル](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+
+## ポータル管理
+### [デベロッパー センター アカウントの登録](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
+### [プライベート SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
+### [SEO ガイダンス](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
+### [公開元プロファイルの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
+### [ユーザーの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+### [GDPR コンプライアンス](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
 
 ## [仮想マシンのオファー](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 ### [前提条件](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
@@ -70,8 +78,7 @@
 ### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
 -->
 
-## Azure アプリケーション
-### [デベロッパー センター アカウントの登録](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
+## [Azure アプリケーション プラン](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
 ### [マネージド アプリケーションの作成](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
 ### [ソリューション テンプレートの作成](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
 ### [管理ソリューションの発行](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
@@ -79,14 +86,12 @@
 ### [プランの公開](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
 ### [既存のプランの更新](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
 ### [プランの削除](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
-### [プランの移行](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+<!-- Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  -->
 
-## SaaS アプリケーション
+## [SaaS アプリケーション プラン](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
 ### [SaaS アプリの技術的な発行ガイド](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
 ### [Azure を通じた SaaS の販売](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
 ### [SaaS API](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
-
-<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
 
 ## [Containers のプラン](./cloud-partner-portal/containers/cpp-containers-offer.md)
 ### [前提条件](./cloud-partner-portal/containers/cpp-prerequisites.md)
@@ -98,6 +103,7 @@
 ### [コンテナーの技術アセットの作成](./cloud-partner-portal/containers/cpp-create-technical-assets.md)
 ### [コンテナー プランの発行](./cloud-partner-portal/containers/cpp-publish-offer.md)
 ### [既存のプランの更新](./cloud-partner-portal/containers/cpp-update-existing-offer.md)
+<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
 
 ## [IoT Edge モジュール プラン](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
 ### [前提条件](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)
@@ -118,24 +124,16 @@
 ### [IoT Edge module FAQ](./cloud-partner-portal-orig/cloud-partner-portal-iot-edge-module-faq.md)
 -->
 
-## リードの管理
-### [潜在顧客の構成](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
-### [Azure テーブル](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
-### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
-### [HTTPS エンドポイント](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
-### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
-### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
-
 <!-- ## [Cortana Intelligence](./cloud-partner-portal-orig/cloud-partner-portal-publish-cortana-intelligence-app.md)  -->
 
-## Dynamics 365 for Customer Engagement
+## [Dynamics 365 for Customer Engagement プラン](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
 ### [ソリューションの作成](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
 ### [パッケージの作成](./cloud-partner-portal-orig/appSource-package-preparation.md)
 ### [SAS キーの生成](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
 ### [プランの作成](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
 ### [プランの発行](./cloud-partner-portal-orig/request-to-publish-the-app.md)
 
-## Dynamics 365 for Business Central
+## [Dynamics 365 for Business Central プラン](./cloud-partner-portal-orig/cpp-business-central-offer.md)
 ### [発行の概要](./cloud-partner-portal-orig/d365-finance-overview-publish-your-app.md)
 ### [新しいプランの作成](./cloud-partner-portal-orig/d365-finance-create-new-offer.md)
 ### [プランの設定](./cloud-partner-portal-orig/d365-finance-create-offer-settings.md)
@@ -143,7 +141,7 @@
 ### [ネットショップの詳細](./cloud-partner-portal-orig/d365-finance-create-storefront-details.md)
 ### [発行プロセス](./cloud-partner-portal-orig/d365-finance-app-publishing-process.md)
 
-## Dynamics 365 for Operations
+## [Dynamics 365 for Operations プラン](./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)
 ### [前提条件](./cloud-partner-portal-orig/pre-requisites.md)
 ### [発行方法](./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md)
 ### [LCS サブスクリプション](./cloud-partner-portal-orig/lcs-subscription.md)
@@ -151,6 +149,11 @@
 ### [データ エンティティ](./cloud-partner-portal-orig/data-entities.md)
 ### [BPM と手法](./cloud-partner-portal-orig/bpm-and-methodologies.md)
 ### [ヘルプ Wiki](./cloud-partner-portal-orig/help-wiki.md)
+
+## [コンサルティング サービス](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+## [公開元プロファイルの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
+## [ユーザーの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+## [GDPR コンプライアンス](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
 
 ## 体験版
 ### [体験版とは](./cloud-partner-portal-orig/what-is-test-drive.md)
@@ -160,12 +163,15 @@
 ### [体験版の変換の例](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
 ### [マーケティングとベスト プラクティス](./cloud-partner-portal-orig/marketing-and-best-practices.md)
 
-## [コンサルティング サービス](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
-## [公開元プロファイルの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
-## [ユーザーの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
-## [GDPR コンプライアンス](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
+## リードの管理
+### [潜在顧客の構成](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
+### [Azure テーブル](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
+### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
+### [HTTPS エンドポイント](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
+### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
+### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
 
-## 洞察
+## Seller Insights
 ### [作業の開始](./cloud-partner-portal-orig/si-getting-started.md)
 ### [新機能](./cloud-partner-portal-orig/si-changes.md)
 ### [Web 分析](./cloud-partner-portal-orig/web-analytics.md)

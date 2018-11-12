@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 04211a00bcdce3baf8060e00a9ce81831a39acb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406323"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257665"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -30,7 +30,7 @@ Office 365 管理ソリューションでは、Log Analytics で Office 365 環�
 - 管理者のアクティビティを監視し、構成変更や高権限操作を追跡します。
 - 不必要なユーザーの行動を検出および調査します。これは、組織のニーズに合わせてカスタマイズできます。
 - 監査とコンプライアンスを実証します。 たとえば、機密ファイルに対するファイル アクセス操作を監視でき、これは監査とコンプライアンスのプロセスに役立ちます。
-- 組織の Office 365 アクティビティ データに対して[ログ検索](../log-analytics/log-analytics-log-search.md)を使用し、運用上のトラブルシューティングを実行します。
+- 組織の Office 365 アクティビティ データに対して[ログ検索](../log-analytics/log-analytics-queries.md)を使用し、運用上のトラブルシューティングを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションをインストールして構成する前に、次のものが必要です。
@@ -709,6 +709,6 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
+* [Log Analytics](../log-analytics/log-analytics-queries.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * [独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
-* [アラートを作成](../log-analytics/log-analytics-alerts.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  
+* [アラートを作成](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  

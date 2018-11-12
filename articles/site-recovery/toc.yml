@@ -148,6 +148,14 @@ items:
         href: azure-to-azure-how-to-enable-replication-ade-vms.md
       - name: フェールオーバー後に Azure VM を再保護する
         href: azure-to-azure-how-to-reprotect.md
+    - name: トラブルシューティング
+      items:
+      - name: Azure から Azure へのレプリケーションに関するトラブルシューティング
+        href: azure-to-azure-troubleshoot-errors.md
+      - name: 実行中のレプリケーションのトラブルシューティング
+        href: azure-to-azure-troubleshoot-replication.md
+      - name: Azure Site Recovery 拡張機能のトラブルシューティング
+        href: site-recovery-extension-troubleshoot.md
       - name: Azure への移行後に Azure VM のディザスター リカバリーをセットアップする
         href: azure-to-azure-replicate-after-migration.md
     - name: 管理
@@ -430,9 +438,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 1eb7683d77faf6139808189ae002b239ba46609b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 770aa6a07df6900b10558ebbb7718c248296ee51
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015436"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288086"

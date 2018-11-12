@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ff4d39a69df90c31186153c077b1b6183a08dd34
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 1bd237d4b8ecd826caf4ba9a150f1dd50f0c5bb6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397217"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259991"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>クラウド ストレージ アプリケーションの監視およびトラブルシューティング
 
@@ -83,7 +83,7 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 ストレージ ログは、ストレージ アカウント内の **$logs** という名前の BLOB コンテナーにある一連の BLOB 内にデータを格納します。 このコンテナーは、アカウント内のすべての BLOB コンテナーを一覧表示しても表示されませんが、直接それにアクセスすればその内容を見ることができます。
 
-このシナリオでは、[Microsoft Message Analyzer](http://technet.microsoft.com/library/jj649776.aspx) を使用して Azure ストレージ アカウントを操作します。
+このシナリオでは、[Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) を使用して Azure ストレージ アカウントを操作します。
 
 ### <a name="download-microsoft-message-analyzer"></a>Microsoft Message Analyzer をダウンロードする
 

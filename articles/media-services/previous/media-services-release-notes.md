@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 531cdf9a69e0ecfa2d2d8ae02f8f88fd5f400479
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 41376448095a5dd760fae594fdfe2d2b57e4440a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378943"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231653"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -35,7 +35,7 @@ ms.locfileid: "49378943"
 | --- | --- |
 | REST API で一般的な HTTP ヘッダーがいくつか提供されていない。 |REST API を使用して Media Services アプリケーションを開発している場合、いくつかの一般的な HTTP フィールド (CLIENT-REQUEST-ID、REQUEST-ID、および RETURN-CLIENT-REQUEST-ID を含む) がサポートされていないことに気付きます。 ヘッダーは、今後の更新プログラムで追加される予定です。 |
 | パーセント エンコーディングが利用できない。 |Media Services は、ストリーミング コンテンツ (たとえば、`http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。 このため、パーセント エンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 また、ファイル名拡張子で使用できる "." は 1 つのみです。 |
-| Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。 |Media Services は、 [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) バージョンに基づいて SAS URL を生成します。 Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。 |
+| Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。 |Media Services は、 [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) バージョンに基づいて SAS URL を生成します。 Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。 |
 | Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。 サービスが "サービスを利用できません" 503 HTTP 状態コードを返すことがある。 |詳細については、[Media Services エラー コード](media-services-encoding-error-codes.md)に関するページの 503 HTTP 状態コードの説明を参照してください。 |
 | パブリック REST バージョン 2 では、クエリ結果が 1000 件に制限されているため、エンティティにクエリを実行すると、上限の 1000 個のエンティティが一度に返される。 |[こちらの .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[こちらの REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、Skip および Take (.NET)/top (REST) を使用してください。 |
 | 一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。 |詳細については、[こちらのセクション](media-services-deliver-content-overview.md#known-issues)をご覧ください。 |
@@ -227,7 +227,7 @@ Media Services で、Widevine Modular DRM テクノロジを使用してビデ�
 ## <a id="july_changes_15"></a>2015 年 7 月のリリース
 * Media Encoder Standard の一般公開が発表されました。 詳細については、 [このブログの投稿](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)を参照してください。
   
-    [こちらのセクション](http://go.microsoft.com/fwlink/?LinkId=618336)で説明されているように、Media Encoder Standard ではプリセットを使用しています。 4K エンコードのプリセットを使用する場合は、Premium の予約ユニットを取得する必要があります。 詳細については、[エンコードのスケール](media-services-scale-media-processing-overview.md)に関するページをご覧ください。
+    [こちらのセクション](https://go.microsoft.com/fwlink/?LinkId=618336)で説明されているように、Media Encoder Standard ではプリセットを使用しています。 4K エンコードのプリセットを使用する場合は、Premium の予約ユニットを取得する必要があります。 詳細については、[エンコードのスケール](media-services-scale-media-processing-overview.md)に関するページをご覧ください。
 * ライブ リアルタイム キャプションが、Media Services と Media Player と共に使用されました。 詳細については、 [このブログの投稿](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)を参照してください。
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK の更新
@@ -303,7 +303,7 @@ Media Services .NET SDK が 3.1.0.1 にバージョン アップしました。
 * キー配信サービスの CORS サポートが追加されました。
 * 承認ポリシーへのクエリ オプションのパフォーマンスが向上しました。
 * 中国のデータ センターで、[キー配信 URL](https://docs.microsoft.com/rest/api/media/operations/contentkey#get_delivery_service_url) が顧客単位となりました (他のデータ センターと同じです)。
-* HLS 自動ターゲット期間が追加されました。 ライブ ストリーミングの実行中、HLS は常に動的にパッケージ化されます。 既定では、HLS セグメントのパッケージ率 (FragmentsPerSegment) は、キーフレーム間隔 (KeyFrameInterval) に基づいて Media Services によって自動計算されます。 この方法は、ライブ エンコーダーから受信する画像グループ (GOP) とも呼ばれます。 詳細については、「[Azure Media Services を使用したライブ ストリーミングの概要](http://msdn.microsoft.com/library/azure/dn783466.aspx)」を参照してください。
+* HLS 自動ターゲット期間が追加されました。 ライブ ストリーミングの実行中、HLS は常に動的にパッケージ化されます。 既定では、HLS セグメントのパッケージ率 (FragmentsPerSegment) は、キーフレーム間隔 (KeyFrameInterval) に基づいて Media Services によって自動計算されます。 この方法は、ライブ エンコーダーから受信する画像グループ (GOP) とも呼ばれます。 詳細については、「[Azure Media Services を使用したライブ ストリーミングの概要](https://msdn.microsoft.com/library/azure/dn783466.aspx)」を参照してください。
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK の更新
 [Media Services .NET SDK](http://www.nuget.org/packages/windowsazure.mediaservices/) が 3.1.0.0 にバージョン アップしました。 次の更新が行われました。
@@ -314,7 +314,7 @@ Media Services .NET SDK が 3.1.0.1 にバージョン アップしました。
 * PlayReady ライセンス テンプレートに BeginDate と ExpirationDate の相対オフセットが追加されました。
 
 ## <a id="november_changes_14"></a>2014 年 11 月のリリース
-* Media Services を使用して、SSL 接続経由で Live Smooth Streaming (fMP4) コンテンツを取り込むことができます。 SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。 現在のところ、Media Services ではカスタム ドメインを使用した SSL はサポートされていません。 ライブ ストリーミングの詳細については、[Azure Media Services ライブ ストリーミングの操作](http://msdn.microsoft.com/library/azure/dn783466.aspx)に関するページをご覧ください。
+* Media Services を使用して、SSL 接続経由で Live Smooth Streaming (fMP4) コンテンツを取り込むことができます。 SSL 経由で取り込むには、取り込み URL を HTTPS に更新する必要があります。 現在のところ、Media Services ではカスタム ドメインを使用した SSL はサポートされていません。 ライブ ストリーミングの詳細については、[Azure Media Services ライブ ストリーミングの操作](https://msdn.microsoft.com/library/azure/dn783466.aspx)に関するページをご覧ください。
 * RTMP ライブ ストリームについては、現在、SSL 接続経由で取り込むことはできません。
 * SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 2014 年 9 月 10 日より後である場合は、URL に "streaming.mediaservices.windows.net" (新形式) が含まれています。 "origin.mediaservices.windows.net" (旧形式) を含むストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL トリーミングに対応するには、[新しいストリーミング エンドポイントを作成](media-services-portal-manage-streaming-endpoints.md)してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいた URL を使用します。
 
@@ -346,7 +346,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です
 * Azure Portal を使用して MP4 ファイルをエンコードし、その後、発行する際の既定の動作が変更されました。
 
 ### <a id="sept_14_GA_changes"></a>一般公開リリースに含まれる新機能/シナリオ
-* Media Indexer メディア プロセッサが導入されました。 詳細については、[Media Indexer によるメディア ファイルのインデックス作成](http://msdn.microsoft.com/library/azure/dn783455.aspx)に関するページをご覧ください。
+* Media Indexer メディア プロセッサが導入されました。 詳細については、[Media Indexer によるメディア ファイルのインデックス作成](https://msdn.microsoft.com/library/azure/dn783455.aspx)に関するページをご覧ください。
 * [StreamingEndpoint] エンティティを使用して、カスタム ドメイン (ホスト) 名を追加できます。
   
     Media Services ストリーミング エンドポイント名としてカスタム ドメイン名を使用するには、カスタム ホスト名をストリーミング エンドポイントに追加します。 Media Services REST API または .NET SDK を使用して、カスタム ホスト名を追加します。
@@ -357,16 +357,16 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です
   * ドメイン名の所有権は、Media Services によって検証する必要があります。 ドメインを検証するには、MediaServicesAccountId 親ドメインをマップする CName を作成して、DNS mediaservices-dns-zone を検証します。
   * カスタム ホスト名 (たとえば、sports.contoso.com) を Media Services StreamingEndpoint ホスト名 (たとえば、amstest.streaming.mediaservices.windows.net) にマップする別の CName を作成する必要があります。
 
-    詳細については、[StreamingEndpoint](http://msdn.microsoft.com/library/azure/dn783468.aspx) に関する記事の CustomHostNames プロパティを参照してください。
+    詳細については、[StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx) に関する記事の CustomHostNames プロパティを参照してください。
 
 ### <a id="sept_14_preview_changes"></a>パブリック プレビュー リリースに含まれる新機能/シナリオ
-* ライブ ストリーミングのプレビュー。 詳細については、「[Azure Media Services を使用したライブ ストリーミングの概要](http://msdn.microsoft.com/library/azure/dn783466.aspx)」を参照してください。
-* キー配信サービス。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](http://msdn.microsoft.com/library/azure/dn783457.aspx)」を参照してください。
-* AES 動的暗号化。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](http://msdn.microsoft.com/library/azure/dn783457.aspx)」を参照してください。
+* ライブ ストリーミングのプレビュー。 詳細については、「[Azure Media Services を使用したライブ ストリーミングの概要](https://msdn.microsoft.com/library/azure/dn783466.aspx)」を参照してください。
+* キー配信サービス。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](https://msdn.microsoft.com/library/azure/dn783457.aspx)」を参照してください。
+* AES 動的暗号化。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](https://msdn.microsoft.com/library/azure/dn783457.aspx)」を参照してください。
 * PlayReady ライセンス配信サービス。 
 * PlayReady 動的暗号化。 
 * Media Services PlayReady ライセンス テンプレート。 詳細については、「[Media Services PlayReady ライセンス テンプレートの概要]」を参照してください。
-* ストレージ暗号化資産のストリーミング。 詳細については、[ストレージ暗号化コンテンツのストリーミング](http://msdn.microsoft.com/library/azure/dn783451.aspx)に関するページをご覧ください。
+* ストレージ暗号化資産のストリーミング。 詳細については、[ストレージ暗号化コンテンツのストリーミング](https://msdn.microsoft.com/library/azure/dn783451.aspx)に関するページをご覧ください。
 
 ## <a id="august_changes_14"></a>2014 年 8 月のリリース
 資産をエンコードすると、エンコード ジョブの完了時に出力資産が生成されます。 このリリースまでは、Media Services エンコーダーは、出力資産に関するメタデータを生成していました。 このリリース以降、エンコーダーは入力資産に関するメタデータも生成します。 詳細については、「[入力メタデータ]」および「[出力メタデータ]」を参照してください。
@@ -381,7 +381,7 @@ Azure Media Services パッケージおよび暗号化機能で次のバグが�
 ### <a id="may_14_changes"></a>Media Services の全般的な更新
 [ダイナミック パッケージ]を使用して、HLS バージョン 3 をストリーミングできるようになりました。 HLS バージョン 3 をストリーミングするには、*.ism/manifest(format=m3u8-aapl-v3) をオリジン ロケーター パスに追加します。 詳細については、[このフォーラム](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3)を参照してください。
 
-動的パッケージが、PlayReady による Smooth Streaming 静的暗号化に基づく、PlayReady による HLS (バージョン 3 と バージョン 4) 暗号化の配信もサポートするようになりました。 PlayReady による Smooth Streaming の暗号化方法の詳細については、[PlayReady による Smooth Streaming の保護](http://msdn.microsoft.com/library/azure/dn189154.aspx)に関するページをご覧ください。
+動的パッケージが、PlayReady による Smooth Streaming 静的暗号化に基づく、PlayReady による HLS (バージョン 3 と バージョン 4) 暗号化の配信もサポートするようになりました。 PlayReady による Smooth Streaming の暗号化方法の詳細については、[PlayReady による Smooth Streaming の保護](https://msdn.microsoft.com/library/azure/dn189154.aspx)に関するページをご覧ください。
 
 ### <a name="may_14_donnet_changes"></a>Media Services .NET SDK の更新
 Media Services .NET SDK が 3.0.0.5 にバージョン アップしました。 次の更新が行われました。
@@ -397,9 +397,9 @@ Media Services .NET SDK が 3.0.0.5 にバージョン アップしました。 
 ## <a id="april_changes_14"></a>2014 年 4 月の Encoder のリリース
 ### <a name="april_14_enocer_changes"></a>Media Services Encoder の更新
 * Grass Valley EDIUS 非線形エディターを使用して作成された AVI ファイルを取り込むことができるようになりました。 このプロセスでは、ビデオは、Grass Valley HQ/HQX コーデックを使用してすばやく圧縮されます。 詳細については、「[Grass Valley announces EDIUS 7 streaming through the cloud (Grass Valley 社、クラウドを介した EDIUS 7 ストリーミングを発表)]」を参照してください。
-*  Media Services Encoder によって生成されたファイルの名前付け規則を指定できるようになりました。 詳細については、[Media Services Encoder 出力ファイル名の制御](http://msdn.microsoft.com/library/azure/dn303341.aspx)に関するページをご覧ください。
-*  ビデオ オーバーレイおよびオーディオ オーバーレイのサポートが追加されました。 詳細については、[オーバーレイの作成](http://msdn.microsoft.com/library/azure/dn640496.aspx)に関するページをご覧ください。
-*  複数のビデオ セグメントを結合できるようになりました。 詳細については、[ビデオ セグメントの結合](http://msdn.microsoft.com/library/azure/dn640504.aspx)に関するページをご覧ください。
+*  Media Services Encoder によって生成されたファイルの名前付け規則を指定できるようになりました。 詳細については、[Media Services Encoder 出力ファイル名の制御](https://msdn.microsoft.com/library/azure/dn303341.aspx)に関するページをご覧ください。
+*  ビデオ オーバーレイおよびオーディオ オーバーレイのサポートが追加されました。 詳細については、[オーバーレイの作成](https://msdn.microsoft.com/library/azure/dn640496.aspx)に関するページをご覧ください。
+*  複数のビデオ セグメントを結合できるようになりました。 詳細については、[ビデオ セグメントの結合](https://msdn.microsoft.com/library/azure/dn640504.aspx)に関するページをご覧ください。
 * オーディオが MPEG-1 Audio Layer 3 (MP3) でエンコードされるという、MP4 のコード変換に関するバグが修正されました。
 
 ## <a id="jan_feb_changes_14"></a>2014 年 1 月と 2 月のリリース
@@ -425,7 +425,7 @@ Media Services .NET SDK が 3.0.0.5 にバージョン アップしました。 
 
 現在、Media Services SDK の最新バージョンは 3.0.0.0 です。 NuGet から最新パッケージをダウンロードするか、[GitHub] からビットを取得できます。
 
-Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Service](http://msdn.microsoft.com/library/hh147631.aspx) トークンを再利用できます。 詳細については、[Media Services SDK for .NET での Media Services への接続](http://msdn.microsoft.com/library/azure/jj129571.aspx)に関するページの Access Control Service トークンの再利用に関するセクションをご覧ください。
+Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Service](https://msdn.microsoft.com/library/hh147631.aspx) トークンを再利用できます。 詳細については、[Media Services SDK for .NET での Media Services への接続](https://msdn.microsoft.com/library/azure/jj129571.aspx)に関するページの Access Control Service トークンの再利用に関するセクションをご覧ください。
 
 ### <a name="dec_13_donnet_ext_changes"></a>Media Services .NET SDK 拡張機能 2.0.0.0
  Media Services .NET SDK 拡張機能は、コードを簡素化し、Media Services による開発を容易にする一連の拡張メソッドとヘルパー機能です。 [Media Services .NET SDK 拡張機能](https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev)から最新のビットを取得できます。
@@ -476,8 +476,8 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
     * StorageAccount プロパティ
     * StorageAccountName プロパティ
   
-    詳細については、「[複数のストレージ アカウントでの Media Services 資産の管理](http://msdn.microsoft.com/library/azure/dn271889.aspx)」を参照してください。
-* 通知関連の API。 バージョン 2.2.0.0 以降、Azure Queue Storage 通知をリッスンできます。 詳細については、[Media Services ジョブ通知の処理](http://msdn.microsoft.com/library/azure/dn261241.aspx)に関するページをご覧ください。
+    詳細については、「[複数のストレージ アカウントでの Media Services 資産の管理](https://msdn.microsoft.com/library/azure/dn271889.aspx)」を参照してください。
+* 通知関連の API。 バージョン 2.2.0.0 以降、Azure Queue Storage 通知をリッスンできます。 詳細については、[Media Services ジョブ通知の処理](https://msdn.microsoft.com/library/azure/dn261241.aspx)に関するページをご覧ください。
   
     * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions プロパティ
     * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint 型

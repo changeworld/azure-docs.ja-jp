@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: d01a5a8a9a60bef315327721b9f55345bc3d1361
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645059"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229681"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
@@ -37,7 +37,7 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 適切な種類と量のトレーニング データがあれば、Custom Translator を使用することで、5 から 10 の間あるいはそれ以上の BLEU ポイントの翻訳品質を期待できることも珍しくありません。
 
-使用可能なデータに基づくカスタマイズのさまざまなレベルについて詳しくは、「[Custom Translator User Guide](http://aka.ms/CustomTranslatorDocs)」(Custom Translator ユーザー ガイド) をご覧ください。
+使用可能なデータに基づくカスタマイズのさまざまなレベルについて詳しくは、「[Custom Translator User Guide](https://aka.ms/CustomTranslatorDocs)」(Custom Translator ユーザー ガイド) をご覧ください。
 
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
@@ -53,7 +53,7 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 | SMT のカスタマイズ | [はい]   | いいえ  |
 | NMT のカスタマイズ | いいえ     | [はい] |
 | 新しい統合 Speech Services のカスタマイズ | いいえ     | [はい] |
-| [トレースなし](http://www.aka.ms/notrace) | [はい]   | [はい] |
+| [トレースなし](https://www.aka.ms/notrace) | [はい]  | [はい] |
 
 ## <a name="collaborative-translations-framework"></a>コラボレーション翻訳フレームワーク
 
@@ -65,4 +65,4 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Custom Translator を使用してカスタマイズされた言語システムを設定します](http://aka.ms/CustomTranslatorDocs)
+> [Custom Translator を使用してカスタマイズされた言語システムを設定します](https://aka.ms/CustomTranslatorDocs)

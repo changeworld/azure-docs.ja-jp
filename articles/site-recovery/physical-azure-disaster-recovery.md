@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 13ce074f8ec22bc80ee5c56f2127b3a5b4d788bf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4f4a61ad0c1b1fcab4773dcc16c5e22053c4158d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215397"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230888"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -51,7 +51,7 @@ ms.locfileid: "50215397"
 
 ### <a name="set-up-an-azure-account"></a>Azure アカウントを設定する
 
-Microsoft [Azure アカウント](http://azure.microsoft.com/)を取得します。
+Microsoft [Azure アカウント](https://azure.microsoft.com/)を取得します。
 
 - アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
 - [Site Recovery の価格](site-recovery-faq.md#pricing)について理解し、[価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)を確認します。
@@ -159,7 +159,7 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 
 1. 新しいレプリケーション ポリシーを作成するには、**[Site Recovery インフラストラクチャ]** > **[レプリケーション ポリシー]** > **[+ レプリケーション ポリシー]** の順にクリックします。
 2. **[レプリケーション ポリシーの作成]** で、ポリシー名を指定します。
-3. **[RPO しきい値]** で、回復ポイントの目標 (RPO) の上限を指定します。 この値で、データの復旧ポイントを作成する頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
+3. **[RPO しきい値]** で、復旧ポイントの目標 (RPO) の上限を指定します。 この値で、データの復旧ポイントを作成する頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
 4. **[復旧ポイントの保持期間]** で、各復旧ポイントのリテンション期間の長さ (時間単位) を指定します。 レプリケートされた VM は、期間内の任意の時点に復旧できます。 Premium Storage にレプリケートされたマシンでは最大 24 時間のリテンション期間がサポートされ、Standard Storage の場合は 72 時間です。
 5. **[アプリ整合性スナップショットの頻度]** で、アプリケーション整合性スナップショットを含む復旧ポイントの作成頻度 (分単位) を指定します。 **[OK]** をクリックしてポリシーを作成します。
 

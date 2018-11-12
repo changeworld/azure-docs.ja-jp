@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 41319ba446994da1669e58e33008a943e74ab417
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bf5cb2851acdcf1f9353e88fc2f2caa3c356804e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331392"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230369"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Notification Hubs の使用 (Kindle アプリ)
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "36331392"
 
 ## <a name="prerequisites"></a>前提条件
 
-* <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android サイト</a>から Android SDK (Eclipse を使用していることを想定) を入手します。
+* <a href="https://go.microsoft.com/fwlink/?LinkId=389797">Android サイト</a>から Android SDK (Eclipse を使用していることを想定) を入手します。
 * 「<a href="https://developer.amazon.com/docs/fire-tablets/ft-set-up-your-development-environment.html">開発環境を設定する</a>」の手順に従い、Kindle の開発環境を設定します。
 
 ## <a name="add-a-new-app-to-the-developer-portal"></a>開発者ポータルへの新しいアプリの追加

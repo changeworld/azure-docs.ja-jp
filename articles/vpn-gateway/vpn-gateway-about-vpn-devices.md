@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/05/2018
 ms.author: yushwang
-ms.openlocfilehash: 7153b4054c1efc6e8e320cee61bc36674061b7d3
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cbbba60f42c2e0ef7a6e53c34e883e2fdf6f8781
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815819"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229171"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -61,7 +61,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Juniper |J シリーズ |PolicyBased: JunOS 10.4r9<br>RouteBased: JunOS 11.4 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
 | Juniper |ISG |ScreenOS 6.3 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
 | Juniper |SSG |ScreenOS 6.2 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
-| Microsoft |ルーティングとリモート アクセス サービス |Windows Server 2012 |互換性なし |[構成のサンプル](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
+| Microsoft |ルーティングとリモート アクセス サービス |Windows Server 2012 |互換性なし |[構成のサンプル](https://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG |Mission Control Security Gateway |該当なし |[構成ガイド](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |互換性なし |
 | Palo Alto Networks |PAN-OS を実行しているすべてのデバイス |PAN-OS<br>PolicyBased: 6.1.5 以降<br>RouteBased: 7.1.4 |[構成ガイド](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[構成ガイド](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | ShareTech | Next Generation UTM (NU シリーズ) | 9.0.1.3 | 互換性なし | [構成ガイド](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
