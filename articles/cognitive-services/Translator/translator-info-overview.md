@@ -10,26 +10,28 @@ ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: erhopf
-ms.openlocfilehash: 6c89ff41531b130843eb288b98ffe7def1d8915e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 9d1c5fac9e305e397e0184653e6d8965f9098ee3
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645049"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037449"
 ---
 # <a name="what-is-translator-text-api"></a>Translator Text API とは
 
-Translator Text API は、アプリケーション、Web サイト、ツール、またはその他のソリューションにシームレスに統合して、[60 言語を超える](languages.md)多言語ユーザー エクスペリエンスを提供できます。 使用しているハードウェア プラットフォーム上やオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
+Translator Text API は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 [60 か国語](languages.md)を超える多言語のユーザー エクスペリエンスを追加し、使用しているハードウェア プラットフォームやオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
 
-Translator Text API は、機械学習と AI のアルゴリズムをクラウドで提供する Azure の [Cognitive Services API ](https://docs.microsoft.com/azure/#pivot=products&panel=ai) コレクションの一部です。この API は、開発プロジェクトですぐに利用できます。
+Translator Text API は、機械学習と AI のアルゴリズムをクラウドで提供する Azure の [Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) コレクションの一部です。この API は、開発プロジェクトですぐに利用できます。
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator について
 
-Microsoft Translator は、クラウドベースの機械翻訳サービスです。 このサービスの中核にあるのは、さまざまな Microsoft 製品やサービスを動かしていて、コンテンツを世界中のユーザーに届けられるように、世界中に広がる数千の企業のアプリケーションとワークフローで使用されている Translator Text API と [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-translation) です。
+Microsoft Translator は、クラウドベースの機械翻訳サービスです。 その核となるサービス Translator Text API は、Microsoft のさまざまな製品やサービスに活かされているほか、世界中の膨大な数の企業がそのアプリケーションとワークフローに使用し、コンテンツを世界中のユーザーに届けることに成功しています。
 
-音声翻訳は [Cognitive Services Speech プレビュー](https://docs.microsoft.com/azure/cognitive-services/speech-service/)でも使用できます。これは、既存の Translator Speech API、Bing Speech API、および Custom Speech Service (プレビュー) を統合し、完全にカスタマイズ可能なサービスです。  
+Translator Text API によって支えられた音声翻訳は、[Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) を通じて利用することもできます。 Translator Speech API、Bing Speech API、Custom Speech Service (プレビュー) の機能が融合され、一元化された完全にカスタマイズ可能なサービスとなっています。 Speech Service は、Translator Speech API (2019 年 10 月 15 日に使用停止となる予定) の後継です。
 
-Microsoft Translator サービスの詳細については、[こちら](https://www.microsoft.com/en-us/translator/home.aspx)を参照してください
+## <a name="language-support"></a>言語のサポート
+
+Microsoft Translator は、翻訳、表記変換、言語検出、辞書の多言語化を実現します。 サポートされる全言語のリストについては、[言語のサポート](language-support.md)に関するページを参照してください。このリストには、プログラムから [REST API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) でアクセスすることもできます。  
 
 ## <a name="language-customization"></a>言語のカスタマイズ
 

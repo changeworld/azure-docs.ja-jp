@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 6efcb7bccfdfab18a57e709d9fdfa8492b159b34
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ab7689cb18dcd11926abc2e9806885b1072e3886
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278091"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960176"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
@@ -26,7 +26,7 @@ ms.locfileid: "51278091"
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、診断ログのアーカイブ先となる[ストレージ アカウントを作成する](../storage/common/storage-quickstart-create-account.md)必要があります。 既存のストレージ アカウントを使用しないことを強くお勧めします。既存のストレージ アカウントには、監視データへのアクセスをさらに制御するために保存されている他の非監視データがあります。 ただし、アクティビティ ログと診断メトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、診断ログのそのストレージ アカウントも使用するのが適切であることがあります。
+開始する前に、診断ログのアーカイブ先となる[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)必要があります。 既存のストレージ アカウントを使用しないことを強くお勧めします。既存のストレージ アカウントには、監視データへのアクセスをさらに制御するために保存されている他の非監視データがあります。 ただし、アクティビティ ログと診断メトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、診断ログのそのストレージ アカウントも使用するのが適切であることがあります。
 
 > [!NOTE]
 >  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにデータをアーカイブすることはできません。
@@ -161,7 +161,7 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 
 ## <a name="next-steps"></a>次の手順
 
-* [分析のための BLOB のダウンロード](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+* [分析のための BLOB のダウンロード](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [診断ログの Event Hubs 名前空間へのストリーミング](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Azure Monitor による Azure Active Directory ログのアーカイブ](../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [診断ログの詳細の参照](monitoring-overview-of-diagnostic-logs.md)

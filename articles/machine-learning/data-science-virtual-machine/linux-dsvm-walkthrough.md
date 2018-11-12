@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 7576c479b9e3e443b048a9295c0ff0f30d4b9423
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240326"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037585"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
 
-このチュートリアルで説明するデータ サイエンス タスクは、「 [Team Data Science Process](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview)」で説明されている手順に従います。 このプロセスは、データ サイエンティストのチームがインテリジェント アプリケーションの構築ライフサイクルにわたって効果的に共同作業できるようにする体系的なアプローチをデータ サイエンスにもたらします。 また、個人が従うことができるデータ サイエンスの反復的なフレームワークも提供します。
+このチュートリアルで説明するデータ サイエンス タスクは、「 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)」で説明されている手順に従います。 このプロセスは、データ サイエンティストのチームがインテリジェント アプリケーションの構築ライフサイクルにわたって効果的に共同作業できるようにする体系的なアプローチをデータ サイエンスにもたらします。 また、個人が従うことができるデータ サイエンスの反復的なフレームワークも提供します。
 
 このチュートリアルでは、[spambase](https://archive.ics.uci.edu/ml/datasets/spambase) データセットを分析します。 このデータセットは、スパムまたはハム (スパムではないメール) としてマークされた一連のメールです。メールの内容に関する統計情報も含まれています。 含まれている統計情報については、次の次のセクションで説明します。
 
