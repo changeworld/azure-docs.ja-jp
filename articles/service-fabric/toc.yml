@@ -452,38 +452,40 @@ items:
       href: service-fabric-backuprestoreservice-quickstart-standalonecluster.md
     - name: Maven への対応を目的とした従来の Java アプリケーションの移行
       href: service-fabric-migrate-old-javaapp-to-use-maven.md
-  - name: Windows/VS 開発環境での作業
+  - name: IDE での作業
     items:
-    - name: Visual Studio でのアプリケーションの管理
-      href: service-fabric-manage-application-in-visual-studio.md
-    - name: Visual Studio でのセキュリティ保護された接続の構成
-      href: service-fabric-visualstudio-configure-secure-connections.md
-    - name: VS での .NET サービスのデバッグ
-      href: service-fabric-debugging-your-application.md
-    - name: Service Fabric と VS での Windows コンテナーのデバッグ
-      href: service-fabric-how-to-debug-windows-containers.md
-    - name: 一般的なエラーと例外
-      href: service-fabric-errors-and-exceptions.md
-    - name: ローカルでの監視と診断
-      href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
-    - name: Windows での Linux クラスターの設定
-      href: service-fabric-local-linux-cluster-windows.md
-  - name: Linux/Eclipse 開発環境での作業
-    items:
-    - name: Java 開発用の Eclipse プラグインの使用
-      href: service-fabric-get-started-eclipse.md
-    - name: Eclipse での Java サービスのデバッグ
-      href: service-fabric-debugging-your-application-java.md
-    - name: ローカルでの監視と診断
-      href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
-  - name: VS Code 環境での作業
-    items:
-    - name: VS Code を使ってみる
-      href: service-fabric-get-started-vs-code.md
-    - name: VS Code を使用した C# Service Fabric アプリケーションの開発
-      href: service-fabric-develop-csharp-applications-with-vs-code.md
-    - name: VS Code を使用した Java Service Fabric アプリケーションの開発
-      href: service-fabric-develop-java-applications-with-vs-code.md
+    - name: Windows/VS 開発環境での作業
+      items:
+      - name: Visual Studio でのアプリケーションの管理
+        href: service-fabric-manage-application-in-visual-studio.md
+      - name: Visual Studio でのセキュリティ保護された接続の構成
+        href: service-fabric-visualstudio-configure-secure-connections.md
+      - name: VS での .NET サービスのデバッグ
+        href: service-fabric-debugging-your-application.md
+      - name: Service Fabric と VS での Windows コンテナーのデバッグ
+        href: service-fabric-how-to-debug-windows-containers.md
+      - name: 一般的なエラーと例外
+        href: service-fabric-errors-and-exceptions.md
+      - name: ローカルでの監視と診断
+        href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
+      - name: Windows での Linux クラスターの設定
+        href: service-fabric-local-linux-cluster-windows.md
+    - name: Linux/Eclipse 開発環境での作業
+      items:
+      - name: Java 開発用の Eclipse プラグインの使用
+        href: service-fabric-get-started-eclipse.md
+      - name: Eclipse での Java サービスのデバッグ
+        href: service-fabric-debugging-your-application-java.md
+      - name: ローカルでの監視と診断
+        href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+    - name: VS Code 環境での作業
+      items:
+      - name: VS Code を使ってみる
+        href: service-fabric-get-started-vs-code.md
+      - name: VS Code を使用した C# Service Fabric アプリケーションの開発
+        href: service-fabric-develop-csharp-applications-with-vs-code.md
+      - name: VS Code を使用した Java Service Fabric アプリケーションの開発
+        href: service-fabric-develop-java-applications-with-vs-code.md
   - name: Cloud Services から移行する
     items:
     - name: Cloud Services と Service Fabric を比較する
@@ -761,9 +763,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 33a243d89888bcb34d9c23a100643876f6eb4b53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a7549a3544fb40527e0526bfb5c7db424b0d014a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241295"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567810"
