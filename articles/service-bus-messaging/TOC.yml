@@ -188,6 +188,8 @@ items:
       href: /dotnet/api/microsoft.azure.servicebus
   - name: Java
     href: /java/api/overview/azure/servicebus
+  - name: Node.js
+    href: /javascript/api/overview/azure/service-bus
   - name: Azure PowerShell
     href: /powershell/module/azurerm.servicebus
   - name: REST ()
@@ -226,9 +228,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: 576e94f39cf8ccdd883b23b769669df2745341aa
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 57d99167d3df488356bc4ee5c5aae0367c96a096
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978129"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577955"
