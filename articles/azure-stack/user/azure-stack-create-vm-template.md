@@ -49,7 +49,7 @@ GitHub リポジトリの詳細と、リポジトリへの投稿方法につい�
 ## <a name="create-a-vm-using-a-custom-github-template"></a>カスタム GitHub テンプレートを使用して VM を作成する
 このチュートリアルの例では、[101-vm-linux-minikube](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-linux-minikube) Azure Stack クイック スタート テンプレートを使用して、Kubernetes クラスターを管理するために Minikube を実行している AzureStack に Ubuntu 16.04 仮想マシンをデプロイします。
 
-Minikube は、Kubernetes をローカルで簡単に実行できるようにするツールです。 ユーザーが Kubernetes を試用したり日常的に開発していたりできるように、Minikube は VM 内で単一ノードの Kubernetes クラスターを実行します。 Linux VM で実行される単純な単一ノードの Kubernetes クラスターがサポートされています。 Minikube は、完全に機能する Kubernetes クラスターを稼働させるための最も速くて簡単な方法です。 Minikube を使用すると、開発者はローカル マシン上で Kubernetes ベースのアプリケーションのデプロイを開発し、テストすることができます。 アーキテクチャ上、Minikube VM はマスター ノード コンポーネントとエージェント ノード コンポーネントの両方でローカルに実行されます。
+Minikube は、Kubernetes をローカルで簡単に実行できるようにするツールです。 ユーザーが Kubernetes を試用したり日常的に開発したりできるように、Minikube は VM 内で単一ノードの Kubernetes クラスターを実行します。 Linux VM で実行される単純な単一ノードの Kubernetes クラスターがサポートされています。 Minikube は、完全に機能する Kubernetes クラスターを稼働させるための最も速くて簡単な方法です。 Minikube を使用すると、開発者はローカル マシン上で Kubernetes ベースのアプリケーションのデプロイを開発し、テストすることができます。 アーキテクチャ上、Minikube VM はマスター ノード コンポーネントとエージェント ノード コンポーネントの両方でローカルに実行されます。
 
 - API Server、Scheduler、[etcd Server](https://coreos.com/etcd/) などのマスター ノード コンポーネントは、LocalKube という名前の単一の Linux プロセスで実行されます。
 - エージェント ノード コンポーネントは、通常のエージェント ノード上で実行される場合とまったく同じように、Docker コンテナー内で実行されます。 アプリケーションのデプロイの観点からは、アプリケーションが Minikube 上にデプロイされても通常の Kubernetes クラスター上にデプロイされても、違いはありません。
