@@ -8,30 +8,32 @@ items:
   expanded: true
 - name: クイック スタート
   items:
-  - name: クライアント SDK の使用
+  - name: .NET SDK の使用
     items:
-    - name: C#
+    - name: 画像内の顔を検出する
       href: QuickStarts/csharp-detect-sdk.md
   - name: REST API の使用
     items:
-    - name: C#
-      href: QuickStarts/CSharp.md
-    - name: cURL
-      href: QuickStarts/curl.md
-    - name: Go
-      href: QuickStarts/go.md
-    - name: Java
-      href: QuickStarts/Java.md
-    - name: JavaScript
-      href: QuickStarts/JavaScript.md
-    - name: Node.js
-      href: QuickStarts/node.md
-    - name: PHP
-      href: QuickStarts/PHP.md
-    - name: Python
-      href: QuickStarts/Python.md
-    - name: Ruby
-      href: QuickStarts/Ruby.md
+    - name: 画像内の顔を検出する
+      items:
+      - name: C#
+        href: QuickStarts/CSharp.md
+      - name: cURL
+        href: QuickStarts/curl.md
+      - name: Go
+        href: QuickStarts/go.md
+      - name: Java
+        href: QuickStarts/Java.md
+      - name: JavaScript
+        href: QuickStarts/JavaScript.md
+      - name: Node.js
+        href: QuickStarts/node.md
+      - name: PHP
+        href: QuickStarts/PHP.md
+      - name: Python
+        href: QuickStarts/Python.md
+      - name: Ruby
+        href: QuickStarts/Ruby.md
 - name: チュートリアル
   items:
   - name: クライアント SDK の使用
@@ -98,9 +100,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: リリース ノート
     href: ReleaseNotes.md
-ms.openlocfilehash: 3875aa50b810fdc5271c1204135a75776109564e
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 406348e52df7f7dc62f3642333111338aef2176c
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913617"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578017"
