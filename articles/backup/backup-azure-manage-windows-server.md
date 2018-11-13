@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: markgal
-ms.openlocfilehash: 9fad5876ce177129d6178052916843b94b33ccf1
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: c9b3b027a52a6847c566c385c304edc195f7fdda
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445469"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250698"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
@@ -223,8 +223,8 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 * すべての操作
 * Register
 * バックアップの構成
-* Backup
-* Restore
+* バックアップ
+* 復元
 * バックアップを無効にする
 * バックアップ データの削除
 
@@ -296,4 +296,4 @@ A3. はい。 次のような状況では、通知は送信されません。
 ## <a name="next-steps"></a>次の手順
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
-* [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
+* [Azure Backup フォーラム](https://go.microsoft.com/fwlink/p/?LinkId=290933)

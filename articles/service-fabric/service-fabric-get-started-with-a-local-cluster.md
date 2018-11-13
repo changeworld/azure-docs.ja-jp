@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 0243f6ca96b5e2c20b40bf6e0fc11e8d760db475
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 639293a1811c35d87bd705800b8ecf62f667c0e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053365"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246720"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する
 Azure Service Fabric SDK には、完全なローカル開発環境が含まれています。これを使用して、ローカル クラスター上でアプリケーションをデプロイおよび管理する作業をすぐに開始することができます。 この記事では、ローカル クラスターを作成し、既存のアプリケーションをローカル クラスターにデプロイして、そのアプリケーションを新しいバージョンにアップグレードします。これらの作業はすべて Windows PowerShell で行います。
@@ -71,7 +71,7 @@ Service Fabric SDK には、アプリケーションを作成するための豊�
     mkdir c:\ServiceFabric\
     cd c:\ServiceFabric\
     ```
-4. [WordCount アプリケーションをダウンロード](http://aka.ms/servicefabric-wordcountapp) します。  注: Microsoft Edge ブラウザーでは、ファイルが *.zip* 拡張子付きで保存されます。  ファイル拡張子を *.sfpkg*に変更します。
+4. [WordCount アプリケーションをダウンロード](https://aka.ms/servicefabric-wordcountapp) します。  注: Microsoft Edge ブラウザーでは、ファイルが *.zip* 拡張子付きで保存されます。  ファイル拡張子を *.sfpkg*に変更します。
 5. 次のように、ローカル クラスターに接続します。
    
     ```powershell
@@ -139,7 +139,7 @@ Service Fabric では、クラスター全体にロールアウトされると�
 
 アプリケーションの新しいバージョンでは、母音で始まる単語のみをカウントするようになります。 アップグレードがロールアウトされると、アプリケーションの動作に 2 つの変化が現れます。 第 1 に、カウント数の増加のスピードが低下します。前よりもカウント対象の単語が少なくなっているためです。 第 2 に、1 番目のパーティションには 2 つの母音 (A と E) が含められ、他のすべてのパーティションにはそれぞれ 1 つの母音が含められるので、1 番目のパーティションのカウント数は最終的に、他のパーティションの値を上回るようになります。
 
-1. バージョン 1 パッケージをダウンロードしたのと同じ場所に、[WordCount バージョン 2 パッケージをダウンロード](http://aka.ms/servicefabric-wordcountappv2)します。
+1. バージョン 1 パッケージをダウンロードしたのと同じ場所に、[WordCount バージョン 2 パッケージをダウンロード](https://aka.ms/servicefabric-wordcountappv2)します。
 2. PowerShell ウィンドウに戻り、SDK のアップグレード コマンドを使用して、新しいバージョンをクラスターに登録します。 その後、fabric:/WordCount アプリケーションのアップグレードを開始します。
    
     ```powershell
