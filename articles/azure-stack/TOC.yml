@@ -230,6 +230,8 @@ items:
       href: azure-stack-add-vm-image.md
     - name: 仮想マシン スケール セットの提供
       href: azure-stack-compute-add-scalesets.md
+    - name: Marketplace の Windows Server の FAQ
+      href: azure-stack-windows-server-faq.md
     - name: Linux 仮想マシンの提供
       href: azure-stack-linux.md
     - name: Red Hat 仮想マシンの追加
@@ -386,9 +388,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 0e8b5d3661de005acf93b871106242f484cf0eb8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 60487f16002df5a55d2859a14ec34559acd5cd5f
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011512"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578153"
