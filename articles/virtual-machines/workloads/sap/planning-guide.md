@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8b7d2620b5b972c9476332f2b662a891a0b3765
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 9edbb9d916840f348a7df589c6e7cb2110419cb3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430342"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262405"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -1259,7 +1259,7 @@ DBMS データ ファイルに使用されるディスクの数とでこれら�
 >
 > * [Linux でのソフトウェア RAID の構成][virtual-machines-linux-configure-raid]
 > * [Azure で Linux VM の LVM を構成する][virtual-machines-linux-configure-lvm]
-> * [Azure Storage の秘密と Linux の I/O 最適化](http://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
+> * [Azure Storage の秘密と Linux の I/O 最適化](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
 >
 >
 
@@ -1316,7 +1316,7 @@ Azure Geo レプリケーションは、VM 内の各 VHD においてローカ�
 > 自動マウントを設定する場合は、次のコマンド ライン実行可能ファイル diskpart.exe のドキュメントを参照してください。
 >
 > * [DiskPart コマンド ライン オプション](https://technet.microsoft.com/library/bb490893.aspx)
-> * [自動マウント](http://technet.microsoft.com/library/cc753703.aspx)
+> * [自動マウント](https://technet.microsoft.com/library/cc753703.aspx)
 >
 > Windows コマンドライン ウィンドウは、管理者として開く必要があります。
 >

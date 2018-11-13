@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b09cfe106eefe9f6ab76cd1bfea91a0b6ff13b7c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214530"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252141"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -119,7 +119,7 @@ Azure portal のコンテナー ページで、**[作業の開始]** セクシ�
 
 1. Windows Server 2012 R2 を実行している EC2 インスタンスを使用して構成サーバーを作成し、Recovery コンテナーに登録します。
 2. 構成サーバーとして使用している EC2 インスタンス VM でプロキシを構成し、[サービス URL](site-recovery-support-matrix-to-azure.md) にアクセスできるようにします。
-3. [Microsoft Azure Site Recovery 統合セットアップ](http://aka.ms/unifiedinstaller_wus)をダウンロードします。 ローカル コンピューターにダウンロードし、構成サーバーとして使用している VM にコピーすることができます。
+3. [Microsoft Azure Site Recovery 統合セットアップ](https://aka.ms/unifiedinstaller_wus)をダウンロードします。 ローカル コンピューターにダウンロードし、構成サーバーとして使用している VM にコピーすることができます。
 4. **[ダウンロード]** ボタンを選択して、コンテナーの登録キーをダウンロードします。 ダウンロードしたファイルを、構成サーバーとして使用している VM にコピーします。
 5. VM で、Microsoft Azure Site Recovery 統合セットアップのダウンロードしたインストーラーを右クリックし、**[管理者として実行]** を選択します。
 

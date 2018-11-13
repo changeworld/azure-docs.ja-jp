@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 4386f87b6986e6ab1742a8d3c14a100fea112182
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406313"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238490"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure Data Catalog の概要
 Azure Data Catalog は、フル マネージドのクラウド サービスで、エンタープライズ データ資産の登録システムと検出システムとして機能します。 詳細については、「 [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md)」を参照してください。
@@ -96,7 +96,7 @@ Adventure Works データベースでは、製品、販売、購入を含む、�
 Adventure Works サンプル データベースのインストール方法を次に示します。
 
 1. CodePlex で [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) をダウンロードします。
-2. [SQL Server Management Studio を使用したデータベース バックアップの復元](http://msdn.microsoft.com/library/ms177429.aspx)に関する記事の手順、または以下の手順に従って、お使いのコンピューターにデータベースを復元します。
+2. [SQL Server Management Studio を使用したデータベース バックアップの復元](https://msdn.microsoft.com/library/ms177429.aspx)に関する記事の手順、または以下の手順に従って、お使いのコンピューターにデータベースを復元します。
    1. SQL Server Management Studio を開き、SQL Server データベース エンジンに接続します。
    2. **[データベース]** を右クリックし、**[データベースの復元]** をクリックします。
    3. **[データベースの復元]** で、**[ソース]** の **[デバイス]** オプションを選択し、**[参照]** をクリックします。

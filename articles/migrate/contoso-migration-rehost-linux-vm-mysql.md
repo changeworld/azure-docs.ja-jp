@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: c89ba62ae104d378dc99809e2d96ac993cd2bc35
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: d4197effff48c23147799cd1fc3778521c42a19e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115970"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256767"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso の移行: オンプレミス Linux アプリを Azure VM と Azure MySQL にリホストする
 
@@ -199,7 +199,7 @@ Contoso は、Azure へのフェールオーバー後に、Azure VM に接続で
 
 - インターネット経由でアクセスするには、移行前に、オンプレミス Linux VM 上で SSH を有効にします。  Ubuntu の場合、これは **Sudo apt-get ssh install -y** というコマンドを使用して済ませることができます。
 - フェールオーバー後、**ブート診断**を調べて VM のスクリーンショットを確認する必要があります。
-- これが機能しない場合は、その VM が実行中であることを確認し、これらの[トラブルシューティングのヒント](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を見直す必要があります。
+- これが機能しない場合は、その VM が実行中であることを確認し、これらの[トラブルシューティングのヒント](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を見直す必要があります。
 
 **さらにサポートが必要な場合**
 

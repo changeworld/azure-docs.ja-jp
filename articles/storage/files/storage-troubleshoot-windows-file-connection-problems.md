@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 5e730e52d55f6c8c2dd02f69e3efa67017af152b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0496d9b3fde8b0194ddf57b3bbfec98eb7fda7fe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242978"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250851"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -46,7 +46,7 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 
 ### <a name="cause-2-port-445-is-blocked"></a>原因 2: ポート 445 がブロックされている
 
-ポート 445 から Azure Files データセンターへの送信方向の通信がブロックされている場合、システム エラー 53 またはシステム エラー 67 が発生することがあります。 ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認するには、[TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) を参照してください。
+ポート 445 から Azure Files データセンターへの送信方向の通信がブロックされている場合、システム エラー 53 またはシステム エラー 67 が発生することがあります。 ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認するには、[TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) を参照してください。
 
 これが "システム エラー 53" メッセージの原因であるかどうかを把握するために、Portqry を使用して、TCP:445 エンドポイントを照会できます。 TCP:445 エンドポイントがフィルター処理済みとして表示される場合、TCP ポートがブロックされています。 クエリの使用例を次に示します。
 

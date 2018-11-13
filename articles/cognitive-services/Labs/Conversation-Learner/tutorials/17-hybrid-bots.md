@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a03596ff8383a085314508d4a25d0ba89bcc3094
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 82b0d1494e983d033889d588bcb73d0364fcfc89
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174481"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256291"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Conversation Learner を他のボット構築技術と共に使用する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "39174481"
 
 ## <a name="video"></a>ビデオ
 
-[![チュートリアル 15 のプレビュー](http://aka.ms/cl-tutorial-15-preview)](http://aka.ms/blis-tutorial-15)
+[![チュートリアル 15 のプレビュー](https://aka.ms/cl-tutorial-15-preview)](https://aka.ms/blis-tutorial-15)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、[Log Dialog]\(会話記録\) の Web UI ではなく、ボット エミュレーターを使用して会話記録を作成する必要があります。  
@@ -69,7 +69,7 @@ Web UI のモデル一覧で、[Tutorial-15-Hybrid] をクリックします。
 
 では、アクションを見てみましょう。
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 
 モデルには 4 つのアクションがあります。
 

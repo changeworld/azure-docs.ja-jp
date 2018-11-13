@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: danlep
-ms.openlocfilehash: 5a73e926b5979e573ccb0402ff2d23eae2463232
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6969f0c6a05ebf5b34fb746d2a83b884687ad710
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29762443"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258257"
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Batch プールでの RDMA 対応または GPU 対応インスタンスの使用
 
@@ -105,7 +105,7 @@ Batch プール用の特殊な VM サイズを構成するために、Batch API 
 
 Azure A8 ノードのプールで Windows MPI アプリケーションを実行するには、サポートされている MPI 実装をインストールする必要があります。 Batch アプリケーション パッケージを使用して、Windows プールに [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) をインストールする手順の例を次に示します。
 
-1. 最新バージョンの Microsoft MPI の[セットアップ パッケージ](http://go.microsoft.com/FWLink/p/?LinkID=389556) (MSMpiSetup.exe) をダウンロードします。
+1. 最新バージョンの Microsoft MPI の[セットアップ パッケージ](https://go.microsoft.com/FWLink/p/?LinkID=389556) (MSMpiSetup.exe) をダウンロードします。
 2. パッケージの zip ファイルを作成します。
 3. パッケージを Batch アカウントにアップロードします。 手順については、[アプリケーション パッケージ](batch-application-packages.md)のガイダンスを参照してください。 アプリケーション ID (*MSMPI* など) とバージョン (*8.1* など) を指定します。 
 4. Batch API または Azure Portal で、必要な数のノードとスケールを指定して、クラウド サービス構成でプールを作成します。 次の表に、開始タスクを使用して無人モードで MPI を設定する際の設定の例を示します。
@@ -124,7 +124,7 @@ Azure A8 ノードのプールで Windows MPI アプリケーションを実行�
 
 Linux NC ノードのプールで CUDA アプリケーションを実行するには、CUDA Toolkit 9.0 をノードにインストールする必要があります。 この Toolkit により、必要な NVIDIA Tesla GPU ドライバーがインストールされます。 GPU ドライバーがインストールされたカスタム Ubuntu 16.04 LTS イメージをデプロイする手順の例を次に示します。
 
-1. Ubuntu 16.04 LTS を実行する Azure NC シリーズ VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 管理ディスクを使用して VM を作成してください。
+1. Ubuntu 16.04 LTS を実行する Azure NC シリーズ VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 マネージド ディスクを使用して VM を作成してください。
 2. VM に接続し、[CUDA ドライバーをインストール](../virtual-machines/linux/n-series-driver-setup.md)する手順に従います。
 3. Linux エージェントをプロビジョニング解除した後、[Linux VM イメージをキャプチャ](../virtual-machines/linux/capture-image.md)します。
 4. NC VM をサポートするリージョンに Batch アカウントを作成します。

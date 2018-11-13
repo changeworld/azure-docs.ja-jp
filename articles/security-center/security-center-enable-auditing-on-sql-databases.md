@@ -3,7 +3,7 @@ title: Azure Security Center での SQL データベースの監査と脅威検�
 description: このドキュメントでは、「**SQL データベースの監査と脅威検出の有効化**」という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 224b6755-2b36-4ecd-9af8-139a198e0df1
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
-ms.author: terrylan
-ms.openlocfilehash: bad06cb8d0b0a55f01101582e034ffac3b62414b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 99b78b063803ff1fb1cda6dfb3b240577d8bbbe6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295889"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258886"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>Azure Security Center での SQL データベースの監査と脅威検出の有効化
 Azure Security Center では、監査と脅威検出をまだ有効にしていない場合、すべての SQL データベースで監査と脅威検出を有効にすることをお勧めします。 監査と脅威検出によって、規定遵守の維持、データベース アクティビティの理解、およびビジネス上の懸念やセキュリティ違反の疑いを示す差異や異常に対するインサイトが容易になります。
@@ -57,7 +57,7 @@ Azure Security Center では、監査と脅威検出をまだ有効にしてい�
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」-- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-enable-auditing-on-sql-databases/enable-auditing-on-sql-databases.png
