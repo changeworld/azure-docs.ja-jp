@@ -60,7 +60,7 @@ items:
       href: azure-to-azure-tutorial-migrate.md
 - name: 概念
   items:
-  - name: よく寄せられる質問 (FAQ)
+  - name: Site Recovery に関する一般的な質問
     href: site-recovery-faq.md
   - name: Azure への Azure VM のディザスター リカバリーについて
     items:
@@ -80,6 +80,8 @@ items:
       href: vmware-azure-common-questions.md
     - name: サポート マトリックス
       href: vmware-physical-azure-support-matrix.md
+    - name: 構成サーバーのデプロイのサポート要件
+      href: vmware-azure-configuration-server-requirements.md
     - name: VMware から Azure へのアーキテクチャ
       href: vmware-azure-architecture.md
     - name: Azure から VMware へのフェールバック場所のオプション
@@ -134,9 +136,9 @@ items:
       items:
       - name: Azure VM のディザスター リカバリーのネットワークを準備する
         href: azure-to-azure-about-networking.md
-      - name: Azure VM のディザスター リカバリーのネットワーク マッピングを準備する
+      - name: ネットワーク マッピングを設定し、フェールオーバー後に IP アドレスを保持する
         href: azure-to-azure-network-mapping.md
-      - name: フェールオーバーの IP アドレス指定を設定する
+      - name: フェールオーバー後に IP アドレスを保持する例
         href: site-recovery-retain-ip-azure-vm-failover.md
       - name: ExpressRoute を Azure VM ディザスター リカバリーと統合する
         href: azure-vm-disaster-recovery-with-expressroute.md
@@ -148,14 +150,6 @@ items:
         href: azure-to-azure-how-to-enable-replication-ade-vms.md
       - name: フェールオーバー後に Azure VM を再保護する
         href: azure-to-azure-how-to-reprotect.md
-    - name: トラブルシューティング
-      items:
-      - name: Azure から Azure へのレプリケーションに関するトラブルシューティング
-        href: azure-to-azure-troubleshoot-errors.md
-      - name: 実行中のレプリケーションのトラブルシューティング
-        href: azure-to-azure-troubleshoot-replication.md
-      - name: Azure Site Recovery 拡張機能のトラブルシューティング
-        href: site-recovery-extension-troubleshoot.md
       - name: Azure への移行後に Azure VM のディザスター リカバリーをセットアップする
         href: azure-to-azure-replicate-after-migration.md
     - name: 管理
@@ -188,10 +182,8 @@ items:
         href: vmware-azure-set-up-process-server-scale.md
     - name: ディザスター リカバリーを設定する
       items:
-      - name: ソース環境をセットアップする
+      - name: ソース環境/構成サーバーを設定する
         href: vmware-azure-set-up-source.md
-      - name: VMware VM 用の構成サーバーをデプロイする
-        href: vmware-azure-deploy-configuration-server.md
       - name: ターゲット環境をセットアップする
         href: vmware-azure-set-up-target.md
       - name: レプリケーションの設定を構成する
@@ -390,14 +382,18 @@ items:
     href: site-recovery-monitor-and-troubleshoot.md
   - name: Azure VM
     items:
-    - name: Azure から Azure へのレプリケーションに関するトラブルシューティング
+    - name: Azure VM のレプリケーション エラーのトラブルシューティング
       href: azure-to-azure-troubleshoot-errors.md
+    - name: Azure VM の継続中のレプリケーションのトラブルシューティング
+      href: azure-to-azure-troubleshoot-replication.md
     - name: Azure VM のモビリティ サービスに関するトラブルシューティング
       href: site-recovery-extension-troubleshoot.md
   - name: VMware および物理サーバー
     items:
     - name: VMware から Azure へのレプリケーションに関するトラブルシューティング
       href: vmware-azure-troubleshoot-replication.md
+    - name: 構成サーバーのトラブルシューティング
+      href: vmware-azure-troubleshoot-configuration-server.md
     - name: VMware VM および物理サーバーのモビリティ サービスのプッシュ インストールに関するトラブルシューティング
       href: vmware-azure-troubleshoot-push-install.md
     - name: Azure へのフェールオーバーに関するトラブルシューティング
@@ -438,9 +434,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 770aa6a07df6900b10558ebbb7718c248296ee51
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: d0d5ff955caa7cf9206973f0411f4170ba3bbc35
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288086"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566355"
