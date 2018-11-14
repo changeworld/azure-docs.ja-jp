@@ -299,6 +299,8 @@ items:
         href: azure-stack-app-service-release-notes-update-two.md
       - name: App Service on Azure Stack update 3 のリリース ノート
         href: azure-stack-app-service-release-notes-update-three.md
+      - name: App Service on Azure Stack update 4 のリリース ノート
+        href: azure-stack-app-service-release-notes-update-four.md
   - name: プラン、オファー、クォータの作成
     items:
     - name: プラン、オファー、クォータ、サブスクリプションの概要
@@ -388,9 +390,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 60487f16002df5a55d2859a14ec34559acd5cd5f
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: b68cebd2d6e2a7965eef61bf35c50824f7102c8e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578153"
+ms.locfileid: "51614754"

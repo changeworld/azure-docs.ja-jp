@@ -74,6 +74,8 @@ items:
       href: scale-cluster.md
     - name: AKS クラスターのアップグレード
       href: upgrade-cluster.md
+    - name: ノードの OS の更新プログラムの処理
+      href: node-updates-kured.md
     - name: AKS クラスターの削除
       href: /cli/azure/aks#az-aks-delete
       maintainContext: true
@@ -244,9 +246,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 7fd44b1ee0c07f600fc46e3f8fda1c45261074d1
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 1bb1c6689831eb2057771c22aced1c8567bd22b0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092902"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51611524"

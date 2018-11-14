@@ -216,11 +216,9 @@ items:
     href: iot-accelerators-faq-cf.md
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
-  - name: IoT ソリューション アクセラレータのラーニング パス
-    href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 59fc1bc690544e3157536a3521848ca5bcee6fbd
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 1819c70b5834d8086a57928d39f2e5b547bfb901
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278618"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615111"

@@ -101,15 +101,15 @@ items:
         href: https://azure.microsoft.com/roadmap/
       - name: Cloudyn の価格
         href: https://azure.microsoft.com/pricing/details/cost-management
-      - name: Clouydn のリージョン別提供状況
+      - name: Cloudyn のリージョン別の提供状況
         href: https://azure.microsoft.com/regions/services/
       - name: Cloudyn に関する FAQ
         href: cost-mgt-faq.md
       - name: Cloudyn のサポートに問い合わせる
         href: support-request-cost-management.md
-ms.openlocfilehash: 287c21eb76f2dbf41adadfc8c0467633d0e9cf82
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 1aecf5906350e1e69f3e8c028e6c82d5e2bc3988
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514912"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623267"

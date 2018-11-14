@@ -16,7 +16,7 @@ items:
   - name: App Service への CI/CD
     href: /azure/jenkins/java-deploy-webapp-tutorial
   - name: Kubernetes への CI/CD
-    href: /azure/container-service/kubernetes/container-service-kubernetes-jenkins
+    href: /azure/aks/jenkins-continuous-deployment
     maintainContext: true
   - name: Linux VM への CI/CD
     href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
@@ -79,9 +79,9 @@ items:
   - name: Jenkins アーキテクチャ
     href: /azure/architecture/reference-architectures/jenkins/
     maintainContext: true
-ms.openlocfilehash: 9b7a9493dec61b110b8371510b3e1a3f1fb45acb
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 72bc64c2bf99c3b682b2db9b884614bfd7539a8f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304205"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616080"

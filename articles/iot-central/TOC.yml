@@ -82,6 +82,8 @@ items:
       href: howto-export-data.md
     - name: Power BI でのデータの視覚化
       href: howto-connect-powerbi.md
+    - name: その他の IoT クラウドの接続
+      href: howto-build-iotc-device-bridge.md
   - name: 管理
     items:
     - name: アプリケーションの管理
@@ -126,9 +128,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: サポートされているブラウザー
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: a1ff265773279d41d4fcbc59922a3003d005e746
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c3a2d9f505b0f5965e80a7daa793e8371a3ff9e1
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957966"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621005"

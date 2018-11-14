@@ -178,7 +178,7 @@ items:
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
     - name: Time Series Insights
       href: /azure/time-series-insights
-  - name: Microsoft Edge
+  - name: Edge
     items:
     - name: IoT Edge
       href: /azure/iot-edge
@@ -210,8 +210,6 @@ items:
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
   - name: iothub-diagnostics ツール
     href: https://github.com/Azure/iothub-diagnostics
-  - name: ラーニング パス
-    href: https://azure.microsoft.com/documentation/learning-paths/iot-hub/
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub
   - name: 価格
@@ -226,9 +224,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 7c662941bc72a9650cd40bd1361a6d43c11a4c5b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fe4a2c1e64b1a5054bfc9c4bbc9d136f93848a1c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989398"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616515"

@@ -67,21 +67,9 @@ items:
     - name: テナント制限
       href: tenant-restrictions.md
   - name: シングル サインオン
-    items:
-    - name: 概要
-      href: what-is-single-sign-on.md
-    - name: SSO の方法
-      href: application-proxy-single-sign-on.md
-    - name: 方法の選択
-      href: single-sign-on-modes.md
-    - name: ホーム領域検出
-      href: configure-authentication-for-federated-users-portal.md
-    - name: Kerberos の制約付き委任 (KCD)
-      href: application-proxy-configure-single-sign-on-with-kcd.md
-    - name: パスワード保管
-      href: application-proxy-configure-single-sign-on-password-vaulting.md
-    - name: headers
-      href: application-proxy-configure-single-sign-on-with-ping-access.md
+    href: what-is-single-sign-on.md
+  - name: エンドユーザーのポータル
+    href: end-user-experiences.md
 - name: ハウツー ガイド
   items:
   - name: クラウド アプリの統合
@@ -200,6 +188,8 @@ items:
       href: disable-user-sign-in-portal.md
     - name: セルフサービス アプリの割り当ての構成
       href: manage-self-service-access.md
+    - name: ホーム領域検出
+      href: configure-authentication-for-federated-users-portal.md
   - name: シングル サインオン
     items:
     - name: ギャラリー以外のアプリの構成
@@ -220,6 +210,14 @@ items:
       href: configure-password-single-sign-on-non-gallery-applications.md
     - name: パスワードの構成の一般的な問題 - ギャラリー以外のアプリ
       href: configure-password-single-sign-on-non-gallery-applications-problems.md
+    - name: アプリケーション プロキシ
+      items:
+      - name: Kerberos の制約付き委任 (KCD)
+        href: application-proxy-configure-single-sign-on-with-kcd.md
+      - name: パスワード保管
+        href: application-proxy-configure-single-sign-on-password-vaulting.md
+      - name: headers
+        href: application-proxy-configure-single-sign-on-with-ping-access.md
   - name: アクセス パネル
     items:
     - name: ブラウザー拡張機能の管理
@@ -286,9 +284,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 7114e27840d9a21701fe30537dbd6d533abaef7e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 80153dcbb00c1d0ac9b0c1c3f87004ffd6f59b1f
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413980"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622790"

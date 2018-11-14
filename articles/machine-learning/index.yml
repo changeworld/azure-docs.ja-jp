@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7dec034812647a883fa8ead05f1a7ed6675b4821
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6dc003473ed228fa8e10bd6a10d5b4b9a3d0ac49
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282749"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621362"
 documentType: LandingData
 title: Azure Machine Learning のドキュメント
 metadata:
@@ -72,7 +72,7 @@ sections:
       - href: /azure/machine-learning/studio/walkthrough-5-publish-web-service
     - title: 機械学習モデルを使用する
       values:
-      - href: 
+      - href: /azure/machine-learning/service/how-to-consume-web-service
       - href: /azure/machine-learning/studio/walkthrough-6-access-web-service
     - title: ML パイプラインを作成、最適化、管理する
       values:

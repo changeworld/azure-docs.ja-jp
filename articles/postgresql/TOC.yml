@@ -106,6 +106,16 @@ items:
   items:
   - name: ユーザーの作成
     href: howto-create-users.md
+  - name: 最適化
+    items:
+    - name: 一括挿入
+      href: howto-optimize-bulk-inserts.md
+    - name: 自動バキューム
+      href: howto-optimize-autovacuum.md
+    - name: クエリの統計コレクション
+      href: howto-optimize-query-stats-collection.md
+    - name: TOAST テーブル戦略
+      href: howto-optimize-query-time-with-toast-table-storage-strategy.md
   - name: ファイアウォールの管理
     items:
     - name: Azure ポータル
@@ -204,9 +214,9 @@ items:
     href: partners-migration-postgresql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 72cb09c49c25cd994a66ab0e32a324aeefeb06a7
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 435201a225f2e6e2d3695f71fec93796d3437436
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280131"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622824"
