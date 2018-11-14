@@ -11,15 +11,15 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
-ms.date: 06/07/2018
-ms.openlocfilehash: 504fae03e06632f5960bfe0761cc0167b9e1d3fb
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 11/01/2018
+ms.openlocfilehash: 82cf0303019d2cbb620c442fd6f750f733930f84
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465219"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912341"
 ---
-# <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>C&#x23; と ADO.NET で Azure SQL データベースを設計し、接続する
+# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>チュートリアル: C&#x23; と ADO.NET を使用して Azure SQL データベースを設計し、接続する
 
 Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサービスとしてのデータベース (DBaaS) です。 このチュートリアルでは、Azure Portal、ADO.NET、および Visual Studio を使用して以下の手順を実行する方法を説明します。
 

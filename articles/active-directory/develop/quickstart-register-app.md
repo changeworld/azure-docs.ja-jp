@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
+ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: e4e667c9a9490d164b9fb1c90580ceb30989a7dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f0220c244bd5ed48393e2f81b7dd8a62fd0423be
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988872"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912993"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する (プレビュー)
 
 エンタープライズ開発者や SaaS (サービスとしてのソフトウェア) プロバイダーは、商用クラウド サービスまたは基幹業務アプリケーションを開発し、それらを Microsoft ID プラットフォームと統合することによって、自社のサービスにセキュリティで保護されたサインインと認可を実現することができます。
 
-このクイック スタートでは、Azure portal でアプリケーションを追加および登録して、Microsoft ID プラットフォームと統合できるようにする方法を説明します。
+このクイック スタートでは、Azure portal で**アプリの登録 (プレビュー)** エクスペリエンスを使用してアプリケーションを追加および登録し、Microsoft ID プラットフォームと統合できるようにする方法を説明します。
 
 ## <a name="prerequisite"></a>前提条件
 
@@ -59,7 +59,7 @@ ms.locfileid: "49988872"
 
     [![Azure portal で新しいアプリケーションを登録する](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
-Azure AD によりアプリに一意のアプリケーション ID が割り当てられ、アプリケーションの **[概要]** ページが表示されます。 アプリケーションにさらに機能を追加するには、ブランド、証明書とシークレット、API のアクセス許可など、その他の構成オプションを選択できます。
+Azure AD によりアプリに一意のアプリケーション (クライアント) ID が割り当てられ、アプリケーションの **[概要]** ページが表示されます。 アプリケーションにさらに機能を追加するには、ブランド、証明書とシークレット、API のアクセス許可など、その他の構成オプションを選択できます。
 
 [![新たに登録されたアプリの概要ページ](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 

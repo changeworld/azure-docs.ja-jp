@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1cc1115612e8ffbe383f563e30ed5c36055df50a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 59ce51ba4b015c7236df9e20416832e877dd26c6
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158110"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748376"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -208,5 +208,5 @@ IoT Hub が受信する device-to-cloud メッセージは、[Visual Studio Code
 このチュートリアルでは、Azure Machine Learning を使用する IoT Edge モジュールを展開しました。 引き続き他のチュートリアルを実行し、Azure IoT Edge が、エッジでデータをビジネス上の洞察に変えるうえで、どのように役立つかを確認できます。
 
 > [!div class="nextstepaction"]
-> [C# コードを使用してセンサー データをフィルター処理する](tutorial-csharp-module.md)
+> [Custom Vision サービスを使用して画像を分類する](tutorial-deploy-custom-vision.md)
 
