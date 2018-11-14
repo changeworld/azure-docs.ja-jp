@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/02/2018
-ms.openlocfilehash: b5b0c1dd6f241d9b76ff766adc221c3fcb36ee1a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/01/2018
+ms.openlocfilehash: 2ab5b7a5b17daef00cb62f69a7d2a798c18456bb
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47062706"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912953"
 ---
-# <a name="use-python-to-query-an-azure-sql-database"></a>Python を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>クイック スタート: Python を使用して Azure SQL Database に照会する
 
  このクイック スタートでは、[Python](https://python.org) を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータを照会する方法について説明します。 SDK の詳細については、[リファレンス](https://docs.microsoft.com/python/api/overview/azure/sql) ドキュメント、pyodbc [サンプル](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)、[pyodbc](https://github.com/mkleehammer/pyodbc/wiki/) GitHub リポジトリを確認してください。
 

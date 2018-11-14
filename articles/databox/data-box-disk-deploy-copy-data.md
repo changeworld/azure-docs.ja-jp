@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: ade409760e3946e9d574a304afc5b48ec4279157
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 807453d6af67fd2dccf06a1b4a2beaca47dc865a
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740265"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913822"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル: Azure Data Box Disk にデータをコピーして確認する
 
@@ -31,7 +31,8 @@ ms.locfileid: "50740265"
 開始する前に次の点を確認します。
 - [Azure Data Box Disk のインストールと構成に関するチュートリアル](data-box-disk-deploy-set-up.md)を完了していること。
 - ディスクは、ロックが解除されてクライアント コンピューターに接続されます。
-- ディスクにデータをコピーするために使用するクライアント コンピューターでは、[サポートされているオペレーティング システム](data-box-disk-system-requirements.md)が実行されている必要があります。
+- ディスクにデータをコピーするために使用するクライアント コンピューターでは、[サポートされているオペレーティング システム](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)が実行されている必要があります。
+- データのための目的のストレージの種類が、[サポートされるストレージの種類](data-box-disk-system-requirements.md#supported-storage-types)と一致することを確認します。
 
 
 ## <a name="copy-data-to-disks"></a>ディスクにデータをコピーする

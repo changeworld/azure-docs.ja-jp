@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 11/02/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: b2dea11b6573be8f574bd18fa69ee76658d6d698
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0bf5bbdf496a23a5ed66a149933f25a059984a9
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975812"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913280"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>クイック スタート: Azure Active Directory v2.0 エンドポイントを使用してアプリを登録する
 
@@ -30,8 +30,10 @@ ms.locfileid: "46975812"
 
 個人用 Microsoft アカウント (MSA) と職場や学校のアカウント (Azure AD) のサインインの両方を受け付けるアプリを構築するには、Azure Active Directory (Azure AD) v2.0 エンドポイントを使用してアプリを登録する必要があります。 現時点では、Azure AD または MSA で利用している既存のアプリは使用できません。新しいアプリを作成してください。
 
+Azure AD のシナリオと機能のすべてが、v2.0 エンドポイントでサポートされるわけではありません。 v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+
 > [!NOTE]
-> Azure AD のシナリオと機能のすべてが、v2.0 エンドポイントでサポートされるわけではありません。 v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
+> 新しいアプリを登録する場合は、 Azure portal の新しい**アプリの登録 (プレビュー)** エクスペリエンスをお試しください。 使用するには、[アプリの登録 (プレビュー)](quickstart-register-app.md) に関するページを参照してください。
 
 ## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>手順 1: Microsoft アプリケーション登録ポータルにサインインする
 

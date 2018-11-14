@@ -1,5 +1,5 @@
 ---
-title: Azure Database Migration Service を使用して MySQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs
+title: 'チュートリアル: Azure Database Migration Service を使用して MySQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs'
 description: Azure Database Migration Service を使用して、オンプレミスの MySQL から Azure Database for MySQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/06/2018
-ms.openlocfilehash: 4825985253f5525314a496f2adbc40657231f5d5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 8b0e15ac6cd59a77e283d9256ab5fa4542dfc9a9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829853"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960516"
 ---
-# <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する
+# <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル: DMS を使用して MySQL を Azure Database for MySQL にオンラインで移行する
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの MySQL インスタンスから [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**Employees** サンプル データベースを MySQL 5.7 のオンプレミス インスタンスから Azure Database for MySQL に移行します。
 
 このチュートリアルでは、以下の内容を学習します。

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0765e79b90eed49742f5eead33063907eb1db1f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7f93a225db845840545b761d812f5a8a81f76f91
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030848"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913565"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル: データをエクスポートし、管理する
 
@@ -46,7 +46,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 ## <a name="create-a-daily-export"></a>毎日のエクスポートを作成する
 
-コスト管理 + 課金 &gt; サブスクリプションを選択するか、サブスクリプション内のリソース グループを選択する &gt; エクスポート &gt; **追加**。
+コスト管理 + 課金 &gt; コスト管理 &gt; サブスクリプションを選択するか、サブスクリプション内のリソース グループを選択する &gt; エクスポート &gt; **追加**。
 
 エクスポートの名前を入力し、サブスクリプション、Azure ストレージ アカウント、コンテナー、ファイル ストレージ ディレクトリ、BLOB コンテナーを指定し、**[作成]** をクリックします。
 

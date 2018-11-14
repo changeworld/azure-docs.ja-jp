@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 7e2225a173562be28840cb0a66913b9f8c9657ff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4608e9ec0cd67b6c0f7ac23e27761b0355a5d738
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962047"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50911866"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>クイック スタート: Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する
 
@@ -31,7 +31,10 @@ ms.locfileid: "46962047"
 
 アプリケーションで Azure AD の機能を使用するには、まず Azure AD テナントにそのアプリケーションを登録する必要があります。 この登録プロセスでは、アプリケーションが配置されている URL、ユーザーが認証された後の応答の送信先となる URL、アプリを識別する URI など、アプリケーションの詳細を Azure AD に提供します。
 
-このクイック スタートでは、Azure AD にアプリケーションを追加して登録する方法について説明します。
+このクイック スタートでは、Azure portal で既存の**アプリの登録**エクスペリエンスを使用して、Azure AD にアプリケーションを追加して登録する方法について説明します。
+
+> [!NOTE]
+> 新しいアプリを登録する場合は、 Azure portal の新しい**アプリの登録 (プレビュー)** エクスペリエンスをお試しください。 使用するには、[アプリの登録 (プレビュー)](quickstart-register-app.md) に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

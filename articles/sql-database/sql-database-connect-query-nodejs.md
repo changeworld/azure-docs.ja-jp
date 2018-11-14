@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: c6cfbd330f77c5a2f448093e58684032a84a41d9
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/01/2018
+ms.openlocfilehash: 60a63486143c64a1dc19a5cd18383baeef6f498d
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063474"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912785"
 ---
-# <a name="use-nodejs-to-query-an-azure-sql-database"></a>Node.js を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>クイック スタート: Node.js を使用して Azure SQL Database に照会する
 
 このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを [Node.js](https://nodejs.org/en/) を使って作成する方法について説明します。
 

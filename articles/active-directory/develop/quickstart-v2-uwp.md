@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
+ms.date: 11/01/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: aa91701fd289be171a2e9f63165c669953dac918
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d61d0220a87f81ca68255d40c00a6b7783943231
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086796"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960202"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート: ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -76,11 +76,23 @@ ms.locfileid: "50086796"
 
 1. ディスクのルートに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
 1. Visual Studio でプロジェクトを開きます。
-1. **App.Xaml.cs** を編集し、`private static string ClientId` で始まる行を以下のコードに置き換えます。
+1. **App.Xaml.cs** を編集し、`ClientId` フィールドと `Tenant` フィールドの値を次のように置き換えます。
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
+    private static string Tenant = "Enter_the_Tenant_Info_Here";
     ```
+
+> [!div renderon="docs"]
+> 各値の説明:
+> - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
+> - `Enter_the_Tenant_Info_Here` - 以下のいずれかのオプション。
+>   - アプリケーションでサポートされるのが **[所属する組織のみ]** である場合、この値を **[テナント ID]** または **[テナント名]** (例: contoso.microsoft.com) に置き換えます。
+>   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
+>   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。
+>
+> > [!TIP]
+> > *[アプリケーション ID]*、*[ディレクトリ (テナント) ID]*、*[サポートされているアカウントの種類]* の値を見つけるには、**[概要]** ページに移動します。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -102,7 +114,7 @@ MSAL への参照を追加するには、次のコードを追加します。
 using Microsoft.Identity.Client;
 ```
 
-続いて、次のコードを使用して MSAL を初期化することができます。
+続いて、次のコードを使用して MSAL を初期化します。
 
 ```csharp
 public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
@@ -118,11 +130,11 @@ MSAL には、トークンの取得に使用する 2 つのメソッド `Acquire
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
- Azure Active Directory v2.0 エンドポイントの操作を強制される場合があります。その場合、資格情報の検証または同意を行うポップアップ ウィンドウが表示されます。 たとえば、次のようなシナリオが考えられます。
+Azure AD v2.0 エンドポイントの操作を強制される場合があります。その場合、資格情報の検証または同意を行うポップアップ ウィンドウが表示されます。 次に例をいくつか示します。
 
-- ユーザーが初めてアプリケーションにサインインする
-- パスワードの有効期限が切れているために、ユーザーが資格情報を再入力する必要がある
-- ご使用のアプリケーションが、ユーザーによる同意が必要なリソースへのアクセスを要求している
+- ユーザーが初めてアプリケーションにサインインした場合
+- パスワードの有効期限が切れているため、ユーザーが資格情報を再入力する必要がある場合
+- ご使用のアプリケーションが、ユーザーによる同意が必要なリソースへのアクセスを要求している場合
 - 2 要素認証が必須である場合
 
 ```csharp
@@ -135,7 +147,7 @@ authResult = await App.PublicClientApp.AcquireTokenAsync(scopes);
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
-リソースへのアクセスが必要になるたびに、ユーザーに自分の資格情報を検証させたくない場合があります。 ほとんどの場合は、ユーザーの操作なしにトークンの取得や更新を行います。 `AcquireTokenSilentAsync` は、最初に `AcquireTokenAsync` メソッドを呼び出した後、保護されたリソースにアクセスするためのトークンを取得する目的で一般的に使用されるメソッドです。
+リソースへのアクセスが必要になるたびに、ユーザーに自分の資格情報を検証させたくない場合があります。 ほとんどの場合は、ユーザーの操作なしにトークンの取得や更新を行います。 最初に `AcquireTokenAsync` メソッドを呼び出した後は、`AcquireTokenSilentAsync` メソッドを使用して保護されたリソースにアクセス するトークンを取得することができます。
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

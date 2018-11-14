@@ -11,15 +11,15 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: fa9686e7f9ca7f14a51ea2b9c313dd69a2e40cec
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 11/01/2018
+ms.openlocfilehash: bc27ece2eddc842a81698aaa685cbe6d63c6a1df
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362256"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912256"
 ---
-# <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスにデータベース バックアップを復元する
+# <a name="quickstart-restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>クイック スタート: Azure SQL Database Managed Instance にデータベース バックアップを復元する
 
 このクイック スタートでは、Wide World Importers - Standard バックアップ ファイルを使用して、Azure Blob Storage に格納されたデータベースのバックアップをマネージド インスタンスに復元する方法について説明します。 この方法には、ある程度のダウンタイムが必要です。 
 
