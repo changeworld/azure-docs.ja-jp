@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 053dbc27908b14e70fa2c7502ec7c4e3ae652bf5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 11/01/2018
+ms.openlocfilehash: 913e374e51b968650b14d3f6563f64c217b76ad0
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469760"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913810"
 ---
-# <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>BACPAC ファイルを新しい Azure SQL Database にインポートする
+# <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>クイック スタート: BACPAC ファイルを新しい Azure SQL Database にインポートする
 
 データベースをアーカイブからインポートまたは別のプラットフォームから移行するときに、[BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルからデータベース スキーマとデータをインポートできます。 BACPAC ファイルは、メタデータと SQL Server データベースからのデータを含み、BACPAC の拡張子を持つ ZIP ファイルです。 BACPAC ファイルは Azure Blob Storage (Standard ストレージのみ) またオンプレミスの保存先のローカル ストレージからインポートできます。 インポート速度を最大限高めるために、より高いサービス レベルとコンピューティング サイズ (P6 など) を指定し、インポートが正常に完了した後は必要に応じてスケールダウンすることをお勧めします。 また、インポート後のデータベースの互換性レベルはソース データベースの互換性レベルに基づきます。
 

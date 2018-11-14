@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.component: disks
-ms.openlocfilehash: f93b2d39f3aba21351fabe4c60195adead903923
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 92bf808da3791b84eb0beeb347b450fd24215e39
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713416"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259396"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Linux 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標
 
@@ -23,6 +23,8 @@ ms.locfileid: "39713416"
 詳細については、[Linux VM のサイズ](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 
 ## <a name="managed-virtual-machine-disks"></a>管理対象の仮想マシン ディスク
+
+アスタリスクで示されるサイズはプレビュー中です。 使用できるリージョンについては、[FAQ](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) を参照してください。
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 

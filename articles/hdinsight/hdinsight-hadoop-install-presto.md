@@ -2,23 +2,25 @@
 title: Azure HDInsight Linux クラスターに Presto をインストールする
 description: スクリプト アクションを使用して Linux ベースの HDInsight Hadoop クラスターに Presto と Airpal をインストールする方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: b9ac9c49e633906e47244eedcb18a4cda4a6228d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: ea806a1004cf268fb7da75fa45013bdbaf882d86
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978955"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227503"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Presto をインストールして使用する
 
 このドキュメントでは、スクリプト アクションを使用して HDInsight Hadoop クラスターに Presto をインストールする方法について説明します。 既存の Presto HDInsight クラスターに Airpal をインストールする方法についても説明します。
+
+HDInsight では、Apache Hadoop クラスター向けの Starburst Presto アプリケーションも提供しています。 詳細については、「[Azure HDInsight へのサード パーティ製アプリケーションのインストール](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apps-install-applications)」を参照してください。
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する **HDInsight 3.5 Hadoop クラスター**が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン](hdinsight-component-versioning.md)に関するページを参照してください。
@@ -42,17 +44,17 @@ ms.locfileid: "46978955"
 
     * HDInsight version 3.6 を使用する Hadoop クラスターである必要があります。
 
-    * データ ストアとして Azure Storage を使用する必要があります。 ストレージ オプションとして Azure Data Lake Store を使用するクラスターでの Presto の使用はまだサポートされていません。 
+    * データ ストアとして Azure Storage を使用する必要があります。 ストレージ オプションとして Azure Data Lake Store を使用するクラスターで Presto を使用するという選択肢はまだありません。
 
     ![カスタム オプションを使用した HDInsight クラスターの作成](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
-2. **[詳細設定]** 領域で **[スクリプト アクション]** を選択し、以下の情報を指定します。
+2. **[詳細設定]** 領域で **[スクリプト アクション]** を選択し、以下の情報を指定します。 スクリプトの種類に [Presto のインストール] オプションを選択することもできます。
    
    * **[名前]**: スクリプト アクションの表示名を入力します。
    * **[バッシュ スクリプト URI]**: `https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
    * **[ヘッド]**: このオプションをオンにします。
    * **[ワーカー]**: このオプションをオンにします
-   * **[ZOOKEEPER]**: このチェック ボックスをオフにします。
+   * **[ZOOKEEPER]**: このチェック ボックスはオフのままにします。
    * **[パラメーター]**: このフィールドは空のままにします。
 
 

@@ -1,57 +1,52 @@
 ---
-title: 'チュートリアル: Custom Vision SDK for Python を使用して物体検出プロジェクトを作成する - Custom Vision Service'
+title: 'クイック スタート: Custom Vision SDK for Python を使用して物体検出プロジェクトを作成する'
 titlesuffix: Azure Cognitive Services
-description: 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
+description: Python SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 05/03/2018
+ms.topic: quickstart
+ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 36b283965766130e86e079c807139998cd01c8a6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 35548284302dead41df1a4b9bf6218d842214e11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958535"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278754"
 ---
-# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-python"></a>チュートリアル: Custom Vision SDK for Python を使用して物体検出プロジェクトを作成する
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>クイック スタート: Custom Vision Python SDK を使用して物体検出プロジェクトを作成する
 
-Computer Vision API を使用する基本的な Python スクリプトを使用し、物体検出プロジェクトを作成する方法について説明します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
+この記事では、Custom Vision SDK と Python を使用して物体検出モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを使用するには、次の作業が必要となります。
+- [Python 2.7 以降または 3.5 以降](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installing/) ツール
 
-- Python 2.7 以降または Python 3.5 以降をインストールします。
-- pip をインストールします。
+## <a name="install-the-custom-vision-sdk"></a>Custom Vision SDK をインストールする
 
-### <a name="platform-requirements"></a>プラットフォームの要件
-このサンプルは Python 向けに作成されています。
+Custom Vision Service SDK for Python をインストールするには、PowerShell で次のコマンドを実行します。
 
-### <a name="get-the-custom-vision-sdk"></a>Custom Vision SDK を入手する
-
-このサンプルをビルドするには、Custom Vision API 向けの Python SDK をインストールする必要があります。
-
-```
+```PowerShell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
 [Python サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)と共に画像をダウンロードできます。
 
-## <a name="step-1-get-the-training-and-prediction-keys"></a>手順 1: トレーニング キーと予測キーを取得する
+[!INCLUDE [get-keys](includes/get-keys.md)]
 
-このサンプルで使用されるキーを取得するには、[Custom Vision サイト](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+[!INCLUDE [python-get-images](includes/python-get-images.md)]
 
-![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
+## <a name="add-the-code"></a>コードの追加
 
-このサンプルでは、[この場所](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images)からの画像が使用されます。
+目的のプロジェクト ディレクトリに、*sample.py* という新しいファイルを作成します。
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>手順 2: Custom Vision Service プロジェクトを作成する
+### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-新しい Custom Vision Service プロジェクトを作成するには、sample.py スクリプト ファイルを作成し、次のコンテンツを追加します。 物体検出と画像分類のプロジェクト作成の違いは create_project 呼び出しに指定されるドメインであることにご注目ください。
+新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 物体検出と画像分類のプロジェクト作成の違いは **create_project** 呼び出しに指定されるドメインであることにご注目ください。
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import training_api
@@ -71,9 +66,9 @@ print ("Creating project...")
 project = trainer.create_project("My Detection Project", domain_id=obj_detection_domain.id)
 ```
 
-## <a name="step-3-add-tags-to-your-project"></a>手順 3: タグをプロジェクトに追加する
+### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
-タグをプロジェクトに追加するには、2 つのタグを作成する次のコードを挿入します。
+プロジェクトに分類タグを作成するため、*sample.py* の最後に次のコードを追加します。
 
 ```Python
 # Make two tags in the new project
@@ -81,14 +76,13 @@ fork_tag = trainer.create_tag(project.id, "fork")
 scissors_tag = trainer.create_tag(project.id, "scissors")
 ```
 
-## <a name="step-4-upload-images-to-the-project"></a>手順 4: 画像をプロジェクトにアップロードする
+### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
-物体検出プロジェクトの場合、画像、リージョン、タグをアップロードする必要があります。 リージョンは正規座標にあり、リージョンによってタグの付いた物体の場所が指定されます。
+物体検出プロジェクトで画像にタグを付ける際は、タグ付けする各物体の領域を正規化座標を使用して指定する必要があります。
 
-画像、リージョン、タグをプロジェクトに追加するには、タグ作成後、次のコードを挿入します。 このチュートリアルでは、リージョンがコードに埋め込まれていることにご注目ください。 リージョンによって、境界ボックスが正規座標で指定されます。
+画像、タグ、領域をプロジェクトに追加するには、タグの作成後、次のコードを挿入します。 このチュートリアルでは、リージョンがコードに埋め込まれていることにご注目ください。 各領域は、正規化座標で境界ボックスを指定しており、座標は、左、上、幅、高さの順に指定しています。
 
 ```Python
-
 fork_image_regions = {
     "fork_1": [ 0.145833328, 0.3509314, 0.5894608, 0.238562092 ],
     "fork_2": [ 0.294117659, 0.216944471, 0.534313738, 0.5980392 ],
@@ -134,7 +128,10 @@ scissors_image_regions = {
     "scissors_19": [ 0.333333343, 0.0274019931, 0.443627447, 0.852941155 ],
     "scissors_20": [ 0.158088237, 0.04047389, 0.6691176, 0.843137264 ]
 }
+```
+さらに、この関連付けのマップを使用して、それぞれのサンプル画像を対応する領域の座標と共にアップロードします。 次のコードを追加します。
 
+```Python
 # Go through the data table above and create the images
 print ("Adding images...")
 tagged_images_with_regions = []
@@ -157,12 +154,9 @@ for file_name in scissors_image_regions.keys():
 trainer.create_images_from_files(project.id, images=tagged_images_with_regions)
 ```
 
-## <a name="step-5-train-the-project"></a>手順 5: プロジェクトをトレーニングする
+### <a name="train-the-project"></a>プロジェクトをトレーニングする
 
-タグと画像がプロジェクトに追加されたので、プロジェクトをトレーニングできます。 
-
-1. 次のコードを挿入します。 プロジェクトの最初のイテレーションが作成されます。 
-2. このイテレーションを既定のイテレーションとして設定します。
+このコードにより、プロジェクトに最初のイテレーションが作成されて、それが既定のイテレーションに指定されます。 既定のイテレーションは、予測要求に応答するモデルのバージョンを表します。 モデルを再トレーニングするたびに更新する必要があります。
 
 ```Python
 import time
@@ -179,12 +173,9 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>手順 6: 既定の予測エンドポイントを取得し、使用する
+### <a name="get-and-use-the-default-prediction-endpoint"></a>既定の予測エンドポイントを取得して使用する
 
-これで予測のためにモデルを使用できます。 
-
-1. 既定のイテレーションに関連付けられているエンドポイントを取得します。 
-2. そのエンドポイントを利用し、プロジェクトにテスト画像を送信します。
+画像を予測エンドポイントに送信し、予測を取得するには、ファイルの末尾に以下のコードを追加します。
 
 ```Python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -203,10 +194,21 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
 ```
 
-## <a name="step-7-run-the-example"></a>手順 7: サンプルを実行する
+## <a name="run-the-application"></a>アプリケーションの実行
 
-ソリューションを実行する 予測結果がコンソールに表示されます。
+*sample.py* を実行します。
 
-```
+```PowerShell
 python sample.py
 ```
+
+コンソールにアプリケーションの出力が表示されると思います。 **samples/vision/images/Test** 内のテスト画像にタグが適切に付けられていること、また検出の領域が正しいことを確認してください。
+
+[!INCLUDE [clean-od-project](includes/clean-od-project.md)]
+
+## <a name="next-steps"></a>次の手順
+
+以上、物体検出処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。 次のガイドでは、画像の分類について取り上げていますが、その原理は物体の検出と似ています。
+
+> [!div class="nextstepaction"]
+> [モデルのテストと再トレーニング](test-your-model.md)

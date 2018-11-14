@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b125d822596675b138560c14c76f9a3120ce3424
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3b9e6a59b44db9295d86e3bc8a8dda9ec9761f38
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628829"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009210"
 ---
 # <a name="create-a-new-device-template-version"></a>デバイス テンプレートの新しいバージョンを作成する
 
-Microsoft Azure IoT Central を使用すると、IoT アプリケーションを迅速に開発できます。 測定、設定、プロパティを追加、編集、削除することで、デバイス テンプレートをすばやく反復処理できます。 これらの一部は、現在接続されているデバイスに対して、大幅な変更となる場合があります。 Azure IoT Central は、これらの破壊的変更を識別し、これらの更新をデバイスに安全に展開する方法を提供します。
+Azure IoT Central を使用すると、IoT アプリケーションを迅速に開発できます。 測定、設定、プロパティを追加、編集、削除することで、デバイス テンプレートをすばやく反復処理できます。 これらの一部は、現在接続されているデバイスに対して、大幅な変更となる場合があります。 Azure IoT Central は、これらの破壊的変更を識別し、これらの更新をデバイスに安全に展開する方法を提供します。
 
 デバイス テンプレートには、作成したときにバージョン番号が含まれます。 既定では、バージョン番号は 1.0.0 です。 デバイス テンプレートを編集するときに、その変更がライブ接続されているデバイスに影響を与える可能性がある場合、Azure IoT Central によって新しいデバイス テンプレートのバージョンを作成するよう求められます。
 

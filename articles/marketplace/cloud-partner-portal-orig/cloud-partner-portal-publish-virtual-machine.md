@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3b046022990e95e65ed02880bd3fefbd78bcad28
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387363"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247077"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Azure Marketplace への仮想マシンの発行
 
@@ -37,7 +37,7 @@ ms.locfileid: "49387363"
 
 -   [イメージからの Linux VM の作成とテスト](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [Windows VHD の作成とアップロード](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [Windows VHD の作成とアップロード ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [イメージからの Windows VM の作成とテスト](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 
@@ -60,7 +60,7 @@ ms.locfileid: "49387363"
 
 -   Azure Marketplace 参加ポリシーと発行者契約の条項に同意すること。
 
--   [使用条件](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft のプライバシーに関する声明](http://www.microsoft.com/privacystatement/default.aspx)、および [Microsoft Azure 認定プログラム契約](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)に従うことに同意すること。
+-   [使用条件](https://azure.microsoft.com/support/legal/website-terms-of-use/)、[Microsoft のプライバシーに関する声明](https://www.microsoft.com/privacystatement/default.aspx)、および [Microsoft Azure 認定プログラム契約](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/)に従うことに同意すること。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -68,15 +68,15 @@ ms.locfileid: "49387363"
 
 **プラン**
 
-Azure アプリケーション プランは、発行元から提供される製品のクラスに相当します。 Azure Marketplace で新しい種類のソリューション/アプリケーションを提供したければ、新しいプランが最適な方法となります。 プランとは、SKU のコレクションです。 各プランは、Azure Marketplace で独自のエンティティとして表示されます。
+Azure アプリケーション プランは、発行元から提供される製品のクラスに相当します。 Azure Marketplace で新しい種類のソリューションまたはアプリケーションを提供したい場合は、新しいプランが最適な方法となります。 プランとは、SKU のコレクションです。 各プランは、Azure Marketplace で独自のエンティティとして表示されます。
 
 **SKU**
 
 SKU とは、プランの購入可能な最小単位です。 同じ製品クラス (プラン) 内では、サポートされているさまざまな機能を SKU によって区別できます。 たとえば、プランにはマネージド プランとアンマネージド プランがあり、サポートされる課金モデルも多様です。
 
 次のシナリオでは、複数の SKU を追加します。
-- ライセンス持ち込み (BYOL)、従量課金制 (PAYG) など、異なる課金モデルをサポートしたい場合。
-- 各 SKU が異なる機能セットをサポートし、機能セットごとに価格が異なる場合。
+- ライセンス持ち込み (BYOL)、従量課金制 (PAYG) など、異なる課金モデルをサポートしたい。
+- 各 SKU で異なる機能セットがサポートされ、機能セットごとに価格が異なる。
 
 SKU は Azure Marketplace では親プランの下に表示されますが、Azure portal ではその購入可能エンティティとして表示されます。
 
@@ -95,28 +95,28 @@ SKU は Azure Marketplace では親プランの下に表示されますが、Azu
 4.  **[エディター]** で、次の各ビューに情報を入力します。
     - プラン設定
     - SKU
-    - Marketplace
+    - マーケットプレース
     - サポート 各ビューには入力するための一連のフィールドがあります。必須フィールドには赤いアスタリスク (\*) が付いています。
 
 ## <a name="to-configure-offer-settings"></a>プランの設定を構成するには
 
-1. [Offer Settings]\(プランの設定\) の **[Offer Identity]\(プラン ID\)** で次の各フィールドを構成します。
+1. [プランの設定] の **[Offer Identity]\(プラン ID\)** で次の各フィールドを構成します。
 
-    **[Offer ID]\(プラン ID\)**
+    **[プラン ID]**
 
      発行元プロファイル内のプランを表す一意識別子です。 この ID は、製品 URL、Azure Resource Manager テンプレート、および課金レポートに表示されます。 小文字の英数字またはダッシュ (-) のみ使用できます。 この ID はハイフンで終えることはできず、長さは最大で 50 文字です。 たとえば、**contoso** という発行元が **sample-vm** というプラン ID を使用してプランを発行した場合、Azure Marketplace には **https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview** として表示されます。  
     >[!Note]
     >このフィールドは、プランの運用が開始されるとロックされます。
 
-    **[Publisher ID]\(パブリッシャー ID\)**
+    **[発行元 ID]**
 
-    発行元プロファイルのドロップダウン リストです。 このプランを発行するプロファイルを選択します。 
+    発行元プロファイルのドロップダウン リスト。 お客様が発行するプランの発行元となるプロファイルを選択します。 
     >[!Note]
     >このフィールドは、プランの運用が開始されるとロックされます。
 
     **名前**
 
-    プランの表示名です。 この名前が Azure Marketplace と Azure portal に表示されます。 最大で 50 文字の長さにできます。 プランの名前は、次のガイダンスに従って設定してください。
+    オファーの表示名です。 この名前は Azure Marketplace と Azure portal に表示されます。 最大で 50 文字の長さにできます。 プランの名前に関する次のガイダンスに従ってください。
     -  製品の覚えやすいブランド名を使用してください。 
     - 会社名はここに含めないでください (プランのマーケティングの一環である場合を除く)。
     - このプランを貴社の Web サイトでマーケティングしている場合は、この名前が、貴社の Web サイトで表示される名前とまったく同じであることを確認します。
@@ -128,7 +128,7 @@ SKU は Azure Marketplace では親プランの下に表示されますが、Azu
 1. **[SKU]** を選択します。 
 2. **[SKU の追加]** を選択し、SKU ID を入力します。 SKU ID は、プラン内の SKU を表す一意識別子です。 この ID は、製品 URL、Azure Resource Manager テンプレート、および課金レポートに表示されます。 SKU ID の形式は次のとおりです。
     - 最大で 50 文字の長さにできます。
-    - 小文字の英数字またはハイフン (-) のみで構成できます。
+    - 小文字の英数字またはダッシュ (-) のみで構成できます。
     - ID の末尾にはダッシュを使用できません。
 
     ![SKU を追加する](./media/cloud-partner-portal-publish-virtual-machine/publishvm4.png)
@@ -211,7 +211,7 @@ SKU のコアあたりの価格を設定できます。 この場合は、1 つ�
 
 >[!IMPORTANT]
 >-   価格は、プランの運用開始後に変更することはできません。 ただし、サポートされるリージョンを追加または削除することはできます。
->-   この価格は、[Azure\' の仮想マシンの価格](http://aka.ms/vmpricingdetails)に加えて、ユーザーに請求されます。
+>-   この価格は、 [Azure\' の仮想マシンの価格](https://aka.ms/vmpricingdetails)に加えて、ユーザーに請求されます。
 >-   すべてのリージョンの価格は、現地通貨で、価格設定時点の通貨レートで設定されます。
 >-   各リージョンの価格を個別に設定または表示するには、価格スプレッドシートをエクスポートして、カスタム価格とともにインポートします。
 
@@ -225,7 +225,7 @@ SKU のコアあたりの価格を設定できます。 この場合は、1 つ�
 
 -   [イメージからの Linux VM の作成とテスト](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [Windows VHD の作成とアップロード](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [Windows VHD の作成とアップロード ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [イメージからの Windows VM の作成とテスト](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 
@@ -275,7 +275,7 @@ VM イメージ バージョンは、[セマンティック バージョン](htt
 
 #### <a name="common-sas-url-issues--fixes"></a>SAS URL に関する一般的な問題と解決策
 
-| 問題                                                                 | メッセージ                                                                           | 解決策                                                           |  ドキュメントへのリンク                                                                                |
+| 問題                                                                 | Message                                                                           | 解決策                                                           |  ドキュメントへのリンク                                                                                |
 |---------------------------------------------------------------------  |-------------------------------------------------------------------------------    |-----------------------------------------------------------    |---------------------------------------------------------------------------------------------------    |
 | イメージのコピーに失敗する - SAS URL で "?" が見つからない                | Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri (指定された SAS URI を使用して BLOB をダウンロードすることができません)       | 推奨ツールを使用して SAS URL を更新します                    | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
 | イメージのコピーに失敗する - SAS URL の "st" および "se" パラメーターがない   | Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob using provided SAS Uri. (指定された SAS URI を使用して BLOB をダウンロードすることができません。)        | 開始日と終了日を指定して SAS URL を更新します             | https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/     |
@@ -322,18 +322,18 @@ Azure Marketplace と Azure Portal に表示されるマーケットプレース
 
 ### <a name="logo-guidelines"></a>ロゴのガイドライン
 
-Cloud パートナー ポータルにアップロードするロゴについては、次のガイドラインに従ってください。
+Cloud パートナー ポータルにアップロードされるロゴについては、次のガイドラインに従ってください。
 
 -   Azure の設計には簡単なカラー パレットがあります。 ロゴのプライマリ カラーとセカンダリ カラーの数は少なくしてください。
 
--   Azure ポータルのテーマの色は白黒です。 この色を、ロゴの背景色として使用しないでください。 Azure portal でロゴが目立つ色を背景色として使用します。 背景色としてはシンプルなプライマリ カラーをお勧めします。
+-   Azure ポータルのテーマの色は白黒です。 これらの色を、ロゴの背景色として使用しないでください。 Azure portal でロゴが目立つ色を使用してください。 背景色としてはシンプルなプライマリ カラーをお勧めします。
 
     >[!Note] 
-    >透明な背景を使用する場合は、ロゴ/テキストが白、黒、または青ではないことを確認します。
+    >透明な背景を使用している場合は、ロゴとテキストが白、黒または青ではないことを確認します。
 
 -   ロゴではグラデーションの背景を使用しないでください。
 
--   ロゴにテキストを配置しないでください。 会社名やブランド名であっても同様です。 ロゴのルック アンド フィールは "*フラット*" にする必要があり、グラデーションは避ける必要があります。
+-   ロゴにテキストを配置しないでください。 これは会社名やブランド名であっても同様です。 ロゴのルック アンド フィールは "*フラット*" にする必要があり、グラデーションは避ける必要があります。
 
 -   ロゴは拡大しないでください。
 
@@ -343,9 +343,9 @@ Hero ロゴはオプションです。 パブリッシャーは、Hero ロゴを
 
 #### <a name="guidelines-for-the-hero-logo-icon"></a>Hero ロゴ アイコンに関するガイドライン
 
--   発行元の表示名、プランのタイトル、およびプランの長い概要は、白色のフォントで表示されます。 背景色には明るい色を使用しないでください。 黒、白、透明は Hero アイコンの背景では使用できません。
+-   発行元の表示名、プランのタイトル、およびプランの長い概要は、白色のフォントで表示されます。 背景には明るい色を使用しないでください。 黒、白、透明は Hero アイコンの背景では使用できません。
 
--   プランが一覧表示されるときに、発行元の表示名、プランのタイトル、プランの長い概要、作成ボタンが、Hero ロゴ内にプログラムによって埋め込まれます。 Hero ロゴのデザイン時にはテキストを入力しないでください。 ロゴの右側のスペースは空けておいてください。 このスペースは 415 x 100 ピクセルで、左から 370 ピクセルだけオフセットされます。
+-   プランが表示されると、発行元の表示名、プランのタイトル、プランの長い概要、作成ボタンが、Hero ロゴ内にプログラムによって埋め込まれます。 Hero ロゴのデザイン時にはテキストを入力しないでください。 ロゴの右側のスペースは空けておいてください。 このスペースは 415 x 100 ピクセルで、左から 370 ピクセルだけオフセットされます。
 
 ![Hero ロゴの例](./media/cloud-partner-portal-publish-virtual-machine/publishvm14.png)
 

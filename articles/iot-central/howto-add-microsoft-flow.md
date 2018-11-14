@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: cc54a3a375fa2780e289a20b699df5d65aaf08cc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c06939ccb920954c08ef02f38e6d12471ac267db
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155577"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959292"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Microsoft Flow 内で IoT Central コネクタを使用してワークフローを作成する
 
@@ -21,8 +21,10 @@ ms.locfileid: "50155577"
 
 Microsoft Flow を使用すると、ビジネス ユーザーが利用する多くのアプリケーションやサービスにまたがるワークフローを自動化できます。 Microsoft Flow 内で IoT Central コネクタを使用すると、IoT Central 内で規則がトリガーされたときにワークフローをトリガーできます。 IoT Central やその他のアプリケーションによってトリガーされたワークフロー内では、IoT Central コネクタ内のアクションを使用して、デバイスの作成、デバイスのプロパティと設定の更新、デバイスの削除を行うことができます。 IoT Central をモバイル通知や Microsoft Teams などの他のサービスに接続する[これらの Microsoft Flow テンプレート](https://aka.ms/iotcentralflowtemplates)をチェックアウトしてください。
 
-> [!NOTE] 
-> Microsoft Flow にサインインするときは、Microsoft の個人、職場、または学校のアカウントを使用する必要があります。 Microsoft Flow のプランの詳細については、[こちら](https://aka.ms/microsoftflowplans)をご覧ください。
+## <a name="prerequisites"></a>前提条件
+
+- 従量課金制アプリケーション
+- Flow にサインインするための、Microsoft の個人アカウント、または職場または学校アカウント ([Microsoft Flow のプランの詳細](https://aka.ms/microsoftflowplans))
 
 ## <a name="trigger-a-workflow-when-a-rule-is-triggered"></a>規則がトリガーされたときに、ワークフローをトリガーする
 

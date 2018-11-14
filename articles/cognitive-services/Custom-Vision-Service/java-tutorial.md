@@ -1,196 +1,97 @@
 ---
-title: 'チュートリアル: Custom Vision SDK for Java を使って画像分類プロジェクトを作成する'
+title: 'クイック スタート: Custom Vision SDK for Java を使って画像分類プロジェクトを作成する'
 titlesuffix: Azure Cognitive Services
-description: 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
+description: Java SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 08/28/2018
+ms.topic: quickstart
+ms.date: 10/31/2018
 ms.author: areddish
-ms.openlocfilehash: d02dced071594732978f961c1b9d8effcd2e35ab
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ad56a6fa4027115bd4f4679fa50330edad1b919f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415629"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283531"
 ---
-# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>チュートリアル: Custom Vision SDK for Java を使って画像分類プロジェクトを作成する
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>クイック スタート: Custom Vision SDK for Java を使って画像分類プロジェクトを作成する
 
-Custom Vision Service と Java を使って、画像分類プロジェクトを作成する方法について説明します。 作成後、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、このエンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
+この記事では、Custom Vision Java SDK を使用して画像分類モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の Java アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-
+- 任意の Java IDE
 - [JDK 7 または 8](https://aka.ms/azure-jdks) がインストールされていること。
-- Maven がインストールされていること。
+- Maven がインストールされていること
 
-## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
-
-![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
-
-## <a name="install-the-custom-vision-service-sdk"></a>Custom Vision Service SDK をインストールする
+## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK とサンプル コードを入手する
+Custom Vision を使用する Java アプリを作成するには、Custom Vision maven パッケージが必要となります。 これらは、これからダウンロードするサンプル プロジェクトに含まれていますが、次のページから個別にアクセスすることもできます。
 
 Maven Central Repository から Custom Vision SDK をインストールできます。
 * [Training SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 * [Prediction SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
+[Cognitive Services Java SDK サンプル](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master) プロジェクトを複製またはダウンロードします。 **Vision/CustomVision/** フォルダーに移動します。
+
+この Java プロジェクトは、__Sample Java Project__ という名前の新しい Custom Vision 画像分類プロジェクトを作成します。作成したプロジェクトには、[Custom Vision Web サイト](https://customvision.ai/)からアクセスすることができます。 その後、イメージをアップロードして分類子のトレーニングおよびテストを行います。 このプロジェクトでは、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを判別することが、分類子の目的となります。
+
+[!INCLUDE [get-keys](includes/get-keys.md)]
+
+このプログラムは、キー データを環境変数として格納するように構成されています。 これらの変数は、PowerShell で **Vision/CustomVision** フォルダーに移動することによって設定します。 次のコマンドを入力してください。
+
+```PowerShell
+$env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
+$env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
+```
+
 ## <a name="understand-the-code"></a>コードの理解
 
-画像を含む完全なプロジェクトは、[Java 用 Custom Vision Azure サンプル リポジトリ](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master)から手に入ります。 
+Java IDE で `Vision/CustomVision` プロジェクトを読み込み、_CustomVisionSamples.java_ ファイルを開きます。 **runSample** メソッドを探して、**ObjectDetection_Sample** メソッド呼び出しをコメントにしてください。このメソッドは物体検出のシナリオを実行するものであり、このガイドの対象外となります。 この例の主な機能は、**ImageClassification_Sample** メソッドに実装されます。このメソッドの定義に移動し、コードを詳しく調べてみましょう。 
 
-好みの Java IDE を使用して、`Vision/CustomVision` プロジェクトを開きます。 
+### <a name="create-a-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類子のトレーニングおよびテストを行います。 分類子は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
+画像分類プロジェクトは、この最初の数行のコードで作成されます。 作成したプロジェクトは、先ほどアクセスした [Custom Vision Web サイト](https://customvision.ai/)に表示されます。 
 
-この例の主な機能は、以下のコード スニペットに実装されています。
+[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=57-63)]
 
-## <a name="create-a-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
+### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
-> [!IMPORTANT]
-> 以前に取得したトレーニング キーの値を `trainingApiKey` に設定します。
+[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=65-74)]
 
-```java
-final String trainingApiKey = "insert your training key here";
-TrainingApi trainClient = CustomVisionTrainingManager.authenticate(trainingApiKey);
+### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
-Trainings trainer = trainClient.trainings();
+サンプル画像は、プロジェクトの **src/main/resources** フォルダーに格納されています。 そこから読み取られて、それぞれの適切なタグと共にサービスにアップロードされます。
 
-System.out.println("Creating project...");
-Project project = trainer.createProject()
-            .withName("Sample Java Project")
-            .execute();
-```
+[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=76-87)]
 
-## <a name="add-tags-to-your-project"></a>タグをプロジェクトに追加する
+前のコード スニペットでは、リソース ストリームとして画像を取得してサービスにアップロードする 2 つのヘルパー関数を使用しています。
 
-```java
-// create hemlock tag
-Tag hemlockTag = trainer.createTag()
-    .withProjectId(project.id())
-    .withName("Hemlock")
-    .execute();
+[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=277-314)]
 
-// create cherry tag
-Tag cherryTag = trainer.createTag()
-    .withProjectId(project.id())
-    .withName("Japanese Cherry")
-    .execute();
-```
+### <a name="train-the-classifier"></a>分類子をトレーニングする
 
-## <a name="upload-images-to-the-project"></a>画像をプロジェクトにアップロードする
+このコードにより、プロジェクトに最初のイテレーションが作成されて、それが既定のイテレーションに指定されます。 既定のイテレーションは、予測要求に応答するモデルのバージョンを表します。 モデルを再トレーニングするたびに更新する必要があります。
 
-サンプルは、最終的なパッケージに画像を含むようにセットアップされます。 画像は、jar の resources セクションから読み取られて、サービスにアップロードされます。
+[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=89-99)]
 
-```java
-System.out.println("Adding images...");
-for (int i = 1; i <= 10; i++) {
-    String fileName = "hemlock_" + i + ".jpg";
-    byte[] contents = GetImage("/Hemlock", fileName);
-    AddImageToProject(trainer, project, fileName, contents, hemlockTag.id(), null);
-}
+### <a name="use-the-prediction-endpoint"></a>予測エンドポイントを使用する
 
-for (int i = 1; i <= 10; i++) {
-    String fileName = "japanese_cherry_" + i + ".jpg";
-    byte[] contents = GetImage("/Japanese Cherry", fileName);
-    AddImageToProject(trainer, project, fileName, contents, cherryTag.id(), null);
-}
-```
+予測エンドポイントは、現在のモデルに画像を送信して分類予測を取得する際に使用できる参照で、ここでは `predictor` で表されます。 このサンプルでは、どこか他の場所で、予測キーの環境変数を使用して `predictor` が定義されています。
 
-前のスニペット コードでは、リソース ストリームとして画像を取得してサービスにアップロードする 2 つのヘルパー関数を使用しています。
+[!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=108-120)]
 
-```java
-private static void AddImageToProject(Trainings trainer, Project project, String fileName, byte[] contents, UUID tag)
-{
-    System.out.println("Adding image: " + fileName);
+## <a name="run-the-application"></a>アプリケーションの実行
 
-    ImageFileCreateEntry file = new ImageFileCreateEntry()
-        .withName(fileName)
-        .withContents(contents);
+Maven を使用してソリューションをコンパイルおよび実行するには、PowerShell でプロジェクト ディレクトリから次のコマンドを実行します。
 
-    ImageFileCreateBatch batch = new ImageFileCreateBatch()
-        .withImages(Collections.singletonList(file));
-
-    batch = batch.withTagIds(Collections.singletonList(tag));
-
-    trainer.createImagesFromFiles(project.id(), batch);
-}
-
-private static byte[] GetImage(String folder, String fileName)
-{
-    try {
-        return ByteStreams.toByteArray(CustomVisionSamples.class.getResourceAsStream(folder + "/" + fileName));
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-        e.printStackTrace();
-    }
-
-    return null;
-}
-```
-
-## <a name="train-the-project"></a>プロジェクトをトレーニングする
-
-これにより、プロジェクトに最初のイテレーションが作成されて、それが既定のイテレーションに指定されます。 
-
-```java
-System.out.println("Training...");
-Iteration iteration = trainer.trainProject(project.id());
-
-while (iteration.status().equals("Training"))
-{
-    System.out.println("Training Status: "+ iteration.status());
-    Thread.sleep(1000);
-    iteration = trainer.getIteration(project.id(), iteration.id());
-}
-
-System.out.println("Training Status: "+ iteration.status());
-trainer.updateIteration(project.id(), iteration.id(), iteration.withIsDefault(true));
-```
-
-## <a name="get-and-use-the-default-prediction-endpoint"></a>既定の予測エンドポイントを取得して使用する
-
-> [!IMPORTANT]
-> 以前に取得した予測キーの値を `predictionApiKey` に設定します。
-
-```java
-final String predictionApiKey = "insert your prediction key here";
-PredictionEndpoint predictClient = CustomVisionPredictionManager.authenticate(predictionApiKey);
-
-// Use below for predictions from a url
-// String url = "some url";
-// ImagePrediction results = predictor.predictions().predictImage()
-//                         .withProjectId(project.id())
-//                         .withUrl(url)
-//                         .execute();
-
-// load test image
-byte[] testImage = GetImage("/Test", "test_image.jpg");
-
-// predict
-ImagePrediction results = predictor.predictions().predictImage()
-    .withProjectId(project.id())
-    .withImageData(testImage)
-    .execute();
-
-for (Prediction prediction: results.predictions())
-{
-    System.out.println(String.format("\t%s: %.2f%%", prediction.tagName(), prediction.probability() * 100.0f));
-}
-```
-
-## <a name="run-the-example"></a>例を実行する
-
-Maven を使用してソリューションをコンパイルして実行するには:
-
-```
+```PowerShell
 mvn compile exec:java
 ```
 
-アプリケーションの出力は次のテキストのようになります。
+アプリケーションのコンソール出力は次のテキストのようになります。
 
 ```
 Creating project...
@@ -223,3 +124,14 @@ Done!
         Hemlock: 93.53%
         Japanese Cherry: 0.01%
 ```
+
+テスト画像の予測結果 (最後の数行の出力) が正しいことを確認してください。
+
+[!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
+
+## <a name="next-steps"></a>次の手順
+
+以上、画像の分類処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。
+
+> [!div class="nextstepaction"]
+> [モデルのテストと再トレーニング](test-your-model.md)

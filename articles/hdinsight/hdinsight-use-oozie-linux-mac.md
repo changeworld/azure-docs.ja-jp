@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 052afbe185f9c66af3759775b38b6bf0f2c2e6b2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: a2b209dc0204c390b16039ed1cf58b47f29629f1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783323"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252107"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Hadoop で Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -30,12 +30,12 @@ Azure HDInsight で Apache Oozie と Hadoop を使用する方法を説明しま
 Oozie を使って、Java プログラムやシェル スクリプトなどの、システムに固有のジョブをスケジュールすることもできます。
 
 > [!NOTE]
-> HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory を使う方法です。 Data Factory について詳しくは、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
+> HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory を使う方法です。 Data Factory について詳しくは、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。 Enterprise セキュリティ パッケージを使用したクラスターで Oozie を使用するには、「[Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight クラスター**: [Linux での HDInsight の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* **通常の HDInsight クラスター**: [Linux での HDInsight の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。

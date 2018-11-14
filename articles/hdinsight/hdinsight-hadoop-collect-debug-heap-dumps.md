@@ -1,25 +1,25 @@
 ---
-title: ヒープ ダンプによる Hadoop サービスのデバッグおよび分析
-description: デバッグおよび分析に利用できるように、自動的に Hadoop サービスのヒープ ダンプを収集して Azure BLOB ストレージ アカウント内に配置します。
+title: ヒープ ダンプによる Apache Hadoop サービスのデバッグおよび分析
+description: デバッグおよび分析に利用できるように、自動的に Apache Hadoop サービスのヒープ ダンプを収集して Azure BLOB ストレージ アカウント内に配置します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 35f7843ebf49e79d9045c72493bb38b218234288
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2a399899c93addf966d3f2ec0e36d4b1c76b686f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43099769"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038309"
 ---
-# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-hadoop-services"></a>BLOB ストレージのヒープ ダンプを収集して Hadoop サービスをデバッグおよび分析する
+# <a name="collect-heap-dumps-in-blob-storage-to-debug-and-analyze-apache-hadoop-services"></a>BLOB ストレージのヒープ ダンプを収集して Apache Hadoop サービスをデバッグおよび分析する
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
-ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。 これらは、実行時に発生する問題を診断するのに便利です。 Hadoop サービスのヒープ ダンプを自動的に収集し、HDInsightHeapDumps 下のユーザーの Azure BLOB ストレージ アカウント内に置くことができます。
+ヒープ ダンプには、ダンプが作成された時点の変数の値を含む、アプリケーションのメモリのスナップショットが含まれています。 これらは、実行時に発生する問題を診断するのに便利です。 Apache Hadoop サービスのヒープ ダンプを自動的に収集し、HDInsightHeapDumps 下のユーザーの Azure BLOB ストレージ アカウント内に置くことができます。
 
 さまざまなサービスに対するヒープ ダンプの収集は、各クラスター上のサービスに対して、個別に有効にする必要があります。 既定では、クラスターに対してこの機能はオフになっています。 これらのヒープ ダンプのサイズは大きくなる可能性があるため、収集を有効にした後はヒープ ダンプの保存先である BLOB ストレージ アカウントを定期的に確認してください。
 
@@ -30,11 +30,11 @@ ms.locfileid: "43099769"
 ## <a name="eligible-services-for-heap-dumps"></a>ヒープ ダンプの対象サービス
 次のサービスのヒープ ダンプを有効にできます。
 
-* **hcatalog** - tempelton
-* **hive** - hiveserver2、metastore、derbyserver
+* **Apache hcatalog** - tempelton
+* **Apache hive** - hiveserver2、metastore、derbyserver
 * **mapreduce** - jobhistoryserver
-* **yarn** - resourcemanager、nodemanager、timelineserver
-* **hdfs** - datanode、secondarynamenode、namenode
+* **Apache yarn** - resourcemanager、nodemanager、timelineserver
+* **Apache hdfs** - datanode、secondarynamenode、namenode
 
 ## <a name="configuration-elements-that-enable-heap-dumps"></a>ヒープ ダンプを有効にする構成要素
 サービスのヒープ ダンプを有効にするには、そのサービスのセクション内に適切な構成要素を設定する必要があります。これは **service_name** で指定します。

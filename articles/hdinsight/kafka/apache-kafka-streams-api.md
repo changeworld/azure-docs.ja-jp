@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/17/2018
-ms.openlocfilehash: 9e4073fa54b7dda5ee9c413b84050510e2357893
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/06/2018
+ms.openlocfilehash: b22a701d9e876ca011381810e330fed60b7177d4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013175"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278703"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>チュートリアル: Apache Kafka Streams API
 
@@ -84,7 +84,7 @@ Kafka Streams API を使用するアプリケーションを作成し、HDInsigh
 
 ### <a name="streamjava"></a>Stream.java
 
-`Stream.java` ファイルは、Streams API を使用してワード カウント アプリケーションを実装します。 これは、`test` という名前の Kafka トピックからデータを読み取り、`wordcounts` という名前のトピックにワード カウントを書き込みます。
+[Stream.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Streaming/src/main/java/com/microsoft/example/Stream.java) ファイルは、Streams API を使用してワード カウント アプリケーションを実装します。 これは、`test` という名前の Kafka トピックからデータを読み取り、`wordcounts` という名前のトピックにワード カウントを書き込みます。
 
 次のコードは、ワード カウント アプリケーションを定義します。
 

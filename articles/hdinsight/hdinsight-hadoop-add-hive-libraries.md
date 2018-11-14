@@ -1,24 +1,24 @@
 ---
-title: HDInsight クラスター作成時の Hive ライブラリの追加 - Azure
-description: クラスターの作成時に Hive ライブラリ (jar ファイル) を HDInsight クラスターに追加する方法について説明します。
+title: HDInsight クラスター作成時の Apache Hive ライブラリの追加 - Azure
+description: クラスターの作成時に Apache Hive ライブラリ (jar ファイル) を HDInsight クラスターに追加する方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 40650c813efc8fe7389b0445c72007dbd97e3ce8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f9788c82e74b47d4550640a1069f6d97487eecc6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108688"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035307"
 ---
-# <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスター作成時のカスタム Hive ライブラリの追加
+# <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する
 
-HDInsight で Hive ライブラリを事前に読み込む方法を説明します。 このドキュメントには、クラスターの作成時にスクリプト操作を使ってライブラリを事前に読み込む方法についての情報が含まれます。 このドキュメントの手順を使用して追加されたライブラリは Hive でグローバルに使用できます ([ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) を使用して読み込む必要がありません)。
+HDInsight で Apache Hive ライブラリを事前に読み込む方法を説明します。 このドキュメントには、クラスターの作成時にスクリプト操作を使ってライブラリを事前に読み込む方法についての情報が含まれます。 このドキュメントの手順を使用して追加されたライブラリは Hive でグローバルに使用できます ([ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) を使用して読み込む必要がありません)。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
@@ -49,7 +49,7 @@ HDInsight で Hive ライブラリを事前に読み込む方法を説明しま�
 
 * インストールする jar は、Azure Blob Storage の **単一のコンテナー**に格納する必要があります。
 
-* jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする**必要があります**。 既定のストレージ アカウントまたは __オプションの構成__ を通じて追加されたアカウントである必要があります。
+* jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする**必要があります**。 既定のストレージ アカウントまたは__オプションの構成__を通じて追加されたアカウントである必要があります。
 
 * コンテナーへの WASB パスは、スクリプト アクションのパラメーターとして指定する必要があります。 たとえば、jar が **mystorage** という名前のストレージ アカウントの **libs** というコンテナーに格納されている場合、パラメーターは **wasb://libs@mystorage.blob.core.windows.net/** となります。
 

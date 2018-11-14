@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでテレメトリ ルールを
 description: Azure IoT Central のテレメトリ ルールを使用すると、ほぼリアルタイムでデバイスを監視し、ルールがトリガーされたときに、電子メールの送信などのアクションを自動的に呼び出すことができます。
 author: ankitgupta
 ms.author: ankitgup
-ms.date: 08/14/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1b82ac3bf67370a2c39e85bf5691da38539edb74
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: d085777e347e1e892c3a49f4f37aa1d8130ef18c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729327"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005735"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでテレメトリ ルールを作成して通知を設定する
 
@@ -87,7 +87,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
    ![アクションを構成する](media\howto-create-telemetry-rules\Configure_Action.png)
 
-1. ルールを保存するには、**[保存]** を選択します。 ルールは数分以内に有効になり、アプリケーションに送信されるテレメトリの監視が開始されます。 ルールで指定した条件に一致すると、構成した電子メールのアクションがトリガーされます。
+1. ルールを保存するには、**[保存]** を選択します。 ルールは数分以内に有効になり、アプリケーションに送信されるテレメトリの監視が開始されます。 ルールで指定した条件を満たすと、構成した電子メールのアクションがトリガーされます。
 
 1. **[完了]** を選択して、**[テンプレートの編集]** モードを終了します。
 

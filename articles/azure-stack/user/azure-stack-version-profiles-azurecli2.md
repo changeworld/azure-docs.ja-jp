@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 6042aa4dd8b26a0986737edc3c89b8e165ae970a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067705"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277275"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack での Azure CLI による API バージョンのプロファイルの使用
 
@@ -139,6 +139,18 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
         --suffix-keyvault-dns ".vault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
+    c. マルチ テナント環境で*ユーザー*を登録するには、次のコマンドを使用します。
+
+      ```azurecli
+      az cloud register \ 
+        -n AzureStackUser \ 
+        --endpoint-resource-manager "https://management.local.azurestack.external" \ 
+        --suffix-storage-endpoint "local.azurestack.external" \ 
+        --suffix-keyvault-dns ".vault.local.azurestack.external" \ 
+        --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases> \
+        --endpoint-active-directory-resource-id=<URI of the ActiveDirectoryServiceEndpointResourceID> \
+        --profile 2018-03-01-hybrid
+      ```
 
 1. 次のコマンドを使用して、アクティブな環境を設定します。
 
@@ -223,7 +235,7 @@ az group create \
 Azure Stack で CLI を使うときに注意する必要がある既知の問題がいくつかあります。
 
  - CLI 対話モード ( `az interactive`コマンド) はまだ Azure Stack でサポートされていません。
- - Azure Stack で使用できる仮想マシン イメージの一覧を取得するには、`az vm image list` コマンドの代わりに、`az vm images list --all` コマンドを使用します。 `--all` オプションを指定すると、応答に、Azure Stack 環境で使用できるイメージのみが返されます。
+ - Azure Stack で使用できる仮想マシン イメージの一覧を取得するには、`az vm image list` コマンドの代わりに、`az vm image list --all` コマンドを使用します。 `--all` オプションを指定すると、応答に、Azure Stack 環境で使用できるイメージのみが返されます。
  - Azure で使用できる仮想マシン イメージの別名は、Azure Stack に適用できない場合があります。 仮想マシン イメージを使用する場合は、イメージの別名の代わりに、URN パラメーター全体 (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) を使用する必要がありますします。 この URN は、`az vm images list` コマンドから派生したイメージ仕様と一致している必要があります。
 
 ## <a name="next-steps"></a>次の手順

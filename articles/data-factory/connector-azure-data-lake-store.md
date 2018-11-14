@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: aed1ab14072da3e3d3e49060b7117a24eeecdb56
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817026"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010254"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,9 +44,6 @@ ms.locfileid: "48817026"
 > Azure Data Lake Store コネクタの使用のチュートリアルについては、[Azure Data Lake Store へのデータの読み込み](load-azure-data-lake-store.md)に関する記事をご覧ください。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
-
->[!NOTE]
->データのコピー ツールを使用してコピー パイプラインを作成するとき、または作成中に ADF UI を使用して接続のテストやフォルダーの移動を実行するときは、ルート レベルでサービス プリンシパルまたは MSI のアクセス許可を付与する必要があります。 これに対し、コピー アクティビティの実行は、コピー対象のデータに対するアクセス許可が付与されてさえいれば可能です。 アクセス許可を制限する必要がある場合は、作成操作を省略できます。
 
 以下のセクションで、Azure Data lake Store に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -79,6 +76,9 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 > Azure Data Lake Store でサービス プリンシパルに適切なアクセス許可を付与してください。
 >- **ソースとして**、データ エクスプローラーで [アクセス] を選択し、フォルダー/サブフォルダー内のファイルを一覧表示およびコピーするには少なくとも**読み取り + 実行**アクセス許可を付与し、1 つのファイルをコピーするには**読み取り**アクセス許可を付与して、再帰の場合は **[このフォルダーとすべての子]** に追加し、**アクセス許可および既定アクセス許可エントリ**として追加します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
 >- **シンクとして**、データ エクスプローラーで [アクセス] を選択し、フォルダーに子項目を作成するには少なくとも**書き込み + 実行**アクセス許可を付与して、再帰の場合は **[このフォルダーとすべての子]** に追加し、**アクセス許可および既定のアクセス許可エントリ**として追加します。 Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、アクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
+
+>[!NOTE]
+>**データのコピー ツール**を使用してコピー パイプラインを作成するとき、または作成中に **ADF UI** を使用して接続のテストやフォルダーの移動を実行するときは、ルートから開始するフォルダーを一覧化するために、**"実行" 権限のあるサービス プリンシパルのアクセス許可をルート レベル**で付与する必要があります。 これに対し、コピー アクティビティの実行は、コピー対象のデータに対するアクセス許可が付与されてさえいれば可能です。 アクセス許可を制限する必要がある場合は、作成操作を省略できます。
 
 次のプロパティがサポートされています。
 
@@ -127,6 +127,9 @@ Azure リソースのマネージド ID 認証を使用するには、次のよ�
 > Azure Data Lake Store でデータ ファクトリ サービス ID に適切なアクセス許可を付与してください。
 >- **ソースとして**、データ エクスプローラーで [アクセス] を選択し、フォルダー/サブフォルダー内のファイルを一覧表示およびコピーするには少なくとも**読み取り + 実行**アクセス許可を付与し、1 つのファイルをコピーするには**読み取り**アクセス許可を付与して、再帰の場合は **[このフォルダーとすべての子]** に追加し、**アクセス許可および既定アクセス許可エントリ**として追加します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
 >- **シンクとして**、データ エクスプローラーで [アクセス] を選択し、フォルダーに子項目を作成するには少なくとも**書き込み + 実行**アクセス許可を付与して、再帰の場合は **[このフォルダーとすべての子]** に追加し、**アクセス許可および既定のアクセス許可エントリ**として追加します。 Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、アクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
+
+>[!NOTE]
+>**データのコピー ツール**を使用してコピー パイプラインを作成するとき、または作成中に **ADF UI** を使用して接続のテストやフォルダーの移動を実行するときは、ルートから開始するフォルダーを一覧化するために、**"実行" 権限のあるアクセス許可**をルート レベルで付与する必要があります。 これに対し、コピー アクティビティの実行は、コピー対象のデータに対するアクセス許可が付与されてさえいれば可能です。 アクセス許可を制限する必要がある場合は、作成操作を省略できます。
 
 Azure Data Factory では、リンクされたサービスの Data Lake Store の一般的な情報以外にプロパティを指定する必要はありません。
 

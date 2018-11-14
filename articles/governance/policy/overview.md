@@ -4,17 +4,17 @@ description: Azure Policy は Azure のサービスであり、Azure 環境で�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: dbdffc7a6f77f3f34ce7937c60eb7a53e5f72590
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c016e21ff59d5f68afee79b2159218d10e90a7ec
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961282"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252821"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -35,12 +35,14 @@ Azure Policy は、ポリシーの作成、割り当て、管理に使用する 
 
 ### <a name="rbac-permissions-in-azure-policy"></a>Azure Policy における RBAC アクセス許可
 
-Azure Policy には、2 つの異なるリソース プロバイダーでの操作として表されるアクセス許可があります。
+Azure Policy は、次の 2 つのリソース プロバイダーにおいて、いくつかのアクセス許可 (操作) を有しています。
 
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
-- [Microsoft.PolicyInsight](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
+- [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-組み込みロールのいくつかは、Azure Policy のリソースに対するさまざまなレベルのアクセス許可を持ちます。たとえば、**セキュリティ管理者**はポリシーの割り当てと定義を管理できますが、コンプライアンス情報の表示はできません。**閲覧者**は、ポリシーの割り当てと定義に関する詳細情報を読み取れますが、コンプライアンス情報の変更や表示はできません。 一方、**所有者**は完全な権利を持ち、**共同作成者**は Azure Policy のアクセス許可を一切持ちません。 Policy のコンプライアンスの詳細情報を表示するアクセス許可を付与するには、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成します。
+Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **[リソース ポリシーの共同作成者 (プレビュー)]** ロールには Policy のほとんどの操作が、また **[所有者]** にはフル権限が与えられています。 **[共同作成者]** と **[閲覧者]** は、どちらも Policy に関する詳細情報をすべて読み取ることができますが、**[共同作成者]** は、それに加えて修復処理をトリガーすることができます。
+
+いずれの組み込みロールにも必要なアクセス許可がない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成してください。
 
 ## <a name="policy-definition"></a>ポリシー定義
 

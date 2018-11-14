@@ -1,24 +1,7 @@
 ---
-title: PowerShell - TDE 保護機能のローテーション - Azure SQL Database | Microsoft Docs
-description: Azure SQL サーバーの Transparent Data Encryption (TDE) 保護機能をローテーションする方法について説明します。
-services: sql-database
-ms.service: sql-database
-ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
-ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
-ms.reviewer: vanto
-manager: jhubbard
-ms.date: 08/07/2017
-ms.openlocfilehash: fc8660b6fa6d9778a4eac9ce939181aa24d5097d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309640"
----
+タイトル: 'PowerShell - TDE 保護機能をローテーションする - Azure SQL Database| Microsoft Docs の説明: Azure SQL サーバーに対して Transparent Data Encryption (TDE) 保護機能をローテーションする方法について説明します。
+services: sql-database ms.service: sql-database ms.subservice: security ms.custom: ms.devlang: ms.topic: conceptual author: aliceku ms.author: aliceku ms.reviewer: vanto manager: jhubbard ms.date: 08/07/2017
+--- 
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用して Transparent Data Encryption (TDE) 保護機能をローテーションする 
 
 この記事では、Azure Key Vault から TDE 保護機能を使用して Azure SQL サーバーのキーをローテーションする方法について説明します。 Azure SQL サーバーの TDE 保護機能をローテーションすることは、サーバー上のデータベースを保護する新しい非対称キーに切り替えることを意味します。 キー ローテーションはオンラインで行われ、データベース全体ではなくデータべースのデータ暗号化キーを復号化して再暗号化するのみであるため、完了までに数秒しかかかりません。

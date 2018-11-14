@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 27f807c8f2f6b6a65ef95136047f5eed1b3aab02
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159314"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978997"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
 
@@ -44,19 +44,15 @@ ms.locfileid: "47159314"
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure ポータルでメトリックにアラート ルールを作成する
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
-2. この手順は、SQL DB およびエラスティック プールと SQL DW では異なります。 
-
-   - **SQL DB とエラスティック プールのみ**: [監視] セクションで、**[アラート]** または **[アラート ルール]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
+2. [監視] セクションで、**[アラート (クラシック)]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
    
-     ![監視](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
+     ![監視](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **SQL DW のみ**: 主なタスク] セクションで **[監視]** を選択します。 **[DWU 利用状況]** グラフをクリックします。
+   - **SQL DW ONLY**: **[DWU 利用状況]** グラフをクリックします。 **[クラシック アラートの表示]** を選択します
 
-     ![主なタスク](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
-
-3. **[アラートの追加]** コマンドを選択し、フィールドに入力します。
+3. **[メトリック アラートの追加 (クラシック)]** ボタンを選択して、フィールドに入力します。
    
-    ![[アラートの追加]](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
+    ![[アラートの追加]](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. アラート ルールに**名前**を付けて、**説明**を選択します。この説明は通知電子メールにも表示されます。
 5. 監視する**メトリック**を選択し、メトリックの**条件**と**しきい値**を選択します。 また、 **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。 たとえば、期間として [PT5M] を使用すると、アラートは 80% を超える CPU を見つけて、その CPU が 5 分間で**平均** 80% を超えた時点でトリガーされます。 最初のトリガーが発生したら、次のアラートは、CPU が 5 分間で平均 80% を下回ったときにトリガーされます。 CPU 測定は 1 分ごとに発生します。 各アラートが使用するサポートされる間隔と集計タイプを、以下の表で確認してください。ただし、すべてのアラートで平均値が使用されるわけではありません。   
 6. アラートが発生したときに管理者と共同管理者に電子メールが送信されるようにするには、 **[メールの所有者...]** をオンにします。

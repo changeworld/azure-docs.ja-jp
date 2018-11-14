@@ -6,19 +6,18 @@ ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-manager: douge
-ms.openlocfilehash: 43cf75d875b2f5fbfea46fb2c8fbae809668057d
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 83f38d6a04b90cfd8e056686f1a1539fd15e98b3
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405174"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978299"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure Dev Spaces での .NET Core と Visual Studio の使用
 
@@ -41,7 +40,7 @@ ms.locfileid: "47405174"
    AKS クラスター の作成フォームの各見出しの下で、次の手順を実行します。
 
     - **PROJECT DETAILS (プロジェクトの詳細)**: Azure サブスクリプションと、新規または既存の Azure リソース グループを選択します。
-    - **CLUSTER DETAILS (クラスターの詳細)**: AKS クラスターの名前、リージョン (現時点では EastUS、Central US、WestEurope、WestUS2、CanadaCentral、CanadaEast のいずれかを選択してください)、バージョン、DNS 名プレフィックスを入力します。
+    - **[CLUSTER DETAILS]\(クラスターの詳細\)**: AKS クラスターの名前、リージョン (現時点では EastUS、EastUS2、Central US、WestEurope、WestUS2、SoutheastAsia、CanadaCentral、CanadaEast のいずれかを選択してください)、バージョン、DNS 名プレフィックスを入力します。
     - **[SCALE]\(スケール\)**: AKS エージェント ノードの VM サイズとノード数を選択します。 Azure Dev Spaces を初めてお使いになる場合、ノード数は 1 つあれば十分にさまざまな機能を試すことができます。 ノード数は、クラスターのデプロイ後、いつでも簡単に調整できます。 AKS クラスターの作成後に VM サイズを変更することはできないので注意してください。 ただし、AKS クラスターのデプロイ後にスケールアップする必要が生じた場合は、より大きな VM を使って新しい AKS クラスターを簡単に作成できます。Dev Spaces を使用して、その大きい方のクラスターに再デプロイすることができます。
 
    必ず Kubernetes バージョン 1.9.6 以降を選択してください。

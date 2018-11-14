@@ -1,25 +1,25 @@
 ---
-title: 'チュートリアル: Data Factory を使用して Azure HDInsight でオンデマンドの Hadoop クラスターを作成する '
-description: Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する方法について説明します。
+title: 'チュートリアル: Data Factory を使用して Azure HDInsight でオンデマンドの Apache Hadoop クラスターを作成する '
+description: Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: jasonh
-ms.openlocfilehash: 9e21c49e7a472830c19f61388739c35aac17c3ff
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: hrasheed
+ms.openlocfilehash: 76651874951255d9b01efdc6e91892f6852d948d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955611"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036378"
 ---
-# <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル: Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する
+# <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル: Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-この記事では、Azure Data Factory を使用して、Azure HDInsight でオンデマンドの Hadoop クラスターを作成する方法について説明します。 その後 Azure Data Factory でデータ パイプラインを使用して Hive ジョブを実行し、クラスターを削除します。 このチュートリアルを完了すると、クラスターの作成、ジョブの実行、クラスターの削除がスケジュールに従って実行されるビッグ データ ジョブの実行を作動可能な状態にする方法を習得できます。
+この記事では、Azure Data Factory を使用して Azure HDInsight で Apache Hadoop クラスター (オンデマンド) を作成する方法について説明します。 その後 Azure Data Factory でデータ パイプラインを使用して Hive ジョブを実行し、クラスターを削除します。 このチュートリアルを完了すると、クラスターの作成、ジョブの実行、クラスターの削除がスケジュールに従って実行されるビッグ データ ジョブの実行を作動可能な状態にする方法を習得できます。
 
 このチュートリアルに含まれるタスクは次のとおりです。 
 

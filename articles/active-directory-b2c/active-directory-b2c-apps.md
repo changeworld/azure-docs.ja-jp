@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7410dadabf9fda2eb36531991d1d7ff3c3747e2c
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7671a0a99e12463fcce5ff33fbcba7e8677dde05
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406519"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006196"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Azure Active Directory B2C で使用できるアプリケーションの種類
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリケー
 Azure AD B2C を使用しているすべてのアプリケーションは、[Azure Portal](https://portal.azure.com/) を使用して [Azure AD B2C テナント](active-directory-b2c-get-started.md)に登録する必要があります。 アプリケーション登録プロセスでは、次のような値が収集されて割り当てられます。
 
 * アプリケーションを一意に識別する **アプリケーション ID**。
-* 応答をアプリケーションにリダイレクトして戻すために使用できる **リダイレクト URI**。
+* 応答をアプリケーションにリダイレクトして戻すために使用できる**応答 URL**。
 
 Azure AD B2C に送信される各要求は、 **ポリシー**を指定します。 ポリシーは、Azure AD の動作を制御します。 これらのエンドポイントを使用して、高度にカスタマイズ可能なユーザー エクスペリエンスのセットを作成することもできます。 一般的なポリシーとしては、サインアップ ポリシー、サインイン ポリシー、プロファイル編集ポリシーなどがあります。 これらのポリシーを詳しく理解していない場合は、先に進む前に Azure AD B2C の「 [拡張可能ポリシー フレームワーク](active-directory-b2c-reference-policies.md) 」を参照する必要があります。
 
@@ -112,9 +112,9 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 
 ## <a name="current-limitations"></a>現時点での制限事項
 
-Azure AD B2C では、現時点で以下の種類のアプリはサポートしていませんが、今後サポート対象に含まれる予定です。 
+### <a name="application-not-supported"></a>サポートされないアプリケーション 
 
-### <a name="daemonsserver-side-applications"></a>デーモン/サーバー側アプリケーション
+#### <a name="daemonsserver-side-applications"></a>デーモン/サーバー側アプリケーション
 
 長時間実行されるプロセスを含んだアプリケーションや、ユーザーの介入なしで動作するアプリケーションも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリケーションは、OAuth 2.0 クライアント資格情報フローを使用することで、(ユーザーの委任 ID ではなく) アプリケーションの ID を使って認証を行い、トークンを取得することができます。 クライアント資格情報フローは、On-Behalf-Of フローと同じではなく、On-Behalf-Of フローは、サーバー対サーバー認証には使用しないようにする必要があります。
 
@@ -122,9 +122,60 @@ Azure AD B2C では、現時点で以下の種類のアプリはサポートし�
 
 クライアント資格情報フローを設定するには、「[Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)」を参照してください。 認証に成功した結果として、書式設定されたトークンを受信し、「[Azure AD トークン リファレンス](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)」で説明されているように Azure AD でそれを使用することができます。
 
-
-### <a name="web-api-chains-on-behalf-of-flow"></a>Web API チェーン (On-Behalf-Of フロー)
+#### <a name="web-api-chains-on-behalf-of-flow"></a>Web API チェーン (On-Behalf-Of フロー)
 
 多くのアーキテクチャには別のダウンストリーム Web API を呼び出す必要がある Web API が含まれ、その場合は両方とも Azure AD B2C によってセキュリティ保護されます。 このシナリオは、Web API バックエンドのあるネイティブ クライアントで一般的なものです。 その後は、Azure AD Graph API などの Microsoft オンライン サービスを呼び出します。
 
 このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 JWT Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。  ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。
+
+### <a name="reply-url-values"></a>応答 URL 値
+
+現時点では、Azure AD B2C に登録されるアプリは、限られた応答 URL 値に制限されています。 Web アプリと Web サービスの応答 URL は `https` スキームで始まる必要があり、すべての応答 URL 値で 1 つの DNS ドメインを共有する必要があります。 たとえば、次の応答 URL のいずれかを使用する Web アプリを登録することはできません。
+
+`https://login-east.contoso.com`
+
+`https://login-west.contoso.com`
+
+登録システムによって、既存の応答 URL の DNS 名全体と、追加しようとしている応答 URL の DNS 名が比較されます。 次のいずれかの条件に当てはまる場合、DNS 名を追加する要求は失敗します。
+
+- 新しい応答 URL の DNS 名全体が、既存の応答 URL の DNS 名と一致しない場合。
+- 新しい応答 URL の DNS 名全体が、既存の応答 URL のサブドメインではない場合。
+
+たとえば、アプリで次の応答 URL を使用しているとします。
+
+`https://login.contoso.com`
+
+次のように、これに追加できます。
+
+`https://login.contoso.com/new`
+
+この場合、DNS は完全に一致します。 または、次を行うことができます。
+
+`https://new.login.contoso.com`
+
+この場合、login.contoso.com の DNS サブドメインを参照しています。 応答 URL として login-east.contoso.com と login-west.contoso.com を使用するアプリが必要な場合は、これらの応答 URL を次の順番で追加する必要があります。
+
+`https://contoso.com`
+
+`https://login-east.contoso.com`
+
+`https://login-west.contoso.com`
+
+後の 2 つの応答 URL を追加できるのは、これらが 1 つ目の contoso.com という応答 URL のサブドメインであるためです。 
+
+モバイル/ネイティブ アプリケーションを作成するときに、**応答 URL** の代わりに**リダイレクト URI** を定義します。 リダイレクト URI を選択する際には、2 つの重要な考慮事項があります。
+
+- **一意**: リダイレクト URI のスキームは、すべてのアプリケーションで一意である必要があります。 `com.onmicrosoft.contoso.appname://redirect/path` の例では、`com.onmicrosoft.contoso.appname` はスキームです。 このパターンに従う必要があります。 2 つのアプリケーションで同じスキームを共有している場合、ユーザーには **[アプリの選択]** ダイアログが表示されます。 ユーザーが不適切な選択を行った場合、ログインは失敗します。
+- **完全**: リダイレクト URI には、スキームとパスが必要です。 パスには、ドメインの後に少なくとも 1 つのスラッシュを含める必要があります。 たとえば、`//contoso/` は機能しますが、`//contoso` は失敗します。 リダイレクト URI にアンダースコアなどの特殊文字がないことを確認します。
+
+### <a name="faulted-apps"></a>アプリの障害
+
+Azure AD B2C アプリケーションは次の手段で編集しないでください。
+
+- 他のアプリケーション管理ポータル ( [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)など)。
+- Graph API または PowerShell の使用。
+
+Azure portal の外部で Azure AD B2C アプリケーションを編集すると、アプリケーションにエラーが発生し、Azure AD B2C で使用できなくなります。 この場合、アプリケーションを削除し、もう一度作成する必要があります。
+
+アプリケーションを削除するには、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/)に移動し、そこでアプリケーションを削除します。 アプリケーションを表示するためには、そのアプリケーションの所有者である必要があります (テナントの管理者であるだけでは不十分です)。
+

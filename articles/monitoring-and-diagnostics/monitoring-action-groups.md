@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717677"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016048"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -24,8 +24,8 @@ ms.locfileid: "44717677"
 各アクションは次のプロパティで構成されます。
 
 * **名前**: アクション グループ内の一意識別子。  
-* **アクションの種類**: 音声通話または SMS の送信、電子メールの送信、webhook の呼び出し、ITSM ツールへのデータの送信、ロジック アプリの呼び出し、Azure アプリへのプッシュ通知、または Automation Runbook の実行。
-* **詳細**: 対応する電話番号、メール アドレス、webhook の URI、または ITSM 接続の詳細。
+* **アクションの種類**: 実行するアクション。 たとえば、音声通話、SMS、電子メールの送信やさまざまな種類の自動化されたアクションのトリガーなどです。 この記事の後半の種類を参照してください。 
+* **詳細**: *アクションの種類*によって異なる対応する詳細。 
 
 Azure Resource Manager テンプレートを使用したアクション グループの構成に関する詳細については、「[アクション グループの Resource Manager テンプレート](monitoring-create-action-group-with-resource-manager-template.md)」を参照してください。
 
@@ -57,64 +57,45 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 1. **[OK]** を選択して、アクション グループを作成します。
 
-## <a name="action-specific-information"></a>アクション固有の情報
-<dl>
-<dt>Azure アプリのプッシュ</dt>
-<dd>アクション グループには、最大 10 個の Azure アプリのアクションがあります。</dd>
-<dd>現時点では Azure アプリのアクションは ServiceHealth アラートのみをサポートします。 その他のアラート日時は無視されます。 [サービスの正常性通知が投稿されるたびにアラートを設定](monitoring-activity-log-alerts-on-service-notifications.md)する方法を見る。</dd>
-
-<dt>電子メール</dt>
-<dd>電子メールは、次の電子メール アドレスから送信されます。 電子メールのフィルタリングが適切に構成されていることを確認してください
-<ul>
-    <li>azure-noreply@microsoft.com</li>
-    <li>azureemail-noreply@microsoft.com</li>
-    <li>alerts-noreply@mail.windowsazure.com</li>
-</ul>
-</dd>
-<dd>1 つのアクション グループには、電子メールに関するアクションが最大 1,000 個あります</dd>
-<dd>[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る</dd>
-
-<dt>ITSM</dt>
-<dd>アクション グループには、最大 10 個の ITSM アクションがあります。</dd>
-<dd>ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../log-analytics/log-analytics-itsmc-overview.md)の作成方法を確認してください。</dd>
-
-<dt>ロジック アプリ</dt>
-<dd>アクション グループには、最大 10 個のロジック アプリのアクションがあります。</dd>
-
-<dt>Runbook</dt>
-<dd>アクション グループには、最大 10 個の Runbook アクションがあります。</dd>
-<dd>Runbook ペイロードの制限については、[Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)に関するページを参照してください</dd>
-
-<dt>SMS</dt>
-<dd>アクション グループには、最大 10 個の SMS アクションがあります。</dd>
-<dd>[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る</dd>
-<dd>[SMS アラート動作](monitoring-sms-alert-behavior.md)の記事を見る</dd>
-
-<dt>音声</dt>
-<dd>アクション グループには、最大 10 個の音声アクションがあります。</dd>
-<dd>[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る</dd>
-
-<dt>webhook</dt>
-<dd>アクション グループには、最大 10 個の webhook アクションがあります。
-<dd>再試行ロジック - 応答のタイムアウト期間は 10 秒です。 HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合、webhook の呼び出しが最大 2 回再試行されます。 1 回目の再試行は 10 秒後に実行されます。 2 回目となる最後の再試行は 100 秒後に実行されます。</dd>
-<dd>発信元 IP アドレスの範囲
-<ul>
-    <li>13.106.57.181</li>
-    <li>13.106.54.3</li>
-    <li>13.106.54.19</li>
-    <li>13.106.38.142</li>
-    <li>13.106.38.148</li>
-    <li>13.106.57.196</li>
-</ul>
-これらの IP アドレスへの変更に関する更新情報を受け取るには、アクション グループ サービスに関する情報の通知を監視する[サービス正常性アラート](./monitoring-service-notifications.md)を構成することをお勧めします。
-</dd>
-</dl>
-
 ## <a name="manage-your-action-groups"></a>アクション グループの管理 ##
 アクション グループを作成すると、**[モニター]** ブレードの **[アクション グループ]** セクションに表示されます。 次の操作を行うために管理するアクション グループを選択します。
 
 * アクションの追加、編集、または削除。
 * アクション グループの削除。
+
+## <a name="action-specific-information"></a>アクション固有の情報
+**Azure アプリのプッシュ** - アクション グループには、最大 10 個の Azure アプリのアクションがあります。 現時点では Azure アプリのアクションは ServiceHealth アラートのみをサポートします。 その他のアラート日時は無視されます。 [サービスの正常性通知が投稿されるたびにアラートを設定](monitoring-activity-log-alerts-on-service-notifications.md)する方法を見る。
+
+**電子メール** - 電子メールは、次の電子メール アドレスから送信されます。 電子メールのフィルタリングが適切に構成されていることを確認してください
+   - azure-noreply@microsoft.com
+   - azureemail-noreply@microsoft.com
+   - alerts-noreply@mail.windowsazure.com
+
+1 つのアクション グループには、電子メールに関するアクションが最大 1,000 個あります。 [レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る
+
+**ITSM** - アクション グループには、最大 10 個の ITSM アクションがあります。ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../log-analytics/log-analytics-itsmc-overview.md)の作成方法を確認してください。
+
+**ロジック アプリ** - アクション グループには、最大 10 個のロジック アプリのアクションがあります
+
+**Runbook** - アクション グループには、最大 10 個の Runbook アクションがあります。Runbook ペイロードの制限については、「[Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)」をご覧ください
+
+**SMS** -アクション グループには、最大 10 個の SMS アクションがあります。[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を参照してください。[SMS アラート動作](monitoring-sms-alert-behavior.md)の記事を参照してください
+
+**音声** - アクション グループには、最大 10 個の音声アクションがあります</dd>
+[レート制限情報](./monitoring-alerts-rate-limiting.md)の記事を見る</dd>
+
+**Webhook** - アクション グループには、最大 10 個の webhook アクションがあります。 再試行ロジック - 応答のタイムアウト期間は 10 秒です。 HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合、webhook の呼び出しが最大 2 回再試行されます。 1 回目の再試行は 10 秒後に実行されます。 2 回目となる最後の再試行は 100 秒後に実行されます。
+
+発信元 IP アドレスの範囲
+    - 13.106.57.181
+    - 13.106.54.3
+    - 13.106.54.19
+    - 13.106.38.142
+    - 13.106.38.148
+    - 13.106.57.196
+
+これらの IP アドレスへの変更に関する更新情報を受け取るには、アクション グループ サービスに関する情報の通知を監視する[サービス正常性アラート](./monitoring-service-notifications.md)を構成することをお勧めします。
+
 
 ## <a name="next-steps"></a>次の手順 ##
 * 詳細については、「[SMS アラート動作](monitoring-sms-alert-behavior.md)」を参照してください。  

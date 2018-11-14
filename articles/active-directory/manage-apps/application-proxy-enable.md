@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5227f756e807a30573733bd408144d869caac9ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 59ca9ca7711904fe7882aac4878bd62c597645d8
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366477"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034968"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>アプリケーション プロキシの概要とコネクタのインストール
 この記事では、Microsoft Azure AD アプリケーション プロキシを Azure AD のクラウド ディレクトリに対して有効にする手順について説明します。
@@ -33,6 +33,7 @@ ms.locfileid: "39366477"
 * [Microsoft Azure AD の Basic または Premium サブスクリプション](../fundamentals/active-directory-whatis.md) に加え、自分が全体管理者となっている Azure AD ディレクトリ。
 * アプリケーション プロキシ コネクタをインストールできる、Windows Server 2012 R2 または 2016 が実行されているサーバー。 このサーバーは、クラウド内のアプリケーション プロキシ サービスと公開するオンプレミス アプリケーションに接続できなければなりません。
   * Kerberos 制約付き委任を利用し、発行したアプリケーションへのシングル サインオンを実行するには、そのアプリケーションと同じ AD ドメインにこのコンピューターが参加済みであることが必要です。 詳細については、「[KCD for single sign-on with Application Proxy](application-proxy-configure-single-sign-on-with-kcd.md)」 (アプリケーション プロキシを使用したシングル サインオンのための KCD) を参照してください。
+* 基になるオペレーティング システムで実行されている TLS 1.2。 TLS 1.2 に変更するには、[TLS 1.2 を有効にする](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect)手順に従います。 内容は Azure AD Connect 向けのものですが、この手順はすべての .NET クライアントについて同じです。
 
 組織でインターネットへの接続にプロキシ サーバーを使用している場合、アプリケーション プロキシを開始する前にサーバーを構成する方法の詳細については、「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)」を参照してください。
 

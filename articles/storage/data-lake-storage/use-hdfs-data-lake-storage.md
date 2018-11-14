@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: c59331c772e140fccfefb89eef086a35837171e1
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c5f11cbb12b727f5f308d7a71c51706fa8ec373f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576977"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277088"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
-Azure Data Lake Storage Gen2 プレビューでは、[Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理やアクセスを行うことができます。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Data Lake Storage Gen2 に保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。 以下の記事では、[Azure Storage チームによる Azure Storage Explorer と Azure portal のサポート追加への取り組み](https://azure.microsoft.com/roadmap/)の間に選択できるオプションについて説明します。
+Azure Data Lake Storage Gen2 プレビューでは、[Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理やアクセスを行うことができます。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Storage アカウントに保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDInsight での HDFS CLI
 
 HDInsight では、それぞれのコンピューティング ノードにローカルに割り当てられている分散ファイル システムにアクセスします。 このファイル システムにアクセスするには、Hadoop でサポートされる HDFS などのファイル システムと直接対話するシェルを使用する必要があります。 よく使用されるコマンドと、役立つリソースへのリンクを以下に示します。
 
 >[!IMPORTANT]
->HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください ([クラスターの削除](../../hdinsight/hdinsight-delete-cluster.md)方法を確認ください)。 ただし、HDInsight クラスターを削除しても、Azure Data Lake Storage Gen2 に保存されているデータは削除されません。
+>HDInsight クラスターの課金は、クラスターが作成された後に開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 クラスターを削除する方法については、[トピックに関する記事](../../hdinsight/hdinsight-delete-cluster.md)を参照してください。 ただし、HDInsight クラスターを削除しても、Data Lake Storage Gen2 が使用可能なストレージ アカウントに保存されているデータは削除されません。
 
 ファイルまたはディレクトリの一覧を取得するには:
 

@@ -7,13 +7,13 @@ ms.author: raagyema
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 0794c1573c2eaa951b805573cf33f05923da83b4
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 11/05/2018
+ms.openlocfilehash: 8ad7369bc940f682bb7c11c3ed4e3444f1bb056a
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867784"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035086"
 ---
 # <a name="monitor-and-tune"></a>監視と調整
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for PostgreSQL には、サーバーの動作の分析情報を提供する各種の監視オプションが用意されています。
@@ -39,6 +39,7 @@ Azure Database for PostgreSQL では、次のメトリックを使用できま�
 |connections_failed|失敗した接続|Count|サーバーへの失敗した接続の数|
 |network_bytes_egress|ネットワーク送信|Bytes|アクティブな接続全体のネットワーク送信。|
 |network_bytes_ingress|Network In|Bytes|アクティブな接続全体のネットワーク受信。|
+|backup_storage_used|使用済みバックアップ ストレージ|Bytes|使用されているバックアップ ストレージの量。|
 
 ## <a name="server-logs"></a>サーバー ログ
 サーバーでのログ記録を有効にできます。 これらのログは、[Log Analytics](../log-analytics/log-analytics-queries.md)、Event Hubs、およびストレージ アカウントでの Azure 診断ログを通じて入手することもできます。 ログ記録の詳細については、[サーバー ログ](concepts-server-logs.md)に関するページをご覧ください。
@@ -55,3 +56,4 @@ Azure Database for PostgreSQL では、次のメトリックを使用できま�
 ## <a name="next-steps"></a>次の手順
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。
 - Azure Portal、REST API、または CLI を使用してメトリックへのアクセスおよびメトリックのエクスポートを行う方法の詳細については、[Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関する記事をご覧ください。
+- [サーバーの監視のベスト プラクティス](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/)に関するブログをお読みください。

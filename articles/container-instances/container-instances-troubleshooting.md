@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079358"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978180"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -102,7 +102,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image microsoft/windowsservercore:ltsc2016
  --command-line "ping -t localhost"
 ```
 
@@ -187,7 +187,7 @@ Windows コンテナーの起動時間を最速にするには、次の **2 つ�
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows コンテナーの低速のネットワークの準備
 
-接続の初期作成時に、最大で 5 秒間、Windows コンテナーに受信または送信の接続ができない場合があります。 初期セットアップ後に、コンテナーのネットワークが適切に再開する必要があります。
+接続の初期作成時に、最大で 30 秒間 (まれではありますがさらに長くなることもあります)、Windows コンテナーに受信または送信の接続ができない場合があります。 コンテナー アプリケーションにインターネット接続が必要な場合は、遅延を加えてロジックを再試行し、30 秒間でインターネット接続を確立できるようにします。 初期セットアップ後に、コンテナーのネットワークが適切に再開する必要があります。
 
 ## <a name="resource-not-available-error"></a>リソース使用不可エラー
 

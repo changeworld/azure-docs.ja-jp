@@ -8,16 +8,47 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c676932541866df081f6db54fa0b1ec4da7088
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471139"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218595"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="speech-service-sdk-110"></a>Speech Service SDK 1.1.0
+
+**新機能**
+
+* Android x86 または x64 のサポート。
+* プロキシのサポート: SpeechConfig オブジェクトで、プロキシ情報 (ホスト名、ポート、ユーザー名、およびパスワード) を設定する関数を呼び出せるようになりました。 この機能は iOS ではまだ利用できません。
+* 強化されたエラー コードとメッセージ。 認識でエラーが返された場合、これは既に `Reason` (取り消されたイベントの場合) または`CancellationDetails` (認識結果) を `Error` に設定します。 取り消されたイベントに、2 つのメンバー `ErrorCode` と `ErrorDetails` が含まれるようになりました。 サーバーによって、報告されたエラーと一緒に追加のエラー情報が返された場合、これを新しいメンバーで使用できるようになります。
+
+**機能強化**
+
+* 認識エンジンの構成に検証が追加され、エラー メッセージが追加されました。
+* オーディオ ファイル中の長時間のサイレント状態の処理が強化されました。
+* NuGet パッケージ: .NET Framework プロジェクトが AnyCPU 構成でビルドされることを防ぎます。
+
+**バグの修正**
+
+* 認識エンジンで見つかったいくつかの例外を修正しました。 さらに例外がキャッチされ、キャンセル済みイベントに変換されます。
+* プロパティ管理のメモリ リークを修正しました。
+* オーディオ入力ファイルが認識エンジンをクラッシュする可能性があるバグを修正しました。
+* セッションがイベントを停止した後でイベントが受信されることがあるバグを修正しました。
+* スレッド処理の一部の競合状態を修正しました。
+* クラッシュの原因となる iOS の互換性の問題を修正しました。
+* Android のマイクのサポートのための安定性の向上。
+* JavaScript の認識エンジンが認識言語を無視するバグを修正しました。
+* JavaScript で (場合によっては) EndpointId の設定を妨げるバグを修正しました。
+* JavaScript の AddIntent のパラメーターの順序を変更し、不足している AddIntent JavaScript 署名を追加します。
+
+**サンプル**
+
+* プルおよびプッシュ ストリームの使用のための C++ のサンプルを[サンプル リポジトリ](https://aka.ms/csspeech/samples)に追加しました。
 
 ## <a name="speech-service-sdk-101"></a>Speech Service SDK 1.0.1
 

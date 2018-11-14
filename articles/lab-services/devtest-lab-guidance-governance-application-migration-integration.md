@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 8653056c5c4b0e5b6831d3cc2b0006e89ac01bdd
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 8a661c94ecc660e0ebd0e9818acef81b8a7b819b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250877"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978617"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
-開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。 
+開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。
 
-- プロジェクト チーム内で環境をどのように利用しますか。 
+- プロジェクト チーム内で環境をどのように利用しますか。
 - どのようにして必要な組織のポリシーに確実に従い、アプリケーションに機敏に価値を追加できるようにしますか。
 
 ## <a name="azure-marketplace-images-vs-custom-images"></a>Azure Marketplace イメージとカスタム イメージ
@@ -60,10 +60,10 @@ Azure Marketplace イメージと組織独自のカスタム イメージをど�
 ### <a name="answer"></a>Answer
 [イメージ ファクトリ パターンに関するこちらのビデオ](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)をご覧ください。 これは高度なシナリオであり、提供されているスクリプトはサンプル スクリプトのみです。 何らかの変更が必要な場合は、環境で使用されるスクリプトを自分で管理および保守する必要があります。
 
-DevTest Labs を使用して、Visual Studio Team Services (VSTS) でカスタム イメージ パイプラインを作成する方法に関しては、以下をご覧ください。
+DevTest Labs を使用して、Azure Pipelines でカスタムのイメージ パイプラインを作成します。
 
 - [概要: Azure DevTest Labs でイメージ ファクトリを設定して数分で VM を準備する](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [イメージ ファクトリ – パート 2:VM を作成するように VSTS とファクトリ ラボをセットアップする](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [イメージ ファクトリ – パート 2:Azure Pipelines とファクトリ ラボを設定して VM を作成する](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
 - [イメージ ファクトリ – パート 3: カスタム イメージを保存して複数のラボに配布する](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
 - [ビデオ: Azure DevTest Labs でのカスタム イメージ ファクトリ](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
 
@@ -79,7 +79,7 @@ DevTest Labs を使用して、Visual Studio Team Services (VSTS) でカスタ�
 
 **送信トラフィック** – 仮想マシンがパブリック インターネットに直接接続できないようにし、企業のファイアウォールをトラフィックが通過するよう強制するには、強制ルーティングを使用して、オンプレミスのトラフィックを ExpressRoute または VPN 経由でルーティングできます。
 
-> [!NOTE] 
+> [!NOTE]
 > プロキシ設定のないトラフィックをブロックするプロキシ サーバーがある場合は、ラボの成果物ストレージ アカウントに対する例外を追加することを忘れないでください。
 
 仮想マシンまたはサブネットに対してネットワーク セキュリティ グループを使用することもできます。 このステップにより、トラフィックを許可/ブロックする保護レイヤーが追加されます。
@@ -100,9 +100,9 @@ VM で既存のインフラストラクチャとやりとりする必要があ�
 共有 IP アドレス、パブリック IP アドレス、プライベート IP アドレスはどのように使い分ける必要がありますか。
 
 ### <a name="answer"></a>Answer
-サイト間 VPN または ExpressRoute を使用する場合は、マシンが内部ネットワーク経由ではアクセスできてもパブリック インターネット経由ではアクセスできないように、プライベート IP アドレスの使用を検討します。 
+サイト間 VPN または ExpressRoute を使用する場合は、マシンが内部ネットワーク経由ではアクセスできてもパブリック インターネット経由ではアクセスできないように、プライベート IP アドレスの使用を検討します。
 
-> [!NOTE] 
+> [!NOTE]
 > ラボの所有者は、このサブネット ポリシーを変更して、ユーザーが各自の VM に誤ってパブリック IP アドレスを作成できないようにすることができます。 サブスクリプションの所有者は、パブリック IP アドレスが作成されるのを防ぐサブスクリプション ポリシーを作成する必要があります。
 
 共有パブリック IP アドレスを使用すると、ラボ内の仮想マシンはパブリック IP アドレスを共有します。 この方法は、特定のサブスクリプションに対するパブリック IP アドレスの制限が違反されるのを防ぐのに役立ちます。
@@ -125,7 +125,7 @@ VM で既存のインフラストラクチャとやりとりする必要があ�
 DevTest Labs 環境で Resource Manager テンプレートを使用するにはどうすればよいですか。
 
 ### <a name="answer"></a>Answer
-[DevTest Labs での環境機能](devtest-lab-test-env.md)に関する記事で説明されている手順を使用して、DevTest Labs 環境に Resource Manager テンプレートをデプロイします。 基本的には、Resource Manager テンプレートを Git リポジトリ (Visual Studio Team Services または GitHub) にチェックインし、[テンプレート用のプライベート リポジトリ](devtest-lab-test-env.md)をラボに追加します。
+[DevTest Labs での環境機能](devtest-lab-test-env.md)に関する記事で説明されている手順を使用して、DevTest Labs 環境に Resource Manager テンプレートをデプロイします。 基本的には、Resource Manager テンプレートを Git リポジトリ (Azure Repos または GitHub) にチェックインし、[テンプレート用のプライベート リポジトリ](devtest-lab-test-env.md)をラボに追加します。
 
 このシナリオは、開発マシンをホストするために DevTest Labs を使用している場合は役に立たないことがありますが、運用環境の典型であるステージング環境を構築している場合は役立つことがあります。
 

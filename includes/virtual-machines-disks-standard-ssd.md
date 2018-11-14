@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f8ca716f4ab991fecca52ca2d5fed080e6f4c177
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7c7671578dc22926dabfe7735038186ab1c2c2b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060780"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263908"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Azure 仮想マシンのワークロード用の Standard SSD マネージド ディスク
 
@@ -22,7 +22,7 @@ Azure Standard Solid State Drives (SSD) マネージド ディスクは、下位
 ## <a name="standard-ssd-features"></a>Standard SSD の機能
 
 **マネージド ディスク**: Standard SSD はマネージド ディスクとしてのみ使用できます。 Standard SSD では、アンマネージド ディスクとページ BLOB がサポートされていません。 マネージド ディスクを作成するときに、ディスクの種類を Standard SSD と指定し、必要なディスク サイズを示すと、Azure によって自動的にディスクの作成と管理が行われます。
-Standard SSD では、マネージド ディスクによって提供されるすべてのサービス管理操作がサポートされます。 たとえば、マネージド ディスクと同じ方法で、Standard SSD マネージド ディスクの作成、コピー、スナップショットの作成を行うことができます。
+Standard SSD では、マネージド ディスクによって提供されるすべてのクラシック デプロイ モデル操作がサポートされます。 たとえば、マネージド ディスクと同じ方法で、Standard SSD マネージド ディスクの作成、コピー、スナップショットの作成を行うことができます。
 
 **仮想マシン**: Standard SSD は、Premium ディスクをサポートしていない VM の種類を含め、すべての Azure VM と共に使用できます。 たとえば、A シリーズ VM、N シリーズ VM、DS シリーズ、またはその他の Azure VM シリーズを使用している場合、その VM と共に Standard SSD を使用できます。 Standard SSD の導入によって、以前は HDD ベースのディスクが使用されていた広範なワークロードを SSD ベースのディスクに移行することで、一貫したパフォーマンス、高可用性、低遅延、全般的なエクスペリエンス向上が実現します。
 
@@ -32,7 +32,7 @@ Standard SSD では、マネージド ディスクによって提供されるす
 
 ## <a name="scalability-and-performance-targets"></a>スケーラビリティとパフォーマンスのターゲット
 
-次の表に、現在 Standard SSD に提供されているディスク サイズを示します。
+次の表に、現在 Standard SSD に提供されているディスク サイズを示します。 アスタリスクで示されるサイズはプレビュー中です。
 
 |Standard SSD ディスクの種類  |ディスク サイズ  |ディスクあたりの IOPS  |ディスクあたりのスループット  |
 |---------|---------|---------|---------|
@@ -42,9 +42,9 @@ Standard SSD では、マネージド ディスクによって提供されるす
 |E30     |1,024 GiB       |最大 500         |最大 60 MiB/秒         |
 |E40     |2,048 GiB       |最大 500         |最大 60 MiB/秒         |
 |E50     |4,095 GiB       |最大 500         |最大 60 MiB/秒         |
-|E60     |8,192 GiB       |最大 1,300       |最大 300 MiB/秒        |
-|E70     |16,384 GiB      |最大 2,000       |最大 500 MiB/秒        |
-|E80     |32,767 GiB      |最大 2,000       |最大 500 MiB/秒        |
+|E60 *     |8,192 GiB       |最大 1,300       |最大 300 MiB/秒        |
+|E70 *    |16,384 GiB      |最大 2,000       |最大 500 MiB/秒        |
+|E80 *    |32,767 GiB      |最大 2,000       |最大 500 MiB/秒        |
 
 Standard SSD では、ほとんどの IO 操作で 1 桁ミリ秒の待機時間を実現し、上記の表に記載されている最大 IOPS と最大スループットを提供するように設計されています。 実際の IOPS とスループットは、トラフィック パターンによって異なる場合があります。 Standard SSD は、HDD ディスクよりも一貫したパフォーマンスを提供し、待機時間が短くなります。
 

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
-ms.openlocfilehash: a178e8880bcbcada9d66eaacf5ccbdb7c55957cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1be635826edbb60d50b06cc7c529e32b6280390b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109930"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249389"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple デバイスを安全にインストールして操作する
 ![警告のアイコン](./media/storsimple-safety/IC740879.png)
 ![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png) **安全衛生に関する情報を確認してください**
 
-Microsoft Azure StorSimple デバイスに適用されるこの記事に記載されたすべての安全衛生に関する情報を確認してください。 後で参照できるように、StorSimple デバイスに同梱されているすべての印刷されたガイドを保管してください。 これらの指示に従わず、本製品の設定、使用、管理を適切に行わなければ、重大な傷害または死亡事故や、デバイスが破損するリスクが高まる恐れがあります。 [このガイドのダウンロード可能なバージョン](http://www.microsoft.com/download/details.aspx?id=44233) も利用できます。
+Microsoft Azure StorSimple デバイスに適用されるこの記事に記載されたすべての安全衛生に関する情報を確認してください。 後で参照できるように、StorSimple デバイスに同梱されているすべての印刷されたガイドを保管してください。 これらの指示に従わず、本製品の設定、使用、管理を適切に行わなければ、重大な傷害または死亡事故や、デバイスが破損するリスクが高まる恐れがあります。 [このガイドのダウンロード可能なバージョン](https://www.microsoft.com/download/details.aspx?id=44233) も利用できます。
 
 ## <a name="safety-icon-conventions"></a>安全性アイコンの表記規則
 Microsoft Azure StorSimple デバイスを設定および実行しているときに従うべき安全に関する注意事項に使用されるアイコンを説明します。
 
-| アイコン | Description |
+| アイコン | 説明 |
 |:--- |:--- |
 | ![危険のアイコン](./media/storsimple-safety/IC740879.png) **危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
 | ![警告のアイコン](./media/storsimple-safety/IC740879.png) **警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
@@ -52,7 +52,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * ユニットの背面にある電源冷却モジュール (PCM) のハンドルでエンクロージャを持ち上げないでください。 これらは、エンクロージャの重量に堪えられるようには設計されていません。
 
 ## <a name="connection-precautions"></a>接続の注意事項
-![警告のアイコン](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **警告!**
+![Warning Icon](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **警告!**
 
 けが、感電、または死亡事故を招く可能性を低減する方法
 
@@ -62,7 +62,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * エンクロージャから PCM を取り外す前に、電源の接続が切断されていることを必ず確認してください。
 * 電源コードのプラグが主な切断装置である場合、壁コンセントが装置の近くにあり、簡単に使用できることを確認してください。
 
-![警告のアイコン](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **警告!**
+![Warning Icon](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **警告!**
 
 電気接続部からの加熱または出火の可能性を低減する方法
 
@@ -145,11 +145,11 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 ![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
 
-バッテリを船舶または飛行機で輸送する場合は、 [http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+バッテリを船舶または飛行機で輸送する場合は、[http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) にある IATA Lithium Battery Guidance のドキュメントに従ってください
 
 これらの安全上の注意を確認した後、装置を開梱し、ラックに積み込み、ケーブルを接続するステップに進みます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 8100 デバイスの場合は、「 [StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」をご覧ください。
 * 8600 デバイスの場合は、「 [StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
 

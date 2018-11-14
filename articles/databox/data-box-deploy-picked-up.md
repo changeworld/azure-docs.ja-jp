@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/03/2018
+ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: 7676360d71dab4da58693221645517c69b56dff8
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 42ed9091ff7ab8059ba253f62726b30899d6e697
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090690"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036057"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>チュートリアル: Azure Data Box の返送と Azure へのデータ アップロードの確認
 
@@ -51,11 +51,16 @@ Microsoft がディスクを受け取ってスキャンすると、注文の状�
 
 コピーが完了すると、注文の状態が "**完了**" に更新されます。
 
-コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。 
+コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。 データを Data Box にコピーする場合は、そのデータがタイプに応じて Azure Storage アカウントの次のいずれかのパスにアップロードされます。
+
+- ブロック BLOB およびページ BLOB の場合: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+- Azure Files の場合: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+
+あるいは、Azure Portal で Azure ストレージ アカウントにアクセスし、そこから移動することもできます。
 
 ## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
  
- Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。 
+Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。 
 
 ## <a name="next-steps"></a>次の手順
 

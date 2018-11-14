@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: shvija
-ms.openlocfilehash: c4a9a3189f3de101528871e4dba95bf7a76b9846
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a3f7245d8a648249a4e7179cc02982eae8561037
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746916"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280580"
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs の機能の概要
 
@@ -28,13 +28,21 @@ Azure Event Hubs は、大量のイベントやデータを取り込んで処理
 ## <a name="namespace"></a>名前空間
 Event Hubs 名前空間は一意のスコープ コンテナーを提供します。このコンテナーは、1 つ以上のイベント ハブまたは Kafka トピックを作成する[完全修飾ドメイン名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)によって参照されます。 
 
+## <a name="event-hubs-for-apache-kafka"></a>Apache Kafka 用 Event Hubs
+
+[この機能](event-hubs-for-kafka-ecosystem-overview.md)は、顧客が Kafka プロトコルを使用して Event Hubs に接続できるようにするエンドポイントを提供します。 この統合によって顧客に Kafka エンドポイントが提供されます。 これにより、顧客は Event Hubs に接続するように既存の Kafka アプリケーションを構成できるため、独自の Kafka クラスターを実行するための代替手段が提供されます。 Apache Kafka 用の Event Hubs は、Kafka プロトコル 1.0 以降をサポートしています。 
+
+この統合を使用すると、Kafka クラスターを実行したり、Zookeeper を使用して管理したりする必要はありません。 また、これにより、キャプチャ、自動インフレ、geo ディザスター リカバリーなどの Event Hubs の最も要求の厳しい機能のいくつかを操作することもできます。
+
+この統合ではまた、Mirror Maker などのアプリケーションまたは Kafka Connect などのフレームワークが、構成変更だけでクラスターなしで動作できます。 
+
 ## <a name="event-publishers"></a>イベント発行元
 
-イベント ハブにデータを送信するエンティティは、イベント プロデューサー ("*イベント発行元*") です。 イベント発行元は、HTTPS または AMQP 1.0 を使用してイベントを発行できます。 イベント発行元は、Shared Access Signature (SAS) トークンを使用してイベント ハブに対して身元を明らかにし、一意の ID を備えることも共通の SAS トークンを使用することもできます。
+イベント ハブにデータを送信するエンティティは、イベント プロデューサー ("*イベント発行元*") です。 イベント パブリッシャーは、HTTPS、AMQP 1.0、または Kafka 1.0 以降を使用してイベントを発行できます。 イベント発行元は、Shared Access Signature (SAS) トークンを使用してイベント ハブに対して身元を明らかにし、一意の ID を備えることも共通の SAS トークンを使用することもできます。
 
 ### <a name="publishing-an-event"></a>イベントの発行
 
-AMQP 1.0 または HTTPS を介してイベントを発行することができます。 Event Hubs は、.NET クライアントからイベント ハブへのイベント発行で使用できる[クライアント ライブラリとクラス](event-hubs-dotnet-framework-api-overview.md)を提供します。 その他のランタイムとプラットフォームには、 [Apache Qpid](http://qpid.apache.org/)などの任意の AMQP 1.0 クライアントを使用できます。 イベントを個別に発行することも、複数のイベントを一括して発行すること (バッチ) もできます。 単一イベントであるかバッチであるかにかかわらず、単一パブリケーション (イベント データ インスタンス) には 256 KB の制限があります。 このしきい値より大きいイベントを発行すると、エラーが発生します。 発行元にとっては、イベント ハブ内のパーティションを意識せずに、次のセクションで説明する "*パーティション キー*" のみを指定するか、または SAS トークンを介して ID のみを指定するのがベスト プラクティスです。
+AMQP 1.0、Kafka 1.0 (以降)、または HTTPS 経由でイベントを発行できます。 Event Hubs は、.NET クライアントからイベント ハブへのイベント発行で使用できる[クライアント ライブラリとクラス](event-hubs-dotnet-framework-api-overview.md)を提供します。 その他のランタイムとプラットフォームには、 [Apache Qpid](http://qpid.apache.org/)などの任意の AMQP 1.0 クライアントを使用できます。 イベントを個別に発行することも、複数のイベントを一括して発行すること (バッチ) もできます。 単一イベントまたはバッチのどちらであるかには関係なく、単一パブリケーション (イベント データ インスタンス) には 1 MB の制限があります。 このしきい値より大きいイベントを発行すると、エラーが発生します。 発行元にとっては、イベント ハブ内のパーティションを意識せずに、次のセクションで説明する "*パーティション キー*" のみを指定するか、または SAS トークンを介して ID のみを指定するのがベスト プラクティスです。
 
 AMQP または HTTPS のどちらを使用するかは、使用シナリオによって決まります。 AMQP では、トランスポート レベルのセキュリティ (TLS) または SSL/TLS に加えて、永続的な双方向ソケットを確立する必要があります。 AMQP ではセッション初期化時のネットワーク コストが高くなりますが、HTTPS では要求ごとに追加の SSL オーバーヘッドが必要になります。 発行の頻度が高い場合は、AMQP の方が高パフォーマンスになります。
 

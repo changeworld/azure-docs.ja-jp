@@ -1,32 +1,32 @@
 ---
-title: Zeppelin を使用して Azure HDInsight で Hive クエリを実行する
-description: Zeppelin を使用して Hive クエリを実行する方法について説明します。
+title: Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する
+description: Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。
 keywords: hdinsight,hadoop,hive,対話型クエリ,LLAP
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 3064c9cd141458307891f666bd5af9aa738cc021
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/05/2018
+ms.author: hrasheed
+ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093170"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277955"
 ---
-# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Zeppelin を使用して Azure HDInsight で Hive クエリを実行する 
+# <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する 
 
-HDInsight 対話型クエリ クラスターには、Zeppelin ノートブックが含まれます。このノートブックを利用し、対話型 Hive クエリを実行できます。 この記事では、Zeppelin を使用して Azure HDInsight で Hive クエリを実行する方法について説明します。 
+HDInsight 対話型クエリ クラスターには、対話型 Hive クエリを実行するために使用できる Apache Zeppelin ノートブックが含まれています。 この記事では、Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
 * **HDInsight 対話型クエリ クラスター**。 HDInsight クラスターの作成については、「[クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。  クエリの種類では対話型クエリを必ず選択してください。 
 
-## <a name="create-a-zeppelin-note"></a>Zeppelin Note を作成する
+## <a name="create-a-apache-zeppelin-note"></a>Apache Zeppelin Note を作成する
 
 1. 次の URL を参照します。
 

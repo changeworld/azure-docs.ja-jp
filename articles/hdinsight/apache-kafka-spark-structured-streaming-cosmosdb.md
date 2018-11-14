@@ -2,27 +2,27 @@
 title: Kafka から Azure Cosmos DB への Apache Spark 構造化ストリーミング - Azure HDInsight
 description: Apache Spark 構造化ストリーミングを使って Apache Kafka からデータを読み込み、そのデータを Azure Cosmos DB に保存する方法を説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリームします。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.author: jasonh
-ms.openlocfilehash: 8f0a16320091f8b2efa98ee96a63801e841c082e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: fcedf4a9335a0d70cfbab5a7f803b68cb154e209
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971316"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278907"
 ---
-# <a name="use-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Kafka と Azure Cosmos DB で Spark 構造化ストリーミングを使用する
+# <a name="use-apache-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する
 
-Spark 構造化ストリーミングを使って、Azure HDInsight 上で Apache Kafka からデータを読み込み、そのデータを Azure Cosmos DB に保存する方法を説明します。
+Apache Spark 構造化ストリーミングを使って、Azure HDInsight 上で Apache Kafka からデータを読み込み、そのデータを Azure Cosmos DB に保存する方法を説明します。
 
 Azure Cosmos DB は、グローバル分散型のマルチモデル データベースです。 この例では、SQL API データベース モデルを使用します。 詳細については、「[Azure Cosmos DB の概要](../cosmos-db/introduction.md)」のドキュメントを参照してください。
 
-Spark 構造化ストリーミングは、Spark SQL に組み込まれたストリーミング処理エンジンであり、 静的データに対してバッチ計算と同様にストリーミング計算を表現できるようになります。 構造化ストリーミングの詳細については、「[Structured Streaming Programming Guide [Alpha]](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)」(構造化ストリーミングのプログラミング ガイド [アルファ]) をご覧ください。
+Spark 構造化ストリーミングは、Spark SQL に組み込まれたストリーミング処理エンジンであり、 静的データに対してバッチ計算と同様にストリーミング計算を表現できるようになります。 構造化ストリーミングの詳細については、Apache.org の「[Structured Streaming Programming Guide](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html)」(構造化ストリーミングのプログラミング ガイド) をご覧ください。
 
 > [!IMPORTANT]
 > この例では、HDInsight 3.6 上で Spark 2.2 を使用しました。
@@ -95,7 +95,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 
-4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
+4. 最後に、**[購入]** を選択します。 クラスターの作成には約 20 分かかります。
 
 > [!IMPORTANT]
 > クラスター、仮想ネットワーク、および Cosmos DB アカウントを作成するまで、最大で 45 分間かかる場合があります。

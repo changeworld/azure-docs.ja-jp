@@ -5,15 +5,15 @@ services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/11/2018
+ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d750ac7a5ac847a8c1eb5a9c91bb42804c2eebe0
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 73273447bcf534f6ffd4584673756c40e8509e21
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49437137"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50973873"
 ---
 Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](../articles/virtual-network/virtual-networks-overview.md) (VNet) を作成するか、既存の VNet を使用する必要があります。 VNet における VM への望ましいアクセス方法を決定する必要もあります。 [リソースを作成する前に計画](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md)を立て、必ず[ネットワーク リソースの制限](../articles/azure-subscription-service-limits.md#networking-limits)を確認することが大切です。
 
@@ -36,9 +36,7 @@ VNet は、VM の作成前と作成時に作成できます。 VM との通信�
 
 [ネットワーク インターフェイス (NIC)](../articles/virtual-network/virtual-network-network-interface.md) とは、VM と仮想ネットワーク (VNet) の間の相互接続です。 VM には少なくとも 1 つの NIC が必要ですが、作成する VM のサイズによっては複数あってもかまいません。 [Windows](../articles/virtual-machines/windows/sizes.md) または [Linux](../articles/virtual-machines/linux/sizes.md) の各 VM サイズでサポートされている NIC の数について確認してください。
 
-複数の NIC を持つ VM を作成し、VM のライフサイクルを通じて NIC を追加または削除することができます。 複数の NIC を使用すると、VM を異なるサブネットに接続し、最も適切なインターフェイスでトラフィックを送受信できます。
-
-VM が可用性セットに追加された場合、可用性セット内のすべての VM に、1 つまたは複数の NIC が存在する必要があります。 複数の NIC がある VM は、NIC の数は同じでなくてもかまいませんが、少なくとも 2 つの NIC を備えている必要があります。
+複数の NIC を持つ VM を作成し、VM のライフサイクルを通じて NIC を追加または削除することができます。 複数の NIC を使用すると、VM を異なるサブネットに接続し、最も適切なインターフェイスでトラフィックを送受信できます。 VM のサイズでサポートされている最大数までのネットワーク インターフェイスがアタッチされた VM が同じ可用性セットに存在できます。 
 
 VM に接続された各 NIC は、VM と同じ場所およびサブスクリプションに存在する必要があります。 NIC と同じ Azure の場所およびサブスクリプションに存在する VNet に各 NIC を接続する必要があります。 VM の作成後に接続先のサブネットを変更できますが、VNet を変更することはできません。 VM に接続された各 NIC には、VM が削除されるまで変更されない MAC アドレスが割り当てられます。
 
@@ -151,7 +149,7 @@ VM と VNet を計画する際は、必ず NSG の[計画](../articles/virtual-n
 
 VM は同一の VNet に作成でき、プライベート IP アドレスを使用して互いに接続できます。 互いに異なるサブネットにある VM どうしでも、ゲートウェイを構成したりパブリック IP アドレスを使用したりすることなく接続できます。 VM を VNet に追加する場合、VNet を作成した後に、各 VM を作成して VNet とサブネットに割り当てます。 VM は、デプロイ中または起動中にネットワーク設定を取得します。  
 
-VM にはデプロイ時に IP アドレスが割り当てられます。 複数の VM を VNet またはサブネットにデプロイする場合、VM の起動時に IP アドレスが割り当てられます。 動的 IP アドレス (DIP) は、VM に関連付けられた内部 IP アドレスです。 静的 DIP を VM に割り当てられます。 静的 DIP を割り当てる場合、間違って別の VM に静的 DIP を再使用しないよう、特定のサブネットを使うことを検討してください。  
+VM にはデプロイ時に IP アドレスが割り当てられます。 複数の VM を VNet またはサブネットにデプロイする場合、VM の起動時に IP アドレスが割り当てられます。 静的 IP を VM に割り当てることもできます。 静的 IP を割り当てる場合、間違って別の VM に静的 IP を再使用しないよう、特定のサブネットを使うことを検討してください。  
 
 作成した VM を後になって VNet に移行したくなった場合、構成の変更は容易ではありません。 VM を VNet にデプロイし直す必要があります。 デプロイし直す場合、接続されたディスクを除いて VM を削除し、VNet 内の元のディスクを使用して VM を作成し直すのが最も簡単です。 
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: d7a5bf23f2855b43c4a2e4022568028d852c094b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0f6e690bc80ae8004fba4faf53c0403b0cb7edd9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719581"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035338"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
 この記事では、SaaS アプリケーションにフェデレーション シングル サインオン (SSO) を確立するために Azure Active Directory (Azure AD) で作成される証明書に関連する一般的な質問と情報について説明します。 アプリケーションは Azure AD アプリ ギャラリーから追加するか、ギャラリー以外のアプリケーション テンプレートを使用して追加します。 アプリケーションの構成には、フェデレーション SSO オプションを使用します。
@@ -76,11 +76,15 @@ aadnotification@microsoft.com から通知メールを受け取ります。 メ�
 
     ![[新しい証明書の生成]](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
 
-2. 新しい証明書の適切な有効期限の日付と時刻を選択し、**[保存]** をクリックします。
+2. 新しい証明書の適切な有効期限の日付と時刻を選択し、**[保存]** をクリックします。 既存の証明書と重なる日付を選択すると、証明書の期限切れによるダウンタイムが制限されることが保証されます。 
 
-3. **[SAML 署名証明書]** オプションで証明書をダウンロードします。 SaaS アプリケーションのシングル サインオンの構成画面に新しい証明書をアップロードします。 特定の SaaS アプリケーションでこれを実行する方法については、**[View application configuration tutorial]\(アプリケーション構成チュートリアルの表示\)** リンクをクリックします。
+3. アプリが証明書を自動的にロールオーバーできる場合は、新しい証明書をアクティブに設定します。  アプリにサインインして、動作することを確認します。
+
+4. アプリで新しい証明書が自動的に取得されない場合でも、アプリが複数の署名証明書を処理できる場合は、古い証明書の期限が切れる前に、新しい証明書をアプリにアップロードしてから、ポータルに戻り、アクティブな証明書にします。 
+
+5. アプリが一度に 1 つの証明書しか処理できない場合は、ダウンタイム期間を選択し、新しい証明書をダウンロードして、それをアプリケーションにアップロードしてから、Azure ポータルに戻って、新しい証明書をアクティブに設定します。 
    
-4. 新しい証明書を Azure AD でアクティブにするには、**[新しい証明書をアクティブにする]** チェック ボックスをオンにし、ページ上部の **[保存]** をクリックします。 これにより、新しい証明書が Azure AD 側にロールオーバーされます。 証明書の状態が **[新規]** から **[アクティブ]** に変わります。 Azure AD ではその時点から、応答の署名に新しい証明書が使用されるようになります。 
+6. 新しい証明書を Azure AD でアクティブにするには、**[新しい証明書をアクティブにする]** チェック ボックスをオンにし、ページ上部の **[保存]** をクリックします。 これにより、新しい証明書が Azure AD 側にロールオーバーされます。 証明書の状態が **[新規]** から **[アクティブ]** に変わります。 Azure AD ではその時点から、応答の署名に新しい証明書が使用されるようになります。 
    
     ![[新しい証明書の生成]](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 

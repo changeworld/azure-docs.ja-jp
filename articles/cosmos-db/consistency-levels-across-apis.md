@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: ed08b90b9e216ee8713bfe445e98144bf2ba02d4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 974531cd5907e4f69e7d064125d3e51fa4974949
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243997"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956385"
 ---
-# <a name="consistency-levels-and-cosmos-db-apis"></a>整合性レベルと Cosmos DB API
+# <a name="consistency-levels-and-azure-cosmos-db-apis"></a>整合性レベルと Azure Cosmos DB API
 
-5 つの整合性モデルは、Cosmos DB を使用する場合の既定の API である SQL API でネイティブにサポートされています。 Cosmos DB は、SQL API だけでなく、MongoDB、Apache Cassandra、Gremlin、Azure Tables などの一般的なデータベースのワイヤ プロトコル対応 API に対するネイティブ サポートを提供します。 これらのデータベースには、正確に定義された整合性モデルも SLA でサポートされた整合性レベルの保証も提供されず、通常は Cosmos DB が提供する 5 つの整合性モデルのサブセットのみが提供されます。 SQL API、Gremlin API、および Table API の場合、Cosmos アカウントで構成された既定の整合性レベルが使用されます。
+Azure Cosmos DB によって提供される 5 つの整合性モデルは、Cosmos DB を使用する場合の既定の API である Cosmos DB SQL API でネイティブにサポートされています。 Cosmos DB は、SQL API だけでなく、MongoDB、Apache Cassandra、Gremlin、Azure Tables などの一般的なデータベースのワイヤ プロトコル対応 API に対するネイティブ サポートを提供します。 これらのデータベースでは、厳密に定義された整合性モデルも、SLA で裏付けられた整合性レベルの保証も、提供されていません。 通常、これらのデータベースでは、Cosmos DB によって提供される 5 つの整合性モデルのサブセットのみが提供されます。 SQL API、Gremlin API、および Table API の場合、ユーザーが Cosmos アカウントで構成する既定の整合性レベルが使用されます。
 
-次の表は、Cassandra API および MongoDB API を使用する場合の Apache Cassandra 4.x および MongoDB 3.4 の OSS クライアント ドライバーによって要求されるそれぞれのデータ整合性と、対応する Cosmos DB の整合性レベルのマッピングを示しています。
+以下のセクションでは、Cassandra API および MongoDB API を使用する場合の Apache Cassandra 4.x および MongoDB 3.4 の OSS クライアント ドライバーによって要求されるそれぞれのデータ整合性と、対応する Cosmos DB の整合性レベルのマッピングを示します。
 
-## <a id="cassandra-mapping"></a>Apache Cassandra と Cosmos DB の整合性レベルのマッピング
+## <a id="cassandra-mapping"></a>Apache Cassandra と Cosmos DB の間の整合性レベルのマッピング
 
-次の表は、マルチリー ジョンおよび単一リージョンの両方のデプロイにおいて、Apache Cassandra 4.x クライアントと Cosmos DB の「既定の」整合性レベルの間の読み取り整合性のマッピングを示します。
+次の表では、マルチリージョンのデプロイと単一リージョンのデプロイの両方について、Apache Cassandra 4.x クライアントと、Cosmos DB の既定の整合性レベルの間での、"読み取り整合性" のマッピングを示します。
 
 | **Apache Cassandra 4.x** | **Cosmos DB (マルチリージョン)** | **Cosmos DB (単一リージョン)** |
 | - | - | - |
@@ -36,7 +36,7 @@ ms.locfileid: "50243997"
 
 ## <a id="mongo-mapping"></a>MongoDB 3.4 と Cosmos DB の整合性レベルのマッピング
 
-次の表は、マルチリー ジョンおよび単一リージョンの両方のデプロイにおいて、MongoDB 3.4 と Cosmos DB の「既定の」整合性レベルの「読み取りの問題」についてのマッピングを示します。
+次の表では、マルチリージョンのデプロイと単一リージョンのデプロイの両方について、MongoDB 3.4 と、Cosmos DB の既定の整合性レベルの間での、"読み取りの問題" のマッピングを示します。
 
 | **MongoDB 3.4** | **Cosmos DB (マルチリージョン)** | **Cosmos DB (単一リージョン)** |
 | - | - | - |

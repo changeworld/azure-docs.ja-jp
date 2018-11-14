@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c16f06d0cc031cd9b51a3c6cf0beb149a19aeb4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9cf37e611dce5705a4c866f25afa59e5c1602ec4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001441"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282205"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure に[デプロイ](#deploy)する方法について説明します。
@@ -27,6 +27,9 @@ ms.locfileid: "39001441"
 Azure で使用される証明書は x.509 v3 証明書であり、別の信頼された証明書によって署名することも、自己署名することもできます。 自己署名証明書は、作成者自身が署名するため、既定では信頼されません。 ほとんどのブラウザーではこの問題を無視できます。 自己署名証明書は、クラウド サービスを開発し、テストする際にのみ使用することをお勧めします。 
 
 Azure が使用する証明書には、プライベート キーか公開キーを含めることができます。 証明書には、それらを明確な方法で識別する手段を提供する拇印があります。 この拇印は、Azure の [構成ファイル](cloud-services-configure-ssl-certificate-portal.md) で使用され、クラウド サービスで使用すべき証明書を識別します。 
+
+>[!Note]
+>Azure Cloud Services は、AES256-SHA256 で暗号化された証明書を受け付けません。
 
 ## <a name="what-are-service-certificates"></a>サービス証明書とは何でしょうか。
 サービス証明書はクラウド サービスに付属して、サービスとの間のセキュリティで保護された通信を有効にします。 次の例では、Web ロールをデプロイして、公開されている HTTPS エンドポイントを認証できる証明書を指定します。 サービス定義で定義されているサービス証明書は、ロールのインスタンスを実行している仮想マシンに自動的にデプロイされます。 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: de5322709b5d7f7bcfe6c512bab94b025d9a56a7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b1127475b873c5679946121e570ef2bb51f25be1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023557"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234716"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Azure Windows VM 用のディスク ストレージについて
 
@@ -42,7 +42,7 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 ### <a name="data-disk"></a>データ ディスク
 
-データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各データ ディスクの最大容量は 4,095 GB、マネージド ディスクの最大容量は 32,767 TiB です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
+データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各データ ディスクの最大容量は 4,095 GB、マネージド ディスクの最大容量は 32,767 GiB です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
 > [!NOTE]
 > 仮想マシンの容量については、「 [Azure の Windows 仮想マシンのサイズ](sizes.md)」を参照してください。
@@ -51,8 +51,9 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 仮想マシンにディスクを**取り付ける**ことで、ユーザーは仮想マシンにデータ ディスクをいつでも追加できます。 ユーザーがアップロードした VHD やストレージ アカウントにコピーした VHD を使用できます。または Azure によって作成される空の VHD も使用できます。 データ ディスクを取り付けると、VHD ファイルが VM に関連付けられます。VHD で "リース" を設定しておけば、仮想マシンに取り付けている間にストレージから削除することはできなくなります。
 
-
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
+
+プレビューのサイズについては、[FAQ](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) を参照して、それらを使用できるリージョンを確認してください。
 
 ## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最後の 1 つの推奨事項: Standard非管理ディスクでの TRIM の使用
 

@@ -1,30 +1,28 @@
 ---
-title: Azure portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
-description: HDInsight サービスを管理する方法を学習します。 HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Hadoop コマンド コンソールを開きます。
+title: Azure portal を使用した HDInsight での Windows ベースの Apache Hadoop クラスターの管理
+description: HDInsight サービスを管理する方法を学習します。 HDInsight クラスターを作成し、対話型 JavaScript コンソールを開いて、Apache Hadoop コマンド コンソールを開きます。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 130f684b69a9cfa1936c2a9aa5175f3d5a7631ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 651a03f69a7664b68ce3fe5c512c59c01762a505
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970279"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282477"
 ---
-# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
+# <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用した HDInsight での Windows ベースの Apache Hadoop クラスターの管理
 
-[Azure Portal][azure-portal] を使用して、Azure HDInsight で Windows ベースの Hadoop クラスターを作成し、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
+[Azure portal][azure-portal] を使用して、Azure HDInsight で Windows ベースの Apache Hadoop クラスターを作成し、Hadoop ユーザーのパスワードを変更して、クラスターで Hadoop コマンド コンソールにアクセスできるようにリモート デスクトップ プロトコル (RDP) を有効にすることができます。
 
 この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの管理については、「[Azure Portal を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md)」を参照してください。
 
-> [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
+[!INCLUDE [windows-retirement-notice](../../includes/windows-retirement-notice.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -328,7 +326,7 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
     [有効期限] の既定値は 1 週間です。
 
    > [!NOTE]
-   > HDInsight .NET SDK を使用して、クラスターに対するリモート デスクトップを有効にすることもできます。 HDInsight クライアント オブジェクトで、**EnableRdp** メソッドを次の形式で使用します: **client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。 同様に、クラスターに対するリモート デスクトップを無効にするには、 **client.DisableRdp(clustername, location)** を使用します。 これらのメソッドの詳細については、 [HDInsight .NET SDK のリファレンス](http://go.microsoft.com/fwlink/?LinkId=529017)を参照してください。 この方法は、Windows で実行されている HDInsight クラスターにのみ適用できます。
+   > HDInsight .NET SDK を使用して、クラスターに対するリモート デスクトップを有効にすることもできます。 HDInsight クライアント オブジェクトで、**EnableRdp** メソッドを次の形式で使用します: **client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。 同様に、クラスターに対するリモート デスクトップを無効にするには、 **client.DisableRdp(clustername, location)** を使用します。 これらのメソッドの詳細については、 [HDInsight .NET SDK のリファレンス](https://go.microsoft.com/fwlink/?LinkId=529017)を参照してください。 この方法は、Windows で実行されている HDInsight クラスターにのみ適用できます。
    >
    >
 

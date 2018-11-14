@@ -9,18 +9,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 41f25496d089a5c6487176afee01f7cb06330794
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426874"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281559"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>クイック スタート: Azure Data Lake Storage Gen2 プレビュー ストレージ アカウントを作成する
+# <a name="quickstart-create-a-storage-account-for-analytics"></a>クイック スタート: 分析用のストレージ アカウントを作成する
 
-Azure Data Lake Storage Gen2 プレビュー アカウントでは、Hadoop 分散ファイル システム (HDFS) と連携するように調整された、ネイティブ ディレクトリ ベースのファイル システムを提供する[階層構造の名前空間サービスがサポート](introduction.md)されています。 HDFS から Data Lake Storage Gen2 データにアクセスするには、[ABFS ドライバー](abfs-driver.md)を使用します。
+Data Lake Storage Gen2 プレビュー対応のストレージ アカウントでは、Hadoop 分散ファイル システム (HDFS) と連携するように調整されたネイティブ ディレクトリ ベースのファイル システムを提供する[階層型名前空間サービスがサポート](introduction.md)されます。 HDFS から Data Lake Storage Gen2 データにアクセスするには、[ABFS ドライバー](abfs-driver.md)を使用します。
 
-ご自身のストレージ アカウントで Data Lake Storage Gen2 機能を有効にするには、[プレビューに関するアンケートに記入して、アクセスを要求](https://aka.ms/adlsgen2signup)してください。 承認されると、新しい Data Lake Storage Gen2 アカウントを作成できます。 このクイック スタートでは、[Azure portal](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、または [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) を使用して、アカウントを作成する方法を説明します。
+ご自身のストレージ アカウントで Data Lake Storage Gen2 機能を有効にするには、[プレビューに関するアンケートに記入して、アクセスを要求](https://aka.ms/adlsgen2signup)してください。 承認されると、Data Lake Storage Gen2 対応のストレージ アカウントを作成できるようになります。 このクイック スタートでは、[Azure portal](https://portal.azure.com/)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)、または [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) を使用して、アカウントを作成する方法を説明します。
 
 > [!NOTE]
 > Azure portal のアカウントの作成 UI は、Data Lake Storage Gen2 アカウントの作成が承認された時点で更新されます。 同様に、Data Lake Storage Gen2 関連の PowerShell および CLI の引数は、プレビューが承認された場合にのみ動作します。
@@ -51,7 +51,7 @@ Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash �
 
 Azure CLI はローカルにインストールして使用することもできます。 このクイック スタートでは、Azure CLI バージョン 2.0.38 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 アカウント作成の概要
+## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Azure Data Lake Storage Gen2 対応のストレージ アカウントを作成する
 
 アカウントを作成する前に、作成するストレージ アカウントまたは他の Azure リソースに対して、論理コンテナーとして機能するリソース グループを作成する必要があります。 このクイックスタートで作成したリソースをクリーンアップする場合は、リソース グループを削除するだけです。 リソース グループを削除すると、関連付けられているストレージ アカウント、およびリソース グループに関連付けられているその他のリソースも削除されます。 リソース グループの詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
@@ -135,7 +135,7 @@ PowerShell を使用して Data Lake Storage Gen2 と対話するには、お使
 PowerShell で新しいリソース グループを作成するには、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドを使用します。 
 
 > [!NOTE]
-> > 階層型名前空間は現在、すべてのパブリック リージョンで利用できますが、プライベート リージョンでは利用できません。 現在ソブリン クラウドでは利用できません。
+> > 階層型名前空間は現在、すべてのパブリック リージョンで利用できます。 現在ソブリン クラウドでは利用できません。
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -222,6 +222,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Data Lake Storage Gen2 ストレージ アカウントを作成しました。 ストレージ アカウントとの間で BLOB をアップロードおよびダウンロードする方法を学習するには、Blob Storage のクイックスタートに進みます。
+このクイック スタートでは、Data Lake Storage Gen2 の機能が利用できるストレージ アカウントを作成しました。 ストレージ アカウントとの間で BLOB をアップロードおよびダウンロードする方法を学習するには、Blob Storage のクイックスタートに進みます。
 
 * [AzCopy を使用して Azure Blob Storage 間でデータを移動する](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azcopy)

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 11/04/2018
 ms.author: juliako;dbgeorge
-ms.openlocfilehash: a36e12080cbbcb1a98bf786a6634959362cb52a7
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f6d4fcf5e6ec8029bb0e7c303849fdceef5bace7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666451"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012090"
 ---
 # <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Haivision KB エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ ms.locfileid: "43666451"
 -   コーデック: H.264
 -   プロファイル: 高 (レベル 4.0)
 -   ビットレート: 5000 kbps
--   キーフレーム: 2 秒 (60 秒)
+-   キーフレーム: 2 秒 (60 フレーム)
 -   フレーム レート: 30
 
 オーディオ:

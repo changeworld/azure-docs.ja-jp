@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 099e597982172bcea39fedd0fd1445f466eb2bc1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419726"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960822"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -185,8 +185,8 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 * [プロファイラー](app-insights-profiler.md) 
 * [スナップショット デバッガー](app-insights-snapshot-debugger.md)
-* [Analytics](app-insights-analytics-tour.md)
-* [Analytics Smart Diagnostics](app-insights-analytics-diagnostics.md)
+* [Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analytics Smart Diagnostics](app-insights-analytics.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 

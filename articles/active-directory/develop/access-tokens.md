@@ -16,29 +16,29 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3a3768e796284895b25eb62d00a58b20ca811540
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 18de5ce2f47b6593d4c8556af045f14ade957fb9
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958943"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979235"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory アクセス トークン
 
-アクセス トークンにより、クライアントは Azure によって保護された API を安全に呼び出すことができます。 Azure Active Directory (Azure AD) アクセス トークンは [JWT](https://tools.ietf.org/html/rfc7519) です。これは、Base64 でエンコードされ、Azure によって署名された JSON オブジェクトです。 アクセス トークンの内容は特定のリソースのみを対象としているため、クライアントはトークンを不透明な文字列として扱う必要があります。 検証とデバッグのために、開発者は [jwt.ms](https://jwt.ms) などのサイトを使用して、JWT をデコードすることができます。 クライアントはさまざまなプロトコルを使用して、エンドポイント (v1.0 または v2.0) からアクセス トークンを取得できます。
+アクセス トークンにより、クライアントは Azure によって保護された API を安全に呼び出すことができます。 Azure Active Directory (Azure AD) アクセス トークンは [JWT](https://tools.ietf.org/html/rfc7519) であり、すなわち Base64 でエンコードされた、Azure による署名付き JSON オブジェクトです。 アクセス トークンの内容は特定のリソースのみを対象としているため、クライアントはトークンを不透明型の文字列として扱う必要があります。 検証とデバッグを目的として、開発者は [jwt.ms](https://jwt.ms) などのサイトを使用して、JWT をデコードすることができます。 クライアントはさまざまなプロトコルを使用して、いずれのエンドポイント (v1.0 または v2.0) からでもアクセス トークンを取得できます。
 
 アクセス トークンを要求すると、Azure AD はアプリで使用できるようにアクセス トークンに関するメタデータも返します。 この情報には、アクセス トークンの有効期限や有効な範囲が含まれます。 このデータにより、アプリはアクセス トークン自体を解析しなくても、アクセス トークンのインテリジェントなキャッシュを実行できます。
 
-アプリケーションが、クライアントからアクセスを要求できるリソース (Web API) である場合、アクセス トークンによって、認証と承認に使用する有用な情報 (ユーザー、クライアント、発行元、アクセス許可など) が提供されます。 
+ご自分のアプリケーションが、クライアントからアクセス要求が可能なリソース (Web API) である場合、アクセス トークンを使って、認証と承認に使用する有用な情報 (ユーザー、クライアント、発行元、アクセス許可など) を提供できます。 
 
-リソースでアクセス トークン内の要求を検証して使用する方法については、以下のセクションをご覧ください。
+リソースでアクセス トークン内のクレームを検証して使用する方法については、以下のセクションをご覧ください。
 
 > [!NOTE]
-> 個人用アカウント (hotmail.com や outlook.com など) でクライアント アプリケーションをテストしたときに、クライアントが受け取ったアクセス トークンが不透明な文字列である場合があります。 これは、アクセス対象のリソースが、暗号化されていてクライアントが認識できない従来の MSA (Microsoft アカウント) チケットを要求したためです。
+> 個人用アカウント (hotmail.com や outlook.com など) を使ってクライアント アプリケーションをテストしたときに、ご自分のクライアントが受け取ったアクセス トークンが不透明型の文字列であることがお分かりいただけると思います。 これは、アクセス対象のリソースが、暗号化されていてクライアントが解釈できない従来の MSA (Microsoft アカウント) チケットを要求したためです。
 
 ## <a name="sample-tokens"></a>サンプル トークン
 
-v1.0 トークンと v2.0 トークンはよく似ており、多くの同じ要求が含まれています。 各トークンの例を次に示します。
+v1.0 トークンと v2.0 トークンはよく似ており、同じクレームが多く含まれています。 各トークンの例を次に示します。
 
 ### <a name="v10"></a>v1.0
 
@@ -56,7 +56,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEps
 
 この v2.0 トークンは [JWT.ms](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9.eyJhdWQiOiI2ZTc0MTcyYi1iZTU2LTQ4NDMtOWZmNC1lNjZhMzliYjEyZTMiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3YyLjAiLCJpYXQiOjE1MzcyMzEwNDgsIm5iZiI6MTUzNzIzMTA0OCwiZXhwIjoxNTM3MjM0OTQ4LCJhaW8iOiJBWFFBaS84SUFBQUF0QWFaTG8zQ2hNaWY2S09udHRSQjdlQnE0L0RjY1F6amNKR3hQWXkvQzNqRGFOR3hYZDZ3TklJVkdSZ2hOUm53SjFsT2NBbk5aY2p2a295ckZ4Q3R0djMzMTQwUmlvT0ZKNGJDQ0dWdW9DYWcxdU9UVDIyMjIyZ0h3TFBZUS91Zjc5UVgrMEtJaWpkcm1wNjlSY3R6bVE9PSIsImF6cCI6IjZlNzQxNzJiLWJlNTYtNDg0My05ZmY0LWU2NmEzOWJiMTJlMyIsImF6cGFjciI6IjAiLCJuYW1lIjoiQWJlIExpbmNvbG4iLCJvaWQiOiI2OTAyMjJiZS1mZjFhLTRkNTYtYWJkMS03ZTRmN2QzOGU0NzQiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhYmVsaUBtaWNyb3NvZnQuY29tIiwicmgiOiJJIiwic2NwIjoiYWNjZXNzX2FzX3VzZXIiLCJzdWIiOiJIS1pwZmFIeVdhZGVPb3VZbGl0anJJLUtmZlRtMjIyWDVyclYzeERxZktRIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidXRpIjoiZnFpQnFYTFBqMGVRYTgyUy1JWUZBQSIsInZlciI6IjIuMCJ9.pj4N-w_3Us9DrBLfpCt) で表示できます。
 
-## <a name="claims-in-access-tokens"></a>アクセス トークン内の要求
+## <a name="claims-in-access-tokens"></a>アクセス トークン内のクレーム
 
 JWT は次の 3 つの部分に分かれています。 
 
@@ -66,27 +66,27 @@ JWT は次の 3 つの部分に分かれています。
 
 各部分はピリオド (`.`) で区切られ、Base64 で個別にエンコードされます。
 
-要求は、そこに入力される値が存在する場合にのみ存在します。 そのため、アプリは要求の存在に依存することはできません。 例として、`pwd_exp` (すべてのテナントがパスワードを期限切れにする必要があるわけではありません) や、`family_name` (名前のないアプリケーションに代わって、[クライアント資格情報フロー](v1-oauth2-client-creds-grant-flow.md)が使用されます) などがあります。 アクセス トークンの検証に使用される要求は常に存在します。
+クレームは、そこに入力される値が存在する場合にのみ存在します。 そのため、アプリはクレームの存在に依存することはできません。 例として、`pwd_exp` (すべてのテナントがパスワードを期限切れにする必要があるわけではありません) や、`family_name` (名前のないアプリケーションに代わって、[クライアント資格情報フロー](v1-oauth2-client-creds-grant-flow.md)が使用されます) などがあります。 アクセス トークンの検証に使用されるクレームは常に存在します。
 
 > [!NOTE]
-> Azure AD が再利用に備えてトークンを保護できるようにするために使用される要求もあります。 これらは公開されないものとして、記述で "Opaque" としてマークされます。 これらの要求はトークンに表示される場合とされない場合があり、新しい要求が予告なく追加される場合もあります。
+> 再利用に備え、Azure AD を使ったトークンのセキュリティ保護に活用されるクレームもあります。 これらは公開されないものとして、記述で "Opaque" としてマークされます。 これらのクレームはトークンに表示される場合とされない場合があり、新しいものが予告なく追加される場合もあります。
 
-### <a name="header-claims"></a>ヘッダーの要求
+### <a name="header-claims"></a>ヘッダーのクレーム
 
 |要求 | 形式 | 説明 |
 |--------|--------|-------------|
 | `typ` | 文字列 - 常に "JWT" | トークンが JWT であることを示します。|
-| `nonce` | String | トークン リプレイ攻撃から保護するために使用される一意識別子。 リソースでは、この値を記録することで再生を防ぐことができます。 |
+| `nonce` | String | トークン リプレイ攻撃から保護するために使用される一意識別子。 リソースでこの値を記録することで、再生を防ぐことができます。 |
 | `alg` | String | トークンの署名に使用されたアルゴリズム ("RS256" など) を示します。 |
-| `kid` | String | このトークンの署名に使用されている公開キーの拇印を示します。 v1.0 と v2.0 のどちらのアクセス トークンでも生成されます。 |
-| `x5t` | String | `kid` と同様に機能します (使用方法も値も同じ)。 これは、互換性のために v1.0 アクセス トークンでのみ生成される従来の要求です。 |
+| `kid` | String | このトークンの署名に使用されている公開キーの拇印が記述されています。 v1.0 と v2.0 のどちらのアクセス トークンでも生成されます。 |
+| `x5t` | String | `kid` と同様に機能します (使用方法も値も同じ)。 これは、互換性を目的として v1.0 アクセス トークンでのみ生成されるレガシ クレームです。 |
 
-### <a name="payload-claims"></a>ペイロードの要求
+### <a name="payload-claims"></a>ペイロードのクレーム
 
 | 要求 | 形式 | 説明 |
 |-----|--------|-------------|
-| `aud` | 文字列、アプリケーション ID URI | トークンの受信者を示します。 アクセス トークンでは、対象の受信者は Azure portal でアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、値が一致しない場合はトークンを拒否する必要があります。 |
-| `iss` | 文字列、STS URI | トークンを作成して返したセキュリティ トークン サービス (STS)、およびユーザーが認証された Azure AD テナントを示します。 トークンが v2.0 エンドポイントによって発行された場合、URI の末尾は `/v2.0` になります。 ユーザーが Microsoft アカウントを持つコンシューマー ユーザーであることを示す GUID は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 要求の GUID 部分を使用して、アプリにサインインできるテナントのセットを制限します (該当する場合)。 |
+| `aud` | 文字列、アプリケーション ID/URI | トークンの受信者を示します。 アクセス トークンでは、オーディエンスは Azure portal でアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、値が一致しない場合はトークンを拒否する必要があります。 |
+| `iss` | 文字列、STS URI | トークンを作成して返したセキュリティ トークン サービス (STS)、およびユーザーが認証された Azure AD テナントを示します。 発行されたトークンが v2.0 トークンである場合 (`ver` 要求を参照)、URI は `/v2.0` で終了します。 ユーザーが Microsoft アカウントを持つコンシューマー ユーザーであることを示す GUID は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 要求の GUID 部分を使用して、アプリにサインインできるテナントのセットを制限します (該当する場合)。 |
 |`idp`|文字列 (通常は STS URI) | トークンのサブジェクトを認証した ID プロバイダーを記録します。 この値は、発行者とテナントが異なるユーザー アカウント (たとえばゲスト) の場合を除いて、発行者クレームの値と同じです。 要求が存在しない場合は、代わりに `iss` の値を使用できることを意味します。  個人用アカウントが組織のコンテキストで使用されている場合 (たとえば、個人用アカウントが Azure AD テナントに招待された場合)、`idp` 要求は 'live.com' またはMicrosoft アカウント テナント `9188040d-6c67-4c5b-b112-36a304b66dad` を含む STS URI である可能性があります。 |  
 | `iat` | int、UNIX タイムスタンプ | "Issued At" は、このトークンの認証がいつ行われたのかを示します。 |
 | `nbf` | int、UNIX タイムスタンプ | "nbf" (not before) 要求は JWT が有効になる日時を示します。これ以前にその JWT を受け入れて処理することはできません。 |
@@ -191,13 +191,13 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 署名の検証の実行は、このドキュメントの対象範囲外です。必要な場合は、役に立つオープン ソース ライブラリが数多く提供されています。
 
-### <a name="claims-based-authorization"></a>要求ベースの承認
+### <a name="claims-based-authorization"></a>クレーム ベースの承認
 
 アプリケーションのビジネス ロジックでこの手順を示します。一般的な承認方法を次に示します。
 
-* `scp` 要求または `roles` 要求をチェックして、提示されているすべてのスコープが、API によって公開されているものと一致することを確認し、要求したアクションをクライアントが実行することを許可します。
-* 呼び出し元のクライアントが、`appid` 要求を使用した API の呼び出しを許可されていることを確認します。
-* `appidacr` を使用して、呼び出し元のクライアントの認証の状態を検証します。パブリック クライアントが API の呼び出しを許可されていない場合、値を 0 にすることはできません。
+* `scp` クレームまたは `roles` クレームをチェックして、提示されているすべてのスコープが、API によって公開されているものと一致することを確認し、要求したアクションをクライアントが実行することを許可します。
+* ご自分の API に対して、呼び出し元のクライアントが `appid` クレームを使った 呼び出しを許可されていることを確認します。
+* `appidacr` を使用して、呼び出し元のクライアントの認証の状態を検証します。パブリック クライアントが ご自分の API の呼び出しを許可されていない場合、値は 0 ではないはずです。
 * 過去の `nonce` 要求のリストと照合して、トークンが再生されていないことを確認します。
 * `tid` が、API の呼び出しを許可されているテナントと一致することを確認します。
 * `acr` 要求を使用して、ユーザーが MFA を実行したことを確認します。 これは、[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を使用して適用する必要があります。

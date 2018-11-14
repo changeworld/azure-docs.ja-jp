@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 70ea33f2c3e3a79d1754b72d12e8fc27689e38ea
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 434f0639baa45dc83ee2fae4ec8b67a80517db14
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387940"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035926"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
 オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。 
@@ -43,6 +43,9 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 動的ポートは、DNS サービスではサポートされていません。 動的ポート上で公開されたサービスを解決するには、[リバース プロキシ サービス](./service-fabric-reverseproxy.md)を使用します。
 
 ## <a name="enabling-the-dns-service"></a>DNS サービスを有効にする
+> [!NOTE]
+> Service Fabric サービス用の DNS サービスは UNIX ではまだサポートされていません。
+
 ポータルを使用してクラスターを作成すると、DNS サービスは **[Include DNS service] (DNS サービスを含める)** チェック ボックスと **[クラスター構成]** メニューでは既定で有効になります。
 
 ![ポータルで DNS サービスを有効にする](./media/service-fabric-dnsservice/enable-dns-service.png)
@@ -251,6 +254,8 @@ public class ValuesController : Controller
 
 ## <a name="known-issues"></a>既知の問題
 * Service Fabric バージョン 6.3 以降では、DNS 名にハイフンを含むサービス名に対する DNS 参照に関して問題があります。 この問題について詳しくは、こちらの [GitHub の問題](https://github.com/Azure/service-fabric-issues/issues/1197)をご覧ください。 この問題は次の 6.3 更新プログラムで修正される予定です。 
+
+* Service Fabric サービス用の DNS サービスは UNIX ではまだサポートされていません。 DNS サービスは Linux 上のコンテナーに対してサポートされています。 Fabric クライアント/ServicePartitionResolver を使用した手動による解決方法を代わりに使用できます。
 
 ## <a name="next-steps"></a>次の手順
 [サービスとの接続と通信](service-fabric-connect-and-communicate-with-services.md)に関する記事を参照して、クラスター内でのサービスの通信の詳細を確認する

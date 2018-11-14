@@ -8,22 +8,22 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: seguler
-ms.openlocfilehash: 065c4c4315bda209484cc1b2449980e55d4ac798
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 09703e203370a524b24f552c93161e4cb64d803d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522698"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281678"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-storage-gen2-preview"></a>Distcp を使用して Azure Storage BLOB と Data Lake Storage Gen2 プレビュー の間でデータをコピーする
 
-Azure Data Lake Storage Gen2 プレビューにアクセスできる HDInsight クラスターがある場合、[Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) などの Hadoop エコシステム ツールを使用し、HDInsight クラスター記憶域 (WASB) と Lake Storage Gen2 対応アカウント**との間**でデータをコピーできます。 この記事では、Distcp ツールの使用方法について説明します。
+HDInsight クラスターがあって、このクラスターが Azure Data Lake Storage Gen2 のプレビューに登録されている場合、[Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) などの Hadoop エコシステム ツールを使用し、HDInsight クラスター記憶域 (WASB) と Data Lake Storage Gen2 が使用可能なストレージ アカウント**との間**でデータをコピーできます。 この記事では、Distcp ツールの使用方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Storage (プレビュー) 機能 が使用可能な Azure Storage アカウント**。 作成手順については、「[Azure Data Lake Storage Gen2 プレビュー ストレージ アカウントを作成する](quickstart-create-account.md)」を参照してください。
-* Data Lake Storage アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](use-hdi-cluster.md)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* **Data Lake Storage Gen2 (プレビュー) 機能が使用可能な Azure Storage アカウント**。 作成手順については、「[Azure Data Lake Storage Gen2 プレビュー ストレージ アカウントを作成する](quickstart-create-account.md)」を参照してください。
+* Data Lake Storage Gen2 が使用可能なストレージ アカウントにアクセスできる **Azure HDInsight クラスター**。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](use-hdi-cluster.md)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>HDInsight Linux クラスターから Distcp を使用する
 
@@ -95,6 +95,6 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 * DistCp では、パフォーマンスを最適化するために、同じようなサイズのマッパーを作成しようとします。 マッパー数を増やしても、必ずしもパフォーマンスが向上するとは限りません。
 
-* DistCp では、ファイルあたりのマッパーの数が 1 つに制限されています。 したがって、ファイル数よりも多くのマッパーを持つことはできません。 DistCp がファイルに割り当てることができるマッパーの数は 1 つだけのため、大きなファイルのコピーに使用できる同時実行量は制限されます。
+* DistCp では、ファイルあたりのマッパーの数が 1 つに制限されています。 したがって、ファイル数よりも多くのマッパーを持つことはできません。 DistCp がファイルに割り当てることができるマッパーの数は 1 つだけのため、大きなファイルのコピーに使用できるコンカレンシー量は制限されます。
 
-* 大きなファイルが少数だけ存在する場合は、潜在的な同時実行性を高めるために、そのファイルを 256 MB ファイル チャンクに分割します。 
+* 大きなファイルが少数だけ存在する場合は、潜在的なコンカレンシーを高めるために、そのファイルを 256 MB ファイル チャンクに分割します。

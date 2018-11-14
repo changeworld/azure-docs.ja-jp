@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: f82a01f3a2b88e66988717eb008a65c8f2aecf28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f68bf05ef9749794c78898e4464489e7cfb358ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900327"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231384"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 
-この記事では、FTP または FTPS を使用して、Web アプリ、モバイル アプリ バックエンド、または API アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。
+この記事では、FTP または FTPS を使用して、Web アプリ、モバイル アプリ バックエンド、または API アプリを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法について説明します。
 
 アプリの FTP/S エンドポイントは既にアクティブです。 FTP/S デプロイを有効にするための構成は必要ありません。
 
@@ -45,7 +45,7 @@ FTP ダッシュボードで、**[コピー]** をクリックして、FTPS エ�
 
 ## <a name="deploy-files-to-azure"></a>ファイルを Azure にデプロイする
 
-1. FTP クライアント (例: [Visual Studio](https://www.visualstudio.com/vs/community/)、[FileZilla](https://filezilla-project.org/download.php?type=client)) から、収集した接続情報を使用してアプリに接続します。
+1. FTP クライアント ([Visual Studio](https://www.visualstudio.com/vs/community/)、[Cyberduck](https://cyberduck.io/)、[WinSCP](https://winscp.net/index.php) など) から、収集した接続情報を使用してアプリに接続します。
 3. ファイルとそれぞれのディレクトリ構造を、Azure の [**/site/wwwroot** ディレクトリ](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) (WebJobs の場合は **/site/wwwroot/App_Data/Jobs/** ディレクトリ) にコピーします。
 4. アプリの URL を参照して、アプリが正しく動作していることを確認します。 
 

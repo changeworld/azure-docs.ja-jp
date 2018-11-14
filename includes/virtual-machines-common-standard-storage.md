@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49312508"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264041"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>コスト効率に優れた Standard Storage および Azure VM の非管理対象ディスクと管理ディスク
 
@@ -61,10 +61,10 @@ Managed Disks を使用する VM を作成する方法については、次の�
 | **リソース** | **既定の制限** |
 |--------------|-------------------|
 | ストレージ アカウントあたりの容量 (TB)  | 500 TB |
-| ストレージ アカウントあたりの最大受信速度<sup>1</sup> (米国リージョン) | GRS/ZRS が有効な場合は 10 Gbps、LRS の場合は 20 Gbps |
-| ストレージ アカウントあたりの最大送信速度<sup>1</sup> (米国リージョン) | RA-GRS/GRS/ZRS が有効な場合は 20 Gbps、LRS の場合は 30 Gbps |
-| ストレージ アカウントあたりの最大受信速度<sup>1</sup> (ヨーロッパおよびアジア リージョン) | GRS/ZRS が有効な場合は 5 Gbps、LRS の場合は 10 Gbps |
-| ストレージ アカウントあたりの最大送信速度<sup>1</sup> (ヨーロッパおよびアジア リージョン) | RA-GRS/GRS/ZRS が有効な場合は 10 Gbps、LRS の場合は 15 Gbps |
+| ストレージ アカウントあたりの最大受信速度<sup>1</sup>  (米国リージョン) | GRS/ZRS が有効な場合は 10 Gbps、LRS の場合は 20 Gbps |
+| ストレージ アカウントあたりの最大送信速度<sup>1</sup>  (米国リージョン) | RA-GRS/GRS/ZRS が有効な場合は 20 Gbps、LRS の場合は 30 Gbps |
+| ストレージ アカウントあたりの最大受信速度<sup>1</sup>  (ヨーロッパおよびアジア リージョン) | GRS/ZRS が有効な場合は 5 Gbps、LRS の場合は 10 Gbps |
+| ストレージ アカウントあたりの最大送信速度<sup>1</sup>  (ヨーロッパおよびアジア リージョン) | RA-GRS/GRS/ZRS が有効な場合は 10 Gbps、LRS の場合は 15 Gbps |
 | ストレージ アカウントあたりの合計要求レート (オブジェクト サイズが 1 KB の場合) | 最大 20,000 の IOPS、エンティティ/秒、またはメッセージ/秒 |
 
 <sup>1</sup>受信とは、ストレージ アカウントに送信されるすべてのデータ (要求) のことです。 送信とは、ストレージ アカウントから受信するすべてのデータ (応答) のことです。
@@ -111,7 +111,7 @@ Standard Storage アカウントのページ BLOB に対して REST 操作を実
 
 Standard Storage を使用するときには、課金に関する次の考慮事項が適用されます。
 
-* Standard Storage の非管理対象ディスク/データ サイズ 
+* Standard Storage の非管理対象ディスク/データ サイズ
 * Standard マネージド ディスク
 * Standard Storage のスナップショット
 * 送信データ転送
@@ -121,14 +121,16 @@ Standard Storage を使用するときには、課金に関する次の考慮事
 
 **マネージド ディスク**: Standard マネージド ディスクへの課金は、ディスクのプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、次の表に示す Managed Disks オプションの中で最も近いオプションにマップします。 各マネージド ディスクは、サポートされているプロビジョニング済みサイズのいずれかにマップされ、それに応じて課金されます。 たとえば、Standard マネージド ディスクを作成し、200 GiB のプロビジョニング済みサイズを指定した場合、ディスクの種類 S15 の価格に従って課金されます。
 
-| **Standard HDD 管理<br>ディスクの種類** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+アスタリスクで示されるサイズはプレビュー中です。
+
+| **Standard HDD 管理<br>ディスクの種類** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | ディスク サイズ        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,385 GiB (16 TiB) | 32,767 GiB (32 TiB) |
 
 
 **スナップショット**: Standard ディスクのスナップショットについては、スナップショットで使用された追加の容量に対して課金されます。 スナップショットの詳細については、「 [BLOB のスナップショットの作成](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)」をご覧ください。
 
-**送信データ転送**: [送信データ転送](https://azure.microsoft.com/pricing/details/data-transfers/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
+**送信データ転送**:  [送信データ転送](https://azure.microsoft.com/pricing/details/data-transfers/)  (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 
 **トランザクション**: Standard Storage では、100,000 トランザクションあたり 0.0036 ドルが課金されます。 トランザクションには、ストレージに対する読み取り操作と書き込み操作の両方が含まれます。
 

@@ -1,22 +1,22 @@
 ---
-title: HDInsight で Hadoop サービスのヒープ ダンプを有効にする - Azure
-description: デバッグと分析のために Linux ベースの HDInsight クラスターから Hadoop サービスのヒープ ダンプを有効にする
+title: HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする - Azure
+description: デバッグと分析のために Linux ベースの HDInsight クラスターから Apache Hadoop サービスのヒープ ダンプを有効にします。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 7fa0ebb1946a856d02296b4ec752113ff8fecbd5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095584"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037711"
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする
+# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
@@ -29,11 +29,11 @@ ms.locfileid: "43095584"
 
 次のサービスのヒープ ダンプを有効にできます。
 
-* **hcatalog** - tempelton
-* **hive** - hiveserver2、metastore、derbyserver
+* **Apache hcatalog** - tempelton
+* **Apache hive** - hiveserver2、metastore、derbyserver
 * **mapreduce** - jobhistoryserver
-* **yarn** - resourcemanager、nodemanager、timelineserver
-* **hdfs** - datanode、secondarynamenode、namenode
+* **Apache yarn** - resourcemanager、nodemanager、timelineserver
+* **Apache hdfs** - datanode、secondarynamenode、namenode
 
 HDInsight によって実行されるマップと削減のプロセスに対して、ヒープ ダンプを有効にすることもできます。
 
@@ -49,7 +49,7 @@ HDInsight によって実行されるマップと削減のプロセスに対し�
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Ambari がクラスター内のノード間の変更のレプリケーションを処理するように、Ambari を使用してスクリプトと mapred-site.xml 設定の両方を変更することをお勧めします。 具体的な手順については、 [Ambari の使用](#using-ambari) のセクションを参照してください。
+> Apache Ambari がクラスター内のノード間の変更のレプリケーションを処理するように、Ambari を使用してスクリプトと mapred-site.xml 設定の両方を変更することをお勧めします。 具体的な手順については、 [Ambari の使用](#using-ambari) のセクションを参照してください。
 
 ### <a name="enable-heap-dumps"></a>ヒープ ダンプを有効にする
 

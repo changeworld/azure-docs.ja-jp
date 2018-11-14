@@ -1,26 +1,26 @@
 ---
-title: Azure Portal を使用した HDInsight での Hadoop クラスターの管理
+title: Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 description: Azure Portal を使用して HDInsight クラスターを作成および管理する方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: jasonh
-ms.openlocfilehash: b00c88e526bf72f51df0d2a3d6a87fbd5bc1f991
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: b96712c3a920a70e121f0a72954680ced2ba96ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991982"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252294"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[Azure Portal][azure-portal] を使用すると、Azure HDInsight で Hadoop クラスターを管理できます。 他のツールを使って HDInsight で Hadoop クラスターを管理する方法については、上のタブ セレクターを使ってください。
+[Azure Portal][azure-portal] を使用して、Azure HDInsight の Apache Hadoop クラスターを管理できます。 他のツールを使って HDInsight で Hadoop クラスターを管理する方法については、上のタブ セレクターを使ってください。
 
 **前提条件**
 
@@ -81,29 +81,32 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
     * **[移動]**: クラスターを別のリソース グループまたは別のサブスクリプションに移動します。
     * **[削除]**: クラスターを削除します。
 
-    **左側のメニュー:**
+**左側のメニュー:**
     * **[アクティビティ ログ]**: アクティビティ ログを表示およびクエリします。
     * **[アクセス制御 (IAM)]**: ロールの割り当てを使用します。  「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
     * **[タグ]**: キーと値のペアを設定して、クラウド サービスのカスタム分類を定義できます。 たとえば、 **プロジェクト**という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
-    * **[問題の診断と解決]**: トラブルシューティング情報を表示します。
-    * **[ロック]**: クラスターの変更または削除を防ぐためのロックを追加します。
-    * **[Automation スクリプト]**: クラスター向けの Azure Resource Manager テンプレートを表示およびエクスポートします。 現時点では、依存している Azure ストレージ アカウントのみをエクスポートできます。 「[Azure Resource Manager テンプレートを使用して、HDInsight での Linux ベースの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
+* **[問題の診断と解決]**: トラブルシューティング情報を表示します。
     * **[クイック スタート]**: HDInsight の操作を開始するために役立つ情報を表示します。
     * **[HDInsight 用のツール]**: HDInsight 関連ツールのヘルプ情報です。
-    * **[サブスクリプションのコアの利用状況]**: サブスクリプションの使用されたコアと利用可能なコアを表示します。
-    * **[クラスターのスケーリング]**: クラスターの worker ノードの数を増減します。 「[クラスターのスケール](hdinsight-administer-use-management-portal.md#scale-clusters)」を参照してください。
+**設定**
+* **[クラスター サイズ]**: クラスターの worker ノードの数を確認したり、増減したりします。 「[クラスターのスケール](hdinsight-administer-use-management-portal.md#scale-clusters)」を参照してください。
+    * **[クォータ制限]**: サブスクリプションの使用されているコアと使用可能なコアを表示します。
     * **[SSH + Cluster login]\(SSH + クラスター ログイン\)**: Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-    * **[HDInsight パートナー]**: 現在の HDInsight パートナーを追加または削除します。
-    * **[外部メタストア]**: Hive メタストアと Oozie メタストアを表示します。 メタストアを構成できるのは、クラスターの作成処理中のみです。 「[Hive/Oozie メタストアの使用](hdinsight-hadoop-provision-linux-clusters.md#use-hiveoozie-metastore)」を参照してください。
-    * **[スクリプト アクション]**: クラスター上の Bash スクリプトを実行します。 「 [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
-    * **[アプリケーション]**: HDInsight アプリケーションを追加/削除します。  「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。
-    * **[監視]**: Azure Log Analytics でクラスターを監視します。
-    * **[プロパティ]**: クラスターのプロパティを表示します。
+* **[Data Lake Store Gen1]**: Data Lake Store Gen1 へのアクセスを構成します。  「[Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」(クイック スタート: HDInsight のクラスターを設定する) をご覧ください。
     * **[ストレージ アカウント]**: ストレージ アカウントとキーを表示します。 ストレージ アカウントは、クラスター作成プロセス中に構成されます。
-    * **[Data Lake Store アクセス]**: Data Lake Store へのアクセスを構成します。  「[Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」(クイック スタート: HDInsight のクラスターを設定する) をご覧ください。
+    * **[アプリケーション]**: HDInsight アプリケーションを追加/削除します。  「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。
+    * **[スクリプト アクション]**: クラスター上の Bash スクリプトを実行します。 「 [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
+    * **[HDInsight パートナー]**: 現在の HDInsight パートナーを追加または削除します。
+    * **[プロパティ]**: クラスターのプロパティを表示します。
+* **[ロック]**: クラスターの変更または削除を防ぐためのロックを追加します。
+    * **[Automation スクリプト]**: クラスター向けの Azure Resource Manager テンプレートを表示およびエクスポートします。 現時点では、依存している Azure ストレージ アカウントのみをエクスポートできます。 「[Azure Resource Manager テンプレートを使用して、HDInsight での Linux ベースの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
+**監視**
+* **[Alters] (変更)**: アラートとアクションを管理します。
+    * **[メトリック]**: Azure Log Analytics でクラスター メトリックを監視します。
+* **[診断の設定]**: 診断メトリック **[サポート + トラブルシューティング]** を格納する場所に関する設定
     * **[リソース正常性]**: 「[Azure Resource Health の概要](../service-health/resource-health-overview.md)」をご覧ください。
     * **[新しいサポート要求]**: Microsoft サポートのサポート チケットを作成できます。
-    
+
 6. **[プロパティ]** をクリックします。
 
     プロパティは次のとおりです。
@@ -144,6 +147,15 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
 > HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。  「[クラスターの一覧と表示](#list-and-show-clusters)」を参照してください。
 >
 >
+**クラスターのスケールを設定するには**
+
+1. [Portal][azure-portal] にサインインします。
+2. 左側のメニューの **[HDInsight クラスター]** をクリックする。
+3. スケールを設定するクラスターをクリックします。
+3. **[クラスターのスケール設定]** をクリックします。
+4. **[worker ノードの数]** を入力します。 クラスター ノードの数の制限は Azure サブスクリプションによって異なります。 制限値を上げるには、課金サポートにお問い合わせください。  コスト情報にはノード数の変更が反映されます。
+
+    ![HDInsight Hadoop HBase Storm および Spark のスケール](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster.png)
 
 データ ノード数を変更した場合の影響は、HDInsight でサポートされているクラスターの種類ごとに異なります。
 
@@ -188,15 +200,6 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-**クラスターのスケールを設定するには**
-
-1. [Portal][azure-portal] にサインインします。
-2. 左側のメニューの **[HDInsight クラスター]** をクリックする。
-3. スケールを設定するクラスターをクリックします。
-3. **[クラスターのスケール設定]** をクリックします。
-4. **[worker ノードの数]** を入力します。 クラスター ノードの数の制限は Azure サブスクリプションによって異なります。 制限値を上げるには、課金サポートにお問い合わせください。  コスト情報にはノード数の変更が反映されます。
-
-    ![HDInsight Hadoop HBase Storm および Spark のスケール](./media/hdinsight-administer-use-portal-linux/hdinsight-portal-scale-cluster.png)
 
 ## <a name="pauseshut-down-clusters"></a>クラスターの一時停止またはシャットダウン
 

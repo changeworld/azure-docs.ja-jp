@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 41965c4a498cfa4c1f0dfefaf7615e43083eb94c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258000"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011835"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 [Azure アクティビティ ログ](monitoring-overview-activity-logs.md)は、以下のいずれかを実行することで、あらゆるアプリケーションでほぼリアルタイムにストリームできます。
@@ -39,10 +39,10 @@ Event Hubs 名前空間が存在しない場合は、最初に作成する必要
 ### <a name="via-the-azure-portal"></a>Azure Portal の使用
 1. ポータル左側の **[すべてのサービス]** 検索を使用して、**[アクティビティ ログ]** セクションに移動します。
    
-   ![ポータルのサービスの一覧からアクティビティ ログを選択します。](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
+   ![ポータルのサービスの一覧からアクティビティ ログを選択します。](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-navigate-v2.png)
 2. ログの上部にある **[エクスポート]** ボタンを選択します。
    
-   ![ポータルの [エクスポート] ボタン](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+   ![ポータルの [エクスポート] ボタン](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-export-v2.png)
 
    前のビューでアクティビティ ログを表示したときに適用したフィルターの設定は、エクスポート設定には影響ありません。 これは、ポータルで、アクティビティ ログを参照中に表示される内容をフィルター処理するためのみに使用されます。
 3. 表示されるセクションで、**[All regions]\(すべての領域\)** を選択します。 特定の領域を選択しないでください。
@@ -101,5 +101,5 @@ Event Hubs 名前空間が存在しない場合は、最初に作成する必要
 ## <a name="next-steps"></a>次の手順
 * [ストレージ アカウントにアクティビティ ログをアーカイブする](monitoring-archive-activity-log.md)
 * [Azure アクティビティ ログの概要を確認する](monitoring-overview-activity-logs.md)
-* [アクティビティ ログ イベントに基づいてアラートを設定する](insights-auditlog-to-webhook-email.md)
+* [アクティビティ ログ イベントに基づいてアラートを設定する](monitor-alerts-unified-log-webhook.md)
 

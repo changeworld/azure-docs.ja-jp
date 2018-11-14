@@ -3,7 +3,7 @@ title: Azure Event Grid を使用して、アップロードされたイメー�
 description: Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。
 services: event-grid, functions
 author: ggailey777
-manager: cfowler
+manager: jpconnoc
 editor: ''
 ms.service: event-grid
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2d94389ade02cb6e61f192e9b9e8adb8f8ceec31
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2a60084577255b9aa88700509129b8d917c43a79
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585579"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282510"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -158,19 +158,18 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
 
 3. 次の表で指定されているようにイベント サブスクリプションを設定します。
     
-    ![Azure Portal で関数からイベント サブスクリプションを作成する](./media/resize-images-on-storage-blob-upload-event/event-subscription-create-flow.png)
+    ![Azure Portal で関数からイベント サブスクリプションを作成する](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
-    | Setting      | 推奨値  | Description                                        |
+    | Setting      | 推奨値  | 説明                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **名前** | imageresizersub | 新しいイベント サブスクリプションを示す名前。 | 
     | **トピックの種類** |  ストレージ アカウント | ストレージ アカウント イベント プロバイダーを選びます。 | 
     | **サブスクリプション** | お使いの Azure サブスクリプション | 既定では、現在の Azure サブスクリプションが選択されています。   |
     | **[リソース グループ]** | myResourceGroup | **[既存のものを使用]** を選び、このチュートリアルで使っているリソース グループを選びます。  |
-    | **インスタンス** |  お使いの BLOB ストレージ アカウント |  作成した Blob Storage アカウントを選びます。 |
+    | **リソース** |  お使いの BLOB ストレージ アカウント |  作成した Blob Storage アカウントを選びます。 |
     | **イベントの種類** | Blob created (作成された BLOB) | **[Blob created]\(作成された BLOB\)** 以外のすべての種類をオフにします。 `Microsoft.Storage.BlobCreated` のイベントの種類のみが関数に渡されます。| 
-    | **サブスクライバーの種類** |  webhook |  選択肢は、webhook または Event Hubs です。 |
+    | **サブスクライバーの種類** |  自動生成 |  Web hook として事前定義されています。 |
     | **サブスクライバー エンドポイント** | 自動生成 | 自動的に生成されるエンドポイントの URL を使います。 | 
-    | **プレフィックス フィルター** | /blobServices/default/containers/images/blobs/ | **images** コンテナーのストレージ イベントだけになるようにフィルター処理します。| 
+    | **名前** | imageresizersub | 新しいイベント サブスクリプションを示す名前。 | 
 
 4. **[作成]** をクリックしてイベント サブスクリプションを追加します。 これにより、BLOB が *images* コンテナーに追加されたときに `imageresizerfunc` をトリガーするイベント サブスクリプションが作成されます。 この関数によって、画像は、サイズが変更され、*thumbnails* コンテナーに追加されます。
 

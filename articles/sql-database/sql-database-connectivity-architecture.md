@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/24/2018
-ms.openlocfilehash: ca1ef9c402b370a8d1228e13d7fe3e13fd225f79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11133a24f4446478dcc7f38ed50eb36de8843442
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986323"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978403"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL Database 接続アーキテクチャ
 
@@ -31,19 +31,30 @@ ms.locfileid: "49986323"
 
 次の手順で、Azure SQL Database ソフトウェア ロード バランサー (SLB) と Azure SQL Database ゲートウェイを利用して Azure SQL への接続が確立されます。
 
-- Azure 内外のクライアントは SLB に接続します。SLB にはパブリック IP アドレスが与えられており、ポート 1433 で待ち受けます。
-- SLB は Azure SQL Database ゲートウェイにトラフィックを送信します。
-- ゲートウェイは適切なプロキシ ミドルウェアにトラフィックをリダイレクトします。
-- プロキシ ミドルウェアは適切な Azure SQL データベースにトラフィックをリダイレクトします。
+- クライアントは SLB に接続します。SLB にはパブリック IP アドレスが与えられており、ポート 1433 で待ち受けます。
+- SLB は Azure SQL Database ゲートウェイにトラフィックを転送します。
+- 有効な接続ポリシーによっては、ゲートウェイがトラフィックを正しいプロキシ ミドルウェアにリダイレクトまたはプロキシします。
+- プロキシ ミドルウェアは適切な Azure SQL データベースにトラフィックを転送します。
 
 > [!IMPORTANT]
 > これらの各コンポーネントには、ネットワーク層とアプリケーション層で、DDoS (分散型サービス拒否) 保護が組み込まれています。
 
+## <a name="connection-policy"></a>接続ポリシー
+
+Azure SQL Database は、SQL Database サーバーの接続ポリシー設定について次の 3 つのオプションをサポートしています。
+
+- **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。 接続を有効にするには、Azure SQL Database ゲートウェイの IP アドレスだけでなく、リージョン内のすべての Azure IP アドレスに対する送信ファイアウォール規則をクライアントが許可する必要があります (ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用してみてください)。 パケットはデータベースに直接送信されるため、待機時間とスループットのパフォーマンスが改善されます。
+- **プロキシ:** このモードでは、すべての接続が Azure SQL Database ゲートウェイ経由でプロキシされます。 接続を有効にするには、Azure SQL Database ゲートウェイの IP アドレスのみ (通常はリージョンあたり 2 つの IP アドレス) を許可する送信ファイアウォール規則がクライアントに必要です。 このモードを選択すると、ワークロードの性質によっては待機時間が長くなり、スループットが低下する可能性があります。 最短の待機時間と最高のスループットを実現するために、プロキシ接続ポリシーを使用したリダイレクト接続ポリシーを強くお勧めします。
+- **既定:** これは、明示的に接続ポリシーをプロキシまたはリダイレクトに変更しない限り、作成後のすべてのサーバーで有効になる接続ポリシーです。 有効なポリシーは、接続が Azure (リダイレクト) 内か Azure (プロキシ) の外部かによって変わります。
+
 ## <a name="connectivity-from-within-azure"></a>Azure 内からの接続
 
-Azure 内から接続する場合、接続には既定で **Redirect** の接続ポリシーが与えられます。 **Redirect** のポリシーとは、TCP セッションが Azure SQL Database に対して確立された後の接続で、宛先の仮想 IP を Azure SQL Database ゲートウェイの IP からプロキシ ミドルウェアの IP に変更して、クライアント セッションをプロキシ ミドルウェアにリダイレクトすることを意味します。 その後、すべての後続パケットは Azure SQL Database ゲートウェイを迂回し、プロキシ ミドルウェア経由で直接送信されます。 次の図にこのトラフィックの流れを示します。
+2018 年 11 月 10 日の後に作成されたサーバーの Azure 内から接続する場合、この接続には既定で**リダイレクト**の接続ポリシーが適用されます。 **Redirect** のポリシーとは、TCP セッションが Azure SQL Database に対して確立された後の接続で、宛先の仮想 IP を Azure SQL Database ゲートウェイの IP からプロキシ ミドルウェアの IP に変更して、クライアント セッションをプロキシ ミドルウェアにリダイレクトすることを意味します。 その後、すべての後続パケットは Azure SQL Database ゲートウェイを迂回し、プロキシ ミドルウェア経由で直接送信されます。 次の図にこのトラフィックの流れを示します。
 
 ![アーキテクチャの概要](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
+
+> [!IMPORTANT]
+> 2018 年 11 月 10 日より前に SQL Database Server を作成した場合、接続ポリシーは明示的に**プロキシ**に設定されていました。 サービス エンドポイントを使用する場合は、パフォーマンスが向上されるように、接続ポリシーを**リダイレクト**に変更することを強くお勧めします。 接続ポリシーを**リダイレクト**に変更しても、次に示されている Azure SQL Database ゲートウェイ IP への NSG の送信は十分ではありません。すべての Azure SQL Database IP への送信を許可する必要があります。 これは、NSG (ネットワーク セキュリティ グループ) サービス タグを使用して実現できます。 詳細については、「[サービス タグ](../virtual-network/security-overview.md#service-tags)」を参照してください。
 
 ## <a name="connectivity-from-outside-of-azure"></a>Azure 外からの接続
 
@@ -51,19 +62,11 @@ Azure 外から接続する場合、接続には既定で**プロキシ**の接�
 
 ![アーキテクチャの概要](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
-> [!IMPORTANT]
-> Azure SQL Database でサービス エンドポイントを使用する場合、ポリシーは既定で**プロキシ**になります。 VNet 内からの接続を有効にするには、次の一覧に指定されている Azure SQL Database ゲートウェイ IP アドレスへの送信接続を許可する必要があります。
-
-サービス エンドポイントを使用する場合は、パフォーマンスが向上されるように、接続ポリシーを**リダイレクト**に変更することを強くお勧めします。 接続ポリシーを**リダイレクト**に変更しても、次に示されている Azure SQL Database ゲートウェイ IP への NSG の送信は十分ではありません。すべての Azure SQL Database IP への送信を許可する必要があります。 これは、NSG (ネットワーク セキュリティ グループ) サービス タグを使用して実現できます。 詳細については、「[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)」を参照してください。
-
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database ゲートウェイ IP アドレス
 
 オンプレミス リソースから Azure SQL データベースに接続するには、自分の Azure リージョンに関して、Azure SQL Database ゲートウェイへの送信ネットワーク トラフィックを許可する必要があります。 プロキシ モードで接続するとき、ゲートウェイ経由でのみ接続されます。プロキシ モードは、オンプレミス リソースから接続するときの既定です。
 
 次の表は、すべてのデータ リージョンの Azure SQL Database ゲートウェイのプライマリ IP とセカンダリ IP を一覧にまとめたものです。 IP アドレスが 2 つのリージョンもあります。 そのようなリージョンでは、プライマリ IP アドレスはゲートウェイの現行 IP アドレスであり、セカンダリ IP アドレスはフェールオーバー IP アドレスになります。 フェールオーバー アドレスは、サービスの高い可用性を維持するためにサーバーを移動するとき、その移動先となるアドレスです。 そのようなリージョンについては、両方の IP アドレスへの送信を許可することが推奨されます。 セカンダリ IP アドレスは Microsoft の所有であり、接続を受け入れるために Azure SQL Database によりアクティベートされるまで、いかなるサービスでもリッスンしません。
-
-> [!IMPORTANT]
-> Azure 内から接続する場合、接続ポリシーは既定で **Redirect** になります (サービス エンドポイントを使用している場合を除く)。 次の IP を許可するだけでは不十分です。 すべての Azure SQL Database IP を許可する必要があります。 VNet から接続する場合、これは NSG (ネットワーク セキュリティ グループ) サービス タグを使用して実現できます。 詳細については、「[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)」を参照してください。
 
 | リージョン名 | プライマリ IP アドレス | セカンダリ IP アドレス |
 | --- | --- |--- |

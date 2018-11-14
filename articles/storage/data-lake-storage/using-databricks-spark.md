@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c46a9f827bdeeaf7a2b9897b262484f64f83b9a8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466032"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283463"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>チュートリアル: Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする
 
-このチュートリアルでは、Azure Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 プレビュー対応アカウント内のデータを照会する方法を説明します。
+このチュートリアルでは、Azure Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 プレビュー対応の Azure Storage アカウント内のデータを照会する方法を説明します。
 
 > [!div class="checklist"]
 > * Databricks クラスターを作成する
@@ -31,9 +31,9 @@ ms.locfileid: "46466032"
 > [!NOTE]
 > **[Prezipped file]\(事前に圧縮されたファイル\)** チェックボックスをオンにして、すべてのデータ フィールドを選択します。 ダウンロード サイズは数ギガバイトにもなりますが、分析にはこの量のデータが必要です。
 
-## <a name="create-an-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 アカウントを作成する
+## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>分析機能を備えた Azure Storage アカウントを作成する
 
-開始するには、新しい [Azure Data Lake Storage Gen2 アカウント](quickstart-create-account.md)を作成し、一意の名前を指定します。 ストレージ アカウントに移動し、構成設定を取得します。
+まず、[分析機能を備えたストレージ アカウント](quickstart-create-account.md)を新たに作成し、一意の名前を指定します。 ストレージ アカウントに移動し、構成設定を取得します。
 
 1. **[設定]** で **[アクセス キー]** をクリックします。
 2. **[key1]** の隣にある **[コピー]** をクリックしてキーの値をコピーします。
@@ -137,11 +137,12 @@ dbutils.fs.help()
 dbutils.fs.put(source + "/temp/1.txt", "Hello, World!", True)
 dbutils.fs.ls(source + "/temp/parquet/flights")
 ```
-上記のコード サンプルを使用して、Azure Data Lake Storage Gen2 対応アカウントの格納データを使って HDFS の階層的な性質を調査しました。
+
+上記のコード サンプルでは、Data Lake Storage Gen2 対応のストレージ アカウントに格納されたデータを使って HDFS の階層的な性質を調査しました。
 
 ## <a name="query-the-data"></a>データを照会する
 
-これで、Azure Data Lake Storage にアップロードしたデータの照会を開始できます。 次のコード ブロックをそれぞれ **[Cmd 1]** に入力し、**Cmd を押しながら Enter** キーを押して Python スクリプトを実行します。
+これで、ストレージ アカウントにアップロードしたデータの照会を開始できます。 次のコード ブロックをそれぞれ **[Cmd 1]** に入力し、**Cmd を押しながら Enter** キーを押して Python スクリプトを実行します。
 
 ### <a name="simple-queries"></a>単純なクエリ
 

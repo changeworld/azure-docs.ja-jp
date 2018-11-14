@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 279818e6b43e53206deb9e33591f75ef381a8962
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319984"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240428"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Security Center でサポートされている機能とプラットフォーム
 
@@ -80,16 +80,16 @@ ms.locfileid: "49319984"
 |セキュリティ構成|✔|✔|✔|✔|
 |マルウェア対策|✔|✔|X|X|
 |JIT VM アクセス|✔|X|✔|X|
-|アダプティブ アプリケーション制御|✔ (Azure のみ)|X|X|X|
+|アダプティブ アプリケーション制御|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
 |ディスクの暗号化|✔|X|✔|X|
 |サード パーティのデプロイ|✔|X|✔|X|
 |NSG|✔|X|✔|X|
-|Filess V1|✔|✔|X|X|
+|ファイル脅威検出|✔|✔|X|X|
 |ネットワーク マップ|✔|X|✔|X|
-|アダプティブ ネットワークのセキュリティ強化機能|✔|X|✔|X|
+|アダプティブ ネットワーク制御|✔|X|✔|X|
 
-* 現在、これらの機能はパブリック プレビューでサポートされています。
+\* 現在、これらの機能はパブリック プレビューでサポートされています。
 
 
 ## <a name="supported-paas-features"></a>サポートされている PaaS 機能
@@ -103,26 +103,17 @@ ms.locfileid: "49319984"
 |BLOB ストレージ アカウント*|✔| ✔|
 |App Services|✔| ✔|
 |クラウド サービス|✔| X|
-|Redis Cache|✔| ○|
-|Service Fabric|✔| ○|
-|Azure Automation|✔| ○|
-|Data Lake |✔| ○|
-|Key Vault|✔| ○|
-|Service Bus|✔| ○|
-|Stream Analytics|✔| ○|
-|Batch|✔| ○|
-|ロジック アプリ|✔| ○|
 |VNet|✔| 該当なし|
 |サブネット|✔| 該当なし|
 |NIC|✔| ✔|
 |NSG|✔| 該当なし|
 |サブスクリプション|✔| ✔|
 
-* 現在、これらの機能はパブリック プレビューでサポートされています。
+\* 現在、これらの機能はパブリック プレビューでサポートされています。
 
 ## <a name="next-steps"></a>次の手順
 
 - 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 - Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
 - [Azure Security Center のタイプ別のセキュリティ アラート](security-center-alerts-type.md#virtual-machine-behavioral-analysis) - Security Center における仮想マシンの動作分析とクラッシュ ダンプ メモリ分析について説明します。
 - [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) - Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+- [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) - Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

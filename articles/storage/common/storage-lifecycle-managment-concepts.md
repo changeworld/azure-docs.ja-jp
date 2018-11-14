@@ -1,36 +1,36 @@
 ---
 title: Azure Storage のライフサイクルの管理
-description: 古いデータをホットからクールおよびアーカイブ層へ移行するためのライフサイクル ポリシー ルールの作成方法について学習します。
+description: 古いデータをホット層からクール層およびアーカイブ層へ移行するためのライフサイクル ポリシー ルールの作成方法について説明します。
 services: storage
 author: yzheng-msft
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 11/01/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 05e7a7e3c2824a9b47ff723e91103611871d7ed2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c6647ff97b078ca5afa5c66833a1617f6b3ec0f1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429560"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978810"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Azure Blob Storage のライフサイクルの管理 (プレビュー)
 
-データ セットには一意のライフサイクルがあります。 たとえば、ライフサイクルの早い段階で頻繁にアクセスされ、データが古くなるとアクセスの必要性が急激に低下するデータがあります。 また、クラウド内で使用されず、格納された後もほとんどアクセスされないデータもあります。 データには、作成後数日または数か月で失効するものがあります。また、ライフサイクルにわたってアクティブに読み取られ、変更されるデータ セットもあります。 Azure Blob Storage のライフサイクル管理 (プレビュー) には優れたルールベースのポリシーが用意されており、これを使用して、最適なアクセス層にデータを移行し、ライフサイクルの最後にデータを期限切れにすることができます。
+データ セットには一意のライフサイクルがあります。 たとえば、ライフサイクルの早い段階で頻繁にアクセスされ、データが古くなるとアクセスの必要性が急激に低下するデータがあります。 また、クラウド内で使用されず、格納された後もほとんどアクセスされないデータもあります。 データには、作成後数日または数か月で失効するものがあります。また、ライフサイクルにわたってアクティブに読み取られ、変更されるデータ セットもあります。 Azure Blob Storage のライフサイクル管理 (プレビュー) には優れたルールベースのポリシーが用意されており、これを GPv2 および BLOB ストレージ アカウントで使用して、最適なアクセス層にデータを移行したり、ライフサイクルの最後にデータを期限切れにしたりすることができます。
 
 ライフサイクル管理ポリシーにより、次のことが可能になります。
 
 - パフォーマンスとコストを最適化するために、BLOB をよりクールなストレージ層に移行する (ホットからクール、ホットからアーカイブ、またはクールからアーカイブ)
 - ライフサイクルの最後に BLOB を削除する
-- ストレージ アカウント レベルで 1 日に 1 回実行されるルールを定義する (GPv2 と BLOB ストレージ アカウントの両方がサポートされます)
+- ストレージ アカウント レベルで 1 日に 1 回実行されるようにルールを定義する
 - コンテナーまたは BLOB のサブセットにルールを適用する (プレフィックスをフィルターとして使用)
 
-ライフサイクルの初期段階で頻繁にアクセスされ、2 週間後にはたまにしか必要とされず、1 か月以上経過した後はほとんどアクセスされないデータ セットを考えてみましょう。 このシナリオの初期段階ではホット ストレージが最適です。ときどきアクセスされるデータにはクール ストレージが適し、1 か月以上経過したデータにはアーカイブ ストレージが最善の層になります。 データの古さを考慮してストレージ層を調整することで、ニーズに合った最も低コストのストレージ オプションを設計できます。 この移行を実現するために、ライフサイクル管理ポリシーを使用して、古いデータをよりクールな層に移動することができます。
+ライフサイクルの初期段階で頻繁にアクセスされ、2 週間後にはたまにしか必要とされず、1 か月以上経過した後はほとんどアクセスされないデータ セットを考えてみましょう。 このシナリオの初期段階ではホット ストレージが最適です。ときどきアクセスされるデータにはクール ストレージが適し、1 か月以上経過したデータにはアーカイブ ストレージが最善の層になります。 データの古さを考慮してストレージ層を調整することで、ニーズに合った最も低コストのストレージ オプションを設計できます。 この移行を実現するために、ライフサイクル管理ポリシー ルールを使用して、古いデータをよりクールな層に移動することができます。
 
 ## <a name="storage-account-support"></a>ストレージ アカウントのサポート
 
-ライフサイクル管理ポリシーは、General Purpose v2 (GPv2) アカウントと Blob Storage アカウントの両方で利用できます。 Azure portal の簡単なワンクリック プロセスを通じて、既存の General Purpose (GPv1) アカウントを GPv2 アカウントに変換することができます。 ストレージ アカウントの詳細については、[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)ページを参照してください。  
+ライフサイクル管理ポリシーは、General Purpose v2 (GPv2) アカウントと Blob Storage アカウントの両方で利用できます。 Azure portal の簡単なワンクリック プロセスを使用して、ダウンタイムなしで、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントの詳細については、[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)ページを参照してください。  
 
 ## <a name="pricing"></a>価格 
 
@@ -67,9 +67,9 @@ az feature show --namespace Microsoft.Storage --name DLM
 機能が承認され、正しく登録されている場合は、「登録済み」状態と表示されます。 
 
 
-## <a name="add-or-remove-policies"></a>ポリシーの追加または削除 
+## <a name="add-or-remove-a-policy"></a>ポリシーを追加または削除する 
 
-ポリシーを追加、編集、または削除するには、Azure portal、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/managementpolicies_createorupdate)、または [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2) の言語のクライアント ツールを使用することができます。 
+ポリシーを追加、編集、または削除するには、Azure portal、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/createorupdate)、または [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby](  https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2) の言語のクライアント ツールを使用することができます。 
 
 ### <a name="azure-portal"></a>Azure ポータル
 
@@ -92,7 +92,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 > [!NOTE]
 ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 例外を指定することで、要求のブロックを解除することができます。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)に関するページの「例外」セクションを参照してください。
 
-## <a name="policies"></a>ポリシー
+## <a name="policy"></a>ポリシー
 
 ライフサイクル管理ポリシーは、JSON ドキュメントに記述されたルールのコレクションです。
 
@@ -122,7 +122,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 | version        | `x.x` として表される文字列 | プレビューのバージョン番号は 0.5 です |
 | 規則          | ルール オブジェクトの配列 | 各ポリシーには少なくとも 1 つのルールが必要です。 プレビュー段階では、ポリシーごとに最大 4 つのルールを指定できます。 |
 
-ルール内で必要なパラメーターは次のとおりです。
+各ルール内では、3 つのパラメーターが必要です。
 
 | パラメーター名 | パラメーターのタイプ | メモ |
 |----------------|----------------|-------|
@@ -132,10 +132,13 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ## <a name="rules"></a>ルール
 
-各ルール定義には、フィルター セットとアクション セットが含まれます。 次のサンプル ルールでは、プレフィックスが `container1/foo` の基本ブロック BLOB の層を変更します。 ポリシーでは、次のようにルールが定義されています。
+各ルール定義には、フィルター セットとアクション セットが含まれます。 [フィルター セット](#rule-filters)は、コンテナー内の特定のオブジェクト セットまたはオブジェクト名にルール アクションを制限するために使用されます。 [アクション セット](#rule-actions)は、階層化または削除アクションをオブジェクトのフィルター処理されたセットに適用します。
 
-- BLOB を最後に変更されたときから 30 日後にクール ストレージに階層化する
-- BLOB を最後に変更されたときから 90 日後にアーカイブ ストレージに階層化する
+### <a name="sample-rule"></a>ルールのサンプル
+次のサンプル ルールは、`container1/foo` だけでアクションが実行されるように、アカウントをフィルター処理します。 `container1` 内に存在し、**かつ**、`foo` で始まるすべてのオブジェクトに対し、以下のアクションが実行されます。 
+
+- BLOB を最後に変更されたときから 30 日後にクール層に階層化する
+- BLOB を最後に変更されたときから 90 日後にアーカイブ層に階層化する
 - BLOB を最後に変更されたときから 2,555 日 (7 年) 後に削除する
 - BLOB のスナップショットを作成したときから 90 日後にスナップショットを削除する
 
@@ -177,7 +180,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 | フィルター名 | フィルターの種類 | メモ | 必須 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 定義済みの列挙型の値の配列。 | プレビュー リリースでは、`blockBlob` のみがサポートされています。 | [はい] |
-| prefixMatch | プレフィックスを照合する文字列の配列。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、"https://myaccount.blob.core.windows.net/mycontainer/mydir/.." 以下のすべての BLOB がルールに一致する必要がある場合、プレフィックスは "mycontainer/mydir" です。 | 定義されていない場合、このルールはアカウント内のすべての BLOB に適用されます。 | いいえ  |
+| prefixMatch | プレフィックスを照合する文字列の配列。 プレフィックス文字列はコンテナー名で始まる必要があります。 たとえば、"https://myaccount.blob.core.windows.net/container1/foo/.." の下にあるすべての BLOB がルールに一致する必要がある場合、prefixMatch は "container1/foo" です。 | prefixMatch が定義されていない場合、ルールはアカウント内のすべての BLOB に適用されます。 | いいえ  |
 
 ### <a name="rule-actions"></a>ルールのアクション
 

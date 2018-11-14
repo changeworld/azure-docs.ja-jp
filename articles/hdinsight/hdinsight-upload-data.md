@@ -1,25 +1,25 @@
 ---
-title: HDInsight での Hadoop ジョブ用データのアップロード
-description: Azure クラシック CLI、Azure Storage エクスプローラー、Azure PowerShell、Hadoop コマンド ライン、または Sqoop を使用して、Hadoop ジョブ用データを HDInsight にアップロードする方法と HDInsight の Hadoop ジョブ用データにアクセスする方法について説明します。
+title: HDInsight で Apache Hadoop ジョブのデータをアップロードする
+description: Azure クラシック CLI、Azure Storage Explorer、Azure PowerShell、Hadoop コマンド ライン、または Sqoop を使用して、HDInsight で Apache Hadoop ジョブのデータをアップロードしてアクセスする方法について説明します。
 keywords: ETL Hadoop, Hadoop へのデータの取得, Hadoop ロード データ
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
-ms.author: jasonh
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.openlocfilehash: 50e9162da5fda98d73ccfeea0776dc89ddd25dac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985981"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256920"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブ用データのアップロード
 
-Azure HDInsight では、Azure Storage および Azure Data Lake Store 上でフル機能の Hadoop 分散ファイル システム (HDFS) を利用できます。 Azure Storage および Data Lake Store は、HDFS 拡張機能として、シームレスなエクスペリエンスを顧客に提供するように設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage および Data Lake Store は、データの保管と計算処理のために最適化された別個のファイル システムです。 Azure Storage を使用するメリットの詳細については、[HDInsight での Azure Storage の使用][hdinsight-storage]および[HDInsight での Data Lake Store の使用](hdinsight-hadoop-use-data-lake-store.md)に関するページをご覧ください。
+Azure HDInsight には、Azure Storage と Azure Data lake Storage (Gen1 および Gen2) を経由した、フル機能を備えた Hadoop 分散ファイル システム (HDFS) が用意されています。 Azure Storage と Data lake Storage Gen1 および Gen2 は、顧客にシームレスなエクスペリエンスを提供する HDFS 拡張機能として設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage、Data Lake Storage Gen1 および Gen2 は、そのデータに対する格納と計算のために最適化された個別のファイル システムです。 Azure Storage を使用するメリットについては、[HDInsight での Azure Storage の使用][hdinsight-storage]、[HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)、[HDInsight での Data Lake Storage Gen2 の使用](../storage/data-lake-storage/use-hdi-cluster.md)のそれぞれに関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,7 +29,8 @@ Azure HDInsight では、Azure Storage および Azure Data Lake Store 上でフ
 * 次の 2 つの記事に関する知識
 
     - [HDInsight での Azure Storage の使用][hdinsight-storage]
-    - [HDInsight での Data Lake Store の使用](hdinsight-hadoop-use-data-lake-store.md)
+    - [HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)
+    - [HDInsight での Data Lake Storage Gen2 の使用](../storage/data-lake-storage/use-hdi-cluster.md)   
 
 ## <a name="upload-data-to-azure-storage"></a>Azure Storage へのデータのアップロード
 
@@ -213,7 +214,7 @@ Azure Storage エクスプローラーを使用するには、Azure Storage の�
     ファイルのアップロードが終了すると、HDInsight クラスターでジョブからそのファイルを使用できます。
 
 ### <a name="mount-azure-storage-as-local-drive"></a>Azure Storage をローカル ドライブとしてマウントする
-「[Mount Azure Storage as Local Drive (Azure Storage をローカル ドライブとしてマウントする)](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx)」を参照してください。
+「[Mount Azure Storage as Local Drive (Azure Storage をローカル ドライブとしてマウントする)](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx)」を参照してください。
 
 ### <a name="upload-using-services"></a>サービスを使用してアップロードする
 #### <a name="azure-data-factory"></a>Azure Data Factory
@@ -304,6 +305,8 @@ Ambari の使用について詳しくは、「[Ambari Web UI を使用した HDI
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
+[hdinsight-adls-gen1]: hdinsight-hadoop-use-data-lake-store.md
+[hdinsight-adls-gen2]: ../storage/data-lake-storage/use-hdi-cluster.md
 [hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 

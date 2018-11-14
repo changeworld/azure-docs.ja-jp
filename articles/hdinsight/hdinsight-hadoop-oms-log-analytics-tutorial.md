@@ -7,20 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: a91acadbc2187f3e6ddffcd29c6f32500dd45c3f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 531cfb32b3433e0a376845a81a3ea5e13e6f1d11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015181"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278686"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics を使用して Azure HDInsight クラスターを監視する
 
 Azure Log Analytics を有効にして HDInsight で Hadoop クラスターの操作を監視する方法と、HDInisght 監視ソリューション追加する方法を説明します。
 
-[Log Analytics](../log-analytics/log-analytics-overview.md) は、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
+[Log Analytics](../log-analytics/log-analytics-overview.md) は、クラウドおよびオンプレミス環境の可用性やパフォーマンスを維持するためにそれらの環境を監視する Azure Monitor のサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
   HDInsight クラスターの作成手順については、[Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
 > [!NOTE]
-> パフォーマンス向上のため、HDInsight クラスターと Log Analytics ワークスペースの両方を同じリージョンに配置することをお勧めします。 すべての Azure リージョンで Azure Log Analytics を利用することはできません。
+> パフォーマンス向上のため、HDInsight クラスターと Log Analytics ワークスペースの両方を同じリージョンに配置することをお勧めします。 Azure Log Analytics は、すべての Azure リージョンで使用できるわけではありません。
 
 ## <a name="enable-log-analytics-by-using-the-portal"></a>ポータルを使用して Log Analytics を有効にする
 

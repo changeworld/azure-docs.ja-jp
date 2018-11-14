@@ -4,24 +4,20 @@ description: Azure Load Balancer の機能の概要、アーキテクチャ、�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for.
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 618b00906a799e1b8cfcfac5ee6bcc3a714c2f87
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 6368b47400f6ea06babfe538cf6f58b18cc49117
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918744"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219581"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -33,7 +29,7 @@ Load Balancer は、ロード バランサーのフロントエンドで到着�
 
 Azure Load Balancer は、Basic と Standard の 2 種類の SKU で使用できます。 両者の間には、スケール、機能、および料金の違いがあります。 Basic Load Balancer で可能なシナリオをすべて、Standard Load Balancer でも作成できますが、アプローチは若干異なる場合があります。 Load Balancer について学習するときは、基礎および SKU 固有の違いを理解することが重要です。
 
-## <a name="why-use-load-balancer"></a>Load Balancer を使用する理由 
+## <a name="why-use-load-balancer"></a>ロード バランサーを使用する理由 
 
 Azure Load Balancer を使って次のことができます。
 
@@ -48,7 +44,7 @@ Azure Load Balancer を使って次のことができます。
 
 ## <a name="what-are-load-balancer-resources"></a>Load Balancer リソースとは
 
-Load Balancer  リソースは、パブリック ロード バランサーまたは内部ロード バランサーとして存在できます。 Load Balancer リソースの機能は、フロントエンド、ルール、正常性プローブ、バックエンド プール定義として表されます。 VM からバックエンド プールを指定することにより、VM をバックエンド プールに配置します。
+ロード バランサー リソースは、パブリック ロード バランサーまたは内部ロード バランサーとして存在できます。 Load Balancer リソースの機能は、フロントエンド、ルール、正常性プローブ、バックエンド プール定義として表されます。 VM からバックエンド プールを指定することにより、VM をバックエンド プールに配置します。
 
 Load Balancer リソースはオブジェクトであり、その中では、ユーザーが作成したいシナリオを実現するために Azure がそのマルチ テナント インフラストラクチャをプログラミングする方法を表すことができます。 Load Balancer リソースと実際のインフラストラクチャの間に直接的な関係はありません。 Load Balancer を作成してもインスタンスは作成されず、容量は常に利用できます。 
 
@@ -70,7 +66,7 @@ Load Balancer リソースはオブジェクトであり、その中では、ユ
 
 * **ポート フォワーディング**
 
-    Load Balancer では、受信 NAT 規則を作成して、特定のフロントエンド IP アドレスの特定のポートから、仮想ネットワーク内の特定のバックエンド インスタンスの特定のポートに、トラフィックをポート転送できます。 これも、負荷分散と同じハッシュ ベースの分散によって実現されます。 この機能の一般的なシナリオは、Azure Virtual Network 内の個別の VM インスタンスへのリモート デスクトップ プロトコル (RDP) または Secure Shell (SSH) セッションです。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのさまざまなポートにマップできます。 これらを使って、追加のジャンプ ボックスがなくても、インターネット経由で VM をリモート管理できます。
+    Load Balancer では、受信 NAT 規則を作成して、特定のフロントエンド IP アドレスの特定のポートから、仮想ネットワーク内の特定のバックエンド インスタンスの特定のポートに、トラフィックをポート転送できます。 これも、負荷分散と同じハッシュ ベースの分散によって実現されます。 この機能の一般的なシナリオは、Azure Virtual Network 内の個別の VM インスタンスへのリモート デスクトップ プロトコル (RDP) または Secure Shell (SSH) セッションです。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのさまざまなポートにマップできます。 フロントエンド IP アドレスを使って、追加のジャンプ ボックスがなくても、インターネット経由で VM をリモート管理できます。
 
 * **アプリケーションに対する独立性と透過性**
 

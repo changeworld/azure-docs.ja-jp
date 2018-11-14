@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 08d8822410545fb0ae3a2a99de00b38566c9834c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41947942"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035103"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>インフラストラクチャ バックアップ サービスのベスト プラクティス
 
@@ -52,9 +52,8 @@ ms.locfileid: "41947942"
 
 ### <a name="backups"></a>バックアップ
 
- - インフラストラクチャ バックアップ コントローラーは、オンデマンドでトリガーする必要があります。 少なくとも 1 日 2 回はバックアップすることをお勧めします。
  - バックアップ ジョブはシステムの稼働中に実行されるため、管理エクスペリエンスやユーザーのアプリケーションにダウンタイムが発生しません。 それなりに負荷がかかっているソリューションでは、バックアップ ジョブに 20 - 40 分かかると見積もってください。
- - OEM 提供の手順に従って、ネットワーク スイッチを手動でバックアップします。また、インフラストラクチャ バックアップ コントローラーがコントロール プレーン バックアップ データを格納している場所と同じバックアップ共有上に、ハードウェア ライフサイクル ホスト (HLH) を格納する必要があります。 スイッチと HLH 構成は、リージョンのフォルダーに格納することを検討してください。 同一リージョンに Azure Stack インスタンスが複数ある場合は、スケール ユニットに属している構成ごとに識別子を使用することを検討してください。
+ - OEM 提供の手順に従って、ネットワーク スイッチを手動でバックアップします。また、Infrastructure Backup コントローラーがコントロール プレーン バックアップ データを格納している場所と同じバックアップ共有上に、ハードウェア ライフサイクル ホスト (HLH) を格納する必要があります。 スイッチと HLH 構成は、リージョンのフォルダーに格納することを検討してください。 同一リージョンに Azure Stack インスタンスが複数ある場合は、スケール ユニットに属している構成ごとに識別子を使用することを検討してください。
 
 ### <a name="folder-names"></a>フォルダー名
 
@@ -95,5 +94,6 @@ OEM は、各社のコンポーネントのバックアップ データは、リ
 
 ## <a name="next-steps"></a>次の手順
 
- - [インフラストラクチャ バックアップ サービス](azure-stack-backup-reference.md)の参照資料を確認します。  
- - [インフラストラクチャ バックアップ サービス](azure-stack-backup-enable-backup-console.md)を有効にします。
+[インフラストラクチャ バックアップ サービス](azure-stack-backup-reference.md)の参照資料を確認します。
+
+[インフラストラクチャ バックアップ サービス](azure-stack-backup-enable-backup-console.md)を有効にします。

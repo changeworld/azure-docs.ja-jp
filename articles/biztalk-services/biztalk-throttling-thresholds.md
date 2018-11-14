@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 39fc5ef36bb581c3a81c9948fda048f6cb75eb7e
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: daab61a0ea9321b0fb918c60688215c80088e0bc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102088"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243353"
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk Services: 調整
 
@@ -30,7 +30,7 @@ Azure BizTalk Services は、メモリ使用率およびメッセージの同時
 ## <a name="throttling-thresholds"></a>調整のしきい値
 調整の対象としきい値の一覧を次の表に示します。
 
-|  | Description | 低いしきい値 | 高いしきい値 |
+|  | 説明 | 低いしきい値 | 高いしきい値 |
 | --- | --- | --- | --- |
 | メモリ |使用可能な合計システム メモリ/PageFileBytes の割合。 <p><p>使用可能な合計 PageFileBytes は、システムの RAM の約 2 倍です。 |60% |70% |
 | メッセージ処理 |メッセージの同時処理数 |40 * コアの数 |100 * コアの数 |
@@ -42,10 +42,10 @@ Azure BizTalk Services では、調整の状態 (通常と調整された状態)
 ## <a name="runtime-behavior"></a>ランタイムの動作
 Azure BizTalk Services が調整状態になると、次のことが発生します。
 
-* 調整はロール インスタンス単位で行われます。 次に例を示します。<br/>
+* 調整はロール インスタンス単位で行われます。 例: <br/>
   RoleInstanceA は調整中です。 RoleInstanceB は調整されていません。 この状況では、RoleInstanceB のメッセージは予期したとおりに処理されます。 RoleInstanceA のメッセージは破棄され、次のエラーで失敗します。<br/><br/>
   **サーバーがビジー状態です。もう一度実行してください。**<br/><br/>
-* どの取り出し元も、メッセージのポーリングやダウンロードを行いません。 次に例を示します。<br/>
+* どの取り出し元も、メッセージのポーリングやダウンロードを行いません。 例: <br/>
   パイプラインは外部の FTP ソースからメッセージを取り出します。 取り出しを実行するロール インスタンスは調整状態になります。 この状況では、パイプラインは、ロール インスタンスが調整を停止するまで追加のメッセージのダウンロードを停止します。
 * 応答がクライアントに送信され、クライアントはメッセージを再送信できるようになります。
 * 調整が解決されるまで待つ必要があります。 具体的には、低いしきい値に達するまで待つ必要があります。
@@ -57,15 +57,15 @@ Azure BizTalk Services が調整状態になると、次のことが発生しま
 * Azure SQL Database サーバーには、組み込みの調整もあります。
 
 ## <a name="additional-azure-biztalk-services-topics"></a>Azure BizTalk Services に関するその他のトピック
-* [Azure BizTalk Services SDK のインストール](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [チュートリアル: Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+* [Azure BizTalk Services SDK のインストール](https://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [チュートリアル: Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [Visual Studio でのプロジェクトの作成](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>関連項目
-* [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk Services: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk サービス: バックアップと復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk サービス: 発行者名および発行者キー](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [BizTalk Services: サービスの状態のチャート](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk サービス: バックアップと復元に関するページ](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [BizTalk サービス: 発行者名および発行者キー](https://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
 

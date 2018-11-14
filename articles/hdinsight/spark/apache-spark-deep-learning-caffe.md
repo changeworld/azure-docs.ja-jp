@@ -2,25 +2,25 @@
 title: 分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 description: 分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: a7873996d83dbc79b4d44c58bd964c274f9c7709
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 71322869eb9272fb59b98a0e21b1f639129572b7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622917"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255928"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 
 
 ## <a name="introduction"></a>はじめに
 
-深層学習は、医療、輸送、製造など、あらゆる分野に影響を与えています。 企業は、[画像分類](http://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[音声認識](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体認識、機械翻訳などの困難な問題を解決するための手段として深層学習を取り入れるようになっています。 
+深層学習は、医療、輸送、製造など、あらゆる分野に影響を与えています。 企業は、[画像分類](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[音声認識](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体認識、機械翻訳などの困難な問題を解決するための手段としてディープ ラーニングを取り入れるようになっています。 
 
 [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、MXNet、Theano など、[多くの人気の高いフレームワーク](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)が登場しています。Caffe は、最も有名な非シンボリック (命令的) ニューラル ネットワーク フレームワークの 1 つであり、コンピューター ビジョンを含む多くの分野で広く使用されています。 さらに、[CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) では、Caffe と Apache Spark を結合して、深層学習を既存の Hadoop クラスターで簡単に使用できるようにしています。 深層学習を Spark ETL パイプラインと一緒に使用して、システムの複雑さと完全なソリューション学習の待機時間を短縮できます。
 

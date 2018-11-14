@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: fe66ca8b8f5b4474290e302f73b35868dce68caa
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/01/2018
+ms.openlocfilehash: b5a1e521f46da7feffd2eb556ad1662a9ccaee55
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669329"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913838"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -25,18 +25,17 @@ ms.locfileid: "50669329"
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-
-## <a name="event-domains-overview"></a>イベント ドメインの概要
+## <a name="event-domain-overview"></a>イベント ドメインの概要
 
 イベント ドメインは、同じアプリケーションに関連する数多くの Event Grid トピック用の管理ツールです。 数千の個々のトピックを含めることができるメタ トピックと考えることができます。
 
-イベント ドメインでは、Storage や IoT Hub などのアーキテクチャ Azure サービスを使用して、独自のシステムで利用可能なイベントを発行します。 数千のトピックにイベントを発行できます。 また、ドメインでは、テナントをパーティション分割できるように各トピックの承認と認証を制御できます。
+イベント ドメインにより、ユーザーは、Azure サービス (Storage や IoT Hub など) によって使用されているものと同じアーキテクチャ を使用して、イベントを発行できます。 数千のトピックにイベントを発行できます。 また、ドメインでは、テナントをパーティション分割できるように各トピックの承認と認証を制御できます。
 
 ### <a name="example-use-case"></a>ユース ケースの例
 
-例を使えば、イベント ドメインを最も簡単に説明できます。 Contoso Construction Machinery という会社を経営しているとします。この会社はトラクター、掘削機器、その他の重機を製造しています。 経営の一部として、機器のメンテナンス、システムの正常性、契約の更新などについて顧客にリアルタイムの情報をプッシュします。この情報はすべて、アプリ、顧客のエンドポイント、顧客が設定したその他のインフラストラクチャを含むさまざまなエンドポイントに到達します。
+例を使えば、イベント ドメインを最も簡単に説明できます。 Contoso Construction Machinery という会社を経営しているとします。この会社はトラクター、掘削機器、その他の重機を製造しています。 経営の一部として、機器のメンテナンス、システムの正常性、契約の更新などについて顧客にリアルタイムの情報をプッシュで提供します。 この情報はすべて、アプリ、顧客のエンドポイント、顧客が設定したその他のインフラストラクチャを含むさまざまなエンドポイントに到達します。
 
-イベント ドメインを使用することで、Contoso Construction Machinery を単一のイベント処理エンティティとしてモデル化することができます。 それぞれの顧客はドメイン内でトピックとして表されます。認証と承認は、Azure Active Directory を使用して処理されます。 各顧客はトピックをサブスクライブし、イベントを自分に配信させることができます。 イベント ドメインを介した管理アクセスにより、確実に自分のトピックにのみアクセスできるようになります。
+イベント ドメインを使用することで、Contoso Construction Machinery を単一のイベント処理エンティティとしてモデル化することができます。 各顧客は、ドメイン内のトピックとして表されます。 認証と承認は Azure Active Directory を使用して処理されます。 各顧客はトピックをサブスクライブし、イベントを自分に配信させることができます。 イベント ドメインを介した管理アクセスにより、確実に自分のトピックにのみアクセスできるようになります。
 
 また、すべての顧客イベントを発行できる、単一のエンドポイントが提供されます。 Event Grid では、各トピックにより、そのテナントをスコープとするイベントのみが認識されるようにします。
 
@@ -44,85 +43,19 @@ ms.locfileid: "50669329"
 
 ## <a name="access-management"></a>アクセス管理
 
- ドメインでは、Azure のロールベースのアクセス確認 (RBAC) を使用して、各トピックの承認と認証を細かく制御することができます。 これらのロールを使用することで、アプリケーションの各テナントを、アクセスを許可するトピックにのみ制限することができます。
+ドメインでは、Azure のロールベースのアクセス制御 (RBAC) を使用して、各トピックの承認と認証を細かく制御することができます。 これらのロールを使用することで、アプリケーションの各テナントを、アクセスを許可するトピックにのみ制限することができます。
 
-イベント ドメインのロール ベースのアクセス確認 (RBAC) は、その他の Event Grid と Azure での[管理アクセス制御](https://docs.microsoft.com/azure/event-grid/security-authentication#management-access-control)の動作と同じように動作します。 RBAC を使用して、イベント ドメインでカスタム ロール定義を作成して適用します。
+イベント ドメインでの RBAC は、他の Event Grid や Azure での[マネージド アクセス制御](security-authentication.md#management-access-control)の動作と同じように動作します。 RBAC を使用して、イベント ドメインでカスタム ロール定義を作成して適用します。
 
 ### <a name="built-in-roles"></a>組み込みロール
 
-Event Grid には、RBAC をより簡単にするための次の 2 つの組み込みロール定義があります。
+Event Grid には、RBAC がイベント ドメインでより簡単に動作するように、2 つの組み込みロール定義があります。 **EventGrid EventSubscription 共同作成者 (プレビュー)** ロールと、**EventGrid EventSubscription 閲覧者 (プレビュー)** ロールです。 イベント ドメインでトピックをサブスクライブする必要があるユーザーに、これらのロールを割り当てます。 ロールの割り当てのスコープは、ユーザーがサブスクライブする必要があるトピックだけにします。
 
-#### <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription 共同作成者 (プレビュー)
-
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor (Preview)",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
-
-#### <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription 閲覧者 (プレビュー)
-
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader (Preview)",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+これらのロールについては、[Event Grid の組み込みロール](security-authentication.md#built-in-roles)に関する記事をご覧ください。
 
 ## <a name="subscribing-to-topics"></a>トピックのサブスクライブ
 
-イベント ドメイン内のトピックのイベントをサブスクライブすることは、[カスタム トピックのイベント サブスクリプションを作成](./custom-event-quickstart.md)したり、Azure で提供される組み込みのイベント発行元のいずれかをサブスクライブするのと同じです。
+イベント ドメイン内のトピックでイベントをサブスクライブすることは、[カスタム トピックでイベント サブスクリプションを作成](./custom-event-quickstart.md)したり、Azure サービスからイベントをサブスクライブしたりすることと同じです。
 
 ### <a name="domain-scope-subscriptions"></a>ドメイン スコープ サブスクリプション
 
@@ -163,7 +96,7 @@ Event Grid には、RBAC をより簡単にするための次の 2 つの組み�
 }]
 ```
 
-イベント ドメインにより、トピックへの発行が自動的に処理されます。 個々に管理する各トピックにイベントを発行するのではなく、すべてのイベントをドメインのエンドポイントに発行することができ、Event Grid では各イベントが確実に正しいトピックに送信されるようにします。
+イベント ドメインにより、トピックへの発行が自動的に処理されます。 管理する各トピックに個別にイベントを発行するのではなく、すべてのイベントをドメインのエンドポイントに対して発行することができます。 Event Grid によって、各イベントは正しいトピックに確実に送信されます。
 
 ## <a name="limits-and-quotas"></a>制限とクォータ
 

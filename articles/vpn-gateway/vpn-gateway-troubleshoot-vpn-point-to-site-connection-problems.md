@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2018
+ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 8d1415e996f65f0791b3e449a61fb30053add523
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240207"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238324"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 
@@ -221,7 +221,7 @@ VPN クライアント構成パッケージをダウンロードしようとす�
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一度に接続する VPN クライアントが多すぎる
 
-VPN ゲートウェイあたりの接続の最大許容数は 128 です。 接続されているクライアントの総数は、Azure Portal で確認できます。
+接続の最大許容数に達しました。 接続されているクライアントの総数は、Azure Portal で確認できます。
 
 ## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>ポイント対サイト VPN でルート テーブルに 10.0.0.0/8 のルートが誤って追加される
 
@@ -282,7 +282,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="symptom"></a>症状
 
-クライアントがポイント対サイト VPN 接続を使用して Azure に接続するとき、ローカル ドメイン内のリソースの FQND を解決できません。
+クライアントがポイント対サイト VPN 接続を使用して Azure に接続するとき、ローカル ドメイン内のリソースの FQDN を解決できません。
 
 ### <a name="cause"></a>原因
 

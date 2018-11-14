@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: e39cf260cc4931fc0dddc4922479522cb521d08e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407063"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256377"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
-この記事には、Azure Migrate に関してよく寄せられる質問が含まれます。 この記事の内容についてさらに質問がある場合は、[Azure Migrate フォーラム](http://aka.ms/AzureMigrateForum)に投稿してください。
+この記事には、Azure Migrate に関してよく寄せられる質問が含まれます。 この記事の内容についてさらに質問がある場合は、[Azure Migrate フォーラム](https://aka.ms/AzureMigrateForum)に投稿してください。
 
 ## <a name="general"></a>全般
 
@@ -54,9 +54,9 @@ Azure Migrate は移行計画ツールで、Azure Site Recovery Deployment Plann
 
 インターネット経由の接続、または ExpressRoute とパブリック ピアリングを使用した接続が可能です。
 
-### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>.OVA テンプレートを使用して VM セットアップを強化できますか。
+### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>OVA テンプレートを使用して VM セットアップを強化できますか。
 
-Azure Migrate アプライアンスの動作に必要な通信およびファイアウォール規則が変わらない限り、(ウイルス対策などの) 追加コンポーネントを .OVA テンプレートに追加することができます。   
+Azure Migrate アプライアンスの動作に必要な通信およびファイアウォール規則が変わらない限り、(ウイルス対策などの) 追加コンポーネントを OVA テンプレートに追加することができます。   
 
 ## <a name="discovery"></a>探索
 
@@ -114,7 +114,7 @@ Azure Migrate は、アプライアンスベースの検出とエージェント
 
 はい、1 台のコレクター アプライアンスを使用して複数の vCenter Server を検出できますが、同時検出はできません。 1 つずつ検出を実行する必要があります。
 
-### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Site Recovery によって使用される .OVA テンプレートは、Azure Migrate によって使用される .OVA と統合されますか。
+### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Site Recovery によって使用される OVA テンプレートは、Azure Migrate によって使用される OVA と統合されますか。
 
 現在、統合はありません。 Site Recovery の .OVA テンプレートは、VMware VM/物理サーバー レプリケーションのための Site Recovery 構成サーバーをセットアップするために使用されます。 Azure Migrate によって使用される .OVA は、移行アセスメントの目的で、vCenter Server によって管理されている VMware VM を検出するために使用されます。
 
@@ -141,9 +141,23 @@ Azure Migrate は現在、[Enterprise Agreement プラン](https://azure.microso
 
 ## <a name="dependency-visualization"></a>依存関係の視覚化
 
+### <a name="what-is-dependency-visualization"></a>依存関係の視覚化とは何ですか。
+
+依存関係の視覚化により、アセスメントを実行する前にマシンの依存をクロスチェックすることで、移行対象の VM のグループの評価の信頼性を高めることができます。 依存関係の視覚化により、後に何も残さないようにし、Azure への移行時に予期しない障害を回避することに役立ちます。 Azure Migrate は、依存関係を視覚化できるように Log Analytics の Service Map ソリューションを活用します。
+
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>依存関係の視覚化機能の利用には料金の支払いが発生しますか。
 
-Azure Migrate は、追加料金なしで利用できます。 Azure Migrate の価格については、[こちら](https://azure.microsoft.com/pricing/details/azure-migrate/)を参照してください。
+いいえ。 Azure Migrate の価格については、[こちら](https://azure.microsoft.com/pricing/details/azure-migrate/)を参照してください。
+
+### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>依存関係の視覚化のために何をインストールする必要がありますか。
+
+依存関係の視覚化を使用するには、評価するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。 
+
+- 各マシンに [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) をインストールする必要があります。
+- 各マシンに [Dependency Agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) をインストールする必要があります。
+- また、インターネットに接続されていないマシンの場合、それらに Log Analytics ゲートウェイをダウンロードしてインストールする必要があります。
+
+依存関係の視覚化を使用している場合を除き、評価するマシンにこれらのエージェントは不要です。
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>依存関係の視覚化に既存のワークスペースを使用できますか。
 

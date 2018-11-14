@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: 0f738348dd0a000df8b1da299bb7b58ebc5a1165
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cceea9fa613d2a2428427bfe73eb50550db6c69a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040099"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281627"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
-データベースを管理するうえでセキュリティは最大の懸念事項であり、 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) では常に優先事項として扱われてきました。 データベースは、大部分の規制要件やセキュリティ要件 (HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft セキュリティ センターのサイト](http://azure.microsoft.com/support/trust-center/services/)で確認できます。 規制の要件に基づいて特定の Azure データセンターにデータベースを配置することも選択できます。
+データベースを管理するうえでセキュリティは最大の懸念事項であり、 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) では常に優先事項として扱われてきました。 データベースは、大部分の規制要件やセキュリティ要件 (HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。 規制の要件に基づいて特定の Azure データセンターにデータベースを配置することも選択できます。
 
 この記事では、Azure のデータベース セキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のデータベース セキュリティに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
@@ -72,22 +72,18 @@ SQL Database は SQL サーバー認証と Azure AD Authentication の 2 種類�
 
 > [!NOTE]
 > SQL Server 認証は Kerberos セキュリティ プロトコルを使用できません。
->
->
 
 SQL Server 認証を使用する場合は、次のことを行う必要があります。
 
 - 強力な資格情報を自分で管理します。
 - 接続文字列で資格情報を保護します。
-- (場合により) Web サーバーからデータベースにネットワーク経由で渡される資格情報を保護します。 詳しくは、「[How To: ASP.NET 2.0 で SQL 認証を使用して SQL Server へ接続する方法](https://msdn.microsoft.com/library/ms998300.aspx)」をご覧ください。
+- (場合により) Web サーバーからデータベースにネットワーク経由で渡される資格情報を保護します。 詳しくは、「[How To: ASP.NET 2.0 で SQL 認証を使用して SQL Server へ接続する方法](/previous-versions/msp-n-p/ff648340(v=pandp.10))」をご覧ください。
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory (AD) 認証*
 Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
 
 > [!NOTE]
 > SQL Server 認証を使用して Azure AD 認証を使用することをお勧めします。
->
->
 
 次のような利点があります。
 
@@ -112,12 +108,12 @@ Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL
 
 詳細については、「[Use Azure Active Directory Authentication for authentication with SQL Database, Managed Instance, or SQL Data Warehouse (SQL Database、マネージド インスタンス、または SQL Data Warehouse での認証に Azure Active Directory Authentication を使用する)](../sql-database/sql-database-aad-authentication.md)」をご覧ください。
 
-## <a name="protect-your-data-by-using-encryption"></a>暗号化を使用してデータを保護する
-[Azure SQL Database の Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096.aspx) は、ディスク上のデータを保護し、ハードウェアへの不正アクセスから保護できます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 Transparent Data Encryption は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。
+## <a name="protect-your-data-by-using-encryption-and-row-level-security"></a>暗号化と行レベルのセキュリティを使用してデータを保護する
+[Azure SQL Database の Transparent Data Encryption](../sql-database/transparent-data-encryption-azure-sql.md) は、ディスク上のデータを保護し、ハードウェアへの不正アクセスから保護できます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 Transparent Data Encryption は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。
 
 ストレージ全体を暗号化している場合でも、データベース自体も暗号化することが重要です。 これは、多層防御型のデータ保護手法の 1 つです。 Azure SQL Database を使用していて、クレジット カードや社会保障番号などの機密データを保護する必要がある場合、FIPS 140-2 検証済み 256 ビット AES 暗号化を使ってデータベースを暗号化できます。 この暗号化は、さまざまな業界標準 (HIPAA、PCI など) の要件を満たしています。
 
-Transparent Data Encryption を使用してデータベースを暗号化するときには、[バッファー プール拡張機能 (BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) に関連するファイルは暗号化されません。 BPE 関連ファイルについては、[BitLocker](https://technet.microsoft.com/library/cc732774) や[暗号化ファイル システム (EFS)]() などのファイル システム レベルの暗号化ツールを使用する必要があります。
+Transparent Data Encryption を使用してデータベースを暗号化するときには、[バッファー プール拡張機能 (BPE)](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) に関連するファイルは暗号化されません。 BPE 関連ファイルについては、[BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) や[暗号化ファイル システム (EFS)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749610(v%3dws.10)) などのファイル システム レベルの暗号化ツールを使用する必要があります。
 
 セキュリティ管理者やデータベース管理者などの特権を持つユーザーは、Transparent Data Encryption で暗号化されたデータベースのデータにもアクセスできるため、次の推奨事項にも従う必要があります。
 
@@ -126,11 +122,11 @@ Transparent Data Encryption を使用してデータベースを暗号化する�
 - ユーザーとアプリケーションは、別々のアカウントを使って認証する必要があります。 そうすることで、ユーザーとアプリケーションに付与されるアクセス許可を制限し、悪意のあるアクティビティのリスクを減らすことができます。
 - 固定データベース ロール (db_datareader、db_datawriter など) を使用してデータベース レベルのセキュリティを実装します。 または、アプリケーションにカスタム ロールを作成し、選択したデータベース オブジェクトに明示的なアクセス許可を付与できます。
 
-その他の方法でデータを暗号化するには、次を検討してください。
+その他の方法でデータをセキュリティ保護するには、次を検討してください。
 
-- [セルレベルの暗号化](https://msdn.microsoft.com/library/ms179331.aspx) により、暗号化キーが異なるデータの特定の列またはセルを暗号化できます。
-- [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) を使用すると、クライアントはクライアント アプリケーション内の機密データを暗号化することができます。暗号化キーがデータベース エンジン (SQL Database や SQL Server) に公開されることはありません。 これにより、Always Encrypted では、データの所有者 (データを表示できるユーザー) とデータの管理者 (アクセス権は付与しないユーザー) を分離できます。
-- [行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131)を使用すると、クエリを実行しているユーザーの特性に基づいて、データベース テーブル内の行へのアクセスを制御できます。 (例の特性は、グループ メンバーシップと実行コンテキストです)。
+- [セルレベルの暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) により、暗号化キーが異なるデータの特定の列またはセルを暗号化できます。
+- [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を使用すると、クライアントはクライアント アプリケーション内の機密データを暗号化することができます。暗号化キーがデータベース エンジン (SQL Database や SQL Server) に公開されることはありません。 これにより、Always Encrypted では、データの所有者 (データを表示できるユーザー) とデータの管理者 (アクセス権は付与しないユーザー) を分離できます。
+- [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)を使用すると、クエリを実行しているユーザーの特性に基づいて、データベース テーブル内の行へのアクセスを制御できます。 (例の特性は、グループ メンバーシップと実行コンテキストです)。
 
 データベース レベルの暗号化を使用しない場合、SQL データベース内にあるデータを損なうような攻撃を受けやすくなる可能性があります。
 
@@ -177,8 +173,8 @@ SQL Server データベース エンジンまたは個々のデータベース�
 さらに、脅威の検出は、アラートを、すべての Azure リソースのセキュリティ状態の一元的に表示するための Azure Security Center と統合します。
 
 ## <a name="next-steps"></a>次の手順
-Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure security best practices and patterns](security-best-practices-and-patterns.md)」 (Azure セキュリティのベスト プラクティスとパターン) を参照してください。
+Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)」を参照してください。
 
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
-* [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています
-* [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください
+* [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
+* [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください。

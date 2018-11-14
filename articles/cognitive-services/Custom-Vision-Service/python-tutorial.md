@@ -1,61 +1,53 @@
 ---
-title: 'チュートリアル: Custom Vision SDK for Python を使って画像分類プロジェクトを作成する'
+title: 'クイック スタート: Custom Vision SDK for Python を使って画像分類プロジェクトを作成する'
 titlesuffix: Azure Cognitive Services
-description: 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
+description: Python SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 services: cognitive-services
 author: areddish
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 08/28/2018
+ms.topic: quickstart
+ms.date: 11/2/2018
 ms.author: areddish
-ms.openlocfilehash: 96125ba1c54f742bb9ddf32a1588173217be0766
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4de1a33006f580bda9d356027e93b4bf2309dd90
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953114"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281389"
 ---
-# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-python"></a>チュートリアル: Custom Vision SDK for Python を使って画像分類プロジェクトを作成する
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>クイック スタート: Custom Vision Python SDK を使って画像分類プロジェクトを作成する
 
-Custom Vision Service および基本の Python スクリプトを使って、画像分類プロジェクトを作成する方法について説明します。 作成後、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、このエンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
-
-
+この記事では、Custom Vision SDK と Python を使用して画像分類モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Python 2.7 または Python 3.5+。
-- pip ツール。
+- [Python 2.7 以降または 3.5 以降](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installing/) ツール
 
-## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
+## <a name="install-the-custom-vision-sdk"></a>Custom Vision SDK をインストールする
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+Custom Vision Service SDK for Python をインストールするには、PowerShell で次のコマンドを実行します。
 
-![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
-
-## <a name="install-the-custom-vision-service-sdk"></a>Custom Vision Service SDK をインストールする
-
-Custom Vision Service SDK をインストールするには、以下のコマンドを使用します。
-
-```
+```PowerShell
 pip install azure-cognitiveservices-vision-customvision
 ```
 
-## <a name="get-example-images"></a>例の画像を取得する
+[!INCLUDE [get-keys](includes/get-keys.md)]
 
-この例では、[https://github.com/Microsoft/Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows/tree/master/Samples/Images) プロジェクトの `Samples/Images` ディレクトリからの画像を使用しています。 プロジェクトを複製またはダウンロードして、開発環境に抽出します。
+[!INCLUDE [python-get-images](includes/python-get-images.md)]
 
-## <a name="create-a-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-新しい Custom Vision Service プロジェクトを作成するには、`sample.py` という名前の新しいファイルを作成します。 ファイルのコンテンツとして、以下のコードを使用します。
+## <a name="add-the-code"></a>コードの追加
 
-> [!IMPORTANT]
-> 以前に取得したトレーニング キーの値を `training_key` に設定します。
->
-> 以前に取得した予測キーの値を `prediction_key` に設定します。
+目的のプロジェクト ディレクトリに、*sample.py* という新しいファイルを作成します。
 
-```python
+### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
+
+新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。
+
+```Python
 from azure.cognitiveservices.vision.customvision.training import training_api
 from azure.cognitiveservices.vision.customvision.training.models import ImageUrlCreateEntry
 
@@ -67,29 +59,28 @@ trainer = training_api.TrainingApi(training_key)
 
 # Create a new project
 print ("Creating project...")
-project = trainer.create_project("My Project")
+project = trainer.create_project("My New Project")
 ```
 
-## <a name="add-tags-to-your-project"></a>タグをプロジェクトに追加する
+### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
-タグをプロジェクトに追加するには、`sample.py` ファイルの末尾に以下のコードを追加します。
+プロジェクトに分類タグを作成するため、*sample.py* の最後に次のコードを追加します。
 
-```python
+```Python
 # Make two tags in the new project
 hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```
 
-## <a name="upload-images-to-the-project"></a>画像をプロジェクトにアップロードする
+### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
-サンプルの画像をプロジェクトに追加するには、タグ作成後、次のコードを挿入します。 このコードでは、対応するタグで画像をアップロードします。
+サンプルの画像をプロジェクトに追加するには、タグ作成後、次のコードを挿入します。 このコードでは、それぞれの画像を対応するタグと共にアップロードします。 Cognitive Services Python SDK Samples プロジェクトをダウンロードした場所に応じて、画像のベース URL パスを入力する必要があります。
 
-> [!IMPORTANT]
->
-> 以前に Cognitive-CustomVision-Windows プロジェクトをダウンロードした場所に基づいて画像へのパスを変更します。
+> [!NOTE]
+> 画像のパスは、事前に Cognitive Services Python SDK Samples プロジェクトをダウンロードした場所に応じて変更する必要があります。
 
-```python
-base_image_url = "https://raw.githubusercontent.com/Microsoft/Cognitive-CustomVision-Windows/master/Samples/"
+```Python
+base_image_url = "<path to project>"
 
 print ("Adding images...")
 for image_num in range(1,10):
@@ -99,28 +90,13 @@ for image_num in range(1,10):
 for image_num in range(1,10):
     image_url = base_image_url + "Images/Japanese Cherry/japanese_cherry_{}.jpg".format(image_num)
     trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ cherry_tag.id ] ) ])
-
-
-# Alternatively, if the images were on disk in a folder called Images alongside the sample.py, then
-# they can be added by using the following:
-#
-#import os
-#hemlock_dir = "Images\\Hemlock"
-#for image in os.listdir(os.fsencode("Images\\Hemlock")):
-#    with open(hemlock_dir + "\\" + os.fsdecode(image), mode="rb") as img_data: 
-#        trainer.create_images_from_data(project.id, img_data, [ hemlock_tag.id ])
-#
-#cherry_dir = "Images\\Japanese Cherry"
-#for image in os.listdir(os.fsencode("Images\\Japanese Cherry")):
-#    with open(cherry_dir + "\\" + os.fsdecode(image), mode="rb") as img_data: 
-#        trainer.create_images_from_data(project.id, img_data, [ cherry_tag.id ])
 ```
 
-## <a name="train-the-project"></a>プロジェクトをトレーニングする
+### <a name="train-the-classifier"></a>分類子をトレーニングする
 
-分類子をトレーニングするには、`sample.py` ファイルの末尾に以下のコードを追加します。
+このコードにより、プロジェクトに最初のイテレーションが作成されて、それが既定のイテレーションに指定されます。 既定のイテレーションは、予測要求に応答するモデルのバージョンを表します。 モデルを再トレーニングするたびに更新する必要があります。
 
-```python
+```Python
 import time
 
 print ("Training...")
@@ -135,9 +111,9 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>既定の予測エンドポイントを取得して使用する
+### <a name="get-and-use-the-default-prediction-endpoint"></a>既定の予測エンドポイントを取得して使用する
 
-画像を予測エンドポイントに送信し、予測を取得するには、`sample.py` ファイルの末尾に以下のコードを追加します。
+画像を予測エンドポイントに送信し、予測を取得するには、ファイルの末尾に以下のコードを追加します。
 
 ```python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -150,23 +126,16 @@ predictor = prediction_endpoint.PredictionEndpoint(prediction_key)
 test_img_url = base_image_url + "Images/Test/test_image.jpg"
 results = predictor.predict_image_url(project.id, iteration.id, url=test_img_url)
 
-# Alternatively, if the images were on disk in a folder called Images alongside the sample.py, then
-# they can be added by using the following.
-#
-# Open the sample image and get back the prediction results.
-# with open("Images\\test\\test_image.jpg", mode="rb") as test_data:
-#     results = predictor.predict_image(project.id, test_data, iteration.id)
-
 # Display the results.
 for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
 ```
 
-## <a name="run-the-example"></a>例を実行する
+## <a name="run-the-application"></a>アプリケーションの実行
 
-ソリューションを実行する 予測結果がコンソールに表示されます。
+*sample.py* を実行します。
 
-```
+```PowerShell
 python sample.py
 ```
 
@@ -182,3 +151,14 @@ Done!
         Hemlock: 93.53%
         Japanese Cherry: 0.01%
 ```
+
+**<base_image_url>/Images/Test/** 内のテスト画像にタグが適切に付けられていることを確認してください。 [Custom Vision Web サイト](https://customvision.ai)に戻って、新しく作成されたプロジェクトの現在の状態を確認してもかまいません。
+
+[!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
+
+## <a name="next-steps"></a>次の手順
+
+以上、画像の分類処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。
+
+> [!div class="nextstepaction"]
+> [モデルのテストと再トレーニング](test-your-model.md)

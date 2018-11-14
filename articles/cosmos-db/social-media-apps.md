@@ -10,23 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 3c97c89bde40357981d82dce8dd53febff25c8f3
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bc31c7ebec7c1f7a02be65b15805fb48b1ef275d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239884"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260314"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 大規模に相互接続された社会で生きていると、日々の生活の中で **ソーシャル ネットワーク**に参加することになります。 ソーシャル ネットワークを使用して、友人や同僚、家族と交流し、共通の関心を持つ人々と情熱を分かち合うこともあります。
 
 エンジニアや開発者は、これらのネットワークがデータをどのように保存し、相互接続しているのか疑問に思っているかもしれません。また、特定のニッチ市場向けの新しいソーシャル ネットワークの構築や設計を任されている場合もあるでしょう。 そこで、"このすべてのデータはどのように保存されているのか" という大きな疑問が生じます。
 
-写真、ビデオ、音楽などの関連メディアと共に記事を投稿できる新しいソーシャル ネットワークを構築しようとしていると仮定しましょう。 ユーザーは投稿にコメントしたり、投稿を評価したりできます。 メインの Web サイト ランディング ページに表示され、ユーザーが操作できる投稿のフィードもあります。 これは (最初は) 複雑ではないように思われますが、簡潔にするために、ここまでにしておきましょう (関係性の影響を受けるカスタム ユーザー フィードを深く掘り下げて考えることもできましたが、それはこの記事の目的ではありません)。
+写真、ビデオ、音楽などの関連メディアと共に記事を投稿できる新しいソーシャル ネットワークを構築しようとしていると仮定しましょう。 ユーザーは投稿にコメントしたり、投稿を評価したりできます。 メインの Web サイト ランディング ページに表示され、ユーザーが操作できる投稿のフィードもあります。 この方法は (最初は) 複雑でないように聞こえますが、簡潔にするために、ここで止めておきましょう (関連性の影響を受けるカスタム ユーザー フィードを深く掘り下げることもできますが、それはこの記事の目的を超えています)。
 
 では、データはどこにどのように保存すればよいのでしょうか。
 
-皆さんの多くは、SQL データベースの使用経験があるか、少なくとも [データのリレーショナル モデリング](https://en.wikipedia.org/wiki/Relational_model) をご存知だと思いますので、次のようなものを作成したくなるかもしれません。
+ユーザーが SQL データベースを経験していたり、[データのリレーショナル モデリング](https://en.wikipedia.org/wiki/Relational_model)の概念を持っていたりすると、次のような図から始めたくなるかもしれません。
 
 ![相対リレーショナル モデルを示すダイアグラム](./media/social-media-apps/social-media-apps-sql.png) 
 
@@ -59,7 +59,7 @@ ms.locfileid: "50239884"
         ]
     }
 
-また、投稿を 1 つのクエリで結合なしに取得できます。 これははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
+また、投稿を 1 つのクエリで結合なしに取得できます。 このクエリははるかにシンプルでわかりやすい方法です。予算的にも、必要なリソースを減らして大きな成果を上げることができます。
 
 Azure Cosmos DB では、[カスタマイズ](indexing-policies.md)も可能な自動インデックス作成機能によって、すべてのプロパティのインデックスが作成されます。 このスキーマフリーのアプローチにより、さまざまな動的構造でドキュメントを保存できます。将来的には、カテゴリのリストや投稿に関連付けられたハッシュタグを投稿に含めたいと考えています。Cosmos DB では、余分な作業を必要とせずに、追加された属性を使用して新しいドキュメントを処理します。
 
@@ -216,12 +216,12 @@ Azure Search の詳細については、「 [A Hitchhikers Guide to Search (検�
 
 これらの Machine Learning シナリオは、さまざまなソースからの情報を取り込むために [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) を使用し、その情報の処理と Azure Machine Learning で処理できる出力の生成に [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) を使用することで実現できます。
 
-利用できる別のオプションとして、[Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) を使用したユーザーのコンテンツの分析があります。ユーザーが何を書いているかを [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) で分析してコンテンツを深く理解できるだけではなく、望ましくないコンテンツや成人向けのコンテンツを [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) で検出することもできます。 Cognitive Services には、Machine Learning の知識を必要とせずに使用できる独創的なソリューションがたくさん含まれています。
+利用できる別のオプションとして、[Azure Cognitive Services](https://www.microsoft.com/cognitive-services) を使用したユーザーのコンテンツの分析があります。ユーザーが何を書いているかを [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) で分析してコンテンツを深く理解できるだけではなく、望ましくないコンテンツや成人向けのコンテンツを [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api) で検出し、それに応じて対処することもできます。 Cognitive Services には、Machine Learning の知識を必要とせずに使用できる独創的なソリューションがたくさん含まれています。
 
 ## <a name="a-planet-scale-social-experience"></a>世界規模のソーシャル エクスペリエンス
 最後に触れなければならない重要な項目は**スケーラビリティ**です。 アーキテクチャを設計するときは、データの処理量の増加や地理的範囲の拡大に対応しなければならないため、各コンポーネントが自動的に拡張できることが非常に重要です。 Cosmos DB を使用すると、こうした複雑な作業を**ターンキー エクスペリエンス**として実現できます。
 
-Cosmos DB では、指定された**パーティション キー** (ドキュメントの属性の 1 つとして定義) に基づいてパーティションが自動作成されるため、[動的なパーティション分割](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)機能をすぐに使用できます。 使用可能な[ベスト プラクティス](../cosmos-db/partition-data.md#designing-for-partitioning)を考慮しながら、適切なパーティション キーをデザイン時に定義する必要があります。ソーシャル エクスペリエンスの場合、パーティション分割戦略は、クエリ実行方法と書き込み方法に合わせる必要があります。クエリ実行については、同じパーティション内で読み取ることが望ましく、書き込みについては、複数のパーティションに書き込みを分散させることで "ホット スポット" を回避します。 たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割でき、どの方法でパーティション分割するかは、データに対してどのようにクエリを実行し、そのデータをソーシャル エクスペリエンスでどのように表示するかによって異なります。 
+Cosmos DB では、指定された**パーティション キー** (ドキュメントの属性の 1 つとして定義) に基づいてパーティションが自動作成されるため、[動的なパーティション分割](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/)機能をすぐに使用できます。 正しいパーティション キーの定義は、設計時に行う必要があります。詳細については、[正しいパーティション キーの選択](partitioning-overview.md#choose-partitionkey)に関する記事を参照してください。 ソーシャル エクスペリエンスの場合は、パーティション分割戦略をクエリの実行方法 (同じパーティション内の読み取りが望ましい) および書き込み方法 (書き込みを複数のパーティションに分散させることによって "ホット スポット" を回避する) と整合させる必要があります。 たとえば、一時的なキー (日/月/週)、コンテンツのカテゴリ、地理的リージョン、ユーザーに基づいてパーティション分割でき、どの方法でパーティション分割するかは、データに対してどのようにクエリを実行し、そのデータをソーシャル エクスペリエンスでどのように表示するかによって異なります。 
 
 特筆すべきは、Cosmos DB では、すべてのパーティションでクエリ ([集計](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)を含む) が透過的に実行される点です。データが拡大しても、ロジックを追加する必要はありません。
 

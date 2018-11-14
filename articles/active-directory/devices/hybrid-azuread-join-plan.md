@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 28344ac7c50b48b472ba6f907b116b3b202de454
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ebf5a23743d1fdd9553b391bb0518c2887ddb096
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238799"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959989"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>ハイブリッド Azure Active Directory Join の実装を計画する方法
 
@@ -49,6 +49,7 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 |---|---|
 |![○][1]|サポート対象デバイスを確認する|
 |![○][1]|知っておくべきことを確認する|
+|![○][1]|デバイスのハイブリッド Azure AD 参加を制御する方法を確認する|
 |![○][1]|シナリオを選択する|
 
 
@@ -112,6 +113,11 @@ Windows デスクトップ オペレーティング システムを実行する�
 ハイブリッド Azure AD 参加は、オンプレミスのドメインに参加しているデバイスを Azure AD に自動的に登録するプロセスです。 場合によっては、すべてのデバイスを自動的に登録したくないことがあります。 このような場合は、「[デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)」を参照してください。
 
 
+## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>デバイスのハイブリッド Azure AD 参加を制御する方法を確認する
+
+ハイブリッド Azure AD 参加は、オンプレミスのドメインに参加しているデバイスを Azure AD に自動的に登録するプロセスです。 場合によっては、すべてのデバイスを自動的に登録したくないことがあります。 たとえば、すべてが期待どおりに機能することを確認するための最初のロールアウト中にこのような状況が発生します。
+
+詳しくは、「[デバイスのハイブリッド Azure AD 参加を制御する方法](hybrid-azuread-join-control.md)」をご覧ください
 
 ## <a name="select-your-scenario"></a>シナリオを選択する
 

@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: 3e892131a0109d2fff924940542b5d8b2b701950
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 6d08a36d7a464ccc1904839d6631be0553aacb17
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815377"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279213"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル: Custom Search Web ページを作成する
 
@@ -79,7 +79,7 @@ Bing Custom Search インスタンスを作成するには:
 
 ## <a name="add-pinned-entries"></a>ピン留めするエントリの追加
 
-特定の Web ページを検索結果の最上位にピン留めするには、**[Pinned]**(ピン留め) タブに Web ページと検索語を追加します。**[Pinned]**(ピン留め) タブには、特定のクエリの最上位の結果として表示される Web ページを指定する Web ページと検索語のペアの一覧が含まれています。 ユーザーのクエリ文字列が、暗証番号 (pin) の一致条件に基づいて pin のクエリ文字列と一致する場合にのみ、Web ページがピン留めされます。 詳細については、[こちら](../define-your-custom-view.md#pin-to-top)を参照してください。
+特定の Web ページを検索結果の最上位にピン留めするには、**[Pinned]**(ピン留め) タブに Web ページと検索語を追加します。**[Pinned]**(ピン留め) タブには、特定のクエリの最上位の結果として表示される Web ページを指定する Web ページと検索語のペアの一覧が含まれています。 ユーザーのクエリ文字列が、暗証番号 (pin) の一致条件に基づいて pin のクエリ文字列と一致する場合にのみ、Web ページがピン留めされます。 検索で表示されるのは、インデックスが作成された Web ページだけです。 詳細については、[カスタム ビューの定義](../define-your-custom-view.md#pin-to-top)に関するページを参照してください。
 
 1. **[構成]** ページで **[ピン留め]** をクリックし、上位の検索結果として返される Web ページと検索語を入力します。  
   

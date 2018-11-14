@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: d166916ca54f3b8c26a418ff83093e53dcdbe515
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: ecdfb0f062ebad903d35401a2f5303d3e6d04b5d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413756"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037381"
 ---
 # <a name="redeploy-the-asdk"></a>ASDK の再デプロイ
 この記事では、非運用環境で Azure Stack Development Kit (ASDK) を再デプロイする方法について説明します。 ASDK のアップグレードはサポートされていないため、新しいバージョンに移行するには、ASDK を完全に再デプロイする必要があります。 また、ゼロからやり直したいときにも、いつでも ASDK を再デプロイすることができます。
@@ -60,7 +60,10 @@ ms.locfileid: "39413756"
 3. スクリプトの実行時に、Azure サブスクリプションとローカル ASDK インストールの両方にサインインするように求めるメッセージが表示されます。
 4. コマンドが完了すると、次の例のようなメッセージが表示されます。
 
-    ` De-Activating Azure Stack (this may take up to 10 minutes to complete).` ` Your environment is now unable to syndicate items and is no longer reporting usage data.` ` Remove registration resource from Azure...` ` "Deleting the resource..." on target "/subscriptions/<subscription information>"` ` ********** End Log: Remove-AzsRegistration ********* `
+    ` De-Activating Azure Stack (this may take up to 10 minutes to complete).` ` Your environment is now unable to syndicate items and is no longer reporting usage data.`
+    ` Remove registration resource from Azure...`
+    ` "Deleting the resource..." on target "/subscriptions/<subscription information>"`
+    ` ********** End Log: Remove-AzsRegistration ********* `
 
 
 
@@ -95,7 +98,7 @@ ASDK をインストールするために asdk-installer.ps1 スクリプトを�
 
 
 ## <a name="next-steps"></a>次の手順
-[ASDK インストール後の構成タスク](asdk-post-deploy.md)
+[ASDK デプロイ後のタスク](asdk-post-deploy.md)
 
 
 

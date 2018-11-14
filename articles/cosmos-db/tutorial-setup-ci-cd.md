@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
-description: Visual Studio Team Services (VSTS) で Cosmos DB エミュレーター ビルド タスクを使用してビルドとリリースのワークフローを設定する方法のチュートリアル
+description: Azure DevOps で Cosmos DB エミュレーター ビルド タスクを使用してビルドとリリースのワークフローを設定する方法のチュートリアル
 services: cosmos-db
 keywords: Azure Cosmos DB Emulator
 author: deborahc
@@ -8,67 +8,67 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 8/28/2018
+ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 37bb43435c34f14145b3642aa12c5cb0f16d780c
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 782975cfa548d214515761e45b8f79a2219831e2
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783876"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036973"
 ---
-# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-visual-studio-team-services"></a>Visual Studio Team Services で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
+# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
 Azure Cosmos DB エミュレーターでは、Azure Cosmos DB サービスを開発目的でエミュレートするローカル環境を利用できます。 エミュレーターを使用すれば、Azure サブスクリプションを作成したりコストをかけたりせずに、アプリケーションをローカルで開発してテストできます。 
 
-Visual Studio Team Services (VSTS) 用の Azure Cosmos DB エミュレーター ビルド タスクでは、CI 環境で同じことができます。 ビルド タスクを使用すると、ビルドとリリースのワークフローの一環として、エミュレーターに対してテストを実行できます。 タスクによって、既に実行中のエミュレーターが含まれた Docker コンテナーが起動され、ビルド定義の残りの部分で使用されるエンドポイントが提供されます。 エミュレーターのインスタンスは必要な数だけ作成して開始できます。これらのインスタンスはそれぞれ、別のコンテナーで実行されます。 
+Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクでは、CI 環境で同じことができます。 ビルド タスクを使用すると、ビルドとリリースのワークフローの一環として、エミュレーターに対してテストを実行できます。 タスクによって、既に実行中のエミュレーターが含まれた Docker コンテナーが起動され、ビルド定義の残りの部分で使用されるエンドポイントが提供されます。 エミュレーターのインスタンスは必要な数だけ作成して開始できます。これらのインスタンスはそれぞれ、別のコンテナーで実行されます。 
 
-この記事では、VSTS で ASP.NET アプリケーション用の CI パイプラインを設定し、Cosmos DB エミュレーター ビルド タスクを使用してテストを実行する方法について説明します。 
+この記事では、Azure DevOps で ASP.NET アプリケーション用の CI パイプラインを設定し、Cosmos DB エミュレーター ビルド タスクを使用してテストを実行する方法について説明します。 
 
 ## <a name="install-the-emulator-build-task"></a>エミュレーター ビルド タスクのインストール
 
-ビルド タスクを使用するには、最初にそれを VSTS 組織にインストールする必要があります。 [マーケットプレース](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview)で拡張機能 **Azure Cosmos DB エミュレーター**を見つけて、**[Get it free]\(無料で入手\)** をクリックします。
+ビルド タスクを使用するには、最初にそれを Azure DevOps 組織にインストールする必要があります。 [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) で拡張機能 **Azure Cosmos DB Emulator** を見つけて、**[Get it free]\(無料で入手\)** をクリックします。
 
-![VSTS マーケットプレースで Azure Cosmos DB エミュレーター ビルド タスクを見つけてインストールする](./media/tutorial-setup-ci-cd/addExtension_1.png)
+![Azure DevOps Marketplace で Azure Cosmos DB Emulator ビルド タスクを見つけてインストールする](./media/tutorial-setup-ci-cd/addExtension_1.png)
 
 次に、拡張機能のインストール先となる組織を選択します。 
 
 > [!NOTE]
-> 拡張機能を VSTS 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](https://docs.microsoft.com/vsts/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions) 
+> 拡張機能を Azure DevOps 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
 
-![拡張機能のインストール先となる VSTS 組織を選択する](./media/tutorial-setup-ci-cd/addExtension_2.png)
+![拡張機能のインストール先となる Azure DevOps 組織を選択する](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
 ## <a name="create-a-build-definition"></a>ビルド定義の作成
 
-拡張機能をインストールしたら、次はそれを[ビルド定義](https://docs.microsoft.com/vsts/pipelines/get-started-designer?view=vsts&tabs=new-nav)に追加する必要があります。 既存のビルド定義を変更するか、または新しいものを作成できます。 既存のビルド定義がある場合、[ビルド定義へのエミュレーター ビルド タスクの追加](#addEmulatorBuildTaskToBuildDefinition)に関するセクションまでスキップしてかまいません。
+拡張機能をインストールしたら、Azure DevOps アカウントにサインインし、プロジェクト ダッシュボードから目的のプロジェクトを見つけます。 [ビルド パイプライン](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)をプロジェクトに追加するか、既存のビルド パイプラインを変更することができます。 ビルド パイプラインが既にある場合は、[ビルド定義へのエミュレーター ビルド タスクの追加](#addEmulatorBuildTaskToBuildDefinition)に関するセクションまでスキップしてかまいません。
 
-新しいビルド定義を作成するには、VSTS で **[ビルドとリリース]** タブに移動します。 **[+新規]** を選択します。
+1. 新しいビルド定義を作成するには、Azure DevOps で **[ビルド]** タブに移動します。 **[+新規]** を選択します。 > **[新しいビルド パイプライン]** を選択します
 
-![新しいビルド定義を作成する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png) ビルドの有効化に使用したいチーム プロジェクト、リポジトリ、ブランチを選択します。 
+   ![新しいビルド パイプラインを作成する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
-![ビルド定義のチーム プロジェクト、リポジトリ、ブランチを選択する ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+2. 目的の**ソース**、**チーム プロジェクト**、**リポジトリ**、および**手動のビルドとスケジュールされたビルドの既定のブランチ**を選択します。 必要なオプションを選択した後、**[続行]** を選択します
 
-最後に、ビルド定義に使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 
+   ![ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-![使用したいビルド定義テンプレートを選択する ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_3.png)
+3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 
 
-これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するよう設定できるビルド定義を用意できました。このビルド定義は以下のようになります。 
+これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
 
-![ASP.NET ビルド定義テンプレート](./media/tutorial-setup-ci-cd/CreateNewBuildDef_4.png)
+## <a name="addEmulatorBuildTaskToBuildDefinition"></a>ビルド パイプラインへのタスクの追加
 
-## <a name="addEmulatorBuildTaskToBuildDefinition"></a>ビルド定義へのタスクの追加
+1. ビルド パイプラインにタスクを追加する前に、エージェント ジョブを追加する必要があります。 ビルド パイプラインに移動します。**[...]** を選択し、**[エージェント ジョブを追加する]** を選択します。
 
-エミュレーター ビルド タスクを追加するには、検索ボックスで「**cosmos**」を検索して、**[追加]** を選択します。 ビルド タスクでは、既に実行中の Cosmos DB エミュレーターのインスタンスが含まれているコンテナーが起動されます。そのため、このタスクは、エミュレーターが実行されていることを前提とするその他のタスクの前に配置する必要があります。
+1. 次に、エミュレーター ビルド タスクを追加するために、エージェント ジョブの横にある **[+]** 記号を選択します。 検索ボックスで **cosmos** を検索し、**Azure Cosmos DB Emulator** を選択してエージェント ジョブに追加します。 このビルド タスクは、Cosmos DB エミュレーターのインスタンスが既に実行されている状態でコンテナーを起動します。 Azure Cosmos DB Emulator タスクは、エミュレーターが実行状態であることを想定している他のタスクの前に配置する必要があります。
 
-![エミュレーター ビルド タスクをビルド定義に追加する](./media/tutorial-setup-ci-cd/addExtension_3.png) このチュートリアルでは、テストの実行前にエミュレーターを使用できるようにするために、[フェーズ 1] の冒頭にタスクを追加します。
-ここで、完成したビルド定義は次のようになります。 
+   ![エミュレーター ビルド タスクをビルド定義に追加する](./media/tutorial-setup-ci-cd/addExtension_3.png)
 
-![ASP.NET ビルド定義テンプレート](./media/tutorial-setup-ci-cd/CreateNewBuildDef_5.png)
+このチュートリアルでは、テストの実行前にエミュレーターを使用できるようにするために、先頭にタスクを追加します。
 
 ## <a name="configure-tests-to-use-the-emulator"></a>エミュレーターを使用するテストの構成
+
 次に、エミュレーターを使用するテストを構成します。 エミュレーター ビルド タスクによって、"CosmosDbEmulator.Endpoint" という環境変数がエクスポートされます。ビルド パイプライン内の後続のタスクは、このエンドポイントに対して要求を発行できます。 
 
-このチュートリアルでは、[Visual Studio Test タスク](https://github.com/Microsoft/vsts-tasks/blob/master/Tasks/VsTestV2/README.md)を使用して、**.runsettings** ファイルを通じて構成された単体テストを実行します。 単体テストの設定の詳細については、[ドキュメント](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017)を参照してください。
+このチュートリアルでは、[Visual Studio Test タスク](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md)を使用して、**.runsettings** ファイルを通じて構成された単体テストを実行します。 単体テストの設定の詳細については、[ドキュメント](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017)を参照してください。
 
 以下は、アプリケーションの単体テストに渡されるパラメーターを定義する **.runsettings** ファイルの例です。 使用されている `authKey` 変数が、エミュレーターの[既知のキー](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests)であることに注意してください。 この `authKey` はエミュレーター ビルド タスクで必要なキーであり、**.runsettings** ファイルで定義する必要があります。
 
@@ -82,7 +82,8 @@ Visual Studio Team Services (VSTS) 用の Azure Cosmos DB エミュレーター 
   </TestRunParameters>
 </RunSettings>
 ```
-`TestRunParameters` のこれらのパラメーターは、アプリケーションのテスト プロジェクトに含まれている `TestContext` プロパティを介して参照されます。 Cosmos DB に対して実行するテストの例を次に示します。 
+
+`TestRunParameters` のこれらのパラメーターは、アプリケーションのテスト プロジェクトに含まれている `TestContext` プロパティを介して参照されます。 Cosmos DB に対して実行するテストの例を次に示します。
 
 ```csharp
 namespace todo.Tests
@@ -135,7 +136,8 @@ Visual Studio Test タスクの [実行オプション] に移動します。 **
 ![エミュレーター ビルド タスクのエンドポイントを使ってエンドポイント変数をオーバーライドする](./media/tutorial-setup-ci-cd/addExtension_5.png)
 
 ## <a name="run-the-build"></a>ビルドを実行します
-次に、ビルドを保存してキューに登録します。 
+
+次に、ビルドを**保存してキューに登録**します。 
 
 ![ビルドを保存して実行する](./media/tutorial-setup-ci-cd/runBuild_1.png)
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6f7fced5163476dc1de866474484f98d546d1901
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 31ae13fb84453a7014b66499c983e1f52554775e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945724"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279128"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
 
@@ -25,12 +25,12 @@ ms.locfileid: "49945724"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 「[Azure Active Directory B2C のカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了します。
-- ADFS によって発行された秘密キーで証明書 .pfx ファイルにアクセスできることを確認してください。
+- 「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
+- 秘密キーで証明書 .pfx ファイルにアクセスできることを確認してください。 独自の署名付き証明書を生成し、それを Azure AD B2C にアップロードできます。 Azure AD B2C は、この証明書を使用して、SAML ID プロバイダーに送信された SAML 要求に署名します。
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
-Azure AD B2C テナントに ADFS 証明書を格納する必要があります。
+証明書を Azure AD B2C テナントに格納する必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
@@ -38,7 +38,7 @@ Azure AD B2C テナントに ADFS 証明書を格納する必要があります�
 4. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
 5. **[ポリシー キー]** を選択し、**[追加]** を選択します。
 6. **オプション**については、`Upload`を選択します。
-7. ポリシー キーの **[名前]** を入力します。 たとえば、「 `ADFSSamlCert` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+7. ポリシー キーの**名前**を入力します。 たとえば、「 `SamlCert` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 8. 秘密キーが含まれている証明書の .pfx ファイルを参照して選択します。
 9. **Create** をクリックしてください。
 
@@ -64,6 +64,7 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
           <Metadata>
             <Item Key="WantsEncryptedAssertions">false</Item>
             <Item Key="PartnerEntity">https://your-ADFS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
+            <Item Key=" XmlSignatureAlgorithm">Sha256</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
@@ -135,7 +136,7 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
     
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `Contoso-SAML2` 」のように入力します。
 
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、検証のためにもう一度アップロードします。
+3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 
 
 ## <a name="configure-an-adfs-relying-party-trust"></a>ADFS 証明書利用者信頼を構成する
@@ -165,6 +166,15 @@ https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idpt
 9. **[規則の追加]** を選択します。  
 10. **[要求規則テンプレート]** で、**[LDAP 属性を要求として送信]** を選択します。
 11. **[要求規則名]** を指定します。 **[属性ストア]** で、**[Active Directory の選択]** を選択し、次の要求を追加し、**[完了]**、**[OK]** の順にクリックします。
+
+    | LDAP 属性 | 出力方向の要求の種類 |
+    | -------------- | ------------------- |
+    | User-Principal-Name | userPricipalName |
+    | Surname | family_name |
+    | Given-Name | given_name |
+    | E-Mail-Address | email |
+    | Display-Name | name |
+    
 12.  証明書の種類によっては、HASH アルゴリズムを設定する必要があります。 証明書利用者信頼 (B2C デモ) のプロパティ ウィンドウで、**[詳細]** タブを選択して、**[セキュア ハッシュ アルゴリズム]** を `SHA-1` または `SHA-256` に変更し、**[OK]** をクリックします。  
 13. [サーバー マネージャー] で、**[ツール]** を選択し、**[ADFS Management]\(ADFS 管理\)** を選択します。
 14. 作成した証明書利用者信頼を選択し、**[フェデレーション メタデータから更新]** を選択し、**[更新]** をクリックします。 

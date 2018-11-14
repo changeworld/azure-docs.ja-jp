@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: 5f2dd31488ae61bec061a81986a208bd328bf39b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ce0123528b3fb2454d8b83d59b5916363ae0e944
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093622"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251578"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -28,7 +28,7 @@ ASE が持っている受信依存関係は複数あります。 受信管理ト
 
 ASE の送信依存関係は、ほぼすべて、背後に静的アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) を使用して ASE からの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の解決策に基づいてルールを設定し、それを使用して NSG を作成することができません。 
 
-送信アドレスをセキュリティで保護する解決策は、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスの使用方法にあります。 Azure Networking チームは、Azure Firewall という新しいネットワーク アプライアンスをプレビューとして公開しました。 Azure Firewall には、送信先の DNS 名に基づいて送信 HTTP および HTTPS トラフィックを制限する機能があります。  
+送信アドレスをセキュリティで保護する解決策は、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスの使用方法にあります。 Azure Firewall では、宛先の FQDN に基づいて送信 HTTP および HTTPS トラフィックを制限できます。  
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>ASE に合わせて Azure Firewall を構成する 
 
@@ -36,11 +36,11 @@ Azure Firewall を使用して ASE からの送信をロックする手順は次
 
 1. ASE が展開されている、または展開される予定の VNet に Azure Firewall を作成します。 [Azure Firewall のドキュメント](https://docs.microsoft.com/azure/firewall/)
 2. Azure Firewall UI から、App Service Environment FQDN タグを選択します
-3. インターネットの次ホップがある [App Service Environment 管理アドレス]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)から管理アドレスを使用してルート テーブルを作成します。 ルート テーブル エントリは、非対称ルーティングの問題を回避するために必要です。 
-4. インターネットの次ホップがある IP アドレスの依存関係に、以下に示す IP アドレスの依存関係のルートを追加します。 
-5. 0.0.0.0/0 のルート テーブルに、次ホップが Azure Firewall ネットワーク アプライアンスであるルートを追加します
-6. ASE サブネットのサービス エンドポイントを Azure SQL と Azure Storage に作成します
-7. 作成したルート テーブルを ASE サブネットに割り当てます  
+3. インターネットの次ホップがある [App Service Environment 管理アドレス]( https://docs.microsoft.com/azure/app-service/environment/management-addresses)から管理アドレスを使用してルート テーブルを作成します。 ルート テーブル エントリは、非対称ルーティングの問題を回避するために必要です。
+4. インターネットの次ホップがある IP アドレスの依存関係に、以下に示す IP アドレスの依存関係のルートを追加します。
+5. 0.0.0.0/0 のルート テーブルに、次ホップが Azure Firewall であるルートを追加します。
+6. Azure SQL と Azure Storage に到達する ASE サブネットのサービス エンドポイントを作成します。
+7. 作成したルート テーブルを ASE サブネットに割り当てます。
 
 ## <a name="application-traffic"></a>アプリケーション トラフィック 
 

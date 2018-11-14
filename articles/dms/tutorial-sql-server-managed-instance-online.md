@@ -1,5 +1,5 @@
 ---
-title: Azure Database Migration Service を使用して、Azure SQL Database Managed Instance への SQL Server のオンライン移行を実行する | Microsoft Docs
+title: 'チュートリアル: Azure Database Migration Service を使用して、Azure SQL Database Managed Instance への SQL Server のオンライン移行を実行する | Microsoft Docs'
 description: Azure Database Migration Service を使用して、SQL Server のオンプレミスから Azure SQL Database Managed Instance へのオンライン移行を実行する方法について説明します。
 services: dms
 author: pochiraju
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 4d46a438708e2e72d625f5104293b4605f7b096d
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ab869e53810f049593803d58b3df75d0c083bbd2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946081"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962896"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>DMS を使用して、SQL Server を Azure SQL Database Managed Instance にオンラインで移行する
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル: DMS を使用して SQL Server を Azure SQL Database Managed Instance にオンラインで移行する
 Azure Database Migration Service を使用すれば、オンプレミスの SQL Server インスタンスから [Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance.md) に、最小限のダウンタイムでデータベースを移行できます。 一定の手作業が必要になる可能性のあるその他の方法については、記事「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](../sql-database/sql-database-managed-instance-migrate.md)」を参照してください。
 
 >[!IMPORTANT]
@@ -145,7 +145,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 3. **SQL ユーザー**と**パスワード**を提示して、Azure SQL Database Managed Instance のターゲット インスタンスに接続します。
 
-       ![Select Target](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
+    ![ターゲットを選択する](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
 
 2.  **[保存]** を選択します。
 

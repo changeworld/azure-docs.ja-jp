@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f7fe7cee39468558ce503c050d5574e4be15ebf5
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 5f07488e526a15fb067d6ea7a265d069fbe3aee3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407167"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009557"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Log Analytics を使用して Surface Hub を監視し、その正常性を追跡する
 
@@ -35,7 +35,7 @@ ms.locfileid: "49407167"
 
 * 監視する台数のデバイスをサポートする [Log Analytics サブスクリプション](https://azure.microsoft.com/pricing/details/log-analytics/) レベル。 Log Analytics の価格は、登録されるデバイスの台数とデータの処理量によって決まります。 Surface Hub の展開を計画する際は、この点を考慮してください。
 
-次に、既存の Log Analytics ワークスペースを追加するか、新しいワークスペースを作成します。 これらの手順の詳細については、「[Log Analytics の起動と開始](log-analytics-get-started.md)」を参照してください。 Log Analytics ワークスペースを構成した後、Surface Hub デバイスを登録するには 2 つの方法があります。
+次に、既存の Log Analytics ワークスペースを追加するか、新しいワークスペースを作成します。 いずれの方法の使用に関する詳細も、「[Create a Log Analytics workspace in the Azure portal](log-analytics-quick-create-workspace.md)」(Azure portal で Log Analytics ワークスペースを作成する) に記載されています。 Log Analytics ワークスペースを構成した後、Surface Hub デバイスを登録するには 2 つの方法があります。
 
 * Intune を通して自動で
 * Surface Hub デバイスの **[設定]** を通して手動で
@@ -84,8 +84,8 @@ Log Analytics を使用した Surface Hub の監視は、その他の登録済�
 
    ![Surface Hub ダッシュボード](./media/log-analytics-surface-hubs/surface-hub-dashboard.png)
 
-既存またはカスタムのログ検索に基づく[アラート](log-analytics-alerts.md)を作成できます。 Log Analytics が Surface Hub から収集するデータを使って、デバイス用に定義した条件に該当する問題とアラートを検索できます。
+既存またはカスタムのログ検索に基づく[アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)を作成できます。 Log Analytics が Surface Hub から収集するデータを使って、デバイス用に定義した条件に該当する問題とアラートを検索できます。
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics のログ検索](log-analytics-log-searches.md)を使用して、Surface Hub の詳細データを表示します。
-* Surface Hub で問題が発生した場合に通知する[アラート](log-analytics-alerts.md)を作成します。
+* [Log Analytics のログ検索](log-analytics-queries.md)を使用して、Surface Hub の詳細データを表示します。
+* Surface Hub で問題が発生した場合に通知する[アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)を作成します。

@@ -1,22 +1,22 @@
 ---
-title: .NET SDK を使用した HDInsight での Hadoop クラスターの管理 - Azure
-description: HDInsight .NET SDK を使用して、HDInsight で Hadoop クラスターの管理タスクを実行する方法について説明します。
+title: .NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する - Azure
+description: HDInsight .NET SDK を使用して、HDInsight で Apache Hadoop クラスターの管理タスクを実行する方法について説明します。
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 0d8238d5f1dca15aaba0f8f5a6580df97164006a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: a7c06d53e3823bd81707608f566f581fa44638fc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110801"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037764"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用した HDInsight での Hadoop クラスターの管理
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
 [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)を使用して、HDInsight クラスターを管理する方法について説明します。
@@ -142,12 +142,12 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
-* Hadoop
+* Apache Hadoop
   
     保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
   
     データ ノードの数を減らして Hadoop クラスターのスケールを小さくした場合、クラスター内の一部のサービスが再起動されます。 これにより、スケール設定処理の完了時に、実行中および保留中のすべてのジョブが失敗します。 ただし、処理が完了した後にジョブを再送信できます。
-* hbase
+* Apache HBase
   
     実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。 地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。 ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
   
@@ -156,7 +156,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
     >hbase shell
     >balancer
     ```
-* Storm
+* Apache Storm
   
     実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
   
@@ -192,9 +192,9 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
 
 * ODBC
 * JDBC
-* Ambari
-* Oozie
-* Templeton
+* Apache Ambari
+* Apache Oozie
+* Apache Templeton
 
 既定では、これらのサービスへのアクセス許可が付与されます。 アクセス許可を取り消す/付与することができます。 取り消するには、次を実行します。
 
@@ -246,19 +246,19 @@ foreach (var key in results.Configuration.Keys)
 
 [HDInsight での Hadoop MapReduce のサンプルの実行](hadoop/apache-hadoop-run-samples-linux.md)に関する記事をご覧ください。
 
-**Hive ジョブを送信するには** 
+**Apache Hive ジョブを送信するには** 
 
 [.NET SDK を使用した Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関する記事をご覧ください。
 
-**Pig ジョブを送信するには**
+**Apache Pig ジョブを送信するには**
 
 [.NET SDK を使用した Pig ジョブの実行](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)に関する記事をご覧ください。
 
-**Sqoop ジョブを送信するには**
+**Apache Sqoop ジョブを送信するには**
 
 「 [Hadoop .NET SDK と HDInsight の使用](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)」を参照してください。
 
-**Oozie ジョブを送信するには**
+**Apache Oozie ジョブを送信するには**
 
 「 [HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行](hdinsight-use-oozie-linux-mac.md)」を参照してください。
 

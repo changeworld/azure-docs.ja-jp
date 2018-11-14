@@ -1,56 +1,51 @@
 ---
-title: 'クイック スタート: C# でテキストの内容を確認する - Content Moderator'
+title: 'クイック スタート: C# で好ましくない要素を検出するためにテキスト コンテンツを分析する'
 titlesuffix: Azure Cognitive Services
-description: Content Moderator SDK for C# を使用してテキストの内容を確認する方法
+description: Content Moderator SDK for .NET を使用してさまざまな好ましくない要素を検出するためにテキスト コンテンツを分析する方法
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: conceptual
-ms.date: 10/10/2018
+ms.topic: quickstart
+ms.date: 10/31/2018
 ms.author: sajagtap
-ms.openlocfilehash: ae795ad823c32bc83669d5e98e3fd922500741d4
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 0540a81db93570928dd33b66a69b6883b2df0cd9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309214"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007690"
 ---
-# <a name="quickstart-check-text-content-in-c"></a>クイック スタート: C# でテキストの内容を確認する 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>クイック スタート: C# で好ましくない要素を検出するためにテキスト コンテンツを分析する 
 
-この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して次の操作をすぐに開始するために役立つ情報とコード サンプルを提供します。
-
-- 用語ベースのフィルタリングでテスト内の潜在的な不適切な表現を検出する
-- 機械学習ベースのモデルを使用して、3 つのカテゴリに[テキストを分類](text-moderation-api.md#classification)します。
-- 米国および英国の電話番号、電子メール アドレス、米国の住所など、個人を特定できる情報 (PII) を検出します。
-- テキストを正規化し、入力ミスを自動修正する
+この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) の使用を開始するために役立つ情報とコード サンプルを提供します。 潜在的に好ましくない素材をモデレートすることを目的として、テキスト コンテンツの用語ベースのフィルター処理と分類を実行する方法を学習します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-## <a name="sign-up-for-content-moderator-services"></a>Content Moderator サービスにサインアップする
+## <a name="prerequisites"></a>前提条件
+- Content Moderator のサブスクリプション キー。 [Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Content Moderator をサブスクライブし、キーを取得します。
+- [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション
 
-REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。 [Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) で Content Moderator サービスをサブスクライブすることによって取得します。
+> [!NOTE]
+> このガイドでは、Free レベルの Content Moderator サブスクリプションを使用します。 各サブスクリプション レベルで提供される内容については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/)に関するページを参照してください。
 
-## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
+## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
-1. ソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
+1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**TextModeration** という名前を付けます。 
+1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
+1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
+    - Microsoft.Azure.CognitiveServices.ContentModerator
+    - Microsoft.Rest.ClientRuntime
+    - Newtonsoft.Json
 
-   サンプル コードで、プロジェクトに **TextModeration** と名前を付けます。
+## <a name="add-text-moderation-code"></a>テキスト モデレーション コードの追加
 
-1. このプロジェクトをソリューションのシングル スタートアップ プロジェクトとして選択します。
+次に、基本的なコンテンツ モデレーション シナリオを実装するために、このガイドからコードをコピーしてプロジェクトに貼り付けます。
 
-### <a name="install-required-packages"></a>必要なパッケージをインストールする
+### <a name="include-namespaces"></a>名前空間を含める
 
-次の NuGet パッケージをインストールします。
-
-- Microsoft.Azure.CognitiveServices.ContentModerator
-- Microsoft.Rest.ClientRuntime
-- Newtonsoft.Json
-
-### <a name="update-the-programs-using-statements"></a>プログラムの using ステートメントを更新する
-
-次の `using` ステートメントを追加します。 
+*Program.cs* ファイルの先頭に次の `using` ステートメントを追加します。
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
@@ -65,44 +60,24 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator クライアントを作成する
 
-次のコードを追加して、サブスクリプションの Content Moderator クライアントを作成します。
-
-> [!IMPORTANT]
-> **AzureRegion** および **CMSubscriptionKey** フィールドをリージョン識別子とサブスクリプション キーの値で更新します。
+サブスクリプション用の Content Moderator クライアント プロバイダーを作成するために、*Program.cs* ファイルに次のコードを追加します。 コードは、同じ名前空間内の **Program** クラスの近くに追加します。 **AzureRegion** フィールドと **CMSubscriptionKey** フィールドを、リージョン識別子とサブスクリプション キーの値で更新する必要があります。
 
 ```csharp
-/// <summary>
-/// Wraps the creation and configuration of a Content Moderator client.
-/// </summary>
-/// <remarks>This class library contains insecure code. If you adapt this 
-/// code for use in production, use a secure method of storing and using
-/// your Content Moderator subscription key.</remarks>
+// Wraps the creation and configuration of a Content Moderator client.
 public static class Clients
 {
-    /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
-    /// </summary>
+    // The region/location for your Content Moderator account, 
+    // for example, westus.
     private static readonly string AzureRegion = "YOUR API REGION";
 
-    /// <summary>
-    /// The base URL fragment for Content Moderator calls.
-    /// </summary>
+    // The base URL fragment for Content Moderator calls.
     private static readonly string AzureBaseURL =
         $"https://{AzureRegion}.api.cognitive.microsoft.com";
 
-    /// <summary>
-    /// Your Content Moderator subscription key.
-    /// </summary>
+    // Your Content Moderator subscription key.
     private static readonly string CMSubscriptionKey = "YOUR API KEY";
 
-    /// <summary>
-    /// Returns a new Content Moderator client for your subscription.
-    /// </summary>
-    /// <returns>The new client.</returns>
-    /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
-    /// When you have finished using the client,
-    /// you should dispose of it either directly or indirectly. </remarks>
+    // Returns a new Content Moderator client for your subscription.
     public static ContentModeratorClient NewClient()
     {
         // Create and initialize an instance of the Content Moderator API wrapper.
@@ -114,29 +89,19 @@ public static class Clients
 }
 ```
 
-### <a name="initialize-application-specific-settings"></a>アプリケーション固有の設定を初期化する
+### <a name="set-up-input-and-output-targets"></a>入力と出力のターゲットを設定する
 
-次の静的フィールドを Program.cs 内の **Program** クラスに追加します。
+次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらは、入力テキスト コンテンツと出力 JSON コンテンツ用のファイルを指定します。
 
 ```csharp
-/// <summary>
-/// The name of the file that contains the text to evaluate.
-/// </summary>
-/// <remarks>You will need to create an input file and update this path
-/// accordingly. Relative paths are relative to the execution directory.</remarks>
+// The name of the file that contains the text to evaluate.
 private static string TextFile = "TextFile.txt";
 
-/// <summary>
-/// The name of the file to contain the output from the evaluation.
-/// </summary>
-/// <remarks>Relative paths are relative to the execution directory.</remarks>
+// The name of the file to contain the output from the evaluation.
 private static string OutputFile = "TextModerationOutput.txt";
 ```
 
-このクイック スタートに対する入力としては、次のテキストを使用しました。
-
-> [!NOTE]
-> 次のサンプル テキスト内にある無効な社会保障番号は、意図的なものです。 目的は、サンプルとなる入力と出力の形式を伝えることです。
+*TextFile.txt* 入力ファイルを作成し、それに合わせてパスを更新する必要があります (相対パスは実行ディレクトリを基準にしています)。 _TextFile.txt_ を開き、モデレートするテキストを追加します。 このクイック スタートでは、次のサンプル テキストを使用します。
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -144,9 +109,15 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 0800 820 3300. Also, 999-99-9999 looks like a social security number (SSN).
 ```
 
-## <a name="add-code-to-load-and-evaluate-the-input-text"></a>入力テキストを読み込み、評価するコードを追加する
+### <a name="load-the-input-text"></a>入力テキストを読み込む
 
-次のコードを **Main** メソッドに追加します。
+次のコードを **Main** メソッドに追加します。 **ScreenText** メソッドは必須の操作です。 そのパラメーターには、実行するコンテンツ モデレーション操作を指定します。 この例では、次の操作を実行するようにメソッドを構成しています。
+- テキスト内の潜在的な冒涜的表現を検出する。
+- テキストを正規化し、入力ミスを自動修正する。
+- 米国および英国の電話番号、電子メール アドレス、米国の住所など、個人を特定できる情報 (PII) を検出します。
+- 機械学習ベースのモデルを使用して、3 つのカテゴリにテキストを分類する。
+
+これらの操作の詳細については、「[次の手順](#next-steps)」セクションのリンク先を参照してください。
 
 ```csharp
 // Load the input text.
@@ -154,6 +125,8 @@ string text = File.ReadAllText(TextFile);
 Console.WriteLine("Screening {0}", TextFile);
 
 text = text.Replace(System.Environment.NewLine, " ");
+byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(text);
+MemoryStream stream = new MemoryStream(byteArray);
 
 // Save the moderation results to a file.
 using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
@@ -161,12 +134,12 @@ using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
     // Create a Content Moderator client and evaluate the text.
     using (var client = Clients.NewClient())
     {
-        // Screen the input text: check for profanity, classify the text into three categories,
-        // do autocorrect text, and check for personally identifying
-        // information (PII)
+        // Screen the input text: check for profanity,
+        // autocorrect text, check for personally identifying
+        // information (PII), and classify the text into three categories
         outputWriter.WriteLine("Autocorrect typos, check for matching terms, PII, and classify.");
         var screenResult =
-        client.TextModeration.ScreenText("eng", "text/plain", text, true, true, null, true);
+        client.TextModeration.ScreenText("text/plain", stream, "eng", true, true, null, true);
         outputWriter.WriteLine(
                 JsonConvert.SerializeObject(screenResult, Formatting.Indented));
     }
@@ -175,12 +148,9 @@ using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
 }
 ```
 
-> [!NOTE]
-> お使いの Content Moderator のサービス キーは 1 秒ごとの要求数 (RPS) が制限されており、その上限を超えると、SDK が 429 エラー コードとともに例外をスローします。 Free レベルのキーを使用している場合、要求の頻度は 1 秒あたり 1 つの要求に制限されます。
+## <a name="run-the-program"></a>プログラムの実行
 
-## <a name="run-the-program-and-review-the-output"></a>プログラムを実行して出力をレビューする
-
-ログ ファイルに書き込まれた、プログラムの出力サンプルは次のとおりです。
+このプログラムは、JSON 文字列データを _TextModerationOutput.txt_ ファイルに書き出します。 このクイック スタートで使用したサンプル テキストでは、次の出力が得られます。
 
 ```json
 Autocorrect typos, check for matching terms, PII, and classify.
@@ -270,4 +240,7 @@ Autocorrect typos, check for matching terms, PII, and classify.
 
 ## <a name="next-steps"></a>次の手順
 
-.NET 用のこのクイック スタートや他の Content Moderator のクイック スタートのために、[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)を入手し、統合を開始します。
+このクイック スタートでは、Content Moderator サービスを使用して特定のサンプル テキストに関する関連情報を返す単純な .NET アプリケーションを開発しました。 次は、必要なデータを判断し、アプリを使ってそれをどのように処理するかを判断できるように、さまざまなフラグと分類の意味について学習します。
+
+> [!div class="nextstepaction"]
+> [テキスト モデレーション ガイド](text-moderation-api.md)

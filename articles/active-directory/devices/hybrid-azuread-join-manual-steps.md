@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 33fc8a3822def68cc0baad4670233f57044d1985
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a3c35057af883eb790c44b3547072031eaf4ad2f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408409"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962012"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル: ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する 
 
@@ -504,6 +504,9 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
  
 - デバイスの認証時に証明書の指定を求めるメッセージが表示されないように、ローカルのイントラネット ゾーンに Azure AD デバイス認証のエンドポイントを追加する。
 
+- ダウンレベルの Windows デバイスの制御 
+
+
 ### <a name="set-policy-in-azure-ad-to-enable-users-to-register-devices"></a>ユーザーがデバイスを登録できるように Azure AD のポリシーを設定する
 
 ダウンレベルの Windows デバイスを登録するには、Azure AD へのデバイスの登録をユーザーに許可する設定になっている必要があります。 この設定は、Azure Portal の次の場所で確認できます。
@@ -551,6 +554,12 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 デバイスを登録するユーザーが Azure AD で認証を受けるときに証明書の指定を求めるメッセージが表示されないように、ドメイン参加済みデバイスにポリシーをプッシュして、以下の URL を Internet Explorer のローカル イントラネット ゾーンに追加することができます。
 
 `https://device.login.microsoftonline.com`
+
+
+### <a name="control-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの制御 
+
+ダウンレベルの Windows デバイスを登録するには、Windows インストーラー パッケージ (.msi) をダウンロード センターからダウンロードし、インストールする必要があります。 詳細については、[こちら](hybrid-azuread-join-control.md#control-windows-down-level-devices)をクリックしてください。 
+
 
 
 ## <a name="verify-joined-devices"></a>参加済みデバイスの確認

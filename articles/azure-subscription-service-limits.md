@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 11/05/2018
 ms.author: byvinyal
-ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: bd20ea58c7693b3be8f583810384aa26dde572d8
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393615"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219564"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。
@@ -78,7 +78,6 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Log Analytics](#log-analytics-limits)
 * [Managed Identity](#managed-identity-limits)
 * [Media Services](#media-services-limits)
-* [Mobile Engagement](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [ネットワーク](#networking-limits)
@@ -102,13 +101,13 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [Virtual Machine Scale Sets](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>サブスクリプションの制限
-#### <a name="subscription-limits"></a>サブスクリプションの制限
+#### <a name="subscription-limits---azure-service-management-classic-resources"></a>サブスクリプションの制限 - Azure サービス管理 (クラシック リソース)
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>サブスクリプションの制限 - Azure Resource Manager
 次の制限は、Azure Resource Manager と Azure リソース グループの使用時に適用されます。 Azure Resource Manager で変更されていない制限はこの一覧に含まれません。 これらの制限については、前の表を参照してください。
 
-Resource Manager 要求の処理制限については、[Throttling Resource Manager requests (Resource Manager 要求を調整する)](resource-manager-request-limits.md)をご覧ください。
+Resource Manager API の読み取りと書き込みの制限については、「[Resource Manager の要求のスロットル](resource-manager-request-limits.md)」を参照してください。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
@@ -145,6 +144,8 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Application Gateway の制限
+
+特に記載のない限り、次の表は v1、v2、Standard、および WAF SKU に適用されます。
 [!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
 
 #### <a name="network-watcher-limits"></a>Network Watcher の制限

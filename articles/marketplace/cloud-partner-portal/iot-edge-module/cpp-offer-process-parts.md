@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 11/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 68c58c16d7083182d412adb6ed0d243a3291cc42
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5b4d4471d9c77b5d13dfd5f8c2e9394b1c2d2a87
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433421"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242555"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge モジュール オファー発行の概要
 
-この記事では、IoT Edge モジュール オファーの発行プロセスと重要な部分について説明します。 この記事を最初に読んでから、[Azure Marketplace](https://azuremarketplace.microsoft.com) にオファーを発行してください。
+<table> <tr> <td>このセクションでは、新しい Azure IoT Edge モジュール オファーを Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> に公開する方法について説明します。 IoT Edge モジュールは、IoT Edge デバイスで実行するように作成された、Docker と互換性のあるコンテナーです。 Azure IoT Edge モジュールは、IoT Edge によって管理される計算の最小単位であり、Azure サービスまたはカスタム ソリューションのコードを含めることができます。 </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 
 ## <a name="publishing-process"></a>公開プロセス
 

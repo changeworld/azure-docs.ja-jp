@@ -7,26 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/27/2017
-ms.author: maxluk
-ms.openlocfilehash: 434b3ecf65aaa5ecea81f5a9773f1bc6e8f6f2be
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: arindamc
+ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092329"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255304"
 ---
 # <a name="monitor-cluster-performance"></a>クラスター パフォーマンスの監視
 
-HDInsight クラスターの正常性とパフォーマンスを監視することは、最大のパフォーマンスとリソースの使用率を維持するために重要です。 監視は、発生する可能性があるコーディングまたはクラスター構成のエラーに対処するためにも役立ちます。
+HDInsight クラスターの正常性とパフォーマンスを監視することは、最適なパフォーマンスとリソースの使用率を維持するために重要です。 監視は、クラスター構成エラーとユーザー コードの問題を検出し、対応するために役立つ場合もあります。
 
-以下のセクションでは、クラスターの負荷、YARN キューの効率、ストレージのアクセシビリティを最適化する方法について説明します。
+以下のセクションでは、クラスター、YARN キューの負荷を監視して、最適化し、ストレージの調整の問題を検出する方法について説明します。
 
-## <a name="cluster-loading"></a>クラスターの負荷
+## <a name="monitor-cluster-load"></a>クラスター負荷の監視
 
-Hadoop クラスターは、クラスターのノード全体の負荷を分散します。 この負荷分散によって、タスクの処理が RAM、CPU、またはディスク リソースの制限を受けないようにします。
+Hadoop クラスターでは、クラスターの負荷がすべてのノードに均等に分散している場合に、最適なパフォーマンスが発揮されます。 これにより、個々のノードの RAM、CPU、またはディスク リソースによって制限されることなく、実行するタスクの処理が可能になります。
 
-クラスターのノードとその負荷の概要を把握するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にログインし、**[Hosts]\(ホスト\)** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
+クラスターのノードとその負荷の概要を把握するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にサインインし、**[Hosts]** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
 
 | 色 | 説明 |
 | --- | --- |
@@ -47,15 +47,15 @@ Hadoop クラスターは、クラスターのノード全体の負荷を分散�
 
 ## <a name="yarn-queue-configuration"></a>YARN キューの構成
 
-Hadoop には、分散プラットフォーム全体で実行される多様なサービスがあります。 YARN (Yet Another Resource Negotiator) はこれらのサービスを調整し、クラスター リソースを割り当て、共通のデータ セットに対するアクセスを管理します。
+Hadoop には、分散プラットフォーム全体で実行される多様なサービスがあります。 YARN (Yet Another Resource Negotiator) により、これらのサービスが調整され、クラスター リソースが割り当てられ、負荷が確実にクラスター全体で均等に分散されます。
 
-YARN は、リソース管理とジョブのスケジュール設定/監視という JobTracker の 2 つの役割を、グローバルな ResourceManager とアプリケーションごとの ApplicationMaster (AM) という 2 つのデーモンに分割します。
+YARN は、リソース管理とジョブのスケジュール設定/監視という JobTracker の 2 つの役割を、グローバルな Resource Manager とアプリケーションごとの ApplicationMaster (AM) という 2 つのデーモンに分割します。
 
-ResourceManager は*純粋なスケジューラ*であり、すべての競合アプリケーション間で使用可能なリソースの判別のみを行います。 ResourceManager は、すべてのリソースが常に使用中であり、SLA、容量の保証などの多様な定数に対して最適化されるように確保します。 ApplicationMaster は、ResourceManager のリソースをネゴシエートし、NodeManager と連携してコンテナーとそのリソース消費の実行と監視を行います。
+ResourceManager は*純粋なスケジューラ*であり、すべての競合アプリケーション間で使用可能なリソースの判別のみを行います。 ResourceManager は、すべてのリソースが常に使用中になり、SLA、容量の保証などの多様な定数に対して最適化されるように確保します。 ApplicationMaster は、ResourceManager のリソースをネゴシエートし、NodeManager と連携してコンテナーとそのリソース消費の実行と監視を行います。
 
 複数のテナントで 1 つの大きなクラスターを共有する場合、クラスターのリソースに競合が発生します。 CapacityScheduler は、要求のキューを処理してリソース共有を支援する接続可能なスケジューラです。 CapacityScheduler も、他のアプリケーションのキューに空きリソースが使用される前に、組織のサブキュー間でリソースを共有するために*階層キュー*をサポートしています。
 
-YARN を使用すると、これらのキューにリソースを割り当てることができます。また、使用できるすべてのリソースが割り当てられているかどうかがわかります。 キューに関する情報を確認するには、Ambari Web UI にログインし、上部のメニューから **[YARN Queue Manager]\(YARN キュー マネージャー\)** を選択します。
+YARN を使用すると、これらのキューにリソースを割り当てることができます。また、使用できるすべてのリソースが割り当てられているかどうかがわかります。 キューに関する情報を確認するには、Ambari Web UI にサインインし、上部のメニューから **[YARN Queue Manager]** を選択します。
 
 ![[YARN Queue Manager]\(YARN キュー マネージャー\)](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
 
@@ -63,13 +63,13 @@ YARN を使用すると、これらのキューにリソースを割り当てる
 
 ![[YARN Queue Manager]\(YARN キュー マネージャー\) の詳細ページ](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-キューの詳細を確認するには、Ambari ダッシュボードの左側の一覧から **[YARN]** を選択します。 **[Quick Links]\(クイック リンク\)** ドロップダウン メニューで、アクティブ ノードの下にある **[ResourceManager UI]** を選択します。
+キューの詳細を確認するには、Ambari ダッシュボードの左側の一覧から **[YARN]** を選択します。 **[Quick Links]** ドロップダウン メニューで、アクティブ ノードの下にある **[Resource Manager UI]** を選択します。
 
-![ResourceManager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Resource Manager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
-ResourceManager UI の左側のメニューから **[Scheduler]\(スケジューラ\)** を選択します。 *[Application Queues]\(アプリケーション キュー\)* の下にキューの一覧が表示されます この一覧では、各キューに使用される容量、キュー間のジョブの分散状況、ジョブのリソースに制約があるかどうかを確認できます。
+ResourceManager UI の左側のメニューから **[Scheduler]** を選択します。 *[Application Queues]\(アプリケーション キュー\)* の下にキューの一覧が表示されます この一覧では、各キューに使用される容量、キュー間のジョブの分散状況、ジョブのリソースに制約があるかどうかを確認できます。
 
-![ResourceManager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Resource Manager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
 
 ## <a name="storage-throttling"></a>ストレージの調整
 

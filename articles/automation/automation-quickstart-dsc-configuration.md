@@ -7,16 +7,16 @@ ms.component: dsc
 keywords: dsc, 構成, オートメーション
 author: KrisBash
 ms.author: krbash
-ms.date: 12/17/2017
+ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053717"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243694"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して Linux 仮想マシンを構成する
 
@@ -30,20 +30,20 @@ Desired State Configuration (DSC) を有効にすると、Windows および Linu
 * Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
 * Red Hat Enterprise Linux、CentOS、または Oracle Linux を実行している (クラシックではなく) Azure Resource Manager VM。 VM の作成手順については、「[Azure Portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md)」を参照してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
-Azure にサインインします ( https://portal.azure.com ) 。
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+https://portal.azure.com で Azure にサインインします
 
 ## <a name="onboard-a-virtual-machine"></a>仮想マシンをオンボードする
 マシンをオンボードし、Desired State Configuration を有効にするには、さまざまな方法があります。 このクイックスタートでは、Automation アカウントを使用してオンボードする方法について説明します。 [オンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)の記事を読むと、マシンを Desired State Configuration にオンボードするさまざまな方法を理解できます。
 
 1. Azure Portal の左ウィンドウで **[Automation アカウント]** を選択します。 左側のウィンドウに表示されていない場合は、**[すべてのサービス]** をクリックして、結果ビューから探します。
 1. 一覧で Automation アカウントを選択します。
-1. Automation アカウントの左側のウィンドウで **[DSC ノード]** を選択します。
-1. **[Azure VM の追加]** のメニュー オプションをクリックします
-1. DSC を有効にする仮想マシンを探します。 検索フィールドとフィルター オプションを使用して、特定の仮想マシンを検索することができます。
-1. 仮想マシンをクリックし、**[接続]** を選択します。
-1. 仮想マシンに適した DSC 設定を選択します。 構成を既に準備している場合は、*[ノード構成名]* として指定できます。 [構成モード](https://docs.microsoft.com/powershell/dsc/metaconfig)を設定して、マシンの構成動作を制御することができます。
-1. **[OK]**
+1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)]** を選択します。
+2. **[追加]** をクリックして、VM の選択ページを開きます。
+3. DSC を有効にする仮想マシンを探します。 検索フィールドとフィルター オプションを使用して、特定の仮想マシンを検索することができます。
+4. 仮想マシンをクリックし、**[接続]** を選択します。
+5. 仮想マシンに適した DSC 設定を選択します。 構成を既に準備している場合は、*[ノード構成名]* として指定できます。 [構成モード](https://docs.microsoft.com/powershell/dsc/metaconfig)を設定して、マシンの構成動作を制御することができます。
+6. **[OK]**
 
 ![Azure VM を DSC にオンボードする](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -101,10 +101,10 @@ configuration LAMPServer {
 
 構成をインポートするには：
 
-1. Automation アカウントの左側のウィンドウで **[DSC 構成]** を選択します。
-1. **[構成の追加]** のメニュー オプションをクリックします
-1. 前の手順で保存した*構成ファイル*を選択します
-1. **[OK]**
+1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)]** を選択し、**[構成]** タブをクリックします。
+2. **[+ 追加]** をクリックします。
+3. 前の手順で保存した*構成ファイル*を選択します
+4. **[OK]**
 
 ## <a name="compile-a-configuration"></a>構成をコンパイルする
 
@@ -112,18 +112,16 @@ configuration LAMPServer {
 
 構成をコンパイルするには：
 
-1. Automation アカウントの左側のウィンドウで **[DSC 構成]** を選択します。
+1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)]** を選択し、**[構成]** タブをクリックします。
 1. 前の手順でインポートした構成 ("LAMPServer") を選択しします
 1. メニュー オプションから **[コンパイル]** をクリックし、**[はい]** をクリックします
 1. [構成] ビューに、キューに格納されている新しい*コンパイル ジョブ*が表示されます。 ジョブが正常に完了すると、次の手順に進むことができます。 失敗した場合は、コンパイル ジョブをクリックして詳細を確認します。
-
-![コンパイル ジョブの状態](./media/automation-quickstart-dsc-configuration/dsc-compilationjob.png)
 
 ## <a name="assign-a-node-configuration"></a>ノード構成を割り当てる
 
 コンパイル済みの*ノード構成*を DSC ノードに割り当てることができます。 割り当てによって構成がマシンに適用され、その構成から外れている点が監視 (または自動修正) されます。
 
-1. Automation アカウントの左側のウィンドウで **[DSC ノード]** を選択します
+1. Automation アカウントの左側のウィンドウで **[状態の構成 (DSC)] を選択し、**[ノード]** タブをクリックします。
 1. 構成を割り当てるノードを選択します
 1. **[ノード構成の割り当て]** をクリックします
 1. *[ノード構成]* - **[LAMPServer.localhost]** を選択して割り当て、**[OK]** をクリックします。
@@ -133,7 +131,7 @@ configuration LAMPServer {
 
 ## <a name="viewing-node-status"></a>ノードの状態を表示する
 
-Automation アカウントの **[DSC ノード]** ビューで、すべての管理対象ノードの状態を確認できます。 状態、ノード構成、または名前の検索で表示を絞り込むことができます。 
+Automation アカウントの **[状態の構成 (DSC)]** の **[ノード]** タブで、すべてのマネージド ノードの状態を確認できます。 状態、ノード構成、または名前の検索で表示を絞り込むことができます。
 
 ![DSC ノードの状態](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 

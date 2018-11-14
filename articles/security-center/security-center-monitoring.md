@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center でのリソース セキュリティの検疫 | Microsoft Docs
-description: この記事は、Azure Security Center でリソース セキュリティの検疫の監視を開始する際に役立ちます。
+title: Azure Security Center を使用してセキュリティ体制を強化する | Microsoft Docs
+description: この記事は、Azure Security Center でリソースを監視することによってセキュリティ体制を強化するのに役立ちます。
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/21/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 361fc2c6931dcfaed062bd39b75be7bef059b467
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 23369ac9f6cef74bac045017e8f956470e9a1159
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122068"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248862"
 ---
-# <a name="monitoring-resource-security-hygiene-in-azure-security-center"></a>Azure Security Center でリソース セキュリティの検疫を監視する
-この記事は、Azure Security Center で監視機能を使用してリソース セキュリティを可能な限り厳しくし、ポリシーに対するコンプライアンスを監視するうえで役立ちます。
+# <a name="strengthen-your-security-posture-with-azure-security-center"></a>Azure Security Center を使用してセキュリティ体制を強化する
+この記事は、セキュリティ体制を強化するために役立ちます。 リソースのセキュリティを可能な限り厳密にしたり、ポリシーへの準拠を監視したりするには、Azure Security Center の監視機能を使用します。
 
-## <a name="what-is-resource-security-hygiene"></a>リソース セキュリティの検疫とは。
-私たちは監視について、状況に対処できるように、イベントが発生するのを監視して待機することだと考えがちです。 リソース セキュリティの検疫は、組織の標準やベスト プラクティスを満たしていないシステムを識別するために、リソースを監査するプロアクティブな戦略を持つことを意味します。
+## <a name="how-do-you-strengthen-your-security-posture"></a>セキュリティ体制を強化する方法
+私たちは監視について、状況に対処できるように、イベントが発生するのを監視して待機することだと考えがちです。 セキュリティ体制の強化とは、組織の標準またはベスト プラクティスを満たしていないシステムを識別するためにリソースを監査するプロアクティブな戦略を持つことを示します。
 
-## <a name="resource-security-hygiene"></a>リソース セキュリティの検疫
 サブスクリプションのリソースに対して[セキュリティ ポリシー](security-center-policies.md)を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。 ネットワークの構成に関する情報は、すぐに利用可能になります。 VM とコンピューターの構成に関する情報 (セキュリティ更新プログラムの状態、オペレーティング システムの構成など) については、エージェントがインストールされている VM とコンピューターの台数によっては、収集して利用可能になるまでに 1 時間以上かかる場合があります。 **[推奨事項]** タイルでは、すべての問題とネットワークを強化し、リスクを軽減するための手法が一覧になっています。
 
 リソースのセキュリティ状態とリソースの種類別の問題を確認できます。
@@ -54,4 +53,4 @@ ms.locfileid: "46122068"
 * 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」: セキュリティの警告の管理と対応の方法について説明しています。
 * 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」: パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」: このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

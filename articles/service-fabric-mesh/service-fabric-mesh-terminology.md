@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 0047ed4f0a172451bd50af3f62e2fecb8e147bf2
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 925d97658a299bea983b16ae6b507159ef0e9e62
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944445"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979133"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh の用語
 
@@ -84,5 +84,6 @@ Service Fabric はオープンソースのプラットフォーム テクノロ�
 
 ## <a name="next-steps"></a>次の手順
 
-Service Fabric Mesh の詳細については、以下の概要ページを参照してください。
-- [Service Fabric Mesh の概要](service-fabric-mesh-overview.md)
+Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
+
+[よく寄せられる質問](service-fabric-mesh-faq.md)に対する回答を確認します。

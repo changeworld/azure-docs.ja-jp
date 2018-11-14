@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 07a079e00963f1f5aff96369649e2e4fb248aae0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: fdee336298212f2536c2408e49f40e25e2c24161
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986000"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227690"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>コマンド ラインから最初の関数を作成する
 
@@ -108,17 +108,19 @@ Function App が作成されると、Azure CLI によって次の例のような
 }
 ```
 
-## <a name="configure-the-function-app"></a>Function App を構成する
+### <a name="configure-the-function-app-nodejs"></a>関数アプリを構成する (Node.js)
 
-Core Tools バージョン 2.x では、Azure Functions 2.x ランタイム用のテンプレートを使用してプロジェクトが作成されます。 このため、Azure でバージョン 2.x ランタイムが使用されていることを確認する必要があります。 `FUNCTIONS_WORKER_RUNTIME` アプリケーション設定を `~2` に設定すると、関数アプリが最新の 2.x バージョンに固定されます。 [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) コマンドを使用して、アプリケーション設定を行います。
+JavaScript の関数アプリを作成する際は、適切な Node.js バージョンを対象にする必要があります。 Functions ランタイムのバージョン 2.x には、Node.js バージョン 8.x が必要です。 Azure の関数アプリによって使用される Node.js のバージョンは、アプリケーション設定 `WEBSITE_NODE_DEFAULT_VERSION` で制御します。 [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) コマンドを使用して Node.js のバージョンを `8.11.1` に設定してください。
 
 次の Azure CLI コマンドの `<app_name> は、お使いの関数アプリの名前です。
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
---settings FUNCTIONS_WORKER_RUNTIME=~2
+--settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
 ```
+
+出力で新しい設定を確認します。
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
@@ -127,3 +129,4 @@ az functionapp config appsettings set --name <app_name> \
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
 [!INCLUDE [functions-quickstart-next-steps-cli](../../includes/functions-quickstart-next-steps-cli.md)]
+

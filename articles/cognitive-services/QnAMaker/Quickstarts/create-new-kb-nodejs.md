@@ -7,18 +7,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/06/2018
 ms.author: diberry
-ms.openlocfilehash: fdba785e33c16c397e2ffaeb4462ea2066a99126
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: a9a6470e8dc7b9f82ae8db586fcbd6629d8ed757
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647546"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235566"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-nodejs"></a>クイック スタート: Node.js を使用して QnA Maker でナレッジ ベースを作成する
 
-このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。 
+このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成して発行する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。 
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
 * [KB の作成](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
@@ -86,7 +86,7 @@ ms.locfileid: "49647546"
 
 次の関数を追加して、操作の状態をチェックするための HTTP GET 要求を作成します。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。 
 
-[!code-nodejs[GET Request to API](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.js?range=111-135 "GET Request to API")]
+[!code-nodejs[Determine creation status](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.js?range=112-135 "Determine creation status")]
 
 成功または失敗が返されるまで、この呼び出しを繰り返します。 
 
@@ -101,9 +101,10 @@ ms.locfileid: "49647546"
 }
 ```
 
+
 ## <a name="add-create-kb-function"></a>create-kb 関数を追加する
 
-次の関数は、KB を作成して、状態のチェックを繰り返し実行する main 関数です。 KB の作成には多少時間がかかる場合があるため、成功と失敗のどちらかの状態になるまで、呼び出しを繰り返して状態をチェックする必要があります。
+次の関数は、KB を作成して、状態のチェックを繰り返し実行する main 関数です。 _create_ という **操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 KB の作成には多少時間がかかる場合があるため、成功と失敗のどちらかの状態になるまで、呼び出しを繰り返して状態をチェックする必要があります。
 
 [!code-nodejs[Add create-kb function](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.js?range=137-167 "Add create-kb function")]
 
@@ -116,6 +117,8 @@ node create-new-knowledge-base.js
 ```
 
 作成されたナレッジ ベースは、QnA Maker ポータルの [[My knowledge bases]\(マイ ナレッジ ベース\)](https://www.qnamaker.ai/Home/MyServices) ページで確認できます。 
+
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
 ## <a name="next-steps"></a>次の手順
 

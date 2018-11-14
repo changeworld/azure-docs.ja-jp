@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b3f71c4710bd9711a3209dd55f8e680f63627c1b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035440"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981567"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>ポータルでメンテナンスがスケジュールされている VM を表示する
 
@@ -38,7 +38,7 @@ Azure Portal を使用して、VM のメンテナンス スケジュールを検
       | 更新済み | VM が既に更新され、この時点で必要な操作はありません。 | 
       | 後で再試行してください | メンテナンスを開始し、成功しませんでした。 セルフサービス メンテナンス オプションを後で使用できます。 | 
       | 今すぐやり直す | 以前失敗した手動開始メンテナンスを再試行することができます。 | 
-      | - | 仮想マシンは、計画済みメンテナンス ウェーブの一部ではありません。 |
+      | - | VM は、計画済みメンテナンス ウェーブの一部ではありません。 |
       
 
    **Maintenance - Self-service (メンテナンス - セルフサービス) 期間**: VM 上でメンテナンスを自動開始できる期間を表示します。
@@ -49,17 +49,9 @@ Azure Portal を使用して、VM のメンテナンス スケジュールを検
 
 ## <a name="notification-and-alerts-in-the-portal"></a>ポータルの通知とアラート
 
-Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画済みメンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳しくは、「[Azure アクティビティ ログでサブスクリプション アクティビティを監視する](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)」をご覧ください。
+Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画済みメンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳細については、「[サービス通知のアクティビティ ログ アラートを作成する](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)」を参照してください。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューで **[監視]** を選択します。 
-3. **[Monitor - Alerts (classic)] (監視 - アラート (クラシック))** ウィンドウで、**[+ アクティビティ ログ アラートの追加]** をクリックします。
-5. **[アクティビティ ログ アラートの追加]** ページに情報を入力し、**[Criteria] (条件)** で以下を設定したかどうかを確認します。
-   - **イベント カテゴリ**: サービスの正常性
-   - **サービス**: 仮想マシン スケール セットおよび仮想マシン
-   - **タイプ**: 定期的なメンテナンス 
-    
-アクティビティ ログ アラートの構成方法については、「[アクティビティ ログ アラートの作成](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts.md)」を参照してください。
+**[イベントの種類]** が **[計画済みメンテナンス]** に設定され、**[サービス]** が **[Virtual Machine Scale Sets]** または **[Virtual Machines]** に設定されていることを確認します
     
     
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>ポータルから VM に対するメンテナンスを開始する

@@ -1,22 +1,21 @@
 ---
 title: クラウドに Kubernetes 開発空間を作成する | Microsoft Docs
 titleSuffix: Azure Dev Spaces
-author: ghogen
+author: iainfoulds
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-ms.author: ghogen
+ms.author: iainfou
 ms.date: 07/09/2018
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-manager: douge
-ms.openlocfilehash: 0e58fb23aded66a44deb0d520151c98903cffe18
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: de30cc01dedbba9177c2a67fe1147b9ae767280e
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433329"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978163"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (.NET Core および Visual Studio)
 
@@ -31,7 +30,7 @@ ms.locfileid: "47433329"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 米国東部、米国中部、米国西部 2、西ヨーロッパ、カナダ中部、カナダ東部のいずれかのリージョンに存在し、[HTTP アプリケーションのルーティング] が有効になっていて、Kubernetes 1.9.6 以降を実行する Kubernetes クラスター。
+- 米国東部、米国東部 2、米国中部、米国西部 2、西ヨーロッパ、東南アジア、カナダ中部、カナダ東部のいずれかのリージョンに存在し、HTTP アプリケーションのルーティングが有効になっていて、Kubernetes 1.9.6 以降が実行されている Kubernetes クラスター。
 
   ![[Http アプリケーションのルーティング] が有効であることを確認してください。](media/common/Kubernetes-Create-Cluster-3.PNG)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5ea026de228f3c93eed04770ad931d072387aa95
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1994c714f691177b526b44e277fea705d18b4335
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079074"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245700"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -90,7 +90,7 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 
 集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 90 日の期間にわたって保持されます。
 
-[デバッグ スナップショット](app-insights-snapshot-debugger.md)は 7 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure Portal でサポート ケースを開くことによって増加を要求できます。
+[デバッグ スナップショット](app-insights-snapshot-debugger.md)は 7 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
 
 ## <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 お客様と、組織アカウントを持っている場合はチーム メンバーが、データを見ることができます。 
@@ -108,9 +108,9 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 * いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
 
 ## <a name="how-secure-is-my-data"></a>データのセキュリティは保たれますか。
-Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](http://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
+Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](https://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
 
-データは、Microsoft Azure サーバーに保管されます。 Azure Portal のアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](http://go.microsoft.com/fwlink/?linkid=392408)に記載されています。
+データは、Microsoft Azure サーバーに保管されます。 Azure Portal のアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](https://go.microsoft.com/fwlink/?linkid=392408)に記載されています。
 
 Microsoft のスタッフによるデータへのアクセスは制限されます。 Microsoft は、Application Insights の使用をサポートするために必要であれば、ユーザーからアクセス許可を得た上でデータにアクセスします。 
 
@@ -173,7 +173,7 @@ TelemetryConfiguration.Active.TelemetryChannel = channel;
 
 既定では、`ServerTelemetryChannel` は、現在のユーザーのローカル アプリ データ フォルダー `%localAppData%\Microsoft\ApplicationInsights` または一時フォルダー `%TMP%` を使用します。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)を参照してください。)Linux 環境では、ストレージ フォルダーが指定されていない限り、ローカル ストレージは無効になります。
 
-次のコード スニペットは、`Startup.cs` クラスの `ConfigureServices()` メソッドで `ServerTelemetryChannel.StorageFolder` を設定する方法を示しています。
+次のコード スニペットは、 `Startup.cs`  クラスの `ConfigureServices()`  メソッドで `ServerTelemetryChannel.StorageFolder` を設定する方法を示しています。
 
 ```
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -232,7 +232,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Application Insights に格納される個人データ
 
-この件については、[Application Insights の個人データに関する記事](app-insights-customer-data.md)に詳しく説明されています。
+この件については、[Application Insights の個人データに関する記事](../log-analytics/log-analytics-personal-data-mgmt.md)に詳しく説明されています。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>ユーザーは Application Insights を無効にできますか。
 直接無効にすることはできません。 ユーザーが Application Insights を無効にするために操作できるスイッチはありません。

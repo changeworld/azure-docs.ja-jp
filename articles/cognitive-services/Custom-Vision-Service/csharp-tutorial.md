@@ -1,163 +1,106 @@
 ---
-title: 'チュートリアル: Custom Vision SDK for C# を使って画像分類プロジェクトを作成する'
+title: 'クイック スタート: Custom Vision SDK for C# を使って画像分類プロジェクトを作成する'
 titlesuffix: Azure Cognitive Services
-description: プロジェクトを作成し、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、既定のエンドポイントを利用して予測を行います。
+description: NET SDK と C# を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: tutorial
-ms.date: 05/03/2018
+ms.topic: quickstart
+ms.date: 10/31/2018
 ms.author: anroth
-ms.openlocfilehash: e046fe452a13384ae7929be805c6252d6ad2fbf9
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 6f92201e1c7222bed5d59066798d7eb6844ecd76
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953045"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279434"
 ---
-# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-c"></a>チュートリアル: Custom Vision SDK for C# を使って画像分類プロジェクトを作成する
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>クイック スタート: Custom Vision .NET SDK を使って画像分類プロジェクトを作成する
 
-C# アプリケーションで Custom Vision Service SDK を使用する方法について説明します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 Custom Vision Service API を利用し、Windows 用の独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
+この記事では、Custom Vision SDK と C# を使用して画像分類モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の .NET アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+- [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション
 
-* Windows 用 Visual Studio 2017 の任意のエディション。
 
-## <a name="get-the-custom-vision-sdk-and-samples"></a>Custom Vision SDK とサンプルを入手する
-このサンプルをビルドするには、次の Custom Vision SDK NuGet パッケージが必要です。
+## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK とサンプル コードを入手する
+Custom Vision を使用する .NET アプリを作成するには、Custom Vision NuGet パッケージが必要となります。 これらは、これからダウンロードするサンプル プロジェクトに含まれていますが、次のページから個別にアクセスすることもできます。
 
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-[C# サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision)と共に画像をダウンロードできます。
+[Cognitive Services .NET サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples) プロジェクトを複製またはダウンロードします。 **CustomVision/ImageClassification** フォルダーに移動して、_ImageClassification.csproj_ を Visual Studio で開きます。
 
-## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
+この Visual Studio プロジェクトは、__My New Project__ という名前の新しい Custom Vision プロジェクトを作成します。作成したプロジェクトには、[Custom Vision Web サイト](https://customvision.ai/)からアクセスすることができます。 その後、イメージをアップロードして分類子のトレーニングおよびテストを行います。 このプロジェクトでは、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを判別することが、分類子の目的となります。
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
-
-![キー UI の画像](./media/csharp-tutorial/training-prediction-keys.png)
+[!INCLUDE [get-keys](includes/get-keys.md)]
 
 ## <a name="understand-the-code"></a>コードの理解
 
-Visual Studio で、SDK プロジェクトの `Samples/CustomVision.Sample/` ディレクトリにあるプロジェクトを開きます。
+_Program.cs_ ファイルを開いて、コードを詳しく調べます。 **Main** メソッド内の該当する各定義にサブスクリプション キーを挿入してください。
 
-このアプリケーションは、先ほど取得したトレーニング キーを使用して、__My New Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類器のトレーニングおよびテストを行います。 分類器は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=21-30)]
 
-この例の主な機能は、以下のコード スニペットに実装されています。
+このプロジェクトの主な機能は、以下のコード行によって実行されます。
 
-* __新しい Custom Vision Service プロジェクトを作成する__
+### <a name="create-a-new-custom-vision-service-project"></a>新しい Custom Vision Service プロジェクトを作成する
 
-    ```csharp
-     // Create a new project
-    Console.WriteLine("Creating new project:");
-    var project = trainingApi.CreateProject("My New Project");
-    ```
+作成したプロジェクトは、先ほどアクセスした [Custom Vision Web サイト](https://customvision.ai/)に表示されます。 
 
-* __プロジェクトにタグを作成する__
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=32-34)]
 
-    ```csharp
-    // Make two tags in the new project
-    var hemlockTag = trainingApi.CreateTag(project.Id, "Hemlock");
-    var japaneseCherryTag = trainingApi.CreateTag(project.Id, "Japanese Cherry");
-    ```
+### <a name="create-tags-in-the-project"></a>プロジェクトにタグを作成する
 
-* __イメージをアップロードし、タグ付けする__
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=36-38)]
 
-    ```csharp
-    // Add some images to the tags
-    Console.WriteLine("\tUploading images");
-    LoadImagesFromDisk();
+### <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
-    // Images can be uploaded one at a time
-    foreach (var image in hemlockImages)
-    {
-        using (var stream = new MemoryStream(File.ReadAllBytes(image)))
-        {
-            trainingApi.CreateImagesFromData(project.Id, stream, new List<string>() { hemlockTag.Id.ToString() });
-        }
-    }
+このプロジェクトの画像を追加します。 これらは、_Program.cs_ の **LoadImagesFromDisk** メソッドで参照します。
 
-    // Or uploaded in a single batch 
-    var imageFiles = japaneseCherryImages.Select(img => new ImageFileCreateEntry(Path.GetFileName(img), File.ReadAllBytes(img))).ToList();
-    trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFiles, new List<Guid>() { japaneseCherryTag.Id }));
-    ```
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=40-55)]
 
-* __分類器をトレーニングする__
+### <a name="train-the-classifier"></a>分類子をトレーニングする
 
-    ```csharp
-    // Now there are images with tags start training the project
-    Console.WriteLine("\tTraining");
-    var iteration = trainingApi.TrainProject(project.Id);
+このコードにより、プロジェクトに最初のイテレーションが作成されて、それが既定のイテレーションに指定されます。 既定のイテレーションは、予測要求に応答するモデルのバージョンを表します。 モデルを再トレーニングするたびに更新する必要があります。
 
-    // The returned iteration will be in progress, and can be queried periodically to see when it has completed
-    while (iteration.Status == "Completed")
-    {
-        Thread.Sleep(1000);
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=57-73)]
 
-        // Re-query the iteration to get it's updated status
-        iteration = trainingApi.GetIteration(project.Id, iteration.Id);
-    }
-    ```
+### <a name="set-the-prediction-endpoint"></a>予測エンドポイントを設定する
 
-* __予測エンドポイント用の既定のイテレーションを設定する__
-
-    ```csharp
-    // The iteration is now trained. Make it the default project endpoint
-    iteration.IsDefault = true;
-    trainingApi.UpdateIteration(project.Id, iteration.Id, iteration);
-    Console.WriteLine("Done!\n");
-    ```
-
-* __予測エンドポイントを作成する__
+予測エンドポイントは、現在のモデルに画像を送信して分類予測を取得する際に使用できる参照です。
  
-    ```csharp
-    // Create a prediction endpoint, passing in obtained prediction key
-    PredictionEndpoint endpoint = new PredictionEndpoint() { ApiKey = predictionKey };
-    ```
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=77-82)]
  
-* __イメージを予測エンドポイントに送信する__
+### <a name="submit-an-image-to-the-default-prediction-endpoint"></a>既定の予測エンドポイントに画像を送信する
 
-    ```csharp
-    // Make a prediction against the new project
-    Console.WriteLine("Making a prediction:");
-    var result = endpoint.PredictImage(project.Id, testImage);
+このスクリプトでは、**LoadImagesFromDisk** メソッドでテスト画像が読み込まれ、モデルの予測出力がコンソールに表示されます。
 
-    // Loop over each prediction and write out the results
-    foreach (var c in result.Predictions)
-    {
-        Console.WriteLine($"\t{c.TagName}: {c.Probability:P1}");
-    }
-    ```
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?range=84-92)]
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-1. 次の変更を行い、アプリケーションにトレーニング キーと予測キーを追加します。
+アプリケーションを実行すると、コンソール ウィンドウが開いて、次の出力が書き込まれます。
 
-    * 次の行に__トレーニング キー__を追加します。
+```
+Creating new project:
+        Uploading images
+        Training
+Done!
 
-        ```csharp
-        string trainingKey = "<your key here>";
-        ```
+Making a prediction:
+        Hemlock: 95.0%
+        Japanese Cherry: 0.0%
+```
 
-    * 次の行に __予測キー__ を追加します。
+**Images/Test/** 内のテスト画像にタグが適切に付けられていることを確認してください。 任意のキーを押してアプリケーションを終了します。 [Custom Vision Web サイト](https://customvision.ai)に戻って、新しく作成されたプロジェクトの現在の状態を確認してもかまいません。
 
-        ```csharp
-        string predictionKey = "<your key here>";
-        ```
+[!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 
-2. アプリケーションを実行します。 アプリケーションを実行すると、次の出力がコンソールに書き込まれます。
+## <a name="next-steps"></a>次の手順
 
-    ```
-    Creating new project:
-            Uploading images
-            Training
-    Done!
+以上、画像の分類処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。
 
-    Making a prediction:
-            Hemlock: 95.0%
-            Japanese Cherry: 0.0%
-    ```
-
-3. 任意のキーを押してアプリケーションを終了します。
+> [!div class="nextstepaction"]
+> [モデルのテストと再トレーニング](test-your-model.md)

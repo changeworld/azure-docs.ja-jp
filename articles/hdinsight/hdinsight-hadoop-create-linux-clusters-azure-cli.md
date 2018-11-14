@@ -1,20 +1,20 @@
 ---
-title: Azure クラシック CLI を使用して Hadoop クラスターを作成する - Azure HDInsight
+title: Azure クラシック CLI を使用して Apache Hadoop クラスターを作成する - Azure HDInsight
 description: クロスプラットフォームの Azure クラシック CLI を使用して HDInsight クラスターを作成する方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 84b352fea0c5b9c98cd3b4e814e448cf8b706402
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 93ee51c8a00e5cfcbffd56f96b627b68dd124aea
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992815"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034695"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して HDInsight クラスターを作成する
 

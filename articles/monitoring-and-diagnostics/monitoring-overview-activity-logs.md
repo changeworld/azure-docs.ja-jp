@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 7538951b1ac8290b574180779b83c6b8e79fcf1f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 538481088d6355729486c1d9fbaaa6af16a1b841
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094365"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006024"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 
@@ -33,10 +33,7 @@ ms.locfileid: "50094365"
 Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
 
 > [!NOTE]
->  [新しいアラート](monitoring-overview-unified-alerts.md)は、アクティビティ ログの警告ルールの作成と管理に強化されたエクスペリエンスを提供します。  [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
-
-アクティビティ ログの概要については、次のビデオを参照してください。
-> [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
+>  [新しいアラート](monitoring-overview-unified-alerts.md)は、アクティビティ ログの警告ルールの作成と管理に強化されたエクスペリエンスを提供します。  [詳細情報](alert-activity-log.md)。
 
 
 ## <a name="categories-in-the-activity-log"></a>アクティビティ ログのカテゴリ
@@ -70,7 +67,7 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 Azure Portal のさまざまな場所でアクティビティ ログを表示できます。
 * **[アクティビティ ログ]**。左側のナビゲーション ウィンドウの **[すべてのサービス]** で [アクティビティ ログ] を検索してアクセスすることができます。
 * **[監視]**。左側のナビゲーション ウィンドウに既定で表示されます。 [アクティビティ ログ] は Azure Monitor のセクションの 1 つです。
-* 任意のリソースの**リソース**。たとえば、仮想マシンの構成ブレードです。 このようなリソース ブレードのほとんどで、セクションの 1 つとしてアクティビティ ログが表示されます。アクティビティ ログをクリックすると、そのリソースに関連するアクティビティ ログのイベントが自動的に絞り込まれます。
+* ほとんどの**リソース**。たとえば、仮想マシンの構成ブレードです。 アクティビティ ログは、ほとんどのリソース ブレードでセクションになっています。アクティビティ ログをクリックすると、そのリソースに関連するアクティビティ ログのイベントが自動的に絞り込まれます。
 
 Azure Portal では、次のフィールドでアクティビティ ログを絞り込むことができます。
 * [期間] - イベントの開始時刻と終了時刻。
@@ -84,11 +81,9 @@ Azure Portal では、次のフィールドでアクティビティ ログを絞
 * [イベント開始者] - "呼び出し元"。つまり、操作を実行したユーザー。
 * [Open search]\(検索を開く\) - すべてのイベントのフィールド全体で、指定した文字列を検索するテキスト検索ボックスが開きます。
 
-フィルターのセットを定義して、他のセッションでも使用できるクエリとして保存することができます。今後、同じクエリを実行する必要がある場合に、保存したフィルターを適用することができます。 また、Azure ダッシュボードにクエリをピン留めして、特定のイベントを常に監視することもできます。
+フィルターのセットを定義した後は、Azure ダッシュボードにクエリをピン留めして、特定のイベントを常に監視できます。
 
-[適用] をクリックすると、クエリが実行され、一致するイベントがすべて表示されます。 一覧のイベントをクリックすると、そのイベントの概要と、そのイベントのすべての JSON が未加工で表示されます。
-
-さらに強力な機能もあります。**[ログ検索]** アイコンをクリックすると、[Log Analytics Activity Log Analytics ソリューション](../log-analytics/log-analytics-activity.md)でアクティビティ ログ データを表示することができます。 [アクティビティ ログ] ブレードには基本的なログのフィルター/閲覧機能がありますが、Log Analytics を使用すると、より強力な方法でデータをピボット、クエリ、視覚化することができます。
+さらに強力な機能もあります。**[ログ]** アイコンをクリックすると、[Log Analytics Activity Log Analytics ソリューション](../log-analytics/log-analytics-activity.md)でアクティビティ ログ データを表示することができます。 [アクティビティ ログ] ブレードには基本的なログのフィルター/閲覧機能がありますが、Log Analytics を使用すると、より強力な方法でデータをピボット、クエリ、視覚化することができます。
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>ログ プロファイルを使用してアクティビティ ログをエクスポートする
 **ログ プロファイル** は、アクティビティ ログをエクスポートする方法を制御します。 ログ プロファイルを使用して、以下を構成できます。
@@ -114,14 +109,14 @@ Azure Portal では、次のフィールドでアクティビティ ログを絞
 ここに挙げた設定は、ポータルの [アクティビティ ログ] ブレードの [エクスポート] オプションで構成できます。 さらに、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell コマンドレット、または CLI を使えば、プログラムを使って構成することもできます。 1 つのサブスクリプションで使用できるログ プロファイルは 1 つだけです。
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Azure Portal を使用したログ プロファイルの構成
-Azure Portal の [エクスポート] オプションを使用して、アクティビティ ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできます。
+Azure portal の [イベント ハブにエクスポート] オプションを使用して、アクティビティ ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできます。
 
 1. ポータルの左側のメニューを使用して、**[アクティビティ ログ]** に移動します。
 
-    ![ポータルの [アクティビティ ログ] に移動](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. ブレードの上部にある **[エクスポート]** ボタンをクリックします。
+    ![ポータルの [アクティビティ ログ] に移動](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate-v2.png)
+2. ブレードの上部にある **[イベント ハブにエクスポート]** ボタンをクリックします。
 
-    ![ポータルの [エクスポート] ボタン](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
+    ![ポータルの [エクスポート] ボタン](./media/monitoring-overview-activity-logs/activity-logs-portal-export-v2.png)
 3. ブレードが表示されたら、以下を選択できます。  
   * イベントをエクスポートするリージョン
   * イベントの保存先となるストレージ アカウント

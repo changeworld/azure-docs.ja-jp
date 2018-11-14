@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: ded952ac6418ae3d9916b3ae8b8dbacb0c9c5a84
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5320b8d5ca7456a6f1b0fdd1372c9f39ac1edfb0
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807766"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219411"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Azure Marketplace にソリューション テンプレートを発行する
 
@@ -75,7 +75,7 @@ SKU とは、プランの購入可能な最小単位です。 同じ製品クラ
 
 SKU は Azure Marketplace では親プランの下に表示されますが、Azure portal ではその購入可能エンティティとして表示されます。
 
-## <a name="to-create-a-new-offer"></a>新しいプランを作成する
+## <a name="to-create-a-new-offer"></a>新しいプランを作成するには
 
 1.  [クラウド パートナー ポータル](http://cloudpartner.azure.com/)にサインインします。
 
@@ -83,7 +83,7 @@ SKU は Azure Marketplace では親プランの下に表示されますが、Azu
 
     ![新しいオファーを作成する](./media/cloud-partner-portal-publish-managed-app/newOffer.png)
 
-3.  **[新しいプラン]** の **[エディター]** を選択します。
+3.  **[新しいプラン]** で、**[エディター]** を選択します。
 
     ![新しいプランのエディター](./media/cloud-partner-portal-publish-managed-app/newOffer_OfferSettings.png)
 
@@ -91,9 +91,11 @@ SKU は Azure Marketplace では親プランの下に表示されますが、Azu
     - プラン設定
     - SKU
     - マーケットプレース
-    - サポート 各ビューには、入力すべき一連のフィールドが表示されます。必須フィールドには赤いアスタリスク (\*) が付いています。
+    - サポート
 
-## <a name="to-configure-offer-settings"></a>プランの設定を構成する
+各ビューには、ユーザーが入力するための一連のフィールドがあります。必須フィールドには赤いアスタリスク (\*) が付いています。
+
+## <a name="to-configure-offer-settings"></a>プランの設定を構成するには
 
 1. [プランの設定] の **[Offer Identity]\(プラン ID\)** で次の各フィールドを構成します。
 
@@ -111,7 +113,7 @@ SKU は Azure Marketplace では親プランの下に表示されますが、Azu
 
     **名前**
 
-    プランの表示名です。 この名前は Azure Marketplace と Azure portal に表示されます。 最大で 50 文字の長さにできます。 プランの名前に関する次のガイダンスに従ってください。
+    オファーの表示名です。 この名前は Azure Marketplace と Azure portal に表示されます。 最大で 50 文字の長さにできます。 プランの名前に関する次のガイダンスに従ってください。
     -  製品の覚えやすいブランド名を使用してください。 
     - 会社名はここに含めないでください (プランのマーケティングの一環である場合を除く)。
     - このプランを貴社の Web サイトでマーケティングしている場合は、この名前が、貴社の Web サイトで表示される名前とまったく同じであることを確認します。
@@ -172,7 +174,7 @@ SKU の設定が完了したら、次のパッケージの詳細情報を指定�
 
 ## <a name="to-configure-the-marketplace"></a>Marketplace を構成する
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com) および [Azure portal](https://portal.azure.com/) に表示されるプランのフィールドを [Marketplace] ビューを使用して構成します。
+[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure Portal](https://portal.azure.com/) に表示されるプランのフィールドを [Marketplace] ビューを使用して構成します。
 
 ### <a name="preview-subscription-ids"></a>サブスクリプション ID をプレビュー
 
@@ -182,7 +184,7 @@ SKU の設定が完了したら、次のパッケージの詳細情報を指定�
 
 提供されたリストから、プランとの最適な関連付けができるカテゴリを 5 つまで選択します。 選択したカテゴリは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure Portal](https://portal.azure.com/) で利用可能な製品カテゴリにプランをマッピングするために使用されます。
 
-Azure Marketplace と Azure portal に表示されるマーケットプレース情報の例を次に示します。
+Azure Marketplace と Azure Portal に表示されるマーケットプレース情報の例を次に示します。
 
 **Azure Marketplace**
 
@@ -233,13 +235,13 @@ Hero ロゴはオプションです。 パブリッシャーは、Hero ロゴを
 
 ![publishvm14](./media/cloud-partner-portal-publish-managed-app/publishvm14.png)
 
-## <a name="to-configure-support"></a>サポートを構成する
+## <a name="to-configure-support"></a>サポートを構成するには
 
 [サポート] ビューを使用して次の情報を指定します。
 
 - 貴社のサポート連絡先 (エンジニアリングなど)。
 - カスタマー サポートの連絡先。
 
-## <a name="to-publish-the-offer"></a>プランを発行する
+## <a name="to-publish-the-offer"></a>プランを発行するには
 
 最後の手順で、プランを発行します。 **[発行]** を選択します。

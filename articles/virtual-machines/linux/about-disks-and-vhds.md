@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: feb3e60ee1b43ec85c81912fbce086858bb33742
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: eec7b64836819f840702bb715f4fcc0573a94b00
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715932"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251851"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Azure Linux VM 用のディスク ストレージについて
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Linux オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。
@@ -37,8 +37,6 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 
 Linux 仮想マシンでは、ディスクは通常 **/dev/sdb** であり、Azure Linux エージェントにより書式設定され、**/mnt** にマウントされます。 仮想マシンのサイズに基づいて、一時ディスクのサイズは異なります。 詳細については、「[Linux 仮想マシンのサイズ](../windows/sizes.md)」をご覧ください。
 
-Azure による一時ディスクの使用方法については、「 [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
-
 ## <a name="data-disk"></a>データ ディスク
 
 データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各ディスクの最大容量は 4,095 GB です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
@@ -52,12 +50,13 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
+プレビューのサイズについては、[FAQ](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) を参照して、それらを使用できるリージョンを確認してください。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>次の手順
+
 * [ディスクのアタッチ](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) による VM 用のストレージの追加。
 * [スナップショットの作成](snapshot-copy-managed-disk.md)。
-* 
-  [マネージド ディスクへの変換](convert-unmanaged-to-managed-disks.md)。
-
+* [マネージド ディスクへの変換](convert-unmanaged-to-managed-disks.md)。

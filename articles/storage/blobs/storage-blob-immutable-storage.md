@@ -2,18 +2,18 @@
 title: Azure Storage Blob の不変ストレージ | Microsoft Docs
 description: Azure Storage では、BLOB (オブジェクト) ストレージの WORM (Write Once Read Many) がサポートされています。これにより、指定された期間、消去および変更できない状態でデータを保存できます。
 services: storage
-author: MichaelHauss
+author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: mihauss
+ms.date: 11/05/2018
+ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 38e34391294e1a070d506583fbc30dcdb703bea0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 261f66013ab9c0ba493d18b84856d17db953402e
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156903"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037000"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -194,7 +194,7 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 **機能を試してみるだけの試用期間または猶予期間は設けられていますか?**
 
-はい。 時間ベースのリテンション ポリシーを最初に作成したとき、ポリシーは"*ロック解除*"状態です。 この状態にある間は、保持間隔に必要な変更 (延長、短縮など) を加えることができ、ポリシーを削除することもできます。 ポリシーは、ロックされると、永久にロックされたままになり、削除できなくなります。 また、ポリシーがロックされると、保持間隔も短縮できなくなります。 "*ロック解除*"状態は試用の目的でのみ使用し、24 時間以内にポリシーをロックすることを強くお勧めします。 この手順により、SEC 17a-4(f) やその他の規制に準拠することができます。
+はい。 時間ベースのリテンション ポリシーを最初に作成したとき、ポリシーは"*ロック解除*"状態です。 この状態にある間は、保持間隔に必要な変更 (延長、短縮など) を加えることができ、ポリシーを削除することもできます。 ポリシーがロックされると、保持間隔の期限が切れるまでロックされたままになります。 これにより、保持間隔の削除および変更ができなくなります。 "*ロック解除*"状態は試用の目的でのみ使用し、24 時間以内にポリシーをロックすることを強くお勧めします。 この手順により、SEC 17a-4(f) やその他の規制に準拠することができます。
 
 **この機能は国内のクラウドや政府機関のクラウドで利用できますか?**
 

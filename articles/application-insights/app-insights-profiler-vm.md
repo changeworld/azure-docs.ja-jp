@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 10cd05bd40262815e3b27c861982debc18e5b4f3
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 152632c55fc21d2b49f6dfd8ae734833ea870898
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142784"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978368"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>Application Insights Profiler を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで実行されている Web アプリをプロファイルする
 Application Insights Profiler を次のサービスにデプロイすることもできます。
@@ -63,11 +63,8 @@ Application Insights Profiler を次のサービスにデプロイすること�
 
 1. アプリケーションをデプロイします。
 
-## <a name="enable-profiler-on-on-premises-servers"></a>オンプレミス サーバーで Profiler を有効にする
-
-オンプレミス サーバーでの Profiler の有効化は、Application Insights Profiler のスタンドアロン モードでの実行とも呼ばれます。 Microsoft Azure 診断の拡張機能の変更には関連付けられません。
-
-オンプレミス サーバー向けに Profiler を公式にサポートする予定はありません。 このシナリオを実験したい場合は、[サポート コードをダウンロード](https://github.com/ramach-msft/AIProfiler-Standalone)できます。 Microsoft は、このコードを保守したり、このコードに関連する問題と機能リクエストに対応したりする責任を*負いません*。
+## <a name="can-profiler-run-on-on-premises-servers"></a>オンプレミス サーバーで Profiler を実行できますか
+オンプレミス サーバーで Applciation Insights Profiler をサポートすることは予定されていません。 
 
 ## <a name="next-steps"></a>次の手順
 

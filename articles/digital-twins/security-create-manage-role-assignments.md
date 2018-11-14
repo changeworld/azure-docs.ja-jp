@@ -1,5 +1,5 @@
 ---
-title: Azure Digital Twins デバイスの接続と認証について | Microsoft Docs
+title: Azure Digital Twins デバイスの接続と認証について理解する | Microsoft Docs
 description: Azure Digital Twins を使用してデバイスを接続および認証する
 author: lyrana
 manager: alinast
@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lyrana
-ms.openlocfilehash: adfb4c369ea1b324da8562a5b0b245ebdecff602
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323794"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012464"
 ---
 # <a name="create-and-manage-role-assignments"></a>ロールの割り当てを作成および管理する
 
@@ -21,15 +21,15 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 各ロールの割り当ては次のとおりです。
 
-* **オブジェクト識別子**(Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名)。
-* **オブジェクト識別子の型**。
-* **ロール定義 ID**。
-* **スペース パス**。
-* (ほとんどの場合) Azure Active Directory **テナント ID**。
+* **オブジェクト識別子**: Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名
+* **オブジェクト識別子の型**
+* **ロール定義 ID**
+* **スペース パス**
+* **テナント ID**: ほとんどの場合 Azure Active Directory のテナント ID
 
 ## <a name="role-definition-identifiers"></a>ロール定義識別子
 
-次の表は、システム/役割 API のクエリを実行することで取得できる内容を示しています。
+次の表に、システム/ロール API のクエリを発行することで取得できる内容を示します。
 
 | **ロール** | **識別子** |
 | --- | --- |
@@ -41,11 +41,11 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 | User | b1ffdb77-c635-4e7e-ad25-948237d85b30 |
 | サポート スペシャリスト | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
 | デバイス インストーラー | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
-| GatewayDevice | d4c69766-e9bd-4e61-bfc1-d8b6e686c7a8 |
+| ゲートウェイ デバイス | d4c69766-e9bd-4e61-bfc1-d8b6e686c7a8 |
 
 ## <a name="supported-objectidtypes"></a>サポートされている ObjectIdTypes
 
-サポートされている `ObjectIdTypes` は次のとおりです。
+サポート対象の `ObjectIdTypes`:
 
 * `UserId`
 * `DeviceId`
@@ -62,15 +62,15 @@ HTTP POST /api/v1.0/roleassignments
 
 | **名前** | **必須** | **種類** | **説明** |
 | --- | --- | --- | --- |
-| roleId| [はい] |string | ロール定義識別子。 ロール定義とその識別子は、システム API のクエリを実行することで確認できます。 |
-| objectId | [はい] |string | 関連付けられている型に従って書式設定する必要のある、ロールの割り当てのオブジェクト ID。 `DomainName` ObjectIdType の場合、ObjectId は `“@”` 文字で始まる必要があります。 |
-| objectIdType | [はい] |string | ロールの割り当ての型。 この表の次のいずれかの値を指定する必要があります。 |
-| tenantId | 多様 | string |テナント識別子。 `DeviceId` および `TenantId` ObjectIdTypes では許可されません。 `UserId` および `ServicePrincipalId` ObjectIdTypes では必須です。 DomainName ObjectIdType では省略可能です。 |
-| path* | [はい] | string |`Space` オブジェクトへの完全アクセス パス。 例: `/{Guid}/{Guid}` 識別子がグラフ全体のロールの割り当てを必要とする場合は、`"/"` (ルートを指定) を指定します。 ただし、その使用は推奨されていません。**常に最小限の特権の原則に従ってください**。 |
+| roleId| [はい] |String | ロール定義識別子。 ロール定義とその識別子は、システム API のクエリを実行して見つけます。 |
+| objectId | [はい] |String | 関連付けられている型に従って書式設定する必要のある、ロールの割り当てのオブジェクト ID。 `DomainName` ObjectIdType の場合、ObjectId は `“@”` 文字で始まる必要があります。 |
+| objectIdType | [はい] |String | ロールの割り当ての型。 この表の次のいずれかの値を指定する必要があります。 |
+| tenantId | 多様 | String |テナント識別子。 `DeviceId` および `TenantId` ObjectIdTypes では許可されません。 `UserId` および `ServicePrincipalId` ObjectIdTypes では必須です。 DomainName ObjectIdType では省略可能です。 |
+| path* | [はい] | String |`Space` オブジェクトへの完全アクセス パス。 例: `/{Guid}/{Guid}`。 識別子がグラフ全体のロールの割り当てを必要とする場合は、`"/"` を指定します。 この文字はルートの指定ですが、これを使用することはお勧めできません。 常に最小限の特権の原則に従ってください。 |
 
 ## <a name="sample-configuration"></a>サンプル構成
 
-ユーザーには、テナント スペースのフロアへの管理アクセス権が必要です。
+この例では、ユーザーには、テナント スペースのフロアへの管理アクセスが必要です。
 
   ```JSON
     {
@@ -82,7 +82,7 @@ HTTP POST /api/v1.0/roleassignments
     }
   ```
 
-デバイスとセンサーのモック作成のテストのシナリオを実行するアプリケーション:
+この例では、アプリケーションが、デバイスとセンサーのモック作成のテスト シナリオを実行します。
 
   ```JSON
     {
@@ -94,7 +94,7 @@ HTTP POST /api/v1.0/roleassignments
     }
   ```
 
-ドメインに属しているすべてのユーザーには、スペース、センサー、ユーザーおよびそれに対応する関連オブジェクトの、読み取りアクセス許可が付与されます。
+ドメインの一部であるすべてのユーザーが、スペース、センサー、およびユーザーの読み取りアクセスを受け取ります。 このアクセスには、対応する関連オブジェクトが含まれます。
 
   ```JSON
     {
@@ -105,7 +105,7 @@ HTTP POST /api/v1.0/roleassignments
     }
   ```
 
-ロールの割り当てを GET する場合:
+GET を使用してロールの割り当てを取得します。
 
 ```plaintext
 HTTP GET /api/v1/roleassignments?path={path}
@@ -115,7 +115,7 @@ HTTP GET /api/v1/roleassignments?path={path}
 | --- | --- | --- | --- | --- |
 | Path | Path | True | String | スペースへの完全パス |
 
-ロールの割り当てを DELETE する場合:
+DELETE を使用してロールの割り当てを削除します。
 
 ```plaintext
 HTTP DELETE /api/v1/roleassignments/{id}

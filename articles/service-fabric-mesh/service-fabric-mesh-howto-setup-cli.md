@@ -9,12 +9,12 @@ ms.date: 07/26/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 7e8a12a215c94102f6b08262f129faebf9cfcde9
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: c30f4b9de279f8c02b7f6bc7fa7d9765972899b1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115626"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977433"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
 Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、Service Fabric Mesh でリソースをデプロイして管理するために必要です。 
@@ -37,7 +37,10 @@ az extension add --name mesh
 ```azurecli-interactive
 az extension update --name mesh
 ```
+## <a name="next-steps"></a>次の手順
 
 [Windows 開発環境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)を設定することもできます。
+
+[よく寄せられる質問と問題](service-fabric-mesh-faq.md)に対する回答を確認します。
 
 [azure-cli-install]: /cli/azure/install-azure-cli

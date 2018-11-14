@@ -4,8 +4,6 @@ description: アウトバウンド規則を使用して、送信ネットワー�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0ba7ed902c6ecb7a328aa6db3d3855b88bed2813
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ab09eb939d760a0f06be758fdf83591565aaf7d0
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637564"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219377"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer のアウトバウンド規則
 
@@ -69,9 +67,9 @@ API バージョン "2018-07-01" では、次のような構造のアウトバ�
 
 アウトバウンド規則は 1 つのパブリック IP アドレスでのみ使用できますが、アウトバウンド規則によって、送信 NAT を拡張するための構成の負担が軽減されます。 複数の IP アドレスを使用することで、大規模なシナリオを計画できます。また、アウトバウンド規則を使用して、[SNAT が枯渇](load-balancer-outbound-connections.md#snatexhaust)しがちなパターンを緩和することもできます。  
 
-フロントエンドによって提供される追加の IP アドレスごとに、Load Balancer が SNAT ポートとして使用する 64,000 個のエフェメラル ポートが提供されます。 負荷分散規則または受信 NAT 規則では単一のフロントエンドを使用しますが、アウトバウンド規則ではフロントエンドの概念を拡張し、規則ごとに複数のフロントエンドを使用できます。  規則ごとに複数のフロントエンドを使用すると、使用可能な SNAT ポートの数にパブリック IP アドレスの数が乗算されるので、非常に大規模なシナリオをサポートできます。
+フロントエンドによって提供される追加の IP アドレスごとに、Load Balancer が SNAT ポートとして使用する 64,000 個のエフェメラル ポートが提供されます。 負荷分散規則または受信 NAT 規則では単一のフロントエンドを使用しますが、アウトバウンド規則ではフロントエンドの概念を拡張し、規則ごとに複数のフロントエンドを使用できます。  規則ごとに複数のフロントエンドを使用すると、使用可能な SNAT ポートの数にパブリック IP アドレスの数が乗算されるので、大規模なシナリオをサポートできます。
 
-さらに、[パブリック IP プレフィックス](https://aka.ms/lbpublicipprefix)をアウトバウンド規則で直接使用することもできます。  これにより、Azure デプロイからのフローのスケーリングが容易になり、ホワイトリスト登録が簡素化されます。 パブリック IP アドレス プレフィックスを直接参照するように、Load Balancer リソース内のフロントエンド IP 構成を設定できます。  これにより、Load Balancer はそのパブリック IP プレフィックスを排他的に制御することが可能になります。また、アウトバウンド規則で、パブリック IP プレフィックスに含まれるすべてのパブリック IP アドレスが自動的に送信接続に使用されるようになります。  パブリック IP プレフィックスの範囲内の IP アドレスごとに、Load Balancer が SNAT ポートとして使用する 64,000 個のエフェメラル ポートが提供されます。   
+さらに、[パブリック IP プレフィックス](https://aka.ms/lbpublicipprefix)をアウトバウンド規則で直接使用することもできます。  パブリック IP プレフィックスの使用により、Azure デプロイからのフローのスケーリングが容易になり、ホワイトリスト登録が簡素化されます。 パブリック IP アドレス プレフィックスを直接参照するように、Load Balancer リソース内のフロントエンド IP 構成を設定できます。  これにより、Load Balancer はそのパブリック IP プレフィックスを排他的に制御することが可能になります。また、アウトバウンド規則で、パブリック IP プレフィックスに含まれるすべてのパブリック IP アドレスが自動的に送信接続に使用されるようになります。  パブリック IP プレフィックスの範囲内の IP アドレスごとに、Load Balancer が SNAT ポートとして使用する 64,000 個のエフェメラル ポートが提供されます。   
 
 アウトバウンド規則によって、パブリック IP プレフィックスを完全に制御する必要があるため、このオプションを使用するときは、パブリック IP プレフィックスから作成される個々のパブリック IP アドレス リソースを使用することはできません。  より細かい制御が必要な場合は、パブリック IP プレフィックスから個々のパブリック IP アドレス リソースを作成し、複数のパブリック IP アドレスをアウトバウンド規則のフロントエンドに個別に割り当てます。
 

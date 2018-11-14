@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 03/02/2018
-ms.openlocfilehash: 96e2f30a59c5b0e366e46363f52e320cc85a245f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 458ac634cee1a64da67e6560900c82c2f2743c0f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732126"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034321"
 ---
 # <a name="version-release-history"></a>バージョンのリリース履歴
 Microsoft Genomics チームは、修正プログラムおよび新しい機能のために Microsoft Genomics Python クライアントを更新します。 
 
 ## <a name="latest-release"></a>最新リリース
-現在の Python クライアントは、バージョン 0.7.4 です。 2018 年 3 月 5 日にリリースされ、GATK 3.3 を利用しています。 
+現在の Python クライアントは、バージョン 0.7.4 です。 これは 2018 年 3 月 5 日にリリースされ、GATK 3.5 および GATK4 でのワークフローの実行をサポートしています。
 
 
 ## <a name="release-history"></a>リリース履歴 

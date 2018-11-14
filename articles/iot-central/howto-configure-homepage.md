@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 609dc8aa1305833fb3677de6fbe95cf490237a4a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 8e79d05147cae5bf9c46fc1f7c0e7e98574383d5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731123"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007622"
 ---
 ## <a name="configuring-homepage"></a>ホーム ページの構成
 
-ホーム ページは、アクセス権を持つユーザーがアプリケーションの URL に移動したときに読み込まれるページです。 アプリケーションの作成時に、[Sample Contoso]\(サンプル Contoso\) または [Sample Devkits]\(サンプル Devkits\) アプリケーション テンプレートのいずれかを選択した場合、アプリケーションには定義済みのホーム ページが含まれます。 一方、[カスタム アプリケーション] アプリケーション テンプレートを選択した場合、ホーム ページは空白になります。
+ホーム ページは、アプリケーションにアクセスできるユーザーがアプリケーションの URL に移動したときに読み込まれるページです。 アプリケーションの作成時に、[Sample Contoso]\(サンプル Contoso\) または [Sample Devkits]\(サンプル Devkits\) アプリケーション テンプレートのいずれかを選択した場合、アプリケーションには定義済みのホーム ページが含まれます。 一方、[カスタム アプリケーション] アプリケーション テンプレートを選択した場合、ホーム ページは空白になります。
 
 たとえば、次に示すのは、[Sample Contoso]\(サンプル Contoso\) テンプレートに基づくアプリケーションのホーム ページです。 ご利用のアプリケーションのホーム ページをカスタマイズするには、まず右上にある **[編集]** を選択します。 
 

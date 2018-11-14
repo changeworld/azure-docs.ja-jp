@@ -1,26 +1,26 @@
 ---
-title: 'チュートリアル: HDInsight の Storm と Apache Kafka - Azure '
+title: 'チュートリアル: HDInsight の Apache Storm と Apache Kafka - Azure '
 description: HDInsight の Apache Storm と Apache Kafka を使用してストリーミング パイプラインを作成する方法について説明します。 このチュートリアルでは、KafkaBolt コンポーネントと KafkaSpout コンポーネントを使用して Kafka からデータをストリーミングします。
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/21/2018
-ms.openlocfilehash: 7aa8f0b62459c376113bca5a0c58cc7dd3b5280c
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 1f8537408325aff0ba3ec198ed0e2bb697134845
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094891"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036344"
 ---
-# <a name="tutorial-use-apache-storm-with-kafka-on-hdinsight"></a>チュートリアル: HDInsight の Kafka で Apache Storm を使用する
+# <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
 このチュートリアルでは、Apache Storm トポロジを使用して、HDInsight の Apache Kafka でデータを読み書きする方法について説明します。 また、Storm クラスター上の HDFS 互換ストレージにデータを保持する方法についても説明します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Storm と Kafka
@@ -149,7 +149,7 @@ Flux トポロジの詳細については、[https://storm.apache.org/releases/1
 
 ### <a name="kafka-writer"></a>Kafka-writer
 
-Kafka-writer トポロジでは、Kafka ボルト コンポーネントがパラメーターとして 2 つの文字列値を受け取ります。 これらのパラメーターは、ボルトから __キー__ 値および __メッセージ__ 値として Kafka に送信するタプル フィールドを示します。 キーは、Kafka でデータをパーティション分割するために使用されます。 メッセージは格納されるデータです。
+Kafka-writer トポロジでは、Kafka ボルト コンポーネントがパラメーターとして 2 つの文字列値を受け取ります。 これらのパラメーターは、ボルトから__キー__値および__メッセージ__値として Kafka に送信するタプル フィールドを示します。 キーは、Kafka でデータをパーティション分割するために使用されます。 メッセージは格納されるデータです。
 
 この例では、`com.microsoft.example.SentenceSpout` コンポーネントは、`key` と `message` の 2 つのフィールドを含むタプルを生成します。 Kafka ボルトはこれらのフィールドを抽出し、フィールド内のデータを Kafka に送信します。
 

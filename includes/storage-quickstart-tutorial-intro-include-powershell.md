@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 31ef8577a2304091fc4df1b394555c4b30fcf96e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 027b370d2497822dcbd6f3958556357957f9e8f5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165648"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964664"
 ---
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -19,7 +19,7 @@ ms.locfileid: "50165648"
 Connect-AzureRmAccount
 ```
 
-使用する場所がわからない場合、利用できる場所を一覧表示できます。 一覧が表示されたら、使用する場所を見つけます。 この例では、**eastus** を使います。 これを変数に格納し、1 か所で変更できるように変数を使用します。
+使用する場所がわからない場合、利用できる場所を一覧表示できます。 次のコード例を使用して場所の一覧を表示し、使用する場所を見つけます。 この例では、**eastus** を使います。 場所を変数に格納し、この変数を使用することで、1 か所で場所を変更できます。
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -37,13 +37,13 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) を使用した LRS レプリケーションで標準の汎用ストレージ アカウントを作成し、使用するストレージ アカウントを定義するストレージ アカウント コンテキストを取得します。 ストレージ アカウントで作業するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。 この例では、ローカル冗長ストレージ (LRS) と BLOB 暗号化 (既定で有効になります) を使って、*mystorageaccount* というストレージ アカウントを作成します。
+[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) を使用して、LRS レプリケーション付きの標準の汎用ストレージ アカウントを作成します。 次に、使用するストレージ アカウントを定義するストレージ アカウント コンテキストを取得します。 ストレージ アカウントを操作するときは、資格情報を繰り返し渡す代わりに、このコンテキストを参照します。 次の例を使用して、ローカル冗長ストレージ (LRS) と BLOB 暗号化機能 (既定で有効になります) を備える *mystorageaccount* というストレージ アカウントを作成します。
 
 ```powershell
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "mystorageaccount" `
-  -Location $location `
   -SkuName Standard_LRS `
+  -Location $location `
   -Kind Storage
 
 $ctx = $storageAccount.Context

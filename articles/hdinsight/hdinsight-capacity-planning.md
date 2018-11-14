@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 4438cff0dcf5e896f39729d9871d4deb3207b4b8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107997"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230429"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -38,7 +38,7 @@ HDInsight は多数の Azure リージョンで利用できます。 最も近�
 
 ### <a name="location-of-default-storage"></a>既定のストレージの場所
 
-既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Store) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Store は一部のリージョンで利用できます。Data Lake Store の現在の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」の「*ストレージ*」を参照してください。
+既定のストレージ (Azure ストレージ アカウントまたは Azure Data Lake Store) は、クラスターと同じ場所に存在する必要があります。 Azure Storage はあらゆる場所で利用できます。 Data Lake Store Gen1 は一部のリージョンで利用できます。Data Lake Store の現在の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」の「*ストレージ*」を参照してください。
 
 ### <a name="location-of-existing-data"></a>既存のデータの場所
 
@@ -48,7 +48,7 @@ HDInsight は多数の Azure リージョンで利用できます。 最も近�
 
 HDInsight クラスターのデプロイ後に、追加の Azure ストレージ アカウントを接続したり、他の Data Lake Store にアクセスしたりできます。 すべてのストレージ アカウントがクラスターと同じ場所に存在する必要があります。 Data Lake Store は別の場所にあっても構いませんが、その場合、データの読み取り/書き込みの待機時間が発生する可能性があります。
 
-Azure Storage には[容量制限](../azure-subscription-service-limits.md#storage-limits)がありますが、Data Lake Store には実質的に制限はありません。
+Azure Storage Gen1 には[容量制限](../azure-subscription-service-limits.md#storage-limits)がありますが、Data Lake Store には実質的に制限はありません。
 
 クラスターは、さまざまなストレージ アカウントの組み合わせにアクセスできます。 一般的な例を次に示します。
 

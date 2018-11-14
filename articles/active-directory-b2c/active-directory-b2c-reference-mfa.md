@@ -7,51 +7,46 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2016
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3d18e1b2e45aba4e83989e29c533cfc7bf5033fc
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: eabae0f3575719c6cb93affefe0a393dd13d1439
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442710"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014008"
 ---
-# <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: コンシューマー向けアプリケーションで Multi-factor Authentication を有効にする
-Azure Active Directory (Azure AD) B2C は [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) と直接統合しているので、コンシューマー向けアプリケーションのサインアップおよびサインイン エクスペリエンスに第 2 のセキュリティ層を簡単に追加できます。 また、コードを 1 行も記述することなく、これを実現できます。 現時点では、電話かテキスト メッセージによる検証がサポートされています。 サインアップおよびサインイン ポリシーを既に作成していても、Multi-Factor Authentication を有効にできます。
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C の多要素認証 | Microsoft Docs
 
-> [!NOTE]
-> Multi-Factor Authentication は、既存のポリシーを編集することによってだけでなく、サインアップ ポリシーやサインイン ポリシーの作成時に有効にすることもできます。
-> 
-> 
+Azure Active Directory (Azure AD) B2C は [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) と直接統合されているので、ご自分のアプリケーションのサインアップおよびサインイン エクスペリエンスに第 2 のセキュリティ層を簡単に追加できます。 コードを 1 行も記述する必要なく多要素認証を有効にできます。 サインアップおよびサインイン ポリシーを既に作成していても、多要素認証を有効にできます。
 
 この機能を利用すると、次のようなシナリオをアプリケーションで処理するのに役立ちます。
 
-* あるアプリケーションにアクセスするには Multi-Factor Authentication は必要ないが、別のアプリケーションにアクセスするには必要な場合。 たとえば、コンシューマーは自動車保険アプリケーションにはソーシャルまたはローカル アカウントでサインインできますが、同じディレクトリに登録されている住宅保険アプリケーションにアクセスするには事前に電話番号の確認が必要であるような場合です。
-* アプリケーションへの通常のアクセスには Multi-Factor Authentication は必要ないが、アプリケーション内の機密性が高い部分へのアクセスには必要である場合。 たとえば、コンシューマーはソーシャルまたはローカル アカウントを使用して銀行取引アプリケーションにサインインし、口座の残高を確認できますが、ネット送金を行うには事前に電話番号の確認が必要になるような場合です。
+- 多要素認証が、あるアプリケーションのアクセスには必要ないが、別のアプリケーションのアクセスには必要な場合。 たとえば、顧客が自動車保険アプリケーションにサインインするにはソーシャルまたはローカル アカウントを使用できますが、同じディレクトリに登録されている住宅保険アプリケーションにアクセスするには事前に電話番号を確認する必要があるような場合です。
+- 通常のアプリケーションへのアクセスには多要素認証は必要ないが、アプリケーション内の機密性が高い部分へのアクセスにはそれが必要である場合。 たとえば、顧客が銀行取引アプリケーションにサインインし、口座の残高を確認するにはソーシャルまたはローカル アカウントを使用できますが、ネット送金を行うには事前に電話番号の確認が必要になるような場合です。
 
-## <a name="modify-your-sign-up-policy-to-enable-multi-factor-authentication"></a>サインアップ ポリシーを変更して Multi-factor Authentication を有効にする
-1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
-2. **[サインアップ ポリシー]** をクリックします。
-3. クリックしてサインアップ ポリシーを開きます (例: "B2C_1_SiUp")。
-4. **[Multi-Factor Authentication]** をクリックし、**[状態]** を **[オン]** にします。 Click **OK**.
-5. ブレードの上部にある **[保存]** をクリックします。
+## <a name="set-multi-factor-authentication"></a>多要素認証の設定
 
-ポリシーで [今すぐ実行] 機能を使用して、コンシューマー エクスペリエンスを確認できます。 次のことを確認します。
+ポリシーを作成する場合、多要素認を有効にするオプションがあります。
 
-Multi-Factor Authentication の手順が実行される前に、コンシューマー アカウントがディレクトリに作成されます。 この手順の過程で、コンシューマーは自分の電話番号を示し、確認することを求められます。 検証が成功した場合、後で使用できるように電話番号がコンシューマー アカウントに関連付けられます。 コンシューマーがキャンセルまたは中止した場合であっても、次にサインインするときに電話番号の確認を再度求められる場合があります (Multi-Factor Authentication が有効になっている場合)。
+![多要素認証の設定](./media/active-directory-b2c-reference-mfa/add-policy.png)
 
-## <a name="modify-your-sign-in-policy-to-enable-multi-factor-authentication"></a>サインイン ポリシーを変更して Multi-factor Authentication を有効にする
-1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
-2. **[サインイン ポリシー]** をクリックします。
-3. クリックしてサインイン ポリシーを開きます (例: "B2C_1_SiIn")。 ブレードの上部にある **[編集]** をクリックします。
-4. **[Multi-Factor Authentication]** をクリックし、**[状態]** を **[オン]** にします。 Click **OK**.
-5. ブレードの上部にある **[保存]** をクリックします。
+**[状態]** を **[オン]** に設定します。
 
-ポリシーで [今すぐ実行] 機能を使用して、コンシューマー エクスペリエンスを確認できます。 次のことを確認します。
+エクスペリエンスを検証するには、ポリシーで **[今すぐ実行]** を使用します。 次のシナリオで確認してみましょう。
 
-コンシューマーがソーシャルまたはローカル アカウントを使用してサインインするとき、検証済みの電話番号がコンシューマー アカウントに関連付けられている場合は、コンシューマーはその確認を求められます。 コンシューマー アカウントに関連付けられている電話番号がない場合は、コンシューマーは電話番号を示し、確認することを求められます。 検証が成功した場合、後で使用できるように電話番号がコンシューマー アカウントに関連付けられます。
+多要素認証の手順が実行される前に、顧客のアカウントがテナントに作成されます。 この手順の過程で、顧客は自分の電話番号を入力し、確認することを求められます。 検証が成功した場合、後で使用できるように電話番号がアカウントに関連付けられます。 顧客がキャンセルまたは中止した場合であっても、多要素認証が有効になっている場合、次にサインインするときに顧客は電話番号の確認を再度求められる場合があります。
 
-## <a name="multi-factor-authentication-on-other-policies"></a>他のポリシーでの Multi-Factor Authentication
-前のサインアップ/サインイン ポリシーで説明したように、サインアップまたはサインイン ポリシーおよびパスワード リセット ポリシーで Multi-Factor Authentication を有効にすることもできます。 プロファイル編集ポリシーでもまもなく利用できるようになります。
+## <a name="add-multi-factor-authentication"></a>多要素認証の追加
+
+以前作成したポリシーで多要素認証を有効にすることも可能です。 
+
+多要素認証を有効にするには
+
+1. ポリシーを開き、**[編集]** を選択します。 
+2. **[Multi-Factor Authentication]** を選択します。
+3. **[状態]** を **[オン]** に設定します。
+4. ページの上部にある **[保存]** をクリックします。
+
 

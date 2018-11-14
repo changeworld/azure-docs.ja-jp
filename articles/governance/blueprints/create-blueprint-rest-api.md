@@ -4,21 +4,21 @@ description: Azure Blueprint を使用して、成果物を作成、定義、デ
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/07/2018
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b873ee869b2044977ebefcfd65331567c24e7ec8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b600eeff0482944a8b9b18ad39c23ee6ea4700ce
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974206"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283548"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>REST API で Azure Blueprint を定義して割り当てる
 
-Azure でのブループリントの作成方法と割り当て方法を理解することにより、組織は一貫性の共通パターンを定義し、Resource Manager テンプレート、ポリシー、セキュリティなどに基づいて、再利用可能であり短時間でデプロイできる構成を開発できるようになります。 このチュートリアルでは、組織内のブループリントの作成、発行、および割り当てに関連する一般的ないくつかのタスクを実行するための、Azure Blueprint の使用方法について説明します。
+ブループリントの作成方法と割り当て方法について説明します。Resource Manager テンプレート、ポリシー、セキュリティなどに基づいて、再利用可能かつ短時間でデプロイできる構成を開発するための共通パターンを、ブループリントを通じて定義することができます。 このチュートリアルでは、組織内のブループリントの作成、発行、および割り当てに関連する一般的ないくつかのタスクを実行するための、Azure Blueprint の使用方法について説明します。
 
 > [!div class="checklist"]
 > - 新しいブループリントを作成し、サポートされているさまざまな成果物を追加する
@@ -33,6 +33,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="getting-started-with-rest-api"></a>REST API で作業を開始する
 
 REST API に慣れていない場合は、最初に「[Azure REST API Reference](/rest/api/azure/)」(Azure REST API リファレンス) を読んで、REST API の基本を理解してください (具体的には要求 URI と要求の本文)。 この記事では、これらの概念を使用して Azure Blueprint を操作する方法を説明しており、それらの実践的な知識を前提としています。 [ARMClient](https://github.com/projectkudu/ARMClient) などのツールは認可を自動的に処理できるので、初めての方にお勧めします。
+
+Blueprints の仕様については、[Azure Blueprints REST API](/rest/api/blueprints/) に関するページを参照してください。
 
 ### <a name="rest-api-and-powershell"></a>REST API と PowerShell
 
@@ -59,7 +61,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="create-a-blueprint"></a>ブループリントを作成する
 
-コンプライアンスの標準的なパターンを定義する最初のステップは、使用可能なリソースからブループリントを作成することです。 この例では、"MyBlueprint" という名前のブループリントを作成して、サブスクリプションのロールとポリシーの割り当てを構成し、リソース グループを追加し、リソース グループの Resource Manager テンプレートとロールの割り当てを作成します。
+コンプライアンスの標準的なパターンを定義する最初のステップは、使用可能なリソースからブループリントを作成することです。 この例では、"MyBlueprint" という名前のブループリントを作成して、サブスクリプションのロールとポリシーの割り当てを構成します。 その後、リソース グループと Resource Manager テンプレート、さらに、そのリソース グループに対するロールの割り当てを追加します。
 
 > [!NOTE]
 > REST API を使用すると、"_ブループリント_" オブジェクトが最初に作成されます。 追加する各 "_成果物_" でパラメーターを持つものについては、最初の "_ブループリント_" でパラメーターを事前に定義する必要があります。
@@ -69,7 +71,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 - `{YourMG}` - 実際の管理グループの名前に置き換えます
 - `{subscriptionId}` - サブスクリプション ID で置き換えます。
 
-1. 初期 "_ブループリント_" オブジェクトを作成します。 **要求本文**には、ブループリントに関するプロパティ、作成するリソース グループ、および割り当ての間に設定されて、後のステップで追加される成果物によって使用される、ブループリント レベルのパラメーターが含まれています。
+1. 初期 "_ブループリント_" オブジェクトを作成します。 **要求本文**には、ブループリントに関するプロパティ、作成するリソース グループ、ブループリント レベルのすべてのパラメーターが含まれています。 これらのパラメーターは、割り当ての間に設定されて、後のステップで追加される成果物によって使用されます。
 
    - REST API URI
 
@@ -176,7 +178,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. サブスクリプションでストレージ タグ (_storageAccountType_ パラメーターを再利用) に対してもう 1 つのポリシー割り当てを追加します。 この追加のポリシー割り当て成果物は、ブループリントで定義されたパラメーターを複数の成果物で使用できることを示します。 この例の **storageAccountType** は、次のステップで作成されるストレージ アカウントに関する情報を提供するリソース グループでタグを設定するために使用されます。
+1. サブスクリプションでストレージ タグ (_storageAccountType_ パラメーターを再利用) に対してもう 1 つのポリシー割り当てを追加します。 この追加のポリシー割り当て成果物は、ブループリントで定義されたパラメーターを複数の成果物で使用できることを示します。 この例の **storageAccountType** は、リソース グループにタグを設定する目的で使用されます。 この値は、次のステップで作成するストレージ アカウントに関する情報を提供します。
 
    - REST API URI
 
@@ -204,7 +206,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. リソース グループにテンプレートを追加します。 Resource Manager テンプレートの**要求本文**では、テンプレートの通常の JSON コンポーネントが含まれ、**properties.resourceGroup** でターゲット リソース グループが定義され、テンプレートに提供することにより **storageAccountType**、**tagName**、および **tagValue** ブループリント パラメーターが再利用されています。 ブループリント パラメーターは **properties.parameters** を定義するとテンプレートで利用することができ、テンプレート JSON 内ではそのキー/値を使用して値を挿入します。 ブループリントとテンプレート パラメーターの名前は同じでもかまいませんが、それぞれがブループリントからテンプレート成果物に渡される方法を示すために別のものにしてあります。
+1. リソース グループにテンプレートを追加します。 Resource Manager テンプレートの**要求本文**では、テンプレートの通常の JSON コンポーネントが含まれ、**properties.resourceGroup** でターゲット リソース グループが定義されます。 また、このテンプレートでは、ブループリントの **storageAccountType**、**tagName**、**tagValue** の各パラメーターをテンプレートに渡すことによって再利用しています。 ブループリント パラメーターは **properties.parameters** を定義するとテンプレートから利用することができ、テンプレート JSON 内ではそのキーと値のペアを使用して値を挿入します。 ブループリントとテンプレート パラメーターの名前は同じでもかまいませんが、それぞれがブループリントからテンプレート成果物に渡す方法を示すために別のものにしてあります。
 
    - REST API URI
 
@@ -313,7 +315,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="publish-a-blueprint"></a>ブループリントを発行する
 
-これで成果物がブループリントに追加されたので、発行することができます。 発行すると、サブスクリプションに割り当てられて使用できるようになります。
+これで成果物がブループリントに追加されたので、発行することができます。 発行することで、サブスクリプションへの割り当てが可能となります。
 
 - REST API URI
 
@@ -388,7 +390,7 @@ REST API を使用してブループリントを発行した後は、それを�
 
 ## <a name="unassign-a-blueprint"></a>ブループリントを割り当て解除する
 
-ブループリントは、不要になったり、更新されたパターン、ポリシー、および設計を持つ新しいブループリントで置き換えられた場合に、サブスクリプションから削除できます。 ブループリントを削除しても、そのブループリントの一部として割り当てられている成果物は後に残されます。 ブループリントの割り当てを削除するには、次の REST API 操作を使用します。
+ブループリントは、サブスクリプションから削除することができます。 多くの場合、アーティファクトのリソースが不要になったときは削除するようにします。 ブループリントを削除しても、そのブループリントの一部として割り当てられている成果物は後に残されます。 ブループリントの割り当てを削除するには、次の REST API 操作を使用します。
 
 - REST API URI
 
@@ -413,4 +415,4 @@ REST API を使用してブループリントを発行した後は、それを�
 - [ブループリントの優先順位](./concepts/sequencing-order.md)のカスタマイズを参照する
 - [ブループリントのリソース ロック](./concepts/resource-locking.md)の使用方法を調べる
 - [既存の割り当ての更新](./how-to/update-existing-assignments.md)方法を参照する
-- ブルー プリントの割り当て時の問題を[一般的なトラブルシューティング](./troubleshoot/general.md)で解決する
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](./troubleshoot/general.md)で解決する

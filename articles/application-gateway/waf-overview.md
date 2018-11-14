@@ -2,16 +2,16 @@
 title: Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) の概要
 description: この記事では、Application Gateway の Web アプリケーション ファイアウォール (WAF) の概要を説明します
 services: application-gateway
-author: amsriva
+author: vhorne
 ms.service: application-gateway
-ms.date: 10/11/2018
+ms.date: 11/7/2018
 ms.author: amsriva
-ms.openlocfilehash: 10a67eab142287cf9303e54005b6b167e9890df0
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068453"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219530"
 ---
 # <a name="web-application-firewall-waf"></a>Web アプリケーション ファイアウォール (WAF)
 
@@ -39,7 +39,7 @@ Application Gateway と Web アプリケーション ファイアウォールが
 
 * リアルタイムの WAF ログを使用して、Web アプリケーションに対する攻撃を監視できます。 このログは [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) と統合されているため、WAF のアラートおよびログを追跡し、傾向を簡単に監視できます。
 
-* WAF は近いうちに Azure Security Center と統合されます。 Azure Security Center では、すべての Azure リソースのセキュリティの状態を一元的に把握できます。
+* WAF は Azure Security Center と統合されています。 Azure Security Center では、すべての Azure リソースのセキュリティの状態を一元的に把握できます。
 
 ### <a name="customization"></a>カスタマイズ
 

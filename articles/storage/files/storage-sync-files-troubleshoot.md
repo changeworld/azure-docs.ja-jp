@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 1a135b0e17889c544a99ad677e9fa42ad6de994c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 507bbc9013d8b02084b639f8d9fac0c7d97503f4
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231884"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014280"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -368,7 +368,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 
     ![Azure ファイル共有のプロパティのスクリーンショット](media/storage-sync-files-troubleshoot/file-share-limit-reached-1.png)
 
-共有がいっぱいでクォータが設定されていない場合、この問題を解決する 1 つの方法は、現在のサーバー エンドポイントの各サブフォルダーを、個別の専用の同期グループに含まれている専用のサーバー エンドポイント内に配置することです。 これにより、各サブフォルダーが個々の Azure ファイル共有に同期されるようになります。
+共有がいっぱいでクォータが設定されていない場合、この問題を解決する 1 つの方法は、現在のサーバー エンドポイントの各サブフォルダーを、個別の専用の同期グループの専用のサーバー エンドポイントにすることです。 これにより、各サブフォルダーが個々の Azure ファイル共有に同期されるようになります。
 
 <a id="-2134351824"></a>**Azure ファイル共有が見つかりません。**  
 | | |

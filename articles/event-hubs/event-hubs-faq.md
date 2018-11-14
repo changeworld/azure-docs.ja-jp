@@ -7,18 +7,21 @@ author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 10/07/2018
 ms.author: shvija
-ms.openlocfilehash: 50491515c7a553107666e29dcba2b4bd0836f409
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 4e0f762a69451ce0dc9ec00db5992fce0707f275
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746231"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282443"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
 ## <a name="general"></a>全般
+
+### <a name="what-is-an-event-hubs-namespace"></a>Event Hubs 名前空間とはどういうものですか。
+名前空間は、Event Hub/Kafka トピックのためのスコーピング コンテナーです。 これにより、一意の [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) が提供されます。 名前空間は、複数の Event Hub/Kafka トピックを収容できるアプリケーション コンテナーとして機能します。 
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Event Hubs の Basic レベルと Standard レベルは何が違いますか。
 
@@ -28,30 +31,13 @@ Azure Event Hubs の Standard レベルは、Basic レベルでは使用でき�
 * 追加の仲介型接続。提供される数を超える場合は超過料金が適用されます
 * 複数の[コンシューマー グループ](event-hubs-features.md#consumer-groups)
 * [キャプチャ](event-hubs-capture-overview.md)
+* [Kafka 統合](event-hubs-for-kafka-ecosystem-overview.md)
 
 専用の Event Hubs を含む価格レベルの詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
-### <a name="what-are-event-hubs-throughput-units"></a>Event Hubs のスループット ユニットとは何ですか。
+### <a name="where-is-azure-event-hubs-available"></a>Azure Event Hubs はどこで利用できますか。
 
-Event Hubs のスループット ユニットは、Azure Portal または Event Hubs Resource Manager テンプレートによってユーザーが明示的に選択します。 スループット ユニットは Event Hubs 名前空間のすべてのイベント ハブに適用され、それぞれのスループット ユニットはその名前空間に次の機能を付与します。
-
-* 最大 1 MB/秒のイングレス イベント (イベント ハブに送信されるイベント)。ただし、1 秒あたり 1000 個未満の受信イベント、管理操作、または制御 API 呼び出し。
-* 最大 2 MB/秒のエグレス イベント (イベント ハブから使用されるイベント)。ただし、4096 個未満のエグレス イベント。
-* 最大 84 GB のイベント ストレージ (既定の 24 時間の保持期間に対応できる十分なストレージ)。
-
-Event Hubs のスループット ユニットは、特定の時間に選択された単位の最大数に基づいて時間単位で課金されます。 自動インフレ機能を使用すると、使用量が増えるにつれて[スループット ユニットの数を自動的に増やす](event-hubs-auto-inflate.md)ことができます。
-
-### <a name="how-are-event-hubs-throughput-unit-limits-enforced"></a>Event Hubs のスループット ユニット制限はどのように適用されますか。
-
-名前空間内のすべてのイベント ハブの合計イングレス スループットまたは合計イングレス イベント レートがスループット ユニットの上限の総計を超過した場合は、送信側が調整され、受信クォータを超えたことを示すエラーを受信します。
-
-名前空間内のすべてのイベント ハブの合計エグレス スループットまたは合計イベント エグレス レートがスループット ユニットの上限の総計を超過した場合は、受信側が調整され、送信クォータが超過したことを示すエラーを受信します。 送信側でイベントの使用速度が低下しないようにするため、また受信側でイベント ハブにイベントを送信できなくなることを避けるために、イングレス クォータとエグレス クォータは別々に適用されます。
-
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-selected"></a>選択できるスループット ユニットの数に制限はありますか。
-
-名前空間ごとに 20 というスループット ユニットの既定のクォータがあります。 サポート チケットを送信することで、スループット ユニットの大きなクォータを要求できます。 20 というスループット ユニットの制限を超える 20 ～ 100 スループット ユニットのバンドルを使用できます。 20 を超えるスループット ユニットを使用すると、サポート チケットの送信なしでスループット ユニットの数を変更する機能は無効になることに注意してください
-
-[自動インフレ](event-hubs-auto-inflate.md)機能を使用すると、使用量が増えるにつれてスループット ユニットの数を自動的に増やすことができます。
+Azure Event Hubs は、サポートされているすべての Azure リージョンで利用できます。 一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」ページを参照してください。  
 
 ### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>単一の AMQP 接続を使用して、複数の イベント ハブから送受信を実行できますか。
 
@@ -59,17 +45,97 @@ Event Hubs のスループット ユニットは、特定の時間に選択さ�
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>イベントの最大保有期間は何日ですか。
 
-Event Hubs Standard レベルでは、現在最大 7 日間の保有期間をサポートしています。 イベント ハブは永続的なデータ ストアになることを目的としていません。 24 時間を超える保有期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。 7 日間を超えるメッセージの保有期間が必要な場合は、イベント ハブで [Event Hubs Capture](event-hubs-capture-overview.md) を有効にするとイベント ハブから任意の Storage アカウントまたは Azure Data Lake Service アカウントにデータをプルできます。 Capture を有効にすると、購入済みのスループット ユニットに基づく料金が発生します。
+Event Hubs Standard レベルは現在、最大 7 日間の保有期間をサポートしています。 イベント ハブは、永続的なデータ ストアとしては考慮されていません。 24 時間を超える保有期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。 7 日間を超えるメッセージの保有期間が必要な場合は、イベント ハブで [Event Hubs Capture](event-hubs-capture-overview.md) を有効にすると、イベント ハブのデータが、選択したストレージ アカウントまたは Azure Data Lake サービス アカウントにプルされます。 Capture を有効にすると、購入済みのスループット ユニットに基づく料金が発生します。
 
-### <a name="where-is-azure-event-hubs-available"></a>Azure Event Hubs はどこで利用できますか。
+### <a name="how-do-i-monitor-my-event-hubs"></a>Event Hubs を監視するにはどうしたらよいですか。
+Event Hubs は、リソースの状態を示す網羅的なメトリックを [Azure Monitor](../azure-monitor/overview.md) に出力します。 また、Event Hubs サービスの全体的な正常性を名前空間レベルだけでなく、エンティティ レベルでも評価することができます。 どのような監視が提供されるかについては、[Azure Event Hubs](event-hubs-metrics-azure-monitor.md) に関するページを参照してください。
 
-Azure Event Hubs は、サポートされているすべての Azure リージョンで利用できます。 一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」ページを参照してください。  
+## <a name="apache-kakfa-integration"></a>Apache Kakfa 統合
+
+### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>既存の Kafka アプリケーションを Event Hubs と統合するにはどうしたらよいですか。
+Event Hubs は、既存の Apache Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 構成変更が、PaaS Kafka エクスペリエンスを得るために必要なすべてのことです。 これにより、独自の Kafka クラスターを実行するための代替手段が提供されます。 Event Hubs は Apache Kafka 1.0 以降のクライアント バージョンをサポートし、既存の Kafka アプリケーション、ツール、およびフレームワークと連携して動作します。 詳細については、[Kafka リポジトリ用の Event Hubs](https://github.com/Azure/azure-event-hubs-for-kafka) に関するページを参照してください。
+
+### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>既存のアプリケーションが Event Hubs に接続するにはどのような構成変更を行う必要がありますか。
+Kafka 対応 Event Hub に接続するには、Kafka クライアントの構成を更新する必要があります。 これは、Event Hubs 名前空間を作成し、[接続文字列](event-hubs-get-connection-string.md)を取得することによって実行されます。 Event Hubs の FQDN を指すように bootstrap.servers を変更し、ポートを 9093 に変更します。 次に示すように、正しい認証を使用して、Kafka クライアントを Kafka 対応 Event Hubs のエンドポイント (取得した接続文字列) に転送するように sasl.jaas.config を更新します。
+
+bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+
+例:
+
+bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
+
+注: sasl.jaas.config がフレームワークでサポートされる構成でない場合は、SASL のユーザー名とパスワードを設定するために使用される構成を見つけ、代わりにそれらを使用します。 ユーザー名を $ConnectionString に、パスワードを Event Hubs の接続文字列に設定します。
+
+### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Kafka 対応 Event Hubs のメッセージ/イベント サイズはどれくらいですか。
+Kafka 対応 Event Hubs に許可されている最大メッセージ サイズは 1MB です。
+
+## <a name="throughput-units"></a>スループット ユニット
+
+### <a name="what-are-event-hubs-throughput-units"></a>Event Hubs のスループット ユニットとは何ですか。
+Event Hubs でのスループットは、Event Hubs 経由で入出力されるデータ量 (MB 単位) または 1 KB のイベントの個数 (千個単位) を定義します。 このスループットは、スループット ユニット (TU) で測定されます。 Event Hubs サービスの使用を開始するには、その前に TU を購入します。 Event Hubs の TU は、ポータルまたは Event Hubs Resource Manager テンプレートのどちらかを使用して明示的に選択できます。 
+
+
+### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>スループット ユニットは名前空間内のすべてのイベント ハブに適用されますか。
+はい。スループット ユニット (TU) は、Event Hubs 名前空間内のすべてのイベント ハブに適用されます。 つまり、TU は名前空間レベルで購入され、その名前空間の下のイベント ハブ間で共有されます。 各 TU により、名前空間に次の機能が与えられます。
+
+- 最大 1 MB/秒のイングレス イベント (イベント ハブに送信されるイベント)。ただし、1 秒あたり 1000 個未満のイングレス イベント、管理操作、または制御 API 呼び出し。
+- 最大 2 MB/秒のエグレス イベント (イベント ハブから使用されるイベント)。ただし、4096 個未満のエグレス イベント。
+- 最大 84 GB のイベント ストレージ (既定の 24 時間の保有期間に十分な量)。
+
+### <a name="how-are-throughput-units-billed"></a>スループット ユニットはどのように課金されますか。
+スループット ユニット (TU) は、時間単位で課金されます。 課金は、特定の 1 時間内に選択されたユニットの最大数に基づきます。 
+
+### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>スループット ユニットでの使用はどのように最適化できますか。
+最初は 1 スループット ユニット (TU) から始め、[自動インフレ](event-hubs-auto-inflate.md)を有効にすることができます。 自動インフレ機能を使用すると、トラフィック/ペイロードの増加に従って TU を増やすことができます。 また、TU の数に上限を設定することもできます。
+
+### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Event Hubs の自動インフレ機能はどのように働くのですか。
+自動インフレ機能を使用すると、スループット ユニット (TU) をスケールアップできます。 つまり、最初は少ない TU を購入し、イングレスが増加したら自動インフレで TU をスケールアップすることが可能です。 これにより、コスト効率に優れたオプションと、管理する TU の数の完全な制御が提供されます。 この機能は**スケールアップのみ**の機能であり、それを更新することによって TU の数のスケールダウンを完全に制御できます。 
+
+少ないスループット ユニット (TU) (2 TU など) で始めることもできます。 トラフィックが 15 TU に増える可能性が予測される場合は、名前空間で自動インフレ機能を有効にし、上限を 15 TU に設定します。 これで、トラフィックの増加に従って TU を自動的に増やすことができます。
+
+### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>自動インフレ機能を有効にした場合、関連するコストは発生しますか。
+この機能に関連した**コストはありません**。 
+
+### <a name="how-are-throughput-limits-enforced"></a>スループットの制限はどのように適用されるのですか。
+名前空間内のすべてのイベント ハブの合計イングレス スループットまたは合計イングレス イベント レートがスループット ユニットの上限の総計を超過した場合は、送信側が調整され、受信クォータを超えたことを示すエラーを受信します。
+
+名前空間内のすべてのイベント ハブの合計エグレス スループットまたは合計イベント エグレス レートがスループット ユニットの上限の総計を超過した場合は、受信側が調整され、送信クォータが超過したことを示すエラーを受信します。 送信側でイベントの使用速度が低下しないようにするため、また受信側でイベント ハブにイベントを送信できなくなることを避けるために、イングレス クォータとエグレス クォータは別々に適用されます。
+
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>予約または選択できるスループット ユニット (TU) の数に制限はありますか。
+マルチテナント オファリングでは、スループット ユニットは 40 TU まで増やすことができます (ポータルで最大 20 TU を選択し、同じ名前空間でそれを 40 TU に増やすためのサポート チケットを生成できます)。 40 TU を超える場合、Event Hubs には、**Event Hubs Dedicated クラスター**と呼ばれるリソース/容量ベースのモデルが用意されています。 Dedicated クラスターは、容量ユニット (CU) で販売されます。
+
+## <a name="dedicated-clusters"></a>Dedicated クラスター
+
+### <a name="what-are-event-hubs-dedicated-clusters"></a>Event Hubs Dedicated クラスターとは何ですか。
+Event Hubs Dedicated クラスターは、最も要求の厳しい要件を持つ顧客にシングルテナント デプロイを提供します。 このオファリングは、スループット ユニットで縛られない容量ベースのクラスターを構築します。 つまり、このクラスターを利用すると、クラスターの CPU とメモリの使用量に従ってデータを取り込み、ストリーミングできます。 詳細については、[Event Hubs Dedicated クラスター](event-hubs-dedicated-overview.md)に関するページを参照してください。
+
+### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>1 容量ユニットではどれだけの容量を実現できますか。
+専用クラスターの場合、どれだけの容量を取り込んでストリーミングできるかは、プロデューサー、コンシューマー、取り込みや処理の速度などのさまざまな要因によって異なります。 
+
+次の表は、当社でのテスト中に実現したベンチマーク結果を示しています。
+
+| ペイロードの形態 | 受信者 | イングレス帯域幅| イングレス メッセージ | エグレス帯域幅 | エグレス メッセージ | 合計 TU 数 | CU あたりの TU 数 |
+| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
+| 100x1KB のバッチ | 2 | 400 MB/秒 | 400k メッセージ/秒 | 800 MB/秒 | 800k メッセージ/秒 | 400 TU | 100 TU | 
+| 10x10KB のバッチ | 2 | 666 MB/秒 | 66.6k メッセージ/秒 | 1.33 GB/秒 | 133k メッセージ/秒 | 666 TU | 166 TU |
+| 6x32KB のバッチ | 1 | 1.05 GB/秒 | 34k メッセージ/秒 | 1.05 GB/秒 | 34k メッセージ/秒 | 1000 TU | 250 TU |
+
+このテストでは、次の条件が使用されました。
+
+- 4 容量ユニット (CU) を持つ専用の Event Hubs クラスターが使用されました。 
+- 取り込みに使用されたイベント ハブには 200 パーティションが存在しました。 
+- 取り込まれたデータは、すべてのパーティションから受信している 2 つの受信側アプリケーションによって受信されました。
+
+これらの結果は、専用の Event Hubs クラスターでどれだけの容量を実現できるかを示しています。 さらに、マイクロバッチおよび長期保有シナリオで有効になる Event Hubs Capture には専用クラスターが付属しています。
+
+### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Event Hubs Dedicated クラスターを作成するにはどうしたらよいですか。
+Event Hubs Dedicated クラスターは、[クォータ引き上げサポート要求](https://portal.azure.com/#create/Microsoft.Support)を送信するか、または [Event Hubs チーム](mailto:askeventhubs@microsoft.com)に連絡することによって作成します。 通常、クラスターをデプロイし、ユーザーが使用できるようにして渡すには約 2 週間かかります。 このプロセスは、Azure Portal または Azure Resource Manager テンプレートを通して完全なセルフサービスが使用可能になるまでの一時的なものです。これでクラスターをデプロイするには、約 2 時間かかります。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
 ### <a name="how-many-partitions-do-i-need"></a>パーティションはいくつ必要ですか。
 
-セットアップの終了後は、イベント ハブのパーティション数を変更できないことに注意してください。 作業を開始する前に、その点を考慮して、必要なパーティションの数を検討する必要があります。 
+イベント ハブのパーティション数は、セットアップ後には変更できません。 作業を開始する前に、その点を考慮して、必要なパーティションの数を検討する必要があります。 
 
 Event Hubs は、コンシューマー グループ 1 つにつきパーティション リーダーを 1 つ許可するように設計されています。 ほとんどのユース ケースでは、既定の設定の 4 つのパーティションで十分です。 イベント処理のスケール設定を予定している場合は、パーティションを追加したほうが良い場合があります。 パーティションには特定のスループット制限はありませんが、名前空間の総スループットは、スループット ユニットの数によって制限されます。 名前空間内のスループット ユニットの数を増やすときは、独自の最大スループットを実現するために、同時読み取りを許可するための追加のパーティションが必要になる場合があります。
 
@@ -83,7 +149,7 @@ Event Hubs 料金の詳細については、「 [Event Hubs 料金](https://azur
 
 ### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Event Hubs のイベントを 24 時間以上保有する場合に料金はかかりますか。
 
-Event Hubs Standard レベルでは、24 時間を超えて最大 7 日間メッセージを保有できます。 保存されたイベントの合計数が選択したスループット ユニット数のストレージの上限 (スループット ユニットあたり 84 GB) 上限を超えるサイズには公開された Azure Blob Storage レートの料金が発生します。 各スループット ユニットのストレージの上限は、スループット ユニットが受信の上限まで使用された場合でも、24 時間の保持期間に対するすべてのストレージ コストをカバーします。
+Event Hubs Standard レベルでは、24 時間より長いメッセージ保有期間 (最大 7 日間) が許可されます。 保存されたイベントの合計数が選択したスループット ユニット数のストレージの上限 (スループット ユニットあたり 84 GB) 上限を超えるサイズには公開された Azure Blob Storage レートの料金が発生します。 各スループット ユニットのストレージの上限は、スループット ユニットが受信の上限まで使用された場合でも、24 時間の保持期間に対するすべてのストレージ コストをカバーします。
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Event Hubs のストレージ サイズはどのように計算され、課金されますか。
 
@@ -103,9 +169,9 @@ Event Hubs Standard レベルでは、24 時間を超えて最大 7 日間メッ
 
 Capture が有効になるのは、名前空間内のいずれかのイベント ハブで Capture オプションが有効になっている場合です。 Event Hubs Capture は購入済みのスループット ユニットごとに時間単位で課金されます。 スループット ユニット数が増減すると、Event Hubs Capture の課金についても、全体の時間の増分にスループット ユニット数の変化が反映されます。 Event Hubs Capture の課金の詳細については、[Event Hubs の価格情報](https://azure.microsoft.com/pricing/details/event-hubs/)に関するページを参照してください。
 
-### <a name="will-i-be-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Event Hubs Capture 用に選択したストレージ アカウントに対しては課金されますか。
+### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Event Hubs Capture 用に選択したストレージ アカウントに対しては課金されますか。
 
-Event Hub で有効にされた場合、Capture はお客様の指定したストレージ アカウントを使用します。 お客様のストレージ アカウントであるため、この構成に関する変更はお客様の Azure サブスクリプションに課金されます。
+Event Hub で有効にされた場合、Capture はお客様の指定したストレージ アカウントを使用します。 これはお客様のストレージ アカウントであるため、この構成に関する変更はすべてお客様の Azure サブスクリプションに課金されます。
 
 ## <a name="quotas"></a>Quotas (クォータ)
 

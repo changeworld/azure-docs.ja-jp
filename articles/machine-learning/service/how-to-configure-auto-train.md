@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 1aeb1315cfafbcdf3507a6e49d71e1f1e69b537c
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5a539aebc9b1ccb5f52f89d511fc992ee6a24c81
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430189"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008948"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>自動機械学習の実験を構成する
 
@@ -192,7 +192,7 @@ get_data() を使用して、または `AutoMLConfig` メソッドで直接、�
 `max_time_sec` |    特定のイテレーションにかかる時間 (秒数) を制限します。 イテレーションが指定した時間を超えると、そのイテレーションはキャンセルされます。 設定しないと、イテレーションは完了するまで実行を続けます。 |   なし
 `n_cross_validations`   |クロス検証の分割の数| なし
 `validation_size`   |すべてのトレーニング サンプルの割合として設定する検証のサイズ。|  なし
-`preprocess` | True または False <br/>True を指定すると、実験は入力に対して前処理を実行できます。 前処理のサブセットを次に示します<li>不足データ: 不足データの入力 - 平均での番号、ほとんどの発生でのテキスト </li><li>カテゴリ値: データ型が数値で一意数の数が 5% 未満の場合、ワンホット エンコードに変換します </li><li>その他。完全なリストについては [GitHub リポジトリ](https://aka.ms/aml-notebooks)を確認</li><br/>注: データが疎の場合は、preprocess = true を使用できません |  False | 
+`preprocess` | True または False <br/>True を指定すると、実験は入力に対して前処理を実行できます。 前処理のサブセットを次に示します<li>不足データ: 不足データの入力 - 平均での番号、ほとんどの発生でのテキスト </li><li>カテゴリ値: データ型が数値で一意数の数が 5% 未満の場合、ワンホット エンコードに変換します </li><li>その他。完全なリストについては [GitHub リポジトリ](https://aka.ms/aml-notebooks)を確認</li><br/>注: データが疎の場合は、preprocess = true を使用できません | False | 
 `blacklist_algos`   | 自動 ML の実験には、試すさまざまなアルゴリズムがあります。 特定のアルゴリズムを実験から除外するように自動 ML を構成します。 アルゴリズムがデータセットに対してうまく動作しないことがわかっている場合に役立ちます。 アルゴリズムを除外すると、コンピューティング リソースとトレーニング時間を節約できます。<br/>分類に使用できる値<br/><li>ロジスティック回帰</li><li>SGD 分類子</li><li>MultinomialNB</li><li>BernoulliNB</li><li>SVM</li><li>LinearSVM</li><li>kNN</li><li>DT</li><li>RF</li><li>エクストラ ツリー</li><li>勾配ブースティング</li><li>lgbm_classifier</li><br/>回帰に使用できる値<br/><li>エラスティック ネット</li><li>勾配ブースティング リグレッサー</li><li>DT リグレッサー</li><li>kNN リグレッサー</li><li>Lasso lars</li><li>SGD リグレッサー</li><li>RF リグレッサー</li><li>エクストラ ツリー リグレッサー</li>|   なし
 `verbosity` |ログのレベルを制御します。INFO は最も詳細で、CRITICAL は最小限です。<br/>使用できる値は、以下のとおりです。<br/><li>logging.INFO</li><li>logging.WARNING</li><li>logging.ERROR</li><li>logging.CRITICAL</li>  | logging.INFO</li> 
 `X` | トレーニングするすべての機能 |  なし

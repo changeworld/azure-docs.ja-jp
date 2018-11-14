@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4b4f9bd1c7390d64a0db08b55bfb777498a10cb0
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 343264f90ecf067786db9c0096625b87b2dbd319
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382707"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004410"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge 用の Azure 関数を開発およびデバッグする
 
@@ -74,7 +74,7 @@ VS Code は指定された情報を取得し、Azure Functions プロジェク�
 
 ## <a name="develop-your-module"></a>モジュールの開発
 
-ソリューションに付属する既定の Azure 関数コードは、**modules** > [お使いのモジュール名] > **EdgeHubTrigger-Csharp** > **run.csx** にあります。 モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールはソース (このケースでは、データをシミュレートする tempSensor モジュール) から入力を取得して、IoT Hub に送信するようにビルドされています。 
+ソリューションに付属する既定の Azure 関数コードは、**modules** > [モジュール名] > **modulename.cs** にあります。 モジュールと deployment.template.json ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールはソース (このケースでは、データをシミュレートする tempSensor モジュール) から入力を取得して、IoT Hub に送信するようにビルドされています。 
 
 Azure 関数テンプレートを独自のコードでカスタマイズする準備ができたら、[Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して、セキュリティ、デバイス管理、信頼性など、IoT ソリューションの主なニーズに対処するモジュールをビルドします。 
 
@@ -93,7 +93,7 @@ VS Code Docker エクスプローラーを使用して、または端末で `doc
 
    ![デバッグ構成を選択します](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
-2. `run.csx` に移動します。 関数にブレークポイントを追加します。
+2. `modulename.cs` に移動します。 関数にブレークポイントを追加します。
 3. **[デバッグの開始]** を選択するか、**F5** を押します。 アタッチするプロセスを選択します。
 4. VS Code のデバッグ ビューの左側のパネルに変数が表示されます。 
 

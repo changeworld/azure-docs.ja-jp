@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 70372f30ffaea1fafda3f76d4754489ae89a0a7c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390178"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016698"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -48,13 +48,9 @@ Service Fabric コア クラスタリング テクノロジを使用すると、
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric ノードでは、OS の更新は自動的に受信されますか?
 
-現時点ではそうではありませんが、これも共通の要求であり、今後 Azure で提供する予定です。
+現在、[仮想マシン スケール セットによる OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)一般公開機能を使用できます。
 
-それまでの間は、Service Fabric ノードのオペレーティング システムにパッチを適用して最新状態にするための[アプリケーションを提供](service-fabric-patch-orchestration-application.md)しています。
-
-OS の更新に伴う課題は、それを行うには通常はコンピューターを再起動する必要があり、それによって可用性が一時的に失われることです。 Service Fabric では可用性が失われたサービスのトラフィックを他のノードに自動的にリダイレクトするため、再起動自体は問題ではありません。 ただし、OS の更新がクラスター全体で連係されていなかった場合、多数のノードが一度にダウンする可能性があります。 このような再起動の同時発生によって、サービスの可用性が完全に失われるか、少なくとも (ステートフル サービス用の) 特定のパーティションの可用性が失われる可能性があります。
-
-今後、更新ドメイン間で連係する完全に自動化された OS 更新ポリシーをサポートして、再起動やその他の予想外の障害が発生した場合でも可用性が維持されることを保証する予定です。
+Azure で実行されていないクラスターの場合は、Service Fabric ノードのオペレーティング システムにパッチを適用するための[アプリケーションが提供](service-fabric-patch-orchestration-application.md)されています。
 
 ### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>SF クラスターで大規模な仮想マシン スケール セットを使用できますか? 
 

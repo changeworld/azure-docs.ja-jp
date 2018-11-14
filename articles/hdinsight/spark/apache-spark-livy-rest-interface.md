@@ -2,19 +2,19 @@
 title: Livy Spark を使用した Azure HDInsight での Spark クラスターへのジョブの送信
 description: Apache Spark REST API を使用して Spark ジョブを Azure HDInsight クラスターにリモート送信する方法について説明します。
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.openlocfilehash: 677c7d27d34725b75c5dfed70cc377735f5d7d61
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: 86a047fe291c7872fe275ba7246b9f3e59044723
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045214"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236825"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Apache Spark REST API を使用してリモート ジョブを HDInsight Spark クラスターに送信する
 
@@ -152,9 +152,9 @@ Livy は、クラスター上で実行される Spark ジョブに対する高�
    
     出力の最後の行は、バッチが正常に削除されたことを示しています。 実行時にジョブを削除すると、ジョブも強制終了します。 正常に終了したかどうかにかかわらず、完了済みのジョブを削除すると、ジョブ情報が完全に削除されます。
 
-## <a name="using-livy-spark-on-hdinsight-35-clusters"></a>HDInsight 3.5 クラスターでの Livy Spark の使用
+## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>HDInsight 3.5 バージョン以降の Livy 構成の更新
 
-HDInsight 3.5 クラスターでは、サンプル データ ファイルまたは jar ファイルにアクセスするためのローカル ファイル パスの使用が既定で無効になっています。 そのため、クラスターから jar ファイルやサンプル データ ファイルにアクセスするのではなく、`wasb://` のパスを使用することをお勧めします。 ローカル パスを使用する場合は、Ambari 構成を適宜更新する必要があります。 そのためには、次の手順を実行します。
+HDInsight 3.5 以上のクラスターでは、サンプル データ ファイルまたは jar にアクセスするためのローカル ファイル パスの使用が既定で無効になっています。 そのため、クラスターから jar ファイルやサンプル データ ファイルにアクセスするのではなく、`wasb://` のパスを使用することをお勧めします。 ローカル パスを使用する場合は、Ambari 構成を適宜更新する必要があります。 そのためには、次の手順を実行します。
 
 1. クラスターの Ambari ポータルに移動します。 Ambari Web UI はお使いの HDInsight クラスター (https://**CLUSTERNAME**.azurehdidnsight.net) にあります。CLUSTERNAME はお使いのクラスターの名前になります。
 

@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 293cde00e53171e848263df8564ec85f273c1a40
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f02fa8ff80915c23f70db09a1dee393010795132
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166335"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277445"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Service Bus メトリック (プレビュー)
 
@@ -29,7 +29,7 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Log Analytics や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../monitoring/monitoring-data-collection.md)」をご覧ください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)で構成されます。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 この値は、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)で構成します。
 
 ## <a name="access-metrics-in-the-portal"></a>ポータルでメトリックにアクセスする
 
@@ -80,6 +80,8 @@ Azure Monitor でのメトリックの使用は、プレビュー段階にある
 | ------------------- | ----------------- |
 |受信メッセージ (プレビュー)|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |送信メッセージ (プレビュー)|指定された期間にわたって Service Bus から受信されたイベントまたはメッセージの数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
+| メッセージ (プレビュー) | キュー/トピック内のメッセージの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> ディメンション: EntityName |
+| ActiveMessages (プレビュー) | キュー/トピック内のアクティブなメッセージの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> ディメンション: EntityName |
 
 ## <a name="connection-metrics"></a>接続のメトリック
 
@@ -106,6 +108,54 @@ Azure Service Bus は、Azure Monitor でのメトリックの次のディメン
 |ディメンション名|説明|
 | ------------------- | ----------------- |
 |EntityName| Service Bus は、名前空間の下のメッセージング エンティティをサポートします。|
+
+## <a name="set-up-alerts-on-metrics"></a>メトリックに対するアラートの設定
+
+1. **[Service Bus 名前空間]** ページの **[メトリック]** タブで、**[Configure alerts]** \(アラートの構成\) を選択します。 
+
+    ![[メトリック] ページ - [Configure alerts]\(アラートの構成\) メニュー](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
+2. **[ターゲットの選択]** を選択し、**[リソースの選択]** ページで次のアクションを実行します。 
+    1. **[リソースの種類でフィルター]** フィールドで **[Service Bus 名前空間]** を選択します。 
+    2. **[サブスクリプション別でフィルター]** フィールドでサブスクリプションを選択します。
+    3. 一覧から **[Service Bus 名前空間]** を選択します。 
+    4. **[完了]** を選択します。 
+    
+        ![名前空間の選択](./media/service-bus-metrics-azure-monitor/select-namespace.png)
+1. **[条件の追加]** を選択し、**[シグナル ロジックの構成]** ページで次のアクションを実行します。
+    1. **[シグナルの種類]** で **[メトリック]** を選択します。 
+    2. シグナルを選択します。 例: **サーバー エラー (プレビュー)**。 
+
+        ![サーバー エラーの選択](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
+    1. **[条件]** で **[より大きい]** を選択します。
+    2. **[時間の集計]** で **[合計]** を選択します。 
+    3. **[しきい値]** に「**5**」を入力します。 
+    4. **[完了]** を選択します。    
+
+        ![条件の指定](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
+1. **[ルールの作成]** ページで、**[アラートの詳細を定義します]** を展開し、次のアクションを実行します。
+    1. アラートの**名前**を入力します。 
+    2. アラートの**説明**を入力します。
+    3. アラートの**重要度**を選択します。 
+
+        ![[アラートの詳細]](./media/service-bus-metrics-azure-monitor/alert-details.png)
+1. **[ルールの作成]** ページで、**[アクション グループを定義します]** を展開し、**[新しいアクション グループ]** を選択し、**[アクション グループの追加]** ページで次のアクションを実行します。 
+    1. アクション グループの名前を入力します。
+    2. アクション グループの短い名前を入力します。 
+    3. サブスクリプションを選択します。 
+    4. リソース グループを選択します。 
+    5. このチュートリアルでは、**[アクション名]** に「**Send email**」と入力します。
+    6. **[アクションの種類]** で、**[電子メール/SMS/プッシュ/音声]** を選択します。 
+    7. **[詳細の編集]** を選択します。 
+    8. **[電子メール/SMS/プッシュ/音声]** ページで、次のアクションを実行します。
+        1. **[電子メール]** を選択します。 
+        2. **電子メール アドレス**を入力します。 
+        3. **[OK]** を選択します。
+
+            ![[アラートの詳細]](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+        4. **[アクション グループの追加]** ページで、**[OK]** を選択します。 
+1. **[ルールの作成]** ページで、**[アラート ルールの作成]** を選択します。 
+
+    ![[アラート ルールの作成] ボタン](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
 
 ## <a name="next-steps"></a>次の手順
 

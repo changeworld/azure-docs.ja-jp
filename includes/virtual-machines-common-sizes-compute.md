@@ -5,21 +5,21 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 11/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0c071fbfb962de1bf077dfa720cd66bc06e42178
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 3bd4adcd6df07aa47312223c559f0e9ed4fc0b14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312572"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264076"
 ---
 <!-- F-series, Fs-series* -->
 
 コンピューティングに最適化された VM サイズは、高い CPU 対メモリ比を備えており、トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
-Fsv2 シリーズは、Intel® Xeon® Platinum 8168 プロセッサを基盤とし、2.7 GHz のベース コア周波数と 3.7 GHz の最大のシングル コア ターボ周波数を特長とします。 Intel のスケーラブル プロセッサでは新しい Intel® AVX-512 命令によって、単精度浮動小数点演算と倍精度浮動小数点演算の両方でベクター処理ワークロードのパフォーマンスが最大で 2 倍向上します。 つまり、これらはあらゆるコンピューティング ワークロードで非常に高速です。 
+Fsv2 シリーズは、Intel® Xeon® Platinum 8168 プロセッサを基盤とし、3.4 GHz の全コア ターボ クロック速度の持続と、3.7 GHz の最大のシングル コア ターボ周波数を特長とします。 Intel のスケーラブル プロセッサでは新しい Intel® AVX-512 命令によって、単精度浮動小数点演算と倍精度浮動小数点演算の両方でベクター処理ワークロードのパフォーマンスが最大で 2 倍向上します。 つまり、これらはあらゆるコンピューティング ワークロードで非常に高速です。 
 
 Fsv2 シリーズは時間あたりの料金が抑えられており、vCPU あたりの Azure コンピューティング ユニット (ACU) に基づく Azure ポートフォリオにおいて、最もコスト パフォーマンスに優れています。 
 

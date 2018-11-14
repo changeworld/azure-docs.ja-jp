@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/07/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352662"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277972"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -156,6 +156,8 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
  
 - デバイスの登録用のローカル イントラネット設定の構成
 
+- ダウンレベルの Windows デバイスの制御 
+
 
 ### <a name="update-device-settings"></a>デバイス設定の更新 
 
@@ -176,8 +178,6 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - 組織のセキュリティ トークン サービス (STS - フェデレーション ドメイン)
 
 - `https://autologon.microsoftazuread-sso.com` (シームレス SSO の場合)。
@@ -185,6 +185,10 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 さらに、ユーザーのローカル イントラネット ゾーンで **[スクリプトを介したステータス バーの更新を許可する]** を有効にする必要があります。
 
 
+
+### <a name="control-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの制御 
+
+ダウンレベルの Windows デバイスを登録するには、Windows インストーラー パッケージ (.msi) をダウンロード センターからダウンロードし、インストールする必要があります。 詳細については、[こちら](hybrid-azuread-join-control.md#control-windows-down-level-devices)をクリックしてください。 
 
 ## <a name="verify-the-registration"></a>登録の確認
 

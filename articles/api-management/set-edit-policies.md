@@ -3,7 +3,7 @@ title: Azure API Management ポリシーの設定または編集方法 | Microso
 description: このトピックでは、Azure API Management ポリシーを設定または編集する方法を示します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cflower
 editor: ''
 ms.service: api-management
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: aaf86a440328e27c8c47b809536951eeaf2104b9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3d1847b6001ef8e32f00a4e1cd9728d5ca0662f8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936699"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008268"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management ポリシーの設定または編集方法
 
@@ -33,15 +33,14 @@ ms.locfileid: "33936699"
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 2. APIM インスタンスを参照します。
 3. **[API]** タブをクリックします。
+
+    ![ポリシーを編集する](./media/set-edit-policies/code-editor.png)
+
 4. 前にインポートした API の 1 つを選びます。
 5. **[デザイン]** タブを選択します。
 6. ポリシーを適用する操作を選びます。 すべての操作にポリシーを適用する場合は、**[すべての操作]** を選択します。
-7. **inbound** または **outbound** の鉛筆の横の三角形をクリックします。
-8. **[コード エディター]** 項目を選択します。
-
-    ![ポリシーを編集する](./media/set-edit-policies/set-edit-policies01.png)
-
-9. 目的のポリシー コードを適切なブロックのいずれかに貼り付けます。
+7. **[受信処理]** または **[送信処理]** セクションで、**</>** (コード エディター) アイコンを選択します。
+8. 目的のポリシー コードを適切なブロックのいずれかに貼り付けます。
          
         <policies>
              <inbound>

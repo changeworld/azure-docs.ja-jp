@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: 5a9f8e332aae72d6fb0ce2f697a41391a51c44b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c153e87224c596929440d814d30b94cc49d7ba76
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376671"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978742"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 「[Azure ゲスト OS の更新設定][Azure Guest OS Update Settings]」に説明されているゲスト OS の *自動更新*を使用するようにロールを構成している場合は、このページを読むことは必須ではありません。
@@ -66,7 +66,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-5-releases"></a>ファミリ 5 のリリース
 **Windows Server 2016**
 
-インストールされている .NET Framework: 4.0、4.5、4.5.1、4.5.2、4.6、4.6.1、4.6.2
+インストールされている .NET Framework: 3.5、4.6.2
 
 > [!NOTE]
 > OS ファミリ 5 用の RDP パスワードは、10 文字以上にする必要があります。
@@ -84,7 +84,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-4-releases"></a>ファミリ 4 のリリース
 **Windows Server 2012 R2**
 
-インストールされている .NET Framework: 4.0、4.5、4.5.1、4.5.2
+インストールされている .NET Framework: 3.5、4.5.1
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-3-releases"></a>ファミリ 3 のリリース
 **Windows Server 2012**
 
-インストールされている .NET Framework: 4.0、4.5、4.5.1、4.5.2
+インストールされている .NET Framework: 3.5、4.5
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
@@ -112,7 +112,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-2-releases"></a>ファミリ 2 のリリース
 **Windows Server 2008 R2 SP1**
 
-インストールされている .NET Framework: 3.5、4.0、4.5、4.5.1、4.5.2
+インストールされている .NET Framework: 3.5 (2.0 と 3.0 を含みます)
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |

@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 11/05/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: f23c9976dacc1ca696772d6bf02b5d59e3e0b4d5
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ee0b14123e193f219e403d2608368c27f953013d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368690"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037976"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる
 ユーザーまたはグループをエンタープライズ アプリに割り当てるには、適切なアクセス許可でエンタープライズ アプリを管理する必要があります。また、ディレクトリの全体管理者である必要があります。
 
 > [!NOTE]
-> この記事で説明する機能には、Azure Active Directory Premium P1 または Premium P2 のライセンスが必要です。 詳しくは、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory)」ページをご覧ください。
+> この記事で説明されている機能に必要なライセンスについては、[Azure Active Directory の価格のページ](https://azure.microsoft.com/pricing/details/active-directory)を参照してください。
 
 > [!NOTE]
 > Microsoft のアプリケーション (Office 365 アプリなど) では、PowerShell を使用してエンタープライズ アプリにユーザーを割り当てます。
@@ -35,7 +35,7 @@ ms.locfileid: "39368690"
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Azure Portal でユーザーにエンタープライズ アプリケーションへのアクセス許可を割り当てる方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[すべてのサービス]** を選択し、テキスト ボックスに「Azure Active Directory」と入力して、**Enter** キーを押します。
-3. **Azure Active Directory - *ディレクトリ名*** ブレード (管理対象のディレクトリの Azure AD ブレード) で、**エンタープライズ アプリケーション** を選択します。
+3. **[エンタープライズ アプリケーション]** を選択します。
 
     ![エンタープライズ アプリケーションを開く](./media/assign-user-or-group-access-portal/open-enterprise-apps.png)
 4. **[エンタープライズ アプリケーション]** ブレードで、**[すべてのアプリケーション]** を選択します。 これにより、管理できるアプリが一覧で表示されます。

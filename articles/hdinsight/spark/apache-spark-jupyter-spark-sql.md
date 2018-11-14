@@ -2,19 +2,19 @@
 title: 'クイック スタート: テンプレートを使用した HDInsight での Spark クラスターの作成'
 description: このクイックスタートでは、Resource Manager テンプレートを使用して、Azure HDInsight に Apache Spark クラスターを作成し、単純な Spark SQL クエリを実行する方法を示します。
 services: azure-hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 05/07/2018
-ms.author: jasonh
+ms.date: 11/06/2018
+ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: eccef79b53a78abc577ff40d84b615968be3dd0f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8ad8f04b3afa7ed020eaba64d639fb4dbfbeee37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046115"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257522"
 ---
 # <a name="quickstart-create-a-spark-cluster-in-hdinsight-using-template"></a>クイック スタート: テンプレートを使用した HDInsight での Spark クラスターの作成
 
@@ -67,7 +67,7 @@ Jupyter Notebook は、さまざまなプログラミング言語をサポート
 
     ![Azure portal で HDInsight クラスターを開く](./media/apache-spark-jupyter-spark-sql/azure-portal-open-hdinsight-cluster.png)
 
-3. ポータルで **[クラスター ダッシュボード]** を選び、**[Jupyter Notebook]** を選びます。 入力を求められたら、クラスターのログイン資格情報を入力します。
+3. ポータルの **[クラスター ダッシュボード]** セクションで、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターのログイン資格情報を入力します。
 
    ![Jupyter Notebook を開いて対話型の Spark SQL クエリを実行する](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter Notebook を開いて対話型の Spark SQL クエリを実行する")
 
@@ -80,7 +80,7 @@ Jupyter Notebook は、さまざまなプログラミング言語をサポート
 
 ## <a name="run-spark-sql-statements"></a>Spark SQL ステートメントを実行する
 
-SQL (構造化照会言語) は、データ照会とデータ定義のための言語として最も一般的かつ広く使用されています。 Spark SQL を Apache Spark の拡張機能として導入することで、使い慣れた SQL 構文を使って構造化データを扱うことができます。
+SQL (構造化照会言語) は、データ照会とデータ変換のための言語として最も一般的かつ広く使用されています。 Spark SQL を Apache Spark の拡張機能として導入することで、使い慣れた SQL 構文を使って構造化データを扱うことができます。
 
 1. カーネルの準備ができていることを確認します。 Notebook のカーネル名の横に白丸が表示されたら、カーネルの準備ができています。 黒丸は、カーネルがビジー状態であることを示します。
 
@@ -89,11 +89,11 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
     Notebook を初めて起動すると、カーネルがバックグラウンドでいくつかのタスクを実行します。 カーネルの準備ができるまで待ちます。 
 2. 次のコードを空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 コマンドを実行すると、クラスター上の Hive テーブルが一覧表示されます。
 
-    ```PySpark
+    ```sql
     %%sql
     SHOW TABLES
     ```
-    HDInsight Spark クラスターで Jupyter Notebook を使用すると、Spark SQL を使用して Hive クエリを実行するために使用できるプリセット `sqlContext` が手に入ります。 `%%sql` により、プリセット `sqlContext` を使用して Hive クエリを実行するよう Jupyter Notebook に指示します。 クエリは、すべての HDInsight クラスターに既定で付属する Hive テーブル (**hivesampletable**) から先頭の 10 行を取得します。 結果が得られるまで約 30 秒かかります。 出力は次のようになります。 
+    HDInsight Spark クラスターで Jupyter Notebook を使用すると、Spark SQL を使用して Hive クエリを実行するために使用できるプリセット `spark` セッションが手に入ります。 `%%sql` により、プリセット `spark` セッションを使用して Hive クエリを実行するよう Jupyter Notebook に指示します。 クエリは、すべての HDInsight クラスターに既定で付属する Hive テーブル (**hivesampletable**) から先頭の 10 行を取得します。 クエリの初回送信時に、Jupyter によってノートブック用の Spark アプリケーションが作成されます。 完了までに約 30 秒かかります。 Spark アプリケーションの準備が完了すると、約 1 秒後にはクエリが実行されて結果が生成されます。 出力は次のようになります。 
 
     ![HDInsight Spark での Hive クエリ](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "HDInsight Spark での Hive クエリ")
 
@@ -101,7 +101,7 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
     
 2. 別のクエリを実行して、`hivesampletable` のデータを確認します。
 
-    ```PySpark
+    ```sql
     %%sql
     SELECT * FROM hivesampletable LIMIT 10
     ```
@@ -110,10 +110,10 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
 
     ![HDInsight Spark での Hive クエリ出力](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "HDInsight Spark での Hive クエリ出力")
 
-2. ノートブックの **[File]\(ファイル\)** メニューの **[Close and Halt]\(閉じて停止\)** を選びます。 Notebook をシャットダウンすると、クラスターのリソースが解放されます。
+2. ノートブックの **[File]\(ファイル\)** メニューの **[Close and Halt]\(閉じて停止\)** を選びます。 Notebook をシャットダウンすると、クラスターのリソース (Spark アプリケーションを含む) が解放されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-HDInsight はデータを Azure Storage または Azure Data Lake Store に格納するので、クラスターが使われていないときは、クラスターを安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 「[次のステップ](#next-steps)」で示されているチュートリアルにすぐに取り掛かる場合は、クラスターをそのままにしてもかまいません。
+HDInsight では、データと Jupyter Notebook が Azure Storage または Azure Data Lake Store に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 「[次のステップ](#next-steps)」で示されているチュートリアルにすぐに取り掛かる場合は、クラスターをそのままにしてもかまいません。
 
 Azure portal に戻り、**[削除]** を選びます。
 

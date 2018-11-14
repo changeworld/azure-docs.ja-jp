@@ -1,21 +1,21 @@
 ---
 title: 'クイック スタート: ナレッジ ベースを作成する - REST (Go) - QnA Maker'
 titlesuffix: Azure Cognitive Services
-description: この REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
+description: この Go REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/06/2018
 ms.author: diberry
-ms.openlocfilehash: e3a498e983985a2610ee4e52a497ad6c7f7b87a8
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: a1f477dd02e048a3bfb77463c2d9857ee32fb8fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647376"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235311"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>クイック スタート: Go を使用して QnA Maker でナレッジ ベースを作成する
 
@@ -25,186 +25,108 @@ ms.locfileid: "49647376"
 * [KB の作成](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 * [取得操作の詳細](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
-
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[Go 1.10.1](https://golang.org/dl/) が必要です。
+* [Go 1.10.1](https://golang.org/dl/)
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft QnA Maker API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
+## <a name="create-a-knowledge-base-go-file"></a>ナレッジ ベースの Go ファイルを作成する
 
-## <a name="create-knowledge-base"></a>サポート技術情報を作成する
+`create-new-knowledge-base.go` という名前でファイルを作成します。
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
+## <a name="add-the-required-dependencies"></a>必要な依存関係を追加する
 
-1. 適切な IDE で新しい Go プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+`create-new-knowledge-base.go` の先頭に次の行を追加して、プロジェクトに必要な依存関係を追加します。
 
-```go
-package main
+[!code-go[Add the required dependencies](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=1-11 "Add the required dependencies")]
 
-import (
-    "bytes"
-    "encoding/json"
-    "fmt"
-    "io/ioutil"
-    "net/http"
-    "strconv"
-    "time"
-)
+## <a name="add-the-required-constants"></a>必要な定数を追加する
+上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を追加します。 `subscriptionKey` 変数の値を自分の QnA Maker キーに置き換えます。
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+[!code-go[Add the required constants](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=13-20 "Add the required constants")]
 
-// Replace this with a valid subscription key.
-var subscriptionKey string = "ENTER KEY HERE"
+## <a name="add-the-kb-model-definition"></a>KB モデル定義を追加する
+定数の後に、次の KB モデル定義を追加します。 モデルは、定義の後に文字列に変換されます。
 
-var host string = "https://westus.api.cognitive.microsoft.com"
-var service string = "/qnamaker/v4.0"
-var method string = "/knowledgebases/create"
+[!code-go[Add the KB model definition](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=22-44 "Add the KB model definition")]
 
-type Response struct {
-    Headers map[string][]string
-    Body    string
-}
+## <a name="add-supporting-structures-and-functions"></a>補助的な構造体と関数を追加する
 
-func pretty_print(content string) string {
-    var obj map[string]interface{}
-    json.Unmarshal([]byte(content), &obj)
-    result, _ := json.MarshalIndent(obj, "", "  ")
-    return string(result)
-}
+次に、以下の補助的な関数を追加します。
 
-func post(uri string, content string) Response {
-    req, _ := http.NewRequest("POST", uri, bytes.NewBuffer([]byte(content)))
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Content-Length", strconv.Itoa(len(content)))
-    client := &http.Client{}
-    response, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
+1. HTTP 要求の構造体を追加します。
 
-    defer response.Body.Close()
-    body, _ := ioutil.ReadAll(response.Body)
+    [!code-go[Add the structure for an HTTP request](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=46-49 "Add the structure for an HTTP request")]
 
-    return Response {response.Header, string(body)}
-}
+2. QnA Maker API への POST を処理する次のメソッドを追加します。 このクイック スタートでは、POST を使用して KB の定義を QnA Maker に送信します。
 
-func get(uri string) Response {
-    req, _ := http.NewRequest("GET", uri, nil)
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-    client := &http.Client{}
-    response, err := client.Do(req)
-    if err != nil {
-        panic(err)
-    }
+    [!code-go[Add the POST method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=51-66 "Add the POST method")]
 
-    defer response.Body.Close()
-    body, _ := ioutil.ReadAll(response.Body)
+3. QnA Maker API への GET を処理する次のメソッドを追加します。 このクイック スタートでは、GET を使用して作成操作の状態を確認します。 
 
-    return Response {response.Header, string(body)}
-}
+    [!code-go[Add the GET method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=68-83 "Add the GET method")]
 
-var req string = `{
-  "name": "QnA Maker FAQ",
-  "qnaList": [
-    {
-      "id": 0,
-      "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/58994a073d9e04097c7ba6fe/operations/58994a073d9e041ad42d9baa",
-      "source": "Custom Editorial",
-      "questions": [
-        "How do I programmatically update my Knowledge Base?"
-      ],
-      "metadata": [
-        {
-          "name": "category",
-          "value": "api"
-        }
-      ]
-    }
-  ],
-  "urls": [
-    "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
-    "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"
-  ],
-  "files": []
-}`;
+## <a name="add-function-to-create-kb"></a>KB を作成するための関数を追加する
 
-func create_kb(uri string, req string) (string, string) {
-    fmt.Println("Calling " + uri + ".")
-    result := post(uri, req)
-    return result.Headers["Location"][0], result.Body
-}
+次の関数を追加して、ナレッジ ベースを作成するための HTTP POST 要求を作成します。 _create_ という **操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。 
 
-func check_status(uri string) (string, string) {
-    fmt.Println("Calling " + uri + ".")
-    result := get(uri)
-    if retry, success := result.Headers["Retry-After"]; success {
-        return retry[0], result.Body
-    } else {
-// If the response headers did not include a Retry-After value, default to 30 seconds.
-        return "30", result.Body
-    }
-}
+[!code-go[Add the create_kb method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=85-97 "Add the create_kb method")]
 
-func main() {
-    var uri = host + service + method
-    operation, body := create_kb(uri, req)
-    fmt.Printf(body + "\n")
-    var done bool = false
-    for done == false {
-        uri := host + service + operation
-        wait, status := check_status(uri)
-        fmt.Println(status)
-        var status_obj map[string]interface{}
-        json.Unmarshal([]byte(status), &status_obj)
-        state := status_obj["operationState"]
-// If the operation isn't finished, wait and query again.
-        if state == "Running" || state == "NotStarted" {
-            fmt.Printf ("Waiting " + wait + " seconds...")
-            sec, _ := strconv.Atoi(wait)
-            time.Sleep (time.Duration(sec) * time.Second)
-        } else {
-            done = true
-        }
-    }
-}
-```
+この API 呼び出しは、ヘッダー フィールド **Location** に操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。 
 
-## <a name="the-create-knowledge-base-response"></a>ナレッジ ベース作成の応答
-
-成功した応答は、次の例に示すように JSON で返されます。
-
-```json
+```JSON
 {
   "operationState": "NotStarted",
-  "createdTimestamp": "2018-04-13T01:52:30Z",
-  "lastActionTimestamp": "2018-04-13T01:52:30Z",
-  "userId": "2280ef5917bb4ebfa1aae41fb1cebb4a",
-  "operationId": "e88b5b23-e9ab-47fe-87dd-3affc2fb10f3"
-}
-...
-{
-  "operationState": "Running",
-  "createdTimestamp": "2018-04-13T01:52:30Z",
-  "lastActionTimestamp": "2018-04-13T01:52:30Z",
-  "userId": "2280ef5917bb4ebfa1aae41fb1cebb4a",
-  "operationId": "e88b5b23-e9ab-47fe-87dd-3affc2fb10f3"
-}
-...
-{
-  "operationState": "Succeeded",
-  "createdTimestamp": "2018-04-13T01:52:30Z",
-  "lastActionTimestamp": "2018-04-13T01:52:46Z",
-  "resourceLocation": "/knowledgebases/b0288f33-27b9-4258-a304-8b9f63427dad",
-  "userId": "2280ef5917bb4ebfa1aae41fb1cebb4a",
-  "operationId": "e88b5b23-e9ab-47fe-87dd-3affc2fb10f3"
+  "createdTimestamp": "2018-09-26T05:19:01Z",
+  "lastActionTimestamp": "2018-09-26T05:19:01Z",
+  "userId": "XXX9549466094e1cb4fd063b646e1ad6",
+  "operationId": "8dfb6a82-ae58-4bcb-95b7-d1239ae25681"
 }
 ```
+
+## <a name="add-function-to-get-status"></a>状態を取得するための関数を追加する
+
+次の関数を追加して、操作の状態をチェックするための HTTP GET 要求を作成します。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。 
+
+[!code-go[Add the check_status method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=99-108 "Add the check_status method")]
+
+成功または失敗が返されるまで、この呼び出しを繰り返します。 
+
+```JSON
+{
+  "operationState": "Succeeded",
+  "createdTimestamp": "2018-09-26T05:22:53Z",
+  "lastActionTimestamp": "2018-09-26T05:23:08Z",
+  "resourceLocation": "/knowledgebases/XXX7892b-10cf-47e2-a3ae-e40683adb714",
+  "userId": "XXX9549466094e1cb4fd063b646e1ad6",
+  "operationId": "177e12ff-5d04-4b73-b594-8575f9787963"
+}
+```
+## <a name="add-main-function"></a>main 関数を追加する
+
+次の関数は、KB を作成して、状態のチェックを繰り返し実行する main 関数です。 KB の作成には多少時間がかかる場合があるため、成功と失敗のどちらかの状態になるまで、呼び出しを繰り返して状態をチェックする必要があります。
+
+[!code-go[Add the main method](~/samples-qnamaker-go/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base.go?range=110-140 "Add the main method")]
+
+
+## <a name="compile-the-program"></a>プログラムをコンパイルする
+以下のコマンドを入力してファイルをコンパイルします。 このコマンド プロンプトから、ビルドの成功に関する情報は一切返されません。
+
+```bash
+go build create-new-knowledge-base.go
+```
+
+## <a name="run-the-program"></a>プログラムの実行
+
+コマンド ラインで次のコマンドを入力して、プログラムを実行します。 QnA Maker API に要求が送信され、KB が作成された後、30 秒おきに結果がポーリングされます。 それぞれの応答は、コンソール ウィンドウに出力されます。
+
+```bash
+go run create-new-knowledge-base
+```
+
+作成されたナレッジ ベースは、QnA Maker ポータルの [[My knowledge bases]\(マイ ナレッジ ベース\)](https://www.qnamaker.ai/Home/MyServices) ページで確認できます。 
+
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
 ## <a name="next-steps"></a>次の手順
 

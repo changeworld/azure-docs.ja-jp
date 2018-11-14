@@ -9,12 +9,12 @@ ms.date: 08/08/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: 094cab324c7a7c66f5fcb57d488661109fcdabea
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 0531985cbab9c10b4df8ea3f27ac6c7903790da5
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362672"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978232"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定
 
@@ -75,7 +75,7 @@ Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインス
 
 ローカル クラスターがない場合、Visual Studio は、ローカル クラスターを自動的に作成します。そのため、Visual Studio を使用している場合は、このセクションをスキップできます。
 
-Service Fabric アプリを作成および実行する際のデバッグのパフォーマンスを最大限に高めるために、単一ノードのローカル開発クラスターの作成をお勧めします。 このクラスターは、Service Fabric Mesh プロジェクトをデプロイまたはデバッグする際は常に実行中の状態にしておく必要があります。
+Service Fabric アプリを作成および実行する際のデバッグのパフォーマンスを最大限に高めるために、単一ノードのローカル開発クラスターの作成をお勧めします。 このクラスターは、Service Fabric mesh プロジェクトをデプロイまたはデバッグする際は常に実行中の状態にしておく必要があります。
 
 Docker は、クラスターを構築する前に実行しておく**必要があります**。 Docker が実行中であるかどうかをテストするには、ターミナル ウィンドウを開いて `docker ps` を実行し、エラーが発生するかどうか確認します。 応答でエラーが表示されない場合は、Docker は実行中になっており、クラスターを構築する準備ができています。
 
@@ -100,6 +100,8 @@ Docker は、クラスターを構築する前に実行しておく**必要が�
 ## <a name="next-steps"></a>次の手順
 
 [Azure Service Fabric アプリの作成](service-fabric-mesh-tutorial-create-dotnetcore.md)に関するチュートリアルを参照してください。
+
+[よく寄せられる質問](service-fabric-mesh-faq.md)に対する回答を確認します。
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [download-docker]: https://store.docker.com/editions/community/docker-ce-desktop-windows

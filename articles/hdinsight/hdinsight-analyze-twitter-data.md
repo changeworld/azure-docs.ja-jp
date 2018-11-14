@@ -1,20 +1,20 @@
 ---
-title: HDInsight の Hadoop を使用した Twitter データの分析 - Azure
-description: HDInsight の Hadoop に格納されている Twitter データを Hive で分析し、特定の単語の使用頻度を調べる方法について説明します。
+title: HDInsight で Apache Hadoop を使用して Twitter データを分析する - Azure
+description: 特定の単語の使用頻度を見つけるために、HDInsight で Hive を使用して Apache Hadoop 上の Twitter データを分析する方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 294353cfcfba617ab19e703f11f35402bcf7ea82
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 39db03170d6a9c9d481b1448b54bdbd52e205921
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387583"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037297"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>HDInsight での Hive を使用した Twitter データの分析
 ビッグ データの多くはソーシャル Website からもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。

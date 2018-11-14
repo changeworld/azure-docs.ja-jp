@@ -2,19 +2,18 @@
 title: Azure Functions で接続を管理する方法
 description: 静的接続クライアントを使用して、Azure Functions のパフォーマンスの問題を回避する方法について説明します。
 services: functions
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 11/02/2018
 ms.author: glenga
-ms.openlocfilehash: 6a877bb7f21b129522b9ffeab22eb77d7a556d53
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: eb5c302c807f85f24f53fa1ba32ef4cd7b52274a
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094801"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036463"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Azure Functions で接続を管理する方法
 
@@ -37,9 +36,13 @@ Azure Functions アプリケーションでサービス固有のクライアン�
 - 関数の呼び出しごとに使用できる単一の静的クライアントを**作成する**。
 - 異なる関数が同じサービスを使用している場合、共有ヘルパー クラスで単一の静的クライアントを**作成することを検討する**。
 
-## <a name="httpclient-code-example"></a>HttpClient コードの例
+## <a name="client-code-examples"></a>クライアント コードの例
 
-静的 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) を作成する関数コードの例を次に示します。
+このセクションでは、関数のコードからクライアントを作成および使用するためのベスト プラクティスを示します。
+
+### <a name="httpclient-example-c"></a>HttpClient の例 (C#)
+
+静的 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) を作成する C# 関数コードの例を次に示します。
 
 ```cs
 // Create a single, static HttpClient
@@ -54,7 +57,27 @@ public static async Task Run(string input)
 
 .NET の [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) については、"クライアントを破棄する方がよいですか" という質問がよく寄せられます。 一般的に、`IDisposable` を実装したオブジェクトは、使用の終了後に破棄します。 ただし、関数の終了時に静的クライアントの使用は終了しないため、静的クライアントは破棄しません。 アプリケーションの起動中は、静的クライアントを存続することができます。
 
-## <a name="documentclient-code-example"></a>DocumentClient のコード例
+### <a name="http-agent-examples-nodejs"></a>HTTP エージェントの例 (Node.js)
+
+優れた接続管理オプションが提供されることから、`node-fetch` モジュールなどの非ネイティブ メソッドではなくネイティブの [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) クラスを使用する必要があります。 接続パラメーターは `http.agent` クラスのオプションを使用して構成されます。 HTTP エージェントで利用できるオプションの詳細については、 [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options) を参照してください。
+
+`http.request()` で使用されるグローバル `http.globalAgent` では、これらのすべての値がそれぞれの既定値に設定されます。 関数の接続制限を構成するための推奨される方法は、グローバルに最大数を設定することです。 次の例は、関数アプリのソケットの最大数を設定します。
+
+```js
+http.globalAgent.maxSockets = 200;
+```
+
+ 次の例は、HTTP 要求に対してのみ使用されるカスタム HTTP エージェントで新しい HTTP 要求を作成します。
+
+```js
+var http = require('http');
+var httpAgent = new http.Agent();
+httpAgent.maxSockets = 200;
+options.agent = httpAgent;
+http.request(options, onResponseCallback);
+```
+
+### <a name="documentclient-code-example-c"></a>DocumentClient のコード例 (C#)
 
 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ) は、Azure Cosmos DB のインスタンスに接続します。 Azure Cosmos DB のドキュメントでは、[アプリケーションの有効期間中はシングルトン Azure Cosmos DB クライアントを使用する](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage)ことが推奨されています。 次の例では、関数内でそれを行うパターンの 1 つを示します。

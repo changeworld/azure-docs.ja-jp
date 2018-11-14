@@ -1,22 +1,22 @@
 ---
-title: Windows ベースの HDInsight で Tez UI を使用する - Azure
-description: Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする方法について説明します。
+title: Windows ベースの HDInsight で Apache Tez UI を使用する - Azure
+description: Windows ベースの HDInsight HDInsight で Apache Tez UI を使用して Tez ジョブをデバッグする方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/17/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ff47d0a71e97ce4ec9fd04e1d0cb9e5592192d53
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ecb613dd2f624b9e0910a0ddcdf931f4b266aa96
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112189"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036584"
 ---
-# <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする
+# <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight で Apache Tez UI を使用して Tez ジョブをデバッグする
 Tez UI は、Tez を実行エンジンとして使用する Hive ジョブをデバッグするために使用できます。 Tez UI を使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
 
 > [!IMPORTANT]
@@ -26,13 +26,13 @@ Tez UI は、Tez を実行エンジンとして使用する Hive ジョブをデ
 * Windows ベースの HDInsight クラスター。 新しいクラスターの作成手順については、「 [Hadoop チュートリアル: Windows 上の HDInsight で Hadoop を使用する](hdinsight-hadoop-tutorial-get-started-windows.md)」を参照してください。
 
   > [!IMPORTANT]
-  > Tez UI は、2016 年 2 月 8 日より後に作成された Windows ベースの HDInsight クラスターでのみ利用できます。
+  > Apache Tez UI は、2016 年 2 月 8 日より後に作成された Windows ベースの HDInsight クラスターでのみ使用できます。
   >
   >
 * Windows ベースのリモート デスクトップ クライアント。
 
-## <a name="understanding-tez"></a>Tez について
-Tez は、Hadoop でデータを処理するための拡張可能なフレームワークで、処理速度が従来の MapReduce よりも向上します。 Tez を有効にするには、次のテキストを Hive クエリの一部に含めます。
+## <a name="understanding-apache-tez"></a>Apache Tez について
+Tez は、Apache Hadoop でのデータ処理のための拡張可能なフレームワークであり、従来の MapReduce 処理より高い速度を提供します。 Tez を有効にするには、次のテキストを Hive クエリの一部に含めます。
 
     set hive.execution.engine=tez;
 

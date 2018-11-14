@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/04/2018
+ms.date: 11/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: bd90d3c4c9207374d6a6085df6a3962ef42b68a9
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: fae5771afea742b2746c32e1ed6ae88c511876e6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091433"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037959"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>チュートリアル: Azure Data Box Disk (プレビュー) を注文する
 
-Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるハイブリッド クラウド ソリューションです。 Microsoft が提供するソリッドステート ディスク (SSD) にデータを転送し、ディスクを返送します。 その後、このデータは Azure にアップロードされます。 
+Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるハイブリッド クラウド ソリューションです。 Microsoft が提供するソリッドステート ディスク (SSD) にデータを転送し、ディスクを返送します。 その後、このデータは Azure にアップロードされます。
 
 このチュートリアルでは、Azure Data Box Disk を注文する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > - Data Box Disk はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
 > - プレビュー期間中、Data Box Disk は、米国、西ヨーロッパ、北ヨーロッパ、カナダ、およびオーストラリアのお客様に出荷できます。 詳細については、「[Region availability (利用可能なリージョン)](data-box-disk-overview.md#region-availability)」をご覧ください。
 
-## <a name="sign-up"></a>サインアップ 
+## <a name="sign-up"></a>サインアップ
 
 Data Box Disk はプレビュー段階にあり、サービスにサインアップする必要があります。 Data Box サービスにサインアップするには、次の手順を実行します。
 
@@ -64,7 +64,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
     |宛先 Azure リージョン|データを転送する Azure リージョンを選択します。|
 
   
-5.  **[Data Box Disk]** を選択します。 1 つの注文 (5 台のディスク) でのソリューションの最大容量は 35 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。 
+5.  **[Data Box Disk]** を選択します。 1 つの注文 (5 台のディスク) でのソリューションの最大容量は 35 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
 
      ![Data Box Disk オプションを選択する](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
@@ -77,6 +77,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
     |宛先 Azure リージョン| ストレージ アカウントのリージョンを選択します。<br> 現時点では、米国、西ヨーロッパ、北ヨーロッパ、カナダ、およびオーストラリアにおけるすべてのリージョンのストレージ アカウントがサポートされています。 |
     |ストレージ アカウント|指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から選択します。 <br>新しい汎用 v1 アカウントまたは汎用 v2 アカウントを作成することもできます。 |
     |推定データ サイズ (TB 単位)| 推定サイズを TB 単位で入力します。 <br>データ サイズに基づいて、Microsoft は適切な数の 8 TB SSD (使用可能な容量は 7 TB) を発送します。 <br>5 台のディスクの最大使用可能容量は最大 35 TB です。 |
+    |ディスク パスキー| **[Azure 生成のパスキーではなくカスタム キーを使用]** をオンにした場合は、ディスク パスキーを指定します。 <br> 少なくとも 1 つの数字と 1 つの特殊文字を含む 12 から 32 文字の英数字で構成されたキーを入力します。 使用できる特殊文字は `@?_+` です。 <br> このオプションをスキップし、Azure によって生成されたパスキーを使用してディスクをロック解除することができます。|
 
 13. **[次へ]** をクリックします。 
 

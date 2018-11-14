@@ -1,6 +1,6 @@
 ---
-title: Hadoop コンポーネントとバージョン - Azure HDInsight
-description: HDInsight での Hadoop コンポーネントおよびバージョンと、このクラウド ディストリビューションの Hortonworks Data Platform で使用できるサービス レベルについて説明します。
+title: Apache Hadoop コンポーネントおよびバージョン - Azure HDInsight
+description: HDInsight での Apache Hadoop コンポーネントおよびバージョンと、このクラウド ディストリビューションの Hortonworks Data Platform で使用できるサービス レベルについて説明します。
 keywords: hadoop バージョン,hadoop エコシステム コンポーネント,hadoop コンポーネント,hadoop バージョンの確認方法
 services: hdinsight
 ms.reviewer: jasonh
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: e299eda50967bee25f76c2e6456afa1ecbd7970c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: fca83090e6713e4360bd19d49c7fd6b9147fd6ea
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243182"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219734"
 ---
-# <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
+# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
 Microsoft Azure HDInsight の Apache Hadoop エコシステムのコンポーネントおよびバージョンと、Enterprise セキュリティ パッケージについて説明します。 また、HDInsight で Hadoop コンポーネントのバージョンを確認する方法についても説明します。 
 
 HDInsight の各バージョンは、あるバージョンの Hortonworks Data Platform (HDP) のクラウド ディストリビューションです。
 
-## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>HDInsight の各バージョンで使用できる Hadoop コンポーネント
+## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント
 Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。 各バージョンを選択すると、特定のバージョンの HDP ディストリビューションと、そのディストリビューションに含まれるコンポーネントが作成されます。 2017 年 4 月 4 日現在、Azure HDInsight で使用される既定のクラスター バージョンは、HDP 2.6 を基盤とした 3.6 です。
 
 HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。 
@@ -50,7 +50,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.1 |2.3.0、2.2.0、2.1.0 |1.6.2、2.0 |1.6.0 |1.5.2 |1.3.1 (Windows のみ) |-|-|
 | Apache Livy |0.5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
-| Apache Kafka | 1.0.1 |1.1、1.0、0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
+| Apache Kafka | 1.1 |1.1、1.0、0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
 | Mono |4.2.1 |4.2.1 |4.2.1 |3.2.8 |-|-|-|
@@ -247,7 +247,7 @@ _提供終了日_とは、その日を過ぎると HDInsight でクラスター 
   | エッジ: 推奨される VM サイズ | | | | | |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
 * ブラジル南部と西日本のみ (v2 サイズはありません):
 
-  | クラスターの種類 | Hadoop | hbase | Interactive Query |Storm | Spark | ML Service |
+  | クラスターの種類 | Hadoop | hbase | Interactive Query |Storm | Spark | ML サービス |
   | --- | --- | --- | --- | --- | --- | --- |
   | ヘッド: 既定の VM サイズ |D3 |D3  | D13、D14 |A3 |D12 |D12 |
   | ヘッド: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12  | D13、D14 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |

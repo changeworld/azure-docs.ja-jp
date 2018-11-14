@@ -10,26 +10,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
+ms.date: 11/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8828ba3c91df7b0a2fde3c42ecd81bd4ee4d17a3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e1edf0ed0c9efcb9f0c81718621706550bf3c4d7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295939"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012005"
 ---
-# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする
+# <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする
 
-この記事では、Azure Resource Manager テンプレートで反復処理して、リソースの複数のインスタンスを作成する方法について説明します。 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](resource-manager-templates-resources.md#condition)に関する記述を参照してください。
+この記事では、リソースの複数のインスタンスを作成するために Azure Resource Manager テンプレートで反復処理する方法について説明します。 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](resource-manager-templates-resources.md#condition)に関する記述を参照してください。
 
 チュートリアルについては、「[Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」を参照してください。
 
 ## <a name="resource-iteration"></a>リソースの反復
 
-デプロイ時に、リソースのインスタンスを 1 つまたは複数作成することを決定する必要がある場合は、リソースの種類に `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。 数値は正の整数で、800 を超えることはできません。 
+デプロイ時に、リソースのインスタンスを 1 つまたは複数作成することを決定する必要がある場合は、リソースの種類に `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。 count 値は正の整数である必要がありますが、800 を超えることはできません。 
 
-複数回作成されるリソースは、次の形式を取ります。
+複数回作成するリソースは、次の形式を取ります。
 
 ```json
 {
@@ -111,9 +111,9 @@ ms.locfileid: "46295939"
 * storagefabrikam
 * storagecoho
 
-既定では、リソース マネージャーは並列でリソースを作成します。 そのため、作成される順序は保証されません。 しかし、リソースが順番にデプロイされるように指定したい場合もあります。 たとえば、運用環境を更新するとき、一度に特定の数だけ更新されるように更新時間をずらす必要がある場合があります。
+既定では、リソース マネージャーは並列でリソースを作成します。 それらが作成される順序は保証されません。 しかし、リソースが順番にデプロイされるように指定したい場合もあります。 たとえば、運用環境を更新するとき、一度に特定の数だけ更新されるように更新時間をずらす必要がある場合があります。
 
-リソースの複数のインスタンスを逐次的にデプロイするには、`mode` を **serial** に設定し、`batchSize` を、一度にデプロイするインスタンスの数に設定します。 シリアル モードでは、Resource Manager はループ内で前のインスタンスへの依存関係を作成するので、前のバッチが完了するまで次のバッチは実行されません。
+リソースの複数のインスタンスを連続的にデプロイするには、`mode` を **serial** に、`batchSize` を一度にデプロイするインスタンスの数に設定します。 シリアル モードでは、Resource Manager はループ内で前のインスタンスへの依存関係を作成するので、前のバッチが完了するまで次のバッチは実行されません。
 
 たとえば、ストレージ アカウントを一度に 2 つずつ、逐次的にデプロイするには、次のコマンドを使用します。
 
@@ -148,10 +148,10 @@ mode プロパティでも **parallel** が既定値として使用されます�
 
 ## <a name="property-iteration"></a>プロパティの反復処理
 
-リソース上のプロパティに複数の値を作成するには、プロパティ要素に `copy` 配列を追加します。 この配列にはオブジェクトが含まれていて、各オブジェクトには次のプロパティがあります。
+リソース上のプロパティの複数の値を作成するには、プロパティ要素に `copy` 配列を追加します。 この配列にはオブジェクトが含まれていて、各オブジェクトには次のプロパティがあります。
 
 * name - 複数の値を作成するプロパティの名前
-* count - 作成する値の数
+* count - 作成する値の数。 count 値は正の整数である必要がありますが、800 を超えることはできません。
 * input - プロパティに割り当てる値を格納するオブジェクト  
 
 次の例は、仮想マシンで dataDisks プロパティに `copy` を適用する方法を示しています。
@@ -381,7 +381,7 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 <a id="looping-on-a-nested-resource" />
 
 ## <a name="iteration-for-a-child-resource"></a>子リソースの反復処理
-子リソースにコピー ループを使用することはできません。 通常他のリソース内の入れ子として定義されるリソースの複数のインスタンスを作成するには、代わりにそのリソースを最上位のリソースとして作成する必要があります。 type および name の各プロパティを使用して、親リソースとの関係を定義します。
+子リソースにコピー ループを使用することはできません。 通常は別のリソース内で入れ子になっているように定義するリソースの複数のインスタンスを作成するには、代わりに、そのリソースを最上位のリソースとして作成する必要があります。 type および name の各プロパティを使用して、親リソースとの関係を定義します。
 
 たとえば、通常はデータ ファクトリ内の子リソースとしてデータセットを定義するとします。
 
@@ -403,7 +403,7 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 }]
 ```
 
-データセットの複数のインスタンスを作成するには、データ ファクトリの外部に移動します。 データセットは、データ ファクトリと同じレベルである必要がありますが、今までどおりデータ ファクトリの子リソースです。 type および name の各プロパティを使用して、データセットとデータ ファクトリの関係を保存します。 テンプレート内の位置から type を推論できなくなったため、`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` の形式で完全修飾型を指定する必要があります。
+複数のデータ セットを作成するには、それをデータ ファクトリの外部に移動します。 データセットは、データ ファクトリと同じレベルである必要がありますが、今までどおりデータ ファクトリの子リソースです。 type および name の各プロパティを使用して、データセットとデータ ファクトリの関係を保存します。 テンプレート内の位置から type を推論できなくなったため、`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` の形式で完全修飾型を指定する必要があります。
 
 データ ファクトリのインスタンスを使用して親子関係を確立するには、親リソースの名前を含むデータ セットの名前を指定します。 `{parent-resource-name}/{child-resource-name}` の形式で入力します。  
 
@@ -432,14 +432,14 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 
 ## <a name="example-templates"></a>サンプル テンプレート
 
-次の例は、複数のリソースやプロパティを作成する場合の一般的なシナリオを示したものです。
+次の例は、リソースまたはプロパティの複数のインスタンスを作成するための一般的なシナリオを示しています。
 
 |テンプレート  |説明  |
 |---------|---------|
-|[Copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |名前にインデックス番号を使用した、複数のストレージ アカウントをデプロイします。 |
+|[Copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |名前にインデックス番号を含む複数のストレージ アカウントをデプロイします。 |
 |[Serial copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |複数のストレージ アカウントを一度に 1 つずつデプロイします。 名前にはインデックス番号が含まれます。 |
 |[Copy storage with array](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |複数のストレージ アカウントをデプロイします。 名前には、配列からの値が含まれます。 |
-|[VM deployment with a variable number of data disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |仮想マシンを使用したデータ ディスクを複数デプロイします。 |
+|[VM deployment with a variable number of data disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |仮想マシンと共に複数のデータ ディスクをデプロイします。 |
 |[Copy variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |変数を反復処理する各種の方法を示します。 |
 |[Multiple security rules](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |ネットワーク セキュリティ グループに複数のセキュリティ規則をデプロイします。 セキュリティ規則はパラメーターから構築されます。 パラメーターについては、[複数の NSG パラメーター ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)に関するページを参照してください。 |
 

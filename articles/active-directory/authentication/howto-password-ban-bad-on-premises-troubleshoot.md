@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1e5782ce3421cc5f0d2e0e51484d4bbe6b9eb6ab
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741183"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978640"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>プレビュー: Azure AD パスワード保護の監視、レポート、トラブルシューティング
 
@@ -28,9 +28,11 @@ Azure AD のデプロイ後、パスワード保護の監視と報告は重要�
 
 ## <a name="on-premises-logs-and-events"></a>オンプレミスのログとイベント
 
-### <a name="dc-agent-service"></a>DC エージェント サービス
+### <a name="dc-agent-admin-log"></a>DC エージェント管理ログ
 
-各ドメイン コントローラーで、DC エージェント サービス ソフトウェアは、パスワード検証の結果 (およびその他の状態) をローカルのイベント ログ (\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin) に書き込みます。
+各ドメイン コントローラーで、DC エージェント サービス ソフトウェアは、パスワード検証の結果 (およびその他の状態) をローカルのイベント ログに書き込みます。
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
 イベントは、以下の範囲を使用して、さまざまな DC エージェント コンポーネントによってログに記録されます。
 
@@ -62,33 +64,42 @@ Azure AD のデプロイ後、パスワード保護の監視と報告は重要�
 > [!TIP]
 > 受信したパスワードは、まず Microsoft のグローバル パスワード リストに対して検証されます。それに失敗すると、以降の処理は実行されません。 これは Azure のパスワード変更に対して実行される動作と同じです。
 
-#### <a name="sample-event-log-message-for-event-id-10014-successful-password-set"></a>イベント ID 10014 の成功したパスワード設定のサンプル イベント ログ メッセージ
+#### <a name="sample-event-log-message-for-event-id-10014-successful-password-set"></a>イベント ID 10014 (パスワード設定成功) のサンプル イベント ログ メッセージ
 
+```
 The changed password for the specified user was validated as compliant with the current Azure password policy.
 
- UserName: BPL_02885102771 FullName:
+ UserName: BPL_02885102771
+ FullName:
+```
 
-#### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>イベント ID 10017 および 30003 の失敗したパスワード設定のサンプル イベント ログ メッセージ
+#### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>イベント ID 10017 および 30003 (パスワード設定失敗) のサンプル イベント ログ メッセージ
 
 10017:
 
+```
 The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
 
- UserName: BPL_03283841185 FullName:
+ UserName: BPL_03283841185
+ FullName:
+```
 
 30003:
 
+```
 The reset password for the specified user was rejected because it matched at least one of the tokens present in the per-tenant banned password list of the current Azure password policy.
 
- UserName: BPL_03283841185 FullName:
+ UserName: BPL_03283841185
+ FullName:
+```
 
-注意が必要なその他の主なイベント ログ メッセージは次のとおりです。
+#### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>イベント ID 30001 (使用可能なポリシーがないためパスワード受け入れ) のサンプル イベント ログ メッセージ
 
-#### <a name="sample-event-log-message-for-event-id-30001"></a>イベント ID 30001 のサンプル イベント ログ メッセージ
-
+```
 The password for the specified user was accepted because an Azure password policy is not available yet
 
-UserName: SomeUser FullName: Some User
+UserName: SomeUser
+FullName: Some User
 
 This condition may be caused by one or more of the following reasons:%n
 
@@ -107,60 +118,103 @@ This condition may be caused by one or more of the following reasons:%n
 4. This DC does not have connectivity to other domain controllers in the domain.
 
    Resolution steps: ensure network connectivity exists to the domain.
+```
 
-#### <a name="sample-event-log-message-for-event-id-30006"></a>イベント ID 30006 のサンプル イベント ログ メッセージ
+#### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>イベント ID 30006 (新規ポリシー適用中) のサンプル イベント ログ メッセージ
 
+```
 The service is now enforcing the following Azure password policy.
 
+ Enabled: 1
  AuditOnly: 1
-
  Global policy date: ‎2018‎-‎05‎-‎15T00:00:00.000000000Z
-
  Tenant policy date: ‎2018‎-‎06‎-‎10T20:15:24.432457600Z
-
  Enforce tenant policy: 1
+```
 
-#### <a name="dc-agent-log-locations"></a>DC エージェントのログの場所
+#### <a name="dc-agent-operational-log"></a>DC エージェント操作ログ
 
-DC エージェント サービスは、操作関連のイベント ログも \Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational に記録します
+DC エージェント サービスでは、操作関連のイベントも次のログに記録されます。
 
-DC エージェント サービスは、詳細なデバッグレベルのトレース イベント ログも \Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace に記録することもできます
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
+
+#### <a name="dc-agent-trace-log"></a>DC エージェント トレース ログ
+
+DC エージェント サービスでは、デバッグ レベルの詳細なトレース イベントも次のログに記録できます。
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
+
+トレース ログは既定では無効です。
 
 > [!WARNING]
-> Trace ログは既定で無効です。 有効にすると、このログは大量のイベントを受け取り、ドメイン コントローラーのパフォーマンスに影響を与える可能性があります。 そのため、この拡張ログは、問題を深く調査する必要がある場合にのみ、ごく短時間、有効にすることをお勧めします。
+>  有効にすると、トレース ログは大量のイベントを受け取り、ドメイン コントローラーのパフォーマンスに影響を与える可能性があります。 そのため、この拡張ログは、問題を深く調査する必要がある場合にのみ、ごく短時間、有効にすることをお勧めします。
+
+#### <a name="dc-agent-text-logging"></a>DC エージェント テキスト ログ
+
+次のレジストリ値を設定することで、テキスト ログに書き込むように DC エージェント サービスを構成できます。
+
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1 (REG_DWORD 値)
+
+テキスト ログは既定では無効です。 この値の変更を有効にするには、DC エージェント サービスを再起動する必要があります。 有効にすると、DC エージェント サービスは次の場所にあるログ ファイルに書き込みます。
+
+`%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
+
+> [!TIP]
+> テキスト ログは、トレース ログに記録できるものと同じデバッグ レベルのエントリを受け取りますが、一般に、確認および分析するのが簡単な形式です。
+
+> [!WARNING]
+> 有効にすると、このログは大量のイベントを受け取り、ドメイン コントローラーのパフォーマンスに影響を与える可能性があります。 そのため、この拡張ログは、問題を深く調査する必要がある場合にのみ、ごく短時間、有効にすることをお勧めします。
 
 ### <a name="azure-ad-password-protection-proxy-service"></a>Azure AD パスワード保護プロキシ サービス
 
-パスワード保護プロキシ サービスは、イベント ログ \Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational に最低限のイベント セットを発行します
+#### <a name="proxy-service-event-logs"></a>プロキシ サービス イベント ログ
 
-パスワード保護プロキシ サービスは、ログ \Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace に詳細なデバッグレベルのトレース イベントを発行することもできます。
+プロキシ サービスでは、次のイベント ログに最小セットのイベントが生成されます。
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational`
+
+プロキシ サービスでは、デバッグ レベルの詳細なトレース イベントも次のログに記録できます。
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
+
+トレース ログは既定では無効です。
 
 > [!WARNING]
-> Trace ログは既定で無効です。 有効にすると、このログは大量のイベントを受け取り、プロキシ ホストのパフォーマンスに影響を与える可能性があります。 そのため、このログは、問題を深く調査する必要がある場合にのみ、ごく短時間、有効にすることをお勧めします。
+> 有効にすると、トレース ログは大量のイベントを受け取り、プロキシ ホストのパフォーマンスに影響を与える可能性があります。 そのため、このログは、問題を深く調査する必要がある場合にのみ、ごく短時間、有効にすることをお勧めします。
 
-### <a name="dc-agent-discovery"></a>DC エージェントの検出
+#### <a name="proxy-service-text-logging"></a>プロキシ サービス テキスト ログ
 
-`Get-AzureADPasswordProtectionDCAgent` コマンドレットを使用すると、ドメインまたはフォレスト内で実行されているさまざまな DC エージェントに関する基本的な情報を表示できます。 この情報は、実行中の DC エージェント サービスによって登録された serviceConnectionPoint オブジェクトから取得されます。 このコマンドレットの出力例は次のとおりです。
+次のレジストリ値を設定することで、テキスト ログに書き込むようにプロキシ サービスを構成できます。
 
-```
-PS C:\> Get-AzureADPasswordProtectionDCAgent
-ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
-Domain                : bplchild.bplRootDomain.com
-Forest                : bplRootDomain.com
-Heartbeat             : 2/16/2018 8:35:01 AM
-```
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters!EnableTextLogging = 1 (REG_DWORD 値)
 
-さまざまなプロパティは、各 DC エージェント サービスによって約 1 時間ごとに更新されます。 さらに、データは Active Directory レプリケーションの待機時間の影響を受けます。
+テキスト ログは既定では無効です。 この値の変更を有効にするには、プロキシ サービスを再起動する必要があります。 有効にすると、プロキシ サービスは次の場所にあるログ ファイルに書き込みます。
 
-コマンドレットのクエリの範囲は、-Forest パラメーターまたは -Domain パラメーターの使用の影響を受ける可能性があります。
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+> [!TIP]
+> テキスト ログは、トレース ログに記録できるものと同じデバッグ レベルのエントリを受け取りますが、一般に、確認および分析するのが簡単な形式です。
+
+> [!WARNING]
+> 有効にすると、このログは大量のイベントを受け取り、ドメイン コントローラーのパフォーマンスに影響を与える可能性があります。 そのため、この拡張ログは、問題を深く調査する必要がある場合にのみ、ごく短時間、有効にすることをお勧めします。
+
+#### <a name="powershell-cmdlet-logging"></a>PowerShell コマンドレット ログ
+
+ほとんどの Azure AD パスワード保護 PowerShell コマンドレットは、次の場所にあるテキスト ログに書き込みます。
+
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+コマンドレット エラーが発生し、原因や解決策がすぐにわからない場合は、テキスト ログも参考になる可能性があります。
 
 ### <a name="emergency-remediation"></a>緊急時の修復
 
-DC エージェント サービスが問題の原因である残念な状況が発生した場合、DC エージェント サービスは直ちにシャットダウンされる可能性があります。 DC エージェントのパスワード フィルター dll が実行中ではないサービスを呼び出そうとすると、警告イベント (10012、10013) がログに記録されますが、その間にすべての受信パスワードが承認されます。 DC エージェント サービスは、必要に応じて Windows サービス コントロール マネージャーを使用してスタートアップの種類を "無効" に構成することもできます。
+DC エージェント サービスが問題の原因である状況が発生した場合、DC エージェント サービスは直ちにシャットダウンされる可能性があります。 DC エージェントのパスワード フィルター dll が実行中ではないサービスをまだ呼び出そうとすると、警告イベント (10012、10013) がログに記録されますが、その間にすべての受信パスワードが承認されます。 DC エージェント サービスは、必要に応じて Windows サービス コントロール マネージャーを使用してスタートアップの種類を "無効" に構成することもできます。
 
 ### <a name="performance-monitoring"></a>パフォーマンスの監視
 
-DC エージェント サービス ソフトウェアによって、**Azure AD password protection** というパフォーマンス カウンター オブジェクトがインストールされます。 現在、次のパフォーマンス カウンターを使用できます。
+DC エージェント サービス ソフトウェアによって、**Azure AD Password Protection** というパフォーマンス カウンター オブジェクトがインストールされます。 現在、次のパフォーマンス カウンターを使用できます。
 
 |パフォーマンス カウンター名 | 説明|
 | --- | --- |
@@ -182,6 +236,7 @@ DC エージェント サービス ソフトウェアによって、**Azure AD p
 ## <a name="domain-controller-demotion"></a>ドメイン コントローラーの降格
 
 DC エージェント ソフトウェアを実行中でもドメイン コントローラーを降格させることができます。 管理者は、DC エージェント ソフトウェアの実行は維持され、降格手続き中は現在のパスワード ポリシーが継続的に適用されていることに注意してください。 新しいローカル管理者アカウントのパスワード (降格操作の一環で指定されます) は、他のパスワードと同様に検証されます。 DC の降格手続きの一環でローカル管理者アカウントに安全なパスワードを選択することをお勧めします。ただし、DC エージェント ソフトウェアによる新しいローカル管理者アカウントのパスワードの検証は、既存の降格操作手続きに影響する可能性があります。
+
 降格が成功し、ドメイン コントローラーが再起動され、通常のメンバー サーバーとして改めて実行されると、DC エージェント ソフトウェアはパッシブ モードで動作するようになります。 このソフトウェアはいつでもアンインストールできます。
 
 ## <a name="removal"></a>削除
@@ -189,14 +244,15 @@ DC エージェント ソフトウェアを実行中でもドメイン コント
 パブリック プレビュー ソフトウェアをアンインストールし、関連するすべての状態をドメインとフォレストからクリーンアップする場合、次の手順で実行できます。
 
 > [!IMPORTANT]
-> これらの手順は、順番に実行することが重要です。 パスワード保護プロキシ サービスのインスタンスを実行中のままにすると、定期的に serviceConnectionPoint オブジェクトが再作成されるだけでなく、定期的に sysvol 状態が再作成されます。
+> これらの手順は、順番に実行することが重要です。 プロキシ サービスのインスタンスを実行中のままにすると、定期的に serviceConnectionPoint オブジェクトが再作成されます。 DC エージェント サービスのインスタンスを実行中のままにすると、定期的に serviceConnectionPoint オブジェクトと sysvol 状態が再作成されます。
 
 1. すべてのマシンからパスワード保護プロキシ ソフトウェアをアンインストールします。 この手順では、再起動する**必要はありません**。
 2. すべてのドメイン コントローラーから DC エージェント ソフトウェアをアンインストールします。 この手順では、再起動する**必要があります**。
 3. 各ドメイン名前付けコンテキストのすべてのプロキシ サービス接続ポイントを手動で削除します。 これらのオブジェクトの場所は、次の Active Directory Powershell コマンドで検出できます。
-   ```
+
+   ```Powershell
    $scp = "serviceConnectionPoint"
-   $keywords = "{EBEFB703-6113-413D-9167-9F8DD4D24468}*"
+   $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
@@ -206,9 +262,9 @@ DC エージェント ソフトウェアを実行中でもドメイン コント
 
 4. 各ドメイン名前付けコンテキストに含まれるすべての DC エージェント接続ポイントを手動で削除します。 パブリック プレビュー ソフトウェアの展開の規模によっては、フォレスト内のドメイン コントローラーごとにこのようなオブジェクトが 1 つ存在することがあります。 そのオブジェクトの場所は、次の Active Directory Powershell コマンドで検出できます。
 
-   ```
+   ```Powershell
    $scp = "serviceConnectionPoint"
-   $keywords = "{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*"
+   $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
@@ -216,8 +272,8 @@ DC エージェント ソフトウェアを実行中でもドメイン コント
 
 5. フォレストレベルの構成状態を手動で削除します。 フォレストの構成状態は、Active Directory 構成の名前付けコンテキストのコンテナーに保持されます。 次のように検出および削除できます。
 
-   ```
-   $passwordProtectonConfigContainer = "CN=Azure AD password protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
+   ```Powershell
+   $passwordProtectonConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject $passwordProtectonConfigContainer
    ```
 

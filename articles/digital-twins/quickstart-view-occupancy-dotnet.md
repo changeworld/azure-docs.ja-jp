@@ -8,20 +8,24 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/02/2018
+ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e0b47b1322a520ad8b09fd2fe2967e628b5e4e03
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6e83ca543937948ad8028969cceca0f8787972c9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322877"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281220"
 ---
 # <a name="quickstart-find-available-rooms-using-azure-digital-twins"></a>クイック スタート: Azure Digital Twins を使用して空き部屋を探す
 
 Azure Digital Twins サービスを使用すると、物理環境のデジタル イメージを再作成できます。 その後、環境内のイベントによって通知を受け取り、それらのイベントへの応答をカスタマイズすることができます。 
 
 このクイック スタートでは、[1 組の .NET サンプル](https://github.com/Azure-Samples/digital-twins-samples-csharp)を使用して架空のオフィス ビルをデジタル化し、その建物内の空き部屋を探す方法を示します。 Digital Twins を使用すると、複数のセンサーを環境に関連付けることができます。 部屋の空き状況に加えて、シミュレートされた二酸化炭素センサーを利用して、空き部屋の空気の質が最適かどうかを調べることもできます。 サンプル アプリケーションの 1 つでは、このシナリオの視覚化に役立つランダムなセンサー データを生成します。
+
+クイック スタートのセットアップについては、次のビデオで要約しています。
+
+> [!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +40,7 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 
 このセクションの手順を使用して、[ポータル](https://portal.azure.com)で Digital Twins の新しいインスタンスを作成します。
 
-[!INCLUDE [create-digital-twins-portal](../../includes/create-digital-twins-portal.md)]
+[!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
 ## <a name="set-permissions-for-your-app"></a>アプリのアクセス許可の設定
 

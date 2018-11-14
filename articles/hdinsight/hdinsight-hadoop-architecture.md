@@ -1,6 +1,6 @@
 ---
-title: Hadoop のアーキテクチャ - Azure HDInsight
-description: HDInsight クラスター上の Hadoop ストレージおよび処理について説明します。
+title: Apache Hadoop のアーキテクチャ - Azure HDInsight
+description: HDInsight クラスター上の Apache Hadoop ストレージおよび処理について説明します。
 services: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: f22cb6a56e0ef81e3d7799b38e33113f8b175457
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 11/06/2018
+ms.openlocfilehash: 066734c88890d5f1a6e42c5350db47d1a398b60a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699432"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277581"
 ---
-# <a name="hadoop-architecture-in-hdinsight"></a>HDInsight の Hadoop アーキテクチャ
+# <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight の Apache Hadoop アーキテクチャ
 
-Hadoop には、ストレージを提供する HDFS (Hadoop 分散ファイル システム) と、処理を提供する YARN (Yet Another Resource Negotiator) の 2 つのコア コンポーネントが含まれています。 ストレージおよび処理機能により、クラスターは、目的のデータ処理を実行するための MapReduce プログラムを実行できるようになります。
+Apache Hadoop には、ストレージを提供する HDFS (Hadoop 分散ファイル システム) と、処理を提供する YARN (Yet Another Resource Negotiator) の 2 つのコア コンポーネントが含まれています。 ストレージおよび処理機能により、クラスターは、目的のデータ処理を実行するための MapReduce プログラムを実行できるようになります。
 
 > [!NOTE]
 > HDFS は通常、ストレージを提供するために、HDInsight クラスター内にはデプロイされません。 代わりに、HDFS と互換性のあるインターフェイス レイヤーが Hadoop コンポーネントによって使用されます。 実際のストレージ機能は、Azure Storage または Azure Data Lake Store のどちらかによって提供されます。 Hadoop の場合、HDInsight クラスター上で実行されている MapReduce ジョブは HDFS が存在するかのように実行されるため、そのストレージ ニーズをサポートするための変更は必要ありません。 HDInsight 上の Hadoop では、ストレージはアウトソーシングされますが、YARN 処理はコア コンポーネントのままです。 詳細については、[Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md)に関するページをご覧ください。
 
 この記事では、YARN と、それが HDInsight 上でのアプリケーションの実行をどのように調整するかを紹介します。
 
-## <a name="yarn-basics"></a>YARN の基本 
+## <a name="apache-yarn-basics"></a>Apache YARN の基本 
 
 YARN は、Hadoop でのデータ処理を管理および調整します。 YARN には、クラスター内のノード上のプロセスとして実行される 2 つのコア サービスがあります。 
 

@@ -1,6 +1,6 @@
 ---
 title: 発行済みアプリケーションのインストール - Dataiku DSS - Azure HDInsight
-description: Dataiku DSS サードパーティ Hadoop アプリケーションをインストールして使用します。
+description: Dataiku DSS サードパーティ Apache Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 64a6f393498ca90675712747afc8f9befc4b932f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: feb94f450621e999da01f77f0b5550258377d6c9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105171"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038265"
 ---
 # <a name="install-published-application---dataiku-dds"></a>発行済みアプリケーションのインストール - Dataiku DSS
 
-この記事では、[Dataiku DSS](https://www.dataiku.com/) によって発行された Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
+この記事では、[Dataiku DSS](https://www.dataiku.com/) によって発行された Apache Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
 
 ## <a name="about-dataiku-dss"></a>Dataiku DSS について
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: 23478a1f72a4b74bcacf27d3b18116250eb6bfff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4e7b6d5c2f84f7d385709dc780507c262081757a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984655"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280593"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>チュートリアル: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
 
@@ -67,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="upload-data-to-an-hdinsight-cluster"></a>HDInsight クラスターにデータをアップロードする
 
-HDInsight クラスターに関連付けられたストレージにデータをアップロードする方法はたくさんあります。 このセクションでは、`scp` を使用してデータをアップロードします。 他のデータ アップロード方法については、「[Use Distcp to copy data between Azure Storage Blobs and Data Lake Storage Gen2 Preview (Distcp を使用して Azure Storage Blob と Data Lake Store Gen2 プレビューの間でデータをコピーする)](use-distcp.md)」を参照してください。
+HDInsight クラスターに関連付けられたストレージにデータをアップロードする方法はたくさんあります。 このセクションでは、`scp` を使用してデータをアップロードします。 他のデータ アップロード方法については、[Data Lake Storage Gen2 が有効な新しいストレージ アカウントと既存のストレージ アカウントとの間で Distcp を使用してデータをコピーする方法](use-distcp.md)に関するページを参照してください。
 
 1. コマンド プロンプトを開き、次のコマンドを使用して HDInsight クラスターのヘッド ノードに .zip ファイルをアップロードします。
 

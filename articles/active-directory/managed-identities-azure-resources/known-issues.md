@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 2a759aea4288af2e90335b47244408d6a537e24b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295583"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913990"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -60,7 +60,7 @@ Azure Instance Metadata Service の詳細については、[IMDS のドキュメ
 
 Azure IaaS でサポートされているすべての Linux ディストリビューションを、IMDS エンドポイント経由の Azure リソースのマネージド ID で使用することができます。 
 
-注: Azure リソース VM 拡張機能のマネージド ID (2019 年 1 月に非推奨になる予定) は、次の Linux ディストリビューションのみをサポートしています:
+Azure リソース VM 拡張機能 (2019 年 1 月に非推奨になる予定) のマネージド IDは、次の Linux ディストリビューションのみをサポートしています:
 - CoreOS Stable
 - CentOS 7.1
 - Red Hat 7.2
@@ -124,16 +124,23 @@ VM が開始されると、次のコマンドを使用してタグを削除で�
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-## <a name="known-issues-with-user-assigned-identities"></a>ユーザー割り当て ID に関する既知の問題
+### <a name="vm-extension-provisioning-fails"></a>VM 拡張機能のプロビジョニングが失敗する
 
-- ユーザー割り当て ID の割り当ては、VM および VMSS に対してのみ使用できます。 重要: ユーザー割り当て ID の割り当ては、今後数か月間に変更されます。
-- 同じ VM/VMSS においてユーザー割り当て ID が重複していると、VM/VMSS は失敗します。 大文字と小文字の違いだけでは重複と見なされます。 たとえば、MyUserAssignedIdentity と myuserassignedidentity などです。 
-- VM に対する VM 拡張機能 (2019 年 1 月に非推奨になる予定) のプロビジョニングは、DNS 検索エラーが原因で失敗することがあります。 VM を再起動して、もう一度やり直してください。 
-- "存在しない" ユーザー割り当て ID を追加すると、VM は失敗します。 
-- 名前に特殊文字 (アンダースコアなど) が含まれるユーザー割り当て ID の作成はサポートされていません。
-- ユーザー割り当て ID の名前は、エンド ツー エンドのシナリオで 24 文字に制限されています。 ユーザー割り当て ID の名前が 24 文字より長いと、割り当ては失敗します。
+VM 拡張機能のプロビジョニングは、DNS 検索エラーが原因で失敗することがあります。 VM を再起動して、もう一度やり直してください。
+ 
+> [!NOTE]
+> VM 拡張機能は、2019 年 1 月には非推奨となる予定です。 IMDS エンドポイントを使用するように移行することをお勧めします。
+
+### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Azure AD ディレクトリ間のサブスクリプションの転送
+
+マネージド ID は、サブスクリプションが別のディレクトリに移動/転送されたときに更新されません。 その結果、既存のシステム割り当てマネージド ID やユーザー割り当てマネージド ID は破損します。 
+
+回避策として、サブスクリプションを移動したら、システム割り当マネージド ID を無効にして、再度それらを有効にすることができます。 同様に、ユーザー割り当てマネージド ID の削除と再作成を行うことができます。 
+
+## <a name="known-issues-with-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID に関する既知の問題
+
+- 名前に特殊文字 (アンダースコアなど) が含まれるユーザー割り当てマネージド ID の作成はサポートされていません。
+- ユーザー割り当て ID の名前は 24 文字に制限されています。 名前が 24 文字より長い場合、ID のリソース (つまり仮想マシン) への割り当ては失敗します。
 - マネージド ID 仮想マシン拡張機能 (2019 年 1 月に非推奨になる予定) を使用している場合にサポートされるユーザー割り当てマネージド ID の制限値は 32 個です。 マネージド ID 仮想マシン拡張機能を使用していない場合にサポートされる制限値は 512 です。  
-- 2 番目のユーザー割り当て ID を追加すると、VM 拡張機能のトークンを要求するときに、clientID を使用できなくなる場合があります。 軽減策として、次の 2 つの bash コマンドを使用して Azure リソース VM 拡張機能のマネージド ID を再起動します:
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
-- VM にユーザー割り当て ID がありシステム割り当て ID がない場合、ポータルの UI では、Azure リソースのマネージド ID は "無効" と表示されます。 システム割り当て ID を有効にするには、Azure Resource Manager テンプレート、Azure CLI、または SDK を使用してください。
+- ユーザー割り当てマネージド ID を異なるリソース グループに移動すると、ID の破損が発生します。 結果として、その ID のトークンを要求できなくなります。 
+- サブスクリプションを別のディレクトリに転送すると、既存のユーザー割り当てマネージド ID は破損します。 

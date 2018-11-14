@@ -2,19 +2,19 @@
 title: Azure HDInsight の Hadoop で Data Lake Store を使用する
 description: Azure Data Lake Store のデータに対してクエリを実行し、分析結果を格納する方法について説明します。
 services: hdinsight,storage
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: d205a46c672523e029816b573742d991de79b2ae
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/06/2018
+ms.openlocfilehash: 0859e480df0111e26d5b64bf835f94b3852b3414
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956733"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277360"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Store を使用する
 
@@ -40,16 +40,17 @@ HDInsight クラスターでは、2 つの方法で Data Lake Store を使用で
 
 | HDInsight クラスターの種類 | 既定ストレージとしての Data Lake Store | 追加ストレージとしての Data Lake Store| メモ |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight Version 3.6 | [はい] | [はい] | |
+| HDInsight Version 3.6 | [はい] | [はい] | HBase は例外|
 | HDInsight Version 3.5 | [はい] | [はい] | HBase は例外|
 | HDInsight Version 3.4 | いいえ  | [はい] | |
 | HDInsight Version 3.3 | いいえ  | いいえ  | |
 | HDInsight Version 3.2 | いいえ  | [はい] | |
 | Storm | | |Data Lake Store を使って、Storm トポロジからデータを書き込むことができます。 また、Data Lake Store を、Storm トポロジから読み取ることができる参照データとして使用することもできます。|
 
+[!WARNING]
+> HDInsight HBase は、Azure Data Lake Storage Gen 1 ではサポートされていません。
+
 Data Lake Store を追加ストレージ アカウントとして使っても、クラスターから Azure ストレージに対する読み取り/書き込みのパフォーマンスや機能には影響しません。
-
-
 ## <a name="use-data-lake-store-as-default-storage"></a>Data Lake Store を既定のストレージとして使用する
 
 Data Lake Store を既定のストレージとして HDInsight がデプロイされている場合、クラスター関連のファイルは次の場所の Data Lake Store に格納されます。

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: d8313ec66f8b71102e63751e7cf07885c899a7e8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 16291e4f4915dd6328a2015407fa06dc8f62fba1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301040"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011886"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -308,7 +308,7 @@ Azure Security Center では、Azure 拡張機能によりインストールさ�
 - システムの更新プログラム - 24 時間以内にデータを更新
 - Endpoint Protection の問題 - 8 時間以内にデータを更新
 
-Security Center は通常 1 時間ごとに最新のデータをスキャンします。 上記の待ち時間の値は、最新のスキャンがないか、スキャンに失敗したような最悪の場合のシナリオです。
+Security Center は通常、1 時間ごとに新しいデータをスキャンし、それに応じて推奨事項を更新します。 
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>"VM Agent is Missing? (VM エージェントが見つかりません)" というメッセージが表示されるのはなぜですか。
 データ収集を有効にするには、VM エージェントが VM にインストールされている必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 他の VM への VM エージェントのインストール方法については、 [VM エージェントと拡張機能](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)に関するブログ投稿を参照してください。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: bd7f8748dc5260ed6574a1b48632318e9399bca0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042123"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979252"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -68,7 +68,9 @@ Kubernetes クラスターの内部からは、webhook トークン認証を使�
 
   ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/delegated-permissions.png)
 
-7. **[完了]** を選択し、API のリストから *[Microsoft Graph]* を選択してから、**[アクセス許可の付与]** を選択します。 現在のアカウントがテナント管理者ではない場合、このステップは失敗します。
+  **[完了]** を選択します。
+
+7. API のリストから *[Microsoft Graph]* を選択してから、**[アクセス許可の付与]** を選択します。 現在のアカウントがテナント管理者ではない場合、このステップは失敗します。
 
   ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/grant-permissions.png)
 
@@ -98,7 +100,9 @@ Kubernetes クラスターの内部からは、webhook トークン認証を使�
 
   ![AKS AAD サーバー アプリケーション エンドポイントを選択する](media/aad-integration/select-server-app.png)
 
-4. **[完了]** と **[アクセス許可の付与]** を選んで、このステップを完了します。
+  **[完了]** を選択します
+
+4. 一覧からサーバー API を選択し、**[アクセス許可の付与]** を選択します。
 
   ![アクセス許可を付与する](media/aad-integration/grant-permissions-client.png)
 

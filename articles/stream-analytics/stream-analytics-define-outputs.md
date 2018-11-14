@@ -3,18 +3,18 @@ title: Azure Stream Analytics からの出力を理解する
 description: この記事では、分析結果への Power BI を含む、Azure Stream Analytics で使用可能なデータ出力オプションについて説明します。
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 92fcf1138a5a7d364c884128d3fc82559ffb15aa
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987887"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257801"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できるさまざまな種類の出力について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、データのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。 
@@ -89,7 +89,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 | ストレージ アカウント     | 出力を送信するストレージ アカウントの名前。               |
 | ストレージ アカウント キー | ストレージ アカウントに関連付けられている秘密キー。                              |
 | ストレージ コンテナー   | コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。 |
-| パスのパターン | 省略可能。 指定したコンテナー内の BLOB を書き込むために使用されるファイル パス パターン。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />[プレビュー](https://aka.ms/ASApreview1)にサインアップしている場合は、BLOB をパーティション分割するためにイベント データの 1 つのカスタム {field} 名を指定できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>大文字小文字を区別しない (列 "ID" と列 "id" を区別できません)</li><li>入れ子になったフィールドを使用できない (代わりに、ジョブ クエリで別名を使用して、フィールドを "フラット化" します)</li><li>式はフィールド名として使用できません。</li></ul> <br /><br /> プレビューではまた、パスでカスタム日付/時刻書式指定子の構成も使用できます。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 使用可能な入力の \<specifier> は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 {datetime:\<specifier>} キーワードは、カスタム日付/時刻の構成を形成するために、パスで複数回使用できます。 <br /><br />次に例を示します。 <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3 (プレビュー): cluster1/{client_id}/{date}/{time}</li><li>例 4 (プレビュー): cluster1/{datetime:ss}/{myField} (この場合、クエリは SELECT data.myField AS myField FROM Input;)</li><li>例 5 (プレビュー): cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br /><br />作成されたフォルダー構造のタイムスタンプでは、現地時刻ではなく、UTC に従います。<br /><br/>ファイルの名前付けは、次の規則に従います。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> |
+| パスのパターン | 省略可能。 指定したコンテナー内の BLOB を書き込むために使用されるファイル パス パターン。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />この [Azure Portal リンク](https://portal.azure.com/?microsoft_azure_streamanalytics_bloboutputpathpartitioning=true&Microsoft_Azure_StreamAnalytics_bloboutputcontainerpartitioning=true)を使用してカスタム BLOB のパーティション分割プレビューにアクセスする場合は、BLOB をパーティション分割するためにイベント データの 1 つのカスタム {field} 名を指定できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>大文字小文字を区別しない (列 "ID" と列 "id" を区別できません)</li><li>入れ子になったフィールドを使用できない (代わりに、ジョブ クエリで別名を使用して、フィールドを "フラット化" します)</li><li>式はフィールド名として使用できません。</li></ul> <br /><br /> プレビューではまた、パスでカスタム日付/時刻書式指定子の構成も使用できます。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 使用可能な入力の \<specifier> は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 {datetime:\<specifier>} キーワードは、カスタム日付/時刻の構成を形成するために、パスで複数回使用できます。 <br /><br />次に例を示します。 <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3 (プレビュー): cluster1/{client_id}/{date}/{time}</li><li>例 4 (プレビュー): cluster1/{datetime:ss}/{myField} (この場合、クエリは SELECT data.myField AS myField FROM Input;)</li><li>例 5 (プレビュー): cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br /><br />作成されたフォルダー構造のタイムスタンプでは、現地時刻ではなく、UTC に従います。<br /><br/>ファイルの名前付けは、次の規則に従います。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br /><br /> このプレビューの詳細については、「[Azure Stream Analytics の BLOB ストレージ出力用のカスタム DateTime パス パターン (プレビュー)](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
 | 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例: YYYY/MM/DD |
 | 時刻の形式 | 省略可能。 時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。 現在唯一サポートされている値は HH です。 |
 | イベントのシリアル化の形式 | 出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
@@ -297,7 +297,7 @@ Azure Stream Analytics では、Azure 関数から 413 ("HTTP 要求エンティ
 | 出力の種類 | パーティション分割のサポート | パーティション キー  | 出力ライターの数 | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | [はい] | Path プレフィックス パターンに {date} および {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 | 
-| Azure SQL Database | [はい] | クエリの PARTITION BY 句に基づいています。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 | 
+| Azure SQL Database | [はい] | クエリの PARTITION BY 句に基づいています。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 SQL Azure Database にデータを読み込む場合の書き込みスループット パフォーマンスの向上の詳細については、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」を参照してください。 | 
 | Azure BLOB ストレージ | [はい] | パス パターンでイベント フィールドからの {date} トークンと {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 [プレビュー](https://aka.ms/ASApreview1)の一部として、BLOB 出力を 1 つのカスタム イベント属性 {fieldname} または {datetime:\<specifier>} でパーティション分割できます。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 | 
 | Azure Event Hub | [はい] | [はい] | パーティションの配置によって異なります。</br> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数は出力イベント ハブのパーティションの数と等しくなります。 各ライターは、EventHub の [EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 </br> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されていない場合、ライターの数は前のステップのパーティションの数と等しくなります。 各ライターは、EventHubClient の [SendBatchAsync クラス](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 |
 | Power BI | いいえ  | なし | 適用不可。 | 
@@ -306,6 +306,8 @@ Azure Stream Analytics では、Azure 関数から 413 ("HTTP 要求エンティ
 | Azure Service Bus キュー | [はい] | 自動的に選択されます。 パーティション数は、[Service Bus SKU とサイズ](../service-bus-messaging/service-bus-partitioning.md)に基づいています。 パーティション キーは、各パーティションに固有の整数値です。| 出力キュー内のパーティションの数と同じです。 |
 | Azure Cosmos DB | [はい] | コレクション名パターンに {partition} トークンを使用します。 {partition} 値は、クエリの PARTITION BY 句に基づいています。 | [完全に並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
 | Azure Functions | いいえ  | なし | 適用不可。 | 
+
+出力アダプターがパーティション分割されていない場合は、ある入力パーティションにデータがないと、到着遅延時間までの遅延が発生します。  このような場合は、出力が 1 つのライタにマージされるため、パイプラインにボトルネックが発生する可能性があります。 到着遅延ポリシーの詳細については、「[Azure Stream Analytics のイベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)」を参照してください。
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 Azure Stream Analytics では、イベントを処理して出力に書き込むために、可変サイズのバッチを使用します。 通常、Stream Analytics エンジンでは、一度に 1 つのメッセージを書き込むことはせず、効率を上げるためにバッチを使用します。 受信と送信のイベント レートが両方とも高い場合は、大きいバッチを使用します。 エグレス レートが低い場合は、小さいバッチを使用して待ち時間が短い状態を維持します。 
@@ -323,10 +325,11 @@ Azure Stream Analytics では、イベントを処理して出力に書き込む
 | Azure Service Bus キュー   | メッセージあたり 256 KB</br> [Service Bus の制限](../service-bus-messaging/service-bus-quotas.md)に関する記事も参照 | メッセージごとに 1 つのイベント |
 | Azure Service Bus トピック | メッセージあたり 256 KB</br> [Service Bus の制限](../service-bus-messaging/service-bus-quotas.md)に関する記事も参照 | メッセージごとに 1 つのイベント |
 | Azure Cosmos DB   | 「[Azure Cosmos DB の制限](../azure-subscription-service-limits.md#azure-cosmos-db-limits)」を参照 | バッチ サイズと書き込みの頻度は、Cosmos DB の応答に基づいて動的に調整されます。 </br> Stream Analytics からの事前に定義された制限はありません。 |
-| Azure Functions   | | 既定のバッチ サイズは 246 KB です。 </br> バッチごとの既定のイベント数は 100 です。 </br> バッチ サイズは構成可能で、Stream Analytics の[出力オプション](#azure-functions)で増減させることができます。 
+| Azure Functions   | | 既定のバッチ サイズは 256 KB です。 </br> バッチごとの既定のイベント数は 100 です。 </br> バッチ サイズは構成可能で、Stream Analytics の[出力オプション](#azure-functions)で増減させることができます。 
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
+
 > [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

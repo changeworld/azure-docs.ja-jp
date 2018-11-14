@@ -4,19 +4,18 @@ titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 09/11/2018
 ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-manager: douge
-ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bca818cb4e13066f8a631111b75f50384e521ac1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353360"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978895"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -231,6 +230,16 @@ az provider register --namespace Microsoft.DevSpaces
 
 ### <a name="try"></a>次の操作を試してください。
 通常は、クラスター内のエージェント ノードを再起動すると、この問題が解決します。
+
+## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Azure Dev Spaces プロキシは開発空間で実行されているその他のポッドと干渉することがあります
+
+### <a name="reason"></a>理由
+AKS クラスター内の名前空間で Dev Spaces を有効にすると、_mindaro-proxy_ と呼ばれる追加のコンテナーが、その名前空間内で実行される各ポッドにインストールされます。 このコンテナーは、ポッド内のサービスへの呼び出しをインターセプトしますが、これは Dev Spaces のチーム開発機能に不可欠です。
+
+残念ながら、これはこれらのポッドで実行されている特定のサービスに干渉することがあります。 具体的には、これは Redis Cache を実行するポッドと干渉し、マスター/スレーブ通信での接続エラーと障害の原因になります。
+
+### <a name="try"></a>次の操作を試してください。
+影響を受けるポッドを、Dev Spaces が有効になって_いない_クラスター内の名前空間に移動し、Dev Spaces が有効になっている名前空間内の内部で残りのアプリケーションの実行を継続できます。 Dev Spaces は、Dev Spaces に非対応の名前空間の内部に _mindaro-proxy_ コンテナーをインストールしません。
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev Spaces が既存の Dockerfile を使用してコンテナーをビルドしていないと思われる 
 

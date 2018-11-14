@@ -5,19 +5,21 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: conceptual
+ms.devlang: na
+ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: f8f529ecc21e8d9ecf149edb8bdf45e8b20dc283
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 5cce3005a0058604136e05d9c3bf9700d5296bf3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241258"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964078"
 ---
-# <a name="support-matrix-for-disaster-recovery-of-azure-vms-between-azure-regions"></a>Azure リージョン間での Azure VM のディザスター リカバリーに関するサポート マトリックス
+# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Azure リージョン間でレプリケートするためのマトリックスのサポート
 
 この記事は、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、ある Azure リージョンから別の Azure リージョンへの Azure VM のレプリケート、フェールオーバー、および復旧を行うディザスター リカバリーをデプロイするときにサポートされる構成とコンポーネントをまとめたものです。
+
 
 ## <a name="deployment-method-support"></a>デプロイ方法のサポート
 
@@ -32,10 +34,10 @@ ms.locfileid: "50241258"
 ## <a name="resource-support"></a>リソースのサポート
 
 **リソースのアクション** | **詳細**
---- | --- | --- 
+--- | --- | ---
 **リソース グループ間の資格情報コンテナーの移動** | サポートされていません
 **リソース グループ間のコンピューティング、ストレージ、およびネットワークの移動** | サポートされていません。<br/><br/> VM のレプリケート後に VM や関連コンポーネント (ストレージやネットワークなど) を移動する場合は、その VM のレプリケーションを無効にしてから、再度有効にする必要があります。
-**ディザスター リカバリーのためにあるサブスクリプションから別のサブスクリプションに Azure VM をレプリケートする** | 同じ Azure Active Directory テナント内でサポートされます。 
+**ディザスター リカバリーのためにあるサブスクリプションから別のサブスクリプションに Azure VM をレプリケートする** | 同じ Azure Active Directory テナント内でサポートされます。
 **サポートされている地理的なクラスター内 (サブスクリプション内外) のさまざまなリージョンにわたって VM を移行する** | 同じ Azure Active Directory テナント内でサポートされます。
 **同じリージョン内の VM の移行** | サポートされていません。
 
@@ -77,8 +79,8 @@ Site Recovery は、このセクションに示したオペレーティング �
 **オペレーティング システム** | **詳細**
 --- | ---
 Windows Server 2016  | サーバー コア、デスクトップ エクスペリエンス搭載サーバー
-Windows Server 2012 R2 | 
-Windows Server 2012 | 
+Windows Server 2012 R2 |
+Windows Server 2012 |
 Windows Server 2008 R2 | SP1 以降を実行
 
 #### <a name="linux"></a>Linux
@@ -131,7 +133,7 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.19 | SP1 3.12.49-11-defaul
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.18 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default から 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.17 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.88-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default から 4.4.126-94.22-default |
 
-## <a name="replicated-machines---linux-file-systemguest-storage"></a>レプリケートされるマシン - Linux ファイル システム/ゲスト ストレージ 
+## <a name="replicated-machines---linux-file-systemguest-storage"></a>レプリケートされるマシン - Linux ファイル システム/ゲスト ストレージ
 
 * ファイル システム: ext3、ext4、ReiserFS (Suse Linux Enterprise Server のみ)、XFS
 * ボリューム マネージャー: LVM2
@@ -143,7 +145,7 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.17 | SP1 3.12.49-11-defaul
 **設定** | **サポート** | **詳細**
 --- | --- | ---
 サイズ | 少なくとも 2 つの CPU コアと 1 GB の RAM を備えた任意の Azure VM サイズ | [Azure 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)を確認してください。
-可用性セット | サポートされています | 既定のオプションを使用して Azure VM のレプリケーションを有効にした場合は、ソース リージョンの設定に基づいて可用性セットが自動的に作成されます。 次の設定を変更できます。 
+可用性セット | サポートされています | 既定のオプションを使用して Azure VM のレプリケーションを有効にした場合は、ソース リージョンの設定に基づいて可用性セットが自動的に作成されます。 次の設定を変更できます。
 可用性ゾーン | サポートされていません | 現在、可用性ゾーンにデプロイされた VM のレプリケートはできません。
 Hybrid Use Benefit (HUB) | サポートされています | ソース VM で HUB ライセンスが有効になっている場合、テスト フェールオーバー VM またはフェールオーバーした VM でも HUB ライセンスが使用されます。
 VM スケール セット | サポートされていません |
@@ -164,14 +166,14 @@ Site Recovery を使用して移行された VM | サポートされています
 この表は、Azure VM の OS ディスク、データ ディスク、一時ディスクに対するサポートをまとめたものです。
 
 - [Linux](../virtual-machines/linux/disk-scalability-targets.md) VM と [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM でのパフォーマンスの問題を回避するため、VM ディスクの制限とターゲットを守ることが重要です。
-- 既定の設定でデプロイすると、Site Recovery によって、ソースの設定に基づいてディスクとストレージ アカウントが自動的に作成されます。 
-- カスタマイズする場合は、必ずガイドラインに従ってください。 
+- 既定の設定でデプロイすると、Site Recovery によって、ソースの設定に基づいてディスクとストレージ アカウントが自動的に作成されます。
+- カスタマイズする場合は、必ずガイドラインに従ってください。
 
 **コンポーネント** | **サポート** | **詳細**
 --- | --- | ---
 OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細を表示します](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
 一時ディスク | サポートされていません | 一時ディスクは常にレプリケーションから除外されます。<br/><br/> 一時ディスクに永続的なデータを置かないでください。 [詳細情報](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)。
-データ ディスクの最大サイズ | 4095 GB | 
+データ ディスクの最大サイズ | 4095 GB |
 データ ディスクの最大数 | 最大 64 (特定の Azure VM サイズでのサポートに従います) | VM サイズに関する[詳細を表示します](../virtual-machines/windows/sizes.md)。
 データ ディスクの変更レート | Premium ストレージではディスクあたり最大 10 MBps。 Standard ストレージではディスクあたり最大 2 MBps。 | ディスクでの平均データ変更レートが継続的に最大値より高い場合、レプリケーションが追いつかなくなります。<br/><br/>  ただし、上限の超過が散発的である場合は、レプリケーションが追いつくことができます。しかし、復旧ポイントがわずかに遅延することもあります。
 データ ディスク - Standard ストレージ アカウント | サポートされています |
@@ -182,15 +184,22 @@ OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細
 クールおよびホット ストレージ | サポートされていません | VM ディスクは、クールおよびホット ストレージではサポートされません
 記憶域 | サポートされています |         
 保存時の暗号化 (SSE) | サポートされています | SSE はストレージ アカウントでの既定の設定です。   
-Windows 用 Azure Disk Encryption (ADE) | [Azure AD アプリでの暗号化](https://aka.ms/ade-aad-app)が有効になっている VM はサポートされます。 |
-Linux 用 Azure Disk Encryption (ADE) | サポートされていません |
-ディスクのホット追加/削除    | サポートされていません | VM 上でデータ ディスクを追加または削除する場合は、その VM のレプリケーションを無効にしてから、再度それを有効にする必要があります。
-ディスクの除外 | サポートされていません | 一時ディスクは既定で除外されます。
-記憶域スペース ダイレクト  | サポートされていません 
-スケールアウト ファイル サーバー  | サポートされていません 
+Windows OS 用 Azure Disk Encryption (ADE) | [Azure AD アプリでの暗号化](https://aka.ms/ade-aad-app)を有効になっているVMはサポートされています。 |
+Linux OS 用 Azure Disk Encryption (ADE) | サポートされていません |
+ディスクのホット アド/削除 | サポートされていません | VM 上でデータ ディスクを追加または削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
+ディスクの除外 | サポートされていません|   一時ディスクは既定で除外されます。
+記憶域スペース ダイレクト  | サポートされていません|
+スケールアウト ファイル サーバー  | サポートされていません|
+LRS | サポートされています |
+GRS | サポートされています |
+RA-GRS | サポートされています |
+ZRS | サポートされていません |  
+クールおよびホット ストレージ | サポートされていません | 仮想マシン ディスクは、クールおよびホット ストレージではサポートされません
+仮想ネットワークの Azure Storage ファイアウォール  | [はい] | ストレージ アカウントへの仮想ネットワーク アクセスを制限している場合は、信頼された Microsoft サービスがストレージ アカウントへのアクセスを許可されることを確認します。
+汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | いいえ  | 汎用目的 V1 のストレージ アカウントに比べて、トランザクション コストが非常に大きくなります
 
-
-
+>[!IMPORTANT]
+> パフォーマンスの問題を回避するために、[Linux](../virtual-machines/linux/disk-scalability-targets.md) または [Windows](../virtual-machines/windows/disk-scalability-targets.md) 仮想マシンの VM ディスクのスケーラビリティおよびパフォーマンスのターゲットを確認してください。 既定の設定に従うと、Site Recovery により、ソース構成に基づいて必要なディスクとストレージ アカウントが作成されます。 設定をカスタマイズして独自の設定を選択する場合は、ソース VM のディスクのスケーラビリティおよびパフォーマンスのターゲットに従ってください。
 
 ## <a name="replicated-machines---networking"></a>レプリケートされるマシン - ネットワーク
 **構成** | **サポート** | **詳細**
@@ -201,17 +210,18 @@ NIC | 特定の Azure VM サイズでサポートされる最大数 | フェー�
 パブリック IP アドレス | サポートされています | 既存のパブリック IP アドレスを NIC に関連付けます。 または、パブリック IP アドレスを作成し、復旧計画の Azure Automation スクリプトを使用して、それを NIC に関連付けます。
 NIC 上の NSG | サポートされています | 復旧計画の Azure Automation スクリプトを使用して、NSG を NIC に関連付けます。  
 サブネット上の NSG | サポートされています | 復旧計画の Azure Automation スクリプトを使用して、NSG を サブネットに関連付けます。
-予約済みの (静的) IP アドレス | サポートされています | ソース VM で NIC が静的 IP を使用していて、ターゲット サブネットで同じ IP アドレスを使用できる場合、そのアドレスはフェールオーバーした VM に割り当てられます。<br/><br/> ターゲット サブネットで同じ IP アドレスを使用できない場合は、そのサブネットで使用できる IP アドレスの 1 つが、その VM 用に予約されます。<br/><br/> **[レプリケートされたアイテム]** > **[設定]** > **[コンピューティングとネットワーク]** > **[ネットワーク インターフェイス]** で、固定 IP アドレスとサブネットを指定することもできます。 
-動的 IP アドレス | サポートされています | ソース VM で NIC に動的 IP アドレス指定が設定されている場合、フェールオーバーした VM の NIC も既定で動的になります。<br/><br/> 必要な場合は、これを固定 IP アドレスに変更できます。 
+予約済みの (静的) IP アドレス | サポートされています | ソース VM で NIC が静的 IP を使用していて、ターゲット サブネットで同じ IP アドレスを使用できる場合、そのアドレスはフェールオーバーした VM に割り当てられます。<br/><br/> ターゲット サブネットで同じ IP アドレスを使用できない場合は、そのサブネットで使用できる IP アドレスの 1 つが、その VM 用に予約されます。<br/><br/> **[レプリケートされたアイテム]** > **[設定]** > **[コンピューティングとネットワーク]** > **[ネットワーク インターフェイス]** で、固定 IP アドレスとサブネットを指定することもできます。
+動的 IP アドレス | サポートされています | ソース VM で NIC に動的 IP アドレス指定が設定されている場合、フェールオーバーした VM の NIC も既定で動的になります。<br/><br/> 必要な場合は、これを固定 IP アドレスに変更できます。
 Traffic Manager     | サポートされています | トラフィックがソース リージョンのエンドポイントに定期的にルーティングされ、フェールオーバーの場合はターゲット リージョンのエンドポイントにルーティングされるように、Traffic Manager を事前に構成することができます。
 Azure DNS | サポートされています |
 [カスタム DNS]  | サポートされています |    
-非認証プロキシ | サポートされています | [詳細情報](site-recovery-azure-to-azure-networking-guidance.md)。   
-認証済みプロキシ | サポートされていません | アウトバウンド接続に認証済みプロキシを使用している VM をレプリケートすることはできません     
-サイト間 VPN | ExpressRoute でのサポートの有無 | Site Recovery トラフィックがオンプレミスにルーティングされないように、UDR と NSG が構成されていることを確認します。 [詳細情報](site-recovery-azure-to-azure-networking-guidance.md)。
-VNet 間接続 | サポートされています |[詳細情報](site-recovery-azure-to-azure-networking-guidance.md)。 
-Virtual Network サービスのエンドポイント | サポートされています | 仮想ネットワークの Azure Storage ファイアウォールはサポートされないことに注意してください。 さらに、レプリケートされたデータの格納に使用するキャッシュ ストレージ アカウントで、特定の Azure 仮想ネットワークへのアクセスを許可することはサポートされません。
-Accelerated Networking | サポートされています | 高速ネットワークは、ソース VM で有効になっている必要があります。 [詳細情報](azure-vm-disaster-recovery-with-accelerated-networking.md)。
+非認証プロキシ | サポートされています | [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。    
+認証済みプロキシ | サポートされていません | VM が送信接続に認証済みプロキシを使用している場合は、Azure Site Recovery でレプリケートできません。    
+オンプレミスでのサイト間 VPN (ExpressRoute あり/なし)| サポートされています | Site Recovery トラフィックがオンプレミスにルーティングされないように、UDR と NSG が構成されていることを確認します。 [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
+VNet 間接続 | サポートされています | [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
+仮想ネットワーク サービス エンドポイント | サポートされています | ストレージ アカウントへの仮想ネットワーク アクセスを制限している場合は、信頼された Microsoft サービスがストレージ アカウントへのアクセスを許可されることを確認します。 
+高速ネットワーク | サポートされています | 高速ネットワークは、ソース VM で有効にする必要があります。 [詳細情報](azure-vm-disaster-recovery-with-accelerated-networking.md)。
+
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,29 +1,29 @@
 ---
-title: Java リモート監視ソリューションのデプロイ - Azure | Microsoft Docs
-description: このチュートリアルでは、CLI を使用してリモート監視ソリューション アクセラレータをプロビジョニングする方法について説明します。
+title: CLI を使用したリモート監視ソリューションのデプロイ - Azure | Microsoft Docs
+description: この攻略ガイドでは、CLI を使用してリモート監視ソリューション アクセラレータをプロビジョニングする方法について説明します。
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/12/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
-ms.openlocfilehash: ddb0b5b1a0847200caa7d8d04ecdc9dab4c41d14
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5704cc21b14d83ebc30cd29f52102c751cfb11f2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956699"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248012"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
-このチュートリアルでは、リモート監視ソリューション アクセラレータをプロビジョニングする方法について説明します。 CLI を使用してソリューションをデプロイします。 azureiotsuite.com で Web ベースの UI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、「[リモート監視ソリューション アクセラレータをデプロイする](quickstart-remote-monitoring-deploy.md)」を参照してください。
+この攻略ガイドでは、リモート監視ソリューション アクセラレータをデプロイする方法について説明します。 CLI を使用してソリューションをデプロイします。 azureiotsuite.com で Web ベースの UI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、クイックスタートの[リモート監視ソリューション アクセラレータをデプロイする](quickstart-remote-monitoring-deploy.md)のページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 リモート監視ソリューション アクセラレータをデプロイするには、アクティブな Azure サブスクリプションが必要です。
 
-アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 CLI を実行するには、[Node.js](https://nodejs.org/) がローカル コンピューターにインストールされている必要があります。
 
@@ -51,19 +51,20 @@ pcs login
 
 | オプション | 値 | 説明 |
 | ------ | ------ | ----------- |
-| SKU    | `basic`、`standard`、`local` | _基本_デプロイは、テストおよびデモを目的としており、すべてのマイクロサービスを単一の仮想マシンにデプロイします。 _標準_デプロイは、実稼働を目的としており、マイクロサービスを複数の仮想マシンにデプロイします。 _ローカル_ デプロイは、ローカル コンピューターでマイクロサービスを実行するように Docker コンテナーを構成し、クラウドで Azure サービス (ストレージや Cosmos DB など) を使用します。 |
+| SKU    | `basic`、`standard`、`local` | _基本_デプロイは、テストおよびデモを目的としており、すべてのマイクロサービスを単一の仮想マシンにデプロイします。 _標準_デプロイは、実稼働を目的としており、マイクロサービスをいくつかの仮想マシンにデプロイします。 _ローカル_ デプロイは、ローカル コンピューターでマイクロサービスを実行するように Docker コンテナーを構成し、Azure クラウド サービス (ストレージや Cosmos DB など) を使用します。 |
 | ランタイム | `dotnet`、`java` | マイクロサービスの言語の実装を選択します。 |
 
-ローカル デプロイの使用方法の詳細については、「[Running the remote monitoring solution locally](iot-accelerators-remote-monitoring-deploy-local.md)」(リモート監視ソリューションのローカルでの実行) をご覧ください。
+ローカル デプロイの使用方法の詳細については、[リモート監視ソリューションのローカルでの実行](iot-accelerators-remote-monitoring-deploy-local.md)に関するページを参照してください。
 
-## <a name="basic-vs-standard-deployments"></a>Basic デプロイとStandard デプロイ
+## <a name="basic-and-standard-deployments"></a>Basic デプロイと Standard デプロイ
+
+このセクションでは、Basic デプロイと Standard デプロイの主な違いをまとめます。
 
 ### <a name="basic"></a>Basic
-Basic デプロイは、ソリューションを紹介することを目的としています。 このデモのコストを減らすために、すべてのマイクロサービスが単一の仮想マシンでデプロイされますが、これは運用対応環境アーキテクチャとみなされません。
 
-Standard デプロイ オプションは、スケーリングと拡張性のために構築された運用対応アーキテクチャをカスタマイズする準備ができたときに使用する必要があります。
+Basic デプロイは、ソリューションを紹介することを目的としています。 コストを削減するために、すべてのマイクロ サービスは単一の仮想マシンにデプロイされます。 このデプロイは、実稼働可能なアーキテクチャを使用しません。
 
-Basic ソリューションを作成すると、有料で次の Azure サービスが Azure サブスクリプションにプロビジョニングされます。 
+Basic デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
 
 | Count | リソース                       | type         | 用途 |
 |-------|--------------------------------|--------------|----------|
@@ -78,13 +79,11 @@ Basic ソリューションを作成すると、有料で次の Azure サービ�
 | 1     | [Azure デバイス プロビジョニング サービス](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | デバイスの大規模プロビジョニング |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 ユニット              | メッセージ データの格納とテレメトリの詳細分析の有効化 |
 
-
-
 ### <a name="standard"></a>標準
-標準デプロイは、開発者がニーズに合わせてカスタマイズし、拡張できる運用対応デプロイです。 Standard デプロイ オプションは、スケーリングと拡張性のために構築された運用対応アーキテクチャをカスタマイズする準備ができたときに使用する必要があります。 アプリケーションのマイクロサービスは Docker コンテナーとして構築されており、Azure Kubernetes Service (AKS) を使用してデプロイされています。 オーケストレーターは、デプロイ、拡張、およびアプリケーションの管理を担当します。
 
+Standard デプロイは、開発者がカスタマイズして拡張できる運用対応デプロイです。 Standard デプロイ オプションは、スケーリングと拡張性のために構築された運用対応アーキテクチャをカスタマイズする準備ができたときに使用します。 アプリケーションのマイクロサービスは Docker コンテナーとして構築されており、Azure Kubernetes Service を使用してデプロイされています。 Kubernetes オーケストレーターはマイクロ サービスをデプロイ、スケーリング、および管理します。
 
-標準ソリューションを作成すると、有料で次の Azure サービスが Azure サブスクリプションにプロビジョニングされます。
+Standard デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
 
 | Count | リソース                                     | SKU/サイズ      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
@@ -99,9 +98,12 @@ Basic ソリューションを作成すると、有料で次の Azure サービ�
 | 1     | [Azure デバイス プロビジョニング サービス](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | デバイスの大規模プロビジョニング |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 ユニット              | メッセージ データの格納とテレメトリの詳細分析の有効化 |
 
-> これらのサービスの価格情報については、[こちら](https://azure.microsoft.com/pricing)をご覧ください。 サブスクリプションの使用量と請求の詳細については、[Azure Portal](https://portal.azure.com/) をご覧ください。
+> [!NOTE]
+> これらのサービスの価格情報については、[https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) をご覧ください。 サブスクリプションの使用量と請求の詳細については、[Azure Portal](https://portal.azure.com/) をご覧ください。
 
 ## <a name="deploy-the-solution-accelerator"></a>ソリューション アクセラレータのデプロイ
+
+デプロイ例:
 
 ### <a name="example-deploy-net-version"></a>例: .NET バージョンのデプロイ
 
@@ -128,7 +130,7 @@ pcs -t remotemonitoring -s standard -r java
 - 場所。
 - マイクロサービスをホストする仮想マシンの資格情報です。 これらの資格情報を使用して、トラブルシューティングのために仮想マシンにアクセスすることができます。
 
-`pcs` コマンドが終了したら、新しいソリューション アクセラレータのデプロイの URL が表示されます。 `pcs` コマンドでは、プロビジョニングされた IoT Hub の名前などの追加情報を含むファイル `{deployment-name}-output.json` も作成されます。
+`pcs` コマンドが終了したら、新しいソリューション アクセラレータの URL が表示されます。 `pcs` コマンドでは、作成した IoT Hub の名前などの情報を含むファイル `{deployment-name}-output.json` も作成されます。
 
 コマンド ライン パラメーターの詳細については、次を実行します。
 
@@ -140,13 +142,13 @@ CLI の詳細については、[CLI の使用方法](https://github.com/Azure/pc
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下の内容を学習しました。
+この攻略ガイドで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
 > * ソリューション アクセラレータの構成
 > * ソリューション アクセラレータのデプロイ
 > * ソリューション アクセラレータへのサインイン
 
-これで、リモート監視ソリューションのデプロイが完了しました。次の手順は [ソリューション ダッシュボードの機能を確認](./quickstart-remote-monitoring-deploy.md) することです。
+これで、リモート監視ソリューションのデプロイが完了しました。次の手順は[ソリューション ダッシュボードの機能を確認](./quickstart-remote-monitoring-deploy.md)することです。
 
-<!-- Next tutorials in the sequence -->
+<!-- Next how-to guides in the sequence -->

@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a322edbc6825261dde0fd926a362ca037739e06e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f1fd60774f5790a514e540984812fc1aaf6e38e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388060"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238915"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する 
 
@@ -68,6 +68,18 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 ## <a name="decision-tree"></a>デシジョン ツリー
 
 ![Azure AD での認証のデシジョン ツリー](media/azure-ad/azure-ad-authn-image1.png)
+
+デシジョン ツリーに関する詳細情報:
+
+1. Azure AD は、パスワードを検証するためのオンプレミス コンポーネントに依存せずにユーザーのサインインを処理できます。
+2. Azure AD は、Microsoft の AD FS などの信頼された認証プロバイダーにユーザーのサインイン情報を渡すことができます。
+3. ユーザー レベルの Active Directory のセキュリティ ポリシー (アカウントの期限切れ、無効なアカウント、パスワードの期限切れ、アカウントのロックアウト、ユーザーのサインインごとのサインイン時間など) を適用する必要がある場合、Azure AD では一部のオンプレミス コンポーネントが必要です。
+4. Azure AD によってネイティブでサポートされてないサインイン機能:
+   * スマート カードまたは証明書を使用したサインイン。
+   * オンプレミスの MFA サーバーを使用したサインイン。
+   * サード パーティの認証ソリューションを使用したサインイン。
+   * 複数サイトのオンプレミス認証ソリューション。
+5. Azure AD Identity Protection では「資格情報が漏洩したユーザー」レポートを作成するために、選択したサインイン方法に関係なくパスワード ハッシュ同期が必要です。 組織は主要なサインイン方法が失敗した場合、パスワード ハッシュ同期が失敗イベントの前に構成されていれば、パスワード ハッシュ同期にフェールオーバーできます。
 
 ## <a name="detailed-considerations"></a>詳細な考慮事項
 
@@ -158,7 +170,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 
 |考慮事項|パスワード ハッシュ同期 + シームレス SSO|パススルー認証 + シームレス SSO|AD FS とのフェデレーション|
 |:-----|:-----|:-----|:-----|
-|認証が行われる場所|クラウド内|クラウド内で、オンプレミスの認証エージェントとのセキュリティで保護されたパスワード検証の交換後|オンプレミスの|
+|認証が行われる場所|クラウド内|クラウド内で、オンプレミスの認証エージェントとのセキュリティで保護されたパスワード検証の交換後|オンプレミス|
 |プロビジョニング システム (Azure AD Connect) 以外のオンプレミスのサーバーの要件|なし|追加の認証エージェントごとに 1 つのサーバー|2 つ以上の AD FS サーバー<br><br>境界/DMZ ネットワークに 2 つ以上の WAP サーバー|
 |プロビジョニング システム以外のオンプレミスのインターネットおよびネットワークの要件|なし|認証エージェントを実行しているサーバーからの[発信インターネット アクセス](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)|境界の WAP サーバーへの[着信インターネット アクセス](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>境界の WAP サーバーから AD FS サーバーへの着信ネットワーク アクセス<br><br>ネットワークの負荷分散|
 |SSL 証明書の要件|いいえ |いいえ |[はい]|
@@ -207,4 +219,4 @@ ID システムによって、クラウドに移行して利用できるよう�
 
 [Azure AD を利用して](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad)、組織に適した認証ソリューションを展開してください。
 
-フェデレーション認証からクラウド認証への移行を検討している場合は、[サインイン方法の変更](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method)についてさらに学習してください。 移行を計画して実施するときは、[これらのプロジェクト展開計画](http://aka.ms/deploymentplans)が役に立ちます。
+フェデレーション認証からクラウド認証への移行を検討している場合は、[サインイン方法の変更](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method)についてさらに学習してください。 移行を計画して実施するときは、[これらのプロジェクト展開計画](https://aka.ms/deploymentplans)が役に立ちます。

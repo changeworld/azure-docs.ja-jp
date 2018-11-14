@@ -8,22 +8,22 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 8c974b3d2a53210b49c3f29a8984038da93dd64c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0785383d8b5a8ab282d8097d5229fa5a8aade06f
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466530"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219428"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート: Android で Speech SDK を使用して Java で音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、Cognitive Services Speech SDK を使用して音声をテキストに変換する Android 向け Java アプリケーションを作成する方法について説明します。
-このアプリケーションは、Microsoft Cognitive Services Speech SDK Maven パッケージ (バージョン 1.0.1) と Android Studio 3.1 が基になっています。
-Speech SDK は、32 ビットまたは 64 ビットの ARM プロセッサを持つ Android デバイスと現在互換性があります。
+このアプリケーションは、Microsoft Cognitive Services Speech SDK Maven パッケージ (バージョン 1.1.0) と Android Studio 3.1 が基になっています。
+現在 Speech SDK は、32/64 ビットの ARM プロセッサを搭載した Android デバイスおよび Intel x86/x64 互換のプロセッサを搭載した Android デバイスと互換性があります。
 
 > [!NOTE]
 > Speech Devices SDK および Roobo デバイスについては、[Speech Devices SDK](speech-devices-sdk.md) を参照してください。
@@ -58,7 +58,7 @@ Android Studio が新しい Android プロジェクトを準備するまでし�
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.0.1` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.1.0` です。
 
 Android 用 Speech SDK は、必要なライブラリと、それを使用するために必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。
 ホストされている Maven リポジトリの場所は https://csspeechstorage.blob.core.windows.net/maven/ です。
@@ -73,7 +73,7 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
    ![[Project Structure] (プロジェクトの構造) ウィンドウのスクリーンショット](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョン (`com.microsoft.cognitiveservices.speech:client-sdk:1.0.1`) を入力します。 **[OK]** をクリックします。
+1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョン (`com.microsoft.cognitiveservices.speech:client-sdk:1.1.0`) を入力します。 **[OK]** をクリックします。
    次に示すように、依存関係のリストに Speech SDK が追加されます。
 
    ![[Project Structure] (プロジェクトの構造) ウィンドウのスクリーンショット](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

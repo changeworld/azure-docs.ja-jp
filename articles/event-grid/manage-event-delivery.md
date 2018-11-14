@@ -5,38 +5,41 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 11/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: fcf3ecaff6e8ba1421496a96d01428946cf8ab8e
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0a89a315f9c97f3cc6a8683f13c22b5066dc5dab
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077784"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277751"
 ---
 # <a name="dead-letter-and-retry-policies"></a>配信不能と再試行に関する方針
 
 イベント サブスクリプションの作成時には、イベント配信の設定をカスタマイズできます。 この記事では、配信不能の場所の設定方法と、再試行の設定のカスタマイズ方法を示します。 これらの機能については、「[Event Grid によるメッセージの配信と再試行](delivery-and-retry.md)」をご覧ください。
 
+## <a name="install-preview-feature"></a>プレビュー機能のインストール
+
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="set-dead-letter-location"></a>配信不能の場所の設定
 
-配信不能の場所を設定するには、エンドポイントに配信できなかったイベントを保持するためストレージ アカウントが必要です。 次のスクリプトは、既存のストレージ アカウントのリソース ID を取得し、そのストレージ アカウント内のコンテナーを配信不能のエンドポイントとして使用するイベント サブスクリプションを作成します。
+配信不能の場所を設定するには、エンドポイントに配信できなかったイベントを保持するためストレージ アカウントが必要です。 この例では、既存のストレージ アカウントのリソース ID を取得します。 ここでは、配信不能エンドポイント用にそのストレージ アカウント内のコンテナーを使用するイベント サブスクリプションを作成します。
+
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
+# If you have not already installed the extension, do it now.
 # This extension is required for preview features.
 az extension add --name eventgrid
 
-storagename=demostorage
 containername=testcontainer
 
-storageid=$(az storage account show --name $storagename --resource-group gridResourceGroup --query id --output tsv)
+topicid=$(az eventgrid topic show --name demoTopic -g gridResourceGroup --query id --output tsv)
+storageid=$(az storage account show --name demoStorage --resource-group gridResourceGroup --query id --output tsv)
 
 az eventgrid event-subscription create \
-  -g gridResourceGroup \
-  --topic-name <topic_name> \
+  --source-resource-id $topicid \
   --name <event_subscription_name> \
   --endpoint <endpoint_URL> \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
@@ -44,11 +47,34 @@ az eventgrid event-subscription create \
 
 配信不能処理を無効にするには、コマンドを再実行してイベント サブスクリプションを作成しますが、`deadletter-endpoint` の値は指定しないでください。 イベント サブスクリプションを削除する必要はありません。
 
+### <a name="powershell"></a>PowerShell
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+$containername = "testcontainer"
+
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
+$storageid = (Get-AzureRmStorageAccount -ResourceGroupName gridResourceGroup -Name demostorage).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -DeadLetterEndpoint "$storageid/blobServices/default/containers/$containername"
+```
+
+配信不能処理を無効にするには、コマンドを再実行してイベント サブスクリプションを作成しますが、`DeadLetterEndpoint` の値は指定しないでください。 イベント サブスクリプションを削除する必要はありません。
+
 ## <a name="set-retry-policy"></a>再試行ポリシーの設定
 
-Event Grid サブスクリプションの作成時には、Event Grid がイベント配信を試行する期間の値を設定できます。 既定では、Event Grid は 24 時間 (1440 分) で最大 30 回イベント配信を試行します。 Event Grid サブスクリプションには、これらの値のいずれかを設定できます。 イベントの有効期限の値は 1 から 1440 までの整数にする必要があります。 最大配信試行数の値は 1 から 30 までの整数にする必要があります。
+Event Grid サブスクリプションの作成時には、Event Grid がイベント配信を試行する期間の値を設定できます。 既定では、Event Grid は、24 時間 (1440 分)、または 30 回の試行を行います。 Event Grid サブスクリプションには、これらの値のいずれかを設定できます。 イベントの有効期限の値は 1 から 1440 までの整数にする必要があります。 最大再試行回数は 1 から 30 までの整数にする必要があります。
 
 [再試行のスケジュール](delivery-and-retry.md#retry-schedule-and-duration)を構成することはできません。
+
+### <a name="azure-cli"></a>Azure CLI
 
 イベントの Time to Live を 1440 分以外の値に設定するには、次のコマンドを使用します。
 
@@ -76,7 +102,39 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-`event-ttl` と `max-deliver-attempts` の両方を設定する場合、Event Grid では最初の項目を使用して、再試行の間に期限切れになるようにします。
+`event-ttl` と `max-deliver-attempts` の両方を設定した場合、Event Grid は期限切れについて最初の設定を使用して、イベント配信を停止するタイミングを判別します。
+
+### <a name="powershell"></a>PowerShell
+
+イベントの Time to Live を 1440 分以外の値に設定するには、次のコマンドを使用します。
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -EventTtl 720
+```
+
+最大再試行回数を 30 以外の値に設定するには、次のコマンドを使用します。
+
+```azurepowershell-interactive
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name demoTopic).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -MaxDeliveryAttempt 18
+```
+
+`EventTtl` と `MaxDeliveryAttempt` の両方を設定した場合、Event Grid は期限切れについて最初の設定を使用して、イベント配信を停止するタイミングを判別します。
 
 ## <a name="next-steps"></a>次の手順
 

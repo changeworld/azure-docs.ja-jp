@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: b5632db57e902eef76860f85de6e76f85861090a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728965"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239595"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (Python)
 
@@ -23,9 +23,9 @@ ms.locfileid: "45728965"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事の手順を完了するには、次のものが必要です。
+この記事の手順を完了するには、次のコンポーネントが必要です。
 
-* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、「[Azure IoT Central アプリケーションを作成する](howto-create-application.md)」を参照してください。
+* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページを参照してください。
 * Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。 GUI 環境にアクセスするには、Raspberry Pi に接続されているモニター、キーボード、およびマウスが必要です。 Raspberry Pi から[インターネットに接続](https://www.raspberrypi.org/learning/software-guide/wifi/)できる必要があります。
 * 必要に応じて、Raspberry Pi 用の [Sense Hat](https://www.raspberrypi.org/products/sense-hat/) アドオン ボード。 このボードは、Azure IoT Central アプリケーションに送信するテレメトリ データをさまざまなセンサーから収集します。 **Sense Hat** ボードがない場合は、代わりにエミュレーターを使用できます (Raspberry PI のイメージの一部として入手可能)。
 
@@ -33,17 +33,28 @@ ms.locfileid: "45728965"
 
 **サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。 
 
-- デバイスの**湿度**、**温度**、**圧力**、**磁力計** (X、Y、Z 軸に沿って測定)、**加速度計** (X、Y、Z 軸に沿って測定)、**ジャイロスコープ** (X、Y、Z 軸に沿って測定) の測定値を含むテレメトリ。
-- **電圧**、**電流**、**ファン速度**、**IR** のトグルを示す設定。
-- デバイス プロパティ**ダイ番号**および**場所**クラウド プロパティを含むプロパティ。
+- デバイスが収集する次の測定値を含むテレメトリ:
+    - 湿度
+    - 気温
+    - 圧力
+    - 磁力計 (X、Y、Z)
+    - 加速度計 (X、Y、Z)
+    - ジャイロスコープ (X、Y、Z)
+- 設定
+    - 電圧
+    - Current
+    - ファン速度
+    - IR 切り替え。
+- Properties
+    - Die number デバイス プロパティ
+    - Location クラウド プロパティ
 
-
-デバイス テンプレートの構成について詳しくは、「[Raspberry PI デバイス テンプレートの詳細](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)」をご覧ください。
+デバイス テンプレートの構成について詳しくは、[Raspberry PI デバイス テンプレートの詳細](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)を参照してください
     
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス テンプレートから実デバイスを追加し、デバイスの接続の詳細 (**スコープ ID、デバイス ID、主キー**) を書き留めます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
+Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス テンプレートから実デバイスを追加し、デバイスの接続の詳細 (**スコープ ID、デバイス ID、主キー**) を追跡します。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 
 
 ### <a name="configure-the-raspberry-pi"></a>Raspberry Pi を構成する
@@ -53,11 +64,11 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 * テレメトリおよびプロパティの値を Azure IoT Central に送信する。
 * Azure IoT Central で行われた設定変更に応答する。
 
-デバイスを構成するには、[GitHub の詳しい手順に従ってください。](http://aka.ms/iotcentral-docs-Raspi-releases)
+デバイスを構成するには、[GitHub の詳しい手順に従ってください。](https://aka.ms/iotcentral-docs-Raspi-releases)
 
 
 > [!NOTE]
-> Raspberry Pi Python のサンプルに関する詳細については、GitHub の [Readme](http://aka.ms/iotcentral-docs-Raspi-releases) ファイルを参照してください。
+> Raspberry Pi Python のサンプルに関する詳細については、GitHub の [README](https://aka.ms/iotcentral-docs-Raspi-releases) ファイルを参照してください。
 
 
 1. デバイスが構成されたら、デバイスはすぐに Azure IoT Central へのデータ送信を開始します。

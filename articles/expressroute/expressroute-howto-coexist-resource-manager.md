@@ -6,14 +6,14 @@ author: charwen
 manager: rossort
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: c267e5002fbd603e4bb749550c19e8d022ce4d54
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 96e2eb85bc96075e0673359910522f8e35bf5a5c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162344"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243813"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
@@ -27,7 +27,9 @@ ms.locfileid: "44162344"
 * ExpressRoute のセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成することができます。 
 * また、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続することもできます。 
 
-この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイ モデルに適用されます。また、ここでは PowerShell が使用されます。 ドキュメントはまだ利用できませんが、Azure portal を使用してこれらのシナリオを構成することもできます。
+この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイ モデルに適用されます。また、ここでは PowerShell が使用されます。 これらのシナリオは Azure Portal を使用して構成することもできますが、ドキュメントはまだ使用できません。 最初にどちらのゲートウェイでも構成できます。 通常、新しいゲートウェイやゲートウェイ接続を追加してもダウンタイムは発生しません。
+
+
 
 >[!NOTE]
 >ExpressRoute 回線上でサイト間 VPN を作成する場合は、[こちらの記事](site-to-site-vpn-over-microsoft-peering.md)をご覧ください。
@@ -77,7 +79,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
 1. 最新バージョンの Azure PowerShell コマンドレットをインストールします。 コマンドレットのインストールについては、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があります。 必ず、これらの手順で指定されているコマンドレットを使用してください。
 
-2. アカウントにログインし、環境を設定します。
+2. アカウントにサインインし、環境を設定します。
 
   ```powershell
   Connect-AzureRmAccount
@@ -209,7 +211,7 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 5. この時点では、仮想ネットワークにゲートウェイがありません。 新しいゲートウェイを作成して接続を設定するには、前のセクションの手順に従います。
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>VPN ゲートウェイにポイント対サイト構成を追加するには
-共存設定で VPN ゲートウェイにポイント対サイト構成を追加するのには、次の手順に従います。
+共存設定で VPN ゲートウェイにポイント対サイト構成を追加するには、次の手順に従うことができます。
 
 1. VPN クライアント アドレス プールを追加します。
 
@@ -224,7 +226,8 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
   $p2sCertMatchName = "RootErVpnCoexP2S" 
   $p2sCertToUpload=get-childitem Cert:\CurrentUser\My | Where-Object {$_.Subject -match $p2sCertMatchName} 
   if ($p2sCertToUpload.count -eq 1){write-host "cert found"} else {write-host "cert not found" exit} 
-  $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
+  $p2sCertData = [System.Convert]::ToBase64String($p2sCertToUpload.RawData) 
+  Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $p2sCertFullName -VirtualNetworkGatewayname $azureVpn.Name -ResourceGroupName $resgrp.ResourceGroupName -PublicCertData $p2sCertData
   ```
 
 ポイント対サイト VPN の詳細については、 [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)に関するページを参照してください。

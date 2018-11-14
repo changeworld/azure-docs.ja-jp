@@ -2,23 +2,23 @@
 title: Azure Container Instances での Azure Files ボリュームのマウント
 description: Azure Files ボリュームをマウントして、Azure Container Instances で状態を保持する方法について説明します
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/20/2018
-ms.author: seanmck
+ms.date: 11/05/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 83c86d8310aff80f148e878261ba33b01846006b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f3d4bfa7d8ffda1ab2789927d03a777fab0ed89c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441325"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281583"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances に Azure ファイル共有をマウントする
 
-既定では、Azure Container Instances はステートレスです。 コンテナーがクラッシュまたは停止すると、すべての状態が失われます。 コンテナーの有効期間後も状態を保持するには、外部ストアからボリュームをマウントする必要があります。 この記事では、Azure Container Instances で使用できるように Azure ファイル共有をマウントする方法について説明します。
+既定では、Azure Container Instances はステートレスです。 コンテナーがクラッシュまたは停止すると、すべての状態が失われます。 コンテナーの有効期間後も状態を保持するには、外部ストアからボリュームをマウントする必要があります。 この記事では、Azure Container Instances で使用できるように [Azure Files](../storage/files/storage-files-introduction.md) で作成された Azure ファイル共有をマウントする方法について説明します。 Azure Files はクラウドで、業界標準の Server Message Block (SMB) プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Container Instances で Azure ファイル共有を使用することで、 Azure 仮想マシンで Azure ファイル共有を使用するのと同様のファイル共有機能を提供します。
 
 > [!NOTE]
 > Azure ファイル共有のマウントは現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
@@ -41,29 +41,24 @@ az storage account create \
     --location $ACI_PERS_LOCATION \
     --sku Standard_LRS
 
-# Export the connection string as an environment variable. The following 'az storage share create' command
-# references this environment variable when creating the Azure file share.
-export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string --resource-group $ACI_PERS_RESOURCE_GROUP --name $ACI_PERS_STORAGE_ACCOUNT_NAME --output tsv`
-
 # Create the file share
-az storage share create -n $ACI_PERS_SHARE_NAME
+az storage share create --name $ACI_PERS_SHARE_NAME --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
 ## <a name="get-storage-credentials"></a>ストレージの資格情報の取得
 
 Azure Container Instances で Azure ファイル共有をボリュームとしてマウントするには、ストレージ アカウント名、共有名、ストレージ アクセス キーの 3 つの値が必要です。
 
-上記のスクリプトでは、ストレージ アカウント名は最後にランダムな値で作成されました。 最後の文字列 (ランダムな部分を含む) にクエリーを実行するには、次のコマンドを使用します。
+上記のスクリプトを使用した場合、ストレージ アカウント名は $ACI_PERS_STORAGE_ACCOUNT_NAME 変数に格納されました。 アカウント名を表示するには、次のように入力します。
 
-```azurecli-interactive
-STORAGE_ACCOUNT=$(az storage account list --resource-group $ACI_PERS_RESOURCE_GROUP --query "[?contains(name,'$ACI_PERS_STORAGE_ACCOUNT_NAME')].[name]" --output tsv)
-echo $STORAGE_ACCOUNT
+```console
+echo $ACI_PERS_STORAGE_ACCOUNT_NAME
 ```
 
 共有名は既にわかっているため (上記のスクリプトでは *acishare* として定義)、あとはストレージ アカウント キーです。このキーを見つけるには、次のコマンドを使用します。
 
 ```azurecli-interactive
-STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query "[0].value" --output tsv)
+STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $ACI_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" --output tsv)
 echo $STORAGE_KEY
 ```
 
@@ -88,7 +83,7 @@ az container create \
 
 ## <a name="manage-files-in-mounted-volume"></a>マウントしたボリューム内のファイルの管理
 
-コンテナーが起動したら、[microsoft/aci-hellofiles][aci-hellofiles] イメージ経由でデプロイされる単純な Web アプリを使用して、指定したマウント パスにある Azure ファイル共有内のファイルを管理できます。 [az container show][az-container-show] コマンドを使用して、Web アプリの完全修飾ドメイン名 (FQDN) を取得します。
+コンテナーが起動したら、[microsoft/aci-hellofiles][aci-hellofiles] イメージ経由でデプロイされる単純な Web アプリを使用して、指定したマウント パスにある Azure ファイル共有内に小さいテキスト ファイルを作成できます。 [az container show][az-container-show] コマンドを使用して、Web アプリの完全修飾ドメイン名 (FQDN) を取得します。
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn
@@ -98,11 +93,11 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 
 ## <a name="mount-multiple-volumes"></a>複数ボリュームのマウント
 
-コンテナー インスタンスに複数のボリュームをマウントするには、[Azure Resource Manager テンプレート](/azure/templates/microsoft.containerinstance/containergroups)を使用してデプロイを行う必要があります。
+コンテナー インスタンスに複数のボリュームをマウントするには、[Azure Resource Manager テンプレート](/azure/templates/microsoft.containerinstance/containergroups)または YAML ファイルを使用してデプロイを行う必要があります。
 
-まず、テンプレートの `properties` セクションで `volumes` 配列を設定することにより、共有の詳細を指定し、ボリュームを定義します。 たとえば、*share1* および *share2* という 2 つの Azure Files 共有をストレージ アカウント *myStorageAccount* に作成した場合、`volumes` 配列は次のようになります。
+テンプレートを使用するには、テンプレートの `properties` セクションで `volumes` 配列を設定することにより、共有の詳細を指定し、ボリュームを定義します。 たとえば、*share1* および *share2* という 2 つの Azure Files 共有をストレージ アカウント *myStorageAccount* に作成した場合、`volumes` 配列は次のようになります。
 
-```json
+```JSON
 "volumes": [{
   "name": "myvolume1",
   "azureFile": {
@@ -123,7 +118,7 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 
 次に、ボリュームをマウントするコンテナー グループ内の各コンテナーに対して、コンテナー定義の `properties` セクションで `volumeMounts` 配列を設定します。 たとえば、以下は、前に定義した 2 つのボリューム *myvolume1* と *myvolume2* をマウントします。
 
-```json
+```JSON
 "volumeMounts": [{
   "name": "myvolume1",
   "mountPath": "/mnt/share1/"
@@ -134,7 +129,7 @@ az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --
 }]
 ```
 
-Azure Resource Manager テンプレートによるコンテナー インスタンスのデプロイ例を見るには、[Azure Container Instances での複数コンテナーのデプロイ](container-instances-multi-container-group.md)に関するページを参照してください。
+Azure Resource Manager テンプレートによるコンテナー インスタンスのデプロイ例を見るには、[コンテナー グループのデプロイ](container-instances-multi-container-group.md)に関するページを参照してください。 YAML ファイルの使用例については、[YAML で複数コンテナー グループを展開する](container-instances-multi-container-yaml.md)に関するページを参照してください
 
 ## <a name="next-steps"></a>次の手順
 

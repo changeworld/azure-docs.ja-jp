@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 29aea0171c767b2188e3eac23b1d61ffbda8e284
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986852"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231636"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: ベスト プラクティスと参照アーキテクチャ
 
@@ -75,7 +75,7 @@ Azure のユーザーには、Microsoft のベスト プラクティスを確認
 Microsoft Azure で実行されるサービスを保護するには、お客様は、自分のアプリケーションのアーキテクチャをよく理解し、[ソフトウェア品質の 5 つの重要な要素](https://docs.microsoft.com/azure/architecture/guide/pillars)に注目する必要があります。
 お客様は、標準的なトラフィックの量、アプリケーションと他のアプリケーションの間の接続モデル、パブリック インターネットに公開されるサービス エンドポイントについて知っておく必要があります。
 
-アプリケーション自体を対象とするサービス拒否攻撃に対処するのに十分な回復力をアプリケーションに持たせることが、最も重要です。 Azure プラットフォームには、[セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)](https://www.microsoft.com/sdl/default.aspx) からセキュリティとプライバシーが組み込まれるようになっています。 SDL は、すべての開発段階でセキュリティに対処し、Azure がいっそう安全になるように継続的に更新されることを保証します。
+アプリケーション自体を対象とするサービス拒否攻撃に対処するのに十分な回復力をアプリケーションに持たせることが、最も重要です。 Azure プラットフォームには、 [セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)](https://www.microsoft.com/sdl/default.aspx) からセキュリティとプライバシーが組み込まれるようになっています。 SDL は、すべての開発段階でセキュリティに対処し、Azure がいっそう安全になるように継続的に更新されることを保証します。
 
 ### <a name="design-for-scalability"></a>スケーラビリティのための設計
 
@@ -265,7 +265,7 @@ N 層アーキテクチャを実装する方法は多数あります。 次の�
 
 #### <a name="paas-web-application"></a>PaaS Web アプリケーション
 
-この参照アーキテクチャでは、単一リージョンでの Azure App Service アプリケーションの実行を示します。 このアーキテクチャは、[Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) と [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/) を使用する Web アプリケーションを対象とした一連の実証済みプラクティスを示しています。
+この参照アーキテクチャでは、単一リージョンでの Azure App Service アプリケーションの実行を示します。 このアーキテクチャは、 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)  と  [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/) を使用する Web アプリケーションを対象とした一連の実証済みプラクティスを示しています。
 フェールオーバー シナリオのためにスタンバイ リージョンを設定します。
 
 ![PaaS Web アプリケーションの参照アーキテクチャの図](media/azure-ddos-best-practices/image11.png)
@@ -300,6 +300,6 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 
 * [Azure DDoS Protection 製品のページ](https://azure.microsoft.com/services/ddos-protection/)
 
-* [Azure DDoS Protection のブログ](http://aka.ms/ddosblog)
+* [Azure DDoS Protection のブログ](https://aka.ms/ddosblog)
 
 * [Azure DDoS Protection のドキュメント](../virtual-network/ddos-protection-overview.md)

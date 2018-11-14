@@ -1,24 +1,24 @@
 ---
-title: HDInsight で Ambari Tez ビューを使用する - Azure
-description: HDInsight で Ambari Tez ビューを使用して Tez ジョブをデバッグする方法について説明します。
+title: HDInsight で Apache Ambari Tez ビューを使用する - Azure
+description: HDInsight で Apache Ambari Tez ビューを使用して Tez ジョブをデバッグする方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 576460f4b68d670e534e0ddeed920f7ac99e1458
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: c85ad59acc8e307de05f41365855f3a9669ac2b5
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108888"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034678"
 ---
-# <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする
+# <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>HDInsight で Apache Ambari ビューを使用して Apache Tez ジョブをデバッグする
 
-HDInsight の Ambari Web UI には Tez ビューが含まれています。Tez ビューは、Tez を使用するジョブの確認とデバッグに使用できます。 Tez ビューを使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
+HDInsight の Apache Ambari Web UI には Tez ビューが含まれています。Apache Tez ビューは、Tez を使用するジョブの確認とデバッグに使用できます。 Tez ビューを使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md#hdinsight-windows-retirement)」を参照してください。
@@ -28,9 +28,9 @@ HDInsight の Ambari Web UI には Tez ビューが含まれています。Tez �
 * Linux ベースの HDInsight クラスター。 クラスターの作成手順については、「[Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する](hadoop/apache-hadoop-linux-tutorial-get-started.md)」を参照してください。
 * HTML5 をサポートする最新の Web ブラウザー
 
-## <a name="understanding-tez"></a>Tez について
+## <a name="understanding-apache-tez"></a>Apache Tez について
 
-Tez は、Hadoop でデータを処理するための拡張可能なフレームワークで、処理速度が従来の MapReduce よりも向上します。 Linux ベースの HDInsight クラスターでは、これが Hive の既定のエンジンになります。
+Tez は、Apache Hadoop でデータを処理するための拡張可能なフレームワークで、処理速度が従来の MapReduce よりも向上します。 Linux ベースの HDInsight クラスターでは、これが Hive の既定のエンジンになります。
 
 Tez は、ジョブで必要なアクションの順序を記述する有向非巡回グラフ (DAG) を作成します。 個々のアクションは頂点と呼ばれ、ジョブ全体の一部分を実行します。 頂点によって表される処理を実際に実行することはタスクと呼ばれ、クラスター内の複数のノードに分散される場合があります。
 
@@ -94,7 +94,7 @@ Tez を使用する Hive クエリを実行するには、次の手順に従い�
     * **[タイムライン]**: 処理の各ステージに要した時間に関する情報。
     * **[構成]**: このクエリに使用される構成。
 
-    __[クエリの詳細]__ では、リンクを使用してこのクエリの __アプリケーション__ や __DAG__ に関する情報を確認できます。
+    __[クエリの詳細]__ では、リンクを使用してこのクエリの__アプリケーション__や __DAG__ に関する情報を確認できます。
     
     * __[アプリケーション]__ リンクには、このクエリの YARN アプリケーションに関する情報が表示されます。 ここから YARN アプリケーションのログにアクセスすることができます。
     * __[DAG]__ リンクには、このクエリの有向非巡回グラフ (DAG) に関する情報が表示されます。 ここから DAG のグラフィカル表示を見ることができます。 また、DAG 内の頂点の情報も確認できます。

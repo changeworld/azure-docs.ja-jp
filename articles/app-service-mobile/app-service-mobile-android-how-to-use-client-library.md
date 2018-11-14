@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: a39ae42ba2344cb39318809e2f120e01a75344d7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b595e62e032743be2655406ac02c8db94cf708f9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025788"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281768"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -1047,7 +1047,7 @@ MobileServiceUser user = mClient
 
 * 従来のサーバー フローの認証と同様に、Azure App Service の認証と承認を構成します。
 * 認証用の認証プロバイダー SDK を統合して、アクセス トークンを生成します。
-* 次のように、`.login()` メソッドを呼び出します。
+* 次のように `.login()` メソッドを呼び出します (`result` は `AuthenticationResult` である必要があります)。
 
     ```java
     JSONObject payload = new JSONObject();
@@ -1065,6 +1065,8 @@ MobileServiceUser user = mClient
     });
     ```
 
+次のセクションで完全なコード例を参照してください。
+
 `onSuccess()` メソッドを、正常なログインで使用する任意のコードに置き換えます。  `{provider}` 文字列は有効なプロバイダーです: **aad** (Azure Active Directory)、**facebook**、**google**、**microsoftaccount**、または **twitter**。  カスタム認証を実装している場合、カスタム認証プロバイダー タグも使用することができます。
 
 ### <a name="adal"></a>Active Directory Authentication Library (ADAL) を使用したユーザーの認証
@@ -1074,35 +1076,35 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 1. [Active Directory ログイン用の App Service の構成方法][22]に関するチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 2. build.gradle ファイルを変更して以下の定義を追加し、ADAL をインストールします。
 
-```
-repositories {
-    mavenCentral()
-    flatDir {
-        dirs 'libs'
+    ```
+    repositories {
+        mavenCentral()
+        flatDir {
+            dirs 'libs'
+        }
+        maven {
+            url "YourLocalMavenRepoPath\\.m2\\repository"
+        }
     }
-    maven {
-        url "YourLocalMavenRepoPath\\.m2\\repository"
+    packagingOptions {
+        exclude 'META-INF/MSFTSIG.RSA'
+        exclude 'META-INF/MSFTSIG.SF'
     }
-}
-packagingOptions {
-    exclude 'META-INF/MSFTSIG.RSA'
-    exclude 'META-INF/MSFTSIG.SF'
-}
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile('com.microsoft.aad:adal:1.1.1') {
-        exclude group: 'com.android.support'
-    } // Recent version is 1.1.1
-    compile 'com.android.support:support-v4:23.0.0'
-}
-```
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile('com.microsoft.aad:adal:1.1.1') {
+            exclude group: 'com.android.support'
+        } // Recent version is 1.1.1
+        compile 'com.android.support:support-v4:23.0.0'
+    }
+    ```
 
-1. 以下のコードを次のように置換してから、アプリケーションに追加します。
+3. 以下のコードを次のように置換してから、アプリケーションに追加します。
 
-* **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。
-* **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
-* **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
-* **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
+    * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。
+    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
+    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
+    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
 
 ```java
 private AuthenticationContext mContext;

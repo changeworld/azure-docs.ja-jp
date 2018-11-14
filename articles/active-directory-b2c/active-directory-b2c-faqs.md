@@ -7,21 +7,21 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6b5cc1eff5c6d080854754ec5b3b62068f1cbb9c
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 8cec3d3695eaff8719757dd022951b969de99f6a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264717"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010645"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Azure Portal で Azure AD B2C の拡張機能にアクセスできないのはなぜですか。
-Azure AD 拡張機能が動作しない一般的な理由は 2 つあります。  Azure AD B2C では、ディレクトリのユーザー ロールがグローバル管理者である必要があります。  アクセス権限が必要だと思われる場合は、管理者に問い合わせてください。  グローバル管理者権限がある場合、ユーザーが Azure Active Directory ディレクトリではなく Azure AD B2C ディレクトリにいることを確認してください。  [Azure AD B2C ディレクトリを作成する](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)手順を確認してください。
+Azure AD 拡張機能が動作しない一般的な理由は 2 つあります。  Azure AD B2C では、ディレクトリのユーザー ロールがグローバル管理者である必要があります。  アクセス権限が必要だと思われる場合は、管理者に問い合わせてください。  グローバル管理者権限がある場合、ユーザーが Azure Active Directory ディレクトリではなく Azure AD B2C ディレクトリにいることを確認してください。  [Azure AD B2C テナントの作成](tutorial-create-tenant.md)に関する手順を確認してください。
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>既存の従業員ベースの Azure AD テナントで Azure AD B2C 機能を使用できますか。
 Azure AD と Azure AD B2C は、別個の製品であるため、同じテナントで共存させることはできません。  Azure AD テナントは、組織を表します。  Azure AD B2C テナントは、証明書利用者アプリケーションで使用される ID のコレクションを表します。  Azure AD B2C では、カスタム ポリシー (パブリック プレビュー中) を使用して、Azure AD にフェデレーションし、組織の従業員の認証を許可することができます。
@@ -39,12 +39,12 @@ Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意�
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
 現在、Facebook、Google+、LinkedIn、Amazon、Twitter (プレビュー)、WeChat (プレビュー)、Weibo (プレビュー)、および QQ (プレビュー) をサポートしています。 お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
 
-Azure AD B2C でも[カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)のサポートがを追加されています。  開発者は、これらの[カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)を使用して、[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーで独自のポリシーを作成できます。 
+Azure AD B2C でも[カスタム ポリシー](active-directory-b2c-overview-custom.md)のサポートがを追加されています。  開発者は、これらの[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して、[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーで独自のポリシーを作成できます。 
 
 [カスタム ポリシー スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)を使ってカスタム ポリシーの作成をお試しください。
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>さまざまなソーシャル ID プロバイダーからお客様に関する情報をさらに収集するためにスコープを構成できますか。
-いいえ。ただし、この機能は検討中です。 サポートされている一連のソーシャル ID プロバイダーに使用されている、既定のスコープは次のとおりです。
+いいえ。 サポートされている一連のソーシャル ID プロバイダーに使用されている、既定のスコープは次のとおりです。
 
 * Facebook: 電子メール
 * Google +: 電子メール
@@ -56,7 +56,7 @@ Azure AD B2C でも[カスタム ポリシー](https://docs.microsoft.com/azure/
 いいえ。アプリケーションは任意の場所でホストできます (クラウドまたはオンプレミス)。 Azure AD B2C とやり取りするために必要なのは、パブリックにアクセス可能なエンドポイントで HTTP 要求を送受信する機能のみです。
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>複数の Azure AD B2C テナントがあります。 Azure Portal でこれらのテナントを管理するにはどうすればよいですか。
-Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前に、管理するディレクトリに切り替える必要があります。  Azure ポータルの右上にある自分の ID をクリックしてディレクトリを切り替えた後、表示されるドロップダウンからディレクトリを選択します。  図を使用した詳細な手順については、「[Azure AD B2C の設定に移動する](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)」を参照してください。
+Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前に、管理するディレクトリに切り替える必要があります。  Azure ポータルの右上にある自分の ID をクリックしてディレクトリを切り替えた後、表示されるドロップダウンからディレクトリを選択します。
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツおよび "From:" フィールド)。
 検証電子メールの内容をカスタマイズするには、 [会社のブランド化機能](../active-directory/fundamentals/customize-branding.md) を使用します。 具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
@@ -74,13 +74,13 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 1. **[名前]** フィールドを変更します。
 1. ページの上部にある **[保存]** をクリックします。
 
-現在、電子メールの送信元フィールドを変更する方法はありません。 [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) で、検証電子メールの本文のカスタマイズについてのご要望を投稿してください。
+現在、電子メールの送信元フィールドを変更する方法はありません。
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
 Azure AD Graph API を使用して、移行ツールを作成できます。 詳細については[ユーザーの移行ガイド](active-directory-b2c-user-migration.md)を参照してください。
 
 ### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C のローカル アカウントに使用されるパスワード ポリシーはどのようなものですか。
-Azure AD B2C のローカル アカウントのパスワード ポリシーは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ポリシーでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、 [Azure AD のパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx) に関するページを参照してください。
+Azure AD B2C のローカル アカウントのパスワード ポリシーは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ポリシーでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、 [Azure AD のパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx) に関するページを参照してください。 アカウントのロックアウトとパスワードについては、「[Azure Active Directory B2C: 脅威の管理](active-directory-b2c-reference-threat-management.md)」を参照してください。
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Azure AD Connect を使用して、自分のオンプレミス Active Directory に保存されているお客様の ID を Azure AD B2C に移行できますか。
 いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。 ユーザーの移行には、[Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用することを検討してください。  詳細については[ユーザーの移行ガイド](active-directory-b2c-user-migration.md)を参照してください。
@@ -113,8 +113,7 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを削除する方法はありますか。
 Azure AD B2C テナントを削除するには、次の手順に従います。
 
-1. Azure ポータルで、[Azure AD B2C の設定に移動する](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)ための手順に従います。
-1. **[アプリケーション]**、**[ID プロバイダー]**、**[すべてのポリシー]** の順に移動しますが、それぞれですべてのエントリを削除します。
+1. Azure AD B2C テナントのポリシーをすべて削除します。
 1. ここで、サブスクリプション管理者として [Azure Portal](https://portal.azure.com/) にサインインします。 (Azure へのサインアップに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントを使用します)。
 1. 削除する Azure AD B2C テナントに切り替えます。
 2. 左側の Active Directory メニューに移動します。

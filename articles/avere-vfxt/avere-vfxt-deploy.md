@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 47773f9375927e4d8dfbfec922e4cf11e42ade04
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670049"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958609"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 
@@ -30,7 +30,7 @@ vFXT クラスターを作成するには、クラスター コントローラ�
 
 このドキュメントの指示に従うことで、以下の図に示されているように、仮想ネットワーク、サブネット、コントローラー、vFXT クラスターを準備することができます。
 
-![省略可能な BLOB ストレージ、および vFXT ノード/vFXT クラスターというラベルの付いた 3 つのグループ化された VM とクラスター コントローラーというラベルの付いた 1 つの VM を含むサブネットがある vnet を示す図](media/avere-vfxt-deployment-500px.png)
+![省略可能な BLOB ストレージ、および vFXT ノード/vFXT クラスターというラベルの付いた 3 つのグループ化された VM とクラスター コントローラーというラベルの付いた 1 つの VM を含むサブネットがある vnet を示す図](media/avere-vfxt-deployment.png)
 
 始める前に、以下の前提条件への対応が済んでいることを確認します。  
 
@@ -198,9 +198,7 @@ Resource Manager テンプレートを使用してコントローラー ノー�
 
 Resource Manager テンプレートの出力からこの情報を見つけるには、次の手順に従います。
 
-1. Azure portal の上部のバーにある通知アイコンから、**[リソース グループに移動]** をクリックします。 これで、ご利用のコントローラーと vnet を含む新しいリソース グループが表示されます。
-
-   !["展開が成功しました" のメッセージと、[リソース グループに移動] ボタンおよび [ダッシュボードにピン留めする] ボタンが示されている、ポータルの通知セクション](media/avere-vfxt-browse-to-rg.png)
+1. クラスター コントローラー用のリソース グループに移動します。
 
 1. 左側にある **[デプロイ]** をクリックしてから、**[Microsoft.Template]** をクリックします。
 

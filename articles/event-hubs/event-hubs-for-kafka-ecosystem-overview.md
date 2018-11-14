@@ -7,22 +7,22 @@ author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 11/07/2018
 ms.author: bahariri
-ms.openlocfilehash: b1a046fdb62926d32c05bab5a1616b250911865b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 7f452fe9797e688dc05b644c003117461b4f8bb9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352575"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277496"
 ---
-# <a name="azure-event-hubs-for-apache-kafka-preview"></a>Apache Kafka 用の Azure Event Hubs (プレビュー)
+# <a name="azure-event-hubs-for-apache-kafka"></a>Apache Kafka 用の Azure Event Hubs 
 
 Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、[Apache Kafka 1.0 以降](https://kafka.apache.org/documentation/)をサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。 
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>Kafka 用 Event Hubs で提供されるもの
 
-Kafka 機能用 Event Hubs は、Azure Event Hubs 上で、Kafka トピックに対する読み取りと書き込みの両方について、Kafka バージョン 1.0 以降とバイナリ互換性のあるプロトコル ヘッドを提供します。 コードを変更する必要はなく、構成の最小限の変更だけで、アプリケーションから Kafka エンドポイントを使い始めることができます。 Kafka クラスターを指すのではなく、イベント ハブによって公開されている Kafka エンドポイントを指すように、構成の接続文字列を更新します。 その後、Kafka プロトコルを使用するアプリケーションから Event Hubs へのイベントのストリーミングを開始できます。 
+Kafka 機能用 Event Hubs は、Azure Event Hubs 上で、Kafka トピックに対する読み取りと書き込みの両方について、Kafka バージョン 1.0 以降とバイナリ互換性のあるプロトコル ヘッドを提供します。 コードを変更する必要はなく、構成の最小限の変更だけで、アプリケーションから Kafka エンドポイントを使い始めることができます。 Kafka クラスターを指すのではなく、イベント ハブによって公開されている Kafka エンドポイントを指すように、構成の接続文字列を更新します。 その後、Kafka プロトコルを使用するアプリケーションから Event Hubs へのイベントのストリーミングを開始できます。 この統合により、現在プレビュー段階の [Kafka 接続](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect)ようなフレームワークもサポートされます。 
 
 Kafka と Event Hubs は、概念的にはほぼ同じものです。これらはどちらも、ストリーミング データ用に構築されたパーティション分割型のログです。 次の表に、Kafka の概念と Event Hubs の概念のマッピングを示します。
 
@@ -50,9 +50,9 @@ Azure Event Hubs は、すべての通信に対して SSL または TLS を要�
 
 Kafka 機能用 Event Hubs では、あるプロトコルで書き込みを、別のプロトコルで読み取りを行えます。そのため、現在の Kafka プロデューサーは Kafka による発行を続けることができます。また、Event Hub で Azure Stream Analytics や Azure Functions などのリーダーを追加できます。 さらに、[Capture](event-hubs-capture-overview.md) や [Geo ディザスター リカバリー](event-hubs-geo-dr.md)などの Event Hubs 機能も、Kafka 機能用 Event Hubs で動作します。
 
-## <a name="features-that-are-not-supported-in-the-preview"></a>プレビューでサポートされていない機能
+## <a name="features-that-are-not-yet-supported"></a>まだサポートされていない機能 
 
-Kafka 用 Event Hubs の統合のパブリック プレビューでは、以下の Kafka 機能はサポートされません。
+まだサポートされていない Kafka の機能の一覧を次に示します。
 
 *   べき等プロデューサー
 *   トランザクション
@@ -61,18 +61,20 @@ Kafka 用 Event Hubs の統合のパブリック プレビューでは、以下�
 *   ログの圧縮
 *   既存トピックへのパーティションの追加
 *   HTTP Kafka API のサポート
-*   Kafka Connect
 *   Kafka Streams
 
 ## <a name="next-steps"></a>次の手順
 
 この記事では、Kafka 用 Event Hubs の概要について説明しました。 詳細については、以下のリンクをご覧ください。
 
-* [Kafka 対応 Event Hubs の作成方法](event-hubs-create-kafka-enabled.md)
-* [Kafka アプリケーションから Event Hubs へのストリーム](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-* [GitHub 上で他のサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
-* [Event Hubs のチュートリアル](event-hubs-dotnet-standard-getstarted-send.md)を開始する
-* [Event Hubs の FAQ](event-hubs-faq.md)
+- [Kafka 対応 Event Hubs の作成方法](event-hubs-create-kafka-enabled.md)
+- [Kafka アプリケーションから Event Hubs へのストリーム](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+- [Kafka 対応イベント ハブでの Kafka ブローカーのミラーリング](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Kafka 対応イベント ハブへの Apache Spark の接続](event-hubs-kafka-spark-tutorial.md)
+- [Kafka 対応イベント ハブへの Apache Flink の接続](event-hubs-kafka-flink-tutorial.md)
+- [Kafka Connect を Kafka 対応イベント ハブに統合する](event-hubs-kafka-connect-tutorial.md)
+- [Kafka 対応イベント ハブへの Akka Streams の接続](event-hubs-kafka-akka-streams-tutorial.md)
+- [GitHub 上でサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
 
  
  

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 28de0f8bdcaa730c5beea0c630d4e86e15642809
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142853"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978844"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -46,16 +46,16 @@ Application Insights Profiler は、1 時間ごとに 2 分間、または **[Ap
 
 1. プロファイラーが実行された期間中に要求がある場合は、プロファイラーが有効になっているアプリケーションの一部分で要求が処理されることを確認します。 アプリケーションが複数のコンポーネントで構成されていることもありますが、Profiler は、コンポーネントのすべてではなく一部に対してのみ有効になっています。 [Application Insights Profiler を構成する] ページに、トレースをアップロード済みのコンポーネントが表示されます。
 
-### <a name="net-core-21-bug"></a>**.NET Core 2.1 のバグ** 
+### <a name="net-core-21-bug"></a>.NET Core 2.1 のバグ
 プロファイラー エージェントには、ASP.NET Core 2.1 上で実行されているアプリケーションから取得されたトレースをアップロードできないというバグがあります。 現在、修正プログラムを作成中です。間もなく準備できます。 このバグの修正プログラムは、10 月末までにデプロイされます。
 
-### <a name="other-things-to-check"></a>**チェックすべきその他の項目:**
+### <a name="other-things-to-check"></a>チェックすべきその他の項目:
 * アプリが .Net Framework 4.6 で動作していること。
 * Web アプリが ASP.NET Core アプリケーションの場合は、ASP.NET Core 2.0 以降が実行されている必要があります。
 * 表示しようとしているデータが 2 週間以上前のものである場合は、時間フィルターを絞り込んで、もう一度試します。 トレースは 7 日後に削除されます。
 * プロキシまたはファイアウォールが https://gateway.azureserviceprofiler.net へのアクセスをブロックしていないことを確認します。
 
-### <a id="double-counting"></a>**並列スレッドの二重カウント**
+### <a id="double-counting"></a>並列スレッドの二重カウント
 
 スタック ビューアーに表示される合計時間メトリックが、要求期間よりも長くなる場合があります。
 
@@ -63,11 +63,11 @@ Application Insights Profiler は、1 時間ごとに 2 分間、または **[Ap
 
 トレースに並列スレッドがある場合は、要求のクリティカル パスを特定できるように、どのスレッドが待機しているかを確認してください。 通常は、すぐに待機状態になるスレッドが他のスレッドを待機しています。 他のスレッドに集中し、待機中のスレッドの時間は無視してください。
 
-### <a name="error-report-in-the-profiling-viewer"></a>**プロファイリング ビューアーのエラーの報告**
+### <a name="error-report-in-the-profile-viewer"></a>プロファイル ビューアーのエラーの報告
 ポータルでサポート チケットを送信してください。 エラー メッセージの関連付け ID を必ず含めてください。
 
 ## <a name="troubleshooting-profiler-on-app-services"></a>App Services でのプロファイラーのトラブルシューティング
-### <a name="for-the-profiler-to-work-properly"></a>**プロファイラーを正常に動作させるためには:**
+### <a name="for-the-profiler-to-work-properly"></a>プロファイラーを正常に動作させるためには:
 * Web アプリ サービス プランは Basic レベル以上である必要があります。
 * Web アプリには、App Services (2.6.5) 用の Application Insights 拡張機能がインストールされている必要があります。
 * Web アプリは、**APPINSIGHTS_INSTRUMENTATIONKEY** 設定が、Application Insights SDK で使用されているインストルメンテーション キーと同じキーで構成されている必要があります。
@@ -82,7 +82,7 @@ Application Insights Profiler は、1 時間ごとに 2 分間、または **[Ap
     
     ![profiler-webjob-log]
 
-### <a name="manual-installation"></a>**手動インストール**
+### <a name="manual-installation"></a>手動のインストール
 
 Profiler を構成すると、Web アプリの設定に対して更新が行われます。 環境に応じて、更新を手動で適用することもできます。 1 つの例として、アプリケーションが PowerApps 用の Web Apps 環境で実行されている場合があります。
 
@@ -97,9 +97,9 @@ Profiler を構成すると、Web アプリの設定に対して更新が行わ�
 1. Azure Web Apps ギャラリーから **Application Insights** をインストールします。
 1. Web アプリを再起動します。
 
-### <a name="too-many-active-profiling-sessions"></a>**アクティブなプロファイリング セッションが多すぎる**
+### <a name="too-many-active-profiling-sessions"></a>アクティブなプロファイリング セッションが多すぎる
 
-現在、同じサービス プランで実行されている最大 4 つの Azure Web アプリとデプロイ スロットで Profiler を有効にできます。 Profiler Web ジョブが報告しているアクティブなプロファイリング セッションが多すぎる場合は、一部の Web アプリを別のサービス プランに移動します。
+現在、同じサービス プランで実行されている最大 4 つの Azure Web アプリとデプロイ スロットで Profiler を有効にできます。 1 つの App Service プランで実行されるより多くの Web アプリがある場合は、プロファイラーによって Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException がスローされる可能性があります。 プロファイラーは、Web アプリごとに個別に実行して、各アプリの ETW セッションの開始を試みます。 ただし、一度にアクティブにできる ETW セッションの数には制限があります。 Profiler Web ジョブが報告しているアクティブなプロファイリング セッションが多すぎる場合は、一部の Web アプリを別のサービス プランに移動します。
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>配置エラー: ディレクトリが空ではありません 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
 

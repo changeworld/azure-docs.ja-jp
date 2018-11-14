@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: mmontwil
-ms.openlocfilehash: 7fcdd2d41f5fe76776acd5642cda11ef8a65f82d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 9e0d90dc4e5e4782802233dd311d10fc1cbe969c
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353760"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978538"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-java-and-vs-code"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (Java および VS Code)
 
@@ -34,7 +34,7 @@ ms.locfileid: "49353760"
 - Azure サブスクリプション。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/free)ことができます。
 - [Visual Studio Code](https://code.visualstudio.com/download)。
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) バージョン 2.0.43 以上。
-- 米国東部、米国中部、米国西部 2、西ヨーロッパ、カナダ中部、カナダ東部のいずれかのリージョンに存在し、**[HTTP アプリケーションのルーティング]** が有効になっていて、Kubernetes 1.10.3 以降が実行されている Kubernetes クラスター。
+- 米国東部、米国東部 2、米国中部、米国西部 2、西ヨーロッパ、東南アジア、カナダ中部、カナダ東部のいずれかのリージョンに存在し、**HTTP アプリケーションのルーティング**が有効になっていて、Kubernetes 1.10.3 以降が実行されている Kubernetes クラスター。
 
     ```cmd
     az group create --name MyResourceGroup --location <region>

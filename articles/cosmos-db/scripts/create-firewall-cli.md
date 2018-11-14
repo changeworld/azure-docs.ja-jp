@@ -1,33 +1,25 @@
 ---
 title: Azure CLI スクリプト - Azure Cosmos DB のファイアウォールを作成する | Microsoft Docs
 description: Azure CLI のサンプル スクリプト - Azure Cosmos DB のファイアウォールを作成する
-services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
+author: markjbrown
 ms.service: cosmos-db
-ms.custom: sammvcple
-ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
-ms.date: 06/02/2017
-ms.author: sngun
-ms.openlocfilehash: e86c66356fb5d2e191407c8f481c2de44103edfb
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 10/26/2018
+ms.author: mjbrown
+ms.openlocfilehash: b43fff02f247e557d018a74772ca115543d904bf
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413300"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013039"
 ---
-# <a name="azure-cosmos-db-create-a-firewall-using-the-azure-cli"></a>Azure Cosmos DB: Azure CLI を使用してファイアウォールを作成する
+# <a name="azure-cosmos-db-create-a-firewall-using-azure-cli"></a>Azure Cosmos DB: Azure CLI を使用してファイアウォールを作成する
 
-この CLI サンプル スクリプトでは、任意の種類の Azure Cosmos DB アカウントのファイアウォール ポリシーを作成します。 
+この CLI サンプル スクリプトでは、任意の種類の Azure Cosmos DB アカウントのファイアウォール ポリシーを作成します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -37,8 +29,8 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
-```azurecli-interactive
-az group delete --name myResourceGroup
+```azurecli-$resourceGroupName
+az group delete --name $resourceGroupName
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
@@ -47,13 +39,13 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB アカウントを作成します。 |
-| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#az-cosmosdb-update) | ファイアウォール設定を含めるように Azure Cosmos DB アカウントを更新します。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB アカウントを作成します。 |
+| [az cosmosdb update](/cli/azure/cosmosdb#az-cosmosdb-update) | Azure CosmosDB アカウントを更新します。 |
+| [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 Azure Cosmos DB のその他の CLI サンプル スクリプトについては、[Azure Cosmos DB CLI のドキュメント](../cli-samples.md)をご覧ください。

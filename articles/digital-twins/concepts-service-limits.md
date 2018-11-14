@@ -8,25 +8,25 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dwalthermsft
-ms.openlocfilehash: f9a3d934de47630ac3fd2356001014d006c2a4eb
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 86ae75118dd1311ea2ae92fb718fe4c58b8e5673
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212269"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961757"
 ---
 # <a name="public-preview-service-limits"></a>パブリック プレビューのサービスの制限
 
-**パブリック プレビュー**期間中の Azure Digital Twins には、一時サブスクリプション、インスタンス、レートに関して以下で説明する制限があります。
+パブリック プレビュー期間中の Azure Digital Twins には、サブスクリプション、インスタンス、レートに関して以下の一時的な制限があります。
 
 これらの制約は、新しいサービスとその多くの機能についての学習を簡単にするために設けられています。
 
 > [!NOTE]
-> これらの制限は、**一般公開** (**GA**) の時点で増やされたり除去されたりします。
+> これらの制限は、一般公開 (GA) の時点で増やされたり除去されたりします。
 
 ## <a name="per-subscription-limits"></a>サブスクリプションごとの制限
 
-**パブリック プレビュー**期間中、各 Azure サブスクリプションで作成または実行できる Azure Digital Twins インスタンスは、厳密に一度に 1 つだけです。
+パブリック プレビュー期間中、各 Azure サブスクリプションで作成または実行できる Azure Digital Twins インスタンスは、厳密に一度に 1 つだけです。
 
 > [!TIP]
 > インスタンスを削除すると、新しいインスタンスを作成できます。
@@ -35,19 +35,19 @@ ms.locfileid: "50212269"
 
 さらに、Azure Digital Twins の各インスタンスでは次のものを使用できます。
 
-- 1 つの **IotHub** リソース
-- イベントの種類が **DeviceMessage** である 1 つの **EventHub** エンドポイント
-- イベントの種類が **SensorChange**、**SpaceChange**、**TopologyOperation**、または **UdfCustom** である、最大 3 つの **EventHub**、**ServiceBus**、または **EventGrid** エンドポイント
+- 1 つの **IotHub** リソース。
+- イベントの種類が **DeviceMessage** である 1 つの **EventHub** エンドポイント。
+- イベントの種類が **SensorChange**、**SpaceChange**、**TopologyOperation**、または **UdfCustom** である、最大 3 つの **EventHub**、**ServiceBus**、または **EventGrid** エンドポイント。
 
 ## <a name="management-api-limits"></a>Management API の制限
 
 Management API に対する要求のレート制限は次のとおりです。
 
-- Management API に対して 1 秒あたり 100 件の要求
-- 1 つの Management API クエリで、最大 1,000 個のオブジェクトを返すことができます
+- Management API に対して 1 秒あたり 100 件の要求。
+- 1 つの Management API クエリで返されるオブジェクトは最大 1,000 個。 
 
 > [!IMPORTANT]
-> 1,000 オブジェクトの制限を超過した場合、エラーが発生し、クエリを簡素化する必要があります。
+> 1,000 オブジェクトの制限を超過する場合は、エラーが発生し、クエリを簡素化する必要があります。
 
 ## <a name="udf-rate-limits"></a>UDF のレート制限
 
@@ -58,8 +58,8 @@ Management API に対する要求のレート制限は次のとおりです。
 
 > [!NOTE]
 > 次の操作により、追加のレート制限が一時的に適用される場合があります。
-> - トポロジ オブジェクトのメタデータの編集
-> - UDF 定義の更新
+> - トポロジ オブジェクト メタデータに対して行われる編集
+> - UDF の定義に対して行われる更新
 > - 初めてテレメトリを送信するデバイス
 
 ## <a name="device-telemetry-limits"></a>デバイスのテレメトリ制限

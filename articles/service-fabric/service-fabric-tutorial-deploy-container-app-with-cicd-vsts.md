@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: ryanwi,v-steg
 ms.custom: mvc
-ms.openlocfilehash: 5ec898465b550a136db71ee731be5943c7441dcd
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: db0abf2c70ac79356496c78275dc658d1ee29a23
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382030"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035920"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする
 
@@ -76,6 +76,9 @@ Team Services のリリース定義では、クラスターにアプリケーシ
 Web ブラウザーを開き、新しいチーム プロジェクト ([https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting)) に移動します。
 
 **[ビルドとリリース]** タブ、**[ビルド]**、**[新しいパイプライン]** の順に選択します。
+
+>[!NOTE]
+>ビルド定義テンプレートが表示されない場合は、**[YAML パイプライン作成の新しいエクスペリエンス]** 機能がオフになっていることを確認します。 この機能は、DevOps アカウントの **[プレビュー機能]** セクションで構成します。
 
 ![新しいパイプライン][new-pipeline]
 
@@ -182,7 +185,7 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * プロジェクトにソース管理を追加する

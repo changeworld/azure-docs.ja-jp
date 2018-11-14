@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/19/2018
+ms.date: 11/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: b5c2c51429e37eea2473ae5966b1f41295875cb6
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ec73083d1bb66e7c7735a2bee8e89eeb56cf7620
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638173"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282500"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
@@ -168,8 +168,10 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
    AZPKG ファイルと共にダウンロードされたテキスト ファイルから、イメージの "*パブリッシャー*"、"*オファー*"、および *SKU* の値を取得できます。 テキスト ファイルは、指定の場所に保存されています。 *version* の値は、前の手順で Azure から項目をダウンロードするときに書き留めておいたバージョンです。 
  
-   次のスクリプト例では、Windows Server 2016 Datacenter - Server Core 仮想マシンの値が使用されています。 *-Osuri* の値は、項目の BLOB 保存場所のパスの例です。
+   次のスクリプト例では、Windows Server 2016 Datacenter - Server Core 仮想マシンの値が使用されています。 *-Osuri* の値は、項目の BLOB 保存場所のパスの例です。 
 
+   このスクリプトに代わる方法として、[こちらの記事で説明されている手順](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal)に従い、Azure portal を使って .VHD イメージをインポートすることもできます。
+ 
    ```PowerShell  
    Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
@@ -179,6 +181,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
     -Version "2016.127.20171215" `
     -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
+   
    **ソリューション テンプレートについて:** いくつかのテンプレートには、名前が **fixed3.vhd** の小さな 3 MB .VHD ファイルを含めることができます。 Azure Stack にそのファイルをインポートする必要はありません。 Fixed3.vhd。  このファイルは、Azure Marketplace の発行要件を満たすために、いくつかのソリューション テンプレートに含まれています。
 
    テンプレートの説明を確認してダウンロードし、ソリューション テンプレートを操作するために必要な VHD などの追加要件をインポートします。  

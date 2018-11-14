@@ -17,12 +17,12 @@ ms.prod: vs-devops-alm
 ms.date: 09/12/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 934f9a7eb626c94ed35a17a5b385b850fbbbe537
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 1922475056fa79aafbf72c75c09eff19cea2b54b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542652"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978447"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
 事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1) で入手できます。
@@ -34,8 +34,8 @@ Azure を利用するのが初めてであれば、 [無料の Azure アカウ�
 
 | リリース バージョン                                              | エディション                     |     製品バージョン     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017: 最新 (バージョン 15.8)                    |    Enterprise、Community     |      バージョン 15.8.4     |
-| Visual Studio 2017: 最新プレビュー (バージョン 15.9、Preview 2) |    Enterprise、Community     |      バージョン 15.9.0     |
+| Visual Studio 2017: 最新 (バージョン 15.8)                    |    Enterprise、Community     |      バージョン 15.8.7     |
+| Visual Studio 2017: 最新プレビュー (バージョン 15.9、Preview 5) |    Enterprise、Community     |      バージョン 15.9.0     |
 |         Visual Studio 2017: RTW                              |    Enterprise、Community     |      バージョン 15.0.18    |
 |   Visual Studio 2015: 最新 (Update 3)                      |    Enterprise、Community     |  Version 14.0.25431.01  |
 |         Visual Studio 2015: RTW                              |             なし             | (サービスの有効期限切れ) |

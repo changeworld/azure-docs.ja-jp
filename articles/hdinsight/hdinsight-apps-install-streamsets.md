@@ -1,6 +1,6 @@
 ---
 title: 発行済みアプリケーションのインストール - StreamSets Data Collector - Azure HDInsight
-description: StreamSets Data Collector サードパーティ Hadoop アプリケーションをインストールして使用します。
+description: StreamSets Data Collector サードパーティ Apache Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 72ace99a8124b0a288e8facf630e947151169d0b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f963ae53e1396b1ef6279f2bd6502e5ab0cd23a1
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106884"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034559"
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>発行済みアプリケーションのインストール - StreamSets Data Collector
 
-この記事では、[HDInsight 用の StreamSets Data Collector](https://streamsets.com/) の発行済み Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
+この記事では、[HDInsight 用の StreamSets Data Collector](https://streamsets.com/) の発行済み Apache Hadoop アプリケーションを Azure HDInsight にインストールして実行する方法について説明します。 HDInsight アプリケーション プラットフォームの概要と、独立系ソフトウェア ベンダー (ISV) によって発行された、利用可能なアプリケーションの一覧については、[サードパーティ Hadoop アプリケーションのインストール](hdinsight-apps-install-applications.md)に関するページを参照してください。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
 
 ## <a name="about-streamsets-data-collector"></a>StreamSets Data Collector について
 

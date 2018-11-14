@@ -1,24 +1,24 @@
 ---
-title: HDInsight の Hadoop クラスターで空のエッジ ノードを使用する - Azure
+title: HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する - Azure
 description: クライアントとして使用できる空のエッジ ノードを HDInsight クラスターに追加し、その後 HDInsight アプリケーションをテストおよびホストする方法について説明します。
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: 1111f3c21e3c3718a9a010284a42ea469e04473d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 276f11bf889927ee74fa4e9078e147db6df78b9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090390"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281373"
 ---
-# <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>HDInsight の Hadoop クラスターで空のエッジ ノードを使用する
+# <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する
 
-HDInsight クラスターに空のエッジ ノードを追加する方法について説明します。 空のエッジ ノードは、ヘッド ノードの場合と同じクライアント ツールがインストールされ、構成された Linux 仮想マシンですが、Hadoop サービスは実行されていません。 エッジ ノードは、クラスターへのアクセス、クライアント アプリケーションのテスト、およびクライアント アプリケーションのホストに使用できます。 
+HDInsight クラスターに空のエッジ ノードを追加する方法について説明します。 空のエッジ ノードは、ヘッド ノードの場合と同じクライアント ツールがインストールされ、構成されているが、Apache Hadoop サービスは実行されていない Linux 仮想マシンです。 エッジ ノードは、クラスターへのアクセス、クライアント アプリケーションのテスト、およびクライアント アプリケーションのホストに使用できます。 
 
 空のエッジ ノードは、既存の HDInsight クラスターに追加することも、クラスターの作成時にその新しいクラスターに追加することもできます。 空のエッジ ノードを追加するには、Azure Resource Manager テンプレートを使用します。  次のサンプルでは、テンプレートを使用して空のエッジ ノードを追加する方法を示しています。
 
@@ -58,7 +58,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 エッジ ノードを作成した後、SSH を使用してエッジ ノードに接続し、クライアント ツールを実行して HDInsight の Hadoop クラスターにアクセスすることができます。
 
 > [!WARNING] 
-> エッジ ノードにインストールされているカスタム コンポーネントは、Microsoft からビジネス上合理的なサポートを受けることができます。 これにより、発生する問題を解決できる場合があります。 または、コミュニティ リソースを利用することで、さらなる支援を受けられる場合もあります。 コミュニティから支援を受けることができる、最もアクティブなサイトの一部を次に示します。
+> エッジ ノードにインストールされているカスタム コンポーネントは、Microsoft からビジネス上合理的なサポートを受けることができます。 これにより、発生する問題を解決できる場合があります。 または、追加の支援を受けるために、コミュニティ リソースを参照することもできます。 コミュニティから支援を受けることができる、最もアクティブなサイトの一部を次に示します。
 >
 > * [HDInsight の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
 > * [http://stackoverflow.com](http://stackoverflow.com)。
@@ -66,7 +66,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 > Apache テクノロジを使用している場合、[http://apache.org](http://apache.org) にある Apache の各プロジェクト サイト (例: [Hadoop](http://hadoop.apache.org/) サイト) で支援を受けられる可能性があります。
 
 > [!NOTE]
-> クラスターと同様、エッジ ノードもパッチ管理されます。  詳細については、「[HDInsight 用の OS の修正プログラム](./hdinsight-os-patching.md)」を参照してください。
+> 他のクラスター ノードと同様に、エッジ ノードもパッチ管理されます。  詳細については、「[HDInsight 用の OS の修正プログラム](./hdinsight-os-patching.md)」を参照してください。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>既存のクラスターにエッジ ノードを追加する
 このセクションでは、Resource Manager テンプレートを使用して既存の HDInsight クラスターにエッジ ノードを追加します。  Resource Manager テンプレートは、 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)にあります。 Resource Manager テンプレートは、 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh にあるスクリプト アクションを呼び出します。このスクリプトでは操作は実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを説明するためのものです。
@@ -116,7 +116,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 
 ## <a name="add-multiple-edge-nodes"></a>複数のエッジ ノードの追加
 
-HDInsight クラスターには複数のエッジ ノードを追加できます。  複数エッジ ノード構成は、Azure Resource Manager テンプレートを使用することによってのみ行うことができます。  この記事の冒頭にあるテンプレート サンプルを参照してください。  作成するエッジ ノードの数を反映するには、**targetInstanceCount** を更新する必要があります。
+HDInsight クラスターには複数のエッジ ノードを追加できます。  複数エッジ ノード構成は、Azure Resource Manager テンプレートを使用することによってのみ行うことができます。  この記事の冒頭にあるテンプレート サンプルを参照してください。  作成するエッジ ノードの数を反映させるには、**targetInstanceCount** を更新する必要があります。
 
 ## <a name="access-an-edge-node"></a>エッジ ノードにアクセスする
 エッジ ノードの SSH エンドポイントは、&lt;エッジ ノード名>.&lt;クラスター名>-ssh.azurehdinsight.net:22 です。  たとえば、new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22 のようになります。

@@ -2,25 +2,25 @@
 title: Hadoop YARN アプリケーション ログにプログラムを使用してアクセスする - Azure
 description: HDInsight の Hadoop クラスター上のアプリケーション ログにプログラムを使用してアクセスします。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e92f9f7bb49b0b7cc33c73a9c5eb2d0ca7532592
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b7b93ca9c8638451d23a27edeed823e593a95b23
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094403"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035647"
 ---
-# <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight での YARN アプリケーション ログへのアクセス
-このドキュメントでは、Azure HDInsight の Windows ベースの Hadoop クラスターで完了した YARN アプリケーションのログにアクセスする方法について説明します。
+# <a name="access-apache-yarn-application-logs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight 上の Apache YARN アプリケーション ログにアクセスする
+このドキュメントでは、Azure HDInsight の Windows ベースの Hadoop クラスターで完了した Apache YARN アプリケーションのログにアクセスする方法について説明します
 
 > [!IMPORTANT]
-> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスの詳細については、「 [Access YARN application logs on Linux-based Hadoop on HDInsight (HDInsight の Linux ベースの Hadoop 上の YARN アプリケーション ログにアクセスする)](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight クラスター上の YARN ログへのアクセスの詳細については、「[Linux ベースの HDInsight で Apache YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)」をご覧ください
 >
 
 

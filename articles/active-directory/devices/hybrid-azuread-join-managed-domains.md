@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: c3c0d9bb6da00272cc7da0ad9f4fae978552c39b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352612"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963933"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル: マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -140,6 +140,9 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
  
 - デバイスの登録用のローカル イントラネット設定の構成
 
+- ダウンレベルの Windows デバイスの制御 
+
+
 ### <a name="update-device-settings"></a>デバイス設定の更新 
 
 ダウンレベルの Windows デバイスを登録するには、Azure AD へのデバイスの登録をユーザーに許可するデバイス設定になっている必要があります。 この設定は、Azure portal の次の場所で確認できます。
@@ -163,6 +166,12 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 - `https://autologon.microsoftazuread-sso.com`
 
 さらに、ユーザーのローカル イントラネット ゾーンで **[スクリプトを介したステータス バーの更新を許可する]** を有効にする必要があります。
+
+
+### <a name="control-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの制御 
+
+ダウンレベルの Windows デバイスを登録するには、Windows インストーラー パッケージ (.msi) をダウンロード センターからダウンロードし、インストールする必要があります。 詳細については、[こちら](hybrid-azuread-join-control.md#control-windows-down-level-devices)をクリックしてください。 
+
 
 ## <a name="verify-the-registration"></a>登録の確認
 

@@ -3,18 +3,18 @@ title: HDInsight で ML Services クラスターを管理する - Azure
 description: Azure HDInsight で ML Services クラスターを管理する方法について説明します。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 38a8366a586b032c3b11cbef8ee5f01ad2b822a5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 11/06/2018
+ms.openlocfilehash: 35b80223552181e44beac011f5fb541158466acc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702403"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255406"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 
@@ -80,7 +80,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/ から RStudio にアクセス�
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Microsoft ML Services にリモート接続する
 
-ご自身のデスクトップで実行している ML Client のリモート インスタンスから HDInsight Hadoop Spark コンピューティング コンテキストへのアクセスを設定できます。 それには、使用しているデスクトップで RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、および sshProfileScript) を指定する必要があります。次の例を示します。
+ご自身のデスクトップで実行している ML Client のリモート インスタンスから HDInsight Spark コンピューティング コンテキストへのアクセスを設定できます。 それには、使用しているデスクトップで RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、および sshProfileScript) を指定する必要があります。次の例を示します。
 
     myNameNode <- "default"
     myPort <- 0
@@ -226,16 +226,13 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/ から RStudio にアクセス�
         summary(modelSpark)
 
 
-   > [!NOTE]
-   > MapReduce を使用して、クラスター ノード全体に計算を分散することもできます。 コンピューティング コンテキストについて詳しくは、「[HDInsight 上の ML サービス向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)」をご覧ください。
-
 ## <a name="distribute-r-code-to-multiple-nodes"></a>複数のノードに R コードを分散する
 
 HDInsight の ML Services では、既存の R コードを取得し、`rxExec` を使ってクラスター内の複数のノード全体で実行できます。 この関数は、パラメーター スイープまたはシミュレーションを行うときに便利です。 次のコードは、`rxExec` の使用方法の例です。
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-まだ Spark や MapReduce のコンテキストを使っている場合は、コード `(Sys.info()["nodename"])` が実行されているワーカー ノードのノード名の値が返されます。 たとえば、4 ノードのクラスターでは次のような出力が表示されます。
+まだ Spark のコンテキストを使っている場合は、コード `(Sys.info()["nodename"])` が実行されているワーカー ノードのノード名の値が返されます。 たとえば、4 ノードのクラスターでは次のような出力が表示されます。
 
     $rxElem1
         nodename

@@ -1,5 +1,5 @@
 ---
-title: Azure Database Migration Service を使用して PostgreSQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs
+title: 'チュートリアル: Azure Database Migration Service を使用して PostgreSQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs'
 description: Azure Database Migration Service を使用して、オンプレミスの PostgreSQL から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 09/26/2018
-ms.openlocfilehash: 51103f6661be22e355aafe01783af5afddd51f54
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 004db061e721f0169491e98bd8e7cdd86e08bb01
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182469"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963600"
 ---
-# <a name="migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>DMS を使用して PostgreSQL をオンラインで Azure Database for PostgreSQ に移行する
+# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル: DMS を使用して PostgreSQL を Azure Database for PostgreSQL にオンラインで移行する
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの PostgreSQL インスタンスから [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを PostgreSQL 9.6 のオンプレミス インスタンスから Azure Database for PostgreSQL に移行します。
 
 このチュートリアルでは、以下の内容を学習します。

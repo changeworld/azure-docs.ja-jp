@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 07f10ebbb99712b62c6807560777587033718d2b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: fc56fe3a5bdfa0f5e1ef4bc309932cb7f57cf27d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091953"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978095"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>チュートリアル: Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する 
 
@@ -100,7 +100,7 @@ Traffic Manager プロファイルを指すエイリアス レコードを作成
 
 1. Azure DNS ゾーンを選択し、ゾーンを開きます。
 2. **[レコード セット]** を選択します。
-3. **[名前]** テキスト ボックスは、ドメイン名の頂点を表す空のままにします  (例: contoso.com)。
+3. **[名前]** テキスト ボックスは、ドメイン名の頂点を表す空のままにします  一例として contoso.com があります。
 4. **[Type]\(種類\)** は **A** レコードのままにします。
 5. **[Alias Record Set]\(エイリアス レコード セット\)** チェック ボックスをオンにします。
 6. **[Choose Azure service]\(Azure サービスの選択\)** を選択して、**TM-alias-test** Traffic Manager プロファイルを選択します。
@@ -121,4 +121,4 @@ Traffic Manager プロファイルを指すエイリアス レコードを作成
 このチュートリアルでは、頂点のドメイン名を使用して Traffic Manager プロファイルを参照するためのエイリアス レコードを作成しました。 Azure DNS と Web アプリについて詳しくは、Web アプリのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [カスタム ドメインにおける Web アプリの DNS レコードの作成](./dns-web-sites-custom-domain.md)
+> [ゾーンの頂点にある負荷分散された Web アプリをホストする](./dns-alias-appservice.md)

@@ -9,16 +9,16 @@ ms.reviewer: jasonwhowell
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/27/2018
-ms.openlocfilehash: 96114270c246e23db0423dec7871e4c24fe1be10
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5c1684f7367aec2d283cd6ad310657def49dd3cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024357"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282562"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したデータの抽出、変換、読み込み
 
-このチュートリアルでは、Azure Databricks を使用して、ETL (データの抽出、変換、および読み込み) 操作を実行して、Azure Data Lake Storage Gen2 プレビューから Azure SQL Data Warehouse にデータを移動します。
+このチュートリアルでは、Azure Databricks を使用して、ETL (データの抽出、変換、および読み込み) 操作を実行し、Azure Data Lake Storage Gen2 対応の Azure Storage アカウントから Azure SQL Data Warehouse にデータを移動します。
 
 次の図に、アプリケーション フローを示します。
 
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
-このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。 
+このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。
 
 1. Azure portal で、**[リソースの作成]** > **[分析]** > **[Azure Databricks]** の順に選択します。
 
@@ -138,7 +138,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. 次に、ストレージ アカウントにサンプル データをアップロードします。 ストレージ アカウントにデータをアップロードする際に使用する方法は、階層名前空間が有効かどうかによって異なります。
 
-    階層名前空間が Gen2 アカウント用に作成された Azure Storage アカウントで有効になっている場合は、Azure Data Factory、distp、または AzCopy (バージョン 10) を使用してアップロードを処理できます。 AzCopy バージョン 10 は、プレビューのお客様のみが使用できます。 AzCopy を使うには、次のコードをコマンド ウィンドウに貼り付けます。
+    階層型名前空間が Azure Storage アカウントで有効になっている場合は、Azure Data Factory、distp、または AzCopy (バージョン 10) を使用してアップロードを処理できます。 現在、AzCopy バージョン 10 は、プレビューでのみ利用できます。 AzCopy を使うには、次のコードをコマンド ウィンドウに貼り付けます。
 
     ```bash
     set ACCOUNT_NAME=<ACCOUNT_NAME>

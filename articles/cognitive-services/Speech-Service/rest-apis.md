@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025839"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038605"
 ---
 # <a name="speech-service-rest-apis"></a>音声サービスの REST API
 
@@ -57,10 +57,12 @@ Speech to Text REST API のエンドポイントを次の表に示します。 �
 
 ### <a name="audio-format"></a>音声の形式
 
-オーディオは HTTP `POST` 要求の本文で送信されます。 次の形式/エンコードの、16 KHz PCM シングル チャンネル (モノラル) の 16 ビット WAV 形式である必要があります。
+オーディオは HTTP `POST` 要求の本文で送信されます。 この表内のいずれかの形式にする必要があります。
 
-* PCM コーデックの WAV 形式
-* OPUS コーデックの Ogg 形式
+| 形式 | コーデック | Bitrate | サンプル レート |
+|--------|-------|---------|-------------|
+| WAV | PCM 0 | 16 ビット | 16 kHz、モノラル |
+| OGG | OPUS | 16 ビット | 16 kHz、モノラル |
 
 >[!NOTE]
 >上の形式は、Speech Service の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](/index.yml) では PCM コーデックの WAV 形式のみがサポートされています。
@@ -104,7 +106,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codec="audio/pcm"; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked

@@ -8,43 +8,45 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 59f2860168782d96bf82d0a27f9bb9eeed0f1020
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ef1eccede59111166145a7735773ce6170f08b20
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167496"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011988"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをカスタマイズする
 
-この記事では、ソース コードにアクセスし、リモート監視ソリューション アクセラレータ UI をカスタマイズする方法について説明します。 この記事では、次の内容について説明します。
+この記事では、ソース コードにアクセスし、リモート監視ソリューション アクセラレータ UI をカスタマイズする方法について説明します。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>UI のローカル開発環境を準備する
 
 リモート監視ソリューション アクセラレータ UI のコードは、React.js フレームワークを使用して実装されます。 [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub リポジトリでソース コードを見つけることができます。
 
-UI を変更するために、そのコピーをローカルで実行できます。 ローカル コピーは、ソリューションのデプロイ済みのインスタンスに接続し、テレメトリの取得などのアクションを実行します。
+UI を変更するために、そのコピーをローカルで実行できます。 テレメトリの取得などのアクションを実行するために、ローカル コピーはソリューションのデプロイ済みのインスタンスに接続します。
 
 次の手順に、UI 開発のためのローカル環境を設定するプロセスを説明します。
 
 1. **pcs** CLI を使用して、ソリューション アクセラレータの**基本**インスタンスをデプロイします。 デプロイの名前と仮想マシンに提供した資格情報をメモしておきます。 詳しくは、[CLI を使用したデプロイ](iot-accelerators-remote-monitoring-deploy-cli.md)に関するページをご覧ください。
 
-1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にします。 例: 
+1. ソリューションでマイクロサービスをホストする仮想マシンへの SSH アクセスを有効にするには、Azure portal または Azure Cloud Shell を使用します。 例: 
 
-    ```sh
+    ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
+    SSH アクセスを有効にするのはテストおよび開発中のみにしてください。 SSH を有効にした場合、[使用し終えたらできるだけ早く無効にする必要があります](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
 
-1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例: 
+1. Azure Portal または Azure Cloud Shell を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例: 
 
-    ```sh
+    ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
 
-1. SSH を使用して、前の手順で取得した IP アドレスと、ソリューションをデプロイするために、**pcs** を実行したときに提供した資格情報を使用して、仮想マシンに接続します。
+1. SSH を使用して仮想マシンに接続します。 前の手順で取得した IP アドレスと、ソリューションをデプロイするために、**pcs** を実行したときに提供した資格情報を使用します。 `ssh` コマンドは Azure Cloud Shell で使用できます。
 
 1. ローカル UX で接続できるようにするには、仮想マシンの bash シェルで、次のコマンドを実行します。
 
@@ -62,7 +64,9 @@ UI を変更するために、そのコピーをローカルで実行できま�
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-1. `azure-iot-pcs-remote-monitoring-webui` フォルダーのローカル コピーのコマンド プロンプトで、次のコマンドを実行して、必要なライブラリをインストールし、ローカルで UI を実行します。
+1. コマンド プロンプトで、`azure-iot-pcs-remote-monitoring-webui` フォルダーのローカル コピーに移動します。
+
+1. 必要なライブラリをインストールして UI をローカルで実行するには、次のコマンドを実行します。
 
     ```cmd/sh
     npm install
@@ -73,131 +77,160 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 ## <a name="customize-the-layout"></a>レイアウトのカスタマイズ
 
-リモート監視ソリューションの各ページは、ソース コードで*パネル*と呼ばれる一連のコントロールから構成されます。 たとえば、**ダッシュボード** ページは、概要、マップ、アラーム、テレメトリ、および KPI の 5 つのパネルのページから構成されます。 各ページとそのパネルを定義するソース コードを、[pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub リポジトリで見つけることができます。 たとえば、**Dashboard** ページ、そのレイアウト、およびページ上のパネルを定義するコードは、[src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) フォルダーにあります。
+リモート監視ソリューションの各ページは、ソース コードで*パネル*と呼ばれる一連のコントロールから構成されます。 **ダッシュボード** ページは、概要、マップ、アラーム、テレメトリ、および Analytics の 5 つのパネルで構成されます。 各ページとそのパネルを定義するソース コードを、[pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub リポジトリで見つけることができます。 たとえば、**Dashboard** ページ、そのレイアウト、およびページ上のパネルを定義するコードは、[src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) フォルダーにあります。
 
-パネルがその独自のレイアウトとサイズを管理するため、ユーザーはページのレイアウトを簡単に変更できます。 たとえば、`src/components/pages/dashboard/dashboard.js` ファイル内の **PageContent** 要素への次の変更により、マップ パネルとテレメトリ パネルの位置が交換され、マップ パネルと KPI パネルの相対的な幅が変更されます。
+パネルがその独自のレイアウトとサイズを管理するため、ユーザーはページのレイアウトを簡単に変更できます。 次のことを行うために、`src/components/pages/dashboard/dashboard.js` ファイルの **PageContent** 要素に以下の変更を加えます。
+
+* マップ パネルとテレメトリ パネルの位置を交換します。
+* マップ パネルと分析パネルの相対的な幅を変更します。
 
 ```nodejs
-<PageContent className="dashboard-container" key="page-content">
+<PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
       <OverviewPanel
+        activeDeviceGroup={activeDeviceGroup}
         openWarningCount={openWarningCount}
         openCriticalCount={openCriticalCount}
         onlineDeviceCount={onlineDeviceCount}
         offlineDeviceCount={offlineDeviceCount}
-        isPending={kpisIsPending || devicesIsPending}
-        error={devicesError || kpisError}
+        isPending={analyticsIsPending || devicesIsPending}
+        error={deviceGroupError || devicesError || analyticsError}
         t={t} />
     </Cell>
-    <Cell className="col-5">
+    <Cell className="col-6">
       <TelemetryPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
         telemetry={telemetry}
         isPending={telemetryIsPending}
-        error={telemetryError}
+        lastRefreshed={lastRefreshed}
+        error={deviceGroupError || telemetryError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
     <Cell className="col-3">
-      <CustAlarmsPanel
-        alarms={currentActiveAlarmsWithName}
-        isPending={kpisIsPending || rulesIsPending}
-        error={rulesError || kpisError}
-        t={t} />
+      <AlertsPanel
+        alerts={currentActiveAlertsWithName}
+        isPending={analyticsIsPending || rulesIsPending}
+        error={rulesError || analyticsError}
+        t={t}
+        deviceGroups={deviceGroups} />
     </Cell>
     <Cell className="col-4">
-    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+      <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
         <MapPanel
+          analyticsVersion={analyticsVersion}
           azureMapsKey={azureMapsKey}
           devices={devices}
-          devicesInAlarm={devicesInAlarm}
+          devicesInAlert={devicesInAlert}
           mapKeyIsPending={azureMapsKeyIsPending}
-          isPending={devicesIsPending || kpisIsPending}
-          error={azureMapsKeyError || devicesError || kpisError}
+          isPending={devicesIsPending || analyticsIsPending}
+          error={azureMapsKeyError || devicesError || analyticsError}
           t={t} />
       </PanelErrorBoundary>
     </Cell>
     <Cell className="col-6">
-      <KpisPanel
-        topAlarms={topAlarmsWithName}
-        alarmsPerDeviceId={alarmsPerDeviceType}
-        criticalAlarmsChange={criticalAlarmsChange}
-        warningAlarmsChange={warningAlarmsChange}
-        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
-        error={devicesError || rulesError || kpisError}
+      <AnalyticsPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
+        topAlerts={topAlertsWithName}
+        alertsPerDeviceId={alertsPerDeviceType}
+        criticalAlertsChange={criticalAlertsChange}
+        isPending={analyticsIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || analyticsError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
+    {
+      Config.showWalkthroughExamples &&
+      <Cell className="col-4">
+        <ExamplePanel t={t} />
+      </Cell>
+    }
   </Grid>
 </PageContent>
 ```
 
 ![パネル レイアウトの変更](./media/iot-accelerators-remote-monitoring-customize/layout.png)
 
-> [!NOTE]
-> マップは、ローカル デプロイでは構成されません。
-
-[パネルを複製して、カスタマイズする](#duplicate-and-customize-an-existing-control)場合は、同じパネルの複数のインスタンスや複数のバージョンを追加することもできます。 次の例は、`src/components/pages/dashboard/dashboard.js` ファイルを編集して、telemetry パネルの 2 つのインスタンスを追加する方法を示しています。
+[パネルを複製して、カスタマイズする](#duplicate-and-customize-an-existing-control)場合は、同じパネルのいくつかのインスタンスやいくつかのバージョンを追加することもできます。 次の例は、テレメトリ パネルの 2 つのインスタンスを追加する方法を示しています。 これらの変更を行うには、`src/components/pages/dashboard/dashboard.js` ファイルを編集します。
 
 ```nodejs
-<PageContent className="dashboard-container" key="page-content">
+<PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
       <OverviewPanel
+        activeDeviceGroup={activeDeviceGroup}
         openWarningCount={openWarningCount}
         openCriticalCount={openCriticalCount}
         onlineDeviceCount={onlineDeviceCount}
         offlineDeviceCount={offlineDeviceCount}
-        isPending={kpisIsPending || devicesIsPending}
-        error={devicesError || kpisError}
+        isPending={analyticsIsPending || devicesIsPending}
+        error={deviceGroupError || devicesError || analyticsError}
         t={t} />
     </Cell>
     <Cell className="col-3">
       <TelemetryPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
         telemetry={telemetry}
         isPending={telemetryIsPending}
-        error={telemetryError}
+        lastRefreshed={lastRefreshed}
+        error={deviceGroupError || telemetryError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
     <Cell className="col-3">
       <TelemetryPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
         telemetry={telemetry}
         isPending={telemetryIsPending}
-        error={telemetryError}
+        lastRefreshed={lastRefreshed}
+        error={deviceGroupError || telemetryError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
-    <Cell className="col-2">
-      <CustAlarmsPanel
-        alarms={currentActiveAlarmsWithName}
-        isPending={kpisIsPending || rulesIsPending}
-        error={rulesError || kpisError}
-        t={t} />
+    <Cell className="col-3">
+      <AlertsPanel
+        alerts={currentActiveAlertsWithName}
+        isPending={analyticsIsPending || rulesIsPending}
+        error={rulesError || analyticsError}
+        t={t}
+        deviceGroups={deviceGroups} />
     </Cell>
     <Cell className="col-4">
-    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+      <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
         <MapPanel
+          analyticsVersion={analyticsVersion}
           azureMapsKey={azureMapsKey}
           devices={devices}
-          devicesInAlarm={devicesInAlarm}
+          devicesInAlert={devicesInAlert}
           mapKeyIsPending={azureMapsKeyIsPending}
-          isPending={devicesIsPending || kpisIsPending}
-          error={azureMapsKeyError || devicesError || kpisError}
+          isPending={devicesIsPending || analyticsIsPending}
+          error={azureMapsKeyError || devicesError || analyticsError}
           t={t} />
       </PanelErrorBoundary>
     </Cell>
     <Cell className="col-6">
-      <KpisPanel
-        topAlarms={topAlarmsWithName}
-        alarmsPerDeviceId={alarmsPerDeviceType}
-        criticalAlarmsChange={criticalAlarmsChange}
-        warningAlarmsChange={warningAlarmsChange}
-        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
-        error={devicesError || rulesError || kpisError}
+      <AnalyticsPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
+        topAlerts={topAlertsWithName}
+        alertsPerDeviceId={alertsPerDeviceType}
+        criticalAlertsChange={criticalAlertsChange}
+        isPending={analyticsIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || analyticsError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
+    {
+      Config.showWalkthroughExamples &&
+      <Cell className="col-4">
+        <ExamplePanel t={t} />
+      </Cell>
+    }
   </Grid>
 </PageContent>
 ```
@@ -206,33 +239,30 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 ![複数のテレメトリ パネル](./media/iot-accelerators-remote-monitoring-customize/multiple-telemetry.png)
 
-> [!NOTE]
-> マップは、ローカル デプロイでは構成されません。
-
 ## <a name="duplicate-and-customize-an-existing-control"></a>既存のコントロールの複製とカスタマイズ
 
-次の手順では、既存のパネルを複製し、それを変更して、変更済みのバージョンを使用する方法の例として、**アラーム** パネルを使用する方法を説明します。
+次の手順では、既存のパネルを複製し、それを変更して、変更済みのバージョンを使用する方法を説明します。 この手順では例として **alerts** パネルを使用します。
 
-1. リポジトリのローカル コピーで、`src/components/pages/dashboard/panels` フォルダー内の **alarms** フォルダーのコピーを作成します。 新しいコピーに **cust_alarms** と名付けます。
+1. リポジトリのローカル コピーで、`src/components/pages/dashboard/panels` フォルダー内の **alerts** フォルダーのコピーを作成します。 新しいコピーに **cust_alerts** と名付けます。
 
-1. **cust_alarms** フォルダー内の **AlarmsPanel.js** ファイルで、クラスの名前を **CustAlarmsPanel** に編集します。
+1. **cust_alerts** フォルダー内の **alertsPanel.js** ファイルで、クラスの名前を **CustAlertsPanel** に編集します。
 
     ```nodejs
-    export class CustAlarmsPanel extends Component {
+    export class CustAlertsPanel extends Component {
     ```
 
 1. 次の行を `src/components/pages/dashboard/panels/index.js` ファイルに追加します。
 
     ```nodejs
-    export * from './cust_alarms';
+    export * from './cust_alerts';
     ```
 
-1. `src/components/pages/dashboard/dashboard.js` ファイル内の `AlarmsPanel` を `CustAlarmsPanel` で置き換えます。
+1. `src/components/pages/dashboard/dashboard.js` ファイル内の `alertsPanel` を `CustAlertsPanel` で置き換えます。
 
     ```nodejs
     import {
       OverviewPanel,
-      CustAlarmsPanel,
+      CustAlertsPanel,
       TelemetryPanel,
       KpisPanel,
       MapPanel,
@@ -243,17 +273,17 @@ UI を変更するために、そのコピーをローカルで実行できま�
     ...
 
     <Cell className="col-3">
-      <CustAlarmsPanel
-        alarms={currentActiveAlarmsWithName}
+      <CustAlertsPanel
+        alerts={currentActivealertsWithName}
         isPending={kpisIsPending || rulesIsPending}
         error={rulesError || kpisError}
         t={t} />
     </Cell>
     ```
 
-これで、元の **Alarms** パネルを **CustAlarms** というコピーで置き換えました。 このコピーは、元のパネルと同一です。 これでコピーを変更できます。 たとえば、**Alarms** パネルの列の順序を変更するには、次の手順を実行します。
+これで、元の **alerts** パネルを **CustAlerts** というコピーで置き換えました。 このコピーは元のものと同じです。 これでコピーを変更できます。 たとえば、**alerts** パネルの列の順序を変更するには、次の手順を実行します。
 
-1. `src/components/pages/dashboard/panels/cust_alarms/alarmsPanel.js` ファイルを開きます。
+1. `src/components/pages/dashboard/panels/cust_alerts/alertsPanel.js` ファイルを開きます。
 
 1. 列定義を次のコード スニペットに示すように変更します。
 
@@ -272,9 +302,9 @@ UI を変更するために、そのコピーをローカルで実行できま�
     ];
     ```
 
-次のスクリーン ショットは、**Alarms** パネルの新しいバージョンを示しています。
+次のスクリーン ショットは、**alerts** パネルの新しいバージョンを示しています。
 
-![更新済みの Alarms パネル](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
+![更新済みの alerts パネル](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
 
 ## <a name="customize-the-telemetry-chart"></a>テレメトリ グラフのカスタマイズ
 
@@ -305,22 +335,23 @@ UI を変更するために、そのコピーをローカルで実行できま�
 
 ## <a name="add-a-new-kpi"></a>新しい KPI の追加
 
-**ダッシュボード** ページには、**システム KPI** パネルの KPI が表示されます。 これらの KPI は、`src/components/pages/dashboard/dashboard.js` ファイルで計算されます。 KPI は `src/components/pages/dashboard/panels/kpis/kpisPanel.js` ファイルによってレンダリングされます。 次の手順で、新しい KPI 値を計算して、**ダッシュ ボード** ページにレンダリングする方法について説明します。 示している例では、警告アラーム KPI に新しいパーセンテージの変更を追加しています。
+**ダッシュボード** ページには、**Analytics** パネルの KPI が表示されます。 これらの KPI は、`src/components/pages/dashboard/dashboard.js` ファイルで計算されます。 KPI は `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` ファイルによってレンダリングされます。 次の手順で、新しい KPI 値を計算して、**ダッシュ ボード** ページにレンダリングする方法について説明します。 示している例では、警告アラーム KPI に新しいパーセンテージの変更を追加しています。
 
-1. `src/components/pages/dashboard/dashboard.js` ファイルを開きます。 **initialState** オブジェクトを次のように **warningAlarmsChange** プロパティを含めるように変更します。
+1. `src/components/pages/dashboard/dashboard.js` ファイルを開きます。 **initialState** オブジェクトを次のように **warningAlertsChange** プロパティを含めるように変更します。
 
     ```nodejs
     const initialState = {
       ...
 
-      // Kpis data
-      currentActiveAlarms: [],
-      topAlarms: [],
-      alarmsPerDeviceId: {},
-      criticalAlarmsChange: 0,
-      warningAlarmsChange: 0,
-      kpisIsPending: true,
-      kpisError: null,
+      // Analytics data
+      analyticsVersion: 0,
+      currentActiveAlerts: [],
+      topAlerts: [],
+      alertsPerDeviceId: {},
+      criticalAlertsChange: 0,
+      warningAlertsChange: 0,
+      analyticsIsPending: true,
+      analyticsError: null
 
       ...
     };
@@ -338,49 +369,51 @@ UI を変更するために、そのコピーをローカルで実行できま�
     };
     ```
 
-1. 新しい KPI を計算します。 重大なアラーム数の計算を見つけます。 コードをコピーし、次のようにコピーを変更します。
+1. 新しい KPI を計算します。 重大なアラート数の計算を見つけます。 コードをコピーし、次のようにコピーを変更します。
 
     ```nodejs
-    // ================== Warning Alarms Count - START
-    const currentWarningAlarms = currentAlarmsStats.totalWarningCount;
-    const previousWarningAlarms = previousAlarms.reduce(
-      (cnt, { severity }) => severity === 'warning' ? cnt + 1 : cnt,
+    // ================== Warning Alerts Count - START
+    const currentWarningAlerts = currentAlertsStats.totalWarningCount;
+    const previousWarningAlerts = previousAlerts.reduce(
+      (cnt, { severity }) => severity === Config.ruleSeverity.warning ? cnt + 1 : cnt,
       0
     );
-    const warningAlarmsChange = ((currentWarningAlarms - previousWarningAlarms) / currentWarningAlarms * 100).toFixed(2);
-    // ================== Warning Alarms Count - END
+    const warningAlertsChange = ((currentWarningAlerts - previousWarningAlerts) / currentWarningAlerts * 100).toFixed(2);
+    // ================== Warning Alerts Count - END
     ```
 
-1. KPI ストリームに新しい **warningAlarmsChange** を含めます。
+1. KPI ストリームに新しい **warningAlertsChange** を含めます。
 
     ```nodejs
     return ({
-      kpisIsPending: false,
+      analyticsIsPending: false,
+      analyticsVersion: this.state.analyticsVersion + 1,
 
-      // Kpis data
-      currentActiveAlarms,
-      topAlarms,
-      criticalAlarmsChange,
-      warningAlarmsChange,
-      alarmsPerDeviceId: currentAlarmsStats.alarmsPerDeviceId,
+      // Analytics data
+      currentActiveAlerts,
+      topAlerts,
+      criticalAlertsChange,
+      warningAlertsChange,
+      alertsPerDeviceId: currentAlertsStats.alertsPerDeviceId,
 
       ...
     });
     ```
 
-1. UI のレンダリングに使用される状態データに新しい **warningAlarmsChange** を含めます。
+1. UI のレンダリングに使用される状態データに新しい **warningAlertsChange** を含めます。
 
     ```nodejs
     const {
       ...
 
-      currentActiveAlarms,
-      topAlarms,
-      alarmsPerDeviceId,
-      criticalAlarmsChange,
-      warningAlarmsChange,
-      kpisIsPending,
-      kpisError,
+      analyticsVersion,
+      currentActiveAlerts,
+      topAlerts,
+      alertsPerDeviceId,
+      criticalAlertsChange,
+      warningAlertsChange,
+      analyticsIsPending,
+      analyticsError,
 
       ...
     } = this.state;
@@ -389,46 +422,47 @@ UI を変更するために、そのコピーをローカルで実行できま�
 1. KPI パネルに渡されるデータを更新します。
 
     ```node.js
-    <KpisPanel
-      topAlarms={topAlarmsWithName}
-      alarmsPerDeviceId={alarmsPerDeviceType}
-      criticalAlarmsChange={criticalAlarmsChange}
-      warningAlarmsChange={warningAlarmsChange}
-      isPending={kpisIsPending || rulesIsPending || devicesIsPending}
-      error={devicesError || rulesError || kpisError}
+    <AnalyticsPanel
+      timeSeriesExplorerUrl={timeSeriesParamUrl}
+      topAlerts={topAlertsWithName}
+      alertsPerDeviceId={alertsPerDeviceType}
+      criticalAlertsChange={criticalAlertsChange}
+      warningAlertsChange={warningAlertsChange}
+      isPending={analyticsIsPending || rulesIsPending || devicesIsPending}
+      error={devicesError || rulesError || analyticsError}
+      theme={theme}
       colors={chartColorObjects}
       t={t} />
     ```
 
-これで、`src/components/pages/dashboard/dashboard.js` ファイルの変更が完了しました。 次の手順では、新しい KPI を表示するために、`src/components/pages/dashboard/panels/kpis/kpisPanel.js` ファイルに行う変更について説明します。
+これで、`src/components/pages/dashboard/dashboard.js` ファイルの変更が完了しました。 次の手順では、新しい KPI を表示するために、`src/components/pages/dashboard/panels/analytics/analyticsPanel.js` ファイルに行う変更について説明します。
 
 1. 次のように新しい KPI 値を取得するために、次のコードの行を変更します。
 
     ```nodejs
-    const { t, isPending, criticalAlarmsChange, warningAlarmsChange, error } = this.props;
+    const { t, isPending, criticalAlertsChange, warningAlertsChange, alertsPerDeviceId, topAlerts, timeSeriesExplorerUrl, error } = this.props;
     ```
 
 1. 次のように、新しい KPI 値を表示するために、マークアップを変更します。
 
     ```nodejs
-    <div className="kpi-cell">
-      <div className="kpi-header">{t('dashboard.panels.kpis.criticalAlarms')}</div>
-      <div className="critical-alarms">
+    <div className="analytics-cell">
+      <div className="analytics-header">{t('dashboard.panels.analytics.criticalAlerts')}</div>
+      <div className="critical-alerts">
         {
-          criticalAlarmsChange !== 0 &&
-            <div className="kpi-percentage-container">
-              <div className="kpi-value">{ criticalAlarmsChange }</div>
-              <div className="kpi-percentage-sign">%</div>
+          !showOverlay &&
+            <div className="analytics-percentage-container">
+              <div className="analytics-value">{ !isNaN(criticalAlertsChange) ? criticalAlertsChange : 0 }</div>
+              <div className="analytics-percentage-sign">%</div>
             </div>
         }
       </div>
-      <div className="kpi-header">{t('Warning alarms')}</div>
-      <div className="critical-alarms">
+      <div className="critical-alerts">
         {
-          warningAlarmsChange !== 0 &&
-            <div className="kpi-percentage-container">
-              <div className="kpi-value">{ warningAlarmsChange }</div>
-              <div className="kpi-percentage-sign">%</div>
+          !showOverlay &&
+            <div className="analytics-percentage-container">
+              <div className="analytics-value">{ !isNaN(warningAlertsChange) ? warningAlertsChange : 0 }</div>
+              <div className="analytics-percentage-sign">%</div>
             </div>
         }
       </div>

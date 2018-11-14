@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: bc273b8979b29057163e02dc9605e631aef173f1
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227005"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981568"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
@@ -129,9 +129,9 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 ## <a name="azure-devops-services"></a>Azure DevOps Services
 [Azure DevOps Services](https://www.visualstudio.com/team-services/) は、コードの共有と追跡、自動ビルドの使用、完全な継続的インテグレーションと開発 (CI/CD) パイプラインの作成に役立つ一連のツールです。 Azure DevOps Services は、Visual Studio や他のエディターと統合して、簡単に使用できるようにします。 Azure DevOps Services では、Azure VM を作成して構成した後、VM にコードをデプロイすることもできます。
 
-以下の項目について説明します。
+各項目の詳細情報
 
-- [Azure DevOps Services を使用して継続的インテグレーション パイプラインを作成する](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md)。
+- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts)。
 
 
 ## <a name="jenkins"></a>Jenkins

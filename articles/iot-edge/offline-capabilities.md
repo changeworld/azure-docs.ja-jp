@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 30b85f15d8718e21af66634db5a4afd5623a77e6
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: c4ab33f4d706eb677b2b790ff871c1fb900846ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340173"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235634"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する (プレビュー)
 
@@ -46,7 +46,7 @@ IoT Edge デバイスがオフライン モードになると、Edge ハブは 3
 
 ## <a name="restrictions-and-limits"></a>制約と制限
 
-この記事で説明されている拡張オフライン機能は、[IoT Edge バージョン 1.0.2 以上](https://github.com/Azure/azure-iotedge/releases)で利用できます。 それより前のバージョンには、オフライン機能のサブセットが備わっています。 拡張オフライン機能を備えていない既存の IoT Edge デバイスは、ランタイム バージョンを変更してアップグレードすることはできませんが、これらの機能を取得するために新しい IoT Edge デバイス ID を使用して再構成する必要があります。 
+この記事で説明されている拡張オフライン機能は、[IoT Edge バージョン 1.0.4 以上](https://github.com/Azure/azure-iotedge/releases)で利用できます。 それより前のバージョンには、オフライン機能のサブセットが備わっています。 拡張オフライン機能を備えていない既存の IoT Edge デバイスは、ランタイム バージョンを変更してアップグレードすることはできませんが、これらの機能を取得するために新しい IoT Edge デバイス ID を使用して再構成する必要があります。 
 
 拡張オフラインサポートは、米国東部と西ヨーロッパを除き、IoT Hub が使用可能なすべてのリージョンで利用できます。 
 
@@ -56,34 +56,7 @@ Edge IoT 以外のデバイスのみを子デバイスとして追加できま�
 
 ## <a name="set-up-an-edge-device"></a>Edge デバイスを設定する
 
-拡張オフライン期間中に実行する任意の IoT Edge デバイスで、MQTT 経由で通信するように IoT Edge ランタイムを構成します。 
-
 IoT Edge デバイスによってその拡張オフライン機能を子 IoT デバイスまで拡張するには、Azure portal で親子リレーションシップを宣言する必要があります。
-
-### <a name="set-the-upstream-protocol-to-mqtt"></a>アップストリーム プロトコルを MQTT に設定する
-
-アップストリーム プロトコルとして MQTT と通信するように、Edge エージェントと Edge ハブの両方を構成します。 このプロトコルは、配置マニフェストで環境変数を使用して宣言されます。 
-
-Azure portal で、デプロイ用のモジュールを設定する際に **[Edge ランタイムの詳細設定を構成する]** ボタンを選択すると、Edge ハブと Edge エージェントのモジュール定義にアクセスできます。 両方のモジュールについて、**UpstreamProtocol** と呼ばれる環境変数を作成し、その値を **MQTT** に設定します。 
-
-デプロイ テンプレート JSON では、次の例に示すように環境変数が宣言されます。 
-
-```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
-    },
-    "env": {
-        "UpstreamProtocol": {
-            "value": "MQTT"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
-}
-```
 
 ### <a name="assign-child-devices"></a>子のデバイスを割り当てる
 
@@ -142,4 +115,4 @@ Edge ハブ モジュールの環境変数および作成オプションは、Az
 
 ## <a name="next-steps"></a>次の手順
 
-[Linux](how-to-create-transparent-gateway-linux.md) デバイスまたは [Windows](how-to-create-transparent-gateway-windows.md) デバイスの透過的なゲートウェイ シナリオで、拡張オフライン操作を有効にします。
+[透過的なゲートウェイ](how-to-create-transparent-gateway.md)のシナリオで、拡張オフライン操作を有効にします。

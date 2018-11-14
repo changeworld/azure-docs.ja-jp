@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 4574b140e2e17462a5ff696b913bb4ef7bcb0ad0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5714257fce53fafa148b8ae4d5a3addf3b872c6f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412758"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035477"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの Azure から切断されたデプロイ計画の決定
 [Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-connection-models.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
 
-Azure からの切断デプロイ オプションを使用すると、インターネットへの接続なしで Azure Stack をデプロイして使用できます。 ただし、切断されたデプロイでは、AD FS ID ストアおよび容量ベースの課金モデルに制限されます。 
+インターネットに接続していなくても、Azure Stack をデプロイして使用することができます。 ただし、切断されたデプロイでは、AD FS ID ストアおよび容量ベースの課金モデルに制限されます。 
 
 このオプションは、次の場合に選択します。
 - インターネットに接続されていない環境で Azure Stack をデプロイすることが必要なセキュリティまたはその他の制限がある。
@@ -40,7 +40,7 @@ Azure からの切断デプロイ オプションを使用すると、インタ�
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>切断されたデプロイで損なわれるか、または使用できない機能 
 Azure Stack は Azure に接続されているときに最適に機能するように設計されているため、切断モードでは損なわれるか、または完全に使用できない機能がいくつか存在することに注意する必要があります。 
 
-|Feature|切断モードでの影響|
+|機能|切断モードでの影響|
 |-----|-----|
 |VM のデプロイ後を構成するための DSC 拡張機能を備えた VM デプロイ|損なわれる - DSC 拡張機能は、最新の WMF がないかどうかインターネットを参照します。|
 |Docker コマンドを実行するための Docker 拡張機能を備えた VM デプロイ|損なわれる – Docker は最新バージョンがないかどうかインターネットをチェックするため、このチェックは失敗します。|

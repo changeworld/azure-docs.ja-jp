@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: de77050206c98832b274e8bdbda8026fc115610e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 850b721cfa78dde23ebc11944bf023de8798cec9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156223"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236955"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 この記事では、Azure AD Domain Services のマネージド ドメインに対して、セキュリティで保護されたライトウェイト ディレクトリ アクセス プロトコル (LDAPS) を有効にする方法について説明します。 セキュリティで保護された LDAP は、「Secure Sockets Layer (SSL)/トランスポート層セキュリティ (TLS) 経由のライトウェイト ディレクトリ アクセス プロトコル (LDAP)」としても知られています。
@@ -45,7 +45,7 @@ ms.locfileid: "50156223"
 
 1. **信頼された発行者** - 証明書は、セキュリティで保護された LDAP を使用してマネージド ドメインに接続するコンピューターによって信頼された機関から発行される必要があります。 この機関は、これらのコンピューターによって信頼された公開証明機関 (CA) またはエンタープライズ CA です。
 2. **有効期間** - 証明書は少なくとも、今後 3 ～ 6 か月間有効である必要があります。 証明書の有効期限が切れると、マネージド ドメインへのセキュリティで保護された LDAP のアクセスが切断されます。
-3. **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインに対してワイルドカードにする必要があります。 たとえば、ドメインが contoso100.com という名前の場合、証明書のサブジェクト名は *.contoso100.com にする必要があります。 DNS 名 (サブジェクト代替名) はこのワイルドカード名に設定します。
+3. **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインである必要があります。 たとえば、ドメインが 'contoso100.com' という名前である場合、証明書のサブジェクト名は 'contoso100.com' である必要があります。 DNS 名 (サブジェクト代替名) をマネージド ドメインのワイルドカード名に設定します。
 4. **キー使用法** - 証明書は、デジタル署名およびキーの暗号化に対して構成される必要があります。
 5. **証明書の目的** - 証明書は、SSL サーバー認証に対して有効である必要があります。
 
@@ -83,7 +83,7 @@ Windows コンピューターで **管理者** として新しい PowerShell ウ
 $lifetime=Get-Date
 New-SelfSignedCertificate -Subject contoso100.com `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
-  -Type SSLServerAuthentication -DnsName *.contoso100.com
+  -Type SSLServerAuthentication -DnsName *.contoso100.com, contoso100.com
 ```
 
 上記のサンプルの "contoso100.com" は、マネージド ドメインの DNS ドメイン名に置き換えます。 たとえば、"contoso100.onmicrosoft.com" というマネージド ドメインを作成した場合は、Subject 属性の "contoso100.com" を "contoso100.onmicrosoft.com" で、DnsName 属性の "*.contoso100.com" を "*.contoso100.onmicrosoft.com" で置き換えます。

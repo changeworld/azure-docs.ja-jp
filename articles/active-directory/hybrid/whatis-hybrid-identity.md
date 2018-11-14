@@ -13,36 +13,36 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/25/2018
+ms.date: 11/02/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9c946c9b7d041b1d08dadc9f7bd830d4a1d658ad
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 2aca42c23cc213d5d7e451105052d5d5d697b77d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250871"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979473"
 ---
-# <a name="hybrid-identity-and-microsofts-identity-solutions"></a>ハイブリッド ID と Microsoft の ID ソリューション
-[Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) ハイブリッド ID ソリューションを使用すると、オンプレミスのディレクトリ オブジェクトと Azure AD を同期したまま、オンプレミスでユーザーを管理できます。 オンプレミスの Windows Server Active Directory と Azure AD との同期を計画する際に最初に行う決断は、同期済み ID を使用するかフェデレーション済み ID を使用するかです。 
+# <a name="hybrid-identity-and-microsoft-identity-solutions"></a>ハイブリッド ID と Microsoft の ID ソリューション
+[Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) ハイブリッド ID ソリューションを使用すると、オンプレミスのディレクトリ オブジェクトと Azure AD を同期したまま、オンプレミスでユーザーを管理できます。 オンプレミスの Windows Server Active Directory と Azure AD との同期を計画する際に最初に行う決断は、マネージド ID を使用するかフェデレーション ID を使用するかです。 
 
-- **同期済み ID** (およびオプションでパスワード ハッシュ) を使用すると、ユーザーは、オンプレミスとクラウドベースの両方の組織リソースへのアクセスに同じパスワードを使用できます。 
+- **マネージド ID** - ユーザー アカウントとグループがオンプレミスの Active Directory から同期され、ユーザー認証が Azure によって管理されます。   
 - **フェデレーション ID** では、ユーザー認証を Azure から切り離し、信頼のおけるオンプレミスの ID プロバイダーに認証を委ねることで、ユーザーをより細かく制御することができます。 
 
 ハイブリッド ID の構成にはいくつかのオプションがあります。 組織のニーズに最も合う ID モデルを検討するとき、時間、既存のインフラストラクチャ、複雑さ、コストも考慮する必要があります。 これらの要因は組織ごとに異なり、時間の経過とともに変化する場合があります。 ただし、要件が変化する場合、異なる ID モデルに柔軟に切り替えることもできます。
 
-## <a name="synchronized-identity"></a>同期済み ID 
+## <a name="managed-identity"></a>マネージド ID 
 
-同期済み ID は、オンプレミスのディレクトリ オブジェクト (ユーザーおよびグループ) と Azure AD を同期する最も簡単な方法です。 
+マネージド ID は、オンプレミスのディレクトリ オブジェクト (ユーザーおよびグループ) と Azure AD を同期する最も簡単な方法です。 
 
-![同期済みハイブリッド ID](./media/whatis-hybrid-identity/synchronized-identity.png)
+![同期済みハイブリッド ID](./media/whatis-hybrid-identity/managed.png)
 
-同期済み ID は最も簡単で高速なメソッドですが、ユーザーは、クラウドベースのリソース用に別のパスワードを管理する必要があります。 これを回避するには、(オプションで) Azure AD ディレクトリに[ユーザー パスワードのハッシュを同期](how-to-connect-password-hash-synchronization.md)することも可能です。 パスワード ハッシュを同期すると、ユーザーは、オンプレミスで使用しているものと同じユーザー名とパスワードを使用してクラウドベースの組織リソースにログインできます。 Azure AD Connect は、オンプレミスのディレクトリの変更を定期的にチェックし、Azure AD ディレクトリを同期された状態に保ちます。 オンプレミスの Active Directory でユーザー属性またはパスワードが変更されると、Azure AD で自動的に更新されます。 
+マネージド ID は最も簡単で迅速な方法ですが、ユーザーは、引き続きクラウドベースのリソース用に別のパスワードを管理する必要があります。 これを回避するには、(オプションで) Azure AD ディレクトリに[ユーザー パスワードのハッシュを同期](how-to-connect-password-hash-synchronization.md)することも可能です。 パスワード ハッシュを同期すると、ユーザーは、オンプレミスで使用しているものと同じユーザー名とパスワードを使用してクラウドベースの組織リソースにログインできます。 Azure AD Connect は、オンプレミスのディレクトリの変更を定期的にチェックし、Azure AD ディレクトリを同期された状態に保ちます。 オンプレミスの Active Directory でユーザー属性またはパスワードが変更されると、Azure AD で自動的に更新されます。 
 
-多くの組織においては Office 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースへのユーザー サインインを可能にする必要があるのみなので、その場合は既定のパスワードの同期オプションをお勧めします。 これが役に立たない場合、パススルー認証と AD FS のいずれかを選択する必要があります。
+ほとんどの組織では、ユーザーが Office 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースにサインインできるようにするだけで十分です。その場合は、既定のパスワード ハッシュ同期オプションをお勧めします。 これが役に立たない場合、パススルー認証と AD FS のいずれかを選択する必要があります。
 
 > [!TIP]
-> ユーザーのパスワードは、実際のユーザーのパスワードを表すハッシュ値の形式でオンプレミスの Windows Server Active Directory に格納されます。 ハッシュ値は、一方向の数学関数 (ハッシュ アルゴリズム) の結果として求められます。 一方向の関数の結果をパスワードのプレーンテキスト バージョンに戻す方法はありません。 パスワードのハッシュを使用してオンプレミスのネットワークにサインインすることはできません。 パスワードの同期を選択すると、Azure AD Connect は、オンプレミスの Active Directory からパスワード ハッシュを抽出し、パスワード ハッシュに追加のセキュリティ処理を適用してから Azure AD に同期します。 パスワードの同期とパスワードの書き戻しを組み合わせて使用すると、Azure AD でセルフ サービス パスワードのリセットを有効にすることもできます。 また、企業ネットワークに接続されたドメイン参加済みコンピューターのユーザーはシングル サインオン (SSO) を有効化できます。 シングル サインオンにおいて、有効になっているユーザーはユーザー名のみを入力して、クラウド リソースに安全にアクセスできます。 
+> ユーザーのパスワードは、実際のユーザーのパスワードを表すハッシュ値の形式でオンプレミスの Windows Server Active Directory に格納されます。 ハッシュ値は、一方向の数学関数 (ハッシュ アルゴリズム) の結果として求められます。 一方向の関数の結果をパスワードのプレーンテキスト バージョンに戻す方法はありません。 パスワードのハッシュを使用してオンプレミスのネットワークにサインインすることはできません。 パスワードの同期を選択すると、Azure AD Connect は、オンプレミスの Active Directory からパスワード ハッシュを抽出し、パスワード ハッシュに追加のセキュリティ処理を適用してから Azure AD に同期します。 パスワード ハッシュ同期とパスワード ライトバックを組み合わせて使用すると、Azure AD でセルフサービスのパスワード リセットを有効にすることもできます。 また、企業ネットワークに接続されたドメイン参加済みコンピューターのユーザーはシングル サインオン (SSO) を有効化できます。 シングル サインオンにおいて、有効になっているユーザーはユーザー名のみを入力して、クラウド リソースに安全にアクセスできます。 
 >
 
 ## <a name="pass-through-authentication"></a>パススルー認証
@@ -67,14 +67,14 @@ Office 365 やその他のクラウド サービスにユーザーがアクセ�
 このサインイン方法は、ID フェデレーションとも呼ばれ、すべてのユーザーの認証がオンプレミスで制御され、管理者はより厳格なアクセス制御を実装できます。 AD FS を使用した ID フェデレーションは、最も複雑なオプションであり、オンプレミスの環境に追加のサーバーをデプロイする必要があります。 ID フェデレーションは、Active Directory と AD FS インフラストラクチャの年中無休 (1 日 24 時間、週 7 日間) のサポートを提供することも約束します。 オンプレミスのインターネット アクセス、ドメイン コントローラー、または AD FS サーバーを使用できなくなった場合にユーザーがクラウド サービスにサインインできなくなるため、この高度なサポートが必要です。
 
 > [!TIP]
-> Active Directory フェデレーション サービス (AD FS) でフェデレーションを使用する場合、AD FS インフラストラクチャで障害が発生した際のバックアップとして、オプションでパスワード同期を設定することもできます。
+> Active Directory フェデレーション サービス (AD FS) とのフェデレーションを使用する場合、AD FS インフラストラクチャで障害が発生した際のバックアップとして、オプションでパスワード ハッシュ同期を設定することもできます。
 >
 
 ## <a name="common-scenarios-and-recommendations"></a>一般的なシナリオと推奨事項
 
 以降では、ハイブリッド ID とアクセス管理に関する一般的なシナリオをいくつか取り上げると共に、それぞれのシナリオで最適と思われるハイブリッド ID オプションを紹介します。
 
-|必要事項|PWS と SSO<sup>1</sup>| PTA と SSO<sup>2</sup> | AD FS<sup>3</sup>|
+|必要事項|PHS および SSO<sup>1</sup>| PTA と SSO<sup>2</sup> | AD FS<sup>3</sup>|
 |-----|-----|-----|-----|
 |新しいユーザー、連絡先、およびオンプレミスの Active Directory で作成したグループ アカウントを自動的にクラウドに同期|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)|
 |テナントを Office 365 ハイブリッド シナリオにセット アップ|![推奨](./media/whatis-hybrid-identity/ic195031.png)| ![推奨](./media/whatis-hybrid-identity/ic195031.png) |![推奨](./media/whatis-hybrid-identity/ic195031.png)|
@@ -86,7 +86,7 @@ Office 365 やその他のクラウド サービスにユーザーがアクセ�
 |ユーザー<sup>4</sup>のスマートカード認証をサポート| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)|
 |Office ポータル および Windows 10 デスクトップにパスワードの有効期限通知を表示| | |![推奨](./media/whatis-hybrid-identity/ic195031.png)|
 
-> <sup>1</sup> シングル サインオンによるパスワード同期。
+> <sup>1</sup> シングル サインオンによるパスワード ハッシュ同期。
 >
 > <sup>2</sup> パススルー認証およびシングル サインオン。 
 >

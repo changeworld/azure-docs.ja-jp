@@ -15,12 +15,12 @@ ms.date: 10/17/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: c9c21b9beb891a685d7e264ec55817c0045455bc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 62738cda8ce37ec7ca50e1e3f285dc71a37113f7
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406279"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036039"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -32,7 +32,7 @@ ms.locfileid: "49406279"
 
 ## <a name="requirements-and-deployment"></a>要件とデプロイ
 
-アプリケーション プロキシを正常にデプロイするには、少なくとも 1 つのコネクタが必要ですが、回復性向上のために 2 つ以上のコネクタを使うことをお勧めします。 Windows Server 2012 R2 または 2016 コンピューターにコネクタをインストールします。 コネクタは、アプリケーション プロキシ サービスおよび公開するオンプレミス アプリケーションと通信できる必要があります。 
+アプリケーション プロキシを正常にデプロイするには、少なくとも 1 つのコネクタが必要ですが、回復性向上のために 2 つ以上のコネクタを使うことをお勧めします。 Windows Server 2012 R2 または 2016 コンピューターにコネクタをインストールします。 コネクタは、アプリケーション プロキシ サービスおよび公開するオンプレミス アプリケーションと通信できる必要があります。 アプリケーション プロキシでは、基になるオペレーティング システムで TLS 1.2 が実行されていることも必要です。 TLS 1.2 に変更するには、[TLS 1.2 を有効にする](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect)の手順に従います。 コンテンツは Azure AD Connect 向けのものですが、この手順はすべての .NET クライアントについて同じです。
 
 コネクタ サーバーのネットワーク要件の詳細については、[アプリケーション プロキシの概要とコネクタのインストール](application-proxy-enable.md)に関するページをご覧ください。
 

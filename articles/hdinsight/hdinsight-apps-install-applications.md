@@ -1,24 +1,24 @@
 ---
-title: Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール
+title: Azure HDInsight にサードパーティ製アプリケーションをインストールする
 description: Azure HDInsight にサード パーティ製 Hadoop アプリケーションをインストールする方法について説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: c50bd7c314c88c0950478cc3068d9a5873b65263
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 71c371594a0ee2b2b8e976fffb7641ccb6b72c0a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996965"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261793"
 ---
-# <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール
+# <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にサードパーティ製 Apache Hadoop アプリケーションをインストールする
 
-Azure HDInsight にサード パーティ製 Hadoop アプリケーションをインストールする方法について説明します。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
+Azure HDInsight にサードパーティ製 Apache Hadoop アプリケーションをインストールする方法について説明します。 独自のアプリケーションのインストール手順については、[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)のページを参照してください。
 
 HDInsight アプリケーションは、ユーザーが HDInsight クラスターにインストールできるアプリケーションです。 マイクロソフトや独立系ソフトウェア ベンダー (ISV) によって作成されるほか、ユーザーが独自に作成することもできます。  
 
@@ -27,13 +27,18 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 * **AtScale Intelligence Platform**: HDInsight クラスターをスケールアウト OLAP サーバーに変えます。 このアプリケーションを使用すると、Excel、PowerBI、Tableau Software、QlikView などの BI ツールを使用して、数十億行のデータのクエリを対話的に実行できます。
 * **Cask CDAP for HDInsight**: ビッグ データ用に初めて一元管理された統合プラットフォームを提供します。ビッグ データにより、データ アプリケーションや Data Lake の作成にかかる時間が 80% 短縮されます。 このアプリケーションは、標準の HBase 3.4 クラスターのみをサポートします。
 * **DATAIKU DDS on HDInsight**: このアプリケーションを使用して、データの専門家は、生データをインパクトのある景気予測に変換する特異性の高いサービスのプロトタイプ作成、ビルド、デプロイを行うことができます。
+* **Datameer**: 分析用のデータを準備、調査、および管理して、複雑なマルチソース データのビジネスに即応できる貴重な情報への転換を加速することにより、エンタープライズ クラスのより迅速で、より高度な洞察を可能にするセルフサービスのスケーラブル プラットフォームです。
 * **H2O Artificial Intelligence for HDInsight (ベータ版)**: H2O Sparkling Water では、次の分散アルゴリズムがサポートされます。GLM、Naïve Bayes、Distributed Random Forest、Gradient Boosting Machine、Deep Neural Networks、Deep learning、K-means、PCA、Generalized Low Rank Models、Anomaly Detection、および Autoencoders。
-* **Kyligence Analytics Platform**: Kyligence Analytics Platform (KAP) は、Apache Kylin と Apache Hadoop を利用したエンタープライズ対応のデータ ウェアハウスです。大規模なデータセットに対するクエリの待ち時間が 1 秒未満に抑えられ、ビジネス ユーザーやアナリストはデータ分析を簡単に実行できます。 
+* **Kyligence Analytics Platform**: Kyligence Analytics Platform (KAP) は、Apache Kylin と Apache Hadoop を活用したエンタープライズ対応のデータ ウェアハウスであり、大規模なデータセットでの 1 秒未満のクエリ待ち時間を提供し、ビジネス ユーザーやアナリストによるデータ分析を簡略化します。 
 * **Paxata セルフサービス データ準備**
 * **Spark Job Server for KNIME Spark Executor**: Spark Job Server for KNIME Spark Executor は、KNIME Analytics Platform を HDInsight クラスターに接続するために使用されます。
+* **Starburst Presto**: Presto は、高速でスケーラブルな分散 SQL クエリ エンジンです。 ストレージと計算を分離するように設計された Presto は、Azure Data Lake Storage、Azure Blob Storage、SQL および NoSQL データベース、その他のデータ ソース内のデータのクエリを実行するために最適です。
 * **Streamsets Data Collector for HDnsight**: フル機能を備えた統合開発環境 (IDE) を備えており、これを使用すると、ストリーム データとバッチ データを調和させる任意の環境間の取り込みパイプラインを設計、テスト、デプロイ、管理したり、ストリーム内のさまざまな変換を含めたりできます。どの処理でも、カスタム コードを記述する必要はありません。 
-* **[Trifacta](http://www.trifacta.com/)** を使用すると、データ エンジニアやアナリストは画期的なユーザー エクスペリエンス、ワークフロー、およびアーキテクチャを提供する機械学習を利用することによって、今日のさまざまなデータをより効率的に調査したり、準備したりできます。
+* **Striim** (発音は "ストリーム"): エンド ツー エンドのストリーミング データ統合およびインテリジェンス プラットフォームであり、異種のデータ ストリームの連続した取り込み、処理、および分析を可能にします。
+* **[Trifacta](http://www.trifacta.com/)**: データ エンジニアやアナリストは、画期的なユーザー エクスペリエンス、ワークフロー、およびアーキテクチャを提供する機械学習を活用することによって、今日の多様なデータをより効率的に調査および準備できます。
+* **Unifi Data Platform**: ビジネス ユーザーが増分収益を向上させ、コストや運用の複雑さを削減するというデータの課題に取り組めるように設計された、シームレスに統合されたセルフサービス データ ツールのスイートです。 
 * **WANdisco Fusion HDI App**: データの場所を問わず、データが変更された際のデータへの継続的な一貫した接続を可能にします。 このアプリケーションにより、いつでもどこでもダウンタイムや中断なしでデータにアクセスできるようになります。
+* **Waterline**: AI を使用してデータをカタログ化、整理、および管理することにより、自動的にデータにビジネス用語のタグを付けます。 Waterline のビジネス リテラシー カタログは、セルフサービスの分析、コンプライアンスとガバナンス、および IT 管理イニシアチブのための重要な成功コンポーネントです。
 
 この記事で説明する手順では、Azure Portal を使用します。 また、ポータルから Azure Resource Manager テンプレートをエクスポートしたり、ベンダーから Resource Manager テンプレートのコピーを入手したりして、Azure PowerShell と Azure クラシック CLI を使ってテンプレートをデプロイすることもできます。  「[Resource Manager テンプレートを使用して HDInsight に Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
 

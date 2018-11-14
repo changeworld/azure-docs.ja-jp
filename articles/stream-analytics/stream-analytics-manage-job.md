@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/30/2018
-ms.openlocfilehash: 9ad4462bba861e2bcc940661242d8801355c2f6c
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f35585fc77f085f58b7be2d55e03919cc1e8b248
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240803"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283786"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>通話データを分析して結果を Power BI ダッシュボードで視覚化する Stream Analytics ジョブの作成
 
@@ -36,7 +36,8 @@ ms.locfileid: "50240803"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。  
 * [Azure Portal](https://portal.azure.com/) にログインします。  
-* Microsoft ダウンロード センターから通話イベント ジェネレーター アプリ [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) をダウンロードします。または、[GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) からソース コードを入手します。  
+* Microsoft ダウンロード センターから通話イベント ジェネレーター アプリ [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) をダウンロードします。または、[GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) からソース コードを入手します。
+* Power BI アカウントが必要になります。
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event Hub を作成します 
 
@@ -86,9 +87,7 @@ Stream Analytics で不正な呼び出しデータ ストリームを分析で�
 
    `Endpoint=sb://<Your event hub namespace>.servicebus.windows.net/;SharedAccessKeyName=<Your shared access policy name>;SharedAccessKey=<generated key>;EntityPath=<Your event hub name>` 
 
-   接続文字列には、**Endpoint**、**SharedAccessKeyName**、**SharedAccessKey**、**EntityPath** という複数のキーと値のペアが含まれ、セミコロンで区切られていることに注目してください。  
-
-5. 接続文字列から、**EntityPath** のペアとその前にあるセミコロンを削除します。
+   接続文字列には、**Endpoint**、**SharedAccessKeyName**、**SharedAccessKey**、**EntityPath** という複数のキーと値のペアが含まれ、セミコロンで区切られていることに注目してください。
 
 ## <a name="start-the-event-generator-application"></a>イベント ジェネレーター アプリケーションを起動する
 
@@ -247,13 +246,13 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 3. ジョブが成功したら [Power BI](https://powerbi.com/) に移動し、職場または学校アカウントを使用してサインインします。 Stream Analytics ジョブ クエリによって結果が出力されている場合、作成した *ASAdataset* データセットは **[データセット]** タブにあります。  
 
-4. Power BI ワークスペースで **+ [作成]** を選択し、*Fraudulent Calls* という名前の新しいダッシュボードを作成します。  
+4. Power BI ワークスペースで **[+ 作成]** を選択し、*Fraudulent Calls* という名前の新しいダッシュボードを作成します。  
 
 5. ウィンドウの上部にある **[タイルの追加]** を選択します。 次に、**[カスタム ストリーミング データ]** と **[次に]** を選択します。 **[データセット]** の **ASAdataset** を選択します。 **[視覚化タイプ]** ドロップダウンで **[カード]** を選択し、**fraudulentcalls** を **[フィールド]** に追加します。 **[次へ]** を選択してタイルに名前を入力し、**[適用]** を選択してタイルを作成します。  
 
    ![タイルの作成](media/stream-analytics-manage-job/create-tiles.png)
 
-6. 次のオプションを使用して、もう一度手順 4. と 5. を実行します。
+6. 次のオプションを使用して、もう一度手順 5. を実行します。
    * [視覚化タイプ] では、[折れ線グラフ] を選択します。  
    * 軸を追加し、**[windowend]** を選びます。  
    * 値を追加し、**[fraudulentcalls]** を選びます。  

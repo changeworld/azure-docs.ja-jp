@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 11/6/2018
 ms.author: patricka
-ms.openlocfilehash: a1c516ebbeb33d2aa92f6a0e3031a2b2d9fb4e9c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.reviewer: bryanr
+ms.openlocfilehash: fbf62e53ffe3fc3540086137955417bec56e7825
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026162"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240173"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Azure Stack でのマルチテナント
 
@@ -26,9 +27,9 @@ ms.locfileid: "50026162"
 
 複数の Azure Active Directory (Azure AD) テナントのユーザーが Azure Stack のサービスを使用できるように Azure Stack を構成することができます。 ここでは、次のシナリオを例に説明します。
 
- - あなたは contoso.onmicrosoft.com のサービス管理者です。ここに Azure Stack がインストールされています。
- - メアリーは、ゲスト ユーザーがいる fabrikam.onmicrosoft.com のディレクトリ管理者です。 
- - メアリーの会社は、あなたの会社から IaaS および PaaS サービスを受けており、ゲスト ディレクトリ (fabrikam.onmicrosoft.com) のユーザーが、contoso.onmicrosoft.com にある Azure Stack のリソースにサインインして使用できるようにする必要があります。
+- あなたは contoso.onmicrosoft.com のサービス管理者です。ここに Azure Stack がインストールされています。
+- メアリーは、ゲスト ユーザーがいる fabrikam.onmicrosoft.com のディレクトリ管理者です。
+- メアリーの会社は、あなたの会社から IaaS および PaaS サービスを受けており、ゲスト ディレクトリ (fabrikam.onmicrosoft.com) のユーザーが、contoso.onmicrosoft.com にある Azure Stack のリソースにサインインして使用できるようにする必要があります。
 
 このガイドでは、このシナリオに基づいて、Azure Stack でマルチテナントを構成するために必要な手順を説明します。 このシナリオでは、Fabrikam のユーザーが Contoso の Azure Stack デプロイのサービスにサインインして使用できるようにするための手順を、あなたとメアリーがそれぞれ完了する必要があります。  
 
@@ -50,6 +51,8 @@ Azure Stack でマルチテナントを構成する前に、いくつかの前�
 このセクションでは、Fabrikam の Azure AD ディレクトリのテナントからのサインインを許可するように Azure Stack を構成します。
 
 ゲスト ディレクトリ テナントのユーザーとサービス プリンシパルを受け入れるように Azure Resource Manager を構成して、ゲスト ディレクトリ テナント (Fabrikam) を Azure Stack にオンボードします。
+
+Contoso.onmicrosoft.com のサービス管理者は、次のコマンドを実行します。
 
 ````PowerShell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -76,11 +79,11 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 ### <a name="configure-guest-directory"></a>ゲスト ディレクトリの構成
 
-あなたが Azure Stack ディレクトリでの手順を完了した後に、メアリーは Azure Stack がゲスト ディレクトリにアクセスすることに同意し、Azure Stack をゲスト ディレクトリに登録する必要があります。 
+Azure Stack 管理者/オペレーターが Azure Stack で使用される Fabrikam ディレクトリを有効にしたら、Mary は Azure Stack を Fabrikam のディレクトリ テナントに登録する必要があります。
 
 #### <a name="registering-azure-stack-with-the-guest-directory"></a>ゲスト ディレクトリへの Azure Stack の登録
 
-ゲスト ディレクトリの管理者が、Azure Stack が Fabrikam のディレクトリにアクセスすることに同意したら、メアリーは Azure Stack を Fabrikam のディレクトリ テナントに登録する必要があります。
+Fabrikam のディレクトリ管理者である Mary は、ゲスト ディレクトリ fabrikam.onmicrosoft.com で次のコマンドを実行します。
 
 ````PowerShell
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -99,14 +102,14 @@ Register-AzSWithMyDirectoryTenant `
 > Azure Stack 管理者が今後新しいサービスや更新プログラムをインストールした場合には、このスクリプトをもう一度実行する必要があります。
 >
 > このスクリプトは、ディレクトリ内の Azure Stack アプリケーションの状態を確認するためにいつでも実行できます。
-> 
+>
 > VM をマネージド ディスク内に作成する操作 (1808 更新プログラムで導入) で問題が起きた場合は新しい**ディスク リソース プロバイダー**が追加されており、このスクリプトをもう一度実行する必要があります。
 
 ### <a name="direct-users-to-sign-in"></a>ユーザーをサインインに誘導する
 
 あなたとメアリーの両方が Fabrikam ディレクトリのオンボード手順を完了したので、メアリーは Fabrikam のユーザーをサインインに誘導することができます。  Fabrikam のユーザー (つまり、fabrikam.onmicrosoft.com のサフィックスを持つユーザー) は、 https://portal.local.azurestack.external にアクセスしてサインインします。  
 
-メアリーは、Fabrikam ディレクトリの[外部プリンシパル](../role-based-access-control/rbac-and-directory-admin-roles.md) (つまり、fabrikam.onmicrosoft.com のサフィックスを持たない Fabrikam ディレクトリのユーザー) はすべて、 https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用してサインインするよう誘導します。  この URL を使用しなかった場合、これらのユーザーは既定のディレクトリ (Fabrikam) に送られ、管理者による同意がないことを示すエラーが表示されます。
+メアリーは、Fabrikam ディレクトリの[外部プリンシパル](../role-based-access-control/rbac-and-directory-admin-roles.md) (つまり、fabrikam.onmicrosoft.com のサフィックスを持たない Fabrikam ディレクトリのユーザー) はすべて、 https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用してサインインするよう誘導します。  この URL を使用しない場合、これらのユーザーは自分の既定のディレクトリ (Fabrikam) に送信され、管理者が同意していないことを示すエラーを受信します。
 
 ## <a name="disable-multi-tenancy"></a>マルチテナントの無効化
 

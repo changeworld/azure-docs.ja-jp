@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 6743d03b623084675f5043a7e158fa99e8aa39d2
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ea29d9052c2389b0c7d145223d3660364cbf2c74
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054007"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016320"
 ---
 # <a name="archive-the-azure-activity-log"></a>Azure アクティビティ ログのアーカイブ
 この記事では、Azure Portal、PowerShell コマンドレット、またはクロス プラットフォーム CLI を使用して、ストレージ アカウントで [**Azure アクティビティ ログ**](monitoring-overview-activity-logs.md)をアーカイブする方法について説明します。 このオプションは、監査、静的分析、またはバックアップに対して (保持ポリシーを完全に制御して) 90 日よりも長いアクティビティ ログを保持する場合に便利です。 90 日以下でイベントを保持する必要があるだけの場合は、ストレージ アカウントにアーカイブを設定する必要はありません。アーカイブを有効にしなければ、アクティビティ ログのイベントは Azure プラットフォームに90 日間保持されるためです。
@@ -35,10 +35,10 @@ ms.locfileid: "44054007"
 ## <a name="archive-the-activity-log-using-the-portal"></a>ポータルを使用したアクティビティ ログのアーカイブ
 1. ポータルで、左側のナビゲーションの **[アクティビティ ログ]** リンクをクリックします。 アクティビティ ログのリンクが表示されない場合は、最初に **[すべてのサービス]** リンクをクリックします。
    
-    ![[アクティビティ ログ] ブレードに移動します。](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
-2. ブレードの上部にある、 **[エクスポート]** をクリックします。
+    ![[アクティビティ ログ] ブレードに移動します。](media/monitoring-archive-activity-log/activity-logs-portal-navigate-v2.png)
+2. ブレードの上部にある **[Export to Event Hub]\(イベント ハブにエクスポート\)** をクリックします。
    
-    ![[エクスポート] ボタンをクリックします。](media/monitoring-archive-activity-log/act-log-portal-export-button.png)
+    ![[エクスポート] ボタンをクリックします。](media/monitoring-archive-activity-log/activity-logs-portal-export-v2.png)
 3. 表示されるブレードで、 **[Export to a storage account (ストレージ アカウントへのエクスポート)]** チェック ボックスをオンにし、ストレージ アカウントを選択します。
    
     ![ストレージ アカウントを設定します。](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
@@ -65,9 +65,9 @@ ms.locfileid: "44054007"
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | StorageAccountId |[はい] |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| Location |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 `(Get-AzureRmLocation).Location` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
+| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 `(Get-AzureRmLocation).Location` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
 | RetentionInDays |いいえ  |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| Category |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。  指定しないと、すべての可能な値と見なされます |
+| Categories |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。  指定しないと、すべての可能な値と見なされます |
 
 ## <a name="archive-the-activity-log-via-cli"></a>CLI を使用したアクティビティ ログのアーカイブ
 

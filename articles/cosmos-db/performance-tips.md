@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: a805294ecb416d18f3ce13981d26a7d25cd5a204
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3e724301d235db49ab9332dedc877d7315460ecc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432853"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256172"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -25,7 +25,7 @@ ms.locfileid: "47432853"
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 Azure Cosmos DB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しか [SDK メソッド呼び出し](set-throughput.md#set-throughput-sdk)を 1 回行うだけで簡単に実行できます。 ただし、Azure Cosmos DB にはネットワーク呼び出しによってアクセスするため、[SQL .NET SDK](documentdb-sdk-dotnet.md) を使うと、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
+Azure Cosmos DB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 Azure Cosmos DB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しを 1 回行うだけの簡単なものです。 詳細については、[コンテナーのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)または[データベースのスループットをプロビジョニングする方法](how-to-provision-database-throughput.md)に関するページを参照してください。 ただし、Azure Cosmos DB にはネットワーク呼び出しによってアクセスするため、[SQL .NET SDK](documentdb-sdk-dotnet.md) を使うと、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
 
 データベースのパフォーマンスを向上させる場合は、 以下のオプションを検討してください。
 
@@ -118,7 +118,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     ガベージ コレクションの頻度を減らした方がよい場合もあります。 .NET では、 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) を true に設定します。
 6. **RetryAfter 間隔でバックオフを実装する**
 
-    パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 スロットル状態になった場合、クライアント アプリケーション側でバックオフ値を適用し、サーバー側によって指定された再試行間隔のスロットル時間を後退させるようにしてください。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。 再試行ポリシーは、SQL [.NET](sql-api-sdk-dotnet.md) および [Java](sql-api-sdk-java.md) のバージョン 1.8.0 以降、[Node.js](sql-api-sdk-node.md) および [Python](sql-api-sdk-python.md) のバージョン 1.9.0 以降、および [.NET Core](sql-api-sdk-dotnet-core.md) SDK のサポートされているすべてのバージョンでサポートされています。 詳細については、「[予約されたスループット上限の超過](request-units.md#RequestRateTooLarge)」および [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx) に関するページを参照してください。
+    パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 スロットル状態になった場合、クライアント アプリケーション側でバックオフ値を適用し、サーバー側によって指定された再試行間隔のスロットル時間を後退させるようにしてください。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。 再試行ポリシーは、SQL [.NET](sql-api-sdk-dotnet.md) および [Java](sql-api-sdk-java.md) のバージョン 1.8.0 以降、[Node.js](sql-api-sdk-node.md) および [Python](sql-api-sdk-python.md) のバージョン 1.9.0 以降、および [.NET Core](sql-api-sdk-dotnet-core.md) SDK のサポートされているすべてのバージョンでサポートされています。 詳細については、[RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx) に関するページを参照してください。
     
     .NET SDK のバージョン 1.19 以降では、次の例のように、追加の診断情報をログに記録し、待ち時間に関する問題をトラブルシューティングするメカニズムがあります。 読み取り待ち時間の長い要求についての診断文字列をログに記録できます。 取得した診断文字列は、特定の要求に対して 429 が確認された回数を把握するのに役立ちます。
     ```csharp
@@ -174,7 +174,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     詳細については、[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)に関するページをご覧ください。
 
-## <a name="throughput"></a>スループット
+## <a name="throughput"></a>Throughput
 <a id="measure-rus"></a>
 
 1. **測定と調整によって 1 秒あたりの要求ユニットの使用量を削減する**

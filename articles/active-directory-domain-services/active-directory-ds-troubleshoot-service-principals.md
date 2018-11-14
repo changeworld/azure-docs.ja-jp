@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: bba7c70a5078d309a55f898c24389d42a8a604ab
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579546"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035037"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>マネージド ドメインの無効なサービス プリンシパル構成のトラブルシューティング
 
@@ -30,8 +30,7 @@ ms.locfileid: "39579546"
 
 **アラート メッセージ:** "*Azure AD Domain Services が正常に機能するために必要なサービス プリンシパルが Azure AD ディレクトリから削除されています。この構成は、マネージド ドメインに対する監視、管理、修正のプログラム適用、および同期を行うための Microsoft の能力に影響します。*"
 
-
-  [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)は、Microsoft がマネージド ドメインを管理、更新、および維持するために使用するアプリケーションです。 それらが削除されると、ドメインにサービスを提供する Microsoft の機能が中断します。
+[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)は、Microsoft がマネージド ドメインを管理、更新、および維持するために使用するアプリケーションです。 それらが削除されると、ドメインにサービスを提供する Microsoft の機能が中断します。
 
 
 ## <a name="check-for-missing-service-principals"></a>不足しているサービス プリンシパルを確認する
@@ -46,7 +45,7 @@ ms.locfileid: "39579546"
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [不足しているサービス プリンシパルを PowerShell を使用して再作成する](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Microsoft.AAD 名前空間に再登録する](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 | abba844e-bc0e-44b0-947a-dc74e5d09022  | [Microsoft.AAD 名前空間に再登録する](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
-| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [自動修正を行うサービス プリンシパル](#service-principals-that-self-correct) |
+| d87dcbc6-a371-462e-88e3-28ad15ec4e64 | [Microsoft.AAD 名前空間に再登録する](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 
 ## <a name="recreate-a-missing-service-principal-with-powershell"></a>不足しているサービス プリンシパルを PowerShell を使用して再作成する
 Azure AD ディレクトリで ID ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` のサービス プリンシパルが不足している場合は、次の手順に従います。
@@ -77,7 +76,7 @@ Azure AD ディレクトリで ID ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` の
 
 
 ## <a name="re-register-to-the-microsoft-aad-namespace-using-the-azure-portal"></a>Azure Portal を使用して、Microsoft AAD 名前空間に再登録する
-Azure AD ディレクトリで ID ```443155a6-77f3-45e3-882b-22b3a8d431fb``` または ```abba844e-bc0e-44b0-947a-dc74e5d09022``` のサービス プリンシパルが不足している場合は、次の手順に従います。
+Azure AD ディレクトリに ID が ```443155a6-77f3-45e3-882b-22b3a8d431fb```、```abba844e-bc0e-44b0-947a-dc74e5d09022```、または ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` のサービス プリンシパルがない場合は、次の手順に従います。
 
 **解決策:** 次の手順を使用して、ディレクトリに Domain Services を復元します。
 
@@ -86,12 +85,6 @@ Azure AD ディレクトリで ID ```443155a6-77f3-45e3-882b-22b3a8d431fb``` ま
 3. 左側のナビゲーションから、**[リソース プロバイダー]** を選択します。
 4. テーブルで [Microsoft.AAD] を見つけ、**[再登録]** をクリックします。
 5. アラートが解決されたことを確認するには、2 時間後にマネージド ドメインの正常性ページを表示します。
-
-
-## <a name="service-principals-that-self-correct"></a>自動修正を行うサービス プリンシパル
-Azure AD ディレクトリで ID ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` のサービス プリンシパルが不足している場合は、次の手順に従います。
-
-**解決策:** Azure AD Domain Services では、この特定のサービス プリンシパルが不足している、正しく構成されていない、または削除されていることを特定できます。 サービス プリンシパルは、自動的に再作成されます。 ただし、アプリケーションと、削除対象のアプリケーションで使用されるオブジェクトを削除する必要があります。証明書がロールオーバーすると、アプリケーションとオブジェクトは新しいサービス プリンシパルによって変更できなくなるためです。 これにより、ドメインで新たなエラーが発生します。 この問題を回避するには、[AADDS105 のセクション](#alert-aadds105-password-synchronization-application-is-out-of-date)で説明した手順に従います。 その後、新しいサービス プリンシパルが再作成されていることを確認するために、2 時間後にマネージド ドメインの正常性をチェックします。
 
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>アラート AADDS105: パスワード同期アプリケーションが古い
@@ -111,8 +104,8 @@ Azure AD ディレクトリで ID ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` の
 2. 次の PowerShell コマンドを使用して古いアプリケーションとオブジェクトを削除します。
 
     ```powershell
-    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
-    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $app = Get-AzureADApplication -Filter "IdentifierUris eq 'https://sync.aaddc.activedirectory.windowsazure.com'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
     $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
     Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
     ```

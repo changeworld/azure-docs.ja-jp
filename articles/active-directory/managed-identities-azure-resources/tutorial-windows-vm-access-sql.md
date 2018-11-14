@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 57f9def09f498c3fc644cbee979d5ae552f2206c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 61b176f4f1fccbb975ee53de497d5afcc8ede060
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369494"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238116"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
 
@@ -29,9 +29,8 @@ ms.locfileid: "46369494"
 
 > [!div class="checklist"]
 > * VM に Azure SQL サーバーへのアクセスを許可します。
-> * Azure AD にグループを作成し、VM のシステム割り当てマネージド ID をそのグループのメンバーにする
 > * SQL サーバーに対する Azure AD 認証を有効にする
-> * Azure AD グループを表すデータベース内に包含ユーザーを作成する
+> * VM のシステム割り当て ID を表す包含ユーザーをデータベースに作成する
 > * VM ID を使用してアクセス トークンを取得し、それを使用して Azure SQL サーバーにクエリを実行する
 
 ## <a name="prerequisites"></a>前提条件
@@ -48,74 +47,16 @@ ms.locfileid: "46369494"
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>VM に Azure SQL サーバー内のデータベースへのアクセス権を付与する
 
-VM に Azure SQL サーバー内のデータベースへのアクセス権を付与できます。  この手順では、既存の SQL サーバーを使用するか、新しいサーバーを作成できます。  Azure ポータルを使用して新しいサーバーとデータベースを作成するには、[Azure SQL のクイック スタート](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)に従います。 [Azure SQL のドキュメント](https://docs.microsoft.com/azure/sql-database/)に、Azure CLI と Azure PowerShell を使用するクイックスタートも用意されています。
+Azure SQL Server 内のデータベースに対するアクセス権を VM に付与する際は、既存の SQL サーバーを使用する方法と、SQL サーバーを新しく作成する方法とがあります。  Azure ポータルを使用して新しいサーバーとデータベースを作成するには、[Azure SQL のクイック スタート](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)に従います。 [Azure SQL のドキュメント](https://docs.microsoft.com/azure/sql-database/)に、Azure CLI と Azure PowerShell を使用するクイックスタートも用意されています。
 
-VM にデータベースへのアクセス権を付与するには次の 3 つの手順があります。
-1.  Azure AD にグループを作成し、VM のシステム割り当てマネージド ID をそのグループのメンバーにします。
-2.  SQL サーバーに対する Azure AD 認証を有効にします。
-3.  Azure AD グループを表すデータベース内に**包含ユーザー**を作成します。
+VM にデータベースへのアクセス権を付与するには次の 2 つの手順があります。
 
-> [!NOTE]
-> 通常は、VM のシステム割り当てマネージド ID に直接マップされる包含ユーザーを作成します。  現時点では、Azure SQL では、包含ユーザーにマップされる VM のシステム割り当てマネージド ID を表す Azure AD サービス プリンシパルは許可されていません。  サポートされている回避策として、VM のシステム割り当てマネージド ID を Azure AD グループのメンバーにした後、そのグループを表すデータベース内に包含ユーザーを作成します。
-
-
-## <a name="create-a-group-in-azure-ad-and-make-the-vms-system-assigned-managed-identity-a-member-of-the-group"></a>Azure AD にグループを作成し、VM のシステム割り当てマネージド ID をそのグループのメンバーにする
-
-既存の Azure AD グループを使用するか、Azure AD PowerShell を使用して新しいグループを作成できます。  
-
-最初に、[Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) モジュールをインストールします。 次に、`Connect-AzureAD` を使用してサインインし、次のコマンドを実行してグループを作成し、それを変数に保存します。
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-```
-
-出力は次のようになります。これは変数の値も調べます。
-
-```powershell
-$Group = New-AzureADGroup -DisplayName "VM managed identity access to SQL" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-$Group
-ObjectId                             DisplayName          Description
---------                             -----------          -----------
-6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 VM managed identity access to SQL
-```
-
-次に、VM のシステム割り当てマネージド ID をグループに追加します。  システム割り当てマネージド ID の **ObjectId** が必要です。これは Azure PowerShell を使用して取得できます。  最初に、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) をダウンロードします。 次に、`Connect-AzureRmAccount` を使用してサインインし、次のコマンドを実行して以下を行います。
-- セッション コンテキストが目的の Azure サブスクリプションに設定されていることを確認します (複数のサブスクリプションがある場合)。
-- Azure サブスクリプションで使用可能なリソースを一覧表示して、リソース グループと VM の名前が適切であることを確認します。
-- `<RESOURCE-GROUP>` と `<VM-NAME>` の適切な値を使用して、VM のシステム割り当てマネージド ID のプロパティを取得します。
-
-```powershell
-Set-AzureRMContext -subscription "bdc79274-6bb9-48a8-bfd8-00c140fxxxx"
-Get-AzureRmResource
-$VM = Get-AzureRmVm -ResourceGroup <RESOURCE-GROUP> -Name <VM-NAME>
-```
-
-出力は次のようになります。これは、VM のシステム割り当てマネージド ID のサービス プリンシパル オブジェクト ID も調べます。
-```powershell
-$VM = Get-AzureRmVm -ResourceGroup DevTestGroup -Name DevTestWinVM
-$VM.Identity.PrincipalId
-b83305de-f496-49ca-9427-e77512f6cc64
-```
-
-ここで、VM のシステム割り当てマネージド ID をグループに追加します。  グループへのサービス プリンシパルの追加は、Azure AD PowerShell でのみ実行できます。  次のコマンドを実行します。
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-```
-
-後でグループ メンバーシップの確認も行う場合、出力は次のようになります。
-
-```powershell
-Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId $VM.Identity.PrincipalId
-Get-AzureAdGroupMember -ObjectId $Group.ObjectId
-
-ObjectId                             AppId                                DisplayName
---------                             -----                                -----------
-b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTestWinVM
-```
+1.  SQL サーバーに対する Azure AD 認証を有効にします。
+2.  VM のシステム割り当て ID を表す**包含ユーザー**をデータベースに作成します。
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>SQL サーバーに対する Azure AD 認証を有効にする
 
-グループを作成し、メンバーシップに VM のシステム割り当てマネージド ID を追加したので、次の手順に従って [SQL サーバー用の Azure AD 認証を構成する](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server)ことができます。
+次の手順を使用して、[SQL サーバーに対する Azure AD 認証を構成](/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-azure-sql-server)します。
 
 1.  Azure ポータルで、左側のナビゲーションから **[SQL サーバー]** を選択します。
 2.  Azure AD 認証で有効にする SQL サーバーをクリックします。
@@ -124,7 +65,7 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 5.  サーバーの管理者になる Azure AD ユーザー アカウントを選択し、**[選択]** をクリックします。
 6.  コマンド バーで、**[保存]** をクリックします。
 
-## <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Azure AD グループを表すデータベース内に包含ユーザーを作成する
+## <a name="create-a-contained-user-in-the-database-that-represents-the-vms-system-assigned-identity"></a>VM のシステム割り当て ID を表す包含ユーザーをデータベースに作成する
 
 この次の手順では、[Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) が必要になります。 始める前に、Azure AD 統合の背景について次の記事で確認しておくことも有益です。
 
@@ -140,17 +81,23 @@ b83305de-f496-49ca-9427-e77512f6cc64 0b67a6d6-6090-4ab4-b423-d6edda8e5d9f DevTes
 7.  **[接続]** をクリックします。  サインイン プロセスを完了します。
 8.  **オブジェクト エクスプローラー**で、**[データベース]** フォルダーを展開します。
 9.  ユーザー データベースを右クリックし、**[新しいクエリ]** をクリックします。
-10.  クエリ ウィンドウで、次の行を入力し、ツールバーの **[実行]** をリックします。
+10. クエリ ウィンドウで、次の行を入力し、ツールバーの **[実行]** をリックします。
+
+    > [!NOTE]
+    > 次のコマンドの `VMName` は、前提条件のセクションでシステム割り当て ID を有効にした VM の名前です。
     
      ```
-     CREATE USER [VM managed identity access to SQL] FROM EXTERNAL PROVIDER
+     CREATE USER [VMName] FROM EXTERNAL PROVIDER
      ```
     
-     コマンドは正常に完了し、グループの包含ユーザーが作成されます。
+     コマンドは正常に完了し、VM のシステム割り当て ID の包含ユーザーが作成されます。
 11.  クエリ ウィンドウをクリアし、次の行を入力し、ツールバーの **[実行]** をリックします。
+
+    > [!NOTE]
+    > 次のコマンドの `VMName` は、前提条件のセクションでシステム割り当て ID を有効にした VM の名前です。
      
      ```
-     ALTER ROLE db_datareader ADD MEMBER [VM managed identity access to SQL]
+     ALTER ROLE db_datareader ADD MEMBER [VMName]
      ```
 
      コマンドは正常に完了し、包含ユーザーにデータベース全体を読み取る権限が与えられます。

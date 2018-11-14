@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 50ec49c22c64780c8f887b12eef1dd0e75c379ed
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269447"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010606"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -75,6 +75,9 @@ ms.locfileid: "48269447"
 
 **Q: 純粋な IPv6 環境はサポートされますか。**  
 いいえ。Azure AD Connect は、純粋な IPv6 環境はサポートしていません。
+
+**Q: マルチフォレスト環境を使用しており、2 つのフォレスト間のネットワークでは NAT (ネットワーク アドレス変換) を使用しています。2 つのフォレスト間で Azure AD Connect の使用はサポートされますか。**</br>
+ いいえ、NAT を介した Azure AD Connect の使用はサポートされていません。 
 
 ## <a name="federation"></a>フェデレーション
 **Q: Office 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。**  

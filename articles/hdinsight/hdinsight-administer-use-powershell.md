@@ -1,25 +1,25 @@
 ---
-title: PowerShell を使用して HDInsight の Hadoop クラスターを管理する - Azure
-description: HDInsight の Hadoop クラスターを Azure PowerShell を使用して管理する方法について説明します。
+title: PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する - Azure
+description: Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターに対する管理タスクを実行する方法について説明します。
 services: hdinsight
-ms.reviewer: jasonh
-author: jasonwhowell
+ms.reviewer: tyfox
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 7abd75347d7bd2673a9e6040ee15def6638de440
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/6/2018
+ms.author: tylerfox
+ms.openlocfilehash: 4bf46501a75b9dd5be7ae1b446a0db90c20be559
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43096584"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235260"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell を使用して、Azure のワークロードのデプロイと管理を制御し自動化することができます。 この記事では、Azure PowerShell を使用して Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 HDInsight PowerShell コマンドレットの一覧については、[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn479228.aspx)をご覧ください。
+Azure PowerShell を使用して、Azure のワークロードのデプロイと管理を制御し自動化することができます。 この記事では、Azure PowerShell を使用して Azure HDInsight の Apache Hadoop クラスターを管理する方法について説明します。 HDInsight PowerShell コマンドレットの一覧については、[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn479228.aspx)をご覧ください。
 
 **前提条件**
 
@@ -209,7 +209,7 @@ $resourceGroupName = $cluster.ResourceGroup
 ## <a name="submit-jobs"></a>ジョブの送信
 **MapReduce ジョブを送信するには**
 
-「 [Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行](hdinsight-run-samples.md)」を参照してください。
+「[HDInsight に含まれる MapReduce サンプルを実行する](hadoop/apache-hadoop-run-samples-linux.md)」を参照してください。
 
 **Hive ジョブを送信するには**
 

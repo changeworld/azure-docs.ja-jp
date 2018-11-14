@@ -1,28 +1,28 @@
 ---
-title: 'チュートリアル: Kafka での Apache Spark 構造化ストリーミング - Azure HDInsight '
+title: 'チュートリアル: Apache Kafka での Apache Spark 構造化ストリーミング - Azure HDInsight '
 description: Apache Spark ストリーミングを使用して、Apache Kafka 内外でデータを取得する方法について説明します。 このチュートリアルでは、Jupyter Notebook を使用して HDInsight の Spark からデータをストリーミングします。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 05/08/2018
-ms.author: jasonh
-ms.openlocfilehash: 11169e45d5fbdc5e51b81c06d814524a7b09c614
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 83e277eceea2df746de6f6e9a33130989e2d874d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108291"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278363"
 ---
-# <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>チュートリアル: HDInsight の Kafka で Spark 構造化ストリーミングを使用する
+# <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する
 
-このチュートリアルでは、Spark 構造化ストリーミングを使用して、Azure HDInsight の Apache Kafka でデータを読み書きする方法について説明します。
+このチュートリアルでは、Azure HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用してデータを読み書きする方法について説明します。
 
 Spark 構造化ストリーミングは、Spark SQL に組み込まれたストリーミング処理エンジンであり、 静的データに対してバッチ計算と同様にストリーミング計算を表現できるようになります。 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Kafka での構造化ストリーミング

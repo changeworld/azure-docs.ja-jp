@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: d96058ae9415ccb361af8a281a4b65b3f69edfcd
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 7a7267faae2067a873ee11bfbf4ef3027b285a0b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746767"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034951"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
@@ -42,7 +42,7 @@ Linux のスケジュールされたイベントの詳細については、[Linu
 - イベント ログ
 - グレースフル シャットダウン 
 
-スケジュールされたイベントを使用すると、アプリケーションはメンテナンスが行われる時期を検出し、その影響を制限するタスクをトリガーできます。  
+スケジュールされたイベントを使用すると、アプリケーションはメンテナンスが行われる時期を検出し、その影響を制限するタスクをトリガーできます。 スケジュール化されたイベントを有効にすると、仮想マシンでメンテナンス アクティビティが実行されるまでの時間が最小限になります。 詳細については、後の「イベントのスケジューリング」セクションをご覧ください。
 
 スケジュールされたイベントは、次のユース ケースでイベントを提供します。
 - プラットフォームが開始するメンテナンス (例: ホスト OS の更新)
@@ -71,7 +71,7 @@ Virtual Machine が Virtual Network 内で作成されていない場合 (クラ
 > スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後非推奨となる予定です。
 
 ### <a name="enabling-and-disabling-scheduled-events"></a>スケジュールされたイベントの有効化と無効化
-スケジュールされたイベントは、ユーザーが初めてイベントを要求したときに、サービスに対して有効になります。 最初の呼び出しでは、最大 2 分の応答遅延が発生すると予想されます。
+スケジュールされたイベントは、ユーザーが初めてイベントを要求したときに、サービスに対して有効になります。 最初の呼び出しでは、最大 2 分の応答遅延が発生すると予想されます。 エンドポイントのクエリを定期的に行って、今後のメンテナンス イベントと、実行されているメンテナンス アクティビティの状態を検出する必要があります。
 
 スケジュールされたイベントは、サービスが 24 時間要求を行わないと、サービスに対して無効になります。
 
@@ -110,6 +110,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @
     ]
 }
 ```
+DocumentIncarnation は ETag であり、前回のクエリ以降にイベントのペイロードが変化したかどうかを簡単に検査する方法を提供します。
 
 ### <a name="event-properties"></a>イベントのプロパティ
 |プロパティ  |  説明 |
@@ -127,7 +128,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @
 |EventType  | 最小値の通知 |
 | - | - |
 | Freeze| 約 15 分 |
-| Reboot | 約 15 分 |
+| 再起動 | 約 15 分 |
 | Redeploy | 10 分 |
 
 ### <a name="event-scope"></a>イベントの範囲     

@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: f25434814a7fb3d0f49cab539b394970c9bcfb3b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023442"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260008"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>クイック スタート : Content Moderator の概要
 
@@ -26,7 +26,7 @@ ms.locfileid: "50023442"
 - Web ブラウザー
 
 ## <a name="set-up-the-review-tool"></a>レビュー ツールのセットアップ
-Content Moderator レビュー ツールは、レビューア担当者が意思決定における Cognitive Service を支援できる Web ベースのツールです。 このガイドでは、レビュー ツール セットアップの簡単なプロセスを説明し、Content Moderator サービスの動作方法を確認します。 [Content Moderator レビュー ツール](http://contentmoderator.cognitive.microsoft.com/)のサイトに移動し、サインアップします。
+Content Moderator レビュー ツールは、レビューア担当者が意思決定における Cognitive Service を支援できる Web ベースのツールです。 このガイドでは、レビュー ツール セットアップの簡単なプロセスを説明し、Content Moderator サービスの動作方法を確認します。 [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)のサイトに移動し、サインアップします。
 
 ![Content Moderator ホーム ページ](images/homepage.PNG)
 
@@ -48,7 +48,7 @@ Content Moderator レビュー ツールは、レビューア担当者が意思�
 
 ## <a name="review-moderation-tags"></a>モデレート タグのレビュー
 
-適用したモデレート タグをレビューします。 コンテンツに適用されたタグおよび各カテゴリのスコアを確認できます。
+適用したモデレート タグをレビューします。 コンテンツに適用されたタグおよび各カテゴリのスコアを確認できます。 さまざまなコンテンツ タグが何を示すかについては、[イメージ](image-moderation-api.md)、[テキスト](text-moderation-api.md)、および[ビデオ](video-moderation-api.md)のモデレーション トピックを参照してください。
 
 ![結果の確認](images/reviewresults_text.png)
 
@@ -70,4 +70,4 @@ Content Moderator レビュー ツールを使用する方法についてさら�
 アプリで Moderation API 自体を使用する方法を学習します。
 - 画像のモデレートを実装します。 [API コンソール](try-image-api.md)または [C# クイックスタート](image-moderation-quickstart-dotnet.md)を使用して、画像をスキャンして、タグ、信頼度スコア、および他の抽出された情報を使用することによって、成人向けや猥褻な可能性のあるコンテンツを検出します。
 - テキストのモデレートを実装します。 [API コンソール](try-text-api.md)または [C# クイックスタート](text-moderation-quickstart-dotnet.md)を使用して、可能性のある罰当たりな表現、機械支援の不要なテキスト分類 (プレビュー)、個人的に識別可能な情報 (PII) に関してテキスト コンテンツをスキャンします。 
-- ビデオのモデレートを実装します。 [C# クイックスタート](video-moderation-api.md)を使用してビデオをスキャンし、成人向けや猥褻なコンテンツの可能性があるものを検出します。 
+- ビデオのモデレートを実装します。 [C# 用のビデオのモデレートに関する攻略ガイド](video-moderation-api.md)に関するページ従ってビデオをスキャンし、成人向けやきわどいコンテンツの可能性があるものを検出します。 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32a887d54a239db0c1e40458e1b304d899befff5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0f53d71cca70f9340689d3d01fb9c67090f917c5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870555"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277549"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API を使用する
 
@@ -66,8 +66,8 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 > 
 > 
 
-## <a name="configure-delete-permissions-for-your-application"></a>アプリケーション用に削除アクセス許可を構成する
-現時点では、*ディレクトリ データの読み取りと書き込み*アクセス許可には、ユーザーの削除など、削除を行う機能は含まれて**いません**。 アプリケーションにユーザーを削除する権限を付与する場合は、PowerShell に関連する下記の追加手順を実行する必要がありますそれ以外の場合、次のセクションにスキップできます。
+## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>アプリケーションに対するパスワードの削除または更新のアクセス許可を構成する
+現在、*[ディレクトリ データの読み取りと書き込み]* アクセス許可には、ユーザーを削除したり、ユーザー パスワードを更新したりする権限は含まれて**いません**。 アプリケーションにユーザーを削除したり、パスワードを更新したりする権限を付与する場合は、PowerShell に関連した次の追加の手順を実行する必要があります。そうでない場合は、次のセクションにスキップできます。
 
 まず、[Azure AD PowerShell v1 モジュール (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0) をまだインストールしていない場合は、それをインストールします。
 
@@ -84,7 +84,7 @@ PowerShell モジュールをインストールした後、Azure AD B2C テナ�
 Connect-MsolService
 ```
 
-ここで、下記スクリプトで**アプリケーション ID** を使用して、ユーザーの削除を許可するユーザー アカウント管理者のロールをアプリケーションに割り当てます。 これらのロールには、よく知られた識別子が用意されているため、下記スクリプトに**アプリケーション ID** を入力するだけです。
+ここで、下のスクリプトにある**アプリケーション ID** を使用して、アプリケーションにユーザー アカウント管理者のロールを割り当てます。 これらのロールには、よく知られた識別子が用意されているため、下記スクリプトに**アプリケーション ID** を入力するだけです。
 
 ```powershell
 $applicationId = "<YOUR_APPLICATION_ID>"
@@ -92,7 +92,7 @@ $sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId
 Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal
 ```
 
-これで、アプリケーションにも、B2C テナントからユーザーを削除するアクセス許可が付与されました。
+これで、アプリケーションには B2C テナントからユーザーを削除したり、パスワードを更新したりするアクセス許可も付与されました。
 
 ## <a name="download-configure-and-build-the-sample-code"></a>サンプル コードをダウンロード、構成、ビルドする
 まず、サンプル コードをダウンロードして実行します。 次に、それを詳しく観察します。  [サンプル コードは .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip)できます。 選択したディレクトリで複製することもできます。

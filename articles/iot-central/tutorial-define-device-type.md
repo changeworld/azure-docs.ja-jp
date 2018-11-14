@@ -3,24 +3,24 @@ title: Azure IoT Central で新しいデバイスの種類を定義する | Micr
 description: このチュートリアルでは、作成者向けに Azure IoT Central アプリケーションで新しいデバイスの種類を定義する方法について説明します。 種類のテレメトリ、状態、プロパティ、設定を定義します。
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 10/12/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8c69a863d8719a0e4eba30a6d5a619210e7f95b8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156036"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963599"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル: Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
 
 このチュートリアルでは、作成者向けに、デバイス テンプレートを使用して、Microsoft Azure IoT Central アプリケーションでデバイスの新しい種類を定義する方法について説明します。 デバイス テンプレートでは、デバイスの種類のテレメトリ、状態、プロパティ、設定を定義します。
 
-実デバイスを接続する前にアプリケーションをテストできるように、Azure IoT Central では、デバイス テンプレートの作成時にデバイス テンプレートからシミュレートされたデバイスを生成します。
+実デバイスを接続する前にアプリケーションをテストできるように、IoT Central では、デバイス テンプレートの作成時にデバイス テンプレートからシミュレートされたデバイスを生成します。
 
 このチュートリアルでは、**Connected Air Conditioner** デバイス テンプレートを作成します。 コネクテッド空調デバイスの仕様は、次のとおりです。
 
@@ -59,9 +59,9 @@ ms.locfileid: "50156036"
 
 4. 新しい Azure IoT Central アプリケーションを作成するには:
     
-    * **[Free]** を選択します。 7 日間の無料試用版には、サブスクリプションの要件はありません。
+    * **[Trial]\(試用版\)** を選択します。 試用版アプリケーションを作成するのに Azure サブスクリプションは必要ありません。
     
-       ディレクトリとサブスクリプションの詳細については、「[Azure IoT Central アプリケーションの作成](howto-create-application.md)」を参照してください。
+       ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページを参照してください。
     
     * **[Custom Application]\(カスタム アプリケーション\)** を選択します。
     
@@ -69,9 +69,9 @@ ms.locfileid: "50156036"
     
     * **[作成]** を選択します。
 
-    ![Azure IoT Central の [Create Application]\(アプリケーションの作成\) ページ](./media/tutorial-define-device-type/iotcentralcreatenew.png)
+    ![Azure IoT Central の [Create Application]\(アプリケーションの作成\) ページ](./media/tutorial-define-device-type/iotcentralcreate.png)
 
-    詳細については、[Azure IoT Central アプリケーションを作成する方法](howto-create-application.md)に関するページを参照してください。
+    詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページを参照してください。
 
 ## <a name="create-a-new-custom-device-template"></a>新しいカスタム デバイス テンプレートの作成
 

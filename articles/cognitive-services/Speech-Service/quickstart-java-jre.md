@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: 80ddef79392acb677555ed795bf429f5ec0266a0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2b39084443690b99391268acb6352763657e2a3c
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467261"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218578"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>クイック スタート: Windows または Linux で Java と Speech Service SDK を使用して音声を認識する
 
@@ -74,7 +74,7 @@ Eclipse を開始する前に Ubuntu 16.04 を使用している場合は、次�
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-  * その後、依存関係として Speech SDK バージョン 1.0.1 を指定した `dependencies` 要素も追加します。
+  * その後、依存関係として Speech SDK バージョン 1.1.0 を指定した `dependencies` 要素も追加します。
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 
