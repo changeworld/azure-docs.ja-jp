@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7046a0c6ac84ad5f156098a26dcef2b8accd50af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987647"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015776"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
@@ -29,7 +29,7 @@ Azure Monitor、Application Insights、Log Analytics および Service Health �
 
 クラシック アラートは、Azure Portal のクラシック アラート ユーザー画面でのみ参照できます。 この画面は、アラート画面の **[クラシック アラートの表示]** ボタンで表示できます。 
 
- ![Azure portal でのアラートの選択肢](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png) 
+ ![Azure portal でのアラートの選択肢](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)
 
 新しいアラート ユーザー エクスペリエンスは、クラシック アラート エクスペリエンスに対して次の利点があります。
 -   **より優れた通知システム** - 新しいアラートはすべて、複数のアラートで再利用できる、通知とアクションの名前付きグループであるアクション グループを使用します。 従来のメトリック アラートと古い Log Analytics のアラートでは、アクション グループを使用しません。
@@ -89,14 +89,14 @@ Azure Monitor に、*アクション グループ*という再利用可能な通
 ## <a name="next-steps"></a>次の手順
 アラート ルールとその構成方法については、以下をご覧ください。
 
-* [メトリック](monitoring-overview-metrics.md)の詳細
-* [Azure Portal からの従来のメトリック アラート](insights-alerts-portal.md)を構成する
-* [従来のメトリック アラートの PowerShell](insights-alerts-powershell.md) を構成する
-* [従来のメトリック アラートのコマンド ライン インターフェイス (CLI)](insights-alerts-command-line-interface.md) を構成する
+* [メトリック](../monitoring/monitoring-data-collection.md)の詳細
+* [Azure Portal からの従来のメトリック アラート](alert-metric-classic.md)を構成する
+* [従来のメトリック アラートの PowerShell](alert-metric-classic.md) を構成する
+* [従来のメトリック アラートのコマンド ライン インターフェイス (CLI)](alert-metric-classic.md) を構成する
 * [従来のメトリック アラートの Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx) を構成する
 * [アクティビティ ログ](monitoring-overview-activity-logs.md) の詳細
 * [Azure Portal からのアクティビティ ログ アラート](monitoring-activity-log-alerts.md)の構成
-* [Resource Manager からのアクティビティ ログ アラート](monitoring-create-activity-log-alerts-with-resource-manager-template.md)の構成
+* [Resource Manager からのアクティビティ ログ アラート](alert-activity-log.md)の構成
 * [アクティビティ ログ アラート webhook スキーマ](monitoring-activity-log-alerts-webhook.md) の確認
 * [アクション グループ](monitoring-action-groups.md)の詳細をご覧ください。
-* [新しいアラート](monitor-alerts-unified-usage.md)を構成する
+* [新しいアラート](alert-metric.md)を構成する

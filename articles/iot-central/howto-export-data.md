@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 86128abd82ee41459a84fc7d9169042179807793
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3231a956648b80d88059b7b0fc8f790e0e58be99
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034911"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962794"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Azure IoT Central でデータをエクスポートする
 
@@ -26,10 +26,10 @@ ms.locfileid: "47034911"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 30 日間に延長された無料試用版 IoT Central アプリケーション、または有料アプリケーション。
-- Azure サブスクリプションが含まれる Azure アカウント。
-- 同じ Azure アカウントが IoT Central アプリケーションの管理者であること。
-- 同じ Azure アカウントに、同じ Azure サブスクリプション内でのストレージ アカウントの作成または既存ストレージ アカウントへのアクセスのためのアクセス許可が付与されていること。
+- 従量課金制アプリケーション。
+- ご利用の IoT Central アプリケーションで以下を持つ管理者:
+    - IoT Central アプリケーションを含む Azure サブスクリプションでの Azure アカウント
+    - この Azure サブスクリプションでストレージ アカウントの作成または既存ストレージ アカウントへのアクセスのためのアクセス許可
 
 ## <a name="types-of-data-to-export"></a>エクスポートするデータの種類
 

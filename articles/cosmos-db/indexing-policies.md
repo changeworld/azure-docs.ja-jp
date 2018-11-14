@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: fea3455b31ff2ea7119fa4146aa84f855a3b6e35
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cd3b5f49788282b535f07c6f84bf7e4002132ab9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054674"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237589"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB のデータ インデックス作成のしくみ
 
@@ -140,18 +140,18 @@ Azure Cosmos DB は JSON ドキュメントとインデックスをツリーと�
 
 インデックスのパスはルート (/) で始まり、通常、 ? ワイルドカード演算子で終わります。 これは、プレフィックスに複数の可能な値があることを示します。 たとえば、SELECT * FROM Families F WHERE F.familyName = "Andersen" を処理するには、コレクションのインデックス ポリシーに /familyName/? の インデックスのパスを含める必要があります。
 
-インデックスのパスは \* ワイルドカード演算子を使用して、プレフィックスの下のパスの動作を再帰的に指定することもできます。 たとえば、/payload/* を使用して、ペイロード プロパティの下に属するものをすべてインデックス作成から除外できます。
+インデックスのパスは \*ワイルドカード演算子を使用して、プレフィックスの下のパスの動作を再帰的に指定することもできます。 たとえば、/payload/* を使用して、ペイロード プロパティの下に属するものをすべてインデックス作成から除外できます。
 
 インデックスのパスを指定するための一般的なパターンは次のとおりです。
 
 | Path                | 説明またはユース ケース                                                                                                                                                                                                                                                                                         |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | /                   | コレクションの既定のパス。 再帰的で、ドキュメント ツリー全体に適用されます。                                                                                                                                                                                                                                   |
-| /prop/?             | 次のようなクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                       |
-| /"prop"/*             | 指定されたラベルの下のすべてのパスのインデックスのパス。 次のようなクエリで使用<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop         |
+| /prop/?             | 次のようなクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                       |
+| /"prop"/*             | 指定されたラベルの下のすべてのパスのインデックスのパス。 次のようなクエリで使用<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5<br><br>SELECT FROM collection c WHERE c.prop.subprop.nextprop = "value"<br><br>SELECT FROM collection c ORDER BY c.prop         |
 | /props/[]/?         | ["a", "b", "c"] のようなスカラーの配列に対して、反復クエリと JOIN クエリを処理するために必要なインデックスのパス。<br><br>SELECT tag FROM tag IN collection.props WHERE tag = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag > 5                                                                         |
 | /props/[]/subprop/? | [{subprop: "a"}, {subprop: "b"}] のようなオブジェクトの配列に対して、反復クエリと JOIN クエリを処理するために必要なインデックスのパス。<br><br>SELECT tag FROM tag IN collection.props WHERE tag.subprop = "value"<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag.subprop = "value"                                  |
-| /prop/subprop/?     | 次のクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。<br><br>SELECT FROM collection c WHERE c.prop.subprop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5                                                                                                                    |
+| /prop/subprop/?     | 次のクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。<br><br>SELECT FROM collection c WHERE c.prop.subprop = "value"<br><br>SELECT FROM collection c WHERE c.prop.subprop > 5                                                                                                                    |
 
 > [!NOTE]
 > カスタム インデックスのパスを設定するときに、特定のパス "/*" で表されるドキュメント ツリー全体の既定のインデックス作成ルールを指定する必要があります。 
@@ -276,9 +276,9 @@ Azure Cosmos DB では、Point、Polygon、または LineString データ型に�
 
 | インデックスの種類 | 説明またはユース ケース                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Hash       | Hash を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash を /props/[]/?  (または / または /props/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5                                                                                                                       |
-| Range      | Range を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                                                                                                                                                              |
-| Spatial     | Range を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) -- ポイントに対するインデックス作成が有効になっている場合<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type": "Point", ... }, c.prop) -- ポリゴンに対するインデックス作成が有効になっている場合              |
+| Hash       | Hash を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>Hash を /props/[]/?  (または / または /props/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5                                                                                                                       |
+| Range      | Range を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c WHERE c.prop = "value"<br><br>SELECT FROM collection c WHERE c.prop > 5<br><br>SELECT FROM collection c ORDER BY c.prop                                                                                                                                                                                                              |
+| Spatial     | Range を /prop/? (または/) に使用して、以下のクエリを効率的に処理することができます。<br><br>SELECT FROM collection c<br><br>WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40<br><br>SELECT FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) -- ポイントに対するインデックス作成が有効になっている場合<br><br>SELECT FROM collection c WHERE ST_WITHIN({"type": "Point", ... }, c.prop) -- ポリゴンに対するインデックス作成が有効になっている場合              |
 
 既定では、範囲インデックス (有効桁数は任意) が存在しない場合、>= のような範囲演算子を使用したクエリに対してはエラーが返され、このクエリを処理するにはスキャンが必要であることが通知されます。 **x-ms-documentdb-enable-scan** ヘッダーを REST API で使用するか、または .NET SDK を使用した **EnableScanInQuery** 要求オプションで使用すれば、範囲インデックスがなくても、範囲クエリを実行することができます。 Azure Cosmos DB でインデックスを使用してフィルター処理できるその他のフィルターがクエリにない場合、エラーは返されません。
 
@@ -323,7 +323,7 @@ Azure Cosmos DB では、Point、Polygon、または LineString データ型に�
 
 自動インデックス作成が無効になっている場合でも、特定のドキュメントだけを選択してインデックスに追加できます。 反対に、自動インデックス作成を有効にしたまま、特定のドキュメントを選択して除外できます。 インデックス作成の有効または無効の構成は、ドキュメントのサブセットだけにクエリを実行する必要がある場合に役立ちます。
 
-次の例は、[SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) と [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) プロパティを使用して、明示的にドキュメントを含める方法を示しています。
+次の例は、[SQL API .NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) と [RequestOptions.IndexingDirective](https://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) プロパティを使用して、明示的にドキュメントを含める方法を示しています。
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a document in indexing,
@@ -413,7 +413,7 @@ Azure Cosmos DB コレクションに対してインデックス作成ポリシ�
 ## <a name="performance-tuning"></a>パフォーマンスのチューニング
 SQL API は使用されているインデックス ストレージ、すべての操作のスループット コスト (要求単位) などのパフォーマンス メトリックに関する情報を提供します。 この情報は、さまざまなインデックス作成ポリシーの比較やパフォーマンス チューニングに使用することができます。
 
-コレクションの記憶域のクォータと使用状況を確認するには、**HEAD** 要求または **GET** 要求をコレクションのリソースに対して実行します。 次に、**x-ms-request-quota** および **x-ms-request-usage** ヘッダーを調べます。 .NET SDK では、[ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) の [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) プロパティと [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティに、これらの対応する値が含まれています。
+コレクションの記憶域のクォータと使用状況を確認するには、**HEAD** 要求または **GET** 要求をコレクションのリソースに対して実行します。 次に、**x-ms-request-quota** および **x-ms-request-usage** ヘッダーを調べます。 .NET SDK では、[ResourceResponse<T\>](https://msdn.microsoft.com/library/dn799209.aspx) の [DocumentSizeQuota](https://msdn.microsoft.com/library/dn850325.aspx) プロパティと [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティに、これらの対応する値が含まれています。
 
      // Measure the document size usage (which includes the index size) against   
      // different policies.
@@ -421,7 +421,7 @@ SQL API は使用されているインデックス ストレージ、すべて�
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-書き込み操作 (作成、更新、削除) のたびにインデックス作成のオーバーヘッドを測定するには、**x-ms-request-charge** ヘッダー (または、.NET SDK の [ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) の同等の [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) プロパティ) を調査して、これらの操作で使用される要求単位の数を測定します。
+書き込み操作 (作成、更新、削除) のたびにインデックス作成のオーバーヘッドを測定するには、**x-ms-request-charge** ヘッダー (または、.NET SDK の [ResourceResponse<T\>](https://msdn.microsoft.com/library/dn799209.aspx) の同等の [RequestCharge](https://msdn.microsoft.com/library/dn799099.aspx) プロパティ) を調査して、これらの操作で使用される要求単位の数を測定します。
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), myDocument);              

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ec712dcce1295a91f552176ddcf6572d3f23ecc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8bf87f9d1d1ab6da4b034890f1fbe058199eca41
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993563"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007142"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure の Linux 仮想マシンにログインする
 
@@ -147,6 +147,20 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
     You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.
 
 ブラウザー ウィンドウを閉じ、SSH プロンプト ウィンドウに戻り、**Enter** キーを押します。 これで、*VM ユーザー*または *VM 管理者*などの、割り当てられたロール権限を持つユーザーとして、Azure Linux 仮想マシンにサインインしました。 ユーザー アカウントに*仮想マシンの管理者ログイン*ロールが割り当てられている場合は `sudo` を使用してルート権限を必要とするコマンドを実行できます。
+
+## <a name="sudo-and-aad-login"></a>sudo と AAD ログイン
+
+初めて sudo を実行するときに、2 回目の認証をするように求められます。 sudo を実行するのに再認証を必要としない場合は、sudoers ファイル `/aad/etc/sudoers.d/aad_admins` を編集して、次の行を、
+
+```bash
+%aad_admins ALL=(ALL) ALL
+```
+次の行に置き換えることができます。
+
+```bash
+%aad_admins ALL=(ALL) NOPASSWD:ALL
+```
+
 
 ## <a name="troubleshoot-sign-in-issues"></a>サインアップに関する問題のトラブルシューティング
 

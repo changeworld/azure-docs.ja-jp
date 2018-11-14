@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub クエリ言語について | Microsoft Docs
 description: 開発者ガイド - デバイス/モジュール ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT Hub クエリ言語の説明。
-author: fsautomata
+author: rezasherafat
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/26/2018
-ms.author: elioda
-ms.openlocfilehash: f28a41f4a80806df14e314dae05405b7b45449b1
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 10/29/2018
+ms.author: rezas
+ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318250"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747917"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -389,6 +389,11 @@ GROUP BY <group_by_element>
 **attribute_name** は、FROM コレクションの JSON ドキュメントのプロパティを参照します。
 
 現在のところ、GROUP BY 句はデバイス ツインに対するクエリの場合にのみサポートされています。
+
+> [!IMPORTANT]
+> `group` という単語は、現在、クエリで特殊なキーワードとして扱われています。 プロパティ名として `group` を使用する場合は、エラーを回避するために二重の角かっこで囲んでください (例: `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`)。
+>
+>
 
 ## <a name="expressions-and-conditions"></a>式と条件
 *式* とはおおまかに次のように言い表すことができます。

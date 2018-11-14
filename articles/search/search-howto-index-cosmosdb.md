@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
-ms.openlocfilehash: c74563ba98835403f12a4df048d7ff358014b826
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 07768ee1590fa087a1eb1486cb59ab0f57d02b64
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406672"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747543"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>インデクサーを使用した Cosmos DB と Azure Search の接続
 
@@ -48,6 +48,8 @@ Azure Cosmos DB ではさまざまなデータ モデルと API がサポート�
 ## <a name="prerequisites"></a>前提条件
 
 Cosmos DB アカウントのほかに、[Azure Search サービス](search-create-service-portal.md)が必要です。 
+
+ご自分の Cosmos DB アカウントで、コレクションですべてのドキュメントのインデックスを自動的に作成するかどうかを選択できます。 既定では、すべてのドキュメントのインデックスが自動的に作成されますが、自動インデックス作成を無効にすることができます。 自動インデックス作成が無効になっている場合、自己リンクまたはドキュメント ID を使用したクエリでのみドキュメントにアクセスできます。 Azure Search では、Azure Search によってインデックスが作成されるコレクションで、Cosmos DB の自動インデックス作成が有効化される必要があります。 
 
 <a name="Concepts"></a>
 ## <a name="azure-search-indexer-concepts"></a>Azure Search インデクサーの概念

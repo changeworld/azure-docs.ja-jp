@@ -7,29 +7,29 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/14/2018
-ms.openlocfilehash: 193aa8f87a90eb7bbf1e2c49132ad480881d41fe
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1328effbc495422e5190362c562928fbb1742e1b
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633471"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913208"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>IaaS VM の Azure Disk Encryption 
-Microsoft Azure では、データのプライバシーおよびデータ主権の確保に積極的に取り組んでおり、暗号化キーの暗号化、制御、管理、また、データ アクセスの制御と監査を行うための幅広い先進テクノロジを介して Azure でホストされるデータを制御できます。 この制御により、Azure の顧客はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 この記事では、"Windows および Linux IaaS VM の Azure Disk Encryption" というテクノロジ ソリューションを紹介します。このソリューションは、組織のセキュリティおよびコンプライアンス コミットメントを満たすためのデータの保護に役立ちます。 
+Microsoft Azure では、利用者のデータのプライバシーとデータ主権の確保に積極的に取り組んでいます。 Azure を使用することで、利用者は、暗号化キーを暗号化し、制御し、管理すると共に、データのアクセスを制御および監査するための幅広い高度なテクノロジを通じて、Azure でホストされているデータを制御できます。 この制御により、Azure の利用者はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 この記事では、技術ソリューション "Windows および Linux の IaaS 仮想マシン (VM) のための Azure Disk Encryption" について説明します。 この技術は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 
 ## <a name="overview"></a>概要
-Azure Disk Encryption (ADE) は、Windows と Linux の IaaS 仮想マシン ディスクを暗号化するのに役立つ機能です。 ADE では、OS およびデータ ディスクのボリュームを暗号化するために、Windows の業界標準である [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能が使用されます。 このソリューションは、ディスクの暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) と統合されています。 またこのソリューションでは、仮想マシン ディスク上のすべてのデータが、Azure Storage での保存時に暗号化されます。
+Azure Disk Encryption は、Windows と Linux の IaaS VM のディスクを暗号化するのに役立つ機能です。 Disk Encryption では、Windows の業界標準である [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して、OS とデータ ディスクのボリュームの暗号化が提供されます。 このソリューションは、ディスクの暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) と統合されています。 またこのソリューションでは、VM ディスク上のすべてのデータが、Azure Storage での保存時に暗号化されます。
 
-Windows および Linux IaaS VM の Azure Disk Encryption は、すべての Azure パブリック リージョンおよび AzureGov リージョンの Standard VM と Premium Storage を使用する VM で**一般に提供**されています。 Azure Disk Encryption の管理ソリューションを使用すると、次のビジネス ニーズに対応できます。
+Windows および Linux IaaS VM 用の Disk Encryption は、すべての Azure パブリック リージョンおよび Azure Government リージョンの Standard VM と Azure Premium Storage を使用する VM で一般に提供されています。 Disk Encryption の管理ソリューションを使用すると、次のビジネス ニーズに対応できます。
 
 * 業界標準の暗号化テクノロジを使用して保存中の IaaS VM をセキュリティで保護し、組織のセキュリティおよびコンプライアンス要件に対処します。
-* IaaS VM はお客様が管理するキーとポリシーに従ってブートします。またお客様は、Key Vault での IaaS VM の使用量を監査することができます。
+* 顧客が管理するキーとポリシーを使用して IaaS VM が起動します。 お使いのキー コンテナーの使用状況を監査できます。
 
+Azure Security Center を使用している場合、暗号化されていない VM があると警告を受け取ります。 アラートは高重要度として表示され、このような VM は暗号化することをお勧めします。
 
-暗号化されていない仮想マシンがある場合には、Azure Security Center を使用していると、アラートが表示されます。 これらのアラートは重要度が高いとして表示されるため、このような仮想マシンを暗号化することをお勧めします。
 ![Azure Security Center のディスク暗号化アラート](media/azure-security-disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!NOTE]
@@ -37,138 +37,146 @@ Windows および Linux IaaS VM の Azure Disk Encryption は、すべての Azu
 
 
 ## <a name="encryption-scenarios"></a>暗号化のシナリオ
-Azure Disk Encryption ソリューションでは、次の顧客シナリオがサポートされています。
+Disk Encryption ソリューションでは、次の顧客シナリオがサポートされています。
 
-* 事前に暗号化した VHD と暗号化キーから作成された新しい Windows IaaS VM での暗号化を有効にする 
-* サポートされている Azure ギャラリー イメージから作成された新しい IaaS VM での暗号化を有効にする
-* Azure で実行されている既存の IaaS VM での暗号化を有効にする
-* Windows 仮想マシン スケール セットでの暗号化を有効にする
-* Linux 仮想マシン スケール セットのデータ ドライブでの暗号化を有効にする
-* Windows IaaS VM での暗号化を無効にする
-* Linux IaaS VM でのデータ ドライブの暗号化を無効にする
-* Windows 仮想マシン スケール セットでの暗号化を無効にする
-* Linux 仮想マシン スケール セットのデータ ドライブでの暗号化を無効にする
-* マネージド ディスク VMの暗号化を有効にする
-* 既存の暗号化された Premium および Premium 以外のストレージ VM の暗号化設定を更新する
-* 暗号化された VM のバックアップと復元
+* 事前に暗号化した VHD と暗号化キーから作成された新しい Windows IaaS VM での暗号化を有効にする。
+* サポートされている Azure ギャラリー イメージから作成された新しい IaaS VM での暗号化を有効にする。
+* Azure で実行されている既存の IaaS VM での暗号化を有効にする。
+* Windows 仮想マシン スケール セットでの暗号化を有効にする。
+* Linux 仮想マシン スケール セットのデータ ドライブでの暗号化を有効にする。
+* Windows IaaS VM での暗号化を無効にする。
+* Linux IaaS VM でのデータ ドライブの暗号化を無効にする。
+* Windows 仮想マシン スケール セットでの暗号化を無効にする。
+* Linux 仮想マシン スケール セットのデータ ドライブでの暗号化を無効にする。
+* マネージド ディスク VM の暗号化を有効にする。
+* 既存の暗号化された Premium および Premium 以外のストレージ VM の暗号化設定を更新する。
+* 暗号化された VM をバックアップおよび復元する。
 
 このソリューションでは、Microsoft Azure で IaaS VM が有効になっている場合、IaaS VM の以下のシナリオがサポートされます。
 
-* Azure Key Vault との統合
-* Standard レベルの VM: [A、D、DS、G、GS、F などの IaaS VM シリーズ](https://azure.microsoft.com/pricing/details/virtual-machines/)
-    * これらのレベルの [Linux VM](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) が最小メモリ要件 (7 GB) を満たしている必要があります。
-* サポートされている Azure ギャラリー イメージの Windows および Linux IaaS VM、マネージド ディスク、およびスケール セット VM での暗号化を有効にする
-* Windows IaaS VM、スケール セット VM、およびマネージド ディスク VM の OS およびデータ ドライブでの暗号化を無効にする
-* Linux IaaS VM、スケール セット VM、およびマネージド ディスク VM のデータ ドライブでの暗号化を無効にする
-* Windows クライアント OS を実行している IaaS VM での暗号化を有効にする
-* ボリュームのマウント パスでの暗号化を有効にする
-* mdadm を使用してディスク ストライピング (RAID) で構成されている Linux VM での暗号化を有効にする
-* データ ディスクの LVM を使用して Linux VM での暗号化を有効にする
-* Linux VM の OS ディスクとデータ ディスクでの暗号化を有効にする 
-* 記憶域スペースで構成されている Windows VM での暗号化を有効にする
-* 既存の暗号化された Premium および Premium 以外のストレージ VM の暗号化設定を更新する
-* KEK なしおよび KEK あり (KEK - キーの暗号化キー) の両方のシナリオについての暗号化された VM のバックアップと復元
-* すべての Azure パブリック リージョンおよび AzureGov リージョンがサポートされる
+* Azure Key Vault との統合。
+* Standard レベルの VM: [A、D、DS、G、GS、F などの IaaS VM シリーズ](https://azure.microsoft.com/pricing/details/virtual-machines/)。 これらのレベルの [Linux VM](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) が最小メモリ要件 (7 GB) を満たしている必要があります。
+* サポートされている Azure ギャラリー イメージの Windows および Linux IaaS VM、マネージド ディスク、およびスケール セット VM での暗号化を有効にする。
+* Windows IaaS VM、スケール セット VM、およびマネージド ディスク VM の OS およびデータ ドライブでの暗号化を無効にする。
+* Linux IaaS VM、スケール セット VM、およびマネージド ディスク VM のデータ ドライブでの暗号化を無効にする。
+* Windows クライアント OS を実行している IaaS VM での暗号化を有効にする。
+* ボリュームのマウント パスでの暗号化を有効にする。
+* mdadm を使用してディスク ストライピング (RAID) が構成されている Linux VM の暗号化を有効にする。
+* データ ディスクに LVM を使用している Linux VM で暗号化を有効にする。
+* Linux VM の OS ディスクとデータ ディスクで暗号化を有効にする。
+
+   > [!NOTE]
+   > 一部の Linux ディストリビューションでは、OS ドライブの暗号化はサポートされていません。 詳しくは、「[Azure Disk Encryption に関する FAQ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)」をご覧ください。
+   
+* Windows 記憶域スペースを使用して構成されている Windows VM の暗号化を有効にする。
+* 既存の暗号化された Premium および Premium 以外のストレージ VM の暗号化設定を更新する。
+* キー暗号化キー (KEK) シナリオと非 KEK シナリオ両方で暗号化された VM をバックアップおよび復元する。
+* すべての Azure パブリック リージョンと Azure Government リージョンをサポートする。
 
 このソリューションでは、以下のシナリオ、機能、およびテクノロジはサポートされていません。
 
-* Basic レベルの IaaS VM
-* Linux IaaS VM の OS ドライブの暗号化を無効にする
-* OS ドライブが Linux Iaas VM で暗号化されている場合にデータ ドライブの暗号化を無効にする
-* 従来の VM の作成方法を使用して作成された IaaS VM
-* Linux IaaS VM ユーザーのカスタム イメージでの暗号化を有効にする
-* オンプレミス キー管理サービスとの統合
-* Azure Files (共有ファイル システム)
-* ネットワーク ファイル システム (NFS)
-* 動的ボリューム
-* ソフトウェア ベースの RAID システムを使用して構成されている Windows VM
+* Basic レベルの IaaS VM。
+* Linux IaaS VM での OS ドライブの暗号化を無効にする。
+* OS ドライブが Linux IaaS VM で暗号化されている場合にデータ ドライブの暗号化を無効にする。
+* 従来の VM の作成方法を使用して作成された IaaS VM。
+* Linux IaaS VM で顧客カスタム イメージの暗号化を有効にする。
+* オンプレミスのキー管理システムとの統合。
+* Azure Files (共有ファイル システム)。
+* ネットワーク ファイル システム (NFS)。
+* 動的ボリューム。
+* ソフトウェア ベースの RAID システムを使用して構成されている Windows VM。
 
 ## <a name="encryption-features"></a>暗号化機能
-Azure IaaS VM の Azure Disk Encryption を有効にしてデプロイすると、指定された構成に応じて、以下の機能が有効になります。
+Azure IaaS VM 用の Disk Encryption を有効にしてデプロイすると、提供される構成に応じて、以下の機能が有効になります。
 
-* ストレージに保存中のブート ボリュームを保護するために OS ボリュームを暗号化する
-* ストレージに保存中のデータ ボリュームを保護するためにデータ ボリュームを暗号化する
-* Windows IaaS VM での OS およびデータ ドライブの暗号化を無効にする
-* Linux IaaS VM のデータ ドライブでの暗号化を無効にする (OS ドライブが暗号化されていない場合のみ)
-* Key Vault サブスクリプションの暗号化キーとシークレットを保護する
-* 暗号化された IaaS VM の暗号化状態をレポートする
-* IaaS 仮想マシンからディスク暗号化構成設定を削除する
-* 暗号化された VM を Azure Backup サービスでバックアップおよび復元する
+* ストレージに保存中のブート ボリュームを保護するために OS ボリュームを暗号化する。
+* ストレージに保存中のデータ ボリュームを保護するためにデータ ボリュームを暗号化する。
+* Windows IaaS VM での OS およびデータ ドライブの暗号化を無効にする。
+* Linux IaaS VM のデータ ドライブでの暗号化を無効にする (OS ドライブが暗号化されていない場合のみ)。
+* Azure Key Vault サブスクリプションの暗号化キーとシークレットを保護する。
+* 暗号化された IaaS VM の暗号化状態をレポートする。
+* IaaS VM からディスク暗号化構成設定を削除する。
+* 暗号化された VM を Azure Backup サービスでバックアップおよび復元する。
 
 Windows および Linux IaaS VM の Azure Disk Encryption ソリューションには、以下のものが含まれています。
 
 * Windows のディスク暗号化拡張機能
 * Linux のディスク暗号化拡張機能
-* ディスク暗号化 PowerShell コマンドレット
-* ディスク暗号化 Azure コマンド ライン インターフェイス (CLI) コマンドレット
-* ディスク暗号化 Azure Resource Manager テンプレート
+* PowerShell ディスク暗号化コマンドレット。
+* Azure CLI ディスク暗号化コマンドレット。
+* Azure Resource Manager ディスク暗号化テンプレート。
 
 Azure Disk Encryption ソリューションは、Windows または Linux OS を実行している IaaS VM でサポートされます。 サポートされているオペレーティング システムについて詳しくは、[前提条件](azure-security-disk-encryption-prerequisites.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> Azure Disk Encryption による VM ディスクの暗号化に追加料金は発生しません。 暗号化キーの格納に使用するキー コンテナーには標準の [Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/)が適用されます。 
+> Azure Disk Encryption による VM ディスクの暗号化による追加料金は発生しません。 暗号化キーの格納に使用するキー コンテナーには標準の [Key Vault 価格](https://azure.microsoft.com/pricing/details/key-vault/)が適用されます。 
 
 
 ## <a name="encryption-workflow"></a>暗号化のワークフロー
 
- Windows および Linux VM のディスク暗号化を有効にするには、次の手順を実行します。
+Windows および Linux VM のディスク暗号化を有効にするには、次の手順を実行します。
 
-1. 上記の暗号化シナリオの中から、実行する暗号化シナリオを選択します。
-2. Azure Disk Encryption Resource Manager テンプレート、PowerShell コマンドレット、または CLI コマンドを使用してディスク暗号化を有効にすることを選択し、暗号化構成を指定します。
+1. 「[暗号化のシナリオ](#encryption-scenarios)」セクションに列記されているシナリオから、暗号化のシナリオを選択します。
+
+1. Azure Disk Encryption Resource Manager テンプレート、PowerShell コマンドレット、または Azure CLI を使用してディスク暗号化を有効にすることを選択し、暗号化の構成を指定します。
 
    * お客様が暗号化した VHD の場合は、暗号化した VHD をストレージ アカウントにアップロードし、暗号化キー マテリアルを Key Vault にアップロードします。 その後、暗号化構成を指定して新しい IaaS VM での暗号化を有効にします。
    * Marketplace から作成された新しい VM と、Azure で既に実行されている既存の VM については、IaaS VM での暗号化を有効にするための暗号化構成を指定します。
 
-3. 暗号化キー マテリアル (Windows システムの場合は BitLocker 暗号化キー、Linux の場合はパスフレーズ) を Key Vault から読み取るためのアクセス権を Azure プラットフォームに付与し、IaaS VM での暗号化を有効にします。
+1. 暗号化キー マテリアル (Windows システムの場合は BitLocker 暗号化キー、Linux の場合はパスフレーズ) を Key Vault から読み取るためのアクセス権を Azure プラットフォームに付与し、IaaS VM での暗号化を有効にします。
 
-4. Azure は、暗号化とキー コンテナーの構成を使用して VM サービス モデルを更新し、暗号化された VM を設定します。
+1. Azure は、暗号化と Key Vault の構成を使用して VM サービス モデルを更新し、暗号化された VM をセットアップします。
 
- ![Azure での Microsoft マルウェア対策](./media/azure-security-disk-encryption/disk-encryption-fig1.png)
+   ![Azure での Microsoft マルウェア対策](./media/azure-security-disk-encryption/disk-encryption-fig1.png)
 
 ## <a name="decryption-workflow"></a>暗号化解除のワークフロー
 IaaS VM のディスク暗号化を無効にするには、以下の手順に従います。
 
 1. Azure で実行中の IaaS VM に対して暗号化を無効に (解除) するよう選択し、暗号化解除の構成を指定します。 Azure Disk Encryption Resource Manager テンプレート、PowerShell コマンドレット、または Azure CLI を使用して無効にすることができます。
 
- この手順によって、Windows IaaS VM で実行されている OS またはデータ ボリューム、もしくはその両方の暗号化が無効になります。 ただし、前のセクションで述べたように、Linux で OS ディスクの暗号化を無効にすることはサポートされていません。 OS ディスクが暗号化されていない限り、暗号化解除の手順は、Linux VM のデータ ドライブでのみ許可されます。
-2. Azure によって VM サービス モデルが更新され、IaaS VM は暗号化解除済みとしてマークされます。 VM の内容は保存時に暗号化されなくなります。
+   この手順によって、Windows IaaS VM で実行されている OS またはデータ ボリューム、もしくはその両方の暗号化が無効になります。 前のセクションで述べたように、Linux で OS ディスクの暗号化を無効にすることはサポートされていません。 OS ディスクが暗号化されていない限り、暗号化解除の手順は、Linux VM のデータ ドライブでのみ許可されます。
 
-> [!NOTE]
-> 暗号化を無効にしても、Key Vault や暗号化キー マテリアル (Windows システムの場合は BitLocker 暗号化キー、Linux の場合はパスフレーズ) は削除されません。
- > Linux 用の OS ディスク暗号化の無効化は、サポートされていません。 暗号化解除の手順は、Linux VM のデータ ドライブでのみ許可されます。
-OS ドライブが暗号化されている場合、Linux のデータ ディスクの暗号化を無効にする機能はサポートされていません。
+1. Azure によって VM サービス モデルが更新され、IaaS VM は暗号化解除済みとしてマークされます。 VM の内容は保存時に暗号化されなくなります。
+
+   > [!NOTE]
+   > 暗号化を無効にしても、Key Vault や暗号化キー マテリアル (Windows システムの場合は BitLocker 暗号化キー、Linux の場合はパスフレーズ) は削除されません。
+   >
+   > Linux 用の OS ディスク暗号化の無効化は、サポートされていません。 暗号化解除の手順は、Linux VM のデータ ドライブでのみ許可されます。
+   >
+   > OS ドライブが暗号化されている場合、Linux のデータ ディスクの暗号化を無効にする機能はサポートされていません。
 
 
 ## <a name="encryption-workflow-previous-release"></a>暗号化のワークフロー (以前のリリース)
 
-Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化を有効にするために Azure AD アプリケーション パラメーターを指定する必要はありません。 新しいリリースでは、暗号化を有効にする手順の途中で、Azure AD の資格情報を指定する必要がなくなりました。 すべての新しい VM は、新しいリリースを使用して、Azure AD アプリケーション パラメーターを指定せずに暗号化する必要があります。 Azure AD アプリケーション パラメーターで既に暗号化された VM はまだサポートされていますが、AAD 構文を使用して保持し続ける必要があります。 Windows および Linux VM のディスク暗号化 (以前のリリース) を有効にするには、次の手順に従います。
+Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化を有効にするために Azure Active Directory (Azure AD) アプリケーション パラメーターを指定する必要はありません。 新しいリリースでは、暗号化を有効にする手順の途中で、Azure AD の資格情報を指定する必要がなくなりました。 すべての新しい VM は、新しいリリースを使用して、Azure AD アプリケーション パラメーターを指定せずに暗号化する必要があります。 Azure AD アプリケーション パラメーターで既に暗号化された VM はまだサポートされていますが、Azure AD の構文を使用して保持し続ける必要があります。 Windows および Linux VM のディスク暗号化 (以前のリリース) を有効にするには、次の手順に従います。
 
-1. 上記の暗号化シナリオの中から、実行する暗号化シナリオを選択します。
-2. Azure Disk Encryption Resource Manager テンプレート、PowerShell コマンドレット、または CLI コマンドを使用してディスク暗号化を有効にすることを選択し、暗号化構成を指定します。
+1. 「[暗号化のシナリオ](#encryption-scenarios)」セクションに列記されているシナリオから、暗号化のシナリオを選択します。
+
+1. Azure Disk Encryption Resource Manager テンプレート、PowerShell コマンドレット、または Azure CLI を使用してディスク暗号化を有効にすることを選択し、暗号化の構成を指定します。
 
    * お客様が暗号化した VHD の場合は、暗号化した VHD をストレージ アカウントにアップロードし、暗号化キー マテリアルを Key Vault にアップロードします。 その後、暗号化構成を指定して新しい IaaS VM での暗号化を有効にします。
    * Marketplace から作成された新しい VM と、Azure で既に実行されている既存の VM については、IaaS VM での暗号化を有効にするための暗号化構成を指定します。
 
-3. 暗号化キー マテリアル (Windows システムの場合は BitLocker 暗号化キー、Linux の場合はパスフレーズ) を Key Vault から読み取るためのアクセス権を Azure プラットフォームに付与し、IaaS VM での暗号化を有効にします。
+1. 暗号化キー マテリアル (Windows システムの場合は BitLocker 暗号化キー、Linux の場合はパスフレーズ) を Key Vault から読み取るためのアクセス権を Azure プラットフォームに付与し、IaaS VM での暗号化を有効にします。
 
-4. Key Vault に暗号化キー マテリアルを書き込むための Azure Active Directory (Azure AD) アプリケーション ID を指定します。 これにより、手順 2 で述べたシナリオについて、IaaS VM での暗号化が有効になります。
+1. Key Vault に暗号化キー マテリアルを書き込むための Azure AD アプリケーション ID を指定します。 これにより、手順 2 で述べたシナリオについて、IaaS VM での暗号化が有効になります。
 
-5. Azure は、暗号化と Key Vault の構成を使用して VM サービス モデルを更新し、暗号化された VM をセットアップします。
+1. Azure は、暗号化と Key Vault の構成を使用して VM サービス モデルを更新し、暗号化された VM をセットアップします。
 
 
 ## <a name="terminology"></a>用語集
-このテクノロジで使用される一般的な用語をいくつか理解するために、以下の用語表を使用してください。
+次の表では、この技術で使用される一般的な用語の一部を定義します。
 
 | 用語集 | 定義 |
 | --- | --- |
-| Azure AD | Azure AD とは [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) のことです。 Azure AD アカウントは、Key Vault のシークレットの認証、格納、および取得を行うために使用されます。 |
-| Azure Key Vault | Key Vault は、Federal Information Processing Standards (FIPS) に照らして検証されたハードウェア セキュリティ モジュールに基づく、暗号化キー管理サービスです。Key Vault は暗号化キーと機密性の高い情報を保護するために役立ちます。 詳しくは、「[Key Vault](https://azure.microsoft.com/services/key-vault/)」のドキュメントをご覧ください。 |
+| Azure AD | [Azure AD](https://azure.microsoft.com/documentation/services/active-directory/) アカウントは、Key Vault のシークレットの認証、格納、および取得を行うために使用されます。 |
+| Azure Key Vault | Key Vault は、Federal Information Processing Standards (FIPS) に照らして検証されたハードウェア セキュリティ モジュールに基づく、暗号化キー管理サービスです。 これらの標準は、暗号化キーと機密性の高いシークレットを保護するために役立ちます。 詳しくは、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントをご覧ください。 |
 | BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) は、Windows IaaS VM でディスク暗号化を有効にするために使用される業界公認の Windows ボリューム暗号化テクノロジです。 |
-| BEK | BitLocker 暗号化キーは、OS ブート ボリュームとデータ ボリュームの暗号化に使用されます。 BitLocker キーは、Key Vault でシークレットとして保護されます。 |
-| CLI | [Azure コマンド ライン インターフェイス](/cli/azure/install-azure-cli)に関する記事をご覧ください。|
+| BEK | BitLocker 暗号化キー (BEK) は、OS ブート ボリュームとデータ ボリュームの暗号化に使用されます。 BEK は、Key Vault でシークレットとして保護されます。 |
+| Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) は、コマンド ラインから Azure リソースを管理できるように最適化されています。|
 | DM-Crypt |[DM Crypt](https://en.wikipedia.org/wiki/Dm-crypt) は、Linux IaaS VM でディスク暗号化を有効にするために使用される Linux ベースの透過的なディスク暗号化サブシステムです。 |
-| KEK | キー暗号化キーは、シークレットを保護またはラップするために使用できる非対称キー (RSA 2048) です。 ハードウェア セキュリティ モジュール (HSM) で保護されたキーまたはソフトウェアで保護されたキーを指定できます。 詳しくは、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントをご覧ください。 |
-| PS コマンドレット | [Azure PowerShell コマンドレット](/powershell/azure/overview)に関する記事をご覧ください。 |
+| KEK | キー暗号化キー (KEK) は、シークレットを保護またはラップするために使用できる非対称キー (RSA 2048) です。 ハードウェア セキュリティ モジュール (HSM) で保護されたキーまたはソフトウェアで保護されたキーを指定できます。 詳しくは、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のドキュメントをご覧ください。 |
+| PowerShell コマンドレット | 詳しくは、[Azure PowerShell コマンドレット](/powershell/azure/overview)に関するページをご覧ください。 |
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]

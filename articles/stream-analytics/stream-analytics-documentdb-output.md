@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 95cfc7e6d9515274aa7a3c5fde382244f3b33fab
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8dc85c55dd67d8acd394d7922e947c91234ef23b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142673"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957150"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -37,6 +37,13 @@ Azure Cosmos DB では、アプリケーション要件を満たすために、�
 Stream Analytics を Azure Cosmos DB と統合することで、特定のドキュメント ID 列に基づき、コレクションでレコードを挿入または更新できるようになります。 この機能は、 *アップサート*とも呼ばれています。
 
 Stream Analytics では、オプティミスティック アップサート手法を使用しています。この手法では、ドキュメント ID の競合が原因で挿入に失敗した場合にのみ更新が実行されます。 この更新は PATCH として実行されるため、ドキュメントに対する部分更新が可能になります。つまり、新しいプロパティの追加や既存のプロパティの置き換えは段階的に実行されます。 ただし、JSON ドキュメント内の配列プロパティの値を変更すると、配列全体が上書きされることになるので注意してください。つまり、配列はマージされません。
+
+受信した JSON ドキュメントに既存の ID フィールドがある場合、そのフィールドが Cosmos DB のドキュメント ID 列として自動的に使用され、後続の書き込みもすべてそのように処理されるため、次のいずれかの状態になります。
+- 一意の ID が挿入される
+- 重複した ID と 'ID' に設定された 'ドキュメント ID' によりアップサートとなる
+- 最初のドキュメントの後に、重複した ID と 'ドキュメント ID' が設定されていないことでエラーになる
+
+重複した ID を持つドキュメントを含め、<i>すべて</i>のドキュメントを保存する場合は、(AS キーワードを使用して) クエリ内の ID フィールドの名前を変更し、Cosmos DB により ID フィールドを作成するか、(AS キーワードか 'ドキュメント ID' 設定を使用して) 別の列の値と ID を置き換えます。
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Cosmos DB でのデータ パーティション分割
 Azure Cosmos DB はワークロードに基づいてパーティションを自動的にスケーリングされるので、データのパーティション分割には[無制限](../cosmos-db/partition-data.md)の Azure Cosmos DB がお勧めです。 無制限コンテナーに書き込む場合、Stream Analytics は以前のクエリ手順または入力のパーティション分割スキームと同数の並列ライターを使用します。

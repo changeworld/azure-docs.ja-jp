@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 5550bbb95b24e12510c69bc3952c346250786994
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145202"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960006"
 ---
 # <a name="import-data-into-analytics"></a>Analytics へのデータのインポート
 
@@ -120,10 +120,10 @@ JSON 形式
  
 各列には、場所、名前、および型を指定します。
 
-* 場所 – 区切られたファイル形式の場合、マップする値の位置を指定します。 JSON 形式では、マップするキーの jpath を指定します。
-* Name – 列の表示名です。
-* 型 – 列のデータ型です。
- 
+* 場所 - 区切られたファイル形式の場合、マップする値の位置となります。 JSON 形式では、マップするキーの jpath を指定します。
+* 名前 - 列の表示名。
+* 型 - 列のデータ型。
+
 > [!NOTE]
 > サンプル データを使用するときにファイルが区切り形式である場合、スキーマ定義ですべての列をマッピングし、末尾に新しい列を追加する必要があります。
 > 
@@ -137,7 +137,7 @@ JSON 形式
 
 次のプロセスは、手動で実行するか、または自動化されたシステムを設定して定期的に実行することができます。 インポートするデータのブロックごとに、これらの手順を実行する必要があります。
 
-1. [Azure BLOB ストレージ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)にデータをアップロードします。 
+1. [Azure BLOB ストレージ](../storage/blobs/storage-quickstart-blobs-dotnet.md)にデータをアップロードします。 
 
  * BLOB のサイズは、非圧縮で 1 GB が上限となります。 パフォーマンスの観点から言うと、数百 MB の BLOB が最適なサイズです。
  * Gzip で圧縮すれば、アップロード時間が短縮されるだけでなく、データがクエリで使用できるようになるまでの時間も短縮されます。 ファイル名拡張子は `.gz` を使用してください。
@@ -369,5 +369,5 @@ namespace IngestionClient
 
 ## <a name="next-steps"></a>次の手順
 
-* [Log Analytics クエリ言語のツアー](app-insights-analytics-tour.md)
+* [Log Analytics クエリ言語のツアー](../log-analytics/query-language/get-started-analytics-portal.md)
 * Logstash を使用している場合は、[Application Insights にデータを送信するための Logstash プラグイン](https://github.com/Microsoft/logstash-output-application-insights)を使用します

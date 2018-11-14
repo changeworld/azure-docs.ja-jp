@@ -1,260 +1,85 @@
 ---
-title: Azure Cosmos DB のスループットのプロビジョニング | Microsoft Docs
-description: Azure Cosmos DB コンテナー、コレクション、グラフ、およびテーブルのプロビジョニング済みスループットを設定する方法について説明します。
-services: cosmos-db
+title: Azure Cosmos DB のスループットのプロビジョニング
+description: Azure Cosmos DB のコンテナーとデータベースにプロビジョニング済みスループットを設定する方法について説明します。
 author: aliuy
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: 2280a3f6b2a67d392a109a5294e1509bcc804bc3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 24b6beec8ecda993667464be5c74dab50fd93201
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869926"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278890"
 ---
-# <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Azure Cosmos DB コンテナーおよびデータベースのスループットを設定および取得する
+# <a name="provision-throughput-for-cosmos-db-containers-and-databases"></a>Cosmos DB のコンテナーとデータベースのスループットのプロビジョニング
 
-Azure Portal またはクライアント SDK を使用して、Azure Cosmos DB コンテナーまたは一連のコンテナーのスループットを設定できます。 この記事では、Azure Cosmos DB アカウントに異なる粒度のスループットを構成するために必要な手順について説明します。
+Cosmos データベースは、一連のコンテナーの管理の単位です。 データベースは、スキーマに依存しない一連のコンテナーで構成されます。 Cosmos コンテナーは、スループットとストレージの両方のスケーラビリティの単位です。 コンテナーは、Azure リージョン内の一連のマシン全体で水平方向にパーティション分割され、Cosmos アカウントに関連付けられているすべての Azure リージョンに分散されます。
 
-## <a name="provision-throughput-by-using-azure-portal"></a>Azure Portal を使用してスループットをプロビジョニングする
+Azure Cosmos DB により、**Cosmos コンテナー**と **Cosmos データベース**の 2 つの粒度でスループットを構成できます。
 
-### <a name="provision-throughput-for-a-container-collectiongraphtable"></a>コンテナー (コレクション/グラフ/テーブル) にスループットをプロビジョニングする
+# <a name="setting-throughput-on-a-cosmos-container"></a>Cosmos コンテナーのスループットの設定  
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。  
-2. 左側のナビゲーションから **[All resources]\(すべてのリソース\)** を選択し、Azure Cosmos DB アカウントを検索します。  
-3. コンテナー (コレクション、グラフ、テーブル) の作成中にスループットを設定したり、または既存のコンテナーのスループットを更新することもできます。  
-4. コンテナーの作成中にスループットを割り当てるには、**データ エクスプローラー** ブレードを開き、**[New Collection]\(新しいコレクション\)** (その他の API の場合は [New Graph]\(新しいグラフ\)、[New Table]\(新しいテーブル\)) を選択します。  
-5. **[コレクションの追加]** ブレード のフォームに入力します。 このブレードのフィールドについては、次の表で説明します。  
+Cosmos コンテナーに対してプロビジョニングされたスループットは、そのコンテナー専用に予約されます。 コンテナーは、常にプロビジョニング済みスループットを受け取ります。 コンテナーのプロビジョニング済みスループットは、SLA によって料金が保証されます。 コンテナーのスループットを構成するには、[Cosmos コンテナーのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)に関するページをご覧ください。
 
-   |**設定**  |**説明**  |
-   |---------|---------|
-   |データベース ID  |  データベースを識別する一意な名前を指定します。 データベースは、1 つまたは複数のコレクションから成る論理的なコンテナーです。 データベース名は 1 文字以上 255 文字以内にする必要があります。/、\\、#、? は使えず、末尾にスペースを入れることもできません。 |
-   |コレクション ID  | コレクションを識別する一意な名前を指定します。 コレクション ID には、データベース名と同じ文字要件があります。 |
-   |ストレージの容量   | この値は、データベースの記憶域容量です。 各コレクションのスループットをプロビジョニングする場合、容量には、**固定 (10 GB)** または**無制限**を設定できます。 無制限のストレージ容量の場合、データのパーティション キーを設定する必要があります。  |
-   |スループット   | 各コレクションおよびデータベースには、1 秒あたりの要求単位でスループットを設定できます。  コレクションのストレージ容量を固定するか無制限にすることができます。 |
+コンテナーへのプロビジョニング済みスループットの設定は、幅広く使用されているオプションです。 任意の量のスループット (RU) をプロビジョニングすることにより、コンテナーのスループットを柔軟にスケールできますが、論理パーティションのスループットを選択して指定することはできません。 論理パーティションで実行されているワークロードによって、特定の論理パーティションに割り当てられたスループットより多く消費されている場合、ユーザーの操作のレートが制限されます。 レートの制限が発生した場合は、コンテナー全体のスループットを増加するか、または操作を再試行できます。 パーティション分割の詳細については、[論理パーティション](partition-data.md)に関するページをご覧ください。
 
-6. これらのフィールドに値を入力した後、**[OK]** を選択して設定を保存します。  
+コンテナーのパフォーマンスを確保する必要がある場合は、コンテナー粒度でスループットを構成することをお勧めします。
 
-   ![コレクションのスループットを設定する](./media/set-throughput/set-throughput-for-container.png)
+Cosmos コンテナーにプロビジョニングされたスループットは、コンテナーのすべての論理パーティションに一様に分散されます。 コンテナーの 1 つ以上の論理パーティションがリソース パーティションによってホストされているため、物理パーティションは、コンテナーにのみ属し、コンテナーにプロビジョニングされたスループットをサポートします。 次のイメージは、リソース パーティションによって、コンテナーの 1 つ以上の論理パーティションをホストする方法を示しています。
 
-7. 既存のコンテナーのスループットを更新するには、データベースとコンテナーを展開し、**[設定]** をクリックします。 新しいウィンドウに、新しいスループットの値を入力し、**[保存]** を選択します。  
+![リソース パーティション](./media/set-throughput/resource-partition.png)
 
-   ![コレクションのスループットを更新する](./media/set-throughput/update-throughput-for-container.png)
+# <a name="setting-throughput-on-a-cosmos-database"></a>Cosmos データベースのスループットの設定
 
-### <a name="provision-throughput-for-a-set-of-containers-or-at-the-database-level"></a>一連のコンテナーまたはデータベース レベルのスループットをプロビジョニングする
+Cosmos データベースのスループットをプロビジョニングする場合、特定のコンテナーに対してプロビジョニング済みスループットを指定していない限り、スループットはデータベースのすべてのコンテナーで共有されます。 データベースのコンテナー間でスループットを共有することは、マシンのクラスターでデータベースをホストすることに似ています。 データベース内のすべてのコンテナーで、コンピューターで使用可能なリソースが共有されるため、必然的に特定のコンテナーで予想どおりのパフォーマンスが得られません。 データベースのスループットを構成するには、[Cosmos データベースでプロビジョニング済みスループットを構成する方法](how-to-provision-database-throughput.md)に関するページをご覧ください。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。  
-2. 左側のナビゲーションから **[All resources]\(すべてのリソース\)** を選択し、Azure Cosmos DB アカウントを検索します。  
-3. スループットは、データベースの作成中に設定したり、または既存のコンテナーのスループットを更新できます。  
-4. データベースの作成中にスループットを割り当てるには、**データ エクスプローラー** ブレードを開き、**[新しいデータベース]** を選択します。  
-5. **[データベース ID]** 値を入力し、**[スループットのプロビジョニング]** オプションをオンにし、スループットの値を設定します。  
+Cosmos データベースにスループットを設定することで、常にプロビジョニング済みスループットを受け取ることが保証されます。 データベース内のすべてのコンテナーでプロビジョニング済みスループットが共有されるため、Cosmos DB データベースでは、そのデータベース内の特定のコンテナーに対して、予測可能なスループット保証を行いません。 特定のコンテナーが受け取ることができるスループットの部分は、次に依存します。
 
-   ![新しいデータベース オプションでスループットを設定する](./media/set-throughput/set-throughput-with-new-database-option.png)
+* コンテナーの数
+* さまざまなコンテナーのパーティション キーの選択
+* コンテナーのさまざまな論理パーティション間のワークロードの分散。 
 
-6. 既存のデータベースのスループットを更新するには、データベースとコンテナーを展開し、**[スケール]** をクリックします。 新しいウィンドウに、新しいスループットの値を入力し、**[保存]** を選択します。  
+複数のコンテナーでスループットを共有するが、スループットを特定のコンテナー専用にしない場合、データベースのスループットを構成することをお勧めします。 次に、データベース レベルでスループットをプロビジョニングすることが望ましい例を示します。
 
-   ![データベースのスループットを更新する](./media/set-throughput/update-throughput-for-database.png)
+* データベースのプロビジョニング済みスループットを一連のコンテナーで共有することは、マルチテナント アプリケーションに便利です。 各ユーザーを、個別の Cosmos コンテナーによって表すことができます。
 
-### <a name="provision-throughput-for-a-set-of-containers-as-well-as-for-an-individual-container-in-a-database"></a>データベース内の個別のコンテナーおよび一連のコンテナーのスループットをプロビジョニングする
+* 一連のコンテナーでデータベースのプロビジョニング済みスループットを共有することは、ホストされている NoSQL データベース (MongoDB、Cassandra など) を、VM のクラスターやオンプレミスの物理サーバーから、Cosmos DB へ移行する場合に便利です。 Cosmos データベースに構成されているプロビジョニング済みスループットは、MongoDB や Cassandra クラスターの計算容量と論理的に同等である (ただしコスト効率や柔軟性が高い) と考えることができます。  
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。  
-2. 左側のナビゲーションから **[All resources]\(すべてのリソース\)** を選択し、Azure Cosmos DB アカウントを検索します。  
-3. データベースを作成し、スループットを割り当てます。 **データ エクスプローラー** ブレードを開き、**[新しいデータベース]** を選択します。  
-4. **[データベース ID]** 値を入力し、**[スループットのプロビジョニング]** オプションをオンにし、スループットの値を設定します。  
+特定の時点で、データベース内のコンテナーに割り当てられているスループットは、そのコンテナーのすべての論理パーティションに分散されます。 データベースにプロビジョニング済みスループットを共有するコンテナーがある場合は、特定のコンテナーや論理パーティションにスループットを選択して適用できません。 論理パーティションのワークロードによって、特定の論理パーティションに割り当てられているスループットより多く消費されている場合、ユーザーの操作のレートが制限されます。 レートの制限が発生した場合は、コンテナー全体のスループットを増加するか、または操作を再試行できます。 パーティション分割の詳細については、[論理パーティション](partition-data.md)に関するページをご覧ください。
 
-   ![新しいデータベース オプションでスループットを設定する](./media/set-throughput/set-throughput-with-new-database-option.png)
+1 つのデータベースにプロビジョニングされたスループットを共有している複数の論理パーティションは、1 つのリソース パーティションでホストできます。 コンテナーの 1 つの論理パーティションは、常にリソース パーティション内で範囲指定されますが、データベースのプロビジョニング済みスループットを共有する 'C' コンテナーにわたる 'L' 論理パーティションを 'R' 物理パーティションにマッピングし、ホストできます。 次のイメージに、リソース パーティションで、データベース内のさまざまなコンテナーに属する 1 つ以上の論理パーティションをホストできる方法を示します。
 
-5. 次に、上記の手順で作成したデータベース内にコレクションを作成します。 コレクションを作成するには、データベースを右クリックして **[新しいコレクション]** を選択します。  
+![リソース パーティション](./media/set-throughput/resource-partition2.png)
 
-6. **[コレクションの追加]** ブレードに、コレクションの名前とパーティション キーを入力します。 または、特定のコンテナーにスループット値を割り当てない場合は、そのコンテナーのスループットをプロビジョニングし、データベースに割り当てられたスループットをコレクションで共有できます。  
+## <a name="setting-throughput-on-a-cosmos-database-and-a-container"></a>Cosmos データベースとコンテナーへのスループットの設定
 
-   ![または、そのコンテナーのスループットを設定します。](./media/set-throughput/optionally-set-throughput-for-the-container.png)
+2 つのモデルを組み合わせることができ、データベースとコンテナーの両方でスループットをプロビジョニングできます。 次の例に、Cosmos データベースとコンテナーでスループットをプロビジョニングする方法を示します。
 
-## <a name="considerations-when-provisioning-throughput"></a>スループットをプロビジョニングするときの考慮事項
+* 'K' RU のプロビジョニング済みスループットで、'Z' という名前の Cosmos データベースを作成できます。 
+* 次に、データベース内に A、B、C、D、E という名前の 5 つのコンテナーを作成します。
+* コンテナー 'B' に 'P' RU のプロビジョニング済みスループットを明示的に構成できます。
+* 'K' RU スループットは、A、C、D、E の 4 つのコンテナーで共有されます。A、C、D、E に使用可能なスループットの正確な量はさまざまに異なり、個々のコンテナーのスループットに対する SLA はありません。
+* コンテナー 'B' は常に 'P' RU スループットが得られることが保証され、SLA によって保証されています。
 
-スループット予約戦略を決定する際に役立ついくつかの考慮事項を以下に示します。
+## <a name="comparison-of-models"></a>モデルの比較
 
-### <a name="considerations-when-provisioning-throughput-at-the-database-level"></a>データベース レベルのスループットをプロビジョニングするときの考慮事項
-
-次の場合は、データベース レベル (一連のコンテナー) でスループットをプロビジョニングすることを検討します。
-
-* 一部またはすべてのコンテナー間でスループットを共有する可能性があるコンテナーの数が 12 個以上の場合。  
-
-* IaaS でホストされた VM またはオンプレミス (NoSQL またはリレーショナル データベースなど) 上で実行するよう設計されたシングル テナント データベースから Azure Cosmos DB に移行する場合。  
-
-* データベース レベルでプールされたスループットを使用して、ワークロードの計画外の急激な増加に対応することを検討している場合。  
-
-* コンテナーごとに個別にスループットを設定するのではなく、データベース内の一連のコンテナー全体の集計スループットを取得することに関心がある場合。
-
-### <a name="considerations-when-provisioning-throughput-at-the-container-level"></a>コンテナー レベルのスループットをプロビジョニングするときの考慮事項
-
-次の場合は、各コンテナーのスループットを個別にプロビジョニングすることを検討してください。
-
-* Azure Cosmos DB コンテナーの数が少ない場合。  
-
-* SLA によって保証された特定の コンテナーのスループットを取得する必要がある場合。
-
-<a id="set-throughput-sdk"></a>
-
-## <a name="set-throughput-by-using-sql-api-for-net"></a>SQL API for .NET を使用してスループットを設定する
-
-### <a name="set-throughput-at-the-container-level"></a>コンテナー レベルでスループットを設定する
-次に示すコード スニペットでは、SQL API の .NET SDK を使用して、個別のコンテナーに対して 1 秒あたり 3,000 要求ユニットのコンテナーを作成します。
-
-```csharp
-DocumentCollection myCollection = new DocumentCollection();
-myCollection.Id = "coll";
-myCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(
-    UriFactory.CreateDatabaseUri("db"),
-    myCollection,
-    new RequestOptions { OfferThroughput = 3000 });
-```
-
-### <a name="set-throughput-for-a-set-of-containers-at-the-database-level"></a>データベース レベルで一連のコンテナーのスループットを設定する
-
-次に示すコード スニペットでは、SQL API の .NET SDK を使用して、一連のコンテナーに対して 1 秒あたり 100,000 要求ユニットをプロビジョニングします。
-
-```csharp
-// Provision 100,000 RU/sec at the database level. 
-// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
-// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
-Database database = await client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 });
-
-DocumentCollection sharedCollection1 = new DocumentCollection();
-sharedCollection1.Id = "sharedCollection1";
-sharedCollection1.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
-
-DocumentCollection sharedCollection2 = new DocumentCollection();
-sharedCollection2.Id = "sharedCollection2";
-sharedCollection2.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
-
-DocumentCollection dedicatedCollection = new DocumentCollection();
-dedicatedCollection.Id = "dedicatedCollection";
-dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
-```
-
-Azure Cosmos DB は、スループットの予約モデルで運用されます。 つまり、実際に "*使用した*" スループット量ではなく、"*予約した*" スループット量に対する料金が請求されます。 アプリケーションの負荷やデータ、使用パターンが変化したときは、SDK や [Azure Portal](https://portal.azure.com) を使用して、予約済み RU の数を簡単にスケールアップしたりスケールダウンしたりできます。
-
-各コンテナーまたは一連のコンテナーは、Azure Cosmos DB の `Offer` リソースにマップされます。このリソースは、プロビジョニング済みスループットに関するメタデータを持っています。 割り当て済みのスループットを変更するには、コンテナーに対応する Offer リソースを検索して、新しいスループット値に更新します。 次に示すコード スニペットは、.NET SDK を使用して、コンテナーのスループットを 1 秒あたり 5,000 要求ユニットに変更します。 スループットを変更した後は、変更されたスループットが表示されるように既存の Azure portal ウィンドウを更新する必要があります。 
-
-```csharp
-// Fetch the resource to be updated
-// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
-Offer offer = client.CreateOfferQuery()
-                .Where(r => r.ResourceLink == collection.SelfLink)    
-                .AsEnumerable()
-                .SingleOrDefault();
-
-// Set the throughput to 5000 request units per second
-offer = new OfferV2(offer, 5000);
-
-// Now persist these changes to the database by replacing the original resource
-await client.ReplaceOfferAsync(offer);
-```
-
-スループットを変更しても、お使いの 1 つのコンテナーまたは一連のコンテナーの可用性には影響しません。 通常、新しく予約されたスループットは、数秒後にアプリケーションで有効になります。
-
-<a id="set-throughput-java"></a>
-
-## <a name="to-set-the-throughput-by-using-the-sql-api-for-java"></a>SQL API for Java を使用してスループットを設定するには
-
-次のコード スニペットでは現在のスループットを取得し、それを 500 RU/秒に変更します。 完全なコード サンプルについては、GitHub の [OfferCrudSamples.java](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) ファイルを参照してください。 
-
-```Java
-// find offer associated with this collection
-// To change the throughput for a set of containers, use the database's resource id instead of the collection's resource id
-Iterator < Offer > it = client.queryOffers(
-    String.format("SELECT * FROM r where r.offerResourceId = '%s'", collectionResourceId), null).getQueryIterator();
-assertThat(it.hasNext(), equalTo(true));
-
-Offer offer = it.next();
-assertThat(offer.getString("offerResourceId"), equalTo(collectionResourceId));
-assertThat(offer.getContent().getInt("offerThroughput"), equalTo(throughput));
-
-// update the offer
-int newThroughput = 500;
-offer.getContent().put("offerThroughput", newThroughput);
-client.replaceOffer(offer);
-```
-
-## <a name="get-the-request-charge-using-cassandra-api"></a>Cassandra API を使用して要求の使用量を取得する 
-
-Cassandra API では、特定の操作の要求ユニット使用量に関する詳細情報を提供する方法がサポートされています。 たとえば、次のように、挿入操作の RU/秒の使用量を取得できます。
-
-```csharp
-var insertResult = await tableInsertStatement.ExecuteAsync();
- foreach (string key in insertResult.Info.IncomingPayload)
-        {
-            byte[] valueInBytes = customPayload[key];
-            string value = Encoding.UTF8.GetString(valueInBytes);
-            Console.WriteLine($“CustomPayload:  {key}: {value}”);
-        }
-```
-
-
-## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>MongoDB API ポータルのメトリックを使用したスループットの取得
-
-MongoDB API データベースの要求ユニットの適切な推定使用量を取得する簡単な方法は、[Azure Portal](https://portal.azure.com) のメトリックを使用することです。 "*要求数*" のグラフと "*要求の使用量*" のグラフから、各操作が使用している要求単位の数と、互いに使用する要求単位の数を推定できます。
-
-![MongoDB API ポータルのメトリック][1]
-
-### <a id="RequestRateTooLargeAPIforMongoDB"></a> MongoDB API での予約されたスループット上限の超過
-1 つのコンテナーまたは一連のコンテナーのプロビジョニング済みスループットを超えたアプリケーションは、使用量レートがプロビジョニング済みスループット レートを下回るまでレート制限されます。 レート制限が発生すると、バックエンドは、`16500`エラー コード - `Too Many Requests` で要求を終了します。 既定では、MongoDB API は、`Too Many Requests`エラー コードを返す前に、最大 10 回の再試行を自動的に実行します。 `Too Many Requests`エラー コードが多数発生する場合は、アプリケーションのエラー処理ルーチンに再試行ロジックを追加するか、[コンテナーのプロビジョニング済みスループットを増やすことを検討した方がよいことがあります](set-throughput.md)。
-
-## <a id="GetLastRequestStatistics"></a>MongoDB API の GetLastRequestStatistics コマンドの使用による要求の使用量を取得する
-
-MongoDB API は、指定した操作の要求の使用量を取得するためのカスタム コマンド *getLastRequestStatistics* をサポートしています。
-
-たとえば、Mongo シェルで、要求の使用料を確認する操作を実行します。
-```
-> db.sample.find()
-```
-
-次に、*getLastRequestStatistics* コマンドを実行します。
-```
-> db.runCommand({getLastRequestStatistics: 1})
-{
-    "_t": "GetRequestStatisticsResponse",
-    "ok": 1,
-    "CommandName": "OP_QUERY",
-    "RequestCharge": 2.48,
-    "RequestDurationInMilliSeconds" : 4.0048
-}
-```
-
-アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット使用量を記録し、アプリケーションが使用する代表的なアイテムに基づいて、1 秒ごとに実行される操作数を推定します。
-
-> [!NOTE]
-> アイテムの種類によって、サイズとインデックス付きプロパティの数が大きく異なる場合は、典型的なアイテムの "*種類*" ごとに、適用可能な操作の要求ユニット使用量を記録してください。
-> 
-> 
-
-## <a name="throughput-faq"></a>スループットについてよく寄せられる質問
-
-**スループットを 400 RU/秒未満に設定することはできますか?**
-
-Cosmos DB のシングル パーティション コンテナーで使用できる最小スループットは 400 RU/秒です (パーティション分割コンテナーの最小スループットは 1,000 RU/秒)。 要求ユニットは 100 RU/秒の間隔で設定されますが、スループットを 100 RU/秒または 400 RU/秒未満の値に設定することはできません。 コストを抑えて Cosmos DB の開発とテストを行いたい場合は、無料の [Azure Cosmos DB Emulator](local-emulator.md) を利用して無償でローカルにデプロイすることができます。 
-
-**MongoDB API を使用してスループットを設定する方法**
-
-スループットを設定するための MongoDB API 拡張機能はありません。 「[SQL API for .NET を使用してスループットを設定するには](#set-throughput-sdk)」で示すように、SQL API を使用することをお勧めします。
+|**[クォータ]**  |**データベースにプロビジョニングされたスループット**  |**コンテナーにプロビジョニングされたスループット**|
+|---------|---------|---------|
+|スケーラビリティの単位|コンテナー|コンテナー|
+|最小 RU |400 |400|
+|コンテナーあたりの最小 RU|100|400|
+|1 GB のストレージを使用するために必要な最小の RU|40|40|
+|最大 RU|無制限、データベース上|無制限、コンテナー上|
+|特定のコンテナーに割り当て済み/使用可能な RU|保証はありません。 特定のコンテナーに割り当てられる RU は、スループットを共有するコンテナーのパーティション キーの選択、ワークロードの分散、コンテナーの数などのプロパティによって異なります。 |コンテナー上に構成されるすべての RU は、そのコンテナー専用に予約されます。|
+|コンテナーの最大ストレージ|無制限|無制限|
+|コンテナーの論理パーティションあたりの最大スループット|10,000 RU|10,000 RU|
+|コンテナーの論理パーティションあたりの最大ストレージ (データ + インデックス)|10 GB|10 GB|
 
 ## <a name="next-steps"></a>次の手順
 
-* スループットおよび要求単位の見積もりの詳細については、「[要求ユニットとスループットの推定 - Azure Cosmos DB](request-units.md)」を参照してください。
+* [論理パーティション](partition-data.md)の詳細を確認する
+* [Cosmos コンテナーのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)について学習する
+* [Cosmos データベースのスループットをプロビジョニングする方法](how-to-provision-database-throughput.md)を確認する
 
-* Cosmos DB を使用したプロビジョニングと地球規模での使用の詳細については、[Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関するページをご覧ください。
-
-[1]: ./media/set-throughput/api-for-mongodb-metrics.png

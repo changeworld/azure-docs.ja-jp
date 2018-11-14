@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: bfbb72d6fd101932f00e12ad18ab079ec30a0d3a
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: c137f6cfdff9d043a656783f38ec9b894e644338
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818822"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913021"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows アプリにプッシュ通知を追加する
 
@@ -37,21 +37,23 @@ ms.locfileid: "42818822"
 
 ## <a name="register-your-app-for-push-notifications"></a>アプリケーションをプッシュ通知に登録する
 
-Microsoft ストアにアプリケーションを出する必要があります。その後、サーバープロジェクトを Windows Notification Services (WNS) に統合させて、プッシュを送ります。
+Microsoft Store にアプリを送信した後、サーバープロジェクトを [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) と統合してプッシュを送信するように構成する必要があります。
 
 1. Visual Studio ソリューション エクスプローラーで、UWP アプリ プロジェクトを右クリックし、**[ストア]**  >  **[アプリケーションをストアと関連付ける]** の順にクリックします。
 
     ![Microsoft ストアにアプリを関連付けます](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+
 2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
 3. アプリの登録が正常に作成されたら、新しいアプリ名を選択し、**[次へ]** をクリックし、**[関連付け]** をクリックします。 この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
-4. [[Windows デベロッパー センター]](https://dev.windows.com/en-us/overview) に移動し、Microsoft アカウントでサインインして、**[マイ アプリ]** で新しいアプリ登録をクリックします。次に、**[サービス]**  >  **[プッシュ通知]** の順に展開します。
-5. **[プッシュ通知]** ページで、**[Microsoft Azure Mobile Services]** の下にある **[Live サービス サイト]** をクリックします。
-6. 登録ページで、**[アプリケーション シークレット]** と **[パッケージ SID]** の値を記録しておきます。モバイル アプリ バックエンドを構成するときに使用します。
+4. [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)に移動し、Microsoft アカウントでサインインします。 前の手順で関連付けた Microsoft Store アプリをクリックします。
+5. 登録ページで、**[アプリケーション シークレット]** と **[パッケージ SID]** の値を記録しておきます。モバイル アプリ バックエンドを構成するときに使用します。
 
     ![Microsoft ストアにアプリを関連付けます](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
    > クライアント シークレットとパッケージ SID は、重要なセキュリティ資格情報です。 これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。 **[アプリケーション ID]** は、Microsoft アカウント認証を構成するためにシークレットと共に使用されます。
+
+[App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) には、プッシュ通知用に UWP アプリを構成するための手順もあります。
 
 ## <a name="configure-the-backend-to-send-push-notifications"></a>プッシュ通知を送信するようにバックエンドを構成する
 

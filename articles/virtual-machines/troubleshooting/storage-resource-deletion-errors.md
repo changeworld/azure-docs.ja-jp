@@ -9,14 +9,14 @@ tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
-ms.date: 05/01/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2ec5caab32e12411f5ccab4a9a6b98d3c4e57c0b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1de70b3ddea84fc0067a0e20ec613f01024f0ed4
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412529"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748036"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>ストレージ リソースの削除エラーのトラブルシューティング
 
@@ -69,10 +69,7 @@ Azure では、破損を防ぐため、VM に接続されているディスク�
 
 ### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>シナリオ 3: ストレージ アカウントの削除 - ストレージ アカウント内で VM に接続されている BLOB をすべて特定する
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ハブ メニューで、**[すべてのリソース]** を選択します。 ストレージ アカウントに移動し、**[Blob service]** で **[コンテナー]** を選びます。
-
-    ![ストレージ アカウント コンテナーと "リース中" の "リース状態" が強調表示されている、Portal のスクリーンショット](./media/troubleshoot-vhds/utd-containers-sm.png)
-
+2. ハブ メニューで、**[すべてのリソース]** を選択します。 ストレージ アカウントに移動し、**[Blob service]** で **[BLOB]** を選びます。
 3. **[コンテナー]** ウィンドウで、**[リース状態]** が **[リース中]** であるすべてのコンテナーを特定し、各**リース中**コンテナーについて[シナリオ 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) に従います。
 4. 「[ステップ 2](#step-2-delete-vm-to-detach-os-disk)」と「[ステップ 3](#step-3-detach-data-disk-from-the-vm)」に従って、**OSDisk** の VM を削除し、**DataDisk** を切断します。 
 

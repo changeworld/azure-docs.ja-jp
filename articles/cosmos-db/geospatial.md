@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB で地理空間データを扱う | Microsoft Docs
+title: Azure Cosmos DB SQL API アカウントで地理空間データを扱う | Microsoft Docs
 description: Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。
 services: cosmos-db
 author: SnehaGunda
@@ -7,18 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 11/01/2017
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b1dcd9ba428618e1b234d76d5ad459eab0662aa
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417567"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961910"
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB で地理空間データと GeoJSON 位置データを扱う
-この記事では、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) の地理空間機能を紹介します。 この記事では次の方法を取り上げています。
+# <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API アカウントで地理空間データと GeoJSON 位置データを使用する
+
+この記事では、Azure Cosmos DB の地理空間機能を紹介します。 現在、地理空間データの保存とアクセスは、Cosmos DB SQL API アカウントのみでサポートされます。 この記事を読むと、次の質問に回答できるようになります。
 
 * 空間データを Azure Cosmos DB に保存する方法
 * Azure Cosmos DB 内の地理空間データを SQL や LINQ で照会する方法
@@ -133,9 +133,6 @@ public class UserProfile
     [JsonProperty("location")]
     public Point Location { get; set; }
 
-    [JsonProperty("profiletype")]
-    public string ProfileType { get; set; }
-
     // More properties
 }
 
@@ -197,7 +194,7 @@ Azure Cosmos DB は、以下の Open Geospatial Consortium (OGC) 組み込み関
       "id": "WakefieldFamily"
     }]
 
-インデックス作成ポリシーに空間インデックスを含めた場合、"距離クエリ" はインデックスを使って効率的に実行されます。 空間インデックスの詳細については、以降のセクションを参照してください。 指定されたパスに空間インデックスがない場合でも、 `x-ms-documentdb-query-enable-scan` 要求ヘッダーの値を "true" に設定して指定することによって空間クエリを実行することはできます。 その場合、.NET では、省略可能な引数 **FeedOptions** を、 [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) を true に設定してクエリに渡してください。 
+インデックス作成ポリシーに空間インデックスを含めた場合、"距離クエリ" はインデックスを使って効率的に実行されます。 空間インデックスの詳細については、以下のセクションを参照してください。 指定されたパスに空間インデックスがない場合でも、 `x-ms-documentdb-query-enable-scan` 要求ヘッダーの値を "true" に設定して指定することによって空間クエリを実行することはできます。 その場合、.NET では、省略可能な引数 **FeedOptions** を、 [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) を true に設定してクエリに渡してください。 
 
 ポイントが Polygon 内に存在するかどうかは、ST_WITHIN を使用してチェックできます。 通常 Polygon は、郵便番号、都道府県の境界など、自然な形状の範囲を表す目的で使用されます。 インデックス作成ポリシーに空間インデックスを含めた場合、"範囲内" 検索はインデックスを使って効率的に実行されます。 
 
@@ -279,7 +276,7 @@ SQL .NET SDK には、LINQ 式の中で使用するための、`Distance()` と 
 **距離検索の LINQ クエリ**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
-        .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
+        .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
     }

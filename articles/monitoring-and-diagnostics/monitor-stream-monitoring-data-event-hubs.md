@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 8/21/2018
+ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 18c0f8176a85eef79000fff8ed717ad7e57f20d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c85b65e9b6eabcb5c74e1d178c0f26235cdf624
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954842"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961825"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -27,8 +27,8 @@ Azure 環境内には監視データの "層" がいくつかあり、各層の�
 
 - **アプリケーション監視データ:** 自分で記述して Azure で実行しているコードのパフォーマンスと機能に関するデータ。 アプリケーション監視データの例として、パフォーマンス トレース、アプリケーション ログ、ユーザー テレメトリなどがあります。 アプリケーション監視データは、通常、次のいずれかの方法で収集されます。
   - コードを SDK ([Application Insights SDK](../application-insights/app-insights-overview.md) など) でインストルメント化することによって。
-  - アプリケーションを実行しているマシン上の新しいアプリケーション ログをリッスンする監視エージェント ([Windows Azure Diagnostic Agent](./azure-diagnostics.md)、[Linux Azure Diagnostic Agent](../virtual-machines/linux/diagnostic-extension.md) など) を実行することによって。
-- **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 ゲスト OS 監視データの例として、Linux の syslog や Windows のシステム イベントがあります。 この種類のデータを収集するには、[Windows Azure Diagnostic Agent](./azure-diagnostics.md) や [Linux Azure Diagnostic Agent](../virtual-machines/linux/diagnostic-extension.md) のようなエージェントをインストールする必要があります。
+  - アプリケーションを実行しているマシン上の新しいアプリケーション ログをリッスンする監視エージェント ([Windows Azure Diagnostic Agent](./azure-diagnostics.md)、[Linux Azure Diagnostic Agent](../virtual-machines/extensions/diagnostics-linux.md) など) を実行することによって。
+- **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 ゲスト OS 監視データの例として、Linux の syslog や Windows のシステム イベントがあります。 この種類のデータを収集するには、[Windows Azure Diagnostic Agent](./azure-diagnostics.md) や [Linux Azure Diagnostic Agent](../virtual-machines/extensions/diagnostics-linux.md) のようなエージェントをインストールする必要があります。
 - **Azure リソース監視データ:** Azure リソースの操作に関するデータ。 仮想マシンなど、一部の種類の Azure リソースには、その Azure サービスの内部を監視するためのゲスト OS およびアプリケーションがあります。 ネットワーク セキュリティ グループなど、他の Azure リソースでは、リソース監視データは使用可能なデータの最上位層です (それらのリソースで実行されるゲスト OS またはアプリケーションがないため)。 このデータは、[リソース診断設定](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)を使用して収集することができます。
 - **Azure サブスクリプション監視データ:** Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 [アクティビティ ログ](./monitoring-overview-activity-logs.md)には、サービス正常性インシデントや Azure Resource Manager の監査など、ほとんどのサブスクリプション監視データが含まれています。 このデータは、ログ プロファイルを使用して収集できます。
 - **Azure テナントの監視データ:** Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。 テナントの監視データの例として、Azure Active Directory の監査とサインインがあります。 このデータは、テナントの診断設定を使用して収集できます。
@@ -54,7 +54,7 @@ Azure テナントの監視データは、現在、Azure Active Directory での
 
 ### <a name="azure-active-directory-data"></a>Azure Active Directory データ
 
-Azure Active Directory ログから Event Hubs 名前空間にデータを送信するには、AAD テナントにテナント診断設定を設定します。 [このガイドに従って](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)テナント診断を設定します。
+Azure Active Directory ログから Event Hubs 名前空間にデータを送信するには、AAD テナントにテナント診断設定を設定します。 [このガイドに従って](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)テナント診断を設定します。
 
 ## <a name="azure-subscription-monitoring-data"></a>Azure サブスクリプション監視データ
 
@@ -71,7 +71,7 @@ Azure アクティビティ ログのデータを Event Hubs 名前空間に送�
 
 Azure リソースは、次の 2 種類の監視データを出力します。
 1. [リソース診断ログ](./monitoring-overview-of-diagnostic-logs.md)
-2. [メトリック](monitoring-overview-metrics.md)
+2. [メトリック](../monitoring/monitoring-data-collection.md)
 
 どちらの種類のデータも、リソース診断設定を使用してイベント ハブに送信されます。 特定のリソースにリソース診断設定をセットアップするには、[このガイド](./monitoring-stream-diagnostic-logs-to-event-hubs.md)に従ってください。 ログの収集先の各リソースで、リソース診断設定を設定します。
 
@@ -113,10 +113,11 @@ Azure Monitor で監視データをイベント ハブにルーティングす�
     1. [Splunk 向けの Azure Monitor アドオン](https://splunkbase.splunk.com/app/3534/)は、Splunkbase およびオープン ソース プロジェクトで入手できます。 ドキュメントは[こちら](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)にあります。
     2. Splunk インスタンスにアドオンをインストールできない場合 (例:  プロキシを使用している場合、Splunk Cloud で実行している場合など)、[イベント ハブの新しいメッセージによってトリガーされるこの機能](https://github.com/Microsoft/AzureFunctionforSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。
 * **SumoLogic** - イベント ハブのデータを使用するように SumoLogic をセットアップする手順については、[こちら](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)を参照してください。
+* **ArcSight** - ArcSight Azure Event Hub スマート コネクタは、[ここの ArcSight スマート コネクタ コレクション](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)の一部として使用できます。
 * **Syslog サーバー** - Azure Monitor データを Syslog サーバーに直接ストリーミングする場合は、[この Github リポジトリ](https://github.com/miguelangelopereira/azuremonitor2syslog/)をチェックアウトできます。
 
 ## <a name="next-steps"></a>次の手順
 * [ストレージ アカウントにアクティビティ ログをアーカイブする](monitoring-archive-activity-log.md)
 * [Azure アクティビティ ログの概要を確認する](monitoring-overview-activity-logs.md)
-* [アクティビティ ログ イベントに基づいてアラートを設定する](insights-auditlog-to-webhook-email.md)
+* [アクティビティ ログ イベントに基づいてアラートを設定する](monitor-alerts-unified-log-webhook.md)
 

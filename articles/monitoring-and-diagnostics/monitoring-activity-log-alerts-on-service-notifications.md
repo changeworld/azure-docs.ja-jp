@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 221434a391f963a764ef36b9533cc8cfd0e16c01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a86a7188c488a634de7b0ac71657bea0105381c7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123450"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961893"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -36,7 +36,7 @@ Azure でサービス正常性通知を Azure サブスクリプションに送�
 
 アクション グループの詳細については、[アクション グループの作成および管理](monitoring-action-groups.md)に関するページを参照してください。
 
-Azure Resource Manager テンプレートを使用したサービス正常性通知アラートの構成方法の詳細については、[Resource Manager テンプレート](monitoring-create-activity-log-alerts-with-resource-manager-template.md)に関するページを参照してください。
+Azure Resource Manager テンプレートを使用したサービス正常性通知アラートの構成方法の詳細については、[Resource Manager テンプレート](alert-activity-log.md)に関するページを参照してください。
 
 ## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Azure Portal を使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する
 1. [ポータル](https://portal.azure.com)で、**[サービス正常性]** を選択します。

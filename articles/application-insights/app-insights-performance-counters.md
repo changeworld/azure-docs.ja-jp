@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: bb1b1e2934de052479f39d40bfe143345e91bc26
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094094"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960108"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 Windows には、CPU 占有率や、メモリ、ディスク、ネットワークの使用率など、広範な[パフォーマンス カウンター](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)が用意されています。 ユーザーが独自のパフォーマンス カウンターを定義することもできます。 アプリケーションを実行している IIS が存在するオンプレミスのホストまたは仮想マシンに対し、ユーザーが管理アクセス権を持っている場合、[Application Insights](app-insights-overview.md) を使ってこれらのパフォーマンス カウンターを表示することができます。 グラフにはライブ アプリケーションで使用できるリソースが示され、サーバー インスタンス間での負荷の不均衡を識別するのに役立ちます。
@@ -27,7 +27,7 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 
 ![Application Insights で表示されるパフォーマンス カウンター](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-(パフォーマンス カウンターは Azure Web Apps には使用できません。 ただし、[Azure 診断を Application Insights に送信する](app-insights-azure-diagnostics.md)ことはできます。)
+(パフォーマンス カウンターは Azure Web Apps には使用できません。 ただし、[Azure 診断を Application Insights に送信する](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)ことはできます。)
 
 ## <a name="view-counters"></a>カウンターを表示する
 [サーバー] ブレードには、既定のパフォーマンス カウンターのセットが表示されます。 
@@ -96,7 +96,7 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 ## <a name="performance-counters-in-analytics"></a>Analytics のパフォーマンス カウンター
 [Analytics](app-insights-analytics.md) でパフォーマンス カウンター レポートを検索して表示できます。
 
-**performanceCounters** スキーマは、各パフォーマンス カウンターの `category`、`counter` 名、および `instance` 名を表示します。  各アプリケーションのテレメトリでは、そのアプリケーションのカウンターのみが確認できます。 たとえば、使用できるカウンターを表示するには次のようにします。 
+**performanceCounters** スキーマは、各パフォーマンス カウンターの `category`、`counter` 名、および `instance` 名を表示します。  各アプリケーションのテレメトリでは、そのアプリケーションのカウンターのみが表示されます。 たとえば、使用できるカウンターを表示するには次のようにします。 
 
 ![Application Insights Analytics のパフォーマンス カウンター](./media/app-insights-performance-counters/analytics-performance-counters.png)
 

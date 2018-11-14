@@ -4,7 +4,8 @@ description: Azure Active Directory と FreshDesk の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -12,15 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 11/02/2018
 ms.author: jeedes
-ms.reviewer: jeedes
-ms.openlocfilehash: 3f640d729d002e89c4968442e8d8ab761f78d090
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: b5968b83fc9beb481e2ad2c0cd44d2c284747fa1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115166"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル: Azure Active Directory と FreshDesk の統合
 
@@ -30,9 +30,9 @@ FreshDesk と Azure AD の統合には、次の利点があります。
 
 - FreshDesk にアクセスする Azure AD ユーザーを制御できます。
 - ユーザーが自分の Azure AD アカウントで FreshDesk に自動的にサインオン (シングル サインオン) できるように、設定が可能です。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,12 +47,11 @@ FreshDesk と Azure AD の統合を構成するには、次のものが必要で
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの FreshDesk の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -65,27 +64,25 @@ Azure AD への FreshDesk の統合を構成するには、ギャラリーから
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-    ![Active Directory][1]
+    ![Azure Active Directory のボタン][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![[アプリケーション]][2]
+    ![[エンタープライズ アプリケーション] ブレード][2]
 
-3. ダイアログの上部にある **[追加]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[アプリケーション]][3]
+    ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに、「**FreshDesk**」と入力します。 結果パネルから **[FreshDesk]** を選択し、**[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**FreshDesk**」と入力し、結果ウィンドウで **[FreshDesk]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
+    ![結果一覧の FreshDesk](./media/freshdesk-tutorial/tutorial_freshdesk_addfromgallery.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、FreshDesk で Azure AD のシングル サインオンを構成し、テストします。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する FreshDesk ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと FreshDesk の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-このリンク関係は、Azure AD の **[ユーザー名]** の値を、FreshDesk の**メール アドレス**の値として割り当てることで確立されます。
 
 FreshDesk で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
@@ -103,55 +100,65 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure portal の **FreshDesk** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![Configure single sign-on][4]
+    ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードの **[選択]** をクリックして、シングル サインオンを有効にします。
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_samlbase.png)
+    ![Configure single sign-on](common/tutorial_general_301.png)
 
-3. **[FreshDesk のドメインと URL]** セクションで、次の手順を実行します。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
+    ![Configure single sign-on](common/editconfigure.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.freshdesk.com` のパターン、または Freshdesk から示されたその他の値を使用して URL を入力します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    > [!NOTE]
-    > これは実際の値ではないので注意してください。 この値は実際のサインオン URL で更新する必要があります。 この値を取得するには、[FreshDesk サポート チーム](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)に問い合わせてください。
+    ![[FreshDesk のドメインと URL] のシングル サインオン情報](./media/freshdesk-tutorial/tutorial_freshdesk_url.png)
 
-4. アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[ユーザー識別子]** の既定値は **user.userprincipalname** ですが、**FreshDesk** では、これがユーザーのメール アドレスにマップされると想定されます。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
+    a. **[サインオン URL]** ボックスに、`https://<tenant-name>.freshdesk.com` のパターン、または FreshDesk から示されたその他の値を使用して URL を入力します。
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_attribute.png)
-
-5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
-
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png)
+    b. **[Identifier (Entity ID)]** \(ID (エンティティ ID)\) ボックスに、`https://<tenant-name>.freshdesk.com` のパターン、または FreshDesk から示されたその他の値を使用して URL を入力します。
 
     > [!NOTE]
-    > 何か問題がある場合は、この[リンク先](https://support.freshdesk.com/support/discussions/topics/317543)を参照してください。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[FreshDesk サポート チーム](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)に問い合わせてください。
 
-6. **[保存]** ボタンをクリックします。
+5. FreshDesk アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 **[ユーザー識別子]** の既定値は **user.userprincipalname** ですが、**FreshDesk** では、これがユーザーのメール アドレスにマップされると想定されます。 そのため、一覧の **user.mail** 属性を使用するか、組織構成に基づいて適切な属性値を使用できます。
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_general_400.png)
+    ![image](./media/freshdesk-tutorial/i4-attribute.png)
 
-7. まだシステムに **OpenSSL** をインストールしていない場合は、インストールします。
+6. **[ユーザー属性と要求]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+    
+    a. **[アイコンの編集]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
+
+    ![image](./media/freshdesk-tutorial/i2-attribute.png)
+
+    ![image](./media/freshdesk-tutorial/i3-attribute.png)
+
+    b. **[ソース属性]** の一覧から、**[user.mail]** を選択します。
+
+    c. **[Save]** をクリックします。
+
+7. **[SAML 署名証明書]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**証明書 (Base64)** をダウンロードし、証明書ファイルをコンピューターに保存します。
+
+    ![証明書のダウンロードのリンク](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png)
 
 8. **コマンド プロンプト**を開き、次のコマンドを実行します。
 
-    a. コマンド プロンプトに、値として `openssl x509 -inform DER -in FreshDesk.cer -out certificate.crt` を入力します。
+    a. コマンド プロンプトに、値として `certutil.exe -dump FreshDesk.cer` を入力します。
 
     > [!NOTE]
     > ここでの **FreshDesk.cer** は、Azure portal からダウンロードした証明書です。
 
-    b. コマンド プロンプトに、値として `openssl x509 -noout -fingerprint -sha256 -inform pem -in certificate.crt` を入力します。 
-    
-    > [!NOTE]
-    > ここでの **certificate.crt** は、前の手順で生成される出力証明書です。
+    b. **Cert ハッシュ (sha256)** 値をコピーし、メモ帳に貼り付けます。 
 
-    c. **[拇印]** の値をコピーしてメモ帳に貼り付けます。 拇印からコロンを削除し、最終的な拇印の値を得ます。
+9. **[Set up FreshDesk]** \(FreshDesk の設定\) セクションで、要件に従って適切な URL をコピーします。
 
-9. **[FreshDesk 構成]** セクションで、**[FreshDesk の構成]** をクリックして、[サインオンの構成] ウィンドウを開きます。 **[クイック リファレンス]** セクションから SAML シングル サインオン サービスの URL とサインアウト URL をコピーします。
+    a. ログイン URL
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+    ![FreshDesk の構成](common/configuresection.png)
 
 10. 別の Web ブラウザー ウィンドウで、Freshdesk 企業サイトに管理者としてログインします。
 
@@ -163,11 +170,11 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
 
     b. **[SAML SSO]** を選択します。
 
-    c. **[SAML Login URL] (SAML ログイン URL)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    c. **[SAML Login URL]** \(SAML ログイン URL\) テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. **[ログアウト URL]** ボックスに、Azure portal からコピーした**サインアウト URL** の値を貼り付けます。
+    d. **[ログアウト URL]** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
-    e. **[セキュリティ証明書フィンガープリント]** ボックスに、先ほどコロンを削除して得た**拇印**の値を貼り付けます。
+    e. **[セキュリティ証明書フィンガープリント]** テキストボックスに、先ほど得た **Cert ハッシュ (sha256)** の値を貼り付けます。
   
     f. **[Save]** をクリックします。
 
@@ -175,33 +182,26 @@ FreshDesk で Azure AD のシングル サインオンを構成してテスト�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![Azure AD ユーザーの作成][100]
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/create_aaduser_01.png) 
+    ![Azure AD のテスト ユーザーの作成](common/create_aaduser_01.png) 
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/create_aaduser_02.png) 
+    ![Azure AD のテスト ユーザーの作成](common/create_aaduser_02.png)
 
-3. ダイアログの上部にある **[追加]** をクリックして **[ユーザー]** ダイアログを開きます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/create_aaduser_03.png) 
+    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
-
-    ![Azure AD のテスト ユーザーの作成](./media/freshdesk-tutorial/create_aaduser_04.png) 
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
-
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
-
-    d. **Create** をクリックしてください。
+    d. **作成**を選択します。
 
 ### <a name="creating-a-freshdesk-test-user"></a>FreshDesk テスト ユーザーの作成
 
@@ -214,11 +214,11 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
 2. 上部のメニューで **[Admin]** をクリックします。
 
-   ![管理](./media/freshdesk-tutorial/IC776772.png "Admin")
+    ![管理](./media/freshdesk-tutorial/IC776772.png "Admin")
 
 3. **[全般設定]** タブで **[エージェント]** をクリックします。
   
-   ![Agents](./media/freshdesk-tutorial/IC776773.png "Agents")
+    ![Agents](./media/freshdesk-tutorial/IC776773.png "Agents")
 
 4. **[新しいエージェント]** をクリックします。
 
@@ -226,15 +226,15 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
 5. [エージェント情報] ダイアログで、次の手順を実行します。
 
-   ![Agent Information](./media/freshdesk-tutorial/IC776775.png "Agent Information")
+    ![Agent Information](./media/freshdesk-tutorial/IC776775.png "Agent Information")
 
-   a. **[電子メール]** ボックスに、プロビジョニングする Azure AD アカウントの Azure AD 電子メール アドレスを入力します。
+    a. **[電子メール]** ボックスに、プロビジョニングする Azure AD アカウントの Azure AD 電子メール アドレスを入力します。
 
-   b. **[フル ネーム]** ボックスに、プロビジョニングする Azure AD のアカウントの名前を入力します。
+    b. **[フル ネーム]** ボックスに、プロビジョニングする Azure AD のアカウントの名前を入力します。
 
-   c. **[タイトル]** ボックスに、プロビジョニングする Azure AD アカウントのタイトルを入力します。
+    c. **[タイトル]** ボックスに、プロビジョニングする Azure AD アカウントのタイトルを入力します。
 
-   d. **[Save]** をクリックします。
+    d. **[Save]** をクリックします。
 
     >[!NOTE]
     >Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
@@ -244,19 +244,15 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Box へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に FreshDesk へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザーの割り当て][200]
-
-**FreshDesk に Britta Simon を割り当てるには、次の手順に従います。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
     ![ユーザーの割り当て][201]
 
 2. アプリケーションの一覧で **[FreshDesk]** を選択します。
 
-    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_app.png) 
+    ![Configure single sign-on](./media/freshdesk-tutorial/tutorial_freshdesk_app.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -266,17 +262,16 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
     ![ユーザーの割り当て][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+6. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
 
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [FreshDesk] タイルをクリックすると、FreshDesk アプリケーションにサインオンするログイン ページが表示されます。
+アクセス パネルで FreshDesk のタイルをクリックすると、FreshDesk アプリケーションに自動的にサインオンします。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -285,14 +280,13 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
 <!--Image references-->
 
-[1]: ./media/freshdesk-tutorial/tutorial_general_01.png
-[2]: ./media/freshdesk-tutorial/tutorial_general_02.png
-[3]: ./media/freshdesk-tutorial/tutorial_general_03.png
-[4]: ./media/freshdesk-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/freshdesk-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/freshdesk-tutorial/tutorial_general_200.png
-[201]: ./media/freshdesk-tutorial/tutorial_general_201.png
-[202]: ./media/freshdesk-tutorial/tutorial_general_202.png
-[203]: ./media/freshdesk-tutorial/tutorial_general_203.png
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

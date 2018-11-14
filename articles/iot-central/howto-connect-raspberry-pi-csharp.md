@@ -1,19 +1,19 @@
 ---
 title: Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#) | Microsoft Docs
 description: デバイス開発者として、C# を使用して Raspberry Pi を Azure IoT Central アプリケーションに接続する方法。
-author: dominicbetts
-ms.author: dobett
-ms.date: 01/22/2018
+author: viv-liu
+ms.author: viviali
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+manager: peterpr
+ms.openlocfilehash: 489a644bd2d17e2be3232ec522b9ed7e37d246ad
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734237"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956725"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
 
@@ -23,10 +23,10 @@ ms.locfileid: "45734237"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事の手順を完了するには、次のものが必要です。
+この記事の手順を完了するには、次のコンポーネントが必要です。
 
 * 開発コンピューターにインストールされた [.NET Core 2](https://www.microsoft.com/net)。 [Visual Studio Code](https://code.visualstudio.com/) などの適切なコード エディターも用意する必要があります。
-* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、「[Azure IoT Central アプリケーションを作成する](howto-create-application.md)」を参照してください。
+* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページを参照してください。
 * Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。
 
 
@@ -34,10 +34,21 @@ ms.locfileid: "45734237"
 
 **サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。 
 
-- デバイスの**湿度**、**温度**、**圧力**、**磁力計** (X、Y、Z 軸に沿って測定)、**加速度計** (X、Y、Z 軸に沿って測定)、**ジャイロスコープ** (X、Y、Z 軸に沿って測定) の測定値を含むテレメトリ。
-- **電圧**、**電流**、**ファン速度**、**IR** のトグルを示す設定。
-- デバイス プロパティ**ダイ番号**および**場所**クラウド プロパティを含むプロパティ。
-
+- デバイスが収集する次の測定値を含むテレメトリ:
+    - 湿度
+    - 気温
+    - 圧力
+    - 磁力計 (X、Y、Z)
+    - 加速度計 (X、Y、Z)
+    - ジャイロスコープ (X、Y、Z)
+- 設定
+    - 電圧
+    - Current
+    - ファン速度
+    - IR 切り替え
+- Properties
+    - Die number デバイス プロパティ
+    - Location クラウド プロパティ
 
 デバイス テンプレートの構成について詳しくは、「[Raspberry PI デバイス テンプレートの詳細](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)」をご覧ください。
 

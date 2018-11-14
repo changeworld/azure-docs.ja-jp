@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1e9170c955f2a36d68600372e3dcdac2a63056c1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301193"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957762"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
@@ -51,7 +51,7 @@ ms.locfileid: "44301193"
 
 1. **[アクションの選択]** 検索ボックスで、「**Azure Application Insights**」と入力します。
 
-1. **[アクション]** の下で、**[Azure Application Insights – Visualize Analytics query Preview]\(Azure Application Insights – Visualize Analytics クエリのプレビュー\)** をクリックします。
+1. **[アクション]** の下で、**[Azure Application Insights - Visualize Analytics クエリのプレビュー]** をクリックします。
 
     ![ロジック アプリ デザイナーの [アクションの選択] ウィンドウ](./media/automate-with-logic-apps/flow2.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "44301193"
 
 1. 検索ボックスに、「**Office 365 Outlook**」と入力します。
 
-1. **[Office 365 Outlook – Send an email]\(Office 365 Outlook – 電子メールの送信\)** をクリックします。
+1. **[Office 365 Outlook - 電子メールの送信]** をクリックします。
 
     ![[Office 365 Outlook] の選択内容](./media/automate-with-logic-apps/flow2b.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "44301193"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Analytics クエリ](app-insights-analytics-using.md)の作成についての詳細を見る
+- [Analytics クエリ](../log-analytics/query-language/get-started-queries.md)の作成についての詳細を見る
 - [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) の詳細を見る
 
 

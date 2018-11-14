@@ -8,12 +8,12 @@ ms.author: tanmayb
 ms.date: 08/30/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: ff6978ddbf8718ad45a4265898109b7ac799d70c
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 2977c3d1656bacf8ba8d34080641ea6c5cdf5bbe
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46468554"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957124"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理する 
 IoT Central Web サイトでの IoT Central アプリケーションの作成と管理に加え、Azure portal でも IoT Central を管理できます。 この記事では、実行できる操作とその実行方法について説明します。
@@ -35,14 +35,14 @@ IoT Central Web サイトでの IoT Central アプリケーションの作成と
 
 ![管理ポータル: IoT Central リソース](media\howto-manage-iot-central-from-portal\image0c.png)
 
-フォームのすべてのフィールドに入力します。 このフォームは、IoT Central Web サイトからアプリケーションを作成するために入力する必要があるフォームに似ています。 各フィールドの詳細については、[IoT Central アプリケーションの作成](https://docs.microsoft.com/ azure/iot-central/howto-create-application)に関するドキュメントを参照してください。 
+フォームのすべてのフィールドに入力します。 このフォームは、IoT Central Web サイトからアプリケーションを作成するために入力する必要があるフォームに似ています。 各フィールドの入力方法の詳細については、「[Azure IoT Central アプリケーションの作成](quick-deploy-iot-central.md)」のクイック スタートを参照してください。 
 
 ![管理ポータル: IoT Central リソースの作成](media\howto-manage-iot-central-from-portal\image1.png)  
 
 すべてのフィールドに値を入力したら、[作成] ボタンをクリックします。
 
 ## <a name="manage-existing-iot-central-applications"></a>既存の IoT Central アプリケーションを管理する
-Azure IoT Central アプリケーションが既にある場合は、Azure portal でそれを削除したり、別のサブスクリプションまたはリソース グループに移動したりできます。 7 日間の試用版アプリケーションをサポートするサブスクリプションがないため、Azure portal にそれらの試用版を表示することはできません。
+Azure IoT Central アプリケーションが既にある場合は、Azure portal でそれを削除したり、別のサブスクリプションまたはリソース グループに移動したりできます。 試用版アプリケーションをサポートするサブスクリプションがないため、Azure portal にそれらの試用版を表示することはできません。
 
 開始するには、左側のメイン ナビゲーション メニューの [すべてのリソース] をクリックします。 検索ボックスにアプリケーションの名前を入力し、リソースの一覧でそれを見つけます。 次に、管理する IoT Central アプリケーションをクリックします。
 

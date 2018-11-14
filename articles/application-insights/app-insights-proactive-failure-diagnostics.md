@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/09/2017
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: b566b204ca9cf13b412d750740836db8bf8930a5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 8394584b2b4f8cbc47a6fdaadd754e8649c3f794
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093987"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960924"
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
 [Application Insights](app-insights-overview.md) では、Web アプリで要求失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーに通知します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 通知には、問題のトリアージと診断に役立つよう、失敗の特性および関連するテレメトリの分析結果が記載されています。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
@@ -40,8 +40,8 @@ ms.locfileid: "47093987"
 次の指標が提示されます。
 
 * 通常のアプリケーションの動作と比較したエラー率。
-* 影響を受けるユーザーの数。アラートの重要度がわかります。
-* エラーに関連付けられている特徴的パターン。 この例では、特定の応答コード、要求名 (操作)、およびアプリケーションのバージョンがあります。 これにより、コードのどこから探すべきかすぐにわかります。 他には特定のブラウザーやクライアント オペレーティング システムなどが想定されます。
+* 影響を受けるユーザーの数 - アラートの重要度がわかります。
+* エラーに関連付けられている特徴的パターン。 この例では、特定の応答コード、要求名 (操作)、およびアプリのバージョンがあります。 これにより、コードのどこから探すべきかすぐにわかります。 他には特定のブラウザーやクライアント オペレーティング システムなどが想定されます。
 * 特徴付けられた失敗に関連するように見える例外、ログ トレース、依存関係エラー (データベースやその他の外部コンポーネント)。
 * Application Insights の製品利用統計情報の関連検索に直接リンクします。
 
@@ -147,7 +147,7 @@ ms.locfileid: "47093987"
 
 * [メトリックス エクスプローラー](app-insights-metrics-explorer.md)
 * [Search エクスプローラー](app-insights-diagnostic-search.md)
-* [Analytics - 強力なクエリ言語](app-insights-analytics-tour.md)
+* [Analytics - 強力なクエリ言語](../log-analytics/query-language/get-started-analytics-portal.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 

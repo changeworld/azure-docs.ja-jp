@@ -4,16 +4,16 @@ description: Azure IoT Edge ランタイムおよびインターネット対応�
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 09/24/2018
+ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6e6a1d2f758cabca41ac405a01de1f0d8bfd0a7b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037458"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913225"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -25,6 +25,18 @@ IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信し�
 2. プロキシ サーバーを使用するために、Docker デーモンと IoT Edge デーモンをデバイス上に構成します。
 3. お使いのデバイス上の config.yaml ファイルに、edgeAgent プロパティを構成します。
 4. 配置マニフェストに、IoT Edge ランタイムと他の IoT Edge モジュールの環境変数を設定します。 
+
+## <a name="know-your-proxy-url"></a>プロキシの URL を確認する
+
+デバイスで Docker デーモンと IoT Edge の両方を構成するには、使用しているプロキシ URL を知る必要があります。 
+
+プロキシ URL の形式は、**protocol**://**proxy_host**:**proxy_port** です。 
+
+* **protocol** は HTTP または HTTPS のいずれかです。 Docker デーモンはコンテナー レジストリの設定に応じてどちらのプロトコルでも構成できますが、IoT Edge デーモンとランタイム コンテナーは常に HTTPS を使用する必要があります。
+
+* **proxy_host** は、プロキシ サーバーのアドレスです。 プロキシ サーバーで認証が必要な場合は、proxy_host の一部として、**user**:**password**@**proxy_host** の形式で資格情報を提供できます 
+
+* **proxy_port** は、ネットワーク トラフィックにプロキシが応答するネットワーク ポートです。 
 
 ## <a name="install-the-runtime"></a>ランタイムをインストールする
 
@@ -47,7 +59,7 @@ IoT Edge ランタイムがインストールされたら、次のセクショ�
 
 ### <a name="docker-daemon"></a>Docker デーモン
 
-環境変数を使用して Docker デーモンを構成するには、Docker のドキュメントを参照してください。 ほとんどのコンテナー レジストリ (DockerHub および Azure Container Registry を含む) では HTTPS 要求をサポートしているので、設定する必要がある変数は **HTTPS_PROXY** です。 トランスポート層セキュリティ (TLS) をサポートしていないレジストリからイメージをプルしている場合は、**HTTP_PROXY** を設定する必要があります。 
+環境変数を使用して Docker デーモンを構成するには、Docker のドキュメントを参照してください。 ほとんどのコンテナー レジストリ (DockerHub および Azure Container Registry を含む) では HTTPS 要求をサポートしているので、設定する必要があるパラメーターは **HTTPS_PROXY** です。 トランスポート層セキュリティ (TLS) をサポートしていないレジストリからイメージをプルしている場合は、**HTTP_PROXY** パラメーターを設定する必要があります。 
 
 お使いの Docker バージョンに該当する記事を選択します。 
 
@@ -113,7 +125,9 @@ Edge エージェントは、任意の IoT Edge デバイス上で開始され�
 
 config.yaml ファイルで、**Edge Agent module spec** セクションを探します。 Edge エージェント定義には、環境変数を追加できる **env** パラメーターが組み込まれています。 
 
-![edgeAgent 定義](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+<!--
+![edgeAgent definition](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+-->
 
 env パラメーターのプレースホルダ―である中かっこを削除して、新しい行に新しい変数を追加します。 YAML では、インデントはスペース 2 つであることに注意してください。 
 
@@ -201,7 +215,7 @@ Visual Studio Code のテンプレートを使用するか、または手動で 
 ```json
 "env": {
     "https_proxy": {
-        "value": "<proxy URL"
+        "value": "<proxy URL>"
     },
     "UpstreamProtocol": {
         "value": "AmqpWs"

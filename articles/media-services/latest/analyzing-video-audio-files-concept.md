@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: juliako
-ms.openlocfilehash: 90aa3551bb9e2d903fb0f66e3a9b464b0f4be928
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a087c1a069e340c01f2eda657a3d0ecce768168c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987615"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228132"
 ---
 # <a name="analyzing-video-and-audio-files"></a>ビデオおよびオーディオ ファイルの分析
 
@@ -27,18 +27,27 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 > [!NOTE]
 > ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。
 
-## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+## <a name="built-in-presets"></a>組み込みのプリセット
 
-**AudioAnalyzerPreset** を使用して、音声または画像ファイルから複数の音声分析情報を抽出できます。 出力には、JSON ファイル (すべての分析情報が含まれます) と、音声トランスクリプト用の VTT ファイルが含まれます。 このプリセットには、入力ファイルの言語を [BCP47](https://tools.ietf.org/html/bcp47) 文字列形式で指定するプロパティを指定できます。 音声分析情報には、以下が含まれます。
+現在、Media Services は次の組み込みのアナライザー プリセットをサポートしています。  
+
+|**プリセット名**|**シナリオ**|**詳細**|
+|---|---|---|
+|**AudioAnalyzerPreset**|オーディオの分析|このプリセットは、音声の文字起こしなど、事前定義された一連の AI ベースの分析操作を適用します。 現在、プリセットは単一のオーディオ トラックでのコンテンツ処理をサポートしています。<br/>BCP-47 形式の 'language tag-region' (たとえば、'en-US') を使用して、入力のオーディオ ペイロードの言語を指定できます。 サポートされている言語は、'en-US'、'en-GB'、'es-ES'、'es-MX'、'fr-FR'、'it-IT'、'ja-JP'、'pt-BR'、'zh-CN' です。|
+|**VideoAnalyzerPreset**|オーディオとビデオの分析|オーディオとビデオの両方から分析情報 (リッチ メタデータ) を抽出し、JSON 形式のファイルを出力します。 ビデオ ファイルを処理するときにオーディオの分析情報のみを抽出するかどうかを指定できます。 詳細については、[ビデオの分析](analyze-videos-tutorial-with-api.md)に関するページを参照してください。|
+
+### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+
+このプリセットを使用すると、音声または画像ファイルから複数の音声分析情報を抽出できます。 出力には、JSON ファイル (すべての分析情報が含まれます) と、音声トランスクリプト用の VTT ファイルが含まれます。 このプリセットには、入力ファイルの言語を [BCP47](https://tools.ietf.org/html/bcp47) 文字列形式で指定するプロパティを指定できます。 音声分析情報には、以下が含まれます。
 
 * 音声の文字起こし – タイムスタンプ付きの発話のトランスクリプト。 複数の言語がサポートされます。
 * 話者インデックス – 話者と対応する音声のマッピング。
 * 音声のセンチメント分析 – 音声の文字起こしに対して実行されたセンチメント分析の出力。
 * キーワード – 音声の文字起こしから抽出されたキーワード。
 
-## <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
+### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-**VideoAnalyzerPreset** を使用して、ビデオ ファイルから複数の音声と画像の分析情報を抽出できます。 出力には、JSON ファイル (すべての分析情報が含まれます)、画像トランスクリプト用の VTT ファイル、およびサムネールのコレクションが含まれます。 このプリセットには、プロパティとして [BCP47](https://tools.ietf.org/html/bcp47) 文字列 (画像の言語を表します) を指定することもできます。 画像分析情報には、前述のすべての音声分析情報と、次の項目が含まれます。
+このプリセットを使用して、ビデオ ファイルから複数の音声と画像の分析情報を抽出できます。 出力には、JSON ファイル (すべての分析情報が含まれます)、画像トランスクリプト用の VTT ファイル、およびサムネールのコレクションが含まれます。 このプリセットには、プロパティとして [BCP47](https://tools.ietf.org/html/bcp47) 文字列 (画像の言語を表します) を指定することもできます。 画像分析情報には、前述のすべての音声分析情報と、次の項目が含まれます。
 
 * 顔追跡 – ビデオに顔が登場している時間。 それぞれの顔には、顔 ID と、対応するサムネイルのコレクションがあります。
 * 視覚テキスト – 光学式文字認識を使用して検出されたテキスト。 テキストにはタイムスタンプが付けられ、(音声トランスクリプションに加え) キーワードの抽出でも使用されます。

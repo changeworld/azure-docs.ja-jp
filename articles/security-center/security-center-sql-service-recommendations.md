@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/03/2017
+ms.date: 10/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 45f5dc840f015793912e314ab3d47e54a409708e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 177deb779ca3e3e9575a41ab9a37bb51d5e79df8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126668"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008081"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Azure Security Center での Azure SQL サービスとデータの保護
 Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。  推奨事項は、仮想マシン (VM)、ネットワーク、SQL、データ、アプリケーションといった、Azure のリソースの種類に適用されます。
@@ -49,12 +49,26 @@ Azure セキュリティ センターは、Azure リソースのセキュリテ�
 
 監査を有効にするには、**[監査]** オプションの **[オン]** を選択します。
 
-## <a name="available-sql-service-and-data-recommendations"></a>SQL サービスとデータに関する利用可能な推奨事項
-| 推奨 | 説明 |
-| --- | --- |
-| [SQL サーバーの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-servers.md) |Azure SQL サーバーの監査と脅威検出を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。 |
-| [SQL データベースの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-databases.md) |Azure SQL データベースの監査と脅威検出を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。 |
-| [SQL データベースでの透過的なデータ暗号化の有効化](security-center-enable-transparent-data-encryption.md) |SQL データベース (Azure SQL のサービスのみ) に対して暗号化を有効にすることをお勧めします。 |
+## <a name="data-and-storage-recommendations"></a>データとストレージの推奨事項
+
+|リソースの種類|セキュリティ スコア|推奨|説明|
+|----|----|----|----|
+|ストレージ アカウント|20|ストレージ アカウントへの安全な転送を必須にする|安全な転送は、ストレージ アカウントに、セキュリティで保護された接続 (HTTPS) からの要求のみを受け入れるように強制するオプションです。 HTTPS を使用することにより、サーバーとサービス間の認証が確実に行われ、転送中のデータをネットワーク層の攻撃 (man-in-the-middle、傍受、セッション ハイジャックなど) から保護します。|
+|Redis|20|Redis Cache に対してセキュリティで保護された接続のみを有効にする|Redis Cache に対して SSL 経由の接続のみを有効にします。 セキュリティで保護された接続を使用することにより、サーバーとサービス間の認証が確実に行われ、転送中のデータをネットワーク層の攻撃 (man-in-the-middle、傍受、セッション ハイジャックなど) から保護します。|
+|SQL|15|SQL データベースで Transparent Data Encryption を有効にする|Transparent Data Encryption を有効にすることで、保存データを保護し、コンプライアンス要件を満たします。|
+|SQL|15|SQL サーバーの監査の有効化|Azure SQL サーバーの監査を有効にします。 (Azure SQL サービスのみ。 仮想マシン上で実行されている SQL は含まれません)。|
+|SQL|15|SQL データベースの監査の有効化|Azure SQL データベースの監査を有効にします。 (Azure SQL サービスのみ。 仮想マシン上で実行されている SQL は含まれません)。|
+|Data Lake Analytics|15|Data Lake Analytics の保存時の暗号化を有効にする|Transparent Data Encryption を有効にして、Data Lake Analytics で保存データをセキュリティで保護します。 保存時の暗号化は透過的です。つまり、Data Lake Analytics によって自動的に、データが保存される前に暗号化され、取得される前に解読されます。 Data Lake Analytics と連携するアプリケーションやサービスに、暗号化に伴う変更を加える必要はありません。 保存時の暗号化により、物理的な盗難からデータ損失のリスクを最小限に抑え、法令遵守の要件を満たすことにも役立ちます。|
+|Data Lake Store|15|Data Lake Store の保存時の暗号化を有効にする|Transparent Data Encryption を有効にして、Data Lake Store で保存データをセキュリティで保護します。 保存時の暗号化は透過的です。つまり、Data Lake Store によって自動的に、データが保存される前に暗号化され、取得される前に解読されます。 暗号化に対応するために Data Lake Store と連携するアプリケーションやサービスに変更を加える必要はありません。 保存時の暗号化により、物理的な盗難からデータ損失のリスクを最小限に抑え、法令遵守の要件を満たすことにも役立ちます。|
+|ストレージ アカウント|15|Azure Storage アカウントの暗号化を有効にする|保存データに対して Azure Storage Service Encryption を有効にします。 Storage Service Encryption (SSE) は、データが Azure ストレージに書き込まれたときに暗号化し、取得される前に復号化します。 現在、SSE は Azure Blob service のみに対応し、ブロック BLOB、ページ BLOB、追加 BLOB で使用できます。|
+|Data Lake Analytics|5|Data Lake Analytics で診断ログを有効にする|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。 |
+|Data Lake Store|5|Azure Data Lake Store で診断ログを有効にする|ログを有効にし、それらを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡を再作成できます。 |
+|SQL|30|SQL データベースの脆弱性を修復する|SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の間違い、過剰なアクセス許可、機密性の高いデータの未保護など、ベスト プラクティスからのすべての逸脱を明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ水準が大幅に向上する可能性があります。|
+|SQL|20|SQL Server に Azure AD 管理者をプロビジョニングする|SQL Server に Azure AD 管理者をプロビジョニングして、Azure AD 認証を有効にします。 Azure AD 認証を使用して、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。|
+|ストレージ アカウント|15|ストレージ アカウントへの無制限のネットワーク アクセスを無効にする|ストレージ アカウントのファイアウォール設定で無制限のネットワーク アクセスを監査します。 代わりに、許可されているネットワークからのアプリケーションのみがストレージ アカウントにアクセスできるように、ネットワーク ルールを構成します。 特定のインターネットまたはオンプレミスのクライアントからの接続を許可するため、特定の Azure 仮想ネットワークからのトラフィックまたはパブリック インターネット IP アドレス範囲に、アクセス権を付与できます。|
+|ストレージ アカウント|1||ストレージ アカウントを新しい AzureRM リソースに移行する|新しい Azure Resource Manager V2 をストレージ アカウントに使用して、セキュリティの拡張機能を提供します。たとえば、アクセス制御の強化 (RBAC)、監査の改善、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレットのための Key Vault へのアクセス、Azure AD に基づく認証、セキュリティ管理を容易にするタグとリソース グループのサポートがあります。|
+
+
 
 ## <a name="see-also"></a>関連項目
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。

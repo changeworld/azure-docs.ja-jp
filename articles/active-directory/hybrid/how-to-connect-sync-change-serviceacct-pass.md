@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b0b88622069801124aff5b44dc4b813838f41c73
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310481"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747254"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Azure AD Connect 同期サービス アカウントのパスワードの変更
 Azure AD Connect 同期サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、Azure AD Connect 同期サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
@@ -59,6 +59,8 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 
 暗号化キーを破棄する必要がある場合は、次の手順に従って破棄を行います。
 
+1. [同期サービスを停止する](#stop-the-synchronization-service)
+
 1. [既存の暗号化キーを破棄する](#abandon-the-existing-encryption-key)
 
 2. [AD DS アカウントのパスワードを入力する](#provide-the-password-of-the-ad-ds-account)
@@ -66,6 +68,13 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 3. [Azure AD 同期アカウントのパスワードを再初期化する](#reinitialize-the-password-of-the-azure-ad-sync-account)
 
 4. [同期サービスを開始する](#start-the-synchronization-service)
+
+#### <a name="stop-the-synchronization-service"></a>同期サービスを停止する
+まず、Windows サービス コントロール マネージャーでサービスを停止できます。  サービスを停止する場合は、そのサービスが実行されていないことを確認してください。  サービスが実行されている場合は、完了するまで待ってから停止します。
+
+
+1. Windows サービス コントロール マネージャーにアクセスします ([スタート]、[サービス] の順に移動します)。
+2. **[Microsoft Azure AD Sync] \(Microsoft Azure AD 同期)** を選択して [停止] をクリックします。
 
 #### <a name="abandon-the-existing-encryption-key"></a>既存の暗号化キーを破棄する
 新しい暗号化キーを作成できるように、既存の暗号化キーを破棄します。

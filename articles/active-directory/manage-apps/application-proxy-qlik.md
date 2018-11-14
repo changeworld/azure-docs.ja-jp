@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5f103e9fe410374a551eb43d456d5993bdd36627
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 55e262e1855eb6ab50c2d32e7e8cd4bb9175a593
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056753"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962556"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>アプリケーション プロキシと Qlik Sense 
 Azure Active Directory アプリケーション プロキシと Qlik Sense は一緒に連携動作し、アプリケーション プロキシを使用して Qlik Sense 配置用のリモート アクセスを容易に提供できるようにします。  
@@ -57,7 +57,11 @@ QlikSense を発行するには、Azure で 2 つのアプリケーションを�
 ## <a name="testing"></a>テスト 
 これでアプリケーションをテストする準備ができました。 アプリケーション 1 で QlikSense を発行するために使用した外部 URL にアクセスし、割り当てられているユーザーとして、両方のアプリケーションにログインします。  
 
+## <a name="additional-references"></a>その他のリファレンス
+アプリケーション プロキシを使用した Qlik Sense の発行の詳細については、Qlik コミュニティの記事「[Azure AD with Integrated Windows Authentication using a Kerberos Constrained Delegation with Qlik Sense](https://community.qlik.com/docs/DOC-20183)」 (Kerberos の制約付き委任と Qlik Sense を使用した統合 Windows 認証での Azure AD) を参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
 - [アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)
-- [アプリケーション プロキシ コネクタの使用方法](application-proxy-connector-groups.md)。
+- [アプリケーション プロキシ コネクタの使用方法](application-proxy-connector-groups.md)
+

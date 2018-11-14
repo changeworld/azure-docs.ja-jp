@@ -11,15 +11,15 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: 65cf954f5d91176715181620671f620264069bdc
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/01/2018
+ms.openlocfilehash: 2508d43e876a7e463d68eed1b1ca93ddf0d1e9d1
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166264"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913346"
 ---
-# <a name="implement-a-geo-distributed-database"></a>地理的に分散したデータベースの実装
+# <a name="tutorial-implement-a-geo-distributed-database"></a>チュートリアル: geo 分散型データベースを実装する
 
 このチュートリアルでは、Azure SQL Database とアプリケーションをリモート リージョンのフェールオーバーのために構成し、その後フェールオーバー計画をテストします。 学習内容は次のとおりです。 
 

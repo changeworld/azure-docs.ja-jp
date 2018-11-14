@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/30/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7f5e1f2141a58f666367d253d5fc313499e64c9f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8b12e3cdc53b926f660e12b7cf4b79a8cb6f40c2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239392"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960159"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Azure VM での RDP 一般エラーのトラブルシューティング
 
@@ -65,7 +65,7 @@ RDP リスナーの構成が正しくありません。
 
 ### <a name="serial-console"></a>シリアル コンソール
 
-#### <a name="step-1-turn-on-remote-deskop"></a>手順 1: リモート デスクトップをオンにする
+#### <a name="step-1-turn-on-remote-desktop"></a>手順 1: リモート デスクトップをオンにする
 
 1. **[サポートとトラブルシューティング]** > **[Serial console (Preview)]\(シリアル コンソール (プレビュー))** を選択して [[シリアル コンソール]](serial-console-windows.md) にアクセスします。 VM で機能が有効な場合、VM を正常に接続できます。
 
@@ -76,94 +76,91 @@ RDP リスナーの構成が正しくありません。
    ```
    ch -si 1
    ```
-4. 次のようにレジストリ キーの値を確認します。
 
-   1. RDP コンポーネントが有効になっていることを確認します。
+#### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>手順 2: RDP レジストリ キーの値を確認する
+
+1. ポリシーによって RDP が無効になっていることを確認します。
 
       ```
-      REM Get the local policy
+      REM Get the local policy 
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
 
       REM Get the domain policy if any
       reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
       ```
 
-      ドメイン ポリシーが存在する場合、ローカル ポリシー上の設定は上書きされます。
+      - ドメイン ポリシーが存在する場合、ローカル ポリシー上の設定は上書きされます。
+      - ドメイン ポリシーによって RDP が無効 (1) と定められている場合、ドメイン コントローラーから AD ポリシーを更新します。
+      - ドメイン ポリシーによって RDP が有効 (0) と定められている場合、更新は必要ありません。
+      - ドメイン ポリシーが存在せず、ローカル ポリシーによって RDP が無効 (1) と定められている場合、次のコマンドを使用して RDP を有効にします。 
+      
+            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+                  
 
-         - ドメイン ポリシーによって RDP が無効 (1) と定められている場合、ドメイン コントローラーから AD ポリシーを更新します。
-         - ドメイン ポリシーによって RDP が有効 (0) と定められている場合、更新は必要ありません。
-
-      ドメイン ポリシーが存在せず、ローカル ポリシーによって RDP が無効 (1) と定められている場合、次のコマンドを使用して RDP を有効にします。
-
-         ```
-         reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-         ```
-
-   2. ターミナル サーバーの現在の構成を確認します。
+2. ターミナル サーバーの現在の構成を確認します。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
       ```
 
-   3. このコマンドで 0 が返される場合、ターミナル サーバーが無効です。 そのときは、次のようにターミナル サーバーを有効にします。
+      このコマンドで 0 が返される場合、ターミナル サーバーが無効です。 そのときは、次のようにターミナル サーバーを有効にします。
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f
       ```
 
-   4. ターミナル サーバー モジュールは、サーバーがターミナル サーバー ファーム (RDS または Citrix) にある場合、ドレイン モードに設定されます。 ターミナル サーバー モジュールの現在のモードを確認します。
+3. ターミナル サーバー モジュールは、サーバーがターミナル サーバー ファーム (RDS または Citrix) にある場合、ドレイン モードに設定されます。 ターミナル サーバー モジュールの現在のモードを確認します。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode
       ```
 
-   5. コマンドで 1 が返される場合、ターミナル サーバー モジュールはドレイン モードに設定されています。 そのときは、次のようにモジュールを動作モードに設定します。
+      コマンドで 1 が返される場合、ターミナル サーバー モジュールはドレイン モードに設定されています。 そのときは、次のようにモジュールを動作モードに設定します。
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f
       ```
 
-   6. ターミナル サーバーに接続できるかどうかを確認します。
+4. ターミナル サーバーに接続できるかどうかを確認します。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled
       ```
 
-   7. コマンドで 1 が返される場合、ターミナル サーバーに接続することはできません。 そのときは、次のように接続を有効にします。
+      コマンドで 1 が返される場合、ターミナル サーバーに接続することはできません。 そのときは、次のように接続を有効にします。
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSUserEnabled /t REG_DWORD /d 0 /f
       ```
-
-   8. RDP リスナーの現在の構成を確認します。
+5. RDP リスナーの現在の構成を確認します。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation
       ```
 
-   9. このコマンドで 0 が返される場合、RDP リスナーが無効です。 そのときは、次のようにリスナーを有効にします。
+      このコマンドで 0 が返される場合、RDP リスナーが無効です。 そのときは、次のようにリスナーを有効にします。
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f
       ```
 
-   10. RDP リスナーに接続できるかどうかを確認します。
+6. RDP リスナーに接続できるかどうかを確認します。
 
       ```
       reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled
       ```
 
-   11. コマンドで 1 が返される場合、RDP リスナーに接続することはできません。 そのときは、次のように接続を有効にします。
+   コマンドで 1 が返される場合、RDP リスナーに接続することはできません。 そのときは、次のように接続を有効にします。
 
       ```
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f
       ```
 
-6. VM を再起動します。
+7. VM を再起動します。
 
-7. 「`exit`」と入力して CMD インスタンスを終了し、**Enter** を 2 回押します。
+8. 「`exit`」と入力して CMD インスタンスを終了し、**Enter** を 2 回押します。
 
-8. 「`restart`」と入力して VM を再起動します。
+9. 「`restart`」と入力して VM を再起動してから、VM に接続します。
 
 まだ問題が発生する場合には手順 2. に進みます。
 
@@ -177,13 +174,13 @@ RDP リスナーの構成が正しくありません。
 
 ### <a name="offline-repair"></a>オフラインでの修復
 
-#### <a name="step-1-turn-on-remote-deskop"></a>手順 1: リモート デスクトップをオンにする
+#### <a name="step-1-turn-on-remote-desktop"></a>手順 1: リモート デスクトップをオンにする
 
 1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。
 3. ディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
-3. 復旧 VM へのリモート デスクトップ接続を開始します。
-4. 管理者特権のコマンド プロンプト セッション (**[管理者として実行]**) を開きます。 以下のスクリプトを実行します。 このスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
+4. 復旧 VM へのリモート デスクトップ接続を開始します。
+5. 管理者特権のコマンド プロンプト セッション (**[管理者として実行]**) を開きます。 以下のスクリプトを実行します。 このスクリプトでは、接続されている OS ディスクに割り当てられているドライブ文字が F であると想定しています。このドライブ文字を実際の VM の適切な値に置き換えてください。
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
@@ -219,21 +216,21 @@ RDP リスナーの構成が正しくありません。
       reg unload HKLM\BROKENSOFTWARE 
       ```
 
-3. VM がドメインに参加している場合は、次のレジストリ キーを調べて、RDP を無効にするグループ ポリシーがあるかどうか確認します。 
+6. VM がドメインに参加している場合は、次のレジストリ キーを調べて、RDP を無効にするグループ ポリシーがあるかどうか確認します。 
 
-   ```
-   HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
-   ```
-
+      ```
+      HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
+      ```
 
       このキーが 1 に設定されている場合は、RDP がポリシーによって無効化されていることを意味します。 GPO ポリシーを介してリモート デスクトップを有効にするには、ドメイン コントローラーから次のポリシーを変更します。
 
-   ```
-   Computer Configuration\Policies\Administrative Templates: Policy definitions\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections\Allow users to connect remotely by using Remote Desktop Services
-   ```
+   
+      **Computer Configuration\Policies\Administrative Templates:**
 
-4. 復旧 VM からディスクをデタッチします。
-5. [そのディスクから新しい VM を作成します](../windows/create-vm-specialized.md)。
+      Policy definitions\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections\Allow users to connect remotely by using Remote Desktop Services
+  
+7. 復旧 VM からディスクをデタッチします。
+8. [そのディスクから新しい VM を作成します](../windows/create-vm-specialized.md)。
 
 まだ問題が発生する場合には手順 2. に進みます。
 

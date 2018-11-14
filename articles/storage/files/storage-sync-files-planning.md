@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: e4e793ac5735f7f3b07d285dea027a8f603b7964
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 0c9c254625ccca27a3525c45da0303f5e045ef44
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237899"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914330"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -242,7 +242,9 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | 東アジア | 香港特別行政区 |
 | 米国東部 | バージニア州 |
 | 米国東部 2 | バージニア州 |
+| 米国中北部 | イリノイ州 |
 | 北ヨーロッパ | アイルランド |
+| 米国中南部 | テキサス |
 | インド南部 | チェンナイ |
 | 東南アジア | シンガポール |
 | 英国南部 | ロンドン |
@@ -269,6 +271,7 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 | 米国東部             | 米国西部            |
 | 米国東部 2           | 米国中央部         |
 | 北ヨーロッパ        | 西ヨーロッパ        |
+| 米国中北部    | 米国中南部   |
 | インド南部         | インド中部      |
 | 東南アジア      | 東アジア          |
 | 英国南部            | 英国西部            |

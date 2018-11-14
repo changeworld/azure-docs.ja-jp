@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a782a7341e53420dbc31fefc86007951df967a9e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: af1a14f87eaf20a7f49a8fc6112c4f3c7595f6bd
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46307981"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914376"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Azure IoT Edge 証明書の使用方法の詳細
 
@@ -78,9 +78,9 @@ Edge Hub サーバー証明書は、IoT Edge で必要な TLS 接続の確立時
 
 ## <a name="devtest-implications"></a>Dev/Test の影響
 
-Dev/Test のシナリオを簡素化するために、Microsoft では、透過的ゲートウェイのシナリオで IoT Edge に適した非運用環境の証明書を生成するための、一連の[便利なスクリプト](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)を提供しています。
+Dev/Test のシナリオを簡素化するために、Microsoft では、透過的ゲートウェイのシナリオで IoT Edge に適した非運用環境の証明書を生成するための、一連の[便利なスクリプト](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)を提供しています。 スクリプトの機能の例については、「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」をご覧ください。
 
-これらのスクリプトによって、この記事で説明した証明書チェーン構造に沿った証明書が生成されます。 [Linux](how-to-create-transparent-gateway-linux.md#certificate-creation) または [Windows](how-to-create-transparent-gateway-windows.md#certificate-creation) の場合、 次のコマンドで "ルート CA 証明書" および単一の "中間 CA 証明書" を生成します。
+これらのスクリプトによって、この記事で説明した証明書チェーン構造に沿った証明書が生成されます。 次のコマンドで "ルート CA 証明書" および単一の "中間 CA 証明書" を生成します。
 
 ```bash
 ./certGen.sh create_root_and_intermediate 
@@ -124,6 +124,4 @@ New-CACertsEdgeDevice "<gateway device name>"
 
 [Azure IoT Edge モジュールについて](iot-edge-modules.md)
 
-[透過的ゲートウェイとして IoT Edge デバイスを使用する (Linux)](how-to-create-transparent-gateway-linux.md)
-
-[透過的ゲートウェイとして IoT Edge デバイスを使用する (Windows)](how-to-create-transparent-gateway-windows.md)
+[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)

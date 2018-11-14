@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 64b33fcd25582f6b1d3e7efe12aba85bb17c4cca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9caaaa0dfe402339ba01be899073bb17de15906
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951204"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962046"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Azure CLI と Managed Disks を使用して Linux VM のコピーを作成する
 
@@ -29,18 +29,16 @@ ms.locfileid: "46951204"
 
 ## <a name="prerequisites"></a>前提条件
 
+-   [Azure CLI](/cli/azure/install-az-cli2) をインストールします。
 
--   [Azure CLI](/cli/azure/install-az-cli2)
-
--   [az login](/cli/azure/reference-index#az_login) で Azure アカウントにサインインする。
+-   [az login](/cli/azure/reference-index#az-login) で Azure アカウントにサインインする。
 
 -   コピーのソースとして使用する Azure VM がある。
 
-## <a name="step-1-stop-the-source-vm"></a>手順 1: ソース VM を停止する
+## <a name="stop-the-source-vm"></a>ソース VM を停止する
 
-
-[az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して、ソース VM の割り当てを解除します。
-次の例では、**myResourceGroup** というリソース グループ内の **myVM** という VM の割り当てを解除します。
+[az vm deallocate](/cli/azure/vm#az-vm-deallocate) を使用して、ソース VM の割り当てを解除します。
+次の例では、*myResourceGroup* というリソース グループ内の *myVM* という VM の割り当てを解除します。
 
 ```azurecli
 az vm deallocate \
@@ -48,14 +46,13 @@ az vm deallocate \
     --name myVM
 ```
 
-## <a name="step-2-copy-the-source-vm"></a>手順 2: ソース VM をコピーする
+## <a name="copy-the-source-vm"></a>ソース VM をコピーする
 
-
-VM をコピーするには、基となる仮想ハード ディスクのコピーを作成します。 このプロセスでは、ソース VM と同じ構成および設定が含まれる管理ディスクとして、特殊な VHD を作成します。
+VM をコピーするには、基となる仮想ハード ディスクのコピーを作成します。 このプロセスでは、ソース VM と同じ構成および設定が含まれるマネージド ディスクとして、特殊な仮想ハード ディスク (VHD) を作成します。
 
 Azure Managed Disks の詳細については、「[Azure Managed Disks の概要](../windows/managed-disks-overview.md)」をご覧ください。 
 
-1.  [az vm list](/cli/azure/vm#az_vm_list) で、各 VM とその OS ディスクの名前を一覧表示します。 次の例では、**myResourceGroup** という名前のリソース グループに含まれているすべての VM の一覧を表示します。
+1.  [az vm list](/cli/azure/vm#az-vm-list) で、各 VM とその OS ディスクの名前を一覧表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれているすべての VM の一覧を表示します。
     
     ```azurecli
     az vm list -g myResourceGroup \
@@ -71,30 +68,29 @@ Azure Managed Disks の詳細については、「[Azure Managed Disks の概要
     myVM    myDisk
     ```
 
-1.  [az disk create](/cli/azure/disk#az_disk_create) を使用して新しいマネージド ディスクを作成することによって、ディスクをコピーします。 次の例では、**myDisk** という名前のマネージド ディスクから **myCopiedDisk** という名前のディスクを作成します。
+1.  新しいマネージド ディスクを作成し、[az disk create](/cli/azure/disk#az-disk-create) を使用することによって、ディスクをコピーします。 次の例では、*myDisk* という名前のマネージド ディスクから *myCopiedDisk* という名前のディスクを作成します。
 
     ```azurecli
     az disk create --resource-group myResourceGroup \
          --name myCopiedDisk --source myDisk
     ``` 
 
-1.  [az disk list](/cli/azure/disk#az_disk_list) を使用して、リソース グループ内にマネージド ディスクがあることを確認します。 次の例では、**myResourceGroup** という名前のリソース グループ内のマネージド ディスクの一覧を表示します。
+1.  [az disk list](/cli/azure/disk#az-disk-list) を使用して、リソース グループ内にマネージド ディスクがあることを確認します。 次の例では、*myResourceGroup* という名前のリソース グループ内のマネージド ディスクの一覧を表示します。
 
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
     ```
 
 
-## <a name="step-3-set-up-a-virtual-network"></a>手順 3: 仮想ネットワークをセットアップする
-
+## <a name="set-up-a-virtual-network"></a>仮想ネットワークを設定する
 
 省略可能な次の手順では、新しい仮想ネットワーク、サブネット、パブリック IP アドレス、仮想ネットワーク インターフェイス カード (NIC) を作成します。
 
 トラブルシューティングまたは追加デプロイの目的で VM をコピーする場合は、既存の仮想ネットワークで VM を使用しないほうがよいことがあります。
 
-コピーする VM のために仮想ネットワーク インフラストラクチャを作成する場合、次の手順に従ってください。 仮想ネットワークを作成しない場合は、「[手順 4: VM を作成する](#step-4-create-a-vm)」に進んでください。
+コピーする VM のために仮想ネットワーク インフラストラクチャを作成する場合、次の手順に従ってください。 仮想ネットワークを作成しない場合は、「[VM を作成する](#create-a-vm)」に進んでください。
 
-1.  [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して、仮想ネットワークを作成します。 次の例では、**myVnet** という名前の仮想ネットワークと **mySubnet** という名前のサブネットを作成します。
+1.  [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、仮想ネットワークを作成します。 次の例では、*myVnet* という名前の仮想ネットワークと *mySubnet* という名前のサブネットを作成します。
 
     ```azurecli
     az network vnet create --resource-group myResourceGroup \
@@ -104,7 +100,7 @@ Azure Managed Disks の詳細については、「[Azure Managed Disks の概要
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) を使用して、パブリック IP を作成します。 次の例では、DNS 名が **mypublicdns** で **myPublicIP** という名前のパブリック IP を作成します  (DNS 名は一意である必要があるため、一意の名前を入力してください)。
+1.  [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用して、パブリック IP を作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します  (DNS 名は一意である必要があるため、一意の名前を入力してください)。
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \
@@ -112,8 +108,8 @@ Azure Managed Disks の詳細については、「[Azure Managed Disks の概要
         --allocation-method static --idle-timeout 4
     ```
 
-1.  [az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用して、NIC を作成します。
-    次の例では、**mySubnet** サブネットに接続される NIC **myNic** を作成します。
+1.  [az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して、NIC を作成します。
+    次の例では、*mySubnet* サブネットに接続される NIC *myNic* を作成します。
 
     ```azurecli
     az network nic create --resource-group myResourceGroup \
@@ -122,11 +118,11 @@ Azure Managed Disks の詳細については、「[Azure Managed Disks の概要
         --public-ip-address myPublicIP
     ```
 
-## <a name="step-4-create-a-vm"></a>手順 4: VM を作成する
+## <a name="create-a-vm"></a>VM の作成
 
-これで、[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成できます。
+[az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。
 
-次のように、コピーしたマネージド ディスクを OS ディスクとして使用するように指定します (--attach-os-disk)。
+次のコマンドを使用して、コピーしたマネージド ディスクを OS ディスク (`--attach-os-disk`) として使用するよう指定します。
 
 ```azurecli
 az vm create --resource-group myResourceGroup \

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: ce8946e5a022eea9281898d1518cc3e8bfb50ee5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1951f001de1b9d0667e5d4430454b32b5a3c890e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092507"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957490"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
 
@@ -34,7 +34,7 @@ HockeyApp で [Account Settings (アカウント設定)]、 [[API Tokens (API �
 
 ![Get a HockeyApp API token](./media/app-insights-hockeyapp-bridge-app/01.png)
 
-Microsoft Azure Portal を開いて、 [Application Insights のリソースを作成](app-insights-create-new-resource.md)します。 [アプリケーションの種類] を [HockeyApp bridge application (HockeyApp ブリッジ アプリケーション)] に設定します。
+Microsoft Azure Portal を開いて、 [Application Insights のリソースを作成](app-insights-create-new-resource.md)します。 [アプリケーションの種類] を [HockeyApp ブリッジ アプリケーション] に設定します。
 
 ![New Application Insights resource](./media/app-insights-hockeyapp-bridge-app/02.png)
 
@@ -44,7 +44,7 @@ HockeyApp ブリッジのフィールドが表示されます。
 
 ![Enter bridge fields](./media/app-insights-hockeyapp-bridge-app/03.png)
 
-前の手順で控えを取った HockeyApp トークンを入力します。 この操作により、[HockeyApp Application (HockeyApp アプリケーション)] ドロップダウン メニューにすべての HockeyApp アプリケーションが設定されます。 使用するアプリケーションを 1 つ選択すると、残りのフィールドにも値が設定されます。 
+前の手順で控えを取った HockeyApp トークンを入力します。 この操作により、[HockeyApp アプリケーション] ドロップダウン メニューにすべての HockeyApp アプリケーションが設定されます。 使用するアプリケーションを 1 つ選択すると、残りのフィールドにも値が設定されます。 
 
 新しいリソースを開きます。 
 
@@ -52,7 +52,7 @@ HockeyApp ブリッジのフィールドが表示されます。
 
 ![Application Insights resource waiting for data](./media/app-insights-hockeyapp-bridge-app/04.png)
 
-これで終了です。 これ以降、HockeyApp でインストルメント化されたアプリで収集されたカスタムおよびトレース データは、Application Insights の Analytics 機能と連続エクスポート機能でも利用できるようになります。
+これで完了です。 これ以降、HockeyApp でインストルメント化されたアプリで収集されたカスタムおよびトレース データは、Application Insights の Analytics 機能と連続エクスポート機能でも利用できるようになります。
 
 利用可能になったこれらの機能それぞれについて簡単に確認しましょう。
 
@@ -61,7 +61,7 @@ Analytics はデータのアドホック クエリのための強力なツール
 
 ![[分析]](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [Analytics の詳細](app-insights-analytics-tour.md)
+* [Analytics の詳細](../log-analytics/query-language/get-started-analytics-portal.md)
 
 ## <a name="continuous-export"></a>連続エクスポート
 連続エクスポートを使用すると、Azure Blob Storage コンテナーにデータをエクスポートできます。 これは、Application Insights で現在提供されている保有期間よりも長くデータを保持する必要がある場合に非常に便利です。 データは、Blob Storage で保持し、SQL データベースやお好みのデータ ウェアハウス ソリューションに加工処理することができます。
@@ -69,5 +69,5 @@ Analytics はデータのアドホック クエリのための強力なツール
 [連続エクスポートの詳細](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>次の手順
-* [Analytics をデータに適用する](app-insights-analytics-tour.md)
+* [Analytics をデータに適用する](../log-analytics/query-language/get-started-analytics-portal.md)
 

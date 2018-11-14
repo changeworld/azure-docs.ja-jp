@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621203"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747560"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 
@@ -58,9 +58,17 @@ Event Grid のトピックには、ソースがイベントを送信するエン
 
 現在の Event Grid サブスクリプションの取得については、「[Event Grid サブスクリプションのクエリを実行する](query-event-subscriptions.md)」を参照してください。
 
+## <a name="event-subscription-expiration"></a>イベント サブスクリプションの有効期限
+
+Azure CLI 向けの [Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list) では、イベント サブスクリプションの作成時に、有効期限を設定できます。 REST API を使用している場合は、`api-version=2018-09-15-preview` を使用します。
+
+イベント サブスクリプションは、その日付後、自動的に期限切れになります。 限られた期間にだけ必要なイベント サブスクリプションに対して有効期限を設定することで、これらのサブスクリプションのクリーンアップについて心配する必要がなくなります。 たとえば、シナリオをテストするためのイベント サブスクリプションを作成するときに、有効期限を設定することができます。 
+
+有効期限の設定の例については、「[高度なフィルターを使用してサブスクライブする](how-to-filter-events.md#subscribe-with-advanced-filters)」を参照してください。
+
 ## <a name="event-handlers"></a>イベント ハンドラー
 
-Event Grid から考えると、イベント ハンドラーはイベントの送信先です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 Event Grid は、複数の種類のハンドラーをサポートします。 サポートされている Azure サービスまたは独自の Webhook を、ハンドラーとして使用できます。 Event Grid は、ハンドラーの種類に応じたさまざまなメカニズムに従って、イベントの配信を保証します。 HTTP Webhook イベント ハンドラーでは、ハンドラーが状態コード `200 – OK` を返すまでイベントが再試行されます。 Azure Storage Queue では、Queue サービスがキューにメッセージのプッシュを正常に処理できるようになるまで、イベントが再試行されます。
+Event Grid から考えると、イベント ハンドラーはイベントの送信先です。 ハンドラーは、さらにいくつかのアクションを行ってイベントを処理します。 Event Grid は、複数の種類のハンドラーをサポートします。 サポートされている Azure サービスまたは独自の Webhook を、ハンドラーとして使用できます。 Event Grid は、ハンドラーの種類に応じたさまざまなメカニズムに従って、イベントの配信を保証します。 HTTP Webhook イベント ハンドラーでは、ハンドラーが状態コード `200 – OK` を返すまでイベントが再試行されます。 Azure Storage Queue では、Queue サービスがキューにメッセージのプッシュを正常に処理するようになるまで、イベントが再試行されます。
 
 サポートされている任意の Event Grid ハンドラーの実装方法については、「[Event handlers in Azure Event Grid (Azure Event Grid 内のイベント ハンドラー)](event-handlers.md)」を参照してください。
 
@@ -74,7 +82,7 @@ Event Grid は、トピックのサブスクライブと発行をセキュリテ
 
 ## <a name="batching"></a>バッチ処理
 
-カスタム トピックを使用する場合は、イベントを常に配列内で発行する必要があります。 低スループットのシナリオでは 1 つのバッチで対応できますが、高ボリュームのユース ケースでは、効率性を向上するために、発行ごとに複数のイベントを 1 つのバッチにまとめることをお勧めします。 バッチのサイズは最大 1 MB に指定できます。 各イベントが 64 KB を超えないようにしてください。
+カスタム トピックを使用する場合は、イベントを常に配列内で発行する必要があります。 低スループットのシナリオでは 1 つのバッチで対応できますが、高ボリュームのユース ケースでは、効率性を向上するために、発行ごとに複数のイベントを 1 つのバッチにまとめることをお勧めします。 バッチのサイズは最大 1 MB に指定できます。 各イベントが 64 KB より大きくならないようにしてください。
 
 ## <a name="next-steps"></a>次の手順
 

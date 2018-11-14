@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 9ae0892d7de8a431227218ffc6db03eca20fcbdd
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 60a92e35f1408d944e8091be4945c53abe3791d1
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585715"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754054"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage からデータをエクスポートする
 この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Blob Storage から安全にエクスポートする手順について説明します。 このサービスを利用するには、Azure データセンターに空のドライブを送付する必要があります。 このサービスでは、ストレージ アカウントからドライブにデータをエクスポートし、ドライブを返送します。
@@ -114,7 +114,7 @@ Azure Blob Storage からデータを転送するエクスポート ジョブを
 ダッシュボードでジョブの完了が報告されると、ディスクが返送され、ポータルで配送の追跡番号を利用できるようになります。
 
 1. エクスポートされたデータが保存されたドライブを受け取ったら、BitLocker キーを取得してドライブのロックを解除する必要があります。 Azure portal でエクスポート ジョブに移動します。 **[インポート/エクスポート]** タブをクリックします。 
-2. リストからエクスポート ジョブを選択し、クリックします。 **BitLocker キー**に移動し、キーをコピーします。
+2. リストからエクスポート ジョブを選択してクリックします。 **BitLocker キー**に移動し、キーをコピーします。
    
    ![エクスポート ジョブの BitLocker キーの表示](./media/storage-import-export-service/export-job-bitlocker-keys.png)
 

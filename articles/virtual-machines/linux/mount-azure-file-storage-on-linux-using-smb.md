@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7cd7f0f37f0d351d1d50d4c15e7132f072b5125d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fde8892f7a32d7b5405eef6661bbf29098325178
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982207"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958680"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -100,6 +100,7 @@ mkdir -p /mnt/MyAzureFileShare
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
+上記のコマンドでは、[mount](https://linux.die.net/man/8/mount) コマンドを使用して、Azure ファイル共有と [cifs](https://linux.die.net/man/8/mount.cifs) に固有のオプションをマウントします。 つまり、file_mode および dir_mode オプションでは、ファイルとディレクトリをアクセス許可 `0777` に設定します。 `0777` アクセス許可では、すべてのユーザーに対して読み取り、書き込み、実行アクセス許可が付与されます。 これらのアクセス許可は、値を他の [chmod アクセス許可](https://en.wikipedia.org/wiki/Chmod)に置き換えることによって変更できます。 gid や uid などの他の [cifs](https://linux.die.net/man/8/mount.cifs) オプションを使用することもできます。 
 
 
 ## <a name="persist-the-mount"></a>マウントの永続化

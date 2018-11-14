@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f0ed4b20f9dbfef4824f66eab3ab953a5dbcfaae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4960ee485ac8c6b233eacc569cdac6748481887d
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060778"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50746496"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンスのための設計
 
@@ -30,6 +30,10 @@ ms.locfileid: "47060778"
 * IOPS、帯域幅、待機時間に最適化するにはどうすればよいか。  
 
 Premium Storage で実行されるワークロードは高パフォーマンスに依存するため、Premium Storage 専用のガイドラインを用意しました。 必要に応じて例も示しています。 これらのガイドラインの一部は、Standard Storage ディスクを使用する IaaS VM で実行されるアプリケーションにも適用できます。
+
+> [!NOTE]
+> ときには、パフォーマンスの問題のように見えるものが、実際にはネットワークのボトルネックであることもあります。 このような場合は、[ネットワーク パフォーマンス](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)を最適化する必要があります。
+> また、ご使用の VM が高速ネットワークをサポートしていることを確認する必要もあります。 サポートしている場合は、[Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) と [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) の両方の VM に配置した後でも有効にできます。
 
 Premium Storage の知識がない場合は、作業を始める前にまず、「[高パフォーマンスの Premium Storage および Azure VM の非管理対象ディスクと管理ディスク](../articles/virtual-machines/windows/premium-storage.md)」と「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md)」をお読みください。
 
@@ -184,7 +188,7 @@ IO サイズがアプリケーションのパフォーマンスに及ぼす影�
 
 高スケール VM は、CPU コア数、メモリ容量、OS/一時ディスク サイズが異なるさまざまなサイズで提供されます。 各 VM サイズには、VM に接続できるデータ ディスクの最大数も設けられています。 そのため、選択した VM サイズは、アプリケーションで利用できる処理能力、メモリ容量、ストレージ容量に影響します。 また、計算およびストレージ コストにも影響します。 例として、DS シリーズ、DSv2 シリーズ、GS シリーズの最大 VM サイズの仕様を次に示します。
 
-| VM サイズ | CPU コア数 | メモリ | VM のディスク サイズ | 最大 データ ディスク | キャッシュ サイズ | IOPS | 帯域幅キャッシュ IO の上限 |
+| VM サイズ | CPU コア数 | メモリ | VM のディスク サイズ | 最大で、基本および標準の動的ルーティング ゲートウェイでは合計 10 個の接続が可能です。 データ ディスク | キャッシュ サイズ | IOPS | 帯域幅キャッシュ IO の上限 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB  <br> ローカル SSD = 224 GB |32 |576 GB |50,000 IOPS  <br> 512 MB/秒 |4,000 IOPS、33 MB/秒 |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB  <br> ローカル SSD = 896 GB |64 |4224 GB |80,000 IOPS  <br> 2,000 MB/秒 |5,000 IOPS、50 MB/秒 |
@@ -221,11 +225,11 @@ Premium Storage で Linux を実行するときは、高パフォーマンスを
 
 Azure Premium Storage では、現在、8 つの GA ディスク サイズと、プレビューでは 3 つのディスク サイズを提供します。 ディスク サイズによって、IOPS、帯域幅、ストレージのスケールの上限がそれぞれ異なります。 アプリケーションの要件と高スケール VM のサイズに応じて、Premium Storage の適切なディスク サイズを選択します。 次の表に、11 種類のディスク サイズとその機能を示します。 P4、P6、P15、P60、P70、P80 サイズは、現在、Managed Disks のみでサポートされています。
 
-| Premium ディスクの種類  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
+| Premium ディスクの種類  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| ディスク サイズ           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1,024 GiB (1 TiB)    | 2,048 GiB (2 TiB)    | 4,095 GiB (4 TiB)    | 8,192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32,767 GiB (32 GiB)    |
-| ディスクあたりの IOPS       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500              | 15,000              | 20,000              |
-| ディスクあたりのスループット | 25 MiB/秒  | 50 MiB/秒  | 100 MiB/秒 |125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 750 MiB/秒 | 750 MiB/秒 |
+| ディスク サイズ           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1,024 GiB (1 TiB)    | 2,048 GiB (2 TiB)    | 4,095 GiB (4 TiB)    | 8,192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32,767 GiB (32 GiB)    |
+| ディスクあたりの IOPS       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500              | 15,000              | 20,000              |
+| ディスクあたりのスループット | 25 MiB/秒  | 50 MiB/秒  | 100 MiB/秒 |125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 750 MiB/秒 | 750 MiB/秒 |
 
 選択するディスク数は、選択したディスク サイズによって異なります。 1 つの P50 ディスクまたは複数の P10 ディスクを使用して、アプリケーションの要件を満たすことができます。 選択時には以下の考慮事項に注意してください。
 

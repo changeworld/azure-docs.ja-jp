@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378138"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962386"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -102,7 +102,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 
 現在の LiveEvent の状態。 指定できる値は、次のとおりです。
 
-|状態|説明|
+|州|説明|
 |---|---|
 |**Stopped**| これは、LiveEvent 作成後の初期状態です (自動開始が選択された場合を除く)。この状態では、課金は行われません。 この状態で、LiveEvent のプロパティを更新できますが、ストリーミングは許可されていません。|
 |**開始中**| LiveEvent を開始しています。 この状態では、課金は行われません。 この状態の場合、更新やストリーミングはできません。 エラーが発生した場合は、LiveEvent は Stopped 状態に戻ります。|
