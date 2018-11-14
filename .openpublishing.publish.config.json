@@ -41,7 +41,8 @@
   "enable_push_aggregation": true,
   "enable_pull_request_aggregation": true,
   "contribution_branch_mappings": {
-    "live-sxs": "live"
+    "live-sxs": "live",
+    "markdig-migration-v3-sxs": "markdig-migration-v3"
   },
   "dependent_repositories": [
     {
