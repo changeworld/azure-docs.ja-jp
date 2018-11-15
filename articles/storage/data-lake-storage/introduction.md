@@ -8,24 +8,24 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 072573b16fbeebac1ec942b0be508cf901b5cd27
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: c86609ae5b993328beced468b74c7f2a1b65def4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140712"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283616"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 プレビューの概要
 
-Azure Data Lake Storage Gen2 プレビューは、[Azure Blob ストレージ](../blobs/storage-blobs-introduction.md)の上位にビルドされる、ビッグ データ分析専用の機能セットです。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 これにより、Data Lake Storage Gen2 は、唯一のクラウドベースのマルチモーダル ストレージ サービスとなり、すべてのデータから分析値を抽出することができます。
+Azure Data Lake Storage Gen2 プレビューは、ビッグ データ分析専用の機能セットで、[Azure Blob Storage](../blobs/storage-blobs-introduction.md) に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 Data Lake Storage Gen2 の追加により、Azure Storage は、唯一のクラウドベースのマルチモーダル プラットフォームとなり、すべてのデータから分析値を抽出することができます。
 
-Data Lake Storage Gen2 は、全サイクルの分析データに必要なすべての特性を備えています。 これは、2 つの既存のストレージ サービスの機能に由来します。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、[Azure Data Lake Storage Gen1](../../data-lake-store/index.md) に由来する機能は、[Azure Blob ストレージ](../blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
+Data Lake Storage Gen2 は、分析データのライフサイクル全体に必要なすべての特性を Azure Storage にもたらします。 その背景にあるのは、Azure Blob Storage と Azure Data Lake Storage Gen1 という、既にある 2 つのストレージ サービスの機能の集約です。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケーリングなど、[Azure Data Lake Storage Gen1](../../data-lake-store/index.md) に由来する機能が、[Azure Blob Storage](../blobs/storage-blobs-introduction.md) の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能と組み合わされています。
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>エンタープライズ ビッグ データ分析用に設計されている
 
-Data Lake Storage Gen2 は、Azure 上に Enterprise Data Lake (EDL) をビルドするための基本的なストレージ サービスです。 当初から、何百ものギガビット単位のスループットを維持しつつ、複数のペタバイト単位の情報を利用可能にする目的で設計されています。Data Lake Storage Gen2 は、大量のデータを簡単に管理する方法を提供します。
+Data Lake Storage Gen2 によって、Azure Storage は、Azure 上にエンタープライズ データ レイクを構築するための基盤となります。 Data Lake Storage Gen2 は、当初から、何百ものギガビット単位のスループットを維持しつつ、複数のペタバイト単位の情報を利用可能にする目的で設計されているため、大量のデータを簡単に管理することができます。
 
-Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高いデータ アクセスのために、オブジェクト/ファイルをディレクトリの階層に編成した Blob ストレージ サービスに、[階層構造の名前空間](./namespace.md)を追加することです。 また、階層構造の名前空間では、Data Lake Storage Gen2 を使ってオブジェクト ストアとファイル システムの両方のパラダイムをサポートできます。 たとえば、共通のオブジェクト ストアの名前規則では、名前の中でスラッシュを使用して、階層フォルダー構造を再現します。 この構造は、Data Lake Storage Gen2 を使って、実際のものになります。 ディレクトリの名前変更や削除などの操作は、ディレクトリ名のプレフィックスを共有するすべてのオブジェクトを列挙して処理するのではなく、ディレクトリ上の単一のアトミック メタデータの操作になります。
+Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高いデータ アクセスのために、オブジェクト/ファイルをディレクトリの階層に編成した Blob ストレージ サービスに、[階層型名前空間](./namespace.md)を追加することです。 また、階層構造の名前空間では、Data Lake Storage Gen2 を使ってオブジェクト ストアとファイル システムの両方のパラダイムをサポートできます。 たとえば、共通のオブジェクト ストアの名前規則では、名前の中でスラッシュを使用して、階層フォルダー構造を再現します。 この構造は、Data Lake Storage Gen2 を使って、実際のものになります。 ディレクトリの名前変更や削除などの操作は、ディレクトリ名のプレフィックスを共有するすべてのオブジェクトを列挙して処理するのではなく、ディレクトリ上の単一のアトミック メタデータの操作になります。
 
 以前は、パフォーマンス、管理、およびセキュリティの領域では、クラウドベース分析は妥協する必要がありました。 Data Lake Storage Gen2 では、次の方法で各側面に対応しています。
 
@@ -45,7 +45,7 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 - **Hadoop と互換性のあるアクセス**: Data Lake Storage Gen2 では、[Hadoop 分散ファイル システム (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) を利用する場合と同様に、データの管理およびアクセスを可能にします。 新しい [ABFS ドライバー](./abfs-driver.md)は、Data Lake Storage Gen2 に格納されたデータにアクセスするための [Azure HDInsight](../../hdinsight/index.yml) および [Azure Databricks](../../azure-databricks/index.yml) など、すべての Apache Hadoop 環境内で利用できます。
 
-- **POSIX アクセス許可のスーパー セット**: Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定を完全サポートしています。 設定は、管理ツールを通じて構成することもできますし、Hive や Spark などのフレームワークを通じて構成することもできます。
+- **POSIX アクセス許可のスーパー セット**: Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定をサポートしています。 設定は、管理ツールを通じて構成することもできますし、Hive や Spark などのフレームワークを通じて構成することもできます。
 
 - **コスト効率**: Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通したデータ遷移として、課金レートは、[Azure Blob ストレージ ライフサイクル](../common/storage-lifecycle-managment-concepts.md)などの組み込みの機能を介して、最小限になるまで継続コストを変更します。
 
@@ -70,4 +70,4 @@ Azure Blob ストレージの上位に Data Lake Storage Gen2 をビルドする
 * [階層構造の名前空間](./namespace.md)
 * [ストレージ アカウントの作成](./quickstart-create-account.md)
 * [Create an HDInsight cluster with Azure Data Lake Storage Gen2](./quickstart-create-connect-hdi-cluster.md) (Azure Data Lake Storage Gen2 で HDInsight クラスターを作成する)
-* [Azure Databricks での Azure Data Lake Storage Gen2 アカウントの使用](./quickstart-create-databricks-account.md) 
+* [Azure Databricks での Azure Data Lake Storage Gen2 アカウントの使用](./quickstart-create-databricks-account.md)

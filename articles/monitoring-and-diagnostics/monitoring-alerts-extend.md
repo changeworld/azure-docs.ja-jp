@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 60ecc2bc1d700c223d4a52b05e3b9362241f3f82
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a4d62dd0bc984ce80324b405ddd0dcb625694b21
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414618"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612575"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Log Analytics アラートを Azure Alerts に拡張する
 最近まで、Azure Log Analytics には、Log Analytics のデータに基づいて状態を事前にユーザーに通知できる独自のアラート機能が含まれていました。 Microsoft Operations Management Suite ポータルでアラート ルールを管理していました。 新しいアラートのエクスペリエンスにより、Microsoft Azure のさまざまなサービスにわたってアラートが統合されました。 これは Azure Portal の Azure Monitor で **[アラート]**  として提供されており、Log Analytics と Azure Application Insights 両方のアクティビティ ログ、メトリック、およびログからのアラートをサポートしています。 
@@ -60,5 +60,5 @@ Operations Management Suite ポータルで、既存のアラートの編集や�
 ## <a name="next-steps"></a>次の手順
 
 * [Log Analytics から Azure へのアラート拡張の開始する](monitoring-alerts-extend-tool.md)ためのツールについて学習する。
-* [Azure Alerts のエクスペリエンス](monitoring-overview-unified-alerts.md)の詳細について学習する。
+* [Azure Alerts のエクスペリエンス](monitoring-overview-alerts.md)の詳細について学習する。
 * [Azure Alerts でのログ アラート](monitor-alerts-unified-log.md)の作成方法について学習します。

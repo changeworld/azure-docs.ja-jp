@@ -11,23 +11,23 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 8bfe069ba03aec2476d437f25ebb00f8a934c845
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: f421a3752e83a6a86193bb854e53bfc8322cfea4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025555"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280556"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>クイック スタート: HDInsight のクラスターを設定する
 
-このクイック スタートでは、Hadoop、Spark、Kafka、Interactive Query、HBase、Microsoft R Server、Storm の HDInsight クラスターをセットアップして構成する方法について説明します。 また、クラスターをカスタマイズし、ドメインに追加し、[Azure Data Lake Storage Gen2 プレビュー](introduction.md)にアタッチする方法についても説明します。
+このクイック スタートでは、Hadoop、Spark、Kafka、Interactive Query、HBase、Microsoft R Server、Storm の HDInsight クラスターを設定して構成する方法について説明します。 また、クラスターをカスタマイズし、ドメインに参加させ、[Azure Data Lake Storage Gen2 プレビュー](introduction.md)が有効なストレージ アカウントにアタッチする方法についても説明します。
 
 Hadoop クラスターは、タスクの分散処理に使用される複数の仮想マシン (ノード) で構成されます。 各ノードのインストールと構成にかかわる細部の実装は Azure HDInsight が担うため、ユーザーは一般的な構成情報を指定するだけで済みます。
 
 > [!IMPORTANT]
 >HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 詳細については、[クラスターの削除方法](../../hdinsight/hdinsight-delete-cluster.md)に関するページを参照してください。
 
-このクイック スタートでは、Data Lake Storage がデータ レイヤーとして使用されています。 Hierarchical Namespace Service と [Hadoop ドライバー](abfs-driver.md)により、Data Lake Storage は分散処理と分析用に最適化されています。 HDInsight クラスターを削除しても、Data Lake Storage に格納されているデータは削除されません。
+このクイック スタートでは、Data Lake Storage Gen2 機能を備えたストレージ アカウントがデータ レイヤーとして使用されています。 階層型名前空間サービスと [Hadoop ドライバー](abfs-driver.md)により、Data Lake Storage Gen2 は分散処理と分析用に最適化されています。 HDInsight クラスターを削除しても、Data Lake Storage Gen2 が有効なストレージ アカウントに保存されているデータは削除されません。
 
 ## <a name="cluster-setup-methods"></a>クラスターのセットアップ方法
 
@@ -44,7 +44,7 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 ## <a name="quick-create-basic-cluster-setup"></a>簡易作成: 基本的なクラスターのセットアップ
 
-この記事では、[Azure Portal](https://portal.azure.com) でのセットアップ方法を説明します。"*簡易作成*" または "*カスタム*" を使用して HDInsight クラスターを作成することができます。 
+この記事では、[Azure Portal](https://portal.azure.com) でのセットアップ方法を説明します。"*簡易作成*" または "*カスタム*" を使用して HDInsight クラスターを作成することができます。
 
 ![HDInsight の作成オプション: カスタムおよび簡易作成](media/quickstart-create-connect-hdi-cluster/hdinsight-creation-options.png)
 
@@ -63,12 +63,11 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数のリソースを、Azure リソース グループと呼ばれる 1 つのグループとして使用できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
 
 ## <a name="cluster-types"></a> クラスターの種類と構成
+
 現在、Azure HDInsight では、以下の種類のクラスターを提供しています。それぞれのクラスターは特定の機能を提供する一連のコンポーネントを備えています。
 
 > [!IMPORTANT]
-> HDInsight クラスターには、さまざまな種類があり、それぞれ単一のワークロードまたはテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。 複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network) で接続してください。 
->
->
+> HDInsight クラスターには、さまざまな種類があり、それぞれ単一のワークロードまたはテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。 複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network) で接続してください。
 
 | クラスターの種類 | 機能 |
 | --- | --- |
@@ -112,7 +111,7 @@ Enterprise セキュリティ パッケージでは、HDInsight を Active Direc
 > [!WARNING]
 > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
 
-構成時に、既定のストレージ エンドポイント用に Data Lake Storage を指定します。 既定のストレージには、アプリケーション ログとシステム ログが格納されます。 それとは別に、クラスターからアクセスできるリンクされた Azure Data Lake Storage アカウントを必要に応じて指定することもできます。 HDInsight クラスターとそのクラスターで使用されるストレージ アカウントは、同じ Azure リージョンに存在している必要があります。
+構成時に、既定のストレージ エンドポイント用に Data Lake Storage を指定します。 既定のストレージには、アプリケーション ログとシステム ログが格納されます。 必要に応じて、クラスターがアクセスできる、Data Lake Storage Gen2 が有効な追加のリンクされたストレージ アカウントを指定することもできます。 HDInsight クラスターとそのクラスターで使用されるストレージ アカウントは、同じ Azure リージョンに存在している必要があります。
 
 ![クラスター ストレージの設定: HDFS と互換性のあるストレージ エンドポイント](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
@@ -122,7 +121,8 @@ Enterprise セキュリティ パッケージでは、HDInsight を Active Direc
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
 ### <a name="optional-metastores"></a>metastore (任意)
-Hive metastore または Oozie metastore を作成できます (任意)。 ただし、クラスターの種類によっては metastore がサポートされません。また Azure SQL Data Warehouse は metastore と互換性がありません。 
+
+Hive metastore または Oozie metastore を作成できます (任意)。 ただし、クラスターの種類によっては metastore がサポートされません。また Azure SQL Data Warehouse は metastore と互換性がありません。
 
 詳細については、[Azure HDInsight での外部メタデータ ストアの使用](../../hdinsight/hdinsight-use-external-metadata-stores.md)に関する記事を参照してください。
 
@@ -137,7 +137,7 @@ HDInsight クラスターを削除した後も Hive テーブルを保持する�
 
 ### <a name="oozie-metastore"></a>Oozie メタストア
 
-Oozie の使用時にパフォーマンスを向上させるには、カスタム メタストアを使用します。 また、metastore を使用すると、クラスターの削除後に、Oozie ジョブ データにアクセスすることができます。 
+Oozie の使用時にパフォーマンスを向上させるには、カスタム メタストアを使用します。 また、metastore を使用すると、クラスターの削除後に、Oozie ジョブ データにアクセスすることができます。
 
 > [!IMPORTANT]
 > カスタム Oozie メタストアを再利用することはできません。 カスタム Oozie メタストアを使用するには、HDInsight クラスターの作成時に空の Azure SQL Database を提供する必要があります。
@@ -146,8 +146,8 @@ Oozie の使用時にパフォーマンスを向上させるには、カスタ�
 
 ノードの使用に対する料金は、クラスターが存在する限り発生します。 課金はクラスターが作成されると開始され、クラスターが削除されると停止されます。 クラスターを割り当て解除または保留にすることはできません。
 
-
 ### <a name="number-of-nodes-for-each-cluster-type"></a>各クラスターの種類のノード数
+
 クラスターのノード数、ノードを表す用語、既定の VM サイズは、クラスターの種類によって異なります。 次の表では、各ノードの種類のノード数がかっこ内に示されています。
 
 | type | Nodes | ダイアグラム |
@@ -159,29 +159,30 @@ Oozie の使用時にパフォーマンスを向上させるには、カスタ�
 
 詳細については、HDInsight における Hadoop のコンポーネントとバージョンに関するページの「[Default node configuration and virtual machine sizes for clusters (クラスターの既定のノード構成と仮想マシン サイズ)](../../hdinsight/hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)」を参照してください。
 
-HDInsight クラスターのコストは、ノード数とノードの仮想マシンのサイズによって決まります。 
+HDInsight クラスターのコストは、ノード数とノードの仮想マシンのサイズによって決まります。
 
 クラスターの種類によって、ノードの種類、ノード数、ノード サイズが異なります。
-* 種類が Hadoop のクラスターにおける既定のノード数: 
+* 種類が Hadoop のクラスターにおける既定のノード数:
     * "*ヘッド ノード*" (x 2)  
     * "*データ ノード*" (x 4)
-* 種類が Storm のクラスターにおける既定のノード数: 
+* 種類が Storm のクラスターにおける既定のノード数:
     * "*Nimbus ノード*" (x 2)
     * "*Zookeeper ノード*" (x 3)
-    * "*スーパーバイザー ノード*" (x 4) 
+    * "*スーパーバイザー ノード*" (x 4)
 
 HDInsight を試すだけの目的ならば、使用するデータ ノードは 1 つにすることをお勧めします。 HDInsight の価格の詳細については、「 [HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」をご覧ください。
 
 > [!NOTE]
 > クラスター サイズの制限は、Azure サブスクリプションによって異なります。 制限値を上げるには、[Azure の課金サポート](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)にお問い合わせください。
->
 
-Azure Portal を使用してクラスターを構成するときに、**[ノード価格レベル]** ブレードでノード サイズを利用できます。 また、別のノード サイズに関連するコストをポータルで確認することもできます。 
+Azure Portal を使用してクラスターを構成するときに、**[ノード価格レベル]** ブレードでノード サイズを利用できます。 また、別のノード サイズに関連するコストをポータルで確認することもできます。
 
 ![HDInsight VM ノードのサイズ](media/quickstart-create-connect-hdi-cluster/hdinsight-node-sizes.png)
 
-### <a name="virtual-machine-sizes"></a>仮想マシン サイズ 
+### <a name="virtual-machine-sizes"></a>仮想マシン サイズ
+
 クラスターをデプロイするとき、デプロイ予定のソリューションに応じてコンピューティング リソースを選択します。 HDInsight クラスターには次の VM が使用されます。
+
 * A シリーズおよび D1 ～ D4 シリーズの VM: [Linux VM の汎用サイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
 * D11 ～ D14 シリーズの VM: [メモリ最適化された Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
@@ -189,13 +190,13 @@ Azure Portal を使用してクラスターを構成するときに、**[ノー�
 
 > [!IMPORTANT]
 > 1 つのクラスターで 32 個を超えるワーカー ノードが必要な場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択する必要があります。
->
->
 
-詳細については、 [仮想マシンのサイズ](../../virtual-machines/windows/sizes.md)に関するページをご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。   
+詳細については、 [仮想マシンのサイズ](../../virtual-machines/windows/sizes.md)に関するページをご覧ください。 さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。
 
 ## <a name="custom-cluster-setup"></a>カスタム クラスターのセットアップ
+
 カスタム クラスターのセットアップには、[簡易作成] の設定に次のオプションが加わります。
+
 - [HDInsight アプリケーション](#hdinsight-applications)
 - [クラスター サイズ](#cluster-size)
 - 詳細設定
@@ -218,8 +219,6 @@ Mahout や Cascading などの一部のネイティブ Java コンポーネン�
 > HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 >
 > Cascading は HDInsight ではサポートされておらず、Microsoft サポートの対象でもありません。 サポートされているコンポーネントの一覧については、[HDInsight で提供されるクラスター バージョンの新機能](../../hdinsight/hdinsight-component-versioning.md)に関する記事をご覧ください。
->
->
 
 場合によっては、作成プロセス中に次の構成ファイルを設定する必要があります。
 
@@ -242,6 +241,7 @@ Mahout や Cascading などの一部のネイティブ Java コンポーネン�
 詳細については、「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](../../hdinsight/hdinsight-hadoop-customize-cluster-bootstrap.md) 」をご覧ください。
 
 ## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>詳細設定: 仮想ネットワークによるクラスターの拡張
+
 複数の種類の HDInsight クラスターにまたがるテクノロジがソリューションに必要な場合は、必要な種類のクラスターを [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network)で接続してください。 この構成により、クラスターと、それにデプロイするすべてのコードが互いに通信できるようになります。
 
 Azure の仮想ネットワークの HDInsight との併用の詳細については、 [Azure の仮想ネットワークを使用した HDInsight 機能の拡張](../../hdinsight/hdinsight-extend-hadoop-virtual-network.md) に関するページをご覧ください。

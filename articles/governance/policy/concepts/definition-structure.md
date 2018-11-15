@@ -4,16 +4,16 @@ description: Azure Policy でリソース ポリシー定義を使用して、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0ff56b86243956d1fa6b51a6dfd14af9e00d8367
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b5c7d0c6d54272518b19ffec0d8f02ebbcfe55d9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212779"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283293"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -123,12 +123,12 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ## <a name="definition-location"></a>定義の場所
 
-イニシアティブまたはポリシー定義を作成するときに、定義の場所を指定することが重要です。
+イニシアティブやポリシーを作成する際には、定義の場所を指定する必要があります。 定義の場所は、管理グループまたはサブスクリプションである必要があります。これにより、イニシアチブやポリシーを割り当てることができるスコープが決定します。 リソースは、割り当て対象とする定義の場所のダイレクト メンバーか、その階層内の子である必要があります。
 
-定義の場所で、イニシアティブまたはポリシー定義を割り当てることができるスコープが決まります。 場所は、管理グループまたはサブスクリプションとして指定することができます。
+定義の場所が:
 
-> [!NOTE]
-> このポリシー定義を複数のサブスクリプションに適用する場合、この場所は、イニシアティブまたはポリシーを割り当てるサブスクリプションを含む管理グループである必要があります。
+- **サブスクリプション**の場合 - そのサブスクリプション内のリソースだけを、ポリシーに割り当てることができます。
+- **管理グループ**の場合 - 子管理グループと子サブスクリプション内のリソースだけを、ポリシーに割り当てることができます。 ポリシー定義を複数のサブスクリプションに適用する場合、この場所は、それらのサブスクリプションを含む管理グループである必要があります。
 
 ## <a name="display-name-and-description"></a>表示名と説明
 
@@ -146,7 +146,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
+        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```
@@ -232,7 +232,8 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - **Audit** はアクティビティ ログで警告イベントを生成しますが、要求は失敗しません
 - **append** は定義済みのフィールド セットを要求に追加します。
 - **AuditIfNotExists** は、リソースが存在しない場合に監査を有効にします。
-- **DeployIfNotExists** は、リソースが存在しない場合にリソースをデプロイします。
+- **DeployIfNotExists** は、リソースが存在しない場合にリソースをデプロイします
+- **Disabled**: リソースがポリシー規則に準拠しているかどうかを評価しません
 
 **append** の場合、次のように詳細を指定する必要があります。
 
@@ -247,6 +248,18 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 値には文字列または JSON 形式オブジェクトを指定できます。
 
 **AuditIfNotExists** および **DeployIfNotExists** を使用すると、関連するリソースの存在を評価したうえで、そのリソースが存在しない場合に、ルールと該当する効果を適用することができます。 たとえば、すべての仮想ネットワークを対象に Network Watcher のデプロイを要求することができます。 仮想マシン拡張機能がデプロイされていない場合の監査の例については、[拡張機能が存在しない場合の監査](../samples/audit-ext-not-exist.md)に関するページを参照してください。
+
+**DeployIfNotExists** 効果を使用する場合は、ポリシー規則の **details** 部分に **roleDefinitionId** プロパティが指定されている必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
+
+```json
+"details": {
+    ...
+    "roleDefinitionIds": [
+        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
+    ]
+}
+```
 
 各効果の詳細、評価の順序、プロパティ、例については、「[Policy の効果について](effects.md)」を参照してください。
 

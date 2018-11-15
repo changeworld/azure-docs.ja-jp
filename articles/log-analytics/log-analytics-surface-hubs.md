@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f07488e526a15fb067d6ea7a265d069fbe3aee3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5601c6c5b85b144b853c40e89c81a22f87b7880f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009557"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614996"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Log Analytics を使用して Surface Hub を監視し、その正常性を追跡する
 
@@ -84,8 +84,8 @@ Log Analytics を使用した Surface Hub の監視は、その他の登録済�
 
    ![Surface Hub ダッシュボード](./media/log-analytics-surface-hubs/surface-hub-dashboard.png)
 
-既存またはカスタムのログ検索に基づく[アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)を作成できます。 Log Analytics が Surface Hub から収集するデータを使って、デバイス用に定義した条件に該当する問題とアラートを検索できます。
+既存またはカスタムのログ検索に基づく[アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)を作成できます。 Log Analytics が Surface Hub から収集するデータを使って、デバイス用に定義した条件に該当する問題とアラートを検索できます。
 
 ## <a name="next-steps"></a>次の手順
 * [Log Analytics のログ検索](log-analytics-queries.md)を使用して、Surface Hub の詳細データを表示します。
-* Surface Hub で問題が発生した場合に通知する[アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)を作成します。
+* Surface Hub で問題が発生した場合に通知する[アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)を作成します。

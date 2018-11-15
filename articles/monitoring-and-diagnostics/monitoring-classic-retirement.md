@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f7efafe5e3080de15781496032b688bc5fa71df2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 589aae8321d2c081f09ed46d9def2229d3973ffd
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418426"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613209"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 
@@ -72,4 +72,4 @@ Azure リソースの新しいメトリックは、以下のように使用で�
 ## <a name="next-steps"></a>次の手順
 
 * [新しい統合された Azure Monitor](../azure-monitor/overview.md)について確認する。
-* 新しい [Azure のアラート](monitoring-overview-unified-alerts.md)の詳細を確認する。
+* 新しい [Azure のアラート](monitoring-overview-alerts.md)の詳細を確認する。

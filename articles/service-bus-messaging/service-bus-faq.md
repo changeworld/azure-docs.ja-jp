@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: spelluru
-ms.openlocfilehash: c851c8a9384acf909dc88d3565d49021e1ee67e9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: a000c599ecf8287af57aec2f6e9d550bbe61f280
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362020"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279883"
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
 
@@ -78,6 +78,9 @@ Service Bus の制限とクォータの一覧については、[Service Bus の�
 
 Azure の他のサービスと同様、Service Bus では、リソースが公平に使用されるように一連のクォータを適用します。 これらのクォータの詳細については、「[Service Bus のクォータ][Quotas overview]」を参照してください。
 
+### <a name="how-to-handle-messages-of-size--1-mb"></a>1 MB を超えるサイズのメッセージを処理する方法を教えてください
+Service Bus メッセージング サービス (キューおよびトピック/サブスクリプション) では、アプリケーションは、最大 256 KB (Standard レベル) または 1 MB (Premium レベル) のサイズのメッセージを送信できます。 1 MB を超えるサイズのメッセージを扱う場合は、[このブログの投稿](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)で説明されている要求チェック パターンを使用します。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Azure Service Bus API によって生成される例外とその推奨される操作をいくつか教えてください。
 Service Bus で可能性のある例外の一覧については、「[例外の概要][Exceptions overview]」をご覧ください。
@@ -112,7 +115,7 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 ## <a name="next-steps"></a>次の手順
 Service Bus の詳細については、次の記事をご覧ください。
 
-* [Azure Service Bus Premium の概要 (ブログの投稿)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Azure Service Bus Premium の概要 (ブログの投稿)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Azure Service Bus Premium の概要 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [Service Bus の概要](service-bus-messaging-overview.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)

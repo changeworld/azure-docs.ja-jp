@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: a74e6a6a90a242d4d1b2fd71a5fc6cf949ea55cb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5e168608202f81f698221b52315de83e9713feab
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815258"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282925"
 ---
 # <a name="configure-your-custom-search-experience"></a>カスタム検索エクスペリエンスの構成
 
@@ -64,7 +64,7 @@ Bing で検索する Web のスライスを指定するには、**[アクティ�
 
 ## <a name="pinned-list"></a>[ピン留め] 一覧
 
-ポータルでは、ユーザーが特定の検索用語を入力した場合に、検索結果の一番上に特定の Web ページをピン留めすることもできます。 **[ピン留め]** タブには、特定のクエリの最上位の結果として表示される Web ページを指定する検索用語と Web ページのペアの一覧が含まれています。 ピン留めの結果については、「[ランク付けの調整](#adjustrank)」を参照してください。
+ポータルでは、ユーザーが特定の検索用語を入力した場合に、検索結果の一番上に特定の Web ページをピン留めすることもできます。 **[ピン留め]** タブには、特定のクエリの最上位の結果として表示される Web ページを指定する検索用語と Web ページのペアの一覧が含まれています。 さらに、検索で表示されるのは、インデックスが付けられた Web ページだけです。 ピン留めの結果については、「[ランク付けの調整](#adjustrank)」を参照してください。 
 
 ピン留めの結果は、Image Search エクスペリエンスと Video Search エクスペリエンスでは利用できません。
 

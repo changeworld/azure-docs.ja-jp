@@ -9,12 +9,12 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: d0ae7fbb22f6d98662f83968158182d447a75394
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: f80f61cbfc1f7b719e73d7d29c6948bebe84aa6c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501969"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278312"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh に関してよく寄せられる質問
 Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワークを管理することなく開発者がマイクロサービス アプリケーションをデプロイできるフル マネージド サービスです。 この記事ではよく寄せられる質問に回答します。
@@ -27,24 +27,54 @@ Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワ
 
 **プレビューに参加すると、どのくらいの費用がかかりますか。**
 
-Mesh プレビューにアプリケーションやコンテナーをデプロイしても料金は発生しません。 しかしながら、頻繁にテストするのでなければ、デプロイしたリソースを削除し、実行状態のまま残さないようにお願いしています。
+現時点では、Mesh プレビューにアプリケーションやコンテナーをデプロイしても料金は発生しません。 しかし、頻繁にテストするのでなければ、デプロイしたリソースを削除し、実行状態のまま残さないことをお勧めします。
 
 **コア数と RAM にはクォータ制限がありますか。**
 
-はい。サブスクリプション別のクォータは次のようになっています。
+はい。サブスクリプション別のクォータは次のように設定されています。
 
 - アプリケーションの数 - 5 
-- アプリケーションあたりのコア数 - 12 
+- アプリケーションあたりのコア - 12 
 - アプリケーションあたりの合計 RAM - 48 GB 
-- ネットワークとイングレス エンドポイントの数 – 5  
-- アタッチできる Azure ボリュームの数 - 10 
+- ネットワークとイングレス エンドポイント – 5  
+- アタッチできる Azure ボリューム - 10 
 - サービス レプリカの数 – 3 
-- デプロイ可能なコンテナーは最大 4 コア、16-GB RAM に制限されています。
+- デプロイ可能なコンテナーは最大 4 コア、16 GB RAM に制限されています。
 - コンテナーにコアを少しずつ割り当てることができます。増分は 0.5 コアであり、最大 6 コアまで割り当て可能です。
 
-**アプリケーションを一晩中実行させておくことはできますか。**
+**アプリケーションをデプロイしたままにできる期間はどれくらいですか。**
 
-はい。ただし、頻繁にテストするのでなければ、デプロイしたリソースを削除し、実行状態のまま残さないようにお願いしています。 この方針は今後変更されることがあります。誤用されていた場合、リソースは削除されることがあります。
+現在、アプリケーションの有効期間は 2 日間に制限されています。 これは、プレビューに割り当てられる空きコアを最大限に利用するためです。 その結果、特定のデプロイを 48 時間だけ継続して実行することができます。その後は、システムによってシャットダウンされます。 そのようになった場合は、Azure CLI で `az mesh app show` コマンドを実行し、`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` が返されるかどうかをチェックすることで、システムがシャットダウンしたことを確認できます。 
+
+例:  
+
+```cli
+chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+{
+  "debugParams": null,
+  "description": "Service Fabric Mesh HelloWorld Application!",
+  "diagnostics": null,
+  "healthState": "Ok",
+  "id": "/subscriptions/1134234-b756-4979-84re-09d671c0c345/resourcegroups/myResourceGroup/providers/Microsoft.ServiceFabricMesh/applications/helloWorldApp",
+  "location": "eastus",
+  "name": "helloWorldApp",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "serviceNames": [
+    "helloWorldService"
+  ],
+  "services": null,
+  "status": "Failed",
+  "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue.",
+  "tags": {},
+  "type": "Microsoft.ServiceFabricMesh/applications",
+  "unhealthyEvaluation": null
+}
+```
+
+同じアプリケーションを Mesh に引き続きデプロイするには、アプリケーションに関連付けられているリソース グループを削除するか、アプリケーションとそれに関連するすべての Mesh リソース (ネットワークを含む) を個別に削除する必要があります。 
+
+リソース グループを削除するには、`az group delete <nameOfResourceGroup>` コマンドを使用します。 
 
 ## <a name="supported-container-os-images"></a>サポートされているコンテナー OS イメージ
 サービスをデプロイすると、次のコンテナー OS イメージを使用できます。

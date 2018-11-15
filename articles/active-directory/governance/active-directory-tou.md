@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: rolyon
-ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8fddcdbb8aa523cf3a98a8f2b203440ceedbdf06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249830"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015209"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、利用規約の使用を開始する方法について説明します。
@@ -218,7 +218,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 **Q: ユーザーが使用条件に同意したかどうか、および同意した日時を確認するにはどうすればよいですか?**</br>
 A: [使用条件] ブレードで **承認済み**の下の数字をクリックします。 Azure AD 監査ログでも同意アクティビティを表示または検索できます。 詳しくは、「[同意したユーザーと拒否したユーザーのレポートの表示](#view-who-has-accepted-and-declined)」および「[Azure AD 監査ログの表示](#view-azure-ad-audit-logs)」をご覧ください。
- 
+
 **Q: 情報はどのくらいの期間保存されますか?**</br>
 使用条件レポートのユーザーの数および同意したユーザーと拒否したユーザーの数は、使用条件が有効な間、保存されます。 Azure AD 監査ログは 30 日間保存されます。
 
@@ -245,12 +245,15 @@ A: 最新の認証を使ったエンタープライズ アプリケーション�
 
 **Q: 特定のユーザーまたはアプリケーションに複数の使用条件を追加できますか?**</br>
 A: はい、そのグループやアプリケーションを対象とする複数の条件付きアクセス ポリシーを作成することで可能です。 複数の使用条件の対象になっているユーザーは、一度に 1 つの使用条件に同意します。
- 
+
 **Q: ユーザーが使用条件を拒否した場合はどうなりますか?**</br>
 A: ユーザーは、アプリケーションへのアクセスをブロックされます。 ユーザーは、アクセスするには、もう一度サインインして使用条件に同意する必要があります。
- 
+
 **Q: 以前に同意した使用条件の同意を取り消すことはできますか?**</br>
 A: [以前に同意した使用条件を確認する](#how-users-can-review-their-terms-of-use)ことはできますが、現在、同意を取り消す方法はありません。
+
+**Q: Intune の使用条件も使用している場合はどうなりますか?**</br>
+A: Azure AD の使用条件と [Intune の使用条件](/intune/terms-and-conditions-create)の両方を構成している場合、ユーザーはそれら両方に同意する必要があります。 詳しくは、[組織のブログ投稿に適した使用条件ソリューションの選択](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

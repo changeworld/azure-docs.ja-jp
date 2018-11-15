@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 13d6ed9feab4654d3574a5aced72efa0345365a6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c2e50362de48991c818017b59632be3b0e74cb0b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215329"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282069"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -339,7 +339,9 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 
 ## <a name="rules-for-devices"></a>デバイスのルール
 
-グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 グループ メンバーとしてユーザーとデバイスの両方を含めることはできません。 次のデバイス属性を使用できます。
+グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 グループ メンバーとしてユーザーとデバイスの両方を含めることはできません。 **organizationalUnit** 属性は表示されなくなったため、使用できません。 この文字列は、特定の場合に Intune によって設定されますが、Azure AD では認識されないため、この属性に基づいてデバイスがグループに追加されることはありません。
+
+次のデバイス属性を使用できます。
 
  デバイス属性  | 値 | 例
  ----- | ----- | ----------------
@@ -355,9 +357,9 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  enrollmentProfileName | Apple デバイス登録プロファイルまたは Windows Autopilot プロファイルの名前 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")
- organizationalUnit | オンプレミスの Active Directory で設定される組織単位の名前と一致する任意の文字列値 | (device.organizationalUnit -eq "US PCs")
  deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有効な Azure AD オブジェクト ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ systemLabels | Modern Workplace デバイスをタグ付けするための Intune デバイス プロパティに一致する任意の文字列 | (device.systemLabels - "M365Managed" を含む)
 
 ## <a name="next-steps"></a>次の手順
 

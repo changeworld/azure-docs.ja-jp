@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fbd11eb23b10800e115a63549f233e0239763420
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638149"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300372"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。 
@@ -89,7 +89,7 @@ Pattern.any エンティティでは、パターンに可変長のエンティ�
 これらの書籍のタイトル例では、書籍のタイトルのコンテキスト ワードによって LUIS が混乱することはありません。 書籍のタイトルはパターン内にあり、Pattern.any エンティティによってマークされているため、LUIS はそのタイトルがどこで終了するかを把握できます。
 
 ### <a name="explicit-lists"></a>明示的なリスト
-パターンに Pattern.any が含まれており、そのパターン構文が発話に基づいて正しくないエンティティを抽出する可能性を考慮する場合は、オーサリング API を通じて[明示的なリスト](https://aka.ms/ExplicitList)を作成し、例外を許可します。 
+パターンに Pattern.any が含まれており、そのパターン構文が発話に基づいて正しくないエンティティを抽出する可能性を考慮する場合は、オーサリング API を通じて[明示的なリスト](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)を作成し、例外を許可します。 
 
 たとえば、オプションの構文 `[]` とエンティティ構文 `{}` の両方が含まれるパターンがあり、データを正しくない方法で抽出するように結合されているとします。
 
@@ -98,11 +98,11 @@ Pattern.any エンティティでは、パターンに可変長のエンティ�
 |発話|エンティティ|正しい抽出|
 |--|--|:--:|
 |email about dogs from Chris (クリスから犬に関する電子メール)|subject=dogs (犬)<br>person=Chris (クリス)|✔|
-|email about the man from La Mancha (ラ・マンチャからその男に関する電子メール)|subject=the man (その男)<br>person=La Mancha (ラ・マンチャ)|○|
+|email about the man from La Mancha (ラ・マンチャからその男に関する電子メール)|subject=the man (その男)<br>person=La Mancha (ラ・マンチャ)|X|
 
 前の表の発話 `email about the man from La Mancha` では、subject は `the man from La Mancha` (書籍のタイトル) である必要がありますが、subject にオプションのワード `from` が含まれているため、タイトルが間違って予測されています。 
 
-このパターンの例外を修正するには、[明示的なリストのオーサリング API](https://aka.ms/ExplicitList) を使用して、`the man from la mancha` を {subject} エンティティに対する明示的なリストの一致として追加します。
+このパターンの例外を修正するには、[明示的なリストのオーサリング API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) を使用して、`the man from la mancha` を {subject} エンティティに対する明示的なリストの一致として追加します。
 
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>テンプレートの発話でオプションのテキストをマークする構文
 正規表現の角かっこの構文 `[]` を使用して、発話内のオプションのテキストをマークします。 オプションのテキストは、最大で 2 つの角かっこのみを入れ子にできます。

@@ -1,25 +1,25 @@
 ---
-title: Kafka に対する Apache Spark ストリーミング - Azure HDInsight
-description: Apache Spark を使用して、DStreams による Apache Kafka 内外へのデータのストリームを行う方法について説明します。 この例では、Jupyter ノートブックを使用して HDInsight 上の Spark からデータをストリームします。
+title: Apache Kafka に対する Apache Spark ストリーミング - Azure HDInsight
+description: Apache Spark を使用して、Apache Kafka に対して DStreams によるデータの送信または受信ストリーミングを行う方法について説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリームします。
 keywords: kafka example,kafka zookeeper,spark streaming kafka,spark streaming kafka example
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/23/2018
-ms.author: jasonh
-ms.openlocfilehash: d06e9d26051fbfafc4d717ec180e8760157aefd9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: b103300c7d4b72c0605b8355b03fac5201ab6d68
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094168"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279162"
 ---
-# <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>HDInsight 上の Kafka を用いた Apache Spark ストリーミング (DStream) の例
+# <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
-Apache Spark を使用して、DStreams による HDInsight 上の Apache Kafka 内外へのデータのストリームを行う方法について説明します。 この例では、Spark クラスター上で実行する Jupyter ノートブックを使用します。
+Apache Spark を使用して、HDInsight 上の Apache Kafka に対して DStreams による送信または受信ストリーミングを行う方法について説明します。 この例では、Spark クラスター上で実行する Jupyter ノートブックを使用します。
 
 > [!NOTE]
 > このドキュメントの手順では、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループを作成します。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
@@ -59,7 +59,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
     * **[場所]**: 地理的に近い場所を選択します。
 
-    * **[Base Cluster Name] \(ベース クラスター名)**: この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdi**」と入力すると、__spark-hdi__ という名前の Spark クラスターと、**kafka-hdi** という名前の Kafka クラスターが作成されます。
+    * **[Base Cluster Name] \(ベース クラスター名)**: この値は、Spark クラスターと Kafka クラスターのベース名として使用されます。 たとえば、「**hdistreaming**」と入力すると、__spark-hdistreaming__ という名前の Spark クラスターと、**kafka-hdistreaming** という名前の Kafka クラスターが作成されます。
 
     * **[Cluster Login User Name] \(クラスター ログイン ユーザー名)**: Spark クラスターと Kafka クラスターの管理者のユーザー名。
 
@@ -71,7 +71,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 
-4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
+4. 最後に、**[購入]** を選択します。 クラスターの作成には約 20 分かかります。
 
 リソースが作成されると、概要ページが表示されます。
 

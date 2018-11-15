@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: fc651b3bc28e59c5c5a195211d811e206eee3e42
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 71d5c26c8c41c470e188291dea4a4dab2811a67e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246619"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963117"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 [Power BI](http://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
@@ -41,7 +41,7 @@ Application Insights のクエリをインポートするには、Power BI の�
 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) をインストールします。
 
 ### <a name="export-an-analytics-query"></a>Analytics クエリのエクスポート
-1. [Analytics を開き、クエリを作成](app-insights-analytics-tour.md)します。
+1. [Analytics を開き、クエリを作成](../log-analytics/query-language/get-started-analytics-portal.md)します。
 2. 満足のいく結果が得られるまで、クエリをテストして改善します。 エクスポートする前に、クエリが Analytics で正しく実行されることを確認します。
 3. **[エクスポート]** メニューの **[Power BI (M)]** を選択します。 テキスト ファイルを保存します。
    
@@ -109,7 +109,7 @@ Analytics クエリから取得するデータセットを小さくすると要�
    * 置き換え前 **https://management.azure.com/subscriptions/...**
    * 置き換え後 **https://api.applicationinsights.io/beta/apps/...**
 3. 最後に、資格情報を基本に更新して、API キーを使います。
-  
+ �
 
 **元のスクリプト**
  ```
@@ -155,5 +155,5 @@ Application Insights のグラフを他のソースのグラフや Analytics ク
 
 ## <a name="next-steps"></a>次の手順
 * [Power BI - 詳細](http://www.powerbi.com/learning/)
-* [Analytics のチュートリアル](app-insights-analytics-tour.md)
+* [Analytics のチュートリアル](../log-analytics/query-language/get-started-analytics-portal.md)
 

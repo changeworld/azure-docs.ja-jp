@@ -1,3 +1,16 @@
+---
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jingwang
+ms.openlocfilehash: 9722ca0d83901ec1c73468fb5c192dd2f54c38c7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572395"
+---
 ## <a name="specifying-formats"></a>形式の指定
 Azure Data Factory は次の形式をサポートしています。
 

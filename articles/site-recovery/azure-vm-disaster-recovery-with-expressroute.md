@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: e7c63fba892f70ca0e18c1bffcda0782316b7ada
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: af57dc50dd156a3398c2c685e436d22ba3daea95
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211555"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567776"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure ExpressRoute を Azure VM のディザスター リカバリーと統合する
 
@@ -185,7 +185,7 @@ Site Recovery を使用してターゲット Azure リージョンに Azure VM �
 - ターゲットの復旧リージョンは Azure 東南アジアです。
 - セカンダリ ExpressRoute 回線接続は、シンガポールにあるパートナー エッジを通じて確立されます。
 
-フェールオーバー後に同じ IP アドレスを使い、単一の ExpressRoute 回線を使用するシンプルなトポロジについては、[こちらの記事を参照してください](site-recovery-retain-ip-azure-vm-failover.md#on-premises-to-azure-connectivity)。
+フェールオーバー後に同じ IP アドレスを使い、単一の ExpressRoute 回線を使用するシンプルなトポロジについては、[こちらの記事を参照してください](site-recovery-retain-ip-azure-vm-failover.md#hybrid-resources-full-failover)。
 
 ### <a name="example-steps"></a>手順の例
 この例で復旧を自動化するには、次のようにする必要があります。

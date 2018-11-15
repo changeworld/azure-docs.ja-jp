@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/07/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 284a964162a2374287b42698b9a2021be36590dd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158161"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282460"
 ---
 # <a name="asdk-release-notes"></a>ASDK リリース ノート  
 この記事では、Azure Stack Development Kit (ASDK) の機能強化、修正、既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](.\.\azure-stack-updates.md#determine-the-current-version)できます。
@@ -49,10 +49,10 @@ ms.locfileid: "50158161"
 - 次のマネージド ディスクの問題は 1809 で修正され、1808 [Azure Stack 修正プログラム 1.1808.5.110](https://support.microsoft.com/help/4468920/) でも修正されています。 
 
    <!--  2966665 – IS, ASDK --> 
-   - SSD データ ディスクを Premium サイズのマネージド ディスク仮想マシン(DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗していた問題が修正されました。"*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ 'Standard_DS/Ds_V2/FS/Fs_v2' ではサポートされないため、要求された操作は実行できません。*" 
+   - SSD データ ディスクを Premium サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗していた問題が修正されました。"*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ 'Standard_DS/Ds_V2/FS/Fs_v2' ではサポートされないため、要求された操作は実行できません。*" 
    
-   - **createOption**:**Attach** を使用して、マネージド ディスク VM を作成すると、次のエラーで失敗します。*"Long running operation failed with status 'Failed' (長時間実行処理は状態 '失敗' で失敗しました)追加情報: '内部実行エラーが発生しました。'*
-   エラーコード: InternalExecutionError ErrorMessage: 内部実行エラーが発生しました。"
+   - **createOption**:**Attach** を使用して、マネージド ディスク VM を作成すると、次のエラーで失敗します。*"Long running operation failed with status 'Failed' (長時間実行処理は状態 '失敗' で失敗しました)Additional Info:'An internal execution error occurred.' (追加情報:'内部実行エラーが発生しました。')*
+   エラーコード: InternalExecutionError ErrorMessage: 内部実行エラーが発生しました。
    
    この問題は修正されました。
 
@@ -99,6 +99,9 @@ ms.locfileid: "50158161"
 
 
 #### <a name="compute"></a>コンピューティング 
+
+<!-- TBD – IS, ASDK -->
+- デタッチしたディスクを同じ名前と LUN で同じ仮想マシン (VM) に再アタッチすると、**"データ ディスク 'datadisk' は、VM 'vm1' にアタッチできません"** というようなエラーで失敗します。 このエラーは、現在ディスクがデタッチされているか、直前のデタッチ操作が失敗したために発生します。 ディスクが完全にデタッチされるまで待ってから再試行するか、ディスクをもう一度明示的に削除/デタッチしてください。 回避策は、別の名前で再アタッチするか、別の LUN に再アタッチすることです。 
 
 <!-- 3235634 – IS, ASDK -->
 - **v2** サフィックスを含むサイズ (**Standard_A2_v2** など) で VM をデプロイするには、サフィックスを **Standard_A2_v2** (小文字の v) と指定してください。 **Standard_A2_V2** (大文字の V) は使用しないでください。 これは、グローバル Azure で動作し、Azure Stack では不整合になります。

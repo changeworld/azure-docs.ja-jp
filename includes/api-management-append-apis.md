@@ -1,3 +1,16 @@
+---
+author: vladvino
+ms.service: api-management
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: vlvinogr
+ms.openlocfilehash: 2bfa356deeede1c16bd5a464ea7081132a67faf6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572341"
+---
 ## <a name="append-other-apis"></a>その他の API の追加
 
 API は、OpenAPI Specification、SOAP API、Azure App Service の API Apps 機能、Azure Function App、Azure Logic Apps、Azure Service Fabric を含む、別のサービスで公開されている API によって構成される場合があります。

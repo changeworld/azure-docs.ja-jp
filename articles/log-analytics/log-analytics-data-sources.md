@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d514728b892126522a73827bb79952612f34704b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 071e4694bc3e2a8dc70a199fe7d6021332693b88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014025"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613870"
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics のデータ ソース
 Log Analytics は、接続されたソースからデータを収集して Log Analytics ワークスペースに格納します。  Log Analytics が収集するデータは、構成するデータ ソースによって定義されます。  Log Analytics のデータは、レコード セットとして格納されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
@@ -69,4 +69,4 @@ Log Analytics によって収集されたすべてのデータは、レコード
 ## <a name="next-steps"></a>次の手順
 * Log Analytics に機能を追加し、ワークスペースにデータを収集する[ソリューション](../monitoring/monitoring-solutions.md)について学習します。
 * [ログ検索](log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
-* データ ソースやソリューションから収集された重要なデータについて事前に通知する[アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)を構成します。
+* データ ソースやソリューションから収集された重要なデータについて事前に通知する[アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)を構成します。

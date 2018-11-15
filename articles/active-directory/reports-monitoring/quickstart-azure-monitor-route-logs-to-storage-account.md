@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cf69fdf87f1ce64bd78478f07e575d7ae75c16e0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9d41c0ceeed2a69884b8ef481c79feb495fc89c0
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394247"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621210"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>チュートリアル: Azure AD のログを Azure ストレージ アカウントにアーカイブする (プレビュー)
 
@@ -68,9 +68,8 @@ ms.locfileid: "49394247"
 
     ![診断設定](./media/quickstart-azure-monitor-route-logs-to-storage-account/DiagnosticSettings.png)
 
-12. 約 15 分後、ログが対象のストレージ アカウントにプッシュされていることを確認します。 [Azure portal](https://portal.azure.com) に移動し、**[ストレージ アカウント]** を選択して前に使用したストレージ アカウントを選択し、**[BLOB]** を選択します。 
+12. 約 15 分後、ログが対象のストレージ アカウントにプッシュされていることを確認します。 [Azure portal](https://portal.azure.com) に移動し、**[ストレージ アカウント]** を選択して前に使用したストレージ アカウントを選択し、**[BLOB]** を選択します。 **[監査ログ]** については、**[insights-log-audit]** を選択します。 **[サインイン ログ]** については、**[insights-logs-signin]** を選択します。
 
-13. **[監査ログ]** については、**[insights-log-audit]** を選択します。 **[サインイン ログ]** については、**[insights-logs-signin]** を選択します。
     ![ストレージ アカウント](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
 
 ## <a name="next-steps"></a>次の手順

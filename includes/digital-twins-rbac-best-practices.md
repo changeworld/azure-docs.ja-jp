@@ -1,19 +1,19 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: azure-digital-twins
-author: adamgerard
-ms.service: azure-digital-twins
+services: digital-twins
+author: kingdomofends
+ms.service: digital-twins
 ms.topic: include
-ms.date: 09/27/2018
+ms.date: 11/13/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: a03f2b4e8d216db3764af03dc06b5188289ffc92
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 42aa275e692e4e2e9b7ca38825c828c1f56247fb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964205"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51628166"
 ---
 ロールベースのアクセス制御は、アクセス、アクセス許可、ロールを管理するための継承によるセキュリティ戦略です。 子孫のロールは、親のロールからアクセス許可を継承します。 アクセス許可は、親ロールから継承しないで割り当てることもできます。 必要に応じて、割り当てたロールをカスタマイズすることもできます。
 

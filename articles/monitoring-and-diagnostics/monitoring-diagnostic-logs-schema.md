@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 035b12c85720817501da9f4ad580aa8e7da8fdc4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116195"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280522"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -47,7 +47,7 @@ ms.locfileid: "49116195"
 
 | Service | スキーマとドキュメント |
 | --- | --- |
-| Azure Active Directory | [概要](../active-directory/reports-monitoring/overview-activity-logs-in-azure-monitor.md)、[監査ログ スキーマ](../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)、および[サインイン スキーマ](../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Active Directory | [概要](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、[監査ログ スキーマ](../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)、および[サインイン スキーマ](../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management の診断ログ](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Application Gateway |[Application Gateway の診断ログ](../application-gateway/application-gateway-diagnostics.md) |
@@ -92,9 +92,11 @@ ms.locfileid: "49116195"
 |Microsoft.Batch/batchAccounts|ServiceLog|サービス ログ|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|エンドポイントのメトリック (帯域幅、エグレスなど) を取得します。|
 |Microsoft.ClassicNetwork/networksecuritygroups|ネットワーク セキュリティ グループの規則フロー イベント|ネットワーク セキュリティ グループの規則フロー イベント|
-|Microsoft.CognitiveServices/accounts|Audit|Audit|
+|Microsoft.CognitiveServices/accounts|Audit|Audit Logs|
+|Microsoft.CognitiveServices/accounts|RequestResponse|要求と応答のログ|
 |Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API サーバー|
 |Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes コントローラー マネージャー|
+|Microsoft.ContainerService/managedClusters|cluster-autoscaler|Kubernetes クラスター オートスケーラー|
 |Microsoft.ContainerService/managedClusters|kube-scheduler|Kubernetes スケジューラ|
 |Microsoft.ContainerService/managedClusters|guard|認証 Webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
@@ -105,7 +107,7 @@ ms.locfileid: "49116195"
 |Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
-|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL 低速クエリ ログ|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL サーバーのログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL サーバー ログ|
 |Microsoft.Devices/IotHubs|Connections|Connections|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|デバイス テレメトリ|
@@ -128,6 +130,14 @@ ms.locfileid: "49116195"
 |Microsoft.EventHub/namespaces|ArchiveLogs|アーカイブ ログ|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作ログ|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自動スケール ログ|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|自動スケーリング検証|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|自動スケーリングのスケーリング操作|
+|Microsoft.IoTSpaces/Graph|Trace|Trace|
+|Microsoft.IoTSpaces/Graph|運用時|運用時|
+|Microsoft.IoTSpaces/Graph|Audit|Audit|
+|Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
+|Microsoft.IoTSpaces/Graph|イングレス|イングレス|
+|Microsoft.IoTSpaces/Graph|エグレス|エグレス|
 |Microsoft.KeyVault/vaults|AuditEvent|Audit Logs|
 |Microsoft.Logic/workflows|WorkflowRuntime|ワークフロー ランタイムの診断イベント|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|統合アカウント追跡イベント|
@@ -136,6 +146,8 @@ ms.locfileid: "49116195"
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS 保護通知|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationFlowLogs|DDoS 軽減策に関する意思決定のフロー ログ|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationReports|DDoS 軽減策のレポート|
 |Microsoft.Network/virtualNetworks|VMProtectionAlerts|VM 保護アラート|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|
@@ -151,6 +163,8 @@ ms.locfileid: "49116195"
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S 診断ログ|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|
 |Microsoft.Network/expressRouteCircuits|PeeringRouteLog|ピアリングのルート テーブルのログ|
+|Microsoft.Network/frontdoors|FrontdoorAccessLog|Frontdoor アクセス ログ|
+|Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|Frontdoor Web アプリケーション ファイアウォール ログ|
 |Microsoft.PowerBIDedicated/capacities|Engine|Engine|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup レポート データ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery ジョブ|
@@ -173,10 +187,21 @@ ms.locfileid: "49116195"
 |Microsoft.Sql/servers/databases|デッドロック|デッドロック|
 |Microsoft.Sql/servers/databases|Audit|Audit Logs|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
-|Microsoft.Sql/servers/databases|SqlDw_Requests|SQL DW 要求|
-|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|SQL DW 要求ステップ|
+|Microsoft.Sql/servers/databases|DmsWorkers|DMS worker|
+|Microsoft.Sql/servers/databases|ExecRequests|実行要求|
+|Microsoft.Sql/servers/databases|RequestSteps|要求ステップ|
+|Microsoft.Sql/servers/databases|SqlRequests|SQL 要求|
+|Microsoft.Sql/servers/databases|Waits|待機|
+|Microsoft.Sql/managedInstances|ResourceUsageStats|リソース使用統計|
+|Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
+|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL Insights|
+|Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|
+|Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|クエリ ストアの待機統計|
+|Microsoft.Sql/managedInstances/databases|Errors|Errors|
 |Microsoft.StreamAnalytics/streamingjobs|Execution|実行|
 |Microsoft.StreamAnalytics/streamingjobs|作成|Authoring|
+|microsoft.web/sites|FunctionExecutionLogs|関数の実行ログ|
+|microsoft.web/sites/slots|FunctionExecutionLogs|関数の実行ログ|
 
 ## <a name="next-steps"></a>次の手順
 

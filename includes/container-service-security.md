@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-service
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: f4acec3db7d74b969c55e725d9ec1c5f063b552c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51628167"
+---
 # <a name="securing-docker-containers-in-azure-container-service"></a>Azure Container Service での Docker コンテナーのセキュリティ保護
 
 この記事では、Azure Container Service にデプロイされた Docker コンテナーをセキュリティで保護するための考慮事項と推奨事項を紹介します。 こうした考慮事項の多くは、通常、Azure またはその他の環境にデプロイされた Docker コンテナーに適用されます。 
@@ -43,13 +56,13 @@ Azure Container Service で使用できる各 Orchestrator に、セキュリテ
 
 その他の Orchestrator 固有のセキュリティ情報については、次のリソースを参照してください。
 
-* **Kubernetes**: [Kubernetes デプロイのセキュリティのベスト プラクティス](http://blog.kubernetes.io/2016/08/security-best-practices-kubernetes-deployment.html)
+* **Kubernetes**: [Kubernetes デプロイのセキュリティのベスト プラクティス](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
 * **DC OS/**: [クラスターのセキュリティ保護](https://dcos.io/docs/1.8/administration/securing-your-cluster/)
 
 * **Docker Swarm**: [Docker のセキュリティ](https://www.docker.com/docker-security)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Docker のアーキテクチャおよびコンテナーのセキュリティの詳細については、「[Introduction to Container Security (コンテナー セキュリティの概要)](https://www.docker.com/sites/default/files/WP_IntrotoContainerSecurity_08.19.2016.pdf)」を参照してください。
 

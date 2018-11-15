@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 8f45535b0e75c3f95a56148ea92a343bb0d8a9f5
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: d94b7f7f2f032278f71053e5de8bb2935af01f3f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079261"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300151"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Azure Stack の VPN ゲートウェイについて
 
@@ -33,7 +33,7 @@ VPN ゲートウェイは、パブリック接続で暗号化されたトラフ�
 
 各仮想ネットワークに配置できる仮想ネットワーク ゲートウェイは 2 つですが、種類はいずれか 1 つのみになります。 選択する設定によっては、1 つの VPN ゲートウェイへの複数の接続を作成できます。 1 つの例は、マルチサイト接続構成です。
 
-Azure Stack 用の VPN Gateway を作成して構成する前に、「[Azure Stack ネットワークに関する考慮事項](/articles/azure-stack/user/azure-stack-network-differences.md)」を参照し、Azure Stack と Azure での構成方法の違いを理解してください。
+Azure Stack 用の VPN Gateway を作成して構成する前に、「[Azure Stack ネットワークに関する考慮事項](user/azure-stack-network-differences.md)」を参照し、Azure Stack と Azure での構成方法の違いを理解してください。
 
 >[!NOTE]
 >Azure では、選択する VPN Gateway SKU の帯域幅スループットが、ゲートウェイに接続されるすべての接続に分配される必要があります。 一方、Azure Stack では、VPN Gateway SKU の帯域幅値が、ゲートウェイに接続される各接続リソースに適用されます。
