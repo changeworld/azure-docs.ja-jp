@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 6fa59a176eaea08b612eb32eeb608fa7373d5c36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3763b7df8830d2555afd9beb492cb6878505afa4
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249746"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566501"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Spark を使用した高度なデータ探索とモデリング
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 このチュートリアルでは、HDInsight Spark を使用して、データ探索を実行し、二項分類モデルと回帰モデルのトレーニングを行います。2013 年の NYC タクシーの乗車と料金に関するデータセットのサンプルに対し、クロス検証とハイパーパラメーターの最適化を使用しています。 チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](https://aka.ms/datascienceprocess)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB にデータとモデルを保存します。 プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。 ソリューションのコーディングと関連するプロットの表示には、Python が使用されています。 これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。 
 
@@ -1254,7 +1253,7 @@ Jupyter サーバーを使用してデータをプロットするコードを次
     # cvModel uses the best model found (lrModel).
     predictionAndLabels = cv_model.transform(testDataFrame)
 
-    # CONVERT TO DF AND SAVE REGISER DF AS TABLE
+    # CONVERT TO DF AND SAVE REGISTER DF AS TABLE
     predictionAndLabels.registerTempTable("tmp_results");
 
     # PRINT ELAPSED TIME

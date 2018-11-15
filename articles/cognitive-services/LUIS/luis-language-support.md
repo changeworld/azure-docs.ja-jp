@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: diberry
-ms.openlocfilehash: ce0a2f36ca11c704062deb28bf47c45a91a32222
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a26fa1f64f1ef8ecef8140b1feab89fdd57875fe
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435408"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569201"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -32,10 +32,10 @@ LUIS が理解する発話の言語を次に示します。
 | Language |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズの提案 | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
-| フランス語 (カナダ) |`fr-CA` |-|   -   |-|✔|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | オランダ語 |`nl-NL` |-|  -   |-|✔|
 | フランス語 (フランス) |`fr-FR` |-| ✔ |✔ |✔|
+| フランス語 (カナダ) |`fr-CA` |-|   -   |-|✔|
 | ドイツ語 |`de-DE` |-| ✔ |✔ |✔|
 | イタリア語 |`it-IT` |-| ✔ |✔|✔|
 | *[日本語](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|キー フレーズのみ|

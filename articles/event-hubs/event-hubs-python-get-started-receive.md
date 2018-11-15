@@ -2,19 +2,19 @@
 title: Python を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs
 description: Python を使用して Event Hubs からイベントの受信を開始する
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
 ms.date: 07/26/2018
-ms.author: sethm
-ms.openlocfilehash: 9707f0cf5a76c0ac4006b53ca8166d3b42fc9af4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: shvija
+ms.openlocfilehash: db177c3356d378317c41e0c91c10865db5e05992
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240564"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286981"
 ---
 # <a name="receive-events-from-event-hubs-using-python"></a>Python を使用して Event Hubs からイベントを受信する
 

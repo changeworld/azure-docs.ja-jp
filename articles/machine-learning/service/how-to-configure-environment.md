@@ -9,13 +9,13 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 10/24/2018
-ms.openlocfilehash: 6c2d5a776f603161ef730028168b91844c120aec
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.date: 11/6/2018
+ms.openlocfilehash: 8ce411e424d538a4a1f94300bfe5510658017f56
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158994"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238325"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -84,14 +84,40 @@ Azure Machine Learning SDK は、ワークスペース構成ファイルを使�
 
 Azure Notebooks および Azure Data Science Virtual Machine (DSVM) は、Azure Machine Learning サービスを操作するように構成されて出荷されます。 これらの環境には、Azure Machine Learning SDK などの必要なコンポーネントが含まれています。
 
+### <a name="azure-notebooks"></a>Azure Notebooks
+
 - Azure Notebooks は、Azure クラウドの Jupyter Notebook サービスです。
-- Data Science Virtual Machine は、データ サイエンスの作業のために設計された、カスタマイズされた仮想マシン (VM) イメージです。 次の情報が含まれます。
-  - 一般的なツール
-  - 統合開発環境 (IDE)
-  - Jupyter Notebook、PyCharm、Tensorflow などのパッケージ
 - これらの環境を使用するには、ワークスペース構成ファイルが引き続き必要です。
 
 Azure Machine Learning サービスで Azure Notebooks を使用する例については、[Azure Machine Learning サービスの基本操作](quickstart-get-started.md)に関するページを参照してください。
+
+### <a name="data-science-virtual-machines"></a>データ サイエンス仮想マシン
+
+- Data Science Virtual Machine は、データ サイエンスの作業のために設計された、カスタマイズされた仮想マシン (VM) イメージです。 次の情報が含まれます。
+  - 一般的なデータ サイエンス ツール
+  - PyCharm や RStudio などの統合開発環境 (IDE)
+  - Jupyter Notebook や Tensorflow などのパッケージ
+
+DSVM には、複数の Anaconda 環境があらかじめインストールされています。 パッケージ インストールなしで Azure Machine Learning Python SDK を使用するには、コマンド プロンプト/シェルを開き、次のいずれかのコマンドを使用して環境をアクティブ化します。
+
+* __Ubuntu__ DSVM では、次のコマンドを使用します。
+
+    ```shell
+    conda activate py36
+    ```
+
+* __Windows__ DSVM では、次のコマンドを使用します。
+
+    ```shell
+    conda activate AzureML
+    ```
+
+この環境をアクティブ化したら、パッケージをインストールしなくても、好みのビルド ツールで Azure Machine Learning SDK をインポートできます。
+
+```python
+import azureml.core
+print(azureml.core.VERSION)
+```
 
 Data Science Virtual Machine の詳細については、[Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)に関するページを参照してください。
 

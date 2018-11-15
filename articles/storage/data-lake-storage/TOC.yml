@@ -60,7 +60,7 @@ items:
 - name: リソース
   items:
   - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=storage
+    href: https://azure.microsoft.com/roadmap/?product=storage
   - name: Azure Storage クライアント ツール
     href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
   - name: フォーラム
@@ -69,15 +69,13 @@ items:
     href: https://azure.microsoft.com/pricing/details/storage/data-lake/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=storage
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/windows-azure-storage
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: 2e640bee7739169b65352d7da6aedf2185c2aa99
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 55e82f76f9bf02d873715829794238de32403050
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41928656"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634440"

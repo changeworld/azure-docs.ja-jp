@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 258d00bcc99165108979ef1679c195a6d2b2d98a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251092"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623062"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -36,7 +36,7 @@ Azure Cosmos DB は、自動スケール、予測可能なパフォーマンス�
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Azure Cosmos DB では、予測可能なパフォーマンスをどのようにして実現していますか?
 [要求ユニット](request-units.md) (RU) とは、Azure Cosmos DB におけるスループットの単位です。 1 RU のスループットは、1 KB のドキュメントを取得するスループットに相当します。 Azure Cosmos DB におけるすべての操作 (読み取り、書き込み、SQL クエリ、ストアド プロシージャの実行など) には、操作を完了するために必要なスループットに基づいて明確な RU 値が設定されています。 CPU、IO、メモリや、これらがアプリケーションのスループットに及ぼす影響について考えるのではなく、RU という 1 つの単位を基にして考えることができます。
 
-各 Azure Cosmos DB コンテナーは、1 秒あたりのスループットを表す RU を単位として、プロビジョニング スループットを使用して予約できます。 あらゆる規模のアプリケーションで、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようにコンテナーをプロビジョニングできます。 アプリケーションのニーズの進化に合わせて、コンテナーのスループットをスケールアップまたはスケールダウンすることもできます。 要求ユニットの詳細とコンテナーのニーズを判断する方法については、「[スループットのニーズの推定](request-units.md#estimating-throughput-needs)」を参照し、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。 この場合の "*コンテナー*" とは、SQL API のコレクション、Gremlin API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
+各 Azure Cosmos DB コンテナーは、1 秒あたりのスループットを表す RU を単位として、プロビジョニング スループットを使用して予約できます。 あらゆる規模のアプリケーションで、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようにコンテナーをプロビジョニングできます。 アプリケーションのニーズの進化に合わせて、コンテナーのスループットをスケールアップまたはスケールダウンすることもできます。 要求ユニットの詳細とコンテナーのニーズを判断する方法については、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。 この場合の "*コンテナー*" とは、SQL API のコレクション、Gremlin API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB は、キー/値、多桁式、ドキュメント、グラフなどのさまざまなデータ モデルをどのようにサポートしていますか?
 
@@ -100,7 +100,7 @@ Try Azure Cosmos DB サブスクリプションには、次の条件が適用さ
 Azure Cosmos DB は Azure Portal で利用できます。 まず、Azure サブスクリプションにサインアップします。 サインアップしたら、SQL API、Gremlin API、Table API、MongoDB API、または Cassandra API のアカウントを Azure サブスクリプションに追加できます。
 
 ### <a name="what-is-a-master-key"></a>マスター キーとは何ですか?
-マスター キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。 キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。 マスター キーを配布するときには十分な注意が必要です。 プライマリ マスター キーとセカンダリ マスター キーは、[Azure Portal][azure-portal] の **[キー]** ブレードで入手できます。 リソース キーの詳細については、「 [アクセス キーを表示、コピー、および再生成する](manage-account.md#keys)」を参照してください。
+マスター キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。 キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。 マスター キーを配布するときには十分な注意が必要です。 プライマリ マスター キーとセカンダリ マスター キーは、[Azure Portal][azure-portal] の **[キー]** ブレードで入手できます。 リソース キーの詳細については、「 [アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#list-account-keys)」を参照してください。
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>PreferredLocations として設定できるリージョンを教えてください。 
 PreferredLocations 値は、Cosmos DB を利用できる Azure リージョンのいずれかに設定できます。 利用可能なリージョンの一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」をご覧ください。
@@ -160,7 +160,7 @@ SQL API アカウントでサポートされる SQL クエリ言語は、SQL Ser
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>SQL API は SQL 集計関数をサポートしていますか?
 SQL API は、SQL 文法の `COUNT`、`MIN`、`MAX`、`AVG`、`SUM` の各集計関数を使用した、あらゆるスケールでの低待機時間の集計をサポートしています。 詳細については、「[集計関数](sql-api-sql-query.md#Aggregates)」をご覧ください。
 
-### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API はどのようにしてコンカレンシーを提供しますか?
+### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API はどのようにして同時実行を提供しますか?
 SQL API は、HTTP エンティティ タグ (ETag) によるオプティミスティック コンカレンシー (OCC) をサポートしています。 すべての SQL API リソースに ETag があり、ドキュメントが更新されるたびにサーバーで ETag が設定されます。 すべての応答メッセージに ETag ヘッダーと現在の値が含まれます。 ETag を If-Match ヘッダーと共に使用することで、サーバーはリソースを更新する必要があるかどうかを判断できるようになります。 If-Match 値は、チェック対象の ETag 値です。 対象の ETag 値がサーバーの ETag 値と一致する場合に、リソースが更新されます。 ETag が最新ではない場合、サーバーは操作を拒否して "HTTP 412 Precondition failure" 応答コードを返します。 この場合、クライアントは、リソースを再フェッチしてリソースの最新の ETag 値を取得します。 また、ETag を If-None-Match ヘッダーと共に使用すると、リソースの再フェッチが必要かどうかを判断できます。
 
 .NET でオプティミスティック コンカレンシーを使用するには、 [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) クラスを使用します。 .NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
@@ -295,7 +295,7 @@ Azure Portal を使用してデータを参照できます。 また、Table API
 
 以前に指定した形式の接続文字列を取得する柔軟性を備えたツールは、新しい Table API に対応できます。 テーブル ツールの一覧については、「[Azure Storage クライアント ツール](../storage/common/storage-explorers.md)」をご覧ください。 
 
-### <a name="is-the-concurrency-on-operations-controlled"></a>操作のコンカレンシーは制御されますか?
+### <a name="is-the-concurrency-on-operations-controlled"></a>操作の同時実行は制御されますか?
 はい。オプティミスティック コンカレンシーは、ETag メカニズムを使用して提供されます。 
 
 ### <a name="is-the-odata-query-model-supported-for-entities"></a>エンティティの OData クエリ モデルはサポートされていますか? 
@@ -458,11 +458,11 @@ Azure Cosmos DB Gremlin API では、サービスのメイン コネクタとし
 
 グラフのオブジェクト、頂点、端はすべて、バックエンドで JSON ドキュメントとして表示されます。 1 つの Gremlin クエリで 1 つまたは複数のグラフ オブジェクトを一度に変更できるため、それに関連付けられるコストは、クエリで処理されるオブジェクトや端に直接関連します。 このプロセスは、その他すべての API に対して Azure Cosmos DB で使用されるプロセスと同じです。 詳細については、「[Azure Cosmos DB の要求ユニット](request-units.md)」をご覧ください。
 
-RU 課金は、結果セットではなく、トラバーサルの作業データ セットに基づきます。 たとえば、結果として頂点を 1 つ得ることがクエリの目的であるが、その過程で他の複数のオブジェクトを走査する必要がある場合、結果として頂点を 1 つ計算するために必要なすべてのグラフ オブジェクトに基づいてコストが算出されます。
+RU 課金は、結果セットではなく、走査の作業データ セットに基づきます。 たとえば、結果として頂点を 1 つ得ることがクエリの目的であるが、その過程で他の複数のオブジェクトを走査する必要がある場合、結果として頂点を 1 つ計算するために必要なすべてのグラフ オブジェクトに基づいてコストが算出されます。
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API でグラフ データベースに与えられる最大スケールは何ですか。 
 
-Azure Cosmos DB では、[行方向のパーティション分割](partition-data.md)を利用し、ストレージ要件とスループット要件の増加に自動的に対処します。 ワークロードの最大スループットと最大ストレージ容量は、指定されたコレクションに関連付けられているパーティションの数により決定されます。 しかしながら、Gremlin API コレクションには、大規模でも適切なパフォーマンスを得るために、一連のガイドラインが指定されています。 ベスト プラクティスの詳細については、[パーティション分割のベスト プラクティス](partition-data.md#best-practices-when-choosing-a-partition-key)ドキュメントを参照してください。 
+Azure Cosmos DB では、[水平方向のパーティション分割](partition-data.md)を利用し、ストレージ要件とスループット要件の増加に自動的に対処します。 ワークロードの最大スループットと最大ストレージ容量は、指定されたコレクションに関連付けられているパーティションの数により決定されます。 しかしながら、Gremlin API コレクションには、大規模でも適切なパフォーマンスを得るために、一連のガイドラインが指定されています。 パーティション分割の詳細とベスト プラクティスについては、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関する記事をご覧ください。 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Gremlin ドライバーを利用したインジェクション攻撃はどのように防ぎますか。 
 

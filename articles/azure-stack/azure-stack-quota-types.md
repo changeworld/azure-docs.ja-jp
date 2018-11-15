@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/30/2018
+ms.date: 11/08/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 3c0ab236dd6fce10be0a50c435f04517e14c1387
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077597"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299421"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
@@ -31,15 +31,15 @@ ms.locfileid: "49077597"
 ## <a name="compute-quota-types"></a>Compute クォータの種類 
 | **種類** | **既定値** | **説明** |
 | --- | --- | --- |
-| [Max number of virtual machines]\(仮想マシンの最大数\) | 20 | 1 つのサブスクリプションでこの場所に作成できる仮想マシンの最大数です。 |
-| [Max number of virtual machine cores]\(仮想マシン コアの最大数\) | 50 | 1 つのサブスクリプションでこの場所に作成できるコアの最大数です (たとえば、A3 VM のコア数は 4 です)。 |
+| [Max number of virtual machines]\(仮想マシンの最大数\) | 50 | 1 つのサブスクリプションでこの場所に作成できる仮想マシンの最大数です。 |
+| [Max number of virtual machine cores]\(仮想マシン コアの最大数\) | 100 | 1 つのサブスクリプションでこの場所に作成できるコアの最大数です (たとえば、A3 VM のコア数は 4 です)。 |
 | [Max number of availability sets]\(可用性セットの最大数\) | 10 | この場所に作成できる可用性セットの最大数です。 |
-| [Max number of virtual machine scale sets]\(仮想マシン スケール セットの最大数\) | 20 | この場所に作成できる仮想マシン スケールセットの最大数です。 |
+| [Max number of virtual machine scale sets]\(仮想マシン スケール セットの最大数\) | 100 | この場所に作成できる仮想マシン スケールセットの最大数です。 |
 
 ## <a name="storage-quota-types"></a>Storage クォータの種類 
 | **項目** | **既定値** | **説明** |
 | --- | --- | --- |
-| 最大容量 (GB) |500 |1 つのサブスクリプションがこの場所で使用できる記憶域の最大容量です。 |
+| 最大容量 (GB) |2048 |1 つのサブスクリプションがこの場所で使用できる記憶域の最大容量です。 |
 | [Total number of storage accounts]\(ストレージ アカウントの合計数\) |20 |1 つのサブスクリプションでこの場所に作成できるストレージ アカウントの最大数です。 |
 
 > [!NOTE]  

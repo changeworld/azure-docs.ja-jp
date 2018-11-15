@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: f8f65cbbf3f2583e43416fc36050de6c55f105dc
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: ca9f2fa249a3d9f4387d0fa45e3c5874eea26120
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161715"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625489"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
@@ -36,16 +36,7 @@ Service SAS は、アカウント アクセス キーを公開することなく
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Azure portal にサインインする](https://portal.azure.com)
-
-- [Windows 仮想マシンを作成する](/azure/virtual-machines/windows/quick-create-portal)
-
-- [仮想マシンでシステム割り当て ID を有効にする](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
-
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 
@@ -85,7 +76,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 
     ![イメージ テキスト](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>VM ID を使用してアクセス トークンを取得し、そのアクセス トークンを使用して Azure Resource Manager を呼び出す 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>VM ID を使用してアクセス トークンを取得し、そのアクセス トークンを使用して Azure Resource Manager を呼び出す 
 
 チュートリアルの残りの部分では、以前に作成した VM から作業を行います。
 

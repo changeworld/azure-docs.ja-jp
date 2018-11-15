@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
-ms.openlocfilehash: 59a35cd7ca3af446853d518fc7e7d48d2321ff10
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 099b59cde4ee438f16b9d7e77bd81c004006cb71
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278975"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684870"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>パイプラインと Azure Machine Learning
 
@@ -44,7 +44,7 @@ ms.locfileid: "51278975"
 
 Azure Machine Learning では、パイプラインのステップごとに、Microsoft Cognitive Toolkit や TensorFlow などの各種ツールキットやフレームワークを使用できます。 Azure によって、使用するさまざまな[コンピューティング ターゲット](concept-azure-machine-learning-architecture.md)間の調整が行われるため、中間データをダウンストリームのコンピューティング ターゲットと簡単に共有できます。 
 
-Azure portal で直接、[パイプライン実験のメトリックを追跡](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments)できます。 
+Azure portal で直接、[パイプライン実験のメトリックを追跡](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments)できます。 
 
 ## <a name="key-advantages"></a>主な利点
 

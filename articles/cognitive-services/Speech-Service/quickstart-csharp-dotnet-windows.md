@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2018
 ms.author: wolfma
-ms.openlocfilehash: 2dd001ebebd5cdf90d7d0b8163a85a5f83c855f6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 502f59c88808480f26e6ea5a6d2c5b362c78869b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281296"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683500"
 ---
 # <a name="quickstart-recognize-and-transcribe-speech-using-the-speech-sdk-and-net-framework-windows"></a>クイック スタート: Speech SDK と .NET Framework (Windows) を使用した音声認識と文字起こし
 
@@ -23,7 +23,7 @@ ms.locfileid: "51281296"
 
 このガイドでは、.NET framework for Windows と Speech SDK を使用して音声変換コンソール アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
 
-このクイック スタートでは、Microsoft Speech を利用できる [Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)が必要になります。 アカウントを持っていない場合は、[無料試用版](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started)を使用してサブスクリプション キーを取得できます。
+このクイック スタートでは、Microsoft Speech を利用できる [Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)が必要になります。 アカウントを持っていない場合は、[無料試用版](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 

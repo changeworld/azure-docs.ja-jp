@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6a197cf5667e1668b2007a5f552b813cb8ed68d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: caa1b4b3bf1f9b8fb1a34bd58dde04f13fbc6c88
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957830"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614568"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージド サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
@@ -25,7 +25,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 監視閲覧者の役割が割り当てられている場合は、サブスクリプション内の監視データすべてを表示できますが、リソースを変更したり、監視リソースに関連する設定を編集したりすることはできません。 この役割は、次の作業を行う必要がある、サポート エンジニア、運用エンジニアなどの組織内のユーザーに適しています。
 
 * ポータルで監視ダッシュボードを表示し、独自のプライベート監視ダッシュボードを作成する。
-* [Azure アラート](monitoring-overview-unified-alerts.md)に定義されているアラート ルールを表示する。
+* [Azure アラート](monitoring-overview-alerts.md)に定義されているアラート ルールを表示する。
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](insights-powershell-samples.md)、または[クロスプラットフォーム CLI](insights-cli-samples.md) を使用して、メトリックにクエリを実行する。
 * ポータル、Azure Monitor REST API、PowerShell コマンドレット、またはクロスプラットフォーム CLI を使用して、アクティビティ ログにクエリを実行する。
 * リソースの [診断設定](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) を表示する。
@@ -51,7 +51,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * 共有ダッシュボードとして監視ダッシュボードを発行する。
 * リソースの[診断設定](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)を設定する。*
 * サブスクリプションの[ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)を設定する。*
-* [Azure アラート](monitoring-overview-unified-alerts.md)を使用して、アラート ルール アクティビティと設定を指定する。
+* [Azure アラート](monitoring-overview-alerts.md)を使用して、アラート ルール アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。
 * Log Analytics ワークスペースの共有キーを一覧表示する。
 * Log Analytics インテリジェンス パックを有効または無効にする。

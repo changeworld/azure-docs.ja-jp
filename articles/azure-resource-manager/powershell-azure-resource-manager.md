@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/20/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7cda2a406c6c49e9252bfd5840e8f943e5b7043f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 0ecb497e9b07119f6c32149a875f27ee7c338d74
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205801"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344639"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Azure PowerShell でリソースを管理する
 
@@ -56,7 +56,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 * [Network Contributor](../role-based-access-control/built-in-roles.md#network-contributor)
 * [Storage Account Contributor](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
+多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。
 
 次の例では、グループを作成し、それをリソース グループの仮想マシンの共同作業者ロールに割り当てます。 `New-AzureAdGroup` コマンドを実行するには、[Azure Cloud Shell](/azure/cloud-shell/overview) を使用するか、または [Azure AD PowerShell モジュールをダウンロードする](https://www.powershellgallery.com/packages/AzureAD/)必要があります。
 
@@ -211,11 +211,12 @@ Remove-AzureRmResourceLock -LockName LockNSG `
 
 必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 * 仮想マシンの監視の詳細については、[Azure PowerShell による Windows 仮想マシンの監視および更新](../virtual-machines/windows/tutorial-monitoring.md)に関するページを参照してください。
 * Azure Security Center を使用した推奨されるセキュリティ対策の実装の詳細については、[Azure Security Center を使用した仮想マシン セキュリティの監視](../virtual-machines/windows/tutorial-azure-security.md)に関するページを参照してください。
 * 新しいリソース グループに、既存のリソースを移動できます。 例については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。

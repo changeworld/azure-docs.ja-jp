@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/02/2018
+ms.date: 11/09/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 4376b9e89aeef32987f7a3bb29ca6815e941ba00
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 049e859f1d736e7c06ac5d40e33d91d1540c3d9e
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960244"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514368"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure Stack の拡張機能ホストを準備する
 
@@ -84,8 +84,7 @@ Azure Stack 適合性チェッカー ツールを使用すると、必要とさ�
 
 1. 次の手順では、Azure Stack 特権エンドポイントに接続できるコンピューターを使用します。 そのコンピューターで新しい証明書ファイルにアクセスできるようにしておいてください。
 2. PowerShell ISE を開いて、次のスクリプト ブロックを実行します
-3. ホスティング エンドポイントの証明書をインポートします。 環境に合わせてスクリプトを調整します。
-4. 管理者ホスティング エンドポイントの証明書をインポートします。
+3. 管理者ホスティング エンドポイントの証明書をインポートします。
 
     ```PowerShell  
 
@@ -104,7 +103,7 @@ Azure Stack 適合性チェッカー ツールを使用すると、必要とさ�
             Import-AdminHostingServiceCert $AdminHostingCertContent $certPassword
     }
     ```
-5. ホスティング エンドポイントの証明書をインポートします。
+4. ホスティング エンドポイントの証明書をインポートします。
     ```PowerShell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 

@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 1918ed664a79a46f25cfc5162a28b311bea29cd8
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f99c0fe798baa272bc2c74e8a171dd6bc7ca4304
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740455"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036548"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -76,7 +76,7 @@ JavaScript の [`async function`](https://developer.mozilla.org/docs/Web/JavaScr
 
 次の例で示すのは、トリガーされてすぐに実行が完了したことを記録する簡単な関数です。
 
-``` javascript
+```javascript
 module.exports = async function (context) {
     context.log('JavaScript trigger function processed a request.');
 };
@@ -109,22 +109,27 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>バインド 
 JavaScript では、[バインド](functions-triggers-bindings.md)が構成され、関数の function.json で定義されます。 関数は、さまざまな方法でバインドを操作します。
 
-### <a name="reading-trigger-and-input-data"></a>トリガーと入力データの読み取り
-関数は、トリガーと入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
+### <a name="inputs"></a>入力
+Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 関数は、トリガーと他の入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
  - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 なお、*function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
+   
  - **[`context.bindings`](#contextbindings-property) オブジェクトのメンバーを使用します。** 各メンバーの名前は、*function.json* で定義されている `name` プロパティによって決まります。
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + context.bindings.myTrigger);
        context.log("This is myInput: " + context.bindings.myInput);
        context.log("This is myOtherInput: " + context.bindings.myOtherInput);
    };
    ```
+   
  - **JavaScript の [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) オブジェクトの入力を使用します。** これは、基本的にパラメーターとして入力を渡すのと同じですが、動的に入力を処理することができます。
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + arguments[1]);
        context.log("This is myInput: " + arguments[2]);
@@ -132,12 +137,13 @@ JavaScript では、[バインド](functions-triggers-bindings.md)が構成さ�
    };
    ```
 
-### <a name="writing-data"></a>データの書き込み
+### <a name="outputs"></a>出力
 関数は、さまざまな方法で出力 (`direction === "out"` のバインド) に書き込むことができます。 どの場合も、*function.json* で定義されているバインドの `name` プロパティは、関数に書き込むオブジェクトのメンバーの名前に対応しています。 
 
 次の方法のいずれかで、出力バインドにデータを割り当てることができます。 これらの方法は、組み合わせて使用しないでください。
 - **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期/Promise を返す関数を使用している場合は、出力データを割り当てたオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       return {
@@ -148,10 +154,12 @@ JavaScript では、[バインド](functions-triggers-bindings.md)が構成さ�
       };
   };
   ```
+  
   同期関数を使用している場合、[`context.done`](#contextdone-method) を使用してこのオブジェクトを返すことができます (例を参照)。
 - **_[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
 - **`context.bindings` に値を割り当てます。** context.bindings に直接値を割り当てることができます。
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       context.bindings.httpResponse = {

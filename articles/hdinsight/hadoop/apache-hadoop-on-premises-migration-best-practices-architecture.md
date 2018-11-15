@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 02db6b4691beb4bfefa3815c87cf54f350219d81
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418009"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008183"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
 
@@ -39,15 +39,15 @@ Azure HDInsight クラスターは、特定の種類の計算を利用するた�
 
 |**ツール**|**ブラウザー ベース**|**コマンド ライン**|**REST API**|**SDK**|
 |---|---|---|---|---|
-|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|○||||
-|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|○|○|○|○|
-|[Azure CLI (ver 1.0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||○|||
-|[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||○|||
-|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||○|○||
-|[.NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||○|
-|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||○|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||○|
-|[Azure リソース マネージャーのテンプレート](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||○|||
+|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
+|[Azure CLI (ver 1.0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
+|[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
+|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
+|[.NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
+|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[Azure リソース マネージャーのテンプレート](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 詳細については、[HDInsight のクラスターの種類](../hadoop/apache-hadoop-introduction.md)に関する記事を参照してください。
 

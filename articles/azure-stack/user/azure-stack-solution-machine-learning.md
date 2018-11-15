@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 8a5ca4f94a6f1186b6d1a26b1c7e12357cd9e799
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353718"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616369"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure および Azure Stack を使用してエッジ機械学習ソリューションを作成する
 
@@ -992,7 +992,7 @@ Azure Container Registry をデプロイして使用します。
 1.  Azure リソース プロバイダー **Microsoft.ContainerRegistry** がサブスクリプションに登録されていることを確認してください。す。 手順 3. で環境を作成する前に、このリソース プロバイダーを登録します。 次のコマンドを使用して、これが既に登録されているかどうかを確認します。
 
     ```CLI
-        az provider list --query "\[\].{Provider:namespace, Status:registrationState}" --out table
+        az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
     ```
 
     この出力を表示します。
@@ -1175,7 +1175,7 @@ Windows Subsystem for Linux セッション内から、次のコマンドを使�
 
 ### <a name="create-a-service-principal-in-azure-ad"></a>Azure AD でのサービス プリンシパルの作成
 
-1.  グローバルな [*Azure Portal*](http://www.poartal.azure.com/) にサインインします。
+1.  グローバルな [*Azure Portal*](http://portal.azure.com/) にサインインします。
 
 2.  Azure Stack インスタンスに関連付けられた Azure AD テナントを使用してサインインします。
 
@@ -1271,10 +1271,8 @@ WSL 環境内から次のコマンドを実行して、WSL 環境に kubectl を
 
 ```Bash  
     apt-get update && apt-get install -y apt-transport-https
-    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-    cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-    deb http://apt.kubernetes.io/ kubernetes-xenial main
-    EOF
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add
+    sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
     apt-get update
     apt-get install -y kubectl
 ```

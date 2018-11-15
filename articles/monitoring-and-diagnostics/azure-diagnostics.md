@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: a40917ec24ede1107f7d8ae7f5fb2f0f03d1094c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7da75e052aaf36d0f59a5f23c28e42c0e4661b0a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278329"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615249"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure 診断拡張機能とは何か
 Azure 診断拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、仮想マシン、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](../azure-monitor/overview.md)」を参照してください。
@@ -47,7 +47,7 @@ Azure 診断拡張機能では、次の種類のデータを収集できます�
 ### <a name="azure-monitor"></a>Azure Monitor
 Azure Monitor にデータを送信することもできます。 現時点では、このシンクはパフォーマンス カウンターにのみ適用されます。 これにより、VM、VMSS、またはクラウド サービスで収集されたパフォーマンス カウンターを Azure Monitor にカスタム メトリックとして送信できるようになります。 Azure Monitor シンクは以下をサポートします。
 * [Azure Monitor メトリック API](https://docs.microsoft.com/rest/api/monitor/) を使用して、Azure Monitor に送信されたすべてのパフォーマンス カウンターを取得します。
-* Azure Monitor の新しい[統合アラート エクスペリエンス](monitoring-overview-unified-alerts.md)を介して Azure Monitor に送信されたすべてのパフォーマンス カウンターに関して警告します
+* Azure Monitor の新しい[統合アラート エクスペリエンス](monitoring-overview-alerts.md)を介して Azure Monitor に送信されたすべてのパフォーマンス カウンターに関して警告します
 * パフォーマンス カウンターでワイルドカード演算子をメトリックの "Instance" ディメンションとして扱います。  たとえば、"LogicalDisk(\*)/DiskWrites/sec" カウンターを収集した場合、"Instance" ディメンションでフィルターして分割し、VM 上の各論理ディスクのディスク書き込み回数/秒をプロットまたはアラートすることができます (C:、D: など)。
 
 このシンクを構成する方法については、[Azure 診断スキーマのドキュメント](azure-diagnostics-schema-1dot3-and-later.md)を参照してください。

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a2b6b3334176cb6fdd86c17b4d11cb03a42dd4bf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731804"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615605"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Azure Storage を使用して Batch AI ジョブの入力と出力を格納する
 
@@ -98,7 +98,7 @@ Azure Storage ボリュームを Azure CLI で作成されたクラスターに�
 
 ### <a name="abbreviate-input-paths"></a>入力パスを省略形にする
 
-環境変数として入力パスを省略形にするには、`job.json` ファイルの `inputDirectories` プロパティ (または Batch AI SDK を使用している場合は、`models.JobCreateParamters.input_directories`) を使用します。 `inputDirectories` のスキーマは、次のとおりです。
+環境変数として入力パスを省略形にするには、`job.json` ファイルの `inputDirectories` プロパティ (または Batch AI SDK を使用している場合は、`models.JobCreateParameters.input_directories`) を使用します。 `inputDirectories` のスキーマは、次のとおりです。
 
 ```json
 {
@@ -115,7 +115,7 @@ Azure Storage ボリュームを Azure CLI で作成されたクラスターに�
 
 ### <a name="abbreviate-output-paths"></a>出力パスを省略形にする
 
-環境変数として出力パスを省略形にするには、`job.json` ファイルの `outputDirectories` プロパティ (または Batch AI SDK を使用している場合は、`models.JobCreateParamters.output_directories`) を使用します。 このメソッドを使用すると、出力ファイル用のパスを簡略化できます。 `outputDirectories` のスキーマは、次のとおりです。
+環境変数として出力パスを省略形にするには、`job.json` ファイルの `outputDirectories` プロパティ (または Batch AI SDK を使用している場合は、`models.JobCreateParameters.output_directories`) を使用します。 このメソッドを使用すると、出力ファイル用のパスを簡略化できます。 `outputDirectories` のスキーマは、次のとおりです。
 
 ```json
 {

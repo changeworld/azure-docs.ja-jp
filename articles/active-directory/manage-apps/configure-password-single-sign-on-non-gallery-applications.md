@@ -2,24 +2,20 @@
 title: ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する方法 | Microsoft Docs
 description: Azure AD アプリケーション ギャラリーに表示されていない場合に、セキュリティで保護されたパスワード ベースのシングル サインオン用にカスタムのギャラリー以外のアプリケーションを構成する方法
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 37ac3b5fb680a9966f5b8f3da43a2b3013554557
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d880a142b54d253cc1522b3dcc521c86119e0997
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355441"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578401"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する方法
 
@@ -115,7 +111,6 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 11. さらに、ユーザーの行を選び、**[資格情報の更新]** をクリックしてユーザーに代わってユーザー名とパスワードを入力すると、ユーザーに代わって資格情報を提供することもできます。 そうしないと、起動時に自分で資格情報を入力するように求めるプロンプトがユーザーに表示されます。
 
-12. **オプション:** Twitter や Facebook のような特定のソーシャル メディア アプリケーションの場合、選択した頻度でのパスワードの自動ロールオーバーを有効にするオプションもあります。 この機能を有効にするには、ユーザーまたはグループの代わりに資格情報を入力するときに、**[このユーザーまたはグループのパスワードを Azure AD で自動的に管理する]** を選択します。 次に、**[ロールオーバーの頻度 (週単位)]** を選択します。
 
 ## <a name="assign-a-user-to-an-application-directly"></a>アプリケーションにユーザーを直接割り当てる
 

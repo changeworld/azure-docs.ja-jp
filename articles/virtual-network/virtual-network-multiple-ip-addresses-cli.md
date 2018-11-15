@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: bd8a9e651c3b2369ae29be966ba4c9cbe0ae579b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8f82a7d5d9c9f3b85856154973be4ec3fb961f6c
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972914"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287560"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -111,7 +111,7 @@ az network nic ip-config create \
 
 # Create a third IP configuration, and associate it to the NIC. This configuration has  static private IP address and   # no public IP address.
 
-azure network nic ip-config create \
+az network nic ip-config create \
 --resource-group $RgName \
 --nic-name $NicName \
 --private-ip-address 10.0.0.6 \

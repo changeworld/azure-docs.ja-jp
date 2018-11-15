@@ -1,3 +1,16 @@
+---
+author: nitinme
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: nitinme
+ms.openlocfilehash: fccc036a5e0422508f7ebc3370a4b5faa5176dc2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572357"
+---
 Bing は検索語の強調表示をサポートしています。検索語の強調表示により、結果の表示文字列内で検索語 (または Bing が関連すると見なしたその他の語) がマークされます。 たとえば、Web ページの `name`、`displayUrl`、`snippet` フィールドでは検索語をマークするとします。
 
 Bing は、既定で、表示文字列に強調表示のマーカーを含めません。 マーカーを含めるには、要求に `textDecorations` クエリ パラメーターを含め、それを **true** に設定します。 Bing では、検索語のマークに Unicode 文字 E000 と E001 が使用され、検索語の開始と終了がマークされます。 たとえば、検索語が Sailing Dinghy で、いずれかの語がフィールドに存在する場合、次の例に示すように、その語が検索語の強調表示文字で囲まれます。  

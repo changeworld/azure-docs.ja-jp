@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215448"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012107"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -59,6 +59,8 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 ### <a name="where-do-on-premises-vms-replicate-to"></a>オンプレミスの VM のレプリケート先はどこですか?
 Azure ストレージにデータがレプリケートされます。 フェールオーバーを実行すると、Site Recovery はストレージ アカウントから Azure VM を自動的に作成します。
 
+## <a name="replication"></a>レプリケーション
+
 ### <a name="what-apps-can-i-replicate"></a>どのようなアプリをレプリケートできますか?
 [レプリケーション要件](vmware-physical-azure-support-matrix.md##replicated-machines)に準拠する VMware VM で実行しているすべてのアプリまたはワークロードをレプリケートできます。 また、アプリケーションに対応したレプリケーションもサポートしているため、アプリをインテリジェントな状態にフェールオーバーおよびフェールバックできます。 Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合し、Oracle、SAP、IBM、Red Hat などの主要なベンダーと緊密に連携します。 [詳細情報](site-recovery-workload.md) を参照してください。
 
@@ -74,18 +76,17 @@ Site Recovery は、パブリック エンドポイントまたは ExpressRoute 
 Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage アカウントのパブリック エンドポイントに到達するので、ExpressRoute (パブリック ピアリング) のパブリック インターネットによってのみレプリケートでき、VPN は動作しません。
 
 
-
-## <a name="what-are-the-replicated-vm-requirements"></a>レプリケートされる VM にはどのような要件がありますか?
+### <a name="what-are-the-replicated-vm-requirements"></a>レプリケートされる VM にはどのような要件がありますか?
 
 レプリケーションの場合、VMware VM はサポートされているオペレーティング システムを実行している必要があります。 さらに、VM は Azure VM に対する要件を満たす必要があります。 サポート マトリックスについて詳しくは、[こちら](vmware-physical-azure-support-matrix.md##replicated-machines)をご覧ください。
 
-## <a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
+### <a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
 VMware VM を Azure にレプリケートするときは、レプリケーションは継続的に行われます。
 
-## <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
+### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
 拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication)でこの機能を要求してください。
 
-## <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
+### <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
 これはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
 
 ### <a name="can-i-exclude-disks"></a>ディスクを除外することはできますか?
@@ -141,7 +142,7 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 インストーラーは、構成サーバーの **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** フォルダーにあります。
 
 ## <a name="how-do-i-install-the-mobility-service"></a>モビリティ サービスはどのようにしてインストールしますか?
-[プッシュ インストール](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)を使って、[UI](vmware-azure-install-mobility-service.md#install-mobility-service-manually-by-using-the-gui) からの手動インストールで、または [PowerShell](vmware-azure-install-mobility-service.md#install-mobility-service-manually-at-a-command-prompt) を使って、レプリケートする各 VM にインストールします。 または、[System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) や [Azure Automation と DSC](vmware-azure-mobility-deploy-automation-dsc.md) などのデプロイ ツールを使って、デプロイすることもできます。
+[プッシュ インストール](vmware-azure-install-mobility-service.md)を使うか、UI または PowerShell からの[手動インストール](vmware-physical-mobility-service-install-manual.md)を使って、レプリケートする各 VM にインストールします。 または、[System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) などのデプロイ ツールを使って、デプロイすることもできます。
 
 
 

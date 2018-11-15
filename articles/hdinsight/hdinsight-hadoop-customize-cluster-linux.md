@@ -2,19 +2,19 @@
 title: スクリプト アクションを使って HDInsight をカスタマイズする - Azure
 description: スクリプト アクションを使用して Linux ベースの HDInsight クラスターにカスタム コンポーネントを追加します。 スクリプト アクションは、クラスター ノード上の Bash スクリプトであり、クラスター構成のカスタマイズや、サービスとユーティリティ (Hue、Solr、R など) の追加に使用できます。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.author: jasonh
-ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978031"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279730"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
@@ -67,7 +67,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
         URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」セクションを参照してください。
 
         > [!WARNING]
-        > __汎用__ の Azure ストレージ アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
+        > HDInsight は、Standard パフォーマンス レベルの Azure ストレージ アカウントの BLOB だけをサポートしています。 
 
 * **特定のノード タイプでのみ実行するように** (ヘッド ノードやワーカー ノードなど) に制限できます。
 

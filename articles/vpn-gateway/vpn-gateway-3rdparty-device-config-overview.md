@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: dd9ca3937d688170798c42fce45dbcd7711773d1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 901de2ac3d80b3ee529d89a22afae7e823437b9b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599613"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685210"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
 この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイの設定を使って、同じパラメーターで異なるオンプレミス VPN デバイス構成に接続する方法を紹介します。
@@ -57,7 +57,7 @@ Azure VPN ゲートウェイは、標準の IPsec/IKE プロトコル スイー�
 ```powershell
 # Declare your variables
 
-$Sub1          = "Replace_With_Your_Subcription_Name"
+$Sub1          = "Replace_With_Your_Subscription_Name"
 $RG1           = "TestRG1"
 $Location1     = "East US 2"
 $VNetName1     = "TestVNet1"

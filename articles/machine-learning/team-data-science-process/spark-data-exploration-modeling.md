@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath
-ms.openlocfilehash: f6f0393fa3c7a1c0851c18ebd4e48f2ef426f893
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 12757bca2e0fcff6a79263909fafd59c94b5eef2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248488"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566518"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark を使用したデータ探索とモデリング
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 このチュートリアルでは、HDInsight Spark を使用して、2013 年 NYC タクシー乗車および料金データセットのサンプルでデータ探索を実行し、二項分類および回帰モデリング タスクを実行します。  チュートリアルでは、エンド ツー エンドの[データ サイエンス プロセス](https://aka.ms/datascienceprocess)の手順について説明します。処理には HDInsight Spark クラスターを使用し、Azure BLOB にデータとモデルを保存します。 プロセスでは、Azure Storage BLOB のデータを探索し、視覚化した後、予測モデルを構築するためのデータを準備します。 これらのモデルは、二項分類および回帰モデリング タスクを実行する Spark MLlib キットを使用して構築されます。
 
@@ -1002,7 +1001,7 @@ R-sqr = 0.759661334921
     dirfilename = modelDir + btregressionfilename;
     gbtModel.save(sc, dirfilename)
 
-    # CONVER RESULTS TO DF AND REGISER TEMP TABLE
+    # CONVERT RESULTS TO DF AND REGISTER TEMP TABLE
     test_predictions = sqlContext.createDataFrame(predictionAndLabels)
     test_predictions.registerTempTable("tmp_results");
 

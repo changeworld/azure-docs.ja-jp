@@ -10,11 +10,12 @@ ms.component: bing-autosuggest
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: dwlin
-ms.openlocfilehash: 4b67433ea1c4f91dd57ec8422301243937639774
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: cb8fd3eeb730ca4e75b456a7f0413e97396c82d7
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831448"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286732"
 ---
+# <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API の利用と表示の要件
 [!INCLUDE [cognitive-services-bing-use-and-display-requirements](../../../includes/cognitive-services-bing-use-and-display-requirements.md)]

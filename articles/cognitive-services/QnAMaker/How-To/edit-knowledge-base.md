@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/06/2018
 ms.author: tulasim
-ms.openlocfilehash: f927e5b7ff65b82aef9d4224d22296e0fa48ad59
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: adcefe8fed927aca2533ea811bac56f0b92288de
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451886"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279763"
 ---
 # <a name="edit-a-knowledge-base"></a>ナレッジ ベースの編集
 
@@ -89,6 +89,12 @@ QnA を削除するには、QnA 行の右端にある**削除**アイコンを�
 3. 大きなナレッジ ベースは、**改ページ**で管理することができます。
 
     ![検索、改ページ、グループ化](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+## <a name="delete-knowledge-bases"></a>ナレッジ ベースの削除
+
+ナレッジ ベース (KB) の削除は永続的な操作です。 この操作を元に戻すことはできません。 ナレッジ ベースを削除する前に、QnA Maker ポータルの **[設定]** ページからナレッジ ベースをエクスポートする必要があります。 
+
+[コラボレーター](collaborate-knowledge-base.md)と共有している KB を削除すると、全員が KB にアクセスできなくなります。 
 
 ## <a name="next-steps"></a>次の手順
 

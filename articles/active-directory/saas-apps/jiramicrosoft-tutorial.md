@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 7d25b072ffc41608bca9e0b23116b2eb453dd160
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740350"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル: Azure Active Directory と JIRA SAML SSO by Microsoft の統合
 
@@ -43,7 +43,7 @@ Microsoft Azure Active Directory アカウントと Atlassian JIRA サーバー�
 JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- JIRA Core と Software 6.0 から 7.8 または JIRA Service Desk 3.0 から 3.2 が Windows 64 ビット版にインストールおよび構成されている必要があります
+- JIRA Core と Software 6.0 から 7.12 または JIRA Service Desk 3.0 から 3.5 が Windows 64 ビット版にインストールおよび構成されている必要があります
 - JIRA サーバーの HTTPS が有効になっていること
 - JIRA プラグインがサポートされているバージョンであること (下記のセクションをご覧ください)
 - JIRA サーバーが認証のためにインターネット、特に Azure AD ログイン ページにアクセスでき、Azure AD からトークンを受け取れること

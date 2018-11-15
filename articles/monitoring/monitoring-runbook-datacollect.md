@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7ef7f6548cd3dd838889fd51ff0521428bbbc2aa
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409511"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282681"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Azure Automation の Runbook を使用して Log Analytics でデータを収集する
 エージェントの[データ ソース](../log-analytics/log-analytics-data-sources.md)や [Azure から収集されたデータ](../log-analytics/log-analytics-azure-storage.md)など、Log Analytics ではさまざまなソースから大量のデータを収集できます。  しかし、これらの標準的なソースではアクセスできないデータの収集が必要なシナリオがあります。  このような場合は、[HTTP データ コレクター API](../log-analytics/log-analytics-data-collector-api.md) を使って、REST API クライアントから Log Analytics にデータを書き込むことができます。  このデータ収集を実行する一般的な方法は、Azure Automation で Runbook を使うものです。   
@@ -30,8 +30,8 @@ ms.locfileid: "49409511"
 ## <a name="prerequisites"></a>前提条件
 このシナリオでは、Azure サブスクリプションに次のリソースが構成されている必要があります。  どちらも無料アカウントでかまいません。
 
-- [Log Analytics ワークスペース](../log-analytics/log-analytics-get-started.md)。
-- [Azure Automation アカウント](../automation/automation-offering-get-started.md)。
+- [Log Analytics ワークスペース](../log-analytics/log-analytics-quick-create-workspace.md)。
+- [Azure Automation アカウント](..//automation/automation-quickstart-create-account.md)。
 
 ## <a name="overview-of-scenario"></a>シナリオの概要
 このチュートリアルでは、Automation のジョブに関する情報を収集する Runbook を作成します。  Azure Automation の Runbook は PowerShell を使って実装されるので、最初に Azure Automation エディターでスクリプトを作成してテストします。  必要な情報が収集されることを確認した後、Log Analytics にそのデータを書き込み、カスタム データ型を検証します。  最後に、定期的に Runbook を起動するスケジュールを作成します。
@@ -145,7 +145,7 @@ Azure Automation には、発行する前に [Runbook をテストする](../aut
     ![Post の出力](media/monitoring-runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5.Log Analytics でレコードを確認する
-Runbook のテストが完了し、出力を正常に受信したことを確認した後、[Log Analytics でのログ検索](../log-analytics/log-analytics-log-searches.md)を使って、レコードが作成されたことを確認できます。
+Runbook のテストが完了し、出力を正常に受信したことを確認した後、[Log Analytics でのログ検索](../log-analytics/log-analytics-queries.md)を使って、レコードが作成されたことを確認できます。
 
 ![ログの出力](media/monitoring-runbook-datacollect/log-output.png)
 

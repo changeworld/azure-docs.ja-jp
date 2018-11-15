@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0859e480df0111e26d5b64bf835f94b3852b3414
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0d76aa5091e77d8713290e6da8908e15ad3ef995
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277360"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684569"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Store を使用する
 
@@ -47,7 +47,7 @@ HDInsight クラスターでは、2 つの方法で Data Lake Store を使用で
 | HDInsight Version 3.2 | いいえ  | [はい] | |
 | Storm | | |Data Lake Store を使って、Storm トポロジからデータを書き込むことができます。 また、Data Lake Store を、Storm トポロジから読み取ることができる参照データとして使用することもできます。|
 
-[!WARNING]
+> [!WARNING]
 > HDInsight HBase は、Azure Data Lake Storage Gen 1 ではサポートされていません。
 
 Data Lake Store を追加ストレージ アカウントとして使っても、クラスターから Azure ストレージに対する読み取り/書き込みのパフォーマンスや機能には影響しません。

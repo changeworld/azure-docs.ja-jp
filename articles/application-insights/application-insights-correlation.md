@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: eb14a3bc76fef37cdff4ed49cdbb6a99eac40928
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341125"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280165"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -66,7 +66,7 @@ STOCKS API という名前の外部 API を使用して株の現在の市場価�
 
 ## <a name="correlation-headers"></a>相関付けヘッダー
 
-マイクロソフトは、[相関付け HTTP プロトコル](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md)の RFC 提案に取り組んでいます。 この提案では、2 つのヘッダーを定義しています。
+マイクロソフトは、[相関付け HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)の RFC 提案に取り組んでいます。 この提案では、2 つのヘッダーを定義しています。
 
 - `Request-Id`: 呼び出しのグローバルに一意の ID を記述します。
 - `Correlation-Context`: 分散トレースのプロパティの名前と値のペアのコレクションを記述します。
@@ -77,7 +77,7 @@ Application Insights は、相関付け HTTP プロトコル用の[拡張機能]
 
 ### <a name="w3c-distributed-tracing"></a>W3C 分散トレース
 
-W3C 分散トレース形式 (https://w3c.github.io/distributed-tracing/report-trace-context.html) への切り替えを実施しています。 次のように定義します。
+[W3C 分散トレース形式](https://w3c.github.io/trace-context/)への切り替えを実施しています。 次のように定義します。
 - `traceparent` - 呼び出しのグローバルな一意操作 ID と一意識別子を伝送します。
 - `tracestate` - トレース システム固有のコンテキストを伝送します。
 
@@ -156,7 +156,7 @@ public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
     }
   }
 ```
-[デバイス コンテキスト クラス](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context)を使用 (このテレメトリ項目だけがタグ付けされます)
+[デバイス コンテキスト クラス](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context._device_context)を使用 (このテレメトリ項目だけがタグ付けされます)
 ```Java
 telemetry.getContext().getDevice().setRoleName("My Component Name");
 ```

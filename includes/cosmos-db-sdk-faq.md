@@ -1,3 +1,16 @@
+---
+author: SnehaGunda
+ms.service: cosmos-db
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: sngun
+ms.openlocfilehash: 99dddd86c9348c9791d3012b382298bb020e63c9
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572384"
+---
 **1.SDK の提供終了は顧客にどのような方法で通知されますか。**
 
 サポートされる SDK に速やかに移行できるように、提供終了となる SDK のサポート終了は 12 か月前に通知されます。 さらに、Microsoft Azure 管理ポータル、デベロッパー センター、ブログ投稿、担当サービス管理者への直接連絡など、さまざまな連絡手段で顧客に通知されます。

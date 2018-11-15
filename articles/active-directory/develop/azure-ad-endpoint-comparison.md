@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 215e0abe196620624dcca7f430aec4ee9b9612f2
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955445"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288205"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Azure AD v2.0 エンドポイントと v1.0 エンドポイントの比較
 
@@ -41,7 +41,7 @@ ms.locfileid: "49955445"
 
 * v1.0 と v2.0 の両方のエンドポイントで、*[シングルテナント](single-and-multi-tenant-apps.md)* として構成されているアプリケーション、またはテナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) を指すように構成されている*マルチテナント* アプリケーションに対する Azure AD ディレクトリの*[ゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* によるサインインも受け入れられます。
 
-v2.0 エンドポイントでは、個人アカウントおよび職場と学校のアカウントの両方からのサインインを受け入れるアプリを作成でき、まったくアカウントに依存しないアプリを作成することができます。 たとえば、アプリで [Microsoft Graph](https://graph.microsoft.io) を呼び出す場合、SharePoint サイトや Directory データなど、いくつかの追加の機能とデータを職場のアカウントで使用できます。 しかし、[ユーザーのメールの読み取り](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message)など、多くのアクションでは、同じコードで個人アカウントおよび職場と学校のアカウントの両方のメールにアクセスすることができます。
+v2.0 エンドポイントでは、個人アカウントおよび職場と学校のアカウントの両方からのサインインを受け入れるアプリを作成でき、まったくアカウントに依存しないアプリを作成することができます。 たとえば、アプリで [Microsoft Graph](https://developer.microsoft.com/graph) を呼び出す場合、SharePoint サイトや Directory データなど、いくつかの追加の機能とデータを職場のアカウントで使用できます。 しかし、[ユーザーのメールの読み取り](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/message)など、多くのアクションでは、同じコードで個人アカウントおよび職場と学校のアカウントの両方のメールにアクセスすることができます。
 
 v2.0 エンドポイントの場合、単一のライブラリ (MSAL) を使用して、コンシューマー向け、教育向け、エンタープライズ向けのいずれの環境にもアクセスできます。
 

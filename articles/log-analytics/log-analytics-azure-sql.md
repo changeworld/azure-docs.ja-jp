@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: b20a142007b3422d071de47410f4c9cdd1ff62a7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5eb398cf981edbcfe9b98ee89c3dd4e12b3f758f
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006738"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615495"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
 ![Azure SQL Analytics のシンボル](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics は、大規模かつ複数のサブスクリプションにまたがる Azure SQL データベースやエラスティック プール、マネージド インスタンスのパフォーマンスを､1 つの窓から監視するためのクラウド監視ソリューションです。 これを使用すると、パフォーマンスのトラブルシューティングのために、組み込みのインテリジェンスを使用して Azure SQL Database の重要なパフォーマンス メトリックを収集し、視覚化できます。
+Azure SQL Analytics は、大規模かつ複数のサブスクリプションにまたがる Azure SQL データベースやエラスティック プール、マネージド インスタンスのパフォーマンスを、1 つの窓から監視するためのクラウド監視ソリューションです。 これを使用すると、パフォーマンスのトラブルシューティングのために、組み込みのインテリジェンスを使用して Azure SQL Database の重要なパフォーマンス メトリックを収集し、視覚化できます。
 
 このソリューションを使用して収集できるメトリックを使用して、独自の監視ルールおよびアラートを作成できます。 このソリューションは、アプリケーション スタックの各層の問題を特定するのに役立ちます。 Azure 診断メトリックと Log Analytics ビューを使用して、すべての Azure SQL データベース、エラスティック プール、マネージド インスタンスのデータベースに関するデータを、単一の Log Analytics ワークスペースに表示します。 Log Analytics では、収集、関連付けのほか、構造化データおよび非構造化データの視覚化ができます。
 
@@ -291,4 +291,4 @@ AzureDiagnostics
 
 - Log Analytics の[ログ検索](log-analytics-queries.md)機能を使用して、詳細な Azure SQL データを確認します。
 - Azure SQL データを表示する[独自のダッシュ ボードを作成](log-analytics-dashboards.md)します。
-- Azure SQL の特定のイベントが発生した場合の[アラートを作成](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)します。
+- Azure SQL の特定のイベントが発生した場合の[アラートを作成](../monitoring-and-diagnostics/monitoring-overview-alerts.md)します。

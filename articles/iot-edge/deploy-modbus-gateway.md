@@ -2,18 +2,18 @@
 title: Azure IoT Edge への Modbus のデプロイ | Microsoft Docs
 description: IoT Edge ゲートウェイ デバイスを作成することで、Modbus TCP を使用したデバイスと Azure IoT Hub との間で通信を実現します。
 author: kgremban
-manager: timlt
+manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: e9db20a1458c398913387e40d247400ee933578b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: d8675042874ffaa824ccd1bf3b0017f0219268b8
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912307"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566399"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge デバイス ゲートウェイ経由で Modbus TCP デバイスに接続する
 

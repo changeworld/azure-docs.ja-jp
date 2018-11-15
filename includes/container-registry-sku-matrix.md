@@ -1,3 +1,16 @@
+---
+author: dlepow
+ms.service: container-registry
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: danlep
+ms.openlocfilehash: 286159aee00b018d0cacae3858f92cdf0e79cfbc
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572398"
+---
 | SKU | 説明 |
 |---|---|
 | Basic | Azure Container Registry について学習する開発者向けのコスト最適化エントリ ポイント。 Basic レジストリには Standard および Premium と同じプログラム機能があります (Azure Active Directory 認証の統合、イメージ削除、および Web フック) が、サイズと使用の制約があります。 |

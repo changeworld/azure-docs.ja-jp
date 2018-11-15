@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/30/2018
+ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 87c0ab7ea0bbc5a98bcb6c0d993e3f7f997f3627
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: c9b5e33f7994209bf1530200cf14d812fa1cf67d
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747271"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299148"
 ---
 # <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Azure CLI と Event Grid を使ってカスタム イベントを Azure Queue Storage にルーティングする
 
@@ -22,6 +22,8 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+## <a name="install-preview-feature"></a>プレビュー機能のインストール
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 

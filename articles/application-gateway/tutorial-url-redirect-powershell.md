@@ -7,15 +7,15 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.date: 11/13/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 11cd052ca07e074ce8303891f7a372890fdf7291
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 785f3e5f55520b3851e8989b79c340bce55c2135
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580601"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566910"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>Azure PowerShell を使用して URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する
 
@@ -32,6 +32,8 @@ ms.locfileid: "45580601"
 次の例は、ポート 8080 と 8081 の両方から送信されてきており、同じバックエンド プールに転送されているサイト トラフィックを示します。
 
 ![URL ルーティングの例](./media/tutorial-url-redirect-powershell/scenario.png)
+
+好みに応じて、[Azure CLI](tutorial-url-redirect-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -516,14 +518,6 @@ URL を http://&lt;ip-address&gt;:8081/images/test.htm に変更します。&lt;
 Remove-AzureRmResourceGroup -Name myResourceGroupAG
 ```
 ## <a name="next-steps"></a>次の手順
-
-このチュートリアルで学習した内容は次のとおりです。
-
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * アプリケーション ゲートウェイの作成
-> * リスナーとルーティング規則の追加
-> * バックエンド プールの仮想マシン スケール セットの作成
 
 > [!div class="nextstepaction"]
 > [アプリケーション ゲートウェイでできることについてさらに学習する](application-gateway-introduction.md)

@@ -9,22 +9,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4d1b27c9b1694f987ea7461c16899f3e5ecb84d2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c4347254df59c62085b2bfb195496bf479cf7b35
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140995"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344586"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
+
 リソースをデプロイするときには、デプロイが増分更新と完全更新のどちらであるかを指定する必要があります。  これら 2 つのモードの主な違いは、テンプレートにないリソース グループの既存のリソースを Resource Manager が処理する方法にあります。 既定のモードは増分です。
 
 ## <a name="incremental-and-complete-deployments"></a>増分デプロイと完全デプロイ
+
 リソースをデプロイするときは、以下の手順に従います。
 
-* 完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。 
+* 完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。
 * 増分モードでは、Resource Manager はリソース グループに存在するが、テンプレートに指定されていないリソースを**変更せず、そのまま残します**。
 
 いずれのモードでも、Resource Manager はテンプレートで指定されたすべてのリソースの作成を試みます。 リソースが既にリソース グループに存在しており、その設定が変更されていない場合、操作の結果に変わりはありません。 リソースのプロパティ値を変更した場合、リソースはそれらの新しい値で更新されます。 既存のリソースの場所または種類を更新しようとすると、デプロイがエラーで失敗します。 その代わり、必要な場所または種類で新しいリソースをデプロイできます。
@@ -64,12 +66,12 @@ ms.locfileid: "50140995"
 
 PowerShell を使用してデプロイするときにデプロイ モードを設定するには、`Mode` パラメーターを使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment `
   -Mode Complete `
   -Name ExampleDeployment `
   -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\storage.json 
+  -TemplateFile c:\MyTemplates\storage.json
 ```
 
 Azure CLI を使用してデプロイするときにデプロイ モードを設定するには、`mode` パラメーターを使用します。
@@ -100,7 +102,7 @@ az group deployment create \
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 * リソース マネージャーのテンプレートの作成の詳細については、 [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * リソースをデプロイする方法を確認するには、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 * リソース プロバイダーの操作を表示するには、「[Azure REST API](/rest/api/)」を参照してください。
-

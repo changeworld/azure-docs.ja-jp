@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: d8da717b83b43395309c695a4f9edaeda8144a8b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: a17e2fa4bef6890d59f7e66c6ede349f8dee3b8a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379197"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280455"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -29,7 +29,7 @@ AKS では、Kubernetes の 4 つのマイナー バージョンがサポート�
 
 たとえば、AKS が *1.11.x* を本日導入した場合、*1.10.a* + *1.10.b*、*1.9.c*  + *1.9d*、*1.8.e* + *1.8f* のサポートも提供されます (修正プログラムの文字部分は 2 つの安定した最新ビルド)。
 
-新しいマイナー バージョンが導入されると、サポートされている最も古いマイナー バージョンと修正プログラムのリリースは、提供終了となります。 新しいマイナー バージョンのリリースおよび次期バージョンの提供終了の 15 日前に、Azure の更新プログラム チャネルを通じて告知が行われます。 上記の例では*1.11.x* がリリースされた場合に廃止されるバージョンは、*1.7.g* + *1.7.h* となります。
+新しいマイナー バージョンが導入されると、サポートされている最も古いマイナー バージョンと修正プログラムのリリースは、提供終了となります。 新しいマイナー バージョンのリリースおよび次期バージョンの提供終了の 15 日前に、[Azure の更新プログラム チャネル][azure-update-channel]を通じて告知が行われます。 上記の例では*1.11.x* がリリースされた場合に廃止されるバージョンは、*1.7.g* + *1.7.h* となります。
 
 ポータルまたは Azure CLI を使用して AKS クラスターをデプロイする場合、クラスターは常に n-1 マイナー バージョンおよび最新修正プログラムに設定されます。 たとえば、AKS が *1.11.x*、*1.10.a* + *1.10.b*、*1.9.c* + *1.9 d*、*1.8.e* + *1.8f* をサポートする場合、新しいクラスターの既定のバージョンは *1.10.b* となります。
 
@@ -85,6 +85,7 @@ AKS でサポートされていないのマイナー バージョンについて
 
 <!-- LINKS - External -->
 [acs-engine]: https://github.com/Azure/acs-engine
+[azure-update-channel]: https://azure.microsoft.com/updates/?product=kubernetes-service
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md

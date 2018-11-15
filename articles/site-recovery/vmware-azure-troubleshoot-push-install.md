@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 10/29/2018
-ms.openlocfilehash: c12683fee7022b84e097c2b71628776271611429
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2051f37656b6717c879a24f6e06c31a0ade0b950
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210994"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012328"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
 
@@ -73,7 +73,7 @@ ms.locfileid: "50210994"
   * ナビゲーション ウィンドウで、[ローカル コンピューター ポリシー]、[ユーザーの構成]、[管理用テンプレート]、[Windows コンポーネント]、および [ネットワーク共有] の各フォルダーを順に開きます。
   * 詳細ウィンドウで、**[ユーザーがプロファイル内のファイルを共有できないようにします]** をダブルクリックします。 グループ ポリシー設定を無効にして、ユーザーがファイルを共有できるようにするには、[無効] をクリックします。 [OK] をクリックして変更を保存します。 詳細については、 [ここ](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))をクリックしてください。
 
-**より新しいバージョン**の場合は、[ここ](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)に記載されている手順に従ってファイルとプリンターの共有を有効にします。
+**より新しいバージョン**の場合は、[ここ](vmware-azure-install-mobility-service.md)に記載されている手順に従ってファイルとプリンターの共有を有効にします。
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Windows Management Instrumentation (WMI) の構成チェック
 

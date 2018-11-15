@@ -9,10 +9,10 @@ ms.date: 10/15/2018
 ms.author: alkohli
 ms.component: common
 ms.openlocfilehash: 3a42f09967ec42b47947823025f2f0dcd081d1b1
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
+ms.lasthandoff: 11/09/2018
 ms.locfileid: "49352239"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
@@ -49,7 +49,7 @@ Azure Import/Export サービスでは、以下の種類のストレージ ア�
 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-quickstart-create-account.md)」を参照してください。
 
 > [!IMPORTANT] 
-> Azure Import Export サービスでは、[仮想ネットワークのサービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)機能が有効になっているストレージ アカウントはサポートされません。 
+> Azure Import/Export サービスでは、[仮想ネットワークのサービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md) 機能が有効になっているストレージ アカウントはサポートされません。 
 
 ## <a name="supported-storage-types"></a>サポートされるストレージの種類
 

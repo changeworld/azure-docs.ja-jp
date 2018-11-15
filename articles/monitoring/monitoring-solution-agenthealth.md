@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: c76b922d311a0e0bc5af2b4c8a95c2ef2ec09ba1
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 7b05876214c08c9298cca30e01958e43e2ef81d6
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914160"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615339"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Azure での Agent Health ソリューション
 Azure の Agent Health ソリューションを使用すると、Log Analytics ワークスペースに対して、または Log Analytics に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、運用データを送信しているエージェントと応答していないエージェントを効率的に把握できます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
@@ -118,4 +118,4 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 
 ## <a name="next-steps"></a>次の手順
 
-* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) に関するページを参照してください。
+* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md) に関するページを参照してください。 

@@ -10,12 +10,12 @@ ms.component: bing-autosuggest
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 6124b831c11f0d72c8072c903d4d05f665448208
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: a3eafe1c2ad6bb7a141b6c40c85f804d0f9b7395
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831417"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345625"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル: シングルページ Web アプリ
 
@@ -40,7 +40,7 @@ ms.locfileid: "48831417"
     h2 {font-size: 16px;}
     h1, h2 {clear: left;}
 
-    img#logo {float: right;
+    img#logo {float: right;}
 </style>
 
 <script type="text/javascript">

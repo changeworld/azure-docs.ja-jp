@@ -5,15 +5,15 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 11/11/2018
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 9ecb07a2cb278f6cde4ffdc3b252cb9e816d08da
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 513d9a3a044daacd84b810e4795522c2bd6763f8
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38733306"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616573"
 ---
 ## <a name="create-a-media-services-account"></a>Media Services アカウントを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "38733306"
 
 リソース グループを作成するには、次のコマンドを使用します。 Azure リソース グループは、Azure Media Services のアカウントや関連するストレージ アカウントなど、各種リソースのデプロイと管理の対象となる論理上のコンテナーです。
 
-```azurecli-interactive
+```azurecli
 az group create --name amsResourceGroup --location westus2
 ```
 
@@ -37,7 +37,7 @@ Media Services で使用されるストレージ アカウントの使用方法�
 
 Media Services アカウントに関連付けるストレージ アカウントは、以下のコマンドで作成します。 以下のスクリプトの `storageaccountforams` は、実際の値に置き換えてください。 アカウント名は 24 文字未満にする必要があります。
 
-```azurecli-interactive
+```azurecli
 az storage account create --name storageaccountforams \  
 --kind StorageV2 \
 --sku Standard_RAGRS \
@@ -48,6 +48,6 @@ az storage account create --name storageaccountforams \
 
 新しい Media Services アカウントは、以下の Azure CLI コマンドで作成します。 `amsaccount` と `storageaccountforams` には、実際のストレージ アカウントに割り当てた値を、`amsResourceGroup` には、リソース グループに割り当てた値を指定してください。
 
-```azurecli-interactive
+```azurecli
 az ams account create --name amsaccount --resource-group amsResourceGroup --storage-account storageaccountforams
 ```

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: qianw211
-ms.openlocfilehash: 3679981a335c380b54d7349d16f94bb7e5e1fee3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1ab00e51aa8677f71990cf3da8bf01c9ab62ce4c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258869"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683139"
 ---
 # <a name="azure-appsource-and-marketplace-review-policies"></a>Azure AppSource および Marketplace のレビュー ポリシー
 
@@ -52,12 +52,3 @@ Azure AppSource と Marketplace についての評価およびレビューのポ
 * レビューで表現されている視点がバランスの取れた中立的な視点となるようにしてください。
 * 公開フォーラムに投稿しているのだということを忘れず、それに応じて行動してください。
 
-## <a name="review-guidelines-for-publishers"></a>パブリッシャーのためのレビューに関するガイドライン
-
-* [AppSource および Azure Marketplace のレビュー ポリシー](./rating-review-policies.md)に違反する可能性があるコンテンツを投稿しないでください。
-* マーケティング コンテンツまたは宣伝をコメントの中に含めないでください。
-* 他のアプリやサービスをコメント内で宣伝しないでください。
-* 回答は、特定のアプリとレビューに直接関連している必要があります。
-* 定型文の回答を使用しないでください。また、複数のレビューで定型文のコメントを投稿しないでください。
-* 報酬やインセンティブをレビューアに提示して評価やレビューを変えるといったレビューの操作を一切しないでください。
-* 常に丁寧に振る舞い、満足した顧客がアプリの最高の推進者となることを考慮してください。

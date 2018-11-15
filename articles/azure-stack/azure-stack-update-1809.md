@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/01/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 38a8cd35d123f58d6379ade4d900e86b36b416ec
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: cca9307fd849f6b8537cf7484d2e56e1a710295b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240139"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257192"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新プログラム
 
@@ -39,7 +39,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
 この更新プログラムには、Azure Stack に対する次の機能強化が含まれています。
 
-- このリリースでは、Azure Stack 統合システムは 4 ～ 16 ノードの構成をサポートします。 [Azure Stack Capacity Planner](http://aka.ms/azstackcapacityplanner) を使用すると、Azure Stack の容量と構成の計画に役立ちます。
+- このリリースでは、Azure Stack 統合システムは 4 ～ 16 ノードの構成をサポートします。 [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) を使用すると、Azure Stack の容量と構成の計画に役立ちます。
 
 - <!--  2712869   | IS  ASDK -->  **Azure Stack syslog クライアント (一般提供)** このクライアントを使用すると、Azure Stack インフラストラクチャに関連する監査ログ、アラート、およびセキュリティログを、Azure Stack の外部にある Syslog サーバーまたはセキュリティ情報イベント管理 (SIEM) ソフトウェアに転送できます。 Syslog のクライアントは、syslog サーバーがリッスンするポートを指定できるようになりました。
 
@@ -62,7 +62,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
    <!--  2966665 – IS, ASDK --> 
    - SSD データ ディスクを Premium サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチすると、次のエラーで失敗していた問題が修正されました。"*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ 'Standard_DS/Ds_V2/FS/Fs_v2' ではサポートされないため、要求された操作は実行できません。*" 
    
-   - **createOption**:**Attach** を使用して、マネージド ディスク VM を作成すると、次のエラーで失敗します。*"Long running operation failed with status 'Failed'. (長時間実行処理は状態 '失敗' で失敗しました。)Additional Info:'An internal execution error occurred.' (追加情報:'内部実行エラーが発生しました。')*
+   - **createOption**:**Attach** を使用して、マネージド ディスク VM を作成すると、次のエラーで失敗します。*"Long running operation failed with status 'Failed' (長時間実行処理は状態 '失敗' で失敗しました)Additional Info:'An internal execution error occurred.' (追加情報:'内部実行エラーが発生しました。')*
    エラーコード: InternalExecutionError ErrorMessage: 内部実行エラーが発生しました。
    
    この問題は修正されました。
@@ -154,7 +154,8 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
 ### <a name="post-update-steps"></a>更新後の手順
 
-*更新プログラム 1809 には更新後の手順はありません。*
+> [!Important]  
+> Azure Stack デプロイを、次の更新プログラム パッケージによって有効化さる拡張機能ホストに合わせて準備してください。 次のガイダンスを使用して、システムを準備します: 「[Azure Stack の拡張機能ホストを準備する](azure-stack-extension-host-prepare.md)」。
 
 <!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
  - [Link to KB]()  

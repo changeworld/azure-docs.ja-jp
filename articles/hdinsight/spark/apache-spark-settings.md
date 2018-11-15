@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/26/2018
-ms.openlocfilehash: 926ce58872b06b41a0c7942b7090dcb4d5c8df03
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.openlocfilehash: b31be534641f2777bcbfaaa33497d96b457db191
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956491"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684088"
 ---
 # <a name="configure-spark-settings"></a>Spark の設定を構成する
 
@@ -30,11 +30,8 @@ HDInsight クラスター内のノードの VM の数と VM のサイズも、Sp
 
 クラスターに最適な Spark バージョンを使用します。  HDInsight サービスには、複数のバージョンの Spark および HDInsight 自体の両方が含まれます。  Spark の各バージョンには、既定のクラスター設定のセットが含まれます。  
 
-現在、新しいクラスターを作成するときは、次の Spark のバージョンを選ぶことができます。
+新しいクラスターを作成するときに、Spark のバージョンを複数のバージョンの中から選ぶことができます。 完全な一覧については、[HDInsight のコンポーネントとバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)に関するページを参照してください。
 
-![Spark のバージョン](./media/apache-spark-settings/spark-version.png)
-
-Spark 2.x の方が Spark 1.x よりはるかに優れています。 Spark 2.x には、Tungsten、Catalyst Query Optimization、その他多くのパフォーマンス最適化が含まれます。  
 
 > [!NOTE]
 > HDInsight サービスに含まれる Apache Spark の既定のバージョンは、予告なく変更される場合があります。 バージョンの依存関係がある場合は、.NET SDK、Azure PowerShell、Azure クラシック CLI を使ってクラスターを作成するときに、特定のバージョンを指定することをお勧めします。

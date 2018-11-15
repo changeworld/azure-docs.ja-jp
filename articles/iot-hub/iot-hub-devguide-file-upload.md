@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2017
+ms.date: 11/07/2018
 ms.author: dobett
-ms.openlocfilehash: 8fee8dd727623e81140656a070e6855547693154
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 1d9e5b46460f04ad491ac741a62ee6d644985e61
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451156"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283429"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
@@ -33,14 +33,15 @@ IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT
 
 ## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Azure Storage アカウントと IoT Hub の関連付け
 
-ファイルのアップロード機能を使用するには、最初に Azure ストレージ アカウントを IoT Hub にリンクする必要があります。 このタスクは、[Azure portal](https://portal.azure.com) から、または [IoT Hub のリソースプロバイダー REST API](/rest/api/iothub/iothubresource) からプログラムで完了することができます。 Azure Storage アカウントと IoT Hub を関連付けると、デバイスがファイルのアップロード要求を開始したときに、サービスがデバイスに SAS URI を返します。
+ファイルのアップロード機能を使用するには、最初に Azure ストレージ アカウントを IoT Hub にリンクする必要があります。 このタスクは、Azure portal から、または [IoT Hub のリソース プロバイダー REST API](/rest/api/iothub/iothubresource) からプログラムで完了することができます。 Azure ストレージ アカウントと IoT ハブを関連付けると、デバイスがファイルのアップロード要求を開始したときに、サービスがデバイスに SAS URI を返します。
+
+[IoT Hub でデバイスからクラウドにファイルをアップロードする方法](iot-hub-csharp-csharp-file-upload.md)に関する操作ガイドに、ファイルのアップロード プロセスの完全な手順が示されています。 これらの操作ガイドには、Azure portal を使用してストレージ アカウントを IoT ハブに関連付ける方法が説明されています。
 
 > [!NOTE]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) では、SAS URI の取得、ファイルのアップロード、および IoT Hub へのアップロード完了の通知を自動的に処理します。
 
-
 ## <a name="initialize-a-file-upload"></a>ファイルのアップロードの初期化
-IoT Hub には、ファイルをアップロードするためのストレージの SAS URI を要求する、特にデバイス向けのエンドポイントがあります。 ファイル アップロード プロセスを開始するために、デバイスは以下の JSON 本文を含む POST 要求を `{iot hub}.azure-devices.net/devices/{deviceId}/files` に送信します。
+IoT Hub には、ファイルをアップロードするためのストレージの SAS URI を要求する、特にデバイス向けのエンドポイントがあります。 ファイルのアップロード プロセスを開始するために、デバイスは以下の JSON 本文を含む POST 要求を `{iot hub}.azure-devices.net/devices/{deviceId}/files` に送信します。
 
 ```json
 {
@@ -65,7 +66,7 @@ IoT Hub は次のデータを返します。デバイスはこのデータを使
 > [!NOTE]
 > このセクションでは、IoT Hub から SAS URI を 受信するための非推奨の機能について説明しています。 前述の POST メソッドを使用します。
 
-IoT Hub には、ファイルのアップロードをサポートする 2 つの REST エンドポイントがあります。1 つは、ストレージの SAS URI を取得します。もう 1 つは、アップロードの完了を IoT Hub に通知します。 デバイスは、`{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` で IoT Hub に GET を送信することで、ファイルのアップロード処理を開始します。 IoT Hub は以下を返します。
+IoT Hub には、ファイルのアップロードをサポートする 2 つの REST エンドポイントがあります。1 つは、ストレージの SAS URI を取得します。もう 1 つは、アップロードの完了を IoT Hub に通知します。 デバイスは、`{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}` の IoT ハブに GET を送信して、ファイルのアップロード プロセスを開始します。 IoT Hub は以下を返します。
 
 * アップロードするファイルに固有の SAS URI
 
@@ -92,7 +93,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 ## <a name="file-upload-notifications"></a>ファイルのアップロード通知
 
-必要に応じて、アップロードが完了したことをデバイスが IoT Hub に通知するときに、IoT Hub でファイルの名前と保存場所を含む通知メッセージを生成できます。
+必要に応じて、デバイスがアップロードの完了を IoT Hub に通知すると、IoT Hub によって通知メッセージが生成されます。 このメッセージには、ファイルの名前とストレージの場所が含まれています。
 
 「[エンドポイント](iot-hub-devguide-endpoints.md)」で説明したように、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/fileuploadnotifications**) 経由でメッセージとしてファイルのアップロード通知を配信します。 ファイルのアップロード通知の受信セマンティクスは Cloud-to-device メッセージの場合と同様であり、[メッセージのライフサイクル](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle)も同じです。 ファイルのアップロード通知エンドポイントから取得した各メッセージは、次のプロパティを持つ JSON レコードです。
 
@@ -120,7 +121,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 ## <a name="file-upload-notification-configuration-options"></a>ファイルのアップロード通知の構成オプション
 
-各 IoT Hub では、ファイルのアップロード通知用に次の構成オプションを公開しています。
+各 IoT ハブには、ファイルのアップロード通知用に次の構成オプションが用意されています。
 
 | プロパティ | 説明 | 範囲と既定値 |
 | --- | --- | --- |
@@ -133,7 +134,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 
-* [IoT Hub エンドポイント](iot-hub-devguide-endpoints.md): 各 IoT Hub でランタイムと管理の操作のために公開される、さまざまなエンドポイントについて説明します。
+* [IoT Hub エンドポイント](iot-hub-devguide-endpoints.md): 実行時および管理操作用のさまざまな IoT Hub エンドポイントについて説明します。
 
 * [スロットルとクォータ](iot-hub-devguide-quotas-throttling.md): IoT Hub サービスに適用されるクォータとスロットルの動作について説明します。
 

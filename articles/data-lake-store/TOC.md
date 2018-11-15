@@ -79,7 +79,7 @@
 ### [SQL Server Integration Services と共に使用する](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)
 ### [その他の Azure 統合オプション](data-lake-store-integrate-with-other-services.md)
 
-## [管理]
+## 管理
 ### [診断ログにアクセスする](data-lake-store-diagnostic-logs.md)
 ### [高可用性向けの計画](data-lake-store-disaster-recovery-guidance.md)
 
@@ -95,12 +95,11 @@
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Data Lake Store のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [料金](https://azure.microsoft.com/pricing/details/data-lake-store/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Stack Overflow フォーラム](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)

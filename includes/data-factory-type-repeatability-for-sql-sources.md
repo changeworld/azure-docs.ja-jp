@@ -1,3 +1,16 @@
+---
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jingwang
+ms.openlocfilehash: 24bb7a1fcb1569922fb34034fb3c0d003cdd7061
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572361"
+---
 ## <a name="repeatability-during-copy"></a>コピー中の再現性
 他のデータ ストアから Azure SQL/SQL Server にデータをコピーする場合、意図しない結果を回避するために、再現性の維持を考慮する必要があります。 
 

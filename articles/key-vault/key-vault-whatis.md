@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: d1a6da5d599296a11678ee58cadc42d61296e8e7
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d7de20e1de91e37b2437091e6d7503e2cb2a4590
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230303"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246533"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -81,12 +81,5 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 
 ## <a name="next-steps"></a>次の手順
 
-管理者用の概要チュートリアルについては、「[Azure Key Vault の概要](key-vault-get-started.md)」をご覧ください。
-
-Key Vault の使用状況に関するログ記録について詳しくは、「[Azure Key Vault のログ記録](key-vault-logging.md)」をご覧ください。
-
-Azure Key Vault でキーとシークレットを使用する方法について詳しくは、「[キー、シークレット、証明書について](https://msdn.microsoft.com/library/azure/dn903623\(v=azure.1\).aspx)」をご覧ください。
-
-<!--Image references-->
-[1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
-Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
+[コンテナーをセキュリティで保護する](key-vault-secure-your-key-vault.md)方法について学ぶ
+<!--Image references--> [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png Azure Key Vault はほとんどのリージョンで利用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。

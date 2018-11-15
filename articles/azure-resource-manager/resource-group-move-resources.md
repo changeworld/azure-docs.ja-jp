@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: e2d1ccbc6532da3600c952236c3904c9e55294c8
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c65f5364ccd4943d1d3e703ed27099408d3a2a27
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279420"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346594"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -28,11 +28,10 @@ ms.locfileid: "51279420"
 リソースの場所を変更することはできません。 リソースを移動しても、新しいリソース グループに移動されるだけです。 新しいリソース グループは別の場所に存在する場合もありますが、リソース自体の場所は変更されません。
 
 > [!NOTE]
-> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント プランを変更する場合 (無料から従量課金制へのアップグレードなど)、お使いのサブスクリプションを変換する必要があります。 
+> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント プランを変更する場合 (無料から従量課金制へのアップグレードなど)、お使いのサブスクリプションを変換する必要があります。
 > * 無料試用版をアップグレードするには、「[無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする](..//billing/billing-upgrade-azure-subscription.md)」をご覧ください。
 > * 従量課金制のアカウントを変更するには、「[Azure の従量課金制サブスクリプションを別のオファーに変更する](../billing/billing-how-to-switch-azure-offer.md)」をご覧ください。
 > * サブスクリプションを変換できない場合は、[Azure サポート要求を作成](../azure-supportability/how-to-create-azure-support-request.md)してください。 問題の種類として **[サブスクリプション管理]** を選択します。
->
 
 ## <a name="checklist-before-moving-resources"></a>リソースの移動前のチェック リスト
 
@@ -42,7 +41,7 @@ ms.locfileid: "51279420"
 
   Azure PowerShell では、次を使用します。
 
-  ```powershell
+  ```azurepowershell-interactive
   (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
   (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
@@ -63,14 +62,14 @@ ms.locfileid: "51279420"
 
   PowerShell で登録状態を取得するには、次のコマンドを使用します。
 
-  ```powershell
+  ```azurepowershell-interactive
   Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
   Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   リソース プロバイダーを登録するには、次のコマンドを使用します。
 
-  ```powershell
+  ```azurepowershell-interactive
   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
@@ -325,7 +324,6 @@ Authorization: Bearer <access-token>
 * Standard SKU Load Balancer、または、Standard SKU パブリック IP を使用した Virtual Machine Scale Sets を移動することはできません
 * プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 
-
 ## <a name="virtual-networks-limitations"></a>Virtual Networks の制限事項
 
 仮想ネットワークを移動するときは、その依存リソースも移動する必要があります。 VPN ゲートウェイでは、IP アドレス、仮想ネットワーク ゲートウェイ、および関連付けられているすべての接続リソースを移動する必要があります。 各ローカル ネットワーク ゲートウェイは、異なるリソース グループ内に配置することができます。
@@ -346,9 +344,9 @@ Web アプリを "_同じサブスクリプション内_" で移動する場合�
 
 SSL 証明書を Web アプリと共に移動したい場合は、次の手順に従います。
 
-1.  アップロードした証明書を Web アプリから削除します。
-2.  Web アプリを移動します。
-3.  移動した Web アプリに証明書をアップロードします。
+1. アップロードした証明書を Web アプリから削除します。
+2. Web アプリを移動します。
+3. 移動した Web アプリに証明書をアップロードします。
 
 ### <a name="moving-across-subscriptions"></a>サブスクリプション間で移動する場合
 
@@ -503,7 +501,7 @@ Standard SKU のパブリック IP は移動できません。
 
 既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、 [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) コマンドを使用します。 次の例では、複数のリソースを新しいリソース グループに移動する方法を示します。
 
-```powershell
+```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
 $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId

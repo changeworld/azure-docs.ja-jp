@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 578d078550daaae54c63bf91da1fa5590bb8fdf6
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: e32e972be4e355f01a760b45905404b70a1450bd
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249147"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300865"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
 
@@ -130,7 +130,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
 ```
 
@@ -208,7 +208,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
 ```
 
@@ -286,7 +286,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
 ```
 
@@ -345,7 +345,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
@@ -398,7 +398,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
 ```
 
@@ -492,7 +492,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
@@ -560,7 +560,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
 ```
 
@@ -628,7 +628,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
 ```
 
@@ -706,7 +706,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
@@ -785,7 +785,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
 ```
 
@@ -850,7 +850,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
@@ -933,7 +933,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
 ```
 
@@ -1007,7 +1007,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
 ```
 
@@ -1072,7 +1072,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
@@ -1146,7 +1146,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
 ```
 
@@ -1218,7 +1218,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
 ```
 
@@ -1281,7 +1281,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
 ```
 
@@ -1347,7 +1347,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
 ```
 
@@ -1428,7 +1428,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
@@ -1500,7 +1500,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
 ```
 
@@ -1579,7 +1579,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
 ```
 
@@ -1663,7 +1663,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
 ```
 
@@ -1737,7 +1737,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
 ```
 
@@ -1818,7 +1818,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
@@ -1882,7 +1882,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
 ```
 
@@ -1946,7 +1946,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
 ```
 
@@ -2005,7 +2005,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
 ```
 
@@ -2094,7 +2094,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
 ```
 
@@ -2171,7 +2171,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 
@@ -2239,7 +2239,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 
@@ -2307,7 +2307,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 

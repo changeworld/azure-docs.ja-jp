@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.openlocfilehash: 5f47ce84203d88604183d13f6e9282e2bb846451
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/06/2018
+ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006007"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283072"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Kafka に接続する
 
@@ -35,7 +35,7 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
     2. サイト間構成を使用する VPN ゲートウェイを作成します。 このドキュメントで使用する構成では、オンプレミス ネットワーク内の VPN ゲートウェイ デバイスへ接続します。
     3. 仮想ネットワーク内に DNS サーバーを作成します。
     4. 各ネットワークの DNS サーバー間の転送を構成します。
-    5. 仮想ネットワークに HDInsight 上の Kafka をインストールします。
+    5. 仮想ネットワーク内の HDInsight クラスターに Kafka を作成します。
 
     詳細については、「[オンプレミス ネットワークから Kafka に接続する](#on-premises)」セクションを参照してください。 
 
@@ -43,8 +43,8 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
 
     1. 仮想ネットワークを作成します。
     2. ポイント対サイト構成を使用する VPN ゲートウェイを作成します。 この構成は、Windows と MacOS の両方のクライアントで使用することができます。
-    3. 仮想ネットワークに HDInsight 上の Kafka をインストールします。
-    4. IP を提供するように Kafka を構成します。 この構成を行うことで、クライアントでドメイン名の代わりに IP アドレスを使用して接続を行えるようになります。
+    3. 仮想ネットワーク内の HDInsight クラスターに Kafka を作成します。
+    4. IP を提供するように Kafka を構成します。 この構成を行うことで、クライアントでドメイン名の代わりに ブローカー IP アドレスを使用して接続を行えるようになります。
     5. 開発システムに VPN クライアントをダウンロードして使用します。
 
     詳細については、「[VPN クライアントを使用して Kafka に接続する](#vpnclient)」セクションを参照してください。

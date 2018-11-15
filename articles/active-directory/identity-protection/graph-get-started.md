@@ -17,15 +17,15 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 3cbded3224e7622d13e7af362cb3532a1813787e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a415258b8127bb78d8a8d1b5ef228234b34b3e26
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242162"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287513"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
-Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API のホームです。 最初の API である **identityRiskEvents** を使用して、Microsoft Graph に対して一連の[リスク イベント](../reports-monitoring/concept-risk-events.md)とその関連情報のクエリを実行できます。 この記事では、この API クエリの基礎について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)を参照してください。
+Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API のホームです。 最初の API である **identityRiskEvents** を使用して、Microsoft Graph に対して一連の[リスク イベント](../reports-monitoring/concept-risk-events.md)とその関連情報のクエリを実行できます。 この記事では、この API クエリの基礎について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://developer.microsoft.com/graph/)を参照してください。
 
 
 Microsoft Graph を介して Identity Protection のデータにアクセスするには、次の 4 つのステップがあります。
@@ -219,7 +219,7 @@ API を呼び出すためには、次のパラメーターを持つヘッダー�
 以上、Microsoft Graph の API を呼び出す基本的な方法を紹介しました。  
 これを応用すれば、思いどおりに ID リスク イベントを照会し、そのデータを活用することができます。
 
-Microsoft Graph に関する詳細情報のほか、Graph API を使ったアプリケーションの構築方法については、こちらの[ドキュメント](https://graph.microsoft.io/docs)と [Microsoft Graph](https://graph.microsoft.io/) のサイトをご覧ください。 また、[Azure AD Identity Protection API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) のページでは、Graph で利用できる Identity Protection の全 API の一覧を掲載しています。ぜひお気に入りに登録してご利用ください。 API を介した Identity Protection の操作方法が新たに追加された場合、このページに反映していく予定です。
+Microsoft Graph に関する詳細情報のほか、Graph API を使ったアプリケーションの構築方法については、こちらの[ドキュメント](https://developer.microsoft.com/graph/docs)と [Microsoft Graph](https://developer.microsoft.com/graph/) のサイトをご覧ください。 また、[Azure AD Identity Protection API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root) のページでは、Graph で利用できる Identity Protection の全 API の一覧を掲載しています。ぜひお気に入りに登録してご利用ください。 API を介した Identity Protection の操作方法が新たに追加された場合、このページに反映していく予定です。
 
 関連情報については、以下をご覧ください。
 
@@ -227,9 +227,9 @@ Microsoft Graph に関する詳細情報のほか、Graph API を使ったアプ
 
 -  [Azure Active Directory Identity Protection で検出されるリスク イベントの種類](../reports-monitoring/concept-risk-events.md)
 
-- [Microsoft Graph](https://graph.microsoft.io/)
+- [Microsoft Graph](https://developer.microsoft.com/graph/)
 
-- [Microsoft Graph の概要](https://graph.microsoft.io/docs)
+- [Microsoft Graph の概要](https://developer.microsoft.com/graph/docs)
 
-- [Azure AD Identity Protection Service Root](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root)
+- [Azure AD Identity Protection Service Root](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)
 

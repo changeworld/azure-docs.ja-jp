@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 6d31e6a4d424b8e3c634c9d5075b1f02c512187b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8c3c7e94db1f09164d6248cf0b9b093db0cf1d69
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651207"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578673"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -38,7 +38,7 @@ ms.locfileid: "49651207"
 
 ### <a name="enable-a-managed-identity"></a>マネージド ID の有効化
 
- Azure Container Instances では、REST API バージョン 2018-10-01 以降および対応する SDK とツールで、Azure リソース用のマネージド ID がサポートされます。 コンテナー グループを作成するときに、[ContainerGroupIdentity](/rest/api/container-instances/containergroups/containergroups_createorupdate#containergroupidentity) プロパティを設定することで 1 つまたは複数のマネージド ID を有効にできます。 また、コンテナー グループが実行状態になった後でマネージド ID を有効化または更新できます。どちらの場合も、それによりコンテナー グループが再起動します。 新規または既存のコンテナー グループで ID を設定するには、Azure CLI、Resource Manager テンプレート、または YAML ファイルを使用します。 
+ Azure Container Instances では、REST API バージョン 2018-10-01 以降および対応する SDK とツールで、Azure リソース用のマネージド ID がサポートされます。 コンテナー グループを作成するときに、[ContainerGroupIdentity](/rest/api/container-instances/containergroups/createorupdate#containergroupidentity) プロパティを設定することで 1 つまたは複数のマネージド ID を有効にできます。 また、コンテナー グループが実行状態になった後でマネージド ID を有効化または更新できます。どちらの場合も、それによりコンテナー グループが再起動します。 新規または既存のコンテナー グループで ID を設定するには、Azure CLI、Resource Manager テンプレート、または YAML ファイルを使用します。 
 
 Azure Container Instances は、ユーザー割り当て、システム割り当ての両方の種類の Azure マネージド ID をサポートしています。 各コンテナー グループで、1 つのシステム割り当て ID、1 つまたは複数のユーザー割り当て ID、または両方の種類の ID を有効化できます。 
 

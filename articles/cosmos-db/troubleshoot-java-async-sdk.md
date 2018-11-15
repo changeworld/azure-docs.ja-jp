@@ -4,17 +4,17 @@ description: クライアント側ログ、他のサード パーティのツー
 services: cosmos-db
 author: moderakh
 ms.service: cosmos-db
-ms.topic: troubleshoot
+ms.topic: troubleshooting
 ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: ef1d2d0751bf1b1a7ee88fbf37e44e6316dee8f8
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 74813634aad95f163b06717521bb2c746ac3df6b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249873"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238831"
 ---
 # <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Azure Cosmos DB SQL API アカウントで Java Async SDK を使用する場合の問題のトラブルシューティング
 この記事では、Azure Cosmos DB SQL API アカウントで [Java Async ADK](sql-api-sdk-async-java.md) を使用するときの共通の問題、回避策、診断手順、およびツールについて説明します。
@@ -48,7 +48,7 @@ ulimit -a
 
 ##### <a name="snat"></a>Azure SNAT (PAT) ポート不足
 
-アプリを Azure VM に展開した場合、既定では VM 外の任意のエンドポイントへの接続を確立するために [Azure SNAT ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)が使用されます。 VM から Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって制限されます。
+パブリック IP アドレスを使わずにアプリを Azure VM にデプロイした場合、既定では VM 外の任意のエンドポイントへの接続を確立するために [Azure SNAT ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)が使用されます。 VM から Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって制限されます。
 
 Azure SNAT ポートが使用されるのは、Azure VM がプライベート IP アドレスを持ち、VM からのプロセスが、パブリック IP アドレスへの接続を確立しようとしている場合に限られます。 そのため、Azure SNAT の制限を回避するには次の 2 つの回避策があります。
     * [VNET サービス エンドポイントを有効にする](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)に関するページで説明したように、Azure VM VNET のサブネットに Azure Cosmos DB サービス エンドポイントを追加します。 サービス エンドポイントが有効なとき、要求はパブリック IP から cosmos DB に送信されなくなり、代わりに VNET およびサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合は、サービス エンドポイントを有効にするとき、[VNET ACLs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) を使用してサブネットをファイアウォールに追加します。

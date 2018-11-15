@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470322"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281780"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -59,6 +59,9 @@ Storage Explorer に自己署名証明書または信頼されない証明書が
 1. すべてのアカウントを削除した後、Storage Explorer を閉じます。
 2. コンピューターから .IdentityService フォルダーを削除します。 Windows では、このフォルダーは `C:\users\<username>\AppData\Local` にあります。 Mac と Linux では、このフォルダーは、ユーザー ディレクトリのルートで見つけることができます。
 3. Mac または Linux の場合は、OS のキーストアから Microsoft.Developer.IdentityService エントリも削除する必要があります。 Mac では、キーストアは "Gnome Keychain" アプリケーションです。 Linux では、このアプリケーションは通常は "Keyring" という名前ですが、お使いのディストリビューションによっては名前が違うことがあります。
+
+### <a name="conditional-access"></a>条件付きアクセス
+Windows 10、Linux、または macOS 上で Storage Explorer を使用した場合、条件付きアクセスはサポートされません。 これは、Storage Explorer で使用される AAD ライブラリの制限によるものです。
 
 ## <a name="mac-keychain-errors"></a>Mac キーチェーン エラー
 macOS のキーチェーンが、Storage Explorer の認証ライブラリの問題を引き起こす状態になることがあります。 この状態からキーチェーンを取得するには、以下の手順を実行します。
@@ -143,6 +146,12 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 ## <a name="unable-to-retrieve-children-error-message"></a>"子を取得できません" エラー メッセージ
 
 プロキシ経由で Azure に接続している場合は、プロキシの設定が正しいことを確認します。 サブスクリプションまたはアカウント所有者からリソースへのアクセス権が付与された場合は、該当するリソースの読み取りまたは一覧表示の権限があることを確認してください。
+
+## <a name="connection-string-does-not-have-complete-configuration-settings"></a>Connection String Does Not Have Complete Configuration Settings (この接続文字列には完全な構成設定が含まれていません)
+
+このエラー メッセージが表示された場合は、Storage アカウントのキーを取得するために必要なアクセス許可がない可能性があります。 これが該当するかどうかを確認するには、ポータルにアクセスして、自分の Storage アカウントを見つけます。 Storage アカウントのノードを右クリックし、[ポータルで開く] をクリックすると、この操作をすばやく行うことができます。 この操作を実行したら、[アクセス キー] ブレードに移動します。 キーを表示するアクセス許可がない場合は、"アクセス権がありません" というメッセージがページに表示されます。 この問題を回避するには、他のユーザーからアカウント キーを入手し、名前とキーを使用して接続します。または、他のユーザーから Storage アカウントへの SAS を入手し、これを使用して Storage アカウントを接続することもできます。
+
+アカウント キーが表示された場合は、Microsoft が問題の解決を手助けできるように、GitHub で問題を報告してください。
 
 ## <a name="issues-with-sas-url"></a>SAS URL の問題
 SAS URL を使用してサービスに接続し、上記のエラーが発生する場合は、

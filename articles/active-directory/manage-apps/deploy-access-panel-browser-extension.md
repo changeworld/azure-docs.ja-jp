@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2018
+ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4540b68dedc3086c3ea0fb12ebbe3cfe2344698b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a21a21f40e731e8bc1d20e01d3671c372df65d84
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718799"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622042"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法
-このチュートリアルでは、グループ ポリシーを使用して Internet Explorer 用のアクセス パネル拡張機能をユーザーのコンピューターにリモートでインストールする方法を示します。 この拡張機能は、 [パスワード ベースのシングル サインオン](what-is-single-sign-on.md#password-based-single-sign-on)を使用するように構成されているアプリにサインインする必要がある Internet Explorer ユーザーに必要なものです。
+このチュートリアルでは、グループ ポリシーを使用して Internet Explorer 用のアクセス パネル拡張機能をユーザーのコンピューターにリモートでインストールする方法を示します。 この拡張機能は、 [パスワード ベースのシングル サインオン](what-is-single-sign-on.md#password-based-sso)を使用するように構成されているアプリにサインインする必要がある Internet Explorer ユーザーに必要なものです。
 
 管理者にはこの拡張機能のデプロイメントを自動化することをお勧めします。 自動化しないと、ユーザーは自分で拡張機能をダウンロードしてインストールする必要があるので、ユーザー エラーが発生しやすく、管理者のアクセス許可が必要になります。 このチュートリアルでは、グループ ポリシーを使用してソフトウェアのデプロイメントを自動化する方法について説明します。 [グループ ポリシーの詳細についてはこちらを参照してください。](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -40,7 +40,7 @@ ms.locfileid: "44718799"
 2. **[サーバー マネージャー]** ウィンドウで、**[ファイルおよび記憶域サービス]** に移動します。
    
     ![[ファイル サービスおよびストレージ サービス] を開く](./media/deploy-access-panel-browser-extension/files-services.png)
-3. **[共有]** タブに移動します。**[タスク]**  >  **[新しい共有...]** の順にクリックします
+3. **[共有]** タブに移動します。[タスク]  >  **[新しい共有...]** の順にクリックします
    
     ![[ファイル サービスおよびストレージ サービス] を開く](./media/deploy-access-panel-browser-extension/shares.png)
 4. **[新しい共有ウィザード]** を完了して、ユーザーのコンピューターからアクセスできるようにアクセス許可を設定します。 [共有の詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc753175.aspx)

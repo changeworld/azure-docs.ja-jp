@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 420ec288b81e0bb12ae9f61a5eaf03880205cc55
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247982"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287440"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの OpenID および OAuth アプリケーションを構成する
 
@@ -84,7 +84,7 @@ Azure AD の同意フレームワークを使用して、マルチテナント�
 
 このフレームワークは、ディレクトリへの登録を要求するアプリケーションに対して同意を与えるユーザーまたは管理者の存在が前提となっています。 登録には、ディレクトリ データへのアクセスが伴う場合があります。 同意が与えられると、クライアント アプリケーションがユーザーに代わって Microsoft Graph API を呼び出し、必要に応じて情報を利用できるようになります。
 
-[Microsoft Graph API](https://graph.microsoft.io/) を使用してアクセスできる Office 365 のデータの例を次に示します。
+[Microsoft Graph API](https://developer.microsoft.com/graph/) を使用してアクセスできる Office 365 のデータの例を次に示します。
 
 - Exchange の予定表とメッセージ。
 - SharePoint のサイトとリスト。

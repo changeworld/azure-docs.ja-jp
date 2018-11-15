@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: d71d09dde45897ad171109f6e091ae29c7cb91c2
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: a36e8d1819037a36d4ebe0f1fda47d0b4be656c1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397289"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565090"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Azure Storage から大量のランダム データをダウンロードする
 
@@ -70,7 +70,7 @@ public static void Main(string[] args)
     }
     finally
     {
-        // The following function will delete the container and all files contained in them.  This is commented out initialy
+        // The following function will delete the container and all files contained in them.  This is commented out initially
         // As the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scaleable-app-download-files has you upload only for one tutorial and download for the other. 
         if (!exception)
         {
@@ -113,7 +113,7 @@ private static async Task DownloadFilesAsync()
 {
     CloudBlobClient blobClient = GetCloudBlobClient();
 
-    // Define the BlobRequestionOptions on the download, including disabling MD5 hash validation for this example, this improves the download speed.
+    // Define the BlobRequestOptions on the download, including disabling MD5 hash validation for this example, this improves the download speed.
     BlobRequestOptions options = new BlobRequestOptions
     {
         DisableContentMD5Validation = true,
@@ -192,7 +192,7 @@ private static async Task DownloadFilesAsync()
 
 ### <a name="validate-the-connections"></a>接続の検証
 
-ファイルのダウンロード中に、ストレージ アカウントへの同時接続の数を確認できます。 `Command Prompt` を開き、「`netstat -a | find /c "blob:https"`」と入力します。 このコマンドは、現在 `netstat` を使用して開かれている接続の数を示します。 実際にチュートリアルを実行したときに表示される出力の例を以下に示します。 この例からわかるように、ストレージ アカウントからランダム ファイルをダウンロードするときに、280 個を超える接続が開かれています。
+ファイルのダウンロード中に、ストレージ アカウントへのコンカレント接続の数を確認できます。 `Command Prompt` を開き、「`netstat -a | find /c "blob:https"`」と入力します。 このコマンドは、現在 `netstat` を使用して開かれている接続の数を示します。 実際にチュートリアルを実行したときに表示される出力の例を以下に示します。 この例からわかるように、ストレージ アカウントからランダム ファイルをダウンロードするときに、280 個を超える接続が開かれています。
 
 ```
 C:\>netstat -a | find /c "blob:https"

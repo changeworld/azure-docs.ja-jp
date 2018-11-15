@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5320b8d5ca7456a6f1b0fdd1372c9f39ac1edfb0
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219411"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345591"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Azure Marketplace にソリューション テンプレートを発行する
 
@@ -161,7 +161,7 @@ SKU の設定が完了したら、次のパッケージの詳細情報を指定�
 
 ![パッケージの詳細](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
-- **[現在のバージョン]** - アップロードするパッケージのバージョン。 次のような形式になっています。
+- **[現在のバージョン]** - アップロードするパッケージのバージョン。 バージョン タグが X.Y.Z 形式である必要がある (X、Y、Z は整数)。
 
 - **[パッケージ ファイル]** - このパッケージには、次のファイルが含まれています (ファイルは .zip ファイルに保存されています)。
 

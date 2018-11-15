@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: a4de054926339985b77f110bd00f77c5c8f7d705
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: cd137462235431f0a0c1562e15a32951fe2a41c5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957991"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346711"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -146,7 +146,7 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 }
 ```
 
-### <a name="managed-identity"> Azure リソースのマネージド ID 認証</a>
+### <a name="managed-identity"></a> Azure リソースのマネージド ID 認証
 
 データ ファクトリは、特定のデータ ファクトリを表す [Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 このサービス ID を Azure SQL Database の認証に使用できます。 指定されたファクトリは、この ID を使用してデータベースにアクセスし、データを双方向にコピーできます。
 
@@ -208,7 +208,7 @@ Azure SQL Database をコピー元またはコピー先としてデータをコ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの **type** プロパティは、**AzureSqlTable** に設定する必要があります。 | [はい] |
-| tableName | リンクされたサービスが参照する Azure SQL Database インスタンスのテーブルまたはビューの名前。 | [はい] |
+| tableName | リンクされたサービスが参照する Azure SQL Database インスタンスのテーブルまたはビューの名前。 | ソースの場合はいいえ、シンクの場合ははい |
 
 #### <a name="dataset-properties-example"></a>データセットのプロパティの例
 
@@ -248,7 +248,6 @@ Azure SQL Database からデータをコピーする場合は、コピー アク
 
 - **SqlSource** に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。 または、ストアド プロシージャを指定できます。 ストアド プロシージャがパラメーターを受け取る場合は、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定します。
 - **sqlReaderQuery** または **sqlReaderStoredProcedureName** を指定しない場合は、データセット JSON の **structure** セクションで定義されている列を使用して、クエリが作成されます。 `select column1, column2 from mytable` が Azure SQL Database に対して実行されます。 データセット定義に **structure** がない場合は、すべての列がテーブルから選択されます。
-- **sqlReaderStoredProcedureName** を使用する場合でも、ダミーの **tableName** プロパティをデータセット JSON に指定する必要があります。
 
 #### <a name="sql-query-example"></a>SQL クエリの例
 

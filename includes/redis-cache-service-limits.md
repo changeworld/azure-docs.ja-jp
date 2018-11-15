@@ -1,4 +1,17 @@
-| Resource | 制限 |
+---
+author: wesmc7777
+ms.service: redis-cache
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: wesmc
+ms.openlocfilehash: 01d6d933474d4a9c1e428b8df89fc766c9b40f20
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572352"
+---
+| リソース | 制限 |
 | --- | --- |
 | キャッシュ サイズ |530 GB |
 | データベース |64 |

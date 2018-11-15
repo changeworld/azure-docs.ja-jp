@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 42994a38aeab7f6da552f2f9073a806142511531
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 2ba6fefb9c1d952fbfdb6942694d69565a299c2e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095530"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241261"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
@@ -44,7 +44,7 @@ ms.locfileid: "50095530"
 いいえ。 Recovery Services コンテナーでは、バックアップが保存される前にしか、ストレージ オプションを変更できません。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Recovery Services コンテナーにバックアップした VM でアイテム レベルの復元 (ILR) を行うことはできますか。
-いいえ、ILR はサポートされていません。 
+いいえ、ILR はサポートされていません。
 
 
 ## <a name="azure-backup-agent"></a>Azure Backup エージェント
@@ -75,7 +75,7 @@ VMware/Hyper-V を保護するために個別のライセンスは必要あり�
 
 ### <a name="which-dpm-versions-are-supported"></a>どの DPM バージョンがサポートされていますか。
 
-サポートされている DPM バージョンの概要を示す[サポート マトリックス](backup-azure-dpm-introduction.md#prerequisites-and-limitations)をご覧ください。 最新の DPM 更新プログラムをインストールした DPM サーバー上で、[最新バージョン](http://aka.ms/azurebackup_agent)の Azure Backup エージェントを実行することをお勧めします。
+サポートされている DPM バージョンの概要を示す[サポート マトリックス](backup-azure-dpm-introduction.md#prerequisites-and-limitations)をご覧ください。 最新の DPM 更新プログラムをインストールした DPM サーバー上で、[最新バージョン](https://aka.ms/azurebackup_agent)の Azure Backup エージェントを実行することをお勧めします。
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>サーバーを複数のコンテナーに登録することはできますか。
 
@@ -99,7 +99,7 @@ VMware/Hyper-V を保護するために個別のライセンスは必要あり�
 ## <a name="general-backup"></a>一般的なバックアップ
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>バックアップのスケジュール設定に制限はありますか。
-はい。 
+はい。
 - Windows Server または Windows マシンをバックアップできるのは、1 日 3 回までです。 スケジューリング ポリシーは、毎日または毎週のスケジュールに設定できます。
 - DPM をバックアップできるのは、1 日 2 回までです。 スケジューリング ポリシーは、毎日、毎週、毎月、および毎年のスケジュールに設定できます。
 - Azure VM のバックアップは 1 日 1 回に限られます。
@@ -110,12 +110,12 @@ VMware/Hyper-V を保護するために個別のライセンスは必要あり�
 
 **OS**| **SKU** |**詳細**
 --- | --- | ---
-ワークステーション | | 
+ワークステーション | |
 Windows 10 64 ビット | Enterprise、Pro、Home | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
 Windows 8.1 64 ビット | Enterprise、Pro | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
 Windows 8 64 ビット | Enterprise、Pro | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
 Windows 7 64 ビット | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
-サーバー | | 
+サーバー | |
 Windows Server 2016 64 ビット | Standard、Datacenter、Essentials | 最新の Service Pack/更新プログラムが適用されていること。
 Windows Server 2012 R2 64 ビット | Standard、Datacenter、Foundation | 最新の Service Pack/更新プログラムが適用されていること。
 Windows Server 2012 64 ビット | Datacenter、Foundation、Standard | 最新の Service Pack/更新プログラムが適用されていること。
@@ -133,20 +133,20 @@ Azure VM Linux のバックアップについては、Azure Backup は [Azure �
 次のサイズ制限が適用されます。
 
 
-OS/マシン | データ ソースのサイズ制限 
---- | --- | --- 
-Windows 8 以降 | 54,400 GB 
-Windows 7 |1,700 GB 
-Windows Server 2012 またはそれ以降 | 54,400 GB 
-Windows Server 2008、Windows Server 2008 R2 | 1,700 GB 
-Azure VM | 32 台のデータ ディスク<br/><br/> 最大 4095 GB のデータ ディスク
+OS/マシン | データ ソースのサイズ制限
+--- | --- | ---
+Windows 8 以降 | 54,400 GB
+Windows 7 |1,700 GB
+Windows Server 2012 またはそれ以降 | 54,400 GB
+Windows Server 2008、Windows Server 2008 R2 | 1,700 GB
+Azure VM | 16 個のデータ ディスク<br/><br/> 最大 4095 GB のデータ ディスク
 
 ## <a name="how-is-the-data-source-size-determined"></a>データ ソースのサイズはどのように決定されますか。
 
 次の表では、各データ ソースのサイズが決定される方法について説明しています。
 
 **データ ソース** | **詳細**
---- | --- 
+--- | ---
 ボリューム |バックアップ対象の VM の 1 つのボリュームからバックアップされるデータの量。
 SQL Server データベース |バックアップされる 1 つの SQL データベースのサイズ。
 SharePoint | バックアップ対象の SharePoint ファーム内のコンテンツと構成データベースの合計。
@@ -158,7 +158,7 @@ BMR/システム状態 |バックアップ対象のコンピューターの BMR 
 
 Recovery Services コンテナーを使用してバックアップできるデータ量に制限はありません。
 
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>バックアップを開始した後でバックアップ ジョブを取り消すと、転送されたバックアップ データは削除されますか。 
+### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>バックアップを開始した後でバックアップ ジョブを取り消すと、転送されたバックアップ データは削除されますか。
 いいえ。 バックアップ ジョブを取り消す前にコンテナーに転送されたすべてのデータは、コンテナーに残ります。 Azure Backup では、チェックポイント メカニズムを使用して、バックアップ中に随時バックアップ データにチェックポイントを追加します。 バックアップ データにチェックポイントがあることで、次回のバックアップ処理でファイルの整合性を検証できます。 次のバックアップ ジョブは、これまでバックアップしたデータの増分になります。 増分バックアップでは、新しいデータまたは変更されたデータのみが転送され、帯域幅の使用状況が向上します。
 
 Azure VM のバックアップ ジョブを取り消した場合、転送済みのデータは無視されます。 次のバックアップ ジョブでは、最後に成功したバックアップ ジョブから増分データが転送されます。
@@ -186,7 +186,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 ### <a name="are-the-retention-policies-for-dpm-and-windows-machines-without-dpm-the-same"></a>DPM での保有ポリシーと DPM を使用しない Windows マシンでの保有ポリシーは同じですか。
 はい。どちらとも、保有ポリシーとして毎日、毎週、毎月、毎年を指定できます。
 
-### <a name="can-i-customize-retention-policies"></a>保有ポリシーをカスタマイズできますか。 
+### <a name="can-i-customize-retention-policies"></a>保有ポリシーをカスタマイズできますか。
 はい、ポリシーをカスタマイズして使用できます。 たとえば、保有期間の要件を毎週および毎日として構成し、毎年や毎月の保有期間の要件を構成しないこともできます。
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>バックアップ スケジュールと保有ポリシーを別々の期間に使用できますか。
@@ -208,7 +208,7 @@ Azure Backup のストレージ アーキテクチャを使用すると、高速
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>作成できる回復ポイント数に制限はありますか。
 
-保護されているインスタンスごとに作成できる復旧ポイントは最大 9,999 個です。 保護されたインスタンスとは、Azure へのバックアップを行うコンピューター、サーバー (物理または仮想)、またはワークロードです。 
+保護されているインスタンスごとに作成できる復旧ポイントは最大 9,999 個です。 保護されたインスタンスとは、Azure へのバックアップを行うコンピューター、サーバー (物理または仮想)、またはワークロードです。
 
 - 詳細については、[バックアップと保有期間](./backup-introduction-to-azure-backup.md#backup-and-retention)を参照してください。
 - [保護されたインスタンス](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)を参照してください。
@@ -238,7 +238,7 @@ Azure Backup からの回復の数に制限はありません。
 - オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。
 - Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。
 
-マイクロソフトは、どの時点でもバックアップ データの暗号化を解除しません。 
+マイクロソフトは、どの時点でもバックアップ データの暗号化を解除しません。
 
 
 ### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>バックアップ データの暗号化に使用される暗号化キーの最小の長さはどれくらいですか。

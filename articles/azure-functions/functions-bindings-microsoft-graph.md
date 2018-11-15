@@ -9,16 +9,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: fa429553caf874dd634944a5fca6cd9283194bb4
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251109"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51301018"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
-この記事では、Azure Functions で Microsoft Graph のトリガーとバインドを構成および操作する方法について説明します。 これらと Azure Functions を使用して、[Microsoft Graph](https://graph.microsoft.io) からのデータ、分析情報、およびイベントを処理できます。
+この記事では、Azure Functions で Microsoft Graph のトリガーとバインドを構成および操作する方法について説明します。 これらと Azure Functions を使用して、[Microsoft Graph](https://developer.microsoft.com/graph) からのデータ、分析情報、およびイベントを処理できます。
 
 Microsoft Graph の拡張機能には、次のバインドが用意されています。
 - [認証トークンの入力バインド](#token-input)では、任意の Microsoft Graph API とやり取りできます。
@@ -834,7 +834,7 @@ Outlook メッセージの出力バインドは、Outlook でメール メッセ
 * [例](#outlook-output---example)
 * [属性](#outlook-output---attributes)
 * [構成](#outlook-output---configuration)
-* [使用方法](#outlook-outnput---usage)
+* [使用方法](#outlook-output---usage)
 
 ### <a name="outlook-output---example"></a>Outlook の出力 - 例
 

@@ -13,22 +13,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 8fade171095ff6a9f4c10925089452d8925e11fe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ed3fc6d1d2a4b674e2866d2e168fb72490575869
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095810"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281835"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Azure Machine Learning Studio Web サービスの Excel アドイン
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>ブックで既存の Web サービスを使用する手順
 
-1. [サンプルの Excel ファイル](http://aka.ms/amlexcel-sample-2)を開きます。このファイルには、Excel アドインと、タイタニック号の乗客に関するデータが含まれます。 
+1. [サンプルの Excel ファイル](https://aka.ms/amlexcel-sample-2)を開きます。このファイルには、Excel アドインと、タイタニック号の乗客に関するデータが含まれます。 
  
 > [!NOTE]
-> ファイルに関係する Web サービスの一覧が表示され、下部に [Auto-predict]\(自動予測\) のチェックボックスが表示されます。 自動予測を有効にすると、入力が変更されるたびにサービスの**すべて**の予測が更新されます。 オフにした場合は、[Predict All]\(すべて予測\) をクリックして更新する必要があります。 サービス レベルで自動予測を有効にするには、手順 6 に移動します。
+> ファイルに関係する Web サービスの一覧が表示され、下部に [Auto-predict]\(自動予測\) のチェックボックスが表示されます。 自動予測を有効にすると、入力が変更されるたびに**すべての**サービスの予測が更新されます。 オフにした場合は、[Predict All]\(すべて予測\) をクリックして更新する必要があります。 サービス レベルで自動予測を有効にするには、手順 6 に移動します。
 
 2. 対象の Web サービスをクリックして選択します。この例では、「Titanic Survivor Predictor (Excel Add-in Sample) [Score]」を選択します。
    
@@ -85,7 +85,7 @@ Web サービスの API キーを取得します。 取得元は、クラシッ�
 ## <a name="sharing-your-workbook"></a>ブックを共有する
 ブックを保存すると、追加した Web サービス用の API/主キーも保存されます。 このため、信頼できる個人とのみブックを共有することをお勧めします。
 
-ご質問は、次のコメント セクション、または[フォーラム](http://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)までお寄せください。
+ご質問は、次のコメント セクション、または[フォーラム](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)までお寄せください。
 
 [01]: ./media/excel-add-in-for-web-services/image1.png
 [02]: ./media/excel-add-in-for-web-services/image2.png

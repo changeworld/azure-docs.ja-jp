@@ -1,3 +1,16 @@
+---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
+ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572364"
+---
 既に [Relay 名前空間を作成][namespace-how-to]していることを確認してください。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
@@ -13,6 +26,6 @@
 6. **[ハイブリッド接続の作成]** の下で、ハイブリッド接続名の値を入力します。 その他は既定値のままにします。
    
     ![Select New](./media/relay-create-hybrid-connection-portal/create-hc-3.png)
-7. **[作成]** を選択します。
+7. **作成**を選択します。
 
 [namespace-how-to]: ../articles/service-bus-relay/relay-create-namespace-portal.md 

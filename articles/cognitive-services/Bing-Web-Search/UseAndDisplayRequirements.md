@@ -10,11 +10,12 @@ ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6a0732b683f726d19bf929b546baebee2ba955f9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 0fb81deba2ded98dc0b0f0ccd5dd92e96ec328b8
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124220"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288664"
 ---
+# <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API の利用と表示の要件
 [!INCLUDE [cognitive-services-bing-use-and-display-requirements](../../../includes/cognitive-services-bing-use-and-display-requirements.md)]

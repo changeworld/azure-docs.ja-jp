@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: scottnap
-ms.openlocfilehash: bcdd5b6d28a6c08b7b36e170fcb7d184fcf65eb0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d215af253471258e487dadcfae0cfd7edafd1c26
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024462"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634653"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>VPN を使用して Azure Stack を Azure に接続する
 
@@ -127,7 +127,7 @@ ms.locfileid: "50024462"
 
 1. Azure portal で **[+ リソースの作成]** を選択します。
 2. **[Marketplace]** に移動し、**[計算]** を選択します。
-3. 仮想マシンのイメージの一覧で、**Windows Server 2016 Datacenter Oval** イメージを選択します。
+3. 仮想マシンのイメージの一覧で、**Windows Server 2016 Datacenter Eval** イメージを選択します。
 4. **[基本]** セクションで、**[名前]** に「**AzureVM**」と入力します。
 5. 有効なユーザー名とパスワードを入力します。 このアカウントを利用し、作成後の仮想マシンにサインインします。
 6. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定し、**[OK]** を選択します。
@@ -227,7 +227,7 @@ VPN 接続を確認するには、2 つの VM を作成します。1 つは Azur
 
 1. Azure portal で **[+ リソースの作成]** を選択します。
 2. **[Marketplace]** に移動し、**[計算]** を選択します。
-3. 仮想マシンのイメージの一覧で、**Windows Server 2016 Datacenter Oval** イメージを選択します。
+3. 仮想マシンのイメージの一覧で、**Windows Server 2016 Datacenter Eval** イメージを選択します。
 4. **[基本]** セクションで、**[名前]** に「**AzureVM**」と入力します。
 5. 有効なユーザー名とパスワードを入力します。 このアカウントを利用し、作成後の VM にサインインします。
 6. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定し、**[OK]** を選択します。

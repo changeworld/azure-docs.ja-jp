@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f24f15134bf189097f20f75ff0b23b72a3e48363
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983760"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299608"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の制限事項
 次のセクションでは、データベース サービス容量と機能の制限について説明します。
@@ -31,10 +31,10 @@ ms.locfileid: "45983760"
 |汎用| 8| 480|
 |汎用| 16| 950|
 |汎用| 32| 1500|
-|メモリ最適化| 2| 150|
-|メモリ最適化| 4| 250|
-|メモリ最適化| 8| 480|
-|メモリ最適化| 16| 950|
+|メモリ最適化| 2| 300|
+|メモリ最適化| 4| 500|
+|メモリ最適化| 8| 960|
+|メモリ最適化| 16| 1900|
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
 > FATAL:  sorry, too many clients already

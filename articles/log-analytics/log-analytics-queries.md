@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2ab7e0c5d4a62b9c4fa0492b9bc9a19dfab36c74
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0a8a1ab41972aa2ae184b900c2dab94ec58f3e7c
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005055"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612756"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Azure Monitor で Log Analytics データを分析する
 
-Azure Monitor で収集されたログ データは、[Azure データ エクスプローラー](/data-explorer)に基づく Log Analytics ワークスペースに保存されます。 さまざまなソースからテレメトリが収集され、[データ エクスプローラーのクエリ言語](/kusto)を使用してデータが取得および分析されます。
+Azure Monitor で収集されたログ データは、[Azure データ エクスプローラー](/azure/data-explorer)に基づく Log Analytics ワークスペースに保存されます。 さまざまなソースからテレメトリが収集され、[データ エクスプローラーのクエリ言語](/azure/kusto/query)を使用してデータが取得および分析されます。
 
 > [!NOTE]
 > Log Analytics は以前、Azure 内の独自のサービスとして扱われていました。 そのサービスは Azure Monitor の一部と見なされるようになり、ログ データの格納とクエリ言語によるログ データの分析に重点が置かれています。 データ収集用の Windows および Linux のエージェント、既存のデータを視覚化するビュー、問題を事前に通知するアラートなど、Log Analytics の一部と見なされていた機能は変更されていませんが、Azure Monitor の一部と見なされるようになりました。
@@ -41,12 +41,12 @@ Log Analytics から任意のデータを取得するにはログ クエリが�
 Log Analytics のクエリは、次に示すさまざまな方法で使用します。
 
 - **ポータル。** [Azure portal](log-analytics-log-search-portals.md) では、ログ データの対話型分析を行うことができます。  これにより、クエリを編集し、さまざまな形式および視覚化で結果を分析することができます。  
-- **警告ルール。** [警告ルール](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)は、ワークスペースのデータの問題を事前に特定します。  各警告ルールは、定期的に自動実行されるログ検索に基づいてます。  結果を検査することで、警告を作成するかどうかが決まります。
+- **警告ルール。** [警告ルール](../monitoring-and-diagnostics/monitoring-overview-alerts.md)は、ワークスペースのデータの問題を事前に特定します。  各警告ルールは、定期的に自動実行されるログ検索に基づいてます。  結果を検査することで、警告を作成するかどうかが決まります。
 - **ダッシュボード。** クエリの結果は [Azure ダッシュボード]()にピン留めすることができます。これにより、ログ データとメトリック データをまとめて視覚化し、必要に応じて、他の Azure ユーザーと共有することができます。 
 - **ビュー。**  ユーザー ダッシュボードに含めるデータの視覚化を作成するには、[ビュー デザイナー](log-analytics-view-designer.md)を使用します。  ログ クエリによって提供されるのは、各ビューの[タイル](log-analytics-view-designer-tiles.md)および[視覚化パーツ](log-analytics-view-designer-parts.md)で使用するデータです。  
 - **エクスポート。**  Log Analytics ワークスペースから Excel または [Power BI](log-analytics-powerbi.md) にデータをエクスポートする場合は、ログ クエリを作成して、エクスポートするデータを定義します。
 - **PowerShell。** [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) を使用する Azure Automation Runbook またはコマンド ラインから PowerShell スクリプトを実行して、Log Analytics からデータを取得できます。  このコマンドレットでは、クエリによって、取得するデータを決定する必要があります。
-- **Log Analytics API。**  [Log Analytics のログ検索 API](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) を使用すると、任意の REST API クライアントによってワークスペースからログ データを取得することができます。  API 要求には Log Analytics に対して実行するクエリが含まれており、これにより取得するデータを決定します。
+- **Log Analytics API。**  [Log Analytics のログ検索 API](../monitoring-and-diagnostics/monitoring-overview-alerts.md) を使用すると、任意の REST API クライアントによってワークスペースからログ データを取得することができます。  API 要求には Log Analytics に対して実行するクエリが含まれており、これにより取得するデータを決定します。
 
 ![ログ検索](media/log-analytics-queries/queries-overview.png)
 

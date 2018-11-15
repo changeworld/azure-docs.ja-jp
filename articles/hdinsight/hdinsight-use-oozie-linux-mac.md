@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: a2b209dc0204c390b16039ed1cf58b47f29629f1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4ea8ded6abcdee397511272c539f9be6cdd12c0e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252107"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685533"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Hadoop で Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -753,7 +753,6 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 [hdinsight-get-started-emulator]: hdinsight-get-started-emulator.md
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
-[sqldatabase-create-configue]: sql-database-create-configure.md
 [sqldatabase-get-started]: sql-database-get-started.md
 
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md

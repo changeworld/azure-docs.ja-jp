@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: acb02df7a1ca49e822062ec5658b4875388b85ab
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 043d19e3917bcdac7e963225af7e614315e414bd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586021"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344707"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 この一連のトピックでは、データの取り込み、特徴エンジニアリング、モデリング、モデル評価など、データ サイエンスの一般的な作業を HDInsight Spark を使用して行う方法について説明しています。 ここで使用しているデータは、2013 年における NYC タクシーの乗車と料金のデータセットから抽出したサンプルです。 構築されるモデルには、ロジスティック回帰と線形回帰、ランダム フォレスト、勾配ブースティング ツリーなどがあります。 これらのモデルを Azure Blob Storage (WASB) に保存する方法や、その予測パフォーマンスをスコア付けして評価する方法も、一連のトピックの中で紹介します。 クロス検証とハイパーパラメーター スイープを使用してモデルをトレーニングする方法については、高度な内容を扱った別のトピックで説明します。 また、この概要トピックでは、後続の 3 つのチュートリアルの手順を踏襲するために必要な Spark クラスターのセットアップ方法を説明しているトピックも紹介します。 
 

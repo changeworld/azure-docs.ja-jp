@@ -4,17 +4,17 @@ description: Visual Studio Code を使用して Azure IoT Edge の C モジュ�
 services: iot-edge
 keywords: ''
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 3ec7f6043c1d2e8e8f090ffc60822768ab9bc9d9
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d40b82b5beac2da78038e303cb50402d6fa0be7a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984003"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566026"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge の C モジュールを開発し、デバッグする
 
@@ -37,7 +37,7 @@ ms.locfileid: "45984003"
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * プロトタイプおよびテスト目的で、クラウド レジストリの代わりに Docker のローカル レジストリを使用できます。 
 
-デバイス上でお使いのモジュールをテストするには、1 つ以上の IoT Edge デバイスを使用するアクティブな IoT ハブが必要になります。 コンピューターを IoT Edge デバイスとして使用するには、[Linux](quickstart-linux.md)用のクイックスタートの手順に従ってください。 
+デバイス上でお使いのモジュールをテストするには、1 つ以上の IoT Edge デバイスを使用するアクティブな IoT ハブが必要になります。 コンピューターを IoT Edge デバイスとして使用するには、[Linux](quickstart-linux.md) 用のクイックスタートの手順に従ってください。 
 
 ## <a name="create-a-new-solution-template"></a>新しいソリューション テンプレートを作成する
 
@@ -94,7 +94,7 @@ C テンプレートを独自のコードでカスタマイズする準備がで
 2. **deployment.template.json** 内の C モジュールの createOptions を以下のコンテンツに置き換え、このファイルを保存します。 
     
     ```json
-    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
+    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
     ```
 
 2. VS Code コマンド パレットで、**Azure IoT Edge: Build and Push IoT Edge solution** コマンドを入力して実行します。

@@ -3,18 +3,18 @@ title: Azure IoT Edge (CLI) のモジュールを展開および監視する | M
 description: エッジ デバイスで実行するモジュールの管理
 keywords: ''
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a3d073e9fd7c535ea84d6e4dbbf8003a6c55725b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3f2e7de6b32b4cca6320933050775f843e2cdf39
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394614"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567935"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -144,7 +144,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 * **--labels** - デプロイを追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、[名前] と [値] で一組になっています。 たとえば、`HostPlatform, Linux` や `Version, 3.0.1` のようにします。
 * **--content** - デプロイ マニフェスト JSON へのファイルパスです。 
 * **--hub-name** - デプロイが作成される IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
-* **--target-condition** - どのデバイスがこのデプロイの対象となるかを指定する対象の条件を入力します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.devicemodel='4000x'` です。 
+* **--target-condition** - どのデバイスがこのデプロイの対象となるかを指定する対象の条件を入力します。 条件は、デバイス ツイン タグか、デバイス ツインから報告されるプロパティに基づいて指定し、式の形式に一致させる必要があります。 たとえば、`tags.environment='test'` または `properties.reported.devicemodel='4000x'` です。 
 * **--priority** - 正の整数にする必要があります。 同じデバイスで複数のデプロイがターゲットとなっている場合は、優先度の数値が最も大きいデプロイが適用されます。
 
 ## <a name="monitor-a-deployment"></a>デプロイの監視
@@ -157,7 +157,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 * **--deployment-id** - IoT ハブに存在するデプロイの名前です。
 * **--hub-name** - デプロイが存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
-コマンド ウィンドウで、デプロイを検査します。 **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
+コマンド ウィンドウで、デプロイを検査します。 **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
 * **targetedCount** - ターゲット条件と一致する IoT Hub 内のデバイス ツインの数を指定するシステム メトリックです。
 * **appliedCount** - IoT Hub 内でモジュール ツインにデプロイ コンテンツが適用されているデバイスの数を指定するシステム メトリックです。
 * **reportedSuccessfulCount** - IoT Edge クライアント ランタイムからデプロイの完了を報告している Edge デバイスの数を指定するデバイス メトリックです。

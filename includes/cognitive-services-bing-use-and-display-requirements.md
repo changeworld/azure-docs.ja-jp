@@ -8,15 +8,13 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/19/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 174af83686eba665a729246be7a477b9a5054f30
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: f166ceac1ae848565f861a94781ce0500c24747e
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35378804"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289157"
 ---
-# <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API の利用と表示の要件
-
 この記事で紹介する利用と表示の要件は、コンテンツと関連情報の実装すべてに適用されます。 要件の適用対象となるものには、たとえばリレーションシップ、メタデータ、その他のシグナルが挙げられます。 これらは、次の API を呼び出すと利用が可能になることがあります。
 
 - Bing Custom Search

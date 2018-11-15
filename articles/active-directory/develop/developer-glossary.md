@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: 8d219ecb2d8a6694da038044bcab883a5535e957
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc3bbab2242321ae736f3f2cefb1eed5e96e834e
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999258"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288732"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
 
@@ -63,11 +63,11 @@ ms.locfileid: "46999258"
 
 詳細については、「[Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]」を参照してください。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>[認証]
 
 特定の当事者に対し、本物の資格情報の提示を要求する行為。ID 管理とアクセス制御に必要なセキュリティ プリンシパルの拠り所となります。 たとえば [OAuth2 承認付与](#authorization-grant)時には、使用する付与形態に応じて、[リソース所有者](#resource-owner)または[クライアント アプリケーション](#client-application)の役割を果たす当事者が、本物であることを証明する側になります。
 
-## <a name="authorization"></a>承認
+## <a name="authorization"></a>authorization
 
 認証済みのセキュリティ プリンシパルに対し、何かを実行する権限を付与する行為。 Azure AD プログラミング モデルでは、主に次の 2 つの使用ケースが存在します。
 
@@ -155,7 +155,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 リソース アプリケーションの ID 構成は、クライアント アプリケーションと同様、Azure AD テナントへの [登録](#application-registration) を通じて確立され、アプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方が得られます。 Azure AD Graph API など、Microsoft が提供している一部の API には、あらかじめ登録されているサービス プリンシパルが存在し、プロビジョニング時にすべてのテナントで利用できるようになっています。
 
-## <a name="roles"></a>ロール
+## <a name="roles"></a>roles
 
 ロールは、[スコープ](#scopes)と同様、[リソース サーバー](#resource-server)の保護されたリソースへのアクセスを管理するための手段です。 ロールには、"ユーザー" ロールと "アプリケーション" ロールの 2 種類があります。ユーザー ロールでは、リソースへのアクセスを必要とするユーザー/グループに関してロールベースのアクセス制御を実装します。これに対してアプリケーション ロールで実装するのは、アクセスを要求する[クライアント アプリケーション](#client-application)の場合と同じです。
 
@@ -191,7 +191,7 @@ Azure AD の Graph API によって公開されているアプリケーション
 
 エンド ユーザーの認証を取り消し、[サインイン](#sign-in)の過程で[クライアント アプリケーション](#client-application)のセッションに関連付けられたユーザーの状態を解除するプロセス。
 
-## <a name="tenant"></a>テナント
+## <a name="tenant"></a>tenant
 
 Azure AD ディレクトリのインスタンスを "Azure AD テナント" といいます。 次のような機能が用意されています。
 
@@ -244,7 +244,7 @@ Microsoft のコンテンツ改善のため、以下のコメント セクショ
 [AZURE-portal]: https://portal.azure.com
 [AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
-[Microsoft-Graph]: https://graph.microsoft.io
+[Microsoft-Graph]: https://developer.microsoft.com/graph
 [O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1

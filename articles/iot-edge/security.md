@@ -2,18 +2,18 @@
 title: Azure IoT Edge のセキュリティ | Microsoft Docs
 description: IoT Edge デバイスのセキュリティ、認証、および承認
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 890189f6b6e18ef10f274324915cc7dee019f1f0
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4292dc3abf775d48ee33cc7a48793d080156efb1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249137"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568939"
 ---
 # <a name="securing-azure-iot-edge"></a>Azure IoT Edge のセキュリティ保護
 

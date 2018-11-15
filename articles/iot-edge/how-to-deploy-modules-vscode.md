@@ -2,19 +2,19 @@
 title: Azure IoT Edge モジュールのデプロイ (VS Code) | Microsoft Docs
 description: Visual Studio Code を使用して IoT Edge デバイスにモジュールをデプロイする
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 06/26/2018
 ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d5b43f81cbb3bbebb231a8a9738f6138b62ef7f6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a7f0fc0c3169aadac78609830dda55ae1ec7ea46
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046031"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567845"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Visual Studio Code から Azure IoT Edge モジュールをデプロイする
 

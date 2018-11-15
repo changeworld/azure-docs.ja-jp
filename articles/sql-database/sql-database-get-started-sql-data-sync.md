@@ -11,15 +11,15 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 98d30d2987d42a2c4893e00c3ba2ea6acd471bef
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 11/07/2018
+ms.openlocfilehash: 0a248ec5137a6de43910b1d11184dfeda18601f5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318811"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280349"
 ---
-# <a name="set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する
+# <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する
 
 このチュートリアルでは、Azure SQL Database と SQL Server インスタンスの両方を含むハイブリッド同期グループを作成して、Azure SQL データ同期をセットアップする方法について学習します。 新しい同期グループには必要な構成をすべて行います。このため、新しい同期グループは設定したスケジュールで同期されます。
 
@@ -129,7 +129,7 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
 
     **[新しいエージェントを作成します]** を選択した場合は、以下の操作を行います。
 
-   1. 表示されているリンクからクライアント同期エージェント ソフトウェアをダウンロードして、SQL Server があるコンピューターにインストールします。
+   1. 表示されているリンクからクライアント同期エージェント ソフトウェアをダウンロードして、SQL Server があるコンピューターにインストールします。 データ同期エージェントは、[SQL Azure データ同期エージェント](https://www.microsoft.com/download/details.aspx?id=27693)のページから直接ダウンロードすることもできます。
 
         > [!IMPORTANT]
         > クライアント エージェントがサーバーと通信できるように、ファイアウォールの送信 TCP ポート 1433 を開く必要があります。
@@ -253,35 +253,7 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
 
 ## <a name="faq-about-the-client-agent"></a>クライアント エージェントについてよくあるご質問
 
-### <a name="why-do-i-need-a-client-agent"></a>なぜクライアント エージェントが必要ですか
-
-SQL データ同期サービスは、クライアント エージェントを使って SQL Server データベースと通信します。 このセキュリティ機能では、ファイアウォールの背後にあるデータベースと直接通信できません。 SQL データ同期サービスは、エージェントと通信するとき、暗号化された接続と、一意のトークンつまり "*エージェント キー*" を使います。 SQL Server データベースは、接続文字列とエージェント キーを使ってエージェントを認証します。 この設計では、高レベルのセキュリティがデータに提供されます。
-
-### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>何個のローカル エージェント UI インスタンスを実行できますか
-
-実行できる UI のインスタンスは 1 つだけです。
-
-### <a name="how-can-i-change-my-service-account"></a>サービス アカウントを変更するにはどうすればよいですか
-
-クライアント エージェントをインストールした後でサービス アカウントを変更する唯一の方法は、クライアント エージェントをアンインストールし、新しいサービス アカウントで新しいクライアント エージェントをインストールすることです。
-
-### <a name="how-do-i-change-my-agent-key"></a>エージェント キーを変更するにはどうすればよいですか
-
-エージェント キーは、エージェントによって一度だけ使われます。 エージェントを削除して新しいエージェントを再インストールするときに再利用したり、複数のエージェントで共用したりすることはできません。 既存のエージェントに対して新しいキーを作成する必要がある場合は、クライアント エージェントと SQL データ同期サービスで同じキーが記録されるようにする必要があります。
-
-### <a name="how-do-i-retire-a-client-agent"></a>クライアント エージェントの使用を終了するにはどうすればよいですか
-
-すぐにエージェントを無効にしたり、使用を終了したりするには、ポータルでエージェント キーの再生成だけを行い、エージェント UI でのキーの送信は行わないでおきます。 キーを再生成すると、対応するエージェントがオンラインかオフラインかにかかわらず、前のキーは無効になります。
-
-### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>別のコンピューターにクライアント エージェントを移動するにはどうすればよいですか
-
-現在とは異なるコンピューターからローカル エージェントを実行する場合は、次のようにします。
-
-1. 目的のコンピューターにエージェントをインストールします。
-2. SQL データ同期ポータルにログインし、新しいエージェントのエージェント キーを再生成します。
-3. 新しいエージェントの UI を使って、新しいエージェント キーを送信します。
-4. 以前に登録されたオンプレミスのデータベースのリストをクライアント エージェントがダウンロードするまで待ちます。
-5. 到達不能と表示されるすべてのデータベースに対し、データベースの資格情報を指定します。 これらのデータベースには、エージェントをインストールした新しいコンピューターから到達可能でなければなりません。
+クライアント エージェントについてよく寄せられる質問については、[エージェントに関する FAQ](sql-database-data-sync-agent.md#agent-faq) のセクションを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

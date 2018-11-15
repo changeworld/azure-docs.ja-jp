@@ -8,28 +8,22 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 47dee26c84d96ebf5b0a421c2f10d18892d6d933
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 89b412a58291dd542b38cd0cbfa1288795024151
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227250"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613717"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
-Azure Monitor が[新しいタイプのメトリック アラート](monitoring-overview-unified-alerts.md)をサポートするようになりました。このタイプには、古い[クラシック メトリック アラート](insights-alerts-portal.md)と比較して多くのメリットがあります。 メトリックは[さまざまな Azure サービスで](monitoring-supported-metrics.md)利用できます。 新しいアラートが対応しているリソース タイプは限られていますが、その数は増えています。 この記事では、このサブセットを一覧で示します。
+Azure Monitor が[新しいタイプのメトリック アラート](monitoring-overview-alerts.md)をサポートするようになりました。このタイプには、古い[クラシック メトリック アラート](monitoring-overview-alerts-classic.md)と比較して多くのメリットがあります。 メトリックは[さまざまな Azure サービスで](monitoring-supported-metrics.md)利用できます。 新しいアラートが対応しているリソース タイプは限られていますが、その数は増えています。 この記事では、このサブセットを一覧で示します。
 
-新しいメトリック アラートは、ログからのメトリックの一部としてメトリックとして抽出された一般的な Log Analytics ログに対しても使用できます 
-- Windows および Linux マシンの[パフォーマンス カウンター](../log-analytics/log-analytics-data-sources-performance-counters.md)
-- [Agent Health のためのハートビート レコード](../operations-management-suite/oms-solution-agenthealth.md)
-- [更新管理](../operations-management-suite/oms-solution-update-management.md)レコード
-- [イベント データ](../log-analytics/log-analytics-data-sources-windows-events.md) ログ
- 
-> [!NOTE]
-> 特定のメトリックやディメンションは、選択された期間内にそのためのデータが存在する場合にのみ表示されます。 これらのメトリックは、米国東部、米国西中部、西ヨーロッパに Azure Log Analytics ワークスペースを持つ顧客が使用できます。 Log Analytics からのメトリックは現在、パブリック プレビューの段階にあり、変更される可能性があります。
+
+新しいメトリック アラートは、メトリックとして抽出された一般的な Log Analytics ログに対しても使用できます。 詳細については、[ログのメトリック アラート](monitoring-metric-alerts-logs.md)に関するページを参照してください。
 
 ## <a name="portal-powershell-cli-rest-support"></a>ポータル、PowerShell、CLI、REST のサポート
-現在、新しいメトリック アラートは Azure Portal、[REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)、または[リソース マネージャー テンプレート](monitoring-create-metric-alerts-with-templates.md)でのみ作成できます。 PowerShell と Azure CLI バージョン 2.0 以降を使用した新しいアラートの構成は、近日中にサポートされる予定です。
+現在、新しいメトリック アラートは Azure portal、[REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/)、または [Resource Manager テンプレート](monitoring-create-metric-alerts-with-templates.md)でのみ作成できます。 PowerShell と Azure CLI バージョン 2.0 以降を使用した新しいアラートの構成は、近日中にサポートされる予定です。
 
 ## <a name="metrics-and-dimensions-supported"></a>サポートされるメトリックとディメンション
 新しいメトリック アラートでは、ディメンションを使用するメトリックのアラートがサポートされています。 ディメンションを使用すると、メトリックを適切なレベルにフィルター処理できます。 サポートされるすべてのメトリックと適用可能なディメンションは、[Azure Monitor - メトリックス エクスプローラー](monitoring-metric-charts.md)から探索および視覚化できます。
@@ -127,6 +121,6 @@ Azure Monitor が[新しいタイプのメトリック アラート](monitoring-
 
 ## <a name="next-steps"></a>次の手順
 
-* 新しい[アラート エクスペリエンス](monitoring-overview-unified-alerts.md)の詳細について学習します。
+* 新しい[アラート エクスペリエンス](monitoring-overview-alerts.md)の詳細について学習します。
 * [Azure でのログ アラート](monitor-alerts-unified-log.md)について学習します。
 * [Azure のアラート](monitoring-overview-alerts.md)について確認します。

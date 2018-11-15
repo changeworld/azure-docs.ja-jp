@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 00fde1145b038f3bf82e3dbc5e1dc967e1865ad6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7b460efbdc50c5b243c3ef78bad568b720e75e59
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234926"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635559"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) B2C アプリケーションへのサインア
 b2clogin.com を使用すると、次のような利点が加わります。
 
 - Cookie は、他の Microsoft サービスと共有されなくなりました。
-- お使いの URL に、Microsoft への参照が含まれなくなりました。 たとえば、「 `https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration` 」のように入力します。
+- お使いの URL に、Microsoft への参照が含まれなくなりました。 たとえば、「 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` 」のように入力します。
 
 b2clogin.com を使用する際は、変更が必要になる可能性があるこれらの設定に配慮してください。
 

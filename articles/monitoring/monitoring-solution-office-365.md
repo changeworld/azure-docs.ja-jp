@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 04211a00bcdce3baf8060e00a9ce81831a39acb9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22e22a2eb6eefb84c6745de9b19e7710913b4ee7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257665"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616284"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -711,4 +711,4 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ## <a name="next-steps"></a>次の手順
 * [Log Analytics](../log-analytics/log-analytics-queries.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * [独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
-* [アラートを作成](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  
+* [アラートを作成](../monitoring-and-diagnostics/monitoring-overview-alerts.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  

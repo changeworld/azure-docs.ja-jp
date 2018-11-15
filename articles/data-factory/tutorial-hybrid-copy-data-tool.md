@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/04/2018
 ms.author: jingwang
-ms.openlocfilehash: a6c17fc897dae765f9789840262cb001d598b731
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 91c6939e42f0a8a5126883e5258017b2c38e6f2a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297744"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613972"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用してオンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,6 +27,7 @@ ms.locfileid: "44297744"
 
 > [!NOTE]
 > - Azure Data Factory を初めて使用する場合は、「[Data Factory の概要](introduction.md)」を参照してください。
+
 このチュートリアルでは、以下の手順を実行します。
 
 > [!div class="checklist"]
@@ -107,7 +108,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. コンテナーの一覧で、**[adftutorial]** を選択します。
 
-    ![コンテナーの選択](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![コンテナーの選択](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. **adftutorial** の **[コンテナー]** ウィンドウを開いたままにしておきます。 チュートリアルの最後で、このページを使用して出力を確認します。 このコンテナーには output フォルダーが Data Factory によって自動的に作成されます。手動で作成する必要はありません。
 

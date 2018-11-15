@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: cfd1160d1592c03eea94e3c4d04fdc5754eca671
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ed97a2c31897d1e5e61421ea489a35af377f4f37
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144969"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621447"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
 この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
@@ -40,7 +40,7 @@ Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証�
 
 Cosmos DB アカウント用の 2 つのマスター キーに加えて、2 つの読み取り専用キーがあります。 これらの読み取り専用キーは、アカウントの読み取り操作のみを許可します。 読み取り専用キーは、アクセス許可リソースを読み取るためのアクセスを提供しません。
 
-プライマリ、セカンダリ、読み取り専用、および読み取り/書き込みのマスター キーは、Azure Portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-account.md#keys)」を参照してください。
+プライマリ、セカンダリ、読み取り専用、および読み取り/書き込みのマスター キーは、Azure Portal で取得と再生成を行うことができます。 手順については、「[アクセス キーを表示、コピー、および再生成する](manage-with-cli.md#regenerate-account-key)」を参照してください。
 
 ![Azure Portal でのアクセス制御 (IAM) - NoSQL データベースのセキュリティ](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
@@ -196,5 +196,4 @@ Azure Cosmos DB では、データベースまたはコレクションにある�
 
 ## <a name="next-steps"></a>次の手順
 * Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB: データベースのセキュリティ](database-security.md)に関するページをご覧ください。
-* マスター キーと読み取り専用キーの詳細については、[Azure Cosmos DB アカウントの管理方法](manage-account.md#keys)に関するページをご覧ください。
 * Azure Cosmos DB 認証トークンを作成する方法については、[Azure Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページをご覧ください。

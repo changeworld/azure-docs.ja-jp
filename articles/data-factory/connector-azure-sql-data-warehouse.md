@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: d3cddc729e40b5591922fc7b5c7d3d6a258219a7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5c45167255ec91030f07e550de223a7ebed93168
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955815"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345761"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -217,7 +217,7 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの **type** プロパティは、**AzureSqlDWTable** を設定する必要があります。 | [はい] |
-| tableName | リンクされたサービスが参照する Azure SQL Data Warehouse インスタンスのテーブルまたはビューの名前。 | [はい] |
+| tableName | リンクされたサービスが参照する Azure SQL Data Warehouse インスタンスのテーブルまたはビューの名前。 | ソースの場合はいいえ、シンクの場合ははい |
 
 #### <a name="dataset-properties-example"></a>データセットのプロパティの例
 
@@ -257,7 +257,6 @@ Azure SQL Data Warehouse からデータをコピーする場合は、コピー 
 
 - **SqlSource** に **sqlReaderQuery** が指定されている場合、コピー アクティビティは、Azure SQL Data Warehouse ソースに対してこのクエリを実行してデータを取得します。 または、ストアド プロシージャを指定できます。 ストアド プロシージャがパラメーターを受け取る場合は、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定します。
 - **sqlReaderQuery** または **sqlReaderStoredProcedureName** を指定しない場合は、データセット JSON の **structure** セクションで定義されている列を使用して、クエリが作成されます。 `select column1, column2 from mytable` が Azure SQL Data Warehouse に対して実行されます。 データセット定義に **structure** がない場合は、すべての列がテーブルから選択されます。
-- **sqlReaderStoredProcedureName** を使用する場合でも、ダミーの **tableName** プロパティをデータセット JSON に指定する必要があります。
 
 #### <a name="sql-query-example"></a>SQL クエリの例
 

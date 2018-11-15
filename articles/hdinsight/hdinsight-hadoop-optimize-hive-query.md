@@ -1,115 +1,130 @@
 ---
 title: Azure HDInsight での Hive クエリの最適化
-description: HDInsight で Hive クエリを最適化する方法について説明します。
+description: この記事では、HDInsight で Apache Hive クエリを最適化する方法について説明します。
 services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: hrasheed
-ms.openlocfilehash: 6faf7fe57b1e562f8cb6d850a781c4403950ebff
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/06/2018
+ms.openlocfilehash: 6729a0e3ccbb96dc178925bbab4cfbf8189c4a14
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014620"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278261"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Hive クエリの最適化
 
-既定では、Hadoop クラスターのパフォーマンスは最適化されていません。 この記事では、クエリに適用できる最も一般的な Hive パフォーマンスの最適化方法について説明します。
+Azure HDInsight には、Apache Hive クエリを実行できるいくつかのクラスター タイプと テクノロジがあります。 HDInsight クラスターを作成する際には、適切なクラスター タイプを選択することで、パフォーマンスをワークロード ニーズに応じて最適化することができます。 
+
+たとえば、アドホックな対話型クエリ用に最適化するには、**対話型クエリ** クラスター タイプを選択します。 バッチ処理として使用される Hive クエリ用に最適化するには、Apache **Hadoop** クラスター タイプを選択します。 また、**Spark** や **HBase** といったクラスター タイプで Hive クエリを実行することもできます。 Hive クエリを実行するための各種 HDInsight クラスター タイプについて詳しくは、「[Azure HDInsight における Apache Hive と HiveQL](hadoop/hdinsight-use-hive.md)」をご覧ください。
+
+Hadoop クラスター タイプの HDInsight クラスターは、既定ではパフォーマンス用に最適化されていません。 この記事では、クエリに適用できる最も一般的な Hive パフォーマンスの最適化方法について説明します。
 
 ## <a name="scale-out-worker-nodes"></a>ワーカー ノードのスケール アウト
 
-クラスター内のノードのワーカーの数を増やすことで、より多くの mapper と reducer を同時に実行できるようになります。 HDInsight でのスケール アウトを向上させる方法が 2 つあります。
+HDInsight クラスター内のノードのワーカーの数を増やすことで、より多くの mapper と reducer を同時に実行できるようになります。 HDInsight でのスケール アウトを向上させる方法が 2 つあります。
 
-* プロビジョニング時に、Azure Portal、Azure PowerShell またはクロス プラットフォームのコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。  詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 次のスクリーンショットは、Azure Portal 上に表示されたワーカー ノード構成を示しています。
+* クラスターの作成時に、Azure portal、Azure PowerShell またはコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。  詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 次のスクリーンショットは、Azure Portal 上に表示されたワーカー ノード構成を示しています。
   
     ![scaleout_1][image-hdi-optimize-hive-scaleout_1]
-* 実行時に、クラスターを再作成せずにスケールアウトすることもできます。
+    
+* 作成後にワーカー ノードの数を編集して、クラスターを再作成せずにスケールアウトすることもできます。
 
     ![scaleout_1][image-hdi-optimize-hive-scaleout_2]
 
-HDInsight によってサポートされているさまざまな仮想マシンの詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+HDInsight のスケーリングについて詳しくは、[HDInsight クラスターのスケーリング](hdinsight-scaling-best-practices.md)に関するページをご覧ください
 
-## <a name="enable-tez"></a>Tez を有効にする
+## <a name="use-tez-instead-of-map-reduce"></a>Map Reduce の代わりに Tez を使用する
 
-[Apache Tez](http://hortonworks.com/hadoop/tez/) は、MapReduce エンジンに代わる実行エンジンです。
+[Apache Tez](http://hortonworks.com/hadoop/tez/) は、MapReduce エンジンに代わる実行エンジンです。 Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
 Tez はより高速です。それは次の理由によります。
 
 * **MapReduce エンジンで、有向非巡回グラフ (DAG) を 1 つのジョブとして実行します**。 DAG では、mapper の各セットの後に 1 セットの reducer が続く必要があります。 これにより、複数の MapReduce ジョブが各 Hive クエリでスピンオフされます。 Tez にはこのような制約はありません。複雑な DAG を 1 つのジョブとして処理することができるため、ジョブのスタートアップのオーバーヘッドが最小限に抑えられます。
-* **不要な書き込みを回避できます**。 MapReduce エンジンでは同じ Hive クエリに対して複数のジョブがスピンオフされるため、各ジョブの出力は中間データとして HDFS に書き込まれます。 Tez は各 Hive クエリのジョブの数を最小限に抑えるので、不要な書き込みを回避することができます。
+* **不要な書き込みを回避できます**。 MapReduce エンジンでは、同じ Hive クエリを 処理するために複数のジョブが使用されます。 各 MapReduce ジョブの出力は、中間データとして HDFS に書き込まれます。 Tez は各 Hive クエリのジョブの数を最小限に抑えるので、不要な書き込みを回避することができます。
 * **起動時の遅延を最小限に抑えられます**。 Tez は、開始に必要な mapper の数を削減することによって、また全体的な最適化を向上させることによって、起動時の遅延を最小限に抑えることができます。
 * **コンテナーを再利用できます**。 コンテナーの起動による待ち時間を軽減するため、可能なときは常にTez はコンテナーを再利用できます。
 * **継続的な最適化手法を使用します**。 これまで、最適化はコンパイル フェーズで行われていました。 しかし最適化を向上させるための入力に関する詳細は、実行時に入手できます。 Tez は、実行時フェーズでプランをさらに最適化する継続的な最適化手法を使用します。
 
 この概念の詳細については、[Apache TEZ](http://hortonworks.com/hadoop/tez/) のサイトを参照してください。
 
-次の設定でクエリにプレフィックスを付けることで、Hive クエリで Tez を有効にできます。
+次の set コマンドでクエリにプレフィックスを付けることで、Hive クエリで Tez を有効にできます。
 
-    set hive.execution.engine=tez;
-
-Linux ベースの HDInsight クラスターでは、Tez は既定で有効になっています。
-
+   ```hive
+   set hive.execution.engine=tez;
+   ```
 
 ## <a name="hive-partitioning"></a>Hive パーティション分割
 
-I/O 操作は、Hive クエリを実行するための主なパフォーマンスのボトルネックです。 読み取る必要があるデータの量を削減することで、パフォーマンスを向上することができます。 既定では、Hive クエリは、全 Hive テーブルをスキャンします。 これはテーブル スキャンのようなクエリでは有効な方法ですが、 少量のデータのみのスキャンが必要なクエリ (フィルターを使用するクエリなど) では、不要なオーバーヘッドが発生します。 Hive パーティション分割では、Hive クエリは Hive テーブルの必要な量のデータだけにアクセスします。
+I/O 操作は、Hive クエリを実行するための主なパフォーマンスのボトルネックです。 読み取る必要があるデータの量を削減することで、パフォーマンスを向上することができます。 既定では、Hive クエリは、全 Hive テーブルをスキャンします。 少量のデータのみのスキャンが必要なクエリ (フィルターを使用するクエリなど) では、不要なオーバーヘッドが発生します。 Hive パーティション分割では、Hive クエリは Hive テーブルの必要な量のデータだけにアクセスします。
 
-Hive パーティション分割は、生データを新しいディレクトリに再構成することにより実装されます。その場合は、各パーティションに独自のディレクトリを用意します (パーティションは、ユーザーによって定義されます)。 次の図は、列 *Year* による Hive テーブルのパーティション分割を示しています。 年ごとに新しいディレクトリが作成されます。
+Hive パーティション分割は、生データを新しいディレクトリに再編成することによって実装されます。 各パーティションには、独自のファイル ディレクトリが編成されます。 パーティション分割はユーザーによって定義されます。 次の図は、列 *Year* による Hive テーブルのパーティション分割を示しています。 年ごとに新しいディレクトリが作成されます。
 
-![パーティション分割][image-hdi-optimize-hive-partitioning_1]
+![Hive パーティション分割][image-hdi-optimize-hive-partitioning_1]
 
 パーティション分割に関するいくつかの考慮事項:
 
 * **パーティションの数を少なくしすぎない** - パーティション分割する列の値の種類が少ないと、パーティションの数が少なくなる場合があります。 たとえば、性別に基づいてパーティションを分割する場合、2 つのパーティション (男性と女性) しか作成されません。したがって、待ち時間の短縮は、最大でも半分にしかなりません。
 * **パーティションの数を多くしすぎない**- その反対に、一意の値 (userid など) で列のパーティションを作成すると、複数のパーティションが作成されます。 これでは、多数のディレクトリを処理する必要があるため、クラスター namenode に多大なストレスを与えることになります。
-* **データのスキューを回避する** - すべてのパーティションのサイズが均等になるよう、注意深くパーティショニング キーを選択します。 たとえば、*州*によってパーティションを分割すると、カリフォルニアの下のレコードの数がバーモントの約 30 倍になる可能性があります。これは人口が違うことによって生じます。
+* **データのスキューを回避する** - すべてのパーティションのサイズが均等になるよう、注意深くパーティショニング キーを選択します。 たとえば、*State* 列をパーティション分割すると、データの分布が偏る可能性があります。 カリフォルニア州の人口はバーモント州の約 30 倍なので、パーティションのサイズが偏り、パフォーマンスの差が大きくなる可能性があります。
 
 パーティション テーブルを作成するには、 *Partitioned By* 句を使用します。
 
-    CREATE TABLE lineitem_part
-        (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
-         L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
-         L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-         L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE            STRING, L_SHIPINSTRUCT STRING, L_SHIPMODE STRING,
-         L_COMMENT STRING)
-    PARTITIONED BY(L_SHIPDATE STRING)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-    STORED AS TEXTFILE;
-
+   ```hive
+   CREATE TABLE lineitem_part
+       (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
+        L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
+        L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
+        L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING, 
+        L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT STRING)
+   PARTITIONED BY(L_SHIPDATE STRING)
+   ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+   STORED AS TEXTFILE;
+   ```
+   
 パーティション テーブルが作成されれば、静的パーティションまたは動的パーティションのいずれかを作成できるようになります。
 
-* **静的パーティション分割** では、適切なディレクトリにシャード化データが既に存在し、ディレクトリの場所に基づいて Hive パーティションに手動で問い合わせができます。 次のコード スニペットに例を示します。
+* **静的パーティション分割**とは、データを適切なディレクトリに既にシャード化していることを意味します。 静的パーティションでは、ディレクトリの場所に基づいて Hive パーティションを手動で追加します。 次のコード スニペットに例を示します。
   
-        INSERT OVERWRITE TABLE lineitem_part
-        PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
-        SELECT * FROM lineitem 
-        WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
+   ```hive
+   INSERT OVERWRITE TABLE lineitem_part
+   PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
+   SELECT * FROM lineitem 
+   WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
+   
+   ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
+   LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
+   ```
+   
+* **動的パーティション分割** では、Hive に自動的にパーティションを作成させます。 ステージング テーブルからパーティショニング テーブルを既に作成しているので、あとはパーティション テーブルにデータを挿入するだけです。
   
-        ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
-        LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
-* **動的パーティション分割** では、Hive に自動的にパーティションを作成させます。 ステージング テーブルからパーティショニング テーブルを作成したので、あとはパーティション テーブルにデータを挿入するだけです。
-  
-        SET hive.exec.dynamic.partition = true;
-        SET hive.exec.dynamic.partition.mode = nonstrict;
-        INSERT INTO TABLE lineitem_part
-        PARTITION (L_SHIPDATE)
-        SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY , 
-             L_SUPPKEY as L_SUPPKEY, L_LINENUMBER as L_LINENUMBER,
-              L_QUANTITY as L_QUANTITY, L_EXTENDEDPRICE as L_EXTENDEDPRICE,
-             L_DISCOUNT as L_DISCOUNT, L_TAX as L_TAX, L_RETURNFLAG as           L_RETURNFLAG, L_LINESTATUS as L_LINESTATUS, L_SHIPDATE as           L_SHIPDATE_PS, L_COMMITDATE as L_COMMITDATE, L_RECEIPTDATE as      L_RECEIPTDATE, L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as      L_SHIPMODE, L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
-
+   ```hive
+   SET hive.exec.dynamic.partition = true;
+   SET hive.exec.dynamic.partition.mode = nonstrict;
+   INSERT INTO TABLE lineitem_part
+   PARTITION (L_SHIPDATE)
+   SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY , 
+       L_SUPPKEY as L_SUPPKEY, L_LINENUMBER as L_LINENUMBER,
+       L_QUANTITY as L_QUANTITY, L_EXTENDEDPRICE as L_EXTENDEDPRICE,
+       L_DISCOUNT as L_DISCOUNT, L_TAX as L_TAX, L_RETURNFLAG as L_RETURNFLAG,
+       L_LINESTATUS as L_LINESTATUS, L_SHIPDATE as L_SHIPDATE_PS,
+       L_COMMITDATE as L_COMMITDATE, L_RECEIPTDATE as L_RECEIPTDATE,
+       L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE, 
+       L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
+   ```
+   
 詳細については、「[Partitioned Tables (パーティション テーブル)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables)」を参照してください。
 
 ## <a name="use-the-orcfile-format"></a>ORCFile 形式の使用
 Hive は、さまざまなファイル形式をサポートしています。 例: 
 
-* **テキスト**: これは既定のファイル形式で、ほとんどのシナリオで使用できます
+* **テキスト**: 既定のファイル形式で、ほとんどのシナリオで使用できます
 * **Avro**: 相互運用性シナリオで使用できます
 * **ORC/Parquet**: 最も高いパフォーマンスを発揮します
 
@@ -122,37 +137,41 @@ ORC (最適化行多桁式) 形式は、Hive データを格納する非常に�
 
 ORC 形式を有効にするにはまず、 *Stored as ORC*句でテーブルを作成します。
 
-    CREATE TABLE lineitem_orc_part
-        (L_ORDERKEY INT, L_PARTKEY INT,L_SUPPKEY INT, L_LINENUMBER INT,
-         L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
-         L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-         L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
-         L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT      STRING)
-    PARTITIONED BY(L_SHIPDATE STRING)
-    STORED AS ORC;
-
+   ```hive
+   CREATE TABLE lineitem_orc_part
+       (L_ORDERKEY INT, L_PARTKEY INT,L_SUPPKEY INT, L_LINENUMBER INT,
+        L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
+        L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
+        L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
+        L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT      STRING)
+   PARTITIONED BY(L_SHIPDATE STRING)
+   STORED AS ORC;
+   ```
+   
 次に、データをステージング テーブルから ORC テーブルに挿入します。 例: 
 
-    INSERT INTO TABLE lineitem_orc
-    SELECT L_ORDERKEY as L_ORDERKEY, 
-           L_PARTKEY as L_PARTKEY , 
-           L_SUPPKEY as L_SUPPKEY,
-           L_LINENUMBER as L_LINENUMBER,
-            L_QUANTITY as L_QUANTITY, 
-           L_EXTENDEDPRICE as L_EXTENDEDPRICE,
-           L_DISCOUNT as L_DISCOUNT,
-           L_TAX as L_TAX,
-           L_RETURNFLAG as L_RETURNFLAG,
-           L_LINESTATUS as L_LINESTATUS,
-           L_SHIPDATE as L_SHIPDATE,
+   ```hive
+   INSERT INTO TABLE lineitem_orc
+   SELECT L_ORDERKEY as L_ORDERKEY, 
+          L_PARTKEY as L_PARTKEY , 
+          L_SUPPKEY as L_SUPPKEY,
+          L_LINENUMBER as L_LINENUMBER,
+          L_QUANTITY as L_QUANTITY, 
+          L_EXTENDEDPRICE as L_EXTENDEDPRICE,
+          L_DISCOUNT as L_DISCOUNT,
+          L_TAX as L_TAX,
+          L_RETURNFLAG as L_RETURNFLAG,
+          L_LINESTATUS as L_LINESTATUS,
+          L_SHIPDATE as L_SHIPDATE,
            L_COMMITDATE as L_COMMITDATE,
            L_RECEIPTDATE as L_RECEIPTDATE, 
            L_SHIPINSTRUCT as L_SHIPINSTRUCT,
            L_SHIPMODE as L_SHIPMODE,
            L_COMMENT as L_COMMENT
     FROM lineitem;
-
-ORC 形式については、 [ここ](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC)を参照してください。
+   ```
+   
+ORC 形式の詳細については、[Hive 言語マニュアル](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC)で説明されています。
 
 ## <a name="vectorization"></a>ベクター化
 
@@ -160,7 +179,9 @@ ORC 形式については、 [ここ](https://cwiki.apache.org/confluence/displa
 
 Hive クエリのベクター化プレフィックスを有効にするには、次の設定を使用します。
 
+   ```hive
     set hive.vectorized.execution.enabled = true;
+   ```
 
 詳細については、「[Vectorized query execution (ベクター化されたクエリ実行)](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution)」を参照してください。
 

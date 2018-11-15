@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6983b49135b5a8adbef1d0cfc5a407cb7b0c7ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0dc7daebe91199cc6c54ac5e3a2d8f43e1592a73
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960551"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282426"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Node.js SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "46960551"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST ()](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -45,6 +45,26 @@ ms.locfileid: "46960551"
 | 現在サポートされているプラットフォーム | [Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/) - SDK バージョン 2.0.0 以上が必要です。<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2.0.5"/>2.0.5</a>
+* エージェントの種類ノードのインターフェイスを追加しました。 Typescript ユーザーは @types/node を依存関係としてインストールする必要がなくなりました
+* 優先する場所が適切に処理されるようになりました
+* 開発者向けドキュメントの投稿に関する機能強化
+* さまざまな入力ミスの修正
+
+### <a name="2.0.4"/>2.0.4</a>
+* 2.0.3 で発生した型定義の問題を修正しました
+
+### <a name="2.0.3"/>2.0.3</a>
+* `big-integer` の依存関係を削除しました
+* AsyncIterable 型の参照ディレクティブに切り替えました。 Typescript ユーザーは "lib" 設定をカスタマイズする必要がなくなりました。
+* 入力ミスを修正しました
+
+### <a name="2.0.2"/>2.0.2</a>
+* readme のリンクの修正
+
+### <a name="2.0.1"/>2.0.1</a>
+* 再試行インターフェイスの実装を修正しました
 
 ### <a name="2.0.0"/>2.0.0</a>
 * JavaScript SDK の Version 2.0.0 の GA

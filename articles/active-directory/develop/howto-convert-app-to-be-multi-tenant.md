@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: abca81e0db565c6c84d9be9df07b46c8c338030b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6581081f0f34f73c915f0b026a3ed50816f6731f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960279"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298945"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法: すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -118,7 +118,7 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 アプリケーション専用アクセス許可では、常にテナント管理者の同意が必要になります。 アプリケーションがアプリケーション専用アクセス許可を要求する場合に、ユーザーがそのアプリケーションにサインインしようとすると、このユーザーは同意できないことを示すエラー メッセージが表示されます。
 
-一部の委任アクセス許可でも、テナント管理者の同意が必要になります。 たとえば、サインイン済みユーザーとして Azure AD に書き戻しを行うアクセス許可には、テナント管理者の同意が必要です。 アプリケーション専用アクセス許可と同様に、管理者の同意が必要な委任アクセス許可を要求するアプリケーションに通常のユーザーがサインインしようとすると、アプリケーションでエラーが発生します。 アクセス許可に管理者の同意が必要かどうかは、リソースを公開した開発者により決定されており、リソースのドキュメントに記載されています。 [Azure AD Graph API][AAD-Graph-Perm-Scopes] と [Microsoft Graph API][MSFT-Graph-permision-scopes] のアクセス許可に関するドキュメントには、管理者の同意が必要なアクセス許可が記載されています。
+一部の委任アクセス許可でも、テナント管理者の同意が必要になります。 たとえば、サインイン済みユーザーとして Azure AD に書き戻しを行うアクセス許可には、テナント管理者の同意が必要です。 アプリケーション専用アクセス許可と同様に、管理者の同意が必要な委任アクセス許可を要求するアプリケーションに通常のユーザーがサインインしようとすると、アプリケーションでエラーが発生します。 アクセス許可に管理者の同意が必要かどうかは、リソースを公開した開発者により決定されており、リソースのドキュメントに記載されています。 [Azure AD Graph API][AAD-Graph-Perm-Scopes] と [Microsoft Graph API][MSFT-Graph-permission-scopes] のアクセス許可に関するドキュメントには、管理者の同意が必要なアクセス許可が記載されています。
 
 アプリケーションで管理者の同意が必要なアクセス許可を使用する場合、ジェスチャ (管理者がアクションを開始できるボタンやリンク) を設定する必要があります。 通常、この操作に対してアプリケーションから送信される要求は OAuth2/OpenID Connect 承認要求ですが、この要求には `prompt=admin_consent` クエリ文字列パラメーターも含まれています。 管理者が同意し、ユーザーのテナントにサービス プリンシパルが作成されると、以降のサインイン要求では `prompt=admin_consent` パラメーターは不要になります。 管理者は要求されたアクセス許可を許容可能と判断しているため、その時点からは、テナント内の他のユーザーが同意を求められることはありません。
 
@@ -184,7 +184,7 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 * [アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト][AAD-App-SP-Objects]
 * [Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]
 * [同意フレームワークの概要][AAD-Consent-Overview]
-* [Microsoft Graph API のアクセス許可スコープ][MSFT-Graph-permision-scopes]
+* [Microsoft Graph API のアクセス許可スコープ][MSFT-Graph-permission-scopes]
 * [Azure AD Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
@@ -201,8 +201,8 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 [AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
-[MSFT-Graph-overview]: https://graph.microsoft.io/en-us/docs/overview/overview
-[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference
+[MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
+[MSFT-Graph-permission-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

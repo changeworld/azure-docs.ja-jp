@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/12/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2b9e7615fc0c2262c33ab5d7be39bdb99bc752bd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4e99656319f543fb40d8509cb4ae9e1c25cfc75b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412960"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622484"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -35,7 +35,7 @@ Log Analytics を使用して、ローカル データ センターやその他�
 * PowerShell スクリプト。
 * Azure Stack 内のオンプレミスで Windows を実行している仮想マシン用の、Resource Manager テンプレート。  
 
-サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-concept-hybrid.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-concept-hybrid.md#network-firewall-requirements)」をご覧ください。
+サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-agent-overview.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-agent-overview.md#network-firewall-requirements)」をご覧ください。
 
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
 Microsoft Monitoring Agent for Windows をインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Log Analytics と正常に通信できるようにするために必要です。  
@@ -98,7 +98,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Azure Automation の DSC を使用してエージェントをインストールする
 
-次のサンプル スクリプトを使用して、Azure Automation の DSC を使用するエージェントをインストールできます。   Automation アカウントがない場合は、「[Azure Automation の概要](../automation/automation-offering-get-started.md)」を参照して、Automation DSC を使用する前に必要な Automation アカウントを作成するための要件と手順を確認してください。  Automation DSC のことをよく知らない場合は、「[Azure Automation DSC の使用](../automation/automation-dsc-getting-started.md)」をご覧ください。
+次のサンプル スクリプトを使用して、Azure Automation の DSC を使用するエージェントをインストールできます。   Automation アカウントがない場合は、「[Azure Automation の概要](/azure/automation/)」を参照して、Automation DSC を使用する前に必要な Automation アカウントを作成するための要件と手順を確認してください。  Automation DSC のことをよく知らない場合は、「[Azure Automation DSC の使用](../automation/automation-dsc-getting-started.md)」をご覧ください。
 
 次のサンプルは、`URI` 値によって識別される 64 ビット エージェントをインストールします。 URI 値を置き換えることで、32 ビット バージョンを使用することもできます。 両方のバージョンの URI は次のとおりです。
 
@@ -109,13 +109,13 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 >[!NOTE]
 >この手順とサンプル スクリプトでは、Windows コンピューターに既にデプロイされているエージェントのアップグレードはサポートされていません。
 
-32 ビット バージョンと 64 ビット バージョンのエージェント パッケージには、それぞれ異なる製品コードがあり、リリースされる新バージョンにも、それぞれ一意の値が指定されます。  製品コードは、アプリケーションや製品の主要な識別情報となる GUID であり、Windows インストーラーの **ProductCode** プロパティによって表されます。  **MMAgent.ps1** スクリプトの `ProductId value` は、32 ビットまたは 64 ビットのエージェント インストーラー パッケージの製品コードと一致する必要があります。
+32 ビット バージョンと 64 ビット バージョンのエージェント パッケージには、それぞれ異なる製品コードがあり、リリースされる新バージョンにも、それぞれ一意の値が指定されます。  製品コードは、アプリケーションや製品の主要な識別情報となる GUID であり、Windows インストーラーの **ProductCode** プロパティによって表されます。  **MMAgent.ps1** スクリプトの `ProductId` 値は、32 ビットまたは 64 ビットのエージェント インストーラー パッケージの製品コードと一致する必要があります。
 
 製品コードをエージェント インストール パッケージから直接取得するには、Windows ソフトウェア開発キットのコンポーネントである [Windows SDK Components for Windows Installer Developers (Windows インストーラー開発者向け Windows SDK コンポーネント)](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) に含まれている、Orca.exe を使用するか、Microsoft Valuable Professional (MVP) によって記述された[サンプル スクリプト](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)に従った、PowerShell を使用できます。  どちらの方法でも、まず、MMASetup インストール パッケージから **MOMagent.msi** ファイルを抽出する必要があります。  これについては、前のセクション「[コマンド ラインを使用してエージェントをインストールする](#install-the-agent-using-the-command-line)」の最初の手順で説明しています。  
 
 1. [http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) から Azure Automation に xPSDesiredStateConfiguration DSC モジュールをインポートします。  
 2.  *OPSINSIGHTS_WS_ID* と *OPSINSIGHTS_WS_KEY* に対して Azure Automation 変数アセットを作成します。 *OPSINSIGHTS_WS_ID* を Log Analytics ワークスペース ID に設定し、*OPSINSIGHTS_WS_KEY* をワークスペースの主キーに設定します。
-3.  スクリプトをコピーし、MMAgent.ps1 として保存します
+3.  スクリプトをコピーし、MMAgent.ps1 として保存します。
 
     ```PowerShell
     Configuration MMAgent
@@ -153,7 +153,8 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 
     ```
 
-4. Automation アカウントに [MMAgent.ps1 構成スクリプトをインポート](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation)します。 
+4. スクリプトの `ProductId` 値を更新します。先ほど提示した方法を使用して最新バージョンのエージェント インストール パッケージから抽出した製品コードに置き換えてください。 
+5. Automation アカウントに [MMAgent.ps1 構成スクリプトをインポート](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation)します。 
 5. 構成に、[Windows コンピューターまたはノードに割り当て](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration)ます。 15 分以内に、ノードはその構成を確認し、エージェントがノードにプッシュされます。
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Log Analytics へのエージェント接続を確認する

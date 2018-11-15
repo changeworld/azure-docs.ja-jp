@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2720ecece86133bf551ab42c415b2e9a87420e93
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55a3f3d7ac08554273464ed7c6f665e27661c6f8
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237827"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625523"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -85,7 +85,7 @@ ms.locfileid: "51237827"
 | --- | --- |
 | 2 | omsadmin スクリプトに提供されたオプションが無効です。 使用方法については `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` を実行してください。 |
 | 3 | omsadmin スクリプトに提供された構成が無効です。 使用方法については `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` を実行してください。 |
-| 4 | omsadmin スクリプトに提供されたプロキシが無効です。 プロキシを確認し、[HTTP プロキシの使用方法に関するドキュメント](log-analytics-concept-hybrid.md#network-firewall-requirements)を参照してください。 |
+| 4 | omsadmin スクリプトに提供されたプロキシが無効です。 プロキシを確認し、[HTTP プロキシの使用方法に関するドキュメント](log-analytics-agent-overview.md#network-firewall-requirements)を参照してください。 |
 | 5 | Log Analytics サービスから 403 HTTP エラーを受け取りました。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
 | 6 | Log Analytics サービスから 200 以外の HTTP エラーを受け取りました。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |
 | 7 | Log Analytics サービスに接続できません。 詳細については、omsadmin スクリプトの完全な出力を参照してください。 |

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: daa1bba0aacdceb7d6655c5f491be587d388176a
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087374"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286692"
 ---
 # <a name="about-v20"></a>v2.0 について
 
@@ -32,7 +32,7 @@ v2.0 エンドポイントおよびプラットフォームはプレビュー段
 
 Azure portal の開発者エクスペリエンスが大きく改善され、ADAL または MSAL で構築されたすべてのアプリケーションが含まれるようになり、使いやすさが向上しました。
 
-アプリケーションの開発者はこれまで、個人用の Microsoft アカウントと Azure Active Directory (Azure AD) の職場アカウントの両方をサポートするには、2 つの異なるシステムを 1 つに統合する必要がありました。 v2.0 エンドポイントおよびプラットフォームは、このプロセスを簡素化する認証 API のバージョンを提供します。 単一の統合を使用してどちらの種類のアカウントからでもサインインできます。 v2.0 エンドポイントを使うアプリケーションは、どちらの種類のアカウントを使用していても、[Microsoft Graph API](https://graph.microsoft.io) の REST API を使用できます。
+アプリケーションの開発者はこれまで、個人用の Microsoft アカウントと Azure Active Directory (Azure AD) の職場アカウントの両方をサポートするには、2 つの異なるシステムを 1 つに統合する必要がありました。 v2.0 エンドポイントおよびプラットフォームは、このプロセスを簡素化する認証 API のバージョンを提供します。 単一の統合を使用してどちらの種類のアカウントからでもサインインできます。 v2.0 エンドポイントを使うアプリケーションは、どちらの種類のアカウントを使用していても、[Microsoft Graph API](https://developer.microsoft.com/graph) の REST API を使用できます。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -59,7 +59,7 @@ v2.0 についての詳細な情報:
 * [ID トークン リファレンス](id-tokens.md)
 * [v2.0 認証ライブラリ リファレンス](reference-v2-libraries.md)
 * [v2.0 におけるアクセス許可と同意](v2-permissions-and-consent.md)
-* [Microsoft Graph API](https://graph.microsoft.io)
+* [Microsoft Graph API](https://developer.microsoft.com/graph)
 
 > [!NOTE]
 > Azure Active Directory から職場および学校アカウントにサインインするだけでよい場合は、最初に [Azure AD 開発者向けガイド](v1-overview.md)をご覧ください。 v2.0 エンドポイントは、Microsoft の個人用アカウントにサインインすることが明らかに必要な開発者が使用するためのものです。

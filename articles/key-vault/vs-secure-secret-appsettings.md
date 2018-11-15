@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: d1e4177dff3f9ae8c78fb2e22b12e40ff2682c58
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7578950af2dafdade3c97650dfd212240053dd3b
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037568"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625455"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
@@ -100,7 +100,7 @@ ms.locfileid: "51037568"
 
 1. プロジェクトに次の NuGet パッケージをインストールします
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic.1.0.0-alpha1.nupkg
+    Microsoft.Configuration.ConfigurationBuilders.Basic
     ```
 
 2. 次のようなファイルを作成します。 プロジェクト フォルダーの外部の場所に保存します。
@@ -145,7 +145,7 @@ ms.locfileid: "51037568"
 
 1. プロジェクトに次の NuGet パッケージをインストールします
 ```
-Microsoft.Configuration.ConfigurationBuilders.UserSecrets.1.0.0-preview2.nupkg
+Microsoft.Configuration.ConfigurationBuilders.UserSecrets
 ```
 
 2. Web.config で Key Vault 構成ビルダーを定義します。このセクションは *appSettings* セクションの前に配置します。 お客様の Key Vault がパブリック Azure 内にある場合は、*vaultName* を Key Vault 名に置き換え、管理権のあるクラウドを使用している場合は完全 URI に置き換えます。

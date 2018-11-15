@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 603ed12bf74f2d75543fd7e60834e695138c991d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dbe2619b99fdc5281375e2c6c1300432d9a4cbb9
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963803"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616131"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure 診断拡張機能の構成スキーマのバージョンと履歴
 このページでは、Microsoft Azure SDK に付属する Azure 診断拡張機能のスキーマのバージョン一覧を示します。  
@@ -67,7 +67,7 @@ Azure 診断拡張機能は、Azure Monitor、Application Insights、Log Analyti
 ### <a name="diagnostics-extension-111"></a>診断拡張機能 1.11
 Azure Monitor シンクに対応しました。 このシンクはパフォーマンス カウンターにのみ適用されます。 VM、VMSS、またはクラウド サービスで収集されたパフォーマンス カウンターを Azure Monitor にカスタム メトリックとして送信できるようになります。 Azure Monitor シンクは以下をサポートします。
 * [Azure Monitor メトリック API](https://docs.microsoft.com/rest/api/monitor/metrics/list) を使用して、Azure Monitor に送信されたすべてのパフォーマンス カウンターを取得します。
-* Azure Monitor の新しい[統合アラート エクスペリエンス](monitoring-overview-unified-alerts.md)を介して Azure Monitor に送信されたすべてのパフォーマンス カウンターに関して警告します
+* Azure Monitor の新しい[統合アラート エクスペリエンス](monitoring-overview-alerts.md)を介して Azure Monitor に送信されたすべてのパフォーマンス カウンターに関して警告します
 * パフォーマンス カウンターでワイルドカード演算子をメトリックの "Instance" ディメンションとして扱います。 たとえば、"LogicalDisk(\*)/DiskWrites/sec" カウンターを収集した場合、"Instance" ディメンションでフィルターして分割し、各論理ディスクのディスク書き込み回数/秒をプロットまたはアラートすることができます (C:、D: など)。
 
 診断拡張機能の構成で新しいシンクとして Azure Monitor を定義します

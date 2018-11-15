@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a2a869c04034f8ca38e80e1bf10518d22e38bcbc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091774"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286998"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
@@ -75,7 +75,7 @@ API は、以下の承認モードで実行できます。
 ### <a name="app-only-mode"></a>アプリのみモード
 アプリのみのコンテキストで招待を成功させるには、アプリに User.Invite.All スコープが必要です。
 
-詳しくは、 https://graph.microsoft.io/docs/authorization/permission_scopes をご覧ください
+詳しくは、 https://developer.microsoft.com/graph/docs/authorization/permission_scopes をご覧ください
 
 
 ## <a name="powershell"></a>PowerShell

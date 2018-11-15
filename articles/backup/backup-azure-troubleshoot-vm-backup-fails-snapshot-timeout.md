@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 55e4195e2666aed371a5a5664b331184afcf5e36
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9511e4f90348d58c7b5f6e85d9a5eb74af276461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420967"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260501"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
@@ -48,7 +48,6 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 **エラー コード**: UserErrorRpCollectionLimitReached <br>
 **エラー メッセージ**: The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました) <br>
-説明:  
 * この問題は、復旧ポイントの自動クリーンアップを妨げる、復旧ポイント リソース グループに対するロックが存在する場合に発生することがあります。
 * この問題は、1 日に複数のバックアップがトリガーされる場合にも発生することがあります。 現時点では、インスタント RP は 7 日間保持され、任意の時点で VM に関連付けることができるインスタント RP は 18 個だけであるため、1 日に 1 つだけのバックアップを推奨します。 <br>
 
@@ -96,6 +95,21 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **原因 5:[ バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
 **原因 6:[ リソース グループのロックが原因で、Backup サービスに古い復元ポイントを削除するためのアクセス許可がない](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
 
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize - 現在、Azure Backup では 1023 GB を超えるディスク サイズはサポートされていません
+
+**エラー コード**: UserErrorUnsupportedDiskSize <br>
+**エラー メッセージ**: 現在、Azure Backup では 1023 GB を超えるディスク サイズはサポートされていません <br>
+
+コンテナーが Azure VM バックアップ スタック V2 にアップグレードされていないため、ディスク サイズが 1023 GB を超える VM をバックアップすると、バックアップ操作が失敗します。 Azure VM バックアップ スタック V2 にアップグレードすると、最大 4 TB がサポートされます。 これらの[利点](backup-upgrade-to-vm-backup-stack-v2.md)と[考慮事項](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)を確認し、こちらの[指示](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)に従ってアップグレードに進んでください。  
+
+## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported - 現在、Azure Backup では Standard SSD ディスクはサポートされていません
+
+**エラー コード**: UserErrorStandardSSDNotSupported <br>
+**エラー メッセージ**: 現在、Azure Backup では Standard SSD ディスクはサポートされていません <br>
+
+現在、Azure Backup では、Azure VM バックアップ スタック V2 にアップグレードされたコンテナーについてのみ、Standard SSD ディスクがサポートされています。 これらの[利点](backup-upgrade-to-vm-backup-stack-v2.md)と[考慮事項](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)を確認し、こちらの[指示](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)に従ってアップグレードに進んでください。
+
+
 ## <a name="causes-and-solutions"></a>原因とソリューション
 
 ### <a name="the-vm-has-no-internet-access"></a>VM がインターネットにアクセスできない
@@ -139,7 +153,7 @@ VM エージェントが破損しているまたはサービスが停止して�
 1. VM サービス (services.msc) で Windows ゲスト エージェント サービスが実行されているかどうかを確認します。 Windows ゲスト エージェント サービスの再起動とバックアップの開始を試みます。    
 2. コントロール パネルの [サービス] に Windows ゲスト エージェント サービスが表示されない場合は、**[プログラムと機能]** に移動し、Windows ゲスト エージェント サービスがインストールされているかどうかを確認してください。
 4. Windows ゲスト エージェント サービスが **[プログラムと機能]** に表示される場合は、Windows ゲスト エージェントをアンインストールします。
-5. [最新バージョンのエージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。 インストールを実行するには、管理者権限が必要です。
+5. [最新バージョンのエージェント MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。 インストールを実行するには、管理者権限が必要です。
 6. [サービス] に Windows ゲスト エージェント サービスが表示されることを確認します。
 7. オンデマンド バックアップを実行します。
     * ポータルの **[今すぐバックアップ]** を選択します。
@@ -208,7 +222,7 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>復旧ポイントのリソース グループに対するロックを解除する
 1. [Azure Portal](http://portal.azure.com/) にサインインします。
-2. **[すべてのリソース] オプション**に移動して、AzureBackupRG_<Geo>_<number> という形式の復元ポイント コレクションのリソース グループを選択します。
+2. **[すべてのリソース] オプション**に移動して、AzureBackupRG_`<Geo>`_`<number>` という形式の復元ポイント コレクションのリソース グループを選択します。
 3. **[設定]** セクションで **[ロック]** を選択して、ロックを表示します。
 4. ロックを解除するには、省略記号を選択し、**[削除]** をクリックします。
 
@@ -217,17 +231,17 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 ### <a name="clean_up_restore_point_collection"></a> 復元ポイント コレクションをクリーンアップする
 ロックを解除した後で、復元ポイントをクリーンアップする必要があります。 復元ポイントをクリーンアップするには、次のいずれかの手順に従います。<br>
 * [アドホック バックアップを実行して復元ポイント コレクションをクリーンアップする](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
-* [バックアップ サービスによって作成された復元ポイント コレクションをポータルからクリーンアップする](#clean-up-restore-point-collection-from-portal-created-by-backup-service)<br>
+* [Azure portal から復元ポイント コレクションをクリーンアップする](#clean-up-restore-point-collection-from-azure-portal)<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>アドホック バックアップを実行して復元ポイント コレクションをクリーンアップする
 ロックを解除した後、アドホック/手動のバックアップをトリガーします。 これにより、復元ポイントが自動的にクリーンアップされます。 このアドホック/手動操作は、初回は失敗することを予期しておいてください。ただし、復元ポイントの手動削除の代わりに、自動クリーンアップが確実に行われます。 クリーンアップ後、次にスケジュールされているバックアップは成功するはずです。
 
 > [!NOTE]
-    > 自動クリーンアップは、アドホック/手動バックアップをトリガーした数時間後に行われます。 スケジュールされたバックアップが引き続き失敗する場合は、[こちら](#clean-up-restore-point-collection-from-portal-created-by-backup-service)に記載されている手順を使用して、復元ポイント コレクションを手動で削除してみてください。
+    > 自動クリーンアップは、アドホック/手動バックアップをトリガーした数時間後に行われます。 スケジュールされたバックアップが引き続き失敗する場合は、[こちら](#clean-up-restore-point-collection-from-azure-portal)に記載されている手順を使用して、復元ポイント コレクションを手動で削除してみてください。
 
-#### <a name="clean-up-restore-point-collection-from-portal-created-by-backup-service">バックアップ サービスによって作成された復元ポイント コレクションをポータルからクリーンアップする</a><br>
+#### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Azure portal から復元ポイント コレクションをクリーンアップする <br>
 
-リソース グループのロックのために消去されない復元ポイント コレクションを手動で消去するには、次の手順を実行します。
+リソース グループのロックのために消去されない復元ポイント コレクションを手動で消去するには、次の手順を試行してください。
 1. [Azure Portal](http://portal.azure.com/) にサインインします。
 2. **[ハブ]** メニューの **[すべてのリソース]** をクリックし、VM が配置されている、AzureBackupRG_`<Geo>`_`<number>` という形式のリソース グループを選択します。
 

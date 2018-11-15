@@ -2,18 +2,18 @@
 title: Azure IoT Edge で透過的なゲートウェイを作成する | Microsoft Docs
 description: Azure IoT Edge デバイスを、複数のデバイスの情報を処理できる透過的なゲートウェイとして使用します
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a48699507fbba18b20cb94e404c4814f25d31f44
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a867122aef5dd9d2152bca3ac10c11459ffc03f5
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50915068"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568473"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 

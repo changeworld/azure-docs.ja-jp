@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a470299df86f6b8f7fd61279af0334d01ef94f8d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 325da912c8fc4e453df895976df970f8e0f56412
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957423"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614952"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>アラートを Log Analytics から Azure アラートに拡張する
 Azure Log Analytics のアラート機能は、Azure アラートに置き換わりつつあります。 この移行の一環として、Log Analytics で最初に構成したアラートは Azure に拡張されます。 アラートが自動的に Azure に移動されるのを待ちたくない場合は、次の方法でプロセスを開始できます。
@@ -479,5 +479,5 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 
 ## <a name="next-steps"></a>次の手順
 
-* 新しい [Azure アラートのエクスペリエンス](monitoring-overview-unified-alerts.md)の詳細について学習する。
+* 新しい [Azure アラートのエクスペリエンス](monitoring-overview-alerts.md)の詳細について学習する。
 * [Azure Alerts のログ アラート](monitor-alerts-unified-log.md)について学習する。

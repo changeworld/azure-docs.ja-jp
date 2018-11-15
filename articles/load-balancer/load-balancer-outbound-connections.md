@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 1d851b60909d548a0735e3827cdfc7746fd8121d
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: fdcc039eb71eaeea03aaae856a6d031d4c528669
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219717"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687573"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -36,7 +36,7 @@ Azure は送信元ネットワーク アドレス変換 (SNAT) を使用して�
 
 ## <a name="scenarios"></a>シナリオの概要
 
-[Azure Resource Manager](#arm) を使用している場合、Azure Load Balancer と関連するリソースは明示的に定義されます。  現在 Azure には、Azure Resource Manager リソースの送信接続を実現するのに 3 つの異なる方法があります。 
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用している場合、Azure Load Balancer と関連するリソースは明示的に定義されます。  現在 Azure には、Azure Resource Manager リソースの送信接続を実現するのに 3 つの異なる方法があります。 
 
 | シナリオ | 方法 | IP プロトコル | 説明 |
 | --- | --- | --- | --- |

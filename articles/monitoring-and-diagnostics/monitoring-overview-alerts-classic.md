@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 02e69a9e3442f276e89e8515fb506ddd876ad2d2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e7622ffcfbaca4f83f0b5233159fc94720148365
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015776"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614142"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
@@ -55,7 +55,7 @@ Azure Monitor、Application Insights、Log Analytics および Service Health �
 
 * **クラシック アクティビティ ログ アラート** - 割り当てたフィルター条件と一致するアクティビティ ログ イベントが生成されたときにトリガーされるストリーミング ログ アラート。 すべての新規イベントには、アラート エンジンによってフィルター条件が適用されるだけなので、これらのアラートの状態は "アクティブ化済み" のみです。 これらのアラートを使用して、新しいサービス正常性インシデントが発生したとき、またはユーザーまたはアプリケーションがサブスクリプションで操作 (仮想マシンの削除など) を実行したときに通知を受け取ることができます。
 
-Azure Monitor で使用できる診断ログ データの場合、データを Log Analytics (旧称 OMS) に転送し、Log Analytics クエリ アラートを使用します。 Log Analytics では、[新しいアラート メソッド](monitoring-overview-unified-alerts.md)を使用しています。 
+Azure Monitor で使用できる診断ログ データの場合、データを Log Analytics (旧称 OMS) に転送し、Log Analytics クエリ アラートを使用します。 Log Analytics では、[新しいアラート メソッド](monitoring-overview-alerts.md)を使用しています。 
 
 次の図は、Azure Monitor のデータのソースと、そのデータからアラートを生成する方法をまとめたものです。
 

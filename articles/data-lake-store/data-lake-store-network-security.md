@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: b206b49914a448aa3fc9da63f72cca91f9f9ade1
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 703a865eca90deabcb6bbc64a75fc2bad52b43b7
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218969"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288001"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1---preview"></a>Azure Data Lake Storage Gen1 の仮想ネットワーク統合 - プレビュー
 
@@ -29,8 +29,6 @@ ms.locfileid: "51218969"
 Data Lake Storage Gen1 の仮想ネットワーク統合では、仮想ネットワークと Azure Active Directory (Azure AD) との間で仮想ネットワーク サービス エンドポイント セキュリティを利用して、アクセス トークン内に追加のセキュリティ要求が生成されます。 これらの要求は、ご利用の Data Lake Storage Gen1 アカウントに対して仮想ネットワークを認証し、アクセスを許可するために使用されます。
 
 > [!NOTE]
-> このテクノロジはプレビュー段階です。 運用環境での使用はお勧めしません。
->
 > これらの機能を使用することに関して追加料金はかかりません。 ご利用のアカウントは、Data Lake Storage Gen1 の標準料金で課金されます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable)に関するページを参照してください。 お客様が使用する他のすべての Azure サービスについては、[価格](https://azure.microsoft.com/pricing/#product-picker)に関するページを参照してください。
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 の仮想ネットワーク統合のシナリオ

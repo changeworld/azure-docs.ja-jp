@@ -2,19 +2,19 @@
 title: Linux コンテナーを使用する Windows に Azure IoT Edge をインストールする方法 | Microsoft Docs
 description: Linux コンテナーを使用する Windows への Azure IoT Edge のインストール手順
 author: kgremban
-manager: timlt
+manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: c389f904fb3ea21c9bcc538a62c7a866ef3b254d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7bae81f2f8b9ef9f7da45aed3bf8d7b6e15c9d0b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739262"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568269"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Windows に Azure IoT Edge をインストールして Linux コンテナーと共に使用する
 
@@ -49,7 +49,7 @@ IoT Hub によって提供されるデバイス接続文字列を使用して、
 
 ### <a name="option-1-install-and-manually-provision"></a>オプション 1: インストールして手動でプロビジョニングする
 
-1. [新しい Azure IoT Edge デバイスの登録](how-to-register-device-portal.md)に関するページの手順に従って、デバイスを登録し、デバイス接続文字列を取得します。 
+1. 「[新しい Azure IoT Edge デバイスを登録する](how-to-register-device-portal.md)」の手順に従って、デバイスを登録し、デバイス接続文字列を取得します。 
 
 2. IoT Edge デバイスで、PowerShell を管理者として実行します。 
 

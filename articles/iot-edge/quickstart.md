@@ -2,19 +2,19 @@
 title: Azure IoT Edge + Windows クイック スタート | Microsoft Docs
 description: シミュレートされたエッジ デバイスで分析を実行して Azure IoT Edge を試します
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 08/02/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 50c430d22f58ce9d2c122c630df1689c18e50aad
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 16c5b15612acebacfa034c6c55dd053a21eac0d2
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946166"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566331"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Azure Portal から Windows デバイスに展開する - プレビュー
 

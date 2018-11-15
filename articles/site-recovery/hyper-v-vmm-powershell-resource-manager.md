@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 6ade1d584fad05e33a72a0ff5099378a9cf7f29f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8e1494594546c432123b8b1b98d646e8637eea99
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214581"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622841"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して、Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する
 
@@ -73,7 +73,7 @@ Azure PowerShell を使用する準備が整っていることを確認します
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
 2. 新しい Recovery Services コンテナーを作成します。 後ほど使用できるように、このコンテナー オブジェクトを変数に格納します。 
 
-        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
+        $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
    
     コンテナー オブジェクトは、作成後に Get-AzureRMRecoveryServicesVault コマンドレットを使用して取得できます。
 

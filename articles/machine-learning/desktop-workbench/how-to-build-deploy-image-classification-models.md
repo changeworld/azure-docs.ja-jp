@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1dfcda5004dcf30c6dc112fb8150180849383016
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f5917cd7a5e4fcc2733765f642ad0958092372c1
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971571"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616216"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Azure Machine Learning で画像分類モデルを構築して配置する
 
@@ -32,7 +32,7 @@ ms.locfileid: "46971571"
 2. 画像の視覚化と注釈
 3. 画像の拡張
 4. ディープ ニューラル ネットワーク (DNN) モデルの定義
-5. 分類子のトレーニング
+5. 分類器のトレーニング
 6. 評価と視覚化
 7. Web サービスのデプロイ
 8. Web サービスのロード テスト
@@ -218,7 +218,7 @@ else:
 + Resnet-101
 + Resnet-152
 
-これらの DNN を、分類子または特徴抽出器として使用できます。 
+これらの DNN を、分類器または特徴抽出器として使用できます。 
 
 ネットワークの詳細については[こちら](https://github.com/Microsoft/CNTK/blob/master/PretrainedModels/Image.md)を、転移学習の概要については[こちら](https://blog.slavv.com/a-gentle-intro-to-transfer-learning-2c0b674375a0)を参照してください。
 
@@ -248,13 +248,13 @@ dnn_model = CNTKTLModel(train_set.labels,
     Successfully downloaded ResNet18_ImageNet_CNTK
     
 
-## <a name="train-the-classifier"></a>分類子をトレーニングする
+## <a name="train-the-classifier"></a>分類器をトレーニングする
 
 事前トレーニング済みの DNN に対して、次のいずれかの方法を選択できます。
 
   - **DNN の調整**: DNN をトレーニングして、分類を直接実行します。 DNN のトレーニングは遅くなりますが、トレーニング中にすべてのネットワークの重みを改善して最高の精度を得ることができるため、通常は最良の結果に至ります。
 
-  - **DNN の特徴抽出**: DNN をそのまま実行して、画像の低次元表現を取得します (512、2048、または 4096 の浮動小数点数)。 その表現が、別の分類子をトレーニングするための入力として使用されます。 DNN は変更されないため、この方法は DNN の調整に比べ、非常に高速で実行されますが、精度はそれほど高くありません。 それにもかかわらず、線形 SVM などの外部分類子のトレーニング (次のコードに示されています) は、強力なベースラインを提供でき、問題の実行可能性を理解するのに役立ちます。
+  - **DNN の特徴抽出**: DNN をそのまま実行して、画像の低次元表現を取得します (512、2048、または 4096 の浮動小数点数)。 その表現が、別の分類器をトレーニングするための入力として使用されます。 DNN は変更されないため、この方法は DNN の調整に比べ、非常に高速で実行されますが、精度はそれほど高くありません。 それにもかかわらず、線形 SVM などの外部分類器のトレーニング (次のコードに示されています) は、強力なベースラインを提供でき、問題の実行可能性を理解するのに役立ちます。
   
 TensorBoard を使用して、トレーニングの進行状況を視覚化できます。 TensorBoard をアクティブ化するには:
 1. 次のコードに示されているように、`tensorboard_logdir=PATH` パラメーターを追加します。
@@ -551,12 +551,12 @@ print("Image source:",image_path_or_url)
 serialized_result_in_json = deploy_obj.score_image(image_path_or_url)
 print("serialized_result_in_json:", serialized_result_in_json)
 
-# Score image url with added paramters. Add softmax to score.
-print("Score image url with added paramters. Add softmax to score")
-from cvtk.utils.constants import ClassificationRESTApiParamters
+# Score image url with added parameters. Add softmax to score.
+print("Score image url with added parameters. Add softmax to score")
+from cvtk.utils.constants import ClassificationRESTApiParameters
 image_path_or_url = "https://cvtkdata.blob.core.windows.net/publicimages/microsoft_logo.jpg"
 print("Image source:",image_path_or_url)
-serialized_result_in_json = deploy_obj.score_image(image_path_or_url, image_resize_dims=[224,224], parameters={ClassificationRESTApiParamters.ADD_SOFTMAX:True})
+serialized_result_in_json = deploy_obj.score_image(image_path_or_url, image_resize_dims=[224,224], parameters={ClassificationRESTApiParameters.ADD_SOFTMAX:True})
 print("serialized_result_in_json:", serialized_result_in_json)
 ```
 
@@ -609,7 +609,7 @@ def score_image_list_with_http(images, service_endpoint_url, service_key=None, p
         images(list): list of (input image file path, base64 image string, url or buffer)
         service_endpoint_url(str): endpoint url
         service_key(str): service key, None for local deployment.
-        parameters(dict): service additional paramters in dictionary
+        parameters(dict): service additional parameters in dictionary
 
 
     Returns:

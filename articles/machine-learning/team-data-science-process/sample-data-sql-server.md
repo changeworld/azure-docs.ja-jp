@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 74dcef9e927fc537cba56b03fcbfb9528c952ad0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7852a0fc548980227723c9f6a259c63367159201
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837873"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346241"
 ---
 # <a name="heading"></a>Azure の SQL Server 内のデータのサンプリング
+
 この記事では、SQL または Python プログラミング言語を使って、Azure の SQL Server に格納されているデータをサンプリングする方法について説明します。 また、サンプリングしたデータをファイルを保存し、Azure BLOB にアップロードして、Azure Machine Learning Studio に読み込むことで、データを Azure Machine Learning に移動する方法についても説明します。
 
 Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/) ODBC ライブラリを使用して、Azure 上の SQL Server に接続し、[Pandas](http://pandas.pydata.org/) ライブラリを使用してサンプリングを実行します。
@@ -31,10 +32,6 @@ Python のサンプリングでは、[pyodbc](https://code.google.com/p/pyodbc/)
 > このドキュメントにあるサンプルの SQL コードは、データが Azure の SQL Server に存在することを前提としています。 SQL Server にデータが存在しない場合、データを Azure の SQL Server に移動する方法については、「[Azure VM の SQL Server へのデータの移動](move-sql-server-virtual-machine.md)」をご覧ください。
 > 
 > 
-
-次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明する記事にリンクしています。 
-
-[!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
 
 **データをサンプリングする理由**
 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 これにより、データの理解、探索、および特徴エンジニアリングが容易になります。 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプを迅速に作成できるようにすることです。

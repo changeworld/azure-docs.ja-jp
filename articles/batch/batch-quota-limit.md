@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a7d77c0a2ce334c9909a621c55866a67e036f9cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887566"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282783"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -45,17 +45,27 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 プール割り当てモードを**ユーザー サブスクリプション**に設定した Batch アカウントを作成した場合、クォータの適用が異なります。 このモードでは、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 
+## <a name="pool-size-limits"></a>プール サイズの制限
+
+| **リソース** | **上限** |
+| --- | --- |
+| **[ノード間通信に対応するプール](batch-mpi.md)内の計算ノード**  ||
+| バッチ サービス プール割り当てモード | 100 |
+| バッチ サブスクリプション プール割り当てモード | 80 |
+| **[カスタム VM イメージを使用して作成されたプール](batch-custom-images.md)内の計算ノード**<sup>1</sup> ||
+| 専用ノード | 2000 |
+| 優先順位の低いノード | 1,000 |
+
+<sup>1</sup> ノード間通信が有効になっていないプール用。
+
 ## <a name="other-limits"></a>その他の制限
 
 | **リソース** | **上限** |
 | --- | --- |
-| [同時実行タスク数](batch-parallel-node-tasks.md)  |ノードのコア数 x 4 |
-| [アプリケーション](batch-application-packages.md) 数 |20 |
-| アプリケーションあたりのアプリケーション パッケージ数 |40 |
+| [同時実行タスク数](batch-parallel-node-tasks.md)  | ノードのコア数 x 4 |
+| [アプリケーション](batch-application-packages.md) 数 | 20 |
+| アプリケーションあたりのアプリケーション パッケージ数 | 40 |
 | タスクの最長有効期間 | 7 日間<sup>1</sup> |
-| [ノード間通信に対応するプール](batch-mpi.md)内のコンピューティング ノード | 100 |
-| [カスタム VM イメージで作成されたプール](batch-custom-images.md)内の専用コンピューティング ノード | 2500 |
-| [カスタム VM イメージで作成されたプール](batch-custom-images.md)内の低優先度コンピューティング ノード | 1,000 |
 
 <sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、7 日間です。 完了したタスクは、無期限に保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 

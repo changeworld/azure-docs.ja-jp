@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 3a6f7511407ba29b8fc6d8d3a41369bcd8cf18bc
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 406936200a39e21d7377e7b2dba19a7ee745de57
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803106"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568837"
 ---
 # <a name="quickstart-bing-spell-check-sdk-with-c"></a>クイック スタート: Bing Spell Check SDK (C# を使用)
 
@@ -25,7 +25,7 @@ Bing Spell Check SDK には、スペル チェックに関する REST API の機
 
 Bing Spell Check SDK を使用してコンソール アプリケーションを設定するには、Visual Studio のソリューション エクスプローラーで `Manage NuGet Packages` オプションを参照します。 `Microsoft.Azure.CognitiveServices.SpellCheck` パッケージを追加します。
 
-[SpellCheck SDK パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.SpellCheck/1.2.0)をインストールすると、次の項目を含む依存関係もインストールされます。
+[SpellCheck SDK パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck/1.2.0)をインストールすると、次の項目を含む依存関係もインストールされます。
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.AZure

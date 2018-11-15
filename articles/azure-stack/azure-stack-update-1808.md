@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 11/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 1ca305ab88e30c911bbded1e5ff97162e12f7652
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0b40b8018715e6b680f42676dfaead0ac6e5bf7a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429067"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279145"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新プログラム
 
@@ -64,7 +64,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 - **Kubernetes Marketplace アイテム**。 Kubernetes クラスターのデプロイに [Kubernetes Marketplace アイテム](azure-stack-solution-template-kubernetes-cluster-add.md)を使用できるようになりました。 ユーザーは Kubernetes アイテムを選択し、いくつかのパラメーターに値を入力すれば、Kubernetes クラスターを Azure Stack にデプロイできます。 このテンプレートの目的は、ユーザーが少ないステップで開発/テスト用の Kubernetes デプロイをセットアップできるように簡素化することです。
 
 <!-- | IS ASDK--> 
-- **Blockchain テンプレート**。 Azure Stack で [Ethereum コンソーシアムのデプロイ](azure-stack-ethereum.md)を実行できるようになりました。 [Azure Stack クイック スタート テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates)に 3 つの新しいテンプレートが追加されています。 これらを利用すると、ユーザーは、Azure と Ethereum の最小限の知識があれば、マルチメンバー コンソーシアム Ethereum ネットワークをデプロイして構成できます。 このテンプレートの目的は、ユーザーが少ないステップで開発/テスト用のブロックチェーン デプロイをセットアップできるように簡素化することです。
+- **Blockchain テンプレート**。 Azure Stack で [Ethereum コンソーシアムのデプロイ](user/azure-stack-ethereum.md)を実行できるようになりました。 [Azure Stack クイック スタート テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates)に 3 つの新しいテンプレートが追加されています。 これらを利用すると、ユーザーは、Azure と Ethereum の最小限の知識があれば、マルチメンバー コンソーシアム Ethereum ネットワークをデプロイして構成できます。 このテンプレートの目的は、ユーザーが少ないステップで開発/テスト用のブロックチェーン デプロイをセットアップできるように簡素化することです。
 
 <!-- | IS ASDK--> 
 - **API バージョン プロファイル 2017-03-09-profile が 2018-03-01-hybrid に更新されました**。 API プロファイルでは、Azure リソース プロバイダーと Azure REST エンドポイントの API バージョンが指定されます。 プロファイルの詳細については、「[Azure Stack での API バージョンのプロファイルの管理](/azure/azure-stack/user/azure-stack-version-profiles)」を参照してください。
@@ -157,6 +157,10 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 - 更新で注意が必要な特定の状況では、対応するアラートが生成されないことがあります。 それでも正確な状態はポータルに反映され、影響を受けることはありません。
 
 ### <a name="post-update-steps"></a>更新後の手順
+
+> [!Important]  
+> Azure Stack デプロイを、拡張機能ホスト用に準備します。 「[Azure Stack の拡張機能ホストを準備する](azure-stack-extension-host-prepare.md)」のガイダンスに従って、システムを準備します。
+
 この更新プログラムをインストールした後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。 
 - [KB 4468920 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.5.110](https://support.microsoft.com/help/4468920/)
 
@@ -249,8 +253,11 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 
 ### <a name="compute"></a>コンピューティング
 
+<!-- TBD – IS, ASDK -->
+- デタッチしたディスクを同じ名前と LUN で同じ仮想マシン (VM) に再アタッチすると、**"データ ディスク 'datadisk' は、VM 'vm1' にアタッチできません"** というようなエラーで失敗します。 このエラーは、現在ディスクがデタッチされているか、直前のデタッチ操作が失敗したために発生します。 ディスクが完全にデタッチされるまで待ってから再試行するか、ディスクをもう一度明示的に削除/デタッチしてください。 回避策は、別の名前で再アタッチするか、別の LUN に再アタッチすることです。 
+
 <!-- 3099544 – IS, ASDK --> 
-- Azure Stack ポータルを使用して新しい仮想マシン (VM) を作成し、VM サイズを選択するときに、[米国ドル/月] 列に **[利用不可]** のメッセージが表示されます。 VM 価格の列の表示は、Azure Stack ではサポートされておらず、この列は表示されるべきではありません。
+- Azure Stack ポータルを使用して新しい VM を作成し、VM サイズを選択するときに、[米国ドル/月] 列に **"利用不可"** のメッセージが表示されます。 VM 価格の列の表示は、Azure Stack ではサポートされておらず、この列は表示されるべきではありません。
 
 <!-- 3090289 – IS, ASDK --> 
 - 更新プログラム 1808 の適用後、Managed Disks を使用した VM をデプロイするときに、次の問題が発生する可能性があります。
