@@ -19,6 +19,8 @@ items:
     href: tutorial-route-location.md
   - name: 3 - 移動モード別の複数のルート
     href: tutorial-prioritized-routes.md
+  - name: 4 - ストア ロケーターの作成
+    href: tutorial-create-store-locator.md
 - name: 概念
   items:
   - name: ズーム レベルとタイル グリッド
@@ -161,9 +163,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: d304140ea5be6c4d8af86c2ad9dc4cc3b0be8fc6
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: e69f28012fcceb7aa741c1ba29c9f21537450089
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247203"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706247"

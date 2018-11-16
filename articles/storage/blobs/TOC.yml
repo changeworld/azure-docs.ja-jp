@@ -11,34 +11,34 @@ items:
   items:
   - name: ストレージ アカウントの作成
     href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - name: BLOB の使用 - Azure Portal
-    href: storage-quickstart-blobs-portal.md
-  - name: BLOB の使用 - Storage Explorer
-    href: storage-quickstart-blobs-storage-explorer.md
-  - name: BLOB の使用 - PowerShell
-    href: storage-quickstart-blobs-powershell.md
-  - name: BLOB の使用 - CLI
-    href: storage-quickstart-blobs-cli.md
-  - name: BLOB の使用 - .NET
-    href: storage-quickstart-blobs-dotnet.md
-  - name: BLOB の使用 - Java (Storage SDK V10)
-    href: storage-quickstart-blobs-java-v10.md
-  - name: BLOB の使用 - Java (Storage SDK V7)
-    href: storage-quickstart-blobs-java.md
-  - name: BLOB の使用 - Python
-    href: storage-quickstart-blobs-python.md
-  - name: BLOB の使用 - Go
-    href: storage-quickstart-blobs-go.md
-  - name: BLOB の使用 - Ruby
-    href: storage-quickstart-blobs-ruby.md
-  - name: BLOB の使用 - Node.js (Storage SDK v10)
-    href: storage-quickstart-blobs-nodejs-v10.md
-  - name: BLOB の使用 - Node.js (Storage SDK v2)
-    href: storage-quickstart-blobs-nodejs.md
-  - name: BLOB の使用 - JS/HTML
-    href: storage-quickstart-blobs-javascript-client-libraries.md
-  - name: BLOB の使用 - PHP
-    href: storage-quickstart-blobs-php.md
+  - name: コードを使用しない BLOB 管理
+    items:
+    - name: Azure ポータル
+      href: storage-quickstart-blobs-portal.md
+    - name: ストレージ エクスプローラー
+      href: storage-quickstart-blobs-storage-explorer.md
+    - name: PowerShell
+      href: storage-quickstart-blobs-powershell.md
+    - name: CLI
+      href: storage-quickstart-blobs-cli.md
+  - name: BLOB を使用した開発
+    items:
+    - name: .NET
+      href: storage-quickstart-blobs-dotnet.md
+    - name: Java (Storage SDK V10)
+      href: storage-quickstart-blobs-java-v10.md
+    - name: Python
+      href: storage-quickstart-blobs-python.md
+    - name: Go
+      href: storage-quickstart-blobs-go.md
+    - name: Ruby
+      href: storage-quickstart-blobs-ruby.md
+    - name: Node.js (Storage SDK v10)
+      href: storage-quickstart-blobs-nodejs-v10.md
+    - name: JS/HTML
+      href: storage-quickstart-blobs-javascript-client-libraries.md
+    - name: PHP
+      href: storage-quickstart-blobs-php.md
 - name: チュートリアル
   items:
   - name: 画像をアップロードして処理する
@@ -295,7 +295,7 @@ items:
         href: ../common/storage-import-export-file-format-log.md
 - name: 方法
   items:
-  - name: 開発
+  - name: BLOB を使用した開発
     items:
     - name: REST ()
       href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -305,6 +305,12 @@ items:
       href: storage-ios-how-to-use-blob-storage.md
     - name: Xamarin
       href: storage-xamarin-blob-storage.md
+    - name: レガシ SDK
+      items:
+      - name: Java (Storage SDK V7)
+        href: storage-quickstart-blobs-java.md
+      - name: Node.js (Storage SDK v2)
+        href: storage-quickstart-blobs-nodejs.md
   - name: 管理
     items:
     - name: Azure Storage 用の PowerShell
@@ -461,9 +467,9 @@ items:
       href: https://github.com/Azure/azure-storage-ruby
     - name: iOS
       href: https://github.com/Azure/azure-storage-ios
-ms.openlocfilehash: b4dbce75cab97213cdee9f248c245e4dd9fcf74f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d0273edd4660fb0b646844022205243a0af3b6b9
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634041"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712077"

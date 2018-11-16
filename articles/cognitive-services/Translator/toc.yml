@@ -222,7 +222,7 @@ items:
   - name: リソース
     items:
     - name: 言語のサポート
-      href: https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support
+      href: https://docs.microsoft.com/azure/cognitive-services/translator/language-support
     - name: 用語集
       href: custom-translator/glossary.md
     - name: FAQ
@@ -233,9 +233,9 @@ items:
       href: https://stackoverflow.com/questions/tagged/microsoft-translator
     - name: Uservoice
       href: https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide
-ms.openlocfilehash: e0a2c0d461cd87ef1ff53e2d8b2b68a2135e6e10
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b6180727be53733f53289c1d79aed340993147b0
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624490"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683595"

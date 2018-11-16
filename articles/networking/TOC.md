@@ -35,7 +35,7 @@
 # 方法
 ## インターネット接続
 ### [ネットワーク負荷分散パブリック サーバー](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [アプリケーション負荷分散パブリック サーバー](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [アプリケーション負荷分散パブリック サーバー](../application-gateway/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Web アプリケーションの保護](../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [場所に基づいた負荷分散](../traffic-manager/traffic-manager-configure-geographic-routing-method.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## 内部接続

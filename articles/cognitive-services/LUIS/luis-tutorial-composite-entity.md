@@ -55,7 +55,7 @@ ms.locfileid: "51283514"
 ## <a name="composite-entity"></a>複合エンティティ
 個別のエンティティを論理的にグループ化できる場合は、複合エンティティを作成します。この論理的なグループ化は、クライアント アプリケーションに役立ちます。 
 
-このアプリでは、従業員名は **[Employee] (従業員)** リスト エンティティで定義されており、名前のシノニム、メール アドレス、会社の内線番号、携帯電話番号、および米国連邦税 ID を含みます。 
+このアプリでは、従業員名は **「Employee」(従業員)** リスト エンティティで定義されており、名前のシノニム、メール アドレス、会社の内線番号、携帯電話番号、および米国連邦税 ID を含みます。 
 
 **MoveEmployee** 意図には、従業員をあるビルとオフィスから別のビルとオフィスに移動することを要求する発話の例があります。 ビルの名前が "A"、"B" などの英字であるのに対して、オフィスは "1234"、"13245" などの数値です。 
 
@@ -111,7 +111,7 @@ ms.locfileid: "51283514"
 
     datetimeV2 でエンティティをフィルター処理する別の方法として、**[Entity filters] (エンティティ フィルター)** を選択し、一覧から **[datetimeV2]** を選択する方法があります。 
 
-5. 最初のエンティティ `Employee` を選択してから、ポップアップ メニューの一覧にある **[Wrap in composite entity] (複合エンティティにラップする)** を選択します。 
+5. 最初のエンティティ `Employee` を選択してから、ポップアップ メニューの一覧にある **「Wrap in composite entity」(複合エンティティにラップする)** を選択します。 
 
     [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
@@ -120,7 +120,7 @@ ms.locfileid: "51283514"
 
     [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "複合内の最後のエンティティの選択とエンティティの作成が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
-7. **[What type of entity do you want to create?] (どのような種類のエンティティを作成しますか?)** では、必要なほぼすべてのフィールドが一覧にあります。 元の場所だけがありません。 **[子エンティティを追加する]** を選択し、既存のエンティティの一覧から **[Locations::Origin]** を選択してから、**[完了]** を選択します。 
+7. **「What type of entity do you want to create?」(どのような種類のエンティティを作成しますか?)** では、必要なほぼすべてのフィールドが一覧にあります。 元の場所だけがありません。 **[子エンティティを追加する]** を選択し、既存のエンティティの一覧から **[Locations::Origin]** を選択してから、**[完了]** を選択します。 
 
     事前構築済みのエンティティ number が複合エンティティに追加されました。 複合エンティティの開始トークンと終了トークンの間に事前構築済みエンティティを出現させることができた場合、複合エンティティにはそれらの事前構築済みエンティティが含まれている必要があります。 事前構築済みエンティティが含まれていない場合、複合エンティティは正しく予測されませんが、個別の要素は正しく予測されます。
 
@@ -133,7 +133,7 @@ ms.locfileid: "51283514"
 ## <a name="label-example-utterances-with-composite-entity"></a>発話の例に複合エンティティのラベルを付ける
 
 
-1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、**[Wrap in composite entity] (複合エンティティにラップする)** を選択します。
+1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、**「Wrap in composite entity」(複合エンティティにラップする)** を選択します。
 
     [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 

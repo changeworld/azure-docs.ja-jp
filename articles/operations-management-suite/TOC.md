@@ -28,8 +28,8 @@
 ### [Web ベースライン評価](../security-center/security-center-customize-os-security-config.md)
 
 ## ソリューションの使用
-### [管理ソリューション](../monitoring/monitoring-solutions.md)
-### [ターゲット ソリューション](../monitoring/monitoring-solution-targeting.md)
+### [管理ソリューション](../azure-monitor/insights/solutions.md)
+### [ターゲット ソリューション](../azure-monitor/insights/solution-targeting.md)
 ### 洞察と分析
 #### [AD 評価](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD レプリケーションの状態](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -57,12 +57,12 @@
 #### [マルウェア対策評価](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## ソリューションを作成する
-### [設計とビルド](../monitoring/monitoring-solutions-creating.md)
-### [ソリューション ファイル](../monitoring/monitoring-solutions-solution-file.md)
-### [Automation リソース](../monitoring/monitoring-solutions-resources-automation.md)
-### [ログ検索とアラート](../monitoring/monitoring-solutions-resources-searches-alerts.md)
-### [ビュー](../monitoring/monitoring-solutions-resources-views.md)
-### [ベスト プラクティス](../monitoring/monitoring-solutions-best-practices.md)
+### [設計とビルド](../azure-monitor/insights/solutions-creating.md)
+### [ソリューション ファイル](../azure-monitor/insights/solutions-solution-file.md)
+### [Automation リソース](../azure-monitor/insights/solutions-resources-automation.md)
+### [ログ検索とアラート](../azure-monitor/insights/solutions-resources-searches-alerts.md)
+### [ビュー](../azure-monitor/insights/solutions-resources-views.md)
+### [ベスト プラクティス](../azure-monitor/insights/solutions-best-practices.md)
 
 ## 管理のシナリオ
 ### [Runbook からの分析データの収集](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)

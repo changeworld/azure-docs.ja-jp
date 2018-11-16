@@ -30,8 +30,6 @@ items:
     href: tutorial-url-redirect-cli.md
   - name: 自動スケーリングとゾーン冗長
     href: tutorial-autoscale-ps.md
-  - name: Azure のアプリケーション ゲートウェイのトラブルシューティング - ILB ASE
-    href: create-gateway-internal-load-balancer-app-service-environment.md
 - name: サンプル
   items:
   - name: Azure PowerShell
@@ -142,6 +140,8 @@ items:
       href: application-gateway-create-probe-ps.md
   - name: トラブルシューティング
     items:
+    - name: Azure のアプリケーション ゲートウェイのトラブルシューティング - ILB ASE
+      href: create-gateway-internal-load-balancer-app-service-environment.md
     - name: Bad Gateway (502) エラーのトラブルシューティング
       href: application-gateway-troubleshooting-502.md
     - name: 診断
@@ -184,9 +184,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-application-gateway
   - name: FAQ
     href: application-gateway-faq.md
-ms.openlocfilehash: c5177c4749b9a678166ac4c909c71cbcbf710fe9
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: bc75dbc86a210793eb436046cdb586cb895d7b05
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613275"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705550"

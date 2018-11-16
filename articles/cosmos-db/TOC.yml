@@ -70,38 +70,6 @@ items:
   expanded: true
 - name: 概念
   items:
-  - name: Azure Cosmos アカウントの使用
-    href: account-overview.md
-  - name: コンテナーとアイテム
-    items:
-    - name: データベース、コンテナー、アイテムの使用
-      href: databases-containers-items.md
-    - name: インデックス作成
-      items:
-      - name: 概要
-        href: index-overview.md
-      - name: インデックス作成ポリシー
-        href: index-policy.md
-      - name: インデックスの種類
-        href: index-types.md
-      - name: インデックスのパス
-        href: index-paths.md
-    - name: Change Feed
-      items:
-      - name: 概要
-        href: change-feed.md
-      - name: 変更フィードの読み取り
-        href: read-change-feed.md
-      - name: 変更フィード プロセッサ
-        href: change-feed-processor.md
-      - name: 変更フィードと Azure Functions
-        href: change-feed-functions.md
-    - name: Time to Live
-      href: time-to-live.md
-    - name: 一意のキー制約
-      href: unique-keys.md
-    - name: トランザクションとオプティミスティック同時実行制御
-      href: database-transactions-optimistic-concurrency.md
   - name: グローバル配信
     items:
     - name: 概要
@@ -136,6 +104,38 @@ items:
       href: request-units.md
     - name: コンテナーとデータベースのスループットのプロビジョニング
       href: set-throughput.md
+  - name: Azure Cosmos アカウントの使用
+    href: account-overview.md
+  - name: コンテナーとアイテム
+    items:
+    - name: データベース、コンテナー、アイテムの使用
+      href: databases-containers-items.md
+    - name: インデックス作成
+      items:
+      - name: 概要
+        href: index-overview.md
+      - name: インデックス作成ポリシー
+        href: index-policy.md
+      - name: インデックスの種類
+        href: index-types.md
+      - name: インデックスのパス
+        href: index-paths.md
+    - name: Change Feed
+      items:
+      - name: 概要
+        href: change-feed.md
+      - name: 変更フィードの読み取り
+        href: read-change-feed.md
+      - name: 変更フィード プロセッサ
+        href: change-feed-processor.md
+      - name: 変更フィードと Azure Functions
+        href: change-feed-functions.md
+    - name: Time to Live
+      href: time-to-live.md
+    - name: 一意のキー制約
+      href: unique-keys.md
+    - name: トランザクションとオプティミスティック同時実行制御
+      href: database-transactions-optimistic-concurrency.md
   - name: セキュリティ
     items:
     - name: 概要
@@ -567,9 +567,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 786829ec3052672c4a931d6a31452a3d96058fcd
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 9a9aed84f75d9db93ec02bbfa681412dd1fa97da
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636562"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706390"

@@ -255,6 +255,10 @@ items:
       href: azure-stack-sql-resource-provider-maintain.md
     - name: SQL Server リソース プロバイダーの削除
       href: azure-stack-sql-resource-provider-remove.md
+    - name: SQL リソース プロバイダーのリリース ノート
+      items:
+      - name: SQL リソース プロバイダー 1.1.30.0 のリリース ノート
+        href: azure-stack-sql-resource-provider-11300.md
   - name: MySQL を PaaS として提供する
     href: azure-stack-mysql-resource-provider.md
     items:
@@ -270,6 +274,10 @@ items:
       href: azure-stack-mysql-resource-provider-maintain.md
     - name: MySQL Server リソース プロバイダーの削除
       href: azure-stack-mysql-resource-provider-remove.md
+    - name: MySQL リソース プロバイダーのリリース ノート
+      items:
+      - name: MySQL リソース プロバイダー 1.1.30.0 のリリース ノート
+        href: azure-stack-mysql-resource-provider-11300.md
   - name: App Service を PaaS として提供する
     href: azure-stack-app-service-overview.md
     items:
@@ -390,9 +398,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: b68cebd2d6e2a7965eef61bf35c50824f7102c8e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b339c19e4736ddf55794ae07f2f14b3d993f7762
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614754"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686655"

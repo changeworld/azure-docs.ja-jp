@@ -10,6 +10,7 @@ items:
     displayName: architecture
     href: concept-azure-machine-learning-architecture.md
   - name: Workbench に起きていること
+    displayName: desktop
     href: overview-what-happened-to-workbench.md
   expanded: true
 - name: クイック スタート
@@ -32,7 +33,7 @@ items:
   items:
   - name: Jupyter Notebook (GitHub)
     displayName: example, examples
-    href: http://aka.ms/aml-notebooks
+    href: https://aka.ms/aml-notebooks
 - name: 概念
   items:
   - name: モデル管理
@@ -49,7 +50,7 @@ items:
   - name: 開発環境をセットアップする 
     items:
     - name: 環境を構成する
-      displayName: local, remote
+      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm
       href: how-to-configure-environment.md
     - name: VS Code Tools for AI
       displayName: Visual Studio Code, vscode
@@ -71,7 +72,7 @@ items:
   - name: モデルをトレーニングする
     items:
     - name: トレーニング環境をセットアップする
-      displayName: compute target, train
+      displayName: compute target, dsvm, Data Science Virtual Machine, batchai, batch ai, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: トレーニング中のデータにアクセスする
       href: how-to-access-data.md
@@ -83,11 +84,12 @@ items:
       - name: TensorFlow
         href: how-to-train-tensorflow.md
     - name: ハイパーパラメーターを調整する
+      displayName: parameter
       href: how-to-tune-hyperparameters.md
     - name: 実験とメトリックを追跡する
       href: how-to-track-experiments.md
   - name: 機械学習の自動化
-    displayName: automl
+    displayName: automl, auto ml
     href: how-to-automated-ml.md
     items:
     - name: 自動トレーニングを構成する
@@ -101,6 +103,7 @@ items:
   - name: モデルをデプロイする
     items:
     - name: モデルをデプロイする場所
+      displayName: publish
       href: how-to-deploy-and-where.md
     - name: ACI にデプロイする
       displayName: Azure Container Instances
@@ -126,17 +129,21 @@ items:
     - name: Application Insights での監視
       href: how-to-enable-app-insights.md
   - name: リソース クォータを管理する
+    displayName: limits
     href: how-to-manage-quotas.md
   - name: Machine Learning CLI の使用
-    displayName: cli, command line, command-line
+    displayName: cli, command line, command-line, az,
     href: reference-azure-machine-learning-cli.md
 - name: リファレンス
   items:
   - name: Machine Learning SDK
-    href: http://aka.ms/aml-sdk
+    displayName: api, core, package
+    href: https://aka.ms/aml-sdk
   - name: Data Prep SDK
-    href: http://aka.ms/data-prep-sdk
+    displayName: api, preparation, package
+    href: https://aka.ms/data-prep-sdk
   - name: Monitoring SDK
+    displayName: api, package
     href: https://aka.ms/aml-monitoring-sdk
 - name: リソース
   items:
@@ -147,12 +154,14 @@ items:
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
   - name: リリース ノート
+    displayName: what's new
     href: azure-machine-learning-release-notes.md
   - name: 既知の問題
     href: resource-known-issues.md
   - name: サポートを受ける
     href: support-for-aml-services.md
   - name: データをエクスポートおよび削除する
+    displayName: gdpr
     href: how-to-export-delete-data.md
   - name: 非推奨のドキュメント
     items:
@@ -161,7 +170,7 @@ items:
       href: how-to-migrate.md
     - name: アカウント データのエクスポートまたは削除 (非推奨)
       href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
-    - name: Workbench のクイック スタート
+    - name: Workbench のクイック スタート (非推奨)
       href: ../desktop-workbench/quickstart-installation.md
     - name: 'チュートリアル 1: データを準備する'
       href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
@@ -357,9 +366,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 以前の問題
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 87379b773b353f4f384252a9840f1e75d595e37b
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 62bc2016ec9294c00f20587cb6f6f7af7bafa599
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613632"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706655"
