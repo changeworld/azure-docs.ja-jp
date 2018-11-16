@@ -10,16 +10,16 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ced100f0bdd20841648ca84dfcab1847bdcd3096
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: d7097886b746c225bb420f9a96e2b7ef5c95c913
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362485"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684741"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights を使用した Azure Active Directory B2C でのユーザー動作の追跡
 
-Azure Active Directory (Azure AD) B2C を Azure Application Insights と連携させて使用すると、ユーザー体験の詳細なイベント ログをカスタマイズして取得することができます。 この記事では、次のことについて説明します:
+Azure Active Directory (Azure AD) B2C を Azure Application Insights と連携させて使用すると、ユーザー体験の詳細なイベント ログをカスタマイズして取得することができます。 この記事では、次のことについて説明します。
 
 * ユーザーの動作を把握する。
 * 開発時または運用時にポリシーの問題を解決する。
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) B2C を Azure Application Insights と連携�
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-Azure AD B2C の Identity Experience Framework には、プロバイダー `Handler="Web.TPEngine.Providers.UserJourneyContextProvider, Web.TPEngine, Version=1.0.0.0` が含まれています。 このプロバイダーは、Azure AD B2C に提供されているインストルメンテーション キーを使用して、イベント データを Application Insights に直接送信します。
+Azure AD B2C の Identity Experience Framework には、プロバイダー `Handler="Web.TPEngine.Providers.AzureApplicationInsightsProvider, Web.TPEngine, Version=1.0.0.0` が含まれています。 このプロバイダーは、Azure AD B2C に提供されているインストルメンテーション キーを使用して、イベント データを Application Insights に直接送信します。
 
 技術プロファイルは、このプロバイダーを使用して Azure AD B2C のイベントを定義します。 このプロファイルには、イベントの名前、記録される要求、およびインストルメンテーション キーを指定します。 イベントを投稿するために、カスタムのユーザー体験には技術プロファイルが `orchestration step` または `validation technical profile` として追加されます。
 

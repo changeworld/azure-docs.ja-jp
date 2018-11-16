@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 558f7d684453c8b5040f586820bd2a8a9ac0f9c8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8a1fd001980efbff27f10cfb4be1502cd2f9f402
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838434"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345931"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Azure HDInsight Hive テーブル内のデータのサンプリング
 この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルに格納されているデータをダウンサンプリングして、分析で管理しやすいサイズに削減する方法について説明します。 一般的に使用されている 3 つのサンプリング方法について説明します。
@@ -28,10 +28,6 @@ ms.locfileid: "34838434"
 * 一様ランダム サンプリング
 * グループごとのランダム サンプリング
 * 階層サンプリング
-
-次の**メニュー**は、さまざまなストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
-
-[!INCLUDE [cap-sample-data-selector](../../../includes/cap-sample-data-selector.md)]
 
 **データをサンプリングする理由**
 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 ダウンサンプリングすると、データの理解、探索、および特徴エンジニアリングが容易になります。 Team Data Science Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。

@@ -4,17 +4,17 @@ description: Visual Studio Code を使用して Azure IoT Edge の Python モジ
 services: iot-edge
 keywords: ''
 author: shizn
-manager: timlt
+manager: philmea
 ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4393d3231ca4f0a813d4586161383bd6d61f6a49
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 0dfe096bb3a2a2116ead2423f53a5e44c8f02630
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45552281"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567521"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-python-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge の Python モジュールを開発してデバッグする
 

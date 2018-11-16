@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea806a1004cf268fb7da75fa45013bdbaf882d86
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ce1e82971f10541bf3a67d46b48c5fc93b5432b4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227503"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687080"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Presto をインストールして使用する
 
 このドキュメントでは、スクリプト アクションを使用して HDInsight Hadoop クラスターに Presto をインストールする方法について説明します。 既存の Presto HDInsight クラスターに Airpal をインストールする方法についても説明します。
 
-HDInsight では、Apache Hadoop クラスター向けの Starburst Presto アプリケーションも提供しています。 詳細については、「[Azure HDInsight へのサード パーティ製アプリケーションのインストール](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apps-install-applications)」を参照してください。
+HDInsight では、Apache Hadoop クラスター向けの Starburst Presto アプリケーションも提供しています。 詳細については、「[Azure HDInsight へのサード パーティ製アプリケーションのインストール](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-install-applications)」を参照してください。
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する **HDInsight 3.5 Hadoop クラスター**が必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン](hdinsight-component-versioning.md)に関するページを参照してください。

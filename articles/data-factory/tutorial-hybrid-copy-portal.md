@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f408d24a5957061bf03d340a555b87bdc6b2aacc
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304137"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614023"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
@@ -111,7 +111,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. コンテナーの一覧で、**[adftutorial]** を選択します。
 
-    ![コンテナーの選択](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![コンテナーの選択](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. **adftutorial** の **[コンテナー]** ウィンドウを開いたままにしておきます。 チュートリアルの最後で、このページを使用して出力を確認します。 このコンテナーには output フォルダーが Data Factory によって自動的に作成されます。手動で作成する必要はありません。
 
@@ -197,7 +197,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[Option 1: Express setup]\(オプション 1: 高速セットアップ\)** の **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** を選択します。 
 
-    ![高速セットアップのリンク](./media/tutorial-hybrid-copy-portal/click-exress-setup.png)
+    ![高速セットアップのリンク](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 
 1. **[Integration Runtime (セルフホステッド) 高速セットアップ]** ウィンドウで、**[閉じる]** を選択します。 
 
@@ -237,7 +237,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **SQLServerToBlobPipeline** のタブに移動するか、またはツリービューの **SQLServerToBlobPipeline** を選択します。 
 
-    ![パイプラインのタブ](./media/tutorial-hybrid-copy-portal/pipeliene-tab.png)
+    ![パイプラインのタブ](./media/tutorial-hybrid-copy-portal/pipeline-tab.png)
 
 1. **[プロパティ]** ウィンドウの一番下にある **[シンク]** タブに移動し、**[+ 新規]** を選択します。 
 

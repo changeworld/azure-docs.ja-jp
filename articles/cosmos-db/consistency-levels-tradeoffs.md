@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: 8f36026c7e5802994b8cf22d60c6ecea052e6382
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0e4105d6f56a8eb45a83e970c85319cf25041781
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963049"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514776"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ
 
@@ -33,20 +33,6 @@ ms.locfileid: "50963049"
 - 要求ユニットの数が同じである場合、"セッション"、"一貫性のあるプレフィックス"、"最終的" の整合性レベルでは、"厳密" および "有界整合性制約" の場合と比べてほぼ 2 倍の読み取りスループットを発揮します。
 
 - 書き込み操作の種類 (挿入、置換、アップサート、削除など) が指定された場合、要求ユニットに対するスループットはすべての整合性レベルで同じです。
-
-## <a name="consistency-levels-and-durability"></a>整合性レベルと持続性
-
-クライアントに対して書き込み操作が承認される前に、書き込み操作を受け入れるリージョン内のレプリカのクォーラムによってデータが永続的にコミットされます。 さらに、同期インデックス作成ポリシーを使用してコンテナーが構成されている場合、クライアントに対して書き込み操作の確認応答が送信される前に、インデックスも同期的に更新され、レプリケートされ、レプリカのクォーラムによって永続的にコミットされます。
-
-次の表は、いくつかのリージョンにまたがる Cosmos アカウントについて、地域災害が発生した場合にデータ損失の可能性がある期間をまとめたものです。
-
-| **整合性レベル** | **地域災害が発生した場合にデータ損失の可能性がある期間** |
-| - | - |
-| Strong | ゼロ |
-| Bounded Staleness | Cosmos アカウント上で構成された "整合性制約期間" に限定。 |
-| Session | 最大で 5 秒 |
-| 一貫性のあるプレフィックス | 最大で 5 秒 |
-| Eventual | 最大で 5 秒 |
 
 ## <a name="next-steps"></a>次の手順
 

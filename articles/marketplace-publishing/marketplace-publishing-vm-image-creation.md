@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 2ec758d9457b75cd7e5f6f29757d3201f3a6d62e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0dc33c669a73dd92926eef6a9c4a476160ce60a4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283480"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686366"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージ作成ガイド
 この記事 ( **手順 2**) では、Azure Marketplace にデプロイする仮想ハード ディスク (VHD) の準備について説明します。 VHD は SKU の基礎です。 プロセスは、Linux ベースの SKU または Windows ベースの SKU のどちらを提供するかによって異なります。 この記事では、両方のシナリオについて説明します。 このプロセスは、[アカウントの作成および登録][link-acct-creation]と並行して実行できます。
@@ -191,7 +191,7 @@ VM イメージの詳細については、次のブログを参照してくだ�
 
 ### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>必要なツール、PowerShell、および Azure クラシック CLI を設定する
 * [PowerShell をセットアップする方法](/powershell/azure/overview)
-* [Azure CLI をセットアップする方法](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure CLI をセットアップする方法](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 ユーザー VM イメージの作成
 #### <a name="capture-vm"></a>VM のキャプチャ

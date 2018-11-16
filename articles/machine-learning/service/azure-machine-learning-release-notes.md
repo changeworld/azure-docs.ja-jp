@@ -9,16 +9,53 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 0927ae14d232ec2ce3a46bb66ed535deabbe0138
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 5ceb47f437f736829d0be10a856fe787fab944b0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158688"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261584"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
 この記事では、Azure Machine Learning service の各リリースについて説明します。 
+
+## <a name="2018-11-05"></a>2018-11-05
+
+### <a name="azure-portal"></a>Azure ポータル 
+Azure Machine Learning サービスの Azure portal では、次の更新が加えられました。
+  * パブリッシュされたパイプライン用の新しい **[パイプライン]** タブ。
+  * 既存の HDInsight クラスターをコンピューティング ターゲットとしてアタッチする操作が新たにサポートされました。
+
+### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Azure Machine Learning SDK for Python v0.1.74
+
++ **重大な変更** 
+  * *Workspace.compute_targets、datastores、experiments、images、models*、および *webservices* が、メソッドではなく、プロパティになりました。 たとえば、*Workspace.compute_targets()* は、*Workspace.compute_targets* に置き換えます。
+  * *Run.get_submitted_run* が廃止され、*Run.get_context* に置き換えられました。 前者のメソッドは、今後のリリースで削除されます。
+  * *PipelineData* クラスは、データストア オブジェクトを datastore_name ではなく、パラメーターとして受け付けるようになりました。 同様に、*パイプライン*は default_datastore_name ではなく default_datastore を受け入れます。
+
++ **新機能**
+  * Azure Machine Learning Pipelines の[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb)で、MPI の手順が使われるようになりました。
+  * Jupyter ノートブック用の RunDetails ウィジェットが更新され、パイプラインの視覚化が表示されるようになりました。
+
+### <a name="azure-machine-learning-data-prep-sdk-v040"></a>Azure Machine Learning Data Prep SDK v0.4.0 
+ 
++ **新機能**
+  * データ プロファイルにタイプ カウントが追加されました 
+  * 値のカウントとヒストグラムが使用可能になりました
+  * データ プロファイル内のパーセンタイルが追加されました
+  * 集計で中央値が使用可能になりました
+  * Python 3.7 が新たにサポートされました
+  * データストアを含んだデータ フローを DataPrep パッケージに保存すると、データ ストア情報が DataPrep パッケージの一部としてを永続化されます
+  * データ ストアへの書き込みが新たにサポートされました 
+        
++ **バグ修正**
+  * 64 ビット符号なし整数のオーバーフローが Linux で正しく処理されるようになりました
+  * smart_read でのプレーン テキスト ファイルの不適切なテキスト ラベルが修正されました
+  * 文字列の列タイプがメトリック ビューで表示されるようになりました
+  * タイプ カウントが修正され、各種ではなく、1 つの FieldType にマップされた ValueKinds が表示されるようになりました
+  * Write_to_csv で、パスが文字列として指定されている場合に処理が失敗しないようになりました
+  * Replace を使用する際に、"find" を空白のままにしても処理が失敗しないようになりました 
 
 ## <a name="2018-10-12"></a>2018 年 10 月 12 日
 
@@ -26,9 +63,6 @@ ms.locfileid: "50158688"
 
 + **新機能**
   * 新しいワークスペースの作成時、マルチ テナントがサポートされます。
-
-+ **重大な変更**
-  * **次期リリースで実施予定** *Workspace.compute_targets、datastores、experiments、images、models*、および *webservices* が、メソッドではなく、プロパティになります。 たとえば、*Workspace.compute_targets()* は、*Workspace.compute_targets* に置き換えます。
 
 + **修正済みのバグ**
   * Web サービスをデプロイするときに、pynacl ライブラリのバージョンをピン留めする必要がなくなりました。
@@ -217,7 +251,7 @@ Azure Machine Learning の 3 回目の更新へようこそ。 この更新に�
 **注目すべき新機能**
 - [データ ソースとしての SQL Server および Azure SQL DB のサポート](../desktop-workbench/data-prep-appendix2-supported-data-sources.md#types) 
 - [MMLSpark を使用した GPU サポートのある Spark でのディープ ラーニング](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
-- [デプロイの時点で Azure IoT Edge デバイスと互換性のあるすべての AML コンテナー (余分な手順は不要)](http://aka.ms/aml-iot-edge-blog)
+- [デプロイの時点で Azure IoT Edge デバイスと互換性のあるすべての AML コンテナー (余分な手順は不要)](https://aka.ms/aml-iot-edge-blog)
 - Azure Portal で利用可能な登録済みモデル リストと詳細ビュー
 - ユーザー名/パスワード ベースのアクセスに加えて、SSH キーに基づく認証を使用したコンピューティング ターゲットへのアクセス。 
 - データ準備エクスペリエンスでの新しいパターン頻度インスペクター。 
@@ -282,7 +316,7 @@ Azure Machine Learning の 3 回目の更新へようこそ。 この更新に�
 - 追加された `az ml datasource create` コマンドを使って、コマンド ラインからデータ ソース ファイルを作成できます
 
 #### <a name="model-management-and-operationalization"></a>モデルの管理と運用化
-- [すべての AML コンテナーは、運用化の時点で Azure IoT Edge デバイスと互換性があります (余分な手順は不要)](http://aka.ms/aml-iot-edge-blog) 
+- [すべての AML コンテナーは、運用化の時点で Azure IoT Edge デバイスと互換性があります (余分な手順は不要)](https://aka.ms/aml-iot-edge-blog) 
 - O16n CLI でエラー メッセージの改良
 - モデル管理ポータル UX のバグ修正  
 - 詳細ページのモデル管理属性での一貫性のある大文字と小文字の使い分け

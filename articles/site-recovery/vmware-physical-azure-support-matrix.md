@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/05/2018
 ms.author: raynew
-ms.openlocfilehash: b472ed1c32e64b8f8ac881c09f22590c49f39c75
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 076cd987cdc74cad07287c15ad52394ef304f251
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215363"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015368"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -63,16 +63,9 @@ Site Recovery は、サポートされているマシンで実行されている
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
 Windows オペレーティング システム | 64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br></br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
-Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 から 5.11<b>\*\*</b>, 6.1 から 6.10<b>\*\*</b>, 7.0 から 7.5 <br/><br/>CentOS: 5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.5 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) を実行している Oracle Linux 6.4、6.5、6.6、6.7 <br/><br/></br>* *レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。*</br></br><b>\*\*</b> *Azure の Linux およびオープン ソース テクノロジのサポートについては、[Azure の Linux 仮想マシンのサポート](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)に関するページを参照してください。Azure Site Recovery を使用すると、Azure で Linux サーバーをフェールオーバーして実行できますが、Linux ベンダーはサポートが終了していないバージョンのディストリビューションのみにサポートを制限している場合があります。*
+Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 から 5.11<b>\*\*</b>, 6.1 から 6.10<b>\*\*</b>, 7.0 から 7.5 <br/><br/>CentOS: 5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.5 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) を実行している Oracle Linux 6.4、6.5、6.6、6.7 <br/><br/></br>-レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。</br></br> - Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。 Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> - Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> - 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。
 
 
->[!NOTE]
->
-> - Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。
->
-> - 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。
->
-> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/en-us/download/details.aspx?id=55106)がインストールされている必要があります。
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu カーネルのバージョン
 
@@ -249,7 +242,7 @@ VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文
 --- | --- | --- | --- | ---
 構成サーバー | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-deploy-configuration-server.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をクリックしてください。
 プロセス サーバー|構成サーバーに既定でインストールされます。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。| 新規インストールについては、[こちら](vmware-azure-set-up-process-server-scale.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-process-server.md#upgrade-a-process-server)をクリックしてください。
-モビリティ サービス | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-install-mobility-service.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-install-mobility-service.md#update-mobility-service)をクリックしてください。
+モビリティ サービス | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-install-mobility-service.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-physical-mobility-service-overview.md#update-the-mobility-service)をクリックしてください。
 
 最新の機能と修正プログラムについては、[こちら](https://aka.ms/latest_asr_updates)をクリックしてください。
 

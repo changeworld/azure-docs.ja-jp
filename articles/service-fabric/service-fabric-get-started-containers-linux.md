@@ -3,7 +3,7 @@ title: Linux 上で Azure Service Fabric コンテナー アプリケーショ�
 description: Azure Service Fabric で初めての Linux コンテナー アプリケーションを作成します。 アプリケーションの Docker イメージをビルドして、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
-ms.author: ryanwi
-ms.openlocfilehash: 133b0d483eb47a76ad2525a430b09b82259c118f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.author: twhitney
+ms.openlocfilehash: 07c227c198166254eb130604685a4ba5884b783a
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698249"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299879"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]

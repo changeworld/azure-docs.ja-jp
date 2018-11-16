@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8bf7ac9daf928c35a3d6efcac528d3372fa87c8a
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fd0b2bda91ecb9b717f4cfe366c45bc95b21fd8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252044"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277564"
 ---
 # <a name="filter-events-for-event-grid"></a>Event Grid のイベントのフィルター処理
 
@@ -181,30 +181,17 @@ az eventgrid event-subscription create \
 
 ## <a name="filter-by-operators-and-data"></a>演算子とデータでフィルター処理する
 
-高度なフィルター処理を使用するには、Azure CLI のプレビュー拡張機能をインストールする必要があります。 [CloudShell](/azure/cloud-shell/quickstart) を使用するか、Azure CLI をローカルにインストールできます。
+フィルター処理の柔軟性を高めるために、演算子とデータ プロパティを使用してイベントをフィルター処理することもできます。
 
-### <a name="install-extension"></a>拡張機能のインストール
-
-CloudShell の場合:
-
-* 拡張機能を以前にインストールしている場合は、`az extension update -n eventgrid` で拡張機能を更新します。
-* 拡張機能を以前にインストールしていない場合は、`az extension add -n eventgrid` で拡張機能をインストールします。
-
-ローカル インストールの場合:
-
-1. ローカルの Azure CLI をアンインストールします。
-1. [最新バージョン](/cli/azure/install-azure-cli)の Azure CLI をインストールします。
-1. コマンド ウィンドウを起動します。
-1. `az extension remove -n eventgrid` で以前のバージョンの拡張機能をアンインストールします。
-1. `az extension add -n eventgrid` で拡張機能をインストールします。
-
-これで、高度なフィルター処理を使用する準備が整いました。
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ### <a name="subscribe-with-advanced-filters"></a>高度なフィルターを使用してサブスクライブする
 
 高度なフィルター処理に使用できる演算子とキーについては、「[Advanced filtering (高度なフィルター処理)](event-filtering.md#advanced-filtering)」を参照してください。
 
-次の例では、カスタム トピックを作成しています。 カスタム トピックをサブスクライブし、データ オブジェクト内の値でフィルター処理します。 color プロパティが blue、red、または green に設定されているイベントがサブスクリプションに送信されます。
+以下の例では、カスタム トピックを作成します。 これらの例では、カスタム トピックをサブスクライブし、データ オブジェクト内の値でフィルター処理を行います。 color プロパティが blue、red、または green に設定されているイベントがサブスクリプションに送信されます。
+
+Azure CLI では、次を使用します。
 
 ```azurecli-interactive
 topicName=<your-topic-name>
@@ -220,14 +207,38 @@ az eventgrid event-subscription create \
   -n demoAdvancedSub \
   --advanced-filter data.color stringin blue red green \
   --endpoint $endpointURL \
-  --expiration-date "2018-11-30"
+  --expiration-date "<yyyy-mm-dd>"
 ```
 
-サブスクリプションに有効期限の日付が設定されていることに注意してください。 イベント サブスクリプションは、その日付後、自動的に期限切れになります。 限定された期間にだけ必要なイベント サブスクリプションに有効期限を設定します。
+サブスクリプションに[有効期限の日付](concepts.md#event-subscription-expiration)が設定されていることに注意してください。
+
+PowerShell では、次を使用します。
+
+```azurepowershell-interactive
+$topicName = <your-topic-name>
+$endpointURL = <endpoint-URL>
+
+New-AzureRmResourceGroup -Name gridResourceGroup -Location eastus2
+New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location eastus2 -Name $topicName
+
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Id
+
+$expDate = '<mm/dd/yyyy hh:mm:ss>' | Get-Date
+$AdvFilter1=@{operator="StringIn"; key="Data.color"; Values=@('blue', 'red', 'green')}
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint $endpointURL `
+  -ExpirationDate $expDate `
+  -AdvancedFilter @($AdvFilter1)
+```
 
 ### <a name="test-filter"></a>フィルターをテストする
 
-フィルターをテストするには、color フィールドが green に設定されているイベントを送信します。
+フィルターをテストするには、color フィールドが green に設定されているイベントを送信します。 green はフィルターに含まれている値の 1 つなので、このイベントはエンドポイントに配信されます。
+
+Azure CLI では、次を使用します。
 
 ```azurecli-interactive
 topicEndpoint=$(az eventgrid topic show --name $topicName -g gridResourceGroup --query "endpoint" --output tsv)
@@ -238,17 +249,60 @@ event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
 
-イベントは、エンドポイントに送信されます。
+PowerShell では、次を使用します。
 
-イベントが送信されないシナリオをテストするには、color フィールドが yellow に設定されているイベントを送信します。
+```azurepowershell-interactive
+$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Endpoint
+$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicName
+
+$eventID = Get-Random 99999
+$eventDate = Get-Date -Format s
+
+$htbody = @{
+    id= $eventID
+    eventType="recordInserted"
+    subject="myapp/vehicles/cars"
+    eventTime= $eventDate
+    data= @{
+        model="SUV"
+        color="green"
+    }
+    dataVersion="1.0"
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
+
+イベントが送信されないシナリオをテストするには、color フィールドが yellow に設定されているイベントを送信します。 yellow はサブスクリプションで指定された値の 1 つではないため、イベントはサブスクリプションに配信されません。
+
+Azure CLI では、次を使用します。
 
 ```azurecli-interactive
 event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/cars", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "model": "SUV", "color": "yellow"},"dataVersion": "1.0"} ]'
 
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
+PowerShell では、次を使用します。
 
-yellow はサブスクリプションで指定された値の 1 つではないため、イベントはサブスクリプションに配信されません。
+```azurepowershell-interactive
+$htbody = @{
+    id= $eventID
+    eventType="recordInserted"
+    subject="myapp/vehicles/cars"
+    eventTime= $eventDate
+    data= @{
+        model="SUV"
+        color="yellow"
+    }
+    dataVersion="1.0"
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
 
 ## <a name="next-steps"></a>次の手順
 

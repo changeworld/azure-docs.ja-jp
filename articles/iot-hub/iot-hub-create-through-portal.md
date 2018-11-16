@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 8f08141f5c14a734f89ba91045767e2a36a44fd2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985607"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515847"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub を作成する
 
@@ -24,45 +24,7 @@ ms.locfileid: "46985607"
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-1. [Azure Portal](https://portal.azure.com) にログインします。 
-
-2. [+ **リソースの作成]**、**[モノのインターネット]** の順に選択します。
-
-3. 右側のリストにある **[Iot Hub]** をクリックします。 IoT ハブを作成するための最初の画面が表示されます。
-
-   ![Azure Portal での Hub の作成を示したスクリーンショット](./media/iot-hub-create-through-portal/iot-hub-create-screen-basics.png)
-
-   フィールドに入力します。
-
-   **サブスクリプション**: IoT ハブで使用するサブスクリプションを選択します。
-
-   **リソース グループ**: 新しいリソース グループを作成することも、既存のものを使用することもできます。 新しいものを作成するには、**[新規作成]** をクリックして、使用する名前を入力します。 既存のグループを使用するには、**[既存のものを使用]** をクリックし、ドロップダウン リストからリソース グループを選択します。
-
-   **リージョン**: ドロップダウン リストから、ハブを配置するリージョンを選択します。
-
-   **Iot Hub 名**: IoT Hub の名前を入力します。 この名前はグローバルに一意である必要があります。 
-
-   [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
-
-4. **[Next: Size and scale]\(次へ: サイズとスケール\)** をクリックして、次の画面に移動します。
-
-   ![Azure portal を使用して新しい IoT ハブ用のサイズとスケールを設定する様子を示すスクリーンショット](./media/iot-hub-create-through-portal/iot-hub-create-screen-size-scale.png)
-
-   この画面では、既定値を使用して、下部にある **[確認および作成]** をクリックするだけです。 必要に応じて、フィールドに入力することもできます。
-
-   **価格とスケール ティア**: 必要な機能の数とソリューションで 1 日に送信するメッセージの数に応じて、複数のレベルから選ぶことができます。 無料レベルは、テストおよび評価用です。 IoT Hub に接続できるデバイスは 500 個で、1 日に許可されるメッセージ数は最大 8,000 件です。 Azure サブスクリプションごとに、無料レベルの IoT Hub を 1 つ作成できます。 
-
-   **IoT Hub ユニット**: ユニットごとに許可される 1 日あたりのメッセージの数は、ハブの価格レベルによって決まります。 たとえば、IoT Hub で 700,000 件の受信メッセージをサポートする場合は、S1 レベルのユニットを 2 つ選択します。
-
-   他のレベルのオプションについて詳しくは、[適切な IoT Hub レベルの選択](iot-hub-scaling.md)に関するページをご覧ください。
-
-   **高度なパーティションと Device-to-cloud パーティション**: このプロパティでは、device-to-cloud メッセージがそのメッセージの同時閲覧者数に関連付けられます。 ほとんどの IoT ハブでは、4 つのパーティションのみが必要となります。 
-
-5. **[確認および作成]** をクリックして、選択内容を確認します。 次の画面のようになります。
-
-   ![新しい IoT ハブを作成するための情報を確認するスクリーンショット](./media/iot-hub-create-through-portal/iot-hub-create-review.png)
-
-5. **[作成]** をクリックして、新しい IoT ハブを作成します。 ハブの作成には数分かかります。
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="change-the-settings-of-the-iot-hub"></a>IoT Hub の設定変更
 

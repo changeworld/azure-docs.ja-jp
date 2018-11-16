@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6a61fdeaf1a751ab4001257335abdcbd6fac9cbf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 92c8de0961f64eea8eef830ad99c7baa268099d9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739466"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007588"
 ---
 # <a name="preview-azure-ad-password-protection-operational-procedures"></a>プレビュー: Azure AD パスワード保護の操作手順
 
@@ -67,7 +67,7 @@ ms.locfileid: "50739466"
 
 `Get-AzureADPasswordProtectionSummaryReport` コマンドレットを使用して、アクティビティの概要ビューを生成できます。 このコマンドレットの出力例は次のとおりです。
 
-```
+```PowerShell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
 DomainController                : bplrootdc2
 PasswordChangesValidated        : 6677
@@ -87,6 +87,22 @@ PasswordSetErrors               : 1
 
 > [!NOTE]
 > このコマンドレットは、各 DC エージェント サービスの管理イベント ログに対するクエリをリモートで実行することで動作します。 イベント ログに多数のイベントが含まれている場合、コマンドレットの完了に時間がかかることがあります。 また、大規模なデータ セットの一括ネットワーク クエリがドメイン コントローラーのパフォーマンスに影響を与える可能性があります。 そのため、このコマンドレットは、運用環境では慎重に使用する必要があります。
+
+## <a name="dc-agent-discovery"></a>DC エージェントの検出
+
+`Get-AzureADPasswordProtectionDCAgent` コマンドレットを使用すると、ドメインまたはフォレスト内で実行されているさまざまな DC エージェントに関する基本的な情報を表示できます。 この情報は、実行中の DC エージェント サービスによって登録された serviceConnectionPoint オブジェクトから取得されます。 このコマンドレットの出力例は次のとおりです。
+
+```PowerShell
+Get-AzureADPasswordProtectionDCAgent
+ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
+Domain                : bplchild.bplRootDomain.com
+Forest                : bplRootDomain.com
+Heartbeat             : 2/16/2018 8:35:01 AM
+```
+
+さまざまなプロパティは、各 DC エージェント サービスによって約 1 時間ごとに更新されます。 さらに、データは Active Directory レプリケーションの待機時間の影響を受けます。
+
+コマンドレットのクエリの範囲は、-Forest パラメーターまたは -Domain パラメーターの使用の影響を受ける可能性があります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fa76ccf7019097c5f27aa126b0a5a7dc81ffbd41
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bba008bc6d1214aa4b2ca7cc609586a3d18159fd
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008149"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613615"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
 ![Alert Management icon](media/log-analytics-solution-alert-management/icon.png)
 
-Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)ものや、[Nagios や Zabbix からインポートされた](log-analytics-quick-collect-linux-computer.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](log-analytics-om-agents.md)からもインポートされます。
+Log Analytics リポジトリ内のアラートはすべて、アラート管理ソリューションを使用して分析できます。  アラートはさまざまなソースから取得されている可能性があり、[Log Analytics によって作成された](../monitoring-and-diagnostics/monitoring-overview-alerts.md)ものや、[Nagios や Zabbix からインポートされた](log-analytics-quick-collect-linux-computer.md)モノが含まれます。 アラートは、[接続された System Center Operations Manager 管理グループ](log-analytics-om-agents.md)からもインポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションでは、Log Analytics リポジトリ内の **Alert** タイプのすべてのレコードが分析されます。そのため、これらのレコードを収集するために必要な構成をすべて行う必要があります。
 
-- Log Analytics のアラートの場合は、[アラート ルールを作成](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)して、リポジトリに直接アラート レコードを作成します。
+- Log Analytics のアラートの場合は、[アラート ルールを作成](../monitoring-and-diagnostics/monitoring-overview-alerts.md)して、リポジトリに直接アラート レコードを作成します。
 - Nagios と Zabbix のアラートの場合は、[これらのサーバーを構成](log-analytics-quick-collect-linux-computer.md)して、Log Analytics にアラートを送信します。
 - System Center Operations Manager のアラートの場合は、[Log Analytics ワークスペースに Operations Manager 管理グループを接続](log-analytics-om-agents.md)します。  System Center Operations Manager で作成されたすべてのアラートが Log Analytics にインポートされます。  
 
@@ -123,4 +123,4 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 
 ## <a name="next-steps"></a>次の手順
-* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) に関するページを参照してください。
+* Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md) に関するページを参照してください。

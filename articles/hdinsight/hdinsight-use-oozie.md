@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5611830d4d9950a7781062997b13555d95d8e703
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: affef85c917804f0b99200dcfa8e53f6d08fcbe4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625965"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684224"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -63,7 +63,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Oozie ワークフローと関連 HiveQL スクリプトを定義する
 Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書かれています。 既定のワークフロー ファイル名は *workflow.xml*です。 このチュートリアルで使用するワークフロー ファイルを次に示します。
-
+```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
         <start to = "RunHiveScript"/>
 
@@ -118,7 +118,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 
         <end name="end"/>
     </workflow-app>
-
+```
 ワークフローでは 2 つのアクションが定義されています。 start-to アクションは *RunHiveScript*です。 このアクションが正常に実行された場合、次のアクションは *RunSqoopExport*です。
 
 RunHiveScript には、変数がいくつかあります。 その値は、Azure PowerShell を使用してワークステーションから Oozie ジョブを送信するときに渡します。
@@ -191,7 +191,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     OOzie ジョブの結果を確認するには、Visual Studio または他のツールを使用して Azure SQL Database に接続します。
 
 このスクリプトを次に示します。  スクリプトは、Windows PowerShell ISE から実行できます。 構成する必要があるのは、最初の 7 つの変数だけです。
-
+```powershell
     #region - provide the following values
 
     $subscriptionID = "<Enter your Azure subscription ID>"
@@ -200,7 +200,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     $sqlDatabaseLogin = "<Enter SQL Database Login Name>"
     $sqlDatabasePassword = "<Enter SQL Database Login Password>"
 
-    # HDInsight cluster HTTP user credential used for creating and connectin
+    # HDInsight cluster HTTP user credential used for creating and connecting
     $httpUserName = "admin"  # The default name is "admin"
     $httpPassword = "<Enter HDInsight Cluster HTTP User Password>"
 
@@ -529,8 +529,8 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $httpCredential -OutVariable $OozieServerStatus
 
     $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-    $oozieServerSatus = $jsonResponse[0].("systemMode")
-    Write-Host "Oozie server status is $oozieServerSatus."
+    $oozieServerStatus = $jsonResponse[0].("systemMode")
+    Write-Host "Oozie server status is $oozieServerStatus."
 
     # create Oozie job
     Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
@@ -570,7 +570,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
 
     #endregion
-
+```
 
 **チュートリアルを再実行するには**
 
@@ -580,7 +580,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 * log4jLogsCount テーブル内のデータ
 
 使用できる PowerShell スクリプトのサンプルを次に示します。
-
+```powershell
     $resourceGroupName = "<AzureResourceGroupName>"
 
     $defaultStorageAccountName = "<AzureStorageAccountName>"
@@ -610,6 +610,7 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
     $cmd.executenonquery()
 
     $conn.close()
+```
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Oozie ワークフローを定義する方法と、PowerShell を使用して Oozie ジョブを実行する方法について説明しました。 詳細については、次の記事を参照してください。
@@ -647,7 +648,6 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3af2b2a1b35a290746007d7f486473162a055b99
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211368"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239204"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -76,7 +76,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
 
-* [Office 365](http://aka.ms/ExpressRouteOffice365)
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
 * Power BI
 * Azure Active Directory
@@ -199,11 +199,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>仮想ネットワーク用のサイト間接続を、ExpressRoute と併用できますか。
 
-はい。 ExpressRoute は、サイト間 VPN と共存できます。
-
-### <a name="can-i-move-a-virtual-network-from-site-to-site--point-to-site-configuration-to-use-expressroute"></a>仮想ネットワークを、サイト間/ポイント対サイト構成から ExpressRoute を使用する構成に移行できますか。
-
-はい。 仮想ネットワーク内に ExpressRoute ゲートウェイを作成する必要があります。 このプロセスに関連して、わずかにダウンタイムが発生します。
+はい。 ExpressRoute は、サイト間 VPN と共存できます。 「[ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)」をご覧ください。
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>仮想ネットワークで ExpressRoute ゲートウェイに関連付けられているパブリック IP アドレスが存在するのはなぜですか。
 
@@ -287,7 +283,7 @@ ExpressRoute Premium を無効にするには、REST API や PowerShell コマ�
 
 1. [ExpressRoute の前提条件のページ](expressroute-prerequisites.md)を参照して、要件を満たしていることを確認します。
 2. 接続ニーズが満たされることを確認するには、[ExpressRoute のパートナーと提供地域](expressroute-locations.md)に関する記事でサービス プロバイダーとサービスの場所の一覧を確認します。
-3. 「 [Office 365 のネットワーク計画とパフォーマンスのチューニング](http://aka.ms/tune/)」を参照して、容量の要件を計画します。
+3. 「 [Office 365 のネットワーク計画とパフォーマンスのチューニング](https://aka.ms/tune/)」を参照して、容量の要件を計画します。
 4. 接続をセットアップするには、「[回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー](expressroute-workflows.md)」に示されている手順に従います。
 
 > [!IMPORTANT]
@@ -297,11 +293,11 @@ ExpressRoute Premium を無効にするには、REST API や PowerShell コマ�
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>既存の ExpressRoute 回線が Office 365 サービスおよび Dynamics 365 への接続をサポートするようにできますか。
 
-はい。 既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。 Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。 [Office 365 のネットワーク プランニングとパフォーマンス チューニング](http://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。 「 [ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
+はい。 既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。 Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。 [Office 365 のネットワーク プランニングとパフォーマンス チューニング](https://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。 「 [ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
 
 ### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>ExpressRoute 接続経由でアクセスできる Office 365 のサービスはどれですか。
 
-ExpressRoute でサポートされているサービスの最新の状態の一覧については、「[Office 365 URL および IP アドレス範囲](http://aka.ms/o365endpoints)」を参照してください。
+ExpressRoute でサポートされているサービスの最新の状態の一覧については、「[Office 365 URL および IP アドレス範囲](https://aka.ms/o365endpoints)」を参照してください。
 
 ### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Office 365 サービスに対応した ExpressRoute の料金はいくらですか。
 

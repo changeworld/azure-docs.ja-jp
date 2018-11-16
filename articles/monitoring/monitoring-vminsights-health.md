@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0f149d09b310553ecd5b03e94601408f279d9c0c
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1b9afa89e5d355668defac30afe4c012b684c71e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914313"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614398"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>VM の Azure Monitor を使用して Azure 仮想マシンの正常性を把握する (プレビュー)
 Azure には監視領域において特定の役割やタスクを個別に実行する複数のサービスが含まれますが、Azure 仮想マシン上でホストされているオペレーティング システムの詳細な正常性情報を提供することはできませんでした。  Log Analytics または Azure Monitor を使用してさまざまな条件を監視することはできますが、仮想マシンのコア コンポーネントの正常性または全体的な正常性をモデル化して表現するようには設計されていませんでした。  VM の Azure Monitor 正常性機能では、主要なコンポーネントとその関係、それらのコンポーネントの正常性を測定する方法を指定する基準、および異常な状態が検出されたときのアラートを表すモデルを使用して、Windows または Linux ゲスト OS の可用性とパフォーマンスが事前に監視されます。  
@@ -119,7 +119,7 @@ Windows オペレーティング システムを実行する Azure VM から正�
 * プロセッサ、ディスク、メモリ、ネットワーク アダプターで検出された問題のために異常な VM の数 (正常性状態によって分類)。  
 * コア オペレーティング システム サービスで検出された問題のために異常な VM の数 (正常性状態によって分類)。
 
-ここでは、予防的に VM を監視している正常性基準によって検出された上位の重大な問題をすばやく識別し、VM の正常性アラートの詳細および問題の診断と修復に役立つ関連ナレッジ記事を確認できます。  任意の重大度を選択すると、その重大度でフィルター処理された [[すべてのアラート]](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md#all-alerts-page) ページが開きます。
+ここでは、予防的に VM を監視している正常性基準によって検出された上位の重大な問題をすばやく識別し、VM の正常性アラートの詳細および問題の診断と修復に役立つ関連ナレッジ記事を確認できます。  任意の重大度を選択すると、その重大度でフィルター処理された [[すべてのアラート]](../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) ページが開きます。
 
 **[オペレーティング システムごとの VM の分布]** の一覧には、Windows のエディションまたは Linux のディストリビューションおよびバージョンごとに VM が一覧表示されます。 オペレーティング システムの各カテゴリでは、VM はさらに VM の正常性に基づいて分類されます。 
 
@@ -247,7 +247,7 @@ VM リスト ビューで VM の名前をクリックすると、VM から直接
 更新された正常性状態を表示するには、**[最新の情報に更新]** リンクをクリックして [正常性の診断] ページを更新します。  定義済みのポーリング間隔に基づいて、正常性基準の正常性状態に更新がある場合、このタスクにより待機を避けて最新の正常性状態を反映できます。  **[正常性基準の状態]** はフィルターであり、選択されている正常性の状態 (正常、警告、重大、不明、およびすべて) に基づいて結果を絞り込むことができます。  右上隅の **[最終更新日時]** は、[正常性の診断] ページが最後に更新された日時を表します。  
 
 ## <a name="alerting-and-alert-management"></a>アラートの生成とアラートの管理 
-VM の Azure Monitor 正常性機能は [Azure アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)と統合し、状態が検出されて定義済みの正常性基準が正常から異常状態に変化すると、アラートを生成します。 アラートは重大度 0 ～ 4 で分類され、重要度 0 が最も高い重大度レベルを表します。  
+VM の Azure Monitor 正常性機能は [Azure アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)と統合し、状態が検出されて定義済みの正常性基準が正常から異常状態に変化すると、アラートを生成します。 アラートは重大度 0 ～ 4 で分類され、重要度 0 が最も高い重大度レベルを表します。  
 
 重大度によって分類された VM 正常性アラートの合計数は、**[アラート]** セクションの **[正常性]** ダッシュボードで確認できます。 アラートの合計数、または重大度レベルに対応する数のいずれかを選択すると、**[アラート]** ページが開き、選択に一致するすべてのアラートが一覧表示されます。  たとえば、**重大度レベル 1** に対応する行を選択した場合、次のようなビューが表示されます。
 

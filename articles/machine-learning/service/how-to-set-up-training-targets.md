@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 2c4255b70ae9eb3b31b6fdfce33853f0d517aa1f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7eacc475145dac61db1717f1860e22cedd022262
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215482"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231449"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>コンピューティング ターゲットを選択して使用し、モデルをトレーニングする
 
@@ -463,7 +463,7 @@ run_config.auto_prepare_environment = True
 * `Pipeline` オブジェクトを送信する。
 
 > [!IMPORTANT]
-> Azure Databricks、Azure Datalake Analytics、および Azure HDInsight のコンピューティング ターゲットは、パイプラインでのみ使用できます。
+> Azure Databricks および Azure Datalake Analytics のコンピューティング ターゲットは、パイプラインでのみ使用できます。
 > ローカルのコンピューティング ターゲットは、パイプラインでは使用できません。
 
 ### <a name="submit-using-scriptrunconfig"></a>`ScriptRunConfig` を使用して送信する
@@ -591,7 +591,7 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Machine Learning SDK リファレンス](http://aka.ms/aml-sdk)
+* [Azure Machine Learning SDK リファレンス](https://aka.ms/aml-sdk)
 * [チュートリアル: モデルのトレーニング](tutorial-train-models-with-aml.md)
 * [モデルをデプロイする場所](how-to-deploy-and-where.md)
 * [Azure Machine Learning サービスで機械学習パイプラインの構築](concept-ml-pipelines.md)

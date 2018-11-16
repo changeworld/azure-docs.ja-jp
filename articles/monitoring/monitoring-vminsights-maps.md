@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: af3d2b997a4d58f2d32705c55151c4cf13bdcc7c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: ac96de2669a75a5966650afc0b49cc2f926537fa
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095480"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614210"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Azure Monitor for VMs (プレビュー) のマップを使用したアプリケーション コンポーネントの理解
 VM 用 Azure Monitor を使用して、Azure で実行されている Windows および Linux 仮想マシン上で検出されたアプリケーション コンポーネントを表示することで、環境を監視できます。仮想マシンから VM 用 Azure Monitor に直接アクセスする方法と、Azure Monitor から仮想マシンのグループ全体の情報を表示する方法があります。 
@@ -52,7 +52,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 - コンピューター別にグループ化する句を含めます (例: **by Computer interval 1 minute**)。
 - メトリックの測定に基づいてアラートを生成することを選択します。
 
-Azure アラートとアラート ルールの作成の詳細については、「[Azure Monitor での統合アラート](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)」をご覧ください。
+Azure アラートとアラート ルールの作成の詳細については、「[Azure Monitor での統合アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)」をご覧ください。
 
 右上隅の **[凡例]** オプションは、マップ上の記号と役割を示します。  マップの詳細を確認するためにズームインし、その周辺を移動するには、ページの右下にあるズーム コントロールでズーム レベルを設定し、ページを現在のページのサイズに合わせます。  
 
