@@ -573,7 +573,7 @@ Job の状態は、次の値のいずれかが可能です。*Queued**Scheduled*
 | DiscontinuityCount | integer | 直近 20 秒に観察された途切れの数。 |
 | NonIncreasingCount | integer | 直近 20 秒に過去のタイムスタンプを受信したデータ チャンクの数。 |
 | UnexpectedBitrate | bool | 直近 20 秒における予想ビットレートと実ビットレートの差が、許容されている上限を超えているかどうか。 IncomingBitrate がビットレートの 2 倍以上または IncomingBitrate がビットレートの 1/2 以下または IncomingBitrate が 0 のとき、かつそのときに限り true。 |
-| 州 | string | ライブ イベントの状態。 |
+| State | string | ライブ イベントの状態。 |
 | Healthy | bool | カウントとフラグに基づき、取り込みが正常であるかどうかを示します。 OverlapCount = 0 && DiscontinuityCount = 0 && NonIncreasingCount = 0 && UnexpectedBitrate = false の場合、Healthy は true になります。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected

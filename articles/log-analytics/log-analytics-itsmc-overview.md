@@ -184,7 +184,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - サービス デスク接続名
 - サービス デスク ID
-- 州
+- State
 - 緊急度
 - 影響
 - 優先順位
@@ -242,7 +242,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics のフィールド | ServiceNow のフィールド |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | 州 |
+| IncidentState_s | State |
 | Urgency_s |緊急度 |
 | Impact_s |影響|
 | Priority_s | 優先順位 |
@@ -270,7 +270,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  簡単な説明 |
 | Type_s|  type |
 | Category_s|  Category |
-| CRState_s|  州|
+| CRState_s|  State|
 | Urgency_s|  緊急度 |
 | Priority_s| 優先順位|
 | Risk_s| リスク|
