@@ -34,6 +34,12 @@ items:
     href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
   - name: 安全なデプロイ プラクティスの使用
     href: deployment-manager-tutorial.md
+- name: サンプル
+  items:
+  - name: Resource Manager テンプレート
+    href: template-samples.md
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: 概念
   items:
   - name: リソース プロバイダーと種類
@@ -225,9 +231,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 0a7b3519c34c0e59dc4dda2e448dc37cbf7228ea
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: d521253d7844ca150e2ede37e756e1cf2540e898
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242792"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853814"

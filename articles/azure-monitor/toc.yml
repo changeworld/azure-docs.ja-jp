@@ -65,9 +65,9 @@ items:
   - name: データの監視
     items:
     - name: メトリックとログ
-      href: ../monitoring/monitoring-data-collection.md?toc=/azure/azure-monitor/toc.json
+      href: platform/data-collection.md
     - name: データ ソース
-      href: ../monitoring/monitoring-data-sources.md?toc=/azure/azure-monitor/toc.json
+      href: platform/data-sources.md
     - name: Azure データ ソース
       href: ../monitoring-and-diagnostics/monitoring-data-sources.md?toc=/azure/azure-monitor/toc.json
     - name: アクティビティ ログ
@@ -187,7 +187,7 @@ items:
     - name: エージェントのインストールと構成
       items:
       - name: 監視エージェントの概要
-        href: ../monitoring/monitoring-overview-azure-agents.md?toc=/azure/azure-monitor/toc.json
+        href: platform/agents-overview.md
       - name: Log Analytics エージェント
         items:
         - name: 概要
@@ -540,9 +540,9 @@ items:
     - name: データベースの監視
       items:
       - name: Azure SQL
-        href: ../log-analytics/log-analytics-azure-sql.md?toc=/azure/monitoring/toc.json
+        href: ../log-analytics/log-analytics-azure-sql.md?toc=/azure/azure-monitor/toc.json
       - name: SQL Server
-        href: ../log-analytics/log-analytics-sql-assessment.md?toc=/azure/monitoring/toc.json
+        href: ../log-analytics/log-analytics-sql-assessment.md?toc=/azure/azure-monitor/toc.json
     - name: ネットワークの監視
       items:
       - name: ネットワーク分析
@@ -594,11 +594,11 @@ items:
       - name: サービス マップ
         items:
         - name: 用途
-          href: ../monitoring/monitoring-service-map.md?toc=/azure/azure-monitor/toc.json
+          href: insights/service-map.md
         - name: 構成
-          href: ../monitoring/monitoring-service-map-configure.md?toc=/azure/azure-monitor/toc.json
+          href: insights/service-map-configure.md
         - name: Operations Manager との統合
-          href: ../monitoring/monitoring-service-map-scom.md?toc=/azure/azure-monitor/toc.json
+          href: insights/service-map-scom.md
     - name: Azure リソースの監視
       items:
       - name: Key Vault Analytics
@@ -692,6 +692,8 @@ items:
           href: ../log-analytics/query-language/advanced-query-writing.md?toc=/azure/azure-monitor/toc.json
         - name: グラフとダイアグラム
           href: ../log-analytics/query-language/charts.md?toc=/azure/azure-monitor/toc.json
+        - name: Functions
+          href: ../log-analytics/query-language/functions.md?toc=/azure/azure-monitor/toc.json
       - name: チートシート
         items:
         - name: SQL
@@ -899,7 +901,7 @@ items:
       - name: ベスト プラクティス
         href: insights/solutions-best-practices.md
       - name: Runbook から監視データを収集する
-        href: ../monitoring/monitoring-runbook-datacollect.md?toc=/azure/azure-monitor/toc.json
+        href: platform/runbook-datacollect.md
 - name: リファレンス
   items:
   - name: Application Insights
@@ -1003,9 +1005,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 41881a2a7073a53a2d2831bdafcd1496e2357d89
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 763fc0139f3de48bb3a4285ab64c9015d4cb4d2a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711941"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853848"

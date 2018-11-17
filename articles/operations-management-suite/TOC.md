@@ -42,9 +42,9 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric 分析](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### サービス マップ
-##### [用途](../monitoring/monitoring-service-map.md)
-##### [構成](../monitoring/monitoring-service-map-configure.md)
-##### [Operations Manager との統合](../monitoring/monitoring-service-map-scom.md)
+##### [用途](../azure-monitor/insights/service-map.md)
+##### [構成](../azure-monitor/insights/service-map-configure.md)
+##### [Operations Manager との統合](../azure-monitor/insights/service-map-scom.md)
 #### [SQL の評価](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [アップグレード分析](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -65,7 +65,7 @@
 ### [ベスト プラクティス](../azure-monitor/insights/solutions-best-practices.md)
 
 ## 管理のシナリオ
-### [Runbook からの分析データの収集](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Runbook からの分析データの収集](../azure-monitor/platform/runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
