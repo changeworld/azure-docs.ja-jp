@@ -55,7 +55,7 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 実行履歴は、しばらくの間はアクセスできる状態が維持されます。 更新されたバージョンの Azure Machine Learning サービスに移行する準備ができたら、コピーを保存しておきたい場合はこれらの実行履歴をエクスポートすることができます。
 
-実行履歴は、現在のリリースでは_実験_と呼ばれるようになりました。 SDK、CLI、または Web ポータルを使用して、モデルの実験を収集し、それらを表示することができます。
+実行履歴は、現在のリリースでは _実験_ と呼ばれるようになりました。 SDK、CLI、または Web ポータルを使用して、モデルの実験を収集し、それらを表示することができます。
 
 ポータルのワークスペース ダッシュボードは、Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
 
@@ -100,7 +100,7 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 この最新のリリースでは、上記の新しい機能を使用するために、Visual Studio (VS) Code Tools for AI の拡張機能が展開され、強化されています。
 
-[ ![Visual Studio Code Tools for AI](./media/overview-what-happened-to-workbench/vscode.png) ] (. media/overview-what-happened-to-workbench/vscode-big.png#lightbox/)
+[ ![Visual Studio Code Tools for AI](./media/overview-what-happened-to-workbench/vscode.png)] (.media/overview-what-happened-to-workbench/vscode-big.png#lightbox/)
 
 ## <a name="what-about-domain-packages"></a>ドメイン パッケージについて教えてください。
 
