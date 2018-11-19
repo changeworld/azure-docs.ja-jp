@@ -165,10 +165,12 @@ items:
       href: https://cognitive.uservoice.com/knowledgebase/topics/132647-translator
     - name: 言語とリージョンのサポート
       href: language-support.md
-    - name: 料金と制限
+    - name: 価格
       href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
     - name: リージョン別の提供状況
-      href: https://azure.microsoft.com/global-infrastructure/services/
+      href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
+    - name: 要求の制限
+      href: request-limits.md
     - name: スタック オーバーフロー
       href: https://stackoverflow.com/questions/tagged/microsoft-translator
     - name: UserVoice
@@ -233,9 +235,9 @@ items:
       href: https://stackoverflow.com/questions/tagged/microsoft-translator
     - name: Uservoice
       href: https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide
-ms.openlocfilehash: b6180727be53733f53289c1d79aed340993147b0
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 254be54860741d2430d735d83575e6754be1c8d4
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683595"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852471"

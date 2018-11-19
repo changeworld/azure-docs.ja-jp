@@ -239,12 +239,16 @@ items:
       items:
       - name: ノードの種類と VM Scale Sets
         href: service-fabric-cluster-nodetypes.md
+      - name: Azure でのクラスターのアップグレード
+        href: service-fabric-cluster-upgrade.md
       - name: スケーリング
         href: service-fabric-cluster-scaling.md
       - name: クラスター ネットワークのパターン
         href: service-fabric-patterns-networking.md
     - name: スタンドアロンのクラスター
       items:
+      - name: スタンドアロン クラスターのアップグレード
+        href: service-fabric-cluster-upgrade-standalone.md
       - name: スケーリング
         href: service-fabric-cluster-scaling-standalone.md
     - name: Cluster Resource Manager
@@ -585,19 +589,27 @@ items:
         - name: 仮想マシン スケール セット ノード タイプのスケールアウト
           href: virtual-machine-scale-set-scale-node-type-scale-out.md
       - name: アップグレード
-        href: service-fabric-cluster-upgrade.md
-      - name: アクセス制御の設定
-        href: service-fabric-cluster-security-roles.md
-      - name: ロード バランサーでポートを開く
-        href: create-load-balancer-rule.md
-      - name: クラスター証明書を共通名に変更する
-        href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-      - name: クラスター証明書を手動でロールオーバーする
-        href: service-fabric-cluster-rollover-cert-cn.md
-      - name: クラスター証明書の管理
-        href: service-fabric-cluster-security-update-certs-azure.md
-      - name: クラスター ノード VM へのリモート接続
-        href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        items:
+        - name: Service Fabric バージョンのアップグレード
+          href: service-fabric-cluster-upgrade-version-azure.md
+        - name: クラスター構成のアップグレード
+          href: service-fabric-cluster-config-upgrade-azure.md
+        - name: クラスター ノードへのパッチの適用 (Windows)
+          href: service-fabric-patch-orchestration-application.md
+        - name: クラスター ノードへのパッチの適用 (Linux)
+          href: service-fabric-patch-orchestration-application-linux.md
+        - name: アクセス制御の設定
+          href: service-fabric-cluster-security-roles.md
+        - name: ロード バランサーでポートを開く
+          href: create-load-balancer-rule.md
+        - name: クラスター証明書を共通名に変更する
+          href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+        - name: クラスター証明書を手動でロールオーバーする
+          href: service-fabric-cluster-rollover-cert-cn.md
+        - name: クラスター証明書の管理
+          href: service-fabric-cluster-security-update-certs-azure.md
+        - name: クラスター ノード VM へのリモート接続
+          href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
     - name: スタンドアロンのクラスター
       items:
       - name: Create
@@ -612,20 +624,22 @@ items:
           href: service-fabric-cluster-standalone-package-contents.md
       - name: スケール
         href: service-fabric-cluster-windows-server-add-remove-nodes.md
-      - name: アクセス制御の設定
-        href: service-fabric-cluster-security-roles.md
-      - name: 構成
-        href: service-fabric-cluster-manifest.md
       - name: アップグレード
-        href: service-fabric-cluster-upgrade-windows-server.md
+        items:
+        - name: Service Fabric バージョンのアップグレード
+          href: service-fabric-cluster-upgrade-windows-server.md
+        - name: クラスター構成のアップグレード
+          href: service-fabric-cluster-config-upgrade-windows-server.md
+        - name: 構成設定
+          href: service-fabric-cluster-manifest.md
+        - name: アクセス制御の設定
+          href: service-fabric-cluster-security-roles.md
+        - name: クラスター ノードへのパッチの適用 (Windows)
+          href: service-fabric-patch-orchestration-application.md
     - name: クラスターの視覚化
       href: service-fabric-visualizing-your-cluster.md
     - name: セキュリティ保護されたクラスターに接続する
       href: service-fabric-connect-to-secure-cluster.md
-    - name: クラスター ノードへのパッチの適用 (Windows)
-      href: service-fabric-patch-orchestration-application.md
-    - name: クラスター ノードへのパッチの適用 (Linux)
-      href: service-fabric-patch-orchestration-application-linux.md
   - name: 監視と診断
     items:
     - name: アプリケーションの監視
@@ -767,9 +781,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 810c04b2d6b2b5e7a8db64e21c10225ccddcb117
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 98ca5a1cbf5298931c14d6c696119d0c98893072
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634279"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853644"

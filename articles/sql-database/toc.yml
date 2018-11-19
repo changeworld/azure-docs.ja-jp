@@ -142,19 +142,23 @@ items:
   - name: マネージド インスタンス
     items:
     - name: マネージド インスタンス
+      href: sql-database-managed-instance-index.yml
+    - name: Managed Instance とは
       href: sql-database-managed-instance.md
     - name: リソース制限
       href: sql-database-managed-instance-resource-limits.md
-    - name: VNet 構成
-      href: sql-database-managed-instance-vnet-configuration.md
-    - name: '[カスタム DNS]'
-      href: sql-database-managed-instance-custom-dns.md
-    - name: ネットワーク構成の同期
-      href: sql-database-managed-instance-sync-network-configuration.md
-    - name: 接続のアーキテクチャ
-      href: sql-database-managed-instance-connectivity-architecture.md
-    - name: アプリケーションの接続
-      href: sql-database-managed-instance-connect-app.md
+    - name: VNet 統合
+      items:
+      - name: VNet 構成
+        href: sql-database-managed-instance-vnet-configuration.md
+      - name: '[カスタム DNS]'
+        href: sql-database-managed-instance-custom-dns.md
+      - name: ネットワーク構成の同期
+        href: sql-database-managed-instance-sync-network-configuration.md
+      - name: 接続のアーキテクチャ
+        href: sql-database-managed-instance-connectivity-architecture.md
+      - name: アプリケーションの接続
+        href: sql-database-managed-instance-connect-app.md
     - name: T-SQL の相違点
       href: sql-database-managed-instance-transact-sql-information.md
     - name: トランザクション レプリケーション
@@ -644,9 +648,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 303e24b5ce064a891c87156e78b6711ddb7cc79a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 90ce805e96458e83315cd5f7c9e60b3585f7313d
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623159"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854290"
