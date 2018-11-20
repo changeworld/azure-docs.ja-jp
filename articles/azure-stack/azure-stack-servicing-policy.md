@@ -58,7 +58,7 @@ Microsoft は、随時、Azure Stack に関する予防可能な、または緊�
 Microsoft ソフトウェア更新プログラム パッケージは累積的ではないため、前提として前のバージョンの更新パッケージか修正プログラムが必要です。 1 つ以上の更新プログラムを先送りにする場合は、最新のバージョンを取得する際に全体のランタイムを考慮してください。 
 
 ## <a name="get-support"></a>サポートを受ける
-Azure Stack では、Azure と同じサポート プロセスが適用されます。 企業のお客様は、[Azure サポート リクエストを作成する方法](/azure/azure-supportability/how-to-create-azure-support-request)で説明されているプロセスに従ってください。 クラウド サービス プロバイダー (CSP) のお客様の場合は、担当の CSP までサポートについてお問い合わせください。  詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。 
+Azure Stack では、Azure と同じサポート プロセスが適用されます。 企業のお客様は、[Azure サポート要求を作成する方法](/azure/azure-supportability/how-to-create-azure-support-request)で説明されているプロセスに従ってください。 クラウド サービス プロバイダー (CSP) のお客様の場合は、担当の CSP までサポートについてお問い合わせください。  詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。 
 
 
 ## <a name="next-steps"></a>次の手順
