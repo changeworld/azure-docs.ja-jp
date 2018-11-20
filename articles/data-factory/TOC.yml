@@ -185,8 +185,6 @@ items:
       href: connector-file-system.md
     - name: FTP
       href: connector-ftp.md
-    - name: GE Historian
-      href: connector-odbc.md#ge-historian-source
     - name: Google AdWords
       href: connector-google-adwords.md
     - name: Google BigQuery
@@ -469,9 +467,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 7a85fe07860835054554160b5cac6d8cda50863e
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: e5f7b008acfaaa76eae154957adcbe0c7372382a
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248355"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976589"
