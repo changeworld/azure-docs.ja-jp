@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2018
+ms.date: 11/07/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2daa624dd7912d09f01e5bab5dc6de9cc14a771c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 8e2d0d5073ffbeaed1c0215386a0c2c9f22a67d9
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145820"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288647"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ
 
@@ -309,15 +309,11 @@ ms.locfileid: "42145820"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-
-## <a name="specifics-to-oracle-database"></a>Oracle Database の詳細
-Oracle ソフトウェアを Microsoft Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、<http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> を参照してください。 
-
-一般的なサポートに続いて、Oracle Database を活用する SAP アプリケーションの特定のシナリオも同様にサポートされます。 詳細はドキュメントに指定されています。 このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)の中の他のガイドを読んでいる必要があります。 
+一般的なサポートに続いて、Oracle Database を活用する SAP アプリケーションの特定のシナリオも同様にサポートされます。 詳細はこのドキュメントで説明されています。 このドキュメントでは、Azure IaaS に SAP ワークロードのために Oracle Database をデプロイするときに考慮すべきいくつかの異なる領域について説明します。 このドキュメントの前提条件として、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントと [Azure 上の SAP ワークロードに関するドキュメント](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)の中の他のガイドを読んでいる必要があります。 
 
 Azure Virtual Machines で SAP on Oracle を実行できる Oracle のバージョンと対応する OS のバージョンについて詳しくは、SAP Note [2039619] をご覧ください。
 
-Oracle での SAP Business Suite の実行に関する一般的な情報については、<https://www.sap.com/community/topic/oracle.html> を参照してください。
+Oracle での SAP Business Suite の実行に関する一般的な情報については、<https://www.sap.com/community/topic/oracle.html> を参照してください。Oracle ソフトウェアは、Microsoft Azure での実行が Oracle によってサポートされています。 Windows Hyper-V と Azure の一般的なサポートの詳細については、<http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> を参照してください。 
 
 Oracle、SAP、および Azure に関連する SAP Note は以下のとおりです。
 
@@ -339,41 +335,73 @@ Oracle、SAP、および Azure に関連する SAP Note は以下のとおりで
 
 Azure 上の Oracle と SAP がサポートする正確な構成と機能については、SAP Note [#2039619](https://launchpad.support.sap.com/#/notes/2039619) を参照してください。
 
-ご覧のように、Windows と Oracle Linux の 2 つのゲスト オペレーティング システムのみがサポートされています。 Azure に Oracle コンポーネントをデプロイする場合、広く使用されている SLES および RHEL Linux はサポートされていません。 Oracle コンポーネントには、Oracle データベース クライアントも含まれています。このクライアントは、SAP アプリケーションが Oracle DBMS に接続するために使用されます。 SAP Note [#2039619](https://launchpad.support.sap.com/#/notes/2039619) によると、SAP コンポーネントは Oracle DBMS に接続する必要がないため、Oracle クライアントを使用していない SAP コンポーネントは例外です。 このような SAP コンポーネントは、SAP のスタンドアロン エンキュー、メッセージ サーバー、およびエンキュー レプリケーション サービスです。 つまり、Oracle Linux 上で Oracle DBMS および SAP アプリケーション インスタンスを実行していても、SLES または RHEL 上で SAP Central Services を実行し、Pacemaker ベースのクラスターで保護することができます。 Oracle Linux でサポートされていない HA 構成。
+Oracle と SAP on Azure でサポートされているオペレーティング システムは、Windows と Oracle Linux のみです。 Azure に Oracle コンポーネントをデプロイする場合、広く使用されている SLES および RHEL Linux のディストリビューションはサポートされていません。 Oracle コンポーネントには、Oracle データベース クライアントが含まれています。このクライアントは、SAP アプリケーションが Oracle DBMS に接続するために使用されます。 SAP Note [#2039619](https://launchpad.support.sap.com/#/notes/2039619) によると、例外は SAP コンポーネントであり、これは Oracle データベース クライアントを使用していません。 このような SAP コンポーネントは、SAP のスタンドアロン エンキュー、メッセージ サーバー、エンキュー レプリケーション サービス、WebDispatcher、SAP ゲートウェイです。  Oracle Linux 上で Oracle DBMS および SAP アプリケーション インスタンスを実行していても、SLES または RHEL 上で SAP Central Services を実行し、Pacemaker ベースのクラスターで保護することができます。 高可用性フレームワークとしての Pacemaker は Oracle Linux ではサポートされていません。
 
-## <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための Oracle 構成ガイドライン
+## <a name="specifics-to-oracle-database-on-windows"></a>Windows 上の Oracle データベースの詳細
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Windows 上の Azure VM で SAP をインストールするための Oracle 構成ガイドライン
+
+SAP インストール マニュアルによると、Oracle 関連のファイルすべては、VM の OS ディスク (ドライブ C:) のシステム ドライバーにインストールしたり、配置したりすべきではありません。 仮想マシンのサイズに応じて、アタッチすることがサポートされるディスクの数は異なります。 仮想マシンの種類が小さければ小さいほど、アタッチできるディスクの数も小さくなります。 そのような小さい VM の場合、Oracle ホーム、ステージ、"saptrace"、"saparch"、"sapbackup"、"sapcheck"、"sapreorg" を OS ディスクにインストール/配置することをお勧めします。 これらの Oracle DBMS コンポーネントが I/O と I/O スループットに与える影響は大きくありません。 そのため、OS ディスクで I/O 要件を処理できます。 OS ディスクの既定のサイズは、127 GB です。 使用できる空き容量が不十分な場合、ディスクを 2048 GB まで[サイズ変更](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)できます。 Oracle データベースと再実行フェーズのログ ファイルは別々のデータ ディスクに格納する必要があります。 Oracle 一時テーブル スペースには例外があります。 tempfiles を D:/ (非永続ドライブ) に作成できます。 非永続ドライブの D:\ は、(A シリーズの VM を除き) I/O 待機時間とスループットが優れています。 適切な tempfiles のスペースを決定するために、既存のシステムの tempfiles のサイズを確認できます。
+
 ### <a name="storage-configuration"></a>ストレージの構成
-NTFS でフォーマットされたディスクを使用した単一インスタンスの Oracle のみサポートされています。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとする NTFS ファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、Azure ページ Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) または Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>) に基づいています。 あらゆる種類のネットワーク ドライブまたは Azure ファイルサービスのようなリモート共有:
+NTFS でフォーマットされたディスクを使用した単一インスタンスの Oracle のみサポートされています。 すべてのデータベース ファイルは、マネージド ディスク (推奨) または VHD 上の NTFS ファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、Azure ページ BLOB ストレージ (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) または [Azure マネージド ディスク](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)に基づいています。 
+
+[Azure マネージド ディスク](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) の使用も強くお勧めします。
+
+あらゆる種類のネットワーク ドライブまたは Azure ファイルサービスのようなリモート共有:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
 は Oracle データベースのファイルではサポートされて **いません** 。
 
-「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイに関する考慮事項](dbms_guide_general.md)」に記載されているステートメントは、Azure Page BLOB Storage をベースとするディスクまたはマネージド ディスクを使用した Oracle Database のデプロイにも適用されます。
+「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイに関する考慮事項](dbms_guide_general.md)」に記載されているステートメントは、Azure ページ BLOB ストレージをベースとするディスクまたはマネージド ディスクを使用した Oracle Database のデプロイにも適用されます。
 
-「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」で説明されているように、Azure ディスクの IOPS スループットに関するクォータが存在します。 正確なクォータは、使用する VM タイプによって異なります。 VM タイプとそのクォータの一覧は、[こちら (Linux)][virtual-machines-sizes-linux] および[こちら (Windows)][virtual-machines-sizes-windows] に記載されています。
+「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」で説明されているように、Azure ディスクの IOPS スループットに関するクォータが存在します。 正確なクォータは、使用する VM タイプによって異なります。 VM タイプとそのクォータの一覧は、[こちら (Windows) ][virtual-machines-sizes-windows]に記載されています。
 
 サポートされている Azure VM のタイプを識別するには、SAP Note [1928533] をご覧ください。
 
-ディスクあたりの現在の IOPS クォータが要件を満たしている限り、マウントされた単一のディスクにすべてのデータベース データ ファイルを格納できます。 また、他の 2 つのディスクについて 2 つの再実行ログが記録されます。
+最小構成:
+| コンポーネント | ディスク | キャッシュ | 記憶域プール |
+| --- | ---| --- | --- |
+| \oracle\<SID>\origlogaA & mirrlogB | Premium | なし | 不要 |
+| \oracle\<SID>\origlogaB & mirrlogA | Premium | なし | 不要 |
+| \oracle\<SID>\sapdata1...n | Premium | 読み取り専用 | 使用可能 |
+| \oracle\<SID>\oraarch | 標準 | なし | 不要 |
+| Oracle ホーム、saptrace、... | OS ディスク | | 不要 |
+
+
+オンラインの再実行ログをホストするためのディスクの選択は、IOPS 要件に従う必要があります。 サイズ、IOPS、スループットの要件を満たしている限りは、1 つのマウント ディスク上で sapdata1...n (テーブルスペース) すべてを格納できます。 
+
+パフォーマンス構成:
+| コンポーネント | ディスク | キャッシュ | 記憶域プール |
+| --- | ---| --- | --- |
+| \oracle\<SID>\origlogaA | Premium | なし | 使用可能  |
+| \oracle\<SID>\origlogaB | Premium | なし | 使用可能 |
+| \oracle\<SID>\mirrlogAB | Premium | なし | 使用可能 |
+| \oracle\<SID>\mirrlogBA | Premium | なし | 使用可能 |
+| \oracle\<SID>\sapdata1...n | Premium | 読み取り専用 | 推奨  |
+| \oracle\SID\sapdata(n+1)* | Premium | なし | 使用可能 |
+| \oracle\<SID>\oraarch* | Premium | なし | 不要 |
+| Oracle ホーム、saptrace、... | OS ディスク | 不要 |
+
+*(n+1) - SYSTEM、TEMP、UNDO の各テーブルスペースをホストします。 SYSTEM、UNDO テーブルスペースの I/O パターンは、アプリケーション データをホストする他のテーブルスペースとは異なります。 SYSTEM と UNDO テーブルスペースのパフォーマンスを考慮すると、キャッシュなしが最適なオプションです。
+* oraarch - パフォーマンスの観点からは記憶域プールは不要です。 より多くの領域を確保するために使用できます。
 
 高い IOPS が必要な場合は、Windows 記憶域プール (Windows Server 2012 以降でのみ提供) を使用して、マウントされた複数のディスクの上に 1 つの大きな論理デバイスを作成することをお勧めします。 この方法では、ディスク領域を管理する管理オーバーヘッドを合理化し、マウントされた複数のディスク全体にファイルを手動で分散する手間を省きます。
 
-お客様のエクスペリエンスに基づく推奨事項は次のとおりです。
 
-- 再実行ログとそのミラーに異なるボリュームを使用する
-- IOPS のために必要な場合は、再実行ログとそのミラーを含むボリュームにのみストライプ セットを適用する
-- Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、再実行ログへの書き込み待機時間を数分の 1 に短縮できます。 そのため、Oracle 再実行ログ用のボリュームを形成する VHD には Azure 書き込みアクセラレータをデプロイする必要があります。 詳細については、「[Azure 書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)」を参照してください。
+#### <a name="write-accelerator"></a>書き込みアクセラレータ
+Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、オンラインの再実行ログへの書き込み待機時間を数分の 1 に短縮できます。 オンラインの再実行ログ ファイルに使用される、Azure Premium Storage に基づくディスク (VHD) では、Azure 書き込みアクセラレータを有効にします。 詳細については、「[Azure 書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)」を参照してください。
+
 
 ### <a name="backup--restore"></a>バックアップと復元
 バックアップと復元機能については、SAP BR*Tools for Oracle が標準の Windows Server オペレーティング システムと同様にサポートされています。 ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
 
-Azure Backup Service を使用して、VM のアプリケーション整合性バックアップを実行することもできます。 記事「[Azure における VM バックアップ インフラストラクチャの計画を立てる](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)」によると、Azure Backup Service はアプリケーション整合性バックアップを実行するために Windows VSS 機能を使用しています。 Azure と SAP でサポートされている Oracle Database のリリースでは、バックアップに VSS 機能を利用できます。 詳細については、Oracle のドキュメント「[Basic Concepts of Database Backup and Recovery with VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701)」(VSS を使用したデータベースのバックアップと復元の基本概念) を参照してください。
+Azure Backup Service を使用して、VM のアプリケーション整合性バックアップを実行することもできます。 記事「[Azure における VM バックアップ インフラストラクチャの計画を立てる](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)」の説明によると、Azure Backup Service はアプリケーション整合性バックアップを実行するために Windows VSS 機能を使用しています。 SAP によって Azure でサポートされている Oracle DBMS リリースでは、バックアップに VSS 機能を利用できます。 詳細については、Oracle のドキュメント「[Basic Concepts of Database Backup and Recovery with VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701)」(VSS を使用したデータベースのバックアップと復元の基本概念) を参照してください。
 
 
 ### <a name="high-availability"></a>高可用性
-高可用性とディザスター リカバリーを目的として Oracle Data Guard がサポートされています。 
+高可用性とディザスター リカバリーを目的として Oracle Data Guard がサポートされています。 Data Guard で自動フェールオーバーを実現するには、ファスト スタート フェールオーバー (FSFA) を使用することが必要です。 オブザーバー (FSFA) によってフェールオーバーがトリガーされます。 FSFA を使用しない場合、手動でのフェールオーバー構成のみが可能です。
 
 Azure の Oracle データベースのディザスター リカバリーについては、記事「[Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)」を参照してください。
 
@@ -393,9 +421,18 @@ Azure Virtual Machines で SAP on Oracle を実行できる Oracle のバージ�
 
 Oracle での SAP Business Suite の実行に関する一般的な情報については、<https://www.sap.com/community/topic/oracle.html> を参照してください。
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための Oracle 構成ガイドライン
-#### <a name="storage-configuration"></a>ストレージの構成
-ext3、ext4、および xfs でフォーマットされたディスクを使用した単一インスタンスの Oracle のみサポートされています。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、Azure ページ Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) または Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>) に基づいています。 あらゆる種類のネットワーク ドライブまたは Azure ファイルサービスのようなリモート共有:
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Linux 上の Azure VM で SAP をインストールするための Oracle 構成ガイドライン
+
+SAP インストール マニュアルによると、Oracle 関連のファイル、VM のブート ディスクのシステム ドライバーにインストールしたり、配置したりすべきではありません。 仮想マシンのサイズに応じて、アタッチすることがサポートされるディスクの数は異なります。 仮想マシンの種類が小さければ小さいほど、アタッチできるディスクの数も小さくなります。 この場合、Oracle ホーム、ステージ、saptrace、saparch、sapbackup、sapcheck、sapreorg をブート ディスクにインストール/配置することをお勧めします。 これらの Oracle DBMS コンポーネントが I/O と I/O スループットに与える影響は大きくありません。 そのため、OS ディスクで I/O 要件を処理できます。 OS ディスクの既定のサイズは、30 GB です。 Azure portal/PowerShell/CLI を使用してブート ディスクを拡張できます。 ブート ディスクを拡張すると、Oracle バイナリのためにパーティションを追加できます。
+
+
+### <a name="storage-configuration"></a>ストレージの構成
+
+Azure 上の Oracle データベース ファイルがサポートされているのは、ext4、xfs、Oracle ASM のファイル システムのみです。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、Azure ページ BLOB ストレージ (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) または [Azure マネージド ディスク](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)に基づいています。 
+
+[Azure マネージド ディスク](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) の使用も強くお勧めします。
+
+あらゆる種類のネットワーク ドライブまたは Azure ファイルサービスのようなリモート共有:
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
@@ -404,35 +441,65 @@ ext3、ext4、および xfs でフォーマットされたディスクを使用�
 
 「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイに関する考慮事項](dbms_guide_general.md)」に記載されているステートメントは、Azure Page BLOB Storage をベースとするディスクまたはマネージド ディスクを使用した Oracle Database のデプロイにも適用されます。
 
-「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」で説明されているように、Azure ディスクの IOPS スループットに関するクォータが存在します。 正確なクォータは、使用する VM タイプによって異なります。 VM タイプとそのクォータの一覧は、[こちら (Linux)][virtual-machines-sizes-linux] および[こちら (Windows)][virtual-machines-sizes-windows] に記載されています。
+「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」で説明されているように、Azure ディスクの IOPS スループットに関するクォータが存在します。 正確なクォータは、使用する VM タイプによって異なります。 VM タイプとそのクォータの一覧は、[こちら (Linux)][virtual-machines-sizes-linux] に記載されています。
 
 サポートされている Azure VM のタイプを識別するには、SAP Note [1928533] をご覧ください。
 
-ディスクあたりの現在の IOPS クォータが要件を満たしている限り、マウントされた単一のディスクにすべてのデータベース ファイルを格納できます。 また、他の 2 つのディスクについて 2 つの再実行ログが記録されます。
+最小構成:
+| コンポーネント | ディスク | キャッシュ | ストライプ化* |
+| --- | ---| --- | --- |
+| /oracle/<SID>/origlogaA & mirrlogB | Premium | なし | 不要 |
+| /oracle/<SID>/origlogaB & mirrlogA | Premium | なし | 不要 |
+| /oracle/<SID>/sapdata1...n | Premium | 読み取り専用 | 使用可能 |
+| /oracle/<SID>/oraarch | 標準 | なし | 不要 |
+| Oracle ホーム、saptrace、... | OS ディスク | | 不要 |
+
+*ストライプ化: RAID0 を使用した LVM ストライプまたは MDADM
+
+Oracle のオンラインの再実行ログをホストするためのディスクの選択は、IOPS 要件に従う必要があります。 ボリューム、IOPS、スループットの要件を満たしている限りは、1 つのマウント ディスク上の sapdata1...n (テーブルスペース) すべてを格納できます。 
+
+パフォーマンス構成:
+| コンポーネント | ディスク | キャッシュ | ストライプ化* |
+| --- | ---| --- | --- |
+| /oracle/<SID>/origlogaA | Premium | なし | 使用可能  |
+| /oracle/<SID>/origlogaB | Premium | なし | 使用可能 |
+| /oracle/<SID>/mirrlogAB | Premium | なし | 使用可能 |
+| /oracle/<SID>/mirrlogBA | Premium | なし | 使用可能 |
+| /oracle/<SID>/sapdata1...n | Premium | 読み取り専用 | 推奨  |
+| /oracle/SID/sapdata(n+1)* | Premium | なし | 使用可能 |
+| /oracle/<SID>/oraarch* | Premium | なし | 不要 |
+| Oracle ホーム、saptrace、... | OS ディスク | 不要 |
+
+*ストライプ化: RAID0 を使用した LVM ストライプ MDADM。*(n+1) - SYSTEM、TEMP、UNDO のテーブルスペースをホストします。 SYSTEM、UNDO テーブルスペースの I/O パターンは、アプリケーション データをホストする他のテーブルスペースとは異なります。 SYSTEM と UNDO テーブルスペースのパフォーマンスを考慮すると、キャッシュなしが最適なオプションです。
+* oraarch - パフォーマンスの観点からは記憶域プールは不要です。 より多くの領域を確保するために使用できます。
+
 
 高い IOPS が必要な場合は、LVM (Logical Volume Manager) または MDADM を使用して、マウントされた複数のディスクの上に 1 つの大きな論理ボリュームを作成することをお勧めします。 LVM または MDADM の利用方法に関するガイドラインとポインターについては、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」も参照してください。 この方法では、ディスク領域を管理する管理オーバーヘッドを合理化し、マウントされた複数のディスク全体にファイルを手動で分散する手間を省きます。
 
-お客様のエクスペリエンスに基づく推奨事項は次のとおりです。
 
-- 再実行ログとそのミラーに異なるボリュームを使用する
-- IOPS のために必要な場合は、再実行ログとそのミラーを含むボリュームにのみストライプ セットを適用する
-- Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、再実行ログへの書き込み待機時間を数分の 1 に短縮できます。 そのため、Oracle 再実行ログ用のボリュームを形成する VHD には Azure 書き込みアクセラレータをデプロイする必要があります。 詳細については、「[Azure 書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)」を参照してください。
+#### <a name="write-accelerator"></a>書き込みアクセラレータ:
+Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、オンラインの再実行ログへの書き込み待機時間を数分の 1 に短縮できます。 オンラインの再実行ログ ファイルに使用される、Azure Premium Storage に基づくディスク (VHD) では、Azure 書き込みアクセラレータを有効にします。 詳細については、「[Azure 書き込みアクセラレータ](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)」を参照してください。
 
 
-#### <a name="backup--restore"></a>バックアップと復元
+### <a name="backup--restore"></a>バックアップと復元
 バックアップと復元機能については、SAP BR*Tools for Oracle がベア メタルおよび Hyper-V と同様にサポートされています。 ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
 
 Azure Backup サービスと Azure Recovery サービスを使用して Oracle データベースをバックアップおよび回復する方法の詳細については、記事「[Azure Linux 仮想マシンでの Oracle Database 12c データベースのバックアップと回復](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery)」を参照してください。
 
-#### <a name="high-availability"></a>高可用性
-高可用性とディザスター リカバリーを目的として Oracle Data Guard がサポートされています。 詳細については、記事「[Azure Linux 仮想マシンで Oracle Data Guard を実装する](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)」を参照してください。
+### <a name="high-availability"></a>高可用性
+高可用性とディザスター リカバリーを目的として Oracle Data Guard がサポートされています。 Data Guard で自動フェールオーバーを実現するには、ファスト スタート フェールオーバー (FSFA) を使用することが必要です。 オブザーバー機能 (FSFA) によってフェールオーバーがトリガーされます。 FSFA を使用しない場合、手動でのフェールオーバー構成のみが可能です。  詳細については、記事「[Azure Linux 仮想マシンで Oracle Data Guard を実装する](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)」を参照してください。
 
 
 Azure の Oracle データベースのディザスター リカバリーについては、記事「[Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)」を参照してください。
 
-#### <a name="accelerated-networking"></a>高速ネットワーク
-Oracle Linux での Azure Accelerated Networking のサポートは、oracle Linux 7 Update 5 (Oracle Linux 7.5) で提供されています。 最新の Oracle Linux 7.5 リリースにアップグレードできない場合、Oracle UEK カーネルの代わりに RHEL カーネルを使用することで回避できる可能性があります。 Oracle Linux 内で RHEL カーネルを使用することは、SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179) に従ってサポートされています。 ただし、Azure Accelerated Networking が適切に動作するには、RHEL カーネル リリースが 3.10.0-862.el7.x86_64 以降である必要があります。
+### <a name="accelerated-networking"></a>高速ネットワーク
+Oracle Linux での Azure Accelerated Networking のサポートは、Oracle Linux 7 Update 5 (Oracle Linux 7.5) で提供されています。 最新の Oracle Linux 7.5 リリースにアップグレードできない場合、Oracle UEK カーネルの代わりに RedHat 互換カーネル (RHCK) を使用することで回避できる可能性があります。 Oracle Linux 内で RHEL カーネルを使用することは、SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179) に従ってサポートされています。 Azure 高速ネットワークの場合、最小 RHCKL カーネル リリースは 3.10.0-862.13.1.el7 でなければなりません。
+
+Azure Marketplace に基づかないイメージから VM をデプロイするのでない場合は、以下を実行して VM にコピーする追加の構成ファイルが必要になります。 
+<pre><code># Copy settings from github to correct place in VM
+sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.githubusercontent.com/LIS/lis-next/master/hv-rhel7.x/hv/tools/68-azure-sriov-nm-unmanaged.rules 
+</code></pre>
 
 
-#### <a name="other"></a>その他
+### <a name="other"></a>その他
 このドキュメントの最初の 3 つの章で説明したように、Oracle Database を使用した VM のデプロイについては、Azure 可用性セットや SAP の監視などの他のすべての一般的な領域が適用されます。
