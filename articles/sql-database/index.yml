@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d7111b5faaa5276c65219db8ddd35fca64081a72
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 9e68e60fa22964f43680cd2070a09fffc98fbee3
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853049"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163389"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -68,12 +68,12 @@ sections:
       image:
         src: media/index/i_mi.svg
       title: マネージド インスタンス
-    - href: /azure/sql-database/sql-database-business-continuity
+    - href: /azure/sql-database/sql-database-paas
       html: <p>組み込みの高可用性、自動バックアップ、geo レプリケーションによって、メンテナンス操作やインフラストラクチャ障害、ハードウェア障害でビジネスが中断されることがなくなります。</p>
       image:
         src: media/index/gear.svg
-      title: ビジネス継続性
-    - href: /azure/sql-database/sql-database-security-overview
+      title: サービスとしてのプラットフォーム
+    - href: /azure/sql-database/sql-database-security-index
       html: <p>Azure AD 認証、仮想ネットワーク、ファイアウォール、Always Encrypted 接続でデータベースをセキュリティ保護できます。 組み込みのセキュリティで脅威と脆弱性を特定します。</p>
       image:
         src: media/index/i_security.svg

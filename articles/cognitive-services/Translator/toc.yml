@@ -231,13 +231,13 @@ items:
       href: custom-translator/faq.md
     - name: 価格
       href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
-    - name: StackOverflow
+    - name: スタック オーバーフロー
       href: https://stackoverflow.com/questions/tagged/microsoft-translator
-    - name: Uservoice
+    - name: UserVoice
       href: https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide
-ms.openlocfilehash: 254be54860741d2430d735d83575e6754be1c8d4
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: fd4087d50e8e1213d95548b148dd7ceaeaae8b8b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852471"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974973"

@@ -318,9 +318,9 @@ items:
   - name: アーキテクチャのパターン
     href: /azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration
     items:
-    - name: シンプルなエンタープライズ統合
+    - name: 単純なエンタープライズ統合
       href: /azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration
-    - name: キューとイベントでのエンタープライズ統合
+    - name: キューとイベントによるエンタープライズ統合
       href: logic-apps-architectures-enterprise-integration-with-queues-events.md
   - name: コネクタ - 詳細
     href: https://docs.microsoft.com/connectors/
@@ -371,9 +371,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: e37217154fdf57b1fa9280cf2d17111bb34f9683
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a910da03fa8f5c510a2e759cc085940a8bf8350f
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221429"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977082"

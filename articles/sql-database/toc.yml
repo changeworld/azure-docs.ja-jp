@@ -143,7 +143,7 @@ items:
     items:
     - name: マネージド インスタンス
       href: sql-database-managed-instance-index.yml
-    - name: Managed Instance とは
+    - name: 概要
       href: sql-database-managed-instance.md
     - name: リソース制限
       href: sql-database-managed-instance-resource-limits.md
@@ -163,15 +163,15 @@ items:
       href: sql-database-managed-instance-transact-sql-information.md
     - name: トランザクション レプリケーション
       href: replication-with-sql-database-managed-instance.md
-  - name: ビジネス継続性
+  - name: サービスとしてのプラットフォーム
     items:
+    - name: サービスとしてのプラットフォーム
+      href: sql-database-paas.yml
     - name: ビジネス継続性
       href: sql-database-business-continuity.md
     - name: 高可用性
       href: sql-database-high-availability.md
-    - name: 高速データベースの復旧
-      href: sql-database-accelerated-database-recovery.md
-    - name: データベースのバックアップ
+    - name: 自動バックアップ
       href: sql-database-automated-backups.md
     - name: 長期のバックアップ リテンション期間
       items:
@@ -193,6 +193,8 @@ items:
       items:
       - name: バックアップを使用した復元
         href: sql-database-recovery-using-backups.md
+      - name: 高速データベースの復旧
+        href: sql-database-accelerated-database-recovery.md
       - name: 障害復旧ガイダンス
         href: sql-database-disaster-recovery.md
       - name: 復旧の演習
@@ -208,6 +210,8 @@ items:
   - name: セキュリティ
     items:
     - name: セキュリティ
+      href: sql-database-security-index.yml
+    - name: 概要
       href: sql-database-security-overview.md
     - name: 高度な脅威保護
       items:
@@ -648,9 +652,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 90ce805e96458e83315cd5f7c9e60b3585f7313d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 12add5f8ee32ce3c5207a604ef7cad821d5e5a4e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854290"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165268"

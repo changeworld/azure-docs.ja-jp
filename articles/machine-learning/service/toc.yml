@@ -119,12 +119,14 @@ items:
       href: how-to-troubleshoot-deployment.md
     - name: SSL でセキュリティ保護する
       href: how-to-secure-web-service.md
-    - name: デプロイしたモデルを使用する
+  - name: Web サービスを使用する
+    items:
+    - name: リアルタイムで使用する
       displayName: create client, client, consume
       href: how-to-consume-web-service.md
-  - name: モデルを監視する
+  - name: Web サービスを監視する
     items:
-    - name: 運用環境でデータを収集する
+    - name: データを収集して評価する
       href: how-to-enable-data-collection.md
     - name: Application Insights での監視
       href: how-to-enable-app-insights.md
@@ -366,9 +368,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 以前の問題
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 62bc2016ec9294c00f20587cb6f6f7af7bafa599
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 71dc3f256a2d145dbb645feb7f309f5c760bf20a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706655"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163981"
