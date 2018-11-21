@@ -444,21 +444,21 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
   
 ```azurecli-interactive
 az group delete --name myResourceGroup 
-``` 
+```
 
 <a name="next"></a>
 
-## Next steps
+## <a name="next-steps"></a>次の手順
 
 > [!div class="checklist"]
-> * Create a MySQL database in Azure
-> * Connect a sample Java app to the MySQL
-> * Deploy the app to Azure
-> * Update and redeploy the app
-> * Stream diagnostic logs from Azure
-> * Manage the app in the Azure portal
+> * Azure で MySQL データベースを作成する
+> * サンプル Java アプリを MySQL に接続する
+> * Azure にアプリケーションをデプロイする
+> * アプリを更新して再デプロイする
+> * Azure から診断ログをストリーミングする
+> * Azure Portal でアプリを管理する
 
-Advance to the next tutorial to learn how to map a custom DNS name to the app.
+次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
 
 > [!div class="nextstepaction"] 
-> [Map an existing custom DNS name to Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)
