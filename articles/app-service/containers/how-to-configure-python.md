@@ -15,24 +15,38 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406468"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633650"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Azure App Service on Linux 向けに Python アプリを構成する
 
 この記事では、[Azure App Service on Linux](app-service-linux-intro.md) で Python アプリが実行される方法と、必要に応じて App Service の動作をカスタマイズする方法について説明します。
 
+## <a name="set-python-version"></a>Python バージョンの設定
+
+2 つの基本イメージ (Python 3.6 と Python 3.7) を使用できます。 どちらの Python ベースのイメージでも、アプリを作成できます。 たとえば、Python 3.7 を使用してアプリを作成するには、Cloud Shell で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
+```
+
+Python バージョン (基本イメージ) を、たとえば Python 3.6 に変更するには、Cloud Shell で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp config set --resource-group <group_name> --name <app_name> --linux-fx-version "PYTHON|3.6"
+```
+
+Python の異なるバージョンが必要な場合は、代わりにお客様独自のコンテナー イメージをビルドしてデプロイする必要があります。 詳細については、「[Web App for Containers のカスタム Docker イメージを使用する](tutorial-custom-docker-image.md)」を参照してください。
+
 ## <a name="container-characteristics"></a>コンテナーの特性
 
-App Service on Linux にデプロイされた Python アプリは、GitHub リポジトリの [Azure-App-Service/python コンテナー](https://github.com/Azure-App-Service/python/tree/master/3.7.0)で定義されている Docker コンテナー内で実行されます。
+App Service on Linux にデプロイされた Python アプリは、GitHub リポジトリの [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) または [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0) で定義されている Docker コンテナー内で実行されます。
 
 このコンテナーには次の特性があります。
-
-- 基本のコンテナー イメージは `python-3.7.0-slim-stretch` です。これは、Python 3.7 を使用してアプリが実行されることを意味します。 Python の異なるバージョンが必要な場合は、代わりにお客様独自のコンテナー イメージをビルドしてデプロイする必要があります。 詳細については、「[Web App for Containers のカスタム Docker イメージを使用する](tutorial-custom-docker-image.md)」を参照してください。
 
 - アプリは、[Gunicorn WSGI HTTP サーバー](http://gunicorn.org/)を使用して実行されます。このとき、追加の引数 `--bind=0.0.0.0 --timeout 600` が使用されます。
 

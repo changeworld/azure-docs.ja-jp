@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5239788f06ed3e738d1f0b62ddcde77c2a13b5f2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: afc24d75b128c192efe14af061ac1df7521c7ef2
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241737"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621263"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>複数の Azure AD インスタンスと単一の AD FS インスタンスとのフェデレーション
 
@@ -47,7 +47,7 @@ contoso.com の AD FS が fabrikam.com 内のユーザーを認証するため�
  
 AD FS との間で認証連携された単一ドメインに使用される既定の発行者設定は "http://ADFSServiceFQDN/adfs/services/trust" です (例: "http://fs.contoso.com/adfs/services/trust")。 Azure Active Directory では、認証連携させるドメインごとに固有の発行者が必要となります。 同じ AD FS で 2 つのドメインのフェデレーションを行うことになるので、発行者の値は、Azure Active Directory との間で認証連携させるドメインごとに固有となるように編集する必要があります。 
  
-AD FS サーバーで Azure AD PowerShell を開いて、次の手順を実行します。
+AD FS サーバーで Azure AD PowerShell (MSOnline モジュールがインストールされていることを確認) を開いて、次の手順を実行します。
  
 ドメイン contoso.com を含んだ Azure Active Directory に接続 (Connect-MsolService) し、contoso.com のフェデレーション設定を更新します (Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain)。
  

@@ -1,7 +1,6 @@
 ---
-title: '例: Text Analytics REST API でセンチメントを分析する'
-titleSuffix: Azure Cognitive Services
-description: Text Analytics REST API を使用したセンチメントの検出方法について説明します。
+title: Text Analytics REST API で感情分析を実行する方法 (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
+description: このチュートリアルでは、Azure 上の Microsoft Cognitive Services の Text Analytics REST API を使用して、センチメントを検出する方法を説明します。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: bbe9ffd0709157b5f0389ccc68a285b9c3829db9
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605897"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632868"
 ---
 # <a name="example-how-to-detect-sentiment-in-text-analytics"></a>例: Text Analytics でセンチメントを検出する方法
 
@@ -24,6 +23,9 @@ ms.locfileid: "45605897"
 この機能は、ソーシャル メディア、顧客レビューおよびディスカッション フォーラムで肯定的および否定的センチメントを検出するために役立ちます。 コンテンツはユーザーが提供します。モデルとトレーニング データは、サービスによって提供されます。
 
 現時点では、感情分析は、英語、ドイツ語、スペイン語、およびフランス語をサポートします。 その他の言語はプレビュー段階です。 詳細については、[サポートされている言語](../text-analytics-supported-languages.md)に関するページを参照してください。
+
+> [!TIP]
+> Text Analytics には感情分析用の Linux ベースの Docker コンテナー イメージも用意されているため、データの近くに [Text Analytics コンテナーをインストールして実行](text-analytics-how-to-install-containers.md)することができます。
 
 ## <a name="concepts"></a>概念
 
@@ -77,7 +79,7 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 + **POST** 要求を作成します。 この要求については [Sentiment Analysis API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) の API ドキュメントを確認してください。
 
-+ キー フレーズ抽出用の HTTP エンドポイントを設定します。 そこには、`/sentiment` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、感情分析用の HTTP エンドポイントを設定します。 そこには、`/sentiment` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
 
 + Text Analytics 操作用のアクセス キーが含まれるように要求ヘッダーを設定します。 詳細については、[エンドポイントを見つけてアクセス キーにアクセスする方法](text-analytics-how-to-access-key.md)に関するページを参照してください。
 

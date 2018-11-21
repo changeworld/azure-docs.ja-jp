@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
-ms.openlocfilehash: 39b3f51693229e75f58c4244089f21c7d3f8677d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8f18b01409680c07b942087b75b1618c75973391
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250616"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634330"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -53,6 +53,10 @@ Computer Vision を使用し、イメージからコンピューターが読み�
 ## <a name="moderating-content-in-images"></a>イメージ内のコンテンツを調整する
 
 Computer Vision を使用して、イメージ内の[成人向けや人種差別的コンテンツを検出](concept-detecting-adult-content.md)できます。イメージに成人向けまたは人種差別的なコンテンツが含まれている可能性を評価し、その両方に対して信頼度スコアを生成します。 成人向けできわどいコンテンツを検出するためのフィルターは、設定に合わせて、スライディング スケールで設定することができます。
+
+## <a name="using-containers"></a>コンテナーを使用する
+
+印刷されたテキストと手書きのテキストをローカルに認識するには、標準化された Docker コンテナーをデータの近くにインストールして、[Computer Vision コンテナーを使用](computer-vision-how-to-install-containers.md)します。
 
 ## <a name="image-requirements"></a>イメージの要件
 

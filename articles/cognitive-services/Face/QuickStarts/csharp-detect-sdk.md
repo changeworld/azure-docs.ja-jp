@@ -1,192 +1,91 @@
 ---
-title: 'クイック スタート: .NET SDK と C# を使用して画像内の顔を検出する'
+title: 'クイック スタート: Azure Face .NET SDK を使って画像から顔を検出する'
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Face Windows C# クライアント ライブラリを使って画像から顔を検出します。
+description: このクイック スタートでは、Azure Face SDK と C# を使用して、画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 09/14/2018
+ms.date: 11/07/2018
 ms.author: pafarley
-ms.openlocfilehash: a4b0b8b277ed6bc6e2bc3c7549d1e67d5f18c615
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4fbbde167a8c895a71ab3614e8c3ecbce26604a9
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954965"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578159"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-net-sdk-with-c"></a>クイック スタート: .NET SDK と C# を使用して画像内の顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>クイック スタート: Face .NET SDK を使用して画像から顔を検出する
 
-このクイック スタートでは、Face Windows クライアント ライブラリを使って画像から人の顔を検出します。
+このクイック スタートでは、Face サービス SDK と C# を使用して、画像から人の顔を検出します。 このクイック スタートで取り上げているコードの実例については、GitHub の [Cognitive Services Vision csharp quickstarts](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) リポジトリにある Face プロジェクトを参照してください。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-* サンプルを実行するにはサブスクリプション キーが必要です。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
-* [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) クライアント ライブラリの NuGet パッケージ。 パッケージをダウンロードする必要はありません。 インストールの手順は、以降で説明しています。
+- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 
-## <a name="detectwithurlasync-method"></a>DetectWithUrlAsync メソッド
+## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
-> [!TIP]
-> 最新のコードを Visual Studio ソリューションとして [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) から取得してください。
+1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**FaceDetection** という名前を付けます。 
+1. ソリューションに他のプロジェクトがある場合は、これを単一のスタートアップ プロジェクトとして選択します。
+1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーで目的のプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[参照]** タブをクリックし、**[プレリリースを含める]** を選択した後、次のパッケージを検索してインストールします。
+    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
-`DetectWithUrlAsync` メソッドと `DetectWithStreamAsync` メソッドは、それぞれリモート画像とローカル画像の [Face - Detect API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) をラップします。 これらのメソッドを使用して、画像の中にある顔を検出し、次のような顔の属性を返すことができます。
+## <a name="add-face-detection-code"></a>顔検出コードを追加する
 
-* Face ID: Face API の各種シナリオで使用される一意の ID。
-* 顔四角形: 画像内での顔の位置を示す値 (左、上、幅、高さ)。
-* ランドマーク: 顔の構成要素の重要な位置を示す 27 地点のランドマークの配列。
-* 顔の属性 (年齢、性別、笑顔の強さ、頭部姿勢、顔ひげなど)。
+新しいプロジェクトの *Program.cs* ファイルを開きます。 画像を読み込んで顔を検出するために必要なコードをここに追加します。
 
-このサンプルを実行するには、次の手順を実行します。
+### <a name="include-namespaces"></a>名前空間を含める
 
-1. Visual Studio で、新しい Visual C# コンソール アプリを作成します。
-1. Face クライアント ライブラリの NuGet パッケージをインストールします。
-    1. 上部のメニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
-    1. **[参照]** タブをクリックし、**[プレリリースを含める]** を選択します。
-    1. **[検索]** ボックスに「Microsoft.Azure.CognitiveServices.Vision.Face」と入力します。
-    1. **[Microsoft.Azure.CognitiveServices.Vision.Face]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
-1. *Program.cs* を次のコードに置き換えます。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて、`faceEndpoint` をサブスクリプション キーに関連付けられている Azure リージョンに変更します。
-1. 必要に応じて、<`LocalImage>` をローカル画像のパスとファイル名に置き換えます (設定しなかった場合は無視されます)。
-1. 必要に応じて、`remoteImageUrl` を別の画像に設定します。
-1. プログラムを実行します。
+*Program.cs* ファイルの先頭に次の `using` ステートメントを追加します。
 
-```csharp
-using Microsoft.Azure.CognitiveServices.Vision.Face;
-using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=1-7)]
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
+### <a name="add-essential-fields"></a>必須フィールドを追加する
 
-namespace DetectFace
-{
-    class Program
-    {
-        // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
-        private const string subscriptionKey = "<SubscriptionKey>";
+**Program** クラスに次のフィールドを追加します。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `faceEndpoint` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください。 `localImagePath` と `remoteImageUrl` の値についても、実際の画像ファイルを指すパスに設定する必要があります。
 
-        // You must use the same region as you used to get your subscription
-        // keys. For example, if you got your subscription keys from westus,
-        // replace "westcentralus" with "westus".
-        //
-        // Free trial subscription keys are generated in the westcentralus
-        // region. If you use a free trial subscription key, you shouldn't
-        // need to change the region.
-        // Specify the Azure region
-        private const string faceEndpoint =
-            "https://westcentralus.api.cognitive.microsoft.com";
+`faceAttributes` フィールドは、簡単に言えば、特定の種類の属性を格納する配列です。 検出された顔について、どの情報を取得するかを指定します。
 
-        // localImagePath = @"C:\Documents\LocalImage.jpg"
-        private const string localImagePath = @"<LocalImage>";
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=13-34)]
 
-        private const string remoteImageUrl =
-            "https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg";
+### <a name="create-and-use-the-face-client"></a>Face クライアントを作成して使用する
 
-        private static readonly FaceAttributeType[] faceAttributes =
-            { FaceAttributeType.Age, FaceAttributeType.Gender };
+次に、**Program** クラスの **Main** メソッドに次のコードを追加します。 これは、Face API クライアントを設定するものです。
 
-        static void Main(string[] args)
-        {
-            FaceClient faceClient = new FaceClient(
-                new ApiKeyServiceClientCredentials(subscriptionKey),
-                new System.Net.Http.DelegatingHandler[] { });
-            faceClient.Endpoint = faceEndpoint;
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=38-41)]
 
-            Console.WriteLine("Faces being detected ...");
-            var t1 = DetectRemoteAsync(faceClient, remoteImageUrl);
-            var t2 = DetectLocalAsync(faceClient, localImagePath);
+また、新たに作成した Face クライアントを使ってリモートとローカルの画像から顔を検出するコード (下記) を **Main** メソッドに追加します。 実際の検出メソッドは、この後で定義します。 
 
-            Task.WhenAll(t1, t2).Wait(5000);
-            Console.WriteLine("Press any key to exit");
-            Console.ReadLine();
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-49)]
 
-        // Detect faces in a remote image
-        private static async Task DetectRemoteAsync(
-            FaceClient faceClient, string imageUrl)
-        {
-            if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
-            {
-                Console.WriteLine("\nInvalid remoteImageUrl:\n{0} \n", imageUrl);
-                return;
-            }
+### <a name="detect-faces"></a>顔を検出する
 
-            try
-            {
-                IList<DetectedFace> faceList =
-                    await faceClient.Face.DetectWithUrlAsync(
-                        imageUrl, true, false, faceAttributes);
+**Program** クラスに次のメソッドを追加します。 Face サービス クライアントを使用してリモートの画像から顔を検出するもので、対象となる画像は URL で参照します。 `faceAttributes` フィールドが使用されていることに注目してください。`faceList` に追加された **DetectedFace** オブジェクトには、このフィールドに指定された属性 (この例では、年齢と性別) が格納されます。
 
-                DisplayAttributes(GetFaceAttributes(faceList, imageUrl), imageUrl);
-            }
-            catch (APIErrorException e)
-            {
-                Console.WriteLine(imageUrl + ": " + e.Message);
-            }
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=52-74)]
 
-        // Detect faces in a local image
-        private static async Task DetectLocalAsync(FaceClient faceClient, string imagePath)
-        {
-            if (!File.Exists(imagePath))
-            {
-                Console.WriteLine(
-                    "\nUnable to open or read localImagePath:\n{0} \n", imagePath);
-                return;
-            }
+同様に、**DetectLocalAsync** メソッドを追加します。 Face サービス クライアントを使用してローカルの画像から顔を検出するもので、対象となる画像はファイル パスで参照します。
 
-            try
-            {
-                using (Stream imageStream = File.OpenRead(imagePath))
-                {
-                    IList<DetectedFace> faceList =
-                            await faceClient.Face.DetectWithStreamAsync(
-                                imageStream, true, false, faceAttributes);
-                    DisplayAttributes(
-                        GetFaceAttributes(faceList, imagePath), imagePath);
-                }
-            }
-            catch (APIErrorException e)
-            {
-                Console.WriteLine(imagePath + ": " + e.Message);
-            }
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=76-101)]
 
-        private static string GetFaceAttributes(
-            IList<DetectedFace> faceList, string imagePath)
-        {
-            string attributes = string.Empty;
+### <a name="retrieve-and-display-face-attributes"></a>顔の属性を取得して表示する
 
-            foreach (DetectedFace face in faceList)
-            {
-                double? age = face.FaceAttributes.Age;
-                string gender = face.FaceAttributes.Gender.ToString();
-                attributes += gender + " " + age + "   ";
-            }
+次に、**GetFaceAttributes** メソッドを定義します。 これは、該当する属性情報を含んだ文字列を返します。
 
-            return attributes;
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=103-116)]
 
-        // Display the face attributes
-        private static void DisplayAttributes(string attributes, string imageUri)
-        {
-            Console.WriteLine(imageUri);
-            Console.WriteLine(attributes + "\n");
-        }
-    }
-}
-```
+最後に、顔の属性データをコンソール出力に書き込む **DisplayAttributes** メソッドを定義します。
 
-### <a name="detectwithurlasync-response"></a>DetectWithUrlAsync 応答
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-123)]
 
-成功応答には、画像内の個々の顔の性別と年齢が表示されます。
+## <a name="run-the-app"></a>アプリの実行
 
-生の JSON 出力例については、[C# を使用して画像の中の顔を検出する API のクイック スタート](CSharp.md)を参照してください。
+成功応答には、画像内の個々の顔の性別と年齢が表示されます。 例: 
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg
@@ -195,7 +94,7 @@ Male 37   Female 56
 
 ## <a name="next-steps"></a>次の手順
 
-Face サービスを使用して画像内の顔を検出する WPF Windows アプリケーションを作成する方法について説明します。 このアプリケーションは、各顔のまわりにフレームを描画し、ステータス バーに顔の説明を表示します。
+このクイック スタートでは、Face API サービスを使ってローカルとリモートの両方の画像から顔を検出する簡単な .NET コンソール アプリケーションを作成しました。 この後は、一歩進んだチュートリアルに取り組んでみましょう。顔の情報を直感的な方法でユーザーに見せる方法をご覧いただけます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 画像の中にある顔を検出してフレームに収める WPF アプリの作成](../Tutorials/FaceAPIinCSharpTutorial.md)
+> [チュートリアル: 画像から顔を検出して分析する WPF アプリの作成](../Tutorials/FaceAPIinCSharpTutorial.md)

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729994"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288035"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>クイック スタート: スキルとサンプル データを使用したコグニティブ検索パイプラインの作成
 
@@ -26,10 +26,16 @@ ms.locfileid: "45729994"
 * ウィザードを実行する (エンティティ スキルで人、場所、および組織を検出する)
 * [Search エクスプローラー](search-explorer.md)を使って、エンリッチされたデータのクエリを実行する。
 
+## <a name="supported-regions"></a> サポートされているリージョン
+
 コグニティブ検索は、次の地域で作成された Azure Search サービスで試してみることができます。
 
+* 米国中西部
 * 米国中南部
+* 米国東部
 * 西ヨーロッパ
+* 北ヨーロッパ
+* 東南アジア
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -57,7 +63,7 @@ Azure サービスはこのシナリオでのみ使用されます。 必要な�
 
 1. [リソース グループ] では、このクイックスタートで作成するすべてのリソースを含めるリソース グループを作成します。 これにより、クイックスタートが完了した後で、リソースをクリーンアップしやすくなります。
 
-1. [場所] では、**[米国中南部]** または **[西ヨーロッパ]** のいずれかを選択します。 現在のところ、プレビューはこれらの領域でのみ使用可能です。
+1. [場所] には、Cognitive Search が[サポートされているリージョン](#supported-regions)を 1 つ選択します。
 
 1. [価格レベル] では、チュートリアルとクイックスタートを完了するために、**Free** のサービスを作成することができます。 独自のデータを使用して詳しく調査する場合は、**Basic** や **Standard** などの[有料のサービス](https://azure.microsoft.com/pricing/details/search/)を作成します。 
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 06ca8269fc41807dd6cb27bab22d10e45f025ee2
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 08b2018ec1f1d34291778df0fa217b874cc3ffab
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363862"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515099"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Python)
 
@@ -26,6 +26,7 @@ IoT Hub は、IoT デバイスからクラウドに大量の利用統計情報�
 このクイック スタートでは、あらかじめ作成されている次の 2 つの Python アプリケーションを使います。
 
 * シミュレートされたデバイス アプリケーションは、バックエンド アプリケーションから呼び出されたダイレクト メソッドに応答します。 ダイレクト メソッドの呼び出しを受け取るため、このアプリケーションは IoT ハブ上のデバイス固有のエンドポイントに接続します。
+
 * バックエンド アプリケーションは、シミュレートされたデバイスでダイレクト メソッドを呼び出します。 デバイスでダイレクト メソッドを呼び出すため、このアプリケーションは IoT ハブ上のサービス側エンドポイントに接続します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -54,7 +55,7 @@ python3 --version
 
 前の「[クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-python.md)」を完了した場合は、この手順を省略できます。
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
@@ -73,7 +74,7 @@ python3 --version
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
     ```
 
-1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
     **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
@@ -87,12 +88,14 @@ python3 --version
 
     この値は、このクイック スタートの後の方で使います。
 
-1. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、"_サービス接続文字列_" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
+3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、"_サービス接続文字列_" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
 
     **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --hub-name YourIoTHubName --output table
+    az iot hub show-connection-string \
+      --hub-name YourIoTHubName \
+      --output table
     ```
 
     次のようなサービス接続文字列をメモしておきます。
@@ -125,7 +128,7 @@ python3 --version
 
     次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT ハブに利用統計情報を送信したときの出力を示しています。
 
-    ![シミュレートされたデバイスを実行する](media/quickstart-control-device-python/SimulatedDevice-1.png)
+    ![シミュレートされたデバイスを実行する](./media/quickstart-control-device-python/SimulatedDevice-1.png)
 
 ## <a name="call-the-direct-method"></a>ダイレクト メソッドを呼び出す
 
@@ -151,11 +154,11 @@ python3 --version
 
     次のスクリーンショットは、アプリケーションがデバイスに対してダイレクト メソッド呼び出しを行い、受信確認を受け取ったときの出力を示します。
 
-    ![バックエンド アプリケーションを実行する](media/quickstart-control-device-python/BackEndApplication.png)
+    ![バックエンド アプリケーションを実行する](./media/quickstart-control-device-python/BackEndApplication.png)
 
     バックエンド アプリケーションを実行した後、シミュレートされたデバイスを実行しているコンソール ウィンドウにメッセージが表示され、メッセージの送信速度が変わります。
 
-    ![シミュレートされたクライアントでの変更](media/quickstart-control-device-python/SimulatedDevice-2.png)
+    ![シミュレートされたクライアントでの変更](./media/quickstart-control-device-python/SimulatedDevice-2.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

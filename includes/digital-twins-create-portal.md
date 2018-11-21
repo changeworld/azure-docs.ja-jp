@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 7bac2b291bec2ceda118c877cde997a2fa9f9f37
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e5e015c1e12e68f54ae7fd32082faed1abfebe74
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283994"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51626393"
 ---
 1. [Azure Portal](http://portal.azure.com) にサインインします。
 
-1. 左側のナビゲーション ウィンドウで、**[リソースの作成]** をクリックします。 *digital twins* を検索し、**[Digital Twins (プレビュー)]** を選択します。 **[作成]** をクリックしてデプロイ プロセスを開始します。
+1. 左側のウィンドウで、**[リソースの作成]** を選択します。 **digital twins** を検索し、**[Digital Twins (プレビュー)]** を選択します。 **[作成]** を選択してデプロイ プロセスを開始します。
 
-    ![Digital Twins の作成](./media/create-digital-twins-portal/create-digital-twins.png)
+   ![新しい Digital Twins インスタンスを作成するための選択](./media/create-digital-twins-portal/create-digital-twins.png)
 
 1. **[Digital Twins]** ウィンドウで、次の情報を入力します。
    * **[リソース名]**: Digital Twins インスタンスの一意の名前を作成します。
@@ -27,14 +27,14 @@ ms.locfileid: "51283994"
    * **[リソース グループ]**: Digital Twins インスタンスの[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)を選択または作成します。
    * **[場所]**: 使用しているデバイスに最も近い場所を選択します。
 
-    ![Digital Twins の作成](./media/create-digital-twins-portal/create-digital-twins-param.png)
+    ![情報が入力されている [Digital Twins] ウィンドウ](./media/create-digital-twins-portal/create-digital-twins-param.png)
 
-1. Digital Twins の情報を確認してから、**[作成]** をクリックします。 Digital Twins インスタンスが作成されるまでに数分かかる場合があります。 **[通知]** ウィンドウで進行状況を監視できます。
+1. Digital Twins の情報を確認してから、**[作成]** を選択します。 Digital Twins インスタンスが作成されるまでに数分かかる場合があります。 **[通知]** ウィンドウで進行状況を監視できます。
 
-1. Digital Twins インスタンスの **[概要]** ウィンドウを開きます。 **[管理 API]** の下に表示されるリンクに注目します。
+1. Digital Twins インスタンスの **[概要]** ウィンドウを開きます。 **[管理 API]** の下のリンクに注目します。
 
-    1. **[管理 API]** の URL は、**_https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger_** という形式です。 この URL では、インスタンスに適用される Azure Digital Twins REST API のドキュメントが表示されます。 この API ドキュメントを読んで使用する方法については、「[How to use Azure Digital Twins Swagger (Azure Digital Twins Swagger の使用方法)](../articles/digital-twins/how-to-use-swagger.md)」を参照してください。
+   **[管理 API]** の URL は、_https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger_ という形式です。 この URL では、インスタンスに適用される Azure Digital Twins REST API のドキュメントが表示されます。 この API ドキュメントを読んで使用する方法については、「[How to use Azure Digital Twins Swagger (Azure Digital Twins Swagger の使用方法)](../articles/digital-twins/how-to-use-swagger.md)」を参照してください。
 
-    1. **[管理 API]** の URL を **_https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/_** という形式に変更します。 アプリケーションは、変更された URL をベース URL として使用してインスタンスにアクセスします。 この変更した URL を一時ファイルにコピーします。 これは、次のセクションで必要になります。
+    **[管理 API]** の URL を _https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/_ という形式に変更します。 アプリケーションは、変更された URL をベース URL として使用してインスタンスにアクセスします。 この変更した URL を一時ファイルにコピーします。 これは次のセクションで必要になります。
 
     ![管理 API](./media/create-digital-twins-portal/digital-twins-management-api.png)

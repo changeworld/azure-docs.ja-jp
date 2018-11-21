@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 523f5eba632b15eaaf45f24be820f7b255aae7c0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378433"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616029"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用してパブリック Basic Load Balancer を作成する
 
@@ -159,6 +159,7 @@ Basic Load Balancer でアプリの状態を監視するには、正常性プロ
    - **myHealthProbe** - 正常性プローブの名前
    - **HTTP** - プロトコルの種類
    - **80** - ポート番号
+   - **Healthprobe.aspx** - URI パス。 この値は、他の URI に置き換えるか、既定のパス値である **"\\"** のままにして既定の URI を取得することもできます。
    - **15** - プローブの試行の**間隔**を示す秒数
    - **2** - プローブの連続する失敗回数を示す**異常しきい値** (この回数を超えると、VM は異常と見なされます)
 

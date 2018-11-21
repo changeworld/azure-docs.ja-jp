@@ -13,17 +13,17 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c8157820f7137eb06a0fe10c42645ec91f33edbc
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 7582c578e91fb3e36d7a0ecc1da7ede0cefc0f4c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364075"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623780"
 ---
-# <a name="tutorial-stream-azure-ad-logs-to-an-azure-event-hub-preview"></a>チュートリアル - Azure AD ログを Azure イベント ハブにストリーム配信する (プレビュー)
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>チュートリアル - Azure Active Directory ログを Azure イベント ハブにストリームする (プレビュー)
 
 このチュートリアルでは、Azure Active Directory (Azure AD) のログを Azure イベント ハブにストリーム配信するよう Azure Monitor の診断設定をセットアップする方法について説明します。 このメカニズムを使用して、Splunk や QRadar といったサードパーティのセキュリティ情報イベント管理 (SIEM) ツールにログを統合します。
 
@@ -36,7 +36,7 @@ ms.locfileid: "46364075"
 * Azure AD テナントの "*グローバル管理者*" または "*セキュリティ管理者*" であるユーザー。
 * Azure サブスクリプション内の Event Hubs 名前空間とイベント ハブ。 [イベント ハブの作成](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)方法に関するページを参照してください。
 
-## <a name="archive-logs-to-an-event-hub"></a>イベント ハブにログをアーカイブする
+## <a name="stream-logs-to-an-event-hub"></a>イベント ハブにログをストリーム配信する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
 

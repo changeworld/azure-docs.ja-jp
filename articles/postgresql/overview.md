@@ -9,17 +9,17 @@ editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/15/2018
-ms.openlocfilehash: 86a8b824479173024b1a14bb8612073ffbfac468
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 11/14/2018
+ms.openlocfilehash: c1e90e9e39bb9ff698b2e53a2b7cf02340e1111f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092159"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685856"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
 
-Azure Database for PostgreSQL は、オープンソースの [PostgreSQL](https://www.postgresql.org/) データベース エンジンのコミュニティ バージョンに基づいて開発者向けに構築された、Microsoft Cloud のリレーショナル データベース サービスです。 Azure Database for PostgreSQL には、次の特長があります。
+Azure Database for PostgreSQL は、オープンソースの [PostgreSQL](https://www.postgresql.org/) データベース エンジン バージョン 9.5、9.6、および 10 のコミュニティ バージョンに基づいて開発者向けに構築された、Microsoft Cloud のリレーショナル データベース サービスです。 Azure Database for PostgreSQL には、次の特長があります。
 
 - 追加コストなしの組み込みの高可用性
 - 包括的な従量課金制の料金を使用した、予測可能なパフォーマンス
@@ -40,7 +40,7 @@ Azure CLI の各種サンプルについては、次のページを参照して�
 - [Azure Database for PostgreSQL 用 Azure CLI サンプル](./sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
-Azure Database for PostgreSQL サービスには、Basic、汎用、およびメモリ最適化の 3 つの価格レベルが用意されています。 使用しているデータベースのワークロードをサポートするために、各レベルでは異なるリソース機能が提供されています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[価格レベル](concepts-pricing-tiers.md)に関するページを参照してください。
+Azure Database for PostgreSQL サービスには、Basic、汎用、およびメモリ最適化の 3 つの価格レベルが用意されています。 使用しているデータベースのワークロードをサポートするために、各レベルでは異なるリソース機能が提供されています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 スケールを調整するときに、適切なパフォーマンス レベルはどのようにして見極めればよいのでしょうか。 組み込みの Azure 監視機能とアラート機能を使用します。 これらのツールを使用すると、現在または今後のパフォーマンスまたはストレージのニーズに基づいて、スケールアップまたはスケールダウンの影響をすばやく評価できます。 詳細については、[アラート](howto-alert-on-metric.md)に関するページを参照してください。

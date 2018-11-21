@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 7cccb47bd7489e88649ee82c4d52c72af0d91e8e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 983b966ad304afb467df26193dd609f6f21a1b32
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390947"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614279"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure Network Watcher とは
 
@@ -98,6 +98,9 @@ NSG フロー ログについて詳しくは、[仮想マシンへの送受信�
 ### <a name="view-diagnostic-logs-for-network-resources"></a>ネットワーク リソースの診断ログを表示する
 
 ネットワーク セキュリティ グループやパブリック IP アドレス、ロード バランサー、仮想ネットワーク ゲートウェイ、アプリケーション ゲートウェイなど、Azure ネットワーク リソースの診断ログを有効にできます。 "*診断ログ*" 機能では、単一のインターフェイスを使用して、診断ログを生成する既存のネットワーク リソースに関するネットワーク リソース診断ログを有効および無効にできます。 診断ログは、Microsoft Power BI や Azure Log Analytics などのツールを使用して表示できます。 Azure ネットワーク診断ログの分析について詳しくは、[Log Analytics の Azure ネットワーク ソリューション](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
+
+## <a name="network-watcher-automatic-enablement"></a>Network Watcher の自動での有効化
+サブスクリプションで仮想ネットワークを作成したり更新したりすると、お使いの Virtual Network のリージョンで Network Watcher が自動的に有効になります。 Network Watcher は自動的に有効化され、リソースや関連する料金が影響を受けることはありません。 詳細については、[Network Watcher の作成](network-watcher-create.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

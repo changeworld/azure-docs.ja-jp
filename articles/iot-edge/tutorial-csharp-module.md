@@ -3,29 +3,31 @@ title: Azure IoT Edge C# チュートリアル | Microsoft Docs
 description: このチュートリアルでは、C# コードで IoT Edge モジュールを作成し、Edge デバイスに展開する方法について説明します。
 services: iot-edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ec8cd52d8a91c76033d52f9b49ee84dde98eada2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4c20ab78ba4da44d4746ef6f68674fe494392347
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156767"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633990"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>チュートリアル: C# IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
 Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。    
 
 > [!div class="checklist"]
-> * Visual Studio Code を使用して .NET Core 2.0 SDK に基づく IoT Edge モジュールを作成する。
+> * Visual Studio Code を使用して .NET Core 2.1 SDK に基づく IoT Edge モジュールを作成する。
 > * Visual Studio Code と Docker を使用して Docker イメージを作成し、レジストリに発行する。
 > * モジュールを IoT Edge デバイスに展開する。
 > * 生成されたデータを表示する。
 
+>[!NOTE]
+>[Visual Studio 2017 を使用して IoT Edge モジュールを開発、デバッグ、およびデプロイ](how-to-visual-studio-develop-csharp-module.md)することもできます。
 
 このチュートリアルで作成する IoT Edge モジュールは、デバイスによって生成される温度データをフィルター処理します。 これは、指定されたしきい値を温度が上回っているときにのみ、メッセージを上流に送信します。 エッジでのこの種の分析は、クラウドに送信および保存されるデータ量を削減するうえで役に立ちます。 
 

@@ -1,5 +1,5 @@
 ---
-title: .NET Core を使用して Azure Media Services v3 でライブ ストリーミングを行う | Microsoft Docs
+title: Azure Media Services v3 によるライブ ストリーミング | Microsoft Docs
 description: このチュートリアルでは、.NET Core を使用して Media Services v3 でライブ ストリーミングを行う方法について順を追って説明します。
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: bd149177a91bc0d5897723df2fad50fef11a37ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392337"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613394"
 ---
-# <a name="stream-live-with-azure-media-services-v3-using-net-core"></a>.NET Core を使用して Azure Media Services v3 でライブ ストリーミングを行う
+# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>チュートリアル: API を使用した Media Services v3 によるライブ ストリーミング
 
-Media Services で、ライブ ストリーミング コンテンツのプロセスを担うのは [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents) です。 LiveEvent は入力エンドポイントであり、その取り込み URL をライブ エンコーダーに対して指定します。 LiveEvent は、ライブ エンコーダーからライブ入力ストリームを受け取り、1 つまたは複数の [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、LiveEvent はその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します このチュートリアルでは、.NET Core を使用してライブ イベントの**パススルー** タイプを作成、管理する方法について説明します。 
+Azure Media Services では、[LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) がライブ ストリーミング コンテンツの処理を受け持ちます。 LiveEvent は入力エンドポイントであり、その取り込み URL をライブ エンコーダーに対して指定します。 LiveEvent は、ライブ エンコーダーからライブ入力ストリームを受け取り、1 つまたは複数の [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints) を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、LiveEvent はその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します このチュートリアルでは、.NET Core を使用してライブ イベントの**パススルー** タイプを作成、管理する方法について説明します。 
 
 > [!NOTE]
 > 先に進む前に、「[Live streaming with Media Services v3](live-streaming-overview.md)」(Media Services v3 によるライブ ストリーミング) を確認してください。 
@@ -31,7 +31,6 @@ Media Services で、ライブ ストリーミング コンテンツのプロセ
 このチュートリアルでは、次の操作方法について説明します。    
 
 > [!div class="checklist"]
-> * Media Services アカウントを作成する
 > * Media Services API にアクセスする
 > * サンプル アプリの構成
 > * ライブ ストリーミングを実行するコードを確認する
@@ -44,9 +43,17 @@ Media Services で、ライブ ストリーミング コンテンツのプロセ
 
 チュートリアルを完了するには次のものが必要です。
 
-* Visual Studio Code または Visual Studio をインストールする
-* イベントのブロードキャストに使用するカメラまたはデバイス (ラップトップなど)。
-* カメラからの信号を Media Services ライブ ストリーミング サービスに送信されるストリームに変換するオンプレミスのライブ エンコーダー。 ストリームは **RTMP** または **Smooth Streaming** 形式である必要があります。
+- Visual Studio Code または Visual Studio をインストールします。
+- CLI をローカルにインストールして使用します。この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+
+    現在、一部の [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) コマンドが Azure Cloud Shell では正常に動作しません。 CLI はローカルで使用することをお勧めします。
+
+- [Media Services アカウントを作成する](create-account-cli-how-to.md)
+
+    リソース グループ名および Media Services アカウント名として使用した値を覚えておいてください。
+
+- イベントのブロードキャストに使用するカメラまたはデバイス (ラップトップなど)。
+- カメラからの信号を Media Services ライブ ストリーミング サービスに送信されるストリームに変換するオンプレミスのライブ エンコーダー。 ストリームは **RTMP** または **Smooth Streaming** 形式である必要があります。
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -61,10 +68,6 @@ Media Services で、ライブ ストリーミング コンテンツのプロセ
 > [!IMPORTANT]
 > このサンプルでは、各リソースに一意のサフィックスを使用します。 デバッグをキャンセルした場合、または完全に実行せずにアプリを終了した場合、アカウントに複数の LiveEvent が作成されます。 <br/>
 > 実行中の LiveEvent を必ず停止してください。 そうしないと、**課金**が発生します。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -176,9 +179,9 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。 **CloudShell** ツールを使うことができます。
+このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。
 
-**CloudShell** で、次のコマンドを実行します。
+次の CLI コマンドを実行します。
 
 ```azurecli-interactive
 az group delete --name amsResourceGroup

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/19/2018
+ms.date: 11/09/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471290"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515728"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート: コスト分析を使用してコストを調査および分析する
 
@@ -32,27 +32,14 @@ Azure コストを正しく制御して最適化するには、コストが組�
 
 ## <a name="prerequisites"></a>前提条件
 
-コスト分析は、すべての [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 顧客が使用できます。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。
+コスト分析は、すべての [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 顧客が使用できます。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。 Cost Management データに対するアクセス権割り当ての詳細については、[データへのアクセスの割り当て](assign-access-acm-data.md)に関するページを参照してください。
 
-
-|**スコープ**|**定義場所**|**スコープのコストを分析するために必要なアクセス**|**前提条件となる EA 設定**|**課金データの統合先**|
-|---                |---                  |---                   |---            |---           |
-|課金アカウント<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|エンタープライズ管理者|なし|マイクロソフト エンタープライズ契約のすべてのサブスクリプション|
-|部署|[https://ea.azure.com ](https://ea.azure.com )|部門管理者|DA ビューの請求額の有効化|部署にリンクされている、登録アカウントに属しているすべてのサブスクリプション|
-|登録アカウント<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|アカウント所有者|AO ビューの請求額の有効化|登録アカウントのすべてのサブスクリプション|
-|管理グループ|[https://portal.azure.com ](https://portal.azure.com )|Cost Management 閲覧者 (または閲覧者)|AO ビューの請求額の有効化|管理グループ下のすべてのサブスクリプション|
-|サブスクリプション|[https://portal.azure.com ](https://portal.azure.com )|Cost Management 閲覧者 (または閲覧者)|AO ビューの請求額の有効化|サブスクリプションに含まれているすべてのリソース/リソース グループ|
-|リソース グループ|[https://portal.azure.com ](https://portal.azure.com )|Cost Management 閲覧者 (または閲覧者)|AO ビューの請求額の有効化|リソース グループに含まれるすべてのリソース|
-
-<sup>1</sup> 請求先アカウントは、しばしば "マイクロソフト エンタープライズ契約" または "登録" と呼ばれます。
-
-<sup>2</sup> 登録アカウントは、しばしば "アカウント所有者" と呼ばれます。
-
-**DA ビュー料金**と **AO ビュー料金**の設定の構成の詳細については、「[コストへのアクセスを有効にする](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs)」を参照してください。
-
-
-
-
+- 請求先アカウント
+- 部署
+- 登録アカウント
+- 管理グループ
+- サブスクリプション
+- リソース グループ
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

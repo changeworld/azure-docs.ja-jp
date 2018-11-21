@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure での SQL&#47;IIS&#47;.NET スタックを実行する VM の作成 | Microsoft Docs
+title: チュートリアル - Azure での SQL、IIS、.NET スタックを実行する VM の作成 | Microsoft Docs
 description: このチュートリアルでは、Azure で Windows 仮想マシンに Azure SQL/IIS/.NET スタックをインストールする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 357a81ef3ab23a1e06b88f083c2fcdc35b27853d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4909edf6e434e626e89409f01ae0f5fbca5bf442
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464912"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515490"
 ---
-# <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Windows VM に SQL&#47;IIS&#47;.NET スタックをインストールする
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Windows VM に SQL、IIS、.NET スタックをインストールする
 
-このチュートリアルでは、Azure PowerShell を使用して SQL&#47;IIS&#47;.NET スタックをインストールします。 このスタックは、1 つは IIS および .NET を、もう 1 つは SQL Server を使用して Windows Server 2016 を実行する 2 つの VM で構成されています。
+このチュートリアルでは、Azure PowerShell を使用して SQL、IIS、.NET スタックをインストールします。 このスタックは、1 つは IIS および .NET を、もう 1 つは SQL Server を使用して Windows Server 2016 を実行する 2 つの VM で構成されています。
 
 > [!div class="checklist"]
 > * VM の作成 
@@ -57,7 +57,7 @@ New-AzureRmVm `
     -OpenPorts 80,3389 
 ```
 
-カスタム スクリプト拡張機能を使用して、IIS および .NET framework をインストールします。
+カスタム スクリプト拡張機能と [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) コマンドレットを使用して、IIS および .NET framework をインストールします。
 
 ```azurepowershell-interactive
 Set-AzureRmVMExtension `

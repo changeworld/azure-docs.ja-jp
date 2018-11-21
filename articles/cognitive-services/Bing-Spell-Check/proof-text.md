@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 48d9dee014d0759bd339c79811bb7b2fddecfe0b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 3a277b10561b2756fab0af6455d17557a8d93a53
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214938"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345710"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Bing Spell Check API とは
 
@@ -42,9 +42,12 @@ API は、2 つの校正モード (`Proof` と `Spell`) をサポートします
 <br /><br/>**注:** クエリ テキストの長さが 4,096 を超える場合は 4.096 文字に切り捨てられた後で処理されます。 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell - Web 検索/クエリ シナリオ用
 `Spell` は、より良い検索結果を返すためにもっと積極的に機能します。 `Spell` モードは、ほとんどのスペル ミスを検出しますが、`Proof` ではキャッチされる一部の文法エラーは検出されません (大文字小文字エラーや単語の繰り返しなど)。
-<br /></br>**注:** サポートされているクエリの最大長を次に示します。 クエリが最大長を超えた場合、クエリとその結果は変更されません。
-<ul><li>言語コード en、de、es、fr、pl、pt、sv、ru、nl、nb、tr-tr、it、zh、ko では 130 文字。 </li>
-<li>それ以外は 65 文字。</li></ul>
+
+> [!NOTE]
+> * サポートされるクエリの最大長は次のとおりです。 クエリが最大長を超えた場合、クエリとその結果は変更されません。
+>    * 言語コード en、de、es、fr、pl、pt、sv、ru、nl、nb、tr-tr、it、zh、ko では 130 文字。 
+>    * それ以外はすべて 65 文字。
+> * Spell モードでは、クエリに角かっこ文字 (`[` と `]`) がサポートされておらず、矛盾した結果が生じることがあります。 Spell モードを使用するときは、これらをクエリから削除することをお勧めします。
 
 ## <a name="market-setting"></a>市場の設定
 要求 URL のクエリ パラメーターに市場を指定する必要があります。指定がない場合、スペル チェックは、IP アドレスに基づく既定の市場になります。

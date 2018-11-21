@@ -3,7 +3,7 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
-ms.author: ryanwi
-ms.openlocfilehash: 36b9a2e710a2a7f34ee9374e89f3fb19cc591ac3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.author: twhitney
+ms.openlocfilehash: 2b53b8a97f4e794110dc482db09a0d376247a678
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429594"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299641"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル: Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -61,9 +61,7 @@ Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題な
 ## <a name="create-an-azure-sql-db"></a>Azure SQL DB を作成する
 運用環境で Fabrikam Fiber CallCenter アプリケーションを実行するときは、データベースにデータを保持する必要があります。 現在コンテナー内のデータの永続化を保証する方法はありません。そのため、コンテナー内に SQL Server の運用データを格納することはできません。
 
-Microsoft では、[Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell) の使用をお勧めしています。 Azure でマネージド SQL Server DB を設定して実行するには、次のスクリプトを実行します。  スクリプトは必要に応じて変更してください。 *clientIP* は、開発用コンピューターの IP アドレスです。
-
-開発用コンピューターが会社のファイアウォールにより保護されている場所に置かれている場合には、そのコンピューターの IP アドレスとインターネットに公開される IP アドレスとが異なることもあります。 ファイアウォール規則に使用する正しい IP アドレスがデータベースにあることを確認するには、[Azure portal](https://portal.azure.com) にアクセスして、[SQL データベース] セクションで目的のデータベースを探してください。 その名前をクリックし、[概要] セクションの [サーバー ファイアウォールの設定] をクリックします。 "クライアント IP アドレス" は、開発マシンの IP アドレスです。 "AllowClient" ルール内の IP アドレスと一致していることを確認してください。
+Microsoft では、[Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell) の使用をお勧めしています。 Azure でマネージド SQL Server DB を設定して実行するには、次のスクリプトを実行します。  スクリプトは必要に応じて変更してください。 *clientIP* は、開発用コンピューターの IP アドレスです。 スクリプトから出力されたサーバーの名前はメモしておいてください。 
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -84,7 +82,7 @@ $adminlogin = "ServerAdmin"
 $password = "Password@123"
 
 # The IP address of your development computer that accesses the SQL DB.
-$clientIP = "24.18.117.76"
+$clientIP = "<client IP>"
 
 # The database name.
 $databasename = "call-center-db"
@@ -111,13 +109,15 @@ New-AzureRmSqlDatabase  -ResourceGroupName $dbresourcegroupname `
 
 Write-Host "Server name is $servername"
 ```
+> [!TIP]
+> 開発用コンピューターが会社のファイアウォールにより保護されている場所に置かれている場合には、そのコンピューターの IP アドレスとインターネットに公開される IP アドレスとが異なることもあります。 ファイアウォール規則に使用する正しい IP アドレスがデータベースにあることを確認するには、[Azure portal](https://portal.azure.com) にアクセスして、[SQL データベース] セクションで目的のデータベースを探してください。 その名前をクリックし、[概要] セクションの [サーバー ファイアウォールの設定] をクリックします。 "クライアント IP アドレス" は、開発マシンの IP アドレスです。 "AllowClient" ルール内の IP アドレスと一致していることを確認してください。
 
 ## <a name="update-the-web-config"></a>Web 構成の更新
-**FabrikamFiber.Web** プロジェクトに戻り、**web.config** ファイル内の接続文字列を更新し、コンテナー内の SQL Server を指定します。  前のスクリプトで作成したサーバーの接続文字列の *Server* の部分を更新します。 
+**FabrikamFiber.Web** プロジェクトに戻り、**web.config** ファイル内の接続文字列を更新し、コンテナー内の SQL Server を指定します。  前のスクリプトで作成したサーバー名の接続文字列の *Server* の部分を更新します。 "fab-fiber-751718376.database.windows.net" のようになっている必要があります。
 
 ```xml
-<add name="FabrikamFiber-Express" connectionString="Server=tcp:fab-fiber-1300282665.database.windows.net,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
-<add name="FabrikamFiber-DataWarehouse" connectionString="Server=tcp:fab-fiber-1300282665.database.windows.net,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
+<add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
+<add name="FabrikamFiber-DataWarehouse" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
   
 ```
 >[!NOTE]
@@ -150,7 +150,9 @@ Service Fabric アプリケーションは、ネットワークに接続され�
 
 このチュートリアルでは、Visual Studio からクラスターを作成します。テストのシナリオでは、こちらの方法が適しているからです。 別の方法でクラスターを作成する場合や、既存のクラスターを使用する場合には、接続エンドポイントをコピーして貼り付けるか、サブスクリプションからクラスターを選択します。 
 
-クラスターを作成するときに、実行中のコンテナーをサポートする SKU を選択します。 クラスター ノード上の Windows Server OS は、コンテナーの Windows Server OS と互換性を持っている必要があります。 詳細については、[Windows Server コンテナーの OS とホスト OS の互換性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)に関するページを参照してください。 このチュートリアルでは、既定では Windows Server 2016 LTSC に基づいて Docker イメージを作成します。 このイメージに基づくコンテナーは、コンテナー搭載 Windows Server 2016 Datacenter で作成されたクラスター上で実行されます。 ただし、コンテナー搭載 Windows Server Datacenter Core 1709 に基づいてクラスターを作成するか、既存のクラスターを使用する場合は、コンテナーの基になる Windows Server OS イメージを変更する必要があります。 **FabrikamFiber.Web** プロジェクトの **Dockerfile** を開き、(`windowsservercore-ltsc` に基づいて) 既存の `FROM` ステートメントをコメントアウトし、`windowsservercore-1709` に基づいて `FROM` ステートメントのコメントを解除します。 
+開始する前に、ソリューション エクスプローラーで [FabrikamFiber.Web]、[PackageRoot]、[ServiceManifest.xml] の順に開きます。 **[エンドポイント]** に記載されている Web フロントエンドのポートをメモします。 
+
+クラスターを作成する際は、次の手順に従います。 
 
 1. ソリューション エクスプローラーで **FabrikamFiber.CallCenterApplication** アプリケーション プロジェクトを右クリックし、**[発行]** を選択します。
 
@@ -160,21 +162,29 @@ Service Fabric アプリケーションは、ネットワークに接続され�
         
 4. **[クラスターの作成]** ダイアログで、次のように設定を変更します。
 
-    1. **[クラスター名]** フィールドでクラスターの名前を指定します。また、使用するサブスクリプションと場所を指定します。
-    2. 省略可能: ノードの数を変更できます。 既定では、Service Fabric のシナリオをテストするのに最低限必要な 3 ノードになっています。
-    3. **[証明書]** タブを選択します。このタブでは、クラスターの証明書をセキュリティで保護するために使用されるパスワードを入力します。 この証明書は、クラスターのセキュリティ保護に役立ちます。 また、証明書を保存したい場所にパスを変更することもできます。 アプリケーションをクラスターに発行するうえで必要な手順であるため、Visual Studio では証明書を自動でインポートすることもできます。
-    4. **[VM の詳細]** タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。
-    5. **[詳細]** タブで、クラスターをデプロイする際にロード バランサーで開放するアプリケーション ポートを列挙します。 ソリューション エクスプローラーで、[FabrikamFiber.Web] -> [PackageRoot] -> [ServiceManifest.xml] の順に開きます。  Web フロントエンドのポートは、**[エンドポイント]** に記載されています。  さらに、アプリケーション ログ ファイルのルーティングに使用される既存の Application Insights キーを追加することもできます。
-    6. 設定の変更が完了したら、**[作成]** ボタンを選択します。 
-5. 作成の完了には数分かかります。クラスターが完全に作成されると、出力ウィンドウにその旨が表示されます。
+    a. **[クラスター名]** フィールドでクラスターの名前を指定します。また、使用するサブスクリプションと場所を指定します。 クラスター リソース グループの名前をメモしておいてください。
+
+    b. 省略可能: ノードの数を変更できます。 既定では、Service Fabric のシナリオをテストするのに最低限必要な 3 ノードになっています。
+
+    c. **[証明書]** タブを選択します。このタブでは、クラスターの証明書をセキュリティで保護するために使用されるパスワードを入力します。 この証明書は、クラスターのセキュリティ保護に役立ちます。 また、証明書を保存したい場所にパスを変更することもできます。 アプリケーションをクラスターに発行するうえで必要な手順であるため、Visual Studio では証明書を自動でインポートすることもできます。
+
+    d. **[VM の詳細]** タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。 
+
+    > [!IMPORTANT]
+    >実行中のコンテナーをサポートする SKU を選択します。 クラスター ノード上の Windows Server OS は、コンテナーの Windows Server OS と互換性を持っている必要があります。 詳細については、[Windows Server コンテナーの OS とホスト OS の互換性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)に関するページを参照してください。 このチュートリアルでは、既定では Windows Server 2016 LTSC に基づいて Docker イメージを作成します。 このイメージに基づくコンテナーは、コンテナー搭載 Windows Server 2016 Datacenter で作成されたクラスター上で実行されます。 ただし、コンテナー搭載 Windows Server Datacenter Core 1709 に基づいてクラスターを作成するか、既存のクラスターを使用する場合は、コンテナーの基になる Windows Server OS イメージを変更する必要があります。 **FabrikamFiber.Web** プロジェクトの **Dockerfile** を開き、(`windowsservercore-ltsc` に基づいて) 既存の `FROM` ステートメントをコメントアウトし、`windowsservercore-1709` に基づいて `FROM` ステートメントのコメントを解除します。 
+
+    e. **[詳細]** タブで、クラスターをデプロイする際にロード バランサーで開放するアプリケーション ポートを列挙します。 これは、クラスターの作成を始める前にメモしておいたポートです。 さらに、アプリケーション ログ ファイルのルーティングに使用される既存の Application Insights キーを追加することもできます。
+
+    f. 設定の変更が完了したら、**[作成]** ボタンを選択します。 
+1. 作成の完了には数分かかります。クラスターが完全に作成されると、出力ウィンドウにその旨が表示されます。
     
 
 ## <a name="allow-your-application-running-in-azure-to-access-the-sql-db"></a>Azure で実行しているアプリケーションに SQL DB へのアクセスを許可する
-ローカルで実行しているアプリケーションにアクセス権を付与するための SQL ファイアウォール規則は、既に作成しました。  次は、Azure で実行しているアプリケーションが SQL DB にアクセスできるようにする必要があります。  Service Fabric クラスターの[仮想ネットワーク サービス エンドポイント](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を作成してから、そのエンドポイントに対して SQL DB へのアクセスを許可する規則を作成します。
+ローカルで実行しているアプリケーションにアクセス権を付与するための SQL ファイアウォール規則は、既に作成しました。  次は、Azure で実行しているアプリケーションが SQL DB にアクセスできるようにする必要があります。  Service Fabric クラスターの[仮想ネットワーク サービス エンドポイント](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を作成してから、そのエンドポイントに対して SQL DB へのアクセスを許可する規則を作成します。 クラスターを作成する際にメモしておいたクラスター リソース グループ変数を指定してください。 
 
 ```powershell
 # Create a virtual network service endpoint
-$clusterresourcegroup = "fabrikamfiber.callcenterapplication_RG"
+$clusterresourcegroup = "<cluster resource group>"
 $resource = Get-AzureRmResource -ResourceGroupName $clusterresourcegroup -ResourceType Microsoft.Network/virtualNetworks | Select-Object -first 1
 $vnetName = $resource.Name
 

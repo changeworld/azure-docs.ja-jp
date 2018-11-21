@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2197ab230341fb2945e7b1acd9a010ef3d3f8c22
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: df79581f4ad6af3dc420e7c7895acf46b5e3d997
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42702408"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615229"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -145,6 +145,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサイン�
     - *myHealthProbe* - 正常性プローブの名前。
     - **HTTP** - プロトコルの種類。
     - *80* - ポート番号。
+    - *Healthprobe.aspx* - URI パス。 この値は、他の URI に置き換えるか、既定のパス値である **"\\"** のままにして既定の URI を取得することもできます。
     - *15* - プローブの試行の**間隔**を示す秒数。
     - *2* - **異常しきい値**またはプローブの連続する失敗の回数。この回数を超えると、VM は異常と見なされます。
 4. Click **OK**.

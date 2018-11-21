@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: ef3139c4b3f06644b219e177fad0c094ed600fb6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394592"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578351"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
-Azure API で操作するために、AKS クラスターには [Azure Active Directory (AD) サービス プリンシパル][aad-service-principal]が必要です。 サービス プリンシパルは、Azure のロード バランサーや Azure Container Registry (ACR) などの Azure リソースを動的に作成し、管理するために必要です。
+Azure API で操作するために、AKS クラスターには [Azure Active Directory (AD) サービス プリンシパル][aad-service-principal]が必要です。 サービス プリンシパルは、Azure のロード バランサーやコンテナー レジストリ (ACR) などの Azure リソースを動的に作成し、管理するために必要です。
 
 この記事では、AKS クラスター用のサービス プリンシパルを作成して使用する方法を示します。
 
@@ -24,7 +24,7 @@ Azure API で操作するために、AKS クラスターには [Azure Active Dir
 
 Azure AD サービス プリンシパルを作成するには、アプリケーションを Azure AD テナントに登録し、そのアプリケーションをサブスクリプション内のロールに割り当てるためのアクセス許可が必要です。 必要なアクセス許可がない場合は、必要なアクセス許可を割り当てるよう Azure AD またはサブスクリプションの管理者に依頼するか、AKS クラスターで使用するサービス プリンシパルを事前に作成する必要が生じることがあります。
 
-また、Azure CLI バージョン 2.0.46 以降がインストールされ、構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>サービス プリンシパルを自動的に作成して使用する
 
@@ -75,6 +75,45 @@ Azure portal を使用して AKS クラスターをデプロイする場合は�
 
 ![Azure Vote にブラウザーでアクセスしたところ](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
+## <a name="delegate-access-to-other-azure-resources"></a>他の Azure リソースへのアクセスを委任する
+
+AKS クラスターのサービス プリンシパルは、他のリソースへのアクセスに使用することができます。 たとえば、高度なネットワークを使用して既存の仮想ネットワークに接続したり、Azure Container Registry (ACR) に接続したりする場合、サービス プリンシパルにアクセスを委任する必要があります。
+
+アクセス許可を委任するには、[az role assignment create][az-role-assignment-create] コマンドを使用してロールの割り当てを作成します。 リソース グループ、仮想ネットワーク リソースなど、特定のスコープに `appId` が割り当てられます。 さらに、そのサービス プリンシパルが対象のリソースに対して持つアクセス許可がロールによって定義されます。次の例をご覧ください。
+
+```azurecli
+az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
+```
+
+リソースの `--scope` には、*/subscriptions/\<guid\>/resourceGroups/myResourceGroup* や */subscriptions/\<guid\>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet* など、完全なリソース ID を指定する必要があります。
+
+以降の各セクションでは、一般的に必要となる委任について詳しく取り上げます。
+
+### <a name="azure-container-registry"></a>Azure Container Registry
+
+Azure Container Registry (ACR) をコンテナーのイメージ ストアとして使用する場合、AKS クラスターがイメージを読み取ってプルするためのアクセス許可を与える必要があります。 レジストリに対する "*閲覧者*" ロールを AKS クラスターのサービス プリンシパルに委任する必要があります。 詳細な手順については、「[ACR へのアクセス許可を AKS に付与する][aks-to-acr]」を参照してください。
+
+### <a name="networking"></a>ネットワーク
+
+仮想ネットワークとサブネットまたはパブリック IP アドレスが別のリソース グループに存在する高度なネットワークを使用することも考えられます。 ロールの一連のアクセス許可として、次のいずれかを割り当てます。
+
+- [カスタム ロール][rbac-custom-role]を作成し、次のロールのアクセス許可を定義します。
+  - *Microsoft.Network/virtualNetworks/subnets/join/action*
+  - *Microsoft.Network/virtualNetworks/subnets/read*
+  - *Microsoft.Network/publicIPAddresses/read*
+  - *Microsoft.Network/publicIPAddresses/write*
+  - *Microsoft.Network/publicIPAddresses/join/action*
+- または、仮想ネットワーク内のサブネットに[ネットワーク共同作成者][rbac-network-contributor]の組み込みロールを割り当てます。
+
+### <a name="storage"></a>Storage
+
+別のリソース グループにある既存のディスク リソースにアクセスしなければならない場合があります。 ロールの一連のアクセス許可として、次のいずれかを割り当てます。
+
+- [カスタム ロール][rbac-custom-role]を作成し、次のロールのアクセス許可を定義します。
+  - *Microsoft.Compute/disks/read*
+  - *Microsoft.Compute/disks/write*
+- または、リソース グループに対する[ストレージ アカウント共同作成者][rbac-storage-contributor]の組み込みロールを割り当てます。
+
 ## <a name="additional-considerations"></a>追加の考慮事項
 
 AKS と Azure AD サービス プリンシパルを使用する場合は、以下の考慮事項を念頭に置いてください。
@@ -107,3 +146,8 @@ Azure Active Directory サービス プリンシパルの詳細については�
 [az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
 [az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
+[rbac-custom-role]: ../role-based-access-control/custom-roles.md
+[rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr

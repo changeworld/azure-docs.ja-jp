@@ -13,15 +13,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 09/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d6ecf62b46c25ec7cf4ab80219d1bc220e4eb4cc
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 3f4090f1724850b0263905a0593fc77cc6dbfd16
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367408"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620736"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して監査レポートをダウンロードする
 
@@ -32,7 +32,7 @@ ms.locfileid: "46367408"
 必要なもの:
 
 * Azure Active Directory テナント。 
-* テナントのセキュリティ管理者、セキュリティ閲覧者、グローバル管理者のいずれかのロールであるユーザー。 さらに、テナントのすべてのユーザーは自分の監査ログにアクセスできます。
+* テナントの**セキュリティ管理者**、**セキュリティ閲覧者**、**グローバル管理者**のいずれかのロールであるユーザー。 さらに、テナントのすべてのユーザーは自分の監査ログにアクセスできます。
 
 ## <a name="quickstart-download-an-audit-report"></a>クイック スタート: 監査レポートをダウンロードする
 

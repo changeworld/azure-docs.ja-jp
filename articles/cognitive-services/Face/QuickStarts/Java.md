@@ -1,51 +1,46 @@
 ---
-title: 'クイック スタート: REST API と Java を使用して画像内の顔を検出する'
+title: 'クイック スタート: Azure REST API と Java を使って画像から顔を検出する'
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Java で Face API を使って画像から顔を検出します。
+description: このクイック スタートでは、Azure Face REST API と Java を使用して、画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 05/10/2018
+ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: df9490a3ee2af115b48dafd323e1afdec24b392d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 0a8a97be89893dbf072942501be51b82d20c1ef4
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956223"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578059"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>クイック スタート: REST API と Java を使用して画像内の顔を検出する
 
-このクイック スタートでは、Face API を使って画像から人の顔を検出します。
+このクイック スタートでは、Azure Face REST API と Java を使用して、画像から人の顔を検出します。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-サンプルを実行するにはサブスクリプション キーが必要です。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。
+- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- 任意の Java IDE。
 
-## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
+## <a name="create-the-java-project"></a>Java プロジェクトを作成する
 
-"[顔 - 検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
+IDE で新しいコマンド ライン Java アプリを作成し、**main** メソッドを含んだ **Main** クラスを追加します。 次に、Maven リポジトリから、次のグローバル ライブラリをプロジェクトの `lib` ディレクトリにダウンロードします。
+* `org.apache.httpcomponents:httpclient:4.2.4`
+* `org.json:json:20170516`
 
-* Face ID: Face API の各種シナリオで使用される一意の ID。
-* 顔四角形: 画像内での顔の位置を示す値 (左、上、幅、高さ)。
-* ランドマーク: 顔の構成要素の重要な位置を示す 27 地点のランドマークの配列。
-* 顔の属性 (年齢、性別、笑顔の強さ、頭部姿勢、顔ひげなど)。
+## <a name="add-face-detection-code"></a>顔検出コードを追加する
 
-このサンプルを実行するには、次の手順を実行します。
+プロジェクトのメイン クラスを開きます。 画像を読み込んで顔を検出するために必要なコードをここに追加します。
 
-1. お気に入りの Java IDE で新しいコマンド ライン アプリを作成します。
-2. Main クラスを次のコードに置き換えます (`package` 文はすべて保持します)。
-3. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-4. 必要に応じて、サブスクリプション キーを取得した場所に `uriBase` の値を変更します。
-5. Maven リポジトリから、次のグローバル ライブラリをプロジェクトの `lib` ディレクトリにダウンロードします。
-   * `org.apache.httpcomponents:httpclient:4.2.4`
-   * `org.json:json:20170516`
-6. 'Main' を実行します。
+### <a name="import-packages"></a>パッケージをインポートする
 
-### <a name="face---detect-request"></a>顔検出要求
+次の `import` ステートメントをファイルの先頭に追加します。
 
 ```java
 // This sample uses Apache HttpComponents:
@@ -63,87 +58,101 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+```
 
-public class Main
+### <a name="add-essential-fields"></a>必須フィールドを追加する
+
+以下の各フィールドを **Main** クラスに追加します。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください。 また、`imageWithFaces` 値は、別の画像ファイルのパスに設定することもできます。
+
+`faceAttributes` フィールドは、簡単に言えば、特定の種類の属性を列挙したものです。 検出された顔について、どの情報を取得するかを指定します。
+
+```Java
+// Replace <Subscription Key> with your valid subscription key.
+private static final String subscriptionKey = "<Subscription Key>";
+
+// NOTE: You must use the same region in your REST call as you used to
+// obtain your subscription keys. For example, if you obtained your
+// subscription keys from westus, replace "westcentralus" in the URL
+// below with "westus".
+//
+// Free trial subscription keys are generated in the westcentralus region. If you
+// use a free trial subscription key, you shouldn't need to change this region.
+private static final String uriBase =
+    "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+
+private static final String imageWithFaces =
+    "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
+
+private static final String faceAttributes =
+    "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
+```
+
+### <a name="call-the-face-detection-rest-api"></a>顔検出 REST API を呼び出す
+
+以下のメソッドを **main** メソッドに追加します。 これは、リモートの画像から顔情報を検出する Face API の REST 呼び出しを構築するものです (取得する顔属性は `faceAttributes` 文字列で指定します)。 出力データは、JSON 文字列に書き込まれます。
+
+```Java
+HttpClient httpclient = new DefaultHttpClient();
+
+try
 {
-    // Replace <Subscription Key> with your valid subscription key.
-    private static final String subscriptionKey = "<Subscription Key>";
+    URIBuilder builder = new URIBuilder(uriBase);
 
-    // NOTE: You must use the same region in your REST call as you used to
-    // obtain your subscription keys. For example, if you obtained your
-    // subscription keys from westus, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the westcentralus region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
-    private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+    // Request parameters. All of them are optional.
+    builder.setParameter("returnFaceId", "true");
+    builder.setParameter("returnFaceLandmarks", "false");
+    builder.setParameter("returnFaceAttributes", faceAttributes);
 
-    private static final String imageWithFaces =
-        "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
+    // Prepare the URI for the REST API call.
+    URI uri = builder.build();
+    HttpPost request = new HttpPost(uri);
 
-    private static final String faceAttributes =
-        "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
+    // Request headers.
+    request.setHeader("Content-Type", "application/json");
+    request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-    public static void main(String[] args)
+    // Request body.
+    StringEntity reqEntity = new StringEntity(imageWithFaces);
+    request.setEntity(reqEntity);
+
+    // Execute the REST API call and get the response entity.
+    HttpResponse response = httpclient.execute(request);
+    HttpEntity entity = response.getEntity();
+```
+
+### <a name="parse-the-json-response"></a>JSON 応答を解析します
+
+前のコードのすぐ下に、次のブロックを追加します。返された JSON データは、コンソールに出力される前に、このコードによって、より読みやすい形式に変換されます。 最後に、try-catch ブロックを閉じます。
+
+```Java
+    if (entity != null)
     {
-        HttpClient httpclient = new DefaultHttpClient();
+        // Format and display the JSON response.
+        System.out.println("REST Response:\n");
 
-        try
-        {
-            URIBuilder builder = new URIBuilder(uriBase);
-
-            // Request parameters. All of them are optional.
-            builder.setParameter("returnFaceId", "true");
-            builder.setParameter("returnFaceLandmarks", "false");
-            builder.setParameter("returnFaceAttributes", faceAttributes);
-
-            // Prepare the URI for the REST API call.
-            URI uri = builder.build();
-            HttpPost request = new HttpPost(uri);
-
-            // Request headers.
-            request.setHeader("Content-Type", "application/json");
-            request.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-            // Request body.
-            StringEntity reqEntity = new StringEntity(imageWithFaces);
-            request.setEntity(reqEntity);
-
-            // Execute the REST API call and get the response entity.
-            HttpResponse response = httpclient.execute(request);
-            HttpEntity entity = response.getEntity();
-
-            if (entity != null)
-            {
-                // Format and display the JSON response.
-                System.out.println("REST Response:\n");
-
-                String jsonString = EntityUtils.toString(entity).trim();
-                if (jsonString.charAt(0) == '[') {
-                    JSONArray jsonArray = new JSONArray(jsonString);
-                    System.out.println(jsonArray.toString(2));
-                }
-                else if (jsonString.charAt(0) == '{') {
-                    JSONObject jsonObject = new JSONObject(jsonString);
-                    System.out.println(jsonObject.toString(2));
-                } else {
-                    System.out.println(jsonString);
-                }
-            }
+        String jsonString = EntityUtils.toString(entity).trim();
+        if (jsonString.charAt(0) == '[') {
+            JSONArray jsonArray = new JSONArray(jsonString);
+            System.out.println(jsonArray.toString(2));
         }
-        catch (Exception e)
-        {
-            // Display error message.
-            System.out.println(e.getMessage());
+        else if (jsonString.charAt(0) == '{') {
+            JSONObject jsonObject = new JSONObject(jsonString);
+            System.out.println(jsonObject.toString(2));
+        } else {
+            System.out.println(jsonString);
         }
     }
 }
+catch (Exception e)
+{
+    // Display error message.
+    System.out.println(e.getMessage());
+}
 ```
 
-### <a name="face---detect-response"></a>顔検出応答
+## <a name="run-the-app"></a>アプリの実行
 
-成功応答が JSON で返されます。
+コードをコンパイルして実行します。 実行に成功した場合、応答として顔データが、読みやすい JSON 形式でコンソール ウィンドウに表示されます。 例: 
 
 ```json
 [{
@@ -237,7 +246,7 @@ public class Main
 
 ## <a name="next-steps"></a>次の手順
 
-Face サービスを使用して画像内の顔を検出する Android アプリケーションを作成する方法について説明します。 このアプリケーションは、それぞれの顔の周囲にフレームが描画された画像を表示します。
+このクイック スタートでは、REST 呼び出しと Azure Face API を使って画像から顔を検出し、その属性を返す単純な Java コンソール アプリケーションを作成しました。 この後は、この機能を Android アプリケーションで応用する方法について見てみましょう。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Android での Face API の使用開始](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [チュートリアル: 顔を検出してフレームに収める Android アプリの作成](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)

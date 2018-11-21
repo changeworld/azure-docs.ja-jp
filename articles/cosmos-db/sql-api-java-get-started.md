@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 0cf42245981afb44415b9709be9d45c44255f295
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 158bfedc8c0eb7d49c72d40cda08588d7377d17d
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417516"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636851"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL チュートリアル: SQL API Java コンソール アプリケーションの作成
 
@@ -91,7 +91,7 @@ Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** を�
 ![Java コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーン ショット。 アクティブなハブが強調表示され、[Azure Cosmos DB account]\(Azure Cosmos DB アカウント\) ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている Azure Cosmos DB アカウントを示します][keys]
 
 ## <a name="step-4-create-a-database"></a>手順 4: データベースを作成する
-Azure Cosmos DB [データベース](sql-api-resources.md#databases)は、**DocumentClient** クラスの [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) メソッドを使用して作成できます。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
+Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-databases)は、**DocumentClient** クラスの [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) メソッドを使用して作成できます。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
 
     Database database = new Database();
     database.setId("familydb");
@@ -103,7 +103,7 @@ Azure Cosmos DB [データベース](sql-api-resources.md#databases)は、**Docu
 > 
 > 
 
-[コレクション](sql-api-resources.md#collections)は、**DocumentClient** クラスの [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) メソッドを使用して作成できます。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
+コレクションは、**DocumentClient** クラスの [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) メソッドを使用して作成できます。 コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -117,7 +117,7 @@ Azure Cosmos DB [データベース](sql-api-resources.md#databases)は、**Docu
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
-[ドキュメント](sql-api-resources.md#documents)は、**DocumentClient** クラスの [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、Azure Cosmos DB の[データ移行ツール](import-data.md)を使用して、データをデータベースにインポートできます。
+ドキュメントは、**DocumentClient** クラスの [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、Azure Cosmos DB の[データ移行ツール](import-data.md)を使用して、データをデータベースにインポートできます。
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();

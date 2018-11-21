@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7b4045737ea2be466a436e6abb0de6a1a61e6a5b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342209"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636596"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 
@@ -39,7 +39,7 @@ Microsoft Azure Service Bus は、完全なマネージド エンタープライ
 
 ![キュー](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-キュー内のメッセージは到着順に並べ替えられ、タイムスタンプが付けられます。 メッセージは、受理されると、冗長ストレージに安全に保管されます。 メッセージは*プル* モードで配信され、要求に応じてメッセージが配信されます。
+キュー内のメッセージは到着順に並べ替えられ、タイムスタンプが付けられます。 メッセージは、受理されると、冗長ストレージに安全に保管されます。 メッセージは " *プル*" モードで配信されます。このモードでは、要求に応じてメッセージが配信されます。
 
 ## <a name="topics"></a>トピック
 
@@ -93,7 +93,7 @@ Service Bus は、受信者に配信できないメッセージ、または処�
 
 ### <a name="duplicate-detection"></a>重複検出
 
-クライアントが送信操作の結果について何か疑問を持つようなエラーが発生した場合、[重複メッセージの検出](duplicate-detection.md)機能は、送信側が同じメッセージを再送信することを可能にすることで、このような状況を解決し、重複メッセージはキューまたはトピックで削除されます。
+クライアントが送信操作の結果について何か疑問を持つようなエラーが発生した場合、[重複メッセージの検出](duplicate-detection.md)機能は、送信側が同じメッセージを再送信することを可能にすることで、このような状況を解決します。重複メッセージは、キューまたはトピックで削除されます。
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS、RBAC、および Azure リソースのマネージド ID
 
@@ -115,9 +115,9 @@ Service Bus は、[.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/
 
 Service Bus は、以下の Azure サービスと完全に統合されています。
 
-- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
-- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
-- [関数](https://azure.microsoft.com/services/functions/) 
+- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
+- [関数](https://azure.microsoft.com/services/functions/) 
 - [Dynamics 365](https://dynamics.microsoft.com)
 - [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
  

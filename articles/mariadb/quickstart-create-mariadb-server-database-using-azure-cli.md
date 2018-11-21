@@ -10,12 +10,12 @@ ms.devlang: azure-cli
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: d500a5cab4373d21b729a177ef847c40c2f4211b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bc32cde7e4b4cf68b12b100eb402237098459aae
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354021"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566450"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
 
@@ -236,9 +236,7 @@ az group delete --name myresourcegroup
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-<!--
-## Next steps
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Design a MariaDB Database with Azure CLI](./tutorial-design-database-using-cli.md)
--->
+> [Azure CLI での MariaDB データベースの設計](./tutorial-design-database-cli.md)

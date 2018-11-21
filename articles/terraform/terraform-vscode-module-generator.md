@@ -1,6 +1,6 @@
 ---
-title: Azure Terraform VS コード モジュール ジェネレーター
-description: Yeoman を使用して、Terraform ベースのテンプレートを作成する方法について説明します。
+title: Azure で Yeoman を使用して Terraform ベース テンプレートを作成する
+description: Azure で Yeoman を使用して Terraform ベース テンプレートを作成する方法について説明します。
 services: terraform
 ms.service: terraform
 keywords: Terraform、DevOps、仮想マシン、Azure、Yeoman
@@ -8,24 +8,26 @@ author: v-mavick
 manager: jeconnoc
 ms.author: v-mavick
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.openlocfilehash: 513b123c44cf2cd37cf81a91e0d2da9599eb1fcd
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 11/08/2018
+ms.openlocfilehash: 9ef27166e84192dec81fd8f8da508785342ffefc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47396360"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288018"
 ---
-# <a name="create-a-terraform-base-template-using-yeoman"></a>Yeoman を使用して Terraform ベース テンプレートを作成する
+# <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Azure で Yeoman を使用して Terraform ベース テンプレートを作成する
 
 [Terraform](https://docs.microsoft.com/azure/terraform/
 ) は Azure にインフラストラクチャを簡単に作成する方法を提供します。 [Yeoman](http://yeoman.io/)は、優れた*ベスト プラクティス*フレームワークを提供する一方で、モジュール開発者が Terraform モジュールを作成するジョブを大幅に簡素化します。
 
-このアーティクルでは、Yeoman モジュール ジェネレーターを使用してベースの Terraform テンプレートを作成する方法を説明します。
+このアーティクルでは、Yeoman モジュール ジェネレーターを使用してベースの Terraform テンプレートを作成する方法を説明します。 その後、新しい Terraform テンプレートをテストする方法について説明します。次の 2 とおりの方法を使用します。
+
+- この記事で作成した Docker ファイルを使用して Terraform モジュールを実行します。
+- Azure Cloud Shell で Terraform モジュールをネイティブに実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Windows 10、Linux、または macOS 10.10 以上を実行しているコンピューター。
 - **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 - **Visual Studio Code**: [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) を使用して、Yeoman　ジェネレーターによって作成されたファイルを確認します。 ただし、任意のコード エディターを使用することもできます。
 - **Terraform**: Yeoman　で作成したモジュールを実行するには[Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure )のインストールが必要になります。
@@ -33,7 +35,7 @@ ms.locfileid: "47396360"
 - **Go プログラミング言語**: Yeoman で生成されたテストケースは Go で書かれているため、[Go](https://golang.org/) のインストールが必要になります。
 
 >[!NOTE]
->このチュートリアルの手順のほとんどには、コマンドラインのエントリが含まれます。 ここで説明した手順は、すべてのオペレーティング システムとコマンド ライン ツールに適用されます。 この例では PowerShell の使用を選択しました。 ただし、Git Bash、Windows コマンド プロンプト、 Linux または macOS のコマンド ライン コマンドなどいくつかの選択肢のいずれかを使用することもできます。
+>このチュートリアルの手順のほとんどには、コマンドラインのエントリが含まれます。 ここで説明した手順は、すべてのオペレーティング システムとコマンド ライン ツールに適用されます。 ここで紹介している例では、ローカル環境には PowerShell を、Cloud Shell 環境には Git Bash を使用しました。
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
@@ -103,7 +105,7 @@ Yeoman テンプレートは、**現在のディレクトリ**内にファイル
         ![Docker イメージ ファイルを含みますか?](media/terraform-vscode-module-generator/ymg-include-docker-image-file.png) 
 
         >[!NOTE]
-        >「 `y` 」を入力します。 **と** を選択した場合、生成されたモジュールのコードはネイティブ モードでのみ実行をサポートします。
+        >「 `y` 」を入力します。 **n** を選択した場合、生成されたモジュールのコードはネイティブ モードでのみ実行をサポートします。
 
 3. `ls` を入力して作成される結果のファイルを表示します。
 
@@ -149,7 +151,7 @@ Yeoman モジュール ジェネレーターで作成されたファイルのい
 - エンド ツー エンド テストでは、Terraform の使用を試行して、**フィクスチャ**下で定義されたすべての項目をプロビジョニングし、**template_output.go** コード内の出力を定義済みの期待値と比較します。
 - **Gopkg.lock** と **Gopkg.toml**: 依存関係を定義します。 
 
-## <a name="test-the-module-using-docker"></a>Docker を使用してモジュールをテストします
+## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Docker ファイルを使用して新しい Terraform モジュールをテストする
 
 >[!NOTE]
 >この例ではモジュールをローカル モジュールとして実行し、実際に Azure には触れていません。
@@ -191,6 +193,8 @@ Docker が実際に実行されていることを確認するには、`docker in
 
     ![Docker ファイルを一覧表示します](media/terraform-vscode-module-generator/ymg-list-docker-file.png)
 
+### <a name="build-the-module"></a>モジュールをビルドする
+
 1. 「 `bundle install` 」を入力します。
 
     **バンドル完了**メッセージを待ち、その後、次の手順に進みます。
@@ -199,7 +203,7 @@ Docker が実際に実行されていることを確認するには、`docker in
 
     ![Rake ビルド](media/terraform-vscode-module-generator/ymg-rake-build.png)
 
-### <a name="perform-the-end-to-end-test"></a>エンド ツー エンド テストを実行します
+### <a name="run-the-end-to-end-test"></a>エンド ツー エンド テストを実行する
 
 1. 「 `rake e2e` 」を入力します。
 
@@ -207,7 +211,74 @@ Docker が実際に実行されていることを確認するには、`docker in
 
     ![合格](media/terraform-vscode-module-generator/ymg-pass.png)
 
-1. `exit`を入力してエンド ツー エンド テストを完了します。
+1. 「`exit`」と入力してエンド ツー エンド テストを完了し、Docker 環境を終了します。
+
+## <a name="use-yeoman-generator-to-create-and-test-a-module-in-cloud-shell"></a>Cloud Shell から Yeoman ジェネレーターを使用してモジュールの作成とテストを行う
+
+前のセクションでは、Docker ファイルを使った Terraform モジュールのテスト方法について説明しました。 このセクションでは、Cloud Shell から Yeoman ジェネレーターを使用してモジュールの作成とテストを行います。
+
+Docker ファイルに代わり Cloud Shell を使用することで、このプロセスが大幅に簡素化されます。 Cloud Shell を使用する利点は次のとおりです。
+
+- Node.js をインストールする必要がない
+- Yeoman をインストールする必要がない
+- Terraform をインストールする必要がない
+
+これらはいずれも、Cloud Shell にプレインストールされています。
+
+### <a name="start-a-cloud-shell-session"></a>Cloud Shell セッションを開始する
+
+1. [Azure portal](https:/portal.azure.com/)、[shell.azure.com](https://shell.azure.com)、[Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/) のいずれかを使用して Azure Cloud Shell セッションを開始します。
+
+1. **[Welcome to Azure Cloud Shell]\(Azure Cloud Shell へようこそ\)** ページが開きます。 **[Bash (Linux)]** を選択してください。 PowerShell はサポートされません。
+
+    ![Azure Cloud Shell へようこそ](media/terraform-vscode-module-generator/ymg-welcome-to-azure-cloud-shell.png)
+
+    >[!NOTE]
+    >この例では、Bash (Linux) が選択されています。
+
+1. Azure ストレージ アカウントをまだ設定していない場合は、次の画面が表示されます。 **[Create storage]\(ストレージの作成\)** を選択します。
+
+    ![ストレージがマウントされていません](media/terraform-vscode-module-generator/ymg-you-have-no-storage-mounted.png)
+
+1. Azure Cloud Shell によって、前に選択したシェルが起動され、先ほど作成されたクラウド ドライブに関する情報が表示されます。
+
+    ![クラウド ドライブが作成されました](media/terraform-vscode-module-generator/ymg-your-cloud-drive-has-been-created-in.png)
+
+### <a name="prepare-a-folder-to-hold-your-terraform-module"></a>Terraform モジュールを格納するためのフォルダーを準備する
+
+1. この時点で、環境変数には既に、Cloud Shell によって自動的に GOPATH が構成されています。 このパスを確認するには、「`go env`」と入力します。
+
+1. $GOPATH フォルダーがまだ存在しない場合は、「`mkdir ~/go`」と入力して作成します。
+
+1. 「`mkdir ~/go/src`」と入力して、$GOPATH フォルダー内に 1 つフォルダーを作成します。 このフォルダーは、自分が作成する可能性のある各種プロジェクト フォルダー (次の手順で作成する <your-module-name> フォルダーなど) を格納したり整理したりする目的で使用します。
+
+1. 「`mkdir ~/go/src/<your-module-name>`」と入力して、Terraform モジュールを格納するためのフォルダーを作成します。
+
+    >[!NOTE]
+    >この例では、フォルダー名を `my-module-name` としました。
+
+1. 「`cd ~/go/src/<your-module-name>`」と入力して、目的のモジュールのフォルダーに移動します。
+
+### <a name="create-and-test-your-terraform-module"></a>Terraform モジュールを作成してテストする
+
+1. 「`yo az-terra-module`」と入力して、ウィザードの指示に従います。
+
+    >[!NOTE]
+    >Docker ファイルを作成するかどうかをたずねられたら、「`N`」と入力してください。
+
+1. 「`bundle install`」と入力して依存関係をインストールします。
+
+    **バンドル完了**メッセージを待ち、その後、次の手順に進みます。
+
+1. 「`rake build`」と入力してモジュールをビルドします。
+
+    ![Rake ビルド](media/terraform-vscode-module-generator/ymg-rake-build.png)
+
+1. 「`rake e2e`」と入力して、エンド ツー エンド テストを実行します。
+
+1. しばらくすると、**合格**メッセージが表示されます。
+
+    ![合格](media/terraform-vscode-module-generator/ymg-pass.png)
 
 ## <a name="next-steps"></a>次の手順
 

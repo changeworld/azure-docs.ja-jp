@@ -1,5 +1,5 @@
 ---
-title: Enterprise セキュリティ パッケージで HDInsight に Kafka ポリシーを構成する - Azure
+title: Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する - Azure
 description: Enterprise セキュリティ パッケージを使用して Azure HDInsight に Kafka 用の Apache Ranger ポリシーを構成する方法について説明します。
 services: hdinsight
 ms.service: hdinsight
@@ -8,16 +8,16 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 48cfba6f62d75470efd27e3a4cdcb995e716798b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037143"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633050"
 ---
-# <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル: Enterprise セキュリティ パッケージで HDInsight に Kafka ポリシーを構成する (プレビュー)
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル: Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
-Enterprise セキュリティ パッケージ (ESP) の Kafka クラスター用の Apache Ranger ポリシーを構成する方法について説明します。 ESP クラスターは、ユーザーがドメイン資格情報で認証できるドメインに接続されます。 このチュートリアルでは、`sales*` および `marketingspend` トピックへのアクセスを制限する 2 つの Ranger ポリシーを作成します。
+Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラスター用の Apache Ranger ポリシーを構成する方法について説明します。 ESP クラスターは、ユーザーがドメイン資格情報で認証できるドメインに接続されます。 このチュートリアルでは、`sales*` および `marketingspend` トピックへのアクセスを制限する 2 つの Ranger ポリシーを作成します。
 
 このチュートリアルでは、以下の内容を学習します。
 

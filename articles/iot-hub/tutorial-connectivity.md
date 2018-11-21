@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 5a09211dc134cdb372a9712c1f45d7c44660a759
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05f6b32fad4f0a449f0d801c1c7cc6a28be6f940
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966862"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685357"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル: シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
@@ -77,7 +77,7 @@ IoT ハブにテレメトリを送信する **MyTestDevice** をシミュレー�
 
 開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に **iot-hub\Tutorials\ConnectivityTests\simulated-device** フォルダーに移動します。
 
-ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションを実行します。 ポータルにデバイスを追加したときにメモしたデバイスの接続文字列を使用します。
+ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションを実行します。 ポータルでデバイスを追加したときにメモしたデバイスの接続文字列を使用します。
 
 ```cmd/sh
 npm install

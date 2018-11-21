@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9d10464dac8d9e47d80f11b8bfaf70740e3ad250
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252141"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567096"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -241,7 +241,10 @@ EC2 インスタンスで実際のフェールオーバーを実行して Azure 
 1. **[保護されたアイテム]** > **[レプリケートされたアイテム]** で、AWS インスタンスを選択し、**[フェールオーバー]** を選択します。
 2. **[フェールオーバー]** で、フェールオーバーする**復旧ポイント**を選択します。 最新の復旧ポイントを選択し、フェールオーバーを開始します。 フェールオーバーの進行状況は **[ジョブ]** ページで確認できます。
 1. **[レプリケートされたアイテム]** に VM が表示されることを確認します。
-2. 各 VM を右クリックし、**[移行の完了]** を選択します。 これによって、移行プロセスが終了し、AWS VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
+2. 各 VM を右クリックし、**[移行の完了]** を選択します。 次の処理が実行されます。
+
+    - これによって、移行プロセスが終了し、AWS VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
+    - この手順でレプリケーション データがクリーンアップされます。 移行した VM は削除されません。 
 
     ![移行の完了](./media/migrate-tutorial-aws-azure/complete-migration.png)
 

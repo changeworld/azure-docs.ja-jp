@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: alkohli
-ms.openlocfilehash: e99a3a7db7a934a8a72695c38ab952786579a640
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232208"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685958"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>Azure Data Box Edge (プレビュー) とは 
 
@@ -84,7 +84,7 @@ Data Box Edge 物理デバイスには次の機能があります。
 | メモリ| 64 GB RAM|
 | ディスク| NVMe SSD x 8、各ディスクは 1.6 TB <br> 1 つの NVMe SSD に障害が発生すると、システムは機能しなくなります。 |
 | ローカル ストレージの容量| 合計容量 12.8 TB|
-| ネットワーク インターフェイス| 1 GbE インターフェイス x 2 - 1 つは管理用で、ユーザー構成不可であり、初期セットアップに使用されます。 他のデータ インターフェイスはユーザー構成可能であり、既定では DHCP です。 <br>25 GbE インターフェイス x 2 – これらは 10 GbE インターフェイスとしても動作可能です。 これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。 <br> 25 GbE インターフェイス x 2 – これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。|
+| ネットワーク インターフェイス| 1 GbE インターフェイス x 2 - 1 つは管理用で、ユーザー構成不可であり、初期セットアップに使用されます。 他のインターフェイスはユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 <br>25 GbE インターフェイス x 2 – これらは 10 GbE インターフェイスとしても動作可能です。 これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。 <br> 25 GbE インターフェイス x 2 – これらのデータ インターフェイスは、DHCP (既定) または静的 としてユーザーが構成できます。|
 
 ## <a name="components"></a>コンポーネント
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 01e8f74f409271810652a9202b634762ad88dcea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5605ac9f3ac4f9a1c85cfedf257cb721205564db
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981248"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613428"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用して Linux VM の作成と管理を行う
 
@@ -228,7 +228,7 @@ az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --qu
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-目的のサイズが現在のクラスターにない場合、サイズ変更を行うには VM の割り当てを解除する必要があります。 [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) コマンドを使用して、VM を停止し割り当てを解除します。 VM の電源を入れ直すと、一時ディスクのデータがすべて削除される可能性があることに注意してください。 また、静的 IP アドレスを使用している場合を除き、パブリック IP アドレスが変更されます。 
+目的のサイズが現在のクラスターにない場合、サイズ変更を行うには VM の割り当てを解除する必要があります。 [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) コマンドを使用して、VM を停止し割り当てを解除します。 VM の電源を入れ直すと、一時ディスクのデータがすべて削除される可能性があることに注意してください。 また、静的な IP アドレスを使用している場合を除き、パブリック IP アドレスが変更されます。 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM
@@ -262,7 +262,7 @@ Azure VM は、さまざまな電源状態のいずれかになります。 こ�
 | 割り当て解除済み | 仮想マシンがハイパーバイザーから削除されているものの、コントロール プレーンでは使用可能であることを示します。 仮想マシンが割り当て解除済みの状態でも、コンピューティング料金は発生します。 |
 | - | 仮想マシンの電源状態が不明であることを示します。 |
 
-### <a name="find-power-state"></a>電源の状態を確認する
+### <a name="find-the-power-state"></a>電源の状態を確認する
 
 特定の VM の状態を取得するには、[az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) コマンドを使用します。 必ず仮想マシンとリソース グループの有効な名前を指定してください。 
 

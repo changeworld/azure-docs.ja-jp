@@ -1,6 +1,6 @@
 ---
-title: Azure CLI サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する| Microsoft Docs
-description: Azure CLI サンプル スクリプト - 管理ディスクを同じまたは別のサブスクリプションにコピー (移動) する
+title: Azure CLI サンプル スクリプト - マネージド ディスクを同じまたは別のサブスクリプションにコピー (移動) する| Microsoft Docs
+description: Azure CLI サンプル スクリプト - マネージド ディスクを同じまたは別のサブスクリプションにコピー (移動) する
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: dfdbc0563810447a1a214356b5153afe38d9cf2f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 65d0d6848534326bb3ef43f1bd8bc700971603e6
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29846793"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636800"
 ---
-# <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>CLI を使用した同じまたは別のサブスクリプションへの管理ディスクのコピー
+# <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>CLI を使用した同じまたは別のサブスクリプションへのマネージド ディスクのコピー
 
-このスクリプトは、同じサブスクリプションまたは同じリージョン内の別のサブスクリプションに、管理ディスクをコピーします。 
+このスクリプトは、同じサブスクリプションまたは同じリージョン内の別のサブスクリプションに、マネージド ディスクをコピーします。 このスクリプトを実行するには、両方のサブスクリプションのグローバル AAD テナント管理者である必要があります。
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -39,17 +39,17 @@ ms.locfileid: "29846793"
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、コピー元の管理ディスクの ID を使ってコピー先のサブスクリプションに新しい管理ディスクを作成します。そのために、以下のコマンドが使われています。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは、コピー元のマネージド ディスクの ID を使ってコピー先のサブスクリプションに新しいマネージド ディスクを作成します。そのために、以下のコマンドが使われています。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | コマンド | メモ |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | 管理ディスクの名前とリソース グループのプロパティを使用して、その管理ディスクのすべてのプロパティを取得します。 ID プロパティを使用して、別のサブスクリプションにその管理ディスクをコピーします。  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | 親管理ディスクの名前と ID を使用して別のサブスクリプションに新しい管理ディスクを作成することで、管理ディスクをコピーします。  |
+| [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | マネージド ディスクの名前とリソース グループのプロパティを使用して、そのマネージド ディスクのすべてのプロパティを取得します。 ID プロパティを使用して、別のサブスクリプションにそのマネージド ディスクをコピーします。  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | 親マネージド ディスクの名前と ID を使用して別のサブスクリプションに新しいマネージド ディスクを作成することで、マネージド ディスクをコピーします。  |
 
 ## <a name="next-steps"></a>次の手順
 
-[管理ディスクから仮想マシンを作成する](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[マネージド ディスクから仮想マシンを作成する](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 
-その他の仮想マシンと管理ディスクの CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にあります。
+その他の仮想マシンとマネージド ディスクの CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../../app-service/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にあります。

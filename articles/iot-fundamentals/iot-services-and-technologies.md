@@ -7,14 +7,14 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: 6834ad6c6915ceb3306284ea738d76027e2c9479
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ba4f5fcb08d671937c677d8a14c27aaec16bcb1b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365358"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288715"
 ---
-# <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT テクノロジとソリューション: PaaS と SaaS
+# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>IoT (モノのインターネット) のテクノロジとソリューション: PaaS と SaaS
 
 Microsoft には、デジタル変換の特典へのアクセスを有効にして、すべての顧客のニーズをサポートするポートフォリオが構築されています。 Azure IoT 製品群は、使用可能な PaaS/SaaS テクノロジとソリューションの概要です。 これには、独自のソリューションをビルドするために使用できる 2 つのパスが表示されます:
 
@@ -24,7 +24,7 @@ Microsoft には、デジタル変換の特典へのアクセスを有効にし�
 
 - サービスとしてのソフトウェア(SaaS): 高速で、開始[Azure IoT Central](https://azure.microsoft.com/services/iot-central/)、新しい SaaS ソリューションは、IoT ソリューションの複雑さにさらされることがなく IoT アプリケーションを開発します。 組織にIoT ソリューションをビルドするリソースが不足している場合、Azure IoT Central は、コード不要で数分以内にデバイス モデル、ダッシュ ボード、およびルールを作成できるIoT ソリューションです。
 
-![Azure IoT のテクノロジとソリューション](./media/iot-comparison/paas-saas-technologies-solutions.png)
+![Azure IoT のテクノロジとソリューション](./media/iot-services-and-technologies/paas-saas-technologies-solutions.png)
 
 ## <a name="solutions"></a>解決方法
 

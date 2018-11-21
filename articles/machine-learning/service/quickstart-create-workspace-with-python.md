@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: hning86
 ms.author: haining
-ms.date: 09/24/2018
-ms.openlocfilehash: e8ebfbfe1d12af892208f67e67c69f25631acb28
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.date: 11/09/2018
+ms.openlocfilehash: fff08131af277b20034ad23c354b70e73ae32f2e
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158841"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578282"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>クイック スタート: Python を使用して Azure Machine Learning の利用を開始する
 
@@ -39,6 +39,9 @@ ms.locfileid: "50158841"
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
+>[!NOTE]
+> この記事のコードは、Azure Machine Learning SDK バージョン 0.1.74 を使用してテストされました 
+
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 
@@ -57,28 +60,31 @@ Miniconda を[ダウンロード](https://conda.io/miniconda.html)してイン�
 
 コマンド ライン ウィンドウを開きます。 次に、Python 3.6 で `myenv` という名前の新しい conda 環境を作成します。
 
-```sh
+```shell
 conda create -n myenv -y Python=3.6
 ```
 
 環境をアクティブにします。
 
-  ```sh
+  ```shell
   conda activate myenv
   ```
 
 ### <a name="install-the-sdk"></a>SDK のインストール
 
-アクティブにした conda 環境に SDK をインストールします。 このコードによって、Machine Learning SDK の主要なコンポーネントがインストールされます。 `myenv` conda 環境に Jupyter Notebook サーバーもインストールされます。 インストールは、完了までに**約 4 分**かかります。
+アクティブにした conda 環境に SDK をインストールします。 以下のコマンドによって、Machine Learning SDK の主要なコンポーネントがインストールされます。 `myenv` conda 環境に Jupyter Notebook サーバーもインストールされます。 お使いのマシンの構成によっては、インストールが完了するまでに数分かかります。
 
-```sh
+```shell
+# install the base SDK and Jupyter Notebook
 pip install azureml-sdk[notebooks]
 ```
+
+
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
 Jupyter Notebook を起動するには、このコマンドを入力します。
-```sh
+```shell
 jupyter notebook
 ```
 
@@ -86,10 +92,7 @@ jupyter notebook
 
 SDK のバージョンを表示するには、ノートブックのセルに次の Python コードを入力し、それを実行します。
 
-```python
-import azureml.core
-print(azureml.core.VERSION)
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
 新しい Azure リソース グループと新しいワークスペースを作成します。
 
@@ -98,10 +101,10 @@ print(azureml.core.VERSION)
 ```python
 from azureml.core import Workspace
 ws = Workspace.create(name='myworkspace',
-                      subscription_id='<azure-subscription-id>',
+                      subscription_id='<azure-subscription-id>',    
                       resource_group='myresourcegroup',
                       create_resource_group=True,
-                      location='eastus2' # or other supported Azure region
+                      location='eastus2' # or other supported Azure region  
                      )
 ```
 
@@ -109,9 +112,8 @@ ws = Workspace.create(name='myworkspace',
 
 関連付けられているストレージ、コンテナー レジストリ、キー コンテナーなど、ワークスペースの詳細を表示するには、次のコードを入力します。
 
-```python
-ws.get_details()
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
+
 
 ## <a name="write-a-configuration-file"></a>構成ファイルの記述
 
@@ -119,14 +121,8 @@ ws.get_details()
 
 このワークスペース構成ファイルを使用すると、後でこの同じワークスペースを簡単に読み込むことができます。 同じディレクトリまたはサブディレクトリ内の他のノートブックやスクリプトと共に読み込むことができます。 
 
-```python
-# Create the configuration file.
-ws.write_config()
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
-# Use this code to load the workspace from 
-# other scripts and notebooks in this directory.
-# ws = Workspace.from_config()
-```
 
 `write_config()` API 呼び出しでは、構成ファイルが現在のディレクトリに作成されます。 `config.json` ファイルには、以下のスクリプトが含まれています。
 
@@ -142,24 +138,8 @@ ws.write_config()
 
 実験の実行を追跡するために、SDK の基本的な API が使用されるコードを記述します。
 
-```python
-from azureml.core import Experiment
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=useWs)]
 
-# create a new experiment
-exp = Experiment(workspace=ws, name='myexp')
-
-# start a run
-run = exp.start_logging()
-
-# log a number
-run.log('my magic number', 42)
-
-# log a list (Fibonacci numbers)
-run.log_list('my list', [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]) 
-
-# finish the run
-run.complete()
-```
 
 ## <a name="view-logged-results"></a>ログに記録された結果の表示
 実行が完了したら、Azure portal で実験の実行を表示できます。 次のコードを使用して、前回の実行に関する結果への URL を表示します。
@@ -178,9 +158,8 @@ print(run.get_portal_url())
 
 ここで作成したリソースを今後使用する予定がない場合は、課金が発生しないように削除します。
 
-```python
-ws.delete(delete_dependent_resources=True)
-```
+[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=delete)]
+
 
 ## <a name="next-steps"></a>次の手順
 
@@ -192,10 +171,34 @@ Machine Learning のチュートリアルでそれを使用するには、他に
 1. コマンド ライン ウィンドウで `Ctrl` + `C` キーを押して、ノートブック サーバーを停止します。
 1. 追加パッケージをインストールします。
 
-    ```sh
+    ```shell
     conda install -y cython matplotlib scikit-learn pandas numpy
     pip install azureml-sdk[automl]
+
+    # install run history widget
+    jupyter nbextension install --py --user azureml.train.widgets
+
+    # enable run history widget
+    jupyter nbextension enable --py --user azureml.train.widgets
     ```
+
+    別途、各種のキーワードを使用して、追加の SDK コンポーネントをインストールすることもできます。
+
+    ```shell
+    # install the base SDK and auto ml components
+    pip install azureml-sdk[automl]
+
+    # install the base SDK and model explainability component
+    pip install azureml-sdk[explain]
+
+    # install the base SDK and experimental components
+    pip install azureml-sdk[contrib]
+
+    # install the base SDK and automl components in Azure Databricks environment
+    # read more at: https://github.com/Azure/MachineLearningNotebooks/tree/master/databricks
+    pip install azureml-sdk[databricks]
+    ```
+
 
 これらのパッケージのインストール後、モデルのトレーニングとデプロイを行うチュートリアルに進みます。 
 

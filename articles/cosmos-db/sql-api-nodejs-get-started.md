@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 7eeb4fdba8272d9bc2b67d8a33dd7b1d210f5e47
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 61d9d33ae7e8e2104e61bbd24862a709dd6d78ec
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278601"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636494"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル: JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
@@ -218,7 +218,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    const containerId = config.container.id;
    ```
 
-   [データベース](sql-api-resources.md#databases)は、**Databases** クラスの [createIfNotExists](/javascript/api/%40azure/cosmos/databases) または [create](/javascript/api/%40azure/cosmos/databases) 関数を使用して作成できます。 データベースは、コンテナーに分割された項目の論理上のコンテナーです。 
+   データベースは、**Databases** クラスの [createIfNotExists](/javascript/api/%40azure/cosmos/databases) または [create](/javascript/api/%40azure/cosmos/databases) 関数を使用して作成できます。 データベースは、コンテナーに分割された項目の論理上のコンテナーです。 
 
 2. app.js ファイルの ```databaseId``` と ```containerId``` の定義の下に、**createDatabase** メソッドと **readDatabase** メソッドをコピーして貼り付けます。 **createDatabase** 関数は、```config``` オブジェクトから指定された ID が ```FamilyDatabase``` の新しいデータベースを作成します (該当するデータベースが存在しない場合)。 **readDatabase** 関数は、データベースの定義を読み取り、データベースが存在することを確認します。
 

@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 2279a6475ab8c39b3ff599f7244caea59d622651
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: bc168cf696d6280ce4c0e7cb46f90af4a2ad7aa0
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803003"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686493"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-node"></a>クイック スタート: Bing News Search SDK (Node)
 
@@ -25,7 +25,9 @@ Bing News Search SDK には、ニュースのクエリと結果解析のため�
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
 
-Bing News Search SDK を利用してコンソール アプリケーションを設定するには、ご利用の開発環境で `npm install azure-cognitiveservices-newssearch` を実行します。
+Bing News Search SDK を使用してコンソール アプリケーションを設定するには:
+* 開発環境で `npm install ms-rest-azure` を実行します。
+* 開発環境で `npm install azure-cognitiveservices-newssearch` を実行します。
 
 ## <a name="news-search-client"></a>News Search クライアント
 *[検索]* で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。 `CognitiveServicesCredentials` のインスタンスを作成します。

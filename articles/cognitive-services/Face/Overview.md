@@ -9,12 +9,12 @@ ms.component: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: 3fe9dd713bef509b1972b51cb07d4f942c544544
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a15b6678b15bf5d1a3078494e12da3a08c57bed3
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914194"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633463"
 ---
 # <a name="what-is-the-azure-face-api"></a>Azure Face API とは
 
@@ -63,6 +63,10 @@ Identify API を使用すると、人のデータベースと照らして、検�
 データベースを作成してトレーニングした後、新しく検出された顔を含んだグループに対して識別を実行できます。 顔がグループ内の person として識別された場合、その person オブジェクトが返されます。
 
 人の識別について詳しくは、[Identify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) に関するページを参照してください。
+
+## <a name="use-containers"></a>コンテナーの使用
+
+標準化された Docker コンテナーをデータの近くにインストールすることによって、[Face コンテナーを使用](face-how-to-install-containers.md)して顔を検出、認識、識別します。
 
 ## <a name="sample-apps"></a>サンプル アプリ
 

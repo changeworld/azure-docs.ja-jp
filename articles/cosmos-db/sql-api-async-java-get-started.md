@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: 66e937e92528e2f0a1fca9d9aac78f7265eef4f7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f79455166ef0d1bec9a2fb1d6045005f844e55ac
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741234"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636749"
 ---
 # <a name="tutorial-build-a-java-app-with-async-java-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル: Async Java SDK を使用して Java アプリを構築して Azure Cosmos DB SQL API データを管理する
 
@@ -116,7 +116,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>手順 5: データベースを作成する
 
-Azure Cosmos DB [データベース](sql-api-resources.md#databases)は、DocumentClient クラスの createDatabaseIfNotExists() メソッドを使用して作成できます。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
+Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-databases)は、DocumentClient クラスの createDatabaseIfNotExists() メソッドを使用して作成できます。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 
@@ -203,7 +203,7 @@ private void createDocumentCollectionIfNotExists() throws Exception
 
 ## <a id="CreateDoc"></a>手順 7: JSON ドキュメントを作成する
 
-[ドキュメント](sql-api-resources.md#documents)は、DocumentClient クラスの createDocument メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 "src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java" ファイルでは、ファミリ JSON ドキュメントが定義されています 
+ドキュメントは、DocumentClient クラスの createDocument メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 "src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java" ファイルでは、ファミリ JSON ドキュメントが定義されています 
 
 ```java
 public static Family getJohnsonFamilyDocument() {

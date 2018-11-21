@@ -5,22 +5,23 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/29/2018
+ms.date: 11/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 03af5efcd4a37203a82db503f8bc602b33de734d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b698dd03473dd3cb708c47c6554869eebba48bf9
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226617"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51597625"
 ---
-|**SKU**   | **S2S/VNet 間<br>トンネル** | **P2S<br> SSTP 接続** | **P2S<br> IKEv2 接続** | **合計<br>スループット ベンチマーク** |
-|---       | ---        | ---       | ---            | ---       |
-|**VpnGw1**| 最大 30*   | 最大 128  | 最大 250       | 650 Mbps  |
-|**VpnGw2**| 最大 30*   | 最大 128  | 最大 500       | 1 Gbps    |
-|**VpnGw3**| 最大 30*   | 最大 128  | 最大 1,000      | 1.25 Gbps |
-|**Basic** | 最大 10    | 最大 128  | サポートされていません  | 100 Mbps  | 
+|**SKU**   | **S2S/VNet 間<br>トンネル** | **P2S<br> SSTP 接続** | **P2S<br> IKEv2 接続** | **合計<br>スループット ベンチマーク** | **BGP** |
+|---       | ---        | ---       | ---            | ---       | --- |
+|**Basic** | 最大 10    | 最大 128  | サポートされていません  | 100 Mbps  | サポートされていません|
+|**VpnGw1**| 最大 30*   | 最大 128  | 最大 250       | 650 Mbps  | サポートされています |
+|**VpnGw2**| 最大 30*   | 最大 128  | 最大 500       | 1 Gbps    | サポートされています |
+|**VpnGw3**| 最大 30*   | 最大 128  | 最大 1,000      | 1.25 Gbps | サポートされています |
+
 
 (*) 30 個を超える S2S VPN トンネルが必要な場合は、[Virtual WAN](../articles/virtual-wan/virtual-wan-about.md) を使用してください。
 

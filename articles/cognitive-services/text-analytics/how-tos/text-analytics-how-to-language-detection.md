@@ -1,7 +1,6 @@
 ---
-title: '例: Text Analytics REST API による言語の検出'
-titleSuffix: Azure Cognitive Services
-description: Text Analytics REST API を使用した言語の検出方法について説明します。
+title: Text Analytics REST API で言語を検出する方法 (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
+description: このチュートリアルでは、Azure 上の Microsoft Cognitive Services の Text Analytics REST API を使用して、言語を検出する方法を説明します。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,18 +9,21 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 460dfb168894d28d5fbc5e5585a6054917127931
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604554"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633566"
 ---
 # <a name="example-how-to-detect-language-in-text-analytics"></a>例: Text Analytics で言語を検出する方法
 
 [言語検出 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) では、テキスト入力が評価され、各ドキュメントについて言語識別子と、分析の強度を示すスコアが返されます。 Text Analytics では、最大 120 の言語が認識されます。
 
 この機能は、言語が不明な任意のテキストを取集するコンテンツ ストアに役立ちます。 この分析の結果を解析して、入力ドキュメントでいずれの言語が使用されるかを特定できます。 応答では、モデルの信頼度 (0 から 1 の値) が反映されたスコアも返されます。
+
+> [!TIP]
+> Text Analytics には言語検出用の Linux ベースの Docker コンテナー イメージも用意されているため、データの近くに [Text Analytics コンテナーをインストールして実行](text-analytics-how-to-install-containers.md)することができます。
 
 ## <a name="preparation"></a>準備
 
@@ -62,7 +64,7 @@ JSON ドキュメントは、id、text の形式である必要があります�
 
 + **POST** 要求を作成します。 この要求については [Language Detection API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) の API ドキュメントを確認してください。
 
-+ 言語検出のための HTTP エンドポイントを設定します。 そこには、`/languages` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
++ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、言語検出用の HTTP エンドポイントを設定します。 そこには、`/languages` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
 
 + Text Analytics 操作用のアクセス キーが含まれるように要求ヘッダーを設定します。 詳細については、[エンドポイントを見つけてアクセス キーにアクセスする方法](text-analytics-how-to-access-key.md)についてのページを参照してください。
 

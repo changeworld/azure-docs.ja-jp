@@ -1,7 +1,6 @@
 ---
-title: '例: Text Analytics でキー フレーズを抽出する方法'
-titleSuffix: Azure Cognitive Services
-description: Text Analytics REST API を使用してキー フレーズを抽出する方法について説明します。
+title: Text Analytics REST API でキー フレーズを抽出する方法 (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
+description: このチュートリアルでは、Azure 上の Microsoft Cognitive Services の Text Analytics REST API を使用して、キー フレーズを抽出する方法を説明します。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: d38886d40a92d5e75f5d0b6b189dbf7c067e1635
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605489"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632392"
 ---
 # <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>例: Text Analytics でキー フレーズを抽出する方法
 
@@ -24,6 +23,9 @@ ms.locfileid: "45605489"
 この機能は、ドキュメントのコレクション内の要点をすばやく特定する必要がある場合に便利です。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、このサービスは話題の中心として "食べ物" と "すばらしいスタッフ" を返します。
 
 現時点では、キー フレーズ抽出では、英語、ドイツ語、スペイン語、および日本語がサポートされています。 その他の言語はプレビュー段階です。 詳細については、[サポートされている言語](../text-analytics-supported-languages.md)に関するページを参照してください。
+
+> [!TIP]
+> Text Analytics にはキー フレーズ抽出用の Linux ベースの Docker コンテナー イメージも用意されているため、データの近くに [Text Analytics コンテナーをインストールして実行](text-analytics-how-to-install-containers.md)することができます。
 
 ## <a name="preparation"></a>準備
 
@@ -71,7 +73,7 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 + **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください: [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
 
-+ キー フレーズ抽出用の HTTP エンドポイントを設定します。 そこには、`/keyphrases` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
++ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、キー フレーズ抽出用の HTTP エンドポイントを設定します。 そこには、`/keyPhrases` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
 
 + Text Analytics 操作用のアクセス キーが含まれるように要求ヘッダーを設定します。 詳細については、[エンドポイントを見つけてアクセス キーにアクセスする方法](text-analytics-how-to-access-key.md)についてのページを参照してください。
 

@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d99f077449529fb4a4a7f124fe1c0263d4113dee
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 49d0840ff7a41ed48151b65e1351628d32d46d24
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363447"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623250"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で名前付きの場所を構成する
 
@@ -62,8 +62,6 @@ ms.locfileid: "46363447"
 
 詳細については、次を参照してください。
 
-- [Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)
-
+- [Azure AD の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)。
 - [Azure AD の条件付きアクセスの場所の条件](../conditional-access/location-condition.md)
-
-- [Azure AD ポータルの危険なサインイン レポート](concept-risky-sign-ins.md)。  
+- [リスクの高いサインイン レポート](concept-risky-sign-ins.md)。  

@@ -1,6 +1,6 @@
 ---
 title: 'クイック スタート: ノード Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う | Microsoft Docs'
-description: 'クイック スタート: ノード Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う'
+description: 'クイック スタート: .NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う'
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a53130dcc489764ce9284f15b8de0de37e0827e5
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230933"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686672"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート: .NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -175,7 +175,6 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Key Vault のホーム ページ](https://azure.microsoft.com/services/key-vault/)
-* [Azure Key Vault のドキュメント](https://docs.microsoft.com/azure/key-vault/)
+* [Key Vault についての詳細情報](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
 * [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net)
 * [Azure REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)

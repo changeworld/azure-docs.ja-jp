@@ -1,60 +1,65 @@
 ---
-title: 'クイック スタート: REST API と cURL を使って画像の中にある顔を検出する'
+title: 'クイック スタート: Azure REST API と cURL を使って画像から顔を検出する'
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、cURL で Face API を使って画像から顔を検出します。
+description: このクイック スタートでは、Azure Face REST API と cURL を使用して、画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 05/10/2018
+ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: ab403ec6a9db4d1a0dc03074044eeb424e4ba875
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a9e3b4713e11b5f01ea8343471aa33a327210338
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953350"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578046"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-curl"></a>クイック スタート: REST API と cURL を使って画像の中にある顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>クイック スタート: Face REST API と cURL を使って画像から顔を検出する
 
-このクイック スタートでは、Face API を使って画像から顔を検出します。
+このクイック スタートでは、Azure Face REST API と cURL を使用して、画像から人の顔を検出します。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-サンプルを実行するにはサブスクリプション キーが必要です。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。
+- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
 
-## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
-
-"[顔 - 検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
-
-* Face ID: Face API の各種シナリオで使用される一意の ID。
-* 顔四角形: 画像内での顔の位置を示す値 (左、上、幅、高さ)。
-* ランドマーク: 顔の構成要素の重要な位置を示す 27 地点のランドマークの配列。
-* 顔の属性 (年齢、性別、笑顔の強さ、頭部姿勢、顔ひげなど)。
-
-このサンプルを実行するには、次の手順を実行します。
-
-1. コマンド プロンプトを開きます。
-2. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-3. 必要に応じて、サブスクリプション キーの取得場所を使用するように URL (`https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect`) を変更します。
-4. 必要に応じて、分析対象の画像 (`"{\"url\":...`) を変更します。
-5. ウィンドウにコードを貼り付けます。
-6. コマンドを実行します。
-
-### <a name="face---detect-request"></a>顔検出要求
-
-> [!NOTE]
-> REST 呼び出しには、サブスクリプション キーの取得に使用したのと同じ場所を使用する必要があります。 たとえば、サブスクリプション キーを westus から取得した場合、次の URL の "westcentralus" を "westus" に置き換えます。
+## <a name="write-the-command"></a>コマンドを作成する
+ 
+Face API を呼び出して、顔の属性データを画像から取得するには、次のようなコマンドを使用します。 まず、テキスト エディターにコードをコピーしてください。実行する前に、コマンドの一部に変更を加える必要があります。
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
-### <a name="face---detect-response"></a>顔検出応答
+### <a name="subscription-key"></a>Subscription key
+`<Subscription Key>` を、有効な Face サブスクリプション キーに置き換えます。
 
-成功応答が JSON で返されます。
+### <a name="face-endpoint-url"></a>Face エンドポイント URL
+
+URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` は、照会する Azure Face エンドポイントを示します。 この URL の最初の部分が、実際のサブスクリプション キーのリージョンと異なる場合は、該当するリージョンに合わせて変更する必要があります。
+
+### <a name="url-query-string"></a>URL クエリ文字列
+
+取得する顔の属性は、Face エンドポイント URL のクエリ文字列で指定します。 この文字列は、実際の用途に合わせて変更してください。
+
+```
+?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise
+```
+
+### <a name="image-source-url"></a>イメージ ソース URL
+ソース URL は、入力として使用する画像を示します。 実際の分析対象となる画像を指すように変更してください。
+
+```
+https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
+``` 
+
+## <a name="run-the-command"></a>コマンドを実行します
+
+変更を加えたら、コマンド プロンプトを開いて新しいコマンドを入力します。 コンソール ウィンドウに、顔の情報が JSON データとして表示されます。 例: 
 
 ```json
 [
@@ -150,7 +155,7 @@ curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.a
 
 ## <a name="next-steps"></a>次の手順
 
-画像の中から人の顔を検出し、顔の境界を四角形で囲んで、属性 (年齢、性別など) を返す Face API について考察します。
+このクイック スタートでは、Azure Face API 呼び出しにより画像から顔を検出してその属性を返す cURL コマンドを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: sample
-ms.date: 09/15/2018
+ms.date: 11/12/2018
 ms.author: juliako
-ms.openlocfilehash: 53dc65c3d2c56308dd298f33bb78047904810ae5
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 513c64ba7c9dad29fbef4a4010f5320dadda3c82
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377832"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625184"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -23,6 +23,7 @@ ms.locfileid: "49377832"
 
 * URL からビデオをアップロードする方法 (推奨) と、
 * 要求本文のバイト配列としてビデオ ファイルを送信する方法です。
+* [アセット ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (有料アカウントでのみサポート) を指定して、既存の Azure Media Services アセットを使用します。
 
 この記事では、[Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行う方法について説明します。 この記事のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。  
 
@@ -50,6 +51,35 @@ ms.locfileid: "49377832"
 
 このパラメーターでは、ビデオに関連付けられる ID を指定できます。 この ID を、外部の "ビデオ コンテンツ管理" (VCM) システムの統合に適用できます。 指定した外部 ID を使用して、Video Indexer ポータル内にあるビデオを検索できます。
 
+### <a name="callbackurl"></a>callbackUrl
+
+以下のイベントについてのユーザーへの通知 (POST 要求を使用) に使われる URL です。
+
+- インデックス状態の変更: 
+    - プロパティ:    
+    
+        |Name|説明|
+        |---|---|
+        |id|ビデオ ID|
+        |state|ビデオの状態|  
+    - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+- ビデオで特定された人物:
+    - Properties
+    
+        |Name|説明|
+        |---|---|
+        |id| ビデオ ID|
+        |faceId|ビデオ インデックスに表示される顔 ID|
+        |knownPersonId|顔モデル内で一意の人物 ID|
+        |personName|人物の名前|
+        
+     - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+
+#### <a name="notes"></a>メモ
+
+- Video Indexer では、元の URL で指定された既存のすべてのパラメーターが返されます。
+- 指定される URL は、エンコードする必要があります。
+
 ### <a name="indexingpreset"></a>indexingPreset
 
 未加工の録画または外部の録画に背景ノイズが入っている場合は、このパラメーターを使用します。 このパラメーターは、インデックス作成プロセスの構成に使用されます。 次の値を指定できます。
@@ -60,11 +90,11 @@ ms.locfileid: "49377832"
 
 料金は、選択したインデックス作成オプションによって異なります。  
 
-### <a name="callbackurl"></a>callbackUrl
+### <a name="priority"></a>priority
 
-インデックス作成が完了したときに通知する POST URL です。 Video Indexer は、これに id と state という 2 つのクエリ文字列を追加します。 たとえば、コールバック URL が 'https://test.com/notifyme?projectName=MyProject' の場合、通知は追加のパラメーターを含めた 'https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed' に送信されます。
+ビデオには、優先度に従って、Video Indexer によってインデックスが付けられます。 インデックスの優先度を指定するには、**priority** パラメーターを使用します。 有効な値は、**Low**、**Normal** (既定)、および **High** です。
 
-Video Indexer の呼び出しを POST する前に、さらに多くのパラメーターを URL を追加することもできます。これらのパラメーターはコールバックに含まれます。 後でコードのクエリ文字列を解析して、クエリ文字列に指定されているすべてのパラメーター (最初に URL に追加したデータと、Video Indexer によって提供された情報) を取得できます。URL はエンコードする必要があります。
+**Priority** パラメーターは、有料アカウントだけでサポートされています。
 
 ### <a name="streamingpreset"></a>streamingPreset
 

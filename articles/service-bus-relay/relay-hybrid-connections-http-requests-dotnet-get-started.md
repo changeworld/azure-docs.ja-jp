@@ -12,58 +12,52 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/16/2018
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 55e97ff95245ce222ccbc2a99f6ae2882cef3715
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: de905466d47774decf864ace5464bb2a68e5e6bc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248777"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612000"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>.NET での Relay ハイブリッド接続 HTTP 要求の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-このチュートリアルでは、[Azure Relay ハイブリッド接続](relay-what-is-it.md#hybrid-connections)の概要を紹介します。 Microsoft .NET を使用して、対応するリスナー アプリケーションに要求を送信するクライアント アプリケーションを作成する方法を説明します。 
+このクイック スタートでは、HTTP プロトコルを使用してメッセージを送受信する .NET のセンダー アプリケーションとレシーバー アプリケーションを作成します。 これらのアプリケーションには、Azure Relay のハイブリッド接続機能が使用されます。 Azure Relay 全般については、[Azure Relay](relay-what-is-it.md) に関するページを参照してください。 
 
-## <a name="what-will-be-accomplished"></a>作業内容
-ハイブリッド接続では、クライアント コンポーネントとサーバー コンポーネントの両方が必要です。 このチュートリアルでは、次の手順に従って 2 つのコンソール アプリケーションを作成します。
+このクイック スタートでは、以下の手順を実行します。
 
 1. Azure Portal を使用した Relay 名前空間の作成
 2. Azure Portal を使用した、その名前空間内のハイブリッド接続の作成
-3. 要求を受信するサーバー (リスナー) コンソール アプリケーションの作成
-4. 要求を送信するクライアント (送信側) コンソール アプリケーションの作成
+3. メッセージを受信するサーバー (リスナー) コンソール アプリケーションの作成
+4. メッセージを送信するクライアント (送信側) コンソール アプリケーションの作成
+5. アプリケーションの実行 
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
-* [Visual Studio 2015 またはそれ以降](https://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
-* Azure サブスクリプション。
+* [Visual Studio 2015 またはそれ以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
+* Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-## <a name="1-create-a-namespace-by-using-the-azure-portal"></a>1.Azure Portal を使用した名前空間の作成
-Relay 名前空間を既に作成してある場合は、「[Azure Portal を使用したハイブリッド接続の作成](#2-create-a-hybrid-connection-using-the-azure-portal)」に進んでください。
-
+## <a name="create-a-namespace"></a>名前空間の作成
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-by-using-the-azure-portal"></a>2.Azure Portal を使用したハイブリッド接続の作成
-ハイブリッド接続を既に作成してある場合は、「[サーバー アプリケーションの作成](#3-create-a-server-application-listener)」に進んでください。
-
+## <a name="create-a-hybrid-connection"></a>ハイブリッド接続の追加
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
-## <a name="3-create-a-server-application-listener"></a>手順 3.サーバー アプリケーション (リスナー) の作成
+## <a name="create-a-server-application-listener"></a>サーバー アプリケーション (リスナー) の作成
 Visual Studio で C# コンソール アプリケーションを作成して、Relay からのメッセージをリッスンおよび受信します。
 
 [!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-server](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-server.md)]
 
-## <a name="4-create-a-client-application-sender"></a>4.クライアント アプリケーション (センダー) の作成
+## <a name="create-a-client-application-sender"></a>クライアント アプリケーション (センダー) の作成
 Visual Studio で C# コンソール アプリケーションを作成して、Relay にメッセージを送信します。
 
 [!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-client](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-client.md)]
 
-## <a name="5-run-the-applications"></a>5.アプリケーションの実行
+## <a name="run-the-applications"></a>アプリケーションの実行
 1. サーバー アプリケーションを実行します。 コンソール ウィンドウに次のテキストが表示されます。
 
     ```
@@ -77,7 +71,6 @@ Visual Studio で C# コンソール アプリケーションを作成して、R
 
 ## <a name="next-steps"></a>次の手順
 
-* [Relay に関する FAQ](relay-faq.md)
-* [名前空間を作成する](relay-create-namespace-portal.md)
-* [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)
+このクイック スタートでは、HTTP を使用してメッセージを送受信する .NET のクライアント アプリケーションとサーバー アプリケーションを作成しました。 Azure Relay のハイブリッド接続機能は、WebSocket を使用したメッセージの送受信もサポートしています。 Azure Relay のハイブリッド接続で WebSocket を使用する方法については、[WebSocket のクイック スタート](relay-hybrid-connections-dotnet-get-started.md)を参照してください。
 
+このクイック スタートでは、.NET Framework を使用してクライアント アプリケーションとサーバー アプリケーションを作成しました。 Node.js を使用してクライアント アプリケーションとサーバー アプリケーションを作成する方法については、[Node.js WebSocket のクイック スタート](relay-hybrid-connections-node-get-started.md)または [Node.js HTTP のクイック スタート](relay-hybrid-connections-http-requests-dotnet-get-started.md)を参照してください。

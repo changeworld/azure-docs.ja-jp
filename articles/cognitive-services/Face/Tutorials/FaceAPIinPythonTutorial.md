@@ -1,41 +1,43 @@
 ---
-title: 'チュートリアル: 画像内の顔を検出してフレームに収める - Face API、Python'
+title: 'クイック スタート: Python SDK を使用して画像内の顔を検出してフレームに収める'
 titleSuffix: Azure Cognitive Services
-description: Python SDK で Face API を使用して画像から人の顔を検出する方法を説明します。
+description: このクイック スタートでは、Face API を使用してリモート画像内の顔を検出してフレームに収める、シンプルな Python スクリプトを作成します。
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: tutorial
-ms.date: 03/01/2018
+ms.topic: quickstart
+ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: 6cc3ac25d2196c0275b445503b79b9ac06a791d3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e8b16f7ebe918e5b8d59c6b57794c4f35a89b5f3
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127739"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684003"
 ---
-# <a name="tutorial-detect-and-frame-faces-with-the-face-api-and-python"></a>チュートリアル: Face API と Python を使用して顔を検出してフレームに収める 
+# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>クイック スタート: 画像内の顔を検出してフレームに収める Python スクリプトの作成
 
-このチュートリアルでは、Python SDK から Face API を呼び出して画像内の人の顔を検出する方法を説明します。
+このクイック スタートでは、リモート画像内の人の顔を検出するシンプルな Python スクリプトを作成します。このスクリプトでは、Python SDK を介して Azure Face API を使用します。 このアプリケーションでは、選択した画像が表示され、検出されたそれぞれの顔の周囲にフレームが描画されます。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを使用するには、次の作業が必要となります。
+- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- [Python 2.7 以降または 3.5 以降](https://www.python.org/downloads/)
+- [pip](https://pip.pypa.io/en/stable/installing/) ツール
+- Face API Python SDK。 これは、次のコマンドを実行してインストールできます。
+    ```bash
+    pip install cognitive_face
+    ```
 
-- Python 2.7 以降または Python 3.5 以降をインストールします。
-- pip をインストールします。
-- 次のようにして Face API 用に Python SDK をインストールします。
+## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
 
-```bash
-pip install cognitive_face
-```
+新しい Python スクリプト _FaceQuickstart.py_ を作成します。 次のコードを追加します。 これは、顔検出のコア機能です。 `<Subscription Key>` は、実際のキーの値に置き換える必要があります。 また、場合によっては、実際のキーに適切なリージョン識別子を使用するために `BASE_URL` の値を変更する必要もあります。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。 必要に応じて、`img_url` を、使用する任意の画像の URL に設定します。
 
-- Microsoft Cognitive Services の[サブスクリプション キー](https://azure.microsoft.com/try/cognitive-services/)を入手します。 このチュートリアルでは、プライマリ キーまたはセカンダリ キーのどちらでも使用できます。 (Face API を使用するには、有効なサブスクリプション キーが必要であることに注意してください。)
-
-## <a name="detect-a-face-in-an-image"></a>画像内の顔を検出する
+このスクリプトでは、**cognitive_face.face.detect** メソッドを呼び出して顔を検出します。これは、[Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップし、顔のリストを返します。
 
 ```python
 import cognitive_face as CF
@@ -52,15 +54,22 @@ faces = CF.face.detect(img_url)
 print(faces)
 ```
 
-結果の例を次に示します。 これは、検出された顔の `list` です。 リスト内の各項目は `dict` インスタンスであり、`faceId` は検出された顔の一意 ID、`faceRectangle` は検出された顔の位置の記述です。 顔 ID の有効期間は 24 時間です。
+### <a name="try-the-app"></a>アプリを試す
 
-```python
-[{u'faceId': u'68a0f8cf-9dba-4a25-afb3-f9cdf57cca51', u'faceRectangle': {u'width': 89, u'top': 66, u'height': 89, u'left': 446}}]
+`python FaceQuickstart.py` コマンドを使用してアプリを実行します。 次のように、コンソール ウィンドウにはテキスト応答が表示されます。
+
+```shell
+[{'faceId': '26d8face-9714-4f3e-bfa1-f19a7a7aa240', 'faceRectangle': {'top': 124, 'left': 459, 'width': 227, 'height': 227}}]
 ```
 
-## <a name="draw-rectangles-around-the-faces"></a>顔の周囲に四角形を描画する
+これは、検出された顔のリストです。 リスト内の各項目は **dict** インスタンスであり、ここでは `faceId` は検出された顔の一意の ID で、`faceRectangle` は検出された顔の位置を示します。 
 
-前のコマンドで受け取った json 座標を使うと、画像に四角形を描画して、各顔を視覚的に表すことができます。 `PIL` イメージング モジュールを使うには、`pip install Pillow` を行う必要があります。  ファイルの先頭に、次を追加します。
+> [!NOTE]
+> Face ID は 24 時間後に有効期限が切れます。顔のデータを長期間保持する場合は、明示的にそれを保存する必要があります。
+
+## <a name="draw-face-rectangles"></a>顔の四角形を描画する
+
+前のコマンドから受け取った座標を使うと、画像に四角形を描画して、それぞれの顔を視覚的に表すことができます。 Pillow の Image モジュールを使用するには、Pillow のインストール (`pip install pillow`) が必要になります。 *FaceQuickstart.py* の先頭に次のコードを追加します。
 
 ```python
 import requests
@@ -68,7 +77,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 ```
 
-次に、スクリプトの `print(faces)` の後に次を追加します。
+次に、スクリプトの末尾に次のコードを追加します。 これにより、四角形の座標を解析するための単純な関数が作成され、Pillow を使用して元の画像の上に四角形が描画されます。 その後、その画像が既定の画像ビューアーに表示されます。
 
 ```python
 #Convert width height to a point in a rectangle
@@ -93,21 +102,15 @@ for face in faces:
 img.show()
 ```
 
-## <a name="further-exploration"></a>さらに探索する
+## <a name="run-the-app"></a>アプリの実行
 
-Face API をさらに調べることができるように、このチュートリアルでは GUI のサンプルを提供します。 これを実行するには、[wxPython](https://wxpython.org/pages/downloads/) をインストールした後、次のコマンドを実行します。
+最初に既定の画像ビューアーを選択するように求められることがあります。 その後、次のような画像が表示されます。 また、コンソール ウィンドウには四角形のデータが出力されていることがわかります。
 
-```bash
-git clone https://github.com/Microsoft/Cognitive-Face-Python.git
-cd Cognitive-Face-Python
-python sample
-```
+![顔の周囲に赤い四角形が描画されている若い女性](../images/face-rectangle-result.png)
 
-## <a name="summary"></a>まとめ
+## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Python SDK の呼び出しから Face API を使用する基本プロセスについて説明しました。 API についてさらに詳しくは、ハウツー記事と [API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)をご覧ください。
+このクイック スタートでは、Face API Python SDK を使用するための基本的なプロセスを学習し、画像内の顔を検出してフレームに収めるスクリプトを作成しました。 次に、さらに複雑な例で Python SDK の使用について調査してください。 GitHub 上の Cognitive Face Python サンプルに移動し、自分のプロジェクト フォルダーにそれを複製した後、_README.md_ ファイル内の手順に従います。
 
-## <a name="related-topics"></a>関連トピック
-
-- [C# での Face API の使用開始](FaceAPIinCSharpTutorial.md)
-- [Java for Android での Face API の使用開始](FaceAPIinJavaForAndroidTutorial.md)
+> [!div class="nextstepaction"]
+> [Cognitive Face Python サンプル](https://github.com/Microsoft/Cognitive-Face-Python)

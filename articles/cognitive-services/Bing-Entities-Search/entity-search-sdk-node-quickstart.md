@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 1f2a5f6a1473cde40928ada6e30f6bd9b780543d
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 69bcca7871d9bf4bebf64c0c0ae1b54cd8408927
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814884"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684122"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-node"></a>クイック スタート: Bing Entity Search SDK (Node)
 
@@ -24,7 +24,9 @@ Bing Entity Search SDK には、エンティティ クエリと結果解析の�
 Git Hub に [C# Bing Entity Search SDK のサンプル ソース コード](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)があります。
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
 
-Bing Entity Search SDK を利用してコンソール アプリケーションを設定するには、ご利用の開発環境で `npm install azure-cognitiveservices-entitysearch` を実行します。
+Bing Entity Search SDK を使用してコンソール アプリケーションを設定するには:
+* 開発環境で `npm install ms-rest-azure` を実行します。
+* 開発環境で `npm install azure-cognitiveservices-entitysearch` を実行します。
 
 ## <a name="entity-search-client"></a>Entity Search クライアント
 *[検索]* で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。 `CognitiveServicesCredentials` のインスタンスを作成します。

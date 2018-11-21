@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services を使用してアップロード、エンコード、ストリーム配信する | Microsoft Docs
+title: Azure Media Services を使用してアップロード、エンコード、ストリーム配信する - REST | Microsoft Docs
 description: Azure Media Services で REST を使用してファイルのアップロード、ビデオのエンコード、コンテンツのストリーム配信を行うには、このチュートリアルの手順のようにします。
 services: media-services
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: e49b450ef2c731e9ddbafa0c8366d9eae29dc5ef
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377433"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615774"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>チュートリアル: REST を使用してビデオのアップロード、エンコード、ストリーム配信を行う
 
-このチュートリアルでは、Azure Media Services を使用してビデオのアップロード、エンコード、ストリーム配信を行う方法を示します。
+Azure Media Services では、メディア ファイルをさまざまなブラウザーおよびデバイスで再生できる形式にエンコードすることができます。 たとえば、Apple の HLS または MPEG DASH 形式のコンテンツをストリーム配信することが必要な場合があります。 ストリーム配信する前に、高品質のデジタル メディア ファイルをエンコードする必要があります。 エンコードのガイダンスについては、[エンコードの概念](encoding-concept.md)に関する記事をご覧ください。
 
-Media Services では、メディア ファイルをさまざまなブラウザーおよびデバイスで再生できる形式にエンコードすることができます。 たとえば、Apple の HLS または MPEG DASH 形式のコンテンツをストリーム配信することが必要な場合があります。 ストリーム配信する前に、高品質のデジタル メディア ファイルをエンコードする必要があります。 エンコードのガイダンスについては、[エンコードの概念](encoding-concept.md)に関する記事をご覧ください。
+このチュートリアルでは、Azure Media Services と REST を使用してビデオのアップロード、エンコード、ストリーム配信を行う方法を示します。 
 
 ![ビデオを再生する](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -42,6 +42,14 @@ Media Services では、メディア ファイルをさまざまなブラウザ�
 
 ## <a name="prerequisites"></a>前提条件
 
+- CLI をローカルにインストールして使用します。この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+
+    現在、一部の [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) コマンドが Azure Cloud Shell では正常に動作しません。 CLI はローカルで使用することをお勧めします。
+
+- [Media Services アカウントを作成する](create-account-cli-how-to.md)
+
+    リソース グループ名および Media Services アカウント名として使用した値を覚えておいてください。
+
 - [Postman](https://www.getpostman.com/) REST クライアントをインストールして、AMS REST チュートリアルの一部で示されている REST API を実行します。 
 
     ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用した **Visual Studio Code** や **Telerik Fiddler** です。 
@@ -53,10 +61,6 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -352,11 +356,11 @@ Azure Media Player はテストには使用できますが、運用環境では�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。 **CloudShell** ツールを使うことができます。
+このチュートリアルで作成した Media Services アカウントとストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、前に作成したリソース グループを削除します。  
 
-**CloudShell** で、次のコマンドを実行します。
+次の CLI コマンドを実行します。
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 

@@ -16,18 +16,18 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f0220c244bd5ed48393e2f81b7dd8a62fd0423be
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1809e7f72afd99de38387317daf2ecb92dbe3cf0
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912993"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298723"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する (プレビュー)
 
 エンタープライズ開発者や SaaS (サービスとしてのソフトウェア) プロバイダーは、商用クラウド サービスまたは基幹業務アプリケーションを開発し、それらを Microsoft ID プラットフォームと統合することによって、自社のサービスにセキュリティで保護されたサインインと認可を実現することができます。
 
-このクイック スタートでは、Azure portal で**アプリの登録 (プレビュー)** エクスペリエンスを使用してアプリケーションを追加および登録し、Microsoft ID プラットフォームと統合できるようにする方法を説明します。
+このクイック スタートでは、Azure portal で**アプリの登録 (プレビュー)** エクスペリエンスを使用してアプリケーションを追加および登録し、Microsoft ID プラットフォームと統合できるようにする方法を説明します。 新しいアプリ登録エクスペリエンスに追加された機能と強化された機能について詳しくは、[こちらのブログ記事](https://developer.microsoft.com/graph/blogs/new-app-registration/)を参照してください。 
 
 ## <a name="prerequisite"></a>前提条件
 

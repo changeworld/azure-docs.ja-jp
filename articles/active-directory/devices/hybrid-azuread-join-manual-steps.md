@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: a3c35057af883eb790c44b3547072031eaf4ad2f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c85d3ce6ab3e84d454ddbc2550f430b87705c192
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962012"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622178"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル: ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する 
 
@@ -520,7 +520,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 ### <a name="configure-on-premises-federation-service"></a>オンプレミス フェデレーション サービスを構成する 
 
-オンプレミス フェデレーション サービスは、Azure AD 証明書利用者への認証要求を受信したときに、resouce_params パラメーターに以下のエンコード値が保持されている場合、**authenticationmehod** と **wiaormultiauthn** 要求の発行をサポートしている必要があります。
+オンプレミス フェデレーション サービスは、Azure AD 証明書利用者への認証要求を受信したときに、resource_params パラメーターに以下のエンコード値が保持されている場合、**authenticationmethod** と **wiaormultiauthn** 要求の発行をサポートしている必要があります。
 
     eyJQcm9wZXJ0aWVzIjpbeyJLZXkiOiJhY3IiLCJWYWx1ZSI6IndpYW9ybXVsdGlhdXRobiJ9XX0
 

@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ba2784663a585aebb82ee149be3b54e73920f6dd
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816652"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622536"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>クイック スタート: Azure Active Directory Power BI コンテンツ パックをインストールする
 
@@ -29,7 +29,7 @@ ms.locfileid: "48816652"
 |現在、Azure AD Power BI コンテンツ パックでは Azure AD Graph API を使用して Azure AD テナントからデータを取得します。 そのため、コンテンツ パック内のデータと[レポート用の Microsoft Graph API](concept-reporting-api.md) を使用して取得したデータに差異が発生する可能性があります。 |
 |  |
 
-Azure Active Directory 用 Power BI コンテンツ パックを使用すると、Active Directory で起きていることについての詳しい分析情報を得ることができます。 既製のコンテンツ パックをダウンロードして使用することにより、Power BI に備わっている豊富なビジュアル エクスペリエンスを使用して、ディレクトリ内のアクティビティをすべてレポートすることができます。 また、そうして得た情報は、独自のダッシュボードを作成することで、社内のだれとでも簡単に共有することができます。 
+Azure Active Directory (Azure AD) 用 Power BI コンテンツ パックを使用すると、お使いの環境から得られたレポート データを視覚化することができます。 既製のコンテンツ パックをダウンロードして使用することにより、Power BI に備わっている豊富なビジュアル エクスペリエンスを使用して、ディレクトリ内のアクティビティをすべてレポートすることができます。 また、そうして得た情報は、独自のダッシュボードを作成することで、社内のだれとでも簡単に共有することができます。 
 
 このクイック スタートでは、コンテンツ パックをインストールする方法について説明します。
 
@@ -37,7 +37,7 @@ Azure Active Directory 用 Power BI コンテンツ パックを使用すると�
 
 このクイック スタートを完了するには、次のものが必要です。
 
-* Power BI アカウント。 これは、ご利用の O365 または Azure AD アカウントと同じアカウントです。 
+* Power BI アカウント  これは、ご利用の O365 または Azure AD アカウントと同じアカウントです。 
 * Azure AD テナント ID。 これは、Azure portal の[プロパティ ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)で確認できるディレクトリの ID (**[ディレクトリ ID]**) です。
 * Azure AD Premium (P1/P2) ライセンス。 
 

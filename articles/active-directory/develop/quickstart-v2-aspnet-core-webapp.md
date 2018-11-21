@@ -10,65 +10,91 @@ ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2018
+ms.date: 11/09/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4ab3d0b74e8305d67af862020197c69b15221086
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 4849ffcc6fd71a0b88b270f2e6cbdb23b18ecc76
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830227"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51611643"
 ---
-# <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリに Microsoft サインインを追加する
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-このクイック スタートには、ASP.NET Core Web アプリが個人アカウント (hotmail.com、live.com など) および職場または学校アカウントを任意の Azure Active Directory インスタンスからサインインさせることができる方法を示すサンプル コードが含まれています。
+このクイック スタートでは、ASP.NET Core Web アプリで、(hotmail.com、outlook.com などの) 個人アカウント、また職場や学校のアカウントを任意の Azure Active Directory (Azure AD) インスタンスからサインインさせる方法を学びます。
 
 ![このクイック スタートで生成されたサンプル アプリの動作](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.png)
 
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>アプリケーションの登録とクイック スタート アプリのダウンロード
+> ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
+> クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
+> * [簡易] [選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [手動] [選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとサンプル コードの登録と構成
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
+>
+> 1. [Azure portal の [アプリの登録 (プレビュー)]](https://aka.ms/aspnetcore2-1-aad-quickstart-v2) に移動します。
+> 1. アプリケーションの名前を入力し、**[登録]** を選択します。
+> 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する
+>
 > #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
-> 
-> 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動します。
-> 1. アプリケーションの名前を入力し、**ガイド付きセットアップ**のオプションがオフになっていることを確認し、**[作成]** をクリックします。
-> 1. `Add Platform` をクリックし、`Web` を選択します。
-> 1. **[暗黙的フローを許可する]** が "*オンになっている*" ことを確認します。
-> 1. **[リダイレクト URL]** に「`http://localhost:3110/`」と入力します。
-> 1. ページの下部までスクロールし、**[保存]** をクリックします。
+> アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
+>
+> 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+> 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
+> 1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)]** > **[新規登録]** を選択します。
+> 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
+>    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `AspNetCore-Quickstart`)。
+>    - **[応答 URL]** に「`https://localhost:44321/`」を追加し、**[登録]** を選択します。
+> 1. **[認証]** メニューを選択し、次の情報を追加します。
+>    - **[応答 URL]** に「`https://localhost:44321/signin-oidc`」を追加し、**[登録]** を選択します。
+>    - **[詳細設定]** セクションの **[ログアウト URL]** を「`https://localhost:44321/signout-oidc`」に設定します。
+>    - **[暗黙的な許可]** の **[ID トークン]** チェック ボックスをオンにします。
+>    - **[保存]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
-> このクイック スタートのサンプル コードを動作させるには、応答 URL として `http://localhost:3110/` を追加する必要があります。
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
+> このクイック スタートのコード サンプルを正常に動作させるためには、応答 URL として `https://localhost:44321/` および `https://localhost:44321/signin-oidc` を追加し、ログアウト URL として `https://localhost:44321/signout-oidc` を追加したうえで、承認エンドポイントによって発行される要求 ID トークンを追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-aspnet-core-webapp/green-check.png): アプリケーションはこの属性で構成されます。
+> > ![構成済み](media/quickstart-v2-aspnet-webapp/green-check.png) アプリケーションはこれらの属性で構成されています。
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>手順 2: ASP.NET Core プロジェクトのダウンロード
 
-- [ASP.NET Core プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/master.zip)します。
+- [Visual Studio 2017 ソリューションのダウンロード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
-#### <a name="step-3-configure-your-project"></a>手順 3: プロジェクトの構成
+#### <a name="step-3-configure-your-visual-studio-project"></a>手順 3: Visual Studio プロジェクトの構成
 
-1. ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
-1. Visual Studio 2017 を使用する場合は、Visual Studio でプロジェクトを開きます (任意)。
-1. **appsettings.json** を編集し、`ClientId` の値を今登録したアプリケーションのアプリケーション ID に置き換えます。
+1. ルート フォルダー内のローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを展開します。
+1. Visual Studio 2017 を使用する場合は、Visual Studio でソリューションを開きます (任意)。
+1. **appsettings.json** ファイルを編集します。 `ClientId` を探し、`Enter_the_Application_Id_here` を、先ほど登録したアプリケーションの "**アプリケーション (クライアント) ID**" 値に置き換えます。 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
-    "TenantId": "common"
+    "TenantId": "Enter_the_Tenant_Info_Here"
     ```
-1. アプリケーションが "*シングル テナント アプリケーション*" (現在のディレクトリ内のアカウントのみをターゲットにする) 場合は、**appsettings.json** ファイルで `TenantId` の値を探し、`common` を**テナント ID** または**テナント名** に置き換えます (例: contoso.microsoft.com)。 テナント名は **[概要] ページ**で取得できます。
+
+> [!div renderon="docs"]
+> 各値の説明:
+> - `Enter_the_Application_Id_here` -Azure portal に登録されているアプリケーションの "**アプリケーション (クライアント) ID**"。 "**アプリケーション (クライアント) ID**" は、アプリの **[概要]** ページで確認できます。
+> - `Enter_the_Tenant_Info_Here` - 次のいずれかのオプション。
+>   - アプリケーションで**この組織のディレクトリ内のアカウントのみ**をサポートする場合は、この値を**テナント ID** または**テナント名**に置き換えます (たとえば、contoso.microsoft.com)
+>   - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
+>   - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされる場合は、この値を `common` に置き換えます。
+>
+> > [!TIP]
+> > **[アプリケーション (クライアント) ID]**、**[ディレクトリ (テナント) ID]**、**[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -81,62 +107,49 @@ ms.locfileid: "48830227"
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddAuthentication(sharedOptions =>
-    {
-        sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        sharedOptions.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
-    })
-    .AddAzureAd(options => Configuration.Bind("AzureAd", options))
-    .AddCookie();
+  services.Configure<CookiePolicyOptions>(options =>
+  {
+    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+  });
 
-    services.AddMvc();
+  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+
+  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
+  {
+    options.Authority = options.Authority + "/v2.0/";         // Azure AD v2.0
+
+    options.TokenValidationParameters.ValidateIssuer = false; // accept several tenants (here simplified)
+  });
+
+  services.AddMvc(options =>
+  {
+     var policy = new AuthorizationPolicyBuilder()
+                     .RequireAuthenticatedUser()
+                     .Build();
+     options.Filters.Add(new AuthorizeFilter(policy));
+  })
+  .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 }
 ```
 
-`AddAuthentication` メソッドは、ブラウザーのシナリオで使用される Cookie ベースの認証を追加するようにサービスを構成し、OpenIdConnect へのチャレンジも設定します。 
+`AddAuthentication` メソッドは、ブラウザーのシナリオで使用される Cookie ベースの認証を追加するようにサービスを構成し、OpenID Connect へのチャレンジも設定します。 
 
-`.AddAzureAd` を含む行によって、Azure Active Directory 認証がアプリケーションに追加されます。
+`.AddAzureAd` を含む行によって、Azure AD 認証がアプリケーションに追加されます。 さらに、Azure AD v2.0 エンドポイントを使用してサインインするように構成されます。
 
-さらに、**AzureAdAuthenticationBuilderExtensions.cs** ファイルによって、拡張メソッドが Azure AD 認証パイプラインに追加されます。 この拡張メソッドは、Azure AD Authentication に必要な属性を構成します。 `IConfigureNamedOptions` インターフェイスの `Configure` メソッドには、以下が含まれます。
-
-```csharp
-public void Configure(string name, OpenIdConnectOptions options)
-{
-    options.ClientId = _azureOptions.ClientId;
-    options.Authority = $"{_azureOptions.Instance}common/v2.0";   // V2 specific
-    options.UseTokenLifetime = true;
-    options.RequireHttpsMetadata = false;
-    options.TokenValidationParameters.ValidateIssuer = false;     // accept several tenants (here simplified)
-}
-```
 > |Where  |  |
 > |---------|---------|
-> |ClientId     |Azure portal に登録されているアプリケーションのアプリケーション ID|
-> |Authority | ユーザーを認証するための STS エンドポイント。 パブリック クラウドでは、通常は https://login.microsoftonline.com/{tenant}/v2.0。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です|
-> |UseTokenLifetime |認証 Cookie が認証トークンのものと一致する必要があることを示します|
-> |RequireHttpsMetadata     |メタデータ アドレスまたは登録機関の HTTPS を要求します。 この値は `True` に変更することをお勧めします|
-> |TokenValidationParameters     | トークン検証のためのパラメーター リスト。 ここでは、`ValidateIssuer` は `false` に設定され、任意の個人、あるいは職場または学校のアカウント タイプからのサインインを受け付け可能であることを示しています|
-
-### <a name="initiate-an-authentication-challenge"></a>認証チャレンジを開始する
-
-**AccountController.cs** と同じように、コントローラーで認証チャレンジを要求することによって、ユーザーにサインインを求めることができます。
-
-```csharp
-public IActionResult SignIn()
-{
-    var redirectUrl = Url.Action(nameof(HomeController.Index), "Home");
-    return Challenge(
-        new AuthenticationProperties { RedirectUri = redirectUrl },
-        OpenIdConnectDefaults.AuthenticationScheme);
-}
-```
-
-> [!TIP]
-> 上記のメソッドを使用した認証チャレンジの要求は省略可能であり、通常は、認証済みのユーザーと未認証のユーザーの両方がビューにアクセスできるようにするときに使用されます。 次のセクションで説明するメソッドを使用することで、コントローラーを保護できます。
+> | ClientId  | Azure portal に登録されているアプリケーションのアプリケーション (クライアント) ID。 |
+> | Authority | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は https://login.microsoftonline.com/{tenant}/v2.0。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |
+> | TokenValidationParameters | トークン検証のためのパラメーター リスト。 ここでは、`ValidateIssuer` は `false` に設定され、任意の個人、あるいは職場または学校のアカウント タイプからのサインインを受け付け可能であることを示しています。 |
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>コントローラーまたはコントローラーのメソッドを保護する
 
 `[Authorize]` 属性を使用して、コントローラーまたはコントローラーのメソッドを保護できます。 この属性は、認証済みのユーザーのみを許可することによって、コントローラーまたはメソッドへのアクセスを制限します。つまり、ユーザーが認証されていない場合は、コントローラーにアクセスするための認証チャレンジを開始できます。
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>次の手順
 
@@ -145,4 +158,3 @@ public IActionResult SignIn()
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web アプリのサンプル コード](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
 
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

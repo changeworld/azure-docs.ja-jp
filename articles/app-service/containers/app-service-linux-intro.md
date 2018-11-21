@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 9efa6dc8427c58c82702fd5b3449fcd4805bf9e3
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 75eb260b107df3877219266794e45eb11d5deb35
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902095"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633242"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -33,13 +33,12 @@ App Service on Linux では、開発者の生産性を向上させるために�
 
 | Language | サポートされているバージョン |
 |---|---|
-| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1 |
-| Java * | 8.0 |
+| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1、10.10 |
+| Java * | Tomcat 8.5、9.0、Java SE、WildFly 14 (いずれも JRE 8 を実行) |
 | PHP | 5.6、7.0、7.2 |
-| Python (プレビュー) | 3.7 |
-| .NET Core | 1.0、1.1、2.0 |
+| Python (プレビュー) | 3.6、3.7 |
+| .NET Core | 1.0、1.1、2.0、2.1 |
 | Ruby | 2.3 |
-| Apache Tomcat | 8.5、9.0 |
 
 詳細については、「[App Service on Linux で Java Web アプリを作成する](https://docs.microsoft.com/azure/app-service/containers/quickstart-java)」を参照してください。
 

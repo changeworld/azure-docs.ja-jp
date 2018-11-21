@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 10/30/2018
 ms.author: bahariri
-ms.openlocfilehash: 2a9f1ea069bdb45adb1b8c6b52392f15a4660b5c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: a2ab9a77728509b794c2f5b810fb939f6d1a16e3
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285120"
+ms.locfileid: "51286777"
 ---
 # <a name="connect-your-apache-spark-application-with-kafka-enabled-azure-event-hubs"></a>Kafka 対応 Azure Event Hubs に Apache Spark アプリケーションを接続する
 このチュートリアルでは、Kafka 対応 Event Hubs に Spark アプリケーションを接続してリアルタイム ストリーミングを実現する方法について説明します。 この統合により、お使いのプロトコル クライアントを変更せずにストリーミングを行ったり、独自の Kafka または Zookeeper クラスターを実行したりすることができます。 このチュートリアルには、Apache Spark v2.4 以上および Apache Kafka v2.0 以上が必要となります。

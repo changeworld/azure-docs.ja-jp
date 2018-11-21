@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Standard Load Balancer を作成して管理する - Azure portal | Microsoft Docs'
+title: 'チュートリアル: インターネット トラフィックを VM に負荷分散する - Azure portal | Microsoft Docs'
 description: このチュートリアルでは、Azure Portal を使用して Standard Load Balancer を作成して管理する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7c3e5c0cc8297ba60925d36d667e0b72a5072553
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ef021a89cb1cba5a3240ade5ba67141940413cdc
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380048"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687314"
 ---
-# <a name="tutorial-create-and-manage-standard-load-balancer-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Standard Load Balancer を作成して管理する
+# <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>チュートリアル: Azure portal を使用してインターネット トラフィックを VM に負荷分散する
 
-負荷分散では、着信要求を複数の仮想マシンに分散させることで、より高いレベルの可用性とスケールを実現します。 このチュートリアルでは、トラフィックを分散し高可用性を提供する、Azure Standard Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。
+負荷分散では、着信要求を複数の仮想マシンに分散させることで、より高いレベルの可用性とスケールを実現します。 このチュートリアルでは、インターネット トラフィックを VM に分散して高可用性を提供する、Azure Standard Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。
 
 
 > [!div class="checklist"]
