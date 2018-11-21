@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning Workbench の変更点 | Microsoft Docs
+title: Azure Machine Learning Workbench の変更点  | Microsoft Docs
 description: Workbench アプリケーションの変更点、Azure Machine Learning の変更箇所、およびサポートのタイムラインの概要について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -55,7 +55,7 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 実行履歴は、しばらくの間はアクセスできる状態が維持されます。 更新されたバージョンの Azure Machine Learning サービスに移行する準備ができたら、コピーを保存しておきたい場合はこれらの実行履歴をエクスポートすることができます。
 
-実行履歴は、現在のリリースでは_実験_と呼ばれるようになりました。 SDK、CLI、または Web ポータルを使用して、モデルの実験を収集し、それらを表示することができます。
+実行履歴は、現在のリリースでは "_実験_" と呼ばれるようになりました。 SDK、CLI、または Web ポータルを使用して、モデルの実験を収集し、それらを表示することができます。
 
 ポータルのワークスペース ダッシュボードは、Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
 

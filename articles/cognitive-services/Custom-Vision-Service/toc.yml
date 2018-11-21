@@ -42,6 +42,8 @@ items:
     href: export-model-python.md
   - name: REST API を使用したモデルの構築
     href: rest-api-tutorial.md
+  - name: アカウント データのエクスポートまたは削除
+    href: ./export-delete-data.md
 - name: リファレンス
   items:
   - name: Custom Vision Training API
@@ -52,7 +54,7 @@ items:
     href: glossary-of-terms.md
   - name: SDK
     items:
-    - name: Windows
+    - name: " Windows"
       href: http://github.com/Microsoft/Cognitive-CustomVision-Windows
     - name: Python
       href: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules
@@ -60,25 +62,23 @@ items:
       href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices
 - name: リソース
   items:
-  - name: リリース ノート
-    href: release-notes.md
   - name: サンプル
     href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
   - name: 料金と制限
     href: limits-and-quotas.md
-  - name: アカウント データのエクスポートまたは削除
-    href: ./export-delete-data.md
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/598141-custom-vision-service
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+    href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/global-infrastructure/services/
-ms.openlocfilehash: 1394f71bceef7a0646411a155b63825771e839d3
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
+  - name: リリース ノート
+    href: release-notes.md
+ms.openlocfilehash: 9a084dbfbbc6d90a56e5986d967375da8a8fbb03
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281034"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276076"

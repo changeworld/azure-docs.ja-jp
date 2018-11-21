@@ -1,111 +1,166 @@
 ---
-title: Azure VM のフェールオーバーのために IP アドレスを保持する | Microsoft Docs
+title: Azure Site Recovery を使用した Azure VM フェールオーバー時に IP アドレスを保持する | Microsoft Docs
 description: ディザスター リカバリーのために、Azure Site Recovery を使用して Azure VM をセカンダリ リージョンへフェールオーバーする際に、IP アドレスを保持する方法について説明します
 ms.service: site-recovery
 ms.date: 10/16/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 86adaa21a069c168b512231ba231940bfa2ef9e8
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4e75ba210e12a39d2c4cfb9753bbc2da2893746b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213034"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567402"
 ---
-# <a name="ip-address-retention-for-azure-vm-failover"></a>Azure VM のフェールオーバーでの IP アドレスの保持
+# <a name="retain-ip-addresses-during-failover"></a>フェールオーバー時に IP アドレスを保持する
 
-Azure Site Recovery を使用すると、Azure VM のディザスター リカバリーを実行できます。 ある Azure リージョンから別の Azure リージョンへフェールオーバーする際、多くの状況で、IP 構成を維持することが必要になります。 既定では、ターゲット リージョンにリソースを作成する際に、Azure Site Recovery によってソース仮想ネットワークとサブネットの構造が模倣されます。 静的プライベート IP アドレスで構成された Azure VM の場合、Site Recovery は、その IP アドレスが Azure リソースやレプリケートされた VM によって事前にブロックされていなければ、できる限り同じプライベート IP アドレスをターゲット VM にプロビジョニングしようとします。
+[Azure Site Recovery](site-recovery-overview.md) では、VM を別の Azure リージョンにレプリケートし、障害が発生した場合にフェールオーバーして、正常な状態に戻ったらプライマリ リージョンにフェールバックすることで、Azure VM のディザスター リカバリーが可能です。
 
-シンプルなアプリケーションの場合、必要となるのは、上記の既定の構成だけです。 複雑なエンタープライズ アプリケーションの場合は、フェールオーバー後にインフラストラクチャの他のコンポーネントと接続できるように、お客様が追加のネットワーク リソースをプロビジョニングすることが必要になる場合があります。 この記事では、Azure VM をあるリージョンから別のリージョンにフェールオーバーする際に VM の IP アドレスを維持するためのネットワーク要件について説明します。
+フェールオーバー中に、ターゲット リージョンで、ソース リージョンと同じ IP アドレス指定を維持したい場合があります。
 
-## <a name="azure-to-azure-connectivity"></a>Azure 間の接続
+- 既定では、Azure VM のディザスター リカバリーを有効にすると、Site Recovery によって、ソース リソースの設定に基づいてターゲット リソースが作成されます。 Azure VM が静的 IP アドレスで構成されている場合、Site Recovery は、使用中でなければ同じ IP アドレスをターゲット VM にプロビジョニングしようとします。 Site Recovery でアドレス指定がどのように処理されるかの詳しい説明については、[この記事](azure-to-azure-network-mapping.md#set-up-ip-addressing-for-target-vms)を参照してください。
+- シンプルなアプリケーションの場合は、既定の構成で十分です。 複雑なアプリの場合は、フェールオーバー後に、接続が予期した通り確実に機能するように、追加のリソースをプロビジョニングする必要が生じることもあります。
 
-1 つ目のシナリオでは、アプリケーション インフラストラクチャがすべて Azure にある **A 社**について考えます。 ビジネス継続性とコンプライアンス上の理由から、**A 社**は Azure Site Recovery を使用してアプリケーションを保護することに決めました。
 
-IP アドレス保持の要件 (アプリケーションのバインディングのためなど) を踏まえて、A 社はターゲット リージョンに同じ仮想ネットワークとサブネットの構造を確保しています。 目標復旧時間 (RTO) をさらに短縮するために、**A 社**は、SQL Always ON やドメイン コントローラーなどのレプリカ ノードを使用しています。これらのレプリカ ノードはターゲット リージョンの別の仮想ネットワークに配置されています。 **A 社**はレプリカ ノードに対して別のアドレス空間を使用することで、ソース リージョンとターゲット リージョンの間の VPN サイト間接続を確立しています。両方のリージョンで同じアドレス空間が使用されていると接続を確立できないためです。
+この記事では、より複雑なシナリオの例で、IP アドレスを保持する例をいくつか示します。 以下のような例が含まれています。
 
-フェールオーバー前のネットワーク アーキテクチャは、次のとおりです。
-- アプリケーション VM は Azure 東アジアにホストされ、アドレス空間 10.1.0.0/16 で Azure 仮想ネットワークを利用しています。 この仮想ネットワークの名前は **Source VNet** です。
-- アプリケーション ワークロードは 3 つのサブネット、10.1.1.0/24、10.1.2.0/24、10.1.3.0/24 に分散されます。サブネットの名前はそれぞれ、**Subnet 1**、**Subnet 2**、**Subnet 3** です。
-- ターゲット リージョンは Azure 東南アジアで、ソースのアドレス空間とサブネット構成を模倣した復旧用仮想ネットワークがあります。 この仮想ネットワークの名前は **Recovery VNet** です。
-- Always On やドメイン コントローラーなどに必要なレプリカ ノードは、アドレスが 10.2.4.0/24 の Subnet 4 内にあるアドレス空間が 10.2.0.0/16 の仮想ネットワークに配置されています。 この仮想ネットワークの名前は **Azure VNet** で、Azure 東南アジアにあります。
-- **Source VNet** と **Azure VNet** は VPN サイト間接続を介して接続されています。
-- **Recovery VNet** は他の仮想ネットワークには接続されていません。
-- **A 社**は、レプリケートされたアイテムのターゲット IP アドレスの割り当てと確認を行いました。 この例では、ターゲット IP アドレスは各 VM のソース IP アドレスと同じです。
+- Azure ですべてのリソース実行されている会社のフェールオーバー
+- ハイブリッド展開で、オンプレミスと Azure の両方でリソースが実行されている会社のフェールオーバー
 
-![フェールオーバー前の Azure 間接続](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
+## <a name="resources-in-azure-full-failover"></a>Azure 内のリソース: 完全フェールオーバー
 
-### <a name="full-region-failover"></a>リージョン全体のフェールオーバー
+A 社は、Azure ですべてのアプリを実行しています。
 
-リージョン障害が発生した場合、**A 社**は、Azure Site Recovery の強力な[復旧計画](site-recovery-create-recovery-plans.md)を利用して、デプロイ全体を迅速かつ簡単に復旧できます。 フェールオーバー前に各 VM のターゲット IP アドレスが既に設定されているため、**A 社**は、フェールオーバーを調整し、下図に示すように、Recovery VNet と Azure Vnet の間の接続を自動的に確立できます。
+### <a name="before-failover"></a>フェールオーバー前
 
-![Azure 間接続のリージョン全体のフェールオーバー](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
+フェールオーバー前のアーキテクチャを次に示します。
 
-ターゲット リージョンにある 2 つの VNet 間の接続は、アプリケーションの要件に応じて、フェールオーバー前、フェールオーバー中 (中間ステップとして)、またはフェールオーバー後に確立できます。 [復旧計画](site-recovery-create-recovery-plans.md)を使用して、スクリプトを追加し、フェールオーバーの順序を定義できます。
+- 会社 A は、ソースとターゲットの Azure リージョン内に同一のネットワークとサブネットを設けています。
+- 目標復旧時間 (RTO) を短縮するため、この会社は、SQL Server Always On やドメイン コント ローラーなどのレプリカ ノードを使用しています。ソース リージョンとターゲット リージョンの間に VPN のサイト間接続を確立できるように、これらのレプリカ ノードは、ターゲット リージョン内では異なる VNet 内に置かれています。 これは、ソースとターゲットで同じ IP アドレス空間が使用されている場合は不可能です。  
+- フェールオーバー前のネットワーク アーキテクチャは次のとおりです。
+    - プライマリ リージョンは Azure 東アジアです
+        - 東アジアに、アドレス空間 10.1.0.0/16 の VNet (**Source VNet**) があります。
+        - 東アジアでは、VNet 内の次の 3 つのサブネットにわたってワークロードを分割しています。
+            - **Subnet 1**: 10.1.1.0/24
+            - **Subnet 2**: 10.1.2.0/24、
+            - **Subnet 3**: 10.1.3.0/24
+    - セカンダリ (ターゲット) リージョンは Azure 東南アジアです
+        - 東南アジアには、**Source VNet** と同一の復旧用 VNet (**Recovery VNet**) があります。
+        - 東南アジアには、アドレス空間が 10.2.0.0/16 の、追加の VNet (**Azure VNet**) があります。
+        - **Azure VNet** には、アドレス空間が 10.2.4.0/24 のサブネット (**Subnet 4**) が含まれています。
+        - SQL Server Always On やドメイン コントローラーなどのレプリカ ノードは、**Subnet 4** 内に配置されています。
+    - **Source VNet** と **Azure VNet** は、VPN サイト間接続で接続されています。
+    - **Recovery VNet** は他の仮想ネットワークには接続されていません。
+    - **A 社**は、レプリケートされる項目について、ターゲット IP アドレスの割り当てと確認を行っています。 ターゲット IP は、各 VM のソース IP と同じです。
 
-A 社は、Recovery VNet と Azure VNet の接続の確立に、VNET ピアリングかサイト間 VPN を使用できます。 VNET ピアリングは VPN ゲートウェイを使用せず、さまざまな制約があります。 さらに、[VNET ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は、[VNet 間 VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway)と計算方法が異なります。 フェールオーバーの場合、一般的には、ネットワークの変更によって生じる予期しないインシデントを最小限に抑えるために、接続の種類など、ソースの接続を模倣することが推奨されます。
+![完全フェールオーバー前の Azure 内のリソース](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
 
-### <a name="isolated-application-failover"></a>分離されたアプリケーションのフェールオーバー
+### <a name="after-failover"></a>フェールオーバー後
 
-特定の条件下では、ユーザーがアプリケーション インフラストラクチャの一部をフェールオーバーする必要が生じることがあります。 このようなケースの例には、専用サブネット内に配置された特定のアプリケーションや階層のフェールオーバーがあります。 IP アドレスを維持しながらサブネットをフェールオーバーすることは可能ですが、接続の整合性が著しく失われるため、ほとんどの場合は推奨されません。 また、同じ Azure 仮想ネットワーク内の他のサブネットとの接続も失われてしまいます。
+ソース リージョンで障害が発生した場合、A 社は、すべてのリソースをターゲット リージョンにフェールオーバーできます。
 
-より適切にサブネット レベルのアプリケーション フェールオーバー要件に対応するには、フェールオーバーに別のターゲット IP アドレスを使用する (ソース仮想ネットワークの他のサブネットに接続する必要がある場合) か、各アプリケーションをソースの専用仮想ネットワークに分離します。 後者の方法では、ソースでネットワーク間接続を確立し、ターゲット リージョンにフェールオーバーする際に同じ接続をエミュレートできます。
+- フェールオーバーの前にターゲット IP アドレスが既に用意されているため、A 社はフェールオーバーを連携させて、**Recovery VNet** および **Azure VNet** 間のフェールオーバー後に接続を自動的に確立できます。 それを示したのが次の図です。
+- ターゲット リージョンにある 2 つの VNet (**Recovery VNet** と **Azure VNet**) 間の接続は、アプリの要件に応じて、フェールオーバー前、フェールオーバー中 (中間ステップとして)、またはフェールオーバー後に確立できます。
+    - 会社は[復旧計画](site-recovery-create-recovery-plans.md)を使用して、接続がいつ確立されるかを指定できます。
+    - VNet ピアリングまたはサイト間 VPN を使用して Vnet 間を接続できます。
+        - VNet ピアリングは VPN ゲートウェイを使用せず、さまざまな制約があります。
+        - VNet ピアリングの[料金](https://azure.microsoft.com/pricing/details/virtual-network)は、VNet 間 VPN Gateway の[料金](https://azure.microsoft.com/pricing/details/vpn-gateway)とは計算方法が異なります。 フェールオーバーについては、一般に、予測不能のネットワーク インシデントを最小限にするため、接続の種類を含め、ソース ネットワークと同じ接続方法を使用することをお勧めします。
 
-回復性を考慮して各アプリケーションを設計するには、アプリケーションを専用の仮想ネットワークに配置し、必要に応じて仮想ネットワーク間の接続を確立する方法をお勧めします。 これにより、元のプライベート IP アドレスを維持しながら、分離されたアプリケーションをフェールオーバーできます。
+    ![Azure 内のリソースの完全フェールオーバー](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
-フェールオーバー前の構成は、次のとおりです。
-- アプリケーション VM は Azure アジア太平洋にホストされ、1 つ目のアプリケーションはアドレス空間 10.1.0.0/16 で、2 つ目のアプリケーションはアドレス空間 10.2.0.0/16 で Azure 仮想ネットワークを使用しています。 仮想ネットワークの名前は、1 つ目のアプリケーションが **Source VNet1**、2 つ目のアプリケーションが **Source VNet2** です。
-- 各 VNet は、さらに 2 つのサブネットに分割されています。
-- ターゲット リージョンは Azure 東南アジアで、Recovery VNet1 と Recovery VNet2 という名前の復旧用の仮想ネットワークがあります。
-- Always On やドメイン コントローラーなどに必要なレプリカ ノードは、アドレスが 10.3.4.0/24 の **Subnet 4** 内にあるアドレス空間が 10.3.0.0/16 の仮想ネットワークに配置されています。 この仮想ネットワークの名前は Azure VNet で、Azure 東南アジアにあります。
-- **Source VNet1** と **Azure VNet** は VPN サイト間接続を介して接続されています。 同様に、**Source VNet2** と **Azure VNet** も VPN サイト間接続を介して接続されています。
-- この例では、**Source VNet1** と **Source VNet2** も、S2S VPN を介して接続されています。 2 つの VNet が同じリージョンにあるため、S2S VPN の代わりに VNET ピアリングを使用することもできます。
+
+
+## <a name="resources-in-azure-isolated-app-failover"></a>Azure 内のリソース: 分離されているアプリのフェールオーバー
+
+アプリ レベルでフェールオーバーすることが必要な場合があります。 たとえば、専用サブネット内に置かれた特定のアプリまたはアプリ階層をフェールオーバーする場合です。
+
+- このシナリオでは、IP アドレス指定は保持できますが、接続性の不整合が発生する可能性が高まるため、一般に推奨されません。 同じ Azure VNet 内の、他のサブネットとの接続も失われます。
+- サブネット レベルでアプリをフェールオーバーする場合、より適切なのは、フェールオーバーには異なるターゲット IP アドレスを使用する方法 (ソース VNet で他のサブネットへの接続性が必要な場合) か、ソース リージョン内で各アプリを独自の専用 VNet 内に分離する方法です。 後者の方法では、ソース リージョンでネットワーク間に接続性を確立し、ターゲット リージョンにフェールオーバーするときに同じ動作をエミュレートすることができます。  
+
+この例では、A 社はソース リージョン内で、アプリを専用 Vnet 内に配置し、それらの Vnet 間に接続性を確立しています。 この設計では、分離されたアプリのフェールオーバーを実行して、ターゲット ネットワークではソースのプライベート IP アドレスを保持することができます。
+
+### <a name="before-failover"></a>フェールオーバー前
+
+フェールオーバー前のアーキテクチャは次のとおりです。
+
+- アプリケーション VM は、プライマリの Azure 東アジア リージョンでホストされています。
+    - **App1** VM は VNet **Source VNet 1** (10.1.0.0/16) に配置されています。
+    - **App2** VM は VNet **Source VNet 2** (10.2.0.0/16) に配置されています。
+    - **Source VNet 1** にはサブネットが 2 つあります。
+    - **Source VNet 2** にはサブネットが 2 つあります。
+- セカンダリ (ターゲット) リージョンは Azure 東南アジアです。東南アジアには、**Source VNet 1** および **Source VNet 2** と同一の、復旧用の Vnet (**Recovery VNet 1** と **Recovery VNet 2**) があります。
+        - **Recovery VNet 1** と **Recovery VNet 2** にはそれぞれ、**Souce VNet 1** と **Souce VNet 2** に対応する 2 つのサブネットがあります。東南アジアには、アドレス空間が 10.3.0.0/16 の、追加の VNet (**Azure VNet**) があります。
+        - **Azure VNet** には、アドレス空間が 10.3.4.0/24 のサブネット (**Subnet 4**) が含まれています。
+        - SQL Server Always On やドメイン コントローラーなどのレプリカ ノードは、**Subnet 4** 内に配置されています。
+- いくつかのサイト間 VPN 接続が存在します。 
+    - **Source VNet 1** と **Azure VNet**
+    - **Source VNet 2** と **Azure VNet**
+    - **Source VNet 1** と **Source VNet 2** はサイト間 VPN で接続されています
+- **Recovery VNet 1** と **Recovery VNet 2** は、他のどの VNet にも接続されていません。
+- **A 社**は RTO を短縮するため、**Recovery VNet 1** と **Recovery VNet 2** に VPN ゲートウェイを構成しています。  
 - **Recovery VNet1** と **Recovery VNet2** は他の仮想ネットワークには接続されていません。
 - 目標復旧時間 (RTO) を短縮するために、フェールオーバー前に **Recovery VNet1** と **Recovery VNet2** に VPN Gateway が構成されています。
 
-![フェールオーバー前の Azure 間接続の分離されたアプリケーション](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
+    ![アプリ フェールオーバー前の Azure 内のリソース](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
 
-1 つのアプリケーションのみ (この例では Source VNet2 に配置されているアプリケーション) に影響を与える障害状況が発生した場合、A 社は影響を受けるアプリケーションを次のようにして復旧できます。
-- **Source VNet1** と **Source VNet2** の VPN 接続と、**Source VNet2** と **Azure VNet** の VPN 接続を切断する。
-- **Source VNet1** と **Recovery VNet2** の VPN 接続と、**Recovery VNet2** と **Azure VNet** の VPN 接続を確立する。
-- **Source VNet2** の VM を **Recovery VNet2** にフェールオーバーする。
+### <a name="after-failover"></a>フェールオーバー後
 
-![フェールオーバー後の Azure 間接続の分離されたアプリケーション](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
+(この例では **Source VNet 2 内の) 1 つのアプリに影響する障害や問題が発生した場合、A 社は、影響を受けたアプリを次のように復旧できます。
 
-上記の分離されたアプリケーションのフェールオーバーを拡張して、含めるアプリケーションとネットワーク接続を増やすことができます。 ソースからターゲットにフェールオーバーする際は、できるだけ似た構成の接続を使用することをお勧めします。
 
-### <a name="further-considerations"></a>その他の考慮事項
+- **Source VNet1** と **Source VNet2** の間と、**Source VNet2** と **Azure VNet** の間の VPN 接続を切断します。
+- **Source VNet1** と **Recovery VNet2** の間と、**Recovery VNet2** と **Azure VNet** の間で、VPN 接続を確立します。
+- **Source VNet2** 内の VM を **Recovery VNet2** にフェールオーバーします。
 
-VPN Gateway ではパブリック IP アドレスとゲートウェイ ホップを使用して接続を確立します。 パブリック IP アドレスを使用しない場合や、ホップが増えることを避けたい場合は、Azure [仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)を使って、[サポートされる Azure リージョン](../virtual-network/virtual-network-manage-peering.md#cross-region)間で仮想ネットワークをピアリングできます。
+![Azure アプリ フェールオーバにおけるリソース](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
 
-## <a name="on-premises-to-azure-connectivity"></a>オンプレミスと Azure の間の接続
 
-2 つ目のシナリオでは、アプリケーション インフラストラクチャの一部を Azure で実行し、残りをオンプレミスで実行している **B 社**について考えます。 ビジネス継続性とコンプライアンス上の理由から、**B 社**は、Azure Site Recovery を使用して、Azure で実行されているアプリケーションを保護することに決めました。
+- この例を拡張し、より多くのアプリケーションとネットワーク接続を含めることができます。 ソースからターゲットにフェールオーバーする際は、できるだけ似た構成の接続を使用することをお勧めします。
+- VPN Gateway ではパブリック IP アドレスとゲートウェイ ホップを使用して接続を確立します。 パブリック IP アドレスを使用しない場合や、ホップの増加を避けたい場合は、[Azure VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)を使用し、[サポートされる Azure リージョン](../virtual-network/virtual-network-manage-peering.md#cross-region)間で仮想ネットワークをピアリングできます。
+
+## <a name="hybrid-resources-full-failover"></a>ハイブリッド リソース: 完全フェールオーバー
+
+このシナリオでは、**B 社**はハイブリッド型の事業を運用しており、アプリケーション インフラストラクチャの一部を Azure で実行し、残りをオンプレミスで実行しています。 
+
+### <a name="before-failover"></a>フェールオーバー前
 
 フェールオーバー前のネットワーク アーキテクチャは、次のとおりです。
-- アプリケーション VM は Azure 東アジアにホストされ、アドレス空間 10.1.0.0/16 で Azure 仮想ネットワークを利用しています。 この仮想ネットワークの名前は **Source VNet** です。
-- アプリケーション ワークロードは 3 つのサブネット、10.1.1.0/24、10.1.2.0/24、10.1.3.0/24 に分散されます。サブネットの名前はそれぞれ、**Subnet 1**、**Subnet 2**、**Subnet 3** です。
-- ターゲット リージョンは Azure 東南アジアで、ソースのアドレス空間とサブネット構成を模倣した復旧用仮想ネットワークがあります。 この仮想ネットワークの名前は **Recovery VNet** です。
-- Azure 東アジアの VM は、ExpressRoute またはサイト間 VPN を介してオンプレミス データセンターに接続されています。
-- 目標復旧時間 (RTO) を短縮するために、B 社は、フェールオーバー前に Azure 東南アジアにある Recovery VNet にゲートウェイをプロビジョニングしました。
-- **B 社**は、レプリケートされたアイテムのターゲット IP アドレスの割り当てと確認を行いました。 この例では、ターゲット IP アドレスは各 VM のソース IP アドレスと同じです。
+
+- アプリケーション VM は、Azure 東アジアでホストされています。
+-  東アジアに、アドレス空間 10.1.0.0/16 の VNet (**Source VNet**) があります。
+    - 東アジアでは、**Source VNet** 内の次の 3 つのサブネットにわたってワークロードを分割しています。
+        - **Subnet 1**: 10.1.1.0/24
+        - **Subnet 2**: 10.1.2.0/24、
+        - **Subnet 3**: 10.1.0.0/16 の Azure 仮想ネットワークを使用する 10.1.3.0/24。 この仮想ネットワークの名前は **Source VNet** です
+ - セカンダリ (ターゲット) リージョンは Azure 東南アジアです。
+    - 東南アジアには、**Source VNet** と同一の復旧用 VNet (**Recovery VNet**) があります。
+- 東アジアの VM は、Azure ExpressRoute またはサイト間 VPN で、オンプレミス データセンターに接続されています。
+- RTO を短縮するために、B 社は、フェールオーバー前に Azure 東南アジアにある Recovery VNet にゲートウェイをプロビジョニングします。
+- B 社は、レプリケートされた VM のターゲット IP アドレスの割り当てと確認を行っています。 ターゲット IP アドレスは、各 VM のソース IP アドレスと同じです。
+
 
 ![フェールオーバー前のオンプレミスと Azure の接続](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover2.png)
 
-### <a name="full-region-failover"></a>リージョン全体のフェールオーバー
+### <a name="after-failover"></a>フェールオーバー後
 
-リージョン障害が発生した場合、**B 社**は、Azure Site Recovery の強力な[復旧計画](site-recovery-create-recovery-plans.md)を利用して、デプロイ全体を迅速かつ簡単に復旧できます。 フェールオーバー前に各 VM のターゲット IP アドレスが既に設定されているため、**B 社**は、フェールオーバーを調整し、下図に示すように、Recovery VNet とオンプレミス データセンターの間の接続を自動的に確立できます。
 
-Azure 東南アジアとオンプレミス データセンターの接続を確立する前に、Azure 東アジアとオンプレミス データセンターの元の接続を切断する必要があります。 オンプレミスのルーティングも、フェールオーバー後にターゲット リージョンとゲートウェイをポイントするように再構成しました。
+ソース リージョンで障害が発生した場合、B 社は、すべてのリソースをターゲット リージョンにフェールオーバーできます。
+
+- フェールオーバーの前にターゲット IP アドレスが既に用意されているため、B 社はフェールオーバーを連携させて、**Recovery VNet** および **Azure VNet** 間のフェールオーバー後に接続を自動的に確立できます。
+- ターゲット リージョンにある 2 つの VNet (**Recovery VNet** と **Azure VNet**) 間の接続は、アプリの要件に応じて、フェールオーバー前、フェールオーバー中 (中間ステップとして)、またはフェールオーバー後に確立できます。 会社は[復旧計画](site-recovery-create-recovery-plans.md)を使用して、接続がいつ確立されるかを指定できます。
+- Azure 東南アジアとオンプレミス データセンターの接続を確立する前に、Azure 東アジアとオンプレミス データセンターの元の接続を切断する必要があります。
+- オンプレミスのルーティングは、フェールオーバー後にターゲット リージョンとゲートウェイを指し示すように再構成されます。
 
 ![フェールオーバー後のオンプレミスと Azure の接続](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover2.png)
 
-### <a name="subnet-failover"></a>Subnet failover
+## <a name="hybrid-resources-isolated-app-failover"></a>ハイブリッド リソース: 分離されているアプリのフェールオーバー
 
-**A 社**で説明した Azure 間接続のシナリオとは異なり、**B 社**のこのケースでは、サブネット レベルのフェールオーバーは実行できません。これは、ソース仮想ネットワークと復旧用仮想ネットワークのアドレス空間が同じであり、ソースとオンプレミスの間の元の接続がアクティブであるためです。
+B 社は、サブネット レベルで分離されているアプリをフェールオーバーできません。 これは、ソース VNet と復旧用 VNet のアドレス空間が同一で、ソースからオンプレミスへの元の接続がアクティブであるためです。
 
-アプリケーションの回復性を確保するために、各アプリケーションは専用の Azure 仮想ネットワークに配置することをお勧めします。 そうすることで、上記のように、アプリケーションを分離してフェールオーバーし、必要なオンプレミスとソースの間の接続をターゲット リージョンにルーティングできます。
+ - アプリの回復性のためには、B 社は各アプリを独自の専用 Azure VNet 内に配置する必要があります。
+ - 各アプリが別個の VNet 内にあれば、B 社は分離されたアプリをフェールオーバーし、ソースの接続をターゲット リージョンにルーティングできます。
 
 ## <a name="next-steps"></a>次の手順
-- 復旧計画の詳細については、[こちら](site-recovery-create-recovery-plans.md)をご覧ください。
+
+[復旧計画](site-recovery-create-recovery-plans.md)について学習します。

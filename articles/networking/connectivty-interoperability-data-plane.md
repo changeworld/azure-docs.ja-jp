@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute、サイト間 VPN、VNET ピアリングの相互運用性 - データ プレーン分析: Azure バックエンド接続機能の相互運用性 | Microsoft Docs'
-description: このページでは、ExpressRoute、サイト間 VPN、VNET ピアリングの機能の相互運用性を分析するために構築されたテスト構成のデータ プレーン分析について説明します｡
+title: 'Azure バックエンド接続機能の相互運用性: データ プレーン分析 | Microsoft Docs'
+description: この記事では、Azure における ExpressRoute、サイト間 VPN、仮想ネットワーク ピアリングの相互運用性を分析する際に使用できるテスト セットアップのデータ プレーン分析について説明します。
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: c9f3824b1e0f44338696ba3c2e434d60eee3af8b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 8b9e5b2b073309f177fa0ce4bb2a2d08009a06ff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49947102"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614415"
 ---
-# <a name="interoperability-of-expressroute-site-to-site-vpn-and-vnet-peering---data-plane-analysis"></a>ExpressRoute、サイト間 VPN、VNET ピアリングの相互運用性 - データ プレーン分析
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure バックエンド接続機能の相互運用性: データ プレーン分析
 
-この記事では､テスト構成のデータ プレーン分析を一通り見てみます｡ テスト構成については､[テスト構成][Setup]を参照してください｡ テスト構成の構成詳細については､｢[テスト構成の構成][Configuration]｣を参照してください｡ テスト構成のコントロール プレーンの分析を確認するには、[コントロール プレーンの分析][Control-Analysis]を参照してください。
+この記事では､[テスト セットアップ][Setup]のデータ プレーン分析について説明します。 [テスト セットアップの構成][Configuration]とテスト セットアップの[コントロール プレーン分析][Control-Analysis]もご覧ください。
 
-データ プレーンの分析では、あるトポロジ内の 1 つのローカル ネットワーク (LAN/VNet) から別のローカル ネットワークへと通過するパケットで使用されるパスについて調べます。 2 つのローカル ネットワーク間のデータ パスは、必ずしも対称でない場合があります。 したがって、この記事ではローカル ネットワークから別のネットワークへの転送パスを、逆方向パスから個別に分析してみます。
+データ プレーンの分析では、あるトポロジ内の 1 つのローカル ネットワーク (LAN または仮想ネットワーク) から別のローカル ネットワークへと移動するパケットが通過したパスについて調べます。 2 つのローカル ネットワーク間のデータ パスは、必ずしも対称ではありません。 したがってこの記事では、逆方向のパスとは異なる、あるローカル ネットワークから別のネットワークへの転送パスについて分析します。
 
-##<a name="data-path-from-hub-vnet"></a>ハブ VNet からのデータ パス
+## <a name="data-path-from-the-hub-vnet"></a>ハブ VNet からのデータ パス
 
-###<a name="path-to-spoke-vnet"></a>スポーク VNet へのパス
+### <a name="path-to-the-spoke-vnet"></a>スポーク VNet へのパス
 
-VNet ピアリングは、ピアリングされている 2 つの VNet 間のネットワーク ブリッジ機能をエミュレートします。 ハブ VNet からスポーク VNet 内の VM への Traceroute 出力を以下に示します。
+仮想ネットワーク (VNet) ピアリングは、ピアリングされている 2 つの VNet 間のネットワーク ブリッジ機能をエミュレートします。 以下に、ハブ VNet からスポーク VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -37,12 +37,14 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-次の画面クリップは、Azure Network Watcher によって表示される、ハブ VNet とスポーク VNet のグラフィカル接続ビューです。
+次の図は、Azure Network Watcher の観点から見た、ハブ VNet とスポーク VNet のグラフィカル接続ビューを示しています。
 
 
 [![1]][1]
 
-###<a name="path-to-branch-vnet"></a>分岐 VNet へのパス
+### <a name="path-to-the-branch-vnet"></a>ブランチ VNet へのパス
+
+以下に、ハブ VNet からブランチ VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -54,17 +56,19 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute では、最初のホップはハブ VNet の VPN GW です。 2 番目のホップは分岐 VNet の VPN GW で、その IP アドレスはハブ VNet 内でアドバタイズされません。 3 番目のホップは、分岐 VNet 上の VM です。
+この traceroute では、最初のホップは、ハブ VNet の Azure VPN Gateway 内にある VPN ゲートウェイです。 2 番目のホップでは、ブランチ VNet の VPN ゲートウェイです。 ブランチ VNet の VPN ゲートウェイの IP アドレスは、ハブ VNet ではアドバタイズされません。 3 番目のホップは、ブランチ VNet 上の VM です。
 
-次の画面クリップは、Azure Network Watcher によって表示される、ハブ VNet と分岐 VNet のグラフィカル接続ビューです。
+次の図は、Network Watcher の観点から見た、ハブ VNet とブランチ VNet のグラフィカル接続ビューを示しています。
 
 [![2]][2]
 
-同じ接続について、次の画面クリップは Azure Network Watcher で表示されるグリッド ビューです。
+同じ接続について、次の図は、Network Watcher でのグリッド ビューを示しています。
 
 [![3]][3]
 
-###<a name="path-to-on-premises-location-1"></a>オンプレミスの場所 1 へのパス
+### <a name="path-to-on-premises-location-1"></a>オンプレミスの場所 1 へのパス
+
+以下に、ハブ VNet からオンプレミスの場所 1 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -77,10 +81,12 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute で、最初のホップは、MSEE への ExpressRoute GW トンネル エンドポイントです。 2 番目と 3 番目のホップはそれぞれ CE ルーターおよびオンプレミスの場所 1 の LAN IP で、これらの IP アドレスはハブ VNet 内でアドバタイズされません。 4 番目のホップは、オンプレミスの場所 1 の VM です。
+この traceroute では、最初のホップは、Microsoft Enterprise Edge Router (MSEE) への Azure ExpressRoute ゲートウェイ トンネル エンドポイントです。 2 番目と 3 番目のホップは、顧客のエッジ (CE) ルーターと、オンプレミスの場所 1 の LAN IP です。 これらの IP アドレスは、ハブ VNet ではアドバタイズされません。 4 番目のホップは、オンプレミスの場所 1 の VM です。
 
 
-###<a name="path-to-on-premises-location-2"></a>オンプレミスの場所 2 へのパス
+### <a name="path-to-on-premises-location-2"></a>オンプレミスの場所 2 へのパス
+
+以下に、ハブ VNet からオンプレミスの場所 2 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.1.31.10
 
@@ -93,9 +99,11 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute で、最初のホップは、MSEE への ExpressRoute GW トンネル エンドポイントです。 2 番目と 3 番目のホップはそれぞれ CE ルーターおよびオンプレミスの場所 2 の LAN IP で、これらの IP アドレスはハブ VNet 内でアドバタイズされません。 4 番目のホップは、オンプレミスの場所 2 の VM です。
+この traceroute では、最初のホップは、MSEE への ExpressRoute ゲートウェイ トンネル エンドポイントです。 2 番目と 3 番目のホップは、CE ルーターと、オンプレミスの場所 2 の LAN IP です。 これらの IP アドレスは、ハブ VNet ではアドバタイズされません。 4 番目のホップは、オンプレミスの場所 2 の VM です。
 
-###<a name="path-to-remote-vnet"></a>リモート VNet へのパス
+### <a name="path-to-the-remote-vnet"></a>リモート VNet へのパス
+
+以下に、ハブ VNet からリモート VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -107,13 +115,15 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute で、最初のホップは、MSEE への ExpressRoute GW トンネル エンドポイントです。 2 番目のホップは、リモート VNet の GW IP です。 2 番目のホップの IP 範囲はハブ VNet 内でアドバタイズされません。 3 番目のホップは、リモート VNet 上の VM です。
+この traceroute では、最初のホップは、MSEE への ExpressRoute ゲートウェイ トンネル エンドポイントです。 2 番目のホップは、リモート VNet のゲートウェイ IP です。 2 番目のホップの IP 範囲は、ハブ VNet ではアドバタイズされません。 3 番目のホップは、リモート VNet 上の VM です。
 
-##<a name="data-path-from-spoke-vnet"></a>スポーク VNet からのデータ パス
+## <a name="data-path-from-the-spoke-vnet"></a>スポーク VNet からのデータ パス
 
-スポーク VNet はハブ VNet のネットワーク ビューを共有していることを思い出してください。 VNet ピアリングによって、スポーク VNet は、ハブ VNet のリモート ゲートウェイ接続をそれらがスポーク VNet に直接接続されているかのように使用します。
+スポーク VNet は、ハブ VNet のネットワーク ビューを共有しています。 スポーク VNet は VNet ピアリングによって、ハブ VNet のリモート ゲートウェイ接続を、スポーク VNet に直接接続されているかのように使用します。
 
-###<a name="path-to-hub-vnet"></a>ハブ VNet へのパス
+### <a name="path-to-the-hub-vnet"></a>ハブ VNet へのパス
+
+以下に、スポーク VNet からハブ VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -123,7 +133,9 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-###<a name="path-to-branch-vnet"></a>分岐 VNet へのパス
+### <a name="path-to-the-branch-vnet"></a>ブランチ VNet へのパス
+
+以下に、スポーク VNet からブランチ VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -135,24 +147,11 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute では、最初のホップはハブ VNet の VPN GW です。 2 番目のホップは分岐 VNet の VPN GW で、その IP アドレスはハブ/スポーク VNet 内でアドバタイズされません。 3 番目のホップは、分岐 VNet 上の VM です。
+この traceroute では、最初のホップは、ハブ VNet の VPN ゲートウェイです。 2 番目のホップでは、ブランチ VNet の VPN ゲートウェイです。 ブランチ VNet の VPN ゲートウェイの IP アドレスは、ハブ/スポーク VNet ではアドバタイズされません。 3 番目のホップは、ブランチ VNet 上の VM です。
 
-###<a name="path-to-on-premises-location-1"></a>オンプレミスの場所 1 へのパス
+### <a name="path-to-on-premises-location-1"></a>オンプレミスの場所 1 へのパス
 
-    C:\Users\rb>tracert 10.2.30.10
-
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
-
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
-
-    Trace complete.
-
-上記の traceroute で、最初のホップは、MSEE へのハブ VNet の ExpressRoute GW トンネル エンドポイントです。 2 番目と 3 番目のホップはそれぞれ CE ルーターおよびオンプレミスの場所 1 の LAN IP で、これらの IP アドレスはハブ/スポーク VNet 内でアドバタイズされません。 4 番目のホップは、オンプレミスの場所 1 の VM です。
-
-###<a name="path-to-on-premises-location-2"></a>オンプレミスの場所 2 へのパス
+以下に、スポーク VNet からオンプレミスの場所 1 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -165,9 +164,29 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute で、最初のホップは、MSEE へのハブ VNet の ExpressRoute GW トンネル エンドポイントです。 2 番目と 3 番目のホップはそれぞれ CE ルーターおよびオンプレミスの場所 2 の LAN IP で、これらの IP アドレスはハブ/スポーク VNet 内でアドバタイズされません。 4 番目のホップは、オンプレミスの場所 2 の VM です。
+この traceroute では、最初のホップは、ハブ VNet の、MSEE への ExpressRoute ゲートウェイ トンネル エンドポイントです。 2 番目と 3 番目のホップは、CE ルーターと、オンプレミスの場所 1 の LAN IP です。 これらの IP アドレスは、ハブ/スポーク VNet ではアドバタイズされません。 4 番目のホップは、オンプレミスの場所 1 の VM です。
 
-###<a name="path-to-remote-vnet"></a>リモート VNet へのパス
+### <a name="path-to-on-premises-location-2"></a>オンプレミスの場所 2 へのパス
+
+以下に、スポーク VNet からオンプレミスの場所 2 内の VM への traceroute 出力を示します。
+
+
+    C:\Users\rb>tracert 10.2.30.10
+
+    Tracing route to 10.2.30.10 over a maximum of 30 hops
+
+      1    24 ms     2 ms     3 ms  10.10.30.132
+      2     *        *        *     Request timed out.
+      3     *        *        *     Request timed out.
+      4     3 ms     2 ms     2 ms  10.2.30.10
+
+    Trace complete.
+
+この traceroute では、最初のホップは、ハブ VNet の、MSEE への ExpressRoute ゲートウェイ トンネル エンドポイントです。 2 番目と 3 番目のホップは、CE ルーターと、オンプレミスの場所 2 の LAN IP です。 これらの IP アドレスは、ハブ/スポーク VNet ではアドバタイズされません。 4 番目のホップは、オンプレミスの場所 2 の VM です。
+
+### <a name="path-to-the-remote-vnet"></a>リモート VNet へのパス
+
+以下に、スポーク VNet からリモート VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -179,11 +198,13 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute で、最初のホップは、MSEE へのハブ VNet の ExpressRoute GW トンネル エンドポイントです。 2 番目のホップは、リモート VNet の GW IP です。 2 番目のホップの IP 範囲はハブ/スポーク VNet 内でアドバタイズされません。 3 番目のホップは、リモート VNet 上の VM です。
+この traceroute では、最初のホップは、ハブ VNet の、MSEE への ExpressRoute ゲートウェイ トンネル エンドポイントです。 2 番目のホップは、リモート VNet のゲートウェイ IP です。 2 番目のホップの IP 範囲は、ハブ/スポーク VNet ではアドバタイズされません。 3 番目のホップは、リモート VNet 上の VM です。
 
-##<a name="data-path-from-branch-vnet"></a>分岐の VNet からのデータ パス
+## <a name="data-path-from-the-branch-vnet"></a>ブランチの VNet からのデータ パス
 
-###<a name="path-to-hub-vnet"></a>ハブ VNet へのパス
+### <a name="path-to-the-hub-vnet"></a>ハブ VNet へのパス
+
+以下に、ブランチ VNet からハブ VNet 内の VM への traceroute 出力を示します。
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -195,9 +216,11 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute では、最初のホップは分岐 VNet の VPN GW です。 2 番目のホップはハブ VNet の VPN GW で、その IP アドレスはリモート VNet 内でアドバタイズされません。 3 番目のホップは、ハブ VNet 上の VM です。
+この traceroute では、最初のホップはブランチ VNet の VPN ゲートウェイです。 2 番目のホップは、ハブ VNet の VPN ゲートウェイです。 ハブ VNet の VPN ゲートウェイの IP アドレスは、リモート VNet ではアドバタイズされません。 3 番目のホップは、ハブ VNet 上の VM です。
 
-###<a name="path-to-spoke-vnet"></a>スポーク VNet へのパス
+### <a name="path-to-the-spoke-vnet"></a>スポーク VNet へのパス
+
+以下に、ブランチ VNet からスポーク VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -209,9 +232,11 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute では、最初のホップは分岐 VNet の VPN GW です。 2 番目のホップはハブ VNet の VPN GW で、その IP アドレスはリモート VNet 内でアドバタイズされず、3 番目のホップはスポーク VNet 上の VM で。
+この traceroute では、最初のホップはブランチ VNet の VPN ゲートウェイです。 2 番目のホップは、ハブ VNet の VPN ゲートウェイです。 ハブ VNet の VPN ゲートウェイの IP アドレスは、リモート VNet ではアドバタイズされません。 3 番目のホップは、スポーク VNet 上の VM です。
 
-###<a name="path-to-on-premises-location-1"></a>オンプレミスの場所 1 へのパス
+### <a name="path-to-on-premises-location-1"></a>オンプレミスの場所 1 へのパス
+
+以下に、ブランチ VNet からオンプレミスの場所 1 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -225,11 +250,11 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute では、最初のホップは分岐 VNet の VPN GW です。 2 番目のホップはハブ VNet の VPN GW で、その IP アドレスはリモート VNet 内でアドバタイズされません。 3 番目のホップは、プライマリ CE ルーター上の VPN トンネルの終了ポイントです。 4 番目のホップは、CE ルーターからアドバタイズされないオンプレミスの場所 1 の LAN IP アドレスの内部 IP アドレスです。 5 番目のホップは、オンプレミスの場所 1 の宛先 VM です。
+この traceroute では、最初のホップはブランチ VNet の VPN ゲートウェイです。 2 番目のホップは、ハブ VNet の VPN ゲートウェイです。 ハブ VNet の VPN ゲートウェイの IP アドレスは、リモート VNet ではアドバタイズされません。 3 番目のホップは、プライマリ CE ルーター上の VPN トンネルの終了ポイントです。 4 番目のホップは、オンプレミスの場所 1 の内部 IP アドレスです。 この LAN IP アドレスは、CE ルーターの外部ではアドバタイズされません。 5 番目のホップは、オンプレミスの場所 1 の宛先 VM です。
 
-###<a name="path-to-on-premises-location-2-and-remote-vnet"></a>オンプレミスの場所 2 およびリモート VNet へのパス
+### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>オンプレミスの場所 2 およびリモート VNet へのパス
 
-コントロール プレーンの分析で以前説明したように、分岐 VNet はネットワーク構成に従い、オンプレミスの場所 2 およびリモート VNet への可視性がありません。 次の ping の結果によって事実を確認します。 
+コントロール プレーンの分析で説明しているように、ネットワーク構成に従って、ブランチ VNet にはオンプレミスの場所 2 やリモート VNet への可視性がありません。 次の ping の結果によって以下を確認します。 
 
     C:\Users\rb>ping 10.1.31.10
 
@@ -253,9 +278,11 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
     Ping statistics for 10.17.30.4:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-##<a name="data-path-from-on-premises-location-1"></a>オンプレミスの場所 1 からのデータ パス
+## <a name="data-path-from-on-premises-location-1"></a>オンプレミスの場所 1 からのデータ パス
 
-###<a name="path-to-hub-vnet"></a>ハブ VNet へのパス
+### <a name="path-to-the-hub-vnet"></a>ハブ VNet へのパス
+
+以下に、オンプレミスの場所 1 からハブ VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -269,15 +296,15 @@ VNet ピアリングは、ピアリングされている 2 つの VNet 間のネ
 
     Trace complete.
 
-上記の traceroute で、最初の 2 つのホップはオンプレミス ネットワークの一部です。 3 番目のホップは、CE ルーターに接続するプライマリ MSEE インターフェイスです。 4 番目のホップは、ハブ VNet の ExpressRoute G/W で、その IP 範囲はオンプレミス ネットワークにアドバタイズされません。 5 番目のホップは宛先 VM です。
+この traceroute では、最初の 2 つのホップはオンプレミス ネットワークの一部です。 3 番目のホップは、CE ルーターに接続するプライマリ MSEE インターフェイスです。 4 番目のホップは、ハブ VNet の ExpressRoute ゲートウェイです。 ハブ VNet の ExpressRoute ゲートウェイの IP 範囲は、オンプレミス ネットワークにアドバタイズされません。 5 番目のホップは宛先 VM です。
 
-Azure Network Watcher では、Azure を中心としたビューのみを提供します。 そのため、オンプレミス中心のビューでは Azure Network Performance Monitor (NPM) を使用しました。 NPM では、Azure の外部ネットワークにあるサーバーにエージェントをインストールして、データ パスの分析を行うことができます。
+Network Watcher で提供されるビューは、Azure を中心としたものだけです。 オンプレミスの観点については、Azure Network Performance Monitor を使用します。 Network Performance Monitor は、データ パス分析のために、Azure 外のネットワークにあるサーバーにインストールできるエージェントを提供します。
 
-次の画面クリップは、オンプレミスの場所 1 の VM から ExpressRoute 経由でハブ VNet の VM に接続したトポロジ ビューを示します。
+次の図は、オンプレミスの場所 1 の VM から ExpressRoute を介してハブ VNet 上の VM に接続するトポロジのビューを示しています。
 
 [![4]][4]
 
-テスト セットアップでは、サイト間 VPN をオンプレミスの場所 1 とハブ VNet 間の ExpressRoute 接続のバックアップ接続として使用したことを思い出してください。 データパスをテストするために、MSEE に接続する CE インターフェイスをシャットダウンすることによって、オンプレミスの場所 1 のプライマリ CE ルーターと、対応する MSEE の間で ExpressRoute リンク障害を発生させてみましょう。
+前述したように、テスト セットアップでは、サイト間 VPN を、オンプレミスの場所 1 とハブ VNet 間の ExpressRoute のバックアップ接続として使用しています。 バックアップ データ パスをテストするために、オンプレミスの場所 1 のプライマリ CE ルーターと、対応する MSEE の間で、ExpressRoute のリンク障害を発生させてみましょう。 ExpressRoute のリンク障害を発生させるには、MSEE に接続している CE インターフェイスをシャット ダウンします。
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -289,13 +316,15 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
 
     Trace complete.
 
-次の画面クリップは、ExpressRoute 接続がダウンした場合にオンプレミスの場所 1 の VM からサイト間 VPN 接続経由でハブ VNet の VM に接続したトポロジ ビューを示します。
+次の図は、ExpressRoute 接続がダウンしたときに、オンプレミスの場所 1 の VM からサイト間 VPN 接続を介してハブ VNet 上の VM に接続するトポロジのビューを示しています。
 
 [![5]][5]
 
-###<a name="path-to-spoke-vnet"></a>スポーク VNet へのパス
+### <a name="path-to-the-spoke-vnet"></a>スポーク VNet へのパス
 
-スポーク VNet に対するデータパス分析を行うために ExpressRoute のプライマリ接続を元に戻します。
+以下に、オンプレミスの場所 1 からスポーク VNet 内の VM への traceroute 出力を示します。
+
+スポーク VNet に向うデータ パスの分析を行うため、ExpressRoute のプライマリ接続を元に戻しましょう。
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -309,9 +338,11 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
 
     Trace complete.
 
-残りのデータパス分析のために ExpressRoute-1 のプライマリ接続を起動します。
+残りのデータ パス分析のために、プライマリの ExpressRoute 1 接続を起動します。
 
-###<a name="path-to-branch-vnet"></a>分岐 VNet へのパス
+### <a name="path-to-the-branch-vnet"></a>ブランチ VNet へのパス
+
+以下に、オンプレミスの場所 1 からブランチ VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -323,9 +354,9 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
 
     Trace complete.
 
-###<a name="path-to-on-premises-location-2"></a>オンプレミスの場所 2 へのパス
+### <a name="path-to-on-premises-location-2"></a>オンプレミスの場所 2 へのパス
 
-コントロール プレーンの分析で以前説明したように、オンプレミスの場所 1 はネットワーク構成に従い、オンプレミスの場所 2 への可視性がありません。 次の ping の結果によって事実を確認します。 
+[コントロール プレーンの分析][Control-Analysis]で説明しているように、ネットワーク構成に従って、オンプレミスの場所 1 にはオンプレミスの場所 2 への可視性がありません。 次の ping の結果によって以下を確認します。 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -338,7 +369,9 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
     Ping statistics for 10.1.31.10:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-###<a name="path-to-remote-vnet"></a>リモート VNet へのパス
+### <a name="path-to-the-remote-vnet"></a>リモート VNet へのパス
+
+以下に、オンプレミスの場所 1 からリモート VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -352,9 +385,11 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
 
     Trace complete.
 
-##<a name="data-path-from-on-premises-location-2"></a>オンプレミスの場所 2 からのデータ パス
+## <a name="data-path-from-on-premises-location-2"></a>オンプレミスの場所 2 からのデータ パス
 
-###<a name="path-to-hub-vnet"></a>ハブ VNet へのパス
+### <a name="path-to-the-hub-vnet"></a>ハブ VNet へのパス
+
+以下に、オンプレミスの場所 2 からハブ VNet 内の VM への traceroute 出力を示します。
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -368,7 +403,9 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
 
     Trace complete.
 
-###<a name="path-to-spoke-vnet"></a>スポーク VNet へのパス
+### <a name="path-to-the-spoke-vnet"></a>スポーク VNet へのパス
+
+以下に、オンプレミスの場所 2 からスポーク VNet 内の VM への traceroute 出力を示します。
 
     C:\Windows\system32>tracert 10.11.30.4
 
@@ -381,13 +418,15 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
 
     Trace complete.
 
-###<a name="path-to-branch-vnet-on-premises-location-1-and-remote-vnet"></a>分岐 VNet、オンプレミスの場所 1、およびリモート VNet へのパス
+### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>ブランチ VNet、オンプレミスの場所 1、およびリモート VNet へのパス
 
-コントロール プレーンの分析で以前説明したように、オンプレミスの場所 1 はネットワーク構成に従い、分岐 VNet、オンプレミスの場所 1、およびリモート VNet への可視性がありません。 
+[コントロール プレーンの分析][Control-Analysis]で説明しているように、ネットワーク構成に従って、オンプレミスの場所 1 には、ブランチ VNet、オンプレミスの場所 1、リモート VNet への可視性がありません。 
 
-##<a name="data-path-from-remote-vnet"></a>リモート VNet からのデータ パス
+## <a name="data-path-from-the-remote-vnet"></a>リモート VNet からのデータ パス
 
-###<a name="path-to-hub-vnet"></a>ハブ VNet へのパス
+### <a name="path-to-the-hub-vnet"></a>ハブ VNet へのパス
+
+以下に、リモート VNet からハブ VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -399,7 +438,9 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
 
     Trace complete.
 
-###<a name="path-to-spoke-vnet"></a>スポーク VNet へのパス
+### <a name="path-to-the-spoke-vnet"></a>スポーク VNet へのパス
+
+以下に、リモート VNet からスポーク VNet 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -411,12 +452,13 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
 
     Trace complete.
 
-### <a name="path-to-branch-vnet-and-on-premises-location-2"></a>分岐 VNet およびオンプレミスの場所 2 へのパス
+### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>ブランチ VNet およびオンプレミスの場所 2 へのパス
 
-コントロール プレーンの分析で以前説明したように、リモート VNet はネットワーク構成に従い、分岐 VNet およびオンプレミスの場所 2 への可視性がありません。 
-
+[コントロール プレーンの分析][Control-Analysis]で説明しているように、ネットワーク構成に従って、リモート VNet には、ブランチ VNet やオンプレミスの場所 2 への可視性がありません。 
 
 ### <a name="path-to-on-premises-location-1"></a>オンプレミスの場所 1 へのパス
+
+以下に、リモート VNet からオンプレミスの場所 1 内の VM への traceroute 出力を示します。
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -430,46 +472,49 @@ Azure Network Watcher では、Azure を中心としたビューのみを提供�
     Trace complete.
 
 
-## <a name="further-reading"></a>参考情報
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続の併用
 
-### <a name="using-expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続を組み合わせて使用する
+###  <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute 上のサイト間 VPN
 
-####<a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute 上のサイト間 VPN
+ExpressRoute Microsoft ピアリングを使用してサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet との間でプライベートにデータを交換することができます。 この構成を使用すれば、機密性、信頼性、整合性が確保されたデータ交換を実現できます。 また、このデータ交換には、アンチリプレイ対策も講じられています。 ExpressRoute Microsoft ピアリングを使用してトンネル モードでサイト間 IPsec VPN を構成する方法の詳細については、[ExpressRoute Microsoft ピアリング上のサイト間 VPN][S2S-Over-ExR] に関するページを参照してください。 
 
-ExpressRoute Microsoft ピアリング上にサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet との間で、機密性とアンチリプレイ、信頼性、整合性を確保しながらプライベートにデータを交換することができます。 ExpressRoute Microsoft ピアリング上にトンネル モードでサイト間 IPsec VPN を構成する方法についての詳細は、[ExpressRoute Microsoft ピアリング上にサイト間 VPNを構成する方法][S2S-Over-ExR]に関するページを参照してください。 
+Microsoft ピアリングを使用したサイト間 VPN 構成に伴う主な制限はスループットです。 IPsec トンネル上では、VPN ゲートウェイの容量によりスループットが制限されます。 VPN ゲートウェイのスループットは、ExpressRoute のスループットよりも低くなります｡ このシナリオでは、高いセキュリティが要求されるトラフィックには IPsec トンネルを使用し、それ以外のすべてのトラフィックにはプライベート ピアリングを使用することで、ExpressRoute の帯域幅使用率を最適化することができます。
 
-Microsoft ピアリング上に S2S VPN を構成することに伴う重要な制限はスループットです。 IPsec トンネル上では、VPN GW の容量によりスループットが制限されます。 VPN GW のスループットは、ExpressRoute のスループットよりも低下します｡ そのようなシナリオでは、高いセキュリティが要求されるトラフィックには IPsec トンネルを使用し、それ以外のトラフィックにはすべてプライベート ピアリングを使用することで、ExpressRoute の帯域幅使用率を最適化することができるでしょう。
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>ExpressRoute の安全なフェールオーバー パスとしてのサイト間 VPN
 
-#### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>ExpressRoute のセキュアなフェールオーバー パスとしてのサイト間 VPN
-ExpressRoute は、高可用性を確保するための冗長回線ペアとして提供されます。 複数の Azure リージョンに geo 冗長の ExpressRoute 接続を構成することができます。 また、ここで紹介したテスト構成のように、特定の Azure リージョン内で ExpressRoute 接続のフェールオーバー パスを設けたければ、サイト間 VPN を使用することができます。 ExpressRoute と S2S VPN の両方に同じプレフィックスがアドバタイズされた場合、ExpressRoute は S2S VPN よりも優先されます。 ExpressRoute と S2S VPN との間で非対称なルーティングを回避するために、オンプレミス ネットワーク構成でも、ExpressRoute を S2S VPN 接続よりも優先するように構成する必要があります。
+ExpressRoute は、高可用性を確保する冗長回線ペアとしての役割を果たします。 異なる Azure リージョンで geo 冗長 ExpressRoute 接続を構成することができます。 また、ここで紹介したテスト セットアップのように、任意の Azure リージョン内でサイト間 VPN を使用して、ExpressRoute 接続のフェールオーバー パスを作成することができます。 ExpressRoute とサイト間 VPN の両方に同じプレフィックスがアドバタイズされた場合、Azure では ExpressRoute が優先されます。 ExpressRoute とサイト間 VPN との間で非対称なルーティングを回避するために、オンプレミス ネットワーク側も、ExpressRoute をサイト間 VPN 接続よりも優先して使用するように構成する必要があります。
 
-ExpressRoute とサイト間 VPN が共存する接続を構成する方法についての詳細は、[ExpressRoute とサイト間の共存接続][ExR-S2S-CoEx]に関するページを参照してください。
+ExpressRoute とサイト間 VPN が共存する接続を構成する方法の詳細については、[ExpressRoute とサイト間の共存][ExR-S2S-CoEx]に関するページを参照してください。
 
-### <a name="extending-backend-connectivity-to-spoke-vnets-and-branch-locations"></a>スポーク VNET と分岐先へのバックエンド接続の延長
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>スポーク VNet とブランチの場所へのバックエンド接続の拡張
 
-#### <a name="spoke-vnet-connectivity-using-vnet-peering"></a>VNET ピアリングを使用したスポーク VNET 接続
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet ピアリングを使用したスポーク VNet 接続
 
-Hub-and-spoke VNET アーキテクチャは広く利用されています｡ Azure ではこのハブは仮想ネットワーク (VNet) であり､オンプレミスネットワークに接続しているスポーク VNET 間の接続の中心点の働きをします｡ スポークは、ハブと相互接続された VNet であり、ワークロードを分離する目的で使用できます。 オンプレミスのデータセンターとハブとの間のトラフィックは、ExpressRoute または VPN 接続を経由して送信されます。 このアーキテクチャの詳細については、[ハブ アンド スポーク アーキテクチャ][Hub-n-Spoke]に関するページを参照してください。
+ハブ アンド スポークの VNet アーキテクチャは、広く利用されています。 ハブは、Azure 内の VNet であり、スポーク VNet とオンプレミス ネットワークをつなぐ接続の中央拠点として機能します。 スポークはハブとピアリングする VNet であり、ワークロードの分離に利用できます。 オンプレミスのデータセンターとハブとの間のトラフィックは、ExpressRoute または VPN 接続を経由して送信されます。 このアーキテクチャの詳細については、「[Azure にハブスポーク ネットワーク トポロジを実装する][Hub-n-Spoke]」を参照してください。
 
-スポーク VNet は、同じリージョン内の VNet ピアリングを通じてハブ VNet ゲートウェイ (VPN ゲートウェイと ExpressRoute ゲートウェイの両方) を使用し、リモート ネットワークと通信を行うことができます。
+スポーク VNet は、リージョン内の VNet ピアリングでハブ VNet ゲートウェイ (VPN ゲートウェイと ExpressRoute ゲートウェイの両方) を使用し、リモート ネットワークと通信できます。
 
-#### <a name="branch-vnet-connectivity-using-site-to-site-vpn"></a>サイト間 VPN を使用した分岐 VNet 接続
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>サイト間 VPN を使用したブランチ VNet 接続
 
-分岐 VNet (異なるリージョンに存在) とオンプレミス ネットワークとをハブ VNet 経由で互いに通信させたい場合、Azure のネイティブ ソリューションは VPN を使用したサイト間 VPN 接続になります。 ハブにおけるルーティングには NVA を使用する選択肢もあります。
+異なるリージョンにあるブランチ VNet と、オンプレミス ネットワークを、ハブ VNet を介して相互に通信させたい場合があります。 この構成に対する Azure のネイティブ ソリューションは、VPN を使用したサイト間 VPN 接続です。 その他には、ネットワーク仮想アプライアンス (NVA) をハブでのルーティングに使用する方法があります。
 
-VPN ゲートウェイの構成については､[VPN Gateway の構成][VPN]に関するページを参照してください。 高可用性の NVA のデプロイについては､[高可用性のネットワーク仮想アプライアンスをデプロイする][Deploy-NVA]を参照してください。
+詳細については、「[VPN ゲートウェイとは][VPN]」および[高可用性 NVA のデプロイ][Deploy-NVA]に関するページを参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 
-ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数や、ExpressRoute 回線に接続できる ExpressRoute ゲートウェイの数など、ExpressRoute のスケーリングに関するその他の制限については、[ExpressRoute FAQ][ExR-FAQ] を参照してください
+[ExpressRoute の FAQ][ExR-FAQ] を参照し、以下を行います。
+-   ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数について学習します。
+-   ExpressRoute 回線に接続できる ExpressRoute ゲートウェイの数について学習します。
+-   ExpressRoute のスケールの上限に関するその他の情報について学習します。
 
 
 <!--Image References-->
 [1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "ハブ VNet からスポーク VNet への接続の Network Watcher ビュー"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "ハブ VNet から分岐 VNet への接続の Network Watcher ビュー"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "ハブ VNet から分岐 VNet への接続の Network Watcher グリッド ビュー"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "ハブ VNet からブランチ VNet への接続の Network Watcher ビュー"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "ハブ VNet からブランチ VNet への接続の Network Watcher グリッド ビュー"
 [4]: ./media/backend-interoperability/Loc1-HubVM.jpg "場所 1 の VM から ExpressRoute 1 経由でハブ VNet に接続するときの Network Performance Monitor ビュー"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "場所 1 の VM から S2S VPN 経由でハブ VNet に接続するときの Network Performance Monitor ビュー"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "場所 1 の VM からサイト間 VPN 経由でハブ VNet に接続するときの Network Performance Monitor ビュー"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
@@ -486,7 +531,5 @@ ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数や�
 [Hub-n-Spoke]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 [Deploy-NVA]: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha
 [VNet-Config]: https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering
-
-
 
 

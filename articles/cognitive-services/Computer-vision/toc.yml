@@ -162,7 +162,7 @@ items:
     href: https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739
   - name: SDK
     items:
-    - name: Windows
+    - name: " Windows"
       href: https://github.com/Microsoft/Cognitive-vision-windows
     - name: Node.js
       href: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules
@@ -184,17 +184,17 @@ items:
     href: https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/430309-computer-vision-api
+  - name: カテゴリの分類
+    href: Category-Taxonomy.md
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+    href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: カテゴリの分類
-    href: Category-Taxonomy.md
-ms.openlocfilehash: decb06feda53ea2b43eb9954aa5976a86239d7de
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
+ms.openlocfilehash: 1dfca8cfb4a43f65c9999a02afdf670cb99032ad
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632375"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276093"

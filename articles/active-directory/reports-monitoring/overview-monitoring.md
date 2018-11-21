@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 監視とは (プレビュー) | Microsoft Docs
+title: Azure Active Directory 監視とは  (プレビュー) | Microsoft Docs
 description: Azure Active Directory 監視の概要について説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 82cd29cf1a635d1cd613d289a5d8db6ef54ee661
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 0afa4f85f443789d1ce7e79d0708967e308a4683
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49398742"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623202"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>Azure Active Directory 監視とは (プレビュー)
 
@@ -32,7 +32,6 @@ Azure Active Directory (Azure AD) 監視を使用すると、Azure AD のアク�
 - Azure ストレージ アカウント。
 - Azure イベント ハブ。Splunk および Sumologic のインスタンスと統合することができます。
 - Azure Log Analytics ワークスペース。このワークスペースで、データの分析や、特定のイベントのダッシュボードとアラートの作成を行うことができます。
-
 
 ## <a name="diagnostic-settings-configuration"></a>診断設定を構成する
 
@@ -53,7 +52,7 @@ Azure AD アクティビティ ログの監視設定を構成するには、ま�
 
 ## <a name="stream-logs-to-event-hub"></a>ログをイベント ハブにストリーミングする
 
-ログを Azure イベント ハブにルーティングすることで、Sumologic や Splunk などのサードパーティの SIEM ツールと統合することができます。 この統合によって、Azure AD のアクティビティ ログ データと、SIEM によって管理されている他のデータを組み合わせることができます。その結果、より豊富な環境分析情報を得ることができます。 ログをイベント ハブにストリーム配信する方法については、[こちら](tutorial-azure-monitor-stream-logs-to-event-hub.md)を参照してください。
+ログを Azure イベント ハブにルーティングすることで、Sumologic や Splunk などのサードパーティの SIEM ツールと統合することができます。 この統合によって、Azure AD のアクティビティ ログ データと、SIEM によって管理されている他のデータを組み合わせ、より豊富な環境分析情報を提供することができます。 ログをイベント ハブにストリーム配信する方法については、[こちら](tutorial-azure-monitor-stream-logs-to-event-hub.md)を参照してください。
 
 ## <a name="send-logs-to-log-analytics"></a>ログを Log Analytics に送信する
 

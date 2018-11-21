@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory レポートの概要 | Microsoft Docs
+title: Azure Active Directory レポートの概要  | Microsoft Docs
 description: Azure Active Directory レポートの概要について説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,20 +13,19 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 01/15/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 220f27ccf2d3eaefd8347e1d52824be2d601d9c9
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 0c3c9b23ac3383eb7e2eda256af4fb92f7f5e0b5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364396"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622161"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory レポートの概要
 
-Azure Active Directory レポートを通じて、自分が管理する環境の状態に関する分析情報を得ることができます。  
-レポートから得たデータによって次のことが可能となります。
+Azure Active Directory (Azure AD) レポートを使用すると、ご利用の環境におけるアクティビティを包括的に把握することができます。 レポートから得たデータによって次のことが可能となります。
 
 - 管理下にあるユーザーがアプリとサービスをどのように利用しているかを明らかにする。
 - 自分が管理している環境の正常性に影響する潜在的リスクを検出する。
@@ -34,27 +33,25 @@ Azure Active Directory レポートを通じて、自分が管理する環境の
 
 このレポート機能のアーキテクチャは、大きく次の 2 つの要素から成ります。
 
-- セキュリティ レポート
-- アクティビティ レポート
+- [セキュリティ レポート](#security-reports)
+- [アクティビティ レポート](#activity-reports)
 
 ![レポート](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>セキュリティ レポート
 
-Azure Active Directory のセキュリティ レポートは、組織の ID 保護に役立てることができます。  
-Azure Active Directory には、次の 2 種類のセキュリティ レポートがあります。
+セキュリティ レポートは、組織の ID 保護に役立てることができます。 セキュリティ レポートには次の 2 種類があります。
 
 - **リスクのフラグ付きユーザー** - [リスクのフラグ付きユーザー セキュリティ レポート](concept-user-at-risk.md)では、セキュリティが侵害されている可能性のあるユーザー アカウントの概要を把握することができます。
 
 - **危険なサインイン** - [危険なサインイン セキュリティ レポート](concept-risky-sign-ins.md)は、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
 
-**セキュリティ レポートにアクセスするために必要な Azure AD ライセンス**  
+### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>セキュリティ レポートにアクセスするために必要な Azure AD ライセンス  
 
-"リスクのフラグ付きユーザー" レポートと "危険なサインイン" レポートは、Azure Active Directory の全エディションで利用できます。  
-ただしエディションによってレポートの粒度が異なります。 
+"リスクのフラグ付きユーザー" レポートと "危険なサインイン" レポートは、Azure AD の全エディションで利用できます。 ただしエディションによってレポートの粒度が異なります。 
 
-- リスクのフラグ付きユーザーと危険なサインインは、**Azure Active Directory の Free エディションと Basic エディション**でも一覧表示できます。 
+- リスクのフラグ付きユーザーと危険なサインインは、**Azure Active Directory の Free エディションと Basic エディション**で一覧表示できます。 
 
 - **Azure Active Directory Premium 1** エディションではこのモデルが拡張され、各レポートについて検出された、基になるリスク イベントの一部を調べることができます。 
 
@@ -63,14 +60,16 @@ Azure Active Directory には、次の 2 種類のセキュリティ レポー�
 
 ## <a name="activity-reports"></a>アクティビティ レポート
 
-Azure Active Directory には、次の 2 種類のアクティビティ レポートがあります。
+アクティビティ レポートを使用すると、組織内のユーザーの行動が把握しやすくなります。 Azure AD には、次の 2 種類のアクティビティ レポートがあります。
 
 - **監査ログ** - テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 
 - **サインイン** -  監査ログ レポートによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で明らかにすることができます。
 
 
-**監査ログ レポート**から得られるシステム アクティビティの記録は、コンプライアンスに利用することができます。 このデータを使用して、次のような一般的なシナリオに対処することができます。
+### <a name="audit-logs-report"></a>監査ログ レポート 
+
+[監査ログ レポート](concept-audit-logs.md)から得られるシステム アクティビティの記録は、コンプライアンスに利用することができます。 このデータを使用して、次のような一般的なシナリオに対処することができます。
 
 - テナント内のだれかが管理者グループにアクセスした。 だれがアクセス権を与えたのか。 
 
@@ -79,28 +78,25 @@ Azure Active Directory には、次の 2 種類のアクティビティ レポ�
 - テナント内でパスワード リセットが何回実行されたかを知りたい。
 
 
-**監査ログ レポートにアクセスするために必要な Azure AD ライセンス**  
+#### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>監査ログ レポートにアクセスするために必要な Azure AD ライセンス  
 
-監査ログ レポートは、自分がライセンスを所有している機能に関して利用できます。 特定の機能のライセンスがある場合、その機能の監査ログ情報にもアクセスすることができます。
+監査ログ レポートは、自分がライセンスを所有している機能に関して利用できます。 特定の機能のライセンスがある場合、その機能の監査ログ情報にもアクセスすることができます。 詳細については、[Azure Active Directory の機能と働き](https://www.microsoft.com/cloud-platform/azure-active-directory-features)に関するページを参照してください。   
 
-詳細については、「[Azure Active Directory の機能と働き](https://www.microsoft.com/cloud-platform/azure-active-directory-features)」の「**Free、Basic、および Premium エディションの一般公開されている機能の比較**」を参照してください。   
+### <a name="sign-ins-report"></a>サインイン レポート
 
-
-**サインイン アクティビティ レポート**によって、次のような疑問に対する答えを見つけることができます。
+[サインイン レポート](concept-sign-ins.md)によって、次のような疑問に対する答えを見つけることができます。
 
 - ユーザーのサインインにどのようなパターンがあるか。
 - 1 週間で何人のユーザーがユーザー サインインを行ったか。
 - これらのサインインはどのような状態か。
 
-
-**サインイン アクティビティ レポートにアクセスするために必要な Azure AD ライセンス**  
+#### <a name="what-azure-ad-license-do-you-need-to-access-the-sign-ins-activity-report"></a>サインイン アクティビティ レポートにアクセスするために必要な Azure AD ライセンス  
 
 サインイン アクティビティ レポートにアクセスするためには、ご利用のテナントに Azure AD Premium ライセンスが関連付けられている必要があります。
 
 ## <a name="programmatic-access"></a>プログラムによるアクセス
 
-Azure Active Directory レポートでは、ユーザー インターフェイスからだけでなく、レポート データに[プログラムからアクセス](concept-reporting-api.md)することができます。 これらのレポートのデータは、SIEM システム、監査、ビジネス インテリジェンス ツールなどのアプリケーションに非常に役立ちます。 Azure AD レポート API は、一連の REST ベースの API を使用してプログラムによってデータにアクセスできるようにします。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。 
-
+Azure AD では、レポート データにユーザー インターフェイスからだけでなく、一連の REST ベースの API を通じて[プログラムからアクセス](concept-reporting-api.md)することもできます。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: fae5771afea742b2746c32e1ed6ae88c511876e6
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 961352dc99a164b8537fb588e038ad1b385941cc
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037959"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567453"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>チュートリアル: Azure Data Box Disk (プレビュー) を注文する
 
@@ -79,7 +79,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
     |推定データ サイズ (TB 単位)| 推定サイズを TB 単位で入力します。 <br>データ サイズに基づいて、Microsoft は適切な数の 8 TB SSD (使用可能な容量は 7 TB) を発送します。 <br>5 台のディスクの最大使用可能容量は最大 35 TB です。 |
     |ディスク パスキー| **[Azure 生成のパスキーではなくカスタム キーを使用]** をオンにした場合は、ディスク パスキーを指定します。 <br> 少なくとも 1 つの数字と 1 つの特殊文字を含む 12 から 32 文字の英数字で構成されたキーを入力します。 使用できる特殊文字は `@?_+` です。 <br> このオプションをスキップし、Azure によって生成されたパスキーを使用してディスクをロック解除することができます。|
 
-13. **[次へ]** をクリックします。 
+13.  **[次へ]** をクリックします。 
 
     ![注文の詳細を指定する](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 

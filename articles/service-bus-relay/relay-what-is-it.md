@@ -1,5 +1,5 @@
 ---
-title: Azure Relay とは | Microsoft Docs
+title: Azure Relay とは  | Microsoft Docs
 description: この記事では、Azure Relay サービスの概要について説明します。このサービスを使用すると、ファイアウォール接続を開いたり、ネットワーク インフラストラクチャ内に及ぶような変更を加えたりせずに、企業ネットワーク内で実行されるオンプレミスのサービスを利用するクラウド アプリケーションを開発できます。
 services: service-bus-relay
 author: spelluru
@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 10/08/2018
+ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 132fca9c8904c4f64fffe167e3a3f2c6bb0d2cfe
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319338"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621029"
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
-Azure Relay サービスでは、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開することができます。 ファイアウォール接続を開いたり、企業ネットワーク インフラストラクチャ内に及ぶような変更を加えたりすることなく、それが可能です。 
+Azure Relay サービスでは、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開することができます。 ファイアウォールでポートを開放したり、企業ネットワーク インフラストラクチャ内に及ぶような変更を加えたりすることなく、それが可能です。 
 
 このリレー サービスは、オンプレミス サービスと、クラウドまたは別のオンプレミス環境で実行されているアプリケーションとの間で、以下のシナリオをサポートしています。 
 
@@ -56,7 +56,7 @@ Azure Relay のハイブリッド接続機能は、以前存在していたリ�
 > Azure Relay のハイブリッド接続は、BizTalk Services の以前ハイブリッド接続機能を置き換えるものです。 BizTalk Services のハイブリッド接続機能は、Azure Service Bus WCF Relay に基づいて構築されました。 Azure Relay のハイブリッド接続機能は、以前から存在する WCF Relay 機能を補完します。 これら 2 つのサービスの機能 (WCF Relay とハイブリッド接続) は、Azure Relay サービス内で並列して存在します。 両者は共通のゲートウェイを共有しますが、それ以外の点では実装が異なります。
 
 ## <a name="wcf-relay"></a>WCF リレー
-WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作します。 一連の WCF "リレー" バインディングを使用して、オンプレミス サービスとリレー サービスとの間に接続を作成します。 バックグラウンドで、リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。 詳細については、[WCF リレーの概要](relay-wcf-dotnet-get-started.md)に関するページを参照してください。
+WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作します。 一連の WCF "リレー" バインディングを使用して、オンプレミス サービスとリレー サービスとの間に接続を作成します。 リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。 詳細については、[WCF リレーの概要](relay-wcf-dotnet-get-started.md)に関するページを参照してください。
 
 ## <a name="hybrid-connections-vs-wcf-relay"></a>ハイブリッド接続とWCF リレー
 ハイブリッド接続と WCF Relay のどちらでも、企業ネットワーク内に存在する資産へのセキュアな接続を実現できます。 どちらの機能を優先して使用するかは、次の表に示すように、個々のニーズによって決まります。
@@ -68,7 +68,7 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 | **.NET Framework** |○ |○ |
 | **Java script/Node.JS** | |○ |
 | **標準ベースのオープン プロトコル** | |○ |
-| **複数の RPC プログラミング モデル** | |○ |
+| **RPC プログラミング モデル** | |○ |
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>アーキテクチャ: 受信リレー要求の処理
 次の図は、受信するリレー要求が、Azure Relay サービスでどのように処理されるかを示しています。
@@ -86,9 +86,9 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 9. ゲートウェイは、送信側クライアントからのすべてのメッセージをリッスンしているクライアントに転送します。  
 
 ## <a name="next-steps"></a>次の手順
-* [.NET Websocket の概要](relay-hybrid-connections-dotnet-get-started.md)
+* [.NET WebSocket の概要](relay-hybrid-connections-dotnet-get-started.md)
 * [.NET HTTP 要求の概要](relay-hybrid-connections-http-requests-dotnet-get-started.md)
-* [Node Websocket の概要](relay-hybrid-connections-node-get-started.md)
+* [Node WebSocket の概要](relay-hybrid-connections-node-get-started.md)
 * [Node HTTP 要求の概要](relay-hybrid-connections-http-requests-node-get-started.md)
 * [Relay に関する FAQ](relay-faq.md)
 
