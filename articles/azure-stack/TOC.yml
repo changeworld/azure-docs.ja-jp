@@ -36,14 +36,14 @@ items:
     href: azure-stack-tutorial-app-service.md
 - name: 概念
   items:
-  - name: 容量計画
+  - name: キャパシティ プランニング
     href: capacity-planning.md
     items:
     - name: コンピューティング能力の計画
       href: capacity-planning-compute.md
     - name: ストレージ容量の計画
       href: capacity-planning-storage.md
-    - name: Azure Stack の容量計画ツール
+    - name: Azure Stack のキャパシティ プランニング ツール
       href: capacity-planning-spreadsheet.md
   - name: データセンターの統合
     items:
@@ -166,7 +166,7 @@ items:
       href: azure-stack-change-subscription-owner.md
     - name: Azure Stack の開始および停止
       href: azure-stack-start-and-stop.md
-    - name: 容量の管理
+    - name: キャパシティの管理
       items:
       - name: ストレージ リソースの管理
         href: azure-stack-manage-storage-accounts.md
@@ -281,7 +281,7 @@ items:
   - name: App Service を PaaS として提供する
     href: azure-stack-app-service-overview.md
     items:
-    - name: App Service の容量計画
+    - name: App Service のキャパシティ プランニング
       href: azure-stack-app-service-capacity-planning.md
     - name: 開始する前に
       href: azure-stack-app-service-before-you-get-started.md
