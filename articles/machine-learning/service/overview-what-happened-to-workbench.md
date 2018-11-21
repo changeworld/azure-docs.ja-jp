@@ -100,7 +100,7 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 この最新のリリースでは、上記の新しい機能を使用するために、Visual Studio (VS) Code Tools for AI の拡張機能が展開され、強化されています。
 
-[ ![Visual Studio Code Tools for AI](./media/overview-what-happened-to-workbench/vscode.png) ] (. media/overview-what-happened-to-workbench/vscode-big.png#lightbox/)
+[ ![Visual Studio Code Tools for AI](./media/overview-what-happened-to-workbench/vscode.png)] (.media/overview-what-happened-to-workbench/vscode-big.png#lightbox/)
 
 ## <a name="what-about-domain-packages"></a>ドメイン パッケージについて教えてください。
 
