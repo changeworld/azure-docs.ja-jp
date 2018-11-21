@@ -13,17 +13,17 @@ items:
     href: avere-vfxt-deploy-overview.md
 - name: ハウツー ガイド
   items:
-  - name: Avere vFXT の作成準備
+  - name: Avere vFXT の作成を準備する
     href: avere-vfxt-prereqs.md
   - name: vFXT クラスターのデプロイ
     href: avere-vfxt-deploy.md
   - name: クラスター構成ツールへのアクセス
     href: avere-vfxt-cluster-gui.md
-  - name: サポートのアップロードの有効化
+  - name: サポートのアップロードを有効にする
     href: avere-vfxt-enable-support.md
   - name: ストレージの構成
     href: avere-vfxt-add-storage.md
-  - name: Avere vFXT クラスターのマウント
+  - name: Avere vFXT クラスターをマウントする
     href: avere-vfxt-mount-clients.md
   - name: Avere vFXT クラスターへのデータの移動
     href: avere-vfxt-data-ingest.md
@@ -43,17 +43,15 @@ items:
     items:
     - name: 補足ドキュメント
       href: avere-vfxt-additional-resources.md
-    - name: ポートのホワイトリスト
-      href: avere-vfxt-required-ports.md
     - name: コントローラーを使用せずにクラスター ロールを作成する
       href: avere-vfxt-pre-role.md
     - name: Avere クラスターの DNS 構成
       href: avere-vfxt-configure-dns.md
     - name: Avere vFXT のデプロイを所有者以外に承認する
       href: avere-vfxt-non-owner.md
-ms.openlocfilehash: 6f99a33ffbf637e02d487a511d17bf8a365cb3ba
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 319745fad14ca3cce97e8735def901f380132eff
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669134"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52273713"

@@ -72,6 +72,8 @@ items:
     items:
     - name: ファイアウォール規則
       href: concepts-firewall-rules.md
+    - name: SSL の構成
+      href: concepts-ssl-connection-security.md
     - name: 高度な脅威保護
       href: concepts-data-access-and-security-threat-protection.md
     - name: VNet
@@ -230,9 +232,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 5bf46cfafe64974e805827dfbee89f8af633b327
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a6f77b9d823edbdffedab97202697bf9535c6b8e
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161063"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276569"

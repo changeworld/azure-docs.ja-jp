@@ -46,6 +46,8 @@ items:
       href: concepts-firewall-rules.md
     - name: SSL の構成
       href: concepts-ssl-connection-security.md
+    - name: VNet
+      href: concepts-data-access-security-vnet.md
   - name: ビジネス継続性
     items:
     - name: 概要
@@ -114,6 +116,10 @@ items:
       href: howto-troubleshoot-common-connection-issues.md
     - name: クエリ パフォーマンスのトラブルシューティング
       href: howto-troubleshoot-query-performance.md
+  - name: Virtual Network
+    items:
+    - name: Azure ポータル
+      href: howto-manage-vnet-portal.md
 - name: リファレンス
   items:
   - name: REST API
@@ -138,9 +144,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 3fc6bf5571f3ddcfe6d1a6acd7fc4a298f996e63
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: ed84d8f75bed2f5b49219fc740308b0c1c106adf
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515422"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274519"

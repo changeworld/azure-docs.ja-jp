@@ -64,6 +64,8 @@ items:
     items:
     - name: アクティビティ レポートの検出
       href: howto-find-activity-reports.md
+    - name: ユーザーのサインイン エラーのトラブルシューティング
+      href: howto-troubleshoot-sign-in-errors.md
     - name: リスクのフラグ付きユーザーの修復
       href: howto-remediate-users-flagged-for-risk.md
     - name: Azure AD レポート用の Power BI コンテンツ パックを使用する
@@ -95,6 +97,10 @@ items:
   items:
   - name: レポート
     items:
+    - name: 監査ログの API リファレンス
+      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit
+    - name: サインイン ログの API リファレンス
+      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin
     - name: 監査アクティビティ
       href: reference-audit-activities.md
     - name: データ保有ポリシー
@@ -112,9 +118,9 @@ items:
     - name: サインイン ログのスキーマ
       href: reference-azure-monitor-sign-ins-log-schema.md
   expanded: true
-ms.openlocfilehash: 6c7dedc0bc592ba47b9fc0a0e017012f2b0be2cd
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4763477baca827eca93f05356dd92249f4c0e63c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623231"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276607"

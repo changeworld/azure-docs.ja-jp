@@ -154,12 +154,12 @@ items:
       href: access-secrets-from-keyvault.md
   - name: エンタープライズ対応
     items:
+    - name: オンラインのバックアップと復元
+      href: online-backup-and-restore.md
     - name: コンプライアンス
       href: compliance.md
   - name: 予約容量の前払い
     href: cosmos-db-reserved-capacity.md
-  - name: バックアップと復元
-    href: online-backup-and-restore.md
 - name: マルチモデルの API
   items:
   - name: SQL API ドキュメント
@@ -453,6 +453,10 @@ items:
       href: how-to-configure-firewall.md
     - name: 仮想ネットワークからのアクセスの構成
       href: how-to-configure-vnet-service-endpoint.md
+  - name: エンタープライズ対応
+    items:
+    - name: バックアップからデータを復元する
+      href: how-to-backup-and-restore.md
   - name: 管理
     items:
     - name: PowerShell を使用して管理する
@@ -573,9 +577,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 39b551b12f80a54a8c374e0ac0980c8c746ef3b3
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: be2c50fb19746f15d879ada3ccbdc4366a4c4763
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162521"
+ms.locfileid: "52262535"

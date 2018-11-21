@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f24a2ab1e4e4b87bb41b95b6ea5d80277c0e7094
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 0f5ace1a59293d7cd3f20d15344741fa90b2892c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409951"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276518"
 documentType: LandingData
 title: Azure 上の Ansible のドキュメント
 metadata:

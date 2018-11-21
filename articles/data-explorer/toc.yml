@@ -13,10 +13,14 @@ items:
     items:
     - name: データのストリーミング - イベント ハブ
       href: ingest-data-event-hub.md
+    - name: データのストリーム配信 - Kafka
+      href: ingest-data-kafka.md
     - name: データのバッチ処理 - Python
       href: python-ingest-data.md
     - name: データのバッチ処理 - Node SDK
       href: node-ingest-data.md
+    - name: データのバッチ処理 - .NET Standard SDK
+      href: net-standard-ingest-data.md
   - name: データのクエリを実行する
     items:
     - name: Web UI
@@ -97,9 +101,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 2a46211975e094db74b501285b9725d78ddd4166
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 70314ad2038e61583ea2d3cccad40062d423856b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852022"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276263"

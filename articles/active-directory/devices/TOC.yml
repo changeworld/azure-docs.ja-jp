@@ -18,13 +18,18 @@ items:
   - name: Windows 10 の初回実行時に Azure AD 参加を構成する
     href: azuread-joined-devices-frx.md
   expanded: false
+- name: 概念
+  items:
+  - name: オンプレミスのリソースへの SSO
+    href: azuread-join-sso.md
+  expanded: false
 - name: ハウツー ガイド
   items:
   - name: Azure portal を使用してデバイスを管理する
     href: device-management-azure-portal.md
   - name: 古いデバイスを管理する
     href: manage-stale-devices.md
-  - name: Azure AD 参加を計画する
+  - name: Azure AD Join の実装を計画する
     href: azureadjoin-plan.md
   - name: ハイブリッド Azure AD 参加の実装を計画する
     href: hybrid-azuread-join-plan.md
@@ -65,9 +70,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: aa3be36e660c1e0a68446166d3ec90a8a24fa3e8
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 54f55af14658fa02999d7f134937fcd357d83d75
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092323"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276498"

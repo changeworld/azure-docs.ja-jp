@@ -425,9 +425,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: bfd489ba8002d8bdfd69b9890b96f41bd4f68b1c
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: bcc4a9e82e5cf44c16bb1b597a9b4f9962318b5e
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976233"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275449"

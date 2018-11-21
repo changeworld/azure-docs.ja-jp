@@ -112,6 +112,12 @@ items:
       href: tutorial-multiple-sites-powershell.md
   - name: トラフィックをリダイレクトする
     items:
+    - name: 外部トラフィック
+      items:
+      - name: Azure PowerShell
+        href: redirect-external-site-powershell.md
+      - name: Azure CLI
+        href: redirect-external-site-cli.md
     - name: HTTP から HTTPS
       items:
       - name: Azure PowerShell
@@ -184,9 +190,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-application-gateway
   - name: FAQ
     href: application-gateway-faq.md
-ms.openlocfilehash: bc75dbc86a210793eb436046cdb586cb895d7b05
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 945db004a91da966b8f10b7bfb0dbf3b84799bad
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705550"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275165"

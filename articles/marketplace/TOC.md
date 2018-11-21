@@ -5,7 +5,6 @@
 ### [マーケットプレースで公開元になる](./become-publisher.md)  
 #### [Microsoft アカウントを作成する](./guidelines.md)
 #### [デベロッパー センターに登録する](./register-dev-center.md) 
-#### [Azure Marketplace の課金オプション](./billing-options-azure-marketplace.md)  
 #### [Azure パートナーの顧客の利用状況属性](./azure-partner-customer-usage-attribution.md)
 #### [クラウド マーケットプレースの潜在顧客管理](./lead-management-for-cloud-marketplace.md)
 
@@ -13,7 +12,7 @@
 
 ### [ソリューションの公開オプションを決定する](./determine-your-listing-type.md)  
 
-### プランの種類別の公開ガイド 
+### [プランの種類別の公開ガイド](./publisher-guide-by-offer-type.md)
 #### [Virtual Machines](./marketplace-virtual-machines.md)
 #### [Azure アプリケーション: ソリューション テンプレート](./marketplace-solution-templates.md)
 #### [Azure アプリケーション: マネージド アプリケーション](./marketplace-managed-apps.md)
@@ -27,6 +26,8 @@
 ### [Marketplace でのビジネスの拡大](./grow-your-business-with-azure-marketplace.md)  
 #### [推奨されるソリューション](./preferred-solutions.md) 
 #### [Marketplace コンテンツの検証](./marketplace-criteria-content-validation.md)
+#### [プライベート プラン](./private-offers.md)
+#### [Marketplace 商用トランザクションの機能と考慮事項](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 
 ### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)  
 
@@ -34,6 +35,16 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [クラウド パートナー ポータル](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+
+## [ポータル ツアー](./cloud-partner-portal/portal-tour/cpp-portal-tour.md)
+### [ポータルのナビゲーション](./cloud-partner-portal/portal-tour/cpp-portal-navigation.md)
+### [[新しいプラン] メニュー](./cloud-partner-portal/portal-tour/cpp-new-offer-menu.md)
+### [[すべてのプラン] ページ](./cloud-partner-portal/portal-tour/cpp-all-offers-page.md)
+### [[承認] ページ](./cloud-partner-portal/portal-tour/cpp-approvals-page.md)
+### [[すべての発行元] ページ](./cloud-partner-portal/portal-tour/cpp-all-publishers-page.md)
+### [[ユーザー] ページ](./cloud-partner-portal/portal-tour/cpp-users-page.md)
+### [[監査履歴] ページ](./cloud-partner-portal/portal-tour/cpp-history-page.md)
+### [[インサイト] ページ](./cloud-partner-portal/portal-tour/cpp-insights-page.md)
 
 ## ポータル管理
 ### [デベロッパー センター アカウントの登録](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
