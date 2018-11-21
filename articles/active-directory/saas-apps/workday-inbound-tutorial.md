@@ -2,7 +2,7 @@
 title: 'チュートリアル: Workday を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
 description: Azure Active Directory を構成して、ユーザー アカウントを Workday に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-author: asmalser-msft
+author: cmmdesai
 documentationcenter: na
 manager: mtillman
 ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
@@ -13,23 +13,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
-ms.author: asmalser
-ms.openlocfilehash: 62dc796de430e7c5926f3231db29ef554f210142
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.author: chmutali
+ms.openlocfilehash: 30354ddb010c22dabe5cd69373ae59daaf4a8b46
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016779"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346747"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる (プレビュー)
 
-このチュートリアルでは、Workday から Active Directory と Azure Active Directory の両方にユーザーをインポートするために必要な手順と、Workday にいくつかの属性を書き戻すオプションについて説明します。
+このチュートリアルでは、Workday から Active Directory と Azure Active Directory の両方に社員プロファイルをインポートするために必要な手順と、Workday にメール アドレスを書き戻すオプションについて説明します。
 
 ## <a name="overview"></a>概要
 
 ユーザー アカウントをプロビジョニングするために、[Azure Active Directory ユーザー プロビジョニング サービス](../manage-apps/user-provisioning.md)を [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) と統合します。 Azure AD はこの接続を使用して、次のユーザー プロビジョニング ワークフローを有効にします。
 
-* **Active Directory へのユーザーのプロビジョニング** - Workday から選択したユーザーのセットを 1 つ以上の Active Directory フォレストに同期させます。
+* **Active Directory へのユーザーのプロビジョニング** - Workday から選択したユーザーのセットを、1 つ以上の Active Directory ドメインに同期します。
 
 * **Azure Active Directory へのクラウドのみのユーザーのプロビジョニング** - オンプレミスの Active Directory を使用しないシナリオでは、Azure AD ユーザー プロビジョニング サービスを使用して、ユーザーを Workday から Azure Active Directory に直接プロビジョニングできます。 
 
@@ -63,7 +63,27 @@ Azure AD のユーザー プロビジョニング サービスでサポートさ
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
-## <a name="planning-your-solution"></a>ソリューションの設計
+## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
+
+このセクションでは、一般的なハイブリッド環境に向けた、エンド ツー エンドのユーザー プロビジョニング ソリューションのアーキテクチャについて説明します。 2 つの関連するフローがあります。
+
+* **権限がある人事データのフロー – Workday からオンプレミスの Active Directory へ:** このフローでは、最初に社員イベント (新規雇用、異動、退職など) がクラウドの Workday HR テナントで発生し、イベント データはその後、Azure AD ディレクトリとプロビジョニング エージェントを通ってオンプレミスの Active Directory に移動します。 イベントによっては、AD での作成/更新/有効化/無効化の操作に至る可能性があります。
+* **メール書き戻しのフロー – オンプレミスの Active Directory から Workday へ:** Active Directory でアカウントの作成が完了すると、Azure AD Connect を介して Azure AD と同期され、Active Directory がソースであるメール属性を Workday に書き戻すことができます。
+
+![概要](./media/workday-inbound-tutorial/wd_overview.png)
+
+### <a name="end-to-end-user-data-flow"></a>エンド ツー エンドのユーザー データ フロー
+
+1. 人事チームは、Workday HCM で社員のトランザクション (参加者/異動者/休暇者または新規雇用/移動/退職) を実行します
+2. Azure AD プロビジョニング サービスは、Workday HR からの、スケジュールされた ID の同期を実行し、オンプレミスの Active Directory との同期のために処理する必要がある変更を識別します。
+3. Azure AD プロビジョニング サービスは、AD アカウントの作成/更新/有効化/無効化の操作を含む要求ペイロードを使用して、オンプレミスの AAD Connect プロビジョニング エージェントを呼び出します。
+4. Azure AD Connect プロビジョニング エージェントは、サービス アカウントを使用して AD アカウントのデータを追加/更新します。
+5. Azure AD Connect (AD の同期エンジン) は、デルタ同期を実行して AD 内の更新をプルします。
+6. Active Directory の更新は、Azure Active Directory と同期されます。
+7. Workday Writeback コネクタが構成されている場合は、使用された一致する属性に基づいて、メール属性が Workday に書き戻されます。
+
+
+## <a name="planning-your-deployment"></a>デプロイの計画
 
 Workday の統合を開始する前に、以下の前提条件を確認し、現在の Active Directory のアーキテクチャおよびユーザー プロビジョニング要件を Azure Active Directory が提供するソリューションに適合させる方法について、次のガイダンスをお読みください。
 
@@ -74,10 +94,10 @@ Workday の統合を開始する前に、以下の前提条件を確認し、現
 * グローバル管理者アクセス権を持つ有効な Azure AD Premium P1 サブスクリプション
 * テストと統合のために Workday を実装したテナント
 * システム統合ユーザーを作成し、テスト目的でテスト用従業員データを変更する Workday の管理者権限
-* Active Directory へのユーザー プロビジョニングの場合、[オンプレミス同期エージェント](https://go.microsoft.com/fwlink/?linkid=847801)をホストするために、Windows Server 2012 以上を実行するドメインに参加しているサーバーが必要です
+* Active Directory へのユーザー プロビジョニングの場合、[オンプレミス プロビジョニング エージェント](https://go.microsoft.com/fwlink/?linkid=847801)をホストするために、.NET 4.7+ ランタイムがインストールされた Windows Server 2012 以上を実行しているサーバーが必要です
 * Active Directory と Azure AD を同期する [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
 
-### <a name="solution-architecture"></a>ソリューションのアーキテクチャ
+### <a name="planning-considerations"></a>計画に関する考慮事項
 
 Azure AD には、Workday から Active Directory、Azure AD、SaaS アプリなどへのプロビジョニングおよび ID ライフ サイクル管理を解決するための豊富なプロビジョニング コネクタが用意されています。 使用する機能とソリューションの設定方法は、組織の環境と要件によって異なります。 最初の手順として、次のうちどれが組織内に存在し、展開されているかを確認します。
 
@@ -91,140 +111,46 @@ Azure AD には、Workday から Active Directory、Azure AD、SaaS アプリな
 
 これらの質問に答えたあと、以下のガイダンスに従って、Workday プロビジョニングの展開を計画します。
 
-#### <a name="using-provisioning-connector-apps"></a>プロビジョニング コネクタ アプリの使用
+#### <a name="planning-deployment-of-aad-connect-provisioning-agent"></a>AAD Connect プロビジョニング エージェントの展開の計画
 
-Azure Active Directory では、Workday および他の数多くの SaaS アプリケーション用の統合済みプロビジョニング コネクタをサポートしています。
+Workday から AD へのユーザー プロビジョニング ソリューションを使用するには、少なくとも 4 GB の RAM と .NET 4.7+ ランタイムを備えた Windows 2012 R2 以上を実行するサーバーに、プロビジョニング エージェントを 1 つまたは複数展開する必要があります。 プロビジョニング エージェントをインストールする前に、以下の点を考慮する必要があります。
 
-単一のプロビジョニング コネクタは、単一のソース システムの API とインターフェイスし、単一のターゲット システムにデータをプロビジョニングするのに役立ちます。 Azure AD がサポートするほとんどのプロビジョニング コネクタは、単一のソースとターゲット システム (Azure AD から ServiceNow など) 向けで、Azure AD アプリケーション ギャラリーから該当のアプリケーション (ServiceNow など) を追加することでセットアップできます。
+* プロビジョニング エージェントを実行しているホスト サーバーが、ターゲット AD ドメインへのネットワーク アクセスを持っていることを確認します
+* プロビジョニング エージェントの構成ウィザードで、エージェントを Azure AD テナントに登録します。登録プロセスでは、ポート 8082 の *msappproxy.net にアクセスする必要があります。 この通信を可能にするファイアウォールのアウトバウンド規則が適用されていることを確認します。
+* プロビジョニング エージェントは、サービス アカウントを使用してオンプレミスの AD ドメインと通信します。 エージェントをインストールする前に、ユーザー プロパティの読み取り/書き込みアクセス許可と無期限のパスワードを持つサービス アカウントを作成することをお勧めします。  
+* プロビジョニング エージェントの構成時には、プロビジョニング要求を処理する必要のあるドメイン コント ローラーを選択できます。 地理的に分散されたドメイン コント ローラーが複数ある場合は、エンド ツー エンドのソリューションの信頼性とパフォーマンスを向上させるため、優先ドメイン コント ローラーと同じサイトにプロビジョニング エージェントをインストールします
+* 高可用性については、複数のプロビジョニング エージェントを展開し、それが同じセットのオンプレミス AD ドメインを処理するように登録できます。
 
-Azure AD のプロビジョニング コネクタ インスタンスとアプリ インスタンスの間には 1 対 1 の関係があります。
+> [!IMPORTANT]
+> 運用環境で高可用性が必要な場合は、Azure AD テナントで少なくとも 3 つのプロビジョニング エージェントが構成されているようにすることをお勧めします。
 
-| ソース システム | ターゲット システム |
-| ---------- | ---------- |
-| Azure AD テナント | SaaS アプリケーション |
+#### <a name="selecting-provisioning-connector-apps-to-deploy"></a>展開するプロビジョニング コネクタ アプリの選択
 
-ただし、Workday と Active Directory を使用する場合は、複数のソースとターゲットのシステムが検討対象となります。
+Workday と Active Directory を統合するときには、考慮に入れる必要があるソースとターゲットのシステムが複数あります。
 
 | ソース システム | ターゲット システム | メモ |
 | ---------- | ---------- | ---------- |
-| Workday | Active Directory フォレスト | 各フォレストは、個別のターゲット システムとして扱われます |
+| Workday | Active Directory ドメイン | 各ドメインは、個別のターゲット システムとして扱われます |
 | Workday | Azure AD テナント | クラウドのみユーザー用に必要 |
 | Active Directory フォレスト | Azure AD テナント | 現在、このフローは AAD Connect によって処理されます |
 | Azure AD テナント | Workday | メール アドレスの書き戻し用 |
 
-これらの複数のソースおよびターゲット システムに対応する複数のワークフローを容易にするため、Azure AD には Azure AD アプリケーション ギャラリーから追加可能な複数のプロビジョニング コネクタ アプリケーションが用意されています。
+Workday と Active Directory の間のワークフローのプロビジョニングを容易にするため、Azure AD には、Azure AD アプリ ギャラリーから追加できるプロビジョニング コネクタ アプリが複数用意されています。
 
-![AAD アプリ ギャラリー](./media/workday-inbound-tutorial/WD_Gallery.PNG)
+![AAD アプリ ギャラリー](./media/workday-inbound-tutorial/wd_gallery.png)
 
-* **Workday to Active Directory Provisioning** - このアプリケーションは、Workday から単一の Active Directory フォレストへのユーザー アカウントのプロビジョニングを容易にします。 複数のフォレストがある場合、Azure AD アプリケーションギャラリーのこのアプリケーションのインスタンスをプロビジョニングの必要がある各 Active Directory フォレストに 1 つずつ追加できます。
+* **Workday to Active Directory Provisioning** - このアプリは、Workday から単一の Active Directory ドメインへのユーザー アカウントのプロビジョニングを容易にします。 複数のドメインがある場合は、プロビジョニング先にする必要がある Active Directory ドメインごとに 1 つ、Azure AD アプリ ギャラリーからこのアプリのインスタンスを追加できます。
 
 * **Workday to Azure AD Provisioning** - AAD Connect は、Active Directory ユーザーを Azure Active Directory に同期するのに必要なツールですが、このアプリはクラウドのみユーザーを Workday から単一の Azure Active Directory テナントへプロビジョニングするのを容易にします。
 
-* **Workday Writeback** - このアプリケーションは、ユーザーのメール アドレスを Azure Active Directory から Workday に書き戻すのを容易にします。
+* **Workday Writeback** - このアプリは、ユーザーのメール アドレスを Azure Active Directory から Workday に書き戻すのを容易にします。
 
 > [!TIP]
 > 通常の "Workday" アプリケーションは、Workday と Azure Active Directory の間でシングル サインオンを設定するために使用されます。 
 
-これらの特別なプロビジョニング コネクタ アプリをセットアップして構成する方法が、このチュートリアルの残りのセクションの主題です。 構成するアプリケーションは、プロビジョニングが必要な対象システム、および環境内の Active Directory フォレストと Azure AD テナントの数によって異なります。
+#### <a name="determine-workday-to-ad-user-attribute-mapping-and-transformations"></a>Workday から AD ユーザー属性へのマッピングと変換を決定する
 
-![概要](./media/workday-inbound-tutorial/WD_Overview.PNG)
-
-## <a name="configure-a-system-integration-user-in-workday"></a>Workday でのシステム統合ユーザーの構成
-すべての Workday プロビジョニング コネクタに共通する要件は、Workday Human Resources API に接続するために、Workday システム統合アカウントの資格情報を必要とすることです。 このセクションでは、Workday でシステム インテグレーター アカウントを作成する方法について説明します。
-
-> [!NOTE]
-> この手順を省略し、代わりに Workday グローバル管理者アカウントをシステム統合アカウントとして使用することもできます。 これはデモでは問題なく動作するかもしれませんが、本番環境での展開にはお勧めできません。
-
-### <a name="create-an-integration-system-user"></a>統合システム ユーザーの作成
-
-**統合システム ユーザーを作成するには、次の手順に従います。**
-
-1. 管理者アカウントを使用して、Workday テナントにサインインします。 **Workday Workbench** で、検索ボックスに「ユーザーの作成」と入力し、**[Create Integration System User (統合システム ユーザーの作成)]** をクリックします。
-
-    ![ユーザーの作成](./media/workday-inbound-tutorial/IC750979.png "ユーザーの作成")
-2. 新しい統合システム ユーザーのユーザー名とパスワードを指定して、**統合システム ユーザーの作成**を完了します。  
- * このユーザーはプログラムを使用してログオンするため、**[次回のサインイン時に新しいパスワードを要求する]** オプションはオフのままにしておきます。
- * **[セッション タイムアウト (分)]** は既定値の 0 のままにしておきます。これにより、ユーザーのセッションが有効期限前にタイムアウトするのを防ぎます。
-
-    ![統合システム ユーザーの作成](./media/workday-inbound-tutorial/IC750980.png "統合システム ユーザーの作成")
-
-### <a name="create-a-security-group"></a>セキュリティ グループの作成
-制約のない統合システム セキュリティ グループを作成し、それにユーザーを割り当てる必要があります。
-
-**セキュリティ グループを作成するには、次の手順に従います。**
-
-1. 検索ボックスに「セキュリティ グループの作成」と入力し、 **[Create Security Group (セキュリティ グループの作成)]** をクリックします。
-
-    ![CreateSecurity グループ](./media/workday-inbound-tutorial/IC750981.png "CreateSecurity グループ")
-2. **[セキュリティ グループの作成]** タスクを完了します。  
-3. **[Type of Tenanted Security Group]\(テナント セキュリティ グループの種類\)** ドロップダウンから **[Integration System Security Group (Unconstrained)]\(統合システム セキュリティ グループ (制約なし)\)** を選択します。
-4. メンバーが明示的に追加されるセキュリティ グループを作成します。
-
-    ![CreateSecurity グループ](./media/workday-inbound-tutorial/IC750982.png "CreateSecurity グループ")
-
-### <a name="assign-the-integration-system-user-to-the-security-group"></a>セキュリティ グループへの統合システム ユーザーの割り当て
-
-**統合システム ユーザーを割り当てるには、次の手順に従います。**
-
-1. 検索ボックスに「セキュリティ グループの編集」と入力し、 **[Edit Security Group (セキュリティ グループの編集)]** をクリックします。
-
-    ![セキュリティ グループの編集](./media/workday-inbound-tutorial/IC750983.png "セキュリティ グループの編集")
-1. 新しい統合セキュリティ グループを名前で検索し、選択します。
-
-    ![セキュリティ グループの編集](./media/workday-inbound-tutorial/IC750984.png "セキュリティ グループの編集")
-2. 新しいセキュリティ グループに新しい統合システム ユーザーを追加します。 
-
-    ![システム セキュリティ グループ](./media/workday-inbound-tutorial/IC750985.png "システム セキュリティ グループ")  
-
-### <a name="configure-security-group-options"></a>セキュリティ グループ オプションの構成
-この手順では、worker データのドメイン セキュリティ ポリシーのアクセス許可をセキュリティ グループに付与します。
-
-**セキュリティ グループ オプションを構成するには、次の手順に従います。**
-
-1. 検索ボックスに**ドメインのセキュリティ ポリシー**を入力し、**[機能領域のドメイン セキュリティ ポリシー]** リンクをクリックします。  
-
-    ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/IC750986.png "ドメイン セキュリティ ポリシー")  
-2. システムを検索し、 **システム** の機能領域を選択します。  Click **OK**.  
-
-    ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/IC750987.png "ドメイン セキュリティ ポリシー")  
-3. システム機能領域のセキュリティ ポリシーの一覧で、**[セキュリティ管理]** を展開し、ドメイン セキュリティ ポリシーの **[External Account Provisioning]** を選択します。  
-
-    ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/IC750988.png "ドメイン セキュリティ ポリシー")  
-1. **[アクセス許可の編集]** をクリックし、**[アクセス許可の編集]** ダイアログ ページで、**Get** と **Put** の統合アクセス権限を持つセキュリティ グループの一覧に新しいセキュリティ グループを追加します。
-
-    ![アクセス許可の編集](./media/workday-inbound-tutorial/IC750989.png "アクセス許可の編集")  
-
-1. これらの残りのセキュリティ ポリシーごとに上記の手順 1 から 4 を繰り返します。
-
-| Operation | ドメイン セキュリティ ポリシー |
-| ---------- | ---------- | 
-| Get と Put | Worker Data: Public Worker Reports |
-| Get と Put | Worker Data: Work Contact Information |
-| 取得 | Worker Data: All Positions |
-| 取得 | Worker Data: Current Staffing Information |
-| 取得 | Worker Data: Business Title on Worker Profile |
-
-
-### <a name="activate-security-policy-changes"></a>セキュリティ ポリシーの変更のアクティブ化
-
-**セキュリティ ポリシーの変更をアクティブにするには、次の手順に従います。**
-
-1. 検索ボックスに「アクティブ化」と入力し、**[保留中のセキュリティ ポリシーの変更をアクティブ化]** リンクをクリックします。
-
-    ![アクティブ化](./media/workday-inbound-tutorial/IC750992.png "アクティブ化") 
-2. 監査用のコメントを入力し、 **[OK]** をクリックして、[Activate Pending Security Policy Changes (保留中のセキュリティ ポリシーの変更のアクティブ化)] 作業を開始します。 
-
-    ![保留中のセキュリティのアクティブ化](./media/workday-inbound-tutorial/IC750993.png "保留中のセキュリティのアクティブ化")  
-1. **[確認]** チェック ボックスをオンにして、**[OK]** をクリックし、次の画面で作業を完了します。
-
-    ![保留中のセキュリティのアクティブ化](./media/workday-inbound-tutorial/IC750994.png "保留中のセキュリティのアクティブ化")  
-
-## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Workday から Active Directory へのユーザー プロビジョニングの構成
-次の手順に従い、Workday からプロビジョニングを必要とする各 Active Directory フォレストへのユーザー アカウントのプロビジョニングを構成します。
-
-### <a name="planning"></a>計画
-
-Active Directory フォレストへのユーザー プロビジョニングを構成する前に、以下の事項を検討してください。 これらの事項に対する答えで、スコープ フィルターと属性マッピングをどのように設定する必要があるかが決まります。 
+Active Directory ドメインへのユーザー プロビジョニングを構成する前に、以下の事項について検討してください。 これらの事項に対する答えで、スコープ フィルターと属性マッピングをどのように設定する必要があるかが決まります。
 
 * **Workday のユーザーをこの Active Directory フォレストにプロビジョニングする必要はありますか。**
 
@@ -255,9 +181,189 @@ Active Directory フォレストへのユーザー プロビジョニングを�
 * **Active Directory フォレストには、一致するロジックが動作するために必要なユーザー ID が既に含まれていますか。**
 
   * *例: Workday を新規にデプロイする場合は、一致するロジックをできるだけ単純にするために、Active Directory に正しい Workday の Worker_ID 値 (または選択した一意の ID 値) をあらかじめ入力することを強く推奨します。*
+
+
+
+これらの特別なプロビジョニング コネクタ アプリをセットアップして構成する方法が、このチュートリアルの残りのセクションの主題です。 どのアプリを構成するかは、プロビジョニングが必要な対象システム、および環境内の Active Directory ドメインと Azure AD テナントの数によって異なります。
+
+
+
+## <a name="configure-integration-system-user-in-workday"></a>Workday の統合システム ユーザーの構成
+
+すべての Workday プロビジョニング コネクタに共通する要件は、Workday Human Resources API に接続するために、Workday システム統合アカウントの資格情報を必要とすることです。 このセクションでは、Workday で統合システムのユーザーを作成する方法について説明します。
+
+> [!NOTE]
+> この手順を省略し、代わりに Workday グローバル管理者アカウントをシステム統合アカウントとして使用することもできます。 これはデモでは問題なく動作するかもしれませんが、本番環境での展開にはお勧めできません。
+
+### <a name="create-an-integration-system-user"></a>統合システム ユーザーの作成
+
+**統合システム ユーザーを作成するには、次の手順に従います。**
+
+1. 管理者アカウントを使用して、Workday テナントにサインインします。 **Workday アプリケーション** で、検索ボックスに「ユーザーの作成」と入力し、**[Create Integration System User (統合システム ユーザーの作成)]** をクリックします。
+
+    ![ユーザーの作成](./media/workday-inbound-tutorial/wd_isu_01.png "ユーザーの作成")
+2. 新しい統合システム ユーザーのユーザー名とパスワードを指定して、**統合システム ユーザーの作成**を完了します。  
+ * このユーザーはプログラムを使用してログオンするため、**[次回のサインイン時に新しいパスワードを要求する]** オプションはオフのままにしておきます。
+ * **[セッション タイムアウト (分)]** は既定値の 0 のままにしておきます。これにより、ユーザーのセッションが有効期限前にタイムアウトするのを防ぎます。
+ * オプション **[Do Not Allow UI Sessions](UI セッションを許可しない)** を選択します。これは、統合システムのパスワードを持つユーザーが Workday にログインできないようにする追加のセキュリティ層を提供するためです。 
+
+    ![統合システム ユーザーの作成](./media/workday-inbound-tutorial/wd_isu_02.png "統合システム ユーザーの作成")
+
+### <a name="create-a-security-group"></a>セキュリティ グループの作成
+この手順では、Workday 内に、制約のない統合システム セキュリティ グループを作成し、このグループに、前の手順で作成した統合システム ユーザーを割り当てます。
+
+**セキュリティ グループを作成するには、次の手順に従います。**
+
+1. 検索ボックスに「セキュリティ グループの作成」と入力し、 **[Create Security Group (セキュリティ グループの作成)]** をクリックします。
+
+    ![CreateSecurity グループ](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity グループ")
+2. **[セキュリティ グループの作成]** タスクを完了します。  
+   * **[Type of Tenanted Security Group]\(テナント セキュリティ グループの種類\)** ドロップダウンから **[Integration System Security Group (Unconstrained)]\(統合システム セキュリティ グループ (制約なし)\)** を選択します。
+
+    ![CreateSecurity グループ](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity グループ")
+
+3. セキュリティ グループの作成が成功した後、セキュリティ グループにメンバーを割り当てることができるページが表示されます。 このセキュリティ グループに新しい統合システム ユーザーを追加し、適切な組織のスコープを選択します。
+![セキュリティ グループの編集](./media/workday-inbound-tutorial/wd_isu_05.png "セキュリティ グループの編集")
+ 
+### <a name="configure-domain-security-policy-permissions"></a>ドメイン セキュリティ ポリシーのアクセス許可の構成
+この手順では、セキュリティ グループに、社員データについての "ドメイン セキュリティ" ポリシーのアクセス許可を付与します。
+
+**ドメイン セキュリティ ポリシーのアクセス許可を構成するには:**
+
+1. 検索ボックスに「**Domain Security Configuration**」と入力し、**[Domain Security Configuration Report](ドメイン セキュリティ構成レポート)** リンクをクリックします。  
+
+    ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_06.png "ドメイン セキュリティ ポリシー")  
+2. **[Domain](ドメイン)** テキスト ボックスで以下のドメインを検索し、それらをフィルターに 1 つずつ追加します。  
+   * *External Account Provisioning*
+   * *Worker Data: Public Worker Reports*
+   * *Person Data: Work Contact Information*
+   * *Worker Data: All Positions*
+   * *Worker Data: Current Staffing Information*
+   * *Worker Data: Business Title on Worker Profile*
+ 
+    ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_07.png "ドメイン セキュリティ ポリシー")  
+
+    ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_08.png "ドメイン セキュリティ ポリシー") 
+
+    Click **OK**.
+
+3. 表示されるレポートで、**External Account Provisioning** の横に表示される省略記号 (...) を選択し、メニュー オプション **Domain(ドメイン) -> Edit Security Policy Permissions(セキュリティ ポリシー アクセス許可の編集** をクリックします
+
+    ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_09.png "ドメイン セキュリティ ポリシー")  
+
+4. **[Edit Domain Security Policy Permissions](ドメイン セキュリティ ポリシー アクセス許可の編集)** ページで、**[Integration Permissions](統合アクセス許可)** セクションまで下へスクロールします。 [+] 記号をクリックし、**Get** および **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
+
+    ![アクセス許可の編集](./media/workday-inbound-tutorial/wd_isu_10.png "アクセス許可の編集")  
+
+5. [+] 記号をクリックし、**Get** と **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
+
+    ![アクセス許可の編集](./media/workday-inbound-tutorial/wd_isu_11.png "アクセス許可の編集")  
+
+6. 以下の残りのセキュリティ ポリシーごとに、上記の手順 3 ～ 5 を繰り返します。
+
+   | Operation | ドメイン セキュリティ ポリシー |
+   | ---------- | ---------- | 
+   | Get と Put | Worker Data: Public Worker Reports |
+   | Get と Put | Person Data: Work Contact Information |
+   | 取得 | Worker Data: All Positions |
+   | 取得 | Worker Data: Current Staffing Information |
+   | 取得 | Worker Data: Business Title on Worker Profile |
+
+### <a name="configure-business-process-security-policy-permissions"></a>ビジネス プロセス セキュリティ ポリシーのアクセス許可の構成
+この手順では、セキュリティ グループに、社員データについての "ビジネス プロセス セキュリティ" ポリシーのアクセス許可を付与します。 これは、Workday Writeback アプリのコネクタを設定するために必要です。 
+
+**ビジネス プロセス セキュリティ ポリシーのアクセス許可を構成するには:**
+
+1. 検索ボックスに「**Business Process Policy**」と入力し、**[Edit Business Process Security Policy](ビジネス プロセス セキュリティ ポリシーの編集)** タスクのリンクをクリックします。  
+
+    ![ビジネス プロセス セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_12.png "ビジネス プロセス セキュリティ ポリシー")  
+
+2. **[Business Process Type](ビジネス プロセスの種類)** テキストボックスで、*[Contact]* を検索し、**[Contact Change]** ビジネス プロセスを選択して **[OK]** をクリックします。
+
+    ![ビジネス プロセス セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_13.png "ビジネス プロセス セキュリティ ポリシー")  
+
+3. **Edit Business Process Security Policy(ビジネス プロセス セキュリティ ポリシーの編集)** ページで、**Maintain Contact Information (Web Service)(連絡先情報 (Web サービス) の管理)** セクションまで下へスクロールします。。
+
+    ![ビジネス プロセス セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_14.png "ビジネス プロセス セキュリティ ポリシー")  
+
+4. 新しい統合システム セキュリティ グループを選択し、Web サービス要求を開始できるセキュリティ グループの一覧に追加します。 **[Done](終了)** をクリックします。 
+
+    ![ビジネス プロセス セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_15.png "ビジネス プロセス セキュリティ ポリシー")  
+
+ 
+### <a name="activate-security-policy-changes"></a>セキュリティ ポリシーの変更のアクティブ化
+
+**セキュリティ ポリシーの変更をアクティブにするには、次の手順に従います。**
+
+1. 検索ボックスに「アクティブ化」と入力し、**[保留中のセキュリティ ポリシーの変更をアクティブ化]** リンクをクリックします。
+
+    ![アクティブ化](./media/workday-inbound-tutorial/wd_isu_16.png "アクティブ化") 
+2. 監査用のコメントを入力し、 **[OK]** をクリックして、[Activate Pending Security Policy Changes (保留中のセキュリティ ポリシーの変更のアクティブ化)] 作業を開始します。 
+
+    ![保留中のセキュリティのアクティブ化](./media/workday-inbound-tutorial/wd_isu_17.png "保留中のセキュリティのアクティブ化")  
+1. **[確認]** チェック ボックスをオンにして、**[OK]** をクリックし、次の画面で作業を完了します。
+
+    ![保留中のセキュリティのアクティブ化](./media/workday-inbound-tutorial/wd_isu_18.png "保留中のセキュリティのアクティブ化")  
+
+## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Workday から Active Directory へのユーザー プロビジョニングの構成
+
+次の手順に従って、Workday から、統合の範囲内にある各 Active Directory ドメインへのユーザー アカウントのプロビジョニングを構成します。
+
+### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>パート 1: オンプレミス プロビジョニング エージェントのインストールと構成
+
+オンプレミスの Active Directory にプロビジョニングするには、.NET 4.7+ Framework と目的の Active Directory ドメインへのネットワーク アクセスを備えたサーバーに、エージェントがインストールされている必要があります。
+
+> [!TIP]
+> [ここ](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)に示した手順に従って、サーバーの .NET Framework のバージョンをチェックできます。
+> サーバーに .NET 4.7 以降がインストールされていない場合は、[ここ](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)からダウンロードできます。  
+
+.NET 4.7+ を展開したら、**[ここのオンプレミス プロビジョニング エージェント](https://go.microsoft.com/fwlink/?linkid=847801)** をダウンロードして、以下に示す手順に従ってエージェントの構成を完了できます。
+
+1. 新しいエージェントをインストールする Windows Server にログインします。
+2. プロビジョニング エージェントのインストーラーを起動し、条件に同意して **[インストール]** ボタンをクリックします。
+![インストール画面](./media/workday-inbound-tutorial/pa_install_screen_1.png "インストール画面")
+
+3. インストールが完了したらウィザードが起動され、**[Connect Azure AD](Azure AD の接続)** 画面が表示されます。 **[認証]** ボタンをクリックして、お使いの Azure AD インスタンスに接続します。
+![Azure AD の接続](./media/workday-inbound-tutorial/pa_install_screen_2.png "Azure AD の接続")
+
+4. グローバル管理者の資格情報を使用して、Azure AD インスタンスに対して認証します。 
+![管理者の認証](./media/workday-inbound-tutorial/pa_install_screen_3.png "管理者の認証")
+
+5. Azure AD で認証が成功すると、**[Connect Active Directory](Active Directory の接続)** 画面が表示されます。 この手順では、お使いの AD ドメイン名を入力し、**[ディレクトリの追加]** ボタンをクリックしてください。
+![ディレクトリの追加](./media/workday-inbound-tutorial/pa_install_screen_4.png "ディレクトリの追加")
+
+6. ここで、AD ドメインに接続するために必要な資格情報の入力を求められます。 同じ画面で、**[Select domain controller priority](ドメイン コント ローラーの優先度を選択する)** を使用して、エージェントがプロビジョニング要求の送信に使用する必要があるドメイン コントローラーを指定できます。
+![ドメインの資格情報](./media/workday-inbound-tutorial/pa_install_screen_5.png "ドメインの資格情報")
+
+7. ドメインの構成後、インストーラーによって、構成されたドメインの一覧が表示されます。 この画面では、手順 5 と 6 を繰り返してより多くのドメインを追加するか、**[次へ]** をクリックしてエージェントの登録に進むことができます。 
+![構成されたドメイン](./media/workday-inbound-tutorial/pa_install_screen_6.png "構成されたドメイン")
+
+   > [!NOTE]
+   > 複数の AD ドメイン (例: na.contoso.com、emea.contoso.com) がある場合は、各ドメインを個々に一覧に追加してください。 親ドメイン (例: contoso.com) を追加するだけでは不十分です。それぞれの子ドメインをエージェントに登録することをお勧めします。 
+
+8. 構成の詳細を確認し、**[Confirm](確認)** をクリックしてエージェントを登録します。 
+![確認画面](./media/workday-inbound-tutorial/pa_install_screen_7.png "確認画面")
+
+9. 構成ウィザードに、エージェント登録の進行状況が表示されます。
+![エージェントの登録](./media/workday-inbound-tutorial/pa_install_screen_8.png "エージェントの登録")
+
+10. エージェントの登録が成功したら、**[終了]** をクリックしてウィザードを終了できます。 
+![終了画面](./media/workday-inbound-tutorial/pa_install_screen_9.png "終了画面")
+
+11. エージェントのインストールを確認し、実行中であることを確認します。それには、[サービス] スナップインを開き、"Microsoft Azure AD Connect Provisioning Agent" という名前のサービスを探します![サービス](./media/workday-inbound-tutorial/services.png)  
+
+
+**エージェントのトラブルシューティング**
+
+エージェントをホストする Windows Server マシンの [Windows イベント ログ](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx)には、エージェントによって実行されるすべての操作のイベントが含まれています。 これらのイベントを表示するには:
     
+1. **Eventvwr.msc** を開きます。
+2. **[Windows ログ] > [アプリケーション]** の順に選択します。
+3. ソース **AAD.Connect.ProvisioningAgent** のログに記録されたすべてのイベントを表示します。 
+4. エラーと警告をを確認します。
+
     
-### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 1：プロビジョニング コネクタ アプリの追加と Workday への接続の作成
+### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 2: プロビジョニング コネクタ アプリの追加と Workday への接続の作成
 
 **Workday を Active Directory プロビジョニングに構成するには、**
 
@@ -283,15 +389,19 @@ Active Directory フォレストへのユーザー プロビジョニングを�
 
    * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources のようになります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。
 
-   * **Active Directory フォレスト -** Get ADForest powershell コマンドレットによって返された Active Directory フォレストの "名前"。 これは通常、*contoso.com* のような文字列です。
+   * **Active Directory フォレスト -** エージェントに登録されている、Active Directory ドメインの "名前"。 これは通常、*contoso.com* のような文字列です。
 
-   * **Active Directory コンテナー -** AD フォレストのすべてのユーザーが含まれるコンテナー文字列を入力します。 例: *OU=Standard Users,OU=Users,DC=contoso,DC=test*
-
+   * **Active Directory コンテナー -** エージェントが既定でユーザー アカウントを作成する必要のあるコンテナー DN を入力します。 
+        例: *OU=Standard Users,OU=Users,DC=contoso,DC=test*
+> [!NOTE]
+> この設定が適用されるのは、属性のマッピングで *parentDistinguishedName* 属性が構成されていない場合のユーザー アカウント作成のみです。 この設定は、ユーザーの検索や更新の操作には使用されません。 ドメインのサブツリー全体が、検索操作の範囲内になります。
    * **メール通知 –** メール アドレスを入力し、[send email if failure occurs (失敗した場合にメールを送信する)] チェック ボックスをオンにします。
+> [!NOTE]
+> Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine)状態になった場合にメール通知を送信します。
 
-   * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、Workday 資格情報が Workday で有効であることを再度確認します。 
+   * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗する場合は、エージェントのセットアップで構成された Workday 資格情報と AD 資格情報が有効であることを再確認します。
 
-![Azure ポータル](./media/workday-inbound-tutorial/WD_1.PNG)
+![Azure ポータル](./media/workday-inbound-tutorial/wd_1.png)
 
 ### <a name="part-2-configure-attribute-mappings"></a>パート 2: 属性マッピングの構成 
 
@@ -386,99 +496,6 @@ Active Directory フォレストへのユーザー プロビジョニングを�
 | **LocalReference** |  preferredLanguage  |     |  作成時 + 更新時 |                                               
 | **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  作成時 + 更新時 |
   
-### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>パート 3: オンプレミスの同期エージェントの構成
-
-オンプレミスの Active Directory にプロビジョニングするには、該当の Active Directory フォレストのドメイン参加サーバーにエージェントがインストールされている必要があります。 この手順を完了するには、ドメイン管理者 (またはエンタープライズ管理者) の資格情報が必要です。
-
-**[ここからオンプレミスの同期エージェントをダウンロードできます](https://go.microsoft.com/fwlink/?linkid=847801)**
-
-エージェントをインストールしたら、以下の Powershell コマンドを実行して、環境に合わせてエージェントを構成します。
-
-**コマンド #1**
-
-> cd "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent" Agent\\Modules\\AADSyncAgent
-
-> Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
-
-**コマンド #2**
-
-> Add-ADSyncAgentActiveDirectoryConfiguration
-
-* 入力: パート \#2 で入力したように、"ディレクトリ名" に AD フォレスト名を入力します
-* 入力: Active Directory フォレストの管理者ユーザー名とパスワード
-
->[!TIP]
-> "プライマリ ドメインと信頼される側のドメインとの信頼関係が確立できませんでした" というエラー メッセージを受け取る場合は、複数の Active Directory フォレストまたはドメインが構成されている環境にローカル コンピューターが存在し、構成されている信頼関係の少なくとも 1 つが失敗したか、動作していないためです。 問題を解決するには、壊れた信頼関係を修正するか削除します。
-
-**コマンド #3**
-
-> Add-ADSyncAgentAzureActiveDirectoryConfiguration
-
-* 入力: Azure AD テナントのグローバル管理者ユーザー名とパスワード
-
->[!IMPORTANT]
->現在既知の問題があり、グローバル管理者がカスタム ドメイン (例: admin@contoso.com) を使用すると、その資格情報が動作しません。 この問題を回避するには、onmicrosoft.com ドメインでグローバル管理者アカウント (例: admin@contoso.onmicrosoft.com) を作成し、使用します
-
->[!IMPORTANT]
->現在既知の問題があります。グローバル管理者が多要素認証を有効にすると、その資格情報が動作しません。 回避策としては、グローバル管理者の多要素認証を無効にします。
-
-**コマンド #4**
-
-> Get-AdSyncAgentProvisioningTasks
-
-* アクション: データが返されたことを確認します。 このコマンドは、Azure AD テナントの Workday プロビジョニング アプリを自動的に検出します。 出力例:
-
-> Name          : My AD Forest
->
-> Enabled       : True
->
-> DirectoryName : mydomain.contoso.com
->
-> Credentialed  : False
->
-> Identifier    : WDAYdnAppDelta.c2ef8d247a61499ba8af0a29208fb853.4725aa7b-1103-41e6-8929-75a5471a5203
-
-**コマンド #5**
-
-> Start-AdSyncAgentSynchronization -Automatic
-
-**コマンド #6**
-
-> net stop aadsyncagent
-
-**コマンド #7**
-
-> net start aadsyncagent
-
->[!TIP]
->同期エージェント サービスは、Powershell の "net"コマンドのほか、**Services.msc** を使用して開始および停止することもできます。 Powershell コマンドを実行しているときにエラーが発生する場合は、**Microsoft Azure AD Connect プロビジョニング エージェント**が **Services.msc** で実行されていることを確認します。
-
-![サービス](./media/workday-inbound-tutorial/Services.png)  
-
-**EU 顧客向けの追加構成**
-
-Azure Active Directory テナントが EU データ センターのいずれかにある場合は、次の追加手順に従ってください。
-
-1. **Services.msc** を開いて、**Microsoft Azure AD Connect プロビジョニング エージェント** サービスを停止します。
-2. エージェント インストール フォルダー (例: C:\Program files \microsoft Azure AD Connect プロビジョニング エージェント) に移動します。
-3. テキスト エディターで **SyncAgnt.exe.config** を開きます。
-4. https://manage.hub.syncfabric.windowsazure.com/Management を **https://eu.manage.hub.syncfabric.windowsazure.com/Management** で置き換えます
-5. https://provision.hub.syncfabric.windowsazure.com/Provisioning を **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning** で置き換えます
-6. **SyncAgnt.exe.config** ファイルを保存します。
-7. **Services.msc** を開いて、**Microsoft Azure AD Connect プロビジョニング エージェント** サービスを開始します。
-
-**エージェントのトラブルシューティング**
-
-エージェントをホストする Windows Server マシンの [Windows イベント ログ](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx)には、エージェントによって実行されるすべての操作のイベントが含まれています。 これらのイベントを表示するには:
-    
-1. **Eventvwr.msc** を開きます。
-2. **[Windows ログ] > [アプリケーション]** の順に選択します。
-3. ソース **AADSyncAgent** のログに記録されたすべてのイベントを表示します。 
-4. エラーと警告をを確認します。
-
-Powershell コマンドで指定された Active Directory または Azure Active Directory の資格情報にアクセス許可の問題がある場合は、次のようなエラーが表示されます。 
-    
-![イベント ログ](./media/workday-inbound-tutorial/Windows_Event_Logs.png) 
 
 
 ### <a name="part-4-start-the-service"></a>パート 4: サービスの開始
@@ -620,7 +637,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 ### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 1：プロビジョニング コネクタ アプリの追加と Workday への接続の作成
 
-**Workday を Active Directory プロビジョニングに構成するには、**
+**Workday Writeback コネクタを構成するには:**
 
 1. <https://portal.azure.com> に移動します
 
@@ -692,7 +709,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 5. **[External]\(外部\)** を選択し、手順 2. でダウンロードした Human_Resources WSDL ファイルを選択します。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio1.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. **[Location]\(場所\)** フィールドを `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` に設定します。ただし、"IMPL-CC" の部分は実際のインスタンス タイプに、"TENANT" の部分は実際のテナント名に置き換えてください。
 
@@ -700,7 +717,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 8.  [Request/Response]\(要求/応答\) ウィンドウの下に小さく表示された **[configure]\(構成\)** リンクをクリックして、Workday の資格情報を設定します。 **[Authentication]\(認証\)** チェック ボックスをオンにし、Workday 統合システム アカウントのユーザー名とパスワードを入力します。 ユーザー名は必ず name@tenant の形式で指定し、**[WS-Security UsernameToken]** オプションはオンのままにしてください。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio2.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. **[OK]** を選択します。
 
@@ -739,7 +756,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 13. Workday Studio のコマンド バーで **[File]\(ファイル\) > [Open File...]\(ファイルを開く...\)** を選択し、保存した XML ファイルを開きます。 Workday Studio の XML エディターにファイルが表示されます。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio3.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. ファイル ツリーで、**[/env:Envelope] > [env:Body] > [wd:Get_Workers_Response] > [wd:Response_Data] > [wd:Worker]** の順に移動して、該当するユーザーのデータを特定します。 
 
@@ -766,7 +783,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 5. **[Edit attribute list for Workday]\(Workday の属性リストの編集\)** を選択します。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio_AAD1.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. 属性リストの一番下にある入力フィールドまでスクロールします。
 
@@ -778,7 +795,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 10. **[属性の追加]** を選択します。
 
-    ![Workday Studio](./media/workday-inbound-tutorial/WDstudio_AAD2.PNG)
+    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad2.png)
 
 11. 上の **[保存]** を選択し、ダイアログで **[はい]** を選択します。 [属性マッピング] 画面をまだ開いている場合は閉じてください。
 
@@ -794,13 +811,9 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 ## <a name="known-issues"></a>既知の問題
 
-* PowerShell コマンド **Add-ADSyncAgentAzureActiveDirectoryConfiguration** の実行中、グローバル管理者がカスタム ドメイン (例: admin@contoso.com) を使用すると、その管理者の資格情報が動作しません。これは既知の問題です。 この問題を回避するには、onmicrosoft.com ドメインで Azure AD のグローバル管理者アカウント (例: admin@contoso.onmicrosoft.com) を作成し、使用します。
-
 * オンプレミスの Active Directory での thumbnailPhoto ユーザー属性へのデータの書き込みは、現在サポートされていません。
 
 * "Workday から Azure AD" へのコネクタは、AAD Connect が有効になっている Azure AD テナントでは現在サポートされていません。  
-
-* EU の Azure AD テナントに監査ログが表示されないという以前の問題は解決されています。 ただし、EU のAzure AD テナントには追加エージェント構成が必要です。 詳細については、「[パート 3: オンプレミスの同期エージェントの構成](#Part 3: Configure the on-premises synchronization agent)」を参照してください
 
 ## <a name="managing-personal-data"></a>個人データの管理
 
