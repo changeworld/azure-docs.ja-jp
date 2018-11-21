@@ -33,6 +33,8 @@ items:
       items:
       - name: .NET
         href: tutorial-net-windows-virtual-machine.md
+      - name: Python
+        href: tutorial-python-windows-virtual-machine.md
   - name: Key Vault からシークレットを読み取る
     href: tutorial-web-application-keyvault.md
   - name: キー ローテーションと監査を設定する
@@ -152,9 +154,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 製品フィードバック
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 4b9168c1ab6b5e2af1d8c13465bfe245a81f869d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 569075137e9dc417764a779eaae6df96022c1a44
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685074"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260843"
