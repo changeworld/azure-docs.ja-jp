@@ -1,6 +1,6 @@
 ---
-title: Web サイトのログ分析のための Hadoop での Hive の使用 - Azure HDInsight
-description: Web サイトのログを分析するために HDInsight で Hive を使用する方法を説明します。 HDInsight テーブルへの入力にログ ファイルを使用し、HiveQL を使用してデータを照会します。
+title: Apache Hadoop と Hive を使用して Web ログを分析する - Azure HDInsightHDInsight 上で Hive を使用して Web サイトのログを分析する方法について説明します。
+description: Learn how to use Apache Hive with HDInsight to analyze website logs. HDInsight テーブルへの入力にログ ファイルを使用し、HiveQL を使用してデータを照会します。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: c0a15bacd3aaf97a3caa54ee8bf70a9c4cf54663
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4f4067c73cac4597da3099212c9c04c2544a0b2d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233600"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634347"
 ---
-# <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Web サイトのログを分析するための Windows ベースの HDInsight での Hive の使用
+# <a name="use-apache-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Windows ベースの HDInsight 上で Apache Hive を使用して Web サイトのログを分析する
 Web サイトのログを分析するために HDInsight で HiveQL を使用する方法を説明します。 Web サイトのログ分析は、類似するアクティビティに基づく対象ユーザーの区分、人口統計によるサイト訪問者の分類、参照されたコンテンツや訪問元の Web サイトの確認などのために使用できます。
 
 > [!IMPORTANT]

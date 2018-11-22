@@ -12,30 +12,36 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/17/2018
+ms.date: 11/08/2018
 ms.author: subramar
-ms.openlocfilehash: 3f321775ba112471760e627e6b43ed17ff8c5b6b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 71e7abef725abf95cc20de8d1283d0efea6c3687
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182877"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615859"
 ---
 # <a name="application-upgrade-parameters"></a>アプリケーション アップグレードのパラメーター
-この記事では、Azure Service Fabric アプリケーションのアップグレード中に適用されるさまざまなパラメーターについて説明します。 アプリケーション アップグレードのパラメーターは、アップグレード時に適用されるタイムアウトと正常性チェックを制御します。また、パラメーターには、アップグレードの失敗時に適用する必要があるポリシーを指定します。
-
-アプリケーションのパラメーターは、PowerShell または Visual Studio を使用したアップグレードに適用されます。 PowerShell や Visual Studio に適用される必須および省略可能なパラメーターについては、後述する「必須のパラメーター」と「省略可能なパラメーター」の表を参照してください。
+この記事では、Azure Service Fabric アプリケーションのアップグレード中に適用されるさまざまなパラメーターについて説明します。 アプリケーション アップグレードのパラメーターは、アップグレード時に適用されるタイムアウトと正常性チェックを制御します。また、パラメーターには、アップグレードの失敗時に適用する必要があるポリシーを指定します。 アプリケーション パラメーターは、以下を使用したアップグレードに適用されます。
+- PowerShell
+- Visual Studio
+- SFCTL
+- [REST](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-startapplicationupgrade)
 
 アプリケーション アップグレードは、ユーザーが選択できる 3 つのアップグレード モードのいずれかを使用して開始されます。 各モードには、独自のアプリケーション パラメーター セットがあります。
 - 監視対象
 - 監視対象外の自動
 - 監視対象外の手動
 
+適用できる必須または省略可能なパラメーターについては、以下の各セクションをご覧ください。
+
+## <a name="visual-studio-and-powershell-parameters"></a>Visual Studio および PowerShell パラメーター
+
 PowerShell を使用する Service Fabric アプリケーションのアップグレードでは、[Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) コマンドを使用します。 アップグレード モードを選択するには、**Monitored**、**UnmonitoredAuto**、または **UnmonitoredManual** パラメーターを [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) に渡します。
 
 Visual Studio Service Fabric のアプリケーション アップグレードのパラメーターを設定するには、Visual Studio の [アップグレード設定] ダイアログ ボックスで設定します。 Visual Studio のアップグレード モードを選択するには、**[アップグレード モード]** ドロップダウン ボックスで **[Monitored]**、**[UnmonitoredAuto]**、または **[UnmonitoredManual]** のいずれかを選択します。 詳細については、「[Visual Studio での Service Fabric アプリケーションのアップグレードの構成](service-fabric-visualstudio-configure-upgrade.md)」を参照してください。
 
-## <a name="required-parameters"></a>必須のパラメーター
+### <a name="required-parameters"></a>必須のパラメーター
 (PS=PowerShell、VS=Visual Studio)
 
 | パラメーター | 適用対象 | 説明 |
@@ -48,7 +54,7 @@ UpgradeMode | VS | 使用できる値は、**Monitored** (既定値)、**Unmonit
 UnmonitoredAuto | PS | アップグレード モードが監視対象外の自動であることを示します。 Service Fabric がアップグレード ドメインをアップグレードした後、アプリケーションの正常性の状態に関係なく、Service Fabric は次のアップグレード ドメインをアップグレードします。 このモードは運用環境にはお勧めできません。アプリケーションの開発中にのみ役に立ちます。 |
 UnmonitoredManual | PS | アップグレード モードが監視対象外の手動であることを示します。 Service Fabric は、アップグレード ドメインをアップグレードした後、ユーザーが *Resume-ServiceFabricApplicationUpgrade* コマンドレットを使用して次のアップグレード ドメインをアップグレードするまで待機します。 |
 
-## <a name="optional-parameters"></a>省略可能なパラメーター
+### <a name="optional-parameters"></a>省略可能なパラメーター
 
 正常性の評価パラメーターは省略可能です。 アップグレードを開始するときに、正常性評価の基準が指定されていない場合、Service Fabric はアプリケーション インスタンスの ApplicationManifest.xml で指定されているアプリケーションの正常性ポリシーを使用します。
 
@@ -69,16 +75,46 @@ UnmonitoredManual | PS | アップグレード モードが監視対象外の手
 | HealthCheckWaitDurationSec |PS、VS | Service Fabric でアプリケーションの正常性を評価する前に、アップグレード ドメインでのアップグレード完了後の待機時間を秒単位で指定します。 この期間は、アプリケーションが正常と見なされる前に、アプリケーションが実行されている必要がある時間としても考慮されます。 正常性チェックに合格すると、アップグレード プロセスは次のアップグレード ドメインに進みます。  正常性チェックに合格しない場合、Service Fabric は *HealthCheckRetryTimeout* に達するまで、[UpgradeHealthCheckInterval](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#clustermanager) の時間を待機してから、正常性チェックをもう一度実行します。 既定値と推奨値は、0 秒です。 |
 | MaxPercentUnhealthyDeployedApplications|PS、VS |既定値と推奨値は、0 です。 アプリケーションが正常でないと見なされ、アップグレードに失敗する前にデプロイされるアプリケーションの最大数 ([正常性のセクション](service-fabric-health-introduction.md)を参照してください) を指定します。 このパラメーターは、ノード上のアプリケーションの正常性を定義するため、アップグレード中の問題を検出するうえで役立ちます。 通常、アプリケーションのレプリカの負荷はその他のノードに分散されます。これにより、アプリケーションは正常に表示され、アップグレードを続行することができます。 厳密な *MaxPercentUnhealthyDeployedApplications* を指定すると、Service Fabric はアプリケーション パッケージで高速に問題を検出し、フェイルファストなアップグレードが行われるようにします。 |
 | MaxPercentUnhealthyServices |PS、VS |*DefaultServiceTypeHealthPolicy* と *ServiceTypeHealthPolicyMap* のパラメーター。 既定値と推奨値は、0 です。 アップグレードが正常でないと見なされてアップグレードに失敗する前に、正常性がなくなることを許可するアプリケーション インスタンス内のサービスの最大数を指定します。 |
-| MaxPercentUnhealthyPartitionsPerService|PS、VS |既定値と推奨値は、0 です。 サービス内のパーティション最大数に指定すると、サービスが正常でないと見なされる前に、正常でなくなる可能性があります。 |
-| MaxPercentUnhealthyReplicasPerPartition|PS、VS |既定値と推奨値は、0 です。 パーティションが正常でないと見なされる前に、正常でない状態になるパーティション内のレプリカの最大数を指定します。 |
+| MaxPercentUnhealthyPartitionsPerService|PS、VS |*DefaultServiceTypeHealthPolicy* と *ServiceTypeHealthPolicyMap* のパラメーター。 既定値と推奨値は、0 です。 サービス内のパーティション最大数に指定すると、サービスが正常でないと見なされる前に、正常でなくなる可能性があります。 |
+| MaxPercentUnhealthyReplicasPerPartition|PS、VS |*DefaultServiceTypeHealthPolicy* と *ServiceTypeHealthPolicyMap* のパラメーター。 既定値と推奨値は、0 です。 パーティションが正常でないと見なされる前に、正常でない状態になるパーティション内のレプリカの最大数を指定します。 |
 | ServiceTypeHealthPolicyMap | PS、VS | あるサービスの種類に属するサービスの正常性を評価するために使用される正常性ポリシーを表します。 @ {"ServiceTypeName" : "MaxPercentUnhealthyPartitionsPerService,MaxPercentUnhealthyReplicasPerPartition,MaxPercentUnhealthyServices"} For example: @{ "ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5" } という形式のハッシュ テーブルの入力を受け取ります。 |
 | TimeoutSec | PS、VS | 操作のタイムアウト期間 (秒) を指定します。 |
 | UpgradeDomainTimeoutSec |PS、VS |1 つのアップグレード ドメインをアップグレードするための最大時間 (秒)。 このタイムアウトに達すると、アップグレードは停止され、*FailureAction* の設定に基づいて操作が続行されます。 既定値はなし (無限) です。アプリケーションに合わせてカスタマイズしてください。 |
-| UpgradeReplicaSetCheckTimeoutSec |PS、VS |**ステートレス サービス**-- Service Fabric は単一のアップグレード ドメイン内で、サービスの追加インスタンスを確実に使用できるようにしようとします。 ターゲット インスタンス数が複数ある場合、最大タイムアウト値になるまで、複数のインスタンスが使用可能になるまで待機します。 このタイムアウトは、*UpgradeReplicaSetCheckTimeoutSec* プロパティを使用して指定されます。 タイムアウトになると、サービス インスタンス数にかかわらず、Service Fabric はアップグレードを続行します。 ターゲット インスタンス数が 1 つの場合、Service Fabric は待機せずに、すぐにアップグレードを実行します。<br><br>**ステートフル サービス**-- Service Fabric は 1 つのアップグレード ドメイン内で、レプリカ セットに確実にクォーラムが含まれるようにしようとします。 Service Fabric は *UpgradeReplicaSetCheckTimeoutSec* プロパティで指定した最大タイムアウト値になるまで、クォーラムが使用可能になるまで待機します。 タイムアウトになると、クォーラムにかかわらずアップグレードを続行します。 この設定は、ロールフォワード時には、"しない (無限)" に設定され、ロールバック時には 1,200 秒に設定されます。 |
+| UpgradeReplicaSetCheckTimeoutSec |PS、VS |秒単位で測定されます。<br>**ステートレス サービス**-- Service Fabric は単一のアップグレード ドメイン内で、サービスの追加インスタンスを確実に使用できるようにしようとします。 ターゲット インスタンス数が複数ある場合、最大タイムアウト値になるまで、複数のインスタンスが使用可能になるまで待機します。 このタイムアウトは、*UpgradeReplicaSetCheckTimeoutSec* プロパティを使用して指定されます。 タイムアウトになると、サービス インスタンス数にかかわらず、Service Fabric はアップグレードを続行します。 ターゲット インスタンス数が 1 つの場合、Service Fabric は待機せずに、すぐにアップグレードを実行します。<br><br>**ステートフル サービス**-- Service Fabric は 1 つのアップグレード ドメイン内で、レプリカ セットに確実にクォーラムが含まれるようにしようとします。 Service Fabric は *UpgradeReplicaSetCheckTimeoutSec* プロパティで指定した最大タイムアウト値になるまで、クォーラムが使用可能になるまで待機します。 タイムアウトになると、クォーラムにかかわらずアップグレードを続行します。 この設定は、ロールフォワード時には、"しない (無限)" に設定され、ロールバック時には 1,200 秒に設定されます。 |
 | UpgradeTimeoutSec |PS、VS |全体のアップグレードに適用されるタイムアウト (秒)。 このタイムアウトに達すると、アップグレードは停止され、*FailureAction* がトリガーされます。 既定値はなし (無限) です。アプリケーションに合わせてカスタマイズしてください。 |
 | WhatIf | PS | 使用可能な値: **True** および **False**。 コマンドレットの実行時に発生する内容を示します。 このコマンドレットは実行されません。 |
 
 *MaxPercentUnhealthyServices*、*MaxPercentUnhealthyPartitionsPerService*、*MaxPercentUnhealthyReplicasPerPartition* の基準は、アプリケーション インスタンスのサービスの種類ごとに指定できます。 このパラメーター per-service を設定すると、アプリケーションにさまざまなサービスの種類を含め、それぞれ異なる評価ポリシーを指定することができます。 たとえば、ステートレスなゲートウェイ サービスの種類には、特定のアプリケーション インスタンスのステートフルなエンジン サービスの種類とは異なる *MaxPercentUnhealthyPartitionsPerService* を含めることができます。
+
+## <a name="sfctl-parameters"></a>SFCTL パラメーター
+
+Service Fabric CLI を使用した Service Fabric アプリケーションのアップグレードでは、[sfctl application upgrade](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-upgrade) コマンドと、次に示す必須および省略可能なパラメーターを使用します。
+
+### <a name="required-parameters"></a>必須のパラメーター
+
+| パラメーター | 説明 |
+| --- | --- |
+| application-id  |アップグレードするアプリケーションの ID です。 <br> これは通常、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は '~' 文字で区切られます。 たとえば、アプリケーション名が "fabric:/myapp/app1" の場合、6.0 以降ではアプリケーション ID は "myapp~app1" になり、前のバージョンでは "myapp/app1" になります。|
+application-version |ターゲットをアップグレードするアプリケーションの種類のバージョンです。|
+parameters  |アプリケーションのアップグレード時に適用される、アプリケーション パラメーター オーバーライドの JSON でエンコードされた一覧。|
+
+### <a name="optional-parameters"></a>省略可能なパラメーター
+| パラメーター | 説明 |
+| --- | --- |
+default-service-health-policy | サービスの種類の正常性を評価するために既定で使用される正常性ポリシーの [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) でエンコードされた仕様。 このマップは、既定では空です。 |
+failure-action | 使用できる値は、**Rollback**、**Manual**、および **Invalid** です。 *Monitored* アップグレードで監視ポリシー違反または正常性ポリシー違反が発生した場合に実行する補正アクションです。 <br>**Rollback** は、アップグレードによってアップグレード前のバージョンに自動的にロールバックされることを示します。 <br>**Manual** は、アップグレードが *UnmonitoredManual* アップグレード モードに切り替わることを示します。 <br>**Invalid** は、失敗アクションが無効であることを示します。|
+force-restart | サービス コードを更新せずに構成やデータ パッケージを更新する場合、サービスは、ForceRestart プロパティが **True** に設定されている場合にのみ再起動されます。 更新が完了すると、Service Fabric は新しい構成パッケージやデータ パッケージを使用可能なサービスを知らせます。 サービスは、変更を適用する役割を担います。 必要に応じて、サービス自体を再起動できます。 |
+health-check-retry-timeout | アプリケーションまたはクラスターが正常でない場合に、正常性評価を再試行する時間。この時間を超えると、*FailureAction* に指定したアクションが実行されます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値: PT0H10M0S。 |
+health-check-stable-duration | アプリケーションまたはクラスターが正常な状態である必要がある時間。この時間を超えると、アップグレードが次のアップグレード ドメインに進みます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値: PT0H2M0S。 |
+health-check-wait-duration | ドメインのアップグレードを完了後、待機する時間。この時間を超えると、正常性ポリシーが適用されます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値: 0。|
+max-unhealthy-apps | 既定値と推奨値は、0 です。 アプリケーションが正常でないと見なされ、アップグレードに失敗する前にデプロイされるアプリケーションの最大数 ([正常性のセクション](service-fabric-health-introduction.md)を参照してください) を指定します。 このパラメーターは、ノード上のアプリケーションの正常性を定義するため、アップグレード中の問題を検出するうえで役立ちます。 通常、アプリケーションのレプリカの負荷はその他のノードに分散されます。これにより、アプリケーションは正常に表示され、アップグレードを続行することができます。 厳密な *max-unhealthy-apps* を指定すると、Service Fabric はアプリケーション パッケージで高速に問題を検出し、フェイルファストなアップグレードが行われるようにします。 0 ～ 100 の数値として表されます。 |
+モード | 使用できる値は、**Monitored**、**UpgradeMode**、**UnmonitoredAuto**、**UnmonitoredManual** です。 既定値は **UnmonitoredAuto** です。 これらの値の説明については、Visual Studio および PowerShell の "*必須パラメーター*" セクションをご覧ください。|
+replica-set-check-timeout |秒単位で測定されます。 <br>**ステートレス サービス**-- Service Fabric は単一のアップグレード ドメイン内で、サービスの追加インスタンスを確実に使用できるようにしようとします。 ターゲット インスタンス数が複数ある場合、最大タイムアウト値になるまで、複数のインスタンスが使用可能になるまで待機します。 このタイムアウトは、*replica-set-check-timeout* プロパティを使用して指定されます。 タイムアウトになると、サービス インスタンス数にかかわらず、Service Fabric はアップグレードを続行します。 ターゲット インスタンス数が 1 つの場合、Service Fabric は待機せずに、すぐにアップグレードを実行します。<br><br>**ステートフル サービス**-- Service Fabric は 1 つのアップグレード ドメイン内で、レプリカ セットに確実にクォーラムが含まれるようにしようとします。 Service Fabric は *replica-set-check-timeout* プロパティで指定した最大タイムアウト値になるまで、クォーラムが使用可能になるまで待機します。 タイムアウトになると、クォーラムにかかわらずアップグレードを続行します。 この設定は、ロールフォワード時には、"しない (無限)" に設定され、ロールバック時には 1,200 秒に設定されます。 |
+service-health-policy | サービスの種類名ごとにサービスの種類の正常性ポリシーを持つ JSON でエンコードされたマップ。 このマップは、既定では空です。 [パラメーターの JSON 形式。](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap). "Value" 部分の JSON には、**MaxPercentUnhealthyServices**、**MaxPercentUnhealthyPartitionsPerService**、および **MaxPercentUnhealthyReplicasPerPartition** が含まれます。 これらのパラメーターの説明については、Visual Studio および PowerShell の省略可能パラメーター セクションをご覧ください。
+timeout | 操作のタイムアウト期間 (秒) を指定します。 既定値は 60 です。 |
+upgrade-domain-timeout | 各ドメインがアップグレードを完了する必要がある時間。この時間を超えると、*FailureAction* が実行されます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値はなし (無限) です。アプリケーションに合わせてカスタマイズしてください。 既定値: P10675199DT02H48M05.4775807S |
+upgrade-timeout | 各ドメインがアップグレードを完了する必要がある時間。この時間を超えると、*FailureAction* が実行されます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値はなし (無限) です。アプリケーションに合わせてカスタマイズしてください。 既定値: P10675199DT02H48M05.4775807S|
+warning-as-error | 使用可能な値: **True** および **False**。 既定値は **False** です。 フラグとして渡すことができます。 アップグレード中に、アプリケーションの正常性を評価するときに、アプリケーションの警告正常性状態をエラーとして扱います。 既定では、Service Fabric は警告イベントがある場合でもアップグレードを続行できるように、エラーになるイベントの警告正常性のイベントは評価しません。 |
 
 ## <a name="next-steps"></a>次の手順
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
