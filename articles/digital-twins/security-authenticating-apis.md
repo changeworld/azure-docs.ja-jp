@@ -57,7 +57,7 @@ Digital Twins API を起動して実行するには、API 環境として Postma
     | 認証 URL | https://login.microsoftonline.com/<Your Azure AD Tenant e.g. Contoso>.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0 |
     | クライアント ID | 手順 2 で作成または別の用途のために作り変えた Azure AD アプリのアプリケーション ID を使用します。 |
     | Scope (スコープ) | 空白のままにします。 |
-    | 州 | 空白のままにします。 |
+    | State (状態) | 空白のままにします。 |
     | クライアント認証 | 基本 Auth ヘッダーとして送信します。 |
 
 1. **[Request Token]\(要求トークン\)** を選択します。

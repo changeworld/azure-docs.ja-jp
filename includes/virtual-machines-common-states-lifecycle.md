@@ -29,7 +29,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 <table>
 <tr>
 <th>
-州
+状態
 </th>
 <th>
 説明
