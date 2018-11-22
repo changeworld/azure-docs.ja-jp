@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: 1b949d2baedc7a7da3230212e267c3ac98b30bbd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 64e7b6ad79fc26f8ab2ba796bbca2909417b113c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239544"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625999"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -642,7 +642,7 @@ client.SetServiceProperties(sp);
 これらの操作は正常に実行されているため、可用性などの他のメトリックに影響することはないことに留意してください。 正常に実行されても失敗の HTTP 状態コードを返される可能性のある操作の例を以下に示します。
 
 * **ResourceNotFound** (未検出 404)。存在しない BLOB への GET 要求など。
-* **ResouceAlreadyExists** (競合 409)。リソースが既に存在している場合の **CreateIfNotExist** 操作など。
+* **ResourceAlreadyExists** (競合 409)。リソースが既に存在している場合の **CreateIfNotExist** 操作など。
 * **ConditionNotMet** (変更なし 304)。最後の操作より後にイメージが更新された場合にのみ、クライアントが **ETag** 値と HTTP **If-None-Match** ヘッダーを送信してそのイメージを要求するなどの条件付き操作。
 
 「[REST API の一般的なエラー コード](https://msdn.microsoft.com/library/azure/dd179357.aspx)」に、Storage サービスが返す一般的な REST API エラー コードの一覧を記載しています。

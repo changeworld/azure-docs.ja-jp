@@ -7,26 +7,26 @@ manager: shivamg
 keywords: Azure Backup Server; ワークロードの保護; ワークロードのバックアップ
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/10/2018
-ms.author: adigan
-ms.openlocfilehash: 67243aca9f5f578402ff79422783148af53798c6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 11/13/2018
+ms.author: adigan; kasinh
+ms.openlocfilehash: e1ed8b1f62eeb52d65ba178c8ca13f94b57da6f0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38546019"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616318"
 ---
-# <a name="install-and-configure-azure-backup-server"></a>Azure Backup Server のインストールと構成
+# <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 > [!div class="op_single_selector"]
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
 >
 
-この記事では、Azure Backup Server を使用してワークロードをバックアップする環境の準備方法について説明します。 Azure Backup Server を使用すると、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードを保護することができます。
+この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードをバックアップする環境の準備方法について説明します。 Azure Backup Server を使用すると、単一のコンソールから Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange、Windows クライアントなどのアプリケーションのワークロードを保護することができます。
 
 > [!NOTE]
-> Azure Backup Server は VMware VM を保護できるようになったため、セキュリティ機能が強化されています。 以下のセクションで説明するように製品をインストールし、Update 1 および最新の Azure Backup エージェントを適用してください。 Azure Backup Server による VMware サーバーのバックアップに関する詳細については、「[Azure への VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)」をご覧ください。 セキュリティ機能の詳細については、[Azure バックアップ セキュリティ機能のドキュメント](backup-azure-security-feature.md)を参照してください。
+> Azure Backup Server は VMware VM を保護できるようになったため、セキュリティ機能が強化されています。 以下のセクションで説明するように製品をインストールし、最新の Azure Backup エージェントをインストールしてください。 Azure Backup Server による VMware サーバーのバックアップに関する詳細については、「[Azure への VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)」をご覧ください。 セキュリティ機能の詳細については、[Azure バックアップ セキュリティ機能のドキュメント](backup-azure-security-feature.md)を参照してください。
 >
 >
 
@@ -37,13 +37,13 @@ Infrastructure as a Server (IaaS) ワークロード (Azure の VM など) を�
 >
 >
 
-Azure Backup Server には、Data Protection Manager (DPM) のワークロード バックアップ機能の大半が継承されています。 この記事は、DPM ドキュメントと連動し、いくつかの共通の機能について説明しています。 Azure Backup Server には DPM と同じ機能が多数存在しますが、 Azure Backup Server は、テープへのバックアップ機能は持たず、System Center とも連携しません。
+Azure Backup Server には、Data Protection Manager (DPM) のワークロード バックアップ機能の大半が継承されています。 この記事は、DPM ドキュメントと連動し、いくつかの共通の機能について説明しています。 Azure Backup Server と DPM の多くの機能は共通ですが、Azure Backup Server ではテープへのバックアップや System Center との統合は行われません。
 
 ## <a name="choose-an-installation-platform"></a>インストール プラットフォームを選択する
 Azure Backup Server を準備して実行するための最初の手順は、Windows Server のセットアップです。 サーバーの設置場所は Azure でもオンプレミスでもかまいません。
 
 ### <a name="using-a-server-in-azure"></a>Azure に設置されたサーバーを使用する場合
-Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter または Windows Server 2016 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は A2 Standard (2 コア、3.5 GB RAM) です。
+Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter、Windows Server 2016 Datacenter または Windows Server 2019 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は A2 Standard (2 コア、3.5 GB RAM) です。
 
 Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
@@ -52,7 +52,8 @@ Azure Backup Server を使用したワークロードの保護には、数多く
 
 | オペレーティング システム | プラットフォーム | SKU |
 |:--- | --- |:--- |
-| Windows Server 2016 と最新 SP |64 ビット |Standard、Datacenter、Essentials (MABS v2 以降) |
+| Windows Server 2019 |64 ビット |Standard、Datacenter、Essentials (MABS V3 以降) |
+| Windows Server 2016 と最新 SP |64 ビット |Standard、Datacenter、Essentials (MABS V2 以降) |
 | Windows Server 2012 R2 と最新 SP |64 ビット |Standard、Datacenter、Foundation |
 | Windows Server 2012 と最新 SP |64 ビット |Datacenter、Foundation、Standard |
 | Windows Storage Server 2012 R2 と最新 SP |64 ビット |Standard、Workgroup |
@@ -157,16 +158,32 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 2. ようこそ画面で **[次へ]** をクリックします。 *[前提条件の確認]* セクションが表示されます。 この画面で **[確認]** をクリックして、Azure Backup Server のハードウェアとソフトウェアの前提条件が満たされているかどうかを確認します。 前提条件がすべて正常に満たされている場合は、マシンが要件を満たしていることを示すメッセージが表示されます。 **[次へ]** をクリックします。
 
     ![Azure Backup Server - Welcome and Prerequisites check](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Microsoft Azure Backup Server には、SQL Server Standard が必要です。 また、Azure Backup Server のインストール パッケージには、独自の SQL を使用しない場合に必要となる適切な SQL Server バイナリがバンドルされています。 新しい Azure Backup Server のインストールを開始するには、**[Install new Instance of SQL Server with this Setup (このセットアップを使用して、SQL Server の新しいインスタンスをインストールします)]** をオンにし、**[確認してインストール]** をクリックします。 前提条件が正常にインストールされたら、 **[次へ]** をクリックします。
+3. Microsoft Azure Backup Server には、SQL Server Enterprise が必要です。 また、Azure Backup Server のインストール パッケージには、独自の SQL を使用しない場合に必要となる適切な SQL Server バイナリがバンドルされています。 新しい Azure Backup Server のインストールを開始するには、**[Install new Instance of SQL Server with this Setup (このセットアップを使用して、SQL Server の新しいインスタンスをインストールします)]** をオンにし、**[確認してインストール]** をクリックします。 前提条件が正常にインストールされたら、 **[次へ]** をクリックします。
 
     ![Azure Backup Server - SQL check](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    エラーが発生し、コンピューターの再起動を推奨された場合は、コンピューターを再起動して **[再確認]** をクリックします。
+    エラーが発生し、コンピューターの再起動を推奨された場合は、コンピューターを再起動して **[再確認]** をクリックします。 SQL の構成に問題がある場合は、SQL のガイドラインに従って SQL を構成し、既存の SQL インスタンスを使用して MABS のインストールまたはアップグレードを再試行します。
 
    > [!NOTE]
-   > Azure Backup Server は、リモートの SQL Server インスタンスでは動作しません。 Azure Backup Server に使用されるインスタンスは、ローカルに存在する必要があります。
-   >
-   >
+   > Azure Backup Server は、リモートの SQL Server インスタンスでは動作しません。 Azure Backup Server に使用されるインスタンスは、ローカルに存在する必要があります。 既存の SQL Server を MABS で使用している場合、MABS のセットアップでサポートされるのは SQL Server の*名前付きインスタンス*のみです。
+
+   **手動で構成**
+
+   SQL の独自のインスタンスを使用するときは、sysadmin ロールに対する builtin\Administrators をマスター DB に追加してください。
+
+    **SQL 2017 の SSRS の構成**
+
+    SQL 2017 の独自のインスタンスを使用するときは、手動で SSRS を構成する必要があります。 SSRS の構成の後で、SSRS の *IsInitialized* プロパティが *True* に設定されていることを確認します。 これが True に設定されていると、MABS は SSRS が既に構成されていると見なして SSRS 構成をスキップします。
+
+    SSRS 構成では次の値を使用します。
+
+        - Service Account: ‘Use built-in account’ should be Network Service
+        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
+        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
+        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+
+    SSRS の構成について詳しくは、[こちら](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017)をご覧ください。
+
 4. Microsoft Azure Backup サーバーのファイルをインストールする場所を指定し、 **[次へ]** をクリックします。
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
@@ -198,12 +215,58 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 インストール手順が正常に完了すると、製品のデスクトップ アイコンも作成されます。 アイコンをダブルクリックして、製品を起動します。
 
 ### <a name="add-backup-storage"></a>Backup ストレージの追加
-一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクを追加する方法の詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://technet.microsoft.com/library/hh758075.aspx)」を参照してください。
+一次バックアップ コピーは、Azure Backup Server マシンに接続されているストレージに保持されます。 ディスクを追加する方法の詳細については、「 [記憶域プールおよびディスク記憶域の構成](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage)」を参照してください。
 
 > [!NOTE]
 > Azure にデータを送信する場合でも、Backup ストレージを追加する必要があります。 Azure Backup Server の現在のアーキテクチャでは、Azure Backup コンテナーにはデータの " *2 番目の* " コピーが保持され、最初の (必須の) バックアップ コピーはローカル ストレージに保持されます。
 >
 >
+
+### <a name="install-and-update-the-data-protection-manager-protection-agent"></a>Data Protection Manager 保護エージェントのインストールと更新
+
+MABS は、System Center Data Protection Manager 保護エージェントを使用します。 保護サーバー上に保護エージェントをインストールする手順は、[こちら](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-1807)をご覧ください。
+
+この後のセクションでは、クライアント コンピューターのために保護エージェントを更新する方法を説明します。
+
+1. Backup Server の管理者コンソールで、**[Management]** \(管理) > **[Agents]** \(エージェント) の順に選択します。
+
+2. 表示ウィンドウで、保護エージェントを更新するクライアント コンピューターを選択します。
+
+  > [!NOTE]
+  > **[Agent Updates]** \(エージェントの更新プログラム) 列は、保護されるコンピューターごとに保護エージェントの更新がいつ行われるかを示します。 **[アクション]** ウィンドウでは、**[更新する]** アイコンは、保護されるコンピューターが選択されていて、更新プログラムが利用可能なときのみ表示されます。
+  >
+  >
+
+3. 選択したコンピューターに更新された保護エージェントをインストールするには、**[アクション]** ウィンドウで、**[更新する]** を選択します。
+
+4. ネットワークに接続されていないクライアント コンピューターでは、コンピューターがネットワークに接続されるまで、**[エージェントの状態]** 列には **[更新保留中]** の状態が表示されます。
+
+  クライアント コンピューターがネットワークに接続された後、クライアント コンピューターの **[Agent Updates]** \(エージェントの更新プログラム) 列には、**[更新中]** の状態が表示されます。
+
+## <a name="move-mabs-to-a-new-server"></a>MABS を新しいサーバーに移動する
+
+記憶域を維持したまま MABS を新しいサーバーに移動する必要がある場合はこの後の手順に従います。 これを実行できるのは、すべてのデータが Modern Backup Storage にある場合のみです。
+
+
+  > [!IMPORTANT]
+  > - 新しいサーバー名は元の Azure Backup Server インスタンスと同じ名前にする必要があります。 以前の記憶域プールと Data Protection Manager データベースを使用して復旧ポイントを保持する場合は、新しい Azure Backup Server インスタンスの名前を変更することはできません。
+  > - Data Protection Manager データベースのバックアップを用意する必要があります。 後でデータベースを復元する必要があるためです。
+
+1. 表示ウィンドウで、保護エージェントを更新するクライアント コンピューターを選択します。
+2. 元の Azure Backup Server をシャットダウンするか、ネットワークから切り離します。
+3. Active Directory のコンピューター アカウントをリセットします。
+4. 新しいコンピューターに Server 2016 をインストールし、元の Azure Backup Server と同じコンピューター名を付けます。
+5. ドメインに参加します。
+6. Azure Backup Server V2 以降をインストールします (DPM 記憶域プールのディスクを古いサーバーから移動してインポートします)。
+7. 手順 1 で作成した DPMDB を復元します。
+8. 元のバックアップ サーバーの記憶域を新しいサーバーにアタッチします。
+9. SQL から DPMDB を復元します。
+10. 新しいサーバーで、管理コマンド ラインから Microsoft Azure Backup のインストール場所と bin フォルダーに cd します。
+
+パスの例: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
+to Azure backup
+
+10) DPMSYNC -SYNC を実行します。注: DPM 記憶域プールに古いディスクを移動するではなく、新しいディスクを追加している場合は、DPMSYNC -Reallocatereplica を実行します。
 
 ## <a name="network-connectivity"></a>ネットワーク接続
 Azure Backup Server が正常に動作するためには、Azure Backup サービスに接続されている必要があります。 マシンが Azure に接続されているかどうかを確認するには、Azure Backup Server PowerShell コンソールで ```Get-DPMCloudConnection``` コマンドレットを使用します。 コマンドレットの出力が TRUE の場合、マシンは接続されていますが、それ以外の場合は接続されていません。
@@ -238,12 +301,47 @@ Azure サブスクリプションの状態が "*有効期限切れ*" または "
 * サブスクリプションが " *プロビジョニング解除済み* " の場合、プロビジョニングが解除されている期間は機能を使用できません。 " *アクティブ*" になると、製品のバックアップ/復元機能を使用できるようになります。 ローカル ディスクのバックアップ データが十分に長い間保持されている場合は、それらのデータも回復できます。 ただし、Azure に保持されるバックアップ データは、サブスクリプションが " *プロビジョニング解除済み* " 状態になると失われ、回復できなくなります。
 * サブスクリプションが "*有効期限切れ*" になった場合は、再び "*アクティブ*" になるまで機能を使用できなくなるだけです。 サブスクリプションが " *有効期限切れ* " になった期間に予定されていたバックアップは実行されません。
 
+## <a name="upgrade-mabs"></a>MABS をアップグレードする
+MABS をアップグレードするには、次の手順を使用します。
+
+### <a name="upgrade-from-mabs-v2-to-v3"></a>MABS V2 から V3 にアップグレードする
+
+> [!NOTE]
+
+> MABS V2 は MABS V3 をインストールするための前提条件ではありません。 ただし、MABS V3 にアップグレードできるのは MABS V2 からのみです。
+
+次の手順を使用して MABS をアップグレードします。
+
+1. MABS V2 を MABS V3 にアップグレードするには、OS を Windows Server 2016 または Windows Server 2019 (必要な場合) にアップグレードします。
+
+2.  サーバーをアップグレードします。 手順は[インストール](#install-and-upgrade-azure-backup-server)と同様です。 ただし、SQL の設定で、SQL インスタンスを SQL 2017 にアップグレードするか、SQL Server 2017 の独自のインスタンスを使用するかという選択肢があります。
+
+  > [!NOTE]
+
+  > SQL インスタンスのアップグレード中に終了しないでください。終了すると、SQL レポート インスタンスがアンインストールされるため、MABS を再アップグレードする試みが失敗します。
+
+  注意すべき重要な点を次に示します。
+
+  > [!IMPORTANT]
+
+  >  SQL 2017 アップグレードの一環として、SQL 暗号化キーをバックアップし、レポート サービスをアンインストールします。 SQL Server のアップグレード後に、レポート サービス (14.0.6827.4788) がインストールされ、暗号化キーが復元されます。
+
+ > SQL 2017 を手動で構成するときは、インストール手順の下にある「*SQL 2017 の SSRS 構成*」セクションを参照してください。
+
+3. 保護サーバー上の保護エージェントを更新します。
+4. バックアップを続行します。実稼働サーバーを再起動する必要はありません。
+5. これで、データの保護を開始できます。 保護しながら、Modern Backup Storage にアップグレードする場合は、バックアップを格納するボリュームを選択して、プロビジョニングされた領域の下をチェックすることもできます。 [詳細情報](backup-mabs-add-storage.md)。
+
+> [!NOTE]
+
+> MABS V1 を V2 にアップグレードする場合は、OS が Windows Server 2016 または Windows Server 2012 R2 であることを確認します。 System Center 2016 Data Protection Manager Modern Backup Storage のような新機能を利用するには、Backup Server V2 を Windows Server 2016 にインストールする必要があります。 Backup Server V2 にアップグレードまたはこれをインストールする前に、MABS に該当する[インストールの前提条件](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)を確認してください。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 Microsoft Azure Backup Server がセットアップ段階 (またはバックアップや復元) でエラーのため失敗した場合、詳細については、この[エラー コードのドキュメント](https://support.microsoft.com/kb/3041338)を参照してください。
-[Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
+ [Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>次の手順
-[DPM 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx) について、Microsoft TechNet サイトのページで詳細を確認してください。 このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。
+[DPM 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx) について、Microsoft TechNet サイトのページで詳細を確認してください。 このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。 一連の [PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016)を使用して、さまざまな操作を実行できます。
 
 以下の記事により、Microsoft Azure Backup Server を使用したワークロードの保護について理解を深めてください。
 

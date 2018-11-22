@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: d4b7d8ec5cb162e5fc844f107fbd5eb08fb00639
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bf5bc66ce55b0b9d6095cd395a11f68b40af1639
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353535"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685720"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -28,7 +28,7 @@ ms.locfileid: "49353535"
 
 Q: Apple iOS デバイスにストリーミングする方法
 
-A: URL の "/Manifest" 部分に "(format=m3u8-aapl)" パスを追加して、ストリーミング配信元サーバーに Apple iOS ネイティブ デバイスでの使用のために HLS コンテンツを返すよう指示します (詳細については、(コンテンツの配信)[media-services-deliver-content-overview.md] を参照してください)。
+A: URL の "/Manifest" 部分に "(format=m3u8-aapl)" パスを追加して、Apple iOS ネイティブ デバイスでの使用のために HLS コンテンツを返すようストリーミング配信元サーバーに指示します (詳細については、[コンテンツの配信](media-services-deliver-content-overview.md)に関する記事をご覧ください)。
 
 Q: インデックス作成の規模はどのように設定できますか?
 
@@ -56,7 +56,7 @@ A: .NET を使用してある Media Services アカウントから別のアカ�
 
 Q: AMS を使用する場合、ファイルの名前にはどのような文字を使用できますか。
 
-A: Media Services は、ストリーミング コンテンツ (たとえば、 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 "." は 1 つのみです。 また、ファイル名拡張子で使用できる
+A: Media Services は、ストリーミング コンテンツ (たとえば、 http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。  "." は 1 つのみです。 また、ファイル名拡張子で使用できる
 
 Q: REST を使用して接続する方法を教えてください。
 

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0afa4f85f443789d1ce7e79d0708967e308a4683
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 92e200f358098d5516246d057d1cef406750e326
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623202"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264684"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>Azure Active Directory 監視とは (プレビュー)
 
@@ -32,6 +32,8 @@ Azure Active Directory (Azure AD) 監視を使用すると、Azure AD のアク�
 - Azure ストレージ アカウント。
 - Azure イベント ハブ。Splunk および Sumologic のインスタンスと統合することができます。
 - Azure Log Analytics ワークスペース。このワークスペースで、データの分析や、特定のイベントのダッシュボードとアラートの作成を行うことができます。
+
+> [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="diagnostic-settings-configuration"></a>診断設定を構成する
 

@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: deguhath
-ms.openlocfilehash: b4194ef5ab1c2c09206ea0acf78cb539bc2fc0b7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fd3f010c3fccca679daa6639c1427d17ae64a0d1
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836519"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51343994"
 ---
 # <a name="feature-engineering-in-data-science"></a>データ サイエンスにおける特徴エンジニアリング
 この記事では、特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。 このプロセスの説明に使用されている例は、Azure Machine Learning Studio から引用しています。 
 
-[!INCLUDE [cap-create-features-data-selector](../../../includes/cap-create-features-selector.md)]
-
-この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明された記事にリンクされています。 このタスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
+このタスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
 
 特徴エンジニアリングでは、学習プロセスの促進に役立つ生データから特徴を作成して、学習アルゴリズムの予測力を高めることを試みます。 特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、「[Team Data Science Process ライフサイクルとは?](overview.md)」をご覧ください。 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。 
 
@@ -37,6 +35,11 @@ ms.locfileid: "34836519"
 通常、**特徴エンジニアリング**は追加の特徴を生成するために最初に適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**の手順が実行されます。
 
 機械学習で使用されるトレーニング データは、多くの場合、収集された生データから特徴を抽出することで向上させることができます。 手書き文字の画像の分類方法の学習において、エンジニアリングされた特徴の例は、生のビット分布データで構成されているビット密度マップの作成です。 このマップは、生の分布を直接使用するよりも効率的に文字のエッジを検索できます。
+
+特定の環境でデータの特徴を作成するには、次の記事を参照してください。
+
+* [SQL Server のデータの特徴を作成する](create-features-sql-server.md)
+* [Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する](create-features-hive.md)
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -48,7 +51,7 @@ ms.locfileid: "34836519"
 まず Azure Machine Learning から始めると、Studio で提供されているサンプルを使用して最も簡単にこのプロセスを具体的に把握できます。 次に、2 つの例を示します。
 
 * ターゲット値が既知の場合の教師あり実験における、 [レンタル自転車の数の予測](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) の回帰の例
-* [特徴ハッシュ](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
+*  [特徴ハッシュ](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>例 1: 回帰モデルに時間的な特徴を追加する
 Azure Machine Learning Studio で ”自転車の需要予測” の実験を使用して、回帰タスクの特徴をエンジニアリングする方法を見てみましょう。 この実験の目的は、自転車の需要、つまり特定の月 / 日 / 時間内でのレンタル自転車の数を予測することです。 データセットの "Bike Rental UCI データセット" は、生の入力データとして使用します。 このデータセットは、米国のワシントン D.C. で自転車のレンタル ネットワークを管理している Capital Bikeshare 社の実際のデータに基づいています。 データセットは、2011 年と 2012 年の 1 日の特定の時間帯のレンタル自転車の数を表し、17379 行と 17 列が含まれています。 生の特徴セットには、気象条件 (温度 / 湿度 / 風速) やその日の種類 (休日 / 平日) が含まれます。 予測するフィールドは "cnt" カウントです。これは、特定の時間帯のレンタル自転車数を 1 ～ 977 の範囲内で表しています。

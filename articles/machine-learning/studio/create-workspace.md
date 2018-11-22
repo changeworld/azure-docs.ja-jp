@@ -12,24 +12,21 @@ ms.component: studio
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 94502cbb0946ad1568cf33716480406b17fd57ac
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 19cbb27221bfb95a0900eb7a604e540cb066037e
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833956"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345557"
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースの作成と共有
-このメニューは、Cortana Analytics Process (CAP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
 
-[!INCLUDE [data-science-environment-setup](../../../includes/cap-setup-environments.md)]
-
-Azure Machine Learning Studio を使用するには、Machine Learning ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ### <a name="to-create-a-workspace"></a>ワークスペースを作成するには
-1. [Azure ポータル](https://portal.azure.com/)
+1.  [Azure ポータル](https://portal.azure.com/)
 
     > [!NOTE]
     > サインインしてワークスペースを作成するには、Azure サブスクリプションの管理者である必要があります。 

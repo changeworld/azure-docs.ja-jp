@@ -1,6 +1,6 @@
 ---
-title: HDInsight 上の Pig で Apache DataFu を使用する - Azure
-description: Apache DataFu Pig は、Hadoop 上の Pig で使用するオープン ソース ライブラリのコレクションです。 HDInsight クラスターの Pig で DataFu を使用する方法について説明します。
+title: HDInsight 上の Apache Pig で Apache DataFu を使用する - Azure
+description: Apache DataFu Pig は、Apache Hadoop 上の Apache Pig で使用されるライブラリのコレクションです。 HDInsight クラスターの Pig で DataFu を使用する方法について説明します。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 43885f3e1fcba97b5af201edfc0cce78a5a5eae5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0c7e8b7ab10771c611f80d36fb1c9ed0cf3e6f1b
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012430"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632358"
 ---
-# <a name="use-apache-datafu-pig-with-pig-on-hdinsight"></a>HDInsight 上の Pig で Apache DataFu Pig を使用する
+# <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>HDInsight 上の Apache Pig で Apache DataFu Pig を使用する
 
 HDInsight で Apache DataFu Pig を使用する方法について説明します。
 
-DataFu Pig は、Hadoop 上の Pig で使用するオープン ソース ライブラリのコレクションです。
+Apache DataFu Pig は、Apache Hadoop 上の Apache Pig で使用されるオープン ソース ライブラリのコレクションです。
 DataFu Pig の詳細については、[https://datafu.apache.org/](https://datafu.apache.org/) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ DataFu Pig の詳細については、[https://datafu.apache.org/](https://dataf
   > [!IMPORTANT]
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
+*  [HDInsight での Pig の使用](hdinsight-use-pig.md)
 
 ## <a name="install-datafu-on-linux-based-hdinsight"></a>Linux ベースの HDInsight に DataFu をインストールする
 

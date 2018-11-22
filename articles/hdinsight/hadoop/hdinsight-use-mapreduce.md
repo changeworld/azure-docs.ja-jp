@@ -1,6 +1,6 @@
 ---
-title: HDInsight での MapReduce と Hadoop
-description: HDInsight クラスターの Hadoop で MapReduce ジョブを実行する方法を説明します。
+title: MapReduce と HDInsight 上の Apache Hadoop
+description: HDInsight クラスター上の Apache Hadoop で MapReduce ジョブを実行する方法について説明します。
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,22 +9,22 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: f9dea4c965f64576f839a39b813e4361b166ffe6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c9a4a0944c51cb8c6f6d91cd153580a17a9b7898
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015164"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632661"
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>HDInsight での MapReduce と Hadoop の使用
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop で MapReduce を使用する
 
 HDInsight クラスターで MapReduce ジョブを実行する方法を説明します。 次の表を使用して、HDInsight で MapReduce を使用できるさまざまな方法を確認してください。
 
 | **使用する方法** | **目的** | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) | **SSH** | Linux |Linux、Unix、Mac OS X、または Windows |
 | [REST](apache-hadoop-use-mapreduce-curl.md) |**REST** を使用してリモートからジョブを送信する (例では cURL を使用) |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows |Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) | **Windows PowerShell** |Linux または Windows | Windows |
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -32,7 +32,7 @@ HDInsight クラスターで MapReduce ジョブを実行する方法を説明�
 
 ## <a id="whatis"></a>MapReduce とは
 
-Hadoop MapReduce は、膨大なデータを処理するジョブを記述するためのソフトウェア フレームワークです。 入力データは、独立したチャンクに分割されます。 各チャンクは、クラスター内のノード全体で並列に処理されます。 MapReduce ジョブは次の 2 つの関数で構成されます。
+Apache Hadoop MapReduce は、膨大なデータを処理するジョブを記述するためのソフトウェア フレームワークです。 入力データは、独立したチャンクに分割されます。 各チャンクは、クラスター内のノード全体で並列に処理されます。 MapReduce ジョブは次の 2 つの関数で構成されます。
 
 * **Mapper**: 入力データを使用して分析し (通常はフィルターと並べ替え操作を使用)、タプル (キーと値のペア) を出力します。
 
@@ -159,9 +159,9 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 
 | **使用する方法** | **目的** | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |**REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) | **SSH** | Linux |Linux、Unix、Mac OS X、または Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) | **REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) | **Windows PowerShell** |Linux または Windows | Windows |
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。

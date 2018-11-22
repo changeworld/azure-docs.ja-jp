@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: b80fcecf28eaaf05e7fc199a9c318fd4148b9212
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b617ae1a1df0ed220d03e0124aa9dafd9fc2388c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497860"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345999"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure BLOB ストレージのデータを探索する
-このドキュメントでは、[Pandas](http://pandas.pydata.org/) Python パッケージを使用して Azure BLOB コンテナーに格納されているデータを探索する方法について説明します。
 
-次の **メニュー** は、ツールを使用してさまざまなストレージ環境のデータを探索する方法を説明するトピックにリンクしています。 このタスクは、 [Data Science Process](overview.md)の 1 ステップです。
+この記事では、[Pandas](http://pandas.pydata.org/) Python パッケージを使用して Azure BLOB コンテナーに格納されているデータを探索する方法について説明します。
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+このタスクは、[Team Data Science Process](overview.md) の 1 ステップです。
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、以下のことを前提としています。
@@ -65,7 +64,7 @@ ms.locfileid: "46497860"
 ## <a name="blob-dataexploration"></a>Pandas を使用したデータ探索の例
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
-1. **行と列の数** 
+1.  **行と列の数** 
    
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 2. 次のデータセットの始めまたは終わりの数**行**を**検査**します。

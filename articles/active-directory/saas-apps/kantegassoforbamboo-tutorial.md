@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: ceab1293b5bd1fbae9088783651d0effa8c5a78a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e6e534aaa833d7c66216896765d20cdcf50a461
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449004"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bamboo の統合
 
@@ -88,7 +88,7 @@ Kantega SSO for Bamboo で、Azure AD での **[ユーザー名]** の値を **[
 
 Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Kantega SSO for Bamboo テスト ユーザーの作成](#creating-a-kantega-sso-for-bamboo-test-user)** - Kantega SSO for Bamboo で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -173,7 +173,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[App ID URI]\(アプリの ID URI\)** の値をコピーして、Azure Portal の **[Kantega SSO for Bamboo のドメインと URL]** セクションの**識別子、応答 URL、サインオン URL** として使います。
 
-    b. **[次へ]** をクリックします。
+    b.  **[次へ]** をクリックします。
 
 1. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。
 
@@ -181,7 +181,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
-    b. **[次へ]** をクリックします。
+    b.  **[次へ]** をクリックします。
 
 1. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
 
@@ -189,7 +189,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
 
-    b. **[次へ]** をクリックします。
+    b.  **[次へ]** をクリックします。
 
 1. 署名証明書を確認し、**[Next]\(次へ\)** をクリックします。   
 
@@ -201,7 +201,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[Create users in Bamboo's internal Directory if needed]\(必要に応じて Bamboo の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
-    b. **[次へ]** をクリックします。
+    b.  **[次へ]** をクリックします。
 
 1. **[完了]** をクリックします。
 
@@ -263,7 +263,7 @@ Azure AD ユーザーが Bamboo にログインできるようにするには、
 
     ![従業員の追加](./media/kantegassoforbamboo-tutorial/user1.png) 
 
-1. **[ユーザー]** をクリックします。 **[Add user]\(ユーザーの追加\)** セクションで、次の手順を実行します。
+1. **[ユーザー]** をクリックします。 **[ユーザーの追加]** セクションで、次の手順を実行します。
 
     ![従業員の追加](./media/kantegassoforbamboo-tutorial/user2.png) 
 
@@ -314,7 +314,7 @@ Azure AD ユーザーが Bamboo にログインできるようにするには、
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Kantega SSO for Bamboo のタイルをクリックすると、自動的に Kantega SSO for Bamboo アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

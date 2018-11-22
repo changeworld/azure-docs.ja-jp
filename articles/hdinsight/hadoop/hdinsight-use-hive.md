@@ -1,6 +1,6 @@
 ---
 title: Apache Hive と HiveQL とは - Azure HDInsight
-description: Apache Hive は、Hadoop 用のデータ ウェアハウス システムです。 Transact-SQL に似た HiveQL を使用して、Hive に格納されているデータを照会することができます。 このドキュメントでは、Azure HDInsight で Hive と HiveQL を使用する方法について説明します。
+description: Apache Hive は、Apache Hadoop 用のデータ ウェアハウス システムです。 Transact-SQL に似た HiveQL を使用して、Hive に格納されているデータを照会することができます。 このドキュメントでは、Azure HDInsight で Hive と HiveQL を使用する方法について説明します。
 keywords: HiveQL, Hive とは, Hadoop HiveQL, Hive の使い方, Hive について, Hive の概要
 services: hdinsight
 author: hrasheed-msft
@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0401717da8c5548033bbbd7720bb1266646bbe48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d7b29980321f04d1ad9325580bc48ab944f60d1c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241108"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633718"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight における Apache Hive と HiveQL
 
-[Apache Hive](http://hive.apache.org/) は、Hadoop 用のデータ ウェアハウス システムです。 Hive を使用すると、データの集計、クエリ、および分析を行うことができます。 Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。
+[Apache Hive](http://hive.apache.org/) は、Apache Hadoop 用のデータ ウェアハウス システムです。 Hive を使用すると、データの集計、クエリ、および分析を行うことができます。 Hive クエリは、SQL に似たクエリ言語である HiveQL で記述します。
 
 Hive では、大規模な非構造化データに構造を投影することができます。 構造を定義したら、HiveQL を使用することで、Java や MapReduce の知識がなくてもそのデータを照会できます。
 
@@ -39,12 +39,12 @@ HDInsight で Hive を使用するさまざまな方法を次の表に示しま�
 
 | **方法** | **対話型**クエリ | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
-| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux、Unix、Mac OS X、または Windows |
-| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux または Windows* |Windows |
-| [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |任意 (ブラウザー ベース) |
-| [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
+| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux | Linux、Unix、Mac OS X、または Windows |
+| [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux または Windows* | Windows |
+| [Hive ビュー](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ | Linux |任意 (ブラウザー ベース) |
+| [Beeline クライアント](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ | Linux |Linux、Unix、Mac OS X、または Windows |
 | [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux または Windows* |Linux、Unix、Mac OS X、または Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* |Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux または Windows* | Windows |
 
 > [!IMPORTANT]
 > \* Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。

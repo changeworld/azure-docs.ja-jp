@@ -1,11 +1,12 @@
 ---
-title: Azure Machine Learning Studio とは | Microsoft Docs
+title: Azure Machine Learning Studio とは  | Microsoft Docs
 description: そのまま使うことのできるアルゴリズムやモジュールを含んだライブラリから、ドラッグ アンド ドロップでモデルをすばやく構築できるツール Azure ML Studio の概要です。
 keywords: azure machine learning、azure ml、ml studio
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.author: amlstudiodocs
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.component: studio
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: b8a1723d95e6f13ca81cacc3d73aa55c6d8fa06b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d893a0817be6ae8a271d403ed0477fa04238954b
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393946"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264405"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio とは
 Microsoft Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 Machine Learning Studio でモデルを Web サービスとして公開すれば、カスタム アプリや BI ツール (Excel など) からそのモデルを簡単に利用することができます。
@@ -45,7 +46,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 ## <a name="get-started-with-machine-learning-studio"></a>Machine Learning Studio の概要
 [Machine Learning Studio](https://studio.azureml.net) を初めて起動したときには、 **ホーム** ページが表示されます。 そこからドキュメントやビデオ、ウェビナーなど、有益なリソースにアクセスすることができます。
 
-左上のメニュー  ![メニュー](./media/what-is-ml-studio/menu.png) をクリックすると、いくつかのオプションが表示されます。
+左上のメニュー  ![メニュー](./media/what-is-ml-studio/menu.png)  をクリックすると、いくつかのオプションが表示されます。
 
 ### <a name="cortana-intelligence"></a>Cortana Intelligence
 **[Cortana Intelligence]** をクリックすると、[Cortana Intelligence Suite](https://www.microsoft.com/cloud-platform/cortana-intelligence-suite) のホーム ページが表示されます。 Cortana Intelligence Suite は、データをインテリジェントなアクションに変換するための、フル マネージドのビッグ データおよび高度な分析スイートです。 顧客事例を含む完全なドキュメントについては、Cortana Intelligence Suite のホーム ページを参照してください。

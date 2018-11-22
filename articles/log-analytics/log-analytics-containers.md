@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 087e11f906fe7f5c2fe67c43a597de8551dfc951
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 575b3ec5e729b325cad216ae463063acbb68f20b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013056"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685941"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
 
@@ -49,7 +49,7 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Docker Orchestrator と OS プラットフォームのコンテナー監視ソリューションのサポート
 次の表は、Log Analytics によるコンテナー インベントリ、パフォーマンス、およびログの Docker オーケストレーションとオペレーティング システムの監視サポートの概要を示しています。   
 
-| | ACS | Linux | Windows | コンテナー<br>インベントリ | イメージ<br>インベントリ | ノード<br>インベントリ | コンテナー<br>[パフォーマンス] | コンテナー<br>Event | Event<br>ログ | コンテナー<br>ログ |
+| | ACS |  Linux |  Windows | コンテナー<br>インベントリ | イメージ<br>インベントリ | ノード<br>インベントリ | コンテナー<br>[パフォーマンス] | コンテナー<br>Event | Event<br>ログ | コンテナー<br>ログ |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -108,7 +108,7 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
     - Red Hat OpenShift 環境がある場合は、｢[Log Analytics エージェント for Red Hat OpenShift を構成する](#configure-an-oms-agent-for-red-hat-openshift)｣をお読みください｡
     - Kubernetes クラスターで Azure Container Service を使用している場合:
        - ｢[Log Analytics Linux エージェント for Kubernetes を構成する](#configure-an-oms-linux-agent-for-kubernetes)｣をお読みください｡
-       - ｢[Log Analytics Windows エージェント for Kubernetes を構成する](#configure-an-oms-windows-agent-for-kubernetes)｣をお読みください｡
+       - ｢[Log Analytics Windows エージェント for Kubernetes を構成する](#configure-an-oms-windows-agent-for-kubernetes)｣をお読みください。
        - 「[Helm を使用して Linux Kubernetes に Log Analytics エージェントをデプロイする](#use-helm-to-deploy-oms-agent-on-linux-kubernetes)」をお読みください｡
     - Azure Container Service DC/OS クラスターがある場合は、「[Log Analytics を使用して Azure Container Service DC/OS クラスターを監視する](../container-service/dcos-swarm/container-service-monitoring-oms.md)」をご覧ください。
     - Docker Swarm モード環境がある場合、詳細については、「[Log Analytics エージェント for Docker Swarm を構成する](#configure-an-oms-agent-for-docker-swarm)」をご覧ください。
@@ -126,7 +126,7 @@ Docker をインストールした後で、コンテナー ホストの次の設
 
 **CoreOS を除くすべての Linux コンテナー ホスト**
 
-- Log Analytics エージェント for Linux のインストール方法に関する詳細と手順は、｢[Log Analytics に Linux コンピューターを接続する](log-analytics-concept-hybrid.md)｣を参照してください。
+- Log Analytics エージェント for Linux のインストール方法に関する詳細と手順は、[Log Analytics エージェントの概要](log-analytics-agent-overview.md)に関する記事をご覧ください。
 
 **CoreOS を含むすべての Linux コンテナー ホスト**
 

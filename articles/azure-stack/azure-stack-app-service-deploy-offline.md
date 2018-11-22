@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718731"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614040"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されているオフラインの Azure Stack 環境に追加する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!IMPORTANT]
-> Azure App Service 1.3 をデプロイする前に、Azure Stack 統合システムに 1807 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
+> Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
 >
 >
 
@@ -84,12 +84,11 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
     2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、**[Default Provider Subscription]\(既定のプロバイダー サブスクリプション\)** を選びます。
     
     > [!NOTE]
-    > 現在、App Service は、**既定のプロバイダー サブスクリプション**にのみデプロイできます。  今後の更新プログラムで、App Service は Azure Stack 1804 で導入された新しい Metering サブスクリプションにデプロイされ、既存のデプロイもすべてこの新しいサブスクリプションに統合されます。
-    >
+    > App Service は、**既定のプロバイダー サブスクリプション**にのみデプロイできます。
     >
     
     3. **[Azure Stack Locations]\(Azure Stack の場所\)** ボックスで、デプロイしているリージョンに対応する場所を選びます。 たとえば、Azure Stack Development Kit にデプロイしている場合は、**[ローカル]** を選びます。
-    4. **[次へ]** をクリックします。
+    4.  **[次へ]** をクリックします。
 
     ![App Service インストーラー][4]
 
@@ -117,7 +116,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
     2. **[Identity Application certificate file]\(ID アプリケーションの証明書ファイル\)** ボックスで、証明書ファイルの場所を入力 (または参照) します。
     3. **[Identity Application certificate password]\(ID アプリケーションの証明書パスワード\)** ボックスで、証明書のパスワードを入力します。 このパスワードは、証明書作成のスクリプトを使ったときに書き留めたものです。
     4. **[Azure Resource Manager root certificate file]\(Azure Resource Manager のルート証明書ファイル\)** ボックスで、証明書ファイルの場所を入力 (または参照) します。
-    5. **[次へ]** をクリックします。
+    5.  **[次へ]** をクリックします。
 
     ![App Service インストーラー][10]
 
@@ -170,14 +169,14 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
     ![App Service インストーラー][14]
 
     > [!NOTE]
-    > **Windows Server 2016 Core は、Azure Stack 上で Azure App Service と共に使用するためにサポートされているプラットフォーム イメージではありません。運用デプロイには評価版イメージを使用しないでください。Azure App Service on Azure Stack では、デプロイに使用されるイメージで Microsoft .Net 3.5.1 SP1 をアクティブにすることが必要です。 Marketplace にシンジケート化された Windows Server 2016 イメージでは、この機能は有効ではありません。**
+    > **Windows Server 2016 Core は、Azure Stack 上で Azure App Service と共に使用するためにサポートされているプラットフォーム イメージではありません。運用デプロイには評価版イメージを使用しないでください。Azure App Service on Azure Stack では、デプロイに使用されるイメージで Microsoft .Net 3.5.1 SP1 をアクティブにすることが必要です。 Marketplace にシンジケート化された Windows Server 2016 イメージでは、この機能は有効ではありません。そのため、この機能をあらかじめ有効にして Windows Server 2016 イメージを作成し、使用する必要があります。**
 
-14. **[プラットフォーム イメージの選択]** ボックスで、App Service クラウド用のコンピューティング リソースプロバイダーで選択可能な項目の中から、ご自分のデプロイの Windows Server 2016 仮想マシン イメージを選びます。 **[次へ]** をクリックします。
+14. **[プラットフォーム イメージの選択]** ボックスで、App Service クラウド用のコンピューティング リソースプロバイダーで選択可能な項目の中から、ご自分のデプロイの Windows Server 2016 仮想マシン イメージを選びます。  **[次へ]** をクリックします。
 
 15. 次のページで、次の操作を行います。
      1. Worker ロールの仮想マシン管理者のユーザー名とパスワードを入力します。
      2. その他のロールの仮想マシン管理者のユーザー名とパスワードを入力します。
-     3. **[次へ]** をクリックします。
+     3.  **[次へ]** をクリックします。
 
     ![App Service インストーラー][16]
 

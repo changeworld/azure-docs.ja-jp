@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962386"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344979"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -44,7 +44,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 
 最新のリリースでは、次の新しい機能強化が行われています。
 
-- ライブの新しい低待機時間モード (エンド ツー エンドで 10 秒)。
+- 新しい低待機時間モード。 詳しくは、「[待機時間](#latency)」をご覧ください。
 - RTMP サポートの強化 (安定性の向上およびソース エンコーダー サポートの強化)。
 - RTMPS のセキュアな取り込み。
 
@@ -82,12 +82,12 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 
 次の表は、2 種類の LiveEvent の機能を比較したものです。
 
-| 機能 | パススルー LiveEvent | Basic LiveEvent |
+| 機能 | パススルー LiveEvent | 標準 LiveEvent |
 | --- | --- | --- |
 | シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ  |[はい] |
 | 最大解像度、層の数 |4Kp30  |720p、6 層、30 fps |
 | 入力プロトコル |RTMP、スムーズ ストリーミング |RTMP、スムーズ ストリーミング |
-| 料金 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
+| 料金 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 | [価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
 | 最長実行時間 |24 時間 365 日 |24 時間 365 日 |
 | スレートの挿入のサポート |いいえ  |[はい] |
 | API による広告信号のサポート|いいえ  |[はい] |
@@ -126,6 +126,20 @@ LiveEvent は、最大 3 つの同時実行 LiveOutput をサポートするの�
 ストリームが LiveEvent に流れ始めると、資産、LiveOutput、および StreamingLocator を作成することにより、ストリーミング イベントを開始できます。 これにより、ストリームがアーカイブされ、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) を介して視聴者がストリームを使用できるようになります。
 
 Media Services アカウントの作成時に、既定のストリーミング エンドポイントが "停止" 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが "実行中" 状態である必要があります。
+
+## <a name="latency"></a>Latency
+
+このセクションでは、低待機時間の設定とさまざまなプレーヤーを使用したときの一般的な結果について説明します。 結果は、CDN およびネットワーク待機時間によって異なります。
+
+新しい LowLatency 機能を使用するには、LiveEvent の **StreamOptionsFlag** を **LowLatency** に設定します。 ストリームが稼働状態になったら、[Azure Media Player](http://ampdemo.azureedge.net/) (AMP) のデモ ページを使用して、"Low Latency Heuristic Profile" を使用するように再生オプションを設定できます。
+
+### <a name="pass-through-liveevents"></a>パススルー LiveEvent
+
+||2 秒 GOP の低待機時間が有効|1 秒 GOP の低待機時間が有効|
+|---|---|---|
+|AMP での DASH|10 秒|8 秒|
+|ネイティブ iOS プレーヤーでの HLS|14 秒|10 秒|
+|Mixer Player での HLS.JS|30 秒|16 秒|
 
 ## <a name="billing"></a>課金
 

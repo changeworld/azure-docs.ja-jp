@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight (Hadoop) での Apache Sqoop ジョブの実行
+title: Azure HDInsight (Apache Hadoop) での Apache Sqoop ジョブの実行
 description: コンピューターから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。
 ms.reviewer: jasonh
 services: hdinsight
@@ -9,21 +9,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 85753376e33f5392be06f7d3ea89a04367e3c9ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1571480540baedd5910c4153caf23e0687d48922
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009863"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684989"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Sqoop の使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-HDInsight で Sqoop を使用して、HDInsight クラスターと Azure SQL Database または SQL Server データベース間でインポートとエクスポートを実行する方法について説明します。
+HDInsight 内で Apache Sqoop を使用して、HDInsight クラスターと Azure SQL Database または SQL Server データベース間でインポートとエクスポートを実行する方法について説明します。
 
-Hadoop はログやファイルなどの非構造化データおよび半構造化データを処理する場合に自然な選択ですが、リレーショナル データベースに格納された構造化データを処理する必要が生じることもあります。
+Apache Hadoop はログやファイルなどの非構造化データおよび半構造化データを処理する場合に自然な選択ですが、リレーショナル データベースに格納された構造化データを処理する必要が生じることもあります。
 
-[Sqoop][sqoop-user-guide-1.4.4] は、Hadoop クラスターとリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL Server、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換してから、そのデータを RDBMS にエクスポートして戻したりできます。 このチュートリアルでは、リレーショナル データベースとして SQL Server データベースを使用します。
+[Apache Sqoop][sqoop-user-guide-1.4.4] は、Hadoop クラスターとリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL Server、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換してから、そのデータを RDBMS にエクスポートして戻したりできます。 このチュートリアルでは、リレーショナル データベースとして SQL Server データベースを使用します。
 
 HDInsight クラスターでサポートされている Sqoop のバージョンについては、「[HDInsight で提供されるクラスター バージョンの新機能][hdinsight-versions]」をご覧ください。
 
@@ -90,7 +90,7 @@ Azure PowerShell を使用してクラスターと SQL Database を作成する�
         
         |Name|値|
         |----|-----|
-        | 既定のストレージ アカウント名 | &lt;CluterName>store |
+        | 既定のストレージ アカウント名 | &lt;ClusterName>store |
         | Azure SQL データベース サーバー名 | &lt;ClusterName > dbserver |
         | Azure SQL データベース名 | &lt;ClusterName>db |
      
@@ -102,7 +102,7 @@ Azure PowerShell を使用してクラスターと SQL Database を作成する�
 * **Azure SQL データベース**: ワークステーションから Azure SQL データベース サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。 Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure SQL データベースの概要][sqldatabase-get-started]」を参照してください。 
   
   > [!NOTE]
-  > 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。 このファイアウォール設定が無効になっている場合は、Azure Portal から有効にする必要があります。 Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configue]」を参照してください。
+  > 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。 このファイアウォール設定が無効になっている場合は、Azure Portal から有効にする必要があります。 Azure SQL データベースの作成方法とファイアウォール ルールの構成方法については、「[SQL データベースの作成と構成][sqldatabase-create-configure]」を参照してください。
   > 
   > 
 * **SQL Server**: HDInsight クラスターが SQL Server と同じ Azure の仮想ネットワーク上にある場合は、この記事の手順を使用して、SQL Server データベースとの間でデータをインポートおよびエクスポートできます。
@@ -147,9 +147,9 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 
 | **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux |Linux、Unix、Mac OS X、または Windows |
+| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? | Linux |Linux、Unix、Mac OS X、または Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |? |Linux または Windows |Windows (現時点) |
-| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Linux または Windows |Windows |
+| [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Linux または Windows | Windows |
 
 ## <a name="limitations"></a>制限事項
 * 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
@@ -305,7 +305,7 @@ try{Get-AzureRmContext}
 catch{Connect-AzureRmAccount}
 #endregion
 
-#region - Create Azure resouce group
+#region - Create Azure resource group
 Write-Host "`nCreating an Azure resource group ..." -ForegroundColor Green
 try{
     Get-AzureRmResourceGroup -Name $resourceGroupName
@@ -636,7 +636,7 @@ Get-AzureRmHDInsightJobOutput `
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 
 [sqldatabase-get-started]: ../../sql-database/sql-database-get-started.md
-[sqldatabase-create-configue]: ../../sql-database/sql-database-get-started.md
+[sqldatabase-create-configure]: ../../sql-database/sql-database-get-started.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB で SQL を使用してクエリを実行する方法 | Microsoft Docs
+title: Azure Cosmos DB で SQL を使用してクエリを実行する方法  | Microsoft Docs
 description: Azure Cosmos DB で SQL を使用してクエリを実行する方法について説明します
 services: cosmos-db
 author: rafats
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: 5f5a98f0f28eba499b7ea3fa76944c21cf8bf8db
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: a56147432d4ef1cc9ac2568259cc2bbf2c7da7ab
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958870"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162672"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル: SQL API を使って Azure Cosmos DB を照会する
 
@@ -65,7 +65,7 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) では SQL を使用した
 クエリを実行するには、Azure Portal のデータ エクスプローラーを使用するか、[REST API および SDK](sql-api-sdk-dotnet.md) で行います。既存のサンプル データ セットに対してクエリを実行する [Query Playground](https://www.documentdb.com/sql/demo) を使用することもできます。
 
 SQL クエリについて詳しくは、次を参照してください。
-* [SQL クエリと SQL 構文](sql-api-sql-query.md)
+* [SQL クエリと SQL 構文](how-to-sql-query.md)
 
 ## <a name="prerequisites"></a>前提条件
 

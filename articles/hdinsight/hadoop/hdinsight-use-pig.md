@@ -1,6 +1,6 @@
 ---
-title: HDInsight での Hadoop Pig の使用
-description: HDInsight で Pig と Hadoop を使用する方法を説明します。
+title: HDInsight 上で Apache Pig を使用する
+description: HDInsight 上の Apache Hadoop で Pig を使用する方法について説明します。
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,25 +9,25 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 921f4747dcaf9ad302c37930ca09903e345bfdb0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6a1247048907d81b3c9db644bcdb7b5e5eee5fba
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016422"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633633"
 ---
-# <a name="use-pig-with-hadoop-on-hdinsight"></a>HDInsight での Pig と Hadoop の使用
+# <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Pig で Apache Pig を使用する
 
 HDInsight で [Apache Pig](http://pig.apache.org/) を使用する方法について説明します。
 
-Pig は、*Pig Latin* という手続き型言語を使用して Hadoop 用のプログラムを作成するためのプラットフォームです。 Pig は、 *MapReduce* ソリューションを作成するために Java の代わりに使用され、Azure HDInsight に含まれています。 HDInsight で Pig を使用するさまざまな方法を次の表に示します。
+Apache Pig は、*Pig Latin* として知られている手続き型言語を使用して Apache Hadoop 用のプログラムを作成するためのプラットフォームです。 Pig は、 *MapReduce* ソリューションを作成するために Java の代わりに使用され、Azure HDInsight に含まれています。 HDInsight で Pig を使用するさまざまな方法を次の表に示します。
 
 | **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
+| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ | Linux |Linux、Unix、Mac OS X、または Windows |
 | [REST API](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux または Windows |Windows (現時点) |
-| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
+| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows | Windows |
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -93,10 +93,10 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 
 | **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の**クライアント** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
+| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ | Linux |Linux、Unix、Mac OS X、または Windows |
 | [Curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux または Windows |Windows (現時点) |
-| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
+| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows | Windows |
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。

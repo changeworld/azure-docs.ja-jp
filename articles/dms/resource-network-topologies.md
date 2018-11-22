@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: 39bcea36f3599530413aa9fc4dbb308ee2fb1681
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.date: 11/8/2018
+ms.openlocfilehash: 9b036b74141ce2091d2e68b68d10c44a56a8696d
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066855"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300694"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Azure Database Migration Service を使用して Azure SQL DB Managed Instance を移行するためのネットワーク トポロジ
 この記事では、オンプレミスの SQL サーバーから Azure SQL Database Managed Instance への包括的な移行エクスペリエンスを提供するために Azure Database Migration Service で使用できる、さまざまなネットワーク トポロジについて説明します。
@@ -64,6 +64,22 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 **要件**
 - Azure SQL Database Managed Instance と Azure Database Migration Service 用に使用される VNet 間に、[VNet ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定します。
 
+## <a name="inbound-security-rules"></a>受信セキュリティ規則
+
+| **名前**   | **ポート** | **プロトコル** | **ソース** | **送信先** | **アクション** |
+|------------|----------|--------------|------------|-----------------|------------|
+| DMS_subnet | 任意      | 任意          | DMS サブネット | 任意             | ALLOW      |
+
+## <a name="outbound-security-rules"></a>送信セキュリティ規則
+
+| **名前**                  | **ポート**                                              | **プロトコル** | **ソース** | **送信先**           | **アクション** | **ルールの理由**                                                                                                                                                                              |
+|---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| management                | 443,9354                                              | TCP          | 任意        | 任意                       | ALLOW      | Service Bus と Azure Blob Storage を経由する管理プレーン通信。 <br/>(Microsoft ピアリングが有効になっている場合、この規則は必要ないことがあります。)                                                             |
+| 診断               | 12000                                                 | TCP          | 任意        | 任意                       | ALLOW      | DMS はこの規則を使用して、トラブルシューティングのために診断情報を収集します。                                                                                                                      |
+| SQL ソース サーバー         | 1433 (または、SQL Server がリッスンしている TCP IP ポート) | TCP          | 任意        | オンプレミスのアドレス空間 | ALLOW      | DMS からの SQL Server ソース接続 <br/>(サイト間接続がある場合、この規則は必要ないことがあります。)                                                                                       |
+| SQL Server 名前付きインスタンス | 1434                                                  | UDP          | 任意        | オンプレミスのアドレス空間 | ALLOW      | DMS からの SQL Server 名前付きインスタンス ソース接続 <br/>(サイト間接続がある場合、この規則は必要ないことがあります。)                                                                        |
+| SMB 共有                 | 445                                                   | TCP          | 任意        | オンプレミスのアドレス空間 | ALLOW      | Azure VM 上の Azure SQL Database MI と SQL Server への移行用にデータベース バックアップ ファイルを格納するための DMS に対する SMB ネットワーク共有 <br/>(サイト間接続がある場合、この規則は必要ないことがあります)。 |
+| DMS_subnet                | 任意                                                   | 任意          | 任意        | DMS_Subnet                | ALLOW      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>関連項目
 - [SQL Server を Azure SQL Database Managed Instance に移行する](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)

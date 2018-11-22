@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: d8e390fc185c3cb0b63bcea56feb4b133652673d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7a7f959f54281dcce5b8d1349f5d6607f0e5da30
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258835"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345795"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -37,13 +37,13 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 * 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 例: "Company name: \"Contoso\""
 
 ## <a name="list-of-functions"></a>関数の一覧
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
 ### <a name="append"></a>Append
-**関数:**<br> Append(source, suffix)
+**関数:**<br>  Append(source, suffix)
 
-**説明:**<br> source 文字列値を受け取り、その末尾に suffix を追加します。
+**説明:**<br>  source 文字列値を受け取り、その末尾に suffix を追加します。
 
 **パラメーター:**<br> 
 
@@ -54,7 +54,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
-**関数:**<br> FormatDateTime(source, inputFormat, outputFormat)
+**関数:**<br>  FormatDateTime(source, inputFormat, outputFormat)
 
 **説明:**<br> 1 つの形式の日付文字列を受け取り、別の形式に変換します。
 
@@ -68,7 +68,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 - - -
 ### <a name="join"></a>Join
-**関数:**<br> Join(separator, source1, source2, …)
+**関数:**<br>  Join(separator, source1, source2, …)
 
 **説明:**<br> Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
 
@@ -83,9 +83,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="mid"></a>Mid
-**関数:**<br> Mid(source, start, length)
+**関数:**<br>  Mid(source, start, length)
 
-**説明:**<br> source 値の部分文字列を返します。 部分文字列は、source 文字列の文字のみを含む文字列です。
+**説明:**<br>  source 値の部分文字列を返します。 部分文字列は、source 文字列の文字のみを含む文字列です。
 
 **パラメーター:**<br> 
 
@@ -109,7 +109,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="not"></a>Not
-**関数:**<br> Not(source)
+**関数:**<br>  Not(source)
 
 **説明:**<br> **source** のブール値を反転します。 **source** 値が "*True*" の場合は "*False*" を返します。 "False" の場合は "*True*" を返します。
 
@@ -124,7 +124,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 **関数:**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **説明:**<br>
-文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
+ 文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
 
 * **oldValue** と **replacementValue** が指定された場合:
   
@@ -152,6 +152,24 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 | **template** |省略可能。 |String |**template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
 
 - - -
+### <a name="selectuniquevalue"></a>SelectUniqueValue
+**関数:**<br> SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
+
+**説明:**<br> 少なくとも 2 つの引数が必要です。引数は、式を使用して定義されている一意値生成ルールです。 関数では、各ルールが評価された後、生成された値の対象となるアプリ/ディレクトリでの一意性が確認されます。 最初に見つかった一意の値が返されます。 すべての値がターゲットに既に存在する場合、エントリはエスクローされて、理由が監査ログに記録されます。 渡すことができる引数の数に上限はありません。
+
+> [!NOTE]
+>1. これは最上位の関数であり、入れ子にはできません。
+>2. この関数は、エントリの作成に使用されることだけを目的としたものです。 属性で使用するときは、**[Apply Mapping]\(マッピングの適用\)** プロパティを **[オブジェクトの作成中のみ]** に設定します。
+
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | type | メモ |
+| --- | --- | --- | --- |
+| **uniqueValueRule1  … uniqueValueRuleN ** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧 |
+
+
+- - -
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **関数:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
@@ -165,9 +183,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
-**関数:**<br> StripSpaces(source)
+**関数:**<br>  StripSpaces(source)
 
-**説明:**<br> source 文字列からすべての空白文字 (" ") を削除します。
+**説明:**<br>  source 文字列からすべての空白文字 (" ") を削除します。
 
 **パラメーター:**<br> 
 
@@ -177,7 +195,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="switch"></a>Switch
-**関数:**<br> Switch(source, defaultValue, key1, value1, key2, value2, …)
+**関数:**<br>  Switch(source, defaultValue, key1, value1, key2, value2, …)
 
 **説明:**<br> **source** 値が **key** と一致するときに、その **key** の **value** を返します。 **source** 値がどの key とも一致しない場合は、**defaultValue** を返します。  **key** と **value** パラメーターは、常にペアで指定する必要があります。 この関数には、常に、偶数個のパラメーターを指定する必要があります。
 
@@ -238,6 +256,7 @@ NormalizeDiacritics([givenName])
 * **出力**: "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
+
 SaaS アプリケーションに特定の形式で日付を送信します。 <br>
 たとえば、ServiceNow 向けに日付の書式を設定します。
 
@@ -251,6 +270,7 @@ SaaS アプリケーションに特定の形式で日付を送信します。 <b
 * **出力**:  "2015-01-23"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>定義済みのオプション セットに基づいて値を置換する
+
 Azure AD に格納されている都道府県コードに基づいて、ユーザーのタイム ゾーンを定義する必要があります。 <br>
 都道府県コードが定義済みオプションのいずれにも一致しない場合は、既定値 "Australia/Sydney" を使用します。
 
@@ -262,6 +282,26 @@ Azure AD に格納されている都道府県コードに基づいて、ユー�
 
 * **入力** (state): "QLD"
 * **出力**: "Australia/Brisbane"
+
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>userPrincipalName (UPN) 属性用に一意の値を生成する
+
+ユーザーの名、ミドル ネーム、姓を基にして UPN 属性の値を生成し、値を UPN 属性に割り当てる前に、対象の AD ディレクトリで値が一意であることを確認する必要があります。
+
+**Expression:** <br>
+
+    SelectUniqueValue( 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com")
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
+    )
+
+**サンプル入力/出力:**
+
+* **入力** (PreferredFirstName): "John"
+* **入力** (PreferredLastName): "Smith"
+* **出力**: John.Smith@contoso.com の UPN 値がディレクトリにまだ存在しない場合は "John.Smith@contoso.com"
+* **出力**: John.Smith@contoso.com の UPN 値がディレクトリに既に存在する場合は "J.Smith@contoso.com"
+* **出力**: 上記の 2 つの UPN 値がディレクトリに既に存在する場合は "Jo.Smith@contoso.com"
 
 ## <a name="related-articles"></a>関連記事
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)

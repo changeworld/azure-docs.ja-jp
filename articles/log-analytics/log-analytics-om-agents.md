@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 11/14/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fcdc14534e833ee394645e19cf8bc4bd9d6a7aaa
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c8bba283a0c3fde75966ae123023e50d497abd5a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961145"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687556"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Operations Manager を Log Analytics に接続する
-Operations Manager とLog Analyticsワークスペースを統合することで、System Center Operations Manager への投資を維持しながら、Log Analytics で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら､Log Analytics を活用することができます。
+Operations Manager とLog Analytics ワークスペースを統合することで、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) への既存の投資を維持しながら、Log Analytics で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら､Log Analytics を活用することができます。
 
 * Operations Manager で IT サービスの正常性を監視する
 * インシデントおよび問題の管理をサポートする ITSM ソリューションとの統合を維持する
@@ -44,7 +44,7 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 
 * Log Analytics は、System Center Operations Manager 1807、Operations Manager 1801、Operations Manager 2016、Operations Manager 2012 SP1 UR6 以降、Operations Manager 2012 R2 UR2 以降のみをサポートしています。 プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。
 * すべての Operations Manager エージェントが最小サポート要件を満たす必要があります。 エージェントに最小限の更新プログラムが適用されていることを確認してください。そうしないと、Windows エージェントの通信が失敗し、Operations Manager イベント ログにエラーが生成される可能性があります。
-* Log Analytics ワークスペース。 詳細については、[環境内のコンピューターから Log Analytics に接続する方法](log-analytics-concept-hybrid.md)に関するページを参照してください。
+* Log Analytics ワークスペース。 詳しくは、[Log Analytics ワークスペースの概要](log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json)に関する記事をご覧ください。
 * [Log Analytics Contributor ロール](log-analytics-manage-access.md#manage-accounts-and-users)のメンバーであるアカウントを使用して Azure の認証を受けます。  
 
 >[!NOTE]
@@ -52,7 +52,7 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 >Operations Manager の各バージョン用に新しい管理パックがリリースされました。  
 >* System Center Operations Manager 1801 の場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=57173)から管理パックをダウンロードします  
 >* System Center 2016 - Operations Manager の場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=57172)から管理パックをダウンロードします  
->* System Center Operations Manager 2012 R2 の場合は、[こちら](https://www.microsoft.com/en-us/download/details.aspx?id=57171)から管理パックをダウンロードします  
+>* System Center Operations Manager 2012 R2 の場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=57171)から管理パックをダウンロードします  
 
 ### <a name="network"></a>ネットワーク
 下記は､Operations Manager のエージェントと管理サーバー､Operations コンソールが Log Analytics と通信するために必要なプロキシーとファイアウォールの構成情報の一覧です｡ 各コンポーネントのトラフィックは､ネットワークから Log Analytics サービスのアウトバウンド方向に発生します｡   
@@ -139,7 +139,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. **[RunAs Configuration (RunAs の構成)]** で **[Profiles (プロファイル)]** を選択します。
 1. **System Center Advisor Run As Profile Proxy** というプロファイルを開きます。
 1. 実行プロファイル ウィザードで [追加] をクリックし、実行アカウントを使用します。 [実行アカウント](https://technet.microsoft.com/library/hh321655.aspx) を作成することも、既存のアカウントを使用することもできます。 このアカウントには、プロキシ サーバーを通過するための十分な権限を持たせる必要があります。
-1. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** を選択し、**[選択...]** をクリックします。 次に、**[グループ...]** をクリックし、**[グループの検索]** ボックス開きます。
+1. 管理するアカウントを設定するには、**[選択したクラス、グループ、またはオブジェクト]** を選択し、**[選択...]** をクリックします。 次に、**[グループ...]**  をクリックし、**[グループの検索]** ボックス開きます。
 1. **Microsoft System Center Advisor Monitoring Server Group**を検索して選択します。 グループを選択したら、**[OK]** をクリックして、**[グループ検索]** ボックスを閉じます。
 1. **[OK]** をクリックして、**[実行アカウントの追加]** ボックスを閉じます。
 1. **[保存]** をクリックして、ウィザードを完了し、変更を保存します。
