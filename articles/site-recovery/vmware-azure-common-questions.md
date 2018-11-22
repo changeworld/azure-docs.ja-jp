@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c261dd083fed8b9c4a0f3846157c666cbb52083c
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012107"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636817"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -110,6 +110,8 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 - プロセス サーバー: レプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。また、プロセス サーバーは、レプリケートする VM へのモビリティ サービスのインストールや、オンプレミスの VMware VM の自動検出も行います。
 - マスター ターゲット サーバー: Azure からのフェールバック中にレプリケーション データを処理します。
 
+構成サーバー コンポーネントとプロセスの[詳細](vmware-azure-architecture.md)をご覧ください。
+
 ### <a name="where-do-i-set-up-the-configuration-server"></a>構成サーバーはどこに設定しますか?
 構成サーバーには、高可用性のオンプレミス VMware VM が 1 つ必要です。
 
@@ -126,15 +128,35 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Azure で構成サーバーをホストできますか?
 可能ですが、構成サーバーを実行している Azure VM は、オンプレミスの VMware のインフラストラクチャや VM と通信する必要があります。 これで待機時間が長くなり、進行中のレプリケーションに影響する可能性があります。
 
-
-### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>構成サーバーの最新バージョンのテンプレートはどこで入手できますか?
-最新バージョンは、[Microsoft Download Center](https://aka.ms/asrconfigurationserver) からダウンロードできます。
-
 ### <a name="how-do-i-update-the-configuration-server"></a>構成サーバーはどのようにして更新できますか?
-更新プログラムのロールアップをインストールします。 最新の更新情報については、[更新プログラムの wiki ページ](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)をご覧ください。
+構成サーバーの更新の[詳細](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をご覧ください。 最新の更新情報については、[Azure の更新情報のページ](https://azure.microsoft.com/updates/?product=site-recovery)をご覧ください。 構成サーバーの最新バージョンは、[Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>デプロイした構成サーバーをバックアップする必要はありますか?
 構成サーバーの定期的なスケジュールされたバックアップを実行することをお勧めします。 フェールバックが成功するには、フェールバックされる仮想マシンが構成サーバー データベース内に存在し、構成サーバーが実行中で接続状態である必要があります。 構成サーバーの一般的な管理タスクの詳細については、[こちら](vmware-azure-manage-configuration-server.md)を参照してください。
+
+### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>構成サーバーを設定しているときに、MySQL を手動でダウンロードしてインストールできますか?
+はい。 MySQL をダウンロードし、**C:\Temp\ASRSetup** フォルダーに配置します。 その後、手動でインストールします。 構成サーバー VM を設定し、ご契約条件に同意すると、MySQL は **[Download and install]\(ダウンロードとインストール\)** に **"インストール済み"** と表示されます。
+
+### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>MySQL をダウンロードせず、Site Recovery によってインストールすることはできますか?
+はい。 MySQL インストーラーをダウンロードし、**C:\Temp\ASRSetup** フォルダーに配置します。  構成サーバーの VM を設定する際に、ご契約条件に同意し、**[Download and install]\(ダウンロードとインストール\)** をクリックすると、ポータルでは追加したインストーラーが MySQL のインストールに使用されます。
+ 
+### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>構成サーバー VM を他の目的で使用することはできますか?
+いいえ、VM は構成サーバーにのみ使用する必要があります。 
+
+### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>構成サーバーに登録されている資格情報コンテナーを変更することはできますか?
+いいえ。 コンテナーは、構成サーバーに登録した後に変更することはできません。
+
+### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーの両方のディザスター リカバリーに同じ構成サーバーを使用できますか?
+はい。ただし、物理マシンは VMware VM にのみフェールバックできることにご注意ください。
+
+### <a name="where-can-i-download-the-passphrase-for-the-configuration-server"></a>構成サーバーのパスフレーズはどこでダウンロードできますか?
+パスフレーズのダウンロードについては、[こちらの記事をご覧ください](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)。
+
+### <a name="where-can-i-download-vault-registration-keys"></a>コンテナー登録キーはどこでダウンロードできますか?
+
+**[Recovery Services コンテナー]** で、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** の順に移動します。 **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
+
+
 
 ## <a name="mobility-service"></a>モビリティ サービス
 

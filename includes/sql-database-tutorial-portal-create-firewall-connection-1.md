@@ -1,3 +1,16 @@
+---
+author: MightyPen
+ms.service: sql-database
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: genemi
+ms.openlocfilehash: a999a18ccd504d6928a5eb1e209fbf55cb8506f5
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52270990"
+---
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
@@ -27,8 +40,8 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
    | Setting       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
-   | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
+   | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
+   | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
    | **パスワード** | 有効なパスワード | パスワードには 8 文字以上が使用され、大文字、小文字、数字、英数字以外の文字のうち、3 つのカテゴリの文字が含まれている必要があります。 |
    | **場所** | 有効な場所 | リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。 |
 

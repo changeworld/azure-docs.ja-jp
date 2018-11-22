@@ -9,13 +9,13 @@ ms.date: 10/17/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
-manager: dougeby
-ms.openlocfilehash: e705a0f57b598eb60932ca1056131cedc1416ffc
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+manager: benshy
+ms.openlocfilehash: db4a2356d3de91e4951acd69dc858730349019d6
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394458"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274554"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->

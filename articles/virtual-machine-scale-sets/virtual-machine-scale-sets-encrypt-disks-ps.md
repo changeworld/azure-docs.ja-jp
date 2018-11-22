@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: c39df127e07601dbc5125d246f25da22ce4a0e40
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f4bf1f35a39042fa38e5d7c7e52c4f8593ffd824
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981765"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683527"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell-preview"></a>Azure PowerShell (プレビュー) を使用した仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
 
@@ -48,7 +48,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は、[Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) を使用して確認できます。 `RegistrationState` から *Registered* と報告されたら、[Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) を使用して *Mirosoft.Compute* プロバイダーを登録し直します｡
+登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は、[Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) を使用して確認できます。 `RegistrationState` から *Registered* と報告されたら、[Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) を使用して *Microsoft.Compute* プロバイダーを登録し直します。
 
 ```azurepowershell-interactive
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"

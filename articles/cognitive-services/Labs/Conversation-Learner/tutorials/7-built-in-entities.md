@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 2dbbf2a47cdc4240e5b0ba38658a4cb8d5307ff8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cdd9ad16096c85db21829840b2bfd7acaced5942
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260059"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683506"
 ---
 # <a name="how-to-add-pre-built-entities"></a>作成済みのエンティティを追加する方法
 このチュートリアルでは、Conversation Learner モデルに "作成済みの" エンティティを追加する方法を示します。
@@ -47,24 +47,25 @@ ms.locfileid: "51260059"
     - [Programmable]\(プログラム可能\) および [Negatable]\(否定可能\) オプションは、作成済みエンティティには適用されないので、無効になっています。
 3. [作成] をクリックします。
 
-![](../media/tutorial7_entities.PNG)
+![](../media/tutorial7_entities_a.PNG)
 
 ### <a name="create-two-actions"></a>2 つのアクションの作成
 
 1. [アクション] をクリックし、[新しいアクション] をクリックします。
-2. [Response]\(応答\) に、「The date is $luis-datetimev2」と入力します。
-3. [作成] をクリックします。
+1. [Response]\(応答\) に、「The date is $luis-datetimev2」と入力します。
+1. [Required Entities]\(必須エンティティ\) に、「$builtin-datetimev2」と入力します。
+1. [作成] をクリックします。
 
-![](../media/tutorial7_actions.PNG)
+![](../media/tutorial7_actions_a.PNG)
 
 次に、アクションをもう 1 つ作成します。
 
 1. [アクション] をクリックし、[新しいアクション] をクリックして 2 つ目のアクションを作成します。
-3. [Response]\(応答\) に、「What's the date?」と入力します。
-4. [Disqualifying Entities]\(不適格エンティティ\) に「luis-datetimev2」と入力します。
-4. Create をクリックしてください。
+1. [Response]\(応答\) に、「What's the date?」と入力します。
+1. [Disqualifying Entities]\(不適格エンティティ\) に、「$builtin-datetimev2」と入力します。
+1. [作成] をクリックします。
 
-![](../media/tutorial7_actions2.PNG)
+![](../media/tutorial7_actions2_a.PNG)
 
 これでアクションが 2 つできました。
 
@@ -75,10 +76,10 @@ ms.locfileid: "51260059"
 3. [Score Actions]\(アクションのスコア付け\) をクリックし、"What's the date?" を選択します。
 2. 「today」と入力します。 
     - "today" にタグが付き、作成済みエンティティであり編集できないため 2 行目に表示されることに注意してください。
-5. [Score Actions]\(アクションのスコア付け\) をクリックします。
+5. [Score Action]\(アクションのスコア付け\) をクリックします。
     - [Entity Memory]\(エンティティのメモリ\) セクションに日付が表示されることに注意してください。 
     - 日付をマウスでポイントすると、LUIS によって提供された追加データが表示されます。これは使用可能であり、コードでさらに操作できます。 
-6. "The date is $luis-datetimev2" を選択します。
+6. "The date is $builtin-datetimev2" を選択します。
 7. [Done Teaching]\(学習の完了\) をクリックします。
 
 ## <a name="next-steps"></a>次の手順

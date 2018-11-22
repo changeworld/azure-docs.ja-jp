@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 61d9d33ae7e8e2104e61bbd24862a709dd6d78ec
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 08fe85ae88b1f53941d490a6c22684d223da24a8
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636494"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160955"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル: JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
@@ -497,9 +497,9 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 
 
 ## <a id="Query"></a>手順 8: Azure Cosmos DB リソースにクエリを実行する
-Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメントに対する[豊富なクエリ](sql-api-sql-query.md)がサポートされています。 次のサンプル コードは、コンテナー内のドキュメントに対して実行できるクエリを示しています。
+Azure Cosmos DB では、各コンテナーに格納された JSON ドキュメントに対する[豊富なクエリ](how-to-sql-query.md)がサポートされています。 次のサンプル コードは、コンテナー内のドキュメントに対して実行できるクエリを示しています。
 
-1. app.js ファイルの **createFamilyItem** 関数の下に、**queryContainer** 関数をコピーして貼り付けます。 以下のとおり、Azure Cosmos DB は SQL に似たクエリをサポートしています。 複雑なクエリを構築する方法の詳細については、[Query Playground](https://www.documentdb.com/sql/demo) および[クエリに関するドキュメント](sql-api-sql-query.md)を参照してください。
+1. app.js ファイルの **createFamilyItem** 関数の下に、**queryContainer** 関数をコピーして貼り付けます。 以下のとおり、Azure Cosmos DB は SQL に似たクエリをサポートしています。 複雑なクエリを構築する方法の詳細については、[Query Playground](https://www.documentdb.com/sql/demo) および[クエリに関するドキュメント](how-to-sql-query.md)を参照してください。
 
    ```nodejs
    /**

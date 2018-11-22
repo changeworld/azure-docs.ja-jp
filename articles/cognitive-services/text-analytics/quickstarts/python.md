@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 07b7327b01987d79a6447ed67de27b69c02c14ee
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 5169f6c7ff3d34d90f3f2e4b37b01733384966ff
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268361"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283589"
 ---
 # <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Python を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
@@ -30,7 +30,7 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Text Analytics API** を取得している必要があります。 **5,000 トランザクション/月を利用可能な Free レベル**を使用してこのチュートリアルを完了することができます。
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。 
 

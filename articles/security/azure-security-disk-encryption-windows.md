@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 10/12/2018
-ms.openlocfilehash: 2034616d7c701dfe03761d5a01848171fd264903
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 545723a020609766b9556746e6547eb8b93e5de9
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625117"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687522"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Windows IaaS VM で Azure Disk Encryption を有効にする 
 
@@ -125,7 +125,7 @@ ms.locfileid: "51625117"
 | パラメーター | 説明 |
 | --- | --- |
 | vmName | 暗号化操作を実行する VM の名前。 |
-| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。 これは、コマンドレット `(Get-AzureRmKeyVault -ResourceGroupName <MyResourceGroupName>). Vaultname` または Azure CLI コマンド `az keyvault list --resource-group "MySecureGroup"  |Convertfrom-JSON` を使用して取得できます。|
+| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。 これは、コマンドレット `(Get-AzureRmKeyVault -ResourceGroupName <MyResourceGroupName>). Vaultname` または Azure CLI コマンド `az keyvault list --resource-group "MySecureGroup"  |ConvertFrom-JSON` を使用して取得できます。|
 | keyVaultResourceGroup | キー コンテナーが含まれているリソース グループの名前|
 |  keyEncryptionKeyURL | 生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL。 このパラメーターは、UseExistingKek ドロップダウン リストで **nokek** を選択した場合には省略可能です。 UseExistingKek ドロップダウン リストで **kek** を選択した場合は、_keyEncryptionKeyURL_ 値を入力する必要があります。 |
 | volumeType | 暗号化操作が実行されるボリュームの種類。 有効な値は _OS_、_Data_、および _All_ です。 
@@ -145,7 +145,7 @@ ms.locfileid: "51625117"
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は、[Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) を使用して確認できます。 `RegistrationState` から *Registered* と報告されたら、[Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) を使用して *Mirosoft.Compute* プロバイダーを登録し直します｡
+登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は、[Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) を使用して確認できます。 `RegistrationState` から *Registered* と報告されたら、[Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) を使用して *Microsoft.Compute* プロバイダーを登録し直します。
 
 ```azurepowershell-interactive
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
@@ -200,7 +200,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は､[az feature show](/cli/azure/feature#az_feature_show) で確認できます｡ `State` から *Registered* と報告されたら､[az provider register](/cli/azure/provider#az_provider_register) を使って *Mirosoft.Compute* プロバイダーを登録し直します｡
+登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は､[az feature show](/cli/azure/feature#az_feature_show) で確認できます｡ `State` から *Registered* と報告されたら､[az provider register](/cli/azure/provider#az_provider_register) を使って *Microsoft.Compute* プロバイダーを登録し直します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute

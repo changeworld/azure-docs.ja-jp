@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: f79455166ef0d1bec9a2fb1d6045005f844e55ac
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 0c458892c56634c97eec92a9439059c087a32144
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636749"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165477"
 ---
 # <a name="tutorial-build-a-java-app-with-async-java-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル: Async Java SDK を使用して Java アプリを構築して Azure Cosmos DB SQL API データを管理する
 
@@ -223,7 +223,7 @@ public static Family getJohnsonFamilyDocument() {
 
 ## <a id="Query"></a>手順 8: Azure Cosmos DB リソースにクエリを実行する
 
-Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](sql-api-sql-query.md)がサポートされています。 次のサンプル コードは、[queryDocuments](/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.querydocuments) メソッドが含まれている SQL 構文を使用して Azure Cosmos DB のドキュメントを照会する方法を示します。
+Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](how-to-sql-query.md)がサポートされています。 次のサンプル コードは、[queryDocuments](/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.querydocuments) メソッドが含まれている SQL 構文を使用して Azure Cosmos DB のドキュメントを照会する方法を示します。
 
 ```java
 private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch completionLatch) 

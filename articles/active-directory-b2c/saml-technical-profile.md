@@ -10,22 +10,22 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 301ae251413cc174f115479e9ebef2310aa83ba7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 347a437a9f45f29348e97c616c985764135e5427
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162444"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687471"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、SAML 2.0 プロトコルの ID プロバイダーにサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 SAML 技術プロファイルを使用すると、AD-FS や Salesforce などの SAML ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
+Azure Active Directory (Azure AD) B2C では、SAML 2.0 プロトコルの ID プロバイダーにサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 SAML 技術プロファイルを使用すると、[ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md) や [Salesforce](active-directory-b2c-setup-sf-app-custom.md) などの SAML ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
 
 ## <a name="metadata-exchange"></a>メタデータ交換
 
-メタデータとは、サービス プロバイダーや ID プロバイダーなど、SAML パーティーの構成を公開するために SAML プロトコルで使用される情報です。 メタデータは、サインインとサインアウト、証明書、サインイン方法など、サービスの場所を定義します。 ID プロバイダーは、メタデータを使用して Azure AD B2C と通信する方法を知ります。 メタデータは XML 形式で構成され、他方の当事者がメタデータの整合性を検証できるように、デジタル署名で署名されることもあります。 Azure AD B2C が SAML ID プロバイダーとフェデレーションを行う場合、SAML 要求を開始して、SAML 応答を待機するサービス プロバイダーとして機能します。 また、場合によっては、ID プロバイダーが開始した未承諾の SAML 認証を除きます。 
+メタデータとは、サービス プロバイダーや ID プロバイダーなど、SAML パーティーの構成を公開するために SAML プロトコルで使用される情報です。 メタデータは、サインインとサインアウト、証明書、サインイン方法など、サービスの場所を定義します。 ID プロバイダーは、メタデータを使用して Azure AD B2C と通信する方法を知ります。 メタデータは XML 形式で構成され、他方の当事者がメタデータの整合性を検証できるように、デジタル署名で署名されることもあります。 Azure AD B2C が SAML ID プロバイダーとフェデレーションを行う場合、SAML 要求を開始して、SAML 応答を待機するサービス プロバイダーとして機能します。 また、場合によっては、ID プロバイダーが開始した未承諾の SAML 認証を受け入れます。 
 
 メタデータは、両当事者で「静的なメタデータ」または「動的メタデータ」として構成できます。 静的なモードでは、1 つの当事者からメタデータ全体をコピーし、他方の当事者に設定します。 動的モードでは、他方の当事者が動的に構成を読み取る間にメタデータに URL を設定します。 原則は同じであり、Azure AD B2C 技術プロファイルのメタデータを ID プロバイダーに設定し、ID プロバイダーのメタデータを Azure AD B2C に設定します。
 
@@ -34,14 +34,14 @@ Azure Active Directory (Azure AD) B2C では、SAML 2.0 プロトコルの ID �
 次の例は、Azure AD B2C テクニカル プロファイルの SAML メタデータへの URL アドレスを示しています。
 
 ```
-https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 次の値を置き換えます。
 
-- **your-tenant** は、実際のテナント名 (your-tenant.onmicrosoft.com など) に置き換えます
+- **your-tenant-name** は、fabrikam.b2clogin.com などのテナント名に置き換えます。
 - **your-policy** は、実際のポリシー名に置き換えます。 SAML プロバイダーのテクノロジ プロファイルを構成するポリシー、またはそのポリシーから継承されるポリシーを使用します。
-- **your-technical-profile** は、実際の SAML ID プロバイダー技術プロファイルの名前に置き換えます
+- **your-technical-profile** は、実際の SAML ID プロバイダー技術プロファイルの名前に置き換えます。
 
 ## <a name="digital-signing-certificates-exchange"></a>デジタル署名証明書の交換
 
@@ -106,12 +106,12 @@ Protocol 要素の **Name** 属性は `SAML2` に設定する必要がありま�
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | [はい] | SAML ID プロバイダーのメタデータの URL です。 ID プロバイダーのメタデータをコピーし、CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内に追加します |
-| WantsSignedRequests | いいえ  | 技術プロファイルでは、送信認証要求すべてを署名する必要があるかどうかを示します。 可能な値: `true` または `false`。 既定値は `true` です。 値を `true` に設定すると、 **SamlMessageSigning** 暗号化キーを指定する必要があり、送信認証要求すべてが署名されます。 値が `false` に設定されている場合、**SigAlg** と **Signature** パラメーター (クエリ文字列または post パラメーター) は要求から省略されます。 このメタデータは、メタデータ **AuthnRequestsSigned** 属性も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 |
+| WantsSignedRequests | いいえ  | 技術プロファイルでは、送信認証要求すべてを署名する必要があるかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値を `true` に設定すると、 **SamlMessageSigning** 暗号化キーを指定する必要があり、送信認証要求すべてが署名されます。 値が `false` に設定されている場合、**SigAlg** と **Signature** パラメーター (クエリ文字列または post パラメーター) は要求から省略されます。 このメタデータは、メタデータ **AuthnRequestsSigned** 属性も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 |
 | XmlSignatureAlgorithm | いいえ  | SAML 要求に署名するために Azure AD B2C が使用するメソッド。 このメタデータは、SAML 要求の **SigAlg** パラメーター (クエリ文字列または post パラメーター) の値を制御します。 可能な値: `Sha256`、`Sha384`、`Sha512`、または`Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 | 
-| WantsSignedAssertions | いいえ  | 技術プロファイルで、着信アサーションすべてに署名が必要かどうかを示します。 可能な値: `true` または `false`。 既定値は `true` です。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信されるすべてのアサーション セクション `saml:Assertion` に署名する必要があります。 値が `false` に設定されている場合、ID プロバイダーは、アサーションを署名しませんが、その場合でも Azure AD B2C は署名を検証しません。 このメタデータは、メタデータ フラグ **WantsAssertionsSigned** も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 アサーションの検証を無効にした場合、応答の署名の検証も無効にできます (詳細については、**ResponsesSigned** を参照)。 |
-| ResponsesSigned | いいえ  | 可能な値: `true` または `false`。 既定値は `true` です。 値が `false` に設定されている場合、ID プロバイダーは、SAML 応答を署名しませんが、その場合でも Azure AD B2C は署名を検証しません。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信される SAML 応答が署名され、必ず検証されます。 SAML 応答の検証を無効にした場合、アサーション署名の検証も無効にできます (詳細については、**WantsSignedAssertions** を参照)。 |
-| WantsEncryptedAssertions | いいえ  | 技術プロファイルで、着信アサーションすべてに暗号化が必要かどうかを示します。 可能な値: `true` または `false`。 既定値は `false` です。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信されるアサーションが必ず署名され、**SamlAssertionDecryption** 暗号化キーを指定する必要があります。 値が `true` に設定されている場合、Azure AD B2C 技術プロファイルのメタデータには **encryption** セクションが含まれます。 ID プロバイダーはメタデータを読み取り、Azure AD B2C 技術プロファイルのメタデータに提供されている公開キーを使用して SAML 応答アサーションを暗号化します。 アサーションの暗号化を有効にした場合、応答の署名の検証を無効にする必要があります (詳細については、**ResponsesSigned** を参照)。 | 
-| IdpInitiatedProfileEnabled | いいえ  |SAML ID プロバイダーのプロファイルによって開始されたシングル サインオン セッションのプロファイルが有効かどうかを示します。 可能な値: `true` または `false`。 既定では、 `false`です。 ID プロバイダーによって開始されたフローでは、ユーザーが外部から認証され、要請されていない応答は Azure AD B2C に送信されます。次にこれがトークンを使用してオーケストレーションの手順を実行し、応答を証明書利用者アプリケーションに送信します。 |
+| WantsSignedAssertions | いいえ  | 技術プロファイルで、着信アサーションすべてに署名が必要かどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信されるすべてのアサーション セクション `saml:Assertion` に署名する必要があります。 値が `false` に設定されている場合、ID プロバイダーは、アサーションを署名しませんが、その場合でも Azure AD B2C は署名を検証しません。 このメタデータは、メタデータ フラグ **WantsAssertionsSigned** も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 アサーションの検証を無効にした場合、応答の署名の検証も無効にできます (詳細については、**ResponsesSigned** を参照)。 |
+| ResponsesSigned | いいえ  | 指定できる値: `true` または `false`。 既定値は `true` です。 値が `false` に設定されている場合、ID プロバイダーは、SAML 応答を署名しませんが、その場合でも Azure AD B2C は署名を検証しません。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信される SAML 応答が署名され、必ず検証されます。 SAML 応答の検証を無効にした場合、アサーション署名の検証も無効にできます (詳細については、**WantsSignedAssertions** を参照)。 |
+| WantsEncryptedAssertions | いいえ  | 技術プロファイルで、着信アサーションすべてに暗号化が必要かどうかを示します。 指定できる値: `true` または `false`。 既定値は `false` です。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信されるアサーションが必ず署名され、**SamlAssertionDecryption** 暗号化キーを指定する必要があります。 値が `true` に設定されている場合、Azure AD B2C 技術プロファイルのメタデータには **encryption** セクションが含まれます。 ID プロバイダーはメタデータを読み取り、Azure AD B2C 技術プロファイルのメタデータに提供されている公開キーを使用して SAML 応答アサーションを暗号化します。 アサーションの暗号化を有効にした場合、応答の署名の検証を無効にする必要があります (詳細については、**ResponsesSigned** を参照)。 | 
+| IdpInitiatedProfileEnabled | いいえ  |SAML ID プロバイダーのプロファイルによって開始されたシングル サインオン セッションのプロファイルが有効かどうかを示します。 指定できる値: `true` または `false`。 既定では、 `false`です。 ID プロバイダーによって開始されたフローでは、ユーザーが外部から認証され、要請されていない応答は Azure AD B2C に送信されます。次にこれがトークンを使用してオーケストレーションの手順を実行し、応答を証明書利用者アプリケーションに送信します。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

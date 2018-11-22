@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 20c1606d4d6a1ddd43426731e5498d1bee47f2e3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c65cfedd398bbb18d65f36a3f2a768e11443687a
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962539"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636511"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure VM バックアップ スタック V2 にアップグレードする
 
@@ -86,15 +86,42 @@ Azure ポータルを使用する場合は、コンテナーのダッシュボ�
     ```
     PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
     ```
+### <a name="cli"></a>CLI
+Shell から次のコマンドを実行します。
+1.  Azure アカウントにサインインします。
+
+    ```
+    az login
+    ```
+
+2.  登録するサブスクリプションを選択します。
+
+    ```
+    az account set --subscription "Subscription Name"
+    ```
+
+3.  このサブスクリプションを登録します。
+
+    ```
+    az feature register --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
+    ```
 
 ## <a name="verify-that-the-upgrade-is-finished"></a>アップグレードが終了したことを確認する
+### <a name="powershell"></a>PowerShell
 管理者特権の PowerShell ターミナルから、次のコマンドレットを実行します。
 
 ```
 Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
 ```
 
-"登録済み" と表示されたら、サブスクリプションは VM バックアップ スタック Resource Manager デプロイメント モデルにアップグレードされています。
+### <a name="cli"></a>CLI
+ashell から次のコマンドを実行します。
+
+```
+az feature show --namespace Microsoft.RecoveryServices --name InstantBackupandRecovery
+```
+
+"登録済み" と表示されたら、サブスクリプションは V2 バックアップ スタックにアップグレードされています。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

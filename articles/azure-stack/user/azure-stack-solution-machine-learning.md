@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 8a5ca4f94a6f1186b6d1a26b1c7e12357cd9e799
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8c947e2effab84b17ea88623695e0a6b0d020d0f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616369"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285120"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure および Azure Stack を使用してエッジ機械学習ソリューションを作成する
 
@@ -89,7 +89,7 @@ Azure と Azure Stack の事前の知識が必要です。 先に進む前に詳
 
  -  Azure Stack 統合システムまたは Azure Stack Development Kit のデプロイ。
 
-    - Azure Stack のインストール手順は、[Azure Stack Development Kit のインストール](/articles/azure-stack/asdk/asdk-install)に関するページで見つけることができます。
+    - Azure Stack のインストール手順は、[Azure Stack Development Kit のインストール](../asdk/asdk-install.md)に関するページで見つけることができます。
      - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) このインストールが完了するまで数時間かかることがあります。
 
  -  Azure Stack への [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS サービスのデプロイ

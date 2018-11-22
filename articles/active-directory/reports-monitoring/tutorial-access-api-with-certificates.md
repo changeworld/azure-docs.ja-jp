@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: report-monitor
-ms.date: 05/07/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5c54af76fc1e145ea062c6bcb37f354a7de94781
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 0ee756828a50cdf62471923614afbe88e238b9ef
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364178"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624559"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>チュートリアル: Azure Active Directory Reporting API と証明書を使ってデータを取得する
 
 [Azure Active Directory (Azure AD) レポート API](concept-reporting-api.md) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。 ユーザーの介入なしに Azure AD Reporting API にアクセスする場合は、証明書を使用するようにアクセスを構成する必要があります。
 
-このチュートリアルでは、テスト証明書を作成し、その証明書を使用して、レポート用の MS Graph API にアクセスする方法について説明します。 運用環境でこのテスト証明書を使わないことをお勧めします。 
+このチュートリアルでは、テスト証明書を使用してレポート用の MS Graph API にアクセスする方法について説明します。 このテスト証明書は、運用環境に使わないことをお勧めします。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,28 +39,24 @@ ms.locfileid: "46364178"
     - ADAL を使用してユーザー キー、アプリケーション キー、証明書からアクセス トークンを取得
     - Graph API でページ単位の結果を処理
 
-4. 初めてモジュールを使う場合は、**Install-MSCloudIdUtilsModule** を実行します。初めてではない場合は、**Import-Module** PowerShell コマンドを使ってモジュールをインポートします。
+4. 初めてモジュールを使う場合は、**Install-MSCloudIdUtilsModule** を実行します。初めてではない場合は、**Import-Module** PowerShell コマンドを使ってモジュールをインポートします。 セッションは次のような画面になります。
 
-セッションは次のような画面になります。
-
-  ![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+        ![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-## <a name="create-a-test-certificate"></a>テスト証明書を作成する
-
-1. **New-SelfSignedCertificate** PowerShell コマンドレットを使用して、テスト証明書を作成します。
+5. **New-SelfSignedCertificate** PowerShell コマンドレットを使用して、テスト証明書を作成します。
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
    ```
 
-2. **Export-Certificate** コマンドレットを使用して、テスト証明書を証明書ファイルにエクスポートします。
+6. **Export-Certificate** コマンドレットを使用して、テスト証明書を証明書ファイルにエクスポートします。
 
    ```
    Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"
 
    ```
 
-## <a name="register-the-certificate-in-your-app"></a>アプリで証明書を登録する
+## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Azure Active Directory Reporting API と証明書を使用したデータの取得
 
 1. [Azure portal](https://portal.azure.com) に移動し、**[Azure Active Directory]**、**[アプリの登録]** の順に選択し、リストからアプリケーションを選択します。 
 
@@ -86,29 +82,22 @@ ms.locfileid: "46364178"
 
 6. マニフェストを保存します。 
   
-## <a name="get-an-access-token-for-ms-graph-api"></a>MS Graph API のアクセス トークンを取得する
-
-1. MSCloudIdUtils PowerShell モジュールの **Get-MSCloudIdMSGraphAccessTokenFromCert** コマンドレットを使い、前の手順で取得したアプリケーション ID とサムプリントを渡します。 
+7. これで、この証明書を使用して MS Graph API のアクセス トークンを取得できるようになりました。 MSCloudIdUtils PowerShell モジュールの **Get-MSCloudIdMSGraphAccessTokenFromCert** コマンドレットを使い、前の手順で取得したアプリケーション ID とサムプリントを渡します。 
 
  ![Azure ポータル](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-## <a name="use-the-access-token-to-call-the-graph-api"></a>アクセス トークンを使用して Graph API を呼び出す
+8. Powershell スクリプトでアクセス トークンを使用して、Graph API のクエリを実行します。 MSCloudIDUtils の **Invoke-MSCloudIdMSGraphQuery** コマンドレットを使って SignIns と directoryAudits エンドポイントを列挙します。 複数のページにわたる結果を処理し、それらの結果を PowerShell パイプラインに送っています。
 
-1. ここで、Powershell スクリプトでアクセス トークンを使って、Graph API のクエリを行うことができます。 MSCloudIDUtils の **Invoke-MSCloudIdMSGraphQuery** コマンドレットを使って SignIns と directoryAudits エンドポイントを列挙します。 複数のページにわたる結果を処理し、それらの結果を PowerShell パイプラインに送っています。
-
-2. directoryAudits エンドポイントを照会して、監査ログを取得します。 
+9. directoryAudits エンドポイントを照会して、監査ログを取得します。 
  ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
-3. SignIns エンドポイントを照会して、サインイン ログを取得します。
+10. SignIns エンドポイントを照会して、サインイン ログを取得します。
  ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
-4. このデータを CSV にエクスポートし、SIEM システムに保存できるようになります。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
+11. このデータを CSV にエクスポートし、SIEM システムに保存できるようになります。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
 
 ## <a name="next-steps"></a>次の手順
 
 * [Reporting API の概要を把握します](concept-reporting-api.md)
 * [監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
 * [サインイン アクティビティ レポート API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
-
-
-

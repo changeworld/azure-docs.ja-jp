@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 99d835d1d0e18bf62d6e64b7e5af45b6c53d809e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4fd9f76223adba20028288b46037586f8f54fd1a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239510"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686383"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンを作成する 
 
@@ -42,7 +42,7 @@ Resource Manager テンプレートを使用して DevTest Labs で VM を作成
 
    同じ環境にある VM を一緒に管理でき、同じライフ サイクルを共有します。 管理者がこのようにラボを構成していれば、DevTest Labs のユーザー ロールを割り当てられているユーザーは、これらのテンプレートを使用して環境を作成できます。
 
-これ以降、この記事では Mirosoft.DevTestLab/labs/virtualmachines を使用する Resource Manager テンプレートについて説明します。 これらは、ラボ管理者がラボ VM 作成 (たとえば、要求可能な VM) またはゴールデン イメージ生成 (たとえば、イメージの出荷) を自動化するのに使用されます。
+これ以降、この記事では Microsoft.DevTestLab/labs/virtualmachines を使用する Resource Manager テンプレートについて説明します。 これらは、ラボ管理者がラボ VM 作成 (たとえば、要求可能な VM) またはゴールデン イメージ生成 (たとえば、イメージの出荷) を自動化するのに使用されます。
 
 「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices)」では、信頼性が高く使いやすい Azure Resource Manager テンプレートを作成するのに役立つ多くのガイドラインと推奨事項を紹介しています。
 

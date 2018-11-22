@@ -11,30 +11,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: dcd1c40717cb35fe4daa9ab9e2c66f334ffff5fe
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 7d3b0e179972464a1ed857c576ca8a7c8fc2e162
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361500"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686808"
 ---
 # <a name="remove-the-mysql-resource-provider"></a>MySQL リソースプロバイダーを削除する
 
 MySQL リソース プロバイダーを削除する前に、プロバイダーの依存関係をすべて削除する必要があります。 また、リソース プロバイダーのインストールに使用したデプロイ パッケージのコピーも必要になります。
 
+  |最小の Azure Stack バージョン|MySQL RP バージョン|
+  |-----|-----|
+  |バージョン 1808 (1.1808.0.97)|[MySQL RP バージョン 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
+  |バージョン 1804 (1.0.180513.1)|[MySQL RP バージョン 1.1.24.0](https://aka.ms/azurestackmysqlrp11240)
+  |     |     |
+
 ## <a name="dependency-cleanup"></a>依存関係のクリーンアップ
 
 DeployMySqlProvider.ps1 スクリプトを実行してリソース プロバイダーを削除する前に、いくつかのクリーンアップ タスクを実行する必要があります。
 
-次のクリーンアップ タスクは、テナントが担当します。
+次のクリーンアップ タスクは、Azure Stack テナント ユーザーが担当します。
 
 * リソース プロバイダーからすべてのデータベースを削除する。 (テナント データベースを削除してもデータは削除されません。)
 * プロバイダーの名前空間からの登録解除を行う。
 
-次のクリーンアップ タスクは、管理者が担当します。
+次のクリーンアップ タスクは、Azure Stack オペレーターが担当します。
 
 * MySQL アダプターからホスティング サーバーを削除する。
 * MySQL アダプターを参照するすべてのプランを削除する。

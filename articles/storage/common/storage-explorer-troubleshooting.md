@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281780"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616199"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -81,7 +81,7 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 * Storage Explorer を再起動する
 * 認証ウィンドウが空白の場合は、認証ダイアログ ボックスを閉じる前に少なくとも 1 分待機します。
 * プロキシと証明書が、使用中のマシンと Storage Explorer の両方の設定用に正しく構成されていることを確認します。
-* Windows を使用していて、同じマシン上で Visual Studio 2017 にアクセス権があるときにログインする場合は、Visual Studio 2017 にサインインしてみてください。 Visual Studio 2017 へのサインインが成功した後、Storage Explorer を開いてアカウント パネルでお使いのアカウントを確認できます。 
+* Windows を使用していて、同じマシン上で Visual Studio 2017 にアクセス権があるときにログインする場合は、Visual Studio 2017 にサインインしてみてください。 Visual Studio 2017 へのサインインが成功した後、Storage Explorer を開いてアカウント パネルでお使いのアカウントを確認できます。
 
 これらの方法がいずれもうまくいかない場合、[GitHub で問題をオープンしてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
@@ -115,6 +115,8 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 
 * プロキシの URL とポート番号
 * プロキシで必要な場合はユーザー名とパスワード
+
+Storage Explorer では、プロキシ設定の構成に関して .pac ファイルがサポートされないことに注意してください。
 
 ### <a name="common-solutions"></a>一般的な解決方法
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/01/2018
+ms.date: 11/15/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7e7e5e16b6f7de1cee8312fd31801c202c3e16ef
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 847300fffb2dd67cae4b51b4baf7d978c569a664
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962913"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284252"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート: トークンを取得し、Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
@@ -33,20 +33,21 @@ ms.locfileid: "50962913"
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
-> [!div renderon="docs" class="sxs-lookup"]
 > クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
 > * [簡易] [選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
 > * [手動] [選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. [Azure portal の [アプリケーションの登録]](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps) に移動します。
+> 1. [Azure portal の [アプリケーションの登録 (プレビュー)]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs) に移動します。
 > 1. アプリケーションの名前を入力し、**[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する
-> [!div renderon="docs"]
+>
 > #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
+> アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
+>
 > 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 > 1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
 > 1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)]** > **[新規登録]** を選択します。
@@ -58,8 +59,8 @@ ms.locfileid: "50962913"
 > 1. **[リダイレクト URL]** セクションで、**[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションを探し、**["urn:ietf:wg:oauth:2.0:oob]** を選択します。
 > 1. **[保存]** を選択します。
 
-> [!div renderon="portal" class="sxs-lookup"]
-> #### <a name="step-1-configure-your-application"></a>手順 1: アプリケーションの構成
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
 > このクイック スタートのコード サンプルを動作させるには、応答 URL として **urn:ietf:wg:oauth:2.0:oob** を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()

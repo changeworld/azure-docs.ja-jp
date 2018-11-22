@@ -9,13 +9,13 @@ ms.date: 09/18/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
-manager: dougeby
-ms.openlocfilehash: 698ddab4f5bca5aacf79cb952a51c385a67eee32
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: benshy
+ms.openlocfilehash: 7d89446869815e5fb33ed0f95739054552268fae
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985448"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274757"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 

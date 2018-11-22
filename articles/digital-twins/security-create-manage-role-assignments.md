@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 11/13/2018
 ms.author: lyrana
-ms.openlocfilehash: 42c1b0fbb6d87e9ed35d4ecce3971d8512eed4d4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f032e3ebf6a10411057cd6d41df0cad6248f328b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012464"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636239"
 ---
 # <a name="create-and-manage-role-assignments"></a>ロールの割り当てを作成および管理する
 
@@ -26,6 +26,8 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 * **ロール定義 ID**
 * **スペース パス**
 * **テナント ID**: ほとんどの場合 Azure Active Directory のテナント ID
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
 ## <a name="role-definition-identifiers"></a>ロール定義識別子
 
@@ -57,7 +59,7 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 ## <a name="create-a-role-assignment"></a>役割の割り当ての作成
 
 ```plaintext
-HTTP POST /api/v1.0/roleassignments
+HTTP POST YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
 | **名前** | **必須** | **種類** | **説明** |
@@ -108,22 +110,22 @@ HTTP POST /api/v1.0/roleassignments
 GET を使用してロールの割り当てを取得します。
 
 ```plaintext
-HTTP GET /api/v1/roleassignments?path={path}
+HTTP GET YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
 | **名前** | **含まれる** | **必須** |    **種類** |  **説明** |
 | --- | --- | --- | --- | --- |
-| Path | Path | True | String | スペースへの完全パス |
+| YOUR_PATH | Path | True | String |    スペースへの完全パス |
 
 DELETE を使用してロールの割り当てを削除します。
 
 ```plaintext
-HTTP DELETE /api/v1/roleassignments/{id}
+HTTP DELETE YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ID
 ```
 
 | **名前** | **含まれる** | **必須** | **種類** | **説明** |
 | --- | --- | --- | --- | --- |
-| ID | Path | True | String |   ロールの割り当て ID |
+| YOUR_ROLE_ID | Path | True | String | ロールの割り当て ID |
 
 ## <a name="next-steps"></a>次の手順
 

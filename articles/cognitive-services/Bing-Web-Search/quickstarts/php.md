@@ -3,19 +3,19 @@ title: 'クイック スタート: PHP で検索を実行する - Bing Web Searc
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、PHP を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
-ms.author: erhopf
-ms.openlocfilehash: 821d6a1b7df43c3eaddff503f6666e72251deec0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: bee9cf2a6ddc385ddf0cb04c58edacaa2da6ec5d
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127903"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163336"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>クイック スタート: PHP を使用して Bing Web Search API を呼び出す  
 

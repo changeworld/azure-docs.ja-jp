@@ -3,19 +3,19 @@ title: 'クイック スタート: Node.js 用の Bing Web Search SDK を使用�
 titleSuffix: Azure Cognitive Services
 description: Bing Web Search SDK を使用すると、Node.js アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、クライアントをインスタンス化し、要求を送信して、応答を出力する方法を学習します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
-ms.author: erhopf
-ms.openlocfilehash: b27c11a69c7d16f38c2448d380b611940078c501
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: 14227239f3772f7c820f0c5dc941a89da9675f4e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121923"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162426"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>クイック スタート: Node.js 用の Bing Web Search SDK を使用する
 
@@ -58,7 +58,7 @@ Bing Web Search SDK を使用すると、Node.js アプリケーションに Bin
 
 ## <a name="create-a-project-and-declare-required-modules"></a>プロジェクトの作成と必要なモジュールの宣言
 
-`package.json` と同じディレクトリで、普段使用している IDE またはエディターで新しい Node.js プロジェクトを作成します。 たとえば、「 `sample.js`」のように入力します。
+`package.json` と同じディレクトリで、普段使用している IDE またはエディターで新しい Node.js プロジェクトを作成します。 (例: `sample.js`)。
 
 次に、このコードをプロジェクトにコピーします。 前のセクションでインストールしたモジュールが読み込まれます。
 

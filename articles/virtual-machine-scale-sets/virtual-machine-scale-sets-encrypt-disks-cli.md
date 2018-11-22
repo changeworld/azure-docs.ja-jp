@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: c8035a87816c56daa5ac9e1f95b40d15fa556cd9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 1ae352a0292e75eb9a5bf07e3ddca79ca687dea2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465161"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687386"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-preview"></a>Azure CLI (プレビュー) による仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
 
@@ -48,7 +48,7 @@ CLI をローカルにインストールして使用する場合、Azure CLI バ
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は､[az feature show](/cli/azure/feature#az_feature_show) で確認できます｡ `State` から *Registered* と報告されたら､[az provider register](/cli/azure/provider#az_provider_register) を使って *Mirosoft.Compute* プロバイダーを登録し直します｡
+登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は､[az feature show](/cli/azure/feature#az_feature_show) で確認できます｡ `State` から *Registered* と報告されたら､[az provider register](/cli/azure/provider#az_provider_register) を使って *Microsoft.Compute* プロバイダーを登録し直します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute

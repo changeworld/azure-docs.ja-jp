@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a91e14afa8325e75507b2f65cd9d71ab38df4524
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 780799103708483fb0092c7a4c15bfaa3269c073
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235243"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636482"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>VM からカスタム イメージを作成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "51235243"
 
     ![[カスタム イメージの作成] ウィンドウ](./media/devtest-lab-create-template/create-custom-image-blade.png)
 
-1. sysprep を VM で実行したかどうかを選択します。 sysprep を VM で実行していない場合は、カスタム イメージから VM を作成するときに sysprep を実行するかどうかを指定します。
+1. sysprep を VM で実行したかどうかを選択します。 sysprep を VM 上で実行していない場合は、カスタム イメージの作成時に VM 上で sysprep を実行するかどうかを指定します。
 
 1. 完了したら **[OK]** を選択して、カスタム イメージを作成します。
 

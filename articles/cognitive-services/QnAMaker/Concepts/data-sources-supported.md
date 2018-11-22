@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 11/08/2018
 ms.author: tulasim
-ms.openlocfilehash: 4c96eb5b49c72fe9bb5ab977c773407889c56805
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e6c654b00ee6be0ed87feb0fb2a5ccba38e5cbe4
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213306"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624879"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker コンテンツのデータ ソース
 
@@ -26,9 +26,9 @@ QnA Maker は、Web ページ、PDF ファイル、または MS Word doc ファ�
 |ソースの種類|コンテンツの種類| 例|
 |--|--|--|
 |URL|FAQ (基本、セクション付き、またはトピックのホーム ページ付き)|[基本的な FAQ](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs)、[リンク付き FAQ](https://www.microsoft.com/software-download/faq)、[トピックのホーム ページ付き FAQ](https://support.microsoft.com/products/windows?os=windows-10)|
-|PDF / DOC|FAQ、製品マニュアル、パンフレット、論文、チラシ、ポリシー、サポート ガイド、構造化 QnA など|[Structured QnA.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Bot%20Service%20Sample%20FAQ.docx)、[Sample Product Manual.pdf](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)、[Sample semi-structured.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)、[Sample white paper.pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-stack-wortmann-bring-the-power-of-the-public-cloud-into-your-data-center/Azure_Stack_Wortmann_Bring_the_Power_of_the_Public_Cloud_into_Your_Data_Center.pdf)|
-|Excel|構造化 QnA ファイル (RTF、HTML サポートを含む)|[Sample QnA FAQ.xls](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/QnA%20Maker%20Sample%20FAQ.xlsx)|
-|TXT/TSV|構造化 QnA ファイル|[Sample chit-chat.tsv](https://github.com/Microsoft/BotBuilder-PersonalityChat/blob/master/CSharp/Datasets/scenario_responses_the_friend.tsv)|
+|PDF / DOC|FAQ、製品マニュアル、パンフレット、論文、チラシ、ポリシー、サポート ガイド、構造化 QnA など|[Structured QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、[Sample Product Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)、[Sample semi-structured.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx)、[Sample white paper.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|構造化 QnA ファイル (RTF、HTML サポートを含む)|[Sample QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|TXT/TSV|構造化 QnA ファイル|[Sample chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="faq-urls"></a>FAQ URL
 
@@ -131,6 +131,10 @@ Answer2
 ## <a name="editorially-add-to-knowledge-base"></a>編集という形でナレッジ ベースに追加する
 
 ナレッジ ベースの内容とする既存のコンテンツがない場合は、QnA Maker のナレッジ ベースに編集という形で QnA を追加することができます。 ナレッジ ベースの更新方法については、[こちら](../How-To/edit-knowledge-base.md)を参照してください。
+
+## <a name="formatting-considerations"></a>書式設定の考慮事項
+
+ファイルまたは URL をインポートした後は Markdown に変換され、その形式で保存されます。 変換プロセスでファイルと URL のリンクが正しく変換されない場合は、**[編集]** ページで質問と回答を編集する必要があります。 
 
 ## <a name="next-steps"></a>次の手順
 

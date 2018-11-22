@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 57c8309af47e71226f41df8cce255e73f33b27c5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: c50f65abd6a0bb446444d889de88348ed4fea84a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341040"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852607"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Go を使用してリモート画像を分析する
 
@@ -63,7 +63,7 @@ func main() {
     // from the West US region, replace "westcentralus" in the URL
     // below with "westus".
     //
-    // Free trial subscription keys are generated in the West Central US region.
+    // Free trial subscription keys are generated in the "westus" region.
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     const uriBase =

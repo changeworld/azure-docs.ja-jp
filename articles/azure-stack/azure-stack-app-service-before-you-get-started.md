@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 786f6ca3b3a1ad26d36c751c54d3cf69ae1d2fd4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240870"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615876"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
@@ -28,7 +28,7 @@ ms.locfileid: "50240870"
 Azure App Service on Azure Stack をデプロイする前に、この記事にある前提条件ステップを完了する必要があります。
 
 > [!IMPORTANT]
-> Azure App Service 1.3 をデプロイする前に、Azure Stack 統合システムに 1807 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
+> Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
 
 ## <a name="download-the-installer-and-helper-scripts"></a>インストーラーおよびヘルパー スクリプトをダウンロードする
 
@@ -44,6 +44,10 @@ Azure App Service on Azure Stack をデプロイする前に、この記事に�
    - Remove-AppService.ps1
    - モジュール フォルダー
      - GraphAPI.psm1
+
+## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Marketplace からカスタム スクリプト拡張機能を配信する
+
+Azure App Service on Azure Stack ではカスタム スクリプト拡張機能 v1.9.0 が必要です。  Azure App Service on Azure Stack のデプロイまたはアップグレードを開始する前に、拡張機能を [Marketplace から配信](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)する必要があります。
 
 ## <a name="high-availability"></a>高可用性
 
@@ -151,6 +155,9 @@ ID 用の証明書には、次の形式に一致するサブジェクトが含�
 
 ## <a name="virtual-network"></a>仮想ネットワーク
 
+> [!NOTE]
+> カスタム仮想ネットワークの事前作成を省略できるのは、Azure App Service on Azure Stack は必須の仮想ネットワークを作成できるためです。ただし、その後、パブリック IP アドレス経由で SQL Server およびファイル サーバーと通信する必要があります。
+
 Azure App Service on Azure Stack を使用すると、リソース プロバイダーを既存の仮想ネットワークにデプロイできます。あるいは、デプロイメントの一部として仮想ネットワークを作成できます。 既存の仮想ネットワークを使用すると、内部 IP を使用して、Azure App Service on Azure Stack で必要なファイル サーバーと SQL Server に接続できます。 Azure App Service on Azure Stack をインストールする前に、仮想ネットワークを次のアドレス範囲とサブネットで構成する必要があります。
 
 仮想ネットワーク - /16
@@ -167,12 +174,20 @@ Azure App Service on Azure Stack を使用すると、リソース プロバイ�
 
 Azure App Service では、ファイル サーバーを使用する必要があります。 運用環境のデプロイの場合は、ファイル サーバーを高可用性で、かつ障害を処理できるように構成する必要があります。
 
+### <a name="quickstart-template-for-file-server-for-deployments-of-azure-app-service-on-asdk"></a>ASDK 上の Azure App Service のデプロイ用のファイル サーバーのクイック スタート テンプレート
+
 Azure Stack Development Kit のデプロイのみの場合は、[Azure Resource Manager デプロイ テンプレートの例](https://aka.ms/appsvconmasdkfstemplate)を使用して、構成された単一ノードのファイル サーバーをデプロイできます。 この単一ノードのファイル サーバーは、ワークグループ内に存在します。
+
+### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>高可用性ファイル サーバーと SQL Server のクイック スタート テンプレート
+
+[参照アーキテクチャ クイック スタート テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha)が現在使用可能です。これは、ファイル サーバー、SQL Server、およびサポートの Active Directory インフラストラクチャを、Azure App Service on Azure Stack の高可用性デプロイをサポートするように構成された仮想ネットワークにデプロイします。  
+
+### <a name="steps-to-deploy-a-custom-file-server"></a>カスタム ファイル サーバーをデプロイする手順
 
 >[!IMPORTANT]
 > App Service を既存の仮想ネットワークにデプロイするように選択した場合、ファイル サーバーを App Service とは別のサブネットにデプロイする必要があります。
 
-### <a name="provision-groups-and-accounts-in-active-directory"></a>Active Directory でグループとアカウントをプロビジョニングする
+#### <a name="provision-groups-and-accounts-in-active-directory"></a>Active Directory でグループとアカウントをプロビジョニングする
 
 1. 次の Active Directory グローバル セキュリティ グループを作成します。
 
@@ -195,7 +210,7 @@ Azure Stack Development Kit のデプロイのみの場合は、[Azure Resource 
    - **FileShareOwner** を **FileShareOwners** グループに追加します。
    - **FileShareUser** を **FileShareUsers** グループに追加します。
 
-### <a name="provision-groups-and-accounts-in-a-workgroup"></a>ワークグループでグループとアカウントをプロビジョニングする
+#### <a name="provision-groups-and-accounts-in-a-workgroup"></a>ワークグループでグループとアカウントをプロビジョニングする
 
 >[!NOTE]
 > ファイル サーバーを構成している場合は、**管理者コマンド プロンプト**で次のすべてのコマンドを実行します。 <br>***PowerShell を使用しないでください。***
@@ -225,7 +240,7 @@ Azure Resource Manager テンプレートを使用するとき、ユーザーは
    net localgroup FileShareOwners FileShareOwner /add
    ```
 
-### <a name="provision-the-content-share"></a>コンテンツ共有をプロビジョニングする
+#### <a name="provision-the-content-share"></a>コンテンツ共有をプロビジョニングする
 
 コンテンツ共有には、テナント Web サイトのコンテンツが含まれています。 1 つのファイル サーバーでコンテンツ共有をプロビジョニングする手順は、Active Directory とワークグループの両方の環境で同じです。 ただし、Active Directory 内のフェールオーバー クラスターでは異なります。
 

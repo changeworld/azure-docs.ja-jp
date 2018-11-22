@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 241cd2fddf31373ed9ca208efb0612dd4332131c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 03fb56125bcc4133dd87a1dc76d4d6811ebb8f40
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740979"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685499"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -89,7 +89,7 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos DB コンテナーのレコ
    ```powershell
    .\deploy.ps1
    ```
-5. プロンプトが表示されたら、Azure **サブスクリプション ID**、リソース グループ名に 「**changefeedlab**」、デプロイ名に「**run1**」を入力します。 リソースがデプロイを開始すると、完了までに最大で 10 分かかる場合があります。
+5. プロンプトが表示されたら、Azure **サブスクリプション ID**、リソース グループ名に「**changefeedlab**」、デプロイ名に「**run1**」を入力します。 リソースがデプロイを開始すると、完了までに最大で 10 分かかる場合があります。
 
 ## <a name="create-a-database-and-the-collection"></a>データベースとコレクションを作成する
 

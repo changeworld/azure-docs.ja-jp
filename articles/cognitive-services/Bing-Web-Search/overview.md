@@ -3,19 +3,19 @@ title: Bing Web Search とは
 titleSuffix: Azure Cognitive Services
 description: Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTful サービスです。 検索結果は、Web ページ、画像、ビデオ、ニュース、翻訳などを含むように簡単に構成できます。 結果は JSON として提供され、検索の関連性と Bing Web Search のサブスクリプションに基づいています。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
-ms.author: erhopf
-ms.openlocfilehash: 8482afae2889ccf2153e1864e4a65b635b6ab4c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: 738941afadbad318d383a119967e3f98c098a9c1
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125240"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160717"
 ---
 # <a name="what-is-bing-web-search"></a>Bing Web Search とは
 
@@ -29,7 +29,7 @@ Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTf
 
 Bing Web Search には、すぐに回答が得られるだけでなく、ユーザーに対する検索結果をカスタマイズできる追加の機能があります。
 
-| Feature | 説明 |
+| 機能 | 説明 |
 |---------|-------------|
 | [検索用語をリアルタイムで提案する](../bing-autosuggest/get-suggested-search-terms.md) | Bing Autosuggest API を使用して、入力時に候補検索用語を表示することで、アプリケーションのエクスペリエンスを向上します。 |
 | [コンテンツ タイプで結果をフィルター処理して制限する](filter-answers.md) | Web ページ、画像、動画、セーフ サーチなどのフィルターとクエリ パラメーターを使用して、検索結果をカスタマイズして絞り込みます。 |

@@ -3,20 +3,20 @@ title: 'クイック スタート: Go で検索を実行する - Bing Web Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
-ms.author: erhopf
+ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 7ce3dd565709567bf75dbbb4ec8f206bba96c195
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9ba0501f9d4b408e4972f36806ab21cba6519b59
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408679"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163777"
 ---
 # <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>クイック スタート: Go を使用して Bing Web Search API を呼び出す  
 

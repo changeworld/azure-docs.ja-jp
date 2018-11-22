@@ -11,18 +11,18 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/15/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 935ddfdee34462a0156a6b013282a01fe9ea145b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f767da10b3607cb24c981b3eaffe988eff1f4f9e
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239291"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261192"
 ---
 # <a name="visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
-Visual Studio Code Tools for AI は、ディープ ラーニングおよび AI ソリューションを構築、テスト、デプロイするための開発拡張機能です。 その重要な特徴として、Azure Machine Learning とのシームレスな統合、特に過去のトレーニングのパフォーマンスとカスタム メトリックの詳細が表示される実行履歴ビューがあります。 サンプル エクスプローラー ビューも用意されています。これを使用すると、[Microsoft Cognitive Toolkit (従来は CNTK と呼ばれていました)](https://www.microsoft.com/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org)、その他のディープ ラーニング フレームワークで新しいプロジェクトを参照およびブートストラップすることができます。 最後に、コンピューティング ターゲット用のエクスプローラーも用意されています。これにより、Azure Virtual Machines や GPU 搭載の Linux サーバーなどのリモート環境でモデルをトレーニングするためのジョブを送信できます。 
+Visual Studio Code Tools for AI は、ディープ ラーニングおよび AI ソリューションを構築、テスト、デプロイするための開発拡張機能です。 その重要な特徴として、Azure Machine Learning とのシームレスな統合、特に過去のトレーニングのパフォーマンスとカスタム メトリックの詳細が表示される実行履歴ビューがあります。 サンプル エクスプローラー ビューも用意されています。これを使用すると、[Microsoft Cognitive Toolkit (従来は CNTK と呼ばれていました)](https://docs.microsoft.com/cognitive-toolkit/)、[Google TensorFlow](https://www.tensorflow.org)、その他のディープ ラーニング フレームワークで新しいプロジェクトを参照およびブートストラップすることができます。 最後に、コンピューティング ターゲット用のエクスプローラーも用意されています。これにより、Azure Virtual Machines や GPU 搭載の Linux サーバーなどのリモート環境でモデルをトレーニングするためのジョブを送信できます。 
  
 ## <a name="getting-started"></a>使用の開始 
 操作を開始するには、最初に [Visual Studio Code](https://code.visualstudio.com/Download) をダウンロードしてインストールする必要があります。 Visual Studio Code を開いたら、次の手順を実行します。

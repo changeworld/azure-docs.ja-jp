@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/17/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: b60c1e84eb5b62bfce0eb2ba96129deeee2fc3c3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 72acc4fe0febaa09d6deb82043795b6003af683f
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345310"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706781"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>チュートリアル: Azure Lab Services でラボ アカウントを設定する
 Azure Lab Services では、ラボ アカウントは、それによって組織のラボが管理される中心的なアカウントとして機能します。 ラボ アカウントでは、ラボを作成する権限を他のユーザーに付与し、ラボ アカウントの管理下にあるすべてのラボに適用されるポリシーを設定します。 このチュートリアルでは、ラボ管理者としてラボ アカウントを作成する方法について説明します。 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     2. ラボ アカウントを作成する **[Azure サブスクリプション]** を選択します。
     3. **[リソース グループ]** で、**[新規作成]** を選択し、リソース グループの名前を入力します。
     4. **[場所]** で、ラボ アカウントが作成される場所/リージョンを選択します。 
-    5. **[作成]** を選択します。 
+    5. **作成**を選択します。 
 
         ![ラボ アカウントの作成ウィンドウ](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. ラボ アカウント ページが表示されない場合は、**[通知]** ボタンを選択し、通知内の **[リソースに移動]** ボタンをクリックします。 

@@ -2,14 +2,14 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 72b63754accee2dbd812f338f5756cc8ba914df2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 0c381cc6e2e2957c946207491c666667821184ad
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572362"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "52156788"
 ---
 | Category | データ ストア | ソースとしてサポート | シンクとしてサポート |
 |:--- |:--- |:--- |:--- |
@@ -42,6 +42,4 @@ ms.locfileid: "51572362"
 | &nbsp; |[汎用 ODBC](../articles/data-factory/v1/data-factory-odbc-connector.md)* |✓ | |
 | &nbsp; |[Salesforce](../articles/data-factory/v1/data-factory-salesforce-connector.md) |✓ | |
 | &nbsp; |[Web テーブル (HTML のテーブル)](../articles/data-factory/v1/data-factory-web-table-connector.md) |✓ | |
-| &nbsp; |[GE Historian](../articles/data-factory/v1/data-factory-odbc-connector.md#ge-historian-store)* |✓ | | |
-
 

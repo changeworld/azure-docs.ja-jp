@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e879e096fb990e4567b43b1938909449820edd42
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c6513c3a92fdf509d9e81d76d1b3547048b2fd8d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412722"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262059"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Azure Maps を使用して近くの目的地を検索する
 
@@ -178,7 +178,7 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
      client = new atlas.service.Client(atlas.getSubscriptionKey());
     ```
 
-2. 続けて次のスクリプト ブロックを追加して検索クエリを作成します。 Search Service の基本的な検索 API であるファジー検索サービスを使用します。 ファジー検索サービスは、住所、場所、目的地 (POI) など、ほとんどのファジー入力を処理します。 このコードは、指定された半径内の近くのガソリン スタンドを検索します。 その後、応答は GeoJSON 形式に解析され、データ ソースに追加されます。これにより、データが記号レイヤーを介してマップ上に自動でレンダリングされます。 スクリプトの最後の部分では、結果の境界ボックスとマップの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) プロパティを使用して、マップのカメラ ビューを設定しています。 境界ボックスは座標に基づいて計算されるため、記号アイコンの画像サイズ (ピクセル) を相殺するためにパディングを追加しています。 
+2. 続けて次のスクリプト ブロックを追加して検索クエリを作成します。 Search Service の基本的な検索 API であるファジー検索サービスを使用します。 ファジー検索サービスは、住所、場所、目的地 (POI) など、ほとんどのファジー入力を処理します。 このコードは、指定された半径内の近くのガソリン スタンドを検索します。 その後、応答は GeoJSON 形式に解析され、データ ソースに追加されます。これにより、データが記号レイヤーを介してマップ上に自動でレンダリングされます。 スクリプトの最後の部分では、結果の境界ボックスとマップの [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) プロパティを使用して、マップのカメラ ビューを設定しています。 境界ボックスは座標に基づいて計算されるため、記号アイコンの画像サイズ (ピクセル) を相殺するためにパディングを追加しています。 
  
    ```JavaScript
    //Execute a POI search query then add the results to the map.

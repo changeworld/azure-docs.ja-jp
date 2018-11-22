@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 83abf15e638ab8caf867126361d81198aa3ad7e2
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a46b4a233702f3e6038c345008c73eaedd2f3be7
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340224"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852811"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-c35-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と C&#35; を使用して印刷されたテキストを抽出する (OCR)
 
@@ -63,7 +63,7 @@ namespace CSHttpClientSample
         // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the West Central US region.
+        // Free trial subscription keys are generated in the "westus" region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         const string uriBase =

@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: sample
 ms.date: 08/16/2018
-ms.author: erhopf
-ms.openlocfilehash: 375a2f14bdc6fc13d23b59ec71870cfe9c15517b
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: aahi
+ms.openlocfilehash: 1e6ba41da9fd9c99ea2fe6bd04040a3111238ffb
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514062"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164409"
 ---
 # <a name="bing-web-search-sdk-samples"></a>Bing Web Search SDK のサンプル
 

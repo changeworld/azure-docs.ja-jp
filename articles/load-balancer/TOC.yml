@@ -192,9 +192,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=load-balancer
-ms.openlocfilehash: 1c0e3428bca6b8aed88a7f2707ff1eaa79e072c7
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: fa5d643a7a623926cd8b1ba464db251511c53bf8
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685007"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284307"

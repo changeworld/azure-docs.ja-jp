@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 10/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7d044559d72b07dc86a5ee1c2269452a9059de61
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4f2fc320d0d66e19ec8a1e591377c482a7ec64d9
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471511"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51626135"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -552,7 +552,7 @@ ms.locfileid: "49471511"
 > | --- | --- | --- |
 > | Action | Microsoft.AzureActiveDirectory/b2cDirectories/delete | B2C ディレクトリ リソースを削除します。 |
 > | Action | Microsoft.AzureActiveDirectory/b2cDirectories/read | B2C ディレクトリ リソースを表示します。 |
-> | Action | Microsoft.AzureActiveDirectory/b2cDirectories/write | B2C ディレクトリ リソースを作成または更新します。 |
+> | Action | Microsoft.AzureActiveDirectory/b2cDirectories/write | B2C ディレクトリ リソースの作成または更新 |
 > | Action | Microsoft.AzureActiveDirectory/operations/read | Microsoft.AzureActiveDirectory リソース プロバイダーで使用可能なすべての API 操作を読み取ります。 |
 > | Action | Microsoft.AzureActiveDirectory/register/action | Microsoft.AzureActiveDirectory リソース プロバイダーにサブスクリプションを登録します。 |
 
@@ -975,7 +975,7 @@ ms.locfileid: "49471511"
 > | Action | Microsoft.ClassicNetwork/networkSecurityGroups/delete | ネットワーク セキュリティ グループを削除します。 |
 > | Action | Microsoft.ClassicNetwork/networkSecurityGroups/operationStatuses/read | ネットワーク セキュリティ グループの操作の状態を読み取ります。 |
 > | Action | Microsoft.ClassicNetwork/networksecuritygroups/providers/Microsoft.Insights/diagnosticSettings/read | ネットワーク セキュリティ グループの診断設定を取得します。 |
-> | Action | Microsoft.ClassicNetwork/networksecuritygroups/providers/Microsoft.Insights/diagnosticSettings/write | ネットワーク セキュリティ グループの診断設定を作成または更新します。この操作は、Insghts リソース プロバイダーによって補完されます。 |
+> | Action | Microsoft.ClassicNetwork/networksecuritygroups/providers/Microsoft.Insights/diagnosticSettings/write | ネットワーク セキュリティ グループの診断設定を作成または更新します。この操作は、Insghts リソース プロバイダーによって補完されます。 | 
 > | Action | Microsoft.ClassicNetwork/networksecuritygroups/providers/Microsoft.Insights/logDefinitions/read | ネットワーク セキュリティ グループのイベントを取得します。 |
 > | Action | Microsoft.ClassicNetwork/networkSecurityGroups/read | ネットワーク セキュリティ グループを取得します。 |
 > | Action | Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/delete | セキュリティ規則を削除します。 |

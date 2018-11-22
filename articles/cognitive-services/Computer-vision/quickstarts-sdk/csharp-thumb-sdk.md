@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: 758021a9428672789923d1774f51fd319fe9885f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: d3340131c1f174201cc9fd1dcb31bd4a4b8cd07a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343114"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854086"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>クイック スタート: Computer Vision SDK と C# によるサムネイルの生成
 
@@ -84,7 +84,7 @@ namespace ImageThumbnail
             // keys. For example, if you got your subscription keys from westus,
             // replace "westcentralus" with "westus".
             //
-            // Free trial subscription keys are generated in the westcentralus
+            // Free trial subscription keys are generated in the "westus"
             // region. If you use a free trial subscription key, you shouldn't
             // need to change the region.
 

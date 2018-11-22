@@ -1,4 +1,16 @@
-
+---
+author: MightyPen
+ms.service: sql-database
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: genemi
+ms.openlocfilehash: 642f1348032a9e4c3ad8efa63287d8f27c93295a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52270985"
+---
 <!-- sql-database-connect-query-prerequisites-server-connection-info-includes.md 
 
 ## SQL server connection information

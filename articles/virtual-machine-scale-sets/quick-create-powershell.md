@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/18
 ms.author: zarhoads
-ms.openlocfilehash: 7c24375cd86700b3b4125447e1aa6dbc7507d8ba
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 511512434dffe7becd38087482876ddeb68af060
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515813"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853457"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure PowerShell を使用して仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
@@ -85,7 +85,7 @@ Update-AzureRmVmss `
 
 ## <a name="allow-traffic-to-application"></a>アプリケーションへのトラフィックを許可する
 
- 基本的な Web アプリケーションへのアクセスを許可するには、[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.compute/new-azurermnetworksecurityruleconfig) と [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.compute/new-azurermnetworksecuritygroup) を使用してネットワーク セキュリティ グループを作成します。 詳細については、「[Azure 仮想マシン スケール セットのネットワーク](virtual-machine-scale-sets-networking.md)」を参照してください。
+ 基本的な Web アプリケーションへのアクセスを許可するには、[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) と [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) を使用してネットワーク セキュリティ グループを作成します。 詳細については、「[Azure 仮想マシン スケール セットのネットワーク](virtual-machine-scale-sets-networking.md)」を参照してください。
 
  ```azurepowershell-interactive
  # Get information about the scale set

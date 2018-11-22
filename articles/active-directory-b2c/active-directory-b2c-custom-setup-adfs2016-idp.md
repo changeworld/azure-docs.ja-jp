@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31ae13fb84453a7014b66499c983e1f52554775e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279128"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685771"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory (Azure AD) B2C で[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して ADFS ユーザー アカウントのサインインを有効にする方法について説明します。
+この記事では、Azure Active Directory (Azure AD) B2C で[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して ADFS ユーザー アカウントのサインインを有効にする方法について説明します。 [SAML 技術プロファイル](saml-technical-profile.md)をカスタム ポリシーに追加することで、サインインを有効にします。
 
 ## <a name="prerequisites"></a>前提条件
 

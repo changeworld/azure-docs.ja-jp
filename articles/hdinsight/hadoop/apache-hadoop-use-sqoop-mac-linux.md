@@ -1,6 +1,6 @@
 ---
-title: Hadoop での Apache Sqoop - Azure HDInsight
-description: Apache Sqoop を使用して、Hadoop on HDInsight と Azure SQL Database の間でインポートおよびエクスポートを行う方法について説明します。
+title: Apache Hadoop での Apache Sqoop - Azure HDInsight
+description: Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と Azure SQL Database の間でインポートおよびエクスポートを行う方法について説明します。
 keywords: hadoop sqoop,sqoop
 services: hdinsight
 author: hrasheed-msft
@@ -10,18 +10,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.openlocfilehash: 6aa5627a0b5e8cb29f0ec68b948084a0bed30529
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb6ad52f008ddeec5d3ecd3b0fdbc80dbf627101
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259447"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685924"
 ---
-# <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight の Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
+# <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Azure HDInsight の Hadoop クラスターと Azure SQL Database または Microsoft SQL Server データベースの間のインポートとエクスポートに Apache Sqoop を使用する方法について説明します。 このドキュメントの手順では、Hadoop クラスターのヘッド ノードから `sqoop` コマンドを直接使用します。 SSH を使用してヘッド ノードに接続し、このドキュメント内のコマンドを実行します。
+Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database または Microsoft SQL Server データベースの間のインポートとエクスポートに Apache Sqoop を使用する方法について説明します。 このドキュメントの手順では、Hadoop クラスターのヘッド ノードから `sqoop` コマンドを直接使用します。 SSH を使用してヘッド ノードに接続し、このドキュメント内のコマンドを実行します。
 
 > [!IMPORTANT]
 > このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -170,7 +170,6 @@ Sqoop を使用して、SQL Server からデータのインポートとエクス
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs

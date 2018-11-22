@@ -3,19 +3,19 @@ title: 'クイック スタート: Bing News Search API (Python)'
 titlesuffix: Azure Cognitive Services
 description: Bing News Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 583b304a742d9abfd799442c9aa2999ad6783a34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: aahi
+ms.openlocfilehash: 2696401b15ceca86c7e7b7d33e7e7f7887f4b7dc
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803547"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164339"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-python"></a>Python での Bing News Search API のクイック スタート
 このチュートリアルでは、Bing News Search API の呼び出しと、結果として得られる JSON オブジェクトの事後処理を行う簡単な例を示します。 詳細については、[Bing News Search のドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)を参照してください。  

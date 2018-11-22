@@ -9,13 +9,13 @@ ms.date: 10/31/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
-manager: dougeby
-ms.openlocfilehash: 56e6a26803ed5257f1cc303b293615a5ea85a866
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+manager: benshy
+ms.openlocfilehash: 7b9c9a600d105d4b7fbbeb4f52ee42b5eb2bcaaa
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740044"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275872"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->

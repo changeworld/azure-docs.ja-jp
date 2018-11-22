@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: quickstart
 ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 35548284302dead41df1a4b9bf6218d842214e11
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9cceec39c8a1609f73401ec18e2c8cb0a278c223
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278754"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164288"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>クイック スタート: Custom Vision Python SDK を使用して物体検出プロジェクトを作成する
 
@@ -49,14 +49,16 @@ pip install azure-cognitiveservices-vision-customvision
 新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 物体検出と画像分類のプロジェクト作成の違いは **create_project** 呼び出しに指定されるドメインであることにご注目ください。
 
 ```Python
-from azure.cognitiveservices.vision.customvision.training import training_api
+from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry, Region
+
+ENDPOINT = "https://southcentralus.api.cognitive.microsoft.com"
 
 # Replace with a valid key
 training_key = "<your training key>"
 prediction_key = "<your prediction key>"
 
-trainer = training_api.TrainingApi(training_key)
+trainer = CustomVisionTrainingClient(training_key, endpoint=ENDPOINT)
 
 # Find the object detection domain
 obj_detection_domain = next(domain for domain in trainer.get_domains() if domain.type == "ObjectDetection")
@@ -178,12 +180,12 @@ print ("Done!")
 画像を予測エンドポイントに送信し、予測を取得するには、ファイルの末尾に以下のコードを追加します。
 
 ```Python
-from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
+from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
 from azure.cognitiveservices.vision.customvision.prediction.prediction_endpoint import models
 
 # Now there is a trained endpoint that can be used to make a prediction
 
-predictor = prediction_endpoint.PredictionEndpoint(prediction_key)
+predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
 
 # Open the sample image and get back the prediction results.
 with open("images/Test/test_od_image.jpg", mode="rb") as test_data:

@@ -3,19 +3,19 @@ title: 'クイック スタート: Bing Spell Check API (Ruby)'
 titlesuffix: Azure Cognitive Services
 description: Bing Spell Check API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: e75b8e8b23bbb8e49cb8d8ec55e42f6ffb204197
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.author: aahi
+ms.openlocfilehash: f9c327b917180c03dabcb118b17d991f3fb4fddb
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023499"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162875"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-ruby"></a>Bing Spell Check API のクイック スタート (Ruby) 
 

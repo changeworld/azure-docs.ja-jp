@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: e0cbf806b7999a56ccdf2826a735238fe8130bf5
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6e14ce19d691cc60cb65353bdb025dfa741e1eca
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240581"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636528"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB データベースのセキュリティ
 
@@ -80,7 +80,7 @@ ms.locfileid: "50240581"
 |保存時の暗号化|Azure Cosmos DB に格納されるすべてのデータは、保存時に暗号化されます。 詳細については、[Azure Cosmos DB の保存時の暗号化](.\database-encryption-at-rest.md)に関するページを参照してください。|
 |サーバーへの修正プログラムの適用|管理されたデータベースとして、Azure Cosmos DB は、サーバーの管理と修正プログラムの適用を行う必要性を排除します。顧客に代わって Azure Cosmos DB が自動的に実行します。|
 |強力なパスワードを持つ管理者アカウント|今でもこの要件について言及する必要があることは信じ難いことですが、一部の競合他社とは異なり、Azure Cosmos DB では、パスワードを持たない管理アカウントは存在できません。<br><br> SSL と HMAC のシークレット ベースの認証によるセキュリティは、既定で組み込まれています。|
-|セキュリティとデータ保護の認証|最新の認定一覧については、全般的な (Azure コンプライアンス サイト)[https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings] と、最新の (Azure コンプライアンス ドキュメント)[https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942] で、すべての認証を確認してください (Cosmos を検索)。 より的を絞った情報については、2018 年 4 月 25 日の投稿 (Azure #CosmosDB: Secure, private, compliant)[https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/] を参照してください。この投稿には、SOCS 1/2 Type 2、HITRUST、PCI DSS Level 1、ISO 27001、HIPPAA、FedRAMP High などが記載されています。
+|セキュリティとデータ保護の認証|最新の認定一覧については、全般的な [Azure コンプライアンス サイト](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings)と、最新の [Azure コンプライアンス ドキュメント](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)で、すべての認証を確認してください (Cosmos を検索)。 より的を絞った情報については、2018 年 4 月 25 日の投稿 [Azure #CosmosDB: Secure, private, compliant](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/) を参照してください。この投稿には、SOCS 1/2 Type 2、HITRUST、PCI DSS Level 1、ISO 27001、HIPPAA、FedRAMP High などが記載されています。
 
 次のスクリーン ショットは、Azure Portal のアクセス制御 (IAM) を使用した Active Directory の統合 (RBAC) を示しています。![Azure Portal のアクセス制御 (IAM) - データベース セキュリティを示す](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 

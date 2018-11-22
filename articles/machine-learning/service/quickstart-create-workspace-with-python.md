@@ -9,12 +9,12 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 11/09/2018
-ms.openlocfilehash: fff08131af277b20034ad23c354b70e73ae32f2e
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 6258717e5c068c910ad9faac3b03f13df8030487
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578282"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710649"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>クイック スタート: Python を使用して Azure Machine Learning の利用を開始する
 
@@ -42,7 +42,7 @@ ms.locfileid: "51578282"
 >[!NOTE]
 > この記事のコードは、Azure Machine Learning SDK バージョン 0.1.74 を使用してテストされました 
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLfree)を作成してください。
 
 
 ## <a name="install-the-sdk"></a>SDK のインストール

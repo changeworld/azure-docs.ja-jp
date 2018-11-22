@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 73b594aaabd814108dfce813b53a4ea865336e63
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a9d3b92b9cb3334c8c52a9127a2fab92d187e3d9
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985065"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687437"
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics on IoT Edge (プレビュー)
 
@@ -71,13 +71,17 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 
 1. Azure Portal で、新しい "Stream Analytics ジョブ" を作成します。 新しい ASA ジョブを作成するには、[こちらの直接リンク](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)を参照してください。
 
-2. 作成画面で、**ホスティング環境**として **Edge** を選択します (次の図を参照) ![ジョブの作成](media/stream-analytics-edge/ASAEdge_create.png)
+2. 作成画面で、**ホスティング環境**として **Edge** を選択します (次の図を参照)
+
+   ![ジョブの作成](media/stream-analytics-edge/ASAEdge_create.png)
 3. ジョブ定義
     1. **入力ストリームの定義**。 ジョブに対して 1 つ以上の入力ストリームを定義します。
     2. 参照データの定義 (省略可能)。
     3. **出力ストリームの定義**。 ジョブに対して 1 つ以上の出力ストリームを定義します。 
     4. **クエリの定義**。 インライン エディターを使用して、クラウドで ASA クエリを定義します。 ASA エッジに対して有効になっている構文が、コンパイラによって自動的にチェックされます。 サンプル データをアップロードして、クエリをテストすることもできます。 
+
 4. **[IoT Edge の設定]** メニュー で、ストレージ コンテナー情報を設定します。
+
 5. オプション設定を設定します
     1. **イベントの順序付け**。 ポータルで順不同ポリシーを構成できます。 ドキュメントは[こちら](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396)で入手できます。
     2. **ロケール**。 内部化形式を設定します。
@@ -181,20 +185,27 @@ ASA ジョブで作成した入力ストリームおよび出力ストリーム�
 
 
 ##### <a name="reference-data"></a>参照データ
-参照データ (ルックアップ テーブルとも呼ばれます) は、有限のデータ セットで、本来は静的であるか、あまり変更されません。 これは、参照の実行やデータ ストリームとの関連付けに使用されます。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。 詳細については、[参照データに関する ASA ドキュメント](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data)をご覧ください。
+参照データ (ルックアップ テーブルとも呼ばれます) は、有限のデータ セットで、本来は静的であるか、あまり変更されません。 これは、参照の実行やデータ ストリームとの関連付けに使用されます。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)を使用します。 詳しくは、「[Stream Analytics での参照に参照データを使用する](stream-analytics-use-reference-data.md)」をご覧ください。
 
-ASA on IoT Edge で参照データを使用するには、次の手順に従います。 
-1. ジョブに対して新しい入力を作成します
+ローカルの参照データのみがサポートされます。 ジョブが IoT Edge デバイスに展開されると、ユーザー定義のファイル パスから参照データが読み込まれます。
+
+Edge 上で参照データを使用してジョブを作成するには:
+
+1. ジョブに対して新しい入力を作成します。
+
 2. **ソースの種類**として**参照データ**を選択します。
-3. ファイル パスを設定します。 ファイル パスは、デバイス上の**絶対**ファイル パスにします![参照データの作成](media/stream-analytics-edge/ReferenceData.png)
-4. Docker 構成で**共有ドライブ**を有効にして、展開を開始する前に、ドライブが有効になっていることを確認します。
 
-詳細については、[こちらの Windows 用 Docker ドキュメント](https://docs.docker.com/docker-for-windows/#shared-drives)をご覧ください。
+3. デバイス上で参照データ ファイルを準備します。 Windows コンテナーの場合は、ローカル ドライブ上に参照データ ファイルを配置し、ローカル ドライブを Docker コンテナーと共有します。 Linux コンテナーの場合は、Docker ボリュームを作成し、ボリュームにデータ ファイルを設定します。
 
-> [!Note]
-> 現時点では、ローカルの参照データのみがサポートされます。
+4. ファイル パスを設定します。 Windows デバイスの場合は、絶対パスを使用します。 Linux デバイスの場合は、ボリューム内のパスを使用します。
 
+![IoT Edge 上の Azure Stream Analytics ジョブ用の新しい参照データ入力](./media/stream-analytics-edge/ReferenceDataNewInput.png)
 
+IoT Edge の更新プログラム上の参照データは、デプロイによってトリガーされます。 トリガーされると、実行中のジョブを停止することなく、更新されたデータが ASA モジュールによって取得されます。
+
+参照データを更新する方法は 2 つあります。
+* Azure portal から ASA ジョブ内の参照データ パスを更新します。
+* IoT Edge デプロイを更新します。
 
 
 ## <a name="license-and-third-party-notices"></a>ライセンスとサード パーティに関する通知

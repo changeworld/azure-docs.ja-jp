@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0058ce8316fa8202cf53eaa1048a44b77efdecb5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 15064e90690064e67b296e7a46749f27773c0814
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012447"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636902"
 ---
 # <a name="token-session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのトークン、セッション、シングル サインオンの構成
 
@@ -26,9 +26,9 @@ ms.locfileid: "51012447"
 - Azure AD B2C が出力するセキュリティ トークンの重要な要求の形式。
 - Azure AD B2C テナント内の複数のアプリとポリシーにまたがるシングル サインオン (SSO) の動作。
 
-組み込みポリシーでは、この機能を次のように Azure AD B2C ディレクトリで使用できます。
+この機能は任意の種類のポリシーに対して使用できますが、この例は、この機能をサインアップまたはサインイン ポリシーと共に使用する方法を示しています。 組み込みポリシーでは、この機能を次のように Azure AD B2C ディレクトリで使用できます。
 
-1. **[Sign-up or sign-in policies (サインアップまたはサインイン ポリシー)]** をクリックします。 *注: この機能は \*\*[サインアップまたはサインイン ポリシー]\*\* に限らず、あらゆるポリシー タイプで使用できます*。
+1. **[Sign-up or sign-in policies (サインアップまたはサインイン ポリシー)]** をクリックします。
 2. ポリシーをクリックして開きます。 たとえば、**[B2C_1_SiUpIn]** をクリックします。
 3. メニューの上部にある **[編集]** をクリックします。
 4. **[トークン、セッション、シングル サインオンの構成]** をクリックします。

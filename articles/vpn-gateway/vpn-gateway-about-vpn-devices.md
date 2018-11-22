@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/05/2018
 ms.author: yushwang
-ms.openlocfilehash: cbbba60f42c2e0ef7a6e53c34e883e2fdf6f8781
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e93f1174f0beaa7b1c8b3164081714281d5b1050
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229171"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687539"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 

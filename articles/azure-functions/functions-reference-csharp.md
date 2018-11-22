@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 6c9172140691f7107d3907ab86938d879989a6c0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d1127834732a6fc82e0331370a6c4173e9f61dcf
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748240"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685414"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
@@ -376,34 +376,27 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 関数のスクリプト ファイルを含むディレクトリは、アセンブリの変更を自動的に監視されています。 その他のディレクトリでアセンブリの変更を監視するには、[host.json](functions-host-json.md) の `watchDirectories` の一覧にそのディレクトリを追加します。
 
 ## <a name="using-nuget-packages"></a>NuGet パッケージを使用する
+NuGet パッケージを C# 関数内で使用するには、*extensions.csproj* ファイルを関数アプリのファイル システムにある関数のフォルダーにアップロードします。 *Microsoft.ProjectOxford.Face* バージョン *1.1.0* への参照を追加する *extensions.csproj* ファイルの例を次に示します。
 
-NuGet パッケージを C# 関数で使用するには、*project.json* ファイルを関数アプリのファイル システムにある関数のフォルダーにアップロードします。 Microsoft.ProjectOxford.Face バージョン 1.1.0 への参照を追加する *project.json* ファイルの例を次に示します。
-
-```json
-{
-  "frameworks": {
-    "net46":{
-      "dependencies": {
-        "Microsoft.ProjectOxford.Face": "1.1.0"
-      }
-    }
-   }
-}
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net46</TargetFramework>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.ProjectOxford.Face" Version="1.1.0" />
+    </ItemGroup>
+</Project>
 ```
-
-Azure Functions 1.x では .NET Framework 4.6 のみがサポートされているので、次に示すように *project.json* ファイルが `net46` を指定していることを確認します。
-
-*project.json* ファイルをアップロードすると、ランタイムによってパッケージが取得され、パッケージ アセンブリに参照が自動的に追加されます。 `#r "AssemblyName"` ディレクティブを追加する必要はありません。 NuGet パッケージで定義されている型を使用するには、必要な `using` ステートメントを *run.csx* ファイルに追加するだけです。 
-
-Functions ランタイムでは、NuGet は `project.json` と `project.lock.json` を比較して作業を復元します。 ファイルの日付と時刻のタイムスタンプが**一致しない**場合は、NuGet 復元が実行され、NuGet は更新されたパッケージをダウンロードします。 ただし、ファイルの日付と時刻のタイムスタンプが**一致した**場合、NuGet は復元を実行しません。 したがって、NuGet がパッケージの復元をスキップするため、`project.lock.json` はデプロイされません。 ロック ファイルのデプロイを回避するには、`project.lock.json` を `.gitignore` ファイルに追加します。
 
 カスタムの NuGet フィードを使用するには、関数アプリのルートにある *Nuget.Config* ファイルでフィードを指定します。 詳しくは、「[NuGet の動作の構成](/nuget/consume-packages/configuring-nuget-behavior)」をご覧ください。
 
-### <a name="using-a-projectjson-file"></a>Project.json ファイルの使用
+### <a name="using-a-extensionscsproj-file"></a>extensions.csproj ファイルを使用する
 
 1. Azure ポータルで関数を開きます。 [ログ] タブには、パッケージのインストールの出力が表示されます。
-2. project.json ファイルをアップロードするには、「Azure Functions developer reference (Azure Functions 開発者向けリファレンス)」の「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」にあるいずれかの方法を利用してください。
-3. *project.json* ファイルがアップロードされた後、関数のストリーミング ログの出力は次の例のようになります。
+2. *extensions.csproj* ファイルをアップロードするには、Azure Functions の開発者向けガイドに関する記事の「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」で説明されているいずれかの方法を利用してください。
+3. *extensions.csproj* ファイルがアップロードされた後、関数のストリーミング ログ内の出力は次の例のようになります。
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -413,7 +406,7 @@ Functions ランタイムでは、NuGet は `project.json` と `project.lock.jso
 2016-04-04T19:02:50.261 C:\DWASFiles\Sites\facavalfunctest\LocalAppData\NuGet\Cache
 2016-04-04T19:02:50.261 https://api.nuget.org/v3/index.json
 2016-04-04T19:02:50.261
-2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\Project.json...
+2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\extensions.csproj...
 2016-04-04T19:02:52.800 Installing Newtonsoft.Json 6.0.8.
 2016-04-04T19:02:52.800 Installing Microsoft.ProjectOxford.Face 1.1.0.
 2016-04-04T19:02:57.095 All packages are compatible with .NETFramework,Version=v4.6.

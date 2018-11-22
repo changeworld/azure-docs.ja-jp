@@ -9,12 +9,12 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: 624564d61a7031cee910ab98e1b327b6f0205e28
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7ed45b5e8a8c3cab26c0998260055ffd7a0f0c5d
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159011"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710258"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>クイック スタート: Azure portal を使用した Azure Machine Learning の基本操作
 
@@ -37,7 +37,7 @@ ms.locfileid: "50159011"
 
 作成するリソースは、Machine Learning サービスに関連したその他のチュートリアルおよびハウツー記事の前提条件として使用できます。 他の Azure サービスと同様に、Machine Learning に関連付けられている特定のリソースにも制限があります。 たとえば、Azure Batch AI クラスターのサイズです。 既定の制限と、クォータを増やす方法については、[この記事](how-to-manage-quotas.md)を参照してください。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLfree)を作成してください。
 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成 

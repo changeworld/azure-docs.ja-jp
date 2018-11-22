@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: dce9d4d5d1f2e3e50cabb86ee0d8d14b2fce2923
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f0c627c1b0ab5f551ed71c3c30eb1dccc6c930a3
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230031"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686349"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Azure Stack への MySQL リソース プロバイダーのデプロイ
 
@@ -45,7 +45,7 @@ Azure Stack MySQL リソース プロバイダーをデプロイする前に、�
 
     | 最小の Azure Stack バージョン | MySQL RP バージョン|
     | --- | --- |
-    | バージョン 1804 (1.0.180513.1)|[MySQL RP バージョン 1.1.24.0](https://aka.ms/azurestackmysqlrp1804) |
+    | バージョン 1808 (1.1808.0.97)|[MySQL RP バージョン 1.1.30.0](https://aka.ms/azurestackmysqlrp11300) |
     |     |     |
 
 * データセンターの統合の前提条件を満たしていることを確認します。
@@ -105,8 +105,8 @@ MySQL リソース プロバイダーをデプロイするには、管理者特�
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
 Install-Module -Name AzureRm.BootStrapper -Force
-Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.4.0
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+Install-Module -Name AzureStack -RequiredVersion 1.5.0
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"  

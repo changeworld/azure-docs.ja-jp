@@ -9,16 +9,33 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 804076fdc653622336ac3b99c15df0bc027510d9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 56256a6c10ecb0d06dfd6194668b9c32c5540c0e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730149"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683902"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: よく寄せられる質問
 
 この記事には、Microsoft Genomics に関連するよく寄せられる質問が記載されています。 Microsoft Genomics サービスの詳細については、「[Microsoft Genomics とは](overview-what-is-genomics.md)」を参照してください。 トラブルシューティングの詳細については、「[Troubleshooting Guide](troubleshooting-guide-genomics.md)」(トラブルシューティング ガイド) を参照してください。 
+
+## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>Microsoft Genomics サービス GATK 4 プロモーションとは何ですか?
+2018 カレンダー年の終わりまで、Microsoft Genomics サービスは、GATK4 での 20 WGS 実行を無料で提供しています。 このオファリングに参加するには、[こちら](https://aka.ms/msgatk4)でご登録ください。 
+
+### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>Microsoft Genomics サービス GATK4 プロモーションの実行中に発生する可能性のある一般的な問題
+発生する可能性のある一般的なエラーと、推奨される解決方法の一覧を次に示します。
+
+| **メッセージ**                                                                                                                                                                                    | **原因**                                                                                                    | **解決策**                                                                                                                                                                                                       |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `gatk4-promo` is not enabled for your account.\(お使いのアカウントでは `gatk4-promo` が有効になっていません。\) 詳細については、 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics を参照してください。                               | Microsoft Genomics サービスをアクティブ化しないで、GATK4 ワークフローを実行しようとしています。       | アカウントをアクティブにするには、[こちら](https://aka.ms/msgatk4)をご覧ください。 試用版の有効期限は 2018 カレンダー年の終わりに切れることにご注意ください。 この日付より後に、プロモーション実行用にアカウントをアクティブにすることはできません。 |
+| Thank you for trying `gatk4-promo`.Your trial period has ended.\(`gatk4-promo` をお試しいただきありがとうございます。試用期間は終了しました。\) For more information, https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics\(詳しくは、 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics をご覧ください\)                  | GATK4 の試用版は、カレンダーの年の終わりに有効期限が切れましたが、`gatk4-promo` process_name を呼び出そうとしています。  | process_name パラメーターを `gatk4-promo` ではなく `gatk4` に切り替えます。 これは、公式の gatk4 バージョンであり、このパラメーターを使用する場合はワークフローに課金されます。                                         |
+| Thank you for trying `gatk4-promo` You have used all of your allocated runs.\(gatk4-promo をお試しいただきありがとうございます。割り当て済みの実行はすべて使用されました。\) 詳細については、 https://docs.microsoft.com/azure/genomics/frequently-asked-questions-genomics を参照してください。 | GATK4 の 20 プロモーションの実行をすべて正常に送信しました。                               | 新しい gatk4 の実行は、process_name 引数を `gatk4-promo` ではなく `gatk4` に設定して送信してください。 このパラメーターを使用すると、ワークフローに課金されます。                                                          |        
+
+
+## <a name="can-i-run-gatk4-workflows-on-microsoft-genomics-without-signing-up-for-the-gatk4-promotion"></a>GATK4 プロモーションにサインアップしなくても、GATK4 ワークフローを Microsoft Genomics 上で実行できますか?
+はい、Microsoft Genomics サービスの config.txt ファイルで、process_name を`gatk4` に指定します。 通常の課金レートで課金され、無料の 20 実行は Microsoft Genomics アカウントに適用されないことにご注意ください。
+
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Microsoft Genomics の SLA はどうなっていますか。
@@ -48,7 +65,7 @@ Azure Portal に移動して、Genomics アカウント ページを開きます
 Azure Portal に移動して、Genomics アカウント ページを開きます。 **[管理]** 見出しの下の **[アクセス キー]** を選択します。 ここに、API URL とアクセス キーの両方が表示されます。
 
 ## <a name="why-do-i-need-two-access-keys"></a>2 つのアクセス キーが必要なのはなぜですか。
-サービスの使用を中断せずにアクセス キーを更新 (再生成) したい場合は、2 つのアクセス キーが必要です。 たとえば、1 番目のキーを更新する必要があるとします。 その場合は、すべての新しいワークフローを、2 番目のキーを使用するように切り替えます。 その後、1 番目のキーを使用したワークフローの実行が完了するまで待ちます。 完了してから、キーを更新します。
+サービスの使用を中断せずにアクセス キーを更新 (再生成) したい場合は、2 つのアクセス キーが必要です。 たとえば、最初のキーを更新する場合は、すべての新しいワークフローで 2 番目のキーを使用する必要があります。 次に、最初のキーを使用しているワークフローがすべて完了するまで待ってから、最初のキーを更新します。
 
 ## <a name="do-you-save-my-storage-account-keys"></a>ストレージ アカウント キーはマイクロソフトで保存されますか。
 ストレージ アカウント キーは、入力ファイルの読み取りと出力ファイルの書き込みを行うための Microsoft Genomics サービスの短期的なアクセス トークンの作成に使用されます。 トークンの既定の有効期間は 48 時間です。 トークンの有効期間は、送信コマンドの `-sas/--sas-duration` オプション (値は時間単位) を使用して変更できます。

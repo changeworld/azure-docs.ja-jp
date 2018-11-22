@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6729a0e3ccbb96dc178925bbab4cfbf8189c4a14
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ebbb12a6454a093ad0ac3b3cc30eb489eeef21ec
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278261"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687216"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Hive クエリの最適化
 

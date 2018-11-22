@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 75eb260b107df3877219266794e45eb11d5deb35
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 3910e13900ec1774e5a1fe449b4f510a661f1f53
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633242"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165324"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -93,7 +93,7 @@ SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]**
 以下の記事では、さまざまな言語で記述した Web アプリを使用して App Service on Linux での作業を開始することができます。
 
 * [.NET Core](quickstart-dotnetcore.md)
-* [PHP](quickstart-dotnetcore.md)
+* [PHP](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-php)
 * [Node.js](quickstart-nodejs.md)
 * [Java](quickstart-java.md)
 * [Python](quickstart-python.md)

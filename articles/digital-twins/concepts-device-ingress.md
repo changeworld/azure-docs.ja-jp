@@ -1,78 +1,82 @@
 ---
 title: Azure Digital Twins でのデバイスの接続とテレメトリのイングレス | Microsoft Docs
-description: Azure Digital Twins でのデバイスのオンボードの概要です
+description: Azure Digital Twins を使用してデバイスをオンボードする方法の概要です
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: 7eddea7e0d57b89318232da6f086bbe2f649ee77
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9ce2f65af89e186a3cd32bd2900b5444fb556b08
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211929"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636715"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>デバイスの接続性とテレメトリの受信
 
-デバイスとセンサーによって送信されるテレメトリ データが、IoT ソリューションのバックボーンを形成します。 そのため、これらのさまざまなリソースを表し、場所のコンテキスト内でそれらを管理することは、IoT アプリの開発における主な考慮事項です。 Azure Digital Twins は、デバイスやセンサーと空間インテリジェンス グラフを統合することにより、IoT ソリューションの開発を簡単にします。
+デバイスとセンサーによって送信されるテレメトリ データが、IoT ソリューションのバックボーンを形成します。 これらのさまざまなリソースを表し、場所のコンテキスト内でそれらを管理する方法は、IoT アプリの開発における主な考慮事項です。 Azure Digital Twins は、デバイスやセンサーと空間インテリジェンス グラフを統合することにより、IoT ソリューションの開発のプロセスを簡単にします。
 
-最初に、IoT Hub リソースを空間グラフのルートに作成し、ルート空間の下にあるすべてのデバイスがメッセージを送信できるようにする必要があります。 IoT ハブを作成し、センサーを備えたデバイスを Digital Twins インスタンスに登録すると、デバイスは [Azure IoT Device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 経由で Digital Twins サービスへのデータの送信を始めることができます。
+まず、空間グラフのルートに Azure IoT Hub のリソースを作成します。 IoT Hub のリソースにより、メッセージを送信するルート空間の下ですべてのデバイスが許可されます。 IoT ハブが作成されたら、Digital Twins のインスタンス内のセンサーにデバイスを登録します。 デバイスは、[Azure IoT device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks) 経由で Digital Twins サービスにデータを送信することができます。
 
-デバイスのオンボードの詳細な手順については、[Digital Twins のデプロイと構成に関するチュートリアル](tutorial-facilities-setup.md)のページをご覧ください。 手順の概要は次のとおりです。
+デバイスをオンボードする方法の詳しい手順については、[Digital Twins のデプロイと構成に関するチュートリアル](tutorial-facilities-setup.md)の記事をご覧ください。 手順の概要は次のとおりです。
 
-- [Azure portal](https://portal.azure.com) から Azure Digital Twins インスタンスをデプロイします
-- グラフに空間を作成します
-- IoT Hub リソースを作成し、グラフ内の空間に割り当てます
-- グラフでデバイスとセンサーを作成し、上の手順で作成した空間に割り当てます
-- 条件に基づいてテレメトリ メッセージをフィルター処理するマッチャーを作成します
-- テレメトリ メッセージのカスタム処理用の[ユーザー定義関数](concepts-user-defined-functions.md)を作成し、グラフの空間に割り当てます
-- ユーザー定義関数がグラフ データにアクセスできるように、ロールを割り当てます
-- Digital Twins Management API から IoT Hub デバイスの接続文字列を取得します
-- Azure IoT Device SDK を使用してデバイスにデバイス接続文字列を構成します
+- [Azure portal](https://portal.azure.com) から Digital Twins のインスタンスをデプロイします。
+- グラフに空間を作成します。
+- IoT Hub リソースを作成し、グラフ内の空間に割り当てます。
+- グラフ内にデバイスとセンサーを作成し、前の手順で作成した空間に割り当てます。
+- 条件に基づいてテレメトリ メッセージをフィルター処理するマッチャーを作成します。
+- テレメトリ メッセージのカスタム処理用の[ユーザー定義関数](concepts-user-defined-functions.md)を作成し、グラフの空間に割り当てます。
+- ユーザー定義関数がグラフ データにアクセスできるように、ロールを割り当てます。
+- Digital Twins Management API から IoT Hub デバイスの接続文字列を取得します。
+- Azure IoT device SDK を使用してデバイスにデバイス接続文字列を構成します。
 
-以下では、Digital Twins Management API から IoT Hub デバイスの接続文字列を取得する方法と、IoT Hub のテレメトリ メッセージ形式を使用してセンサー ベースのテレメトリを送信する方法について説明します。 Digital Twins では、データが適切な空間コンテキスト内で処理されてルーティングされるように、受信したテレメトリの各部分が空間グラフ内のセンサーと関連付けられている必要があります。
+次のセクションで、Digital Twins Management API から IoT Hub デバイスの接続文字列を取得する方法について説明します。 また、IoT Hub のテレメトリ メッセージの形式を使用してセンサー ベースのテレメトリを送信する方法を説明します。 Digital Twins は、受信したテレメトリの各部分が空間グラフ内のセンサーに関連付けられることを必要とします。 この要件によって、確実にデータが処理され、適切な空間コンテキスト内でルーティングされます。
 
 ## <a name="get-the-iot-hub-device-connection-string-from-the-management-api"></a>Management API から IoT Hub デバイスの接続文字列を取得する
 
-`includes=ConnectionString` パラメーターを指定して Device API で GET 呼び出しを行い、IoT Hub デバイスの接続文字列を取得します。 デバイスの GUID またはハードウェアの ID でフィルター処理を行い、特定のデバイスを検索できます。
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
+`includes=ConnectionString` パラメーターを指定して Device API で GET 呼び出しを行い、IoT Hub デバイスの接続文字列を取得します。 デバイスの GUID またはハードウェアの ID でフィルター処理を行い、特定のデバイスを検索します。
 
 ```plaintext
-https://yourManagementApiUrl/api/v1.0/devices/yourDeviceGuid?includes=ConnectionString
+YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 ```
 
-```plaintext
-https://yourManagementApiUrl/api/v1.0/devices?hardwareIds=yourDeviceHardwareId&includes=ConnectionString
-```
-
-| カスタム属性の名前 | 置換後の文字列 |
+| パラメーター | 置換後の文字列 |
 | --- | --- |
-| *yourManagementApiUrl* | Management API の完全な URL パス |
-| *yourDeviceGuid* | デバイス ID |
-| *yourDeviceHardwareId* | デバイスのハードウェア ID |
+| *YOUR_DEVICE_GUID* | デバイス ID |
 
-応答のペイロードで、デバイスの *connectionString* プロパティをコピーします。これは、Azure IoT Device SDK を呼び出して Azure Digital Twins にデータを送信するときに使用します。
+```plaintext
+YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
+```
 
-## <a name="device-to-cloud-message"></a>device-to-cloud メッセージ
+| パラメーター値 | 置換後の文字列 |
+| --- | --- |
+| *YOUR_DEVICE_HARDWARE_ID* | デバイスのハードウェア ID |
 
-ソリューションのニーズに合わせて、デバイスのメッセージ形式とペイロードをカスタマイズできます。 [Azure IoT Device Client Message クラスの Message(byte[] byteArray)](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___) によってサポートされるバイト配列またはストリームにシリアル化できる任意のデータ コントラクトを使用することができます。 対応するユーザー定義関数でデータ コントラクトをデコードする限り、メッセージでは任意のカスタム バイナリ形式を使用できます。 device-to-cloud メッセージの唯一の要件は、メッセージが処理エンジンに適切にルーティングされるように、一連のプロパティ (下記参照) を維持することです。
+応答ペイロードで、デバイスの **connectionString** プロパティをコピーします。 これは、Azure IoT device SDK を呼び出して Digital Twins にデータを送信する際に使用します。
+
+## <a name="device-to-cloud-message"></a>デバイスからクラウドへのメッセージ
+
+ソリューションのニーズに合わせて、デバイスのメッセージ形式とペイロードをカスタマイズできます。 [Azure IoT Device Client Message クラスの Message(byte[] byteArray)](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___) によってサポートされるバイト配列またはストリームにシリアル化できる任意のデータ コントラクトを使用します。 対応するユーザー定義関数でデータ コントラクトをデコードする限り、メッセージでは任意のカスタム バイナリ形式を使用できます。 デバイスからクラウドへのメッセージの要件は 1 つだけあります。 処理エンジンにメッセージが適切にルーティングされるようにプロパティのセットを維持する必要があります。
 
 ### <a name="telemetry-properties"></a>テレメトリのプロパティ
 
-**Message** のペイロードの内容はサイズが最大 256 KB の任意のデータですが、予期される [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) についてはいくつかの要件があります。 以下の手順では、システムでサポートされる必須および省略可能のプロパティが反映されます。
+ **Message** のペイロードの内容はサイズが最大 256 KB の任意のデータです。 [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) 型のプロパティに必要ないくつかの要件があります。 システムによってサポートされる必須および省略可能なプロパティを表に示します。
 
 | プロパティ名 | 値 | 必須 | 説明 |
 |---|---|---|---|
-| *DigitalTwins-Telemetry* | 1.0 | [はい] | システムに対してメッセージを示す定数値 |
-| *DigitalTwins-SensorHardwareId* | `string(72)` | [はい] | **Message** を送信しているセンサーの一意識別子。 この値は、それを処理するシステムでのオブジェクトの **HardwareId** プロパティと一致する必要があります。 たとえば、`00FF0643BE88-CO2` のように指定します。 |
-| *CreationTimeUtc* | `string` | いいえ  | ペイロードのサンプリング日時を示す [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の日付文字列。 たとえば、`2018-09-20T07:35:00.8587882-07:00` のように指定します。 |
-| *CorrelationId* | `string` | いいえ  | システム全体でイベントをトレースするために使用できる UUID。 たとえば、`cec16751-ab27-405d-8fe6-c68e1412ce1f` のように指定します。
+| **DigitalTwins-Telemetry** | 1.0 | [はい] | システムに対してメッセージを示す定数値。 |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | [はい] | **Message** を送信しているセンサーの一意識別子。 この値は、それを処理するシステムでのオブジェクトの **HardwareId** プロパティと一致する必要があります。 たとえば、「 `00FF0643BE88-CO2` 」のように入力します。 |
+| **CreationTimeUtc** | `string` | いいえ  | ペイロードのサンプリング日時を示す [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の日付文字列。 たとえば、「 `2018-09-20T07:35:00.8587882-07:00` 」のように入力します。 |
+| **CorrelationId** | `string` | いいえ  | システム全体でイベントをトレースするために使用される UUID。 たとえば、「 `cec16751-ab27-405d-8fe6-c68e1412ce1f` 」のように入力します。
 
-### <a name="sending-your-message-to-digital-twins"></a>Digital Twins へのメッセージの送信
+### <a name="send-your-message-to-digital-twins"></a>Digital Twins へのメッセージの送信
 
-DeviceClient の [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventasync?view=azure-dotnet) または [SendEventBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventbatchasync?view=azure-dotnet) の呼び出しを使用して、メッセージを Digital Twins サービスに送信します。
+DeviceClient の [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventasync?view=azure-dotnet) または [SendEventBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventbatchasync?view=azure-dotnet) の呼び出しを使用して、メッセージを Digital Twins に送信します。
 
 ## <a name="next-steps"></a>次の手順
 

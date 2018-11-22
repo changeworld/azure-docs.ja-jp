@@ -11,12 +11,12 @@ ms.service: automation
 ms.component: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: d8fb8ca84f68e6e8c503375b3b2fae1ce1eb72ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ad9fc7deb73cdcbcf83cc10b9b28f7d7e4ac7661
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989211"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283793"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Azure マシンと Azure 以外のマシンにインストールされているソフトウェアを検出する
 
@@ -41,7 +41,7 @@ ms.locfileid: "46989211"
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (http://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com) にログインします。
 
 ## <a name="enable-change-tracking-and-inventory"></a>変更履歴とインベントリを有効にする
 

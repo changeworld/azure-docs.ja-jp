@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 631225e6e0a7bb3bc42741e2761e3746c001c217
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4e0ee7eca3c843df46ad1f4e92757c9bcc3755ff
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211640"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685737"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>PowerShell を使用して VMware VM の Azure へのディザスター リカバリーを設定する
 
@@ -23,7 +23,8 @@ ms.locfileid: "50211640"
 > [!div class="checklist"]
 > - Recovery Services のコンテナーを作成し、コンテナーのコンテキストを設定する。
 > - コンテナー内のサーバー登録を検証する。
-> - レプリケーション ポリシーなど、レプリケーションを設定する。 vCenter サーバーを追加して VM を検出する。 > - vCenter サーバーを追加して検出する 
+> - レプリケーション ポリシーなど、レプリケーションを設定する。 vCenter サーバーを追加して VM を検出する。 
+> - vCenter サーバーを追加して検出する 
 > - レプリケーション データを保持するストレージ アカウントを作成し、VM をレプリケートする。
 > - フェールオーバーを実行する。 仮想マシンをレプリケートするためのフェールオーバーの設定を構成し、設定を実行する。
 
@@ -93,7 +94,7 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ```
 
 4. ダウンロードしたコンテナー登録キーを使い、以下の記事の手順に従って、構成サーバーのインストールと登録を行います。
-   - [保護の目標を選択する](vmware-azure-set-up-source.md#choose-your-protection-goals)
+   - [保護の目標を選択する](vmware-azure-set-up-source.md#choose-protection-goals)
    - [ソース環境をセットアップする](vmware-azure-set-up-source.md#set-up-the-configuration-server) 
 
 ### <a name="set-the-vault-context"></a>コンテナーのコンテキストを設定する
@@ -109,7 +110,7 @@ Set-ASRVaultContext コマンドレットを使って、コンテナーのコン
    Set-ASRVaultContext -Vault $vault
    ```
    ```
-   ResourceName      ResourceGroupName ResourceNamespace          ResouceType
+   ResourceName      ResourceGroupName ResourceNamespace          ResourceType
    ------------      ----------------- -----------------          -----------
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
@@ -367,19 +368,19 @@ $VM1 = Get-ASRProtectableItem -ProtectionContainer $ProtectionContainer -Friendl
 
 # Enable replication for virtual machine Win2K12VM1
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
-$Job_EnableRepication1 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $PremiumStorageAccount.Id -LogStorageAccountId $LogStorageAccount.Id -ProcessServer $ProcessServers[0] -Account $AccountHandles[1] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" 
+$Job_EnableReplication1 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $PremiumStorageAccount.Id -LogStorageAccountId $LogStorageAccount.Id -ProcessServer $ProcessServers[0] -Account $AccountHandles[1] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" 
 
 #Get the protectable item corresponding to the virtual machine CentOSVM1
 $VM2 = Get-ASRProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM1"
 
 # Enable replication for virtual machine CentOSVM1
-$Job_EnableRepication2 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM2 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $ReplicationStdStorageAccount.Id  -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+$Job_EnableReplication2 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM2 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $ReplicationStdStorageAccount.Id  -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 #Get the protectable item corresponding to the virtual machine CentOSVM2
 $VM3 = Get-ASRProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM2"
 
 # Enable replication for virtual machine CentOSVM2
-$Job_EnableRepication3 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM3 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $ReplicationStdStorageAccount.Id  -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" 
+$Job_EnableReplication3 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM3 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $ReplicationStdStorageAccount.Id  -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" 
 
 ```
 

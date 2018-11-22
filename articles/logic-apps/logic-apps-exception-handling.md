@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7ce5c7007414bfe8e17727c25de9712e7993dc1e
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263754"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686264"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -29,7 +29,7 @@ ms.locfileid: "39263754"
 
 再試行ポリシーの種類を次に示します。 
 
-| Type | 説明 | 
+| type | 説明 | 
 |------|-------------| 
 | [**既定**](#default-retry) | このポリシーは、"[*指数関数的に増加*](#exponential-retry)" する間隔で、最大 4 回の再試行を送信します。間隔の増加係数は 7.5 秒で、下限と上限はそれぞれ 5 秒と 45 秒になります。 | 
 | [**指数間隔**](#exponential-retry)  | このポリシーは、指数関数的に増加する範囲から選択されるランダムな間隔を待ち時間として、次の要求を送信します。 | 
@@ -71,16 +71,16 @@ ms.locfileid: "39263754"
 
 *必須*
 
-| 値 | Type | 説明 |
+| 値 | type | 説明 |
 |-------|------|-------------|
-| <*retry-policy-type*> | String | 使用する再試行ポリシーの種類。"default"、"none"、"fixed"、"exponential" のいずれかを指定できます。 | 
+| <*retry-policy-type*> | String | 使用する再試行ポリシーの種類: `default`、`none`、`fixed`、または `exponential` | 
 | <*retry-interval*> | String | 再試行間隔。この値には [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)を使用する必要があります。 既定の最小間隔は `PT5S` で、最大間隔は `PT1D` です。 指数の間隔ポリシーを使用するとき、最小と最大にさまざまな値を指定できます。 | 
 | <*retry-attempts*> | 整数 | 再試行の回数。1 - 90 で指定する必要があります。 | 
 ||||
 
 *省略可能*
 
-| 値 | Type | 説明 |
+| 値 | type | 説明 |
 |-------|------|-------------|
 | <*minimum-interval*> | String | 指数間隔ポリシーに関して、ランダムに選択される間隔の最小値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 | 
 | <*maximum-interval*> | String | 指数間隔ポリシーに関して、ランダムに選択される間隔の最大値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 | 
@@ -221,9 +221,9 @@ ms.locfileid: "39263754"
 
 ### <a name="get-context-and-results-for-failures"></a>エラーのコンテキストと結果を取得する
 
-スコープ単位でエラーをキャッチできるのは便利ですが、失敗したアクションや返されたエラーまたは状態コードを正確に把握するためには、スコープの結果だけでなくコンテキストが必要となります。 "@result()" 式を使用すると、スコープ内のすべてのアクションの結果に関するコンテキストが得られます。
+スコープ単位でエラーをキャッチできるのは便利ですが、失敗したアクションや返されたエラーまたは状態コードを正確に把握するためには、スコープの結果だけでなくコンテキストが必要となります。 `@result()` 式を使用すると、スコープ内のすべてのアクションの結果に関するコンテキストが得られます。
 
-"@result()" 式は、単一のパラメーター (スコープの名前) を受け取り、そのスコープに含まれるアクションの結果をすべて含んだ配列を返します。 これらのアクションのオブジェクトには、アクションの開始時刻、終了時刻、状態、入力、相関 ID、出力など、**@actions()** オブジェクトと同じ属性を含まれます。 **@result()** 関数と **runAfter** プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
+`@result()` 式は、単一のパラメーター (スコープの名前) を受け取り、そのスコープに含まれるアクションの結果をすべて含んだ配列を返します。 これらのアクションのオブジェクトには、アクションの開始時刻、終了時刻、状態、入力、相関 ID、出力など、**@actions()** オブジェクトと同じ属性を含まれます。 **@result()** 関数と **runAfter** プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
 
 スコープ内の **Failed** となったアクションごとにアクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、**@result()** を **[[配列のフィルター処理]](../connectors/connectors-native-query.md)** アクションと [**For each**](../logic-apps/logic-apps-control-flow-loops.md) ループと組み合わせて使用します。 抽出した結果の配列を **For each** ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。 
 
@@ -270,22 +270,22 @@ ms.locfileid: "39263754"
 
 上の例における実際の動作についての詳細は以下のとおりです。
 
-1. "My_Scope" 内のすべてのアクションの結果を取得するために、**[配列のフィルター処理]** アクションには、"@result('My_Scope')" というフィルター式が使用されます。
+1. "My_Scope" 内のすべてのアクションの結果を取得するために、**[配列のフィルター処理]** アクションには、`@result('My_Scope')` というフィルター式が使用されます
 
-2. **[配列のフィルター処理]** の条件は、状態が **Failed** と等しいすべての "@result()" 要素です。 この条件により、"My_Scope" のすべてのアクションの結果を含む配列がフィルター処理され、失敗したアクションの結果のみを抽出した配列が得られます。
+2. **[配列のフィルター処理]** の条件は、状態が **Failed** と等しいすべての `@result()` 項目です。 この条件により、"My_Scope" のすべてのアクションの結果を含む配列がフィルター処理され、失敗したアクションの結果のみを抽出した配列が得られます。
 
 3. "*フィルター後の配列*" の出力に対して **For each** ループ アクションを実行します。 このステップでは、フィルター処理済みの失敗したアクションの結果ごとに特定のアクションが実行されます。
 
    スコープ内の 1 つのアクションが失敗した場合、**For each** ループ内のアクションは 1 回だけ実行されます。 
    失敗したアクションが複数ある場合は、エラーごとに 1 つのアクションが実行されます。
 
-4. **For each** 要素の応答本文すなわち "@item()['outputs']['body']" 式で HTTP POST を送信します。 
+4. **For each** 項目の応答本文すなわち `@item()['outputs']['body']` 式で HTTP POST を送信します。 
 
-   "@result()" 要素の構造は "@actions()" と同じであり、同じ方法で解析することができます。
+   `@result()` 項目の構造は `@actions()` と同じであり、同じ方法で解析することができます。
 
-5. ("@item()['name']") と ID ("@item()['clientTrackingId']") という 2 つのカスタム ヘッダーが含まれます。前者は失敗したアクションの名前、後者は失敗した実行のクライアント追跡 ID です。
+5. `@item()['name']` と `@item()['clientTrackingId']` という 2 つのカスタム ヘッダーが含まれます。前者は失敗したアクションの名前、後者は失敗した実行のクライアント追跡 ID です。
 
-参考例として、前述の例で解析した **name**、**body**、**clientTrackingId** の各プロパティを含む 1 つの "@result()" 要素を次に示します。 **For each** アクションの外側では、"@result()" によってこれらのオブジェクトの配列が返されます。
+参考例として、前述の例で解析した **name**、**body**、**clientTrackingId** の各プロパティを含む 1 つの `@result()` 項目を次に示します。 **For each** アクションの外側では、`@result()` によってこれらのオブジェクトの配列が返されます。
 
 ```json
 {

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: c4f86b9fa949c854b557812a41aa9d86a11ecc94
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: b1ff7e7a2f79d99bc14f8e25ea82b212fad2acef
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636987"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165528"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: SQL API の使用に関するチュートリアル
 
@@ -367,7 +367,7 @@ Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-
 ![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるアカウント、オンライン データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
 ## <a id="Query"></a>手順 7: Azure Cosmos DB リソースにクエリを実行する
-Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](sql-api-sql-query.md)がサポートされています。  次のサンプル コードは、前の手順で挿入したドキュメントに対して実行できる、さまざまなクエリを示しています。Azure Cosmos DB SQL 構文と LINQ の両方が使用されています。
+Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](how-to-sql-query.md)がサポートされています。  次のサンプル コードは、前の手順で挿入したドキュメントに対して実行できる、さまざまなクエリを示しています。Azure Cosmos DB SQL 構文と LINQ の両方が使用されています。
 
 **ExecuteSimpleQuery** メソッドをコピーし、**CreateFamilyDocumentIfNotExists** メソッドの後に貼り付けます。
 
@@ -420,7 +420,7 @@ Azure Cosmos DB では、各コレクションに格納された JSON ドキュ�
 
 ![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるクエリの範囲と意味を示す図](./media/sql-api-get-started/nosql-tutorial-collection-documents.png)
 
-Azure Cosmos DB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](sql-api-sql-query.md#FromClause) キーワードを省略できます。 したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。 Azure Cosmos DB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
+Azure Cosmos DB クエリのスコープは既に 1 つのコレクションに設定されているので、クエリでは [FROM](how-to-sql-query.md#FromClause) キーワードを省略できます。 したがって、"FROM Families f" は "FROM root r" または他の任意の変数名に置き換えることができます。 Azure Cosmos DB は、Families、root、または任意の変数名が、既定で現在のコレクションを参照しているものと推測します。
 
 ## <a id="ReplaceDocument"></a>手順 8: JSON ドキュメントを置換する
 Azure Cosmos DB は、JSON ドキュメントの置換をサポートします。  

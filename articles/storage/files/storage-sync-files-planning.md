@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 0c9c254625ccca27a3525c45da0303f5e045ef44
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914330"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625302"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -191,19 +191,9 @@ Azure File Sync エージェントがインストールされているサーバ�
 クラウドの階層化がサーバー エンドポイントで有効になっている場合、階層化されたファイルはスキップされ、Windows Search によってインデックスが付けられます。 階層化されていないファイルは適切にインデックスが付けられます。
 
 ### <a name="antivirus-solutions"></a>ウイルス対策ソリューション
-ウイルス対策は、ファイルをスキャンして既知の悪意のあるコードを検索することで機能するので、ウイルス対策製品によって階層化されたファイルの再呼び出しが発生することがあります。 階層化されたファイルには "オフライン" 属性が設定されているため、オフライン ファイルの読み取りをスキップするようにソリューションを構成する方法について、ソフトウェア ベンダーと相談することをお勧めします。 
+ウイルス対策は、ファイルをスキャンして既知の悪意のあるコードを検索することで機能するので、ウイルス対策製品によって階層化されたファイルの再呼び出しが発生することがあります。 Azure File Sync エージェントのバージョン 4.0 以降では、階層化されたファイルにはセキュリティで保護された Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS が設定されています。 この属性を設定してオフライン ファイルの読み取りをスキップするようにソリューションを構成する方法について、ソフトウェア ベンダーと相談することをお勧めします (多くの場合は自動実行されます)。
 
-次のソリューションは、オフライン ファイルのスキップをサポートすることが確認されています。
-
-- [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - Windows Defender は、オフラインの属性が設定されているファイルの読み取りを自動的にスキップします。 Defender をテストした結果、小さな問題点がわかりました。既存の同期グループにサーバーを追加すると、新しいサーバーで 800 バイト未満のファイルが再呼び出される (ダウンロードされる) という問題です。 このようなファイルは新しいサーバー上に残り、階層化のサイズ要件 (64 KB を超えるサイズ) を満たしていないため、階層化されません。
-- [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - SCEP は Defender と同様に動作します。前述の説明を参照してください。
-- [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
-- [McAfee EndPoint Security](https://kc.mcafee.com/resources/sites/MCAFEE/content/live/PRODUCT_DOCUMENTATION/26000/PD26799/en_US/ens_1050_help_0-00_en-us.pdf) (この PDF の 90 ページの「Scan only what you need to」(必要なファイルのみをスキャンする) セクションを参照してください)
-- [Kaspersky Anti-Virus](https://support.kaspersky.com/4684)
-- [Sophos Endpoint Protection](https://community.sophos.com/kb/en-us/40102)
-- [TrendMicro OfficeScan](https://success.trendmicro.com/solution/1114377-preventing-performance-or-backup-and-restore-issues-when-using-commvault-software-with-osce-11-0#collapseTwo) 
+Microsoft の社内ウイルス対策ソリューションである Windows Defender と System Center Endpoint Protection (SCEP) では、この属性が設定されたファイルの読み取りが自動的にスキップされます。 そのテスト結果として小さな問題点がわかりました。既存の同期グループにサーバーを追加すると、新しいサーバー上で 800 バイト未満のファイルの呼び戻し (ダウンロード) が実行されるという問題です。 このようなファイルは新しいサーバー上に残り、階層化のサイズ要件 (64 KB を超えるサイズ) を満たしていないため、階層化されません。
 
 ### <a name="backup-solutions"></a>バックアップ ソリューション
 ウイルス対策ソリューションと同様に、バックアップ ソリューションでも階層化されたファイルの再呼び出しが発生することがあります。 Azure ファイル共有をバックアップするには、オンプレミスのバックアップ製品ではなく、クラウド バックアップ ソリューションを使用することをお勧めします。

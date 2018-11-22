@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: fd20fe880ae77992e5eadb5f2b581d3f5b53f86e
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: bbc9ad4f15bdffa2c0f9b6f4b56f8b1701c83c47
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085877"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636619"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Azure で OpenShift をデプロイする場合の共通の前提条件
 
@@ -99,12 +99,11 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ```
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成 
-OpenShift は、ユーザー名とパスワード、またはサービス プリンシパルを使用して Azure と通信します。 Azure のサービス プリンシパルは、アプリケーション、サービス、OpenShift などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。 この例では、ユーザー名とパスワードを提供するだけでなく、セキュリティを強化するために、基本的なサービス プリンシパルを作成します。
+OpenShift は、ユーザー名とパスワード、またはサービス プリンシパルを使用して Azure と通信します。 Azure のサービス プリンシパルは、アプリケーション、サービス、OpenShift などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。 サービス プリンシパルのアクセス許可のスコープは、サブスクリプション全体ではなく、特定のリソース グループに設定することが最適です。
 
 [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) を使用してサービス プリンシパルを作成し、OpenShift が必要とする資格情報を出力します。
 
 次の例では、サービス プリンシパルを作成して、共同作成者のアクセス許可を openshiftrg という名前のリソース グループに割り当てます。
-Windows を使用する場合、 を別途実行し、出力を使用して --scopes オプションをフィードします。
 
 まず、openshiftrg という名前のリソース グループを作成します。
 

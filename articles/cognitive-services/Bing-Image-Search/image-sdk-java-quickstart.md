@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 42fc3dfb48c041ba187e2034eed81183dba02cb4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: b6cecdb2418be78c40ff08c53f98f4c709a47728
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413879"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974411"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>クイック スタート: Bing Image Search SDK と Java を使用して画像を検索する
 
@@ -34,7 +34,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
     <dependency>
       <groupId>com.microsoft.azure.cognitiveservices</groupId>
       <artifactId>azure-cognitiveservices-imagesearch</artifactId>
-      <version>0.0.1-beta-SNAPSHOT</version>
+      <version>1.0.1</version>
     </dependency>
  </dependencies>
 ```
@@ -64,7 +64,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
 ## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Bing Image Search API に検索要求を送信します。
 
 1. `bingImages().search()` を使用して、検索クエリを含む HTTP 要求を送信します。 応答を `ImagesModel` として保存します。
-    ```java
+   ```java
     ImagesModel imageResults = client.bingImages().search()
                 .withQuery(searchTerm)
                 .withMarket("en-us")
@@ -87,8 +87,8 @@ if (imageResults != null && imageResults.value().size() > 0) {
 }
 else {
         System.out.println("Couldn't find image results!");
-    }
-}
+     }
+
 ```
 
 ## <a name="next-steps"></a>次の手順

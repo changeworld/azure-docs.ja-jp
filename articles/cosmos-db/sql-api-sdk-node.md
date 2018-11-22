@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0dc7daebe91199cc6c54ac5e3a2d8f43e1592a73
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b5ba00376e40b92a217bddd5b27c53dbe30c3cf3
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282426"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687505"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Node.js SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -153,7 +153,7 @@ ms.locfileid: "51282426"
 * 結果の不適切な連結のためにリンクを返していなかった RangePartitionResolver.resolveForRead のバグを修正しました。
 
 ### <a name="1.5.5"/>1.5.5</a>
-* hashParitionResolver resolveForRead() を修正しました - 登録済みのすべてのリンクの一覧を返す代わりに、指定したパーティション キーが例外をスローしない問題を修正しました。
+* hashPartitionResolver resolveForRead() を修正しました - 登録済みのすべてのリンクの一覧を返す代わりに、指定したパーティション キーが例外をスローしない問題を修正しました。
 
 ### <a name="1.5.4"/>1.5.4</a>
 * 問題 [#100](https://github.com/Azure/azure-documentdb-node/issues/100) を修正します - 専用 HTTPS エージェント: Azure Cosmos DB 目的用のグローバル エージェントが変更されないようにします。 lib のすべての要求に対して、専用エージェントを使用します。

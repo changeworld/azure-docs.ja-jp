@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 820fd904ac4ab983f4bd9858f3cf1ecff147876e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2a4519484c3319ca73bef2862db4d279ba117c4f
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386622"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636732"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する 
 
@@ -25,14 +25,11 @@ ms.locfileid: "49386622"
 
 ## <a name="prerequisites"></a>前提条件
 
-「[Azure Active Directory B2C のカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
+「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
 
 特定の Azure AD 組織のユーザーのサインインを有効にするには、組織の Azure AD テナント内でアプリケーションを登録する必要があります。
-
->[!NOTE]
->以下の手順では、組織の Azure AD テナントには `Contoso.com` を使用し、Azure AD B2C テナントとして `fabrikamb2c.onmicrosoft.com` を使用します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD テナント (contoso.com) を含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
@@ -40,13 +37,15 @@ ms.locfileid: "49386622"
 4. **[新しいアプリケーションの登録]** を選択します。
 5. アプリケーションの名前を入力します。 たとえば、「 `Azure AD B2C App` 」のように入力します。
 6. **[アプリケーションの種類]** には `Web app / API` を選択します。
-7. **[サインオン URL]** には、次の URL を全部小文字で入力します。`your-tenant` は、お使いの Azure AD B2C テナント (fabrikamb2c.onmicrosoft.com) の名前に変更します。
+7. **[サインオン URL]** には、次の URL を全部小文字で入力します。`your-B2C-tenant-name` は、お使いの Azure AD B2C テナントの名前に変更します。
 
     ```
-    https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
+    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-8. **[作成]** をクリックします。 後で使用するために **[アプリケーション ID]** をコピーします。
+    たとえば、「 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` 」のように入力します。
+
+8. **Create** をクリックしてください。 後で使用するために **[アプリケーション ID]** をコピーします。
 9. アプリケーションを選択し、**[設定]** を選択します。
 10. **[キー]** を選択し、キーの説明を入力し、期間を選択し、**[保存]** をクリックします。 後で使用するために、表示されているキーの値をコピーします。
 
@@ -59,10 +58,10 @@ ms.locfileid: "49386622"
 3. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
 4. **[ポリシー キー]** を選択し、**[追加]** を選択します。
 5. **オプション**については、`Manual`を選択します。
-6. ポリシー キーの **[名前]** を入力します。 たとえば、「 `ContosoAppSecret` 」のように入力します。  プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+6. ポリシー キーの**名前**を入力します。 たとえば、「 `ContosoAppSecret` 」のように入力します。  プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 7. **[シークレット]** に、記録しておいたアプリケーション キーを入力します。
-8. **[キー使用法]** で `Signature` を選択します。
-9. **[作成]** をクリックします。
+8. **[キー使用法]** として [`Signature`] を選択します。
+9. **Create** をクリックしてください。
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
@@ -85,7 +84,7 @@ ms.locfileid: "49386622"
           <Protocol Name="OpenIdConnect"/>
           <OutputTokenFormat>JWT</OutputTokenFormat>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/your-tenant/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration</Item>
             <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="IdTokenAudience">00000000-0000-0000-0000-000000000000</Item>
@@ -119,7 +118,7 @@ ms.locfileid: "49386622"
     </ClaimsProvider>
     ```
 
-4. **ClaimsProvider** 要素の下で、**Domain** の値を、他の ID プロバイダーと区別するために使用できる一意の値に更新します。
+4. **ClaimsProvider** 要素の下で、**Domain** の値を、他の ID プロバイダーと区別するために使用できる一意の値に更新します。 たとえば、「 `Contoso` 」のように指定します。 `.com` はこのドメイン設定の最後に配置しません。
 5. **ClaimsProvider** 要素の下で、**DisplayName** の値を、クレーム プロバイダーを表すわかりやすい名前に更新します。 この値は現在使用されていません。
 
 ### <a name="update-the-technical-profile"></a>技術プロファイルの更新
@@ -130,7 +129,7 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 2. **DisplayName** の値を更新します。 この値は、サインイン画面のサインイン ボタン上に表示されます。
 3. **Description** の値を更新します。
 4. Azure AD では OpenID Connect プロトコルを使用するため、**Protocol** の値が `OpenIdConnect` になっていることを確認してください。
-5. **METADATA** の値を `https://login.windows.net/your-tenant/.well-known/openid-configuration` に設定します。`your-tenant` は Azure AD テナント名 ( contoso.com) です。
+5. **METADATA** の値を `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration` に設定します。`your-AD-tenant-name` は Azure AD テナント名です。 たとえば、`https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration` のように指定します。
 6. ブラウザーを開き、更新したばかりの **METADATA** URL に移動し、**issuer** オブジェクトを見つけてその値をコピーし、XML ファイル内の **ProviderName** の値の中に貼り付けます。
 8. **client_id** と **IdTokenAudience** を、アプリケーションの登録で取得したアプリケーション ID に設定します。
 9. **CryptograhicKeys** の下で、**StorageReferenceId** の値を、自分で定義したポリシー キーに変更します。 たとえば、「 `ContosoAppSecret` 」のように入力します。
@@ -155,10 +154,10 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 
 ### <a name="display-the-button"></a>ボタンを表示する
 
-**ClaimsProviderSelection** 要素は、サインアップ/サインイン画面の ID プロバイダー ボタンに類似しています。 Azure AD 用の **ClaimsProviderSelection** 要素を追加すると、ユーザーがページにアクセスしたときに新しいボタンが表示されます。
+**ClaimsProviderSelection** 要素は、サインアップおよびサインイン画面の ID プロバイダー ボタンに類似しています。 Azure AD 用の **ClaimsProviderSelection** 要素を追加すると、ユーザーがページにアクセスしたときに新しいボタンが表示されます。
 
 1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
-2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`ContosoExchange` など) に設定します。
+2. **ClaimsProviderSelections** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`ContosoExchange` など) に設定します。
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
@@ -169,7 +168,7 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Azure AD と通信してトークンを受信します。 Azure AD 要求プロバイダーの技術プロファイルをリンクすることで、ボタンをアクションにリンクします。
 
 1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-2. 次の **ClaimsExchange** 要素を追加します。**Id** には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
+2. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した **Id** と同じ値を必ずご使用ください。
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
@@ -177,28 +176,28 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
     
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `ContosoProfile` 」のように入力します。
 
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、検証のために再度アップロードします。
+3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
 
-Azure AD B2C との通信は、テナントで作成したアプリケーション経由で行われます。 このセクションでは、テスト アプリケーションをまだ作成していない場合、それを作成するために実行できる省略可能な手順を示します。
+Azure AD B2C との通信は、テナントで作成したアプリケーション経由で行われます。 このセクションでは、テスト アプリケーションをまだ作成していない場合にそれを作成するための省略可能な手順を紹介します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]**、**[追加]** の順に選択します。
-5. アプリケーションの名前 (*testapp1* など) を入力します。
-6. **[Web アプリ / Web API]** で `Yes` を選択し、**[応答 URL]** に「`https://jwt.ms`」と入力します。
-7. **[作成]** をクリックします。
+4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+5. アプリケーションの名前を入力します (*testapp1* など)。
+6. **[Web アプリ / Web API]** には `Yes` を選択し、**[応答 URL]** に `https://jwt.ms` を入力します。
+7. **Create** をクリックしてください。
 
-## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新してテストする
+## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
 
 作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
 
-1. 作業ディレクトリ内に *SignUpOrSignIn.xml* のコピーを作成し、その名前を変更します。 たとえば、*SignUpSignInContoso.xml* に名前を変更します。
-2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値に更新します。 たとえば、「 `SignUpSignInContoso` 」のように入力します。
+1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、*SignUpSignInContoso.xml* に名前を変更します。
+2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInContoso` 」のように入力します。
 3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_contoso` とします。
 4. **DefaultUserJourney** の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignContoso) と一致するように変更します。
 5. 変更を保存し、ファイルをアップロードしてから、一覧内の新しいポリシーを選択します。
-6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてそれをテストします。
+6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてテストします。
 

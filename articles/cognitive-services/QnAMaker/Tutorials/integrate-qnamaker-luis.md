@@ -10,17 +10,19 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: diberry
-ms.openlocfilehash: e0f3703d50f20b766b2ac43b96be7e001ff9bc7f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 27f60f9624af2819663990aeba99b4044045540b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957730"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687369"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>QnA Maker と LUIS の統合によるナレッジ ベースの配信
 QnA Maker ナレッジ ベースは、大きくなるにつれて、単一のモノリシックなセットとして維持することが難しくなり、より小さな論理的なチャンクにナレッジ ベースを分割する必要があります。
 
 QnA Maker には複数のナレッジ ベースを簡単に作成できますが、入力された質問を適切なナレッジ ベースにルーティングするためには、何らかのロジックが必要となります。 これは LUIS を使用して実行できます。
+
+この記事では、Bot Framework v3 SDK を使用します。 この情報の Bot Framework v4 SDK バージョンに関心がある場合は、こちらの [Bot Framework に関する記事](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp)をご覧ください。
 
 ## <a name="architecture"></a>アーキテクチャ
 

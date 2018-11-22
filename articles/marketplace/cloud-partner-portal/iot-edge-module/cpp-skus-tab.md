@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a216f3ddd89ad92dbbae617c51d5fc9c478c0c03
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 205fd258ed397f5a9588773549368fc3c4aec058
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433277"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684819"
 ---
 # <a name="iot-edge-module-skus-tab"></a>[IoT Edge モジュール SKU] タブ
 
@@ -37,7 +37,7 @@ ms.locfileid: "49433277"
 - **[新しい SKU]** ダイアログ ボックスで SKU の ID を入力し、**[OK]** を選択します
 (次の表に、ID の命名規則を示します)。
 
-**[SKU]** タブが更新され、SKU を構成するために編集したフィールドが表示されます。 フィールド名に追加されたアスタリスク (*) は、そのフィールドが必須であることを示します。
+**[SKU]** タブが更新され、SKU を構成するために編集したフィールドが表示されます。 フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
 
 |  **フィールド**       |     **説明**                                                          |
 |  ---------       |     ---------------                                                          |
@@ -90,7 +90,7 @@ Azure Marketplace および Azure portal の Web サイトでの SKU の表示�
 
 ## <a name="sku-content"></a>SKU の内容
 
-Edge モジュールのイメージの下に、IoT Edge モジュールをアップロードするために必要な情報を指定します。
+**Edge モジュールのイメージ**の下に、IoT Edge モジュールをアップロードするために必要な情報を指定します。
 
 IoT Edge モジュールのイメージを含む [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) へのアクセスを可能にし、それにより、アップロードして認証できるようにします。 発行後、IoT Edge モジュールがコピーされ、Azure Marketplace でホストされているパブリック コンテナー レジストリを使用して配布されます。
 

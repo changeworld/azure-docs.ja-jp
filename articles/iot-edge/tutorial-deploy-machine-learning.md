@@ -4,21 +4,21 @@ description: このチュートリアルでは、Azure Machine Learning をモ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 11/15/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 692dce4c3fcb31bcfbffbba06e5a69722b5fb5fa
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c98dc9019421133b83ab9aec29f725852315f6ba
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566113"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977211"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
-IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 IoT Edge 上の Azure ML の詳細については、「[Azure Machine Learning のドキュメントに関するページ」](../machine-learning/desktop-workbench/use-azure-iot-edge-ai-toolkit.md)を参照してください。
+IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされたマシンの温度データに基づいてデバイスが失敗するタイミングを予測する、Azure Machine Learning モジュールを展開する方法について説明します。 IoT Edge 上の Azure ML の詳細については、「[Azure Machine Learning のドキュメントに関するページ」](../machine-learning/service/how-to-deploy-to-iot.md)を参照してください。
 
 このチュートリアルで作成した Azure Machine Learning モジュールは、デバイスによって生成された環境データを読み取り、メッセージに異常か否かのラベル付けを行います。
 

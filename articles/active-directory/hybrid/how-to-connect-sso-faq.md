@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d445a4673245b4c6d1986d099113beba79d136bb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e3f08b80b891ad277794ae5a07c3662dab2f2c16
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310591"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687454"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン: よく寄せられる質問
 
@@ -28,7 +28,7 @@ ms.locfileid: "46310591"
 
 ## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>シームレス SSO は、どのようなサインイン方法と動作しますか。
 
-シームレス SSO は、サインインの方法として、 [パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)または[パススルー認証](how-to-connect-pta.md)のどちらとも組み合わせることができます。 ただし、この機能は、Active Directory フェデレーション サービス (AD FS) で使用できません。
+シームレス SSO は、サインインの方法として、[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)または[パススルー認証](how-to-connect-pta.md)のどちらとも組み合わせることができます。 ただし、この機能は、Active Directory フェデレーション サービス (AD FS) で使用できません。
 
 ## <a name="is-seamless-sso-a-free-feature"></a>シームレス SSO は無料の機能ですか。
 
@@ -46,7 +46,7 @@ Azure AD にこれらのパラメーターを送信でき、その結果、シ�
 | -- | -- |
 | アクセス パネル | https://myapps.microsoft.com/contoso.com |
 | Web 上の Outlook | https://outlook.office365.com/contoso.com |
-| Office 365 ポータル | https://portal.office.com?domain_hint=contoso.com |
+| Office 365 ポータル | https://portal.office.com?domain_hint=contoso.com、 https://www.office.com?domain_hint=contoso.com |
 
 また、アプリケーションがサインイン要求を、Azure AD の共通エンドポイント (つまり、 https://login.microsoftonline.com/common/<...>) ではなく、Azure AD のテナント エンドポイント (つまり、 https://login.microsoftonline.com/contoso.com/<..> または https://login.microsoftonline.com/<tenant_ID>/<..>) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。 これらの種類のサインイン要求を行うアプリケーションの一部を以下にリストします。
 

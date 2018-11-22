@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: 5707f97dff099d1ad914dcf3faa96cc287d48de9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8b92191b60f8eb7e3c63f465926b434e205ef1b4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245666"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684751"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
 
@@ -22,7 +22,7 @@ Enterprise セキュリティ パッケージ (ESP) のクラスターでは、A
 この記事では、Azure Active Directory Domain Services (Azure AD-DS) を使って、ESP の HDInsight クラスターを構成する方法について説明します。
 
 >[!NOTE]
->ESP は、Spark、Interactive、Hadoop の HDI 3.6 で一般公開されています。 HBase および Kafka クラスター タイプの ESP はプレビュー段階です。
+>ESP は、Spark、Interactive、Apache Hadoop 用の HDI 3.6 で一般公開されています。 HBase および Kafka クラスター タイプの ESP はプレビュー段階です。
 
 ## <a name="enable-azure-ad-ds"></a>Azure AD-DS を有効にする
 
@@ -64,6 +64,9 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 ![HDInsight のマネージド ID オペレーター ロールの割り当て](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
 ## <a name="networking-considerations"></a>ネットワークに関する考慮事項
+
+> [!NOTE]
+> Azure AD DS は、Azure Resource Manager (ARM) ベースの vNET にデプロイする必要があります。 Azure AD-DS では、クラシック仮想ネットワークはサポートされません。 詳しくは、「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network)」をご覧ください。
 
 Azure AD-DS を有効にした後、ローカルのドメイン ネーム サービス (DNS) サーバーが AD Virtual Machines (VM) で実行されます。 Azure AD-DS 仮想ネットワーク (VNET) を、これらのカスタム DNS サーバーを使用するように構成します。 適切な IP アドレスを見つけるには、**[マネージド]** カテゴリで **[プロパティ]** を選択し、**[仮想ネットワーク上の IP アドレス]** の下に表示される IP アドレスを参照します。
 

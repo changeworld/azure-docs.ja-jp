@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: e206f3e716bed558c8041b5714433cecbf9500ac
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 8a435df6c30f625752339bfdf89884ce4a77ddde
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345115"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853797"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と Python を使用して印刷されたテキストを抽出する (OCR)
 
@@ -62,7 +62,7 @@ assert subscription_key
 # subscription keys. For example, if you got your subscription keys from
 # westus, replace "westcentralus" in the URI below with "westus".
 #
-# Free trial subscription keys are generated in the westcentralus region.
+# Free trial subscription keys are generated in the "westus" region.
 # If you use a free trial subscription key, you shouldn't need to change
 # this region.
 vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"

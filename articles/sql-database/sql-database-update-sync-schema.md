@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 3137b86dd186e628508111a932140fd9c1f59b5d
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: cfd59c3e64e019feb4efe4546872012a02402ad7
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161433"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684329"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL データ同期でスキーマ変更のレプリケートを自動化する
 
@@ -217,3 +217,20 @@ DDL トリガーが作成されたデータベースで行われたスキーマ�
 -   DBCC CHECKIDENT を使用して ID 列を再シードしないでください。
 
 -   TRUNCATE を使用して、スキーマ変更追跡テーブルのデータをクリーンアップしないでください。
+
+## <a name="next-steps"></a>次の手順
+
+SQL データ同期の詳細については、以下を参照してください。
+
+-   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
+-   データ同期の設定
+    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - PowerShell の場合
+        -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-database-data-sync-agent.md)
+-   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
+-   監視 - [Log Analytics による SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
+-   同期スキーマの更新
+    -   PowerShell の場合 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/sql-database-sync-update-schema.md)

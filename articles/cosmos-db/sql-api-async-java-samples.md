@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: sample
 ms.date: 06/18/2018
 ms.author: sngun
-ms.openlocfilehash: 02e60b3899280afde2927d40ad54cb514bf0fa0e
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 08ef3651b08534b94e1e1a55c16b17313bbbe9f2
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246733"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284967"
 ---
 # <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の非同期 Java のサンプル
 
@@ -134,7 +134,7 @@ Eclipse から実行するには:
 | --- | --- |
 | [インデックスの作成とインデックス作成ポリシーの設定](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java#L394-L410) | [Index](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._index)<br>[IndexingPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._indexing_policy) |
 
-インデックス作成の詳細については、「[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)」をご覧ください。
+インデックス作成の詳細については、「[Azure Cosmos DB インデックス作成ポリシー](index-policy.md)」をご覧ください。
 
 ## <a name="query-examples"></a>クエリのサンプル
 [DocumentQuerySamples](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java) ファイルは、次のタスクを実行する方法を示しています。
@@ -147,7 +147,7 @@ Eclipse から実行するには:
 | [単純なドキュメントのクエリの実行と結果のフィルター処理](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L318-L368) | |
 | [クロス パーティション ドキュメントの order-by クエリの実行](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L410-L457) | [FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._feed_options.setenablecrosspartitionquery) |
 
-クエリの記述について詳しくは、[Azure Cosmos DB 内の SQL クエリ](sql-api-sql-query.md)に関するページをご覧ください。
+クエリの記述について詳しくは、[Azure Cosmos DB 内の SQL クエリ](how-to-sql-query.md)に関するページをご覧ください。
 
 ## <a name="offer-examples"></a>プランのサンプル
 [OfferCRUDAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java) ファイルは、次のタスクを実行する方法を示しています。

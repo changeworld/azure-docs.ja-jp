@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 0ca9c7ff1ac4cfbb50f251679286a933429bf03f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 71ac963f00993f8a66d41a8d6f3f67528d9c0583
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903049"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625151"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
 この記事では、クライアント側でさまざまな種類の広告を挿入する方法について説明します。
@@ -107,7 +107,7 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad1trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -127,7 +127,7 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
           <Description>Unknown</Description>
           <Survey></Survey>
           <Error></Error>
-          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResouce]]></Impression>
+          <Impression id="Atlas"><![CDATA[http://myserver.com/Impression/Ad2trackingResource]]></Impression>
           <Creatives>
             <Creative id="video" sequence="0" AdID="">
               <Linear>
@@ -160,7 +160,7 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
     </Creative>
 ```
 
-<**NonLinearAds**> 要素には 1 つ以上の <**NonLinear**> 要素が含まれており、それぞれ非線形広告を記述できます。 <**NonLinear**> 要素は、非線形広告のリソースを指定します。 このリソースは、<**StaticResouce**>、<**IFrameResource**>、または <**HTMLResouce**> です。 <**StaticResource** は、HTML 以外のリソースを記述し、リソースの表示方法を指定する creativeType 属性を定義します。
+<**NonLinearAds**> 要素には 1 つ以上の <**NonLinear**> 要素が含まれており、それぞれ非線形広告を記述できます。 <**NonLinear**> 要素は、非線形広告のリソースを指定します。 このリソースは、<**StaticResource**>、<**IFrameResource**>、または <**HTMLResource**> です。 <**StaticResource** は、HTML 以外のリソースを記述し、リソースの表示方法を指定する creativeType 属性を定義します。
 
 Image/gif、image/jpeg、image/png – リソースが HTML <**img**> タグで表示されます。
 
@@ -276,7 +276,7 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
     </vmap:VMAP>
 ```
 
-<**TrackingEvents**> 要素とその子の詳細については、http://iab.net/VMAP.pdf を参照してください。
+<**TrackingEvents**> 要素とその子の詳細については、 http://iab.net/VMAP.pdf を参照してください。
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>Media Abstract Sequencing Template (MAST) ファイルの使用
 MAST ファイルを使用すると、広告がいつ表示されるかを定義するトリガーを指定できます。 プリロール広告、ミッドロール広告、ポストロール広告のトリガーを含む MAST ファイルの例を次に示します。

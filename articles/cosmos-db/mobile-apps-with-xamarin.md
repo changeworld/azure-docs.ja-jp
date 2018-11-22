@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a41ffdb31cb54e1488c0f114632c605b92d4c444
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6311316ab5aeab4685ca820ef5dbec4832896dcd
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255287"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164508"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 
@@ -35,7 +35,7 @@ Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機
 
 ![モバイル アプリ向けの Azure Cosmos DB の機能](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
 
-* スキーマなしのデータに対するリッチ クエリ。 Azure Cosmos DB では、データをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 スキーマやインデックスについて心配する必要なく、[高速なリッチ クエリ](sql-api-sql-query.md)を提供します。
+* スキーマなしのデータに対するリッチ クエリ。 Azure Cosmos DB では、データをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 スキーマやインデックスについて心配する必要なく、[高速なリッチ クエリ](how-to-sql-query.md)を提供します。
 * 高速スループット。 Azure Cosmos DB では、ドキュメントを読み書きするのにわずか数ミリ秒しかかかりません。 開発者は必要なスループットを指定でき、Azure Cosmos DB はすべての単一リージョンのアカウントに緩やかな整合性で 99.999% の可用性 SLA を提供し、全ての複数リージョンのデータベース アカウントに 99.99% の 読み取り可用性を提供します。
 * 無限のスケール。 Azure Cosmos DB のコレクションは、[アプリの規模の拡大に合わせて増加](partition-data.md)します。 小さいデータ サイズと 1 秒あたり数百件の要求のスループットから開始できます。 コレクションまたはデータベースは、ペタバイトのデータと 1 秒あたり数億件の要求という任意の大きさのスループットに拡張できます。
 * グローバルに分散。 モバイル アプリ ユーザーは外に出かけ、世界中を飛び回ることもよくあります。 Azure Cosmos DB は、[グローバル分散データベース](distribute-data-globally.md)です。 ユーザーがデータにアクセスするには、地図をクリックします。
@@ -107,7 +107,7 @@ Azure Cosmos DB は、管理された DBaaS (database as a service) です。 �
 * [GitHub の Xamarin と Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) のソース コードを確認する。
 * [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md) をダウンロードする。
 * [.NET アプリケーション](sql-api-dotnet-samples.md)向けの他のコード サンプルを探す。
-* [Azure Cosmos DB のリッチ クエリ機能](sql-api-sql-query.md)について確認する。
+* [Azure Cosmos DB のリッチ クエリ機能](how-to-sql-query.md)について確認する。
 * [Azure Cosmos DB の地理空間サポート](geospatial.md)について確認する。
 
 

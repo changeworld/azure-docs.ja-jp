@@ -85,12 +85,14 @@ items:
   - name: ベスト プラクティス
     href: luis-concept-best-practices.md
   - name: アプリの計画
+    displayName: simple, hierarchical, composite, prebuilt, list, regex, regular expression
     href: luis-how-plan-your-app.md
   - name: アプリの作成
     items:
     - name: 作成サイクル
       href: luis-concept-app-iteration.md
     - name: コラボレーション
+      displayName: shared, transfer, ownership, author, access
       href: luis-concept-collaborator.md
     - name: バージョン管理
       href: luis-concept-version.md
@@ -99,6 +101,7 @@ items:
     - name: 意図
       href: luis-concept-intent.md
     - name: エンティティ
+      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed
       href: luis-concept-entity-types.md
     - name: 発話
       href: luis-concept-utterance.md
@@ -139,6 +142,7 @@ items:
   - name: セキュリティ
     items:
     - name: アプリのアクセス
+      displayName: public, public app, AAD, compliance, ISO, certification, trust center
       href: luis-concept-security.md
     - name: オーサリング キーとエンドポイント キー
       href: luis-concept-keys.md
@@ -179,22 +183,29 @@ items:
       - name: Web アプリ ボットとの統合
         items:
         - name: Node.js
+          displayName: ABS, azure bot, service
           href: luis-nodejs-tutorial-build-bot-framework-sample.md
         - name: C#
+          displayName: ABS, azure bot, service
           href: luis-csharp-tutorial-build-bot-framework-sample.md
       - name: Application Insights
         items:
         - name: Node.js
+          displayName: Application insight, kusto
           href: luis-tutorial-function-appinsights.md
         - name: C#
+          displayName: Application insight, kusto
           href: luis-tutorial-bot-csharp-appinsights.md
   - name: 予測精度の改善
     items:
     - name: エンドポイントの発言の確認
+      displayName: active learning
       href: luis-how-to-review-endoint-utt.md
     - name: フレーズ リストの追加
+      displayName: synonym, interchange
       href: luis-how-to-add-features.md
     - name: パターンの追加
+      displayName: syntax, template
       href: luis-how-to-model-intent-pattern.md
   - name: トレーニング
     href: luis-how-to-train.md
@@ -209,14 +220,18 @@ items:
   - name: アプリの管理
     items:
     - name: ダッシュボードの利用
+      displayName: analytics, usage
       href: luis-how-to-use-dashboard.md
     - name: エンドポイント キーの作成
+      displayName: azure portal
       href: luis-how-to-azure-subscription.md
     - name: アプリへのエンドポイント キーの追加
+      displayName: assign key, assign
       href: luis-how-to-manage-keys.md
     - name: バージョンの管理
       href: luis-how-to-manage-versions.md
     - name: 作成者とコラボレーターの管理
+      displayName: access, transfer, AAD, tenant, Azure AD, consent
       href: luis-how-to-collaborate.md
     - name: オーサリング キーの管理
       href: luis-how-to-account-settings.md
@@ -289,6 +304,7 @@ items:
     - name: エンドポイント V2 REST API
       href: https://aka.ms/luis-endpoint-apis
     - name: HTTP コード
+      displayName: 400, 401, 403, 409, 410, 414, 429
       href: luis-reference-response-codes.md
   - name: SDK
     items:
@@ -368,9 +384,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 43d36dd8f08508139bc74904c9c155b947ace52e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d5a40f294e63ad72c667ed94fd367588537450c6
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139671"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283265"

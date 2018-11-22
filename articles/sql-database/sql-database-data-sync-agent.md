@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/07/2018
-ms.openlocfilehash: 032676528120995dab980207ee9d09ccad712142
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 11/12/2018
+ms.openlocfilehash: bb80b512176e8fe260eb4572ea9fa801a6ffc80a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285374"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685142"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL データ同期のデータ同期エージェント
 
@@ -31,8 +31,14 @@ Azure SQL データ同期のデータ同期エージェントをインストー�
 
 データ同期エージェントをコマンド プロンプトからサイレント インストールするには、次の例のようなコマンドを入力します。 ダウンロードした .msi ファイルのファイル名を確認し、**TARGETDIR** および **SERVICEACCOUNT** 引数に独自の値を指定します。
 
+- **TARGETDIR** の値を指定しない場合、既定値は `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0` です。
+
+- **SERVICEACCOUNT** の値として `LocalSystem` を指定した場合は、オンプレミスの SQL Server に接続するエージェントを構成するときに、SQL Server 認証を使用します。
+
+- **SERVICEACCOUNT** の値としてドメイン ユーザー アカウントまたはローカル ユーザー アカウントを指定した場合は、**SERVICEPASSWORD** 引数を使用してパスワードを指定する必要もあります。 たとえば、「 `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"` 」のように入力します。
+
 ```cmd
-msiexec /i SQLDataSyncAgent-2.0--ENU.msi TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn 
+msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
 ## <a name="sync-data-with-sql-server-on-premises"></a>オンプレミスの SQL Server とのデータの同期
@@ -91,10 +97,10 @@ SQL データ同期サービスは、クライアント エージェントを使
 
 - **原因**。 このエラーはさまざまなシナリオで発生します。 このエラーの具体的な原因を特定するには、ログを調べます。
 
-- **解決策**。 エラーの具体的な原因を特定するには、Windows インストーラー ログを生成し、内容を確認します。 ログ記録はコマンド プロンプトから有効にすることができます。 たとえば、ダウンロードした AgentServiceSetup.msi ファイルが LocalAgentHost.msi である場合は、次のコマンド ラインを使用してログ ファイルを生成し、内容を確認します。
+- **解決策**。 エラーの具体的な原因を特定するには、Windows インストーラー ログを生成し、内容を確認します。 ログ記録はコマンド プロンプトから有効にすることができます。 たとえば、ダウンロードしたインストール ファイルが `SQLDataSyncAgent-2.0-x86-ENU.msi` である場合は、次のコマンド ラインを使用してログ ファイルを生成し、内容を確認します。
 
-    -   インストールの場合: `msiexec.exe /i SQLDataSyncAgent-Preview-ENU.msi /l\*v LocalAgentSetup.InstallLog`
-    -   アンインストールの場合: `msiexec.exe /x SQLDataSyncAgent-se-ENU.msi /l\*v LocalAgentSetup.InstallLog`
+    -   インストールの場合: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+    -   アンインストールの場合: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Windows インストーラーによって実行されるすべてのインストールについて、ログ記録を有効にすることもできます。 Microsoft サポート技術情報の記事「[Windows インストーラーのログの記録を有効にする方法](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)」には、Windows インストーラーのログの記録を有効にするワンクリック ソリューションが用意されています。 また、ログの場所も示されています。
 
@@ -268,13 +274,15 @@ SqlDataSyncAgentCommand.exe -action registerdatabase -servername [on-premisesdat
 #### <a name="examples"></a>例
 
 ```cmd
-SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -databaseName testdb -authentication sql -username xiwu -password Yukon900 -encryption true
+SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -databaseName testdb -authentication sql -username <user name> -password <password> -encryption true
 
 SqlDataSyncAgentCommand.exe -action "registerdatabase" -serverName localhost -databaseName testdb -authentication windows -encryption true
 
 ```
 
 ### <a name="unregister-a-database"></a>データベースの登録解除
+
+このコマンドを使用してデータベースの登録を解除すると、データベースが完全にプロビジョニング解除されます。 データベースが他の同期グループに参加している場合、この操作は他の同期グループを中断します。
 
 #### <a name="usage"></a>使用法
 
@@ -308,6 +316,15 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 
 SQL データ同期の詳細については、次の記事を参照してください。
 
-- [Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
-
-- [複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します](sql-database-sync-data.md)
+-   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
+-   データ同期の設定
+    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - PowerShell の場合
+        -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
+-   監視 - [Log Analytics による SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
+-   同期スキーマの更新
+    -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](sql-database-update-sync-schema.md)
+    -   PowerShell の場合 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/sql-database-sync-update-schema.md)

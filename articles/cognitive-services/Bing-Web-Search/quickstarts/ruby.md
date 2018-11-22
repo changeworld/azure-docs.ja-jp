@@ -3,19 +3,19 @@ title: 'クイック スタート: Ruby で検索を実行する - Bing Web Sear
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Ruby を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
-ms.author: erhopf
-ms.openlocfilehash: e1819be51c339b302dbc1181e2a8f998170b2413
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: b6d5122fce4db393e4b7bdb9b3556e49551d2c17
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127059"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163626"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>クイック スタート: Ruby を使用して Bing Web Search API を呼び出す  
 

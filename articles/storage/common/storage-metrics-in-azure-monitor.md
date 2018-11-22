@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: b9b6c67930e251302f397e199c65f949997a25cf
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 72d324e0b5fe0c50dadc076306c9167c0492290a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637973"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625591"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -404,6 +404,10 @@ Azure Monitor 管理メトリックと並行して従来のメトリックを利
 **Azure Storage はマネージド ディスクまたはアンマネージド ディスクのメトリックをサポートしますか。**
 
 いいえ、Azure Compute はディスク上のメトリックをサポートします。 詳しくは、[この記事](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)をご覧ください。
+
+**新しいメトリックを使用して従来のメトリックをマップして移行する方法**
+
+従来のメトリックと新しいメトリック間の詳細なマッピングについては、「[Azure Storage メトリックの移行](./storage-metrics-migration.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

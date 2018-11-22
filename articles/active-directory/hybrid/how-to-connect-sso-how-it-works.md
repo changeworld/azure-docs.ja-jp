@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 83a36c81ad88ccb37fe4a258f895b1e1cbe9299f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304551"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687403"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン: 技術的な詳細
 
@@ -79,8 +79,8 @@ Web ブラウザーでのサインインのフローは次のとおりです。
 
 1. ユーザーは、(Outlook クライアントなどの) ネイティブ アプリケーションに企業ネットワーク内のドメインに参加している会社のデバイスからアクセスします。
 2. ユーザーがまだサインインしていない場合は、ネイティブ アプリケーションが、デバイスの Windows セッションからそのユーザーのユーザー名を取得します。
-3. アプリが、Azure AD にユーザー名を送信し、テナントの WS-Trust MEX エンドポイントを取得します。
-4. 次にアプリは、統合認証エンドポイントが使用可能かどうかを確認するために、WS-Trust MEX エンドポイントにクエリを実行します。
+3. アプリが、Azure AD にユーザー名を送信し、テナントの WS-Trust MEX エンドポイントを取得します。 この WS-Trust エンドポイントは、シームレス SSO 機能によって排他的に使用されるもので、Azure AD 上の WS-Trust プロトコルの一般的な実装ではありません。
+4. 次にアプリは、統合認証エンドポイントが使用可能かどうかを確認するために、WS-Trust MEX エンドポイントにクエリを実行します。 統合認証エンドポイントは、シームレス SSO 機能によって排他的に使用されます。
 5. 手順 4. が成功した場合は、Kerberos チャレンジが発行されます。
 6. アプリが Kerberos チケットを取得できる場合は、Azure AD の統合認証エンドポイントにそのチケットを転送します。
 7. Azure AD が Kerberos チケットを復号化して検証します。

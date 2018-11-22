@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: sample
 ms.date: 02/08/2018
 ms.author: sngun
-ms.openlocfilehash: ec13a594750132bc016d1383eb4b0a08fdf6114e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 539e863d05c2d343a643c54c39c1e5a28694c03a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831831"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163222"
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の Java のサンプル
 
@@ -133,7 +133,7 @@ Eclipse から実行するには:
 | [シンプルなクロス パーティション ドキュメント クエリの実行](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L108-L129) | [DocumentClient.queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.querydocuments)<br>[FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_options.setenablecrosspartitionquery) |
 | [ORDER BY クエリ](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L132-L154) | [FeedResponse<T>.getQueryIterator](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._feed_response.getqueryiterator) |
 
-クエリの記述について詳しくは、[Azure Cosmos DB 内の SQL クエリ](sql-api-sql-query.md)に関するページをご覧ください。
+クエリの記述について詳しくは、[Azure Cosmos DB 内の SQL クエリ](how-to-sql-query.md)に関するページをご覧ください。
 
 ## <a name="offer-examples"></a>プランのサンプル
 [OfferCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) ファイルは、次のタスクを実行する方法を示しています。

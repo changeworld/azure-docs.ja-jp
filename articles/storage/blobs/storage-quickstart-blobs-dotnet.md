@@ -6,14 +6,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 08/27/2018
+ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: cde8516b93c2aac0cb74d9c9599168c8e6a70472
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4b632d9aab89e4c8d79983855bdd12aeafb05147
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734135"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712026"
 ---
 # <a name="quickstart-use-net-to-create-a-blob-in-object-storage"></a>クイック スタート: .NET を使用してオブジェクト ストレージ内に BLOB を作成する
 
@@ -21,9 +21,7 @@ ms.locfileid: "45734135"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-このクイック スタートを完了するには、まず、[Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) で Azure ストレージ アカウントを作成します。 アカウントの作成については、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md)」を参照してください。
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 次に、ご使用のオペレーティング システム用の .NET Core 2.0 をダウンロードしてインストールします。 Windows を実行している場合は、Visual Studio をインストールして、.NET Framework を使用してもかまいません。 オペレーティング システムで使用するエディターをインストールすることもできます。
 

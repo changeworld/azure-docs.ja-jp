@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d4f44deac1e8833af064e0abea4e65c5ca2b2f93
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309171"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686196"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -125,7 +125,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 認証エージェントに関するエラーの場合、サーバーでイベント ビューアー アプリケーションを開き、**アプリケーションとサービス ログ\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** の下を調べます。
 
-詳細な分析が必要な場合は "セッション" ログを有効にします。 通常の操作中に、このログを有効にして認証エージェントを実行しないでください。これはトラブルシューティングにのみ使用します。 ログの内容は、ログを再度無効にした後にのみ表示されます。
+詳細な分析を取得するには、"セッション" ログを有効にします (このオプションを表示するにはイベント ビューアー アプリケーション内で右クリックします)。 通常の操作中に、このログを有効にして認証エージェントを実行しないでください。これはトラブルシューティングにのみ使用します。 ログの内容は、ログを再度無効にした後にのみ表示されます。
 
 ### <a name="detailed-trace-logs"></a>詳細なトレース ログ
 

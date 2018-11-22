@@ -14,18 +14,18 @@ ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 28f06efdd990e46eaa84b1fe26ed5d8944971505
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8c5da669d490bf295c4066854ac1173bcc79ad5e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156920"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686128"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
 Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別々の管理者を指定することができます。 Azure AD ポータルで、ユーザーの追加または変更、管理ロールの割り当て、ユーザーのパスワードのリセット、ユーザーのライセンスの管理、ドメイン名の管理などのタスクを実行する管理者を指定できます。
 
-全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 管理者ロールを委任できるのは全体管理者だけです。
+全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 管理者ロールを委任できるのは全体管理者と特権ロール管理者だけです。
 
 ## <a name="assign-or-remove-administrator-roles"></a>管理者ロールの割り当てまたは削除
 
@@ -213,8 +213,8 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの更新。 |
 | microsoft.aad.directory/servicePrincipals/owners/update | Azure Active Directory での servicePrincipals.owners プロパティの更新。 |
 | microsoft.aad.directory/servicePrincipals/policies/update | Azure Active Directory での servicePrincipals.policies プロパティの更新。 |
-| microsoft.aad.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
-| microsoft.aad.reports/allEntities/read | Azure AD レポートの読み取り。 |
+| microsoft.aad.reports/applicationAuditLogs/read | Azure AD レポート内の applicationAuditLogs の読み取り。 |
+| microsoft.aad.reports/applicationSignInReports/read | Azure AD レポート内の applicationSignInReports の読み取り。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
@@ -317,8 +317,8 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.aad.directory/servicePrincipals/delete | Azure Active Directory での servicePrincipals の削除。 |
 | microsoft.aad.directory/servicePrincipals/owners/update | Azure Active Directory での servicePrincipals.owners プロパティの更新。 |
 | microsoft.aad.directory/servicePrincipals/policies/update | Azure Active Directory での servicePrincipals.policies プロパティの更新。 |
-| microsoft.aad.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
-| microsoft.aad.reports/allEntities/read | Azure AD レポートの読み取り。 |
+| microsoft.aad.reports/applicationAuditLogs/read | Azure AD レポート内の applicationAuditLogs の読み取り。 |
+| microsoft.aad.reports/applicationSignInReports/read | Azure AD レポート内の applicationSignInReports の読み取り。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
@@ -337,7 +337,8 @@ Azure AD でデバイスを管理するためのフル アクセス。
 | microsoft.aad.directory/devices/delete | Azure Active Directory での devices の削除。 |
 | microsoft.aad.directory/devices/disable | Azure Active Directory での devices の無効化。 |
 | microsoft.aad.directory/devices/enable | Azure Active Directory での devices の有効化。 |
-| microsoft.aad.reports/allEntities/read | Azure AD レポートの読み取り。 |
+| microsoft.aad.reports/applicationAuditLogs/read | Azure AD レポート内の applicationAuditLogs の読み取り。 |
+| microsoft.aad.reports/applicationSignInReports/read | Azure AD レポート内の applicationSignInReports の読み取り。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
@@ -385,7 +386,8 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
 | microsoft.aad.directorySync/allEntities/allTasks | Azure AD Connect でのすべてのアクションの実行。 |
 | microsoft.aad.identityProtection/allEntities/allTasks | microsoft.aad.identityProtection でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.aad.privilegedIdentityManagement/allEntities/read | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの読み取り。 |
-| microsoft.aad.reports/allEntities/allTasks | Azure AD レポートの読み取りと構成。 |
+| microsoft.aad.reports/applicationAuditLogs/read | Azure AD レポート内の applicationAuditLogs の読み取り。 |
+| microsoft.aad.reports/applicationSignInReports/read | Azure AD レポート内の applicationSignInReports の読み取り。 |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
 | microsoft.azure.informationProtection/allEntities/allTasks | Azure Information Protection の全側面の管理。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
@@ -447,6 +449,28 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
 | microsoft.aad.directory/policies/conditionalAccess/owners/read | Azure Active Directory での policies.conditionalAccess プロパティの読み取り。 |
 | microsoft.aad.directory/policies/conditionalAccess/owners/update | Azure Active Directory での policies.conditionalAccess プロパティの更新。 |
 | microsoft.aad.directory/policies/conditionalAccess/policiesAppliedTo/read | Azure Active Directory での policies.conditionalAccess プロパティの読み取り。 |
+
+### <a name="crm-service-administrator"></a>CRM サービス管理者
+Dynamics 365 製品のすべての側面を管理できます。
+
+  > [!NOTE]
+  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
+  >
+  >
+
+  > [!NOTE]
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.powerApps.dynamics365/allEntities/allTasks | Dynamics 365 の全側面の管理。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
 ### <a name="customer-lockbox-access-approver"></a>カスタマー ロックボックスのアクセス承認者
 Microsoft サポートがお客様の組織データにアクセスする要求を承認することができます。
@@ -604,28 +628,8 @@ Azure AD Connect サービスでのみ使用されます。
 | microsoft.aad.directory/users/manager/update | Azure Active Directory での users.manager プロパティの更新。 |
 | microsoft.aad.directory/users/userPrincipalName/update | Azure Active Directory での users.userPrincipalName プロパティの更新。 |
 
-### <a name="dynamics-365-administrator"></a>Dynamics 365 管理者
-Dynamics 365 製品のすべての側面を管理できます。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Dynamics 365 サービス管理者" として識別されます。 Azure portal では、"Dynamics 365 管理者" になります。
-
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可も備えています。 詳細については、上記のロールの説明を参照してください。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.powerApps.dynamics365/allEntities/allTasks | Dynamics 365 の全側面の管理。 |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
-| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
-
-### <a name="exchange-administrator"></a>Exchange 管理者
-Exchange 製品のすべての側面を管理できます。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Exchange サービス管理者" として識別されます。 Azure portal では、"Exchange 管理者" になります。
+### <a name="exchange-service-administrator"></a>Exchange サービス管理者
+Exchange 製品のすべての側面を管理できます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -640,13 +644,14 @@ Exchange 製品のすべての側面を管理できます。 Microsoft Graph API
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.aad.directory/groups/unified/appRoleAssignments/update | Azure Active Directory 内での groups.unified プロパティの更新。 |
+| microsoft.aad.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
 | microsoft.aad.directory/groups/unified/create | Office 365 グループを作成します。 |
 | microsoft.aad.directory/groups/unified/delete | Office 365 グループを削除します。 |
-| microsoft.aad.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
 | microsoft.aad.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
 | microsoft.aad.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.office365.exchange/allEntities/allTasks | Exchange Online の全側面の管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
@@ -713,8 +718,8 @@ Azure Information Protection 製品のすべての側面を管理できます。
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-### <a name="intune-administrator"></a>Intune 管理者
-Intune 製品のすべての側面を管理できます。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Intune サービス管理者" として識別されます。 Azure portal では、"Intune 管理者" になります。
+### <a name="intune-service-administrator"></a>Intune サービス管理者
+Intune 製品のすべての側面を管理できます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -769,8 +774,8 @@ Intune 製品のすべての側面を管理できます。 Microsoft Graph API�
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
-### <a name="skype-for-business-administrator"></a>Skype for Business 管理者
-Skype for Business 製品のすべての側面を管理できます。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Skype for Business サービス管理者" として識別されます。 Azure portal では、"Skype for Business 管理者" になります。
+### <a name="lync-service-administrator"></a>Lync サービス管理者
+Skype for Business 製品のすべての側面を管理できます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -886,8 +891,8 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-### <a name="power-bi-administrator"></a>Power BI 管理者
-Power BI 製品のすべての側面を管理できます。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Power BI サービス管理者" として識別されます。 Azure portal では、"Power BI 管理者" になります。
+### <a name="power-bi-service-administrator"></a>Power BI サービス管理者
+Power BI 製品のすべての側面を管理できます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -941,7 +946,8 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.aad.reports/allEntities/read | Azure AD レポートの読み取り。 |
+| microsoft.aad.reports/applicationAuditLogs/read | Azure AD レポート内の applicationAuditLogs の読み取り。 |
+| microsoft.aad.reports/applicationSignInReports/read | Azure AD レポート内の applicationSignInReports の読み取り。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
@@ -970,6 +976,8 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
 | microsoft.aad.identityProtection/allEntities/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
 | microsoft.aad.identityProtection/allEntities/update | microsoft.aad.identityProtection でのすべてのリソースの更新。 |
 | microsoft.aad.privilegedIdentityManagement/allEntities/read | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの読み取り。 |
+| microsoft.aad.reports/applicationAuditLogs/read | Azure AD レポート内の applicationAuditLogs の読み取り。 |
+| microsoft.aad.reports/applicationSignInReports/read | Azure AD レポート内の applicationSignInReports の読み取り。 |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.protectionCenter/allEntities/read | Office 365 プロテクション センターの全側面の読み取り。 |
@@ -993,6 +1001,8 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
 | --- | --- |
 | microsoft.aad.identityProtection/allEntities/read | microsoft.aad.identityProtection でのすべてのリソースの読み取り。 |
 | microsoft.aad.privilegedIdentityManagement/allEntities/read | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの読み取り。 |
+| microsoft.aad.reports/applicationAuditLogs/read | Azure AD レポート内の applicationAuditLogs の読み取り。 |
+| microsoft.aad.reports/applicationSignInReports/read | Azure AD レポート内の applicationSignInReports の読み取り。 |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.protectionCenter/allEntities/read | Office 365 プロテクション センターの全側面の読み取り。 |
@@ -1019,8 +1029,8 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-### <a name="sharepoint-administrator"></a>SharePoint 管理者
-SharePoint サービスのすべての側面を管理できます。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "SharePoint サービス管理者" として識別されます。 Azure portal では、"SharePoint 管理者" になります。
+### <a name="sharepoint-service-administrator"></a>SharePoint サービス管理者
+SharePoint サービスのすべての側面を管理できます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -1035,12 +1045,14 @@ SharePoint サービスのすべての側面を管理できます。 Microsoft G
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.aad.directory/groups/unified/delete | Office 365 グループを削除します。 |
+| microsoft.aad.directory/groups/unified/appRoleAssignments/update | Azure Active Directory 内での groups.unified プロパティの更新。 |
 | microsoft.aad.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
+| microsoft.aad.directory/groups/unified/create | Office 365 グループを作成します。 |
+| microsoft.aad.directory/groups/unified/delete | Office 365 グループを削除します。 |
 | microsoft.aad.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
 | microsoft.aad.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | microsoft.office365.sharepoint でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
@@ -1108,8 +1120,8 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
-### <a name="teams-administrator"></a>Teams 管理者
-Microsoft Teams サービスを管理できます。 Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Teams サービス管理者" として識別されます。 Azure portal では、"Teams 管理者" になります。
+### <a name="teams-service-administrator"></a>Teams サービス管理者
+Microsoft Teams サービスを管理できます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -1124,11 +1136,13 @@ Microsoft Teams サービスを管理できます。 Microsoft Graph API、Azure
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/groups/hiddenMembers/read | Azure Active Directory での groups.hiddenMembers プロパティの読み取り。 |
-| microsoft.aad.directory/policies/basic/read | Azure Active Directory での policies の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groups/unified/delete | Office 365 グループを削除します。 |
+| microsoft.aad.directory/groups/unified/appRoleAssignments/update | Azure Active Directory 内での groups.unified プロパティの更新。 |
 | microsoft.aad.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
+| microsoft.aad.directory/groups/unified/create | Office 365 グループを作成します。 |
+| microsoft.aad.directory/groups/unified/delete | Office 365 グループを削除します。 |
 | microsoft.aad.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
 | microsoft.aad.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
+| microsoft.aad.directory/policies/basic/read | Azure Active Directory での policies の基本プロパティの読み取り。 |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |

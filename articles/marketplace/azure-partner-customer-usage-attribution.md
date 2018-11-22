@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280675"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685703"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -59,12 +59,13 @@ Microsoft パートナーは、顧客に代わって、プロビジョニング�
 1. [テンプレートのデプロイで GUID の成功を確認します](#verify-the-guid-deployment)。
 
 ### <a name="sample-resource-manager-template-code"></a>サンプル Resource Manager テンプレート コード
-メインのテンプレート ファイルに追加するときは、以下のサンプル コードを独自の入力で変更してください。
+
+テンプレートのリソースの追跡を有効にするには、リソース セクションに次の追加リソースを追加する必要があります。 メインのテンプレート ファイルに追加するときは、以下のサンプル コードを独自の入力で変更してください。
 リソースは、**mainTemplate.json** ファイルまたは **azuredeploy.json** ファイルのみに追加する必要があります。入れ子またはリンクされたテンプレート内には必要ありません。
 ```
 // Make sure to modify this sample code with your own inputs where applicable
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
+{ // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
     "apiVersion": "2018-02-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
@@ -126,12 +127,12 @@ GUID は、32 桁の16 進数から成る一意の参照番号です。 追跡�
 > [!Note]
 > [Azure Storage の GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を使用して GUID を作成することを強くお勧めします。 詳細については、[FAQ](#faq) をご覧ください。
 
-プランと配布チャネルごとに一意の GUID を作成します。 テンプレートを使用してデプロイする 2 つのソリューションを、Azure Marketplace と GitHub で公開する場合、4 つの GUID を作成する必要があります。
+各製品について、オファーと配布チャネルごとに一意の GUID を作成することをお勧めします。 レポートを分割したくない場合は、製品の複数配布チャネルに対して単一の GUID を使用することを選択できます。 
 
-*   A を Marketplace に提供 
-*   A を GitHub に提供
-*   B を Marketplace に提供 
-*   B を GitHub に提供
+テンプレートを使用して製品をデプロイし、それを Azure Marketplace と GitHub の両方で利用できる場合は、2 つの異なる GUID を作成し、登録することができます。
+
+*   Marketplace 内の製品 A 
+*   GitHub 上の製品 A
 
 レポートは、パートナー値 (Microsoft パートナー ID) と GUID によって行われます。 
 

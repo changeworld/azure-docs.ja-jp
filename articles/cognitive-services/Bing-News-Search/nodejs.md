@@ -3,19 +3,19 @@ title: 'クイック スタート: Bing News Search API (Node.js)'
 titlesuffix: Azure Cognitive Services
 description: Bing News Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 923566dc2764037164725f795e411beef939d92a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: aahi
+ms.openlocfilehash: 2551e950630821a31c86b3d27f6ff5e74c09695a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802072"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52159884"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-nodejs"></a>Node.js での Bing News Search API のクイック スタート
 

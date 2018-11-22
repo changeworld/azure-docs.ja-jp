@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 09/27/2018
 ms.topic: quickstart
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: a53ff5fdb256a46f42e7461bb46b6847d17ed230
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f2cb5d33b8d7a7442da16a38e268c56de363a9c6
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958749"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274084"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Cloudyn で Azure サブスクリプションとアカウントをアクティブ化する
 

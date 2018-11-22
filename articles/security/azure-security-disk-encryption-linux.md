@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/19/2018
-ms.openlocfilehash: 3561c2959283cd1c589414b96724cf0341af5e0a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8806d2b1848064c48615aed653c69c2df9b1949f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215380"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685465"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Linux IaaS VM で Azure Disk Encryption を有効にする 
 
@@ -130,7 +130,7 @@ Azure 内にある既存または実行中の IaaS Linux VM でのディスク�
 | パラメーター | 説明 |
 | --- | --- |
 | vmName | 暗号化操作を実行する VM の名前。 |
-| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。 これは、コマンドレット `(Get-AzureRmKeyVault -ResourceGroupName <MyResourceGroupName>). Vaultname` または Azure CLI コマンド `az keyvault list --resource-group "MySecureGroup"  |Convertfrom-JSON` を使用して取得できます。|
+| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。 これは、コマンドレット `(Get-AzureRmKeyVault -ResourceGroupName <MyResourceGroupName>). Vaultname` または Azure CLI コマンド `az keyvault list --resource-group "MySecureGroup"  |ConvertFrom-JSON` を使用して取得できます。|
 | keyVaultResourceGroup | キー コンテナーが含まれているリソース グループの名前|
 |  keyEncryptionKeyURL | 生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL。 このパラメーターは、UseExistingKek ドロップダウン リストで **nokek** を選択した場合には省略可能です。 UseExistingKek ドロップダウン リストで **kek** を選択した場合は、_keyEncryptionKeyURL_ 値を入力する必要があります。 |
 | volumeType | 暗号化操作が実行されるボリュームの種類。 有効な値は _OS_、_Data_、および _All_ です。 
@@ -153,7 +153,7 @@ Linux スケール セット データ ディスクの暗号化のバッチ フ�
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は､[az feature show](/cli/azure/feature#az_feature_show) で確認できます｡ `State` から *Registered* と報告されたら､[az provider register](/cli/azure/provider#az_provider_register) を使って *Mirosoft.Compute* プロバイダーを登録し直します｡
+登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は､[az feature show](/cli/azure/feature#az_feature_show) で確認できます｡ `State` から *Registered* と報告されたら､[az provider register](/cli/azure/provider#az_provider_register) を使って *Microsoft.Compute* プロバイダーを登録し直します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -191,7 +191,7 @@ az provider register --namespace Microsoft.Compute
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は、[Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) を使用して確認できます。 `RegistrationState` から *Registered* と報告されたら、[Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) を使用して *Mirosoft.Compute* プロバイダーを登録し直します｡
+登録要求が伝達されるのに最大 10 分時間がかかることがあります｡ 登録状態は、[Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) を使用して確認できます。 `RegistrationState` から *Registered* と報告されたら、[Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) を使用して *Microsoft.Compute* プロバイダーを登録し直します。
 
 ```azurepowershell-interactive
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
@@ -304,7 +304,7 @@ LVM-on-crypt のセットアップをお勧めします。 以下に示すすべ
     
     4. -EncryptFormatAll を指定して Set-AzureRmVMDiskEncryptionExtension PowerShell コマンドレットを実行し、これらのディスクを暗号化します。
          ```azurepowershell-interactive
-         Set-AzureRmVMDiskEncryptionExtension -ResouceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
+         Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
          ```
     5. これらの新しいディスク上に LVM を設定します。 VM の起動が完了した後で、暗号化されたドライブのロックが解除されます。 そのため、LVM のマウントをその後に遅延させる必要があります。
 
@@ -330,7 +330,7 @@ PowerShell コマンドレット [Set-AzureRmVMOSDisk](/powershell/module/azurer
 ```azurepowershell-interactive
 $VirtualMachine = New-AzureRmVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
 $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name "SecureOSDisk" -VhdUri "os.vhd" Caching ReadWrite -Windows -CreateOption "Attach" -DiskEncryptionKeyUrl "https://mytestvault.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa" -DiskEncryptionKeyVaultId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mytestvault"
-New-AzureRmVM -VM $VirtualMachine -ResouceGroupName "MySecureRG"
+New-AzureRmVM -VM $VirtualMachine -ResourceGroupName "MySecureRG"
 ```
 
 ## <a name="enable-encryption-on-a-newly-added-data-disk"></a>新しく追加されたデータ ディスクで暗号化を有効にする

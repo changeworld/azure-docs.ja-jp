@@ -6,15 +6,15 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 07/19/2018
+ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 3138f0ebb6316e69c873a37d479ddc0279a361ef
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 8ea4a615cff02cad1030f10b408fe047f1208a60
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285079"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819222"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>チュートリアル: デバイスの問題のトラブルシューティングと修正
 

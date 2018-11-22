@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 55b86e0d23936e47a82aedf213e20eb6dec3d56d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 66a10cdd6324147509bcb45dad9e9b40b5335fef
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621821"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684918"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成  
 
@@ -101,7 +101,7 @@ Log Analytics データで収集されたログのメトリックを機能させ
             "type": "string",
             "defaultValue": "true",
             "metadata": {
-                "description": "Specifies whether the log convertion rule is enabled"
+                "description": "Specifies whether the log conversion rule is enabled"
             }
         },
         "convertRuleMetric": {

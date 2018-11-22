@@ -3,19 +3,19 @@ title: 'クイック スタート: Bing Video Search (PHP)'
 titlesuffix: Azure Cognitive Services
 description: Bing Video Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 4e64771802564da1e1cb9efccef1ef63b38c2b80
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.author: aahi
+ms.openlocfilehash: e345c9c2e265478b438af6952f7721d3ecc6103b
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224717"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165265"
 ---
 # <a name="quickstart-bing-video-search-api-with-php"></a>クイック スタート: PHP での Bing Video Search API
 

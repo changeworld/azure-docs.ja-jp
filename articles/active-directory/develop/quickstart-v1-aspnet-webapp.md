@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: 538a92c094c10cce1177a9669465b383873fc5a1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a421527de275d38650c314d3722a7d2f93e8331d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971843"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285018"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -145,7 +145,7 @@ Visual Studio で新しいビューを作成してサインイン ボタンを�
 
     [!code-html[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Views/Home/Index.cshtml "Index.cshtml")]
 
-<!--start-collapse--> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Sign-in with Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](https://docs.microsoft.com/azure/active-directory/develop/howto-add-branding-guidelines-in-azure-ad-apps)をご覧ください。
+<!--start-collapse--> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Sign-in with Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](howto-add-branding-in-azure-ad-apps.md)をご覧ください。
 <!--end-collapse-->
 
 ## <a name="step-7-display-users-claims-by-adding-a-controller"></a>手順 7: コントローラーを追加してユーザーの要求を表示する

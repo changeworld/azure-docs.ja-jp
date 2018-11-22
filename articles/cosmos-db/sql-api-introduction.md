@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: f71a7ad538e22359a2a0dd9c2e3f6c4448ee5a2d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5d1e86630ff9143a75e5b0502a64c7661cc2822c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232395"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161083"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Azure Cosmos DB の概要: SQL API
 
@@ -24,7 +24,7 @@ ms.locfileid: "51232395"
 
 ![Azure SQL API](./media/sql-api-introduction/cosmosdb-sql-api.png) 
 
-SQL API を使用すると、Azure Cosmos DB で豊富で使い慣れた [SQL クエリ機能](sql-api-sql-query.md)を利用できるようになるほか、スキーマレスの JSON データに対する待ち時間が一貫して低くなります。 この記事では、Azure Cosmos DB の SQL API の概要を説明します。また、Azure Cosmos DB を使用して大量の JSON データを格納し、数ミリ秒の待ち時間でデータを照会する方法、スキーマを簡単に進化させる方法についても説明します。 
+SQL API を使用すると、Azure Cosmos DB で豊富で使い慣れた [SQL クエリ機能](how-to-sql-query.md)を利用できるようになるほか、スキーマレスの JSON データに対する待ち時間が一貫して低くなります。 この記事では、Azure Cosmos DB の SQL API の概要を説明します。また、Azure Cosmos DB を使用して大量の JSON データを格納し、数ミリ秒の待ち時間でデータを照会する方法、スキーマを簡単に進化させる方法についても説明します。 
 
 ## <a name="what-capabilities-and-key-features-does-azure-cosmos-db-offer"></a>Azure Cosmos DB の主な機能
 SQL API を使った場合の Azure Cosmos DB の主な機能とメリットは次のとおりです。
@@ -34,7 +34,7 @@ SQL API を使った場合の Azure Cosmos DB の主な機能とメリットは�
 
 * **複数リージョンのレプリケーション**: Azure Cosmos DB は、Azure Cosmos DB アカウントに関連付けられているすべてのリージョンにデータを透過的にレプリケートします。これにより、整合性、可用性、パフォーマンスを所定のレベルで確保して、これらのトレードオフを実現しながら、データへのグローバル アクセスを必要とするアプリケーションを開発できます。 Azure Cosmos DB は、マルチホーミング API を使用した透過的なリージョン内フェールオーバーを提供します。また、スループットとストレージを世界規模で弾力的にスケールすることもできます。 詳細については、[Azure Cosmos DB を使用してデータをグローバルに分散させる方法](distribute-data-globally.md)に関するページを参照してください。
 
-* **馴染みのある SQL 構文を使用したアドホック クエリ:** 多種多様な JSON ドキュメントを格納し、馴染みのある SQL 構文を使用して照会できます。 Azure Cosmos DB では、同時実行性の高い、ロックのないログ構造のインデックス作成技術を利用して、すべてのドキュメントのコンテンツのインデックスを自動的に作成します。 そのため、スキーマのヒント、セカンダリ インデックス、ビューを指定せずに、豊富なリアルタイム クエリが可能となっています。 詳細については、[Azure Cosmos DB に対するクエリ](sql-api-sql-query.md)に関するページを参照してください。 
+* **馴染みのある SQL 構文を使用したアドホック クエリ:** 多種多様な JSON ドキュメントを格納し、馴染みのある SQL 構文を使用して照会できます。 Azure Cosmos DB では、同時実行性の高い、ロックのないログ構造のインデックス作成技術を利用して、すべてのドキュメントのコンテンツのインデックスを自動的に作成します。 そのため、スキーマのヒント、セカンダリ インデックス、ビューを指定せずに、豊富なリアルタイム クエリが可能となっています。 詳細については、[Azure Cosmos DB に対するクエリ](how-to-sql-query.md)に関するページを参照してください。 
 * **データベース内で JavaScript を実行**: 標準の JavaScript を使用し、ストアド プロシージャ、トリガー、ユーザー定義関数 (UDF) としてアプリケーション ロジックを表現することができるため、 アプリケーション スキーマとデータベース スキーマ間のミスマッチに悩まされることなく、アプリケーション ロジックでデータを扱うことができます。 SQL API は、JavaScript アプリケーション ロジックを完全なトランザクションとしてデータベース エンジン内から直接実行できるようになっています。 JavaScript が深いレベルで統合されているため、INSERT、REPLACE、DELETE、SELECT の操作を分離されたトランザクションとして JavaScript プログラム内から実行することができます。 詳細については、[SQL のサーバー側プログラミング](programming.md)に関するページを参照してください。
 
 * **調整可能な整合性レベル:** 整合性とパフォーマンスの最適なトレードオフを実現するために、明確に定義された 5 つの整合性レベルの中から選択できます。 Azure Cosmos DB では、クエリと読み取り操作に関して、強固、有界整合性制約、セッション、一貫性のあるプレフィックス、最終的の 5 種類の整合性レベルを提供します。 きめ細かな一貫性レベルが明確に定義されていることによって、一貫性、可用性、待機時間の最適なトレードオフを検討することができます。 詳細については、[整合性レベルを使用して可用性とパフォーマンスを最大化する方法](consistency-levels.md)に関するページを参照してください。

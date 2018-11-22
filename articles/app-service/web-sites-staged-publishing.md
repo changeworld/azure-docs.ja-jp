@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ea9167404034911a0e917374fbdb9962da1578d5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b5a06cff653007568b4ab2b44624b6314413f8a6
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257835"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636069"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
 
-使用している App Service プラン レベルが **Standard** または **Premium** である場合は、Web アプリ、Linux 上の Web アプリ、モバイル バック エンド、API アプリを [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする際、既定の運用スロットではなく、個別のデプロイ スロットにデプロイすることができます。 デプロイ スロットは、実際には固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 デプロイ スロットにアプリケーションをデプロイすることには、次のメリットがあります。
+使用している App Service プラン レベルが **Standard**、**Premium**、**Isolated** のいずれかである場合は、Web アプリ、Linux 上の Web アプリ、モバイル バック エンド、API アプリを [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする際、既定の運用スロットではなく、個別のデプロイ スロットにデプロイすることができます。 デプロイ スロットは、実際には固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 デプロイ スロットにアプリケーションをデプロイすることには、次のメリットがあります。
 
 * ステージング デプロイ スロットでアプリの変更を検証した後に、運用スロットにスワップできます。
 * スロットにアプリをデプロイした後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。 これにより、アプリをデプロイする際のダウンタイムがなくなります。 トラフィックのリダイレクトはシームレスであるため、スワップ操作によりドロップされる要求はありません。 このワークフロー全体は、スワップ前の検証が必要ない場合、 [自動スワップ](#Auto-Swap) を構成することで自動化できます。
@@ -36,7 +36,7 @@ ms.locfileid: "51257835"
 <a name="Add"></a>
 
 ## <a name="add-a-deployment-slot"></a>デプロイ スロットの追加
-複数のデプロイ スロットを有効にするには、アプリが **Standard** または **Premium** レベルで実行されている必要があります。
+複数のデプロイ スロットを有効にするには、アプリが **Standard**、**Premium**、**Isolated* のいずれかのレベルで実行されている必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) でアプリの[リソース ブレード](../azure-resource-manager/resource-group-portal.md#manage-resources)を開きます。
 2. **[デプロイ スロット]** オプションを選択し、**[スロットの追加]** をクリックします。
@@ -44,7 +44,7 @@ ms.locfileid: "51257835"
     ![新しいデプロイ スロットの追加][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > アプリがまだ **Standard** または **Premium** レベルでない場合は、ステージングされた発行を有効にするためのレベルを示すメッセージが表示されます。 その場合は、操作を継続する前に、**[アップグレード]** を選択してアプリの **[スケール]** タブに移動できます。
+   > アプリがまだ **Standard**、**Premium**、**Isolated* のいずれのレベルでもない場合は、ステージングされた発行を有効にするためのサポート対象のレベルを示すメッセージが表示されます。 その場合は、操作を継続する前に、**[アップグレード]** を選択してアプリの **[スケール]** タブに移動できます。
    > 
    > 
 3. **[スロットの追加]** ブレードで、スロット名を設定し、別の既存のデプロイ スロットからアプリ構成を複製するかどうかを選択します。 チェック マークをクリックして続行します。

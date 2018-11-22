@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: bc88ca63f14c5480210455abcf403771b6a4c232
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288035"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264130"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>クイック スタート: スキルとサンプル データを使用したコグニティブ検索パイプラインの作成
 
@@ -33,9 +33,16 @@ ms.locfileid: "51288035"
 * 米国中西部
 * 米国中南部
 * 米国東部
+* 米国東部 2
+* 米国西部 2
+* カナダ中部
 * 西ヨーロッパ
+* 英国南部
 * 北ヨーロッパ
+* ブラジル南部
 * 東南アジア
+* インド中部
+* オーストラリア東部
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

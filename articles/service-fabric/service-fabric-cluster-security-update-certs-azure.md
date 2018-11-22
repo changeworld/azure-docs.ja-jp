@@ -3,7 +3,7 @@ title: Azure Service Fabric クラスターでの証明書の管理 | Microsoft 
 description: Service Fabric クラスターに対して新しい証明書を追加、証明書をロールオーバー、および証明書を削除する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/23/2018
-ms.author: chackdan
-ms.openlocfilehash: a1cfd68b526d8ce63fcfbc3b6e0eac84926fabaa
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.date: 11/13/2018
+ms.author: aljo-microsoft
+ms.openlocfilehash: aa5096b84f9bfe97784d6f80e4c203a1d8384404
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42141182"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687420"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
@@ -175,7 +175,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>追加した新しいパラメーターを反映するようにテンプレート ファイルを編集する
-[git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) のサンプルを使用して操作する場合は、サンプル 5-VM-1-NodeTypes-Secure.paramters_Step2.JSON の変更から始めることができます。 
+[git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) のサンプルを使用して操作する場合は、サンプル 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON の変更から始めることができます 
 
 Resource Manager テンプレートのパラメーター ファイルを編集し、secCertificateThumbprint と secCertificateUrlValue に 2 つの新しいパラメーターを追加します。 
 
@@ -196,7 +196,7 @@ Resource Manager テンプレートのパラメーター ファイルを編集�
 
 ```powershell
 Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionId <Subcription ID> 
+Select-AzureRmSubscription -SubscriptionId <Subscription ID> 
 
 ```
 
@@ -221,11 +221,11 @@ New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <R
 同じ PowerShell コマンドの入力例は次のとおりです。
 
 ```powershell
-$ResouceGroup2 = "chackosecure5"
+$ResourceGroup2 = "chackosecure5"
 $TemplateFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure_Step2.json"
 $TemplateParmFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure.parameters_Step2.json"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResouceGroup2
+New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
 
 ```
 

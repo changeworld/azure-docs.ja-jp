@@ -8,44 +8,47 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5572c80879584e7f6df650263ae455a134ee4088
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283599"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616488"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Azure Monitor におけるログ アラートのトラブルシューティング  
-
 ## <a name="overview"></a>概要
-この記事では、Azure Monitor 内でログ アラートを設定しているときに遭遇する一般的な問題への対処について説明します。 また、ログ アラートの機能や構成に関してよく寄せられる質問の解決策を紹介しています。 アラートを説明する**ログ アラート**という用語。このアラートでは、[Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) または [Application Insights](../application-insights/app-insights-analytics.md) に基づいて、シグナルがカスタム クエリとなります。 「[ログ アラート - 概要](monitor-alerts-unified-log.md)」からの機能、用語、および型について説明します。
+この記事では、Azure Monitor 内でログ アラートを設定しているときに遭遇する一般的な問題の解決方法について説明します。 また、ログ アラートの機能や構成に関してよく寄せられる質問の解決策を紹介しています。 
+
+アラートを説明する**ログ アラート**という用語。このアラートは、[Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) または [Application Insights](../application-insights/app-insights-analytics.md) においてカスタム クエリに基づいて作動します。 機能、用語、および種類については、「[ログ アラート - 概要](monitor-alerts-unified-log.md)」をご覧ください。
 
 > [!NOTE]
-> この記事では、アラート ルールがトリガー済みとして Azure portal に表示されるケースや、関連するアクション グループを介して通知が表示されるケースについては考慮していません。 そのようなケースについて詳しくは、[アクション グループ](monitoring-action-groups.md)に関する記事を参照してください。
+> この記事では、トリガーされたアラート ルールが Azure portal に表示されるケースや、関連するアクション グループによって実行された通知が Azure portal に表示されるケースについては考慮していません。 そのようなケースについて詳しくは、[アクション グループ](monitoring-action-groups.md)に関する記事を参照してください。
 
 
 ## <a name="log-alert-didnt-fire"></a>ログ アラートが作動しない
 
-構成されている [Azure Monitor のログ アラート ルール](alert-log.md)が、[Azure アラート](monitoring-alerts-managing-alert-states.md)で確認すると、発生すべきタイミングでトリガーされていないことがあります。以降、その一般的な理由について詳しく取り上げます。 
+ここでは、構成された [Azure Monitor のログ アラート ルール](alert-log.md)の状態が、[予期された場合に "*起動済み*"](monitoring-alerts-managing-alert-states.md) にならない共通の理由をいくつか示します。 
 
 ### <a name="data-ingestion-time-for-logs"></a>ログのデータ インジェストの時間
-ログ アラートは、[Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) または [Application Insights](../application-insights/app-insights-analytics.md) に基づき、お客様によって指定されたクエリを定期的に実行することによって動作します。 そのどちらも、膨大な量のログ データを処理し、同時に機能を提供する、Analytics のパワーによって支えられています。 Log Analytics サービスは、数千のお客様から送られた何テラバイトものデータを処理します。そのデータは、世界中の多様なソースから送信されます。そのため、時間的遅延の影響を受けやすいサービスとなっています。 詳細については、「[Log Analytics のデータ インジェスト時間](../log-analytics/log-analytics-data-ingestion-time.md)」を参照してください。
+ログ アラートは、[Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) または [Application Insights](../application-insights/app-insights-analytics.md) に基づいてクエリを定期的に実行します。 Log Analytics は、世界中の多様なソースから数千のお客様によって送られた何テラバイトものデータを処理するため、さまざまな時間的遅延の影響を受けやすいサービスとなっています。 詳細については、「[Log Analytics のデータ インジェスト時間](../log-analytics/log-analytics-data-ingestion-time.md)」を参照してください。
 
-Log Analytics または Application Insights のログで生じる可能性のあるデータ インジェストの遅延に対処するために、ログ アラートは、アラート対象期間についてのデータがまだ取り込まれていないことがわかると、しばらく待ってから再試行します。 Log Analytics によってデータが取り込まれるまで確実に待つために、ログ アラートは、設定された待ち時間を指数関数的に増やします。 したがって、ログ アラート ルールによって照会されたログがインジェスト遅延の影響を受けた場合、ログ アラートがトリガーされるのは、Log Analytics にデータが取り込まれて利用可能になった後、かつその間ログ アラート サービスが複数回にわたって再試行されたことで指数関数的に増やされた時間の経過後となります。
+システムは、データ インジェストの遅延を軽減するため、必要なデータが取り込まれていないことがわかると、待機してアラート クエリを何度も再試行します。 システムによって、指数関数的に増加する待機時間が設定されます。 ログ アラートはデータが使用可能にならないとトリガーされません。したがって、遅延の原因はログ データ インジェストが遅いことによります。 
 
 ### <a name="incorrect-time-period-configured"></a>構成されている期間が正しくない
 [ログ アラートの用語](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types)に関する記事で説明されているように、クエリの時間範囲は、構成に記述された期間によって指定されます。 クエリから返されるのは、この時間範囲内に作成されたレコードだけです。 期間では、ログ クエリ用にフェッチされるデータを制限して不正使用を防いだり、ログ クエリで使用されている時間コマンド (ago など) を回避することができます。 
-*たとえば、期間が 60 分に設定されていて、クエリが午後 1 時 15 分に実行された場合は、午後 12 時 15 分から午後 1 時 15 分までの間に作成されたレコードだけが、ログ クエリの実行用に返されます。ログ クエリで "ago (1d)" などの時間コマンドが使用されている場合、そのログ クエリは、過去 60 分間しかデータが存在しないかのように、午後 12 時 15 分から午後 1 時 15 分までの間のデータのみを対象に実行されます。ログ クエリで指定された 7 日間についてはデータが存在しないかのように動作します。*
+"*たとえば、期間が 60 分に設定されていて、クエリが午後 1 時 15 分に実行された場合は、午後 12 時 15 分から午後 1 時 15 分までの間に作成されたレコードだけが、ログ クエリで使用されます。ログ クエリが *ago (1d)* のような時間コマンドを使用する場合でも、クエリは午後 12 時 15 分から午後 1 時 15 分までのデータしか使用しません。期間がその間隔に設定されているためです。*"
 
-ご自分のクエリのロジックに応じて、構成で適切な期間が指定されているかどうかを確認してください。 前出の例で、緑色のマーカーで示したようにログ クエリに ago (1d) を使用した場合、指定したクエリが想定したとおりに正しく実行されるようにするには、期間が 24 時間または 1,440 分 (赤色で示した箇所) に設定されている必要があります。
-    ![期間](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
+したがって、構成内の期間がクエリと一致しているかを確認してください。 前出の例で、緑色のマーカーで示したようにログ クエリに *ago (1d)* を使用した場合、クエリが意図どおりに実行されるようにするには、期間が 24 時間または 1,440 分 (赤色で示した箇所) に設定されている必要があります。
+
+![期間](./media/monitor-alerts-unified/LogAlertTimePeriod.png)
 
 ### <a name="suppress-alerts-option-is-set"></a>[アラートを表示しない] オプションが設定されている
-[Azure portal でのログ アラート ルールの作成](alert-log.md#managing-log-alerts-from-the-azure-portal)に関する記事の手順 8. で説明されているように、ログ アラートには、アラート ルールを自動的に抑制し、指定された期間、通知/トリガーを無効にするための構成オプションがあります。 [アラートを表示しない] オプションを選択すると、**[アラートを表示しない]** オプションに指定されている期間、アクション グループがトリガーされないまま、ログ アラートが実行されます。そのため、実際には構成に従って抑制されているにもかかわらず、ユーザーにはアラートが作動しなかったように感じられることがあります。
-    ![アラートを表示しない](./media/monitor-alerts-unified/LogAlertSuppress.png)
+[Azure portal でのログ アラート ルールの作成](alert-log.md#managing-log-alerts-from-the-azure-portal)に関する記事の手順 8 で説明しているように、ログ アラートでは、構成された期間にトリガーや通知アクションを抑止するために **[アラートを表示しない]** オプションが提供されます。 この結果、アラートが実際に発生して抑止されたときに、アラートが発生しなかったと受け取る場合があります。  
+
+![アラートを表示しない](./media/monitor-alerts-unified/LogAlertSuppress.png)
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>メトリック測定のアラート ルールが正しくない
-メトリック測定タイプのログ アラート ルールは、ログ アラートのサブタイプで、特殊な機能がある代わりに、アラートのクエリ構文に対して制限を設けます。 メトリック測定のログ アラート ルールでは、メトリックのタイム シリーズ (明らかに同じサイズの期間と、それに対応する AggregatedValue の計算値を含んだテーブル) を提供する、アラート クエリの出力が必要です。 また、ユーザーは、そのテーブルに、AggregatedValue と一緒に、Computer や Node などの変数を含めることができます。 それを使用して、テーブル内のデータを並べ替えることができます。
+**メトリック測定ログ アラート**は、ログ アラートのサブタイプです。特別な機能を備え、アラートのクエリ構文が制限されています。 メトリック測定のログ アラート ルールでは、クエリ出力がメトリック時系列、すなわち同じ長さの個々の期間とそれに対応する集計値を含むテーブルであることが必要です。 また、ユーザーは、そのテーブルに AggregatedValue と一緒に追加の変数を含めることができます。 これらの変数はテーブルを並べ替えるために使用できます。 
 
 たとえば、メトリック測定のログ アラート ルールが次のように構成されていたとします。
 - クエリ: `search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
@@ -54,9 +57,9 @@ Log Analytics または Application Insights のログで生じる可能性の�
 - アラート ロジック: 連続 3 回の違反
 - 集計基準: $table を選択
 
-コマンド内では、summarize …by を使用し、 timestamp と $table という 2 つの変数を指定したため、アラート サービスは、下記のとおり、$table を "集計基準" に選択します。つまり、基本的には結果テーブルが $table フィールドで並べ替えられます。その後、テーブルの種類 (availabilityResults など) ごとに複数の AggregatedValue に注目し、連続 3 回以上の違反が存在するかどうかを確認します。
+コマンドには *summarize … by* が含まれ、2 つの変数 (timestamp & $table) が指定されているため、システムは集計基準として $table を選択します。 基本的には結果テーブルが *$table* フィールドで並べ替えられます。その後、テーブルの種類 (availabilityResults など) ごとに複数の AggregatedValue に注目し、連続 3 回以上の違反が存在するかどうかを確認します。
 
-   ![複数の値を使用したメトリック測定クエリの実行](./media/monitor-alerts-unified/LogMMQuery.png)
+![複数の値を使用したメトリック測定クエリの実行](./media/monitor-alerts-unified/LogMMQuery.png)
 
 "集計基準" は $table であるため、データが $table 列で並べ替えられた (赤色で示した箇所) 後、"集計基準" フィールド ($table) の種類をグループ化して探します。たとえば、availabilityResults の値は、1 つのプロット/エンティティとして見なされます (オレンジ色で示した箇所)。 アラート サービスは、この値プロット/エンティティから、テーブル値 "availabilityResults" に対してアラートがトリガーされる連続 3 回の違反 (緑色で示した箇所) がないかを確認します。 同様に、$table のその他すべての値に関して、連続 3 回の違反が見つかった場合、同じものに対して別のアラート通知がトリガーされます。アラート サービスは、1 つのプロット/エンティティに含まれる各値 (オレンジ色で示した箇所) を時刻別に自動的に並べ替えます。
 
@@ -85,4 +88,5 @@ Log Analytics と Application Insights を支えている Analytics は、イン
 
 * [Azure アラートのログ アラート](monitor-alerts-unified-log.md)について学習します。
 * [Application Insights](../application-insights/app-insights-analytics.md) についてさらに学習します。
-* [Log Analytics](../log-analytics/log-analytics-queries.md) についてさらに学習します。 
+* [Log Analytics](../log-analytics/log-analytics-overview.md) についてさらに学習します。 
+

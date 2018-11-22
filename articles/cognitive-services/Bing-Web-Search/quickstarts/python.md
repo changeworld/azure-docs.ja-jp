@@ -3,19 +3,19 @@ title: 'クイック スタート: Python で検索を実行する - Bing Web Se
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
-ms.author: erhopf
-ms.openlocfilehash: 22dc88d2b924587818f7767105872f01f2e43faf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: 2f034bd60747282ac9724250ab260e06122def6f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129150"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160996"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>クイック スタート: Python を使用して Bing Web Search API を呼び出す  
 

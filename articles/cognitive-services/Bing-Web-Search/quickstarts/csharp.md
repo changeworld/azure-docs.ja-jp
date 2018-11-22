@@ -3,19 +3,19 @@ title: 'クイック スタート: C# で検索を実行する - Bing Web Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
-ms.author: erhopf
-ms.openlocfilehash: 7f0555a9bb655109ff8786d3a0873d997d715477
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: 1997ca83ebcc7162d7056fdc099ab5b74d87fdd2
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124764"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163156"
 ---
 # <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>クイック スタート: C# を使用して Bing Web Search API を呼び出す  
 

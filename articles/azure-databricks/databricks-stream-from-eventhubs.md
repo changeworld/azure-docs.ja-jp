@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: a5415ed8f2440a52d18004a31b87487cdb584c03
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6e75e549486fb260f3ccbdead7fe1dea02593f3c
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415459"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707148"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
 
@@ -367,7 +367,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 ![Databricks クラスターを停止する](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after __ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。

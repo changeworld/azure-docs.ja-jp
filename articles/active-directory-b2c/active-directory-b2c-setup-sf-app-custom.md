@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: afed471694dd66adfc285965433a1efd92d1653b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 03961cab8bcf71a9db69937257385db5d3b500d8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945097"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684105"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Salesforce SAML プロバイダーでのサインインを設定する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory (Azure AD) B2C で[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して Salesforce 組織からのユーザーのサインインを有効にする方法について説明します。
+この記事では、Azure Active Directory (Azure AD) B2C で[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して Salesforce 組織からのユーザーのサインインを有効にする方法について説明します。 [SAML 技術プロファイル](saml-technical-profile.md)をカスタム ポリシーに追加することで、サインインを有効にします。
 
 ## <a name="prerequisites"></a>前提条件
 
-- 「[Azure Active Directory B2C のカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了します。
+- 「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
 - まだ行っていない場合は、[無料の Developer Edition アカウント](https://developer.salesforce.com/signup)にサインアップします。 この記事では、[Salesforce Lightning Experience](https://developer.salesforce.com/page/Lightning_Experience_FAQ) を使用します。
 - Salesforce 組織用の ["私のドメイン" のセットアップ](https://help.salesforce.com/articleView?id=domain_name_setup.htm&language=en_US&type=0)。
 
@@ -192,7 +192,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
     
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `LinkedIn-OAUTH` 」のように入力します。
 
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、検証のためにもう一度アップロードします。
+3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
 

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: juliako
-ms.openlocfilehash: 2f5c0ef63ba150fdad4aea1a0c65269611d56815
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247689"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616012"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -45,7 +45,7 @@ ms.locfileid: "51247689"
 * ファイル ベースのジョブ処理のための[変換](transforms-jobs-concept.md)の概念が導入されました。 変換を使用して、再利用可能な構成を構築し、Azure Resource Manager テンプレートを作成し、複数の顧客またはテナント間の処理の設定を分離することができます。
 * 1 つの資産で、ダイナミック パッケージと動的暗号化の設定が異なる[複数の StreamingLocator](streaming-locators-concept.md) を持つことができます。
 * [コンテンツ保護](content-key-policy-concept.md)はマルチキー機能をサポートしています。
-* 最大 24 時間の長さのライブ イベントをストリーミングすることができます。
+* Media Services を使用してシングル ビットレートのコントリビューション フィードをマルチ ビットレートの出力ストリームにコード変換すると、最大 24 時間のライブ イベントをストリーミングできます。
 * LiveEvent に対する新しい低待機時間ライブ ストリーミング サポート。
 * LiveEvent Preview は、ダイナミック パッケージと動的暗号化をサポートしています。 そのため、プレビューだけでなく、DASH および HLS パッケージに対するコンテンツ保護が可能です。
 * LiveOuput は、v2 API の Program エンティティよりも使用方法が簡単です。 
@@ -59,6 +59,7 @@ ms.locfileid: "51247689"
 * v3 SDK が Storage SDK から分離されたため、使用する Storage SDK のバージョンをより詳細に制御し、バージョン管理の問題を回避できるようになりました。 
 * v3 API では、エンコード ビット レートはすべてビット/秒単位です。 これは v2 Media Encoder Standard のプリセットとは異なります。 たとえば、v2 のビットレートは 128 (kbps) と指定されていますが、v3 では 128,000 (ビット/秒) です。 
 * v3 にはエンティティ AssetFiles、AccessPolicies、IngestManifests が存在しません。
+* v3 には IAsset.ParentAssets プロパティが存在しません。
 * ContentKeys はエンティティではなくなり、StreamingLocator のプロパティです。
 * Event Grid のサポートによって NotificationEndpoints を置き換えられました。
 * 次のエンティティ名が変更されました

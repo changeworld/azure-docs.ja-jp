@@ -14,25 +14,26 @@ ms.date: 08/02/2017
 ms.reviewer: abgreg;mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bfb04f596a61ff79c75cd38473c9480a29b0e6c4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5a224d7a78e35776b36b162228f6ba4c72677069
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139892"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636205"
 ---
-#  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>ユーザー コンテキスト ID を送信して Azure Application Insights で使用状況を把握できるようにする
+# <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>ユーザー コンテキスト ID を送信して Azure Application Insights で使用状況を把握できるようにする
 
 ## <a name="tracking-users"></a>ユーザーの追跡
 
-Application Insights を使用すると、次に示す一連の製品使用状況ツールでユーザーを監視したり追跡したりすることができます。 
-* [ユーザー、セッション、イベント](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
-* [ファネル](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-* [保持](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)
-* コーホート
-* [ブック](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+Application Insights を使用すると、次に示す一連の製品使用状況ツールでユーザーを監視したり追跡したりすることができます。
+
+- [ユーザー、セッション、イベント](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
+- [ファネル](https://docs.microsoft.com/azure/application-insights/usage-funnels)
+- [リテンション期間](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)コーホート
+- [ブック](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
 Application Insights で一定期間にわたってユーザーの行動を追跡するためには、ユーザーごと、またはセッションごとの ID が必要となります。 すべてのカスタム イベントまたはページ ビューに次の ID を追加します。
+
 - ユーザー、ファネル、リテンション期間、コーホート: ユーザー ID を追加します。
 - セッション: セッション ID を追加します。
 
@@ -41,6 +42,7 @@ Application Insights で一定期間にわたってユーザーの行動を追�
 ## <a name="choosing-user-ids"></a>ユーザー ID の選択
 
 一定期間にわたってユーザーの行動を追跡するためには、ユーザー セッションの終了後もユーザー ID を維持する必要があります。 ID を維持する方法としては、さまざまなアプローチが存在します。
+
 - 既にサービスに存在するユーザーの定義。
 - サービスがブラウザーにアクセスできる場合、ID を Cookie に含めてブラウザーに渡すことができます。 ユーザーのブラウザーに Cookie が存在する限り、ID は維持されます。
 - 必要に応じてセッションごとに新しい ID を使用することもできますが、ユーザーに関する結果が制限されます。 たとえば一定期間にわたるユーザーの行動の変化を把握できなくなります。
@@ -51,50 +53,92 @@ ID には、Guid のほか、個々のユーザーを一意に識別できるだ
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET アプリ: ITelemetryInitializer でのユーザー コンテキストの設定
 
-テレメトリ初期化子を作成し (詳細については[こちら](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)を参照)、Context.User.Id と Context.Session.Id を設定します。
+[ここ](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)で詳しく説明されているように、テレメトリ初期化子を作成します。 要求テレメトリを通じてセッション ID を渡し、Context.User.Id と Context.Session.Id を設定します。
 
 この例でユーザー ID に設定している識別子は、セッション後に有効期限が切れます。 可能であれば、セッションの終了後も維持されるユーザー ID を使用してください。
 
+### <a name="telemetry-initializer"></a>テレメトリ初期化子
+
 ```csharp
+using System;
+using System.Web;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
 
-    using System;
-    using System.Web;
-    using Microsoft.ApplicationInsights.Channel;
-    using Microsoft.ApplicationInsights.Extensibility;
-
-    namespace MvcWebRole.Telemetry
+namespace MvcWebRole.Telemetry
+{
+  /*
+   * Custom TelemetryInitializer that sets the user ID.
+   *
+   */
+  public class MyTelemetryInitializer : ITelemetryInitializer
+  {
+    public void Initialize(ITelemetry telemetry)
     {
-      /*
-       * Custom TelemetryInitializer that sets the user ID.
-       *
-       */
-      public class MyTelemetryInitializer : ITelemetryInitializer
-      {
-        public void Initialize(ITelemetry telemetry)
+        var ctx = HttpContext.Current;
+
+        // If telemetry initializer is called as part of request execution and not from some async thread
+        if (ctx != null)
         {
-            // For a full experience, track each user across sessions. For an incomplete view of user 
-            // behavior within a session, store user ID on the HttpContext Session.
-            // Set the user ID if we haven't done so yet.
-            if (HttpContext.Current.Session["UserId"] == null)
+            var requestTelemetry = ctx.GetRequestTelemetry();
+ 
+            // Set the user and session ids from requestTelemetry.Context.User.Id, which is populated in Application_PostAcquireRequestState in Global.asax.cs.
+            if (requestTelemetry != null && !string.IsNullOrEmpty(requestTelemetry.Context.User.Id) &&
+                (string.IsNullOrEmpty(telemetry.Context.User.Id) || string.IsNullOrEmpty(telemetry.Context.Session.Id)))
             {
-                HttpContext.Current.Session["UserId"] = Guid.NewGuid();
+                // Set the user id on the Application Insights telemetry item.
+                telemetry.Context.User.Id = requestTelemetry.Context.User.Id;
+ 
+                // Set the session id on the Application Insights telemetry item.
+                telemetry.Context.Session.Id = requestTelemetry.Context.User.Id;
             }
-
-            // Set the user id on the Application Insights telemetry item.
-            telemetry.Context.User.Id = (string)HttpContext.Current.Session["UserId"];
-
-            // Set the session id on the Application Insights telemetry item.
-            telemetry.Context.Session.Id = HttpContext.Current.Session.SessionID;
         }
-      }
     }
+  }
+}
+```
+
+### <a name="globalasaxcs"></a>Global.asax.cs
+
+```csharp
+using System.Web;
+using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Optimization;
+using System.Web.Routing;
+
+namespace MvcWebRole.Telemetry
+{
+    public class MvcApplication : HttpApplication
+    {
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+ 
+        protected void Application_PostAcquireRequestState()
+        {
+            var requestTelemetry = Context.GetRequestTelemetry();
+ 
+            if (HttpContext.Current.Session != null && requestTelemetry != null && string.IsNullOrEmpty(requestTelemetry.Context.User.Id))
+            {
+                requestTelemetry.Context.User.Id = Session.SessionID;
+            }
+        }
+    }
+}
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 - 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
-    * [利用状況の概要](app-insights-usage-overview.md)
-    * [ユーザー、セッション、およびイベント](app-insights-usage-segmentation.md)
-    * [ファネル](usage-funnels.md)
-    * [保持](app-insights-usage-retention.md)
-    * [ブック](app-insights-usage-workbooks.md)
+    - [利用状況の概要](app-insights-usage-overview.md)
+    - [ユーザー、セッション、およびイベント](app-insights-usage-segmentation.md)
+    - [ファネル](usage-funnels.md)
+    - [保持](app-insights-usage-retention.md)
+    - [ブック](app-insights-usage-workbooks.md)

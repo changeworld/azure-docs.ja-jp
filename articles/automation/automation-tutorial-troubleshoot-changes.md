@@ -11,12 +11,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1865fcf47510bbaae82f98ccad85993a85ffc1ab
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fc4ccdc2d73d0aa7213db9b1d9a28d029ec032b7
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959139"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284661"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -44,7 +44,7 @@ ms.locfileid: "50959139"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ( http://portal.azure.com ) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="enable-change-tracking-and-inventory"></a>変更履歴とインベントリを有効にする
 
@@ -72,7 +72,7 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 変更履歴データは、型 **ConfigurationChange** に格納されます。
 次のサンプル Log Analytics クエリは、停止しているすべての Windows サービスを返します。
 
-```
+```loganalytics
 ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```

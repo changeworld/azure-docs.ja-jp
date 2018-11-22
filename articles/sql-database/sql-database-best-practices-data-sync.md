@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 4bc655f1e9da00a42c60e1ab763c5503b393d4a1
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fa5ce7264fd003e0a49d6408acae070577879cdd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646304"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686621"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 
@@ -219,13 +219,18 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 ## <a name="next-steps"></a>次の手順
 SQL データ同期の詳細については、以下を参照してください。
 
--   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベースにまたがるデータの同期)](sql-database-sync-data.md)
--   [Azure SQL データ同期のセットアップ](sql-database-get-started-sql-data-sync.md)
--   [Log Analytics を使用した Azure SQL データ同期の監視](sql-database-sync-monitor-oms.md)
--   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)  
--   SQL データ同期を構成する方法を示す完全な PowerShell の例  
-    -   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)  
+-   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
+-   データ同期の設定
+    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - PowerShell の場合
+        -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-database-data-sync-agent.md)
+-   監視 - [Log Analytics による SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
+-   同期スキーマの更新
+    -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](sql-database-update-sync-schema.md)
+    -   PowerShell の場合 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/sql-database-sync-update-schema.md)
 
 SQL Database の詳細については、以下をご覧ください。
 

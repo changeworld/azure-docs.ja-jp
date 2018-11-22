@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946098"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636273"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins のユーザー定義関数の問題をデバッグする方法
 
@@ -42,12 +42,12 @@ Azure Digital Twins インスタンスの診断設定が有効になっている
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'yourCorrelationIdentifier'
+| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| カスタム属性の名前 | 置換後の文字列 |
+| クエリの値 | 置換後の文字列 |
 | --- | --- |
-| *yourCorrelationIdentifier* | イベント データで指定した相関 ID |
+| YOUR_CORRELATION_IDENTIFIER | イベント データで指定した相関 ID |
 
 ユーザー定義関数をログに記録した場合、それらのログがカテゴリ `UserDefinedFunction` で Azure Log Analytics インスタンスに表示されます。 それらを取得するには、Azure Log Analytics で、次のクエリ条件を入力します。
 
@@ -62,6 +62,8 @@ AzureDiagnostics
 
 ソリューションに対してトラブルシューティングを実行するときは、一般的な問題の診断と識別の両方が重要です。 ユーザー定義関数を開発するときに直面するいくつかの一般的な問題を以下にまとめています。
 
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
 ### <a name="ensure-a-role-assignment-was-created"></a>ロールの割り当てが作成されていることを確認する
 
 Management API 内にロールの割り当てが作成されないと、ユーザー定義関数に通知の送信、メタデータの取得、トポロジ内での計算された値の設定などのアクションを実行するアクセス権限が付与されません。
@@ -69,13 +71,12 @@ Management API 内にロールの割り当てが作成されないと、ユー�
 次の Management API を使用してユーザー定義関数にロールの割り当てが存在することを確認してください。
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/roleassignments?path=/&traverse=Down&objectId=yourUserDefinedFunctionId
+GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| カスタム属性の名前 | 置換後の文字列 |
+| パラメーター | 置換後の文字列 |
 | --- | --- |
-| *yourManagementApiUrl* | Management API の完全な URL パス  |
-| *yourUserDefinedFunctionId* | ロールの割り当てを取得するユーザー定義関数の ID|
+| *YOUR_USER_DEFINED_FUNCTION_ID* | ロールの割り当てを取得するユーザー定義関数の ID|
 
 ロールの割り当てを取得できない場合は、[ユーザー定義関数にロールの割り当てを作成する方法](./how-to-user-defined-functions.md)に関する記事をご覧ください。
 
@@ -84,14 +85,13 @@ GET https://yourManagementApiUrl/api/v1.0/roleassignments?path=/&traverse=Down&o
 Azure Digital Twins インスタンスの Management API に対して次の呼び出しを実行すると、指定のマッチャーが指定のセンサーに適用されるかどうかを判断できます。
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/matchers/yourMatcherIdentifier/evaluate/yourSensorIdentifier?enableLogging=true
+GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| カスタム属性の名前 | 置換後の文字列 |
+| パラメーター | 置換後の文字列 |
 | --- | --- |
-| *yourManagementApiUrl* | Management API の完全な URL パス  |
-| *yourMatcherIdentifier* | 評価するマッチャーの ID |
-| *yourSensorIdentifier* | 評価するセンサーの ID |
+| *YOUR_MATCHER_IDENTIFIER* | 評価するマッチャーの ID |
+| *YOUR_SENSOR_IDENTIFIER* | 評価するセンサーの ID |
 
 応答:
 
@@ -109,13 +109,12 @@ GET https://yourManagementApiUrl/api/v1.0/matchers/yourMatcherIdentifier/evaluat
 Azure Digital Twins インスタンスの Management API に対して次の呼び出しを実行すると、指定のセンサーの受信テレメトリによってトリガーされるユーザー定義関数の識別子を判別できます。
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/sensors/yourSensorIdentifier/matchers?includes=UserDefinedFunctions
+GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| カスタム属性の名前 | 置換後の文字列 |
+| パラメーター | 置換後の文字列 |
 | --- | --- |
-| *yourManagementApiUrl* | Management API の完全な URL パス  |
-| *yourSensorIdentifier* | テレメトリを送信するセンサーの ID |
+| *YOUR_SENSOR_IDENTIFIER* | テレメトリを送信するセンサーの ID |
 
 応答:
 

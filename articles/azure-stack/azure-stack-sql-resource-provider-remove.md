@@ -11,31 +11,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: f5aa67ad0588e3f42e68056c8ffca97767975e8b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b7af23ccdd379aac9959bb9993fc1781a44e705e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361483"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684028"
 ---
 # <a name="remove-the-sql-resource-provider"></a>SQL リソース プロバイダーの削除
 
 SQL リソース プロバイダーを削除する前に、プロバイダーの依存関係をすべて削除する必要があります。 また、リソース プロバイダーのインストールに使用したデプロイ パッケージのコピーも必要になります。
 
-_DeploySqlProvider.ps1_ スクリプトを実行してリソース プロバイダーを削除する前に、いくつかのクリーンアップ タスクを実行する必要があります。
-次のクリーンアップ タスクは、テナントが担当します。
+  |最小の Azure Stack バージョン|SQL RP バージョン|
+  |-----|-----|
+  |バージョン 1808 (1.1808.0.97)|[SQL RP バージョン 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
+  |バージョン 1804 (1.0.180513.1)|[SQL RP バージョン 1.1.24.0](https://aka.ms/azurestacksqlrp11240)
+  |     |     |
+
+## <a name="dependency-cleanup"></a>依存関係のクリーンアップ
+
+DeploySqlProvider.ps1 スクリプトを実行してリソース プロバイダーを削除する前に、いくつかのクリーンアップ タスクを実行する必要があります。
+
+次のクリーンアップ タスクは、Azure Stack テナント ユーザーが担当します。
 
 * リソース プロバイダーからすべてのデータベースを削除する。 (テナント データベースを削除してもデータは削除されません。)
-* リソース プロバイダーの名前空間からの登録解除を行う。
+* プロバイダーの名前空間からの登録解除を行う。
 
-次のクリーンアップ タスクは、管理者が担当します。
+次のクリーンアップ タスクは、Azure Stack オペレーターが担当します。
 
-* SQL リソース プロバイダーからホスティング サーバーを削除する。
-* SQL リソース プロバイダーを参照するプランをすべて削除する。
-* SQL リソース プロバイダーに関連付けられているクォータをすべて削除する。
+* MySQL アダプターからホスティング サーバーを削除する。
+* MySQL アダプターを参照するすべてのプランを削除する。
+* MySQL アダプターに関連付けられているすべてのクォータを削除する。
 
 ## <a name="to-remove-the-sql-resource-provider"></a>SQL リソース プロバイダーを削除するには
 

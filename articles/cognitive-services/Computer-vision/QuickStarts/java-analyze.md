@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: bfbdba780e9de1b89737cf2a6aa02f7de82a5df7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2503d8cda05787885935ffab1be6b1efd85ad0cd
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414932"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852114"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-java-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Java を使用してリモート画像を分析する
 
@@ -73,7 +73,7 @@ public class Main {
     // from the West US region, replace "westcentralus" in the URL
     // below with "westus".
     //
-    // Free trial subscription keys are generated in the West Central US region.
+    // Free trial subscription keys are generated in the "westus" region.
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     private static final String uriBase =

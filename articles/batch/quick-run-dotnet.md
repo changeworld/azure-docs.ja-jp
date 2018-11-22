@@ -2,20 +2,20 @@
 title: Azure クイック スタート - Batch ジョブの実行 - .NET
 description: Batch .NET クライアント ライブラリを使用して Batch ジョブとタスクを短時間で実行できます。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/06/2018
-ms.author: danlep
+ms.date: 11/16/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: d22e5111a0413c1774d4d41290741414c82039f7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d6d1fb9631af06f6bfbb2c360661779281a08905
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814833"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975111"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート: .NET API で最初の Azure Batch ジョブを実行する
 
@@ -27,7 +27,7 @@ ms.locfileid: "48814833"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs) (または Linux、macOS、Windows 用 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)) 
+* [Visual Studio 2017](https://www.visualstudio.com/vs) (または Linux、macOS、Windows 用 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1))。 
 
 * Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。 
 
@@ -73,7 +73,7 @@ Batch ワークフローの動作を確認するには、Visual Studio または
 次に、それを実行します。 サンプル アプリケーションを実行すると、コンソールの出力は次のようになります。 実行中、プールのコンピューティング ノードを開始する際に、`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` で一時停止が発生します。 タスクは、最初のコンピューティング ノードが実行中になるとすぐに、実行するためにキューに登録されます。 プール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal](https://portal.azure.com) で Batch アカウントに移動します。
 
 ```
-Sample start: 12/4/2017 4:02:54 PM
+Sample start: 11/16/2018 4:02:54 PM
 
 Container [input] created.
 Uploading file taskdata0.txt to container [input]...
@@ -150,7 +150,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 
 Batch プールを作成するために、このアプリでは [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) メソッドを使用してノードの数、VM のサイズ、プールの構成を設定します。 ここで、[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) オブジェクトでは、[ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) に、Azure Marketplace で公開されている Windows Server イメージを指定します。 Batch は、Azure Marketplace の Linux および Windows Server のさまざまなイメージだけでなく、カスタム VM イメージもサポートしています。
 
-ノードの数 (`PoolNodeCount`) と VM のサイズ (`PoolVMSize`) は、定義済みの定数です。 このサンプルでは、既定で、サイズ *Standard_A1_v2* の 2 つのノードで構成されるプールが作成されます。 推奨されるサイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。 
+ノードの数 (`PoolNodeCount`) と VM のサイズ (`PoolVMSize`) は、定義済みの定数です。 このサンプルでは、既定で、サイズ *Standard_A1_v2* の 2 つのノードで構成されるプールが作成されます。 推奨されるサイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
 
 [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) メソッドは、プールを Batch サービスに送信します。
 
@@ -158,7 +158,7 @@ Batch プールを作成するために、このアプリでは [BatchClient.Poo
 ImageReference imageReference = new ImageReference(
     publisher: "MicrosoftWindowsServer",
     offer: "WindowsServer",
-    sku: "2012-R2-Datacenter-smalldisk",
+    sku: "2016-Datacenter-smalldisk",
     version: "latest");
 
 VirtualMachineConfiguration virtualMachineConfiguration =

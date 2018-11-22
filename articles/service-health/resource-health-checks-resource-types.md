@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 633501b03a362fbd07e14e308e18488f03af5af5
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6f02e20efbcb34d1f70f9f10acbe5bb3800cb4d2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069208"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683953"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -100,6 +100,11 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li> 名前空間で、登録、インストール、送信などのランタイム操作を実行できるか</li></ul>|
+
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
+|実行されるチェック|
+|---|
+|<ul><li>キャパシティ リソースが稼働しているか</li><li>すべてのワークロードが稼働しているか</li></ul>|
 
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |実行されるチェック|

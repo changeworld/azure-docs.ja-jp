@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 796e10053df79f8f7106d98dd9c9be6083d9f719
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: de464cfeca01e492139e8bf9679d8f9876eedda6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964154"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625625"
 ---
 # <a name="manage-workspaces"></a>ワークスペースを管理する
 
@@ -239,7 +239,7 @@ OMS ポータルを使用して価格レベルを変更するには、Azure サ�
 ![OMS リボン](./media/log-analytics-manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>次の手順
-* 「[Azure Log Analytics を使用して環境内のコンピューターからデータを収集する](log-analytics-concept-hybrid.md)」を参照して、ご自身のデータセンターまたはその他のクラウド環境のコンピューターからデータを収集します。
+* [Log Analytics エージェントの概要](log-analytics-agent-overview.md)に関するページを参照して、データセンターや他のクラウド環境内のコンピューターからデータを収集します。
 * 「[Azure Virtual Machines に関するデータの収集](log-analytics-quick-collect-azurevm.md)」を参照して、Azure VM からのデータ コレクションを構成します。  
 * [Add Log Analytics solutions from the Solutions Gallery](../monitoring/monitoring-solutions.md) 」 (ソリューションギャラリーから Log Analytics ソリューションを追加する) を参照してください。
 

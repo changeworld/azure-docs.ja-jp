@@ -3,19 +3,19 @@ title: 'クイック スタート: C# を使用してエンドポイントを呼
 titlesuffix: Azure Cognitive Services
 description: このクイックスタートでは、C# を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: c0e315f9b96133d68bf1f9c02da1436b877baf40
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a04d2a2bcaaf4edcf03fac3e2242f94712ce8022
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468417"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163046"
 ---
 # <a name="quickstart-call-bing-custom-search-endpoint-c"></a>クイック スタート: Bing Custom Search エンドポイントを呼び出す (C#)
 

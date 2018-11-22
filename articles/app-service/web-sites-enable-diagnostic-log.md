@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 7ab12c86e01a34e4ba2a9673364c0e1104f6cdba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8a58f8722b41944a7be02254e0f00682575c1bbb
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231625"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636970"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Azure App Service の Web アプリの診断ログの有効化
 ## <a name="overview"></a>概要
 Azure では、組み込みの診断機能により、 [App Service Web アプリ](https://go.microsoft.com/fwlink/?LinkId=529714)のデバッグを容易に行うことができます。 この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
-この記事では、[Azure Portal](https://portal.azure.com)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。 Visual Studio で診断ログを使用する方法の詳細については、「 [Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
+この記事では、[Azure portal](https://portal.azure.com) と Azure CLI を使用して診断ログを操作します。 Visual Studio で診断ログを使用する方法の詳細については、「 [Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -65,7 +65,7 @@ App Service Web Apps は、Web アプリにコンテンツをパブリッシュ�
 
 **Web サーバー ログ**の場合、**[ストレージ]** または **[ファイル システム]** を選択できます。 **[ストレージ]** を選択すると、ストレージ アカウントを選択でき、ログ書き込み先の BLOB コンテナーを指定できます。 
 
-ログをファイル システムに保存した場合、これらのファイルは、FTP によってアクセスするか、Azure PowerShell または Azure コマンド ライン インターフェイス (Azure CLI) を使用して Zip アーカイブとしてダウンロードできます。
+ログをファイル システムに保存した場合、これらのファイルは、FTP によってアクセスするか、Azure CLI を使用して Zip アーカイブとしてダウンロードできます。
 
 既定で、ログは自動的に削除されません (**アプリケーション ログ (ファイルシステム)** を除く)。 ログを自動的に削除するには、**[リテンション期間 (日)]** フィールドを設定します。
 
@@ -73,24 +73,20 @@ App Service Web Apps は、Web アプリにコンテンツをパブリッシュ�
 > [ストレージ アカウントのアクセス キーを再生成する](../storage/common/storage-create-storage-account.md)場合は、該当するログ構成を更新後のキーを使用するように設定し直す必要があります。 これを行うには、次の手順を実行します。
 >
 > 1. **[構成]** タブで、該当するログ機能を **[オフ]** に設定します。 設定を保存します。
-> 2. ストレージ アカウントの BLOB またはテーブルへのログを再び有効にします。 設定を保存します。
+> 2. ストレージ アカウントの BLOB へのログを再び有効にします。 設定を保存します。
 >
 >
 
-ファイル システム、テーブル ストレージ、BLOB ストレージへのログ記録は、任意に組み合わせて同時に有効にすることができます。また、それぞれ個別にログ レベルを設定できます。 たとえば、BLOB ストレージへのエラーと警告の長期間のログ記録、ファイル システムへの詳細レベルのログ記録を同時に有効にすることができます。
+ファイル システムまたは BLOB ストレージへのログ記録は、任意に組み合わせて同時に有効にすることができます。また、それぞれ個別にログ レベルを設定できます。 たとえば、BLOB ストレージへのエラーと警告の長期間のログ記録、ファイル システムへの詳細レベルのログ記録を同時に有効にすることができます。
 
-ログ書き込み先の 3 つの場所のいずれでも、ログ記録されたイベントについて同じ基本的な情報が得られますが、**テーブル ストレージ**と **Blob Storage** には、インスタンス ID、スレッド ID、より詳細なタイムスタンプ (目盛り形式) など、追加の情報がログ記録されます。**ファイル システム**には、このような情報はログ記録されません。
+どちらのログ書き込み先でもログ記録されたイベントについて同じ基本的な情報が得られますが、**BLOB ストレージ**には、インスタンス ID、スレッド ID、より詳細なタイムスタンプ (目盛り形式) など、追加の情報がログ記録されます。**ファイル システム**には、このような情報はログ記録されません。
 
 > [!NOTE]
-> **テーブル ストレージ**または **Blob  Storage** に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションからアクセスできます。 たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、テーブル ストレージまたは BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。 [Azure SDK](https://azure.microsoft.com/downloads/) のいずれかを使用して、Azure Storage にアクセスするアプリケーションを記述することもできます。
->
-> [!NOTE]
-> 診断を有効にするには、Azure PowerShell から **Set-AzureWebsite** コマンドレットを使用する方法もあります。 Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)」をご覧ください。
->
+> **BLOB ストレージ**に格納されている情報には、これらのストレージ システムを直接操作できるストレージ クライアントまたはアプリケーションからアクセスできます。 たとえば、Visual Studio 2013 のストレージ エクスプローラーを使用すると、BLOB ストレージを操作できます。HDInsight を使用すると、BLOB ストレージに格納されているデータにアクセスできます。 [Azure SDK](https://azure.microsoft.com/downloads/) のいずれかを使用して、Azure Storage にアクセスするアプリケーションを記述することもできます。
 >
 
 ## <a name="download"></a> ログをダウンロードする方法
-Web アプリケーション ファイル システムに保存された診断情報には、FTP を使用して直接アクセスできます。 さらに、Azure PowerShell または Azure コマンド ライン インターフェイスを使用して Zip アーカイブとしてダウンロードすることもできます。
+Web アプリケーション ファイル システムに保存された診断情報には、FTP を使用して直接アクセスできます。 Azure CLI を使用して Zip アーカイブとしてダウンロードすることもできます。
 
 ログが保存されるディレクトリ構造は次のとおりです。
 
@@ -106,19 +102,7 @@ Web アプリケーション ファイル システムに保存された診断�
 
 Web アプリの FTP/S サーバーに接続したら、ログ ファイルが格納されている **LogFiles** フォルダーを開きます。
 
-### <a name="download-with-azure-powershell"></a>Azure PowerShell を使用してダウンロードする
-ログ ファイルをダウンロードするには、Azure PowerShell の新しいインスタンスを開始し、次のコマンドを使用します。
-
-    Save-AzureWebSiteLog -Name webappname
-
-このコマンドで、**-Name** パラメーターにより指定された Web アプリのログが、現在のディレクトリにある **logs.zip** というファイルに保存されます。
-
-> [!NOTE]
-> Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)」をご覧ください。
->
->
-
-### <a name="download-with-azure-command-line-interface"></a>Azure コマンド ライン インターフェイスを使用してダウンロードする
+### <a name="download-with-azure-cli"></a>Azure CLI を使用してダウンロードする
 Azure コマンド ライン インターフェイスを使用してログ ファイルをダウンロードするには、新しいコマンド プロンプト、PowerShell、Bash、ターミナル セッションを開き、次のコマンドを入力します。
 
     az webapp log download --resource-group resourcegroupname --name webappname
@@ -126,7 +110,7 @@ Azure コマンド ライン インターフェイスを使用してログ フ�
 このコマンドで、"webappname" という名前の Web アプリのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 
 > [!NOTE]
-> Azure コマンド ライン インターフェイス (Azure CLI) をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure CLI の使用方法](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+> Azure CLI をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、[Azure CLI の使用方法](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)に関するページをご覧ください。
 >
 >
 
@@ -143,7 +127,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 [Application Insights でのパフォーマンス追跡についての詳細情報](../application-insights/app-insights-azure-web-apps.md)
 
 ## <a name="streamlogs"></a> ログをストリーミングする方法
-アプリケーションの開発中に、ログ情報をほぼリアルタイムで参照すると役立つことがよくあります。 Azure PowerShell または Azure コマンド ライン インターフェイスを使用して開発環境にログ情報をストリーミングできます。
+アプリケーションの開発中に、ログ情報をほぼリアルタイムで参照すると役立つことがよくあります。 Azure CLI を使用して、開発環境にログ情報をストリーミングすることができます。
 
 > [!NOTE]
 > 一部の種類のログ バッファーはログ ファイルに書き込まれるため、ストリーミング中に無効な順序エラーが発生する可能性があります。 たとえば、ユーザーがページにアクセスしたときに発生するアプリケーション ログ エントリは、ページ要求の該当する HTTP ログ エントリより前のストリームに表示されることがあります。
@@ -153,29 +137,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 >
 >
 
-### <a name="streaming-with-azure-powershell"></a>Azure PowerShell を使用してストリーミングする
-ログ情報をストリーミングするには、Azure PowerShell の新しいインスタンスを開始して、次のコマンドを使用します。
-
-    Get-AzureWebSiteLog -Name webappname -Tail
-
-このコマンドで、**-Name** パラメーターに指定された Web アプリに接続され、ログ イベントが Web アプリで発生したら、PowerShell ウィンドウへの情報のストリーミングが開始されます。 /LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
-
-特定のイベント (エラーなど) をフィルター処理するには、 **-Message** パラメーターを使用します。 例: 
-
-    Get-AzureWebSiteLog -Name webappname -Tail -Message Error
-
-特定のログの種類 (HTTP など) をフィルター処理するには、 **-Path** パラメーターを使用します。 例: 
-
-    Get-AzureWebSiteLog -Name webappname -Tail -Path http
-
-使用可能なパスの一覧を表示するには、-ListPath パラメーターを使用します。
-
-> [!NOTE]
-> Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure PowerShell の使用方法](https://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/)に関するページを参照してください。
->
->
-
-### <a name="streaming-with-azure-command-line-interface"></a>Azure コマンド ライン ツールを使用してストリーミングする
+### <a name="streaming-with-azure-cli"></a>Azure CLI を使用してストリーミングする
 ログ情報をストリーミングするには、新しいコマンド プロンプト、PowerShell、Bash、またはターミナル セッションを開き、次のコマンドを入力します。
 
     az webapp log tail --name webappname --resource-group myResourceGroup
@@ -191,13 +153,15 @@ Visual Studio Application Insights には、ログをフィルターおよび検
     az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Azure コマンド ライン インターフェイスをインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure コマンド ライン インターフェイスの使用方法](../cli-install-nodejs.md)に関するページを参照してください。
+> Azure CLI をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、[Azure CLI の使用方法](../cli-install-nodejs.md)に関するページをご覧ください。
 >
 >
 
 ## <a name="understandlogs"></a> 診断ログを読む方法
 ### <a name="application-diagnostics-logs"></a>アプリケーション診断ログ
-アプリケーション診断では、ファイル システム、テーブル ストレージ、BLOB ストレージのうち、どれにログを保存するかに応じて、.NET アプリケーション向けの一定の形式で情報が保存されます。 格納される一連の基本的なデータは、3 種類のすべてのストレージ間で同じで、イベントが発生した日時、イベントを生成したプロセスの ID、イベントの種類 (情報、警告、エラー)、イベントのメッセージです。
+アプリケーション診断では、ファイル システムと BLOB ストレージのどちらにログを保存するかに応じて、.NET アプリケーション向けの一定の形式で情報が保存されます。 
+
+格納される一連の基本的なデータは、両方の種類のストレージ間で同じで、イベントが発生した日時、イベントを生成したプロセスの ID、イベントの種類 (情報、警告、エラー)、イベントのメッセージです。 問題のトラブルシューティングに直ちにアクセスする必要がある場合は、ログ ストレージにファイル システムを使用するとログ ファイルがほぼ瞬時に更新されるため便利です。 BLOB ストレージは、ファイルがキャッシュされ、スケジュールに従ってストレージ コンテナーにフラッシュされるため、アーカイブの目的に使用します。
 
 **ファイル システム**
 
@@ -211,27 +175,9 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 ファイル システムにログ記録する場合は、使用できる 3 つのログ記録方法のうちで最も基本的な情報が提供され、時間、プロセス ID、イベント レベル、メッセージのみを確認できます。
 
-**Table Storage**
+**Blob Storage**
 
-テーブル ストレージにログを記録する場合は、追加のプロパティを使用して、テーブルに格納されているデータだけでなく、イベントに関するより詳細な情報も簡単に検索できます。 テーブルに格納される各エンティティ (行) に次のプロパティ (列) が使用されます。
-
-| プロパティ名 | 値/形式 |
-| --- | --- |
-| パーティション キー |yyyyMMddHH の形式によるイベントの日時 |
-| RowKey |このエンティティを一意に識別する GUID 値 |
-| Timestamp |イベントが発生した日時 |
-| EventTickCount |イベントが発生した目盛り形式 (高精度) の日時 |
-| ApplicationName |Web アプリケーション名 |
-| Level |イベント レベル (例: エラー、警告、情報) |
-| EventId |このイベントのイベント ID<p><p>何も指定しない場合は既定で 0 |
-| InstanceId |イベントが発生した Web アプリケーションのインスタンス |
-| Pid |プロセス ID |
-| Tid |イベントを生成したスレッドの ID |
-| Message |イベントの詳細メッセージ |
-
-**BLOB ストレージ**
-
-BLOB ストレージにログを記録するときには、値をコンマで区切った (CSV) 形式で格納されます。 テーブル ストレージと同様、追加のフィールドがログに記録されて、イベントについてより詳細な情報が提供されます。 CSV 内の各行に次のプロパティが使用されます。
+BLOB ストレージにログを記録するときには、値をコンマで区切った (CSV) 形式で格納されます。 追加のフィールドがログに記録されて、イベントについてより詳細な情報が提供されます。 CSV 内の各行に次のプロパティが使用されます。
 
 | プロパティ名 | 値/形式 |
 | --- | --- |
@@ -251,7 +197,7 @@ BLOB に格納されるデータは次の例のようになります。
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> この例に示しているように、ログの最初の行は列ヘッダーになります。
+> ASP.NET Core の場合、ログ記録は [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) プロバイダーを使用して実現されます。このプロバイダーは、BLOB コンテナーに追加のログ ファイルを置きます。 詳しくは、[Azure 内での ASP.NET Core のログ記録](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure)に関するページをご覧ください。
 >
 >
 

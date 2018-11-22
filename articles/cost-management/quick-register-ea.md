@@ -9,19 +9,19 @@ ms.date: 09/14/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
-manager: dougeby
-ms.openlocfilehash: bed1ea3785c35d1053a0ff2147c3bdd797e28581
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: benshy
+ms.openlocfilehash: 36f53203a7d75fc06f872e9cc9ef9379944df108
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996638"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52273568"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Azure エンタープライズ契約を登録してコスト データを表示する
 
 エンタープライズ契約を使用して、Cloudyn に登録します。 この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
 
-Azure Cost Management は Cloudyn と同様の機能を提供します。 Azure Cost Management は、Azure のネイティブのコスト管理ソリューションです。 このソリューションにより、コストを分析し、予算を作成して管理し、データをエクスポートし、最適化のための推奨事項を検討して対処することで、費用を節約できます。 詳細については、「[Azure Cost Management](overview-cost-mgt.md)」を参照してください。
+Azure Cost Management には Cloudyn と同様の機能があります。 Azure Cost Management は、Azure のネイティブのコスト管理ソリューションです。 このソリューションにより、コストを分析し、予算を作成して管理し、データをエクスポートし、最適化のための推奨事項を検討して対処することで、費用を節約できます。 詳細については、「[Azure Cost Management](overview-cost-mgt.md)」を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -30,7 +30,7 @@ Azure Cost Management は Cloudyn と同様の機能を提供します。 Azure 
 ## <a name="register-with-cloudyn"></a>Cloudyn に登録する
 
 1. Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。
-2. **[概要]** の **[Cloudyn]** をクリックします  
+2. **[概要]** の **[Cloudyn]** をクリックします｡  
     ![Cloudyn のページ](./media/quick-register-ea/cost-mgt-billing-service.png)
 3. **[Cloudyn]** ページで **[Cloudyn に移動]** をクリックします。新しいウィンドウで Cloudyn 登録ページが開きます。
 4. Cloudyn ポータルの試用登録ページで、会社名を入力し、**[Azure Enterprise Enrollment Administrator]\(Azure エンタープライズ登録管理者\)** を選択します。  
@@ -50,7 +50,7 @@ Azure Cost Management は Cloudyn と同様の機能を提供します。 Azure 
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure エンタープライズ契約情報を使用して、Cloudyn に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Cloudyn に関する詳細については、Cloudyn のチュートリアルに進んでください。
+このクイック スタートでは、Azure エンタープライズ契約情報を使用して、Cloudyn に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Cloudyn に関する詳細は、Cloudyn のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [使用状況とコストを確認する](./tutorial-review-usage.md)

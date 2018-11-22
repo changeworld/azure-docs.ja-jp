@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9100722042bfdcbee48af1fc44e294df046c828e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d88a59d3b9a39a42120b302fd8e7989c968db952
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007214"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624779"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM) と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 また、クラッシュ ダンプ ファイルもワークスペースにコピーします。
@@ -81,7 +81,7 @@ Security Center によって作成されたワークスペースを選択する�
 
 2. **[Save]** をクリックします。<br>
     Security Center で新しいリソース グループとその位置情報の既定のワークスペースが作成され、エージェントがそのワークスペースに接続されます。 ワークスペースとリソース グループの名前付け規則は次のとおりです。<br>
-**ワークスペース: DefaultWorkspace-[subscription-ID]-[geo]<br> リソース グループ: DefaultResouceGroup-[geo]**
+**ワークスペース: DefaultWorkspace-[subscription-ID]-[geo]<br> リソース グループ: DefaultResourceGroup-[geo]**
 
    複数の地理的位置情報からの VM がサブスクリプションに含まれている場合、Security Center では複数のワークスペースを作成します。 複数のワークスペースは、データのプライバシー ルールを維持するために作成されます。
 -   サブスクリプションに設定された価格レベルに従い、ワークスペースで Security Center ソリューションが自動的に有効になります。 

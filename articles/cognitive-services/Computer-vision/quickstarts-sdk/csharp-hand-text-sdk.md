@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
-ms.openlocfilehash: d819aee7c42759e2427e27e0f640d79536069ccb
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: c1b25db440023618d3d633f9a2b2ebcd5c0a6293
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343607"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852488"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>クイック スタート: Computer Vision SDK と C# によるテキストの抽出
 
@@ -88,7 +88,7 @@ namespace ExtractText
             // keys. For example, if you got your subscription keys from westus,
             // replace "westcentralus" with "westus".
             //
-            // Free trial subscription keys are generated in the westcentralus
+            // Free trial subscription keys are generated in the "westus"
             // region. If you use a free trial subscription key, you shouldn't
             // need to change the region.
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8226ff956db1b21c308d184e8d5876a59d1b646d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 57ffb30296e5dbede11e23c40041c42e00444c4c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391780"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686996"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>貴社のパートナー ID を Azure アカウントにリンクする
 
@@ -136,4 +136,4 @@ C:\ az managementpartner delete --partner-id 12345
 
 **他のパートナーまたは顧客がパートナー ID へのリンクを編集または削除できますか。**
 
-リンクはアカウント レベルで関連付けられます。 パートナー ID へのリンクは、貴社のみが編集または削除できます。 顧客と他のパートナーは、パートナー ID へのリンクを変更できません。 
+リンクはユーザー アカウント レベルで関連付けられます。 パートナー ID へのリンクは、貴社のみが編集または削除できます。 顧客と他のパートナーは、パートナー ID へのリンクを変更できません。 

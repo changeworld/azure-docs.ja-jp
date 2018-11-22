@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 10/01/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b1333eda0fa0bffdf3852f24414511f55acc090e
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7f3db8b16e275ff130cc3d8cb162780d595a7f32
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395533"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624643"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用の Log Analytics ビューのインストールと使用
 
@@ -42,7 +42,7 @@ Log Analytics ビューを使用するには、次の準備が必要です。
 
 1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、**[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、**[Log Analytics]** を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
 2. **[ビュー デザイナー]** を選択し、**[インポート]** してから、**[ファイルの選択]** を選択して、ローカル コンピューターからビューをインポートします。
-3. 前提条件からダウンロードしたビューを選択し、**[保存]** を選択してインポートを保存します。 **[Azure AD Account Provisioning Events]\(Azure AD アカウントのプロビジョニング イベント\)** ビュー、**[Sign-ins Events]\(サインイン イベント\)** ビュー、および **[Users Performing Consent]\(ユーザ―実行の同意\)** ビューに対しても、同じ操作を実行します。
+3. 前提条件からダウンロードしたビューを選択し、**[保存]** を選択してインポートを保存します。 **[Azure AD Account Provisioning Events]\(Azure AD アカウントのプロビジョニング イベント\)** ビューと **[Sign-ins Events]\(サインイン イベント\)** ビューに対しても同じ操作を実行します。
 
 ## <a name="use-the-views"></a>ビューの使用
 
@@ -52,7 +52,6 @@ Log Analytics ビューを使用するには、次の準備が必要です。
 
     * **[Azure AD Account Provisioning Events]\(Azure AD アカウントのプロビジョニング イベント\)**: プロビジョニングされた新しいユーザーとプロビジョニング エラーの数、更新されたユーザーと更新エラーの数、プロビジョニング解除されたユーザーと該当するエラーの数など、プロビジョニング アクティビティの監査に関連するレポートを表示します。    
     * **[Sign-ins Events]\(サインイン イベント\)**: このビューは、経時的にサインイン数を追跡する概要ビューだけでなく、アプリケーション、ユーザー、デバイスごとのサインインなど、サインイン アクティビティの監視に関連する最も重要なレポートを表示します。
-    * **[Users Performing Consent]\(ユーザ―実行の同意\)**: このビューは、すべての同意ベースのアプリケーションに対して、アプリゲーションごとのサインインだけでなく、ユーザーによる同意、同意したユーザーによるサインインなど、ユーザーの同意に関連するレポートを表示します。 
 
 3. これらのいずれかのビューを選択して、個々のレポートに進みます。 また、任意のレポート パラメーターにアラートを設定することも可能です。 たとえば、サインイン エラーが発生するたびに、アラートを設定するとします。 これを行うには、まず、**[Sign-ins Events]\(サインイン イベント\)** ビューを選択し、**[Sign-in errors over time]\(経時的なサインイン エラー\)** レポートを選択し、**[Analytics]** を選択して、レポートの背景となる実際のクエリを示した詳細ページを開きます。 
 

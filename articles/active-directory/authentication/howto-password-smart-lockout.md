@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 11/12/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 9ea91f70a72b812803a20244bb4445b76b133b0c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 957aa05efab68f9531fb6576de775aa9901ab44d
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296161"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685805"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -23,7 +23,15 @@ ms.locfileid: "46296161"
 
 既定のスマート ロックアウトでは、10 回試行に失敗した後、アカウントによるサインインの試行が 1 分間ロックされます。 後続のサインインの試行が失敗するたびに、アカウントは再度ロックされます。最初は 1 分間、後続の試行ではより長い時間ロックされます。
 
+* スマート ロックアウトでは、直近 3 つの無効なパスワードのハッシュを追跡して、ロックアウト カウンターの再増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロックアウトされることはありません。
+   * この機能は、パススルー認証を有効にしているお客様にはご利用いただけません。
+
 スマート ロックアウトは、すべての Azure AD 顧客に既定として設定され、常に有効で、セキュリティとユーザビリティを適切な割合で提供します。 スマート ロックアウト設定を組織固有の値にカスタマイズするには、ユーザーに Azure AD Basic 以上のライセンスが必要です。
+
+スマート ロックアウトを使用しても、正規のユーザーが決してロックアウトされないことは保証されません。スマート ロックアウトによってユーザー アカウントがロックされた場合、マイクロソフトでは可能な限り正規ユーザーをロックアウトしないよう試みます。 ロックアウト サービスでは、悪意のあるアクターが正規のユーザー アカウントへのアクセス権を取得できないよう試みます。  
+
+* 各 Azure Active Directory データ センターでは、ロックアウトが個別に追跡されます。 ユーザーが各データ センターにアクセスする場合、そのユーザーの試行回数は (threshold_limit * datacenter_count) になります。
+* スマート ロックアウトでは、悪意のあるアクターと正規ユーザーを区別するために、既知の場所と未知の場所を使用します。 未知の場所と既知の場所の両方に、個別のロックアウト カウンターが設定されます。
 
 スマート ロックアウトは、パスワード ハッシュ同期またはパススルー認証を使用するハイブリッド デプロイと統合でき、オンプレミスの Active Directory アカウントが攻撃者によってロックアウトされることを防止します。 Azure AD でスマート ロックアウト ポリシーを適切に設定することにより、オンプレミスの Active Directory に到達する前に攻撃を防止できます。
 

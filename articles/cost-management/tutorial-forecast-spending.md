@@ -9,13 +9,13 @@ ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
-manager: dougeby
-ms.openlocfilehash: e1954ae9fcbb010c66e8a812e3e34477ac2bfc29
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+manager: benshy
+ms.openlocfilehash: 25fa099bcd6fa3843deadb3dc39d4250624ead06
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395226"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274587"
 ---
 # <a name="tutorial-forecast-future-spending"></a>チュートリアル: 将来の支出の予測
 

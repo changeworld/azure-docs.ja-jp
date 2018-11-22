@@ -1,5 +1,5 @@
 ---
-title: Azure App Service での認証と承認のカスタマイズ | Microsoft Docs
+title: Azure App Service 上での認証と承認の高度な使用方法 | Microsoft Docs
 description: App Service で認証と承認をカスタマイズし、ユーザーの要求とさまざまなトークンを取得する方法を示します。
 services: app-service
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 11/08/2018
 ms.author: cephalin
-ms.openlocfilehash: 629a76ab5610625e14780d7b5c57d3979c2224c9
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e1109ec8cc98c7e5fc72d7f56ade19968b0056cc
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344172"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685329"
 ---
-# <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証と承認のカスタマイズ
+# <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
-この記事では、[App Service で認証と承認](app-service-authentication-overview.md)をカスタマイズする方法と、アプリケーションから ID を管理する方法について説明します。 
+この記事では、[App Service 上で組み込みの認証と承認](app-service-authentication-overview.md)をカスタマイズする方法と、アプリケーションから ID を管理する方法について説明します。 
 
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
@@ -58,6 +58,48 @@ ms.locfileid: "43344172"
 
 ```HTML
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
+
+## <a name="validate-tokens-from-providers"></a>プロバイダーからのトークンを検証する
+
+クライアント主導のサインインでは、アプリケーションはユーザーをプロバイダーに手動でサインインさせ、検証のために認証トークンを App Service に送信します (「[Authentication flow](app-service-authentication-overview.md#authentication-flow)」をご覧ください)。 この検証自体では、必要なアプリ リソースへのアクセス権が実際には付与されませんが、検証に成功すると、アプリ リソースへのアクセスに使用できるセッション トークンが付与されます。 
+
+プロバイダーのトークンを検証するには、最初に目的のプロバイダーを使用して App Service のアプリが構成されている必要があります。 実行時に、プロバイダーから認証トークンを取得した後、検証のためにトークンを `/.auth/login/<provider>` にポストします。 例:  
+
+```
+POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
+Content-Type: application/json
+
+{"id_token":"<token>","access_token":"<token>"}
+```
+
+トークンの形式は、プロバイダーによって若干異なります。 詳しくは、以下の表をご覧ください。
+
+| プロバイダーの値 | 要求本文に必要 | 説明 |
+|-|-|-|
+| `aad` | `{"access_token":"<access_token>"}` | |
+| `microsoftaccount` | `{"access_token":"<token>"}` | `expires_in` プロパティは省略可能です。 <br/>ライブ サービスからトークンを要求する場合は、常に `wl.basic` スコープを要求します。 |
+| `google` | `{"id_token":"<id_token>"}` | `authorization_code` プロパティは省略可能です。 指定した場合、必要に応じて `redirect_uri` プロパティを添付することもできます。 |
+| `facebook`| `{"access_token":"<user_access_token>"}` | Facebook からの有効な[ユーザー アクセス トークン](https://developers.facebook.com/docs/facebook-login/access-tokens)を使用します。 |
+| `twitter` | `{"access_token":"<access_token>", "access_token_secret":"<acces_token_secret>"}` | |
+| | | |
+
+プロバイダー トークンが正常に検証された場合、API は、セッション トークンである `authenticationToken` を応答本文に入れて戻ります。 
+
+```json
+{
+    "authenticationToken": "...",
+    "user": {
+        "userId": "sid:..."
+    }
+}
+```
+
+このセッション トークンを入手したら、`X-ZUMO-AUTH` ヘッダーを HTTP 要求に追加することで、保護対象のアプリ リソースにアクセスすることができます。 例:  
+
+```
+GET https://<appname>.azurewebsites.net/api/products/1
+X-ZUMO-AUTH: <authenticationToken_value>
 ```
 
 ## <a name="sign-out-of-a-session"></a>セッションからサインアウトする
@@ -119,7 +161,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 サーバー コードからプロバイダー固有のトークンが要求ヘッダーに挿入されるので、これらのトークンに簡単にアクセスできます。 次の表は、可能なトークン ヘッダー名を示しています。
 
-| | |
+| プロバイダー | ヘッダー名 |
 |-|-|
 | Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Facebook トークン | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |

@@ -3,19 +3,19 @@ title: 'クイック スタート: Python 用の Bing Web Search SDK を使用�
 titleSuffix: Azure Cognitive Services
 description: Bing Web Search SDK を使用すると、Python アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
-ms.author: erhopf
-ms.openlocfilehash: c83848bc3c8f14aa49c1f87f1cd44224bb3e8081
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.openlocfilehash: d810704d0f18915d805a4db46818df30147c8dfa
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127639"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283286"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>クイック スタート: Python 用の Bing Web Search SDK を使用する
 
@@ -161,7 +161,7 @@ python -m pip install azure-cognitiveservices-search-websearch
         print("Didn't find any videos...")
     ```
 3. `subscription_key` を有効なサブスクリプション キーに置き換えます。
-4. プログラムを実行します。 たとえば、「 `python your_program.py`」のように入力します。
+4. プログラムを実行します。 (例: `python your_program.py`)。
 
 ## <a name="define-functions-and-filter-results"></a>関数の定義と結果のフィルター処理
 
@@ -206,7 +206,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ### <a name="filter-for-news-and-freshness"></a>ニュースと鮮度のフィルター処理
 
-このサンプルでは、`response_filter` パラメーターと `freshness` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com//api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search)による検索結果をフィルター処理します。 返される検索結果は、ニュース記事と、Bing が過去 24 時間以内に検出したページだけに制限されます。 最初の結果の `name` と `URL` が出力されます。
+このサンプルでは、`response_filter` パラメーターと `freshness` パラメーターを使用して、SDK の [`search` メソッド](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations#search)による検索結果をフィルター処理します。 返される検索結果は、ニュース記事と、Bing が過去 24 時間以内に検出したページだけに制限されます。 最初の結果の `name` と `URL` が出力されます。
 
 1. 次のコードを Python プロジェクトに追加します。
     ```python

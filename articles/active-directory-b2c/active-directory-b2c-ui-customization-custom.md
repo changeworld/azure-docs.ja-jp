@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: d4b4d99ac943749faaca8cd699b1455795b9c399
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945062"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625796"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -99,17 +99,13 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 
 次の手順を実行して、クロス オリジン リソース共有用に Blob Storage を構成します。
 
->[!NOTE]
->サンプル HTML と CSS コンテンツを使用して UI のカスタマイズ機能を試すことができます。 Blob Storage アカウントにサンプル コンテンツをアップロードし、構成する[簡単なヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)が提供されています。 このツールを使用する場合は、「[サインアップまたはサインイン カスタム ポリシーを変更する](#modify-your-sign-up-or-sign-in-custom-policy)」に進んでください。
-
-1. **[設定]** の下にある **[ストレージ]** ブレードで、**[CORS]** を開きます。
-2. **[追加]** をクリックします。
-3. **[Allowed origins]\(許可されたオリジン\)** にアスタリスク (\*) を入力します。
-4. **[使用できる動詞]** ボックスの一覧で、**[GET]** と **[OPTIONS]** の両方を選択します。
-5. **[許可されたヘッダー]** にアスタリスク (\*) を入力します。
-6. **[公開されるヘッダー]** にアスタリスク (\*) を入力します。
-7. **[最大期間 (秒)]** に「**200**」と入力します。
-8. **[追加]** をクリックします。
+1. メニューで **[CORS]** を選択します。
+2. **[許可されるオリジン]** には、`your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `fabrikam.b2clogin.com` 」のように入力します。
+3. **[許可されたメソッド]** に、`GET` と `OPTIONS` を両方選択します。
+4. **[許可されたヘッダー]** に、アスタリスク (*) を入力します。
+5. **[公開されるヘッダー]** に、アスタリスク (*) を入力します。
+6. **[最長有効期間]** には「200」と入力します。
+7. **[Save]** をクリックします。
 
 ## <a name="test-cors"></a>CORS のテスト
 
@@ -152,7 +148,7 @@ UI のカスタマイズを構成するには、**ContentDefinition** とその�
 ## <a name="upload-your-updated-custom-policy"></a>更新したカスタム ポリシーをアップロードします。
 
 1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure Portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
 4. **[Identity Experience Framework]** を選択します。
 2. **[All Policies]**(すべてのポリシー) をクリックします。
 3. **[ポリシーのアップロード]** をクリックします。

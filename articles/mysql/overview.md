@@ -2,23 +2,22 @@
 title: Azure Database for MySQL リレーショナル データベース サービスの概要
 description: Azure Database for MySQL リレーショナル データベース サービスの概要
 services: mysql
+ms.service: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
 editor: jasonwhowell
-ms.service: mysql
-ms.topic: article
-ms.date: 06/02/2018
 ms.custom: mvc
-ms.openlocfilehash: b7af709c4175ecd6100de6d638ac9862488a7190
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.topic: article
+ms.date: 11/14/2018
+ms.openlocfilehash: 4d0d78b978f6454170b52a95f538f143b9f24505
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266348"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684802"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは - 
-Azure Database for MySQL は、Microsoft クラウドにおける、[MySQL Community Edition](https://www.mysql.com/products/community/) のデータベース エンジンをベースとしたリレーショナル データベース サービスです。 Azure Database for MySQL には、次の特長があります。
+Azure Database for MySQL は、Microsoft クラウドにおける、[MySQL Community Edition](https://www.mysql.com/products/community/) のデータベース エンジン バージョン 5.6 と 5.7 をベースとしたリレーショナル データベース サービスです。 Azure Database for MySQL には、次の特長があります。
 
 - 追加コストなしの組み込みの高可用性。
 - 包括的な従量課金制の料金を使用した、予測可能なパフォーマンス。
@@ -39,7 +38,7 @@ Azure CLI の各種サンプルについては、次のページを参照して�
 - [Azure Database for MySQL 用 Azure CLI サンプル](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
-Azure Database for MySQL サービスには、複数のサービス レベル (Basic、汎用、メモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[価格レベル](concepts-service-tiers.md)に関するページを参照してください。
+Azure Database for MySQL サービスには、複数のサービス レベル (Basic、汎用、メモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-service-tiers.md)に関するページをご覧ください。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 スケールを調整するときに、適切なパフォーマンス レベルはどのようにして見極めればよいのでしょうか。 組み込みのパフォーマンス監視機能およびアラート機能と、仮想コアに基づくパフォーマンス評価とを組み合わせて使用します。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、仮想コアのスケールアップまたはスケールダウンの影響をすばやく評価することができます。 詳細については、[アラート](howto-alert-on-metric.md)に関するページを参照してください。

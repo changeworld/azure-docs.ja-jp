@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 2b653c57aafd9e457855390f4f9955d9d387ed20
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 21ff210ad46b4add2d3f639d8e68bf2784f5acd8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344185"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852437"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>クイック スタート: Computer Vision の REST API および JavaScript を使用して手書きテキストを抽出する
 
@@ -67,7 +67,7 @@ Computer Vision のサブスクリプション キーが必要です。 「[サ�
         // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the West Central US region.
+        // Free trial subscription keys are generated in the "westus" region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =

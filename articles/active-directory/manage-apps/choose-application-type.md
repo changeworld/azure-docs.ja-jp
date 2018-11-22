@@ -12,24 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 3a9f27a92a4bc808ff9bcf04b66523a92f1bcf03
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 3fe268b6491a2a3cc1237173506ef5a91beb7d26
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355511"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625083"
 ---
-# <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>アプリケーションを追加するときに使用するアプリケーションの種類の選択方法
+# <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションを追加するときにアプリケーションの種類を選択する
+Azure Active Directory (Azure AD) に追加できる 4 種類のアプリケーションについて説明します。 Azure Active Directory でアプリケーションを追加すると、4 種類のアプリケーションのいずれかを選択するように求められます。 
 
-この記事は、Azure AD と統合できる 4 つの主要なアプリケーションの種類について、次の項目を理解するのに役立ちます。
-
-* それぞれのアプリケーションのサポート内容
-* 特定のアプリケーションを選択する理由
-* アプリケーションの核となるプロパティを構成する方法 (ユーザーを**プロビジョニング**する方法、どの**シングル サインオン** テクノロジを使用するかなど)。
-
-## <a name="supported-application-types-in-azure-ad"></a>Azure AD でサポートされているアプリケーションの種類
+## <a name="what-are-the-types-of-applications"></a>アプリケーションの種類とは
 
 Azure AD は、4 つの主要なアプリケーションの種類をサポートしています。これらのアプリケーションは、**[エンタープライズ アプリケーション]** の **[追加]** 機能を使用して追加できます。 チェックの内容は次のとおりです
 
@@ -41,7 +36,7 @@ Azure AD は、4 つの主要なアプリケーションの種類をサポート
 
 -   **非ギャラリー アプリケーション** – ユーザー独自のアプリケーションを持ち込みます。 必要な Web リンク、またはユーザー名とパスワードのフィールドを表示するアプリケーションは、SAML または OpenID Connect プロトコルをサポートするか、シングル サインオンのために Azure AD と統合する SCIM をサポートします。
 
-## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>上記のすべてのアプリケーションの種類でサポートされている機能
+## <a name="features-and-capabilities-supported-by-the-application-types"></a>アプリケーションの種類でサポートされているフィーチャーと機能
 
 Azure AD では、上記 4 つのすべてのアプリケーションの種類で、次の機能がサポートされます。
 

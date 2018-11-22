@@ -6,14 +6,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/22/2018
+ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: e615585fbdbef634a13a19aca4b85eef5b21815f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 84753f2c3ab19a0cc9d72ef8ce5011dfc8e5a8da
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740376"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711890"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>クイック スタート: Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -21,9 +21,7 @@ ms.locfileid: "50740376"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 

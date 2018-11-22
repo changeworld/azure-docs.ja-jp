@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 09/18/2018
 ms.topic: overview
 ms.service: cost-management
-manager: dougeby
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 9f0eac454d6ac937fc3313e4c50f8872e320c7ca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2125863f212b9e79b88e9f46ed0eb0def71d79b4
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985386"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276195"
 ---
 # <a name="what-is-cloudyn"></a>Cloudyn とは
 

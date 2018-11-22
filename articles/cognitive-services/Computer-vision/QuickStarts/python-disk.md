@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: ff06a06fb22abba3b666828f0594e70e4db99f57
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ef95d68f37de7637abd546a1a7fdffff547bda6b
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341998"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854137"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Python を使用してローカル画像を分析する
 
@@ -61,7 +61,7 @@ assert subscription_key
 # subscription keys. For example, if you got your subscription keys from
 # westus, replace "westcentralus" in the URI below with "westus".
 #
-# Free trial subscription keys are generated in the westcentralus region.
+# Free trial subscription keys are generated in the "westus" region.
 # If you use a free trial subscription key, you shouldn't need to change
 # this region.
 vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"

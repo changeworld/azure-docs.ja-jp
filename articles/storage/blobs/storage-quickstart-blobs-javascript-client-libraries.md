@@ -7,22 +7,25 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.author: tamram
-ms.date: 10/18/2018
+ms.date: 11/14/2018
 ms.topic: quickstart
 ms.component: blobs
-ms.openlocfilehash: 3b4bf95b0f5d275f6c8b4325e88a7ac326efa16b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c72cd83af2b06b19b285d3c939c0d45b995464d9
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139460"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711484"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
 # <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>クイック スタート: ブラウザーで JavaScript と HTML を使用して BLOB をアップロード、一覧表示、および削除する
+
 このクイック スタートでは、すべてブラウザー内で実行されるコードを使用して BLOB を管理する方法を示します。 ここで使用されている方法は、必要なセキュリティ対策を使用して BLOB ストレージ アカウントへの保護されたアクセスを確保する方法を示しています。 このクイック スタートを完了するには、[Azure サブスクリプション](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)が必要です。
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 ## <a name="setting-up-storage-account-cors-rules"></a>ストレージ アカウントの CORS ルールの設定 
 Web アプリケーションがクライアントから BLOB ストレージにアクセスできるようにするには、[クロス オリジン リソース共有](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS) を有効にするようにアカウントを構成する必要があります。 
