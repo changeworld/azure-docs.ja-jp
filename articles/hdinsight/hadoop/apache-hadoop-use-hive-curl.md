@@ -1,6 +1,6 @@
 ---
-title: HDInsight での Hadoop Hive と Curl の使用 - Azure
-description: Curl を使用して Pig ジョブを HDInsight にリモートで送信する方法について説明します。
+title: HDInsight 上で Curl を使用して Apache Hadoop Hive を使用する - Azure
+description: Curl を使用して Apache Pig ジョブを HDInsight にリモートで送信する方法について説明します。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: ac17c299656cc8134141284e0b31bdf568c0e3e0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: cff24991263ece54c143e5da8a3eb2a9e5b4af18
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016949"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634500"
 ---
-# <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>REST を使用した HDInsight における Hadoop での Hive クエリの実行
+# <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して Hive クエリを実行する
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で Hive クエリを実行する方法について説明します。
+WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Hadoop で Hive クエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -12,26 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/06/2017
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: a0f2cc0d76ef3c857bb7c13f46f1397f05b60977
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232445"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614474"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Relay REST のチュートリアル
-
 このチュートリアルでは、REST ベースのインターフェイスを表示する簡易な Azure Relay ホスト アプリケーションを構築する方法について説明します。 REST を使用すると、Web ブラウザーなどの Web クライアントから HTTP 要求を介して Service Bus API にアクセスできるようになります。
 
 本チュートリアルでは、Windows Communication Foundation (WCF) REST プログラミング モデルを使用して、Azure Relay に REST サービスを構築します。 詳細については、WCF ドキュメントの[「WCF Web HTTP プログラミング モデル」](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model)と [「サービスの設計と実装」](/dotnet/framework/wcf/designing-and-implementing-services) を参照してください。
 
-## <a name="step-1-create-a-namespace"></a>手順 1: 名前空間を作成する
+このチュートリアルでは、次の手順を実行します。
+
+> [!div class="checklist"]
+> * Relay 名前空間を作成する。
+> * REST ベースの WCF サービス コントラクトを定義する
+> * REST ベースの WCF コントラクトを実装する
+> * REST ベースの WCF サービスをホストし、実行する
+> * サービスを実行してテストする
+
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
+
+- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+- [Visual Studio 2015 またはそれ以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
+- Azure SDK for .NET。 [SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からインストールします。
+
+## <a name="create-a-relay-namespace"></a>Relay 名前空間を作成する
 
 Azure で Relay 機能を使用するには、最初にサービス名前空間を作成する必要があります。 名前空間は、アプリケーション内で Azure リソースをアドレス指定するためのスコープ コンテナーを提供します。 [こちらの手順](relay-create-namespace-portal.md)に従って、Relay 名前空間を作成します。
 
-## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>手順 2: Azure Relay で使用する REST ベースの WCF サービス コントラクトを定義する
+## <a name="define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>Azure Relay で使用する REST ベースの WCF サービス コントラクトを定義する
 
 WCF REST スタイルのサービスを作成するには、コントラクトを定義する必要があります。 コントラクトには、ホストがサポートする操作を指定します。 サービス操作は、Web サービス メソッドと考えることができます。 コントラクトを作成するには、C++、C#、または Visual Basic インターフェイスを定義します。 インターフェイスの各メソッドは、特定のサービス操作に対応しています。 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) 属性を各インターフェイスに適用する必要があります。また、[OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) 属性を各操作に適用する必要があります。 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) があるインターフェイスのメソッドに [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) がない場合、そのメソッドは公開されません。 これらのタスクに使用されるコードの例を手順に従って説明します。
 
@@ -136,7 +152,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="step-3-implement-a-rest-based-wcf-service-contract-to-use-service-bus"></a>手順 3: Service Bus を使用する REST ベースの WCF サービス コントラクトを実装する
+## <a name="implement-the-rest-based-wcf-service-contract"></a>REST ベースの WCF サービス コントラクトを実装する
 REST スタイルの WCF Relay サービスを作成するには、まずコントラクトを作成する必要があります。コントラクトは、インターフェイスを使用して定義します。 次の手順はインターフェイスの実装です。 ユーザー定義の **IImageContract** インターフェイスを実装する **ImageService** というクラスを作成します。 コントラクトを実装したら、App.config ファイルを使用してインターフェイスを構成します。 構成ファイルには、サービス名、コントラクト名、リレー サービスとの通信に使用するプロトコルの種類など、アプリケーションに必要な情報が含まれています。 以下の手順では、これらのタスクに使用するコード例を示します。
 
 これまでの手順と同様に、REST スタイルのコントラクトと基本の WCF Relay コントラクトの実装にはほとんど違いがありません。
@@ -430,7 +446,7 @@ namespace Microsoft.ServiceBus.Samples
 </configuration>
 ```
 
-## <a name="step-4-host-the-rest-based-wcf-service-to-use-azure-relay"></a>手順 4: Azure Relay を使用する REST ベースの WCF サービスをホストする
+## <a name="host-the-rest-based-wcf-service-to-use-azure-relay"></a>Azure Relay を使用する REST ベースの WCF サービスをホストする
 この手順では、WCF Relay でコンソール アプリケーションを使用して、Web サービスを実行する方法について説明します。 この手順で作成するコードの詳細については、手順に従って例を使用して説明します。
 
 ### <a name="to-create-a-base-address-for-the-service"></a>サービスのベース アドレスを作成するには
@@ -476,7 +492,7 @@ namespace Microsoft.ServiceBus.Samples
     host.Close();
     ```
 
-## <a name="example"></a>例
+### <a name="example"></a>例
 次の例では、チュートリアルの前の手順で説明したサービス コントラクトと実装が含まれています。ここでは、コンソール アプリケーションでサービスをホストします。 次のコードをコンパイルして、ImageListener.exe という実行可能ファイルを作成します。
 
 ```csharp
@@ -551,7 +567,7 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-### <a name="compiling-the-code"></a>コードのコンパイル
+## <a name="run-and-test-the-service"></a>サービスを実行してテストする
 ソリューションをビルドしたら、次の手順でアプリケーションを実行します。
 
 1. **F5** キーを押すか、実行可能ファイルの場所 (ImageListener\bin\Debug\ImageListener.exe) を参照し、サービスを実行します。 次の手順を実行するために必要なため、アプリケーションを実行したままにします。

@@ -5,23 +5,327 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 11/12/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: b4a816c887d1cca78ff845858dce29049946b09f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f8f3584475415cf9ca19458f6da78d34df37f438
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235991"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614363"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
 
 Azure Blockchain Workbench は、REST API を提供するだけでなく、メッセージング ベースの統合も提供します。 Workbench は Azure Event Grid を介して台帳中心のイベントを発行し、ダウンストリームの消費者がこれらのイベントに基づいてデータを取り込んだり、行動を起こしたりすることができるようにします。 信頼性の高いメッセージングを必要とするクライアントの場合、Azure Blockchain Workbench は Azure Service Bus エンドポイントにもメッセージを送信します。
 
-開発者は、ユーザーの作成、契約の作成、および台帳の契約の更新のために外部システム通信が取引を開始できるようにする機能にも関心を示しています。 現在、この機能はパブリック プレビューでは公開されていませんが、この機能を提供するサンプルが [http://aka.ms/blockchain-workbench-integration-sample](https://aka.ms/blockchain-workbench-integration-sample) にあります。
+## <a name="input-apis"></a>入力 API
+
+ユーザーの作成、コントラクトの作成、およびコントラクトの更新のために外部システムからトランザクションを開始する場合は、メッセージング入力 API を使用して、台帳に対するトランザクションを実行できます。 入力 API の使用方法を示すサンプルについては、[メッセージング統合のサンプル](https://aka.ms/blockchain-workbench-integration-sample)をご覧ください。
+
+次に示すのは、現在使用可能な入力 API です。
+
+### <a name="create-user"></a>ユーザーの作成
+
+新しいユーザーを作成します。
+
+要求には次のフィールドが必要です。
+
+| **名前**             | **説明**                                      |
+|----------------------|------------------------------------------------------|
+| requestId            | クライアントによって指定された GUID                                |
+| firstName            | ユーザーの名                              |
+| lastName             | ユーザーの姓                               |
+| emailAddress         | ユーザーの電子メール アドレス                           |
+| externalId           | ユーザーの Azure AD オブジェクト ID                      |
+| connectionId         | ブロックチェーン接続の一意識別子 |
+| messageSchemaVersion | メッセージング スキーマ バージョン                            |
+| messageName          | **CreateUserRequest**                               |
+
+例:
+
+``` json
+{
+    "requestId": "e2264523-6147-41fc-bbbb-edba8e44562d",
+    "firstName": "Ali",
+    "lastName": "Alio",
+    "emailAddress": "aa@contoso.com",
+    "externalId": "6a9b7f65-ffff-442f-b3b8-58a35abd1bcd",
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateUserRequest"
+}
+```
+
+Blockchain Workbench は、次のフィールドを含む応答を返します。
+
+| **名前**              | **説明**                                                                                                             |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| requestId             | クライアントによって指定された GUID |
+| userId                | 作成されたユーザーの ID |
+| userChainIdentifier   | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの **オンチェーン**  アドレスです。 |
+| connectionId          | ブロックチェーン接続の一意識別子|
+| messageSchemaVersion  | メッセージング スキーマ バージョン |
+| messageName           | **CreateUserUpdate** |
+| status                | ユーザー作成要求の状態。  成功した場合、値は **Success** です。 失敗した場合、値は **Failure** です。     |
+| additionalInformation | 状態に基づいて提供される追加情報 |
+
+**ユーザー作成**が成功した場合の Blockchain Workbench からの応答例:
+
+``` json
+{ 
+    "requestId": "e2264523-6147-41fc-bb59-edba8e44562d", 
+    "userId": 15, 
+    "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398", 
+    "connectionId": 1, 
+    "messageSchemaVersion": "1.0.0", 
+    "messageName": "CreateUserUpdate", 
+    "status": "Success", 
+    "additionalInformation": { } 
+} 
+```
+
+要求が成功しなかった場合は、追加情報にエラーの詳細が示されます。
+
+``` json
+{
+    "requestId": "e2264523-6147-41fc-bb59-edba8e44562d", 
+    "userId": 15, 
+    "userChainIdentifier": null, 
+    "connectionId": 1, 
+    "messageSchemaVersion": "1.0.0", 
+    "messageName": "CreateUserUpdate", 
+    "status": "Failure", 
+    "additionalInformation": { 
+        "errorCode": 4000, 
+        "errorMessage": "User cannot be provisioned on connection." 
+    }
+}
+```
+
+### <a name="create-contract"></a>コントラクトの作成
+
+新しいコントラクトを作成します。
+
+要求には次のフィールドが必要です。
+
+| **名前**             | **説明**                                                                                                           |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| requestId            | クライアントによって指定された GUID |
+| userChainIdentifier  | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
+| applicationName      | アプリケーションの名前 |
+| workflowName         | ワークフローの名前 |
+| parameters           | コントラクト作成のために入力されたパラメーター |
+| connectionId         | ブロックチェーン接続の一意識別子 |
+| messageSchemaVersion | メッセージング スキーマ バージョン |
+| messageName          | **CreateContractRequest** |
+
+例:
+
+``` json
+{ 
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211", 
+    "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398", 
+    "applicationName": "AssetTransfer", 
+    "workflowName": "AssetTransfer", 
+    "parameters": [ 
+        { 
+            "name": "description", 
+            "value": "a 1969 dodge charger" 
+        }, 
+        { 
+            "name": "price", 
+            "value": "12345" 
+        } 
+    ], 
+    "connectionId": 1, 
+    "messageSchemaVersion": "1.0.0", 
+    "messageName": "CreateContractRequest" 
+}
+```
+
+Blockchain Workbench は、次のフィールドを含む応答を返します。
+
+| **名前**                 | **説明**                                                                   |
+|--------------------------|-----------------------------------------------------------------------------------|
+| requestId                | クライアントによって指定された GUID                                                             |
+| contractId               | Azure Blockchain Workbench 内のコントラクトの一意の識別子 |
+| contractLedgerIdentifier | 台帳のコントラクトのアドレス                                            |
+| connectionId             | ブロックチェーン接続の一意識別子                               |
+| messageSchemaVersion     | メッセージング スキーマ バージョン                                                         |
+| messageName              | **CreateContractUpdate**                                                      |
+| status                   | コントラクト作成要求の状態。  使用される値: **Submitted**、**Committed**、**Failure**。  |
+| additionalInformation    | 状態に基づいて提供される追加情報                              |
+
+**コントラクト作成**が送信された後の Blockchain Workbench からの応答例。
+
+``` json
+{
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211",
+    "contractId": 55,
+    "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractUpdate",
+    "status": "Submitted"
+    "additionalInformation": { }
+}
+```
+
+**コントラクト作成**がコミットされた後の Blockchain Workbench からの応答例。
+
+``` json
+{
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211",
+    "contractId": 55,
+    "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractUpdate",
+    "status": "Committed",
+    "additionalInformation": { }
+}
+```
+
+要求が成功しなかった場合は、追加情報にエラーの詳細が示されます。
+
+``` json
+{
+    "requestId": "ce3c429b-a091-4baa-b29b-5b576162b211",
+    "contractId": 55,
+    "contractLedgerIdentifier": null,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractUpdate",
+    "status": "Failure"
+    "additionalInformation": {
+        "errorCode": 4000,
+        "errorMessage": "Contract cannot be provisioned on connection."
+    }
+}
+```
+
+### <a name="create-contract-action"></a>コントラクト アクションの作成
+
+新しいコントラクト アクションを作成します。
+
+要求には次のフィールドが必要です。
+
+| **名前**                 | **説明**                                                                                                           |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| requestId                | クライアントによって指定された GUID |
+| userChainIdentifier      | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、これはユーザーの**オン チェーン** アドレスです。 |
+| contractLedgerIdentifier | 台帳のコントラクトのアドレス |
+| workflowFunctionName     | ワークフロー関数の名前 |
+| parameters               | コントラクト作成のために入力されたパラメーター |
+| connectionId             | ブロックチェーン接続の一意識別子 |
+| messageSchemaVersion     | メッセージング スキーマ バージョン |
+| messageName              | **CreateContractActionRequest** |
+
+例:
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "userChainIdentifier": "0x9a8DDaCa9B7488683A4d62d0817E965E8f248398",
+    "contractLedgerIdentifier": "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe",
+    "workflowFunctionName": "modify",
+    "parameters": [
+        {
+            "name": "description",
+            "value": "a 1969 dodge charger"
+        },
+        {
+            "name": "price",
+            "value": "12345"
+        }
+    ],
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionRequest"
+}
+```
+
+Blockchain Workbench は、次のフィールドを含む応答を返します。
+
+| **名前**              | **説明**                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------|
+| requestId             | クライアントによって指定された GUID|
+| contractId            | Azure Blockchain Workbench 内のコントラクトの一意の識別子 |
+| connectionId          | ブロックチェーン接続の一意識別子 |
+| messageSchemaVersion  | メッセージング スキーマ バージョン |
+| messageName           | **CreateContractActionUpdate** |
+| status                | コントラクト アクション要求の状態。 使用される値: **Submitted**、**Committed**、**Failure**。                         |
+| additionalInformation | 状態に基づいて提供される追加情報 |
+
+**コントラクト アクション作成**が送信された後の Blockchain Workbench からの応答例。
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "contractId": 105,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionUpdate",
+    "status": "Submitted",
+    "additionalInformation": { }
+}
+```
+
+**コントラクト アクション作成**がコミットされた後の Blockchain Workbench からの応答例。
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "contractId": 105,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionUpdate",
+    "status": "Committed"
+    "additionalInformation": { }
+}
+```
+
+要求が成功しなかった場合は、追加情報にエラーの詳細が示されます。
+
+``` json
+{
+    "requestId": "a5530932-9d6b-4eed-8623-441a647741d3",
+    "contractId": 105,
+    "connectionId": 1,
+    "messageSchemaVersion": "1.0.0",
+    "messageName": "CreateContractActionUpdate",
+    "status": "Failure"
+    "additionalInformation": {
+        "errorCode": 4000,
+        "errorMessage": "Contract action cannot be provisioned on connection."
+    }
+}
+```
+
+### <a name="input-api-error-codes-and-messages"></a>入力 API のエラー コードとメッセージ
+
+**エラー コード 4000: 無効な要求のエラー**
+- Invalid connectionId \(無効な connectionId です\)
+- CreateUserRequest deserialization failed \(CreateUserRequest のシリアル化を解除できませんでした\)
+- CreateContractRequest deserialization failed \(CreateContractRequest のシリアル化を解除できませんでした\)
+- CreateContractActionRequest deserialization failed \(CreateContractActionRequest のシリアル化を解除できませんでした\)
+- Application {identified by application name} does not exist \({アプリケーション名によって識別された} アプリケーションが存在しません\)
+- Application {identified by application name} does not have workflow \({アプリケーション名によって識別された} アプリケーションにワークフローがありません\)
+- UserChainIdentifier does not exist \(UserChainIdentifier が存在しません\)
+- Contract {identified by ledger identifier} does not exist \({台帳識別子によって識別された} コントラクトが存在しません\)
+- Contract {identified by ledger identifier} does not have function {workflow function name} \({台帳識別子によって識別された} コントラクトには、{ワークフロー関数名} 関数がありません\)
+- UserChainIdentifier does not exist \(UserChainIdentifier が存在しません\)
+
+**エラー コード 4090: 競合のエラー**
+- ユーザーは既に存在します
+- Contract already exists \(コントラクトは既に存在します\)
+- Contract action already exists \(コントラクト アクションは既に存在します\)
+
+**エラー コード 5000: 内部サーバー エラー**
+- 例外メッセージ
 
 ## <a name="event-notifications"></a>イベント通知
 
@@ -92,15 +396,15 @@ public class NewAccountRequest : MessageModelBase
 
 | Name | 説明 |
 |-----|--------------|
-| ChainID | 要求に関連付けられているチェーンの一意の識別子。|
-| BlockId | 台帳のブロックの一意の識別子。|
-| ContractId | 契約の一意の識別子。|
-| ContractAddress |       台帳の契約のアドレス。|
-| TransactionHash  |     台帳の取引のハッシュ。|
-| OriginatingAddress |   取引の発信者のアドレス。|
-| ActionName       |     アクションの名前。|
-| IsUpdate        |      これが更新であるかどうかを示します。|
-| parameters       |     アクションに送信されるパラメーターの名前、値、およびデータ型を識別するオブジェクトの一覧。|
+| ChainID | 要求に関連付けられているチェーンの一意の識別子 |
+| BlockId | 台帳のブロックの一意の識別子 |
+| ContractId | コントラクトの一意識別子 |
+| ContractAddress |       台帳のコントラクトのアドレス |
+| TransactionHash  |     台帳のトランザクションのハッシュ |
+| OriginatingAddress |   トランザクションの発信者のアドレス |
+| ActionName       |     アクションの名前 |
+| IsUpdate        |      これが更新であるかどうかを示します |
+| parameters       |     アクションに送信されるパラメーターの名前、値、およびデータ型を識別するオブジェクトの一覧 |
 | TopLevelInputParams |  契約が 1 つ以上の他の契約に接続されているシナリオでは、これらは最上位の契約のパラメーターです。 |
 
 ``` csharp
@@ -126,18 +430,17 @@ public class ContractInsertOrUpdateRequest : MessageModelBase
 
 | Name                     | 説明                                                                                                                                                                   |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ContractActionId         | この契約アクションの一意の識別子                                                                                                                                |
-| ChainIdentifier          | チェーンの一意の識別子                                                                                                                                           |
-| ConnectionId             | 接続の一意の識別子                                                                                                                                      |
-| UserChainIdentifier      | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、ユーザーの "オン チェーン" アドレスです。                                                     |
-| ContractLedgerIdentifier | 台帳の契約のアドレス。                                                                                                                                        |
-| WorkflowFunctionName     | ワークフロー関数の名前。                                                                                                                                                |
-| WorkflowName             | ワークフローの名前。                                                                                                                                                         |
-| WorkflowBlobStorageURL   | BLOB ストレージ内の契約の URL。                                                                                                                                      |
-| ContractActionParameters | 契約アクションのパラメーター。                                                                                                                                           |
-| TransactionHash          | 台帳の取引のハッシュ。                                                                                                                                    |
-| プロビジョニング状態      | アクションの現在のプロビジョニング状態。</br>0 - 作成済み</br>1 - 進行中</br>2 - 完了</br> "完了" は、これが正常に追加されたことが台帳で確認されたことを示します。                                               |
-|                          |                                                                                                                                                                               |
+| ContractActionId         | このコントラクト アクションの一意の識別子 |
+| ChainIdentifier          | チェーンの一意の識別子 |
+| ConnectionId             | 接続の一意の識別子 |
+| UserChainIdentifier      | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
+| ContractLedgerIdentifier | 台帳のコントラクトのアドレス |
+| WorkflowFunctionName     | ワークフロー関数の名前 |
+| WorkflowName             | ワークフローの名前 |
+| WorkflowBlobStorageURL   | BLOB ストレージ内のコントラクトの URL |
+| ContractActionParameters | コントラクト アクションのパラメーター |
+| TransactionHash          | 台帳のトランザクションのハッシュ |
+| プロビジョニング状態      | アクションの現在のプロビジョニング状態。</br>0 - 作成済み</br>1 - 進行中</br>2 - 完了</br> "完了" は、これが正常に追加されたことが台帳で確認されたことを示します |
 
 ```csharp
 public class ContractActionRequest : MessageModelBase
@@ -165,9 +468,9 @@ public class ContractActionRequest : MessageModelBase
 
 | Name    | 説明                              |
 |---------|------------------------------------------|
-| Address | 資金調達されたユーザーのアドレス。 |
-| Balance | ユーザー残高の残高。         |
-| ChainID | チェーンの一意の識別子。     |
+| Address | 資金調達されたユーザーのアドレス |
+| Balance | ユーザー残高の残高         |
+| ChainID | チェーンの一意の識別子     |
 
 
 ``` csharp
@@ -185,10 +488,10 @@ public class UpdateUserBalanceRequest : MessageModelBase
 
 | Name           | 説明                                                            |
 |----------------|------------------------------------------------------------------------|
-| ChainId        | ブロックが追加されたチェーンの一意の識別子。             |
-| BlockId        | Azure Blockchain Workbench 内のブロックの一意の識別子。 |
-| BlockHash      | ブロックのハッシュ。                                                 |
-| BlockTimeStamp | ブロックのタイムスタンプ。                                            |
+| ChainId        | ブロックが追加されたチェーンの一意の識別子             |
+| BlockId        | Azure Blockchain Workbench 内のブロックの一意の識別子 |
+| BlockHash      | ブロックのハッシュ                                                 |
+| BlockTimeStamp | ブロックのタイムスタンプ                                            |
 
 ``` csharp
 public class InsertBlockRequest : MessageModelBase
@@ -206,13 +509,13 @@ public class InsertBlockRequest : MessageModelBase
 
 | Name            | 説明                                                            |
 |-----------------|------------------------------------------------------------------------|
-| ChainId         | ブロックが追加されたチェーンの一意の識別子。             |
-| BlockId         | Azure Blockchain Workbench 内のブロックの一意の識別子。 |
-| TransactionHash | 取引のハッシュ。                                           |
-| ソース            | 取引の発信者のアドレス。                      |
-| ターゲット              | 取引対象の受信者のアドレス。              |
-| 値           | 取引に含まれている値。                                 |
-| IsAppBuilderTx  | これが Blockchain Workbench 取引であるかどうかを示します。                         |
+| ChainId         | ブロックが追加されたチェーンの一意の識別子             |
+| BlockId         | Azure Blockchain Workbench 内のブロックの一意の識別子 |
+| TransactionHash | トランザクションのハッシュ                                           |
+| ソース            | トランザクションの発信者のアドレス                      |
+| ターゲット              | トランザクション対象の受信者のアドレス              |
+| 値           | トランザクションに含まれている値                                 |
+| IsAppBuilderTx  | これが Blockchain Workbench トランザクションであるかどうかを示します                         |
 
 ``` csharp
 public class InsertTransactionRequest : MessageModelBase
@@ -233,8 +536,8 @@ public class InsertTransactionRequest : MessageModelBase
 
 | Name            | 説明                                                                       |
 |-----------------|-----------------------------------------------------------------------------------|
-| ContractId      | Azure Blockchain Workbench 内の契約の一意の識別子。 |
-| ChainIdentifier | これは、チェーン上の契約の識別子です。                             |
+| ContractId      | Azure Blockchain Workbench 内のコントラクトの一意の識別子 |
+| ChainIdentifier | チェーン上のコントラクトの識別子                             |
 
 ``` csharp
 public class AssignContractChainIdentifierRequest : MessageModelBase
@@ -252,8 +555,8 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 
 | Name          | 説明                          |
 |---------------|--------------------------------------|
-| OperationName | 操作の名前。           |
-| RequestId     | 要求の一意の識別子。 |
+| OperationName | 操作の名前           |
+| RequestId     | 要求の一意識別子 |
 
 ``` csharp
 public class MessageModelBase
@@ -269,9 +572,9 @@ public class MessageModelBase
 
 | Name  | 説明                 |
 |-------|-----------------------------|
-| Name  | パラメーターの名前。  |
-| 値 | パラメーターの値。 |
-| type  | パラメーターの型。  |
+| Name  | パラメーターの名前  |
+| 値 | パラメーターの値 |
+| type  | パラメーターの型  |
 
 ``` csharp
 public class ContractInputParameter
@@ -288,10 +591,10 @@ ID、名前、値、パラメーターの型が含まれています。
 
 | Name  | 説明                |
 |-------|----------------------------|
-| ID    | プロパティの ID。    |
-| Name  | プロパティの名前。  |
+| ID    | プロパティの ID    |
+| Name  | プロパティの名前  |
 | 値 | プロパティの値。 |
-| type  | プロパティの型。  |
+| type  | プロパティの型  |
 
 ``` csharp
 public class ContractProperty

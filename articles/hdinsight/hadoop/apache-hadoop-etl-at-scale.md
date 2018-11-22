@@ -1,6 +1,6 @@
 ---
 title: 大規模な抽出、変換、および読み込み (ETL) - Azure HDInsight
-description: HDInsight での Hadoop による ETL の使用方法について説明します。
+description: HDInsight 上で Apache Hadoop を使用して ETL を使用する方法について説明します。
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 6af55bf8311efc14687ee16c3226988fd730081d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 17aeb847a2c701abf03b46d47e34d13b6fb27316
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049004"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633327"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
-抽出、変換、および読み込み (ETL) は、データがさまざまなソースから取得され、標準の場所に収集され、クリーニングと処理が行われ、最終的にクエリが可能なデータ ストアに読み込まれるプロセスです。 従来の ETL プロセスは、データをインポートし、所定の場所でクリーニングした後、リレーショナル データ エンジンに格納します。 HDInsight では、さまざまな Hadoop エコシステム コンポーネントが大規模な ETL の実行をサポートします。 
+抽出、変換、および読み込み (ETL) は、データがさまざまなソースから取得され、標準の場所に収集され、クリーニングと処理が行われ、最終的にクエリが可能なデータ ストアに読み込まれるプロセスです。 従来の ETL プロセスは、データをインポートし、所定の場所でクリーニングした後、リレーショナル データ エンジンに格納します。 HDInsight 上では、さまざまな Apache Hadoop エコシステム コンポーネントで、大規模な ETL の実行がサポートされます。 
 
 ETL プロセスでの HDInsight の使用は、次のパイプラインにまとめることができます。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus WCF Relay のチュートリアル | Microsoft Docs
+title: Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する | Microsoft Docs
 description: WCF Relay を使用してクライアントとサービス アプリケーションを構築します。
 services: service-bus-relay
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2017
+ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6927788fa79c567222a199064f5b375546ecf9ad
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262014"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615478"
 ---
-# <a name="azure-wcf-relay-tutorial"></a>Azure WCF Relay のチュートリアル
+# <a name="expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
 
 このチュートリアルでは、Azure Relay を使用して簡単な WCF Relay クライアント アプリケーションとサービスを構築する方法について説明します。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
@@ -31,19 +31,32 @@ ms.locfileid: "51262014"
 
 最後の 3 つの手順では、クライアント アプリケーションの作成方法、クライアント アプリケーションの構成方法、ホストの機能にアクセスできるクライアントを作成して使用する方法について説明します。
 
+このチュートリアルでは、次の手順を実行します。
+
+> [!div class="checklist"]
+> * Relay 名前空間を作成する。
+> * WCF サービス コントラクトを作成する
+> * WCF コントラクトを実装する
+> * リレー サービスに登録する WCF サービスをホストして実行する
+> * サービス コントラクト用の WCF クライアントを作成する
+> * WCF クライアントを構成する
+> * WCF クライアントを実装する
+> * アプリケーションを実行する。 
+
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次のものが必要です。
+このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
-* [Microsoft Visual Studio 2015 以上](https://visualstudio.com)。 このチュートリアルでは、Visual Studio 2017 を使用します。
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、無料アカウントを数分で作成できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。
+- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+- [Visual Studio 2015 またはそれ以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
+- Azure SDK for .NET。 [SDK のダウンロード ページ](https://azure.microsoft.com/downloads/)からインストールします。
 
-## <a name="create-a-service-namespace"></a>サービス名前空間の作成
+## <a name="create-a-relay-namespace"></a>Relay 名前空間を作成する
+最初の手順として、名前空間を作成し、[Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) キーを取得します。 名前空間により、リレー サービスが公開する各アプリケーションにアプリケーション境界が設けられます。 サービス名前空間が作成された時点で、SAS キーが生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Azure が認証する資格情報になります。
 
-最初の手順として、名前空間を作成し、[Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) キーを取得します。 名前空間により、リレー サービスが公開する各アプリケーションにアプリケーション境界が設けられます。 サービス名前空間が作成された時点で、SAS キーが生成されます。 サービス名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Azure が認証する資格情報になります。 [こちらの手順](relay-create-namespace-portal.md)に従って、Relay 名前空間を作成します。
+[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 ## <a name="define-a-wcf-service-contract"></a>WCF サービス コントラクトを定義する
-
 サービス コントラクトは、サービスでサポートされる操作 (メソッドや関数を表す Web サービスの用語) を指定します。 コントラクトを作成するには、C++、C#、または Visual Basic インターフェイスを定義します。 インターフェイスの各メソッドは、特定のサービス操作に対応しています。 各インターフェイスには、[ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性が適用されている必要があります。また、各操作には、[OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性が適用されている必要があります。 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性があるインターフェイスのメソッドに [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性がない場合、そのメソッドは公開されません。 以下の手順では、これらのタスクのコード例を示します。 コントラクトとサービスの概要については、WCF ドキュメントの [「サービスの設計と実装」](https://msdn.microsoft.com/library/ms729746.aspx) を参照してください。
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>インターフェイスを使用してリレー コントラクトを作成する
@@ -51,13 +64,13 @@ ms.locfileid: "51262014"
 1. 管理者として Visual Studio を開きます。これには、**[スタート]** メニューの [Visual Studio] を右クリックし、**[管理者として実行]** を選択します。
 2. 新しいコンソール アプリケーション プロジェクトを作成します。 **[ファイル]** メニューをクリックし、**[新規作成]** を選択して、**[プロジェクト]** をクリックします。 **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** をクリックします (**[Visual C#]** が表示されない場合は、**[他の言語]** の下を確認してください)。 **[コンソール アプリ (.NET Framework)]** テンプレートをクリックし、「**EchoService**」という名前を付けます。 **[OK]** をクリックしてプロジェクトを作成します。
 
-    ![][2]
+    ![コンソール アプリを作成する][2]
 
 3. Service Bus NuGet パッケージをインストールします。 WCF の **System.ServiceModel** と Service Bus ライブラリへの参照が、このパッケージによって自動的に追加されます。 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) は、WCF の基本機能にプログラムでアクセスできるようにする名前空間です。 Service Bus は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。
 
-    ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。[参照] タブをクリックして、**WindowsAzure.ServiceBus** を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]** をクリックして、使用条件に同意します。
+    ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。**[参照]** タブをクリックして、**WindowsAzure.ServiceBus** を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]** をクリックして、使用条件に同意します。
 
-    ![][3]
+    ![Service Bus パッケージ][3]
 4. エディターに Program.cs ファイルがまだ表示されていない場合は、ソリューション エクスプローラーでこのファイルをダブルクリックして開きます。
 5. 次の using ステートメントをファイルの先頭に追加します。
 
@@ -231,7 +244,7 @@ Azure Relay を作成するには、まずコントラクトを作成する必�
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>リレー サービスに登録する基本的な Web サービスをホストして実行する
+## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>リレー サービスに登録する WCF サービスをホストして実行する
 
 この手順では、Azure Relay サービスの実行方法について説明します。
 
@@ -501,7 +514,7 @@ namespace Microsoft.ServiceBus.Samples
     この手順では、エンドポイントの名前、サービスで定義されたコントラクト、クライアント アプリケーションが Azure Relay との通信に TCP を使用することを定義します。 エンドポイント名は、次の手順でこのエンドポイント構成をサービス URI とリンクするために使用されます。
 5. **[ファイル]**、**[すべて保存]** の順にクリックします。
 
-## <a name="example"></a>例
+### <a name="example"></a>例
 
 次のコードは、Echo クライアントの App.config ファイルを示します。
 
@@ -607,7 +620,7 @@ namespace Microsoft.ServiceBus.Samples
     channelFactory.Close();
     ```
 
-## <a name="example"></a>例
+### <a name="example"></a>例
 
 完成したコードは次のようになります。クライアント アプリケーションを作成する方法、サービスの操作を呼び出す方法、操作の呼び出しが完了した後でクライアントを終了する方法を示しています。
 
@@ -714,13 +727,10 @@ namespace Microsoft.ServiceBus.Samples
 12. この方法で、クライアントからサービスにテキスト メッセージの送信を続けることができます。 終了したら、クライアント コンソール ウィンドウとサービス コンソール ウィンドウで Enter キーを押して両方のアプリケーションを終了します。
 
 ## <a name="next-steps"></a>次の手順
+次のチュートリアルに進みます。 
 
-このチュートリアルでは、Service Bus の WCF Relay 機能を使用して、Azure Relay クライアント アプリケーションとサービスを構築する方法を紹介しました。 [Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)を使用した同様のチュートリアルについては、「[Service Bus キューの使用](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」を参照してください。
-
-Azure Relay の詳細については、次のトピックを参照してください。
-
-* [Azure Relay の概要](relay-what-is-it.md)
-* [.NET で WCF リレー サービスを使用する方法](relay-wcf-dotnet-get-started.md)
+> [!div class="nextstepaction"]
+>[オンプレミスの WCF REST サービスをネットワーク外部のクライアントに公開する](service-bus-relay-rest-tutorial.md)
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png

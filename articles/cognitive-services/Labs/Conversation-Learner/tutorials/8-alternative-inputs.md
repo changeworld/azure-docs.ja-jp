@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f344424c372f65cd8bfe5779cc65f0e866e58a11
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252549"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633973"
 ---
 # <a name="how-to-use-alternative-inputs"></a>代替入力を使用する方法
 
@@ -137,8 +137,10 @@ ms.locfileid: "51252549"
     3. [Submit Changes]\(変更内容の送信\) をクリックします。
 4. 左側のウィンドウで [denver] をクリックして選択します。
     1. [Add alternative input]\(代替入力の追加\) に「for denver」と入力します。
-    2. 「forecast for austin」と入力します。
-        - フレーズ全体が強調表示されています。 そのフレーズをクリックし、赤色の [x] をクリックします。 次に [austin] を選択して、[city] をクリックします。
+    1. 「forecast for austin」と入力します。
+        - エラー メッセージが表示されます。'Text Variations must contain the same detected Entities as the original input text.' (テキストのバリエーションには、元の入力テキストと同じ検出されたエンティティを含める必要があります。)
+        - 'austin' という単語をクリックします。
+        - 'austin' 用のエンティティを選択できるポップアップが表示されます。 **[city]\(市区町村\)** をクリックします。
         - [Submit Changes]\(変更内容の送信\) をクリックします。
     1. [完了] をクリックすると、モデルの再トレーニングが実行されます。
 

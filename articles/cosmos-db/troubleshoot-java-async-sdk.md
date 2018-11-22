@@ -9,12 +9,12 @@ ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: 74813634aad95f163b06717521bb2c746ac3df6b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ee92a5dd474cdf4f32ed2c7327d732a2cfbbbf79
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238831"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632936"
 ---
 # <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Azure Cosmos DB SQL API アカウントで Java Async SDK を使用する場合の問題のトラブルシューティング
 この記事では、Azure Cosmos DB SQL API アカウントで [Java Async ADK](sql-api-sdk-async-java.md) を使用するときの共通の問題、回避策、診断手順、およびツールについて説明します。
@@ -148,7 +148,7 @@ Cosmos DB エミュレーターの HTTPS 証明書が自己署名されていま
 
 ## <a name="enable-client-sice-logging"></a>クライアント SDK のログ記録を有効にする
 
-async Java SDK は、log4j や logback などの一般的なログ記録フレームワークへのログ記録をサポートするロギング ファサードとして SLF4j を使用 します。
+Java Async SDK では、log4j や logback などの一般的なログ記録フレームワークへのログ記録をサポートするロギング ファサードとして SLF4j を使用 します。
 
 たとえば、ログ記録フレームワークとして log4j を使用する場合は、Java classpath に次の libs を追加します。
 

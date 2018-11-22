@@ -1,18 +1,18 @@
 ---
 title: Azure Container Registry マルチ ステップ タスクによってイメージのビルド、テスト、および修正プログラムの適用を自動化する
-description: Azure Container Registry の ACR タスクの機能である、マルチ ステップ タスクの概要。これは、クラウドでコンテナー イメージのビルド、テスト、および修正プログラムの適用を行うため、タスク ベースのワークフローを提供するものです。
+description: Azure Container Registry の ACR タスクの機能である、マルチ ステップ タスクの概要。これは、クラウド上でコンテナー イメージのビルド、テスト、および修正プログラムの適用を行うためのタスク ベースのワークフローを提供するものです。
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/29/2018
 ms.author: danlep
-ms.openlocfilehash: cdabafc4f70b08076820e7e0d39300b3eb0bc1e7
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 4492e05339c72c371eb2c935d0397b469440c4f6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856720"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632694"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する
 
@@ -53,7 +53,7 @@ ACR タスクのマルチ ステップ タスクは、YAML ファイル内で一
 * [`push`](container-registry-tasks-reference-yaml.md#push): ビルドされたイメージをコンテナー レジストリにプッシュします。 パブリック Docker Hub と同様に、Azure Container Registry のようなプライベート レジストリがサポートされています。
 * [`cmd`](container-registry-tasks-reference-yaml.md#cmd): 実行中のタスクのコンテキスト内で関数として動作できるように、コンテナーを実行します。 コンテナーの `[ENTRYPOINT]` にパラメーターを渡すことができます。また、env や detach などのプロパティや、その他の使い慣れた `docker run` パラメーターを指定できます。 `cmd` ステップの種類では、単体テストや機能テストに加え、コンテナーの同時実行が可能です。
 
-マルチ ステップ タスクは、1 つのイメージのビルドやプッシュと同様にシンプルなものにできます。
+次のスニペットでは、これらのタスクのステップの種類を組み合わせる方法を示しています。 マルチ ステップ タスクは、次のような YAML ファイルを使用して、Dockerfile から 1 つのイメージを構築してレジストリにプッシュするのと同じように単純にすることができます。
 
 ```yaml
 version: 1.0-preview-1
@@ -62,7 +62,7 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-または、このタスクのように、より複雑なタスクです。これには、パッケージのビルド、テスト、helm でのパッケージ化、helm でのデプロイが含まれます。
+複雑なものでは、次の架空のマルチ ステップ定義のように、ビルド、テスト、helm によるパッケージ化、および helm によるデプロイを実行するためのステップを含めることができます (コンテナー レジストリと Helm リポジトリの構成は示されていません)。
 
 ```yaml
 version: 1.0-preview-1
@@ -84,6 +84,8 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
+
+さまざまなシナリオ用の完全なマルチ ステップ タスクの YAML ファイルと Dockerfile については、[タスクの例][task-examples]を参照してください。
 
 ## <a name="run-a-sample-task"></a>サンプル タスクを実行する
 
@@ -163,6 +165,7 @@ ACR タスクのマルチ ステップ タスク機能はプレビュー段階�
 
 * [タスクのリファレンス](container-registry-tasks-reference-yaml.md) - タスク ステップの種類、プロパティ、使い方。
 * [タスクの例][task-examples] - 簡単なものから複雑なものまで、いくつかのシナリオに向けた `task.yaml` ファイルの例。
+* [コマンド リポジトリ](https://github.com/AzureCR/cmd) - ACR のタスクのコマンドとしてのコンテナーのコレクション。
 
 <!-- IMAGES -->
 

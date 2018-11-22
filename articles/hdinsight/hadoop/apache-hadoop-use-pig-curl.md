@@ -1,6 +1,6 @@
 ---
-title: REST を使用した HDInsight 内での Hadoop Pig の使用 - Azure
-description: REST を使用して Azure HDInsight の Hadoop クラスターで Pig Latin ジョブを実行する方法を説明します。
+title: UHDInsight 上で REST を使用して Apache Hadoop Pig を使用する - Azure
+description: REST を使用して、Azure HDInsight 上の Apache Hadoop クラスターで Pig Latin ジョブを実行する方法について説明します。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: bd729d0d2cd095339a82b8a7f38a17a20b709c15
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: cb96933569c18b8c70d8991c9ba19f9f3e1243e6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013090"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633701"
 ---
-# <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>REST を使用した HDInsight の Hadoop での Pig ジョブの実行
+# <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>REST を使用して HDInsight 上の Apache Hadoop で Pig ジョブを実行する
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Azure HDInsight クラスターに REST を要求して Pig Latin ジョブを実行する方法について説明します。 Curl は、WebHCat REST API を使用して HDInsight とやり取りする方法を示すために使用されます。
+Azure HDInsight クラスターに REST 要求を行うことで、Apache Pig Latin ジョブを実行する方法について説明します。 Curl は、WebHCat REST API を使用して HDInsight とやり取りする方法を示すために使用されます。
 
 > [!NOTE]
-> Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「 [Linux での HDInsight の使用方法](../hdinsight-hadoop-linux-information.md)」をご覧ください。
+> Linux ベースの Apache Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、[Linux ベースの HDInsight のヒント](../hdinsight-hadoop-linux-information.md)に関する記事をご覧ください。
 
 ## <a id="prereq"></a>前提条件
 

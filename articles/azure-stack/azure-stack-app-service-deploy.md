@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 08f08d926a9e27e421ff8db46051d8a1e7229041
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166884"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614057"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>App Service リソース プロバイダーを Azure Stack に追加する
 
@@ -28,7 +28,7 @@ ms.locfileid: "49166884"
 この記事のガイダンスを使用して、Azure Stack に App Service をデプロイします。
 
 > [!IMPORTANT]  
-> Azure App Service 1.3 をデプロイする前に、Azure Stack 統合システムに 1807 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
+> Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
 
 Web および API アプリケーションを作成する機能をユーザーに提供できます。 これらのアプリケーションをユーザーが作成できるようにするには、次のことを行う必要があります。
 
@@ -74,8 +74,8 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
    b. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** で、**[Default Provider Subscription]\(既定のプロバイダー サブスクリプション\)** を選択します。
 
-     >[!NOTE]
-     >現在、App Service は、**[Default Provider Subscription]\(既定のプロバイダー サブスクリプション\)** にのみデプロイできます。
+     > [!IMPORTANT]  
+     > App Service は、**[Default Provider Subscription]\(既定のプロバイダー サブスクリプション\)** にデプロイする**必要があります**。
 
    c. **[Azure Stack Locations]\(Azure Stack の場所\)** で、デプロイしているリージョンに対応する場所を選択します。 たとえば、Azure Stack Development Kit にデプロイしている場合は、**[ローカル]** を選びます。
 

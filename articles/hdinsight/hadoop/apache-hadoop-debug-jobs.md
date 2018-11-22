@@ -1,5 +1,5 @@
 ---
-title: 'HDInsight での Hadoop のデバッグ: ログの表示とエラーメッセージの解釈 - Azure '
+title: 'HDInsight 上の Apache Hadoop をデバッグする: ログの表示とエラーメッセージの解釈 - Azure '
 description: PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。
 services: hdinsight
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 694129fa39a84deac118c35da52a0617fe805d6c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1589a5c1cab5a37322249762c840620d9ba4fc7e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261151"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634636"
 ---
 # <a name="analyze-hadoop-logs"></a>Hadoop ログの分析
 
-Azure HDInsight の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、「 [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)」を参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+Azure HDInsight 上の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、「 [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)」を参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
 ## <a name="logs-written-to-azure-tables"></a>Azure テーブルに書き込まれたログ
 
@@ -47,7 +47,7 @@ HDInsight クラスターを作成すると、Linux ベースのクラスター�
 * PreciseTimeStamp
 * Role
 * RowIndex
-* テナント
+* Tenant
 * TIMESTAMP
 * TraceLevel
 
@@ -131,7 +131,7 @@ Azure Portal から、HDInsight HBase クラスター名をクリックし、ク
 
 一部のエラー メッセージは、Azure ポータルで HDinsight クラスターを管理している場合にも表示されます。 しかし、その場合に遭遇する可能性のあるエラー メッセージは、その状況で可能な対応策に制約があるため、さほどきめ細かいものではありません。 その他のエラー メッセージは、対応策が明白な文脈で提供されています。 
 
-### <a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided
+### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
 * **説明**: Hive メタストアと Oozie メタストアにカスタム設定を使用するために、1 つ以上のコンポーネントに Azure SQL Database の詳細を指定してください。
 * **対応策**: 有効な SQL Azure メタストアを指定して要求し直す必要があります。  
 

@@ -1,6 +1,6 @@
 ---
 title: HDInsight での Python ストリーミング MapReduce ジョブの開発 - Azure
-description: ストリーミング MapReduce ジョブに Python を使用する方法について説明します。 Hadoop には、MapReduce を Java 以外の言語で記述するためのストリーミング API が用意されています。
+description: ストリーミング MapReduce ジョブに Python を使用する方法について説明します。 Apache Hadoop には、MapReduce を Java 以外の言語で記述するためのストリーミング API が用意されています。
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
 author: hrasheed-msft
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5ed61eb05d0aa4360e042097d6b8c632c17ea59c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008727"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634024"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>HDInsight 用 Python ストリーミング MapReduce プログラムの開発
 
-ストリーミング MapReduce 操作に Python を使用する方法について説明します。 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。 このドキュメントの手順では、Python に Map および Reduce コンポーネントを実装します。
+ストリーミング MapReduce 操作に Python を使用する方法について説明します。 Apache Hadoop には、Java 以外の言語で map 関数と reduce 関数を記述できる MapReduce 用のストリーミング API が用意されています。 このドキュメントの手順では、Python に Map および Reduce コンポーネントを実装します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight クラスターでの Linux ベースの Hadoop
+* HDInsight クラスター上の Linux ベースの Apache Hadoop
 
   > [!IMPORTANT]
   > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。

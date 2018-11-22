@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute、サイト間 VPN、VNET ピアリングの相互運用性 - 構成の詳細: Azure バックエンド接続機能の相互運用性 | Microsoft Docs'
-description: このページでは、ExpressRoute、サイト間 VPN、VNET ピアリングの機能の相互運用性の分析に使用するテスト構成の構成を詳しく説明します｡
+title: 'Azure バックエンド接続機能の相互運用性: 構成の詳細 | Microsoft Docs'
+description: この記事では、Azure における ExpressRoute、サイト間 VPN、仮想ネットワーク ピアリングの相互運用性を分析する際に使用できるテスト セットアップの構成情報について説明します。
 documentationcenter: na
 services: networking
 author: rambk
@@ -10,48 +10,48 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: d94900b764331c6fff0e0384e6edbebc88ac938b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a460a8f4c652182a7916cba5aef0520834432909
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49947097"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614822"
 ---
-# <a name="interoperability-of-expressroute-site-to-site-vpn-and-vnet-peering---test-configuration-details"></a>ExpressRoute、サイト間 VPN、VNET ピアリングの相互運用性 - テスト構成の詳細
+# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure バックエンド接続機能の相互運用性: テスト構成の詳細
 
-この記事では､テスト構成の構成を一通り見てみます｡ テスト構成については､[テスト構成][Setup]を参照してください｡ 
+この記事では､[テスト セットアップ][Setup]の構成の詳細について説明します。 テスト セットアップは、Azure のネットワーク サービスがコントロール プレーン レベルとデータ プレーン レベルでどのように相互運用されるかを分析するのに役立ちます。
 
-##<a name="spoke-vnet-connectivity-using-vnet-peering"></a>VNET ピアリングを使用したスポーク VNET 接続
+## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet ピアリングを使用したスポーク VNet 接続
 
-次の Azure portal のスクリーンショットは､スポーク VNET の VNET ピアリングの詳細を示しています｡ 2 つの仮想ネットワークの間に VNET ピアリングを構成する手順については､[VNET ピアリング][VNet-Config]を参照してください｡ Spoke VNET が Hub VNET を使用するようにしたい場合は､*リモート ゲートウェイを使用 (Use remote gateways)* を選択する必要があります｡
+次の図は、スポーク仮想ネットワーク (VNet) の Azure Virtual Network ピアリングの詳細を示したものです。 2 つの VNet 間のピアリングを設定する方法については、[VNet ピアリングの管理][VNet-Config]に関する記事をご覧ください。 スポーク VNet で、ハブ VNet に接続されたゲートウェイを使用する場合は､**[リモート ゲートウェイを使用する]** を選択します。
 
 [![1]][1]
 
-次の Azure portal のスクリーンショットは､ハブ VNET の VNET ピアリングの詳細を示しています｡ Hub VNET で Spoke VNET がゲートウェイを使用するようにしたい場合は､*リモート ゲートウェイを使用 (Use remote gateways)* を選択する必要があります｡
+次の図は､ハブ VNet の VNet ピアリングの詳細を示したものです。 スポーク VNet でハブ VNet のゲートウェイを使用する場合は､**[リモート ゲートウェイを使用する]** を選択します。
 
 [![2]][2]
 
-##<a name="branch-vnet-connectivity-using-site-to-site-vpn"></a>サイト間 VPN を使用した分岐 VNET 接続
+## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>サイト間 VPN を使用したブランチ VNet 接続
 
-ハブと Branch VNET との間のサイト間 VPN 接続は､VPN ゲートウェイを利用して構成されます｡ 既定では､VPN および ExpressRoute ゲートウェイは､プライベート ASN 値の 65515 を使って構成します｡ VPN ゲートウェイにより､ユーザーは ASN 値を構成できます｡ 次の Azure portal のスクリーンショットに示すようなテスト構成では､分岐 VNet の VPN ゲートウェイの ASN 値を65516 に変更することでハブと Branch VNET 間で eBGP ルーティングを行えるようにしています｡
+Azure VPN Gateway で VPN ゲートウェイを使用して、ハブ VNet とブランチ VNet の間のサイト間 VPN 接続を設定します。 既定では、VPN ゲートウェイと Azure ExpressRoute ゲートウェイでは、プライベート自律システム番号 (ASN) の値として **65515** が使用されます。 VPN Gateway の ASN 値は変更できます。 テスト セットアップでは、ハブ VNet とブランチ VNet 間の eBGP ルーティングをサポートするために、ブランチ VNet VPN ゲートウェイの ASN 値が **65516** に変更されています。
 
 
 [![3]][3]
 
 
-##<a name="location-1-on-premises-connectivity-using-expressroute-and-site-to-site-vpn"></a>ExpressRoute とサイト間 VPN を使用した場所 1 のオンプレミス接続
+## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>ExpressRoute とサイト間 VPN を使用したオンプレミスの Location 1 接続
 
-###<a name="expressroute1-configuration-details"></a>ExpressRoute1 構成の詳細
+### <a name="expressroute-1-configuration-details"></a>ExpressRoute 1 の構成の詳細
 
-次のポータル スクリーンショットは､場所 1 の オンプレミス CE ルーター方向の Azure Region 1 ExpressRoute 回線の構成を示しています｡
+次の図は､オンプレミスの Location 1 カスタマー エッジ (CE) ルーターに対する Azure Region 1 ExpressRoute 回線の構成を示したものです。
 
 [![4]][4]
 
-次のポータル スクリーンショットは､ExpressRoute1 回線と Hub VNET 間の接続の構成を示しています｡
+次の図は､ExpressRoute 1 回線とハブ VNet 間の接続の構成を示したものです。
 
 [![5]][5]
 
-次は､ExpressRoute のプライベート ピアリング接続に関係するプライマリー CE ルーター (このテスト構成では CE ルーターとして Cisco ASR1000 ルーターを使用) 構成の一覧です｡ サイト間 VPN と ExpressRoute 回線が並列に構成されて､オンプレミスのネットワークを Azure に接続するようになっている場合､既定では Azure は ExpressRoute 回線を優先します｡ ExpressRoute とサイト間 VPN の両方を経由する受信ルートで非対称ルーティングを回避するには､オンプレミスのネットワークもまたサイト間 VPN よりも ExpressRoute を優先する必要があります｡ これは､BGP ローカル優先属性を使った次の構成で行うことができます｡ 
+次に示すのは、ExpressRoute プライベート ピアリング接続用のプライマリ CE ルーターの構成です (テスト セットアップでは、Cisco ASR1000 ルーターが CE ルーターとして使用されています)。オンプレミス ネットワークを Azure に接続するために、サイト間 VPN と ExpressRoute 回線が並列に構成されている場合､Azure の既定では、ExpressRoute 回線が優先されます。 非対称ルーティングを回避するため、オンプレミス ネットワークでも、サイト間 VPN 接続より ExpressRoute 接続を優先するようにしてください。 次の構成では、BGP の **local-preference** 属性を使用して優先度を設定しています。
 
     interface TenGigabitEthernet0/0/0.300
      description Customer 30 private peering to Azure
@@ -91,9 +91,9 @@ ms.locfileid: "49947097"
     ip prefix-list Cust30_to_Private seq 10 permit 10.2.30.0/25
     !
 
-###<a name="site-to-site-vpn-configuration-details"></a>サイト間 VPN 構成の詳細
+### <a name="site-to-site-vpn-configuration-details"></a>サイト間 VPN 構成の詳細
 
-次は､サイト間 VPN 接続に関係するプライマリー CE ルーターの構成の一覧です｡
+次に示すのは､サイト間 VPN 接続用のプライマリ CE ルーターの構成です。
 
     crypto ikev2 proposal Cust30-azure-proposal
      encryption aes-cbc-256 aes-cbc-128 3des
@@ -148,67 +148,69 @@ ms.locfileid: "49947097"
     !
     ip route vrf 30 10.10.30.254 255.255.255.255 Tunnel30
 
-##<a name="location-2-on-premises-connectivity-using-expressroute"></a>ExpressRoute を使用した場所 2 のオンプレミス接続
+## <a name="on-premises-location-2-connectivity-by-using-expressroute"></a>ExpressRoute を使用したオンプレミスの Location 2 接続
 
-オンプレミスで場所 2 に近接した場所にある 2 つ目 ExpressRoute 回線によって､オンプレミスの場所 2 がハブ VNET に接続されています｡ 次のポータル スクリーンショットは 2 つ目の ExpressRoute の構成を示しています｡
+オンプレミスの Location 2 に近接した場所にある 2 つ目の ExpressRoute 回線では､オンプレミスの Location 2 をハブ VNet に接続します。 次の図は、2 つ目の ExpressRoute の構成を示したものです。
 
 [![6]][6]
 
-次のポータル スクリーンショットは､2 つ目の ExpressRoute 回線と Hub VNET 間の接続の構成を示しています｡
+次の図は､2 つ目の ExpressRoute 回線とハブ VNet 間の接続の構成を示したものです。
 
 [![7]][7]
 
-ExpressRoute1 は､別の Azure リージョンにあるリモート VNET にオンプレミスの Hub VNET と場所 1 の両方を接続しています｡
+ExpressRoute 1 では､ハブ VNet とオンプレミスの Location 1 の両方を、別の Azure リージョンにあるリモート VNet に接続します。
 
 [![8]][8]
 
-## <a name="further-reading"></a>参考資料
+## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続を組み合わせる
 
-### <a name="using-expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute とサイト間 VPN 接続を組み合わせて使用する
+###  <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute 上のサイト間 VPN
 
-#### <a name="site-to-site-vpn-over-expressroute"></a>ExpressRoute 上のサイト間 VPN
+ExpressRoute Microsoft ピアリングを使用してサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet との間でプライベートにデータを交換することができます。 この構成を使用すれば、機密性、信頼性、整合性が確保されたデータ交換を実現できます。 また、このデータ交換には、アンチリプレイ対策も講じられています。 ExpressRoute Microsoft ピアリングを使用してトンネル モードでサイト間 IPsec VPN を構成する方法の詳細については、[ExpressRoute Microsoft ピアリング上のサイト間 VPN][S2S-Over-ExR] に関するページを参照してください。 
 
-ExpressRoute Microsoft ピアリング上にサイト間 VPN を構成することにより、オンプレミス ネットワークと Azure VNet との間で、機密性とアンチリプレイ、信頼性、整合性を確保しながらプライベートにデータを交換することができます。 ExpressRoute Microsoft ピアリング上にトンネル モードでサイト間 IPsec VPN を構成する方法についての詳細は、[ExpressRoute Microsoft ピアリング上にサイト間 VPNを構成する方法][S2S-Over-ExR]に関するページを参照してください。 
+Microsoft ピアリングを使用したサイト間 VPN 構成に伴う主な制限はスループットです。 IPsec トンネル上では、VPN ゲートウェイの容量によりスループットが制限されます。 VPN ゲートウェイのスループットは、ExpressRoute のスループットよりも低くなります。 このシナリオでは、高いセキュリティが要求されるトラフィックには IPsec トンネルを使用し、それ以外のすべてのトラフィックにはプライベート ピアリングを使用することで、ExpressRoute の帯域幅使用率を最適化することができます。
 
-Microsoft ピアリング上に S2S VPN を構成することに伴う重要な制限はスループットです。 IPsec トンネル上では、VPN GW の容量によりスループットが制限されます。 VPN GW のスループットは、ExpressRoute のスループットよりも低下します｡ このようなシナリオでは、高いセキュリティが要求されるトラフィックには IPsec トンネルを使用し、それ以外のすべてのトラフィックにはプライベート ピアリングを使用することで、ExpressRoute の帯域幅使用率を最適化できます｡
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>ExpressRoute の安全なフェールオーバー パスとしてのサイト間 VPN
 
-#### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>ExpressRoute のセキュアなフェールオーバー パスとしてのサイト間 VPN
-ExpressRoute は、高可用性を確保するための冗長回線ペアとして提供されます。 複数の Azure リージョンに geo 冗長の ExpressRoute 接続を構成することができます。 また、ここで紹介したテスト構成のように、特定の Azure リージョン内で ExpressRoute 接続のフェールオーバー パスを設けたければ、サイト間 VPN を使用することができます。 ExpressRoute と S2S VPN の両方に同じプレフィックスがアドバタイズされた場合、ExpressRoute は S2S VPN よりも優先されます。 ExpressRoute と S2S VPN との間で非対称なルーティングを回避するために、オンプレミス ネットワーク構成でも、ExpressRoute を S2S VPN 接続よりも優先するように構成する必要があります。
+ExpressRoute は、高可用性を確保する冗長回線ペアとしての役割を果たします。 異なる Azure リージョンで geo 冗長 ExpressRoute 接続を構成することができます。 また、ここで紹介したテスト セットアップのように、任意の Azure リージョン内でサイト間 VPN を使用して、ExpressRoute 接続のフェールオーバー パスを作成することができます。 ExpressRoute とサイト間 VPN の両方に同じプレフィックスがアドバタイズされた場合、Azure では ExpressRoute が優先されます。 ExpressRoute とサイト間 VPN との間で非対称なルーティングを回避するために、オンプレミス ネットワーク側も、ExpressRoute をサイト間 VPN 接続よりも優先して使用するように構成する必要があります。
 
-ExpressRoute とサイト間 VPN が共存する接続を構成する方法についての詳細は、[ExpressRoute とサイト間の共存接続][ExR-S2S-CoEx]に関するページを参照してください。
+ExpressRoute とサイト間 VPN が共存する接続を構成する方法の詳細については、[ExpressRoute とサイト間の共存][ExR-S2S-CoEx]に関するページを参照してください。
 
-### <a name="extending-backend-connectivity-to-spoke-vnets-and-branch-locations"></a>スポーク VNET と分岐先へのバックエンド接続の延長
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>バックエンド接続をスポーク VNet とブランチ ロケーションに拡張する
 
-#### <a name="spoke-vnet-connectivity-using-vnet-peering"></a>VNET ピアリングを使用したスポーク VNET 接続
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>VNet ピアリングを使用したスポーク VNet 接続
 
-Hub-and-spoke VNET アーキテクチャは広く利用されています｡ Azure ではこのハブは仮想ネットワーク (VNet) であり､オンプレミスネットワークに接続しているスポーク VNET 間の接続の中心点の働きをします｡ スポークはハブとピアリングする VNet であり、ワークロードの分離に利用できます。 オンプレミスのデータセンターとハブとの間のトラフィックは、ExpressRoute または VPN 接続を経由して送信されます。 このアーキテクチャについての詳細は､｢[Hub-and-Spoke アーキテクチャ][Hub-n-Spoke]｣を参照してください｡
+ハブ アンド スポークの VNet アーキテクチャは、広く利用されています。 ハブは、Azure 内の VNet であり、スポーク VNet とオンプレミス ネットワークをつなぐ接続の中央拠点として機能します。 スポークはハブとピアリングする VNet であり、ワークロードの分離に利用できます。 オンプレミスのデータセンターとハブとの間のトラフィックは、ExpressRoute または VPN 接続を経由して送信されます。 このアーキテクチャの詳細については、「[Azure にハブスポーク ネットワーク トポロジを実装する][Hub-n-Spoke]」を参照してください。
 
 スポーク VNet は、同じリージョン内の VNet ピアリングを通じてハブ VNet ゲートウェイ (VPN ゲートウェイと ExpressRoute ゲートウェイの両方) を使用し、リモート ネットワークと通信を行うことができます。
 
-#### <a name="branch-vnet-connectivity-using-site-to-site-vpn"></a>サイト間 VPN を使用した分岐 VNET 接続
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>サイト間 VPN を使用したブランチ VNet 接続
 
-分岐 VNet (異なるリージョンに存在) とオンプレミス ネットワークとをハブ VNet 経由で互いに通信させたい場合、Azure のネイティブ ソリューションは VPN を使用したサイト間 VPN 接続になります。 ハブにおけるルーティングには NVA を使用する選択肢もあります。
+ブランチ VNet (異なるリージョンに存在) とオンプレミス ネットワークとをハブ VNet 経由で互いに通信させたいとしましょう。 この構成に対する Azure のネイティブ ソリューションは、VPN を使用したサイト間 VPN 接続です。 その他には、ネットワーク仮想アプライアンス (NVA) をハブでのルーティングに使用する方法があります。
 
-VPN ゲートウェイの構成については､[VPN ゲートウェイの構成][VPN]を参照してください｡ 高可用性の NVA のデプロイについては､[高可用性 NVA のデプロイ][Deploy-NVA]を参照してください。
+詳細については、「[VPN ゲートウェイとは][VPN]」および[高可用性 NVA のデプロイ][Deploy-NVA]に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-テスト構成のコントロール プレーン分析と､このトポロジのさまざまな VNET/VLAN のビューについては､[コントロール プレーン分析][Control-Analysis]を参照してください｡
+テスト セットアップの[コントロール プレーン分析][Control-Analysis]と、トポロジ内のさまざまな VNet や VLAN のビューについて学習する。
 
-テスト構成のデータ プレーン分析および Azure ネットワーク監視機能のビューについては、[データ プレーン分析][Data-Analysis]を参照してください。
+テスト セットアップの[データ プレーン分析][Data-Analysis]および Azure ネットワーク監視機能のビューについて見てみましょう。
 
-ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数や、ExpressRoute 回線に接続できる ExpressRoute ゲートウェイの数など、ExpressRoute のスケーリングに関するその他制限については、[ExpressRoute FAQ][ExR-FAQ] を参照してください。
+次のテーマについては、「[ExpressRoute の FAQ][ExR-FAQ]」を参照してください。
+-   ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数について学習する。
+-   ExpressRoute 回線に接続できる ExpressRoute ゲートウェイの数について学習する。
+-   ExpressRoute のスケールの上限に関するその他の情報について学習する。
 
 
 <!--Image References-->
 [1]: ./media/backend-interoperability/SpokeVNet_peering.png "スポーク VNet の VNet ピアリング"
 [2]: ./media/backend-interoperability/HubVNet-peering.png "ハブ VNet の VNet ピアリング"
-[3]: ./media/backend-interoperability/BranchVNet-VPNGW.png "分岐 VNET の VPN GW 構成"
-[4]: ./media/backend-interoperability/ExR1.png "ExpressRoute1 の構成"
-[5]: ./media/backend-interoperability/ExR1-Hub-Connection.png "ExpressRoute1 からハブ VNet ExR GW への接続の構成"
-[6]: ./media/backend-interoperability/ExR2.png "ExpressRoute2 の構成"
-[7]: ./media/backend-interoperability/ExR2-Hub-Connection.png "ExpressRoute2 からハブ VNet ExR GW への接続の構成"
-[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "ExpressRoute2 からリモート VNet ExR GW への接続の構成"
+[3]: ./media/backend-interoperability/BranchVNet-VPNGW.png "ブランチ VNet の VPN Gateway の構成"
+[4]: ./media/backend-interoperability/ExR1.png "ExpressRoute 1 の構成"
+[5]: ./media/backend-interoperability/ExR1-Hub-Connection.png "ExpressRoute 1 からハブ VNet ExR ゲートウェイへの接続の構成"
+[6]: ./media/backend-interoperability/ExR2.png "ExpressRoute 2 の構成"
+[7]: ./media/backend-interoperability/ExR2-Hub-Connection.png "ExpressRoute 2 からハブ VNet ExR ゲートウェイへの接続の構成"
+[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "ExpressRoute 2 からリモート VNet ExR ゲートウェイへの接続の構成"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
@@ -224,7 +226,5 @@ ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数や�
 [Hub-n-Spoke]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 [Deploy-NVA]: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha
 [VNet-Config]: https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering
-
-
 
 

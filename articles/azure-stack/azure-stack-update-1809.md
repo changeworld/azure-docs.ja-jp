@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: cca9307fd849f6b8537cf7484d2e56e1a710295b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8d13d6df1b168183e3794bf357ad86bfcfd77057
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257192"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567912"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新プログラム
 
@@ -70,6 +70,17 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 - <!-- 2702741 -  IS, ASDK --> 動的割り当てメソッドを使用してデプロイされているパブリック IP の固定された問題は、停止-割り当て解除が発行された後も保持される保証はありませんでした。 これらは保存されるようになりました。
 
 - <!-- 3078022 - IS, ASDK --> VM が 1808 の前に停止‐割り当て解除された場合、これは 1808 の更新後に再割り当てできませんでした。  この問題は 1809 で修正されています。 ここの状態にあり開始できなかったインスタンスは、この修正によって 1809 で開始できます。 また、修正プログラムにより、この問題は再発しないようになります。
+
+<!-- 3090289 – IS, ASDK --> 
+- 更新プログラム 1808 の適用後、Managed Disks を使用した VM をデプロイするときに、次の問題が発生する可能性があった問題を修正しました。
+
+   1. 1808 更新の前に作成したサブスクリプションの場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
+      1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
+      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
+   2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、次の手順に従ってください。
+      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4471992)を適用します。
+      2. [この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
+
 
 ### <a name="changes"></a>変更点
 
@@ -128,7 +139,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
 ### <a name="prerequisites"></a>前提条件
 
-- 1809 を適用する前に、1808 の最新の Azure Stack 修正プログラムをインストールしてください。 詳細については、[KB 4468920 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.5.110](https://support.microsoft.com/en-us/help/4468920) を参照してください。
+- 1809 を適用する前に、1808 の最新の Azure Stack 修正プログラムをインストールしてください。 詳細については、[KB 4471992 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.7.113](https://support.microsoft.com/help/4471992/) を参照してください。
 
   > [!TIP]  
   > 以下の *RRS* または *Atom* フィードに登録して、Azure Stack の修正プログラムの最新情報を入手してください:
@@ -157,9 +168,8 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 > [!Important]  
 > Azure Stack デプロイを、次の更新プログラム パッケージによって有効化さる拡張機能ホストに合わせて準備してください。 次のガイダンスを使用して、システムを準備します: 「[Azure Stack の拡張機能ホストを準備する](azure-stack-extension-host-prepare.md)」。
 
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - [Link to KB]()  
- -->
+この更新プログラムをインストールした後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。  
+- [KB 4471993 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
 
@@ -211,6 +221,8 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
    - *Scale unit node is offline\(スケール ユニットがオフラインです\)*
    
   [Test-AzureStack](azure-stack-diagnostic-test.md) コマンドレットを実行して、インフラストラクチャ ロール インスタンスとスケール ユニット ノードの正常性を確認してください。 [Test-AzureStack](azure-stack-diagnostic-test.md) によって問題が検出されない場合は、これらのアラートを無視することができます。 問題が検出された場合は、管理ポータルまたは PowerShell を使用して、インフラストラクチャ ロール インスタンスまたはノードの開始を試みることができます。
+
+  この問題は最新の [1809 修正プログラム リリース](https://support.microsoft.com/help/4471993/)で修正されているので、問題が発生している場合は、この修正プログラムをインストールしてください。 
 
 <!-- 1264761 - IS ASDK -->  
 - 以下の詳細情報の**正常性コントローラー** コンポーネントのアラートが表示されることがあります:  

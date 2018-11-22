@@ -1,6 +1,6 @@
 ---
-title: HDInsight での Java ユーザー定義関数 (UDF) と Hive - Azure
-description: Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。 この UDF の例では、テキスト文字列のテーブルを小文字に変換します。
+title: HDInsight 上の Apache Hive を使用する Java のユーザー定義関数 (UDF) - Azure
+description: Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。 この UDF の例では、テキスト文字列のテーブルを小文字に変換します。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3d8f1d75b8e61bd611f58ed953a8357fb4a47c78
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006245"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634075"
 ---
-# <a name="use-a-java-udf-with-hive-in-hdinsight"></a>HDInsight で Hive と Java UDF を使用する
+# <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 上の Apache Hive で Java UDF を使用する
 
-Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。 この例の Java UDF では、テキスト文字列のテーブルをすべて小文字の文字に変換します。
+Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。 この例の Java UDF では、テキスト文字列のテーブルをすべて小文字の文字に変換します。
 
 ## <a name="requirements"></a>必要条件
 

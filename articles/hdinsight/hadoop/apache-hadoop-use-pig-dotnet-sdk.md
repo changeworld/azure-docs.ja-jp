@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: e9fc4773a0dafc813f217564d5d052fa69d3f298
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0aa45ae807f153e6f1a3fde1d648571b29802dc2
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006705"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632477"
 ---
-# <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
+# <a name="run-apache-pig-jobs-using-the-net-sdk-for-apache-hadoop-in-hdinsight"></a>.NET SDK for Apache Hadoop を使用して HDInsight 上で Apache Pig ジョブを実行する
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-.NET SDK for Hadoop を使用して Azure HDInsight で Hadoop に Apache Pig ジョブを送信する方法を説明します。
+.NET SDK for Apache Hadoop を使用して Azure HDInsight 上の Hadoop に Apache Pig ジョブを送信する方法について説明します。
 
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 Pig では、一連のデータ変換をモデル化することで MapReduce 操作を作成できます。 このドキュメントでは、基本的な C# アプリケーションを使用して、Pig ジョブを HDInsight クラスターに送信する方法を説明します。
 
@@ -45,9 +45,9 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
    | プロパティ | 値 |
    | ------ | ------ |
-   | Category | テンプレート/Visual C#/Windows |
+   | カテゴリ | テンプレート/Visual C#/Windows |
    | テンプレート | コンソール アプリケーション |
-   | Name | SubmitPigJob |
+   | 名前 | SubmitPigJob |
 
 3. **[OK]** をクリックしてプロジェクトを作成します。
 

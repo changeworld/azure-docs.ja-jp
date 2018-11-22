@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 538481088d6355729486c1d9fbaaa6af16a1b841
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f69a7f5e7aef4da798ec7c9ce3b7af3a456c00e
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006024"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613360"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 
@@ -33,7 +33,7 @@ ms.locfileid: "51006024"
 Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
 
 > [!NOTE]
->  [新しいアラート](monitoring-overview-unified-alerts.md)は、アクティビティ ログの警告ルールの作成と管理に強化されたエクスペリエンスを提供します。  [詳細情報](alert-activity-log.md)。
+> [新しいアラート](monitoring-overview-alerts.md)では、アクティビティ ログの警告ルールの作成と管理について、強化されたエクスペリエンスが提供されます。  [詳細情報](alert-activity-log.md)。
 
 
 ## <a name="categories-in-the-activity-log"></a>アクティビティ ログのカテゴリ

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: cd62083bc7bd0254084f0fc209540de929c25d06
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042255"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632545"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する
 
-通常、受信データは、クリーニングし変換してから、分析を行うのに適した宛先に読み込む必要があります。 抽出、変換、および読み込み (ETL) の操作は、データを準備し、そのデータをデータの宛先に読み込むために実行されます。  HDInsight 上の Hive は、非構造化データを読み取り、必要に応じてそのデータを処理し、意思決定支援システム用のリレーショナル データ ウェアハウスにデータを読み込むことができます。 この方法においてデータはソースから抽出され、Azure Storage Blob や Azure Data Lake Store などのスケーラブルなストレージに格納されます。 次にデータは一連の Hive クエリを使用して変換され、最終的に、宛先データ ストアへの一括読み込みのための準備として Hive 内にステージングされます。
+通常、受信データは、クリーニングし変換してから、分析を行うのに適した宛先に読み込む必要があります。 抽出、変換、および読み込み (ETL) の操作は、データを準備し、そのデータをデータの宛先に読み込むために実行されます。  HDInsight 上の Apache Hive では、非構造化データを読み取り、必要に応じてそのデータを処理し、意思決定支援システム用のリレーショナル データ ウェアハウスにデータを読み込むことができます。 この方法においてデータはソースから抽出され、Azure Storage Blob や Azure Data Lake Store などのスケーラブルなストレージに格納されます。 次にデータは一連の Hive クエリを使用して変換され、最終的に、宛先データ ストアへの一括読み込みのための準備として Hive 内にステージングされます。
 
 ## <a name="use-case-and-model-overview"></a>ユース ケースとモデルの概要
 

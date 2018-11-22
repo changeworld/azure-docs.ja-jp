@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/13/2018
+ms.openlocfilehash: 82f80fc1342f0c76cb880b020dcd835a23635b0a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412450"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632562"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -53,19 +53,22 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 レプリカ サーバーは、マスターと同じサーバー構成を使用して作成されます。たとえば、以下の構成が含まれます。
 
-- [価格レベル] 
+- 価格レベル
 - コンピューティング世代
 - 仮想コア
-- Storage
+- ストレージ
 - バックアップのリテンション期間
 - バックアップ冗長オプション
 - MySQL エンジンのバージョン
+- ファイアウォール規則
 
 レプリカの作成の完了後、マスター サーバーとは別に、価格レベル (Basic への変更および Basic からの変更を除く)、コンピューティング世代、仮想コア、ストレージ、バックアップ保有期間を変更できます。
 
 ### <a name="master-server-configuration"></a>マスター サーバーの構成
 
-マスターのサーバー構成 (例:  仮想コアやストレージ) が更新されると、レプリカの構成も、同じかそれ以上の値に更新する必要があります。 これを行わないと、レプリカ サーバーはマスターに加えられた変更を継続的に反映することができず、結果的にクラッシュする可能性があります。 
+マスターのサーバー構成 (例:  仮想コアやストレージ) が更新されると、レプリカの構成も、同じかそれ以上の値に更新する必要があります。 これを行わないと、レプリカ サーバーはマスターに加えられた変更を継続的に反映することができず、結果的にクラッシュする可能性があります。
+
+レプリカ サーバーの作成後にマスター サーバーに追加された新しいファイアウォール規則は、レプリカにレプリケートされません。 この新しいファイアウォール規則を使用してレプリカを更新する必要があります。
 
 ### <a name="deleting-the-master-server"></a>マスター サーバーの削除
 
@@ -87,7 +90,4 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 ## <a name="next-steps"></a>次の手順
 
 - [Azure portal を使用して読み取りレプリカの作成と管理](howto-read-replicas-portal.md)を行う方法について確認する。
-
-<!--
-- Learn how to [create and manage read replicas using the Azure CLI](howto-read-replicas-using-cli.md)
--->
+- [Azure CLI を使用して読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認する。

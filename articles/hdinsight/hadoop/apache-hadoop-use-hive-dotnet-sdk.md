@@ -1,6 +1,6 @@
 ---
-title: HDInsight .NET SDK を使用した Hive クエリの実行 - Azure
-description: HDInsight .NET SDK を使用して、Hadoop ジョブを Azure HDInsight Hadoop に送信する方法について説明します。
+title: HDInsight .NET SDK を使用して Apache Hive クエリを実行する - Azure
+description: HDInsight .NET SDK を使用して、Azure HDInsight 上の Apache Hadoop に Apache Hadoop ジョブを送信する方法について説明します。
 ms.reviewer: jasonh
 services: hdinsight
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5cababaa7c808969e6e24a70581f54639f269621
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 790cc11e3d4cf1d0260b1099efd82bdddec85785
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016014"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634568"
 ---
-# <a name="run-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用した Hive クエリの実行
+# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して Apache Hive クエリを実行する
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-HDInsight .NET SDK を使用して Hive クエリを送信する方法について説明します。 Hive テーブルを表示するための Hive クエリを送信し、結果を表示する C# プログラムを作成します。
+HDInsight .NET SDK を使用して Apache Hive クエリを送信する方法について説明します。 Hive テーブルを表示するための Hive クエリを送信し、結果を表示する C# プログラムを作成します。
 
 > [!NOTE]
 > この記事の手順は、Windows クライアントから実行する必要があります。 Linux、OS X、または Unix クライアントで Hive を使用する方法については、この記事の上部に表示されているタブ セレクターをクリックしてください。
@@ -27,7 +27,7 @@ HDInsight .NET SDK を使用して Hive クエリを送信する方法につい�
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
-* **HDInsight の Hadoop クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+* **HDInsight 上の Apache Spark クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
     > [!WARNING]
     > 2017 年 9 月 15 日の時点で、HDInsight .NET SDK でサポートされているのは、Azure ストレージ アカウントから Hive クエリの結果を返すことのみです。 プライマリ ストレージとして Azure Data Lake Store を使用している HDInsight クラスターでこの例を使用する場合、.NET SDK を使用して検索結果を取得することはできません。

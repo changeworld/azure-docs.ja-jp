@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 160cc4fb3ccdabfd76e228c447ad179b3616d195
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231102"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633956"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -170,7 +170,7 @@ HANA/log/backup ボリュームは、データベース バックアップ用の
 
 お客様は、提供されているストレージに加え、追加のストレージ容量を 1 TB 単位で購入することができます。 この追加ストレージは、新しいボリュームとして HANA L インスタンスに追加できます。
 
-SAP HANA on Azure サービス管理によるオンボード中、お客様は sidadm ユーザーと sapsys グループのユーザー ID (UID) とグループ ID (GID) を指定します (例: 1000,500)。SAP HANA システムのインストール時には、これらと同じ値を使用する必要があります。 1 つのユニットに複数の HANA インスタンスをデプロイするために、複数のボリューム セット (インスタンスごとに 1 セット) を取得します。 そのため、デプロイ時には以下を定義する必要があります。
+SAP HANA on Azure サービス管理によるオンボード中、お客様は sidadm ユーザーと sapsys グループのユーザー ID (UID) とグループ ID (GID) を指定します (例: 1000,500)。 SAP HANA システムのインストール時には、これらと同じ値を使用する必要があります。 1 つのユニットに複数の HANA インスタンスをデプロイするために、複数のボリューム セット (インスタンスごとに 1 セット) を取得します。 そのため、デプロイ時には以下を定義する必要があります。
 
 - 各 HANA インスタンスの SID (sidadm はそれからから派生されます)。
 - 各 HANA インスタンスのメモリ サイズ。 インスタンスごとのメモリ サイズによって、個々のボリューム セットのボリュームのサイズが定義されます。

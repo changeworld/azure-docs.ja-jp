@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric クラスターのスケーリング | Microsoft Docs
-description: Service Fabric クラスターのスケールインまたはスケールアウトと、スケールアップまたはスケールダウンについて説明します。
+description: Azure Service Fabric クラスターのスケールインまたはスケールアウトと、スケールアップまたはスケールダウンについて説明します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,32 +12,26 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/09/2018
+ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: f199e6615109278764b9fcc75346da9ee6171cfa
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0890ce0342024229b99d92a2eddba5b49cc59595
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815649"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633939"
 ---
-# <a name="scaling-service-fabric-clusters"></a>Service Fabric クラスターのスケーリング
+# <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric クラスターのスケーリング
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 クラスターには、場合によっては数千のノードを含めることができます。 Service Fabric クラスターの作成後は、クラスターを水平方向 (ノードの数を変更する) または垂直方向 (ノードのリソースを変更する) にスケーリングすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
 
 クラスターをスケーリングする理由 アプリケーションの要求は、時間の経過と共に変化します。  増加したアプリケーション ワークロードやネットワーク トラフィックに対処するためにクラスター リソースを増やしたり、需要が低下したときにクラスター リソースを減らしたりする必要が生じる場合があります。
 
-### <a name="scaling-in-and-out-or-horizontal-scaling"></a>スケールインとスケールアウト (水平方向のスケーリング)
+## <a name="scaling-in-and-out-or-horizontal-scaling"></a>スケールインとスケールアウト (水平方向のスケーリング)
 クラスター内のノードの数を変更します。  新しいノードがクラスターに参加すると、[Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md) はサービスをそれらのノードに移動します。これにより、既存のノードの負荷が軽減されます。  クラスターのリソースが効率的に使用されていない場合は、ノードの数を削減することもできます。  ノードがクラスターから離れるときには、それらのノードからサービスが移動し、残っているノードで負荷が増加します。  Azure で実行されているクラスター内のノードの数を減らすと、クラスター内の VM のワークロードではなく使用している VM の数に対して支払いをするため、コストを節約できます。  
 
 - 長所: 理論上は無限のスケーリング。  スケーラビリティを考慮してアプリケーションが設計されている場合は、より多くのノードを追加することで無制限の拡張が可能になります。  クラウド環境のツールによってノードの追加や削除が容易になっているため、キャパシティの調整は容易で、支払いをするのは使用するリソースに対してのみです。  
 - 短所: アプリケーションが[スケーラビリティを考慮して設計されている](service-fabric-concepts-scalability.md)必要があります。  アプリケーション データベースと永続化についても、スケーリングのために追加のアーキテクチャ関連作業が必要な場合があります。  ただし Service Fabric ステートフル サービスの[信頼性の高いコレクション](service-fabric-reliable-services-reliable-collections.md)によって、アプリケーション データのスケーリングが大幅に容易になっています。
 
-### <a name="scaling-up-and-down-or-vertical-scaling"></a>スケールアップとスケールダウン (垂直方向のスケーリング) 
-クラスター内のノードのリソース (CPU、メモリ、またはストレージ) を変更します。
-- 長所: ソフトウェアやアプリケーションのアーキテクチャは変わりません。
-- 短所: スケーリングには限度があります。個々のノード上でリソースをどれだけ増加できるかに制限があるためです。 リソースを追加または削除するために物理または仮想のマシンをオフラインにする必要があるため、ダウンタイムが生じます。
-
-## <a name="scaling-an-azure-cluster-in-or-out"></a>Azure クラスターのスケールインまたはスケールアウト
 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 各ノードの種類は、個別にスケールインまたはスケールアウトでき、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 
 
 Azure クラスターをスケーリングするときには、次のガイドラインに留意してください。
@@ -70,23 +64,11 @@ Azure API を使用すると、アプリケーションがプログラムで仮�
 
 これらの制限に基づいて、[さらにカスタマイズされた自動スケーリング モデルの実装](service-fabric-cluster-programmatic-scaling.md)が必要になる可能性があります。
 
+## <a name="scaling-up-and-down-or-vertical-scaling"></a>スケールアップとスケールダウン (垂直方向のスケーリング) 
+クラスター内のノードのリソース (CPU、メモリ、またはストレージ) を変更します。
+- 長所: ソフトウェアやアプリケーションのアーキテクチャは変わりません。
+- 短所: スケーリングには限度があります。個々のノード上でリソースをどれだけ増加できるかに制限があるためです。 リソースを追加または削除するために物理または仮想のマシンをオフラインにする必要があるため、ダウンタイムが生じます。
 
-## <a name="scaling-a-standalone-cluster-in-or-out"></a>スタンドアロン クラスターのスケールインまたはスケールアウト
-スタンドアロン クラスターでは、Service Fabric クラスターをオンプレミスで、または任意のクラウド プロバイダー内にデプロイできます。  ノードの種類は、配置に応じて、物理マシンまたは仮想マシンで構成されます。 Azure で実行されるクラスターと比較して、スタンドアロン クラスターのスケーリング プロセスはもう少し複雑です。  クラスター内のノードの数を手動で変更してから、クラスター構成のアップグレードを実行する必要があります。
-
-ノードを削除すると、複数のアップグレードが開始されることがあります。 一部のノードには `IsSeedNode=”true”` タグが付けられており、[Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) を使用してクラスター マニフェストをクエリすると、これらのノードを識別できます。 このようなシナリオでノードを削除する場合、シード ノードを削除する必要があるため、通常よりも長く時間がかかる可能性があります。 クラスターは、種類がプライマリ ノードであるノードを 3 つ以上維持する必要があります。
-
-> [!WARNING]
-> ノード数はクラスターの[信頼性レベルのクラスター サイズ](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)を下回らないようにすることをお勧めします。 これにより、Service Fabric システム サービスの機能が妨げられてクラスター間でレプリケートされ、クラスターを不安定にするか、破棄する可能性があります。
->
-
-スタンドアロン クラスターをスケーリングするときには、次のガイドラインに留意してください。
-- プライマリ ノードの置き換えは、まとめて削除して後で追加するのではなく、1 ノードづつ実行する必要があります。
-- ノードの種類を削除する前に、そのノードの種類を参照しているノードがないかどうかを調べてください。 このようなノードを削除してから、対応するノードの種類を削除します。 すべての対応するノードを削除したら、クラスター構成から NodeType を削除し、[Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) を使用して構成のアップグレードを開始できます。
-
-詳細については、[スタンドアロン クラスターのスケーリング](service-fabric-cluster-windows-server-add-remove-nodes.md)に関するページを参照してください。
-
-## <a name="scaling-an-azure-cluster-up-or-down"></a>Azure クラスターのスケールアップまたはスケールダウン
 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。  ある種類のノードをスケールアップまたはスケールダウンするには、スケール セットの仮想マシン インスタンスの SKU を変更する必要があります。 
 
 > [!WARNING]

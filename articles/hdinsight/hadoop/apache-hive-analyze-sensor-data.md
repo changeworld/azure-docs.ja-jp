@@ -1,6 +1,6 @@
 ---
-title: Hive と Hadoop を使用したセンサー データの分析 - Azure HDInsight
-description: Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
+title: Apache Hive と Apache Hadoop を使用してセンサー データを分析する - Azure HDInsight
+description: Apache Hive クエリ コンソールと HDInsight (Hadoop) を使用してセンサー データを分析し、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/14/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: dfc4d930f185c36c3ba0c869494ba0e7dee64cac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c3e4ab9dc03afe1c4a19e738804e6400b0830291
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249406"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634415"
 ---
-# <a name="analyze-sensor-data-using-the-hive-query-console-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop で Hive クエリ コンソールを使用したセンサー データの分析
+# <a name="analyze-sensor-data-using-the-apache-hive-query-console-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Hive クエリ コンソールを使用してセンサー データを分析する
 
-Hive クエリ コンソールを HDInsight (Hadoop) と共に使用してセンサー データを分析してから、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
+Apache Hive クエリ コンソールと HDInsight (Apache Hadoop) を使用してセンサー データを分析し、Microsoft Excel の Power View を使用してデータを視覚化する方法について説明します。
 
 > [!IMPORTANT]
 > このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。

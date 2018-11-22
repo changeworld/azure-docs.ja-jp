@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f6f94f12fc0a639743f310638af0f0b6ac0d2932
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4dae003b011e8e33f0ae935d6dd8399a5687dff6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958154"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633769"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
-この記事では、ログ アラートの詳細について説明します。ログ アラートは、[Azure アラート](monitoring-overview-unified-alerts.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラート発信の基盤として使用できます。
+この記事では、ログ アラートの詳細について説明します。ログ アラートは、[Azure アラート](monitoring-overview-alerts.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラート発信の基盤として使用できます。
 
 ログ アラートは、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) または [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) 用に作成されたログ検索ルールで構成されます。 その使用の詳細については、[Azure でのログ アラートの作成](alert-log.md)に関するページをご覧ください
 
@@ -106,7 +106,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 - 午後 1 時 15 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により 2 個のレコードが提供されました。しきい値を超えたため、アラートが発生し、関連する[アクション グループ](monitoring-action-groups.md)が直後にトリガーされました。
 - 次のイテレーションである午後 1 時 20 分に Contoso-Log-Alert が Azure アラートによって実行されたとき、ログ検索結果により再度 0 個のレコードが提供されました。これはしきい値を下回っているため、アラートは発生しません。
 
-ただし、上にあげたケースでは、午後 1 時 15 分の時点で、Azure アラートでは、1 時 10 分に見られた問題の根本原因が継続しているかどうか、また新たな障害が発生しているかどうかが判断できません。ユーザーが提供したクエリで前のレコードが考慮されている可能性もあるためですが、Azure アラートでは認識できません。 このため慎重を期して、構成済みの[アクション グループ](monitoring-action-groups.md)を介して Contoso-Log-Alert が午後 1 時 15 分に再度実行されます。 午後 1 時 20 分にはレコードがありませんが、Azure アラートでは、レコードの原因が解決されたかどうかを確信できません。このため、Azure アラート ダッシュボードでは Contoso-Log-Alert が "解決済み" に変更されませんし、アラートの解決を示す通知も送信されません。
+ただし、上にあげたケースでは、午後 1 時 15 分の時点で、Azure アラートでは、1 時 10 分に見られた問題の根本原因が継続しているかどうか、また新たな障害が発生しているかどうかが判断できません。ユーザーが提供したクエリで前のレコードが考慮されている可能性もあるためですが、Azure アラートでは認識できません。 このため慎重を期して、Contoso-Log-Alert が午後 1 時 15 分に実行されるときに、構成済みの[アクション グループ](monitoring-action-groups.md)が再びトリガーされます。 午後 1 時 20 分にはレコードがありませんが、Azure アラートでは、レコードの原因が解決されたかどうかを確信できません。このため、Azure アラート ダッシュボードでは Contoso-Log-Alert が "解決済み" に変更されませんし、アラートの解決を示す通知も送信されません。
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>ログ アラートの価格と課金
@@ -120,6 +120,6 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 ## <a name="next-steps"></a>次の手順
 * [Azure でのログ アラートの作成](alert-log.md)について学習します。
 * [Azure のログ アラートの Webhook](monitor-alerts-unified-log-webhook.md) について理解する。
-* [Azure アラート](monitoring-overview-unified-alerts.md)について学習します。
+* [Azure アラート](monitoring-overview-alerts.md)について学習します。
 * [Application Insights](../application-insights/app-insights-analytics.md) についてさらに学習します。
 * [Log Analytics](../log-analytics/log-analytics-queries.md) についてさらに学習します。    

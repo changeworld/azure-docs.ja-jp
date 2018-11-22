@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/09/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3b350deff2883761af6a3a2b3c5c9ef22235bde0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cb5b421c1bcfe888d65335f3ab7f67bed80eec34
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038356"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614261"
 ---
 # <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>Azure Files ベースのボリュームをコンテナー内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する
 
@@ -62,10 +62,10 @@ az group create --name myResourceGroup --location eastus
 
 テンプレートの `storageAccountKey` パラメーターはセキュリティで保護された文字列です。 デプロイの状態および `az mesh service show` コマンドには表示されません。 次のコマンドで正しく指定されていることを確認してください。
 
-次のコマンドでは、[mesh_rp.linux.json テンプレート](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json)を使用して Linux アプリケーションがデプロイされます。 Windows アプリケーションをデプロイするには、[mesh_rp.windows.json テンプレート](https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.windows.json)を使用します。 大規模なコンテナー イメージはデプロイに時間がかかる場合があります。
+次のコマンドでは、[counter.azurefilesvolume.linux.json テンプレート](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json)を使用して Linux アプリケーションがデプロイされます。 Windows アプリケーションをデプロイするには、[counter.azurefilesvolume.windows.json テンプレート](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.windows.json)を使用します。 大規模なコンテナー イメージはデプロイに時間がかかる場合があります。
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/mesh_rp.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
 ```
 
 数分後に、`counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>` のようなコマンドの結果が返されます。
