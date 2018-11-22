@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3ab32388e0a35f4abf3866aa0a84ee0628b0570c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: efaaa196220213877283040120d6c2eeed86dbf3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318199"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346322"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Azure Machine Learning サービスから Azure Kubernetes Service にモデルをデプロイする方法
 
@@ -63,6 +63,9 @@ Azure Kubernetes Service では Docker イメージを使用します。 イメ�
 1. イメージを構成するには、スコアリング スクリプトと環境ファイルを作成する必要があります。 スクリプトと環境ファイルの作成例については、次のイメージ分類例のセクションを参照してください。
 
     * [スコアリング スクリプト (score.py) を作成する](tutorial-deploy-models-with-aml.md#create-scoring-script)
+
+        > [!IMPORTANT]
+        > スコア スクリプトでは、クライアントから送信されたデータが受信されて、スコア付けのためにモデルに渡されます。 スクリプトとモデルで予期されるデータ構造を文書化します。 このドキュメントを作成すると、Web サービスを使用するクライアントの作成が容易になります。
 
     * [環境ファイル (myenv.yml) を作成する](tutorial-deploy-models-with-aml.md#create-environment-file) 
 
@@ -190,3 +193,7 @@ aks_service.delete()
 image.delete()
 model.delete()
 ```
+
+## <a name="next-steps"></a>次の手順
+
+[Web サービスとしてデプロイされる ML モデルを使用する](how-to-consume-web-service.md)方法を学習します。

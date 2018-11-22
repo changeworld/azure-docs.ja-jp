@@ -15,18 +15,18 @@ ms.date: 11/07/2018
 ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 298afda7549690a9ea0314bff63a714be50a33b9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f0de122dc3dbd770e91a8412430423bee222b30
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019879"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577961"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法: 無効化された Access Control Service 名前空間を再度有効化する
 
 2017 年 11 月に、Azure Active Directory (Azure AD) のサービスである Microsoft Azure Access Control (ACS) が 2018 年 11 月 7 日で終了となると告知しました。
 
-その後、ACS サブスクリプションの管理メールに ACS サービス終了に関する電子メールを複数にわたって送信しています。2018 年 11 月 7 日のサービス終了まで残り 12 か月、9 か月、6 か月、3 か月、1 か月、2 週間、1 週間、1 日のタイミングで送信されます。
+その後、ACS サブスクリプションの管理メールに ACS サービス終了に関する電子メールを送信しています。2018 年 11 月 7 日のサービス終了まで残り 12 か月、9 か月、6 か月、3 か月、1 か月、2 週間、1 週間、1 日のタイミングで送信されます。
 
 2018 年 10 月 3 日に、2018 年 11 月 7 日までの移行を完了できないお客様に延長サービスを告知しました (電子メールと[ブログ投稿](https://azure.microsoft.com/blog/one-month-retirement-notice-access-control-service/)で)。 この告知には、延長の要請方法も含まれていました。
 
@@ -35,7 +35,7 @@ ms.locfileid: "51019879"
 延長を選択していない場合、2018 年 11 月 7 日より ACS 名前空間の無効化を開始します。 連絡できなかったお客様が 2019 年 2 月 4 日までの延長を希望する場合、次のセクションの指示に従ってください。
 
 > [!NOTE]
-> サブスクリプションの管理者でなければ、PowerShell コマンドを実行したり、延長を要求したりできません。
+> サブスクリプションのサービス管理者または共同管理者でなければ、PowerShell コマンドを実行したり、延長を要求したりできません。
 
 ## <a name="find-and-enable-your-acs-namespaces"></a>自分の ACS 名前空間を見つけ、有効にする
 
@@ -62,6 +62,9 @@ ACS PowerShell を使用して自分の ACS 名前空間をすべて一覧表示
         ```
     
         `[Command-Name]` は、ACS コマンドの名前です。
+1. **Connect-AcsAccount** コマンドレットを使用して ACS に接続します。 
+
+    コマンドを実行する前に、**Set-ExecutionPolicy** を実行して実行ポリシーを変更することが必要な場合があります。
 1. **Get-AcsSubscription** コマンドレットを使用して、使用可能な Azure サブスクリプションを一覧表示します。
 1. **Get-AcsNamespace** コマンドレットを使用して、ACS 名前空間を一覧表示します。
 1. `State` が `Disabled` であることを確認することで名前空間が無効になっていることを確認します。

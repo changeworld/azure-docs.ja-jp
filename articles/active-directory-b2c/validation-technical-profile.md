@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f08d5732939e853785e2cce1d1e9ed8eea7f9ad7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: c21a5c5b23b709ce6683c51cf96f0e6ff89efc78
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543141"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568678"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーで検証技術プロファイルを定義する
 
@@ -54,7 +54,7 @@ ms.locfileid: "45543141"
 | --------- | -------- | ----------- |
 | ReferenceId | [はい] | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
 |ContinueOnError|いいえ | この検証技術プロファイルでエラーが発生した場合に後続の検証技術プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false` (既定値。以降の検証プロファイルの処理が停止され、エラーが返されます)。 
-|ContinueOnSuccess | いいえ  | この検証技術プロファイルが成功した場合に後続の検証プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false`。 既定値は `true` で、以降の検証プロファイルの処理が続行されることを意味します。 |
+|ContinueOnSuccess | いいえ  | この検証技術プロファイルが成功した場合に後続の検証プロファイルの検証を続行するかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` で、以降の検証プロファイルの処理が続行されることを意味します。 |
 
 **ValidationTechnicalProfile** 要素には、次の要素が含まれています。
 
@@ -74,7 +74,7 @@ ms.locfileid: "45543141"
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | 値 | 1:n | チェックで使用されるデータ。 このチェックの種類が `ClaimsExist` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 チェックの種類が `ClaimEquals` の場合、このフィールドではクエリ対象の ClaimTypeReferenceId が指定されます。 一方、別の値要素には、チェック対象の値が含まれています。|
-| アクションを表示します。 | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 **Action** の値は `SkipThisValidationTechnicalProfile` に設定されます。 関連付けられている検証技術プロファイルを実行しないことを指定します。 | 
+| Action | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 **Action** の値は `SkipThisValidationTechnicalProfile` に設定されます。 関連付けられている検証技術プロファイルを実行しないことを指定します。 | 
 
 ### <a name="example"></a>例
 

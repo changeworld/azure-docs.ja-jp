@@ -11,59 +11,56 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 05/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 13d81e655b98771d985277974bd3081437e2a3e8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c43497a69b3188b4bc38e91b6ff9b1cc8b6bd21a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255781"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51624150"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
-Azure Active Directory (Azure AD) のセキュリティ レポートでは、環境内でユーザー アカウントが侵害されている確率を調べることができます。 リスクのフラグ付きユーザーは、侵害された可能性があるユーザー アカウントの指標です。
+Azure Active Directory (Azure AD) のセキュリティ レポートでは、環境内でユーザー アカウントが侵害されている確率を評価することができます。 リスクのフラグ付きユーザーは、侵害された可能性があるユーザー アカウントの指標です。
 
 Microsoft は、お客様の環境のセキュリティの保持に努めています。 この取り組みの一環として、Microsoft は、異常なアクティビティや既知の攻撃パターンと一致するアクティビティを継続的に監視しています。 
 
-
-お客様のユーザーのアカウントに対する未承認のアクセスを示す可能性がある異常なアクティビティが検出された場合は、対処できるように通知します。 通知があっても、Microsoft 自体のシステムがなんらかの方法で侵害されたとは限りません。
- 
+お客様のユーザーのアカウントに対する未承認のアクセスを示す可能性がある異常なアクティビティが検出された場合は、対処できるように通知します。 これは、Microsoft 固有のシステムが侵害されているという意味ではありません。
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>リスクのフラグ付きユーザー レポートへのアクセス
 
-リスクのフラグ付きユーザーは、Azure Active Directory (AD) の関連[レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk)を通じて確認できます。 Azure AD のサブスクライバーでない場合は、[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) で、1 回限りのサブスクリプション プロセスを無料で行うことができます。 このレポートで、次のようなさまざまなアクションを実行できます。
+リスクのフラグ付きユーザーは、Azure portal の[リスク レポートに示されたユーザー](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk)から確認できます。 Azure AD をお持ちでない場合は、[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) の無料試用版にサインアップできます。 
+
+リスクのフラグ付きユーザー レポートから、各ユーザーに対して次のアクションを実行できます。
 
 - 一時パスワードを生成する
 - ユーザーに次回のサインインで自分のパスワードを安全にリセットすることを要求する
 - 修復アクションを行わずにユーザーのリスクを無視する。
 
-詳しくは、「[Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート](concept-user-at-risk.md)」をご覧ください。
+詳細については、[リスクのフラグ付きユーザー セキュリティ レポート](concept-user-at-risk.md)に関するページを参照してください。
 
 ### <a name="azure-ad-subscription-for-office-365-customers"></a>Office 365 のお客様の Azure AD サブスクリプション
 
-完了したら、Office 365 の資格情報を使用して Azure 管理センターにアクセスすることができます。 Azure AD へのアクセスをアクティブにすると、Azure AD ポータルにリダイレクトされます。 Basic サブスクリプション レベルでは、レポートで提供される詳細情報の量が限定されます。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。
+Office 365 の資格情報を使用して **Azure 管理センター**にアクセスすることもできます。 Azure AD へのアクセスをアクティブにすると、Azure AD ポータルにリダイレクトされます。 Basic サブスクリプション レベルでは、レポートで提供される詳細情報の量が限定されます。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。
 
+Office 365 管理センターで**リスクのフラグ付きユーザー**のレポートにアクセスするには:
 
-**Office 365 管理センターでリスクのフラグ付きユーザーのレポートにアクセスするには:**
-
-1.  左側のナビゲーション メニューで、**[管理センター]** をクリックします。 
-2.  **[Azure AD]** をクリックします。
+1.  左側のナビゲーション メニューで、**[管理センター]** を選択します。 
+2.  **[Azure AD ]** を選びます。
 3.  **Azure Active Directory 管理センター**にログインします。
-4.  ページ上部に **[新しいポータルの確認]** というバナーが表示される場合は、そのリンクをクリックします。
-4.  左側のナビゲーション メニューで、**[Azure Active Directory]** をクリックします。 
-5.  ナビゲーション ウィンドウで、**[セキュリティ]** の **[リスクのフラグ付きユーザー]** をクリックします。
-
-ここに表示される情報を確認します。 一覧に表示されているアカウントのパスワードは、リセットする必要があります。 
+4.  ページ上部に **[新しいポータルの確認]** というバナーが表示される場合は、そのリンクを選択します。
+4.  左側のナビゲーション メニューで、**[Azure Active Directory]** を選択します。 
+5.  ナビゲーション ウィンドウの **[セキュリティ]** セクションから、**[リスクのフラグ付きユーザー]** を選択します。
 
 ## <a name="remediation-actions"></a>修復アクション
 
 影響を受けたアカウントの問題を解決し、環境を保護するために、以下の操作を実行してください。
 
-1.  多要素認証とセルフサービスのパスワード リセットに関する情報が正しいことを[検証](https://aka.ms/MFAValid)します。 
-2.  すべてのユーザーの多要素認証を[有効](https://aka.ms/MFAuth)にします。 
-3.  この[修復スクリプト](https://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行することができます。 
+1.  多要素認証とセルフサービスのパスワード リセットに関する[情報が正しいことを検証](http://aka.ms/MFAValid)します。 
+2.  すべてのユーザーの[多要素認証を有効](http://aka.ms/MFAuth)にします。 
+3.  この[修復スクリプト](http://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行します。 
 
     a. パスワードをリセットしてアカウントを保護し、アクティブなセッションを強制終了します。
 
@@ -87,14 +84,12 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 
 他にも、以下の作業が必要です。
 
-- 異常なアクティビティへの対処について、この[ガイダンス](https://aka.ms/fixaccount)を読み、実装します。 
-- テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](https://aka.ms/improvesecurity)にします。 そのようにすると、監査ストアにすべてのアクティビティ ログが読み込まれるようになります。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査](https://aka.ms/sccsearch)を活用することもできます。 
-- この[スクリプト](https://aka.ms/mailboxaudit1)を使用して、すべてのアカウントのメールボックスの監査を有効にします。 
-- すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](https://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
-
-
+- [異常なアクティビティへの対処に関するこのガイダンス](http://aka.ms/fixaccount)を読み、実装します。 
+- テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](http://aka.ms/improvesecurity)にします。 完了すると、監査ストアはアクティビティ ログの読み込みを開始します。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査のリソース](http://aka.ms/sccsearch)を活用することもできます。 
+- すべてのアカウントに対して、この[スクリプトを使用してメールボックスの監査を有効](http://aka.ms/mailboxaudit1)にします。 
+- すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](http://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Active Directory Identity Protection の詳細については、「[Azure Active Directory Identity Protection](../active-directory-identityprotection.md)」を参照してください。
-
+* [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+* [リスクのフラグ付きユーザー](concept-user-at-risk.md)

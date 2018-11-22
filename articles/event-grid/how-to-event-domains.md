@@ -1,46 +1,65 @@
 ---
-title: Azure Event Grid で大規模なトピック セットを管理し、イベント ドメインを使用してそれらにイベントを発行する方法
-description: Azure Event Grid でトピックを作成および管理し、イベント ドメインを使用してそれらにイベントを発行する方法について説明します。
+title: イベント ドメインを使用して Azure Event Grid で大規模なトピック セットを管理する
+description: イベント ドメインを使用して、Azure Event Grid で大規模なトピック セットを管理し、それらにイベントを発行する方法を説明します。
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: d6da1ee603c85556693b145ba17d1e0cd0dfabd7
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.date: 11/08/2018
+ms.openlocfilehash: ad23599d1df5d07e912f634435f8b44b441d87e6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034542"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298533"
 ---
-# <a name="manage-topics-and-publish-events-using-event-domains"></a>トピックを管理し、イベント ドメインを使用してイベントを発行する
+# <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
 
 この記事では、次の方法について説明します。
 
 * Event Grid ドメインを作成する
-* トピックをサブスクライブする
+* Event Grid トピックをサブスクライブする
 * キーのリスト
 * ドメインにイベントを発行する
+
+イベント ドメインについて学習するには、「[Event Grid トピックを管理するためのイベント ドメインについて](event-domains.md)」をご覧ください。
+
+## <a name="install-preview-feature"></a>プレビュー機能のインストール
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-an-event-domain"></a>イベント ドメインを作成する
 
-イベント ドメインは、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) の `eventgrid` 拡張機能を使用して作成することができます。 ドメインを作成したら、それを使用して大規模なトピック セットを管理することができます。
+大規模なトピック セットを管理するには、イベント ドメインを作成します。
+
+Azure CLI では、次を使用します。
 
 ```azurecli-interactive
-# if you haven't already installed the extension, do it now.
+# If you haven't already installed the extension, do it now.
 # This extension is required for preview features.
 az extension add --name eventgrid
 
 az eventgrid domain create \
   -g <my-resource-group> \
-  --name <my-domain-name>
+  --name <my-domain-name> \
   -l <location>
 ```
 
-正常に作成された場合、次のように返されます。
+PowerShell では、次を使用します。
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+New-AzureRmEventGridDomain `
+  -ResourceGroupName <my-resource-group> `
+  -Name <my-domain-name> `
+  -Location <location>
+```
+
+正常に作成された場合、次の値が返されます。
 
 ```json
 {
@@ -57,24 +76,59 @@ az eventgrid domain create \
 }
 ```
 
-ドメインを管理してイベントを発行するために必要であるため、`endpoint` と `id` はメモしておいてください。
+ドメインを管理してイベントを発行するために必要なので、`endpoint` と `id` を書き留めておきます。
+
+## <a name="manage-access-to-topics"></a>トピックへのアクセスを管理する
+
+トピックへのアクセスの管理は、[ロールの割り当て](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)を使用して行われます。 ロールの割り当てではロールベースのアクセス制御を使用して、Azure リソースに対する操作を、特定のスコープの承認されたユーザーに制限します。
+
+Event Grid には、ドメイン内のさまざまなトピックへのアクセスを特定のユーザーに割り当てるために使用できる 2 つの組み込みロールがあります。 これらのロールは、サブスクリプションの作成と削除を許可する `EventGrid EventSubscription Contributor (Preview)` と、イベント サブスクリプションのリストのみを許可する `EventGrid EventSubscription Reader (Preview)` です。
+
+次の Azure CLI コマンドでは、`alice@contoso.com` によるイベント サブスクリプションの作成と削除を、トピック `demotopic1` のみに制限します。
+
+```azurecli-interactive
+az role assignment create \
+  --assignee alice@contoso.com \
+  --role "EventGrid EventSubscription Contributor (Preview)" \
+  --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
+```
+
+次の PowerShell コマンドでは、`alice@contoso.com` によるイベント サブスクリプションの作成と削除を、トピック `demotopic1` のみに制限します。
+
+```azurepowershell-interactive
+New-AzureRmRoleAssignment `
+  -SignInName alice@contoso.com `
+  -RoleDefinitionName "EventGrid EventSubscription Contributor (Preview)" `
+  -Scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
+```
+
+Event Grid の操作に対するアクセスの管理について詳しくは、「[Event Grid のセキュリティと認証](./security-authentication.md)」をご覧ください。
 
 ## <a name="create-topics-and-subscriptions"></a>トピックとサブスクリプションを作成する
 
 Event Grid サービスでは、ドメイン トピックのイベント サブスクリプションを作成するための呼び出しに基づいて、ドメインで対応するトピックが自動的に作成および管理されます。 ドメインでトピックを作成する別の手順はありません。 同様に、トピックの最後のイベント サブスクリプションが削除されたときに、トピックも削除されます。
 
-ドメインのトピックをサブスクライブすることは、他のすべての Azure リソースをサブスクライブするのと同じです。
+ドメインのトピックをサブスクライブすることは、他のすべての Azure リソースをサブスクライブするのと同じです。 ソース リソース ID としては、前にドメインを作成するときに返されたイベント ドメイン ID を指定します。 サブスクライブするトピックを指定するには、ソース リソース ID の末尾に `/topics/<my-topic>` を追加します。 ドメイン内のすべてのイベントを受け取るドメイン スコープのイベント サブスクリプションを作成するには、トピックを指定せずに、イベント ドメイン ID を指定します。
+
+通常、前のセクションでアクセスを許可されたユーザーが、サブスクリプションを作成します。 この記事では、簡単にするため自分でサブスクリプションを作成します。 
+
+Azure CLI では、次を使用します。
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
   --name <event-subscription> \
-  --resource-id "/subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/<my-topic>" \
-  --endpoint https://contoso.azurewebsites.net/api/f1?code=code
+  --source-resource-id "/subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1" \
+  --endpoint https://contoso.azurewebsites.net/api/updates
 ```
 
-指定されたリソース ID は、先ほどドメインを作成するときに返されたものと同じ ID です。 サブスクライブするトピックを指定するには、リソース ID の末尾に `/topics/<my-topic>` を追加します。
+PowerShell では、次を使用します。
 
-ドメイン内のすべてのイベントを受信するドメイン スコープ イベント サブスクリプションを作成するには、`/subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>` など、トピックを指定せずに `resource-id` としてドメインを指定します。
+```azurepowershell-interactive
+New-AzureRmEventGridSubscription `
+  -ResourceId "/subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1" `
+  -EventSubscriptionName <event-subscription> `
+  -Endpoint https://contoso.azurewebsites.net/api/updates
+```
 
 イベントをサブスクライブするテスト エンドポイントが必要な場合は、受信イベントを表示する[ビルド済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をいつでもデプロイすることができます。 `https://<your-site-name>.azurewebsites.net/api/updates` のテスト Web サイトにイベントを送信できます。
 
@@ -82,23 +136,6 @@ az eventgrid event-subscription create \
 
 トピックに設定されているアクセス許可は Azure Active Directory で格納され、明示的に削除する必要があります。 ユーザーにトピックへの書き込みアクセス権限がある場合、イベント サブスクリプションを削除しても、イベント サブスクリプションを作成するためのアクセスは取り消されません。
 
-## <a name="manage-access-to-topics"></a>トピックへのアクセスを管理する
-
-トピックへのアクセスの管理は、[ロールの割り当て](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)を使用して行われます。 ロールの割り当てではロールベースのアクセス確認を使用して、Azure リソースに対する操作を、特定のスコープの承認されたユーザーに制限します。
-
-Event Grid には、ドメイン内のさまざまなトピックへのアクセスを特定のユーザーに割り当てるために使用できる 2 つの組み込みロールがあります。 これらのロールは、サブスクリプションの作成と削除を許可する `EventGrid EventSubscription Contributor (Preview)` と、イベント サブスクリプションのリストのみを許可する `EventGrid EventSubscription Reader (Preview)` です。
-
-次のコマンドでは、`alice@contoso.com` を、トピック `foo` のイベント サブスクリプションの作成と削除のみに制限します。
-
-```azurecli-interactive
-az role assignment create --assignee alice@contoso.com --role "EventGrid EventSubscription Contributor (Preview)" --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/foo
-```
-
-詳細については、「[Event Grid security and authentication](./security-authentication.md)」 (Event Grid のセキュリティと認証) を参照してください。
-
-* 管理アクセス制御
-* 操作の種類
-* カスタム ロール定義の作成
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Event Grid ドメインにイベントを発行する
 
@@ -106,7 +143,7 @@ az role assignment create --assignee alice@contoso.com --role "EventGrid EventSu
 
 ```json
 [{
-  "topic": "foo",
+  "topic": "demotopic1",
   "id": "1111",
   "eventType": "maintenanceRequested",
   "subject": "myapp/vehicles/diggers",
@@ -118,7 +155,7 @@ az role assignment create --assignee alice@contoso.com --role "EventGrid EventSu
   "dataVersion": "1.0"
 },
 {
-  "topic": "bar",
+  "topic": "demotopic2",
   "id": "2222",
   "eventType": "maintenanceCompleted",
   "subject": "myapp/vehicles/tractors",
@@ -131,7 +168,7 @@ az role assignment create --assignee alice@contoso.com --role "EventGrid EventSu
 }]
 ```
 
-ドメインのキーを取得するには、以下を使用します。
+Azure CLI でドメインのキーを取得するには、以下を使用します。
 
 ```azurecli-interactive
 az eventgrid domain key list \
@@ -139,8 +176,16 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
+PowerShell では、次を使用します。
+
+```azurepowershell-interactive
+Get-AzureRmEventGridDomainKey `
+  -ResourceGroupName <my-resource-group> `
+  -Name <my-domain>
+```
+
 次に、HTTP POST を実行するための任意のメソッドを使用して、Event Grid ドメインにイベントを発行します。
 
 ## <a name="next-steps"></a>次の手順
 
-* イベント ドメインの概念の概要と役立つ理由の詳細については [イベント ドメインの概念の概要](./event-domains.md)に関するページを参照してください。
+* イベント ドメインの概念の概要と役立つ理由の詳細については、[イベント ドメインの概念の概要](event-domains.md)に関するページを参照してください。

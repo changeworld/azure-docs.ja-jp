@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 11/09/2018
 ms.author: tulasim
-ms.openlocfilehash: 1a61d8f4008b0183ab5ddb51332d887217f52f48
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 8c47c4a59f03328b1dc8d3df7771bac81864bb34
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435409"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566637"
 ---
 # <a name="language-and-region-support-for-qna-maker"></a>QnA Maker の言語と地域のサポート
 
@@ -34,6 +34,8 @@ QnA Maker は任意の言語ページでの質問と回答の抽出をサポー�
 
 ## <a name="query-matching-and-relevance"></a>クエリの一致と関連性
 QnA Maker は、Azure Search の[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)に依存して結果を提供します。 En-* 言語については、関連性が向上する特別な再ランキング機能を利用できます。
+
+Azure Search の機能はサポートされている言語に従いますが、QnA Maker には Azure Search の結果より上位に追加のランカーがあります。 このランカー モデルでは、en-* においてはいくつかの特別なセマンティックと単語に基づく機能を使用しますが、他の言語ではまだ使用できません。 これらはランカーの内部動作の一部であるため、これらを使用できるようにはしません。 
 
 QnA Maker は、作成時にナレッジ ベースの言語を自動検出し、それに応じてアナライザーを設定します。 次の言語でナレッジ ベースを作成できます。 QnA Maker による言語の処理方法について詳しくは、[こちら](../How-To/language-knowledge-base.md)をご覧ください。
 

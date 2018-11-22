@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: d57e780fbf5187f2481d40bde28b113181c15b4a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 22432a98a7ac5ecba46201d0166940e069f6031b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834660"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346441"
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>Azure AI ギャラリーで実験を発見する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="experiments-for-machine-learning-studio"></a>Machine Learning Studio 向け実験
-ギャラリーには、[Azure Machine Learning Studio](https://studio.azureml.net) で開発されたさまざまな[実験](https://gallery.cortanaintelligence.com/experiments)があります。 実験の範囲は、特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまでに及びます。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)には、[Azure Machine Learning Studio](https://studio.azureml.net) で開発されたさまざまな[実験](https://gallery.cortanaintelligence.com/experiments)があります。 実験の範囲は、特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまでに及びます。
 
 > [!NOTE]
 > ***実験***は、予測分析モデルの構築に使用できる Machine Learning Studio 内のキャンバスです。 さまざまな分析モジュールを使用してデータを接続することで、モデルを作成します。 さまざまなアイデアを取り入れ、試行して、最終的には Azure の Web サービスとしてモデルをデプロイできます。 基本的な実験を作成する方法の例については、「[Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する](create-experiment.md)」を参照してください。 予測分析ソリューションを作成する方法のより包括的なチュートリアルについては、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」を参照してください。

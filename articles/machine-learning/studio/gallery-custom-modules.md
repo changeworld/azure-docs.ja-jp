@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: c53bab2e838425dfdd124e64c3d7d3114fa30429
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fe58b335a029e558ce29871483589908f17c03cd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834432"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345693"
 ---
 # <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Azure AI ギャラリーでカスタム機械学習モジュールを発見する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="custom-modules-for-machine-learning-studio"></a>Machine Learning Studio 向けカスタムモジュール
-Azure AI ギャラリーには、Azure Machine Learning Studio の機能を拡張するいくつかの[カスタム モジュール](https://gallery.cortanaintelligence.com/customModules)が用意されています。 これらのモジュールをインポートして実験で使用し、さらに高度な予測分析ソリューションを開発することができます。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)には、Azure Machine Learning Studio の機能を拡張するいくつかの[カスタム モジュール](https://gallery.cortanaintelligence.com/customModules)が用意されています。 これらのモジュールをインポートして実験で使用し、さらに高度な予測分析ソリューションを開発することができます。
 
 現在、ギャラリーには、*時系列分析*、*関連付けルール*、*クラスタリング アルゴリズム* (k-means 法以降)、*視覚化*、およびその他の役立つユーティリティ モジュールが用意されています。
 

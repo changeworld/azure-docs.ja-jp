@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: aff0710ead4f76bb80c38e2d88fe9cd3ce6a7b48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 55a4b150471b87289cdd67dc8fbce92336850364
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109260"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568820"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>バックアップ セットからの StorSimple ボリュームの復元
 
@@ -51,7 +51,7 @@ ms.locfileid: "23109260"
 
 ## <a name="how-does-restore-work"></a>復元のしくみ
 
-Update 4 以降を実行しているデバイスでは、ヒートマップ ベースの復元が実装されています。 ホストのデータ アクセス要求がデバイスに届くと、これらの要求が追跡され、ヒートマップが作成されます。 要求レートが高いと、ヒート値が高いデータ チャンクになり、要求レートが低くなると、ヒート値が低いチャンクに変換されます。 "_高_" としてマークするには、データに 2 回以上アクセスする必要があります。 変更されたファイルも "_高_" としてマークされます。 復元を開始すると、ヒートマップに基づいてデータのプロアクティブ ハイドレーションが発生します。 Update 4 より前のバージョンでは、アクセスだけに基づいて復元時にデータがダウンロードされます。
+Update 4 以降を実行しているデバイスでは、ヒートマップ ベースの復元が実装されています。 ホストのデータ アクセス要求がデバイスに届くと、これらの要求が追跡され、ヒートマップが作成されます。 要求レートが高いと、ヒート値が高いデータ チャンクになり、要求レートが低くなると、ヒート値が低いチャンクに変換されます。 "_高_" としてマークされるには、データに 2 回以上アクセスする必要があります。 変更されたファイルも "_高_" としてマークされます。 復元を開始すると、ヒートマップに基づいてデータのプロアクティブ ハイドレーションが発生します。 Update 4 より前のバージョンでは、アクセスだけに基づいて復元時にデータがダウンロードされます。
 
 次の注意事項は、ヒートマップ ベースのリストアに適用されます。
 
@@ -140,7 +140,7 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
 
 復元操作を完了するには、ホスト上でボリュームをオフラインにし、復元操作を再試行します。 復元の処理中に行われたボリューム データへの変更は失われることに注意してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [StorSimple ボリュームを管理する](storsimple-8000-manage-volumes-u2.md)方法について説明します。
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)について説明します。
 

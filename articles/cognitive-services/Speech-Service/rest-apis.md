@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 11/12/2018
 ms.author: erhopf
-ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a8aa2600c8f3bcbc9d2ebc7f55ac0d2f038d8ecd
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038605"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566620"
 ---
 # <a name="speech-service-rest-apis"></a>音声サービスの REST API
 
@@ -127,14 +127,43 @@ HTTP コード|意味|考えられる理由
 
 ### <a name="json-response"></a>JSON 応答
 
-結果は JSON 形式で返されます。 `simple` 形式には、次の最上位レベルのフィールドのみが含まれます。
+結果は JSON 形式で返されます。 クエリ パラメーターに応じて、`simple` または `detailed` 形式が返されます。
+
+#### <a name="the-simple-format"></a>`simple` 形式 
+
+この形式には、次の最上位レベル フィールドが含まれます。
 
 |フィールド名|コンテンツ|
 |-|-|
-|`RecognitionStatus`|認識成功を表す `Success` などのステータス。 次の表を参照してください。|
+|`RecognitionStatus`|認識成功を表す `Success` などのステータス。 この[表](rest-apis.md#recognitionstatus)をご覧ください。|
 |`DisplayText`|大文字化、句読点、逆テキスト正規化 (「two hundred」から「200」に、または「doctor smith」から「Dr. Smith」のように、音声テキストをより短い形式に変換すること)、および不適切な表現のマスキングの後に認識されたテキスト。 成功時にのみ存在します。|
 |`Offset`|認識された音声がオーディオ ストリーム内で開始する時間 (100 ナノ秒単位)。|
 |`Duration`|認識された音声のオーディオ ストリーム内での持続時間 (100 ナノ秒単位)。|
+
+#### <a name="the-detailed-format"></a>`detailed` 形式 
+
+この形式には、次の最上位レベル フィールドが含まれます。
+
+|フィールド名|コンテンツ|
+|-|-|
+|`RecognitionStatus`|認識成功を表す `Success` などのステータス。 この[表](rest-apis.md#recognition-status)をご覧ください。|
+|`Offset`|認識された音声がオーディオ ストリーム内で開始する時間 (100 ナノ秒単位)。|
+|`Duration`|認識された音声のオーディオ ストリーム内での持続時間 (100 ナノ秒単位)。|
+|`NBest`|同じ音声の代替解釈のリストであり、最も可能性が高いものから最も可能性が低いものまでランク付けされています。 [NBest の説明](rest-apis.md#nbest)をご覧ください。|
+
+#### <a name="nbest"></a>NBest
+
+`NBest` フィールドは同じ音声の代替解釈のリストであり、最も可能性が高いものから最も可能性が低いものまでランク付けされています。 最初のエントリはメイン認識結果と同じです。 各エントリには次のフィールドが含まれます。
+
+|フィールド名|コンテンツ|
+|-|-|
+|`Confidence`|0.0 (信頼度なし) から1.0 (完全信頼) までのエントリの信頼度スコア
+|`Lexical`|認識されたテキストの語彙形式: 認識された実際の単語。
+|`ITN`|認識されたテキストの逆テキスト正規化 ("カノニカル") 形式。電話番号、数字、略語 (「doctor smith」から「dr smith」)、およびその他の変換を適用したものです。
+|`MaskedITN`| 要求された場合、不適切な表現のマスキングを適用した ITN 形式。
+|`Display`| 認識されたテキストの表示形式。句読点と大文字化を追加したものです。
+
+#### <a name="recognitionstatus"></a>RecognitionStatus
 
 `RecognitionStatus` フィールドには次の値が含まれる可能性があります。
 
@@ -148,17 +177,6 @@ HTTP コード|意味|考えられる理由
 
 > [!NOTE]
 > オーディオが不適切な表現のみで構成されており、`profanity` クエリ パラメーターが `remove` に設定されている場合、サービスは音声結果を返しません。
-
-
-`detailed` 形式には、`simple` 形式と同じフィールドに加えて `NBest` フィールドが含まれています。 `NBest` フィールドは同じ音声の代替解釈のリストであり、最も可能性が高いものから最も可能性が低いものまでランク付けされています。 最初のエントリはメイン認識結果と同じです。 各エントリには次のフィールドが含まれます。
-
-|フィールド名|コンテンツ|
-|-|-|
-|`Confidence`|0.0 (信頼度なし) から1.0 (完全信頼) までのエントリの信頼度スコア
-|`Lexical`|認識されたテキストの語彙形式: 認識された実際の単語。
-|`ITN`|認識されたテキストの逆テキスト正規化 ("カノニカル") 形式。電話番号、数字、略語 (「doctor smith」から「dr smith」)、およびその他の変換を適用したものです。
-|`MaskedITN`| 要求された場合、不適切な表現のマスキングを適用した ITN 形式。
-|`Display`| 認識されたテキストの表示形式。句読点と大文字化を追加したものです。 最上位の結果では `DisplayText` と同じです。
 
 ### <a name="sample-responses"></a>応答のサンプル
 

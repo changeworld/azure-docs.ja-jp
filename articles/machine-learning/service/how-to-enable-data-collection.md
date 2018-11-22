@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 09/24/2018
-ms.openlocfilehash: 70c023fc8fe996060d3eff3d5a700b5f910097b4
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 11/08/2018
+ms.openlocfilehash: bb3dca56583296bab42fe9804a32e0690ace5897
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113633"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578231"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
@@ -45,6 +45,8 @@ ms.locfileid: "49113633"
 /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+>[!NOTE]
+> この記事のコードは、Azure Machine Learning SDK バージョン 0.1.74 を使用してテストされました
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,17 +58,7 @@ ms.locfileid: "49113633"
 
 - [AKS クラスター](how-to-deploy-to-aks.md)。
 
-- [使用している環境](how-to-configure-environment.md)に次の依存関係とモジュールがインストールされていること。
-  + Linux の場合:
-    ```shell
-    sudo apt-get install libxml++2.6-2v5
-    pip install azureml-monitoring
-    ```
-
-  + Windows の場合:
-    ```shell
-    pip install azureml-monitoring
-    ```
+- [環境を設定](how-to-configure-environment.md)し、[Monitoring SDK](https://aka.ms/aml-monitoring-sdk) をインストールします。
 
 ## <a name="enable-data-collection"></a>データ収集を有効にする
 モデルのデプロイに使用されているツールが Azure Machine Learning Service かどうかにかかわらず、データ収集を有効にすることができます。 
@@ -75,7 +67,7 @@ ms.locfileid: "49113633"
 
 1. スコア付けファイルを開きます。 
 
-1. ファイルの先頭に次のコードを追加します。
+1. ファイルの先頭に[次のコード](https://aka.ms/aml-monitoring-sdk)を追加します。
 
    ```python 
    from azureml.monitoring import ModelDataCollector
@@ -123,11 +115,11 @@ ms.locfileid: "49113633"
 
 1. **[デプロイ]** -> **[サービスの選択]** -> **[編集]** の順に選択します。
 
-   ![サービスの編集](media/how-to-enable-data-collection/EditService.png)
+   ![サービスの編集](media/how-to-enable-data-collection/EditService.PNG)
 
 1. **[詳細設定]** で、**[モデルのデータ コレクションを有効にする]** をオフにします。 
 
-   ![データ コレクションをオフにする](media/how-to-enable-data-collection/CheckDataCollection.png)
+    [![データ収集をオンにする](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    このウィンドウでは、[AppInsights 診断を有効にする] をオンにしてサービスの正常性を追跡することもできます。  
 
@@ -144,11 +136,11 @@ ms.locfileid: "49113633"
 
   1. **[デプロイ]** -> **[サービスの選択]** -> **[編集]** の順に選択します。
 
-     ![サービスの編集](media/how-to-enable-data-collection/EditService.png)
+    [![サービスの編集](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. **[詳細設定]** で、**[モデルのデータ コレクションを有効にする]** をオフにします。 
 
-     ![データ コレクションをオフにする](media/how-to-enable-data-collection/UncheckDataCollection.png) 
+    [![データ コレクションをオフにする](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. **[更新]** をクリックして変更を適用します。
 
@@ -158,6 +150,84 @@ ms.locfileid: "49113633"
   ## replace <service_name> with the name of the web service
   <service_name>.update(collect_model_data=False)
   ```
+
+## <a name="validate-your-data-and-analyze-it"></a>データを検証して分析する
+好みの任意のツールを選択して、Azure Blob に収集されたデータを分析できます。 
+
+BLOB のデータにすばやくアクセスするには:
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+
+1. ワークスペースを開きます。
+1. **[ストレージ]** をクリックします。
+
+    [![ストレージ](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+
+1. BLOB 内での出力データへのパスは次のような構文です。
+
+```
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+# example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
+```
+
+
+### <a name="analyzing-model-data-through-power-bi"></a>Power BI でのモデル データの分析
+
+1. [Power BI Desktop](http://www.powerbi.com) をダウンロードして開きます
+
+1. **[データを取得]** を選択し、[**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources) をクリックします。
+
+    [![PBI の BLOB のセットアップ](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+
+
+1. ストレージ アカウント名を追加し、ストレージ キーを入力します。 この情報は、BLOB の **[設定]** > [アクセス キー] で確認できます。 
+
+1. コンテナー **modeldata** を選択し、**[編集]** をクリックします。 
+
+    [![PBI ナビゲーター](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+
+1. クエリ エディターで、[名前] 列の下をクリックし、ストレージ アカウント 1. モデル パスをフィルターに追加します。 注: 特定の年または月のファイルだけを検索する場合は、そのフィルター パスだけを展開します。 たとえば、3 月のデータだけを検索する場合は、/modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/identifier>/year>/3 とします
+
+1. **名前**に基づいて関連するデータをフィルター処理します。 **予測**と**入力**を保存した場合、それごとにクエリを作成する必要があります。
+
+1. **[コンテンツ]** 列の二重矢印をクリックして、ファイルを結合します。 
+
+    [![PBI コンテンツ](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+
+1. [OK] をクリックして、データの事前読み込みを行います。
+
+    [![pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+
+1. **[閉じて適用する]** をクリックしてかまいません。
+
+1.  入力と予測を追加した場合、テーブルは **RequestId** によって自動的に関連付けられます。
+
+1. モデル データでのカスタム レポートの作成を開始します。
+
+
+### <a name="analyzing-model-data-using-databricks"></a>Databricks を使用したモデル データの分析
+
+1. [Databricks ワークスペース](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を作成します。 
+
+1. Databricks ワークスペースに移動します。 
+
+1. Databricks ワークスペースで、**[Upload Data]\(データのアップロード\)** を選択します。
+
+    [![DB のアップロード](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+
+1. 新しいテーブルを作成し、**[他のデータ ソース]** > [Azure Blob Storage] > [Create Table in Notebook]\(ノートブックにテーブルを作成\) を選択します。
+
+    [![DB テーブル](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+
+1. データの場所を更新します。 たとえば次のようになります。
+
+    ```
+    file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 
+    file_type = "csv"
+    ```
+ 
+    [![DBsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
+
+1. データを表示および分析するには、テンプレートの手順に従います。 
 
 ## <a name="example-notebook"></a>ノートブックの例
 

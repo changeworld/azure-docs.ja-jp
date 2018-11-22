@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: fa425a5ecd8cf8f4c7b3516534b4c4f0f4257850
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 285486d5fe641d49ee21d7340b62f83d75862553
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085344"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578300"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Application Insights を使用して運用環境の Azure Machine Learning モデルを監視する
 
@@ -24,6 +24,10 @@ ms.locfileid: "50085344"
 * 例外。
 
 [Application Insights](../../application-insights/app-insights-overview.md) の詳細 
+
+>[!NOTE]
+> この記事のコードは、Azure Machine Learning SDK バージョン 0.1.74 を使用してテストされました
+
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
@@ -53,7 +57,7 @@ Azure portal で Application Insights を有効または無効にすることが
 
 1. 画面下部の **[更新]** を選択して変更を適用します。 
 
-### <a name="disable"></a>無効化
+### <a name="disable"></a>Disable
 1. [Azure portal](https://portal.azure.com) でワークスペースを開きます。
 1. **[デプロイ]** を選択し、サービスを選択し、**[編集]** を選択します。
 
@@ -109,8 +113,11 @@ Application Insights を無効にするには、次のコードを使用しま�
 ## <a name="evaluate-data"></a>データを評価する
 サービスのデータは、Azure Machine Learning サービスと同じリソース グループ内の Application Insights アカウントに保存されます。
 表示するには:
-1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、Application Insights リソースを参照します。 
-2. **[概要]** タブには、サービスの基本的なメトリック セットが表示されます。
+1. [Azure portal](https://portal.azure.com) で Machine Learning service ワークスペースに移動し、Application Insights のリンクをクリックします。
+
+    [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+
+1. **[概要]** タブを選択すると、サービスの基本的なメトリック セットが表示されます。
 
    [![概要](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -130,3 +137,7 @@ Application Insights の使用方法の詳細については、「[Application I
 
 ## <a name="next-steps"></a>次の手順
 運用環境でモデルに関するデータを収集することもできます。 記事「[実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)」を参照してください。 
+
+
+## <a name="other-references"></a>その他のリファレンス
+* [コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)

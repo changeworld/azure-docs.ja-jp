@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: b703cb4d3ddd8b62895c9c40c7fa2fba728e884e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f86d1d74f5139458999a8c91ac35ec76ac278c8
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262280"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300933"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>車両テレメトリ分析ソリューション テンプレートの Power BI ダッシュボードのセットアップ手順
-このメニューは、このプレイブック内の各章にリンクされています。 
-
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 車両テレメトリ分析ソリューションでは、自動車販売店、自動車製造業者、保険会社が Cortana Intelligence の機能をどのように使用できるかを紹介します。 車両の状態と運転習慣についてリアルタイムの分析情報と予測的な分析情報を得て、カスタマー エクスペリエンス、研究と開発、マーケティング キャンペーンを改善できます。 このステップバイステップの手順では、ご自分のサブスクリプションでソリューションをデプロイした後に Power BI のレポートとダッシュボードを構成する方法を示します。 
+
+このソリューションの概要説明を確認するには、「[車両テレメトリ分析ソリューション プレイブック](cortana-analytics-playbook-vehicle-telemetry.md)」をご覧ください。
+このソリューションについてさらに詳しく調べるには、「[車両テレメトリ分析ソリューション プレイブック: ソリューションの詳細](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 * [車両テレメトリ分析](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90)ソリューションをデプロイします。 

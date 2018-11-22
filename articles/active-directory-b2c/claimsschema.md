@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 92328ffd8b6dbbb2be82bc70352e19f3097eb2a7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 2d11283ccf58fdc356742d6f4042afd15bf6faab
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637733"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568644"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -109,7 +109,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 | type | [はい] | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値では、要求の文字列の先頭部分に単純なテキスト マスクを適用することを示します。 `Regex`値が正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
 | 正規表現 | いいえ  | **種類**が`Regex`に設定されている場合、使用される正規表現を指定します。
 
-次の例では**PhoneNumber**要求を`Simple`マスクして設定します。
+次の例では **PhoneNumber** 要求を `Simple` マスクで構成します。
 
 ```XML
 <ClaimType Id="PhoneNumber">
@@ -124,7 +124,7 @@ Identity Experience Framework では、最初の 6 桁の数字を非表示し�
 
 ![マスクを使用する要求種類](./media/claimsschema/mask.png)
 
-次の例では**AlternateEmail**要求を`Regex`マスクして設定します。
+次の例では **AlternateEmail** 要求を `Regex` マスクで構成します。
 
 ```XML
 <ClaimType Id="AlternateEmail">

@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b004abb3959bbfe36fc200bf762114f88f3d2ead
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429465"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345048"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Azure Container Instances への Web サービスのデプロイ 
 
@@ -50,7 +50,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 すべてのモデル ファイルの格納に使用する Docker イメージを構成します。
 1. [説明に従って](tutorial-deploy-models-with-aml.md#create-scoring-script)スコア スクリプト (score.py) を作成します｡
 
-1. [説明に従って](tutorial-deploy-models-with-aml.md#create-environment-file)環境ファイル (myenv.yml) を作成します｡ 
+    > [!IMPORTANT]
+    > スコア スクリプトでは、クライアントから送信されたデータが受信されて、スコア付けのためにモデルに渡されます。 スクリプトとモデルで予期されるデータ構造を文書化します。 このドキュメントを作成すると、Web サービスを使用するクライアントの作成が容易になります。
+
+1. [説明に従って](tutorial-deploy-models-with-aml.md#create-environment-file)環境ファイル (myenv.yml) を作成します｡
 
 1. これら 2 つのファイルを使用し､次のように SDK を利用して Python で Docker イメージを構成します｡
 
@@ -217,8 +220,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
 
 これで Web サービスをテストできます。
 
-<a name='test-web-service'/>
-## <a name="test-the-web-service"></a>Web サービスをテストする
+## <a name="a-nametest-web-servicetest-the-web-service"></a><a name='test-web-service'/>Web サービスをテストする
 
 Web サービスは、使用された方法に関係なく同じです。  予測情報を取得するには、サービスの `run` メソッドを利用します。  
 
@@ -261,4 +263,5 @@ service.delete()
 
 ## <a name="next-steps"></a>次の手順
 
-大規模なデプロイで [Azure Kubernetes Service にデプロイ](how-to-deploy-to-aks.md)する方法を学びます｡ 
+* [Web サービスとしてデプロイされる ML モデルを使用する](how-to-consume-web-service.md)方法を学習します。
+* 大規模なデプロイで [Azure Kubernetes Service にデプロイ](how-to-deploy-to-aks.md)する方法を学びます｡ 

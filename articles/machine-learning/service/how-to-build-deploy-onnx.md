@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 190b7fff24c9d6b3dee86471b56ad68c962e51ce
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 97350c90ab4ce9c3623a293c3a6637edc65ced08
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116880"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345472"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX と Azure Machine Learning: 相互運用可能な AI モデルを作成してデプロイする
 
@@ -192,13 +192,13 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 ## <a name="examples"></a>例
  
 次のノートブックは、Azure Machine Learning で ONNX モデルを作成し、デプロイする方法を示しています。 
-+ `/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb` 
-+ `/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb`
-+ `/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb`
++ [onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb)
++ [onnx/onnx-convert-aml-deploy-tinyyolo.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb)
++ [onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb)
 
 次のノートブックは、Azure Machine Learning で既存の ONNX モデルをデプロイする方法を示しています。 
-+ [onnx/onnx-inference-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist.ipynb) 
-+ [onnx/onnx-inference-emotion-recognition.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-emotion-recognition.ipynb)
++ [onnx/onnx-inference-mnist-deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist-deploy.ipynb) 
++ [onnx/onnx-inference-facial-expression-recognition-deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-facial-expression-recognition-deploy.ipynb)
  
 これらの notebook を入手してください。
  

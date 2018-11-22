@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: eae7f97799e38d5a4b09e3f193a84b423dced780
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 11/09/2018
+ms.openlocfilehash: 44d6135c8a259d3d4c791d359136963483088c5a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869331"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567895"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>SQL Database の単一およびプールされたデータベースへのレプリケーション
 
@@ -65,7 +65,7 @@ Azure SQL Database の[論理サーバー](sql-database-logical-servers.md)で�
 
 1. オンプレミスの SQL Server データベースで、トランザクション レプリケーション パブリケーションを作成します。  
 2. オンプレミスの SQL Server で、**新しいサブスクリプション ウィザード**または Transact-SQL ステートメントを使用して、Azure SQL Database のサブスクリプションに対するプッシュを作成します。  
-3. 初期データ セットは、通常、スナップショットです。このスナップショットは、スナップショット エージェントによって作成され、ディストリビューション エージェントによって配布および適用されます。 初期データ セットは、バックアップや、SQL Server Integration Services などの他の方法を使用して、提供することもできます。  
+3. Azure SQL Database の単一およびプールされたデータベースでは、初期データ セットはスナップショットです。このスナップショットは、スナップショット エージェントによって作成され、ディストリビューション エージェントによって配布および適用されます。 Azure SQL Database Managed Instance では、データベース バックアップを使用してサブスクライバー データベースをシードすることもできます。
 
 ### <a name="data-migration-scenario"></a>データ移行シナリオ  
 

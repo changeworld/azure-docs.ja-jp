@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 782de7dc6e099fade0d2f1099ac19b9398562023
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945180"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622093"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
 
@@ -76,11 +76,11 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 5. **[Preview Connector] \(プレビュー コネクタ)** ページで、**[続行]** をクリックします。 **[Azure Cosmos DB]** ウィンドウが表示されます。
 
-6. 次のように、データを取得する Azure Cosmos DB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。 独自のアカウントを使用するには、Azure Portal の **[[キー]](manage-account.md#keys)** ブレードにある [URI] ボックスから URL を取得できます。 オプションで、データベース名とコレクション名を指定するか、またはナビゲーターを使用してデータベースとコレクションを選択することによってデータの取得元を識別できます。
+6. 次のように、データを取得する Azure Cosmos DB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。 独自のアカウントを使用するには、Azure Portal の **[キー]** ブレードにある [URI] ボックスから URL を取得できます。 オプションで、データベース名とコレクション名を指定するか、またはナビゲーターを使用してデータベースとコレクションを選択することによってデータの取得元を識別できます。
    
-7. このエンドポイントに初めて接続している場合は、アカウント キーの入力を求められます。 独自のアカウントの場合は、Azure Portal の **[[Read-only Keys] (読み取り専用キー)](manage-account.md#keys)** ブレードにある **[主キー]** ボックスからキーを取得します。 適切なキーを入力し、**[接続]** をクリックします。
+7. このエンドポイントに初めて接続している場合は、アカウント キーの入力を求められます。 独自のアカウントの場合は、Azure Portal の **[Read-only Keys]/(読み取り専用キー/)** ブレードにある **[主キー]** ボックスからキーを取得します。 適切なキーを入力し、**[接続]** をクリックします。
    
-   レポートを作成する際は読み取り専用キーを使用することをお勧めします。 これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure Portal の [[キー]](manage-account.md#keys) ブレードから入手できます。 
+   レポートを作成する際は読み取り専用キーを使用することをお勧めします。 これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure Portal の **[キー]** ブレードから入手できます。 
     
 8. アカウントが正常に接続されると、 **ナビゲーター** ウィンドウが表示されます。 **ナビゲーター** には、アカウントで利用できるデータベースの一覧が表示されます。
 

@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9b2c5fa38d0ad21a374d3e5acee8534aeb9c0384
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: fe1f2e026aaa4260d34b9b1cb96064053af1c3c7
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580550"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568014"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>SQL Data Warehouse をアップグレードしてパフォーマンスを最適化する
 Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレージ アーキテクチャにアップグレードします。
@@ -45,13 +45,17 @@ Azure Portal で SQL Data Warehouse のコンピューティング最適化 Gen2
 
 ## <a name="start-the-upgrade"></a>アップグレードを開始する
 
-1. Azure Portal でコンピューティング最適化 Gen1 階層のデータ ウェアハウスに移動して、**[Upgrade to Gen2]\(Gen2 にアップグレード\)** をクリックします。![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+1. Azure Portal でコンピューティング最適化 Gen1 階層のデータ ウェアハウスに移動して、[タスク] タブの **[Gen2 にアップグレードします]** カードをクリックします。![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+    
+> [!NOTE]
+> [タスク] タブに **[Gen2 にアップグレードします]** カードが表示されない場合は、お使いのサブスクリプションの種類が現在のリージョンで制限されています。 [サポート チケットを提出](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)し、サブスクリプションをホワイトリストに登録してもらってください。
 
 2. 既定では、次のマッピングを使用して、コンピューティング最適化 Gen1 階層の現在のパフォーマンス レベルに基づいて、データ ウェアハウスの**推奨パフォーマンス レベルを選択**します。
     
    | コンピューティング最適化 Gen1 階層 | コンピューティング最適化 Gen2 階層 |
    | :----------------------: | :-------------------: |
-   |      DW100 – DW1000      |        DW1000c        |
+   |      DW100 – DW600       |        DW500c         |
+   |          DW1000          |        DW1000c        |
    |          DW1200          |        DW1500c        |
    |          DW1500          |        DW1500c        |
    |          DW2000          |        DW2000c        |

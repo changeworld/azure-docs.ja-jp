@@ -1,8 +1,18 @@
 ---
-タイトル: Azure Site Recovery を使用した VMware の Azure へのディザスター リカバリーのために VMware VM のレプリケーションを有効にする | Microsoft Docs の説明: この記事は、Azure Site Recovery を使用して、Azure へのディザスター リカバリーのために VMware VM のレプリケーションを有効にする方法について説明します。
-author: asgang ms.service: site-recovery ms.date: 07/06/2018 ms.topic: conceptual ms.author: asgang
-
-
+title: Azure Site Recovery による Azure への VMware ディザスター リカバリーのために VMware VM のレプリケーションを有効にする | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用した Azure へのディザスター リカバリーのために VMware VM のレプリケーションを有効にする方法について説明します。
+author: asgang
+ms.service: site-recovery
+ms.date: 07/06/2018
+ms.topic: conceptual
+ms.author: asgang
+ms.openlocfilehash: c6c5aeece9e49a44654d63a7dc243991a62f2d9a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566364"
+---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
 
@@ -68,10 +78,7 @@ VMware 仮想マシンをレプリケートする場合:
     ![レプリケーションを有効にする](./media/vmware-azure-enable-replication/enable-replication7.png)
 14. **[レプリケーションを有効にする]** をクリックします。 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
-> [!NOTE]
-> 保護が有効になっている場合、マシンでプッシュ インストールの準備が完了すると、モビリティ サービス コンポーネントがインストールされます。 コンポーネントがマシンにインストールされたら、保護ジョブが開始され、失敗します。 失敗後、各マシンを手動で再起動する必要があります。 再起動後に保護ジョブが再び開始され、初期レプリケーションが実行されます。
->
->
+
 
 ## <a name="view-and-manage-vm-properties"></a>VM プロパティを表示して管理する
 

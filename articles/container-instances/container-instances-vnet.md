@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/05/2018
 ms.author: danlep
-ms.openlocfilehash: cab19cf051efea55a476128e4038aa69efdce8d9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e2f0d90a0a4384560c0a4126c028761765cb9e45
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157090"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288868"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -56,7 +56,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 ## <a name="required-network-resources"></a>必要なネットワーク リソース
 
-仮想ネットワークにコンテナー グループをデプロイするには、3 つの Azure Virtual Network リソースが必要になります。[仮想ネットワーク](#virtual-network)自体と、仮想ネットワーク内で[委任されたサブネット](#subnet-delegated)、そして[ネットワーク プロファイル](#network-profile)です。
+仮想ネットワークにコンテナー グループをデプロイするには、3 つの Azure Virtual Network リソースが必要になります。[仮想ネットワーク](#virtual-network)自体と、仮想ネットワーク内で[委任されたサブネット](#subnet-delegated)、そして[ネットワーク プロファイル](#network-profile)です。 
 
 ### <a name="virtual-network"></a>仮想ネットワーク
 
@@ -70,15 +70,17 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 ### <a name="network-profile"></a>ネットワーク プロファイル
 
-ネットワーク プロファイルは、Azure リソース用のネットワーク構成テンプレートです。 このプロファイルでは、リソースのネットワーク プロパティが指定されます (たとえば、リソースのデプロイ先となるサブネットなど)。 サブネット (および仮想ネットワーク) に最初のコンテナー グループをデプロイすると、Azure によってネットワーク プロファイルが作成されます。 その後は、そのネットワーク プロファイルを使ってサブネットにリソースをデプロイしていくことができます。
+ネットワーク プロファイルは、Azure リソース用のネットワーク構成テンプレートです。 このプロファイルでは、リソースのネットワーク プロパティが指定されます (たとえば、リソースのデプロイ先となるサブネットなど)。 最初に [az container create][az-container-create] コマンドを使用してコンテナー グループをサブネット (および仮想ネットワーク) にデプロイすると、Azure により、ネットワーク プロファイルが自動的に作成されます。 その後は、そのネットワーク プロファイルを使ってサブネットにリソースをデプロイしていくことができます。 
+
+Resource Manager テンプレート、YAML ファイル、またはプログラムのメソッドを使用して、コンテナー グループをサブネットにデプロイするには、ネットワーク プロファイルの完全な Resource Manager リソース ID を指定する必要があります。 以前 [az container create][az-container-create] を使用して作成したプロファイルを使用することも、Resource Manager テンプレート (「[reference (リファレンス)](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)」を参照) を使用してプロファイルを作成することもできます。 以前作成したプロファイルの ID を取得するには、[az network profile list][az-network-profile-list] コマンドを使用します。 
 
 次の図では、Azure Container Instances へ委任されたサブネットに、複数のコンテナー グループがデプロイされています。 サブネットにコンテナー グループを 1 つデプロイしたら、同じネットワーク プロファイルを指定して追加のコンテナー グループをデプロイしていくことができます。
 
 ![仮想ネットワーク内のコンテナー グループ][aci-vnet-01]
 
-## <a name="deploy-to-virtual-network"></a>仮想ネットワークへのデプロイ
+## <a name="deployment-scenarios"></a>デプロイメント シナリオ
 
-コンテナー グループを新しい仮想ネットワークにデプロイして、必要なネットワーク リソースを自動的に作成することもできますし、既存の仮想ネットワークにデプロイすることもできます。
+[az container create][az-container-create] を使用して、コンテナー グループを新しい仮想ネットワークにデプロイし、必要なネットワーク リソースを Azure で自動的に作成したり、既存の仮想ネットワークにデプロイしたりできます。 
 
 ### <a name="new-virtual-network"></a>新しい仮想ネットワーク
 
@@ -99,19 +101,21 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 1. 既存の仮想ネットワーク内にサブネットを作成するか、既存のサブネットから、他の*すべて*のリソースを削除します
 1. [az container create][az-container-create] を使用してコンテナー グループをデプロイし、次のいずれかを指定します。
-   * 仮想ネットワーク名とサブネット名</br>
-    or
-   * ネットワーク プロファイルの名前または ID
+   * 仮想ネットワーク名とサブネット名
+   * 仮想ネットワーク リソース ID、およびサブネット リソース ID (これにより、別のリソース グループから仮想ネットワークを使用できます)
+   * ネットワーク プロファイルの名前または ID (これは、[az network profile list][az-network-profile-list] を使用して取得できます)
 
 既存のサブネットに最初のコンテナー グループをデプロイすると、Azure によって、そのサブネットが Azure Container Instances に委任されます。 そのサブネットには、コンテナー グループ以外のリソースをデプロイできなくなります。
 
+## <a name="deployment-examples"></a>デプロイの例
+
 次のセクションでは、Azure CLI を使用して仮想ネットワークにコンテナー グループをデプロイする方法について説明します。 サンプル コマンドは **Bash** シェル形式で示してあります。 PowerShell やコマンド プロンプトなど、別のシェルを使用する場合は、行継続文字を適切に調整してください。
 
-## <a name="deploy-to-new-virtual-network"></a>新しい仮想ネットワークへのデプロイ
+### <a name="deploy-to-a-new-virtual-network"></a>新しい仮想ネットワークへのデプロイ
 
 最初に、コンテナー グループをデプロイし、新しい仮想ネットワークとサブネットのパラメーターを指定します。 これらのパラメーターを指定すると、Azure によって仮想ネットワークとサブネットが作成され、サブネットが Azure Container instances に委任されて、ネットワーク プロファイルも作成されます。 これらのリソースが作成されると、コンテナー グループがサブネットにデプロイされます。
 
-新しい仮想ネットワークとサブネットの設定を指定して、次の [az container create][az-container-create] コマンドを実行します。 このコマンドにより、[microsoft/aci-helloworld][aci-helloworld] コンテナーがデプロイされます。これは、静的 Web ページを提供する小規模な Node.js Web サーバーを実行するコンテナーです。 次のセクションでは、同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信をテストします。
+新しい仮想ネットワークとサブネットの設定を指定して、次の [az container create][az-container-create] コマンドを実行します。 リソース グループが、仮想ネットワーク内のコンテナー グループを[サポート](#preview-limitations)するリージョンで作成されている場合は、そのリソース グループの名前を指定する必要があります。 このコマンドにより、[microsoft/aci-helloworld][aci-helloworld] コンテナーがデプロイされます。これは、静的 Web ページを提供する小規模な Node.js Web サーバーを実行するコンテナーです。 次のセクションでは、同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信をテストします。
 
 ```azurecli
 az container create \
@@ -126,7 +130,7 @@ az container create \
 
 この方法を使って新しい仮想ネットワークへのデプロイを実行する際には、ネットワーク リソースの作成に数分かかることがあります。 最初のデプロイが済んだら、追加のコンテナー グループはより短時間でデプロイできます。
 
-## <a name="deploy-to-existing-virtual-network"></a>既存の仮想ネットワークへのデプロイ
+### <a name="deploy-to-existing-virtual-network"></a>既存の仮想ネットワークへのデプロイ
 
 新しい仮想ネットワークにコンテナー グループをデプロイしたら、次は同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信を確認します。
 
@@ -174,7 +178,7 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 ログ出力を見ると、`wget` が最初のコンテナーに接続し、ローカル サブネット上のプライベート IP アドレスを使用して、最初のコンテナーからインデックス ファイルをダウンロードできたことがわかります。 2 つのコンテナー グループ間のネットワーク トラフィックは、仮想ネットワーク内に維持されたことになります。
 
-## <a name="deploy-to-existing-virtual-network---yaml"></a>既存の仮想ネットワークへのデプロイ - YAML
+### <a name="deploy-to-existing-virtual-network---yaml"></a>既存の仮想ネットワークへのデプロイ - YAML
 
 既存の仮想ネットワークにコンテナー グループをデプロイするのには、YAML ファイルを使用することもできます。 仮想ネットワーク内のサブネットにデプロイするには、YAML にいくつかの追加プロパティを指定します。
 

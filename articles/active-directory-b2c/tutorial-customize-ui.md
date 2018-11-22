@@ -7,21 +7,21 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/12/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9c206ac7a13ea222a01cac78c447c0764f753517
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ee6d7735a2983f642eff82a7dabe036af100e60e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669349"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622671"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>チュートリアル - Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする
 
 サインアップ、サインイン、プロファイル編集など、より一般的なユーザー エクスペリエンスについては、Azure Active Directory (Azure AD) B2C の[組み込みポリシー](active-directory-b2c-reference-policies.md)を使用できます。 このチュートリアルの情報は、独自の HTML ファイルや CSS ファイルを使用してそのようなエクスペリエンスの[ユーザー インターフェイス (UI) をカスタマイズする](customize-ui-overview.md)方法を理解する上で役立ちます。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * UI カスタマイズ ファイルを作成する
@@ -64,9 +64,11 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
  ブラウザーの Azure AD B2C コードでは、最新かつ標準の手法を利用し、ポリシーに指定された URL からカスタム コンテンツを読み込みます。 クロスオリジン リソース共有 (CORS) によって、Web ページ上の制限付きリソースを他のドメインから要求することが許可されます。
 
 1. メニューで **[CORS]** を選択します。
-2. **[許可されたオリジン]**、**[許可されたヘッダー]**、**[公開されるヘッダー]** については、「`your-tenant-name.b2clogin.com`」と入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `fabrikam.b2clogin.com` 」のように入力します。
-3. **[使用できる動詞]** には、`GET` と `OPTIONS` を両方選択します。
-4. **[最長有効期間]** には「200」と入力します。
+2. **[許可されるオリジン]** には、`your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `fabrikam.b2clogin.com` 」のように入力します。
+3. **[許可されたメソッド]** に、`GET` と `OPTIONS` を両方選択します。
+4. **[許可されたヘッダー]** に、アスタリスク (*) を入力します。
+5. **[公開されるヘッダー]** に、アスタリスク (*) を入力します。
+6. **[最長有効期間]** には「200」と入力します。
 
     ![CORS を有効にする](./media/tutorial-customize-ui/enable-cors.png)
 

@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: c682b61a39224f2c80db8fe5fa153ea5e5d82922
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1b2a122cc8a04d4f0044ecb0fe0341357bc29c0f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958571"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514827"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>競合のタイプと解決ポリシー
 
 競合と競合解決ポリシーは、複数の書き込みリージョンを使用して Cosmos アカウントが構成されている場合に該当します。
 
-複数の書き込みリージョンで構成されている Cosmos DB アカウントの場合、複数のライターが複数のリージョンで同じ項目を同時に更新するときに更新の競合が発生します。 更新の競合は次の 3 種類に分類されます。
+複数の書き込みリージョンで構成されている Cosmos アカウントの場合、複数のライターが複数のリージョンで同じ項目を同時に更新するときに更新の競合が発生します。 更新の競合は次の 3 種類に分類されます。
 
 1. **挿入の競合:** アプリケーションが同じ一意のインデックス (ID プロパティなど) を持つ複数の項目を複数のリージョンから同時に挿入した場合に発生することがあります。 この場合、最初はそれぞれのローカル リージョンですべての書き込みが成功する可能性がありますが、選択した競合解決ポリシーに基づいて、元の ID を持つ 1 つの項目のみが最終的にコミットされます。
 

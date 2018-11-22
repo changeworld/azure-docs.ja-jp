@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 11/06/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2deacb7d15f370c9182c3239493ed60f735d738c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6fbb09d41535bf811a42b204f4e3d38b87c2846c
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736837"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287950"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 
@@ -35,6 +35,11 @@ Azure for SAP HANA の独自性は、その製品の独自性にあります。�
 Azure で SAP ワークロードをホストするシナリオでは、さまざまな SAP コンポーネントと SAP SaaS または PaaS 製品に対する Activity Directory を使用した ID 統合要件とシングル サインオンを構成できます。 Azure Active Directory (AAD) と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
 
 ## <a name="latest-changes"></a>最新の変更
+
+待ち時間が重要な SAP システムの通信パスでの [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/)の使用法および構成の明確化。
+
+- [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
 Azure VM 用の SAP HANA Dynamic Tiering に関するドキュメント
 
@@ -103,7 +108,7 @@ Azure 上の SAP ワークロードの下での HANA 以外のデータベース
 
 Azure 上での SAP HANA データベースについては、Azure Virtual Machines 上の SAP HANA に関するセクションを確認してください。
 
-Azure 上での SAP ワークロードの高可用性について、エントリ ドキュメントは次のとおりです。
+Azure 上での SAP ワークロードの高可用性について、入門者向けドキュメントは次のとおりです。
 
 - [SAP NetWeaver のための Azure Virtual Machines 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
 

@@ -1,6 +1,6 @@
 ---
 title: リモート監視ソリューションのローカルでのデプロイ - Docker - Azure | Microsoft Docs
-description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターに展開する方法を示します。
+description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のために Docker を使用してローカル コンピューターにデプロイする方法を示します。
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 91f43473a5648be5264038993f43b61887e0c363
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285414"
+ms.locfileid: "51288546"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 この記事では、ローカルの Docker コンテナーに、マイクロサービスをデプロイする方法を示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
+この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、ローカルの Docker コンテナーに、マイクロサービスをデプロイする方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
 
 リモート監視ソリューション アクセラレータをローカル コンピューター上の IDE で実行する場合は、「[Deploy the Remote Monitoring solution accelerator locally - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)」を参照してください。
 
@@ -70,13 +70,13 @@ docker-compose up
 このコマンドを初めて実行すると、Docker は Docker ハブからマイクロサービス イメージをダウンロードして、コンテナーをローカルに構築します。 以降の実行では、Docker はコンテナーを直ちに実行します。
 
 > [!TIP]
-> Microsoft は、新しい機能を備えた新しい Docker イメージを頻繁に公開しています。 最新のものをプルする前に、次のコマンド セットを使用して、ローカルの Docker コンテナーと対応するイメージをクリーン アップすることができます。 
+> マイクロソフトは、新しい機能を備えた新しい Docker イメージを頻繁に公開しています。 最新のものをプルする前に、次のコマンド セットを使用して、ローカルの Docker コンテナーと対応するイメージをクリーン アップすることができます。
 
-```cmd/sh
-docker list
-docker rm <list_of_containers>
-docker rmi <list_of_images>
-```
+    ```cmd/sh
+    docker list
+    docker rm <list_of_containers>
+    docker rmi <list_of_images>
+    ```
 
 個別のシェルを使用して、コンテナーからのログを表示できます。 最初に、`docker ps` コマンドを使用してコンテナー ID を見つけます。 次に、`docker logs {container-id} --tail 1000` を使用して、指定したコンテナーの最後の 1000 個のエントリを表示します。
 
@@ -101,14 +101,4 @@ Docker イメージを削除し、ローカル コンピューター上の領域
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * ローカルの開発環境の設定
-> * ソリューション アクセラレータの構成
-> * ソリューション アクセラレータのデプロイ
-> * ソリューション アクセラレータへのサインイン
-
 これで、リモート監視ソリューションのデプロイが完了しました。次の手順は[ソリューション ダッシュボードの機能を確認](quickstart-remote-monitoring-deploy.md)することです。
-
-<!-- Next tutorials in the sequence -->

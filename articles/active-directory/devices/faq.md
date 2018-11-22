@@ -15,36 +15,16 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 72035c2f13f5a2a749feabbb26db5500f6c3fc0a
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 9402147e2dab7fbf52fc893f339f6f3b8e112377
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42146270"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515643"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
-**Q: Android デバイスや iOS BYOD デバイスを登録できますか?**
-
-**A:** はい。ただし、ハイブリッドのお客様が Azure デバイス登録サービスを利用してのみ可能となります。 AD FS のオンプレミス デバイス登録サービスではサポートされていません。
-
-**Q: macOS デバイスを登録するにはどうしたらよいですか?**
-
-**A:** macOS デバイスを登録するには: 
-
-1.  [コンプライアンス ポリシーを作成する](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
-2.  [macOS デバイスの条件付きアクセス ポリシーを定義する](../active-directory-conditional-access-azure-portal.md) 
-
-**解説:**
-
-- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](../conditional-access/technical-reference.md#client-apps-condition) が必要です。 
-
-- 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
-
----
-
-**Q: 最近、デバイスを登録しました。Azure Portal のユーザー情報にデバイスが表示されないのはなぜですか?**
-
+**Q: 最近、デバイスを登録しました。Azure portal のユーザー情報にデバイスが表示されないのはなぜですか? または、ハイブリッド Azure AD 参加済みデバイスに対してデバイス所有者が N/A とマークされるのはなぜですか?**
 **A:** ハイブリッド Azure AD 参加済みの Windows 10 デバイスは、[ユーザー デバイス] には表示されません。
 Azure portal で [すべてのデバイス] ビューを使用する必要があります。 PowerShell の [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレットを使用することもできます。
 
@@ -58,12 +38,16 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 **Q: クライアントのデバイスの登録状態はどうすればわかりますか?**
 
-**A:** Azure portal を使用して、[すべてのデバイス] に移動し、デバイス ID を入力してデバイスを検索することができます。 [結合の種類] 列の値を確認します。
-
-登録デバイスからローカル デバイスの登録状態を確認するには:
+**A:** Azure portal を使用して、[すべてのデバイス] に移動し、デバイス ID を入力してデバイスを検索することができます。 [結合の種類] 列の値を確認します。 場合によっては、デバイスがリセットまたは再イメージ化されていることがあります。 そのため、デバイスでもデバイス登録状態を確認することが不可欠です。
 
 - Windows 10 および Windows Server 2016 以降のデバイスの場合は、"dsregcmd.exe/status" を実行します。
 - ダウンレベルの OS バージョンの場合は、"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" を実行します。
+
+---
+
+**Q: Azure portal の [ユーザー情報] にデバイス レコードが表示され、デバイスに状態が登録済みと表示されます。条件付きアクセスの使用は正しく設定されていますか?**
+
+**A:** deviceID に反映されたデバイスの参加状態が Azure AD での状態と一致しており、条件付きアクセスの評価基準を満たしている必要があります。 詳細については、[条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する方法](../conditional-access/require-managed-devices.md)に関するページを参照してください。
 
 ---
 
@@ -88,25 +72,6 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 3.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`」と入力します。
 
 ---
-**Q: デバイス上の Azure AD 参加済みデバイスをローカルで参加解除するにはどうすればよいですか?**
-
-**A:** 
-- ハイブリッド Azure AD 参加済みデバイスの場合、スケジュールされたタスクによってデバイスが再登録されないように、自動登録をオフにます。 次に、管理者としてコマンド プロンプトを開き、「`dsregcmd.exe /debug /leave`」と入力します。 または、このコマンドを複数のデバイスに対するスクリプトとして実行し、一括で参加を解除することもできます。
-
-- 純粋な Azure AD 参加済みデバイスの場合、Azure AD ユーザーの資格情報ではサインインできなくなるので、オフラインのローカル管理者アカウントを持っている必要があります。 次に、**[設定]** > **[アカウント]** > **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、**[切断]** をクリックします。 画面の指示に従い、入力を求められたらローカル管理者の資格情報を入力します。 デバイスを再起動して参加の解除プロセスを完了します。
-
----
-
-**Q: ユーザーが Azure AD 参加済みデバイスからプリンターを検索できません。どうすれば Azure AD 参加済みデバイスからの印刷を有効にできますか?**
-
-**A:** Azure AD 参加済みデバイスにプリンターをデプロイする手順については、「[Hybrid cloud print](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)」 (ハイブリッド クラウド印刷) を参照してください。 ハイブリッド クラウド印刷には、Windows Server がオンプレミスで必要です。 現在、クラウドベースの印刷サービスは利用できません。 
-
----
-
-**Q: Azure AD に参加しているリモート デバイスに接続する方法はありますか。**
-**A:** 詳細については、「https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc」という記事を参照してください。
-
----
 
 **Q: Azure Portal に重複するデバイス エントリが表示されるのはなぜですか?**
 
@@ -128,7 +93,27 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 >[!Note] 
 >登録済みデバイスの場合、ユーザーがリソースにアクセスできないように、デバイスのワイプを実行することをお勧めします。 詳細については、[管理するデバイスを Intune に登録する方法](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)に関するページを参照してください。 
+---
 
+# <a name="azure-ad-join-faq"></a>Azure AD Join の FAQ
+
+**Q: デバイス上の Azure AD 参加済みデバイスをローカルで参加解除するにはどうすればよいですか?**
+
+**A:** 
+- ハイブリッド Azure AD 参加済みデバイスの場合、スケジュールされたタスクによってデバイスが再登録されないように、自動登録をオフにます。 次に、管理者としてコマンド プロンプトを開き、「`dsregcmd.exe /debug /leave`」と入力します。 または、このコマンドを複数のデバイスに対するスクリプトとして実行し、一括で参加を解除することもできます。
+
+- 純粋な Azure AD 参加済みデバイスの場合、Azure AD ユーザーの資格情報ではサインインできなくなるので、オフラインのローカル管理者アカウントを持っている必要があります。 次に、**[設定]** > **[アカウント]** > **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、**[切断]** をクリックします。 画面の指示に従い、入力を求められたらローカル管理者の資格情報を入力します。 デバイスを再起動して参加の解除プロセスを完了します。
+
+---
+
+**Q: ユーザーが Azure AD 参加済みデバイスからプリンターを検索できません。どうすれば Azure AD 参加済みデバイスからの印刷を有効にできますか?**
+
+**A:** Azure AD 参加済みデバイスにプリンターをデプロイする手順については、「[Hybrid cloud print](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)」 (ハイブリッド クラウド印刷) を参照してください。 ハイブリッド クラウド印刷には、Windows Server がオンプレミスで必要です。 現在、クラウドベースの印刷サービスは利用できません。 
+
+---
+
+**Q: Azure AD に参加しているリモート デバイスに接続する方法はありますか。**
+**A:** 詳細については、「https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc」という記事を参照してください。
 
 ---
 
@@ -144,12 +129,6 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 ---
 
-**Q: Azure portal の [ユーザー情報] にデバイス レコードが表示され、デバイスに状態が登録済みと表示されます。条件付きアクセスの使用は正しく設定されていますか?**
-
-**A:** deviceID に反映されたデバイスの参加状態が Azure AD での状態と一致しており、条件付きアクセスの評価基準を満たしている必要があります。 詳細については、[条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する方法](../conditional-access/require-managed-devices.md)に関するページを参照してください。
-
----
-
 **Q: Azure AD に参加したばかりのデバイスに対して、"ユーザー名またはパスワードが正しくありません" というメッセージが表示されるのはなぜですか?**
 
 **A:** このシナリオの一般的な理由は次のとおりです。
@@ -158,7 +137,7 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 - コンピューターが Azure Active Directory と通信できません。 ネットワーク接続の問題を確認してください。
 
-- フェデレーション ログインでは、フェデレーション サーバーが WS-Trust のアクティブ エンドポイントをサポートしている必要があります。 
+- フェデレーション ログインでは、有効になっていてアクセスできる WS-Trust エンドポイントがフェデレーション サーバーでサポートされている必要があります。 
 
 - パス スルー認証を有効にしたため、ログオン時には変更する必要がある一時的なパスワードがユーザーに割り当てられています。
 
@@ -170,14 +149,15 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 ---
 
-**Q: エラー情報が表示されなかったにも関わらず、PC を参加させることができなかったのはなぜですか?**
+**Q: エラー情報が表示されなかったにも関わらず、PC を Azure AD に参加させることができなかったのはなぜですか?**
 
 **A:** ユーザーがローカルの組み込み管理者アカウントを使用してデバイスにログインしていることが原因と考えられます。 Azure Active Directory Join を使用してセットアップを完了する前に、別のローカル アカウントを作成してください。 
 
-
 ---
 
-**Q: デバイスの自動登録に関するトラブルシューティング情報はどこで入手できますか?**
+# <a name="hybrid-azure-ad-join-faq"></a>Hybrid Azure AD Join の FAQ
+
+**Q: Hybrid Azure AD Join のエラーの診断に関するトラブルシューティング情報はどこにありますか?**
 
 **A:** トラブルシューティング情報については、次の記事をご覧ください。
 
@@ -188,3 +168,23 @@ Azure portal で [すべてのデバイス] ビューを使用する必要があ
 
 ---
 
+# <a name="azure-ad-register-faq"></a>Azure AD の登録の FAQ
+
+**Q: Android デバイスや iOS BYOD デバイスを登録できますか?**
+
+**A:** はい。ただし、ハイブリッドのお客様が Azure デバイス登録サービスを利用してのみ可能となります。 AD FS のオンプレミス デバイス登録サービスではサポートされていません。
+
+**Q: macOS デバイスを登録するにはどうしたらよいですか?**
+
+**A:** macOS デバイスを登録するには: 
+
+1.  [コンプライアンス ポリシーを作成する](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+2.  [macOS デバイスの条件付きアクセス ポリシーを定義する](../active-directory-conditional-access-azure-portal.md) 
+
+**解説:**
+
+- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](../conditional-access/technical-reference.md#client-apps-condition) が必要です。 
+
+- 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
+
+---

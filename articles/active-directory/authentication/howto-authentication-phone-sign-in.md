@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3a9fba644bd379f3f54cf07cf35c0a54029756da
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804329"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287185"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしの電話によるサインイン (パブリック プレビュー)
 
@@ -37,11 +37,16 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ### <a name="steps-to-enable"></a>有効にする手順
 
-1. [Azure Active Directory V2 PowerShell モジュールのパブリック プレビュー リリース](https://www.powershellgallery.com/packages/AzureADPreview/)をインストールします。  
-2. PowerShell で、2 つのコマンドを実行します。
-   1. `Connect-AzureAD`
-      1. 認証ダイアログで、テナントのアカウントでサインインします。 このアカウントは、セキュリティ管理者またはグローバル管理者のいずれかでなければなりません。
-   2. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+Azure Active Directory V2 PowerShell モジュールのパブリック プレビューのリリースが最新バージョンであることを確認します。 パブリック プレビューをアンインストールおよび再インストールして最新バージョンにするには、次のコマンドを実行します。
+
+1. `Uninstall-Module -Name AzureADPreview`
+2. `Install-Module -Name AzureADPreview`
+
+パスワードを入力せずに電話でプレビューにサインインできるようにするには、次の PowerShell コマンドを使用します。
+
+1. `Connect-AzureAD`
+   1. 認証ダイアログで、テナントのアカウントでサインインします。 このアカウントは、セキュリティ管理者またはグローバル管理者のいずれかでなければなりません。
+1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>エンド ユーザーは電話によるサインインをどのように有効にするのですか。
 
@@ -61,7 +66,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ### <a name="ad-fs-integration"></a>AD FS の統合
 
-ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[Use your password instead] (代わりにパスワードを使用する) をクリックする追加の手順を取ることなく、サインイン確認のために ADFS にリダイレクトされることを防ぎます。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 このプロセスの例外として、login_hint が指定されている場合、ユーザーは AD FS に自動転送され、パスワードなしの資格情報を使用するオプションをバイパスします。
+ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[Use your password instead] (代わりにパスワードを使用する) をクリックする追加の手順を取ることなく、サインイン確認のために ADFS にリダイレクトされることを防ぎます。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 このプロセスの例外として、login_hint が指定されている場合、ユーザーは AD FS に自動転送され、パスワードなしの資格情報を使用するオプションがバイパスされます。
 
 ### <a name="azure-mfa-server"></a>Azure MFA サーバー
 

@@ -13,44 +13,44 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 12/15/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b81c66acc0a90ba9b74cf1f4fb34ef7a545837f9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e5ceae2959f79c677f5b89c0c3f0a487f92ad1c6
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736608"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623181"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
-Azure Active Directory の[レポート](../active-directory-preview-explainer.md)では、環境の動作状況を判断するために必要な情報をすべて取得できます。 Azure Portal にレポート データが表示されるのにかかる時間は、待機時間とも呼ばれます。 
-
-このトピックでは、Azure Portal 内のすべてのレポート用のカテゴリの待機時間情報を一覧します。 
-
+待機時間とは、[Azure portal](https://portal.azure.com) に Azure Active Directory (Azure AD) レポート データが表示されるのにかかる時間です。 この記事では、さまざまな種類のレポートで想定される待機時間を示します。 
 
 ## <a name="activity-reports"></a>アクティビティ レポート
 
-アクティビティ レポートには次の 2 つの領域があります。
+アクティビティ レポートには次の 2 つの種類があります。
 
-- **サインイン アクティビティ** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
-- **監査ログ** - ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報
+- [サインイン](concept-sign-ins.md) – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報を提供します。
+- [監査ログ](concept-audit-logs.md) - ユーザーとグループや、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提示します。
 
-次の表に、アクティビティ レポートの待機時間情報を一覧表示します。
+次の表に、アクティビティ レポートの待機時間情報を一覧表示します。 
 
-| レポート | 待機時間 (95%) |待機時間 (99%)|
+> [!NOTE]
+> **待機時間 (95 パーセンタイル)** は、ログの 95% が報告されるまでにかかる時間を示し、**待機時間 (99 パーセンタイル)** は、ログの 99% が報告されるまでにかかる時間を示します。 
+>
+
+| レポート | 待機時間 (95 パーセンタイル) |待機時間 (99 パーセンタイル)|
 | :-- | --- | --- | 
 | 監査ログ | 2 分  | 5 分  |
 | サインイン | 2 分  | 5 分 |
 
-
 ## <a name="security-reports"></a>セキュリティ レポート
 
-セキュリティ レポートには次の 2 つの領域があります。
+セキュリティ レポートには次の 2 種類があります。
 
-- **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
-- **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 
+- [リスクの高いサインイン](concept-risky-sign-ins.md) - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
+- [リスクのフラグ付きユーザー](concept-user-at-risk.md) - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 
 
 次の表に、セキュリティ レポートの待機時間情報を一覧表示します。
 
@@ -61,7 +61,7 @@ Azure Active Directory の[レポート](../active-directory-preview-explainer.m
 
 ## <a name="risk-events"></a>リスク イベント
 
-Azure Active Directory では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、リスク イベントと呼ばれるレコードに格納されます。
+Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、**リスク イベント**と呼ばれるレコードに格納されます。
 
 次の表に、リスク イベントの待機時間情報を一覧表示します。
 
@@ -75,17 +75,8 @@ Azure Active Directory では、アダプティブ機械学習アルゴリズム
 | 不審なアクティビティのある IP アドレスからのサインイン |2 時間 |4 時間 |8 時間  |
 
 
-
 ## <a name="next-steps"></a>次の手順
 
-Azure Portal のアクティビティ レポートに関する詳細については、次を参照してください。
-
-- [Azure Active Directory ポータルのサインイン アクティビティ レポート](concept-sign-ins.md)
-- [Azure Active Directory ポータルの監査アクティビティ レポート](concept-audit-logs.md)
-
-Azure Portal のセキュリティ レポートに関する詳細については、次を参照してください。
-
-- [Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート](concept-user-at-risk.md)
-- [Azure Active Directory ポータルのリスクの高いサインイン レポート](concept-risky-sign-ins.md)
-
-リスク イベントの詳細について理解するには、「[Azure Active Directory のリスク イベント](concept-risk-events.md)」を参照してください。
+* [Azure AD レポートの概要](overview-reports.md)
+* [Azure AD レポートへのプログラムによるアクセス](concept-reporting-api.md)
+* [Azure Active Directory リスク イベント](concept-risk-events.md)

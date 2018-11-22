@@ -2,18 +2,18 @@
 title: 新しい Azure IoT Edge デバイス (ポータル) の登録 | Microsoft Docs
 description: Azure portal を使用して新しい IoT Edge デバイスを登録する
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b61594469df33e11c23c9cbe0b9542da374fefa3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 6657203c76bc03a262fbcbd30b5bf74b5be140eb
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034737"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577500"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>Azure portal から新しい Azure IoT Edge デバイスを登録する
 
@@ -44,7 +44,7 @@ IoT ハブに接続するすべてのエッジ対応デバイスが、**IoT Edge
 デバイスを設定する準備ができたら、物理デバイスを IoT ハブ内でのその ID にリンクする接続文字列が必要です。
 
 1. ポータルの **IoT Edge** ページで、Edge デバイスの一覧からデバイス ID をクリックします。 
-2. **接続文字列 - 主キー**または**接続文字列 - セカンダリ キー**の値をコピーします。 
+2. **[接続文字列 (主キー)]** または **[接続文字列 (セカンダリ キー)]** の値をコピーします。 
 
 ## <a name="next-steps"></a>次の手順
 

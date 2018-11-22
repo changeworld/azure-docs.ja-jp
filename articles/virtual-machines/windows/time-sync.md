@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/017/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1c784721d103ca623f6e9bac5ec1281beeb70074
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ad5ceeef170e38bf6368c54894b20245d10b74ee
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468323"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578197"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure での Windows VM の時刻同期
 
@@ -40,6 +40,8 @@ Azure は、Windows Server 2016 を実行しているインフラストラクチ
 Azure ホストは内部の Microsoft タイム サーバーに同期されています。このサーバーでは、GPS アンテナを使用して、Microsoft が所有する Stratum 1 デバイスから時刻を取得します。 Azure の仮想マシンでは、そのホストに依存して正確な時刻 (*ホスト時刻*) を VM に渡すことも、VM でタイム サーバーから直接時刻を取得することも、あるいはこれらの両方を組み合わることもできます。 
 
 仮想マシンとホストとのやりとりがクロックに影響する場合もあります。 [メモリ保持メンテナンス](maintenance-and-updates.md#memory-preserving-maintenance)中に、VM は最大で 30 秒間一時停止します。 たとえば、メンテナンスの開始前に、VM クロックには午前 10 時 00 分 00 秒と示され、この状態が 28 秒間続きます。 VM の再開後、VM のクロックはまだ午前 10 時 00 分 00 秒と示されており、28 秒遅れていることになります。 これを修正するため、VMICTimeSync サービスでは、ホストで何が発生しているのかを監視し、VM で生じた変更の補正を求めます。
+
+VMICTimeSync サービスはサンプル モードまたは同期モードで動作し、時刻を進める効果だけがあります。 サンプル モードでは、W32time が実行されている必要があり、VMICTimeSync サービスはホストを 5 秒ごとにポーリングして、W32time タイム サンプルを提供します。 W32time サービスは、約 30 秒ごとに最新のタイム サンプルを取得し、それを使用してゲストのクロックに影響を与えます。 同期モードは、ゲストが再開された場合、またはゲストのクロックがホストのクロックから 5 秒より大きく遅れた場合に、アクティブになります。 W32time サービスが正常に動作している場合、後者のケースは発生しません。
 
 時刻同期が動作しないと、VM のクロックでエラーが蓄積されます。 VM が 1 つのみであれば、ワークロードで高精度のタイムキーピングが必要でない限り、影響は大きくならない場合があります。 しかし、ほとんどの場合、相互接続された VM が複数あり、それらの VM ではトランザクションを追跡するために時間を使用し、その時間はデプロイ全体で一貫している必要があります。 VM 間の時間が異なると、次のような影響が見られる場合があります。
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f1242b299c6d2278bd75b576f225987854a2d8a5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 45ea2a28b4b2fb3d55d7ae949152e6f51b5d3162
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44383120"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566535"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -78,7 +78,7 @@ ms.locfileid: "44383120"
 |---------|---------|---------|
 | ID | [はい] | 技術プロファイルの一意の識別子。 ポリシー ファイル内の他の要素からこの識別子を使用して、技術プロファイルを参照することができます。 例として、**OrchestrationSteps** や **ValidationTechnicalProfile** が挙げられます。 |
 
-**TechnicalProfile** には、次の要素が含まれています。
+**TechnicalProfile** には、次の属性が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
@@ -108,7 +108,7 @@ ms.locfileid: "44383120"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Name | [はい] | 技術プロファイルの一部として使用される、Azure AD B2C でサポートされている有効なプロトコルの名前。 指定できる値: `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`WsFed`、`WsTrust`、`Proprietary`、`session management`、`self-asserted`、または `None`。 |
+| Name | [はい] | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`WsFed`、`WsTrust`、`Proprietary`、`session management`、`self-asserted`、または `None`。 |
 | Handler | いいえ  | プロトコル名が `Proprietary` に設定されている場合は、Azure AD B2C がプロトコル ハンドラーを決定するために使用するアセンブリの完全修飾名を指定します。 |
 
 ### <a name="metadata"></a>Metadata
@@ -117,9 +117,9 @@ ms.locfileid: "44383120"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| 項目 | 0:n | 技術プロファイルに関連するメタデータ。 技術プロファイルの種類ごとに、異なるメタデータ項目のセットがあります。 詳細については、技術プロファイルの種類に関するセクションを参照してください。 |
+| Item | 0:n | 技術プロファイルに関連するメタデータ。 技術プロファイルの種類ごとに、異なるメタデータ項目のセットがあります。 詳細については、技術プロファイルの種類に関するセクションを参照してください。 |
 
-#### <a name="item"></a>項目
+#### <a name="item"></a>Item
 
 **Metadata** 要素の **Item** 要素には、次の属性が含まれています。
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d916e884e7764a1ba5ebaf224750f38e7d7673e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308661"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344884"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項
 企業世界では消費者基準のデバイスが広まっており、クラウド基準の SaaS (Software-as-a-Service/サービスとしてのソフトウェア) アプリケーションの導入が簡単になっています。 結果的に、内部データセンターとクラウド プラットフォームにわたりユーザーのアプリケーション アクセスを制御することが課題となります。  
@@ -62,6 +62,6 @@ Microsoft の ID ソリューションでは、オンプレミスとクラウド
 | 強力な ID ソリューションによりデータ セキュリティを強化するための計画を立てる |[データ保護要件の決定](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [コンテンツ管理要件の決定](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [アクセス制御要件の決定](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [インシデント対応要件の決定](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [データ保護戦略の定義](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
 | ハイブリッド ID ライフサイクルの計画を立てる |[ハイブリッド ID 管理タスクの決定](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [同期管理](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [ハイブリッド ID 管理の導入戦略の決定](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
-## <a name="download-this-guide"></a>このガイドをダウンロードする
-ハイブリッド ID の設計上の考慮事項のガイドの pdf 版を [Technet ギャラリー](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288)からダウンロードできます。 
+## <a name="next-steps"></a>次の手順
+[ID 要件を決定する](plan-hybrid-identity-design-considerations-business-needs.md)
 

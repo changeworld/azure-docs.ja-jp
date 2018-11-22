@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5d1beb124bbb857d13aecad7bf0cef493d42dac5
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6d47fe29dab37523913b96ebae0ef3ef31d11210
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043279"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300576"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption (ADE) が有効な仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -104,7 +104,7 @@ Site Recovery によって使用される既定のターゲット設定を変更
 
 1. [ターゲット サブスクリプション] の横にある **[カスタマイズ]** をクリックして、既定のターゲット サブスクリプションを変更します。 同じ Azure Active Directory (AAD) テナントで使用できるすべてのサブスクリプションの一覧からサブスクリプションを選択します。
 
-2. [Resource group, Storage, Network, and Availability sets]\(リソース グループ、ストレージ、ネットワーク、可用性セット\) の横にある **[カスタマイズ]** をクリックして、以下の既定の設定を変更します。
+2. [リソース グループ、ネットワーク、ストレージ、可用性セット] の横にある **[カスタマイズ]** をクリックして、以下の既定の設定を変更します。
     - **ターゲット リソース グループ**で、サブスクリプションのターゲットの場所にあるすべてのリソース グループの一覧から、リソース グループを選択します。
     - **ターゲット仮想ネットワーク**で、ターゲットの場所にあるすべての仮想ネットワークの一覧から、ネットワークを選択します。
     - **可用性セット**では、可用性セットの設定を、それらがソース リージョンの可用性セットの一部であれば、VM に追加できます。

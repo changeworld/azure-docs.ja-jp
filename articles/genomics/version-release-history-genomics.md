@@ -3,18 +3,18 @@ title: バージョンのリリース履歴 - Microsoft Genomics
 titleSuffix: Azure
 description: Microsoft Genomics は、修正プログラムおよび新しい機能のために Microsoft Genomics Python クライアントを更新します。
 services: genomics
-author: grhuynh
+author: ruchir
 manager: cgronlun
-ms.author: grhuynh
+ms.author: ruchir
 ms.service: genomics
 ms.topic: article
-ms.date: 03/02/2018
-ms.openlocfilehash: 458ac634cee1a64da67e6560900c82c2f2743c0f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.date: 11/08/2018
+ms.openlocfilehash: e673d732d1d43e3f58a295a94d11fc42f3618d93
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034321"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345864"
 ---
 # <a name="version-release-history"></a>バージョンのリリース履歴
 Microsoft Genomics チームは、修正プログラムおよび新しい機能のために Microsoft Genomics Python クライアントを更新します。 
@@ -33,4 +33,4 @@ Microsoft Genomics Python クライアントの新しいバージョンは、ほ
 バージョン 0.7.3 には、軽微なバグの修正が含まれています。
 
 ### <a name="version-072"></a>バージョン 0.7.2
-バージョン 0.7.2 は初期バージョンです。 2017 年 11 月 1 日にリリースされ、GATK 3.3 を利用しています。
+バージョン 0.7.2 は初期バージョンです。 2017 年 11 月 1 日にリリースされました。

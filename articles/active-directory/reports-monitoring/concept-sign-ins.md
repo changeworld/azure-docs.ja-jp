@@ -13,57 +13,50 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 06/21/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bc8d3525ab7cdbdf298ecbbc686ced16fa7bc77c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42146206"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623788"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
-環境の動作状況を判断するために必要な情報は、[Azure Portal](https://portal.azure.com) の Azure Active Directory (Azure AD) レポートで入手できます。
-
-Azure Active Directory のレポート アーキテクチャは、次のコンポーネントで構成されます。
+Azure Active Directory (Azure AD) のレポート アーキテクチャは、次のコンポーネントで構成されます。
 
 - **アクティビティ** 
-    - 
-  **サインイン アクティビティ** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
-    - 
-  **監査ログ** - ユーザーとグループの管理、マネージド アプリケーション、およびディレクトリのアクティビティに関するシステム アクティビティ情報です。
+    - **サインイン** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報。
+    - **監査ログ** - [監査ログ](concept-audit-logs.md)は、ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提供します。
 - **セキュリティ** 
-    - **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 詳細については、「Risky sign-ins (リスクの高いサインイン)」を参照してください。
-    - **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 詳細については、「Users flagged for risk (リスクのフラグ付きユーザー)」を参照してください。
+    - **リスクの高いサインイン** - [リスクの高いサインイン](concept-risky-sign-ins.md)は、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。
+    - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](concept-user-at-risk.md)は、侵害された可能性があるユーザー アカウントの指標です。
 
-このトピックでは、サインイン アクティビティの概要を説明します。
+このトピックでは、サインイン レポートの概要を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 * セキュリティ管理者、セキュリティ閲覧者、レポート閲覧者ロールのユーザー
 * グローバル管理者
-* 任意のユーザー (非管理者) が自分のサインインにアクセス可能 
+* さらに、任意のユーザー (非管理者) が自分のサインインにアクセス可能 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>サインイン アクティビティにアクセスするために必要な Azure AD ライセンスを教えてください。
 * すべてのサインイン アクティビティ レポートを閲覧するためには、ご利用のテナントに、Azure AD Premium ライセンスが関連付けられている必要があります。
 
+## <a name="sign-ins-report"></a>サインイン レポート
 
-## <a name="sign-in-activities"></a>サインイン アクティビティ
-
-ユーザー サインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
+ユーザーのサインイン レポートは、次の質問に対する回答を提示します。
 
 * ユーザーのサインインにどのようなパターンがあるか。
 * 1 週間で何人のユーザーがサインインを行ったか。
 * これらのサインインはどのような状態か。
 
-すべてのサインイン アクティビティ データへの最初のエントリ ポイントは、**[Azure Active Directory]** の [アクティビティ] セクションの **[サインイン]** です。
-
+[Azure portal](https://portal.azure.com) の **[Azure Active Directory]** ブレードの **[アクティビティ]** セクションで **[サインイン]** を選択して、サインイン レポートにアクセスできます。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/61.png "サインイン アクティビティ")
-
 
 サインイン ログには、次のものを示す既定のリスト ビューがあります。
 
@@ -84,7 +77,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 ![サインイン アクティビティ](./media/concept-sign-ins/02.png "サインイン アクティビティ")
 
-リスト ビュー内の項目をクリックすると、その項目に関する確認可能な詳細が横表示で表示されます。
+詳細な情報を取得するには、リスト ビューで項目を選択します。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/03.png "サインイン アクティビティ")
 
@@ -102,7 +95,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 - User
 - アプリケーション
 - サインインの状態
-- リスク検出の状態
+- 条件付きアクセス
 - 日付
 
 ![サインイン アクティビティ](./media/concept-sign-ins/04.png "サインイン アクティビティ")
@@ -114,14 +107,15 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 **[サインイン状態]** フィルターでは、次のいずれかを選択できます。
 
 - All
-- 成功
+- Success
 - 失敗
 
-**[リスクが検出されました]** フィルターでは、次のいずれかを選択できます。
+**条件付きアクセス** フィルターでは、次に示すサインインの CA ポリシーの状態を選択できます。
 
 - All
-- [はい]
-- いいえ 
+- 未適用
+- Success
+- 失敗
 
 **[日付]** フィルターでは、返されるデータの期間を定義できます。  
 次のいずれかの値になります。
@@ -151,11 +145,14 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 ## <a name="download-sign-in-activities"></a>サインイン アクティビティのダウンロード
 
-サインイン アクティビティ データを Azure portal の外部で操作する場合は、ダウンロードすることができます。 **[ダウンロード]** をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。  Azure portal では、ダウンロード ボタンの他に、データをダウンロードするためのスクリプトを生成するオプションも提供されています。  
+Azure portal の外部で操作する場合は、[サインイン データをダウンロード](quickstart-download-sign-in-report.md)できます。 **[ダウンロード]** をクリックすると、最新の 5K レコードの CSV ファイルが作成されます。  Azure portal では、ダウンロード ボタンの他に、[データをダウンロードするためのスクリプトを生成する](tutorial-signin-logs-download-script.md)オプションも提供されています。  
 
 ![ダウンロード](./media/concept-sign-ins/71.png "ダウンロード")
 
 さらに柔軟性が必要である場合は、スクリプト ソリューションを使用することができます。 **[スクリプト]** をクリックすると、設定したすべてのフィルターを含む PowerShell が作成されます。 **管理者モード**でこのスクリプトをダウンロードして実行し、CSV ファイルを生成します。 
+
+> [!IMPORTANT]
+> ダウンロードできるレコードの数は、[Azure Active Directory レポートの保持ポリシー](reference-reports-data-retention.md)によって制限されます。  
 
 ### <a name="running-the-script-on-a-windows-10-machine"></a>Windows 10 マシン上でスクリプトを実行する
 
@@ -166,28 +163,18 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 3. **Set-ExecutionPolicy unrestricted** を実行し、**[Yes to All]\(すべてはい\)** を選択します。 
 4. 以上で、ダウンロードした PowerShell スクリプトを管理者モードで実行して、CSV ファイルを生成できます。
 
-ダウンロードできるレコードの数は、技術的な実装だけでなく、[Azure Active Directory レポートの保持ポリシー](reference-reports-data-retention.md)によっても制限されます。  
+## <a name="sign-ins-data-shortcuts"></a>サインイン データのショートカット
 
-
-## <a name="sign-in-activities-shortcuts"></a>サインイン アクティビティのショートカット
-
-[Azure Active Directory] の他にも、Azure Portal にはサインイン アクティビティ データに対する追加のエントリ ポイントが用意されています。
+Azure AD の他にも、Azure portal にはサインイン データに対する追加のエントリ ポイントが用意されています。
 
 - ID のセキュリティ保護の概要
 - ユーザー
 - グループ
 - エンタープライズ アプリケーション
 
+### <a name="users-sign-ins-data-in-identity-security-protection"></a>ID セキュリティ保護のユーザーのサインイン データ
 
-### <a name="users-sign-ins-activities"></a>ユーザーのサインイン アクティビティ
-
-ユーザー サインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
-
-- ユーザーのサインインにどのようなパターンがあるか。
-- 1 週間で何人のユーザーがユーザー サインインを行ったか。
-- これらのサインインはどのような状態か。
-
-このデータへのエントリ ポイントは、**ID のセキュリティ保護**の概要ページにあるユーザー サインイン グラフです。 ユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
+**ID セキュリティ保護**のユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。 期間の既定値は 30 日です。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/06.png "サインイン アクティビティ")
 
@@ -213,7 +200,6 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 - 日付
 - MFA が必要
 - サインインの状態
-
  
 **[ユーザー]** ページの **[アクティビティ]** セクションの **[サインイン]** をクリックすると、すべてのユーザー サインインの完全な概要が表示されます。
 
@@ -245,9 +231,9 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 
 ![サインイン アクティビティ](./media/concept-sign-ins/11.png "サインイン アクティビティ")
 
-
-
 ## <a name="next-steps"></a>次の手順
 
-サインイン アクティビティのエラー コードの詳細については、「[Azure Active Directory ポータルのサインイン アクティビティ レポートのエラー コード](reference-sign-ins-error-codes.md)」を参照してください。
+* [サインイン アクティビティ レポートのエラー コード](reference-sign-ins-error-codes.md)
+* [Azure AD のデータ保有ポリシー](reference-reports-data-retention.md)
+* [Azure AD のレポート待機時間](reference-reports-latencies.md)
 

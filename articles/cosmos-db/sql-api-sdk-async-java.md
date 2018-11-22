@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/02/2018
 ms.author: moderakh
-ms.openlocfilehash: 80beeda607c83bc2a583c140779766952efcc568
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c8b8397e5d51b67895a6a95ed6d1611813a9aaf6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252872"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300848"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -52,6 +52,9 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* パッケージのバグを修正しました。
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * 書き込み再試行パスで NPE バグを修正しました。
@@ -119,8 +122,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
-| [2.2.1](#2.1.0) |2018 年 11 月 2 日|--- |
-| [2.2.0](#2.2.1) |2018 年 9 月 22 日|--- |
+| [2.2.2](#2.2.2) |2018 年 11 月 8 日|--- |
+| [2.2.1](#2.2.1) |2018 年 11 月 2 日|--- |
+| [2.2.0](#2.2.0) |2018 年 9 月 22 日|--- |
 | [2.1.0](#2.1.0) |2018 年 9 月 5 日|--- |
 | [2.0.1](#2.0.1) |2018 年 8 月 16 日|--- |
 | [2.0.0](#2.0.0) |2018 年 6 月 20 日|--- |

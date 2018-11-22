@@ -2,18 +2,18 @@
 title: 新しい Azure IoT Edge デバイスの登録 (VS Code) | Microsoft Docs
 description: Visual Studio Code を使用して、Azure IoT Hub に新しい IoT Edge デバイスを作成します
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 06/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7902461f58df1b4fe0c3ed3b577f668fe8be4cc2
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: cf9603c65454f076a494789e784c9352fb7bef33
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034963"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578707"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>Visual Studio Code から新しい Azure IoT Edge デバイスを登録する
 
@@ -37,7 +37,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
    ![Azure IoT Hub デバイスを展開する](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
 
-3. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをポイントします。 
+3. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをクリックするかポイントします。 
 
 4. **[Select IoT Hub]\(IoT ハブの選択\)** を選択します。
 
@@ -51,7 +51,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 1. VS Code エクスプローラーで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。 
 
-2. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをポイントします。 
+2. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーで **[...]** をクリックします。 省略記号が表示されない場合は、ヘッダーをクリックするかポイントします。 
 
 3. **[Create IoT Edge Device]\(IoT Edge デバイスの作成\)** を選択します。 
 

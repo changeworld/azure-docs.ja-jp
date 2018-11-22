@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 6b8cb104c734edf688d875a8e9674a660f2db4e2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b586639cc6c9d4e25d65fa9f3a510e22789acfb2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834602"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346037"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Azure AI ギャラリーでコレクションを発見および共有する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="collections"></a>コレクション
-[コレクション](https://gallery.cortanaintelligence.com/collections)を使って、特定のソリューションまたは概念に使用する実験、API、およびその他のギャラリー項目をグループ化できます。 それらをグループ化して使用したり、後で参照するために保存したり、共有したりできます。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)の[コレクション](https://gallery.cortanaintelligence.com/collections)を使用すると、特定のソリューションまたは概念に使用する実験、API、およびその他のギャラリー項目をグループ化できます。 それらをグループ化して使用したり、後で参照するために保存したり、共有したりできます。
 
 ## <a name="discover"></a>発見
 [ギャラリーで](http://gallery.cortanaintelligence.com)コレクションを参照するには、**[More (詳細)]** の下の **[Collections (コレクション)]** を選択します。
@@ -71,7 +69,7 @@ ms.locfileid: "34834602"
    > 
    
     ![[Public (公開)] または [Unlisted (非公開)] を選択する](./media/gallery-collections/create-collection-page-3.png)
-7. **[作成]** を選択します。
+7. **作成**を選択します。
 
 これで、コレクションが Azure AI ギャラリーに追加されます。 コレクションは、アカウント ページの **[Collection (コレクション)]** タブに一覧表示されます。
 

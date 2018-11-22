@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 3cd9b5a2bfed49ee712b89040477389ba9ea7715
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389634"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567045"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出
 
@@ -31,7 +31,7 @@ AnomalyDetection 演算子は、3 種類の異常を検出します。
 
 * **ゆっくりした減少傾向**: 時間の経過に伴うゆっくりした減少の傾向。  
 
-AnomalyDetection 演算子を使う場合は、**Limit Duration** 句を指定する必要があります。 この句では、異常を検出する際に考慮する時間間隔 (現在のイベントからどこまで履歴をさかのぼるか) を指定します。  **When**  句を使うと、特定のプロパティまたは条件に一致するイベントのみにこの演算子を制限することもできます。 また、この演算子では、 **Partition by**  句で指定するキーに基づいて、イベントのグループを個別に処理することもできます。 トレーニングと予測は、パーティションごとに独立して行われます。 
+AnomalyDetection 演算子を使う場合は、**Limit Duration** 句を指定する必要があります。 この句では、異常を検出する際に考慮する時間間隔 (現在のイベントからどこまで履歴をさかのぼるか) を指定します。 **When** 句を使うと、特定のプロパティまたは条件に一致するイベントのみにこの演算子を制限することもできます。 また、この演算子は必要に応じて、**Partition by** 句で指定するキーに基づいて、イベントのグループを個別に処理できます。 トレーニングと予測は、パーティションごとに独立して行われます。 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>AnomalyDetection 演算子の構文
 
@@ -45,11 +45,11 @@ AnomalyDetection 演算子を使う場合は、**Limit Duration** 句を指定�
 
 * **scalar_expression** - 異常検出を実行する対象のスカラー式です。 このパラメーターに使える値は、単一の (スカラー) 値を返す Float または Bigint データ型です。 ワイルドカード式 **\*** は使用できません。 スカラー式に他の分析関数または外部関数を含めることはできません。 
 
-* **partition_by_clause** - `PARTITION BY <partition key>` 句は、学習とトレーニングを個別のパーティションに分割します。 つまり、`<partition key>` の値ごとに異なるモデルが使われ、その値を持つイベントのみがそのモデルの学習とトレーニングに使われます。 たとえば以下のクエリは、同じセンサーの他の読み取りに対してのみ、トレーニングとスコア付けを行います。
+* **partition_by_clause** - `PARTITION BY <partition key>` 句は、学習とトレーニングを個別のパーティションに分割します。 つまり、`<partition key>` の値ごとに異なるモデルが使われ、その値を持つイベントのみがそのモデルの学習とトレーニングに使われます。 たとえば以下のクエリは、同じセンサーの他の読み取りに対してのみ、トレーニングとスコア付けを行います。
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
-* **limit_duration clause** `DURATION(<unit>, <length>)` - 異常を検出する際に考慮する時間間隔 (現在のイベントからどこまで履歴をさかのぼるか) を指定します。 サポートされるユニットとその省略形について詳しくは、[DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) をご覧ください。 
+* **limit_duration clause** `DURATION(<unit>, <length>)` - 異常を検出する際に考慮する時間間隔 (現在のイベントからどこまで履歴をさかのぼるか) を指定します。 サポートされるユニットとその省略形について詳しくは、[DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) をご覧ください。 
 
 * **when_clause** - 異常検出の計算で考慮に入れるイベントのブール条件を指定します。
 

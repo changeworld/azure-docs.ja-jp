@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 04/19/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 818f4f4d8ea51cb278190d6e41953f0b04b2e995
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141937"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622876"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 監査アクティビティのリファレンス
 
@@ -29,17 +29,15 @@ ms.locfileid: "42141937"
 
 Azure AD のレポート アーキテクチャは、次のコンポーネントで構成されます。
 
-- **アクティビティ** 
-    - 
-  **サインイン アクティビティ** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
-    - **監査ログ** - Azure AD 内のさまざまな機能によって行われたすべての変更についてログによる追跡可能性を提供します。 監査ログの例には、ユーザー、アプリ、グループ、役割、ポリシー、認証などの Azure AD 内のあらゆるリソースに加えられた変更が含まれます。
-- **セキュリティ** 
-    - **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 詳細については、「Risky sign-ins (リスクの高いサインイン)」を参照してください。
-    - **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 詳細については、「Users flagged for risk (リスクのフラグ付きユーザー)」を参照してください。
+- **アクティビティ レポート** 
+    - [サインイン](concept-sign-ins.md) – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報を提供します。
+    - [監査ログ](concept-audit-logs.md) - Azure AD 内のさまざまな機能によって行われたすべての変更についてログによる追跡可能性を提供します。 
+    
+- **セキュリティ レポート** 
+    - [リスクの高いサインイン](concept-risky-sign-ins.md) - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
+    - [リスクのフラグ付きユーザー](concept-user-at-risk.md) - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 
 
 この記事では、監査ログにログに記録できる監査アクティビティの一覧を示します。
- 
-
 
 ## <a name="access-reviews"></a>アクセス レビュー
 
@@ -73,9 +71,6 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 |[ユーザー管理]|V1 アプリケーションの取得|
 |[ユーザー管理]|V2 アプリケーションの取得|
 |[ユーザー管理]|V2 アプリケーションの取得|
-
-
-
 
 ## <a name="account-provisioning"></a>アカウント プロビジョニング
 
@@ -594,13 +589,8 @@ Azure AD のレポート アーキテクチャは、次のコンポーネント�
 |ポリシー管理|セルフサービスによるパスワード リセットに登録されたユーザー|
 
 
-
-
 ## <a name="next-steps"></a>次の手順
 
-概要:
-
-- レポートについては、「[Azure Active Directory レポート](overview-reports.md)」を参照してください。
-
-- 監査アクティビティ レポートについては、「[Azure Active Directory ポータルの監査アクティビティ レポート](concept-audit-logs.md)」を参照してください。 
-
+- [Azure AD レポートの概要](overview-reports.md)
+- [監査ログ レポート](concept-audit-logs.md) 
+- [Azure AD レポートへのプログラムによるアクセス](concept-reporting-api.md)

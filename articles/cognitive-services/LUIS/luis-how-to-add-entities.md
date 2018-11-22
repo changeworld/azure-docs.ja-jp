@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: diberry
-ms.openlocfilehash: 178f4314f9ede86444ee60fd2a64f85dc283080b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5beb952c2330d44ffe090fc422afa6da67376b0d
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138533"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288052"
 ---
 # <a name="create-entities-without-utterances"></a>発話なしでエンティティを作成する
 
@@ -49,7 +49,7 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
     このエンティティを作成したら、サンプル発話にそのエンティティが含まれている、すべての意図に移動します。 サンプル発話内のテキストを選択し、そのテキストをエンティティとしてマークします。 
 
-    一般的には、シンプル エンティティのシグナルを強化するために[語句リスト](luis-concept-feature.md)を使用します。
+    一般的には、シンプル エンティティのシグナルを強化するために[フレーズ リスト](luis-concept-feature.md)を使用します。
 
 ## <a name="add-regular-expression-entities"></a>正規表現エンティティを追加する
 
@@ -116,7 +116,7 @@ LUIS アプリ内のエンティティは、**[エンティティ]** ページ�
 
 1. **[ビルド]** セクションから、左パネル内の **[エンティティ]** を選択し、**[新しいエンティティの作成]** を選択します。
 
-1. **[エンティティの追加]** ダイアログ ボックスで、[エンティティ名] ボックスに  と入力し、**[エンティティの種類]** として **[Pattern.any]** を選択します。
+1. **[エンティティの追加]** ダイアログ ボックスで、**[エンティティ名]** ボックスに `HumanResourcesFormTitle` と入力し、**[エンティティの種類]** として **[Pattern.any]** を選択します。
 
     Pattern.any エンティティを使用するには、(**[Improve app performance]\(アプリのパフォーマンス改善\)** セクションの) **[パターン]** ページで、「`Where is **{HumanResourcesFormTitle}** on the server?`」のように正しい中かっこ構文を使用してパターンを追加します。
 

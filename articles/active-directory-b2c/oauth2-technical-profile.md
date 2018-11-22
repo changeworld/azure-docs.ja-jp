@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7f85de79b683ba7b10f5466c4a8042fc0ffdea90
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 3f1e34b4d527d076a0bac2e0cb6ef3a901296c57
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382871"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612477"
 ---
 # <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 
 ## <a name="protocol"></a>プロトコル
 
-**Protocol** 要素の **Name** 属性は、`OAuth2` に設定する必要があります。 たとえば、**Facebook-OAUTH** 技術プロファイル用のプロトコルは `OAuth2` です。
+**Protocol** 要素の **Name** 属性は `OAuth2` に設定する必要があります。 たとえば、**Facebook-OAUTH** 技術プロファイル用のプロトコルは `OAuth2` です。
 
 ```XML
 <TechnicalProfile Id="Facebook-OAUTH">
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 
 **OutputClaims** 要素には、OAuth2 ID プロバイダーにより返される要求の一覧が存在します。 お使いのポリシーに定義されている要求の名前を、ID プロバイダーで定義されている名前にマップする必要があるかもしれません。 `DefaultValue` 属性を設定している限り、ID プロバイダーにより返されない要求を追加することもできます。
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが存在する場合があります。
+**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。
 
 次の例は、Facebook ID プロバイダーにより返される要求を示しています。
 
@@ -89,7 +89,7 @@ Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プ�
 | ClaimsEndpointFormatName | いいえ  | 形式のクエリ文字列パラメーターの名前。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、名前を `format` として設定できます。 | 
 | ClaimsEndpointFormat | いいえ  | 形式のクエリ文字列パラメーターの値。 たとえば、LinkedIn 要求エンドポイント `https://api.linkedin.com/v1/people/~?format=json` では、値を `json` として設定できます。 | 
 | ProviderName | いいえ  | ID プロバイダーの名前。 |
-| response_mode | いいえ  | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 可能な値: `query`、`form_post` (既定)、または `fragment`。 |
+| response_mode | いいえ  | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
 | scope | いいえ  | OAuth2 ID プロバイダーの仕様に従って定義される、アクセス要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |
 | HttpBinding | いいえ  | アクセス トークンと要求トークンのエンドポイントに予期される HTTP バインド。 可能な値: `GET` または `POST`。  |
 | ResponseErrorCodeParamName | いいえ  | HTTP 200 (Ok) 経由で返されるエラー メッセージを収納するパラメーターの名前。 |

@@ -1,7 +1,21 @@
-タイトル: API リファレンス - Face API titleSuffix: Azure Cognitive Services の説明: API リファレンスでは、人の管理、LargePersonGroup/PersonGroup の管理、LargeFaceList/FaceList の管理および Face アルゴリズム API に関する情報を提供します。
-サービス: cognitive-services 作成者: SteveMSFT マネージャー: cgronlun
-
-ms.service: cognitive-services ms.component: face-api ms.topic: reference ms.date: 03/01/2018 ms.author: sbowles
+---
+title: API リファレンス - Face API
+titleSuffix: Azure Cognitive Services
+description: API リファレンスでは、人の管理、LargePersonGroup/PersonGroup の管理、LargeFaceList/FaceList の管理および Face アルゴリズム API に関する情報を説明します。
+services: cognitive-services
+author: SteveMSFT
+manager: cgronlun
+ms.service: cognitive-services
+ms.component: face-api
+ms.topic: reference
+ms.date: 03/01/2018
+ms.author: sbowles
+ms.openlocfilehash: 283a042bb8ea32f8f6db9bebb211bc2762a3a4c1
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578073"
 ---
 # <a name="api-reference"></a>API リファレンス
 

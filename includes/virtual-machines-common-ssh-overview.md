@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 04/16/2018
+ms.date: 11/08/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0363b719e2587226282257e19e58e3c4e55c2219
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: cff3d7bfb89d5b03f986da32edc148efcfb7e7bd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47454381"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51506351"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>SSH とキーの概要
 
@@ -21,7 +21,7 @@ SSH は、セキュリティで保護されていない接続においてセキ�
 
 * *公開キー*は、Linux VM か、公開キー暗号化で使用する他のサービスに配置します。
 
-* *秘密キー*は、SSH 接続するときに自分の身元を証明するために渡すキーです。 このキーは安全に保管してください。 このキーは共有しないようにしてください。
+* ローカル システム上の "*秘密キー*" は、ユーザーが Linux VM に接続するときに、ユーザーの ID を確認するために SSH クライアントによって使用されます。 このキーは安全に保管してください。 このキーは共有しないようにしてください。
 
 組織のセキュリティ ポリシーに応じて、単一の公開キーと秘密キーのペアを再利用して複数の Azure VM とサービスにアクセスできます。 アクセスする VM またはサービスごとに異なるキーのペアを用意する必要はありません。 
 

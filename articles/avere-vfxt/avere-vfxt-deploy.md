@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958609"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578639"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 
-vFXT クラスターを作成するには、クラスター コントローラーを使用するのが最も簡単な方法です。このクラスター コントローラーは、vFXT クラスターを作成して管理するために必要なスクリプト、テンプレート、ソフトウェア インフラストラクチャを備えた VM です。
+Azure で vFXT クラスターを作成する最も簡単な方法は、クラスター コントローラーを使用することです。 クラスター コントローラーは、vFXT クラスターを作成して管理するために必要なスクリプト、テンプレート、ソフトウェア インフラストラクチャを含む VM です。
 
 新しい vFXT クラスターをデプロイするには、次の手順を行います。
 
@@ -68,7 +68,7 @@ vFXT クラスターを作成するには、クラスター コントローラ�
 
 **[Basic]** セクション内:  
 
-* クラスターの**説明**
+* クラスターの**サブスクリプション**
 * クラスターの**リソース グループ** 
 * **場所** 
 
@@ -82,7 +82,7 @@ vFXT クラスターを作成するには、クラスター コントローラ�
 * 仮想ネットワークのリソース グループ、名前、およびサブネット名 - 既存のリソースの名前を入力します (既存の vnet を使用する場合)。新しい vnet を作成する場合は、新しい名前を入力します
 * **コントローラー名** - コントローラー VM の名前を設定します
 * コントローラーの管理者ユーザー名 - 既定値は `azureuser` です
-* SSH キー - 管理者ユーザー名に関連付けるために公開キーを貼り付けます。 ヘルプが必要な場合は、[SSH キーを作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に関するページを参照してください。
+* SSH キー - 管理者ユーザー名に関連付けるために公開キーを貼り付けます。 ヘルプが必要な場合は、[SSH キーを作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)に関するページを参照してください。
 
 **[使用条件]** で: 
 
@@ -91,18 +91,16 @@ vFXT クラスターを作成するには、クラスター コントローラ�
   > [!NOTE] 
   > サブスクリプションの所有者でない場合は、所有者に、「[Accept software terms in advance](avere-vfxt-prereqs.md#accept-software-terms-in-advance)」 (事前にソフトウェア条件に同意する) に示されている前提条件の手順に従って、条件に同意してもらいます。 
 
+
 完了したら、**[購入]** をクリックします。 5、6 分後に、コントローラー ノードが稼働します。
 
-クラスターに必要な情報を収集するために、出力ページにアクセスする必要があります。 詳細については、[クラスターの作成に必要な入力](#inputs-needed-for-cluster-creation)に関するページを参照してください。
+出力ページに移動し、クラスターの作成に必要なコントローラーの情報を収集します。 詳しくは、「[クラスターの作成に必要な情報](#information-needed-to-create-the-cluster)」をご覧ください。
 
 ### <a name="create-controller---azure-marketplace-image"></a>コントローラーを作成する - Azure Marketplace イメージ
 
-Azure Marketplace で ``Avere`` という名前を検索して、コントローラー テンプレートを見つけます。 **Avere vFXT for Azure コントローラー**のテンプレートを選択します。 
+Azure Marketplace で ``Avere`` という名前を検索して、コントローラー テンプレートを見つけます。 **Avere vFXT for Azure コントローラー**のテンプレートを選択します。
 
 条件に同意し、[プログラムによるデプロイについて] リンクをクリックして、Marketplace イメージのプログラムによるアクセスを有効にします (まだこの作業を行っていない場合)。 リンクは、**[作成]** ボタンの下にあります。
-
-> [!NOTE] 
-> 一般公開の最初の週 (2018 年 10 月 31 から 11 月 7 日まで) では、この手順に従うのではなく、コマンドライン オプションを使用して、2 つのソフトウェア イメージの条件に同意する必要があります。 「[Accept software terms in advance](avere-vfxt-prereqs.md#accept-software-terms-in-advance)」 (事前にソフトウェア条件に同意する) の指示に従ってください。 
 
 ![[作成] ボタンの下にある、プログラムによるアクセスへのリンクのスクリーンショット](media/avere-vfxt-deploy-programmatically.png)
 
@@ -125,7 +123,7 @@ Azure Marketplace で ``Avere`` という名前を検索して、コントロー
   * [ユーザー名/パスワード] または [SSH 公開キー] (推奨) を選択します。
   
     > [!TIP] 
-    > SSH キーのほうが安全です。 ヘルプが必要な場合は、[SSH キーを作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に関するページを参照してください。 
+    > SSH キーのほうが安全です。 ヘルプが必要な場合は、[SSH キーを作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)に関するページを参照してください。 
   * ユーザー名を指定します 
   * SSH キーを貼り付けるか、パスワードを入力して確認します
 * **受信ポートの規則** - パブリック IP アドレスを使用する場合は、ポート 22 (SSH) を開きます
@@ -172,29 +170,31 @@ Azure Marketplace で ``Avere`` という名前を検索して、コントロー
 
   ![サービス エンドポイントを作成する手順に関する注釈を示す Azure portal のスクリーンショット](media/avere-vfxt-service-endpoint.png)
 
-## <a name="gather-needed-inputs"></a>必要な入力を収集する
+## <a name="information-needed-to-create-the-cluster"></a>クラスターの作成に必要な情報
 
-クラスターを作成するには、次の情報が必要です。 
+クラスター コントローラーを作成した後、次の手順に必要な情報があることを確認します。 
 
-Resource Manager テンプレートを使用してコントローラー ノードを作成した場合は、[テンプレートの出力から情報を取得](#finding-template-output)できます。 
+コントローラーに接続するために必要な情報: 
 
-コントローラーに接続するために必要なもの: 
-
-* コントローラーのユーザー名と SSH キーまたはパスワード
+* コントローラーのユーザー名と SSH キー (またはパスワード)
 * コントローラー IP アドレス、またはコントローラー VM に接続するための他の方法
 
-クラスターの作成に必要なもの: 
+クラスターに必要な情報: 
 
 * リソース グループ名
 * Azure の場所 
 * 仮想ネットワーク名
 * サブネット名
-* クラスター ノードのロール名
+* クラスター ノードのロール名 - この名前はロールを作成するときに設定されます ([後述](#create-the-cluster-node-access-role))
 * BLOB コンテナーを作成する場合は、ストレージ アカウント名
 
-コントローラー VM 情報ページを参照して、欠落している情報を見つけることもできます。 たとえば、**[すべてのリソース]** をクリックして、コントローラー名を検索し、そのコントローラー名をクリックして詳細を表示します。
+Resource Manager テンプレートを使用してコントローラー ノードを作成した場合は、[テンプレートの出力から情報を取得](#find-template-output)できます。 
 
-### <a name="finding-template-output"></a>テンプレートの出力を見つける
+Azure Marketplace イメージを使用してコントローラーを作成した場合、これらの項目のほとんどは直接提供してあります。 
+
+コントローラー VM の情報ページを参照して、欠落している情報を見つけます。 たとえば、**[すべてのリソース]** をクリックして、コントローラー名を検索し、そのコントローラー名をクリックして詳細を表示します。
+
+### <a name="find-template-output"></a>テンプレートの出力を見つける
 
 Resource Manager テンプレートの出力からこの情報を見つけるには、次の手順に従います。
 
@@ -215,7 +215,7 @@ Resource Manager テンプレートの出力からこの情報を見つけるに
 1. クラスター コントローラーに接続する方法は、設定内容によって異なります。
 
    * コントローラーにパブリック IP アドレスがある場合は、設定した管理者ユーザー名として、コントローラーの IP に SSH 接続します (例: ``ssh azureuser@40.117.136.91``)。
-   * コントローラーにパブリック IP がない場合は、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)、または vnet への VPN 接続を使用します。
+   * コントローラーにパブリック IP がない場合は、vnet への VPN または [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) 接続を使用します。
 
 1. コントローラーにログインした後、`az login` を実行して認証します。 シェルに指定されている認証コードをコピーし、Web ブラウザーを使用して [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) を読み込み、Microsoft システムで認証します。 シェルに戻って確認します。
 
@@ -226,7 +226,9 @@ Resource Manager テンプレートの出力からこの情報を見つけるに
 ## <a name="create-the-cluster-node-access-role"></a>クラスター ノードのアクセス ロールを作成する
 
 > [!NOTE] 
-> サブスクリプション所有者ではなく、ロールがまだ作成されていない場合は、サブスクリプション所有者にこれらの手順を行うよう依頼するか、「[コントローラーなしで Avere vFXT クラスター ランタイム アクセス ロールを作成する](avere-vfxt-pre-role.md)」の手順を使用します。
+> * サブスクリプション所有者ではなく、ロールがまだ作成されていない場合は、サブスクリプション所有者にこれらの手順を行うよう依頼するか、「[コントローラーなしで Avere vFXT クラスター ランタイム アクセス ロールを作成する](avere-vfxt-pre-role.md)」の手順を使用します。
+> 
+> * Microsoft の内部ユーザーは、作成する代わりに "Avere Cluster Runtime Operator" という名前の既存のロールを使用する必要があります。 
 
 [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) により、vFXT クラスター ノードに対して、必要なタスクを実行する承認が与えられます。  
 
@@ -292,15 +294,18 @@ RESOURCE_GROUP=
 ファイルを保存して終了します。
 
 ### <a name="run-the-script"></a>スクリプトを実行する
+
 作成したファイル名を入力して、スクリプトを実行します  (例: `./create-cloudbacked-cluster-west1`)。  
 
-接続が失われた場合は、`screen` や `tmux` などの[ターミナル マルチプレクサー](http://linuxcommand.org/lc3_adv_termmux.php)内でこのコマンドを実行することを検討してください。  
+> [!TIP]
+> 接続が失われた場合は、`screen` や `tmux` などの[ターミナル マルチプレクサー](http://linuxcommand.org/lc3_adv_termmux.php)内でこのコマンドを実行することを検討してください。  
+
 出力は `~/vfxt.log` にも記録されます。
 
 スクリプトが完了したら、クラスターの管理に必要な、管理 IP アドレスをコピーします。
 
 ![末尾付近に管理 IP アドレスが表示されているスクリプトのコマンド ライン出力](media/avere-vfxt-mgmt-ip.png)
 
-### <a name="next-step"></a>次のステップ
+## <a name="next-step"></a>次のステップ
 
 これでクラスターが実行され、その管理 IP アドレスがわかったので、[クラスター構成ツールに接続](avere-vfxt-cluster-gui.md)して、サポートを有効にし、必要に応じてストレージを追加できます。

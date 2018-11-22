@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fe7d18cdfa88988e1c7dda7f1120d4750fa52e8c
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: faf3cc6c333ee8f8757ec24ecc8ea8299657c4a7
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269430"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578486"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
@@ -38,8 +38,7 @@ ms.locfileid: "48269430"
 - [SAML2](saml-technical-profile.md) - 任意の SAML プロトコル ID プロバイダーとのフェデレーション。
 - [セルフアサート](self-asserted-technical-profile.md) - ユーザーとやりとりします。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセットをレンダリングします。
 - **WsFed** - 任意の WsFed プロトコル ID プロバイダーとのフェデレーション。 
-- **セッション管理** - さまざまな種類のセッションを処理します。 
-- **ユーザー体験コンテキスト プロバイダー**
+- [セッション管理](active-directory-b2c-reference-sso-custom.md) - さまざまな種類のセッションを処理します。 
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>技術プロファイルのフロー

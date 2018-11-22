@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 8c669e13ec3345ff75024c54eda8c13ad194705a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2e254faae0289cd00c7e66d430ec3148fccb364a
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741132"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>チュートリアル: Azure Active Directory と Confluence SAML SSO by Microsoft の統合
 
@@ -65,9 +65,17 @@ Confluence SAML SSO by Microsoft と Azure AD の統合を構成するには、�
 
 - Confluence: 5.0 ～ 5.10
 - Confluence: 6.0.1
+- Confluence: 6.1.1
 - Confluence: 6.2.1
+- Confluence: 6.3.4
+- Confluence: 6.4.0
+- Confluence: 6.5.0
 - Confluence: 6.6.2
+- Confluence: 6.7.0
 - Confluence: 6.8.1
+- Confluence: 6.9.0
+- Confluence: 6.10.0
+- Confluence: 6.11.0
 - Confluence: 6.12.0
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -275,7 +283,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルの [Confluence SAML SSO by Microsoft] のタイルをクリックすると、Confluence SAML SSO by Microsoft アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

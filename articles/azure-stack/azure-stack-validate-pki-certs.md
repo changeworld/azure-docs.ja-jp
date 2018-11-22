@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/09/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 51c76c552ef3a79f48637598a12f7a7be1823996
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f3a83352e5aa7591d3f7b325adb542ba89e57fe5
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961128"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515830"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Azure Stack PKI 証明書の検証
 
@@ -244,6 +244,22 @@ SQL/MySQL または App Services のデプロイを計画している場合は�
         Key Usage: OK
         Key Size: OK
     ```
+
+## <a name="certificates"></a>証明書
+
+| Directory | 証明書 |
+| ---    | ----        |
+| acsBlob | wildcard_blob_\< region>\< externalFQDN> |
+| ACSQueue  |  wildcard_queue\< region>\< externalFQDN> |
+| ACSTable  |  wildcard_table\< region>\< externalFQDN> |
+| 管理者拡張機能ホスト  |  wildcard_adminhosting\< region>\< externalFQDN> |
+| 管理ポータル  |  adminportal\< region>\< externalFQDN> |
+| ARM 管理  |  adminmanagement\< region>\< externalFQDN> |
+| ARM パブリック  |  management\< region>\< externalFQDN> |
+| KeyVault  |  wildcard_vault\< region>\< externalFQDN> |
+| KeyVaultInternal  |  wildcard_adminvault\< region>\< externalFQDN> |
+| パブリック拡張機能ホスト  |  wildcard_hosting\< region>\< externalFQDN> |
+| パブリック ポータル  |  portal\< region>_\< externalFQDN> |
 
 ## <a name="using-validated-certificates"></a>検証済み証明書の使用
 

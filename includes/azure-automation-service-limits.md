@@ -5,20 +5,21 @@ services: automation
 author: georgewallace
 ms.service: automation
 ms.topic: include
-ms.date: 04/05/2018
+ms.date: 11/07/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: abe7668ed16ddd5cc1b247207d3e80f7c1118137
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 70cdd5a9d0482c24dfeb2037ae56b86cd9339fcf
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964567"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285778"
 ---
 | リソース | 上限 |メモ|
 | --- | --- |---|
 | Automation アカウントあたりの 30 秒ごとに送信できる新しいジョブの最大数 (スケジュールされていないジョブ) |100 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
 | Automation アカウントあたりのインスタンスの同じ時刻に同時実行するジョブの最大数 (スケジュールされていないジョブ) |200 |この制限に到達すると、次のジョブ作成要求は失敗します。 クライアントにエラー応答が届きます。|
+| 30 日のローリング期間におけるジョブ メタデータの最大ストレージ サイズ。 | 10 GB (約 400 万ジョブ)|この制限に到達すると、次のジョブ作成要求は失敗します。 |
 | Automation アカウントあたりの 30 秒ごとにインポートできるモジュールの最大数 |5 ||
 | モジュールの最大サイズ |100 MB ||
 | ジョブ実行時間 - Free レベル |カレンダー月あたりサブスクリプションごとに 500 分 ||

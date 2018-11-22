@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 0b40b8018715e6b680f42676dfaead0ac6e5bf7a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 37fb4c330004ce87afd900d9cafebb337261ec06
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279145"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568235"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新プログラム
 
@@ -69,7 +69,8 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 <!-- | IS ASDK--> 
 - **API バージョン プロファイル 2017-03-09-profile が 2018-03-01-hybrid に更新されました**。 API プロファイルでは、Azure リソース プロバイダーと Azure REST エンドポイントの API バージョンが指定されます。 プロファイルの詳細については、「[Azure Stack での API バージョンのプロファイルの管理](/azure/azure-stack/user/azure-stack-version-profiles)」を参照してください。
 
- ### <a name="fixed-issues"></a>修正された問題
+### <a name="fixed-issues"></a>修正された問題
+
 <!-- IS ASDK--> 
 - ポータルで可用性セットを作成すると 1 の障害ドメインと更新ドメインがセットに含められるという問題が修正されました。 
 
@@ -159,10 +160,10 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 ### <a name="post-update-steps"></a>更新後の手順
 
 > [!Important]  
-> Azure Stack デプロイを、拡張機能ホスト用に準備します。 「[Azure Stack の拡張機能ホストを準備する](azure-stack-extension-host-prepare.md)」のガイダンスに従って、システムを準備します。
+> Azure Stack デプロイを、拡張機能ホスト用に準備します。 次のガイダンスを使用して、システムを準備します: 「[Azure Stack の拡張機能ホストを準備する](azure-stack-extension-host-prepare.md)」。
 
 この更新プログラムをインストールした後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。 
-- [KB 4468920 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.5.110](https://support.microsoft.com/help/4468920/)
+- [KB 4468920 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.7.113](https://support.microsoft.com/help/4471992/)
 
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
@@ -219,6 +220,8 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
    
   [Test-AzureStack](azure-stack-diagnostic-test.md) コマンドレットを実行して、インフラストラクチャ ロール インスタンスとスケール ユニット ノードの正常性を確認してください。 [Test-AzureStack](azure-stack-diagnostic-test.md) によって問題が検出されない場合は、これらのアラートを無視することができます。 問題が検出された場合は、管理ポータルまたは PowerShell を使用して、インフラストラクチャ ロール インスタンスまたはノードの開始を試みることができます。
 
+  この問題は最新の [1808 修正プログラム リリース](https://support.microsoft.com/help/4471992/)で修正されているので、問題が発生している場合は、この修正プログラムをインストールしてください。
+
 <!-- 1264761 - IS ASDK --> 
 - 以下の詳細情報の**正常性コントローラー** コンポーネントのアラートが表示されることがあります:  
 
@@ -253,7 +256,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 
 ### <a name="compute"></a>コンピューティング
 
-<!-- TBD – IS, ASDK -->
+<!-- 3164607 – IS, ASDK -->
 - デタッチしたディスクを同じ名前と LUN で同じ仮想マシン (VM) に再アタッチすると、**"データ ディスク 'datadisk' は、VM 'vm1' にアタッチできません"** というようなエラーで失敗します。 このエラーは、現在ディスクがデタッチされているか、直前のデタッチ操作が失敗したために発生します。 ディスクが完全にデタッチされるまで待ってから再試行するか、ディスクをもう一度明示的に削除/デタッチしてください。 回避策は、別の名前で再アタッチするか、別の LUN に再アタッチすることです。 
 
 <!-- 3099544 – IS, ASDK --> 
@@ -266,7 +269,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
       1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
       2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
    2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、次の手順に従ってください。
-      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4468920/)を適用します。
+      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4471992/)を適用します。
       2. [この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
       
 <!-- 3179561 - IS --> 

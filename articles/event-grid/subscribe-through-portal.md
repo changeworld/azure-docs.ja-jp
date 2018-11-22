@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 72eaa17e78086a4e5338bb3198ef7471c44b785f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: eb48e40007a25992a9a399176b6a4f93be89efc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234787"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344088"
 ---
 # <a name="subscribe-to-events-through-portal"></a>ポータルを使用したイベントのサブスクライブ
 
@@ -45,6 +45,16 @@ ms.locfileid: "40234787"
 1. イベントを処理するためのエンドポイントやサブスクリプション名など、イベント サブスクリプションに関するその他の詳細情報を指定します。
 
    ![サブスクリプションの詳細の指定](./media/subscribe-through-portal/provide-subscription-details.png)
+
+1. 配信不能レタリングを有効にして、再試行ポリシーをカスタマイズするには、**[追加の機能]** を選択します。
+
+   ![追加機能を選択する](./media/subscribe-through-portal/select-additional-features.png)
+
+1. 配信されないイベントの格納に使用するコンテナーを選択して、再試行の送信方法を設定します。
+
+   ![配信不能レタリングと再試行を有効にする](./media/subscribe-through-portal/set-deadletter-retry.png)
+
+1. 完了したら、**[作成]** を選択します。
 
 ## <a name="create-subscription-on-resource"></a>リソースでのサブスクリプションの作成
 

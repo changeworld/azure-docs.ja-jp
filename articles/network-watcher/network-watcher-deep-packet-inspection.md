@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 1ad6ca4abe73336ce9ce3539fdaf2a9d7dd23fa6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7af14143e8ce4924c17a41c6bb1ff33954f4b583
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036337"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568728"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure Network Watcher を使用したパケット インスペクション
 
@@ -123,7 +123,7 @@ tcp.port == 111
 
 結果から、すべてのトラフィックが同じサブネットのローカル仮想マシンから送信されていることがわかります。 このトラフィックが発生している理由がまだ明らかでない場合、さらにパケットを検査して、この仮想マシンがポート 111 でこれらの呼び出しを行う理由を特定できます。 この情報に基づいて、適切な処置を取ることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Network Watcher のその他の診断機能については、「[Azure network monitoring overview (Azure のネットワーク監視の概要)](network-watcher-monitoring-overview.md)」を参照してください。
 

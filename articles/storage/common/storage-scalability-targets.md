@@ -1,41 +1,32 @@
 ---
-title: Azure Storage のスケーラビリティおよびパフォーマンスのターゲット | Microsoft Docs
-description: Standard Storage アカウントと Premium Storage アカウントの両方の容量、要求レート、および送受信の帯域幅を含む、Azure Storage のスケーラビリティとパフォーマンスのターゲットについて説明します。 各 Azure Storage サービス内にあるパーティションのパフォーマンス ターゲットを理解します。
+title: Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
+description: Standard Azure ストレージ アカウントの容量、要求レート、受信と送信の帯域幅など、スケーラビリティとパフォーマンスのターゲットについて説明します。
 services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 11/08/2018
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 758871537b89a9c010cfaddf324e2208f9846afb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93e09f3ab6780eb9ce7fa29b4554b53d796b6837
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241325"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564955"
 ---
-# <a name="azure-storage-scalability-and-performance-targets"></a>Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
-## <a name="overview"></a>概要
-この記事では、Azure Storage のスケーラビリティとパフォーマンスについて説明します。 その他の Azure の制約に関する概要は、「 [Azure サブスクリプションとサービスの制限、クォータ、および制約](../../azure-subscription-service-limits.md)」を参照してください。
+# <a name="azure-storage-scalability-and-performance-targets-for-standard-storage-accounts"></a>Standard ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット
 
-> [!NOTE]
-> すべてのストレージ アカウントは新しいフラット ネットワーク トポロジで実行され、ストレージ アカウントがいつ作成されたかにかかわらず、この記事で概要を説明するスケーラビリティとパフォーマンスのターゲットがサポートされます。 のフラット ネットワーク アーキテクチャおよびスケーラビリティの詳細については、 [Microsoft Azure Storage の高い整合性を持つ高可用クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)に関するページを参照してください。
-> 
+この記事では、Standard Azure ストレージ アカウントでのスケーラビリティとパフォーマンスのターゲットについて詳しく説明します。 ここで示すスケーラビリティおよびパフォーマンスのターゲットは、ハイエンドのターゲットですが、達成可能です。 いかなる場合でも、ストレージ アカウントで達成される要求レートおよび帯域幅は、格納されたオブジェクトのサイズ、使用されているアクセス パターン、およびアプリケーションで実行されているワークロードの種類によって異なります。 
 
-> [!IMPORTANT]
-> ここで示すスケーラビリティおよびパフォーマンスのターゲットは、ハイエンドのターゲットですが、達成可能です。 いかなる場合でも、ストレージ アカウントで達成される要求レートおよび帯域幅は、格納されたオブジェクトのサイズ、使用されているアクセス パターン、およびアプリケーションで実行されているワークロードの種類によって異なります。 必ずサービスをテストして、パフォーマンスがユーザー要件を満たしているかどうかを確認してください。 可能であれば、トラフィック量の急増を回避し、トラフィックがパーティション間でうまく分散されるようにしてください。
-> 
-> ワークロードがアプリケーションのパーティションで処理できる上限に達すると、Azure Storage はエラー コード 503 (サーバーがビジー状態) またはエラー コード 500 (操作タイムアウト) の応答を返し始めます。 このようなエラーが発生した場合は、アプリケーションで指数関数的バックオフによる再試行ポリシーを使用する必要があります。 指数関数的バックオフによって、そのパーティションへの負荷が減少し、そのパーティションへのトラフィック量の増加が緩和されます。
-> 
-> 
+必ずサービスをテストして、パフォーマンスがユーザー要件を満たしているかどうかを確認してください。 可能であれば、トラフィック量の急増を回避し、トラフィックがパーティション間でうまく分散されるようにしてください。
 
-アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合は、複数のストレージ アカウントを使用するようにアプリケーションを構築できます。 その後、それらのストレージ アカウント間でデータをパーティション分割できます。 ボリューム価格については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/) 」をご覧ください。
+ワークロードがアプリケーションのパーティションで処理できる上限に達すると、Azure Storage はエラー コード 503 (サーバーがビジー状態) またはエラー コード 500 (操作タイムアウト) の応答を返し始めます。 503 エラーが発生する場合は、再試行に対してエクスポネンシャル バックオフ ポリシーを使用するようアプリケーションを変更することを検討します。 指数関数的バックオフによって、そのパーティションへの負荷が減少し、そのパーティションへのトラフィック量の増加が緩和されます。
 
-## <a name="scalability-targets-for-a-storage-account"></a>ストレージ アカウントのスケーラビリティ ターゲット
+## <a name="standard-storage-account-scale-limits"></a>Standard ストレージ アカウントのスケールの上限
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
-### <a name="storage-resource-provider-limits"></a>ストレージ リソース プロバイダーの制限 
+## <a name="storage-resource-provider-scale-limits"></a>ストレージ リソース プロバイダーのスケールの上限 
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -48,7 +39,7 @@ Azure Files と Azure File Sync のスケールおよびパフォーマンス �
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Azure File Sync のスケール ターゲット
-Azure File Sync では、できる限り使用量無制限を目指して設計しましたが、それを実現できない場合もあります。 弊社のテストの境界線と、どのターゲットが実際のハード制限かを次の表に示します。
+Azure File Sync は使用量無制限を目標に設計されていますが、使用量無制限が常に可能なわけではありません。 次の表では、Microsoft のテストの境界と、どのターゲットがハード制限かを示します。
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
@@ -63,5 +54,4 @@ Azure File Sync では、できる限り使用量無制限を目指して設計�
 * [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)
 * [Azure Storage のレプリケーション](../storage-redundancy.md)
 * [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage-performance-checklist.md)
-* [Microsoft Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

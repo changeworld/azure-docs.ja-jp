@@ -15,18 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: garye
-ms.openlocfilehash: c1ca9c45a7bd070ba0dbcee3b428f986ebac47d3
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d64395314f73c5d359b30c15ef11bfd3078e068f
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062099"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346305"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Azure AI ギャラリーで業界に特化したソリューションを発見する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="industry-specific-cortana-intelligence-solutions"></a>業界に特化した Cortana Intelligence ソリューション
-ギャラリーの **[業界](https://gallery.azure.ai/industries)** セクションでは、以下のような業界に固有のさまざまなリソースがまとめられています。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)の**[業界](https://gallery.azure.ai/industries)** セクションでは、以下のような業界に固有のさまざまなリソースがまとめられています
 
 * [小売](https://gallery.azure.ai/industries/retail): 売上予測、顧客離れの予測、および価格モデルの開発などの小売り業向けソリューションを検索します。
 * [製造](https://gallery.azure.ai/industries/manufacturing): 機器のメンテナンスの予測やエネルギー価格の予測などの製造ソリューションを検索します。

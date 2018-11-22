@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/05/2018
+ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dcc27992c318a970a86f1ff5c60723daeef881b6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914653"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345489"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>方法: Azure AD アプリに省略可能な要求を提供する (パブリック プレビュー)
 
@@ -42,7 +42,7 @@ ms.locfileid: "50914653"
 | アカウントの種類 | v1.0 エンドポイント | v2.0 エンドポイント  |
 |--------------|---------------|----------------|
 | 個人用 Microsoft アカウント  | 該当なし - RPS チケットが代わりに使用されます | サポート予定 |
-| Azure AD アカウント          | サポートされています                          | サポート対象 (注意事項あり)      |
+| Azure AD アカウント          | サポートされています                          | サポート対象 (注意事項あり) |
 
 > [!IMPORTANT]
 > 個人アカウントと Azure AD ([アプリの登録ポータル](https://apps.dev.microsoft.com)を使用して登録済み) の両方をサポートするアプリは、省略可能な要求を使用できません。 ただし、v2.0 エンドポイントを使用して Azure AD のみに登録されたアプリは、マニフェストで要求した省略可能な要求を取得することができます。 Azure portal では、既存の**アプリの登録**エクスペリエンスのアプリケーション マニフェスト エディターを使用して、省略可能な要求を編集できます。 ただし、この機能は、新しい**アプリの登録 (プレビュー)** エクスペリエンスのアプリケーション マニフェスト エディターではまだ使用できません。
@@ -60,8 +60,6 @@ ms.locfileid: "50914653"
 |-----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | ユーザーが最後に認証された時刻。 OpenID Connect の仕様を参照してください。| JWT        |           |  |
 | `tenant_region_scope`      | リソースのテナントのリージョン | JWT        |           | |
-| `signin_state`             | サインイン状態要求   | JWT        |           | フラグとして 6 個の戻り値があります。<br> "dvc_mngd": デバイスが管理されているかどうか<br> "dvc_cmp": デバイスが準拠しているかどうか<br> "dvc_dmjd": デバイスがドメインに参加しているかどうか<br> "dvc_mngd_app": デバイスが MDM 経由で管理されているかどうか<br> "inknownntwk": デバイスが既知のネットワーク内にあるかどうか。<br> "kmsi": [サインインしたままにする] が使用されたかどうか <br> |
-| `controls`                 | 条件付きアクセス ポリシーによって適用されるセッション コントロールを含む複数値の要求。 | JWT        |           | 3 個の値:<br> "app_res": アプリはより細かい制限を適用する必要があります。 <br> "ca_enf": 条件付きアクセスの適用は延期されましたが、現在も必要です。 <br> "no_cookie": ブラウザー内のクッキーを交換するにはこのトークンは不十分です。 <br>  |
 | `home_oid`                 | ゲスト ユーザーの場合、ユーザーのホーム テナント内のユーザーのオブジェクト ID。| JWT        |           | |
 | `sid`                      | セッション ID。セッションごとのユーザーのサインアウトに使用されます。 | JWT        |           |         |
 | `platf`                    | デバイスのプラットフォーム    | JWT        |           | デバイスの種類を検証できる、マネージド デバイスに制限されます。|
@@ -76,6 +74,7 @@ ms.locfileid: "50914653"
 | `xms_pl`                   | ユーザーの優先する言語  | JWT ||ユーザーの優先する言語 (設定されている場合)。 ゲスト アクセスのシナリオの場合、ソースはホーム テナントです。 LL-CC ("en-us") という形式です。 |
 | `xms_tpl`                  | テナントの優先する言語| JWT | | テナントの優先する言語 (設定されている場合)。 LL ("en") という形式です。 |
 | `ztdid`                    | ゼロタッチ デプロイ ID | JWT | | [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) に使用されるデバイス ID |
+|`email`                     | このユーザーのアドレス指定可能なメール アドレス (ユーザーが持っている場合)。  | JWT、SAML | | ユーザーがテナントのゲストである場合、この値は既定で含まれます。  マネージド ユーザー (テナント内のユーザー) の場合は、この省略可能な要求により、または OpenID スコープで (v2.0 の場合のみ)、それを要求する必要があります。  マネージド ユーザーの場合、メール アドレスは [Office 管理ポータル](https://portal.office.com/adminportal/home#/users)で設定する必要があります。|  
 | `acct`             | テナント内のユーザー アカウントの状態。 | JWT、SAML | | ユーザーがテナントのメンバーである場合、値は `0` です。 ユーザーがゲストの場合、値は `1` です。 |
 | `upn`                      | UserPrincipalName 要求。 | JWT、SAML  |           | この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。 <br> 追加のプロパティ: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 

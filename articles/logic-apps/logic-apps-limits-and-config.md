@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/11/2018
-ms.openlocfilehash: 1ae350e74a9b56aaaa72b38a9e3a43bddfbefefc
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232275"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346702"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -321,9 +321,9 @@ B2B プロトコルに適用される制限を次に示します。
 | 英国西部 | 51.141.48.98、51.141.51.145、51.141.53.164、51.141.119.150 |
 | | |
 
-### <a name="connectors"></a>コネクタ
+### <a name="managed-connectors"></a>マネージド コネクタ
 
-[コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、送信 IP アドレスが含まれるようにファイアウォールの構成を設定します。
+[Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、送信 IP アドレスが含まれるようにファイアウォールの構成を設定します。
 
 > [!IMPORTANT]
 > 既存の構成がある場合は、**2018 年 9 月 1日より前にできるだけ早く**更新を行って、この一覧に示されているロジック アプリが存在するリージョン用の IP アドレスと一致するようにしてください。 

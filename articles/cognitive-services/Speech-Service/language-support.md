@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: erhopf
-ms.openlocfilehash: 5adc0e39c271b71d6c003eaba6cb5b8a71531bd7
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c1eeee35869f29170a7f15b1d9e2c1ee69a6314d
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471443"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622518"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Speech Service API の言語と地域のサポート
 
@@ -160,7 +160,7 @@ zh-TW | 中国語 (台湾)|女性 | "Microsoft Server Speech Text to Speech Voic
 
 ## <a name="speech-translation"></a>音声翻訳
 
-**Speech Translation** API では、音声を音声に翻訳し、音声をテキストに翻訳するために、さまざまな言語をサポートしています。 ソース言語は常に次の音声言語テーブルからのものである必要があります。 使用可能なターゲット言語は、何に翻訳するか (音声かテキストか) によって決まります。
+**Speech Translation** API では、音声を音声に翻訳し、音声をテキストに翻訳するために、さまざまな言語をサポートしています。 ソース言語は常に次の音声言語テーブルからのものである必要があります。 使用可能なターゲット言語は、何に翻訳するか (音声かテキストか) によって決まります。 受信した音声は [60 言語](https://www.microsoft.com/translator/business/languages/)以上に翻訳できます。 これらの言語のサブセットは、[音声合成](language-support.md#text-languages)に利用できます。 
 
 ### <a name="speech-languages"></a>音声言語
 

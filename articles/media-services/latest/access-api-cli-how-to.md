@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 5d7c338dc9d5028552d9b33802982ffda97a56f0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 54a92e56df21b59430ed12f191a9cf7a918e14c9
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389852"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612901"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Azure CLI で Azure Media Services API にアクセスする
  
@@ -32,22 +32,19 @@ Azure Media Services API に接続するには、Azure AD サービス プリン
 
 ## <a name="prerequisites"></a>前提条件 
 
-[このクイックスタート](create-account-cli-quickstart.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
+- CLI をローカルにインストールして使用します。この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+    現在、一部の [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) コマンドが Azure Cloud Shell では正常に動作しません。 CLI はローカルで使用することをお勧めします。
 
-[Azure portal](http://portal.azure.com) にサインインしたら、CLI コマンドを実行するため、次の手順の説明に従って **CloudShell** を起動します。
+- [Media Services アカウントを作成する](create-account-cli-how-to.md)
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+    Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [ファイルのストリーミング](stream-files-dotnet-quickstart.md)
+[ファイルのストリーミング](stream-files-dotnet-quickstart.md)
 
 ## <a name="see-also"></a>関連項目
 

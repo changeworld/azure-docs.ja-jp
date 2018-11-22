@@ -6,24 +6,26 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 4f1f0e95ae74ef41ed91be55f4c964671e8f723b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3865a94192a65a2cb8a761cc1da30317f605548b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044551"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287202"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents スキーマを Event Grid で使用する
 
-Azure Event Grid では、[既定のイベント スキーマ](event-schema.md)に加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/master/json-format.md)内のイベントをネイティブ サポートしています。 [CloudEvents](http://cloudevents.io/) は、イベント データを共通の方法で記述するための[オープン標準仕様](https://github.com/cloudevents/spec/blob/master/spec.md)です。
+Azure Event Grid では、[既定のイベント スキーマ](event-schema.md)に加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/master/json-format.md)内のイベントをネイティブ サポートしています。 [CloudEvents](http://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/master/spec.md)です。
 
 CloudEvents を使用すると、クラウド ベースのイベントを発行したり使用したりするための共通のイベント スキーマを提供し、相互運用性を簡略化することができます。 このスキーマを使用すれば、ツールを統一化したり、イベントのルーティングや処理方法を標準化したり、外部のイベント スキーマを共通の方法で逆シリアル化することができます。 共通のスキーマを使用することで、プラットフォーム間での作業をより簡単に統合できます。
 
 CloudEvents は、[Cloud Native Compute Foundation](https://www.cncf.io/) を通じ、複数の[コラボレーター](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (マイクロソフトを含む) によって構築されています。 現在、バージョン 0.1 が提供されています。
 
 この記事では、Event Grid で CloudEvents スキーマを使用する方法について説明します。
+
+## <a name="install-preview-feature"></a>プレビュー機能のインストール
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -58,7 +60,7 @@ CloudEvents は、[Cloud Native Compute Foundation](https://www.cncf.io/) を通
 
 CloudEvents v0.1 では、次のプロパティが使えます。
 
-| CloudEvents        | Type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
+| CloudEvents        | type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | String   | "com.example.someevent"          | 発生したオカレンスの種類                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | eventType のバージョン (省略可能)                            | dataVersion
@@ -91,12 +93,12 @@ Event Grid は、CloudEvents スキーマ内のイベントの入力と出力の
 
 ### <a name="input-schema"></a>入力スキーマ
 
-カスタム トピックでの入力スキーマを CloudEvents に設定するには、カスタム トピックの作成時に Azure CLI で次のパラメーターを使います: `--input-schema cloudeventv01schema`。 カスタム トピックでは現在、CloudEvents v0.1 形式の受信イベントが受け付けられます。
+カスタム トピックを作成するときは、カスタム トピックに対する入力スキーマを設定します。
 
-Event Grid トピックを作成するには、次のコマンドを使います。
+Azure CLI では、次を使用します。
 
-```azurecli
-# if you have not already installed the extension, do it now.
+```azurecli-interactive
+# If you have not already installed the extension, do it now.
 # This extension is required for preview features.
 az extension add --name eventgrid
 
@@ -107,24 +109,50 @@ az eventgrid topic create \
   --input-schema cloudeventv01schema
 ```
 
+PowerShell では、次を使用します。
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+New-AzureRmEventGridTopic `
+  -ResourceGroupName gridResourceGroup `
+  -Location westcentralus `
+  -Name <topic_name> `
+  -InputSchema CloudEventV01Schema
+```
+
 CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマを使ったイベントをトピックに 対して発行するには、各イベントを個別に発行してください。
 
 ### <a name="output-schema"></a>出力スキーマ
 
-イベント サブスクリプションでの出力スキーマを CloudEvents に設定するには、イベント サブスクリプションの作成時に Azure CLI で次のパラメーターを使います: `--event-delivery-schema cloudeventv01schema`。 このイベント サブスクリプションのイベントは現在、CloudEvents v0.1 形式で配信されます。
+イベント サブスクリプションを作成するときは、出力スキーマを設定します。
 
-イベント サブスクリプションを作成するには、次のコマンドを使います。
+Azure CLI では、次を使用します。
 
-```azurecli
+```azurecli-interactive
+topicID=$(az eventgrid topic show --name <topic-name> -g gridResourceGroup --query id --output tsv)
+
 az eventgrid event-subscription create \
   --name <event_subscription_name> \
-  --topic-name <topic_name> \
-  -g gridResourceGroup \
+  --source-resource-id $topicID \
   --endpoint <endpoint_URL> \
   --event-delivery-schema cloudeventv01schema
 ```
 
-CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマ用に構成されたイベント サブスクリプションでは、各イベントが個別に受信されます。 現時点では、CloudEvents スキーマでイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 HTTP トリガーを使用する必要があります。 CloudEvents スキーマでイベントを受け取る HTTP トリガーを実装する例については、「[Event Grid トリガーとして HTTP トリガーを使用する](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)」を参照してください。
+PowerShell では、次を使用します。
+```azurepowershell-interactive
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint <endpoint_URL> `
+  -DeliverySchema CloudEventV01Schema
+```
+
+CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマ用に構成されたイベント サブスクリプションでは、各イベントが個別に受信されます。 現時点では、CloudEvents スキーマでイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 HTTP トリガーを使用します。 CloudEvents スキーマでイベントを受け取る HTTP トリガーを実装する例については、「[Event Grid トリガーとして HTTP トリガーを使用する](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

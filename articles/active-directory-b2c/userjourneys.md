@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 65b34a49006e6a2f9be003414498d9a8fc9955ae
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 231a3e87692e47ec33f8a613832acf5102257c96
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161824"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567062"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -50,7 +50,6 @@ ms.locfileid: "47161824"
 ユーザー体験は、トランザクションを成功させるために従う必要のあるオーケストレーション シーケンスとして表されます。 いずれかの手順に失敗した場合、トランザクションは失敗します。 これらのオーケストレーション手順は、ポリシー ファイルで許可されているビルディング ブロックと要求プロバイダーの両方を参照します。 ユーザー体験を表示する、またはレンダリングするオーケストレーション手順は、対応するコンテンツ定義 ID も参照しています。
 
 オーケストレーション手順は、オーケストレーション手順の要素で定義されている前提条件に基づいて、条件付きで実行できます。 たとえば、特定の要求が存在する場合のみ、あるいは要求が特定の値と等しい、または等しくない場合にのみオーケストレーション手順を実行するように確認できます。 
-
 
 オーケストレーション手順の順序付きリストを指定するために、**OrchestrationSteps** 要素がポリシーの一部として追加されます。 この要素は必須です。
 
@@ -101,7 +100,7 @@ ms.locfileid: "47161824"
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | 値 | 1:n | クエリされる ClaimTypeReferenceId。 別の値要素には、チェック対象の値が含まれています。</li></ul>|
-| アクションを表示します。 | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 `Action` の値を `SkipThisOrchestrationStep` に設定すると、関連付けられている `OrchestrationStep` は実行されません。 | 
+| Action | 1:1 | オーケストレーション手順内の前提条件チェックが true の場合に実行する必要があるアクション。 `Action` の値を `SkipThisOrchestrationStep` に設定すると、関連付けられている `OrchestrationStep` は実行されません。 | 
 
 ### <a name="preconditions-examples"></a>前提条件の例
 

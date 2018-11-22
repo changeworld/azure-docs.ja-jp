@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/14/2017
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 38ae18dca08b50a90102149d7e44169c956a1c0e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2e4406a75ea1d9f1968d994ae2294b39ca7613d5
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869637"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623861"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクの高いサインイン レポート
 
-Azure Active Directory (Azure AD) のセキュリティ レポートでは、環境内でユーザー アカウントが侵害されている確率を調べることができます。 
+Azure Active Directory (Azure AD) は、ユーザー アカウントに関連する疑わしい動作を検出します。 検出された動作ごとに、"**リスク イベント**" と呼ばれるレコードが作成されます。 詳細については、「[Azure AD リスク イベント](concept-risk-events.md)」を参照してください。 
 
-Azure AD は、ユーザー アカウントに関連する疑わしい動作を検出します。 検出された動作ごとに、"*リスク イベント*" と呼ばれるレコードが作成されます。 詳細については、「[Azure Active Directory risk events (Azure Active Directory リスク イベント)](concept-risk-events.md)」を参照してください。 
+セキュリティ レポートには、[Azure portal](https://portal.azure.com) から **[Azure Active Directory]** ブレードを選択し、**[セキュリティ]** セクションに移動することでアクセスできます。 
 
-検出されたリスク イベントは、以下のものの計算に使用されます。
+リスク イベントに基づいて計算されるセキュリティ レポートとして、次に示す異なる 2 つのレポートがあります。
 
-- **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 詳細については、「[方法: サインイン リスク ポリシーを構成する](../identity-protection/howto-sign-in-risk-policy.md)」をご覧ください。 
+- **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。
 
-- **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 詳細については、「[方法: ユーザー リスク ポリシーを構成する](../identity-protection/howto-user-risk-policy.md)」をご覧ください。  
-
-[Azure Portal](https://portal.azure.com) では、**[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、セキュリティ レポートを確認できます。 
+- **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 
 
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/10.png)
+
+これらのリスク イベントをトリガーするポリシーを構成する方法については、[ユーザー リスク ポリシーを構成する方法](../identity-protection/howto-user-risk-policy.md)に関するページを参照してください。  
 
 ## <a name="who-can-access-the-risky-sign-ins-report"></a>リスクの高いサインイン レポートにアクセスできるユーザー
 
@@ -49,18 +49,17 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>セキュリティ レポートにアクセスするために必要な Azure AD ライセンス  
 
-"危険なサインイン" レポートは、Azure Active Directory の全エディションで利用できます。  
-ただしエディションによってレポートの粒度が異なります。 
+"危険なサインイン" レポートは、Azure AD の全エディションで利用できます。 ただしエディションによってレポートの粒度が異なります。 
 
-- 危険なサインインは、**Azure Active Directory の Free エディションと Basic エディション**でも一覧表示できます。 
+- **Azure Active Directory Free エディションと Basic エディション**では、危険なサインインの一覧を取得できます。 
 
-- **Azure Active Directory Premium 1** エディションではこのモデルが拡張され、各レポートについて検出された、基になるリスク イベントの一部を調べることができます。 
+- 加えて、**Azure Active Directory Premium 1** エディションでは、各レポートについて検出された、基になるリスク イベントの一部を調べることができます。 
 
 - **Azure Active Directory Premium 2** エディションでは、基になるすべてのリスク イベントについて最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
 
-## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory の Free および Basic エディション
+## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Azure AD の Free エディションと Basic エディションにおける危険なサインイン レポート
 
-Azure Active Directory の Free および Basic エディションでは、管理対象ユーザーに関して検出された、リスクの高いサインインの一覧を提供します。 このレポートに表示される内容は次のとおりです。
+Azure AD の Free および Basic エディションでは、管理対象ユーザーに関して検出された、リスクの高いサインインの一覧を提供します。 各レコードには、次の属性が含まれています。
 
 - **ユーザー** - サインイン操作中に使用されたユーザーの名前
 - **IP** - Azure Active Directory への接続に使用されたデバイスの IP アドレス
@@ -68,10 +67,9 @@ Azure Active Directory の Free および Basic エディションでは、管�
 - **サインイン時刻** - サインインが実行された時刻
 - **状態** - サインインの状態
 
-
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/01.png)
 
-リスクの高いサインインの調査に基づき、次の対処方法の形式で Azure Active Directory にフィードバックを提出できます。
+リスクの高いサインインの調査に基づき、次のアクションを実行して Azure AD にフィードバックを提出できます。
 
 - 解決
 - 誤検知に設定
@@ -80,28 +78,23 @@ Azure Active Directory の Free および Basic エディションでは、管�
 
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/21.png)
 
-
-
-このレポートから次の操作を行うことができます。
+また、このレポートでは、次の操作も利用できます。
 
 - リソースの検索
 - レポート データのダウンロード
 
-
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/93.png)
 
 
-## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory Premium エディション
+## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Azure AD Premium エディションにおける危険なサインイン レポート
 
-Azure Active Directory Premium エディションのリスクの高いサインイン レポートで提供される情報を以下に示します。
+Azure AD Premium エディションのリスクの高いサインイン レポートでは、次の情報を提供しています。
 
 - 検出された[リスク イベントの種類](concept-risk-events.md)に関する集計情報
 
 - レポートをダウンロードするオプション
 
-
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/456.png)
-
 
 リスク イベントを選択すると、そのリスク イベントの詳細なレポート ビューが表示されます。ここから次の機能を利用できます。
 
@@ -112,7 +105,6 @@ Azure Active Directory Premium エディションのリスクの高いサイン�
 - このリスク イベントが検出されたユーザーの一覧を確認する
 
 - リスク イベントを手動で閉じる。 
-
 
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/457.png)
 
@@ -126,21 +118,15 @@ Azure Active Directory Premium エディションのリスクの高いサイン�
 
 - そのユーザーについて報告されたリスク イベントを調査する 
 
-
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/324.png)
-
 
 リスク イベントを調査するには、一覧からリスク イベントを 1 つ選択します。  
 このリスク イベントの **[詳細]** ブレードが開きます。 **[詳細]** ブレードで、リスク イベントを手動で閉じるか、手動で閉じたリスク イベントを再アクティブ化することができます。 
 
-
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/325.png)
-
-
-
-
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Active Directory Identity Protection の詳細については、「[Azure Active Directory Identity Protection](../active-directory-identityprotection.md)」を参照してください。
-
+- [ユーザー リスク ポリシーを構成する方法](../identity-protection/howto-user-risk-policy.md)
+- [リスク修復ポリシーを構成する方法](../identity-protection/howto-user-risk-policy.md)
+- [リスク イベントの種類](concept-risk-events.md)

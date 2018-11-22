@@ -6,18 +6,20 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 11/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: f79fa096484edc34294ea0a69584e12788dba647
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: ce9df1d45de82c759883dc90d50c28551bf62cdf
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043399"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287306"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid スキーマへのカスタム フィールドのマップ
 
 イベント データと必要な [Event Grid スキーマ](event-schema.md)が一致しない場合でも、Event Grid を使用して、イベントをサブスクライバーにルーティングできます。 この記事では、カスタム スキーマを Event Grid スキーマにマップする方法について説明します。
+
+## <a name="install-preview-feature"></a>プレビュー機能のインストール
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -39,18 +41,18 @@ ms.locfileid: "48043399"
 
 ## <a name="create-custom-topic-with-mapped-fields"></a>フィールドをマップしたカスタム トピックの作成
 
-カスタム トピックを作成する際に、元のイベントのフィールドを Event Grid スキーマにマップする方法を指定します。 マッピングのカスタマイズに使用するプロパティは 3 つあります。
+カスタム トピックを作成する際に、元のイベントのフィールドを Event Grid スキーマにマップする方法を指定します。 マッピングをカスタマイズする際に使用する値として、次の 3 つがあります。
 
-* `--input-schema` パラメーターでは、スキーマの種類を指定します。 指定可能なオプションは、*cloudeventv01schema*、*customeventschema*、*eventgridschema* です。 既定値は eventgridschema です。 カスタム スキーマと Event Grid スキーマの間のカスタム マッピングを作成する場合は、customeventschema を使用します。 イベントが CloudEvents スキーマの場合は、cloudeventv01schema を使用します。
+* **--input-schema** の値では、スキーマのタイプを指定します。 使用可能なオプションは、CloudEvents スキーマ、カスタム イベント スキーマ、または Event Grid スキーマです。 既定値は、Event Grid スキーマです。 カスタム スキーマと Event Grid スキーマの間のカスタム マッピングを作成する場合は、カスタム イベント スキーマを使用します。 イベントが CloudEvents スキーマ内にある場合は、Cloudevents スキーマを使用します。
 
-* `--input-mapping-default-values` パラメーターでは、Event Grid スキーマのフィールドの既定値を指定します。 `subject`、`eventtype`、および `dataversion` の既定値を指定できます。 通常、これらの 3 つのフィールドのいずれかに対応するフィールドがカスタム スキーマに含まれていない場合に、このパラメーターを使用します。 たとえば、dataversion が常に **1.0** に設定されるように指定できます。
+* **-mapping-default-values** プロパティでは、Event Grid スキーマ内のフィールドの既定値を指定します。 `subject`、`eventtype`、および `dataversion` の既定値を指定できます。 通常、これらの 3 つのフィールドのいずれかに対応するフィールドがカスタム スキーマに含まれていない場合に、このパラメーターを使用します。 たとえば、dataversion が常に **1.0** に設定されるように指定できます。
 
-* `--input-mapping-fields` パラメーターでは、カスタム スキーマのフィールドを Event Grid スキーマにマップします。 値はスペースで区切ったキー/値のペアで指定します。 キー名には、Event Grid フィールドの名前を使用します。 値には、カスタム フィールドの名前を使用します。 `id`、`topic`、`eventtime`、`subject`、`eventtype`、および `dataversion` ではキー名を使用できます。
+* **-mapping-fields** の値により、スキーマのフィールドが Event Grid スキーマにマッピングされます。 値はスペースで区切ったキー/値のペアで指定します。 キー名には、Event Grid フィールドの名前を使用します。 値には、カスタム フィールドの名前を使用します。 `id`、`topic`、`eventtime`、`subject`、`eventtype`、および `dataversion` ではキー名を使用できます。
 
-次の例では、マッピングされたフィールドと既定のフィールドが含まれるカスタム トピックを作成します。
+Azure CLI でカスタム トピックを作成するには、次を使用します。
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
+# If you have not already installed the extension, do it now.
 # This extension is required for preview features.
 az extension add --name eventgrid
 
@@ -63,39 +65,77 @@ az eventgrid topic create \
   --input-mapping-default-values subject=DefaultSubject dataVersion=1.0
 ```
 
+PowerShell では、次を使用します。
+
+```azurepowershell-interactive
+# If you have not already installed the module, do it now.
+# This module is required for preview features.
+Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
+
+New-AzureRmEventGridTopic `
+  -ResourceGroupName myResourceGroup `
+  -Name demotopic `
+  -Location eastus2 `
+  -InputSchema CustomEventSchema `
+  -InputMappingField @{eventType="myEventTypeField"} `
+  -InputMappingDefaultValue @{subject="DefaultSubject"; dataVersion="1.0" }
+```
+
 ## <a name="subscribe-to-event-grid-topic"></a>Event Grid トピックのサブスクライブ
 
-カスタム トピックをサブスクライブする場合は、イベントの受信に使用するスキーマを指定します。 `--event-delivery-schema` パラメーターを使用し、*cloudeventv01schema*、*eventgridschema*、または *inputeventschema* に設定します。 既定値は eventgridschema です。
+カスタム トピックをサブスクライブする場合は、イベントの受信に使用するスキーマを指定します。 CloudEvents スキーマ、カスタム イベント スキーマ、または Event Grid スキーマのいずれかを指定します。 既定値は、Event Grid スキーマです。
 
-このセクションの例では、イベント ハンドラーに Queue Storage を使用しています。 詳細については、[Azure Queue Storage へのカスタム イベントのルーティング](custom-event-to-queue-storage.md)に関するページを参照してください。
-
-次の例では、Event Grid トピックをサブスクライブし、Event Grid スキーマを使用します。
+次の例では、Event Grid トピックをサブスクライブし、Event Grid スキーマを使用します。 Azure CLI では、次を使用します。
 
 ```azurecli-interactive
+topicid=$(az eventgrid topic show --name demoTopic -g myResourceGroup --query id --output tsv)
+
 az eventgrid event-subscription create \
-  --topic-name demotopic \
-  -g myResourceGroup \
+  --source-resource-id $topicid \
   --name eventsub1 \
   --event-delivery-schema eventgridschema \
-  --endpoint-type storagequeue \
-  --endpoint <storage-queue-url>
+  --endpoint <endpoint_URL>
 ```
 
 次の例では、イベントの入力スキーマを使用します。
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
-  --topic-name demotopic \
-  -g myResourceGroup \
+  --source-resource-id $topicid \
   --name eventsub2 \
   --event-delivery-schema inputeventschema \
-  --endpoint-type storagequeue \
-  --endpoint <storage-queue-url>
+  --endpoint <endpoint_URL>
+```
+
+次の例では、Event Grid トピックをサブスクライブし、Event Grid スキーマを使用します。 PowerShell では、次を使用します。
+
+```azurepowershell-interactive
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName eventsub1 `
+  -EndpointType webhook `
+  -Endpoint <endpoint-url> `
+  -DeliverySchema EventGridSchema
+```
+
+次の例では、イベントの入力スキーマを使用します。
+
+```azurepowershell-interactive
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName eventsub2 `
+  -EndpointType webhook `
+  -Endpoint <endpoint-url> `
+  -DeliverySchema CustomInputSchema
 ```
 
 ## <a name="publish-event-to-topic"></a>トピックへのイベントの公開
 
 これで、カスタム トピックにイベントを送信し、マッピングの結果を確認する準備が整いました。 次のスクリプトで[サンプル スキーマ](#original-event-schema)を使ってイベントを投稿します。
+
+Azure CLI では、次を使用します。
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name demotopic -g myResourceGroup --query "endpoint" --output tsv)
@@ -106,23 +146,43 @@ event='[ { "myEventTypeField":"Created", "resource":"Users/example/Messages/1000
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
-それでは、Queue Storage を確認してください。 2 つのサブスクリプションで異なるスキーマを使ってイベントが配信されています。
+PowerShell では、次を使用します。
+
+```azurepowershell-interactive
+$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
+$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
+
+$htbody = @{
+    myEventTypeField="Created"
+    resource="Users/example/Messages/1000"
+    resourceData= @{
+        someDataField1="SomeDataFieldValue"
+    }
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
+
+ここで、Webhook エンドポイントを確認します。 2 つのサブスクリプションで異なるスキーマを使ってイベントが配信されています。
 
 最初のサブスクリプションでは、Event Grid スキーマを使用しました。 配信されたイベントの形式は次のとおりです。
 
 ```json
 {
-  "Id": "016b3d68-881f-4ea3-8a9c-ed9246582abe",
-  "EventTime": "2018-05-01T20:00:25.2606434Z",
-  "EventType": "Created",
-  "DataVersion": "1.0",
-  "MetadataVersion": "1",
-  "Topic": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.EventGrid/topics/demotopic",
-  "Subject": "DefaultSubject",
-  "Data": {
+  "id": "aa5b8e2a-1235-4032-be8f-5223395b9eae",
+  "eventTime": "2018-11-07T23:59:14.7997564Z",
+  "eventType": "Created",
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.EventGrid/topics/demotopic",
+  "subject": "DefaultSubject",
+  "data": {
     "myEventTypeField": "Created",
     "resource": "Users/example/Messages/1000",
-    "resourceData": { "someDataField1": "SomeDataFieldValue" } 
+    "resourceData": {
+      "someDataField1": "SomeDataFieldValue"
+    }
   }
 }
 ```
@@ -135,7 +195,9 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 {
   "myEventTypeField": "Created",
   "resource": "Users/example/Messages/1000",
-  "resourceData": { "someDataField1": "SomeDataFieldValue" }
+  "resourceData": {
+    "someDataField1": "SomeDataFieldValue"
+  }
 }
 ```
 

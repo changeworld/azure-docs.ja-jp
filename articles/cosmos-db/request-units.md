@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: rimman
-ms.openlocfilehash: eabfe503d9b92252ada0014eba4c83390dd6fd97
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 709cd16c7eee30dd2d88ea87b5f704ad20530ffb
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236077"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621345"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 
@@ -52,8 +52,8 @@ RU/秒は、スループットのための通貨と考えることができま�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Cosmos DB のコンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)の詳細を学習する
+* [Cosmos DB のコンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)の詳細を確認する
 * [論理パーティション](partition-data.md)の詳細を確認する
-* [スループットのスケーリング](scaling-throughput.md)の詳細を学習する
+* [プロビジョニング スループットのグローバルなスケーリング](scaling-throughput.md)の詳細を確認する
 * [Cosmos コンテナーのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)について学習する
 * [Cosmos データベースのスループットをプロビジョニングする方法](how-to-provision-database-throughput.md)について学習する

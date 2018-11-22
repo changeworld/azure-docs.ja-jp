@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: daveba
-ms.openlocfilehash: cce6685e98b7a67ab8e9e9ea35ccb492ae56da10
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 58643593970fa00822e79ed54f91d56c45ebba65
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018211"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578571"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>REST API 呼び出しを使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 
@@ -36,15 +36,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-it-work)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- この記事の管理操作を実行するアカウントには、次の Azure のロール ベースのアクセス制御の割り当てが必要です。
-
-    > [!NOTE]
-    > Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
-
-    - VM を作成して、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を有効化したり、Azure VM から削除したりするための[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)。
-    - ユーザー割り当て ID を作成するための[マネージド ID 共同作成者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)ロール。
-    - [マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロール。ユーザー割り当てマネージド ID を VM に割り当てたり、VM から削除したりします。
-- Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) をインストールするか、Azure Portal で [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
+- Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) をインストールするか、Azure portal で [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
 - [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) または [Linux ディストリビューション OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) を使用する場合は、[Azure CLI ローカル コンソールをインストール](/cli/azure/install-azure-cli)します。
 - Azure CLI ローカル コンソールを使用している場合は、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を管理する Azure サブスクリプションに関連付けられているアカウントで `az login` を使用して Azure にサインインします。
 
@@ -56,7 +48,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Azure VM の作成中にシステム割り当てマネージド ID を有効にする
 
-システム割り当てマネージド ID を有効にして Azure VM を作成するには、VM を作成して、アクセス トークンを取得し、CURL を使用して、システム割り当てマネージド ID の種類の値を指定して Resource Manager エンドポイントを呼び出す必要があります。
+システム割り当てマネージド ID を有効にして Azure VM を作成するには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 1. [az group create](/cli/azure/group/#az-group-create) を使用して、VM とその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/resource-group-overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
 
@@ -84,7 +76,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>既存の Azure VM においてシステム割り当て ID を有効にする
 
-既存の VM でシステム割り当て ID を有効にするには、アクセ ストークンを取得し、CURL を使用して Resource Manager REST エンドポイントを呼び出し、ID の種類を更新する必要があります。
+もともとシステム割り当てマネージド ID をプロビジョニングされていなかった VM でシステム割り当てマネージド ID を有効にするには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 1. Bearer アクセス トークンを取得します。このトークンは、Authorization ヘッダーでシステム割り当てマネージド ID を使用して VM を作成する次の手順で使用します。
 
@@ -121,7 +113,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Azure VM でシステム割り当てマネージド ID を無効にする
 
-既存の VM でシステム割り当てマネージド ID を無効にするには、アクセ ストークンを取得し、CURL を使用して Resource Manager REST エンドポイントを呼び出し、ID の種類を `None` に更新する必要があります。
+VM でシステム割り当てマネージド ID を無効にするには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 1. Bearer アクセス トークンを取得します。このトークンは、Authorization ヘッダーでシステム割り当てマネージド ID を使用して VM を作成する次の手順で使用します。
 
@@ -145,6 +137,8 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 このセクションでは、CURL を使用して Azure Resource Manager REST エンドポイントを呼び出し、Azure VM でユーザー割り当てマネージド ID を追加および削除する方法について説明します。
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Azure VM の作成中にユーザー割り当てマネージド ID を割り当てる
+
+ユーザー割り当て ID を VM に割り当てるには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールと[マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 1. Bearer アクセス トークンを取得します。このトークンは、Authorization ヘッダーでシステム割り当てマネージド ID を使用して VM を作成する次の手順で使用します。
 
@@ -182,6 +176,8 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    ```
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>ユーザー割り当てマネージド ID を既存の Azure VM に割り当てる
+
+ユーザー割り当て ID を VM に割り当てるには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールと[マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 1. Bearer アクセス トークンを取得します。このトークンは、Authorization ヘッダーでシステム割り当てマネージド ID を使用して VM を作成する次の手順で使用します。
 
@@ -238,6 +234,8 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    ```
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Azure VM からユーザー割り当てのマネージド ID を削除する
+
+VM からユーザー割り当ての ID を削除にするには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールの割り当てが必要です。
 
 1. Bearer アクセス トークンを取得します。このトークンは、Authorization ヘッダーでシステム割り当てマネージド ID を使用して VM を作成する次の手順で使用します。
 

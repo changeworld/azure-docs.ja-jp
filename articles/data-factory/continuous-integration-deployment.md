@@ -10,18 +10,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 94633ce2f11f9efa99f1ad44820abd5aecdec923
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457212"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623793"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
 
-継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。 継続的デリバリーは、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
+継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。 継続的デリバリーは、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
 
 Azure Data Factory では、継続的インテグレーションと継続的デリバリーとは、Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動することを意味します。 継続的インテグレーションと継続的デリバリーを行うために、Data Factory UI 統合と Azure Resource Manager テンプレートを使用できます。 **ARM テンプレート** オプションを選択すると、Data Factory UI によって Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、実稼働) ごとに 1 つの構成ファイルを作成する必要があります。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
 
@@ -75,11 +75,11 @@ Data Factory UI で Azure Repos Git 統合を有効にした後で使用でき�
 
 ### <a name="requirements"></a>必要条件
 
--   [*Azure Resource Manager サービス エンドポイント*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)を使用して Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
+-    [*Azure Resource Manager サービス エンドポイント*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)を使用して Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
 
 -   Azure Repos Git 統合が構成されたデータ ファクトリ。
 
--   シークレットを格納する [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+-   シークレットを格納する  [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 。
 
 ### <a name="set-up-an-azure-pipelines-release"></a>Azure Pipelines リリースをセットアップする
 
@@ -832,6 +832,48 @@ else {
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Resource Manager テンプレートでカスタム パラメーターを使用する
 
 Resource Manager テンプレートにカスタム パラメーターを定義できます。 必要なのは、リポジトリのルート フォルダーに `arm-template-parameters-definition.json` という名前のファイルを配置するだけです  (ファイル名は、ここに示されている名前と正確に一致する必要があります)。Data Factory は、コラボレーション ブランチからだけでなく、現在作業中のどのブランチからもファイルの読み取りを試みます。 ファイルが見つからない場合、Data Factory では既定のパラメーターと値が使用されます。
+
+### <a name="syntax-of-a-custom-parameters-file"></a>カスタム パラメーター ファイルの構文
+
+カスタム パラメーター ファイルの作成時に使用するいくつかのガイドラインを次に示します。 この構文の例を確認するには、下記の「[サンプルのカスタム パラメーター ファイル](#sample)」セクションを参照してください。
+
+1. 定義ファイルに配列を指定した場合、テンプレート内の一致するプロパティが配列であることを指示します。 Data Factory は、配列の最初のオブジェクトに指定された定義を使用して、配列内のすべてのオブジェクトを反復処理します。 2 番目のオブジェクトである文字列は、各反復処理のパラメーターの名前として使用されるプロパティ名です。
+
+    ```json
+    ...
+    "Microsoft.DataFactory/factories/triggers": {
+        "properties": {
+            "pipelines": [{
+                    "parameters": {
+                        "*": "="
+                    }
+                },
+                "pipelineReference.referenceName"
+            ],
+            "pipeline": {
+                "parameters": {
+                    "*": "="
+                }
+            }
+        }
+    },
+    ...
+    ```
+
+2. プロパティ名に `*` を設定した場合、、明示的に定義されているものを除き、そのレベルにあるすべてのプロパティをテンプレートで使用することを指示します。
+
+3. プロパティの値を文字列として設定した場合、プロパティをパラメーター化することを指示します。 `<action>:<name>:<stype>` の形式を使用します。
+    1.  `<action>` は次のいずれかの値になります。 
+        1.  `=` は、パラメーターの既定値として現在の値を保持することを意味します。
+        2.  `-` は、パラメーターの既定値を保持しないことを意味します。
+        3.  `|` は、接続文字列に対する Azure Key Vault からのシークレットの特殊なケースです。
+    2.  `<name>` は、パラメーターの名前です。 `<name`> が空白の場合、パラメーターの名前になります。 
+    3.  `<stype>` は、パラメーターの型です。 `<stype>` が空白の場合、既定の型は文字列です。
+4.  パラメーター名の冒頭に `-` 文字を入力すると、完全な Resource Manager パラメーター名が `<objectName>_<propertyName>` に短縮されます。
+たとえば、`AzureStorage1_properties_typeProperties_connectionString` は `AzureStorage1_connectionString` に短縮されます。
+
+
+### <a name="sample"></a>サンプルのカスタム パラメーター ファイル
 
 次の例で、サンプルのパラメーター ファイルを示します。 このサンプルを参照として使用して、独自のカスタム パラメーター ファイルを作成します。 指定したファイルが適切な JSON 形式ではない場合、Data Factory によりブラウザーのコンソールにエラー メッセージが出力され、Data Factory の UI に表示されている既定のパラメーターと値に戻されます。
 

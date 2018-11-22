@@ -2,18 +2,18 @@
 title: Azure IoT Edge のモジュールを開発する | Microsoft Docs
 description: Azure IoT Edge のカスタム モジュールの作成方法について説明します
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d4253942ea5cd998bfd3806978e108413949f886
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: cb97e2cf6d554753f64afc76de84f43e38443909
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741436"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567232"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>IoT Edge モジュールを開発するための要件とツールについて理解する
 
@@ -58,7 +58,9 @@ IoT Edge ハブは、[モジュール構成](module-composition.md)に関する�
 | $outputName | メッセージを送信するために使用された出力。 空の場合もあります。 |
 
 ### <a name="connecting-to-iot-edge-hub-from-a-module"></a>モジュールから IoT Edge ハブへの接続
-モジュールからローカル IoT Edge ハブに接続するには、2 つの手順が必要です。1 つは、 モジュールの起動時に IoT Edge ランタイムによって提供された接続文字列を使用することで、もう 1 つは、そのデバイスの IoT Edge ハブによって提示された証明書がアプリケーションによって受け入れられることを確認することです。
+モジュールからローカル IoT Edge ハブに接続するには、2 つの手順が必要です。 
+1. モジュールの起動時に IoT Edge ランタイムによって提供された接続文字列を使用します。
+2. そのデバイスの IoT Edge ハブによって提示された証明書がアプリケーションによって受け入れられることを確認します。
 
 使用する接続文字列は、IoT Edge ランタイムによって環境変数 `EdgeHubConnectionString` に挿入されます。 これにより、その接続文字列を使用する必要があるすべてのプログラムで、その接続文字列が使用可能になります。
 

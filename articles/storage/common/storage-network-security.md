@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 51404c35b42d1c98116e74b5b7a47afe05b7d2a9
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470066"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300559"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
@@ -201,7 +201,7 @@ IP ネットワーク ルールは、**パブリック インターネット**�
 ### <a name="configuring-access-from-on-premises-networks"></a>オンプレミスのネットワークからのアクセスの構成
 IP ネットワーク ルールでオンプレミスのネットワークからストレージ アカウントへのアクセスを許可するには、ネットワークで使用するインターネット接続 IP アドレスを特定する必要があります。  サポートが必要な場合は、ネットワーク管理者にお問い合わせください。
 
-ネットワークが [ExpressRoute](/azure/expressroute/expressroute-introduction) を使用して Azure ネットワークに接続されている場合、各回線は、[Azure パブリック ピアリング](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)を使用して Azure Storage などの Microsoft サービスへ接続するために使用している 2 つのパブリック IP アドレスを使って Microsoft Edge で構成されます。  回線から Azure Storage への通信を許可するには、回線のパブリック IP アドレスに対する IP ネットワーク ルールを作成する必要があります。  ExpressRoute 回線のパブリック IP アドレスを確認するには、Azure Portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。
+ネットワークが [ExpressRoute](/azure/expressroute/expressroute-introduction) を使用して Azure ネットワークに接続されている場合、各回線は、[Azure パブリック ピアリング](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)を使用して Azure Storage などの Microsoft サービスへ接続するために使用している 2 つのパブリック IP アドレスを使って Microsoft Edge で構成されます。  回線から Azure Storage への通信を許可するには、回線のパブリック IP アドレスに対する IP ネットワーク ルールを作成する必要があります。  ExpressRoute 回線のパブリック IP アドレスを確認するには、Azure portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。
 
 
 ### <a name="managing-ip-network-rules"></a>IP ネットワーク ルールの管理

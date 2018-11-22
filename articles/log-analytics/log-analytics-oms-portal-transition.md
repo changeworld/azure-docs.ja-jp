@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: c731d0498c026a5d0659335550f6e280a031b1e4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2e14112220eeea1df094ff0c5844429fa3891a9b
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011359"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612807"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
@@ -84,7 +84,7 @@ OMS ポータルを使用して新しいワークスペースを作成するこ�
 アラートは [Azure portal に拡張されました](../monitoring-and-diagnostics/monitoring-alerts-extend.md)。 これが完了したら、アラートに対する管理アクションは Azure portal でのみ使用可能になります。 既存のアラートは引き続き OMS ポータルに表示されます。 Log Analytics Alert REST API または Log Analytics のアラート リソース テンプレートを使用してプログラムでアラートにアクセスする場合は、API 呼び出し、Azure Resource Manager テンプレート、PowerShell コマンドではアクションではなくアクション グループを使用する必要があります。
 
 ### <a name="alert-management-solution"></a>アラート管理ソリューション
-[Alert Management ソリューション](log-analytics-solution-alert-management.md)の代わりに、[Azure Monitor の統合アラート インターフェイス](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)を使用して、アラートの視覚化と管理を行うことができます。 この新しいエクスペリエンスでは、Log Analytics からのログ アラートをはじめ、Azure 内の複数のソースからのアラートが集約されます。 アラートの分布の表示、関連するアラートをスマート グループで自動的にグループ化する機能の活用、複数のサブスクリプションにわたるアラートの表示が可能なほか、さまざまなフィルターを適用することもできます。 これらの機能はすべて、2018 年 6 月 4 日からプレビューで使用できます。 Alert Management ソリューションは、Azure portal では使用できなくなります。 
+[Alert Management ソリューション](log-analytics-solution-alert-management.md)の代わりに、[Azure Monitor の統合アラート インターフェイス](../monitoring-and-diagnostics/monitoring-overview-alerts.md)を使用して、アラートの視覚化と管理を行うことができます。 この新しいエクスペリエンスでは、Log Analytics からのログ アラートをはじめ、Azure 内の複数のソースからのアラートが集約されます。 アラートの分布の表示、関連するアラートをスマート グループで自動的にグループ化する機能の活用、複数のサブスクリプションにわたるアラートの表示が可能なほか、さまざまなフィルターを適用することもできます。 これらの機能はすべて、2018 年 6 月 4 日からプレビューで使用できます。 Alert Management ソリューションは、Azure portal では使用できなくなります。 
 
 Alert Management ソリューションで収集されたデータ (アラートの種類を含むレコード) は、このソリューションがワークスペースにインストールされているかぎり、引き続き Log Analytics に保存されます。 2018 年 8 月から、統合アラートからワークスペースへのアラートのストリーミングが有効になり、この機能の代わりに使用されます。 一部のスキーマの変更が予定されており、今後発表される予定です。
 

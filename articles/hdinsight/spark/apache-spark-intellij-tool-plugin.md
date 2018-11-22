@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: 90c84130902420dcaa2ace74a5743fc9719622b0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ff7cfcd56158bd38d031a29a21247fb9eb6b91f9
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014263"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289072"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -195,7 +195,7 @@ Scala アプリケーションを作成した後に、クラスターに送信�
        > [!NOTE]
        > ご自分の参照される Jar と参照ファイルをアップロードするには、[リソースをクラスターにアップロードする方法](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)に関するページを参照してください。
                          
-    * **[アップロード パス]**: Jar または Scala プロジェクト リソースの送信用の保存先を指定できます。 サポートされるストレージは 3 種類です。**[Azure BLOB]**、**[Use Spark interactive session to upload artifacts]\(Spark 対話型セッションを使用して成果物をアップロードする\)**、および **[Use cluster default storage account]\(クラスターの既定のストレージ アカウントを使用する\)** です。 次のスクリーンショットは、Azure BLOB の例です。
+    * **[アップロード パス]**: Jar または Scala プロジェクト リソースの送信用の保存先を指定できます。 サポートされるストレージのタイプは、**[Azure BLOB]**、**[Use Spark interactive session to upload artifacts]\(Spark 対話型セッションを使用して成果物をアップロードする\)**、**[Use cluster default storage account]\(クラスターの既定のストレージ アカウントを使用する\)**、および **[ADLS Gen1]\(ADSL 第 1 世代\)** です。 次のスクリーンショットは、Azure BLOB の例です。
 
         ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
 
@@ -258,26 +258,25 @@ Azure Toolkit for IntelliJ の既定では、すべての Azure サブスクリ�
 Spark Local Console(Scala) を実行したり、Spark Livy Interactive Session Console(Scala) を実行したりすることができます。
 
 ### <a name="spark-local-consolescala"></a>Spark Local Console(Scala)
-1. 手動で依存関係を追加する必要があります。 メニューで **[ファイル]**->**[Project Structures]\(プロジェクトの構造\)**->**[プロジェクトの設定]**->**[ライブラリ]** の順に選択して、**+** をクリックし、**[From Maven...]\(Maven から...\)** を選びます。次に、ポップアップ ダイアログに「**org.apache.spark:spark-repl_2.11:2.1.0**」と入力します。 ライブラリの依存関係を追加した後、**[Project Structures]\(プロジェクトの構造\)** ウィンドウ内の **[モジュール]** の最初の行に依存関係を移動する必要があります。 移動する前に、**[スコープ]** を **[ランタイム]** に変更します。
-
-    ![ローカル コンソールの依存関係ライブラリの追加](./media/apache-spark-intellij-tool-plugin/local-console-add-dependency-libraries.png)
-
-    ![ローカル コンソールの最初の行への移動](./media/apache-spark-intellij-tool-plugin/local-console-move-first-line.png)
-
-2. 以前に設定していない場合は、構成を設定します。 **[Run/Debug Configurations]\(実行/デバッグの構成\)** ウィンドウで、**+**->**[Azure HDInsight Spark]** をクリックして **[Locally Run]\(ローカルで実行\)** タブを選択し、メイン クラスを選んで **[OK]** をクリックします。
+1. 以前に設定していない場合は、構成を設定します。 **[Run/Debug Configurations]\(デバッグの実行/構成\)** ウィンドウで、**+**->**[Azure HDInsight Spark]** をクリックし、タブ **[Locally Run]\(ローカルで実行\)** および **[Remotely Run in Cluster]\(クラスターでリモートから実行\)** を選択します。次に、メイン クラスを選択し、**[OK]** をクリックします。
 
     ![ローカル コンソールの構成の設定](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
  
-3. ご自分のメイン クラス ファイルに対応するファイルを開いて **[Spark Console]\(Spark コンソール\)** を右クリックし、**[Run Spark Local Console(Scala)]\(Spark Local Console(Scala) の実行\)** をクリックします。 または、**[ツール]** メニュー ->**[Spark Console]\(Spark コンソール\)**->**[Run Spark Local Console(Scala)]\(Spark Local Console(Scala) の実行\)** に移動して、コンソールを起動します。
+2. 対応するメイン クラス ファイルを開いて **[Spark Console]\(Spark コンソール\)** を右クリックし、**[Run Spark Local Console(Scala)]\(Spark ローカル コンソール (Scala) の実行\)** をクリックします。 または、**[ツール]** メニュー ->**[Spark Console]\(Spark コンソール\)**->**[Run Spark Local Console(Scala)]\(Spark Local Console(Scala) の実行\)** に移動して、コンソールを起動します。 依存関係を自動修正するかどうかを尋ねる 2 つのダイアログ ボックスが表示されます。 **[自動修正]** ボタンをクリックします。
+
+    ![Spark 自動修正 1](./media/apache-spark-intellij-tool-plugin/console-auto-fix1.png)
+
+    ![Spark 自動修正 2](./media/apache-spark-intellij-tool-plugin/console-auto-fix2.png)
 
     ![Spark のローカル エントリ ポイント](./media/apache-spark-intellij-tool-plugin/spark-console-local-entry-script.png)
 
-4. ローカル コンソールが正常に起動されると、 次のように表示されます。 必要な操作を行うことができます。 たとえば、「**sc.appName**」と入力して、Ctrl キーを押しながら Enter キーを押すと、結果が表示されます。
+3. ローカル コンソールが正常に起動されると、 次のように表示されます。 必要な操作を行うことができます。 たとえば、「**sc.appName**」と入力して、Ctrl キーを押しながら Enter キーを押すと、結果が表示されます。 ローカルのコンソールを終了するには、赤いボタンをクリックします。
 
     ![ローカル コンソールの結果](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
+
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy Interactive Session Console(Scala)
-これは IntelliJ 2018.2 でのみサポートされます。
+これは、IntelliJ 2018.2 および 2018.3 上でのみサポートされます。
 
 1. 以前に設定していない場合は、構成を設定します。 **[Run/Debug Configurations]\(実行/デバッグの構成\)** ウィンドウで、**+**->**[Azure HDInsight Spark]** をクリックして、**[Remotely Run in Cluster]\(クラスターでリモートから実行\)** タブを選択し、クラスター名とメイン クラスを選んで **[OK]** をクリックします。
 
@@ -290,6 +289,11 @@ Spark Local Console(Scala) を実行したり、Spark Livy Interactive Session C
 3. コンソールが正常に起動したら、必要な操作を行うことができます。 たとえば、「**sc.appName**」と入力して、Ctrl キーを押しながら Enter キーを押すと、結果が表示されます。
 
     ![Interactive Console の結果](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+
+### <a name="send-selection-to-spark-console"></a>選択項目の Spark コンソールへの送信
+一部のコードをローカルのコンソールまたは Livy 対話式セッション コンソール (Scala) に送信して、スクリプトの結果を事前に確認すると便利です。 Scala ファイル内の一部のコードを強調表示し、右クリックして **[Send Selection To Spark Console]\(選択項目を Spark コンソールに送信する\)** を選択します。 選択したコードがコンソールに送信され、実行されます。 結果は、コンソール内のコードの後に表示されます。 コンソールは、エラーが存在する場合は、エラーをチェックします。 
+
+   ![選択項目の Spark コンソールへの送信](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ を使用できるように既存の IntelliJ IDEA アプリケーションを変換する
 IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを、Azure Toolkit for IntelliJ に対応するように変換することができます。 その後、プラグインを使用して、そのアプリケーションを HDInsight Spark クラスターに送信できます。
@@ -333,11 +337,7 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 ![IntelliJ の [VM options]\(VM オプション\) ボックスへのオプションの追加](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>FAQ
-クラスターをリンクするときに、ストレージの資格情報を入力することをお勧めします。
-
-![クラスターをリンクし、ストレージの資格情報を入力する](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
-
-ジョブの送信には、2 つのモードがあります。 ストレージ資格情報が入力されると、バッチ モードが使用され、ジョブが送信されます。 入力されない場合、対話モードが使用されます。 クラスターがビジー状態の場合、以下のエラーが表示されることがあります。
+クラスターがビジー状態の場合、以下のエラーが表示されることがあります。
 
 ![クラスターがビジー状態のときの Intellij get エラー](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
 

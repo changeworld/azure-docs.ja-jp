@@ -14,12 +14,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 35737b91d8ef0b58223f51530f56408df1c7eb8e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d8bb7a975bd5bab8698d20e5d21514b79945eac6
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138794"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564920"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights コーホート
 
@@ -49,9 +49,9 @@ ms.locfileid: "50138794"
     このコーホートに対しては 3 つのパラメーターがあります。
     * **アクティビティ**: "使用" としてカウントするイベントおよびページ ビューを選択します。
     * **期間**: 月の定義です。
-    * **UsedAtleastCustom**: 関心度が高いとしてカウントするために、ユーザーが期間内に何かを使用する必要がある回数。
+    * **UsedAtLeastCustom**: 関心度が高いとしてカウントするために、ユーザーが期間内に何かを使用する必要がある回数。
 
-4. **UsedAtleastCustom** を **5 日以上**に変更し、**[期間]** を既定値の 28 日のままとします。
+4. **UsedAtLeastCustom** を **5 日以上**に変更し、**[期間]** を既定値の 28 日のままとします。
 
     ![関心度の高いユーザー](.\media\app-insights-usage-cohorts\003.png)
 

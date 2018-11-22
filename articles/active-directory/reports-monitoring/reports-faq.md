@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory レポートに関する FAQ | Microsoft Docs
-description: Azure Active Directory レポートに関する FAQ。
+description: Azure Active Directory レポートに関するよく寄せられる質問。
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -12,55 +12,55 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: report-monitor
-ms.date: 05/10/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c2e131776fb9f2c5e87c363d0d57e655bc34448f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5cbf0895274672c053158cf07acb344908b37831
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294222"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623470"
 ---
-# <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory レポートに関する FAQ
+# <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
 この記事では、Azure Active Directory (Azure AD) レポートに関してよく寄せられる質問に対する回答を示します。 詳細については、「[Azure Active Directory レポート](overview-reports.md)」をご覧ください。 
 
 ## <a name="getting-started"></a>使用の開始 
 
-**Q: https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用して、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
+**Q: 現在 https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用しており、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
 
-**A:** [API リファレンス ドキュメント](https://developer.microsoft.com/graph/)を参照して、新しい API を使用して[アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)にアクセスする方法をご確認ください。 このエンドポイントには 2 つのレポート (監査とサインイン) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
+**A:** [API リファレンス](https://developer.microsoft.com/graph/)を参照して、[API を使用してアクティビティ レポートにアクセスできる](concept-reporting-api.md)方法をご確認ください。 このエンドポイントには 2 つのレポート (**監査と**と**サインイン**) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
 
 --- 
 
-**Q: https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用して、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
+**Q: 現在 https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
 
-**A:** [Identity Protection リスク イベント API](../identity-protection/graph-get-started.md) をご利用いただくと、Microsoft Graph を通じてセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク イベントが 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、要した作業により、既存の MS Graph への投資が拡大され、この新しい標準プラットフォームへの移行開始が促進されます。
+**A:**  [Identity Protection リスク イベント API](../identity-protection/graph-get-started.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク イベントが 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、要した作業により、既存の MS Graph への投資が拡大され、この新しい標準プラットフォームへの移行開始が促進されます。
 
 --- 
 
 **Q: Premium ライセンスはどうすれば取得できますか。**
 
-**A:** この質問の回答については、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
+**A:** Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
 
 ---
 
 **Q: Premium ライセンスを取得した後、どのぐらいの期間でアクティビティ データが表示されるようになりますか。**
 
-**A:** 無料ライセンスでのアクティビティ データが既にある場合、同じデータが表示されます。 データが何もなかった場合は、1 日から 2 日かかります。
+**A:** 無料ライセンスでのアクティビティ データが既にある場合、そのデータがすぐに表示されます。 データが何もなかった場合は、レポートにデータが表示されるまで 1 日から 2 日かかります。
 
 ---
 
 **Q: Azure AD Premium ライセンスを取得した後に、前月のデータを見ることはできますか。**
 
-**A:**: 最近 Premium バージョン (試用版を含む) に切り替えた場合、初めは 7 日間分までのデータを見ることができます。 データが累積すると、30 日間分まで見られるようになります。
+**A:**: 最近 Premium バージョン (試用版を含む) に切り替えた場合、初めは 7 日間分までのデータを見ることができます。 データが蓄積されると、過去 30 日間のデータを確認できます。
 
 ---
 
-**Q: Azure Portal へのアクティビティ サインインを確認、および API を通じてデータを取得するにはグローバル管理者である必要がありますか。**
+**Q: Azure portal へのアクティビティ サインインを確認したり、API を通じてデータを取得したりするには、グローバル管理者である必要がありますか。**
 
-**A:** いいえ。 **セキュリティ閲覧者**、**セキュリティ管理者**、または**グローバル管理者**であれば、Azure Portal で、または API を通じてレポート データを取得できます。
+**A:** いいえ、テナントの**セキュリティ閲覧者**または**セキュリティ管理者**であっても、ポータルまたは API を通じてレポート データにアクセスできます。 もちろん、**グローバル管理者**でも、このデータにアクセスすることが可能です。
 
 ---
 
@@ -70,16 +70,21 @@ ms.locfileid: "46294222"
 
 **Q: Azure Portal でのアクティビティ ログ (監査およびサインイン) のデータ保持期間はどのぐらいですか。** 
 
-**A:** この質問の回答については、「[収集されたデータはどのくらい保存されるのか](reference-reports-data-retention.md#q-for-how-long-is-the-collected-data-stored)」を参照してください。
+**A:** 次の表に、アクティビティ ログのデータ保持期間を示します。 詳細については、[Azure AD レポートのデータ保持ポリシー](reference-reports-data-retention.md)に関するページを参照してください。
+
+| レポート                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--                    | :--           | :--                 | :--                 |
+| 監査ログ             | 7 日        | 30 日             | 30 日             |
+| サインイン               | 該当なし           | 30 日             | 30 日             |
+| Azure MFA の使用状況        | 30 日       | 30 日             | 30 日             |
 
 --- 
 
 **Q: 自分のタスクを完了した後、アクティビティ データが表示されるまでどのぐらい時間がかかりますか。**
 
-**A:** 監査アクティビティ ログの待機時間は 15 分から 1 時間です。 サインイン アクティビティ ログは 15 分から、一部のレコードについては最大で 2 時間かかることがあります。
+**A:** 監査ログの待機時間は 15 分から 1 時間です。 サインイン アクティビティ ログは 15 分から、一部のレコードについては最大で 2 時間かかることがあります。
 
 ---
-
 
 **Q: Azure Portal を通じて Office 365 のアクティビティ ログ情報を取得できますか。**
 
@@ -87,10 +92,9 @@ ms.locfileid: "46294222"
 
 ---
 
-
 **Q: Office 365 のアクティビティ ログの情報を取得するには、どの API を使えばよいですか。**
 
-**A:** [API を通じて Office 365 アクティビティ ログ](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview)にアクセスするには、Office 365 Management API を使用します。
+**A:** API を通じて Office 365 アクティビティ ログにアクセスするには、[Office 365 Management API](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview) を使用します。
 
 ---
 
@@ -102,39 +106,27 @@ ms.locfileid: "46294222"
 
 ## <a name="risky-sign-ins"></a>リスクの高いサインイン
 
-**Q: Identity Protection にリスク イベントがありますが、すべてのサインインの中に対応するサインインを確認できません。これは期待される動作ですか?**
+**Q: Identity Protection にリスク イベントがありますが、サインイン レポートの中に該当するサインインが見つかりません。これは期待される動作ですか?**
 
 **A:** はい、Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 それに対して、すべてのサインインのレポートには、対話型のサインインだけが表示されます。
 
 ---
 
-**Q: Azure Portal で "リスクのフラグ付きユーザー" レポートはどうすればダウンロードできますか。**
-
-**A:** *リスクのフラグ付きユーザー* レポートをダウンロードするオプションは、近日中に追加されます。
-
----
-
 **Q: Azure Portal でサインインまたはユーザーにリスクのフラグが付けられた理由はどうすれば調べることができますか。**
 
-**A:** Premium エディションのお客様は、[リスクのフラグ付きユーザー] に含まれるユーザーをクリックするか、[危険なサインイン] をクリックすれば、基になるリスク イベントについて確認できます。 無料および Basic エディションのお客様には、基になるリスク イベント情報なしで、リスクのあるユーザーとサインインが表示されます。
+**A:** **Azure AD Premium** サブスクリプションをお持ちの場合は、**[Users flagged for risk]\(リスクのフラグが付与されたユーザー)** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク イベントに関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になる危険なイベント情報は確認できません。
 
 ---
 
 **Q: サインインとリスクの高いサインイン レポートでは、IP アドレスはどのように計算されていますか。**
 
-**A:** IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 これは、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから IP アドレスを発行するモバイル プロバイダーや VPN などの要因によって複雑になります。 これにより、IP アドレスの物理的な場所の変換は、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートで対応されています。 
+**A:** IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 IP アドレスのマッピングは、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから IP アドレスを発行するモバイル プロバイダーや VPN などの要因によって、さらに複雑になります。 現在の Azure AD レポートでは、IP アドレスの物理的な場所の変換は、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートで対応されています。 
 
 ---
 
 **Q: リスク イベント "追加のリスクが検出されたサインイン" は何を意味していますか。**
 
-**A:** 環境内のすべての危険なサインインについて知らせるために、"追加のリスクが検出されたサインイン" は、Azure AD Identity Protection サブスクライバーに限定される検出でサインインに対するプレースホルダーとして機能します。
-
----
-
-**Q: リスク イベント "追加のリスクが検出されたサインイン" は何を意味していますか。**
-
-**A:** 環境内のすべての危険なサインインについて知らせるために、"追加のリスクが検出されたサインイン" は、Azure AD Identity Protection サブスクライバーに限定される検出でサインインに対するプレースホルダーとして機能します。
+**A:** 環境内のすべての危険なサインインについて知らせるために、"追加のリスクが検出されたサインイン" は、Azure AD Identity Protection サブスクライバー限定の検出で、サインインに対するプレースホルダーとして機能します。
 
 ---
 

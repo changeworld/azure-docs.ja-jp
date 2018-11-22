@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 19861955dcf82d0ffae674400552ca1f0c439a81
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: cb02ed61ea050c17bc7e6dc0ebc724f29f885dd7
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834887"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344337"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Azure AI ギャラリー ソリューションを発見する
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="solutions"></a>解決方法
-ギャラリーの**[ソリューション](https://gallery.cortanaintelligence.com/solutions)** は、構成済みのソリューション、参照アーキテクチャおよびデザイン パターンから Cortana Intelligence ソリューションを迅速に構築するためのきっかけとなります。
+[Azure AI ギャラリー](http://gallery.cortanaintelligence.com)の**[ソリューション](https://gallery.cortanaintelligence.com/solutions)** は、構成済みのソリューション、参照アーキテクチャおよびデザイン パターンから Cortana Intelligence ソリューションを迅速に構築するためのきっかけとなります。
 含まれる手順または機能的なパートナーによって、独自のものにします。  
 
 ## <a name="discover"></a>発見

@@ -1,29 +1,29 @@
 ---
-title: Azure Backup Server v2 のサイレント インストール
-description: Azure Backup Server v2 をサイレント インストールするのに、PowerShell スクリプトを使用します。 この種類のインストールは無人インストールとも呼ばれます。
+title: Azure Backup Server V2 のサイレント インストール
+description: PowerShell スクリプトを使用して、Azure Backup Server V2 をサイレント モードでインストールします。 この種類のインストールは無人インストールとも呼ばれます。
 services: backup
 author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/30/2017
+ms.date: 11/13/2018
 ms.author: markgal
-ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8f7bda070e613e5495d3733dd1610cb291e12c36
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606411"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612697"
 ---
-# <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Azure Backup Server v2 の無人インストールの実行
+# <a name="run-an-unattended-installation-of-azure-backup-server"></a>Azure Backup Server の無人インストールの実行
 
-Azure Backup Server v2 の無人インストールの実行について説明します。 
+Azure Backup Server の無人インストールの実行について説明します。
 
-次の手順は、Azure Backup Server v1 をインストールする場合は適用されません。
+次の手順は、Azure Backup Server V1 をインストールする場合は適用されません。
 
-## <a name="install-backup-server-v2"></a>Backup Server v2 のインストール
+## <a name="install-backup-server"></a>Backup Server のインストール
 
-1. Azure Backup Server v2 をホストしているサーバーで、テキスト ファイルを作成します。 (メモ帳などのテキスト エディターでファイルを作成できます。)MABSSetup.ini としてファイルを保存します。 
+1. Azure Backup Server V2 以降をホストしているサーバーで、テキスト ファイルを作成します。 (メモ帳などのテキスト エディターでファイルを作成できます。)MABSSetup.ini としてファイルを保存します。
 
 2. MABSSetup.ini ファイルに次のコードを貼り付けます。 ブラケット (\< \>) 内のテキストを環境の値に置き換えます。 テキスト例を次に示します。
 

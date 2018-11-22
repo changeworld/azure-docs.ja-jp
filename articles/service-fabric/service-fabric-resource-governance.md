@@ -3,7 +3,7 @@ title: Azure Service Fabric におけるコンテナーとサービスのリソ�
 description: Azure Service Fabric では、内部または外部のコンテナーを実行するサービスのリソース制限を指定できます。
 services: service-fabric
 documentationcenter: .net
-author: masnider
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: subramar
-ms.openlocfilehash: 49c7e2c99cce13880781a67806543b1cde0c12b6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney, subramar
+ms.openlocfilehash: f2898de030a70d578eb45e81c9ccbef90bce96c8
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208014"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300474"
 ---
 # <a name="resource-governance"></a>リソース ガバナンス 
 
@@ -78,12 +78,12 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
 ノード容量を完全に手動で設定する必要がある場合は、クラスター内のノードを記述するための通常のメカニズムを使用できます。 4 つのコアと 2 GB のメモリを持つノードを設定する方法の例を次に示します。 
 
 ```xml
-    <NodeType Name="MyNodeType">
-      <Capacities>
-        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
-        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
-      </Capacities>
-    </NodeType>
+    <NodeType Name="MyNodeType">
+      <Capacities>
+        <Capacity Name="servicefabric:/_CpuCores" Value="4"/>
+        <Capacity Name="servicefabric:/_MemoryInMB" Value="2048"/>
+      </Capacities>
+    </NodeType>
 ```
 
 使用可能なリソースの自動検出が有効であり、ノード容量がクラスター マニフェストに手動で定義されている場合、Service Fabric は、ユーザーが定義している容量をサポートするための十分なリソースがノードに存在するかどうかをチェックします。
@@ -102,8 +102,8 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
 また、最適なパフォーマンスを得るには、クラスター マニフェストで次の設定をオンにする必要があります。 
 
 ```xml
-<Section Name="PlacementAndLoadBalancing">
-    <Parameter Name="PreventTransientOvercommit" Value="true" /> 
+<Section Name="PlacementAndLoadBalancing">
+    <Parameter Name="PreventTransientOvercommit" Value="true" /> 
     <Parameter Name="AllowConstraintCheckFixesDuringApplicationUpgrade" Value="true" />
 </Section>
 ```
@@ -131,7 +131,7 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
     </Policies>
   </ServiceManifestImport>
 ```
-  
+  
 この例では、**ServicePackageA** というサービス パッケージが配置されたノード上で 1 つのコアを取得しています。 このサービス パッケージには、2 つのコード パッケージ (**CodeA1** と **CodeA2**) が含まれており、どちらも `CpuShares` パラメーターを指定しています。 CpuShares 512:256 の比率で、2 つのコード パッケージ全体のコアを分割しています。 
 
 つまり、この例では、コアの 3 分の 2 を CodeA1 が、コアの 3 分の 1 を CodeA2 が取得しています (ソフト保証予約は同じです)。 コード パッケージに CpuShares が指定されていない場合、Service Fabric は均等にコアを分割します。
@@ -180,8 +180,7 @@ Memory の制限は絶対的であるため、コード パッケージのメモ
 </Application>
 ```
 
-> [!IMPORTANT] 
-> アプリケーション パラメーターによるリソース ガバナンスの指定は、Service Fabric バージョン 6.1 以降で利用できます。<br> 
+> [!IMPORTANT]  アプリケーション パラメーターによるリソース ガバナンスの指定は、Service Fabric バージョン 6.1 以降で利用できます。<br> 
 >
 > アプリケーション パラメーターを使ってリソース ガバナンスを指定すると、Service Fabric をバージョン 6.1 より前のバージョンにダウングレードできなくなります。 
 

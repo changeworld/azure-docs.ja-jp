@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: fc4b2d0beef1c91cd937ba901974796441657441
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234767"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300950"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>車両テレメトリ分析ソリューション プレイブック: ソリューションの詳細
-このメニューは、このプレイブック内の各セクションにリンクされています。 
 
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
+この記事では、ソリューション アーキテクチャで示されている各段階について詳しく説明します。 カスタマイズのための説明とアドバイスが含まれています。 
 
-このドキュメントでは、ソリューション アーキテクチャで示されている各段階について詳しく説明します。 カスタマイズのための説明とアドバイスが含まれています。 
+このソリューションの概要説明を確認するには、「[車両テレメトリ分析ソリューション プレイブック](cortana-analytics-playbook-vehicle-telemetry.md)」をご覧ください。
+
 
 ## <a name="data-sources"></a>データ ソース
 このソリューションでは、次の 2 つのデータ ソースを使用します。
@@ -675,3 +675,7 @@ Power BI は、このソリューションに機能豊富なダッシュボー�
 * [Azure Data Factory のデータ移動機能](../../data-factory/copy-activity-overview.md)
 * [Azure Data Factory .NET アクティビティ](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [サンプル データを準備するための Azure Data Factory .NET アクティビティ Visual Studio ソリューション](https://go.microsoft.com/fwlink/?LinkId=717077) 
+
+## <a name="next-steps"></a>次の手順
+
+このソリューション用に Power BI レポートとダッシュボードを構成する方法については、「[車両テレメトリ分析ソリューション テンプレートの Power BI ダッシュボードのセットアップ手順](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)」をご覧ください。

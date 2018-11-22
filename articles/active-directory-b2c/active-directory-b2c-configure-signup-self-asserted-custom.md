@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 37492e22b5615ae0b266bc8b2bb6d8f039fdaabe
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336857"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345002"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: 新しい要求を追加するようにサインアップを変更し、ユーザー入力を構成する
 
@@ -277,8 +277,8 @@ ms.locfileid: "43336857"
 
 ## <a name="next-steps"></a>次の手順
 
-以下に示す TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 これらは、ロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
-```xml
-<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-```
+ポリシーでソーシャル アカウントがサポートされている場合は、以下に示す技術プロファイルを変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 これらの要求は、ユーザーからデータを収集して書き込むために、ソーシャル アカウント ログインによって使用されます。
+
+1. 技術プロファイル **SelfAsserted-Social** を見つけて、出力要求を追加します。 **OutputClaims** 内の要求の順序は、Azure AD B2C が画面に要求を表示する順序を制御します。 たとえば、「 `<OutputClaim ClaimTypeReferenceId="city" />` 」のように入力します。
+2. 技術プロファイル **AAD-UserWriteUsingAlternativeSecurityId** を見つけて、永続化要求を追加します。 たとえば、「 `<PersistedClaim ClaimTypeReferenceId="city" />` 」のように入力します。
+3. 技術プロファイル **AAD-UserReadUsingAlternativeSecurityId** を見つけて、出力要求を追加します。 たとえば、「 `<OutputClaim ClaimTypeReferenceId="city" />` 」のように入力します。

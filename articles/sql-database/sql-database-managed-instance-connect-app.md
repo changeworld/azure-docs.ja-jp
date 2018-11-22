@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 0221965c51f2287cb6042c33b9ab3402e104abc3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870480"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514963"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 
@@ -83,6 +83,10 @@ Azure App Service をマネージド インスタンスに接続する場合の�
 次の図は、このシナリオを説明したものです。
 
 ![統合アプリケーション ピアリング](./media/sql-database-managed-instance/integrated-app-peering.png)
+
+>[!NOTE]
+>VNet 統合機能では、アプリと ExpressRoute ゲートウェイを使う VNet は統合されません。 ExpressRoute ゲートウェイが共存モードで構成されている場合であっても、VNet 統合は機能しません。 ExpressRoute 接続を通してリソースにアクセスする必要がある場合は、VNet で実行する App Service Environment を使用できます。
+>
  
 ## <a name="troubleshooting-connectivity-issues"></a>接続の問題のトラブルシューティング
 

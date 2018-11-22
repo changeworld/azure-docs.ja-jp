@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: a5d031622103183fa9aa7a3f3771a055fc16edb2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 632558760d0b4a00384763cc30de3b9241bb1ae6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049978"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300168"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 
@@ -60,6 +60,13 @@ DNS 解決のダウンタイムの心配がない場合は、「[既存のカス
 | \* (ワイルドカード) | _awverify.\*_ | _&lt;appname>.azurewebsites.net_ |
 
 DNS レコードのページで、移行する DNS 名のレコード タイプを書き留めておきます。 App Service では、CNAME レコードおよび A レコードからのマッピングをサポートしています。
+
+> [!NOTE]
+> CloudFlare などの一部のプロバイダーの場合、`awverify.*` は有効なレコードではありません。 代わりに `*` だけを使用してください。
+
+> [!NOTE]
+> ワイルドカード `*` レコードでは、既存の CNAME レコードでサブドメインが検証されません。 サブドメインごとに TXT レコードを明示的に作成することが必要な場合があります。
+
 
 ### <a name="enable-the-domain-for-your-app"></a>アプリのドメインを有効にする
 

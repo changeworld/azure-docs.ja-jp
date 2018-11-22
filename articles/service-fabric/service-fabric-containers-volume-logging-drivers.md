@@ -3,7 +3,7 @@ title: Service Fabric Azure Files ボリューム ドライバー (プレビュ�
 description: Service Fabric は、Azure Files を使用したコンテナーからのボリュームのバックアップをサポートしています。 これは現在プレビューの段階です。
 services: service-fabric
 documentationcenter: other
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
-ms.author: subramar
-ms.openlocfilehash: 0ce1ca09327fa0bd7fbbb82b8dc3c3bdc70d5028
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: twhitney, subramar
+ms.openlocfilehash: fabb44f9369dd7b7050ae353ab94263f140aae48
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239374"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346407"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric Azure Files ボリューム ドライバー (プレビュー)
 Azure Files ボリューム プラグインは、Docker コンテナーに [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 この Docker ボリューム プラグインは、Service Fabric クラスターにデプロイ可能な Service Fabric アプリケーションとしてパッケージ化されています。 その目的は、クラスターにデプロイされている他の Service Fabric コンテナー アプリケーション用に Azure ファイル ベースのボリュームを提供することです。
@@ -166,12 +166,11 @@ Azure Files ボリューム プラグインのドライバー名は **sfazurefil
 - **Destination** - このタグは、実行中のコンテナー内でボリュームがマップされている場所です。 そのため、Destination としてコンテナー内の既存の場所を指定することはできません
 
 上記スニペットの **DriverOption** 要素に示すように、Azure Files ボリューム プラグインは、次のドライバー オプションをサポートしています。
+- **shareName** - コンテナーのボリュームを提供する Azure Files ファイル共有の名前。
+- **storageAccountName** - Azure Files ファイル共有を含む Azure Storage アカウントの名前。
+- **storageAccountKey** - Azure Files ファイル共有を含む Azure Storage アカウントのアクセス キー。
+- **storageAccountFQDN** - ストレージ アカウントに関連付けられたドメイン名。 storageAccountFQDN が指定されない場合、ドメイン名は既定のサフィックス (.file.core.windows.net) と storageAccountName を使用して形成されます。  
 
-サポートされるドライバー オプション:
-- **shareName** - コンテナーのボリュームを提供する Azure Files ファイル共有の名前
-- **storageAccountName** - Azure Files ファイル共有を含む Azure Storage アカウントの名前
-- **storageAccountKey** - Azure Files ファイル共有を含む Azure Storage アカウントのアクセス キー
-- **storageAccountFQDN** - ストレージ アカウントに関連付けられたドメイン名。 storageAccountFQDN が指定されない場合、ドメイン名は既定のサフィックス (.file.core.windows.net) と storageAccountName を使用して形成されます。 
     ```xml
     - Example1: 
         <DriverOption Name="shareName" Value="myshare1" />
@@ -184,6 +183,7 @@ Azure Files ボリューム プラグインのドライバー名は **sfazurefil
         <DriverOption Name="storageAccountKey" Value="mykey2" />
         <DriverOption Name="storageAccountFQDN" Value="myaccount2.file.core.chinacloudapi.cn" />
     ```
+
 ## <a name="using-your-own-volume-or-logging-driver"></a>独自のボリュームまたはログ ドライバーの使用
 Service Fabric では、独自のカスタム [ボリューム](https://docs.docker.com/engine/extend/plugins_volume/)または[ログ](https://docs.docker.com/engine/admin/logging/overview/) ドライバーを使用することもできます。 Docker ボリューム/ログ ドライバーがクラスターにインストールされていない場合は、RDP/SSH プロトコルを使って手動でインストールできます。 これらのプロトコルによるインストールは、[仮想マシン スケール セット スタートアップ スクリプト](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)または [SetupEntryPoint スクリプト](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service)を使って実行できます。
 

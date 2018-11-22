@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 11/07/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 396fb947a95ebc634ab0dea24d20f35126bc006e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5bc94b6fe69a9ffec11fcbab952a6f8aa3e2259a
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389447"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51569007"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -43,15 +43,21 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 
    ![Google API 資格情報](media/google-federation/google-api.png)
  
-4. **[OAuth 同意画面]** タブを選択して、**[ユーザーに表示するサービス名]** の入力を行います  (他の設定はそのままにします)。**[保存]** を選択します。
+4. **[OAuth consent screen]\(OAuth 同意画面\)** タブを選択して、**[Application name]\(アプリケーション名\)** を入力します。 (他の設定はそのままにします)。
 
    ![Google の [OAuth 同意画面]](media/google-federation/google-oauth-consent-screen.png)
 
-5. **[認証情報]** タブを選択します。**[認証情報を作成]** メニューで、**[OAuth クライアント ID]** を選択します。
+5. **[Authorized domains]\(承認済みドメイン\)** セクションまでスクロールし、「microsoftonline.com」と入力します。
+
+   ![[Authorized domains]\(承認済みドメイン\) セクション](media/google-federation/google-oauth-authorized-domains.png)
+
+6. **[保存]** を選択します。
+
+7. **[認証情報]** タブを選択します。**[認証情報を作成]** メニューで、**[OAuth クライアント ID]** を選択します。
 
    ![Google API 資格情報](media/google-federation/google-api-credentials.png)
 
-6. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択し、**[承認済みのリダイレクト URI]** で次の URI を入力します。
+8. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択し、**[承認済みのリダイレクト URI]** で次の URI を入力します。
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(`<directory id>` は自分のディレクトリ ID に置き換えます)
    
@@ -60,7 +66,7 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 
    ![OAuth クライアント ID の作成](media/google-federation/google-create-oauth-client-id.png)
 
-7. **作成**を選択します。 クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
+9. **作成**を選択します。 クライアント ID とクライアント シークレットをコピーします。これらは、Azure AD ポータルで ID プロバイダーを追加する際に使用します。
 
    ![OAuth クライアント ID とクライアント シークレット](media/google-federation/google-auth-client-id-secret.png)
 

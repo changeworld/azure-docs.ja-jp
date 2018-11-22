@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 11/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 362ee7e84229c421f69ff0db0c8cfb040b105c97
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 95b63b525365a5a31856c2f14ac965aaa1113cff
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394514"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515626"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Azure Stack Usage API のよくあるご質問
 
@@ -65,7 +65,7 @@ ms.locfileid: "49394514"
 **測定 ID**: B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90  
 **測定名**: TableTransactions  
 **単位**: 10,000 秒間の要求数  
-**備考**: Table service 要求 (10,000 秒間)。  
+**備考**: Table service 要求 (10,000 件)。  
   
 **測定 ID**: 50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D  
 **測定名**: TableDataTransIn  
@@ -80,7 +80,7 @@ ms.locfileid: "49394514"
 **測定 ID**: 43DAF82B-4618-444A-B994-40C23F7CD438  
 **測定名**: BlobTransactions  
 **単位**: 10,000 秒間の要求数  
-**備考**: Blob service 要求 (10,000 秒間)。  
+**備考**: Blob service 要求 (10,000 件)。  
   
 **測定 ID**: 9764F92C-E44A-498E-8DC1-AAD66587A810  
 **測定名**: BlobDataTransIn  
@@ -95,7 +95,7 @@ ms.locfileid: "49394514"
 **測定 ID**: EB43DD12-1AA6-4C4B-872C-FAF15A6785EA  
 **測定名**: QueueTransactions  
 **単位**: 10,000 秒間の要求数  
-**備考**: Queue サービス要求 (10,000 秒間)。  
+**備考**: Queue サービス要求 (10,000 件)。  
   
 **測定 ID**: E518E809-E369-4A45-9274-2017B29FFF25  
 **測定名**: QueueDataTransIn  
@@ -126,105 +126,165 @@ ms.locfileid: "49394514"
   
 ### <a name="managed-disks"></a>Managed Disks
 
+**測定 ID**: 380874f9-300c-48e0-95a0-d2d9a21ade8f   
+**測定名**: S4   
+**単位**: ディスク数 \* 月   
+**備考**: Standard マネージド ディスク - 32 GB 
+
+**測定 ID**: 1b77d90f-427b-4435-b4f1-d78adec53222   
+**測定名**: S6   
+**単位**: ディスク数 \* 月   
+**備考**: Standard マネージド ディスク - 64 GB 
+
+**測定 ID**: d5f7731b-f639-404a-89d0-e46186e22c8d   
+**測定名**: S10   
+**単位**: ディスク数 \* 月   
+**備考**: Standard マネージド ディスク - 128 GB 
+
+**測定 ID**: ff85ef31-da5b-4eac-95dd-a69d6f97b18a   
+**測定名**: S15   
+**単位**: ディスク数 \* 月   
+**備考**: Standard マネージド ディスク - 256 GB 
+
+**測定 ID**: 88ea9228-457a-4091-adc9-ad5194f30b6e   
+**測定名**: S20   
+**単位**: ディスク数 \* 月      
+**備考**: Standard マネージド ディスク - 512 GB 
+
+**測定 ID**: 5b1db88a-8596-4002-8052-347947c26940   
+**測定名**: S30   
+**単位**: ディスク数 \* 月   
+**備考**: Standard マネージド ディスク - 1024 GB 
+
+**測定 ID**: 7660b45b-b29d-49cb-b816-59f30fbab011   
+**測定名**: P4   
+**単位**: ディスク数 \* 月   
+**備考**: Premium マネージド ディスク - 32 GB 
+
+**測定 ID**: 817007fd-a077-477f-bc01-b876f27205fd   
+**測定名**: P6   
+**単位**: ディスク数 \* 月   
+**備考**: Premium マネージド ディスク - 64 GB 
+
+**測定 ID**: e554b6bc-96cd-4938-a5b5-0da990278519   
+**測定名**: P10   
+**単位**: ディスク数 \* 月   
+**備考**: Premium マネージド ディスク - 128 GB  
+
+**測定 ID**: cdc0f53a-62a9-4472-a06c-e99a23b02907   
+**測定名**: P15  
+**単位**: ディスク数 \* 月   
+**備考**: Premium マネージド ディスク - 256 GB 
+
+**測定 ID**: b9cb2d1a-84c2-4275-aa8b-70d2145d59aa   
+**測定名**: P20   
+**単位**: ディスク数 \* 月   
+**備考**: Premium マネージド ディスク - 512 GB 
+
+**測定 ID**: 06bde724-9f94-43c0-84c3-d0fc54538369   
+**測定名**: P30   
+**単位**: ディスク数 \* 月   
+**備考**: Premium マネージド ディスク - 1024 GB 
+
+**測定 ID**: 7ba084ec-ef9c-4d64-a179-7732c6cb5e28   
+**測定名**: ActualStandardDiskSize   
+**単位**: GB \* 月      
+**備考**: Standard マネージド ディスクのディスク上の実際のサイズ  
+
+**測定 ID**: daef389a-06e5-4684-a7f7-8813d9f792d5  
+**測定名**: ActualPremiumDiskSize   
+**単位**: GB \* 月      
+**備考**: Premium マネージド ディスクのディスク上の実際のサイズ 
+
+**測定 ID**: 75d4b707-1027-4403-9986-6ec7c05579c8  
+**測定名**: ActualStandardSnapshotSize   
+**単位**: GB \* 月   
+**備考**: マネージド Standard スナップショットのディスク上の実際のサイズ。  
+
+**測定 ID**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e   
+**測定名**: ActualPremiumSnapshotSize   
+**単位**: GB \* 月   
+**備考**: マネージド Premium のディスク上の実際のサイズ。   
+
 **測定 ID**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
 **測定名**: S4   
 **単位**: ディスク数\* (時間)   
-**備考**: Standard マネージド ディスク - 32 GB 
+**備考**: Standard マネージド ディスク – 32 GB (非推奨) 
 
 **測定 ID**: dc9fc6a9-0782-432a-b8dc-978130457494   
 **測定名**: S6   
 **単位**: ディスク数\* (時間)   
-**備考**: Standard マネージド ディスク - 64 GB 
+**備考**: Standard マネージド ディスク – 64 GB (非推奨) 
 
 **測定 ID**: e5572fce-9f58-49d7-840c-b168c0f01fff   
 **測定名**: S10   
 **単位**: ディスク数\* (時間)   
-**備考**: Standard マネージド ディスク - 128 GB 
+**備考**: Standard マネージド ディスク – 128 GB (非推奨) 
 
 **測定 ID**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
 **測定名**: S15   
 **単位**: ディスク数\* (時間)   
-**備考**: Standard マネージド ディスク - 256 GB 
+**備考**: Standard マネージド ディスク – 256 GB (非推奨) 
 
 **測定 ID**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
 **測定名**: S20   
 **単位**: ディスク数\* (時間)      
-**備考**: Standard マネージド ディスク - 512 GB 
+**備考**: Standard マネージド ディスク – 512 GB (非推奨) 
 
 **測定 ID**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
 **測定名**: S30   
 **単位**: ディスク数\* (時間)   
-**備考**: Standard マネージド ディスク - 1024 GB 
-
-**測定 ID**: d9aac1eb-a5d1-42f2-b617-9e3ea94fed88   
-**測定名**: S40   
-**単位**: ディスク数\* (時間)   
-**備考**: Standard マネージド ディスク - 2048 GB 
-
-**測定 ID**: a54899dd-458e-4a40-9abd-f57cafd936a7   
-**測定名**: S50   
-**単位**: ディスク数\* (時間)   
-**備考**: Standard マネージド ディスク - 4096 GB 
+**備考**: Standard マネージド ディスク – 1024 GB (非推奨) 
 
 **測定 ID**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
 **測定名**: P4   
 **単位**: ディスク数\* (時間)   
-**備考**: Premium マネージド ディスク - 32 GB 
+**備考**: Premium マネージド ディスク – 32 GB (非推奨) 
 
 **測定 ID**: 518b412b-1927-4f25-985f-4aea24e55c4f   
 **測定名**: P6   
 **単位**: ディスク数\* (時間)   
-**備考**: Premium マネージド ディスク - 64 GB 
+**備考**: Premium マネージド ディスク – 64 GB (非推奨) 
 
 **測定 ID**: 5cfb1fed-0902-49e3-8217-9add946fd624   
 **測定名**: P10   
 **単位**: ディスク数\* (時間)   
-**備考**: Premium マネージド ディスク - 128 GB  
+**備考**: Premium マネージド ディスク – 128 GB (非推奨)  
 
 **測定 ID**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
 **測定名**: P15  
 **単位**: ディスク数\* (時間)   
-**備考**: Premium マネージド ディスク - 256 GB 
+**備考**: Premium マネージド ディスク – 256 GB (非推奨) 
 
 **測定 ID**: c7e7839c-293b-4761-ae4c-848eda91130b   
 **測定名**: P20   
 **単位**: ディスク数\* (時間)   
-**備考**: Premium マネージド ディスク - 512 GB 
+**備考**: Premium マネージド ディスク – 512 GB (非推奨) 
 
 **測定 ID**: 9f502103-adf4-4488-b494-456c95d23a9f   
 **測定名**: P30   
 **単位**: ディスク数\* (時間)   
-**備考**: Premium マネージド ディスク - 1024 GB 
-
-**測定 ID**: 043757fc-049f-4e8b-8379-45bb203c36b1   
-**測定名**: P40   
-**単位**: ディスク数\* (時間)    
-**備考**: Premium マネージド ディスク - 2048 GB 
-
-**測定 ID**: c0342c6f-810b-4942-85d3-6eaa561b6570   
-**測定名**: P50   
-**単位**: ディスク数\* (時間)   
-**備考**: Premium マネージド ディスク - 4096 GB 
+**備考**: Premium マネージド ディスク – 1024 GB (非推奨) 
 
 **測定 ID**: 8a409390-1913-40ae-917b-08d0f16f3c38   
 **測定名**: ActualStandardDiskSize   
 **単位**: バイト\* (時間)      
-**備考**: Standard マネージド ディスクのディスク上の実際のサイズ  
+**備考**: Standard マネージド ディスクのディスク上の実際のサイズ (非推奨)  
 
 **測定 ID**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
 **測定名**: ActualPremiumDiskSize   
 **単位**: バイト\* (時間)      
-**備考**: Premium マネージド ディスクのディスク上の実際のサイズ 
+**備考**: Premium マネージド ディスクのディスク上の実際のサイズ (非推奨) 
 
 **測定 ID**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
 **測定名**: ActualStandardSnapshotSize   
 **単位**: バイト\* (時間)   
-**備考**: マネージド Standard スナップショットのディスク上の実際のサイズ。  
+**備考**: マネージド Standard スナップショットのディスク上の実際のサイズ (非推奨) 
 
 **測定 ID**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
 **測定名**: ActualPremiumSnapshotSize   
 **単位**: バイト\* (時間)   
-**備考**: マネージド Premium のディスク上の実際のサイズ。   
+**備考**: マネージド Premium のディスク上の実際のサイズ (非推奨) 
 
 ### <a name="sql-rp"></a>Sql RP
   

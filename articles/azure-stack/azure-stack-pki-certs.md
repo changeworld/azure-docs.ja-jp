@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: d181835c6baf5a2a40bca04feaa4c115178ba086
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a6f18222e5683d2d9663b699a8f6bab399d4f45b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093971"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299862"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 
@@ -42,7 +42,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - デプロイおよびローテーションの場合は、証明書のサブジェクト名フィールドとサブジェクトの別名 (SAN) フィールドのすべての名前空間をカバーする 1 つの証明書を使用するか、または、各名前空間で利用する予定の Azure Stack サービスが必要とする個別の証明書を使用することができます。 注: どちらの方法でも、それらが必要とされる場所のエンドポイントに対してワイルドカードを使用する必要があります (例: **KeyVault**､**KeyVaultInternal**)。 
 - 証明書の PFX 暗号化は、3 DES になっている必要があります。 
 - 証明書の署名アルゴリズムを SHA1 にすることはできません。 
-- Azure Stack のインストールには公開キーと秘密キーの両方が必要なため、証明書の形式は PFX である必要があります。 
+- Azure Stack のインストールには公開キーと秘密キーの両方が必要なため、証明書の形式は PFX である必要があります。 秘密キーにはローカル コンピューターのキー属性が設定されている必要があります。
 - PFX 暗号化は、3DES (これは、Windows 10 クライアントまたは Windows Server 2016 証明書ストアからエクスポートする場合の既定です) である必要があります。
 - 証明書 pfx ファイルの "Key Usage" フィールドには、"Digital Signature" と "KeyEncipherment" の値が含まれている必要があります。
 - 証明書の pfx ファイルの "Enhanced Key Usage" フィールドには、"Server Authentication (1.3.6.1.5.5.7.3.1)" と "Client Authentication (1.3.6.1.5.5.7.3.2)" の値が含まれている必要があります。

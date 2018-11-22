@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: f064521929bdaf0565a2993e12be62a3959ad567
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945299"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300440"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack での特権エンドポイントの使用
 
@@ -55,7 +55,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - ADSK を実行している場合、開発キットのホストにサインインします。
+    - ASDK を実行している場合、開発キットのホストにサインインします。
 
 2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
@@ -67,7 +67,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` パラメーターは、PEP をホストする仮想マシンの 1 台の IP アドレスまたは DNS 名のどちらかです。 
-    - ADSK を実行している場合:
+    - ASDK を実行している場合:
      
       ````PowerShell
         $cred = Get-Credential
@@ -127,7 +127,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
       ````PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ````
-    - ADSK を実行している場合、開発キットのホストにサインインします。
+    - ASDK を実行している場合、開発キットのホストにサインインします。
 
 2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
@@ -139,7 +139,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
           -ConfigurationName PrivilegedEndpoint -Credential $cred
       ````
       `ComputerName` パラメーターは、PEP をホストする仮想マシンの 1 台の IP アドレスまたは DNS 名のどちらかです。 
-    - ADSK を実行している場合:
+    - ASDK を実行している場合:
      
       ````PowerShell
        $cred = Get-Credential

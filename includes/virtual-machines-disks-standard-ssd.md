@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7c7671578dc22926dabfe7735038186ab1c2c2b3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 75b3934a7329b4e83a0f36f79bbc8365eaf8a086
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263908"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51572368"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Azure 仮想マシンのワークロード用の Standard SSD マネージド ディスク
 
@@ -46,9 +46,9 @@ Standard SSD では、マネージド ディスクによって提供されるす
 |E70 *    |16,384 GiB      |最大 2,000       |最大 500 MiB/秒        |
 |E80 *    |32,767 GiB      |最大 2,000       |最大 500 MiB/秒        |
 
-Standard SSD では、ほとんどの IO 操作で 1 桁ミリ秒の待機時間を実現し、上記の表に記載されている最大 IOPS と最大スループットを提供するように設計されています。 実際の IOPS とスループットは、トラフィック パターンによって異なる場合があります。 Standard SSD は、HDD ディスクよりも一貫したパフォーマンスを提供し、待機時間が短くなります。
+Standard SSD では、ほとんどの IO 操作で 1 桁ミリ秒の待機時間を実現し、99% の時間で上記の表に記載されている最大 IOPS と最大スループットを提供するように設計されています。 実際の IOPS とスループットは、トラフィック パターンによって異なる場合があります。 Standard SSD は、HDD ディスクよりも一貫したパフォーマンスを提供し、待機時間が短くなります。
 
-一方、Premium SSD は、Standard SSD よりもパフォーマンスが優れており、低遅延、高 IOPS/スループットを実現し、プロビジョニング済みディスクのパフォーマンスとの一貫性をさらに高めます。 これは重要な運用環境のワークロード向けに推奨されるディスクの種類です。 ワークロードで高パフォーマンス、低待機時間のディスク サポートが必要な場合は、Premium Storage を使用することを検討してください。
+一方、Premium SSD は、Standard SSD よりもパフォーマンスが優れており、低遅延、高 IOPS/スループットを実現し、プロビジョニング済みディスクのパフォーマンスとの一貫性をさらに高めます。 Premium SSD は重要な運用環境のワークロード向けに推奨されるディスクの種類です。 ワークロードで高パフォーマンス、低待機時間のディスク サポートが必要な場合は、Premium Storage を使用することを検討してください。
 
 Premium SSD と同様に、Standard SSD も 256 KiB の IO ユニット サイズを使用します。 転送されるデータが 256 KiB に満たない場合は、1 つの I/O ユニットとみなされます。 I/O のサイズが大きくなると、サイズが 256 KiB の複数の I/O としてカウントされます。 たとえば、1,100 KiB の I/O は 5 つの I/O ユニットとしてカウントされます。
 
