@@ -1,6 +1,6 @@
 ---
-title: Azure Stack での Azure App Service サーバー ロールの容量計画 | Microsoft Docs
-description: Azure Stack での Azure App Service サーバー ロールの容量計画
+title: Azure Stack での Azure App Service サーバー ロールのキャパシティ プランニング | Microsoft Docs
+description: Azure Stack での Azure App Service サーバー ロールのキャパシティ プランニング
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -22,15 +22,15 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/16/2018
 ms.locfileid: "49354140"
 ---
-# <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Azure Stack での Azure App Service サーバー ロールの容量計画
+# <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Azure Stack での Azure App Service サーバー ロールのキャパシティ プランニング
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-稼働準備済みの Azure App Service on Azure Stack のデプロイを設定するには、システムでサポートする容量について計画する必要があります。  
+稼働準備済みの Azure App Service on Azure Stack のデプロイを設定するには、システムでサポートするキャパシティについて計画する必要があります。  
 
 この記事では、実稼働環境のデプロイに使用すべき最小限のコンピューティング インスタンス数とコンピューティング SKU に関するガイダンスを示します。
 
-これらのガイドラインを使用して、App Service の容量戦略を計画できます。
+これらのガイドラインを使用して、App Service のキャパシティ戦略を計画できます。
 
 | App Service サーバー ロール | 推奨の最小インスタンス数 | 推奨のコンピューティング SKU|
 | --- | --- | --- |
@@ -51,7 +51,7 @@ Azure App Service コントローラーでは通常、CPU、メモリ、ネッ�
 
 **推奨の最小構成**: 2 つの A1 Standard のインスタンス
 
-フロントエンドでは、Web worker の可用性に応じて、Web worker に要求をルーティングします。 高可用性のためには複数のフロントエンドが必要で、3 つ以上保有できます。 容量計画では、各コアで 1 秒あたり約 100 の要求を処理できるように考慮してください。
+フロントエンドでは、Web worker の可用性に応じて、Web worker に要求をルーティングします。 高可用性のためには複数のフロントエンドが必要で、3 つ以上保有できます。 計画段階では、各コアが秒間約 100 リクエストを処理できると想定します。
 
 ## <a name="management-role"></a>管理ロール
 
