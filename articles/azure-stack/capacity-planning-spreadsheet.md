@@ -1,6 +1,6 @@
 ---
-title: Azure Stack のための容量計画スプレッドシート | Microsoft Docs
-description: Azure Stack デプロイのための容量計画スプレッドシートについて説明します。
+title: Azure Stack のためのキャパシティ プランニング用スプレッドシート | Microsoft Docs
+description: Azure Stack デプロイのためのキャパシティ プランニング用スプレッドシートについて説明します。
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -22,16 +22,16 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51233067"
 ---
-# <a name="azure-stack-capacity-planner"></a>Azure Stack の容量計画ツール
-Azure Stack の容量計画ツールは、Azure Stack リソース容量計画に使用されるスプレッドシートです。 この容量計画ツールは、コンピューティング リソースのさまざまな割り当てを設計し、ハードウェアのさまざまな選択に対してこれらがどのようにフィットするかを確認する機能を提供します。 Azure Stack の計算ツール使用の詳細手順については後述します。
+# <a name="azure-stack-capacity-planner"></a>Azure Stack Capacity Planner
+Azure Stack Capacity Planner は、Azure Stack のキャパシティ プランニングに使用されるスプレッドシートです。 このツールは、コンピューティング リソースのさまざまな割り当てを設計し、ハードウェアのさまざまな選択に対してこれらがどのようにフィットするかを確認する機能を提供します。 Azure Stack の計算ツール使用の詳細手順については後述します。
 
 ## <a name="worksheet-descriptions"></a>ワークシートの説明
-以下に Azure 容量計画ツールのスプレッドシートに含まれているワークシートの概要を示します。このスプレッドシートは [http://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner) からダウンロードできます。
+以下に Azure Stack Capacity Planner のスプレッドシートに含まれているワークシートの概要を示します。このスプレッドシートは [http://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner) からダウンロードできます。
 
 |タブ名|説明|
 |-----|-----|
-|バージョン免責事項|計算ツールの目的、バージョン番号、およびリリース日の簡単な概要です。|
-|このサンプルについての指示|Azure Stack の容量計画ツール使用の詳細手順を提供します。|
+|Version-Disclaimer|計算ツールの目的、バージョン番号、およびリリース日の簡単な概要です。|
+|Instructions|Azure Stack Capacity Planner の使用方法について、詳細な手順を提供します。|
 |DefinedSolutionSKUs|最大 5 つのハードウェア定義を含む複数列テーブル。 このシートの入力内容は例です。 この意図は、ユーザーが詳細を変更して、使用または購入を検討しているシステム構成に合わせることです。|
 |DefineByVMFootprint|さまざまなサイズおよび VM 数のコレクションを作成して適切なハードウェア SKU を検索します。|
 |DefineByWorkloadFootprint|Azure Stack のワークロードのコレクションを作成して適切なハードウェア SKU を検索します。|
@@ -41,7 +41,7 @@ Azure Stack の容量計画ツールは、Azure Stack リソース容量計画�
 このワークシートには、最大 5 つのハードウェア定義の例が含まれています。 詳細を変更して、使用または購入を検討しているシステム構成に合わせます。
 
 ### <a name="hardware-selections-provided-by-authorized-hardware-partners"></a>ハードウェアの認定パートナーによって提供されるハードウェアの選択
-Azure Stack は、ソリューション パートナーによってインストールされたソフトウェアが組み込まれたシステムとして提供されます。 これらのソリューション パートナーは、Azure Stack 容量計画ツールの独自の権限のあるバージョンを持っており、これらのツールを使用して、ソリューション容量の検討を終える必要があります。
+Azure Stack は、ソリューション パートナーによってインストールされたソフトウェアが組み込まれたシステムとして提供されます。 これらのソリューション パートナーは、それぞれのソリューションに固有の、信頼できる Azure Stack キャパシティ プランニング ツールのバージョンを持っており、これらのツールを使用して、ソリューションのキャパシティに関する検討をまとめる必要があります。
 
 ### <a name="multiple-ways-to-model-computing-resources"></a>コンピューティング リソースをモデル化する複数の方法
 Azure Stack 計画ツール内のリソース モデリングに使用する基本的な構成要素は、さまざまなサイズの Azure Stack 仮想マシン (VM) です。 これらの VM のサイズ範囲は、最小サイズの「Basic 0」から最大サイズの現在最大の VM である「Standard_Fsv2」までです。 ニーズに基づいて、このツールを使用して 2 つの方法で、さまざまな VM を好きな数量使用して、コンピューティング リソース割り当てを作成できます。
