@@ -87,7 +87,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 | シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ  |[はい] |
 | 最大解像度、層の数 |4Kp30  |720p、6 層、30 fps |
 | 入力プロトコル |RTMP、スムーズ ストリーミング |RTMP、スムーズ ストリーミング |
-| 料金 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 | [価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
+| 料金 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
 | 最長実行時間 |24 時間 365 日 |24 時間 365 日 |
 | スレートの挿入のサポート |いいえ  |[はい] |
 | API による広告信号のサポート|いいえ  |[はい] |
