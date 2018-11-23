@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 65495209714c37e5e166545ed7ed029e36c258c0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2fad3ad8bc6e1c0ca87038af6c461d863065fc95
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038604"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345965"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Azure Data Factory を使って Azure Data Lake Storage Gen2 プレビューとの間でデータをコピーする (プレビュー)
 
@@ -34,6 +34,9 @@ Data Lake Storage Gen2 には、サポートされているソース データ �
 
 >[!TIP]
 >階層型名前空間を有効にした場合、現在、BLOB と ADLS Gen2 API の間の操作における相互運用性はありません。 詳細なメッセージ "指定したファイルシステムは存在しません" を含む "ErrorCode=FilesystemNotFound" のエラーが発生した場合、他の場所で ADLS Gen2 API ではなく BLOB API を介して作成された指定のシンク ファイル システムが原因で発生しています。 問題を解決するには、BLOB コンテナーの名前として存在しない名前を使用して、新しいファイル システムを指定してください。そのファイル システムは、データ コピー中に ADF によって自動的に作成されます。
+
+>[!NOTE]
+>Azure Storage のファイアウォール設定で [_信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します_] オプションを有効にした場合、Azure Integration Runtime を使用した Data Lake Storage Gen2 への接続は、ADF が信頼された Microsoft サービスとして扱われないため、アクセス不可エラーで失敗します。 代わりに、セルフホステッド統合ランタイムを使用して接続してください。
 
 ## <a name="get-started"></a>作業開始
 
@@ -84,7 +87,7 @@ Data Lake Storage Gen2 のリンクされたサービスでは、次のプロパ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは、**AzureBlobFSFile** に設定する必要があります。 |[はい] |
-| folderPath | Data Lake Storage Gen2 のフォルダーへのパス。 ワイルドカード フィルターはサポートされていません。 例: rootfolder/subfolder/。 |[はい] |
+| folderPath | Data Lake Storage Gen2 のフォルダーへのパス。 ワイルドカード フィルターはサポートされていません。 指定しないと、ルートが参照されます。 例: rootfolder/subfolder/。 |いいえ  |
 | fileName | 指定された "folderPath" の下にあるファイルの**名前またはワイルドカード フィルター**。 このプロパティの値を指定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。 <br/><br/>フィルターに使用できるワイルドカードは、`*` (ゼロ文字以上の文字に一致) と `?` (ゼロ文字または 1 文字に一致) です。<br/>- 例 1: `"fileName": "*.csv"`<br/>- 例 2: `"fileName": "???20180427.txt"`<br/>実際のファイル名にワイルドカードまたはこのエスケープ文字が含まれている場合は、`^` を使用してエスケープします。<br/><br/>出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、"*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*" というパターンでファイル名を自動的に生成します。 たとえば、"Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz" などです。 |いいえ  |
 | format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析するか生成する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、[Text 形式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 形式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 形式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 形式](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet 形式](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
 | compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |

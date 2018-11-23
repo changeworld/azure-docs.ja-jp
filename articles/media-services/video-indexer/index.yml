@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d7a4990efc8050a564b30d03ca54555cf8e7b3ab
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c15eba9db8e50cc738d8f0450e5ba543735df6e6
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380289"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290855"
 documentType: LandingData
 title: Video Indexer のドキュメント
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09-27-2018
+  ms.date: 11-19-2018
   ms.author: juliako
 abstract:
   description: Video Indexer には、ビデオから分析情報を簡単に抽出するためのメディア AI テクノロジが組み込まれています。
@@ -32,4 +32,4 @@ sections:
     - image:
         src: 
       text: Video Indexer とは
-      href: ../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+      href: video-indexer-overview.md
