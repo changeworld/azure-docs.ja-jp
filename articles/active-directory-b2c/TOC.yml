@@ -71,6 +71,8 @@ items:
   items:
   - name: 監査ログにアクセスする
     href: active-directory-b2c-reference-audit-logs.md
+  - name: 年齢制限
+    href: basic-age-gating.md
   - name: トークンを構成する
     href: active-directory-b2c-token-session-sso.md
   - name: 言語をカスタマイズする
@@ -123,6 +125,8 @@ items:
         href: active-directory-b2c-custom-setup-adfs2016-idp.md
       - name: Salesforce
         href: active-directory-b2c-setup-sf-app-custom.md
+    - name: ユーザー動作の追跡
+      href: active-directory-b2c-custom-guide-eventlogger-appins.md
     - name: ユーザー フロー
       items:
       - name: ユーザー入力の構成
@@ -264,8 +268,6 @@ items:
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: リソース所有者のパスワード資格情報
     href: configure-ropc.md
-  - name: 年齢制限の設定
-    href: basic-age-gating.md
   - name: 直接サインインの設定
     href: direct-signin.md
   - name: セルフサービスパスワードのリセットの設定
@@ -274,8 +276,6 @@ items:
     href: b2clogin.md
   - name: Azure AD Graph API を使用する
     href: active-directory-b2c-devquickstarts-graph-dotnet.md
-  - name: ユーザー動作の追跡
-    href: active-directory-b2c-custom-guide-eventlogger-appins.md
   - name: Web Apps
     items:
     - name: ASP.NET
@@ -300,6 +300,8 @@ items:
       href: active-directory-b2c-support-create-directory.md
     - name: Extensions アプリ
       href: active-directory-b2c-reference-extensions-app.md
+    - name: ユーザー フローのバージョン
+      href: user-flow-versions.md
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -322,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 276a67a6dc5708f5e4f25796d7d31523db7a7446
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 55fb2bda4013369cecd797cd90b152ad58d2bd6e
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415867"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291403"
