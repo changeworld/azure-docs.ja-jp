@@ -285,22 +285,23 @@ items:
     items:
     - name: 監視の概要
       href: service-fabric-diagnostics-overview.md
+    - name: アプリケーションの監視
+      href: service-fabric-diagnostics-event-generation-app.md
     - name: クラスターの監視
-      href: service-fabric-diagnostics-event-generation-infra.md
       items:
+      - name: クラスターの監視の概要
+        href: service-fabric-diagnostics-event-generation-infra.md
       - name: Service Fabric イベント
         href: service-fabric-diagnostics-events.md
       - name: EventStore の概要
         href: service-fabric-diagnostics-eventstore.md
       - name: Reliable Services のイベント
         href: service-fabric-reliable-services-diagnostics.md
-      - name: Reliable Actors のイベント
-        href: service-fabric-reliable-actors-diagnostics.md
       - name: サービスのリモート処理の監視
         href: service-fabric-reliable-serviceremoting-diagnostics.md
-    - name: アプリケーションのログ記録
-      href: service-fabric-diagnostics-event-generation-app.md
-    - name: パフォーマンス メトリック
+      - name: Reliable Actors のイベント
+        href: service-fabric-reliable-actors-diagnostics.md
+    - name: インフラストラクチャ監視
       href: service-fabric-diagnostics-event-generation-perf.md
     - name: 正常性モデルの概要
       href: service-fabric-health-introduction.md
@@ -642,33 +643,35 @@ items:
       href: service-fabric-connect-to-secure-cluster.md
   - name: 監視と診断
     items:
+    - name: 一般的なシナリオの診断
+      href: service-fabric-diagnostics-common-scenarios.md
     - name: アプリケーションの監視
       items:
-      - name: Application Insights での分析
-        href: service-fabric-diagnostics-event-analysis-appinsights.md
       - name: アプリケーションへのログ記録の追加
         href: service-fabric-how-to-diagnostics-log.md
-      - name: EventFlow を使ったイベントの集計
+      - name: Application Insights での分析
+        href: service-fabric-diagnostics-event-analysis-appinsights.md
+      - name: EventFlow を使ったログの集計
         href: service-fabric-diagnostics-event-aggregation-eventflow.md
       - name: コンテナーの監視
         href: service-fabric-diagnostics-oms-containers.md
     - name: クラスターの監視
       items:
+      - name: クラスター イベントを収集するための Log Analytics の構成
+        href: service-fabric-diagnostics-oms-setup.md
+      - name: Log Analytics によるクラスターの監視
+        href: service-fabric-diagnostics-event-analysis-oms.md
       - name: EventStore API の照会
         href: service-fabric-diagnostics-eventstore-query.md
-      - name: Windows の Azure 診断
+      - name: WAD エージェントのカスタマイズ
         href: service-fabric-diagnostics-event-aggregation-wad.md
-      - name: Linux の Azure 診断
+      - name: LAD エージェントのカスタマイズ
         href: service-fabric-diagnostics-event-aggregation-lad.md
-      - name: Log Analytics の設定
-        href: service-fabric-diagnostics-oms-setup.md
-      - name: Log Analytics による監視
-        href: service-fabric-diagnostics-event-analysis-oms.md
     - name: インフラストラクチャの監視
       items:
-      - name: Log Analytics エージェントを使用したパフォーマンスの監視
+      - name: Log Analytics エージェントによるパフォーマンス カウンターの収集
         href: service-fabric-diagnostics-oms-agent.md
-      - name: WAD を使用したパフォーマンスの監視
+      - name: WAD によるパフォーマンス カウンターの収集
         href: service-fabric-diagnostics-perf-wad.md
     - name: 正常性の監視
       items:
@@ -682,8 +685,6 @@ items:
       href: service-fabric-reverse-proxy-diagnostics.md
     - name: ローカル クラスターのトラブルシューティング
       href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: 一般的なシナリオの診断
-      href: service-fabric-diagnostics-common-scenarios.md
   - name: ベスト プラクティス
     items:
     - name: 運用環境の準備状況チェックリスト
@@ -781,9 +782,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 98ca5a1cbf5298931c14d6c696119d0c98893072
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 320399b277b7b6aa05b128994f68058455353e7b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853644"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291506"
