@@ -83,7 +83,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="mid"></a>Mid
-**関数:**<br>  Mid(source, start, length)
+**関数:**<br> Mid(source, start, length)
 
 **説明:**<br>  source 値の部分文字列を返します。 部分文字列は、source 文字列の文字のみを含む文字列です。
 
@@ -191,7 +191,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
-| **source** |必須 |String |**source** 値。 |
+| **source** |必須 |String |**source セクション セクション** 値。 |
 
 - - -
 ### <a name="switch"></a>Switch
