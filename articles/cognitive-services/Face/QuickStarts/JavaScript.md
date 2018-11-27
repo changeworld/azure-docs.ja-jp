@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 355d3258392fa722fbdc3762a9125a22e8a69b67
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 0d0ff627ad2549ff9b6f09b6c934c5a17a102962
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954303"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852372"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>クイック スタート: REST API と JavaScript を使って画像の中にある顔を検出する
 
@@ -37,10 +37,10 @@ ms.locfileid: "49954303"
 このサンプルを実行するには、次の手順を実行します。
 
 1. 次をコピーし、`detectFaces.html` などのファイルに保存します。
-2. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-3. 必要に応じて、サブスクリプション キーを取得した場所に `uriBase` の値を変更します。
-4. お使いのブラウザーにファイルをドラッグ アンド ドロップします。
-5. `Analyze faces` ボタンをクリックします。
+1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
+1. 必要に応じて、サブスクリプション キーを取得した場所を使用するように `uriBase` の値を変更します (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。
+1. お使いのブラウザーにファイルをドラッグ アンド ドロップします。
+1. `Analyze faces` ボタンをクリックします。
 
 ### <a name="face---detect-request"></a>顔検出要求
 
@@ -63,7 +63,7 @@ ms.locfileid: "49954303"
         // subscription keys from westus, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the "westus" region.
         // If you use a free trial subscription key, you shouldn't need to change 
         // this region.
         var uriBase =

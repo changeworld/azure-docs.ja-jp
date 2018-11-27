@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d3a7ddcd4a95660264bdf9609f54af39a05c97b3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 13422434e6392ec7681ec4478533c45a84f40c9a
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741030"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706978"
 ---
 # <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>チュートリアル: Azure Cosmos DB MongoDB API アカウントにデータを移行する
 
@@ -36,13 +36,13 @@ ms.locfileid: "50741030"
 
 1. コレクションを事前に作成し、拡大縮小します。
         
-    * 既定では、Azure Cosmos DB は、毎秒 1,000 要求ユニット (RU/秒) で新しい MongoDB コレクションをプロビジョニングします。 mongoimport または mongorestore を使用して移行を開始する前に、[Azure portal](https://portal.azure.com) または MongoDB ドライバーとツールから、すべてのコレクションを事前に作成します。 データのサイズが 10 GB を超える場合は、適切なシャード キーを使用して[パーティション分割コレクション](partition-data.md)を作成します。
+   * 既定では、Azure Cosmos DB は、毎秒 1,000 要求ユニット (RU/秒) で新しい MongoDB コレクションをプロビジョニングします。 mongoimport または mongorestore を使用して移行を開始する前に、[Azure portal](https://portal.azure.com) または MongoDB ドライバーとツールから、すべてのコレクションを事前に作成します。 データのサイズが 10 GB を超える場合は、適切なシャード キーを使用して[パーティション分割コレクション](partition-data.md)を作成します。 MongoDB は、エンティティ データをコレクションに格納することを推奨しています。 同等のサイズのエンティティは同じ場所に配置して、Azure Cosmos データベース レベルでスループットをプロビジョニングすることができます。
 
-    * [Azure portal](https://portal.azure.com) で、コレクションのスループットを 1,000 RU/秒 (単一パーティションのコレクションの場合) または 2,500 RU/秒 (移行のためだけにシャード化されたコレクションの場合) から引き上げます。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行直後にスループットを低くすることでコストを削減できます。
+   * [Azure portal](https://portal.azure.com) で、コレクションのスループットを 1,000 RU/秒 (単一パーティションのコレクションの場合) または 2,500 RU/秒 (移行の期間のみシャード化されたコレクションの場合) から引き上げます。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行直後にスループットを低くすることでコストを削減できます。
 
-    * コレクション レベルでの RU/秒 のプロビジョニングに加えて、親データベース レベルの一連のコレクションの RU/秒 のプロビジョニングも行う場合があります。 これを行うには、データベースとコレクションの事前作成と、各コレクションのシャード キーの定義が必要です。
+   * コレクション レベルでの RU/秒 のプロビジョニングに加えて、親データベース レベルの一連のコレクションの RU/秒 のプロビジョニングも行う場合があります。 これを行うには、データベースとコレクションの事前作成と、各コレクションのシャード キーの定義が必要です。
 
-    * お気に入りのツールやドライバー、SDK を使用してシャード コレクションを作成できます。 この例では、Mongo シェルを使用してシャード コレクションを作成します。
+   * お気に入りのツールやドライバー、SDK を使用してシャード コレクションを作成できます。 この例では、Mongo シェルを使用してシャード コレクションを作成します。
 
         ```bash
         db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )

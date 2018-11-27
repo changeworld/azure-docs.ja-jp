@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: overview
 ms.date: 11/09/2018
 ms.author: heidist
-ms.openlocfilehash: bf616dda602edff6add5070ad1f1ab85b6a21380
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 85a071017f4394f4ccde297fb229f7786d9249b3
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568973"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285137"
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
 Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 クエリはユーザー定義インデックスを介して実行されます。
@@ -91,7 +91,7 @@ Azure Search は、Web、モバイル、およびエンタープライズ アプ
 
 Microsoft のお客様は、オンライン カタログ、基幹業務プログラム、およびドキュメント検索アプリケーションを含む、Azure Search の機能を最大限利用できます。
 
-## <a name="rest-api--net-sdk"></a>REST API | .Net SDK
+## <a name="rest-api--net-sdk"></a>REST API | .NET SDK
 
 多くのタスクを実行できるポータルに対し、Azure Search は既存のアプリケーションに検索機能を統合したいと考えている開発者向けのものです。 次のプログラミング インターフェイスが用意されています。
 

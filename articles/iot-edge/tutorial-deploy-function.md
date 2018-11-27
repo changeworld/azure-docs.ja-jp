@@ -4,17 +4,17 @@ description: このチュートリアルでは、Azure 関数をモジュール�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/21/2018
+ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 27aac9431c3f4cd801d090ddf11114c98edab405
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: d0ae009db0d9470942a4ff5d7c09e2cdd7bcdd53
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567317"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165622"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル: Azure 関数を IoT Edge モジュールとして展開する
 
@@ -41,7 +41,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 
 Azure IoT Edge デバイス:
 
-* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
+* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして設定できます。
 
 クラウド リソース:
 
@@ -51,15 +51,15 @@ Azure IoT Edge デバイス:
 
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 
-* Visual Studio Code 用の [Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
+* [Visual Studio Code 用の Azure IoT Edge 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)  
 * [The .NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 * [Docker CE](https://docs.docker.com/install/)。 
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-このチュートリアルでは、VS Code 用の Azure IoT Edge 拡張機能を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
+このチュートリアルでは、Visual Studio Code 用の Azure IoT Edge 拡張機能を使用してモジュールをビルドし、ファイルから**コンテナー イメージ**を作成します。 その後、このイメージを**レジストリ**にプッシュし、格納および管理します。 最後に、レジストリからイメージを展開し、IoT Edge デバイスで実行します。  
 
-このチュートリアルでは、Docker と互換性のある任意のレジストリをご利用いただけます。 クラウドで使用できる 2 つの一般的な Docker レジストリ サービスは、[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) と [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) です。 このチュートリアルでは、Azure Container Registry を使用します。 
+コンテナー イメージは、Docker と互換性のある任意のレジストリを使用して格納できます。 2 つの一般的な Docker レジストリ サービスは、[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) と [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) です。 このチュートリアルでは、Azure Container Registry を使用します。 
 
 1. [Azure portal](https://portal.azure.com) で、**[リソースの作成]** > **[コンテナー]** > **[コンテナー レジストリ]** の順に選択します。
 
@@ -80,7 +80,7 @@ Azure IoT Edge デバイス:
 
 6. コンテナー レジストリが作成されたら、その場所を参照し、**[アクセス キー]** を選択します。 
 
-7. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値を、このチュートリアルで後ほど使用します。 
+7. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値は、このチュートリアルで後ほどコンテナー レジストリへのアクセスを提供するために使用します。 
 
 ## <a name="create-a-function-project"></a>関数プロジェクトを作成する
 
@@ -90,90 +90,89 @@ Azure IoT Edge デバイス:
 
 2. **[表示]** > **[コマンド パレット]** を選択して、VS Code コマンド パレットを開きます。
 
-3. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行します。 手順に従って Azure アカウントにサインインします。
+3. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットに表示されるメッセージに従って、ソリューションを作成します。
 
-4. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 コマンド パレットに表示されるメッセージに従って、ソリューションを作成します。
-
-   1. ソリューションの作成先フォルダーを選択します。 
-   2. ソリューションの名前を指定するか、既定の **EdgeSolution** をそのまま使用します。
-   3. **Azure Functions - C#** をモジュール テンプレートとして選択します。 
-   4. モジュールに **CSharpFunction** という名前を付けます。 
-   5. 前のセクションで作成した Azure Container Registry を、最初のモジュールのイメージ リポジトリとして指定します。 **localhost:5000** を、コピーしたログイン サーバーの値に置き換えます。 モジュール名 (たとえば、/csharpfunction) が文字列の一部としてそのまま使用されていることを確認します。 文字列は最終的に、\<レジストリ名\>.azurecr.io/csharpfunction のようになります。
+   | フィールド | 値 |
+   | ----- | ----- |
+   | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
+   | Provide a solution name (ソリューション名の指定) | **FunctionSolution** のように、ソリューションのわかりやすい名前を入力するか、既定値をそのまま使用します。 |
+   | Select module template (モジュール テンプレートの選択) | **[Azure Functions - C#]** を選択します。 |
+   | Provide a module name (モジュール名の指定) | モジュールに **CSharpFunction** という名前を付けます。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 文字列は最終的に、\<レジストリ名\>.azurecr.io/CSharpFunction のようになります。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-deploy-function/repository.png)
 
 4. VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペース (\.vscode フォルダー、modules フォルダー、配置マニフェスト テンプレート ファイル、 \.env ファイル) が読み込まれます。 VS Code エクスプローラーで、**[モジュール]** > **[CSharpFunction]** > **[CSharpFunction.cs]** の順に開きます。
 
-5. **CSharpFunction.cs** ファイルの内容を次のコードに置き換えます。
+5. **CSharpFunction.cs** ファイルの内容を次のコードに置き換えます。 このコードは、周囲温度とマシン温度に関するテレメトリを受け取り、定義されたしきい値をマシン温度が超えた場合にのみ、IoT Hub にメッセージを転送します。
 
    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Devices.Client;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Extensions.EdgeHub;
-    using Microsoft.Azure.WebJobs.Host;
-    using Microsoft.Extensions.Logging;
-    using Newtonsoft.Json;
+   using System;
+   using System.Collections.Generic;
+   using System.IO;
+   using System.Text;
+   using System.Threading.Tasks;
+   using Microsoft.Azure.Devices.Client;
+   using Microsoft.Azure.WebJobs;
+   using Microsoft.Azure.WebJobs.Extensions.EdgeHub;
+   using Microsoft.Azure.WebJobs.Host;
+   using Microsoft.Extensions.Logging;
+   using Newtonsoft.Json;
 
-    namespace Functions.Samples
-    {
-        public static class CSharpFunction
-        {
-            [FunctionName("CSharpFunction")]
-            public static async Task FilterMessageAndSendMessage(
-                        [EdgeHubTrigger("input1")] Message messageReceived,
-                        [EdgeHub(OutputName = "output1")] IAsyncCollector<Message> output,
-                        ILogger logger)
-            {
-                const int temperatureThreshold = 20;
-                byte[] messageBytes = messageReceived.GetBytes();
-                var messageString = System.Text.Encoding.UTF8.GetString(messageBytes);
+   namespace Functions.Samples
+   {
+       public static class CSharpFunction
+       {
+           [FunctionName("CSharpFunction")]
+           public static async Task FilterMessageAndSendMessage(
+               [EdgeHubTrigger("input1")] Message messageReceived,
+               [EdgeHub(OutputName = "output1")] IAsyncCollector<Message> output,
+               ILogger logger)
+           {
+               const int temperatureThreshold = 20;
+               byte[] messageBytes = messageReceived.GetBytes();
+               var messageString = System.Text.Encoding.UTF8.GetString(messageBytes);
 
-                if (!string.IsNullOrEmpty(messageString))
-                {
-                    logger.LogInformation("Info: Received one non-empty message");
-                    // Get the body of the message and deserialize it.
-                    var messageBody = JsonConvert.DeserializeObject<MessageBody>(messageString);
+               if (!string.IsNullOrEmpty(messageString))
+               {
+                   logger.LogInformation("Info: Received one non-empty message");
+                   // Get the body of the message and deserialize it.
+                   var messageBody = JsonConvert.DeserializeObject<MessageBody>(messageString);
 
-                    if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
-                    {
-                        // Send the message to the output as the temperature value is greater than the threashold.
-                        var filteredMessage = new Message(messageBytes);
-                        // Copy the properties of the original message into the new Message object.
-                        foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
-                        {
-                            filteredMessage.Properties.Add(prop.Key, prop.Value);                }
-                        // Add a new property to the message to indicate it is an alert.
-                        filteredMessage.Properties.Add("MessageType", "Alert");
-                        // Send the message.       
-                        await output.AddAsync(filteredMessage);
-                        logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
-                    }
-                }
-            }
-        }
-        //Define the expected schema for the body of incoming messages.
-        class MessageBody
-        {
-            public Machine machine {get; set;}
-            public Ambient ambient {get; set;}
-            public string timeCreated {get; set;}
-        }
-        class Machine
-        {
-            public double temperature {get; set;}
-            public double pressure {get; set;}         
-        }
-        class Ambient
-        {
-            public double temperature {get; set;}
-            public int humidity {get; set;}         
-        }
-    }
+                   if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
+                   {
+                       // Send the message to the output as the temperature value is greater than the threashold.
+                       var filteredMessage = new Message(messageBytes);
+                       // Copy the properties of the original message into the new Message object.
+                       foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
+                       {filteredMessage.Properties.Add(prop.Key, prop.Value);}
+                       // Add a new property to the message to indicate it is an alert.
+                       filteredMessage.Properties.Add("MessageType", "Alert");
+                       // Send the message.       
+                       await output.AddAsync(filteredMessage);
+                       logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
+                   }
+               }
+           }
+       }
+       //Define the expected schema for the body of incoming messages.
+       class MessageBody
+       {
+           public Machine machine {get; set;}
+           public Ambient ambient {get; set;}
+           public string timeCreated {get; set;}
+       }
+       class Machine
+       {
+           public double temperature {get; set;}
+           public double pressure {get; set;}         
+       }
+       class Ambient
+       {
+           public double temperature {get; set;}
+           public int humidity {get; set;}         
+       }
+   }
    ```
 
 6. ファイルを保存します。
@@ -186,12 +185,13 @@ Azure IoT Edge デバイス:
 
 1. **[表示]** > **[ターミナル]** を選択して、VS Code 統合ターミナルを開きます。 
 
-1. 統合ターミナルで次のコマンドを入力して、コンテナー レジストリにサインインします。 これで、必要なモジュール イメージを Azure Container Registry にプッシュすることができます。 
+2. 統合ターミナルで次のコマンドを入力して、コンテナー レジストリにサインインします。 前に Azure Container Registry からコピーしたユーザー名とログイン サーバーを使用します。
      
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
-    前に Azure Container Registry からコピーしたユーザー名とログイン サーバーを使用します。 パスワードの入力を求めるメッセージが表示されたら、コンテナー レジストリのパスワードを貼り付けて **Enter** キーを押します。
+
+    パスワードの入力を求めるメッセージが表示されたら、コンテナー レジストリのパスワードを貼り付けて **Enter** キーを押します。
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>
@@ -235,9 +235,9 @@ Azure IoT Edge デバイス:
 
 6. IoT Edge デバイスの名前を右クリックし、**[単一デバイスの展開を作成する]** を選択します。 
 
-7. **CSharpFunction** が含まれているソリューション フォルダーの場所を参照します。 config フォルダーを開き、deployment.json ファイルを選択して、**[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** を選択します。
+7. **CSharpFunction** が含まれているソリューション フォルダーの場所を参照します。 config フォルダーを開き、**deployment.json** ファイルを選択して、**[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** を選択します。
 
-8. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを更新します。 新しい **CSharpFunction** が、**TempSensor** モジュール、**$edgeAgent** および **$edgeHub** と一緒に実行されていることがわかります。 
+8. **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを更新します。 新しい **CSharpFunction** が、**TempSensor** モジュール、**$edgeAgent** および **$edgeHub** と一緒に実行されていることがわかります。 新しいモジュールが表示されるまでに、数分かかる場合があります。 IoT Edge デバイスは、その新しいデプロイ情報を IoT Hub から取得し、新しいコンテナーを起動した後、その状態を IoT Hub にレポートする必要があります。 
 
    ![VS Code での配置されたモジュールの表示](./media/tutorial-deploy-function/view-modules.png)
 

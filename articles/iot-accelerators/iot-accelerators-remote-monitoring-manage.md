@@ -6,15 +6,15 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 07/19/2018
+ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 6e92ef276d270fcc4c351fb89c699c8addd74632
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222151"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821067"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスの構成および管理
 
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="act-on-a-device"></a>デバイスでの動作
 
-ダッシュボードから開始されたアクションにシミュレートされたエンジン デバイスが正しく応答することをテストするには、**FirmwareUpdate** メソッドを実行します。 メソッドを実行してデバイスを操作するには、デバイスの一覧でデバイスを選択し、**[ジョブ]** をクリックします。 複数のデバイスを操作する場合は、複数のデバイスを選択できます。 **[ジョブ]** パネルで、**[Run method]\(実行メソッド\)** を選択します。 **エンジン** デバイス モデルでは、**FirmwareUpdate**、**FillTank**、および **EmptyTank** の 3 つのメソッドを指定します。
+ダッシュボードから開始されたアクションにシミュレートされたエンジン デバイスが正しく応答することをテストするには、**FirmwareUpdate** メソッドを実行します。 メソッドを実行してデバイスを操作するには、デバイスの一覧でデバイスを選択し、**[ジョブ]** をクリックします。 複数のデバイスを操作する場合は、複数のデバイスを選択できます。 **[ジョブ]** パネルで、**[メソッド]** を選択します。 **エンジン** デバイス モデルでは、**FirmwareUpdate**、**FillTank**、および **EmptyTank** の 3 つのメソッドを指定します。
 
 [![エンジンのメソッド](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
@@ -81,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="reconfigure-a-device"></a>デバイスの再構成
 
-エンジンの構成プロパティを更新できることをテストするには、**[デバイス]** ページのデバイスの一覧でデバイスを選択します。 次に、**[ジョブ]** をクリックし、**[再構成]** を選択します。 [ジョブ] パネルには、選択したデバイスの更新可能なプロパティ値が表示されます。
+エンジンの構成プロパティを更新できることをテストするには、**[デバイス]** ページのデバイスの一覧でデバイスを選択します。 次に、**[ジョブ]** をクリックし、**[プロパティ]** を選択します。 [ジョブ] パネルには、選択したデバイスの更新可能なプロパティ値が表示されます。
 
 [![デバイスの再構成](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 

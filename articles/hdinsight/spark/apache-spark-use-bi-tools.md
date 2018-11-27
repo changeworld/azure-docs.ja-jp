@@ -1,6 +1,6 @@
 ---
 title: 'チュートリアル: Azure HDInsight での Power BI を使用した Apache Spark データの分析 '
-description: Microsoft Power BI を使用して HDInsight クラスターに格納されている Spark データを視覚化する
+description: Microsoft Power BI を使用して HDInsight クラスターに格納されている Apache Spark データを視覚化する
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 341346b290fc3dab94773f75f2269cc147e71b82
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dcd28d8e33045f4c0324f964a854e98dfe004321
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252464"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712417"
 ---
-# <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル: Azure HDInsight での Power BI を使用した Apache Spark データの分析 
+# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル: HDInsight での Power BI を使用した Apache Spark データの分析 
 
 Microsoft Power BI を使用して、Azure HDInsight で Apache Spark クラスター内のデータを視覚化する方法について説明します。
 
@@ -78,7 +78,7 @@ Spark を操作する最初のステップでは、Power BI Desktop のクラス
     ![HDInsight Apache Spark から Power BI Desktop にデータを取得](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Apache Spark BI から Power BI にデータを取得")
 
 
-2. 検索ボックスに「`Spark`」と入力し、**[Azure HDInsight Spark (ベータ版)]** を選択して、**[接続]** をクリックします。
+2. 検索ボックスに「`Spark`」と入力し、**[Azure HDInsight Spark]** を選択して、**[接続]** をクリックします。
 
     ![Apache Spark BI から Power BI にデータを取得](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Apache Spark BI から Power BI にデータを取得")
 

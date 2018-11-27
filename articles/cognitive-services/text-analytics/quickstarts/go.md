@@ -10,23 +10,23 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: f1907ef46f508bea81065e15f83c6e97000e0862
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 10b6015a5d0755c77c787003e429c79f0e2669e5
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268091"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283422"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Go を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
-この記事では、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Go で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
+この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Go で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
 
 API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Text Analytics API** を取得している必要があります。 このクイック スタートは、**月に 5,000 トランザクションを利用できる Free レベル**を使用して完了できます。
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
 

@@ -3,18 +3,18 @@ title: Azure Maps を使った複数のルート | Microsoft Docs
 description: Azure Maps を使用してさまざまな移動モードのルートを検索します
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/29/2018
+ms.date: 11/14/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 67b68489f2e06b9149f842f293a769fa7f688be0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0a278eb1612ec9573c4d12611ccce2d1b5b971bc
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412705"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705281"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Azure Maps を使用してさまざまな移動モードのルートを検索します
 
@@ -291,12 +291,7 @@ ms.locfileid: "50412705"
 
 [こちらでライブ サンプルをご覧いただけます](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
 
-Azure Maps の対象範囲と機能について詳しくは、以下を参照してください。
+次のチュートリアルでは、Azure Maps を使用して簡単なストア ロケーターを作成する手順を紹介します。
 
 > [!div class="nextstepaction"]
-> [ズーム レベルとタイル グリッド](zoom-levels-and-tile-grid.md)
-
-他のコード例や対話型のコーディング エクスペリエンスについては、以下を参照してください。
-
-> [!div class="nextstepaction"]
-> [マップ コントロールの使用方法](how-to-use-map-control.md)
+> [Azure Maps を使用してストア ロケーターを作成する](./tutorial-create-store-locator.md)

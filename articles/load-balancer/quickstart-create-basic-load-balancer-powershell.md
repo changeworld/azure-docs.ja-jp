@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: c675b6d50cf6bf5c4e7ea064f3741cae7a091946
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: c21d5618b3e3223297ddd97dc5c98e5eb8c18c0b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578319"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974820"
 ---
 # <a name="get-started"></a>クイック スタート: Azure PowerShell を使用してパブリック ロード バランサーを作成する
 このクイック スタートでは、Azure PowerShell を使用して Basic Load Balancer を作成する方法について説明します ロード バランサーをテストするには、Windows Server を実行する 2 つの仮想マシン (VM) をデプロイし、VM 間で Web アプリの負荷を分散します。
@@ -44,7 +44,7 @@ New-AzureRmResourceGroup `
 $publicIP = New-AzureRmPublicIpAddress `
   -ResourceGroupName "myResourceGroupLB" `
   -Location "EastUS" `
-  -AllocationMethod "Dynamic" `
+  -AllocationMethod "Static" `
   -Name "myPublicIP"
 ```
 ## <a name="create-basic-load-balancer"></a>Basic Load Balancer を作成する
@@ -251,7 +251,7 @@ $availabilitySet = New-AzureRmAvailabilitySet `
 $cred = Get-Credential
 ```
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成できるようになりました。 次の例では、2 つの VM と必要な仮想ネットワーク コンポーネントがまだ存在しない場合にそれらを作成します。
+[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成できるようになりました。 次の例では、2 つの VM と必要な仮想ネットワーク コンポーネントがまだ存在しない場合にそれらを作成します。 以下の例の VM 作成時には、あらかじめ作成しておいた NIC が VM に関連付けられます。同じ仮想ネットワーク (*myVnet*) とサブネット (*mySubnet*) が割り当てられているためです。
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)

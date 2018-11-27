@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: c04c9d9618cfc507ebdba170e0697aeaeecb1e99
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393714"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854103"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>チュートリアル: Power BI で Azure データ エクスプローラーからデータを視覚化する
 
@@ -36,9 +36,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [テスト用のクラスターとデータベース](create-cluster-database-portal.md)
 
-* [StormEvents サンプル データ](ingest-sample-data.md)
+* [StormEvents サンプル データ](ingest-sample-data.md)。 [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (クリックして**無料ダウンロード**)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (**[無料ダウンロード]** を選択)
 
 ## <a name="render-visuals-in-azure-data-explorer"></a>Azure データ エクスプローラーでビジュアルをレンダリングする
 
@@ -82,17 +82,17 @@ Power BI に進む前に、Azure データ エクスプローラーでビジュ�
 
 Power BI Desktop で Azure データ エクスプローラーに接続します。
 
-1. Power BI Desktop で、**[データを取得]** を選択して、**[その他]** を選択します。
+1. Power BI Desktop の **[ホーム]** タブで、**[データの取得]**、**[詳細]** の順に選択します。
 
     ![データを取得する](media/visualize-power-bi/get-data-more.png)
 
-1. *Kusto* を検索し、**[Azure KustoDB (ベータ)]** を選択して、**[接続]** を選択します。
+1. *Azure Data Explorer* を検索し、**[Azure Data Explorer (Beta)]\(Azure Data Explorer (ベータ)\)** を選択して、**[接続]** を選択します。
 
     ![データを検索して取得する](media/visualize-power-bi/search-get-data.png)
 
 1. **[コネクタのプレビュー]** ページで、**[続行]** を選択します。
 
-1. **[Kusto]** 画面で、テスト クラスターとデータベースの名前を入力します。 クラスターは、`https://<ClusterName>.<Region>.kusto.windows.net` の形式にする必要があります。 テーブルの名前には「*StormEvents*」と入力します。 他のオプションはすべて既定値のままにして、**[OK]** を選択します。
+1. 次の画面で、テスト クラスターとデータベースの名前を入力します。 クラスターは、`https://<ClusterName>.<Region>.kusto.windows.net` の形式にする必要があります。 テーブルの名前には「*StormEvents*」と入力します。 他のオプションはすべて既定値のままにして、**[OK]** を選択します。
 
     ![クラスター、データベース、テーブルのオプション](media/visualize-power-bi/cluster-database-table.png)
 

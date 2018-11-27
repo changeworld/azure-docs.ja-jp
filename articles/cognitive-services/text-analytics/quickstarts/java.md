@@ -10,32 +10,33 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 8ea45d202e550e16a7afd11e056738b2b21bd963
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: f2e576b421526c0245ff249d77214b27c9fd649a
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267717"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283946"
 ---
 # <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Java を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
-この記事では、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Java で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされたエンティティの識別](#Entities)を行う方法について説明します。
+この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Java で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
 
 API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Text Analytics API** を取得している必要があります。 このクイック スタートは、**月に 5,000 トランザクションを利用できる Free レベル**を使用して完了できます。
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
+
 また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>言語を検出する
 
-言語検出 API では、[言語検出メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
+言語検出 API では、 [言語検出メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
 
-1. 適当な IDE で新しい Java プロジェクトを作成します。
+1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。
 3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
@@ -523,7 +524,7 @@ public class GetKeyPhrases {
 ```
 <a name="Entities"></a>
 
-## <a name="identify-entities"></a>エンティティの特定
+## <a name="identify-entities"></a>エンティティの識別
 
 Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別しています。
 

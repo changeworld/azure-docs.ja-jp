@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: quickstart
-ms.openlocfilehash: 949fb2487c3ca519c1d7022c1434d0a029ed20bb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: cb713ac53b399d8ba79d003ee6d948bb5af5220b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626579"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975774"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>クイック スタート: 翻訳のためのカスタム モデルを構築、デプロイ、および使用する
 
@@ -26,7 +26,7 @@ ms.locfileid: "51626579"
 
 2. Azure portal を通じた Translator Text API へのサブスクリプション。 Custom Translator 内のお客様のワークスペースに関連付ける Translator Text API サブスクリプション キーが必要です。 「[Translator Text API にサインアップする方法](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)」を参照してください。
 
-3. 上記の両方がある場合は、[Custom Translator](https://portal.customtranslator.azure.ai) ポータルにサインインします。 Custom Translator ポータルで [設定] ページに移動します。ここでは、お客様の Microsoft Translator Text API サブスクリプション キーをお客様のワークスペースに関連付けることができます。 
+3. 上記の両方がある場合は、[Custom Translator](https://portal.customtranslator.azure.ai) ポータルにサインインします。 Custom Translator ポータルで [設定] ページに移動します。ここでは、お客様の Microsoft Translator Text API サブスクリプション キーをお客様のワークスペースに関連付けることができます。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: c54f5c5fba31933a6dd9f98d1ecfb6d03a3ad9be
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003749"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852199"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>メッセージを配信する Azure サービスの選択
 
@@ -43,7 +43,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 ## <a name="comparison-of-services"></a>サービスの比較
 
-| サービス | 目的 | Type | いつ使用するか |
+| Service | 目的 | type | いつ使用するか |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | リアクティブ プログラミング | イベントの配信 (個別) | 状態の変更に反応する |
 | Event Hubs | ビッグ データのパイプライン | イベントのストリーミング (シリーズ) | テレメトリと分散データ ストリーミング |
@@ -54,6 +54,8 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 Event Grid は、イベント駆動のリアクティブ プログラミングを可能にするイベント バックプレーンです。 発行-サブスクライブ モデルを使用します。 発行元はイベントを発行しますが、どのイベントが処理されるかは想定していません。 サブスクライバーが、どのイベントを処理するかを決定します。
 
 Event Grid は Azure サービスと緊密に統合されており、サード パーティのサービスと統合することもできます。 イベントの使用が簡略化され、定期的にポーリングする必要がなくなるためコストも削減できます。 Event Grid は、Azure および Azure 以外のリソースからのイベントを効率的かつ確実にルーティングします。 イベントは、登録されたサブスクライバーのエンドポイントに配信されます。 イベント メッセージには、サービスやアプリケーションの変更に対応するために必要な情報が含まれています。 Event Grid は、データ パイプラインではないため、更新された実際のオブジェクトは配信しません。
+
+Event Grid は、エンドポイントに配信されないイベントの配信不能処理をサポートしています。
 
 次の特性があります。
 

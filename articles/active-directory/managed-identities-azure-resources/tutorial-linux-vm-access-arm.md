@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 79aacd7160dd4e794681e9b182236d6946baf3b8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6c4869c6ed392b8ae0fb33176435aa3f58abaa1e
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47107236"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706434"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Linux VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
 
@@ -33,15 +33,7 @@ ms.locfileid: "47107236"
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Azure portal にサインインする](https://portal.azure.com)
-
-- [Linux 仮想マシンを作成する](/azure/virtual-machines/linux/quick-create-portal)
-
-- [仮想マシンでシステム割り当てマネージド ID を有効にする](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-azure-resource-manager"></a>Azure Resource Manager で VM にリソース グループへのアクセスを許可する 
 
@@ -61,22 +53,22 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 
 これらの手順を完了するには、SSH クライアントが必要です。 Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
 
-1. ポータルで Linux VM に移動し、**[概要]** の **[接続]** をクリックします。  
-2. 任意の SSH クライアントを使用して、VM に**接続**します。 
-3. ターミナル ウィンドウで、CURL を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Resource Manager のアクセス トークンを取得するよう要求します。  
- 
-    アクセス トークンの CURL 要求を次に示します。  
+1. ポータルで Linux VM に移動し、**[概要]** の **[接続]** をクリックします。  
+2. 任意の SSH クライアントを使用して、VM に**接続**します。 
+3. ターミナル ウィンドウで、CURL を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Resource Manager のアクセス トークンを取得するよう要求します。  
+ 
+    アクセス トークンの CURL 要求を次に示します。  
     
     ```bash
-    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
+    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true   
     ```
     
     > [!NOTE]
-    > "resource"パラメーターの値は、Azure AD で予期される値と完全に一致している必要があります。  Resource Manager のリソース ID の場合は、URI の末尾にスラッシュを含める必要があります。 
+    > "resource"パラメーターの値は、Azure AD で予期される値と完全に一致している必要があります。  Resource Manager のリソース ID の場合は、URI の末尾にスラッシュを含める必要があります。 
     
-    応答には、Azure Resource Manager へのアクセスに必要なアクセス トークンが含まれています。 
+    応答には、Azure Resource Manager へのアクセスに必要なアクセス トークンが含まれています。 
     
-    応答:  
+    応答:  
 
     ```bash
     {"access_token":"eyJ0eXAiOi...",
@@ -85,27 +77,26 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
     "expires_on":"1504130527",
     "not_before":"1504126627",
     "resource":"https://management.azure.com",
-    "token_type":"Bearer"} 
+    "token_type":"Bearer"} 
     ```
     
-    このアクセス トークンを使用して、Azure Resource Manager にアクセスし、たとえば、この VM アクセスを許可した Resource Group の詳細を確認することができます。 \<SUBSCRIPTION ID\>、\<RESOURCE GROUP\>、および \<ACCESS TOKEN\> の値を、以前に作成した値で置き換えます。 
+    このアクセス トークンを使用して、Azure Resource Manager にアクセスし、たとえば、この VM アクセスを許可した Resource Group の詳細を確認することができます。 \<SUBSCRIPTION ID\>、\<RESOURCE GROUP\>、および \<ACCESS TOKEN\> の値を、以前に作成した値で置き換えます。 
     
     > [!NOTE]
-    > URL では大文字小文字が区別されるため、リソース グループの命名時に以前使用したものと同じ大文字小文字が使用されていること、および "resourceGroup" で大文字の "G" が使用されていることを確認してください。  
+    > URL では大文字小文字が区別されるため、リソース グループの命名時に以前使用したものと同じ大文字小文字が使用されていること、および "resourceGroup" で大文字の "G" が使用されていることを確認してください。  
     
     ```bash 
-    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
-    応答は、特定の Resource Group の情報とともに返されます。 
-     
+    応答は、特定の Resource Group の情報とともに返されます。    
     ```bash
-    {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}} 
-    ```     
+    {"id":"/subscriptions/98f51385-2edc-4b79-bed9-7718de4cb861/resourceGroups/DevTest","name":"DevTest","location":"westus","properties":{"provisioningState":"Succeeded"}} 
+    ```     
 
-## <a name="next-steps"></a>次の手順
+## Next steps
 
-このクイック スタートでは、システム割り当て ID を使用して Azure Resource Manager API にアクセスする方法について説明しました。  Azure Resource Manager の詳細については、以下を参照してください。
+In this quickstart, you learned how to use a system-assigned managed identity to access the Azure Resource Manager API.  To learn more about Azure Resource Manager see:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: e8b16f7ebe918e5b8d59c6b57794c4f35a89b5f3
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: dc84014f3dce027c830f3f46b4aba16b775251d8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684003"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853151"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>クイック スタート: 画像内の顔を検出してフレームに収める Python スクリプトの作成
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
 
-新しい Python スクリプト _FaceQuickstart.py_ を作成します。 次のコードを追加します。 これは、顔検出のコア機能です。 `<Subscription Key>` は、実際のキーの値に置き換える必要があります。 また、場合によっては、実際のキーに適切なリージョン識別子を使用するために `BASE_URL` の値を変更する必要もあります。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。 必要に応じて、`img_url` を、使用する任意の画像の URL に設定します。
+新しい Python スクリプト _FaceQuickstart.py_ を作成します。 次のコードを追加します。 これは、顔検出のコア機能です。 `<Subscription Key>` は、実際のキーの値に置き換える必要があります。 また、`BASE_URL` の値も、実際のキーに合った正しいリージョン識別子を使用するように変更する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。 必要に応じて、`img_url` を、使用する任意の画像の URL に設定します。
 
 このスクリプトでは、**cognitive_face.face.detect** メソッドを呼び出して顔を検出します。これは、[Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップし、顔のリストを返します。
 

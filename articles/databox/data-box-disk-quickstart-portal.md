@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: f84eda2269df0bbe7186a2f1a9abb9c594b75455
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fbe286313bce9b735665b134a5ea18ba4995548b
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245071"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712264"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>クイック スタート: Azure portal を使用して Azure Data Box Disk をデプロイする (プレビュー)
 
@@ -67,7 +67,7 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 
     1. Azure portal で **[全般] > [デバイスの詳細]** に移動し、パスキーを取得します。
     2. ディスクへのデータのコピーに使用するコンピューターに、オペレーティング システム固有の Data Box Disk のロック解除ツールをダウンロードして展開します。 
-    3. Data Box Disk ロック解除ツールを実行して、このパスキーを指定します。 ディスクの再挿入に対応するには、ロック解除ツールをもう一度実行し、パスキーを指定します。 **BitLocker ダイアログまたは BitLocker キーを使用したディスクのロック解除は行わないでください。** ディスクのロック解除方法の詳細については、[Windows クライアントでのディスクのロック解除]()または [Linux クライアントでのディスクのロック解除]()に関するページを参照してください。
+    3. Data Box Disk ロック解除ツールを実行して、このパスキーを指定します。 ディスクの再挿入に対応するには、ロック解除ツールをもう一度実行し、パスキーを指定します。 **BitLocker ダイアログまたは BitLocker キーを使用したディスクのロック解除は行わないでください。** ディスクのロック解除方法の詳細については、[Windows クライアントでのディスクのロック解除](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)または [Linux クライアントでのディスクのロック解除](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)に関するページを参照してください。
     4. ディスクに割り当てられたドライブ文字が、ツールによって表示されます。 ディスクのドライブ文字をメモしておいてください。 以降の手順で使用します。
 
 ## <a name="copy-data-and-validate"></a>データをコピーし、検証する
@@ -85,7 +85,6 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 2. (省略可) コピーが完了したら、*DataBoxDiskImport* フォルダーに格納されている `DataBoxDiskValidation.cmd` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
 3. ドライブを取り外します。 
 
-
 ## <a name="ship-to-azure"></a>Azure への発送
 
 この手順の所要時間は 5 分から 7 分程度です。
@@ -94,7 +93,6 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 2. パッケージに封をし、集荷場所に持ち込みます。  
 
 Data Box Disk サービスからメール通知が送信され、Azure portal で注文の状態が更新されます。
-
 
 ## <a name="verify-your-data"></a>データの検証
 
@@ -126,5 +124,3 @@ Data Box Disk サービスからメール通知が送信され、Azure portal �
 
 > [!div class="nextstepaction"]
 > [Azure portal を使用して Data Box Disk を管理する](data-box-portal-ui-admin.md)
-
-

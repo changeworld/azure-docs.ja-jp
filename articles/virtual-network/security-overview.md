@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 6501444aacd36c794c8a169a8d1b16898efad018
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159079"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977252"
 ---
 # <a name="security-groups"></a>セキュリティ グループ
 <a name="network-security-groups"></a>

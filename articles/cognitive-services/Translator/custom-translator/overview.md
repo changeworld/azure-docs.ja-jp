@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: b7cba2959bead5eeed72a87219c70f896b5a48b8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 76e6bc006ff6049b631409a3515628fbd169f713
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51682964"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976980"
 ---
 # <a name="what-is-custom-translator-preview"></a>Custom Translator (プレビュー) とは
 

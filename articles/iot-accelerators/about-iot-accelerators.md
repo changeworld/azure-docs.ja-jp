@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: aac079feefde53ff30cbeab942ee0443c113cdc8
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 6fed0c5e3f24fbcefec427cf56a625d1d8d7aba2
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345115"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824542"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータとは
 
@@ -50,7 +50,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 ### <a name="predictive-maintenance"></a>予測メンテナンス
 
-このソリューション アクセラレータは、リモート デバイスのエラーを予測し、そのエラーが発生する前にメンテナンスを行うために使用します。 このソリューション アクセラレータは機械学習アルゴリズムを使用して、デバイスのテレメトリからエラーを予測します。 デバイスの例として、航空機のエンジンやエレベーターが挙げられる場合があります。
+このソリューション アクセラレータは、リモート デバイスが故障する前にメンテナンスを行えるよう、その故障時期を予測するために使用します。 このソリューション アクセラレータは機械学習アルゴリズムを使用して、デバイスのテレメトリからエラーを予測します。 デバイスの例として、航空機のエンジンやエレベーターが挙げられる場合があります。
 
 予測メンテナンス ダッシュボードを使用して、予測メンテナンス分析を表示できます。
 
@@ -97,7 +97,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 * **Basic:** デモまたはデプロイ テストのための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
 * **Local:** テストおよび開発用のローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内で IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
 
-ソリューション アクセラレータを実行するコストは、[基礎となる Azure サービスのコスト](https://azure.microsoft.com/pricing)の総計です。 デプロイのオプションを選択するときに、使用する Azure サービスの詳細が表示されます。
+ソリューション アクセラレータを実行するコストは、[基礎となる Azure サービスの実行コスト](https://azure.microsoft.com/pricing)の総計です。 デプロイのオプションを選択するときに、使用する Azure サービスの詳細が表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 0a8a97be89893dbf072942501be51b82d20c1ef4
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 7656d8247cfb16df9989638b7e8ad2ffd3ff445f
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578059"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51851672"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>クイック スタート: REST API と Java を使用して画像内の顔を検出する
 
@@ -62,7 +62,7 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>必須フィールドを追加する
 
-以下の各フィールドを **Main** クラスに追加します。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください。 また、`imageWithFaces` 値は、別の画像ファイルのパスに設定することもできます。
+以下の各フィールドを **Main** クラスに追加します。 このデータによって、Face サービスへの接続方法と入力データの取得場所が指定されます。 `subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 また、`imageWithFaces` 値は、別の画像ファイルのパスに設定することもできます。
 
 `faceAttributes` フィールドは、簡単に言えば、特定の種類の属性を列挙したものです。 検出された顔について、どの情報を取得するかを指定します。
 
@@ -75,7 +75,7 @@ private static final String subscriptionKey = "<Subscription Key>";
 // subscription keys from westus, replace "westcentralus" in the URL
 // below with "westus".
 //
-// Free trial subscription keys are generated in the westcentralus region. If you
+// Free trial subscription keys are generated in the "westus" region. If you
 // use a free trial subscription key, you shouldn't need to change this region.
 private static final String uriBase =
     "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 17326fa60160e084d4c30347b1a765d1f80d01f5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299421"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711533"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
@@ -31,10 +31,12 @@ ms.locfileid: "51299421"
 ## <a name="compute-quota-types"></a>Compute クォータの種類 
 | **種類** | **既定値** | **説明** |
 | --- | --- | --- |
-| [Max number of virtual machines]\(仮想マシンの最大数\) | 50 | 1 つのサブスクリプションでこの場所に作成できる仮想マシンの最大数です。 |
-| [Max number of virtual machine cores]\(仮想マシン コアの最大数\) | 100 | 1 つのサブスクリプションでこの場所に作成できるコアの最大数です (たとえば、A3 VM のコア数は 4 です)。 |
-| [Max number of availability sets]\(可用性セットの最大数\) | 10 | この場所に作成できる可用性セットの最大数です。 |
-| [Max number of virtual machine scale sets]\(仮想マシン スケール セットの最大数\) | 100 | この場所に作成できる仮想マシン スケールセットの最大数です。 |
+| [Maximum number of virtual machines]\(仮想マシンの最大数\) | 50 | 1 つのサブスクリプションでこの場所に作成できる仮想マシンの最大数です。 |
+| [Maximum number of virtual machine cores]\(仮想マシン コアの最大数\) | 100 | 1 つのサブスクリプションでこの場所に作成できるコアの最大数です (たとえば、A3 VM のコア数は 4 です)。 |
+| [Maximum number of availability sets]\(可用性セットの最大数\) | 10 | この場所に作成できる可用性セットの最大数です。 |
+| [Maximum number of virtual machine scale sets]\(仮想マシン スケール セットの最大数\) | 100 | この場所に作成できる仮想マシン スケールセットの最大数です。 |
+| [Maximum capacity (in GB) of standard managed disk]\(Standard マネージド ディスクの最大容量 (GB)\) | 2048 | この場所に作成できる Standard マネージド ディスクの最大容量。 |
+| [Maximum capacity (in GB) of premium managed disk]\(Premium マネージド ディスクの最大容量 (GB)\) | 2048 | この場所に作成できる Premium マネージド ディスクの最大容量。 |
 
 ## <a name="storage-quota-types"></a>Storage クォータの種類 
 | **項目** | **既定値** | **説明** |
@@ -49,13 +51,13 @@ ms.locfileid: "51299421"
 ## <a name="network-quota-types"></a>Network クォータの種類
 | **項目** | **既定値** | **説明** |
 | --- | --- | --- |
-| [Max public IPs]\(パブリック IP の最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるパブリック IP の最大数です。 |
-| [Max virtual networks]\(仮想ネットワークの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できる仮想ネットワークの最大数です。 |
-| [Max virtual network gateways]\(仮想ネットワーク ゲートウェイの最大数\) |1 |1 つのサブスクリプションでこの場所に作成できる仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) の最大数です。 |
-| [Max network connections]\(ネットワーク接続の最大数\) |2 |1 つのサブスクリプションで、すべての仮想ネットワーク ゲートウェイにまたがってこの場所に作成できるネットワーク接続 (ポイント対ポイントまたはサイト対サイト) の最大数です。 |
-| [Max load balancers]\(ロード バランサーの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるロード バランサーの最大数です。 |
-| 最大 NIC 数 |100 |1 つのサブスクリプションでこの場所に作成できるネットワーク インターフェイスの最大数です。 |
-| [Max network security groups]\(ネットワーク セキュリティ グループの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるネットワーク セキュリティ グループの最大数です。 |
+| [Maximum public IPs]\(パブリック IP の最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるパブリック IP の最大数です。 |
+| [Maximum virtual networks]\(仮想ネットワークの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できる仮想ネットワークの最大数です。 |
+| [Maximum virtual network gateways]\(仮想ネットワーク ゲートウェイの最大数\) |1 |1 つのサブスクリプションでこの場所に作成できる仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) の最大数です。 |
+| [Maximum network connections]\(ネットワーク接続の最大数\) |2 |1 つのサブスクリプションで、すべての仮想ネットワーク ゲートウェイにまたがってこの場所に作成できるネットワーク接続 (ポイント対ポイントまたはサイト対サイト) の最大数です。 |
+| [Maximum load balancers]\(ロード バランサーの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるロード バランサーの最大数です。 |
+| [Maximum NICs]\(最大 NIC 数\) |100 |1 つのサブスクリプションでこの場所に作成できるネットワーク インターフェイスの最大数です。 |
+| [Maximum network security groups]\(ネットワーク セキュリティ グループの最大数\) |50 |1 つのサブスクリプションでこの場所に作成できるネットワーク セキュリティ グループの最大数です。 |
 
 ## <a name="view-an-existing-quota"></a>[View an existing quota]\(既存のクォータの表示\)
 1. 管理ポータルの既定のダッシュボードで、**[リソース プロバイダー]** タイルを見つけます。

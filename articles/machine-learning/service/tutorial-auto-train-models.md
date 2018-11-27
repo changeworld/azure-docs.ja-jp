@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 29d673f48671ec917e45b7ff76feeebf0b868c4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.date: 11/21/2018
+ms.openlocfilehash: 76436da1013c6747e9167c006e0d7c5e89ec8d9c
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426891"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284746"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>チュートリアル: Azure Machine Learning サービスにおいて、自動機械学習で分類モデルをトレーニングする
 
@@ -34,7 +34,10 @@ ms.locfileid: "49426891"
 > * トレーニング結果を確認する
 > * 最高のモデルを登録する
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLfree)を作成してください。
+
+>[!NOTE]
+> この記事のコードは、Azure Machine Learning SDK バージョン 0.1.79 を使用してテストされました
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
@@ -214,7 +217,7 @@ Jupyter ウィジェットを使用するか、実験の履歴を検証して、
 Jupyter Notebook ウィジェットを使用し、すべての結果のグラフおよびテーブルを参照します。
 
 ```python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 

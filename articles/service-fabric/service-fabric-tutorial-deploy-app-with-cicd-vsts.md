@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/13/2017
+ms.date: 11/15/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7f14151224a9e2baa74183696c92bca06695bf4f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380150"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853742"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 
@@ -94,23 +94,23 @@ Azure DevOps のリリース パイプラインでは、クラスターにアプ
 
 Web ブラウザーを開き、新しいプロジェクト ([https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting)) に移動します。
 
-**[ビルドとリリース]** タブ、**[ビルド]**、**[新しいパイプライン]** の順に選択します。
+**[パイプライン]** タブ、**[ビルド]**、**[新しいパイプライン]** の順に選択します。
 
 ![新しいパイプライン][new-pipeline]
 
-ソースとして **[Azure DevOps Git]** を選択し、**[Voting]** プロジェクト、**[Voting]** リポジトリ、**[マスター]** 既定ブランチまたは手動のビルドおよびスケジュールされたビルドを選択します。  **[Continue]\(続行\)** をクリックします。
+ソースとして **[Azure Repos Git]** を選択し、**[Voting]** チーム プロジェクト、**[Voting]** リポジトリ、**[マスター]** 既定ブランチまたは手動のビルドおよびスケジュールされたビルドを選択します。  **[Continue]\(続行\)** をクリックします。
+
+![リポジトリの選択][select-repo]
 
 **[テンプレートの選択]** で **[Azure Service Fabric アプリケーション]** テンプレートを選択し、**[適用]** をクリックします。
 
 ![ビルド テンプレートを選択する][select-build-template]
 
-**[タスク]** の **[エージェント キュー]** に「Hosted VS2017」と入力します。
+**[タスク]** の **[エージェント プール]** に「Hosted VS2017」と入力します。
 
 ![タスクを選択する][save-and-queue]
 
-**[トリガー]** で **[継続的インテグレーションを有効にする]** をオンにして、継続的インテグレーションを有効にします。 **[ブランチ フィルター]** で **[+ 追加]** をクリックすると、**[ブランチ仕様]** が既定の **[マスター]** になります。 **[保存してキューに登録]** を選択して、ビルドを手動で開始します。
-
-**[ビルド パイプラインとキューの保存]** ダイアログで、**[保存してキューに登録]** をクリックします。
+**[トリガー]** で **[継続的インテグレーションを有効にする]** をオンにして、継続的インテグレーションを有効にします。 **[ブランチ フィルター]** 内で、**[ブランチ仕様]** が既定の **[マスター]** になります。 **[保存してキューに登録]** を選択して、ビルドを手動で開始します。
 
 ![トリガーを選択する][save-and-queue2]
 
@@ -118,7 +118,7 @@ Web ブラウザーを開き、新しいプロジェクト ([https://&lt;myaccou
 
 ### <a name="create-a-release-pipeline"></a>リリース パイプラインを作成する
 
-**[ビルドとリリース]** タブ、**[リリース]**、**[+ 新しいパイプライン]** の順に選択します。  **[テンプレートの選択]** で一覧から **[Azure Service Fabric の配置]** テンプレートを選択し、**[適用]** を選択します。
+**[パイプライン]** タブ、**[リリース]**、**[+ 新しいパイプライン]** の順に選択します。  **[テンプレートの選択]** で一覧から **[Azure Service Fabric の配置]** テンプレートを選択し、**[適用]** を選択します。
 
 ![リリース テンプレートを選択する][select-release-template]
 
@@ -182,7 +182,7 @@ Azure DevOps へ変更をプッシュすると、ビルドが自動的にトリ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * プロジェクトにソース管理を追加する
@@ -198,6 +198,7 @@ Azure DevOps へ変更をプッシュすると、ビルドが自動的にトリ�
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
 [new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
+[select-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectRepo.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png

@@ -10,23 +10,23 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: a5223b026705cef5abbcd0be6f64cf0c98fd0930
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 59469b6c27ceb0ed96659198edd6ddbca12685e2
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309027"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283963"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: C# を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
-このチュートリアルでは、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を C# で使用して、言語の検出、センチメントの分析、およびキー フレーズの抽出を行う方法について説明します。 このコードは、.Net Core アプリケーションで動作するように作成されており、外部ライブラリへの参照は最小限なので、Linux または MacOS で実行することもできます。
+このチュートリアルでは、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を C# で使用して、言語の検出、センチメントの分析、およびキー フレーズの抽出を行う方法について説明します。 このコードは、.Net Core アプリケーションで動作するように作成されており、外部ライブラリへの参照は最小限なので、Linux または MacOS で実行することもできます。
 
 API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Text Analytics API** を取得している必要があります。 このクイック スタートは、**月に 5,000 トランザクションを利用できる Free レベル**を使用して完了できます。
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
 

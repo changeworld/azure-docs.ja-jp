@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: e6e49a03ee76c50cb2fff492bfd50b2820abafe4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 11/21/2018
+ms.openlocfilehash: 067a8deb935fb8a49d72c6ce441e8d9760c5390c
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343760"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283657"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>チュートリアル #1: Azure Machine Learning サービスで画像分類モデルをトレーニングする
 
@@ -33,7 +33,10 @@ ms.locfileid: "49343760"
 
 その後[このチュートリアルのパート 2](tutorial-deploy-models-with-aml.md) で、モデルを選択してデプロイする方法を学習します。 
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLfree)を作成してください。
+
+>[!NOTE]
+> この記事のコードは、Azure Machine Learning SDK バージョン 0.1.79 を使用してテストされました
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
@@ -42,7 +45,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 >[!NOTE]
-> このチュートリアルは、Azure Machine Learning SDK バージョン 0.168 でテストされました。 
+> このチュートリアルは、Azure Machine Learning SDK バージョン 0.1.74 でテストされました 
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
@@ -93,41 +96,43 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-remote-compute-target"></a>リモート コンピューティング ターゲットの作成
 
-Azure Batch AI は、Azure 仮想マシン (GPU をサポートする VM を含む) のクラスター上で、データ サイエンティストが機械学習モデルをトレーニングすることを可能にする管理されたサービスです。  このチュートリアルでは、トレーニング環境として Azure Batch AI クラスターを作成します。 このコードは、クラスターがまだワークスペース内にない場合にクラスターを作成します。 
+Azure ML Managed Compute は、Azure 仮想マシン (GPU をサポートする VM を含む) のクラスター上で、データ サイエンティストが機械学習モデルをトレーニングすることを可能にする管理されたサービスです。  このチュートリアルでは、トレーニング環境として Azure Managed Compute クラスターを作成します。 このコードは、クラスターがまだワークスペース内にない場合にクラスターを作成します。 
 
  **クラスターの作成には約 5 分かかります。** ワークスペース内にクラスターが既存の場合は、このコードはそのクラスターを使用し、作成プロセスをスキップします。
 
 
 ```python
-from azureml.core.compute import ComputeTarget, BatchAiCompute
-from azureml.core.compute_target import ComputeTargetException
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+import os
 
 # choose a name for your cluster
-batchai_cluster_name = "traincluster"
+compute_name = os.environ.get("BATCHAI_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 4)
 
-try:
-    # look for the existing cluster by name
-    compute_target = ComputeTarget(workspace=ws, name=batchai_cluster_name)
-    if type(compute_target) is BatchAiCompute:
-        print('found compute target {}, just use it.'.format(batchai_cluster_name))
-    else:
-        print('{} exists but it is not a Batch AI cluster. Please choose a different name.'.format(batchai_cluster_name))
-except ComputeTargetException:
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_D2_V2")
+
+
+if compute_name in ws.compute_targets:
+    compute_target = ws.compute_targets[compute_name]
+    if compute_target and type(compute_target) is AmlCompute:
+        print('found compute target. just use it. ' + compute_name)
+else:
     print('creating a new compute target...')
-    compute_config = BatchAiCompute.provisioning_configuration(vm_size="STANDARD_D2_V2", # small CPU-based VM
-                                                                #vm_priority='lowpriority', # optional
-                                                                autoscale_enabled=True,
-                                                                cluster_min_nodes=0, 
-                                                                cluster_max_nodes=4)
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws, batchai_cluster_name, compute_config)
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
     
     # can poll for a minimum number of nodes and for a specific timeout. 
-    # if no min node count is provided it uses the scale settings for the cluster
+    # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-    # Use the 'status' property to get a detailed status for the current cluster. 
+     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -143,7 +148,7 @@ except ComputeTargetException:
 
 ### <a name="download-the-mnist-dataset"></a>MNIST データセットのダウンロード
 
-MNIST データセットをダウンロードし、ファイルを `data` ディレクトリ内にローカルに保存します。  トレーニング用とテスト用にイメージとラベルがダウンロードされます。  
+MNIST データセットをダウンロードし、ファイルを `data` ディレクトリ内にローカルに保存します。  トレーニング用とテスト用にイメージとラベルがダウンロードされます。
 
 
 ```python
@@ -160,7 +165,7 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 
 ### <a name="display-some-sample-images"></a>複数のサンプル イメージの表示
 
-圧縮されたファイルを `numpy` 配列内に読み込みます。 それから `matplotlib` を使用して、ラベルがあるデータセットから 30 個のランダムなイメージをプロットします。 この手順には、`util.py` ファイルに含まれている `load_data` 関数が必要です。 このファイルは、サンプル フォルダーに含まれています。 このノートブックと同じフォルダーに配置されていることを確認してください。 `load_data` 関数は、圧縮ファイルを numpy 配列に解析します。
+圧縮されたファイルを `numpy` 配列内に読み込みます。 それから `matplotlib` を使用して、ラベルがあるデータセットから 30 個のランダムなイメージをプロットします。 この手順には、`util.py` ファイルに含まれている `load_data` 関数が必要です。 このファイルは、サンプル フォルダーに含まれています。 このノートブックと同じフォルダーに配置されていることを確認してください。 `load_data` 関数は、圧縮ファイルを numpy 配列に解析するだけのものです。
 
 
 
@@ -209,9 +214,9 @@ ds.upload(src_dir='./data', target_path='mnist', overwrite=True, show_progress=T
 ```
 これで、モデルのトレーニングを開始するために必要なものがすべて揃いました。 
 
-## <a name="train-a-model-locally"></a>ローカルでモデルをトレーニングする
+## <a name="train-a-local-model"></a>ローカル モデルをトレーニングする
 
-scikit-learn からの単純なロジスティック回帰モデルをローカルでトレーニングします。
+scikit-learn を使用して単純なロジスティック回帰モデルをローカルでトレーニングします。
 
 コンピューターの構成に応じて、**ローカルでのトレーニングには 1、2 分かかります**。
 
@@ -243,7 +248,7 @@ print(np.average(y_hat == y_test))
 このタスクでは、以前に設定したリモート トレーニング クラスターにジョブを送信します。  ジョブを送信するには、次のようにします。
 * ディレクトリを作成する
 * トレーニング スクリプトを作成する
-* 推定を作成する
+* エスティメータ オブジェクトを作成する
 * ジョブを送信する 
 
 ### <a name="create-a-directory"></a>ディレクトリを作成する
@@ -314,11 +319,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 以下の、スクリプトがデータを取得してモデルを保存する方法に注目してください。
 
-+ トレーニング スクリプトが引数を読み取り、データが含まれるディレクトリを検出します。  後でジョブを送信する際に、次のように、引数にデータストアを指定します。`parser.add_argument('--data-folder', type = str, dest = 'data_folder', help = 'data directory mounting point')`
-
++ トレーニング スクリプトが引数を読み取り、データが含まれるディレクトリを検出します。  後でジョブを送信する際に、次のように、引数にデータストアを指定します。`parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
     
 + トレーニング スクリプトが、outputs という名前のディレクトリ内にモデルを保存します。 <br/>
-`joblib.dump(value = clf, filename = 'outputs/sklearn_mnist_model.pkl')`<br/>
+`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 このディレクトリ内に書き込まれたものはすべてワークスペース内に自動的にアップロードされます。 チュートリアルの後半で、このディレクトリからモデルにアクセスします。
 
 データセットを正しく読み込むために、`utils.py` ファイルがトレーニング スクリプトから参照されます。  このスクリプトをスクリプト フォルダーにコピーして、リモート リソース上でトレーニング スクリプトと共にアクセスできるようにします。
@@ -341,7 +345,7 @@ shutil.copy('utils.py', script_folder)
 * トレーニング スクリプトからの必須パラメーター 
 * トレーニングに必要な Python パッケージ
 
-このチュートリアルでは、このターゲットは Batch AI クラスターです。 プロジェクト ディレクトリ内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 データストア (`ds.as_mount()`) を使用するために data_folder が設定されます。
+このチュートリアルでは、このターゲットは Batch AI クラスターです。 スクリプト フォルダー内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 データストア (`ds.as_mount()`) を使用するために data_folder が設定されます。
 
 ```python
 from azureml.train.estimator import Estimator
@@ -395,7 +399,7 @@ Jupyter ウィジェットを使用して、実行の進行状況を監視しま
 
 
 ```python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(run).show()
 ```
 
@@ -423,7 +427,7 @@ print(run.get_metrics())
 
 `{'regularization rate': 0.8, 'accuracy': 0.9204}`
 
-デプロイのチュートリアルで、このモデルについてさらに詳しく探索できます。
+次のチュートリアルで、このモデルについてさらに詳しく探索できます。
 
 ## <a name="register-model"></a>モデルの登録
 

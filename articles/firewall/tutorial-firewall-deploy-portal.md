@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8a3a9e4019be0b6039fe43df11a5f6093545f9cd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1d7c880a56c79d516c3904c3f532eb7006f0b68c
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685358"
+ms.locfileid: "51705839"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する
 

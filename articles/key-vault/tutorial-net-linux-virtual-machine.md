@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: afee50db98b361b11371e9ac382060e200a1f62f
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 928339a245525933ae142a5d73137ce699cf1f7c
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688256"
+ms.locfileid: "51712332"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>チュートリアル: .NET で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法
 
 Azure Key Vault は、API キーや、アプリケーション、サービス、IT リソースへのアクセスに必要なデータベース接続文字列などのシークレットを保護するのに役立ちます。
 
-このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るように Azure Web アプリケーションを設定するために必要な手順を学習します。 このチュートリアルは、[Azure Web Apps](../app-service/app-service-web-overview.md) に基づいています。 ここでは、次の操作を行う方法について学習します。
+このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るようにコンソール アプリケーションを設定するために必要な手順を学習します。 このチュートリアルは、[Azure Web Apps](../app-service/app-service-web-overview.md) に基づいています。 ここでは、次の操作を行う方法について学習します。
 
 > [!div class="checklist"]
 > * Key Vault を作成します。
@@ -259,8 +259,7 @@ using Newtonsoft.Json.Linq;
                 String responseString = reader.ReadToEnd();
 
                 JObject joResponse = JObject.Parse(responseString);    
-                JValue ojObject = (JValue)joResponse[tokenName];
-                Console.WriteLine(ojObject.Value);                
+                JValue ojObject = (JValue)joResponse[tokenName];   
                 token = ojObject.Value.ToString();
             }
             return token;

@@ -5,15 +5,15 @@ author: aditidugar
 ms.author: adugar
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/11/2018
+ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 8258c8f34b4b9a1b216d9d497dcdf7d3b8db1373
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369512"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284566"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>チュートリアル: アラートの根本原因分析を実施する
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![ダッシュボードに表示するトラックをフィルター処理する](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
 
-フィルターを適用すると、フィルター条件に一致するデバイスのみが **[ダッシュボード]** ページのマップとテレメトリ パネルに表示されます。 **truck-02** を含む 2 台のトラックがソリューション アクセラレータに接続されていることがわかります。
+フィルターを適用すると、フィルター条件に一致するデバイスのみが **[ダッシュボード]** のマップとテレメトリ パネルに表示されます。 **truck-02** を含む 2 台のトラックがソリューション アクセラレータに接続されていることがわかります。
 
 ## <a name="view-real-time-telemetry"></a>テレメトリをリアルタイムで表示する
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![TSI エクスプローラーのトラック温度](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
 
-リモート監視ダッシュボードと同じビューが表示されますが、ここではアラートがトリガーされた時間範囲を拡大できます。
+リモート監視ダッシュボードと同じビューが表示されます。 加えて、ここではアラートがトリガーされた時間範囲を拡大できるようになりました。
 
 [![TSI エクスプローラーの拡大](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
 
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="diagnose-the-alert"></a>アラートを診断する
 
-現在のビューのストリームを見ると、2 台のトラックの高度プロファイルが大きく異なることがわかります。 また、トラックの高度が高くなると **delivery-truck-02** の温度が低下しています。 トラックは同じルートをたどるようにスケジュールされていたため、オペレータは驚きます。
+現在のビューのストリームを見ると、2 台のトラックの高度プロファイルが異なることがわかります。 また、トラックの高度が高くなると **delivery-truck-02** の温度が低下しています。 トラックは同じルートをたどるようにスケジュールされていたため、オペレータは驚きます。
 
 トラックが異なる経路を走ったかどうかを確認するため、**[追加]** ボタンを使用してサイド パネルに別のウィンドウを追加します。 新しいウィンドウで、新しいラベルの名前を「**デバイス**」に変更して前のものと一致するようにします。 **[メジャー]** として**経度**を選択し、**[次で分割]** の値として **iothub-connection-device-id** を選択して、経度テレメトリをビューに追加します。 **経度**ストリームの違いを見ることで、トラックが別の道を通ったことがわかります。
 
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-new-rule"></a>新しいルールの作成
 
-通常、トラックのルートは事前に最適化されていますが、オペレーターは交通量のパターン、天気、その他の予期しないイベントが原因で遅れる可能性があることを理解しており、トラックの運転手は最善の判断に基づいて直前にルートを変更することができます。 ただし、トラックの積荷の温度は重要であるため、1 分間隔の平均高度が 350 フィートを超えた場合は警告を受け取るように、リモート監視ソリューションで追加ルールを作成する必要があります。
+通常、トラックのルートは事前に最適化されていますが、オペレーターは交通量のパターン、天気、その他の予期しないイベントが原因で遅れる可能性があることを理解しており、トラックの運転手は最善の判断に基づいて直前にルートを変更することができます。 ただし、トラックの積荷の温度は重要であるため、リモート監視ソリューションで追加ルールを作成する必要があります。 1 分間隔の平均高度が 350 フィートを超えた場合に確実に警告を受け取ることが、このルールの目的です。
 
 [![リモート監視のルール タブでの高度ルールの設定](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
 

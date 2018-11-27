@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140859"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824780"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>クイック スタート: クラウドベースのリモート監視ソリューションを試す
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure アカウントの資格情報を使用して、[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) にサインインします。
 
-**[リモート監視]** タイルで **[Try Now]** (今すぐ試す) を選択します。
+**[リモート監視]** タイルをクリックします。 **[リモート監視]** ページの **[Try Now]\(今すぐ試す\)** をクリックします。
 
 ![リモート監視の選択](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
@@ -40,9 +40,10 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 
 言語として **[.NET]** を選択します。 Java と .NET の実装は、同じ機能を備えています。
 
-リモート監視ソリューション アクセラレータの一意の**ソリューション名**を入力します。 このクイック スタートでは、**contoso-rm2** という名前を使用します。
+リモート監視ソリューション アクセラレータの一意の**ソリューション名**を入力します。 このクイック スタートでは、**contoso-rm** という名前を使用します。
 
-ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは、**[Visual Studio Enterprise]** と **[西ヨーロッパ]** を使用します。 サブスクリプションの[グローバル管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
+ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは**米国東部**を使用します。
+**[Visual Studio Enterprise]** を選択できますが、そのためには[全体管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
 
 デプロイを開始するには、**[ソリューションの作成]** をクリックします。 このプロセスを実行するには、少なくとも 5 分かかります。
 

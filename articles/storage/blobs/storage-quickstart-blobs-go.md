@@ -6,14 +6,14 @@ author: seguler
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/23/2018
+ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: d3f6f2c9a1ca5016eb9a6597ba32dc1471f77cb4
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 2939bd5c7b32cc9fe05326ee72dbb7367a72ef7f
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038326"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711159"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>クイック スタート: Go を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -21,17 +21,20 @@ ms.locfileid: "51038326"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下が必要です。 
-* [Go 1.8 以上](https://golang.org/dl/)をインストールする
-* `go get -u github.com/Azure/azure-storage-blob-go/azblob` を使用して [Go 用の Azure Storage Blob SDK](https://github.com/azure/azure-storage-blob-go/) をダウンロードしてインストールする。 
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-> [!NOTE]
-> URL では Azure の先頭文字を必ず大文字にしてください。 そうしないと、SDK を使用するときに大文字と小文字の区別に関連するインポートの問題が発生する可能性があります。 インポート ステートメントでも Azure の先頭文字を大文字にする必要があります。
+次の追加の前提条件がインストールされていることを確認してください。
+ 
+* [Go 1.8 以上](https://golang.org/dl/)
+* [Azure Storage Blob SDK for Go](https://github.com/azure/azure-storage-blob-go/) (次のコマンドを使用)
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+    ```
+    go get -u github.com/Azure/azure-storage-blob-go/azblob
+    ``` 
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
-
+    > [!NOTE]
+    > SDK を使用するときに大文字と小文字の区別に関連するインポートの問題を回避するために、`Azure` の先頭文字は必ず大文字にしてください。 インポート ステートメントでも `Azure` の先頭文字を大文字にします。
+    
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 このクイックスタートで使う[サンプル アプリケーション](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git)は、基本的な Go アプリケーションです。  
 

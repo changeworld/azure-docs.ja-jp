@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - .NET で Azure Web アプリを使用して Azure Key Vault を使用する方法 | Microsoft Docs
-description: 'チュートリアル: キー コンテナーからシークレットを読み取るように ASP.Net Core アプリケーションを構成する'
+title: チュートリアル - .NET で Azure Web アプリを使用して Azure Key Vault を使用する | Microsoft Docs
+description: チュートリアル - キー コンテナーからシークレットを読み取るように ASP.Net Core アプリケーションを構成する
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -12,18 +12,20 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 6e30a181bc69678051e6d6469a2f1c533de811df
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: defe1a109381c7ee44c6fc5e5db4c6f6ecc5ac6f
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686213"
+ms.locfileid: "51706842"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-web-app-in-net"></a>チュートリアル: .NET で Azure Web アプリを使用して Azure Key Vault を使用する方法
+# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>チュートリアル: .NET で Azure Web アプリを使用して Azure Key Vault を使用する
 
-Azure Key Vault は、API キーや、アプリケーション、サービス、IT リソースへのアクセスに必要なデータベース接続文字列などのシークレットを保護するのに役立ちます。
+Azure Key Vault は、API キーやデータベース接続文字列などのシークレットを保護するのに役立ちます。 アプリケーション、サービス、IT リソースへのアクセス手段が得られます。
 
-このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るように Azure Web アプリケーションを設定するために必要な手順を学習します。 このチュートリアルは、[Azure Web Apps](../app-service/app-service-web-overview.md) に基づいています。 ここでは、次の操作を行う方法について学習します。
+このチュートリアルでは、Azure キー コンテナーから情報を読み取ることができる Azure Web アプリケーションを作成する方法について説明します。 このプロセスでは、Azure リソースのマネージド ID を使用します。 Azure Web アプリケーションの詳細については、[Azure Web Apps](../app-service/app-service-web-overview.md) に関するページを参照してください。
+
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * Key Vault を作成します。
@@ -32,9 +34,9 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 > * Azure AD Web アプリケーションを作成する。
 > * Web アプリの[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする
 > * Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
-> * Azure で Web アプリケーションを実行する
+> * Azure 上で Web アプリケーションを実行する。
 
-先に進む前に、[基本概念](key-vault-whatis.md#basic-concepts)を確認してください。
+先に進む前に、[Key Vault の基本的な概念](key-vault-whatis.md#basic-concepts)を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,29 +44,27 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
   * [.NET Core 2.1 SDK 以降](https://www.microsoft.com/net/download/windows)
 
 * Mac の場合:
-  * [Visual Studio for Mac の新機能](https://visualstudio.microsoft.com/vs/mac/)に関するページを参照してください。
+  * [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
 
 * すべてのプラットフォーム:
-  * Git ([ダウンロード](https://git-scm.com/downloads))。
-  * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) バージョン 2.0.4 以降。 これは、Windows、Mac、Linux に対応しています。
+  * [Git](https://git-scm.com/downloads)
+  * Azure サブスクリプション <br />(Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。)
+  * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) バージョン 2.0.4 以降 (Windows、Mac、Linux で利用可能)
   * [.NET Core](https://www.microsoft.com/net/download/dotnet-core/2.1)
 
-## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>マネージド サービス ID とは何か、およびそのしくみ
-本題に入る前に、MSI について理解しましょう。 Azure Key Vault を使用すると、資格情報を安全に保存することができます。したがって、コードには資格情報を含めませんが、資格情報を取得するために Azure Key Vault に対して認証する必要があります。 そして、Key Vault に対して認証するには資格情報が必要になります。 これは、古典的なブートストラップ問題です。 MSI は、Azure と Azure AD を利用して "ブートストラップ ID" を提供します。これにより、物事がはるかに簡単になります。
+## <a name="managed-service-identity-and-how-it-works"></a>マネージド サービス ID とそのしくみ
 
-そのしくみについて説明しましょう。 Virtual Machines、App Service、Functions などの Azure サービスに対して MSI を有効にすると、Azure によってサービス インスタンスの[サービス プリンシパル](key-vault-whatis.md#basic-concepts)が Azure Active Directory に作成され、サービス プリンシパルの資格情報がサービスのインスタンスに挿入されます。 
+Azure Key Vault は資格情報を安全に格納します。そのためコードには資格情報が含まれません。 ただし、キーを取得するためには Azure Key Vault に対して認証を行う必要があります。 Key Vault に対して認証を行うには、資格情報が必要となります。 これは従来からあるブートストラップ問題のジレンマです。 マネージド サービス ID (MSI) は、このプロセスを簡素化する "_ブートストラップ ID_" を提供することによって、この問題を解決します。
 
-![MSI](media/MSI.png)
+Azure サービス (Virtual Machines、App Service、Functions など) に対して MSI を有効にすると、Azure によって[サービス プリンシパル](key-vault-whatis.md#basic-concepts)が作成されます。 MSI は、サービスのインスタンスのプリンシパルを Azure Active Directory (Azure AD) に作成し、サービス プリンシパルの資格情報をそのインスタンスに挿入します。
 
-次に、ユーザーのコードが、Azure リソース上で利用可能なローカル メタデータ サービスを呼び出してアクセス トークンを取得します。
-コードは、ローカルの MSI_ENDPOINT から取得したアクセス トークンを使用して、Azure Key Vault サービスに対して認証します。 
+![MSI ダイアグラム](media/MSI.png)
 
-それでは、チュートリアルを開始しましょう。
+次に、ユーザーのコードが、Azure リソース上で利用可能なローカル メタデータ サービスを呼び出してアクセス トークンを取得します。 コードは、ローカルの MSI_ENDPOINT から取得したアクセス トークンを使用して、Azure Key Vault サービスに対して認証します。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure CLI を使用して Azure にログインするには、次のように入力します。
+Azure CLI を使用して Azure にサインインするには、次のように入力します。
 
 ```azurecli
 az login
@@ -72,25 +72,27 @@ az login
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使ってリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-リソース グループ名を選択し、プレース ホルダーを入力します。
-次の例では、米国西部の場所にリソース グループを作成します。
+1. [az group create](/cli/azure/group#az-group-create) コマンドを使ってリソース グループを作成します。
+1. リソース グループ名を選択し、プレース ホルダーを入力します。 次の例では、米国西部の場所にリソース グループを作成します。
 
-```azurecli
-# To list locations: az account list-locations --output table
-az group create --name "<YourResourceGroupName>" --location "West US"
-```
+   ```azurecli
+   # To list locations: az account list-locations --output table
+   az group create --name "<YourResourceGroupName>" --location "West US"
+   ```
 
-作成したリソース グループは、この記事の全体を通して使用します。
+このリソース グループは、このチュートリアルの全体を通して使用します。
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します
 
-次に、前の手順で作成したリソース グループにキー コンテナーを作成します。 次の情報を指定します。
+ご利用のリソース グループにキー コンテナーを作成するには、次の情報を入力します。
 
-* キー コンテナー名: 名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
-* リソース グループ名。
-* 場所: **米国西部**。
+* キー コンテナー名: 数字、文字、ハイフン (例: 0 から 9、a から z、A から Z、-) のみを含んだ 3 から 24 文字の文字列。
+* リソース グループ名
+* 場所: **米国西部**
+
+Azure CLI で、次のコマンドを入力します。
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -100,15 +102,15 @@ az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGr
 
 ## <a name="add-a-secret-to-the-key-vault"></a>キー コンテナーにシークレットを追加する
 
-シークレットのしくみをよく理解できるように、シークレットを追加します。 SQL 接続文字列やその他の情報を機密として保持する必要があるのに、アプリケーションで使用可能になるように保管している場合があります。
+以上で、シークレットを追加できる状態になりました。 その候補としては、SQL 接続文字列など、安全性と、アプリケーションから利用できる状態の両方を維持する必要のある情報が考えられます。
 
-次のコマンドを入力して、**AppSecret** というキー コンテナーにシークレットを作成します。 このシークレットには、値 **MySecret** が格納されます。
+次のコマンドを入力して、**AppSecret** というキー コンテナーにシークレットを作成します。 このシークレットには、**MySecret** という値が格納されます。
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-シークレットに格納されている値をプレーンテキストとして表示するには:
+シークレットに含まれている値をプレーンテキストとして表示するには、次のコマンドを入力します。
 
 ```azurecli
 az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
@@ -118,24 +120,27 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 
 ## <a name="create-a-net-core-web-app"></a>.NET Core Web アプリを作成する
 
-この[チュートリアル](../app-service/app-service-web-get-started-dotnet.md)に従って .NET Core Web アプリを作成し、それを Azure に**発行**します。**または**、次のビデオを視聴します
-> [!VIDEO https://www.youtube.com/embed/EdiiEH7P-bU]
+この[チュートリアル](../app-service/app-service-web-get-started-dotnet.md)に従って .NET Core Web アプリを作成し、それを Azure に**発行**します。 次のビデオをご覧いただくこともできます。
+
+>[!VIDEO https://www.youtube.com/embed/EdiiEH7P-bU]
 
 ## <a name="open-and-edit-the-solution"></a>ソリューションを開いて編集する
 
-1. [ページ] > About.cshtml.cs ファイルの順に移動します。
-2. 次の 2 つの Nuget パッケージをインストールします
-    - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
-    - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
-3. About.cshtml.cs ファイルに次のコードをインポートします
+1. **[ページ]** > **[About.cshtml.cs]** ファイルの順に移動します。
+2. 次の NuGet パッケージをインストールします。
+   - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
+   - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
+3. About.cshtml.cs ファイルに次のコードをインポートします。
 
-    ```
+   ```
     using Microsoft.Azure.KeyVault;
     using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Services.AppAuthentication;
-    ```
-4. AboutModel クラスのコードは次のようになります
-    ```
+   ```
+
+4. AboutModel クラスのコードは次のようになります。
+
+   ```
     public class AboutModel : PageModel
     {
         public string Message { get; set; }
@@ -152,7 +157,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
                 KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
                 var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")
                         .ConfigureAwait(false);
-                Message = secret.Value;             
+                Message = secret.Value;
 
                 /* The below do while logic is to handle throttling errors thrown by Azure Key Vault. It shows how to do exponential backoff which is the recommended client side throttling*/
                 do
@@ -172,7 +177,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
                 Message = keyVaultException.Message;
                 if((int)keyVaultException.Response.StatusCode == 429)
                     retry = true;
-            }            
+            }
         }
 
         // This method implements exponential backoff incase of 429 errors from Azure Key Vault
@@ -192,53 +197,63 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
     }
     ```
 
-
 ## <a name="run-the-app"></a>アプリの実行
 
-Visual Studio 2017 のメイン メニューで、**[デバッグ]** > **[開始]** を選択します ("デバッグあり" と "デバッグなし" のどちらでもかまいません)。 ブラウザーが表示されたら、**[バージョン情報]** ページに移動します。 **AppSecret** の値が表示されます。
+1. Visual Studio 2017 のメイン メニューで、**[デバッグ]** > **[開始]** の順に選択します ("デバッグあり" と "デバッグなし" のどちらでもかまいません)。 
+1. ブラウザーが表示されたら、**[バージョン情報]** ページに移動します。
+1. **AppSecret** の値が表示されます。
 
 ## <a name="enable-a-managed-identity-for-the-web-app"></a>Web アプリのマネージド ID を有効にする
 
-Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
+Azure Key Vault は、資格情報やその他のシークレットを安全に保管する方法を提供しますが、コードで Key Vault に対して認証を行い、それらを取得する必要があります。 [Azure リソースのマネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページは、Azure AD で自動的に管理されているマネージド ID を Azure サービスに付与することで、この問題を解決するうえで役立ちます。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
-1. Azure CLI に戻ります。
-2. assign-identity コマンドを実行して、このアプリケーションの ID を作成します。 
+1. Azure CLI で assign-identity コマンドを実行して、このアプリケーションの ID を作成します。
 
    ```azurecli
+
    az webapp identity assign --name "<YourAppName>" --resource-group "<YourResourceGroupName>"
+
    ```
-   <YourAppName> を Azure 上に発行されているアプリの名前に置き換える必要があることに注意してください。たとえば、発行されたアプリの名前が MyAwesomeapp.azurewebsites.net の場合は、<YourAppName> を MyAwesomeapp に置き換えてください
- 
- 上記のコマンドの出力は次のようになります。アプリケーションを Azure に発行するときに PrincipalId をメモしておきます。 次の形式にする必要があります。
+
+   >[!NOTE]
+   >\<YourAppName\> は、Azure 上の発行済みアプリの名前に置き換える必要があります。 たとえば、その発行済みアプリの名前が **MyAwesomeapp.azurewebsites.net** である場合は、\<YourAppName\> を **MyAwesomeapp** に置き換えます。
+
+1. アプリケーションを Azure に発行するときの `PrincipalId` をメモします。 手順 1. で実行したコマンドの出力形式は次のとおりです。
+
    ```
    {
      "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
      "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
      "type": "SystemAssigned"
    }
-  ```
+   ```
+
 >[!NOTE]
 >この手順のコマンドは、[ポータル](https://portal.azure.com)に移動して、Web アプリケーション プロパティの **[ID] / [システム割り当て済み]** を **[オン]** に切り替えることと同等です。
 
 ## <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>アプリケーションにアクセス許可を割り当ててキー コンテナーからシークレットを読み取る
-        
-次に、キー コンテナーの名前と **PrincipalId** の値を使用してこのコマンドを実行します。
+
+次のコマンドの \<YourKeyVaultName\> は実際のキー コンテナーの名前に、\<PrincipalId\> は該当する **PrincipalId** の値に置き換えてください。
 
 ```azurecli
-
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list
-
 ```
+
+このコマンドでは、App Service の ID (MSI) に、キー コンテナーに対する **get** および **list** 操作を行うためのアクセス許可を付与しています。
 
 ## <a name="publish-the-web-application-to-azure"></a>Azure に Web アプリケーションを発行する
 
-このアプリをもう一度 Azure に発行した後、Web アプリとして動作していること、およびシークレット値を取得できることを確認します。
+ライブ Web アプリからシークレット値をフェッチできることを確認するために、もう一度 Web アプリを Azure に発行します。
 
 1. Visual Studio で、**key-vault-dotnet-core-quickstart** プロジェクトを選択します。
 2. **[発行]** > **[開始]** の順に選択します。
 3. **作成**を選択します。
 
-上記のコマンドでは、App Service の ID (MSI) に、キー コンテナーに対する **get** および **list** 操作を行うアクセス許可を付与しています。 <br />
-これで、アプリケーションを実行すると、取得されたシークレットの値が表示されます。 
+アプリケーションを実行すると、シークレット値を取得できることが確認できます。
 
-これで終了です。 これで、シークレットを保存してキー コンテナーから取得する Web アプリを .NET で正常に作成できました。
+これで、シークレットを保存してキー コンテナーから取得する Web アプリを .NET で正常に作成できました。
+
+## <a name="next-steps"></a>次の手順
+
+>[!div class="nextstepaction"]
+>[Azure Key Vault 開発者ガイド](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-developers-guide)

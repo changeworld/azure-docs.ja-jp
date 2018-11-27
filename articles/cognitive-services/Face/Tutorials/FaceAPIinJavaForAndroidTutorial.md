@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 4378d04d8909ecb0cd77c3196b74ecd51eb19638
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 92344943d2ec19f6730387221974a001e6a2045a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686230"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852896"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル: 画像の中にある顔を検出してフレームに収める Android アプリの作成
 
@@ -92,11 +92,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=17-27)]
 
-`<Subscription Key>` を実際のサブスクリプション キーに置き換える必要があります。 さらに、キーの適切なリージョン識別子を使用して、`<API endpoint>` を実際の Face API エンドポイントに置き換えます。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。 API エンドポイントの値の例を次に示します。
-
-```java
-apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0";
-```
+`<Subscription Key>` を実際のサブスクリプション キーに置き換える必要があります。 さらに、キーの適切なリージョン識別子を使用して、`<API endpoint>` を実際の Face API エンドポイントに置き換えます (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。
 
 **[Project]\(プロジェクト\)** ウィンドウで **[app]\(アプリ\)**、**[manifests]\(マニフェスト\)** を順に展開し、*AndroidManifest.xml* を開きます。 `manifest` 要素の直接の子として、次の要素を挿入します。
 

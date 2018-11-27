@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/05/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 6696d6e7e53e98dfab2a65c7c66825936020f33c
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: babff55d6684feb1f0414970616260be96b994f4
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856640"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706009"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル: クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -81,7 +81,7 @@ ms.locfileid: "48856640"
 
         > [!WARNING]
         > 一度発行すると、再発行することはできません。 
-    2. 後で発行する場合は、**[後のために保存]** を選択します。 ウィザードが完了した後に、テンプレート VM を発行することができます。 ウィザード完了後の構成および発行方法の詳細については、「[クラスルーム ラボの管理](how-to-manage-classroom-labs.md)」記事の「[テンプレートを発行する](how-to-manage-classroom-labs.md#publish-the-template)」セクションを参照してください。
+    2. 後で発行する場合は、**[後のために保存]** を選択します。 ウィザードが完了した後に、テンプレート VM を発行することができます。 ウィザード完了後の構成および発行方法の詳細については、「[クラスルーム ラボの管理](how-to-manage-classroom-labs.md)」記事の「[テンプレートを発行する](how-to-create-manage-template.md#publish-the-template-vm)」セクションを参照してください。
 
         ![テンプレートを発行する](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. テンプレートの**発行に関する進行状況**が表示されます。 このプロセスには、最大で 1 時間かかることがあります。 
@@ -97,17 +97,33 @@ ms.locfileid: "48856640"
 
     ![仮想マシンが停止済み状態](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
+## <a name="add-users-to-the-lab"></a>ラボへのユーザーの追加
+
+1. 左側のメニューの **[ユーザー]** を選択します。 既定では、**[アクセスを制限する]** オプションが有効になっています。 この設定がオンの場合、ユーザーは、ユーザーの一覧に存在しない限り、登録リンクを持っていてもラボに登録できません。 リストに存在するユーザーだけが、受け取った登録リンクを使用してラボに登録できます。 この手順では、ユーザーをリストに追加します。 または、**[アクセスを制限する]** をオフにすることもできます。その場合ユーザーは、登録リンクさえあればラボに登録することができます。 
+2. ツール バーの **[ユーザーの追加]** を選択します。 
+3. **[ユーザーの追加]** ページで、ユーザーのメール アドレスを入力します。複数のメール アドレスは別々の行に入力するか、1 つの行にセミコロンで区切って入力します。 
+
+    ![ユーザーのメール アドレスを追加](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. **[保存]** を選択します。 ユーザーのメール アドレスとそのステータス (登録または未登録) がリストに表示されます。 
+
+    ![ユーザー リスト](../media/how-to-configure-student-usage/users-list-new.png)
+
+
 ## <a name="send-registration-link-to-students"></a>登録リンクを学生に送信する
 
-1. 左側のメニューで **[ダッシュボード]** を選択することによって、**[ダッシュボード]** ビューに切り替えます。 
-2. **[User registration]\(ユーザー登録\)** タイルを選択します。
+1. このページ上で、まだ **[ユーザー]** ビューが表示されていない場合は、[ユーザー] ビューに切り替えます。 
+2. **[Get registration link]\(登録リンクの取得\)** タイルを選択します。
 
     ![学生登録リンク](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
-1. **[User registration]\(ユーザー登録\)** ダイアログ ボックスで、**[コピー]** ボタンを選びます。 リンクがクリップボードにコピーされます。 それを電子メール エディターに貼り付け、学生に電子メールを送信します。 
+1. **[User registration]\(ユーザー登録\)** ダイアログ ボックスで、**[コピー]** ボタンを選びます。 リンクがクリップボードにコピーされます。 
 
     ![学生登録リンク](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. **[User registration]\(ユーザー登録\)** ダイアログ ボックスの **[閉じる]** を選択します。 
-3. 学生がクラスに登録できるように、登録リンクを学生と共有します。 
+4. 学生がクラスに登録できるように、登録リンクを学生と共有します。 **制限オプション**設定が有効になっていて、なおかつ一連のユーザーがリストに存在する場合は、次の操作を行います。
+    1. ユーザーの**メール アドレス**をリストで選択します。 
+    2. 既定のメール プログラムのウィンドウが、**宛先**アドレスが入力された状態で表示されます。 
+    3. 先ほどコピーした**登録 URL** を貼り付けます。 
+    4. **メール**を送信します。
 
 
 ## <a name="next-steps"></a>次の手順

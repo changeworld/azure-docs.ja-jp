@@ -3,21 +3,17 @@ title: クイック スタート - Azure Application Gateway による Web ト�
 description: Azure Portal を使用して、Web トラフィックをバックエンド プール内の仮想マシンにルーティングする Azure Application Gateway を作成する方法を説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: quickstart
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: effda81d8755486a65472eb546c6b8688aea0a3b
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 6ad839b9cf1179e282b9163df5a38e13417408e2
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205977"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706230"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure Portal
 
@@ -27,75 +23,83 @@ Azure Application Gateway では、ポートにリスナーを割り当て、ル
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインする
+Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-アプリケーション ゲートウェイが他のリソースと通信できるように仮想ネットワークを作成する必要があります。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。 この例では 2 つのサブネットが作成されます。1 つはアプリケーション ゲートウェイ用で、もう 1 つは仮想マシン用です。 
+作成したリソース間の通信には仮想ネットワークが必要です。 この例では 2 つのサブネットが作成されます。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
-2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
-3. 次のアプリケーション ゲートウェイの値を入力します。
+2. **[ネットワーク]** をクリックし、注目のリストで **[アプリケーション ゲートウェイ]** をクリックします。
+
+### <a name="basics"></a>基本
+
+1. 次のアプリケーション ゲートウェイの値を入力します。
 
     - *myAppGateway* - アプリケーション ゲートウェイの名前です。
     - *myResourceGroupAG* - 新しいリソース グループの名前です。
 
-    ![新しいアプリケーション ゲートウェイの作成](./media/quick-create-portal/application-gateway-create.png)
+    ![新しいアプリケーション ゲートウェイの作成](./media/application-gateway-create-gateway-portal/application-gateway-create.png)
 
-4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
-5. **[仮想ネットワークの選択]** > **[新規作成]** の順にクリックし、仮想ネットワークに次の値を入力します。
+2. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
+
+### <a name="settings"></a>設定
+
+1. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
 
     - *myVNet* - 仮想ネットワークの名前です。
     - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
     - *myAGSubnet* - サブネットの名前です。
-    - *10.0.0.0/24* - サブネットのアドレス空間です。
+    - *10.0.0.0/24* - サブネットのアドレス範囲です。
 
-    ![Create virtual network](./media/quick-create-portal/application-gateway-vnet.png)
+    ![Create virtual network](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
 
-6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
-6. **[パブリック IP アドレスの選択]**、 > **[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
-8. リスナーの構成は既定値をそのまま使用し、Web アプリケーション ファイアウォールは無効のままにして、**[OK]** をクリックします。
-9. 概要ページで設定を確認し、**[OK]** をクリックして、仮想ネットワーク、パブリック IP アドレス、およびアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には最大 30 分かかる場合があります。デプロイが正常に終了するのを待ってから、次のセクションに進みます。
+6. **[OK]** をクリックして [設定] ページに戻ります。
+7. **[フロントエンド IP 構成]** で **[IP アドレスの種類]** が **[パブリック]** に設定されていること、および **[パブリック IP アドレス]** で **[新規作成]** が選択されていることを確認します。 パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力します。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
 
-### <a name="add-a-subnet"></a>サブネットの追加
+### <a name="summary"></a>まとめ
+
+概要ページで設定を確認し、**[OK]** をクリックして、仮想ネットワーク、パブリック IP アドレス、およびアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。 次のセクションに進む前に、デプロイが正常に完了するまで待機します。
+
+## <a name="add-a-subnet"></a>サブネットの追加
 
 1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myVNet]** をクリックします。
-2. **[サブネット]** > **[サブネット]** の順にクリックします。
+2. **[サブネット]**、**[+ サブネット]** の順にクリックします。
 
-    ![サブネットの作成](./media/quick-create-portal/application-gateway-subnet.png)
+    ![サブネットの作成](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
 
 3. サブネットの名前として「*myBackendSubnet*」を入力し、**[OK]** をクリックします。
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
-この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 
+この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 また、IIS を仮想マシンにインストールして、アプリケーション ゲートウェイが正常に作成されたことを確認します。
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-1. **[新規]** をクリックします。
-2. **[Compute]** をクリックし、おすすめのリストで **[Windows Server 2016 Datacenter]** を選択します。
+1. Azure Portal で、**[リソースの作成]** をクリックします。
+2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
 3. 次の仮想マシンの値を入力します。
 
+    - *myResourceGroupAG* - リソース グループです。
     - *myVM* - 仮想マシンの名前です。
     - *azureuser* - 管理者のユーザー名です。
-    - *Azure123456!* パスワードです。
-    - **[既存のものを使用]**、*[myResourceGroupAG]* の順に選択します。
+    - *Azure123456!* 入力します。
 
-4. Click **OK**.
-5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
-6. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。 
-7. **[無効]** をクリックして、ブート診断を無効にします。
-8. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
+   他の既定値をそのまま使用し、**[Next: Disks]\(次へ: ディスク\)** をクリックします。
+4. ディスクの既定値をそのまま使用し、**[Next: Networking]\(次へ: ネットワーク\)** をクリックします。
+5. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。
+6. 他の既定値をそのまま使用し、**[Next: Management]\(次へ: 管理\)** をクリックします。
+7. **[オフ]** をクリックして、ブート診断を無効にします。 他の既定値をそのまま使用し、**[確認および作成]** をクリックします。
+8. 概要ページの設定を確認して、**[作成]** をクリックします。
+9. 仮想マシンの作成が完了するのを待って先に進みます。
 
 ### <a name="install-iis"></a>IIS のインストール
 
-IIS を仮想マシンにインストールして、アプリケーション ゲートウェイが正常に作成されたことを確認します。
-
 1. 対話型シェルを開いて、**PowerShell** に設定されていることを確認します。
 
-    ![カスタム拡張機能のインストール](./media/quick-create-portal/application-gateway-extension.png)
+    ![カスタム拡張機能のインストール](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
 2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
 
@@ -115,33 +119,28 @@ IIS を仮想マシンにインストールして、アプリケーション ゲ
 
 ### <a name="add-backend-servers"></a>バックエンド サーバーの追加
 
-仮想マシンを作成したら、それらをアプリケーション ゲートウェイのバックエンド プールに追加する必要があります。
+1. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
+4. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGatewayBackendPool]** をクリックします。
+5. **[ターゲット]** で、**[IP アドレスまたは FQDN]** をクリックし、**[仮想マシン]** を選択します。
+6. **[仮想マシン]** で、仮想マシン (myVM と myVM2) とそれらに関連付けられたネットワーク インターフェイスを追加します。
 
-1. **[すべてのリソース]** > **[myAppGateway]** の順にクリックします。
-2. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGatewayBackendPool]** をクリックします。
-3. **[ターゲットの追加]** > **[仮想マシン]** の順にクリックし、*[myVM]* を選択します。 **[ターゲットの追加]** > **[仮想マシン]** の順に選択し、*[myVM2]* を選択します。
+    ![バックエンド サーバーの追加](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-    ![バックエンド サーバーの追加](./media/quick-create-portal/application-gateway-backend.png)
-
-4. **[Save]** をクリックします。
+6. **[Save]** をクリックします。
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-アプリケーション ゲートウェイを作成するために IIS のインストールは必要はありませんが、このクイック スタートでは、アプリケーション ゲートウェイが正常に作成されたかどうかを確認するために、IIS をインストールしました。
+1. [概要] 画面で、アプリケーション ゲートウェイのパブリック IP アドレスを見つけます。 **[すべてのリソース]**、**[myAGPublicIPAddress]** の順にクリックします。
 
-1. [概要] 画面で、アプリケーション ゲートウェイのパブリック IP アドレスを見つけます。 **[すべてのリソース]** > **[myAGPublicIPAddress]** の順にクリックします。
-
-    ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/quick-create-portal/application-gateway-record-ag-address.png)
+    ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)
 
 2. パブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
 
-    ![アプリケーション ゲートウェイのテスト](./media/quick-create-portal/application-gateway-iistest.png)
-
-ブラウザーを更新したら、他の VM の名前が表示されるはずです。
+    ![アプリケーション ゲートウェイのテスト](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-まずアプリケーション ゲートウェイによって作成されたリソースを調べ、必要がなくなったら、リソース グループ、アプリケーションゲートウェイ、およびすべての関連リソースを削除できます。 これを行うには、アプリケーション ゲートウェイを含むリソース グループを選択し、**[削除]** をクリックします。
+必要がなくなったら、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除します。 これを行うには、アプリケーション ゲートウェイを含むリソース グループを選択し、**[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

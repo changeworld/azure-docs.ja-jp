@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - .NET で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法 | Microsoft Docs
+title: チュートリアル - .NET で Azure Windows 仮想マシンを使用して Azure Key Vault を使用する方法 | Microsoft Docs
 description: 'チュートリアル: キー コンテナーからシークレットを読み取るように ASP.Net Core アプリケーションを構成する'
 services: key-vault
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: d5596343a293d333dac9ca7e31a9fbc3363f3fd9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d1f24c8bebc8740f47dc0f02089db1091c22f597
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688228"
+ms.locfileid: "51711329"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>チュートリアル: .NET で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-net"></a>チュートリアル: .NET で Azure Windows 仮想マシンを使用して Azure Key Vault を使用する方法
 
 Azure Key Vault は、API キーや、アプリケーション、サービス、IT リソースへのアクセスに必要なデータベース接続文字列などのシークレットを保護するのに役立ちます。
 
-このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るように Azure Web アプリケーションを設定するために必要な手順を学習します。 このチュートリアルは、[Azure Web Apps](../app-service/app-service-web-overview.md) に基づいています。 ここでは、次の操作を行う方法について学習します。
+このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るようにコンソール アプリケーションを設定するために必要な手順を学習します。 このチュートリアルは、[Azure Web Apps](../app-service/app-service-web-overview.md) に基づいています。 ここでは、次の操作を行う方法について学習します。
 
 > [!div class="checklist"]
 > * Key Vault を作成します。
@@ -202,8 +202,7 @@ using Newtonsoft.Json.Linq;
                 String responseString = reader.ReadToEnd();
 
                 JObject joResponse = JObject.Parse(responseString);    
-                JValue ojObject = (JValue)joResponse[tokenName];
-                Console.WriteLine(ojObject.Value);                
+                JValue ojObject = (JValue)joResponse[tokenName];             
                 token = ojObject.Value.ToString();
             }
             return token;

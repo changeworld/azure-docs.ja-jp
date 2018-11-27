@@ -10,23 +10,23 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 39aeef8b8c88737a7e50f7dc1db5e874279176c0
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 8495d003113b2ba607dada7b8f5624d8281d3583
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784657"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284406"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Ruby を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
-この記事では、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Ruby で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされたエンティティの識別](#Entities)を行う方法について説明します。
+この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Ruby で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
 
 API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Text Analytics API** を取得している必要があります。 このクイック スタートは、**月に 5,000 トランザクションを利用できる Free レベル**を使用して完了できます。
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
 
@@ -308,7 +308,7 @@ puts JSON::pretty_generate (JSON (response.body))
 ```
 <a name="Entities"></a>
 
-## <a name="identify-entities"></a>エンティティの特定
+## <a name="identify-entities"></a>エンティティの識別
 
 Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のエンティティを抽出します。 次の例では、英語のドキュメントのエンティティを識別しています。
 

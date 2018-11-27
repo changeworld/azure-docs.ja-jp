@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 76747f7e9f1a95ee14ee570dcc29b42f98c26838
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: ba42cc7ede2ab790e5f50f3db525e48ebd21f522
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577994"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852505"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>クイック スタート: Face REST API と Node.js を使って画像から顔を検出する
 
@@ -81,7 +81,7 @@ request.post(options, (error, response, body) => {
 
 ### <a name="face-endpoint-url"></a>Face エンドポイント URL
 
-URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` は、照会する Azure Face エンドポイントを示します。 この URL の最初の部分が、実際のサブスクリプション キーのリージョンと異なる場合は、該当するリージョンに合わせて変更する必要があります。
+URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` は、照会する Azure Face エンドポイントを示します。 この URL の最初の部分は、実際のサブスクリプション キーに対応するリージョンと一致するように変更する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。
 
 ### <a name="url-query-string"></a>URL クエリ文字列
 

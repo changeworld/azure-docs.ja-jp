@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/05/2018
 ms.author: pafarley
-ms.openlocfilehash: 5319584d892c261dcc6290703e9ca6518640cc94
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8db2437b7f78271aee131cf5b4dfd9f06f744c66
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685482"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852675"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル: 画像内の顔データを表示する WPF アプリの作成
 
@@ -67,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=1-12)]
 
-次に、**MainWindow** クラスに次のコードを挿入します。 これにより、サブスクリプション キーを使用して **FaceClient** インスタンスが作成されます。サブスクリプション キーは自分で入力する必要があります。 また、`faceEndpoint` のリージョン文字列を、自分のサブスクリプションに適切なリージョンに設定する必要もあります。
+次に、**MainWindow** クラスに次のコードを挿入します。 これにより、サブスクリプション キーを使用して **FaceClient** インスタンスが作成されます。サブスクリプション キーは自分で入力する必要があります。 また、`faceEndpoint` に含まれるリージョン文字列も、実際のサブスクリプションに合った正しいリージョンに設定する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=18-46)]
 
