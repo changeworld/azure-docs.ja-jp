@@ -26,7 +26,7 @@ ms.locfileid: "51233067"
 Azure Stack Capacity Planner は、Azure Stack のキャパシティ プランニングに使用されるスプレッドシートです。 このツールは、コンピューティング リソースのさまざまな割り当てを設計し、ハードウェアのさまざまな選択に対してこれらがどのようにフィットするかを確認する機能を提供します。 Azure Stack の計算ツール使用の詳細手順については後述します。
 
 ## <a name="worksheet-descriptions"></a>ワークシートの説明
-以下に Azure 容量計画ツールのスプレッドシートに含まれているワークシートの概要を示します。このスプレッドシートは [http://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner) からダウンロードできます。
+以下に Azure Stack Capacity Planner のスプレッドシートに含まれているワークシートの概要を示します。このスプレッドシートは [http://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner) からダウンロードできます。
 
 |タブ名|説明|
 |-----|-----|
