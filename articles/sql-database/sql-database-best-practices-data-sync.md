@@ -25,7 +25,7 @@ ms.locfileid: "51686621"
 
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-database-sync-data.md)に関する記事を参照してください。
 
-## <a name="security-and-reliability">セキュリティと信頼性</a>
+## <a name="security-and-reliability"></a>セキュリティと信頼性
 
 ### <a name="client-agent"></a>クライアント エージェント
 
