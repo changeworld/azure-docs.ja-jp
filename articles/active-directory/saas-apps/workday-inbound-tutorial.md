@@ -205,7 +205,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 2. 新しい統合システム ユーザーのユーザー名とパスワードを指定して、**統合システム ユーザーの作成**を完了します。  
  * このユーザーはプログラムを使用してログオンするため、**[次回のサインイン時に新しいパスワードを要求する]** オプションはオフのままにしておきます。
  * **[セッション タイムアウト (分)]** は既定値の 0 のままにしておきます。これにより、ユーザーのセッションが有効期限前にタイムアウトするのを防ぎます。
- * オプション **[Do Not Allow UI Sessions](UI セッションを許可しない)** を選択します。これは、統合システムのパスワードを持つユーザーが Workday にログインできないようにする追加のセキュリティ層を提供するためです。 
+ * オプション **[Do Not Allow UI Sessions]\(UI セッションを許可しない)** を選択します。これは、統合システムのパスワードを持つユーザーが Workday にログインできないようにする追加のセキュリティ層を提供するためです。 
 
     ![統合システム ユーザーの作成](./media/workday-inbound-tutorial/wd_isu_02.png "統合システム ユーザーの作成")
 
@@ -230,10 +230,10 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 **ドメイン セキュリティ ポリシーのアクセス許可を構成するには:**
 
-1. 検索ボックスに「**Domain Security Configuration**」と入力し、**[Domain Security Configuration Report](ドメイン セキュリティ構成レポート)** リンクをクリックします。  
+1. 検索ボックスに「**Domain Security Configuration**」と入力し、**[Domain Security Configuration Report]\(ドメイン セキュリティ構成レポート)** リンクをクリックします。  
 
     ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_06.png "ドメイン セキュリティ ポリシー")  
-2. **[Domain](ドメイン)** テキスト ボックスで以下のドメインを検索し、それらをフィルターに 1 つずつ追加します。  
+2. **[Domain]\(ドメイン)** テキスト ボックスで以下のドメインを検索し、それらをフィルターに 1 つずつ追加します。  
    * *External Account Provisioning*
    * *Worker Data: Public Worker Reports*
    * *Person Data: Work Contact Information*
@@ -251,7 +251,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
     ![ドメイン セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_09.png "ドメイン セキュリティ ポリシー")  
 
-4. **[Edit Domain Security Policy Permissions](ドメイン セキュリティ ポリシー アクセス許可の編集)** ページで、**[Integration Permissions](統合アクセス許可)** セクションまで下へスクロールします。 [+] 記号をクリックし、**Get** および **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
+4. **[Edit Domain Security Policy Permissions]\(ドメイン セキュリティ ポリシー アクセス許可の編集)** ページで、**[Integration Permissions]\(統合アクセス許可)** セクションまで下へスクロールします。 [+] 記号をクリックし、**Get** および **Put** の統合アクセス許可を持つセキュリティ グループの一覧に統合システム グループを追加します。
 
     ![アクセス許可の編集](./media/workday-inbound-tutorial/wd_isu_10.png "アクセス許可の編集")  
 
@@ -274,19 +274,19 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 **ビジネス プロセス セキュリティ ポリシーのアクセス許可を構成するには:**
 
-1. 検索ボックスに「**Business Process Policy**」と入力し、**[Edit Business Process Security Policy](ビジネス プロセス セキュリティ ポリシーの編集)** タスクのリンクをクリックします。  
+1. 検索ボックスに「**Business Process Policy**」と入力し、**[Edit Business Process Security Policy]\(ビジネス プロセス セキュリティ ポリシーの編集)** タスクのリンクをクリックします。  
 
     ![ビジネス プロセス セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_12.png "ビジネス プロセス セキュリティ ポリシー")  
 
-2. **[Business Process Type](ビジネス プロセスの種類)** テキストボックスで、*[Contact]* を検索し、**[Contact Change]** ビジネス プロセスを選択して **[OK]** をクリックします。
+2. **[Business Process Type]\(ビジネス プロセスの種類)** テキストボックスで、*[Contact]* を検索し、**[Contact Change]** ビジネス プロセスを選択して **[OK]** をクリックします。
 
     ![ビジネス プロセス セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_13.png "ビジネス プロセス セキュリティ ポリシー")  
 
-3. **Edit Business Process Security Policy(ビジネス プロセス セキュリティ ポリシーの編集)** ページで、**Maintain Contact Information (Web Service)(連絡先情報 (Web サービス) の管理)** セクションまで下へスクロールします。。
+3. **Edit Business Process Security Policy\(ビジネス プロセス セキュリティ ポリシーの編集)** ページで、**Maintain Contact Information (Web Service)\(連絡先情報 (Web サービス) の管理)** セクションまで下へスクロールします。
 
     ![ビジネス プロセス セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_14.png "ビジネス プロセス セキュリティ ポリシー")  
 
-4. 新しい統合システム セキュリティ グループを選択し、Web サービス要求を開始できるセキュリティ グループの一覧に追加します。 **[Done](終了)** をクリックします。 
+4. 新しい統合システム セキュリティ グループを選択し、Web サービス要求を開始できるセキュリティ グループの一覧に追加します。 **[Done]\(終了)** をクリックします。 
 
     ![ビジネス プロセス セキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_15.png "ビジネス プロセス セキュリティ ポリシー")  
 
@@ -323,16 +323,16 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 2. プロビジョニング エージェントのインストーラーを起動し、条件に同意して **[インストール]** ボタンをクリックします。
 ![インストール画面](./media/workday-inbound-tutorial/pa_install_screen_1.png "インストール画面")
 
-3. インストールが完了したらウィザードが起動され、**[Connect Azure AD](Azure AD の接続)** 画面が表示されます。 **[認証]** ボタンをクリックして、お使いの Azure AD インスタンスに接続します。
+3. インストールが完了したらウィザードが起動され、**[Connect Azure AD]\(Azure AD の接続)** 画面が表示されます。 **[認証]** ボタンをクリックして、お使いの Azure AD インスタンスに接続します。
 ![Azure AD の接続](./media/workday-inbound-tutorial/pa_install_screen_2.png "Azure AD の接続")
 
 4. グローバル管理者の資格情報を使用して、Azure AD インスタンスに対して認証します。 
 ![管理者の認証](./media/workday-inbound-tutorial/pa_install_screen_3.png "管理者の認証")
 
-5. Azure AD で認証が成功すると、**[Connect Active Directory](Active Directory の接続)** 画面が表示されます。 この手順では、お使いの AD ドメイン名を入力し、**[ディレクトリの追加]** ボタンをクリックしてください。
+5. Azure AD で認証が成功すると、**[Connect Active Directory]\(Active Directory の接続)** 画面が表示されます。 この手順では、お使いの AD ドメイン名を入力し、**[ディレクトリの追加]** ボタンをクリックしてください。
 ![ディレクトリの追加](./media/workday-inbound-tutorial/pa_install_screen_4.png "ディレクトリの追加")
 
-6. ここで、AD ドメインに接続するために必要な資格情報の入力を求められます。 同じ画面で、**[Select domain controller priority](ドメイン コント ローラーの優先度を選択する)** を使用して、エージェントがプロビジョニング要求の送信に使用する必要があるドメイン コントローラーを指定できます。
+6. ここで、AD ドメインに接続するために必要な資格情報の入力を求められます。 同じ画面で、**[Select domain controller priority]\(ドメイン コント ローラーの優先度を選択する)** を使用して、エージェントがプロビジョニング要求の送信に使用する必要があるドメイン コントローラーを指定できます。
 ![ドメインの資格情報](./media/workday-inbound-tutorial/pa_install_screen_5.png "ドメインの資格情報")
 
 7. ドメインの構成後、インストーラーによって、構成されたドメインの一覧が表示されます。 この画面では、手順 5 と 6 を繰り返してより多くのドメインを追加するか、**[次へ]** をクリックしてエージェントの登録に進むことができます。 
@@ -341,7 +341,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
    > [!NOTE]
    > 複数の AD ドメイン (例: na.contoso.com、emea.contoso.com) がある場合は、各ドメインを個々に一覧に追加してください。 親ドメイン (例: contoso.com) を追加するだけでは不十分です。それぞれの子ドメインをエージェントに登録することをお勧めします。 
 
-8. 構成の詳細を確認し、**[Confirm](確認)** をクリックしてエージェントを登録します。 
+8. 構成の詳細を確認し、**[Confirm]\(確認)** をクリックしてエージェントを登録します。 
 ![確認画面](./media/workday-inbound-tutorial/pa_install_screen_7.png "確認画面")
 
 9. 構成ウィザードに、エージェント登録の進行状況が表示されます。
