@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 65d0d6848534326bb3ef43f1bd8bc700971603e6
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: a514359edcf21d5882b2361d10c06214d8e39502
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636800"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274868"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>CLI を使用した同じまたは別のサブスクリプションへのマネージド ディスクのコピー
 
-このスクリプトは、同じサブスクリプションまたは同じリージョン内の別のサブスクリプションに、マネージド ディスクをコピーします。 このスクリプトを実行するには、両方のサブスクリプションのグローバル AAD テナント管理者である必要があります。
+このスクリプトは、同じサブスクリプションまたは同じリージョン内の別のサブスクリプションに、マネージド ディスクをコピーします。 コピーは、サブスクリプションが同じ AAD テナントに含まれている場合にのみ機能します。
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

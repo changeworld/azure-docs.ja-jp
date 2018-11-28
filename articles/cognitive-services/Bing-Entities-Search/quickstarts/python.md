@@ -3,23 +3,23 @@ title: 'クイック スタート: Bing Entity Search API (Python)'
 titlesuffix: Azure Cognitive Services
 description: Bing Entity Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 11/28/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 80265c883214812acbd0af3bd186a0fbd3703132
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 8650d241be5d3a34ae24b25c4e694792925ee300
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814340"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161822"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-python"></a>Bing Entity Search API のクイック スタート (Python)
 
-この記事では、Python で [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API を使用する方法について説明します。
+この記事では、Python で [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)  API を使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

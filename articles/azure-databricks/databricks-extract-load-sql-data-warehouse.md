@@ -9,13 +9,13 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 07/26/2018
-ms.openlocfilehash: bf7351f5d62958b77473440d618d31cda2c983ea
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 11/19/2018
+ms.openlocfilehash: 5a6d3265fde3b7633036ddc4cae0a5ea7d246957
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615519"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265272"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したデータの抽出、変換、読み込み
 
@@ -378,7 +378,7 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
 
 前述のように、SQL Data Warehouse コネクタは、Azure Databricks と Azure SQL Data Warehouse との間でデータをアップロードするための一時記憶域の場所として Azure Blob Storage を使用します。 それにはまず、そのストレージ アカウントに接続するための構成を指定します。 このアカウントは、この記事の前提条件としてあらかじめ作成しておく必要があります。
 
-1. Azure Databricks から Azure Storage アカウントにアクセスするための構成を指定します。
+1. Azure Databricks から Azure Storage アカウントにアクセスするための構成を指定します。 お客様の BLOB ストレージ用の URL をポータルでコピーしたら、必ず先頭から *https://* を削除してください。 
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"

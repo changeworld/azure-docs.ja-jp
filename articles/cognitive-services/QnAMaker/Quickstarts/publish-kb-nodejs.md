@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: e1e349f4ddbebdd9df38d7f0babf50d726241d4f
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3d96beee881df560fc616cd975502f062275e9eb
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648736"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162026"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-nodejs"></a>クイック スタート: Node.js を使用して QnA Maker でナレッジ ベースを公開する
 
-このクイック スタートでは、ナレッジ ベース (KB) をプログラムから公開する手順を紹介しています。 公開すると、ナレッジ ベースの最新バージョンが、専用の Azure Search インデックスにプッシュされ、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
+この REST ベースのクイック スタートでは、ナレッジ ベース (KB) をプログラムから公開する手順を紹介しています。 公開すると、ナレッジ ベースの最新バージョンが、専用の Azure Search インデックスにプッシュされ、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
 * [公開](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) - この API は、要求の本文に情報を必要としません。
@@ -32,9 +32,11 @@ ms.locfileid: "49648736"
 
     ![QnA Maker ナレッジ ベース ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-まだナレッジ ベースがない場合は、[新しいナレッジ ベースの作成](create-new-kb-nodejs.md)に関するページを参照し、このクイック スタート用のサンプルを作成してください。
+    まだナレッジ ベースがない場合は、[新しいナレッジ ベースの作成](create-new-kb-nodejs.md)に関するページを参照し、このクイック スタート用のサンプルを作成してください。
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+
+> [!NOTE] 
+> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-nodejs** Github リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/publish-knowledge-base-short)から入手できます。
 
 ## <a name="create-a-knowledge-base-nodejs-file"></a>ナレッジ ベース Node.js ファイルを作成する
 
@@ -44,49 +46,27 @@ ms.locfileid: "49648736"
 
 `publish-knowledge-base.js` の先頭に次の行を追加して、プロジェクトに必要な依存関係を追加します。
 
-[!code-nodejs[Add the dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=1-4 "Add the dependencies")]
+[!code-nodejs[Add the dependencies](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base-short/publish-knowledge-base.js?range=1-3 "Add the dependencies")]
 
 ## <a name="add-required-constants"></a>必要な定数を追加する
 
-上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を追加します。 `subscriptionKey` 変数の値を自分の QnA Maker キーに置き換えます。 
+上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を追加します。 サンプルの値は実際の値に変更してください。
 
-[!code-nodejs[Add required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=10-17 "Add required constants")]
+[!code-nodejs[Add required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base-short/publish-knowledge-base.js?range=11-14 "Add required constants")]
 
-## <a name="add-knowledge-base-id"></a>ナレッジ ベース ID を追加する
+## <a name="add-post-request-to-publish-knowledge-base"></a>ナレッジ ベースを公開するための POST 要求を追加する
 
-前の定数の後に、ナレッジ ベース ID を追加し、これをパスに追加します。
+必要な定数の後に、次のコードを追加します。このコードは、ナレッジ ベースを公開するための HTTPS 要求を QnA Maker API に送信し、その応答を受信します。
 
-[!code-nodejs[Add knowledge base ID](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=19-23 "Add knowledge base ID")]
+[!code-nodejs[Add a POST request to publish knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base-short/publish-knowledge-base.js?range=16-47 "Add a POST request to publish knowledge base")]
 
-## <a name="add-supporting-functions"></a>補助的な関数を追加する
+正常に公開されると、この API 呼び出しから状態 204 が返されます。応答の本文にはコンテンツが含まれません。 このコードでは、204 応答に対してコンテンツを追加しています。
 
-次に、以下の補助的な関数を追加します。
-
-1. JSON を読みやすい形式で出力するために、次の関数を追加します。
-
-   [!code-nodejs[Add supporting functions, step 1](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=25-28 "Add supporting functions, step 1")]
-
-2. 作成操作の状態を取得する HTTP 応答を管理するために、次の関数を追加します。
-
-   [!code-nodejs[Add supporting functions, step 2](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=30-52 "Add supporting functions, step 2")]
-
-## <a name="add-the-publishkb-function-and-main-function"></a>publish_kb 関数と main 関数を追加する
-
-次のコードは、KB を公開するための HTTPS 要求を QnA Maker API に送信し、その応答を受信するものです。
-
-[!code-nodejs[Add POST request to publish KB](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=54-71 "Add POST request to publish KB")]
-
-[!code-nodejs[Add the publish_kb function](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=73-91 "Add the publish_kb function and main function")]
-
-## <a name="add-the-main-function"></a>main 関数を追加する
-
-要求と応答を管理するために、次の関数を追加します。
-
-[!code-nodejs[Add the main function](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/publish-knowledge-base/publish-knowledge-base.js?range=94-97 "Add the main function")]
+それ以外の応答の場合は、その応答がそのまま返されます。
 
 ## <a name="run-the-program"></a>プログラムの実行
 
-プログラムをビルドして実行します。 QnA Maker API に要求が自動的に送信され、KB が公開された後、応答がコンソール ウィンドウに出力されます。
+プログラムをビルドして実行します。 ナレッジ ベースを公開するための要求が QnA Maker API に自動的に送信され、応答がコンソール ウィンドウに出力されます。
 
 ナレッジ ベースが公開された後は、クライアント アプリケーションまたはチャット ボットを使用して、エンドポイントからナレッジ ベースに対してクエリを実行できます。 
 
@@ -94,7 +74,11 @@ ms.locfileid: "49648736"
 node publish-knowledge-base.js
 ```
 
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+
 ## <a name="next-steps"></a>次の手順
+
+ナレッジ ベースが公開された後、[回答を生成するためのエンドポイント URL](../Tutorials/create-publish-answer.md#generating-an-answer) が必要になります。 
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

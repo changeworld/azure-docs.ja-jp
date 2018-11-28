@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: be2c68922221af848c9e484d03527d02808c071a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 68c8c3767ff3a3d2873c1ff50928ab8d2cada4b1
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283820"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263753"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
 
@@ -34,7 +34,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-下の例では、米国東部リージョンと米国西部リージョンでマルチマスターが有効な新しい Cosmos DB アカウントを作成します。既定の一貫性ポリシーは、最大整合性制約間隔が 10 秒、許容される古い要求の最大数が 200 で、有界整合性制約に設定されています。
+下の例では、米国東部リージョンと米国西部リージョンでマルチマスターが有効な新しい Cosmos DB アカウントを作成します。既定の一貫性ポリシーは、Session に設定されています。
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -42,9 +42,7 @@ $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
 
 $iprangefilter = ""
 
-$consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness";
-                       "maxIntervalInSeconds"= "10";
-                       "maxStalenessPrefix"="200"}
+$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
 
 $CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
                         "locations"=$locations;
@@ -110,7 +108,7 @@ ConnectionPolicy connectionPolicy = new ConnectionPolicy();
 DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy, ConsistencyLevel.Strong);
 ```
 
-### <a id="override-default-consistency-javascript"></a>Node.js SDK、JavaScript SDK、TypeScript SDK
+### <a id="override-default-consistency-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Override consistency at the client level
@@ -183,7 +181,7 @@ options.setSessionToken(sessionToken);
 ResourceResponse<Document> response = client.readDocument(documentLink, options);
 ```
 
-### <a id="utilize-session-tokens-javascript"></a>Node.js SDK、JavaScript SDK、TypeScript SDK
+### <a id="utilize-session-tokens-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 // Get session token from response

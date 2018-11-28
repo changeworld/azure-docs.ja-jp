@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
-ms.openlocfilehash: 40bee31b7880a323a48e92912ee323c43c3a97da
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0772dbb1aaa6b00994bd653c19b006114377dc5f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634781"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165460"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル: Azure で Java EE と Postgres の Web アプリを構築する
 
@@ -51,13 +51,38 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 希望する名前とお客様のアプリ サービスのリソース グループを指定して、Maven POM を更新します。 これらの値は、Azure プラグインに挿入されます。これは、_pom.xml_ ファイルのかなり下の方にあります。 App Service プランまたはインスタンスを事前に作成する必要はありません。 リソース グループとアプリ サービスがまだ存在しない場合は、Maven プラグインによって作成されます。
 
+_pom.xml_ の `<plugins>` セクションまで下へスクロールして、Azure プラグインを確認できます。 azure-webapp-maven-plugin の _pom.xml_ 内にある `<plugin>` 構成のセクションには、以下の構成が含まれている必要があります。
+
+```xml
+      <!--*************************************************-->
+      <!-- Deploy to WildFly in App Service Linux           -->
+      <!--*************************************************-->
+ 
+      <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <configuration>
+ 
+          <!-- Web App information -->
+          <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+          <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
+          <appName>${WEBAPP_NAME}</appName>
+          <region>${REGION}</region>
+ 
+          <!-- Java Runtime Stack for Web App on Linux-->
+          <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+ 
+        </configuration>
+      </plugin>
+```
+
 お客様が希望するリソース名を使用してプレースホルダーを置き換えます。
 ```xml
 <azure.plugin.appname>YOUR_APP_NAME</azure.plugin.appname>
 <azure.plugin.resourcegroup>YOUR_RESOURCE_GROUP</azure.plugin.resourcegroup>
 ```
 
-_pom.xml_ の `<plugins>` セクションまで下へスクロールして、Azure プラグインを確認できます。
 
 ## <a name="build-and-deploy-the-application"></a>アプリケーションをビルドしてデプロイする
 

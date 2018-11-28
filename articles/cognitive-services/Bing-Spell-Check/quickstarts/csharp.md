@@ -3,23 +3,23 @@ title: 'クイック スタート: Bing Spell Check API (C#)'
 titlesuffix: Azure Cognitive Services
 description: Bing Spell Check API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: e723bc117cff208ea824dae216b8e8b57f7f26d7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: aahi
+ms.openlocfilehash: 4e5bc56a74a8280954e278f00639b7a774d516ce
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801456"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165556"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-c"></a>Bing Spell Check API のクイック スタート (C#)
 
-この記事では、C# で [Bing Spell Check API](https://azure.microsoft.com/services/cognitive-services/spell-check/) を使用する方法について説明します。 Spell Check API は、認識できない単語のリストを置換候補と共に返します。 一般に、この API にテキストを送信し、テキスト内の単語を置換候補に置き換えるか、その判断をユーザー自身が行えるように置換候補をアプリケーションのユーザーに表示することになるでしょう。 この記事では、"Hollo, wrld!" というテキストを含んだ要求を送信する方法について説明します。 置換候補は "Hello" と "world" です。
+この記事では、C# で [Bing Spell Check API](https://azure.microsoft.com/services/cognitive-services/spell-check/)  を使用する方法について説明します。 Spell Check API は、認識できない単語のリストを置換候補と共に返します。 一般に、この API にテキストを送信し、テキスト内の単語を置換候補に置き換えるか、その判断をユーザー自身が行えるように置換候補をアプリケーションのユーザーに表示することになるでしょう。 この記事では、"Hollo, wrld!" というテキストを含んだ要求を送信する方法について説明します。 置換候補は "Hello" と "world" です。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1481c32512266f494c03f9ffdc1ce67ef503b4a8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 415652739c4987deafe820c31499132ec3829c8b
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255202"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263317"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Azure VM のカスタム イメージを作成する
 
@@ -101,7 +101,7 @@ New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceG
  
 ## <a name="create-vms-from-the-image"></a>イメージからの VM の作成
 
-イメージが用意できたので、イメージから新しい VM を 1 つ以上作成できます。 カスタム イメージからの VM の作成は、Marketplace イメージを使用した VM の作成に似ています。 Marketplace イメージを使うときは、イメージ、イメージ プロバイダー、プラン、SKU、バージョンに関する情報を提供する必要があります。 リソース グループが同じであれば、[New-AzureRMVM]() コマンドレットに設定されている簡易パラメーターを利用し、カスタム イメージの名前を指定する必要があります。 
+イメージが用意できたので、イメージから新しい VM を 1 つ以上作成できます。 カスタム イメージからの VM の作成は、Marketplace イメージを使用した VM の作成に似ています。 Marketplace イメージを使うときは、イメージ、イメージ プロバイダー、プラン、SKU、バージョンに関する情報を提供する必要があります。 リソース グループが同じであれば、[New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm) コマンドレットに設定されている簡易パラメーターを利用し、カスタム イメージの名前を指定する必要があります。 
 
 この例では、*myResourceGroup* で *myImage* から *myVMfromImage* という名前の VM が作成されます。
 
@@ -130,11 +130,11 @@ $images = Get-AzureRMResource -ResourceType Microsoft.Compute/images
 $images.name
 ```
 
-イメージを削除します。 この例では、*myOldImage* という名前のイメージを *myResourceGroup* から削除します。
+イメージを削除します。 この例では、*myImage* という名前のイメージを *myResourceGroup* から削除します。
 
 ```azurepowershell-interactive
 Remove-AzureRmImage `
-    -ImageName myOldImage `
+    -ImageName myImage `
     -ResourceGroupName myResourceGroup
 ```
 

@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 09bddd1c1d9589dbba0acf319ba43ea54c0c737b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 14a6e295eebcc3a7cb3f190a09afd65b0e959d7e
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221459"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265340"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 この記事では、Azure Portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を行う方法について説明します。
@@ -31,7 +31,7 @@ ms.locfileid: "47221459"
 Azure ファイル共有をバックアップする前に、[サポートされているストレージ アカウントの種類](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview)のいずれかにそれが存在することを確認しておいてください。 この確認が完了したら、ファイル共有を保護することができます。
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
-Azure ファイル共有のバックアップはプレビュー段階です。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
+Azure ファイル共有のバックアップはプレビュー段階です。 汎用 v1 ストレージ アカウントと汎用 v2 ストレージ アカウント、どちらの Azure ファイル共有もサポートされています。 次のバックアップ シナリオは、Azure ファイル共有ではサポートされていません。
 - [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーションを使用してストレージ アカウントの Azure ファイル共有を保護することはできません。*
 - 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
 - Azure Backup を使用して Azure Files を保護することを目的とした PowerShell と CLI は提供されていません。
@@ -39,10 +39,11 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 - オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
 - ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
 - Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。
+- Azure Backup で保護されているファイル共有は削除しないでください。 現在のソリューションでは、ファイル共有が削除されると Azure Backup によって取得されたスナップショットがすべて削除されます。そのため、すべての復元ポイントが失われます。
 
 \*[読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md) (RA-GRS) レプリケーション機能を GRS として使用し、GRS の価格で課金される、ストレージ アカウントの Azure ファイル共有。
 
-[ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用するストレージ アカウントでの Azure ファイル共有のバックアップは、現在、米国中部 (CUS)、米国東部 2 (EUS2)、北ヨーロッパ (NE)、東南アジア (SEA)、および西ヨーロッパ (WE) でのみ使用できます。
+[ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用するストレージ アカウントでの Azure ファイル共有のバックアップは、現在、米国中部 (CUS)、米国東部 (EUS)、米国東部 2 (EUS2)、北ヨーロッパ (NE)、東南アジア (SEA)、西ヨーロッパ (WE)、米国西部 2 (WUS2) でのみ使用できます。
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Azure ファイル共有のバックアップの構成
 すべてのバックアップ データは、Recovery Services コンテナーに格納されます。 このチュートリアルでは、Azure ファイル共有を既に確立していることを前提としています。 Azure ファイル共有をバックアップするには:

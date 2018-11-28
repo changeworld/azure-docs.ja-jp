@@ -8,84 +8,74 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: e58b344102eb900ffe41bb90e541258eb3b59286
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c942045f01e08161394304f5ec15ff44ba84fc4b
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646816"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164457"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>クイック スタート: Python を使用して QnA Maker でナレッジ ベースを公開する
 
-このクイック スタートでは、ナレッジ ベース (KB) をプログラムから公開する手順を紹介しています。 公開すると、ナレッジ ベースの最新バージョンが、専用の Azure Search インデックスにプッシュされ、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
+この REST ベースのクイック スタートでは、ナレッジ ベース (KB) をプログラムから公開する手順を紹介しています。 公開すると、ナレッジ ベースの最新バージョンが、専用の Azure Search インデックスにプッシュされ、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
 * [公開](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) - この API は、要求の本文に情報を必要としません。
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+## <a name="prerequisites"></a>前提条件
 
-1. 適切な IDE で新しい Python プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+* [Python 3.7](https://www.python.org/downloads/)
+* QnA Maker サービスが必要です。 キーを取得するには、ダッシュボードで [リソース管理] の [キー] を選択します。
+* URL の kbid クエリ文字列パラメーターに含まれている QnA Maker ナレッジ ベース (KB) ID (下図)。
 
-```python
-# -*- coding: utf-8 -*-
+    ![QnA Maker ナレッジ ベース ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-import http.client, urllib.parse, json, time
+    まだナレッジ ベースがない場合は、[新しいナレッジ ベースの作成](create-new-kb-nodejs.md)に関するページを参照し、このクイック スタート用のサンプルを作成してください。
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+> [!NOTE] 
+> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-python** Github リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)から入手できます。
 
-# Replace this with a valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
+## <a name="create-a-knowledge-base-python-file"></a>ナレッジ ベースの Python ファイルを作成する
 
-# Replace this with a valid knowledge base ID.
-kb = 'ENTER ID HERE';
+`publish-kb-3x.py` という名前でファイルを作成します。
 
-host = 'westus.api.cognitive.microsoft.com'
-service = '/qnamaker/v4.0'
-method = '/knowledgebases/'
+## <a name="add-the-required-dependencies"></a>必要な依存関係を追加する
 
-def pretty_print (content):
-# Note: We convert content to and from an object so we can pretty-print it.
-    return json.dumps(json.loads(content), indent=4)
+`publish-kb-3x.py` の先頭に次の行を追加して、プロジェクトに必要な依存関係を追加します。
 
-def publish_kb (path, content):
-    print ('Calling ' + host + path + '.')
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-Type': 'application/json',
-        'Content-Length': len (content)
-    }
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path, content, headers)
-    response = conn.getresponse ()
+[!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=1-1 "Add the required dependencies")]
 
-    if response.status == 204:
-        return json.dumps({'result' : 'Success.'})
-    else:
-        return response.read ()
+## <a name="add-required-constants"></a>必要な定数を追加する
 
-path = service + method + kb
-result = publish_kb (path, '')
-print (pretty_print(result))
+上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を追加します。 サンプルの値は実際の値に変更してください。
+
+[!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=5-15 "Add the required constants")]
+
+## <a name="add-post-request-to-publish-knowledge-base"></a>ナレッジ ベースを公開するための POST 要求を追加する
+
+必要な定数の後に、次のコードを追加します。このコードは、ナレッジ ベースを公開するための HTTPS 要求を QnA Maker API に送信し、その応答を受信します。
+
+[!code-python[Add a POST request to publish knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/publish-knowledge-base/publish-kb-3x.py?range=17-26 "Add a POST request to publish knowledge base")]
+
+正常に公開されると、この API 呼び出しから状態 204 が返されます。応答の本文にはコンテンツが含まれません。 このコードでは、204 応答に対してコンテンツを追加しています。
+
+それ以外の応答の場合は、その応答がそのまま返されます。
+
+## <a name="build-and-run-the-program"></a>プログラムをビルドして実行する
+
+コマンド ラインで次のコマンドを入力して、プログラムを実行します。 これによって、ナレッジ ベースを公開するための要求が QnA Maker API に送信され、成功または失敗のための 204 が出力されます。
+
+```bash
+python publish-kb-3x.py
 ```
 
-## <a name="the-publish-a-knowledge-base-response"></a>ナレッジ ベース公開の応答
-
-成功した応答は、次の例に示すように JSON で返されます。
-
-```json
-{
-  "result": "Success."
-}
-```
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
 ## <a name="next-steps"></a>次の手順
+
+ナレッジ ベースが公開された後、[回答を生成するためのエンドポイント URL](../Tutorials/create-publish-answer.md#generating-an-answer) が必要になります。 
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

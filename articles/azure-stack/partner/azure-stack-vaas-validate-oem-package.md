@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bcfc4cb65c94e34e9f6056ada53726f88489fefb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646653"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261804"
 ---
 # <a name="validate-oem-packages"></a>OEM パッケージの検証
 
@@ -58,22 +58,17 @@ VaaS ポータルで**パッケージの検証**ワークフローを作成す�
 
 #### <a name="option-1-generating-an-account-sas-url"></a>オプション 1: アカウントの SAS URL を生成する
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+1. [Azure portal](https://portal.azure.com/) でストレージ アカウントに移動し、パッケージが含まれている .zip に移動します
 
-1. **[使用できるサービス] オプション**から **[BLOB]** を選択します。 残りのオプションについてはすべて選択を解除します。
+2. コンテキスト メニューで **[SAS の生成]** を選択します
 
-1. **[使用できるリソースの種類]** で、**[サービス]**、**[コンテナー]、**[オブジェクト]** を選択します。 残りのオプションについてはすべて選択を解除します。
+3. **[アクセス許可]** の **[読み取り]** を選択します
 
-1. **[与えられているアクセス許可]** で、**[読み取り]** と **[List]\(一覧\)** を選択します。 残りのオプションについてはすべて選択を解除します。
+4. **[開始時間]** を現在の時刻に設定し、**[終了時間]** を少なくとも **[開始時間]** から 48 時間後に設定します。 同じパッケージに対して別のテストも行う場合は、**[終了時間]** をテストの時間分遅らせることを検討します。 VaaS を通じて **[終了時間]** より後にスケジュールされたテストは失敗し、新しい SAS の生成が必要になります。
 
-1. **[開始時間]** を現在の時刻に設定し、**[終了時刻]** を現在の時刻から 1 時間後に設定します。
+5. **[BLOB SAS トークンおよび URL を生成]** を選択します
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
-    次のような形式になります。`https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-1. 次のように、生成された SAS URL を変更して、パッケージ コンテナー `{containername}` とパッケージ BLOB の名前 `{mypackage.zip}` を含めます。`https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-    この値は、VaaS ポータルで新しい**パッケージの検証**ワークフローを開始するときに使用します。
+**BLOB SAS URL** は、VaaS ポータルで新しい**パッケージの検証**ワークフローを開始するときに使用します。
 
 #### <a name="option-2-using-public-read-container"></a>オプション 2: パブリック読み取りコンテナーを使用する
 
