@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: 4a372b54ace87816b9e7cccbd38466331b5ebfc7
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 91463520547ca534048bba77d3b979b462ded6b5
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437598"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442354"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Azure API Management で開発者ポータルのページのコンテンツとレイアウトを変更する
 Azure API Management で開発者ポータルをカスタマイズする基本的な方法は 3 つあります。
@@ -27,6 +27,8 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 * [静的なページとページ レイアウト要素の内容を編集する][modify-content-layout] (このガイドで説明します)
 * [開発者ポータル全体のページ要素で使用されるスタイルを更新する][customize-styles]
 * [ポータルで生成されたページで使用されるテンプレートを変更する][portal-templates] (例: API ドキュメント、製品、ユーザー認証など)
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="page-structure"> </a>開発者ポータルのページの構造
 

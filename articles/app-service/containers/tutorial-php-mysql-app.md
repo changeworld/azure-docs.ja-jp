@@ -6,17 +6,17 @@ author: cephalin
 manager: erikre
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: nodejs
+ms.devlang: php
 ms.topic: tutorial
-ms.date: 11/28/2017
+ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9dbdcc9eb09ff137b32225e83e42ec5baca39396
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 91beef3076005fc7b95b1ffd208be238e23a7b8b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024547"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291489"
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で PHP と MySQL Web アプリを構築する
 
@@ -161,21 +161,21 @@ PHP を停止するには、ターミナルで `Ctrl + C` キーを押します�
 
 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL でサーバーを作成します。
 
-次のコマンドで、_&lt;mysql_server_name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
+次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、*\<admin_user>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
 
 ```azurecli-interactive
-az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd!
+az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <admin_password> --sku-name B_Gen5_1
 ```
 
 MySQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
 
 ```json
 {
-  "administratorLogin": "adminuser",
+  "administratorLogin": "<admin_user>",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<mysql_server_name>.database.windows.net",
+  "fullyQualifiedDomainName": "<mysql_server_name>.mysql.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql_server_name>",
-  "location": "northeurope",
+  "location": "westeurope",
   "name": "<mysql_server_name>",
   "resourceGroup": "myResourceGroup",
   ...
@@ -194,15 +194,19 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 > [アプリで使用する送信 IP アドレスのみを使用する](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
-### <a name="connect-to-production-mysql-server-locally"></a>ローカルに運用 MySQL サーバーに接続する
+Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](http://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
 
-ターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 _&lt;mysql_server_name>_ に指定した値を使用します。
-
-```bash
-mysql -u adminuser@<mysql_server_name> -h <mysql_server_name>.database.windows.net -P 3306 -p
+```azurecli-interactive
+az mysql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address>
 ```
 
-パスワードの入力を求められたら、データベース サーバーの作成時に指定した _$tr0ngPa$w0rd!_ を使用します。
+### <a name="connect-to-production-mysql-server-locally"></a>ローカルに運用 MySQL サーバーに接続する
+
+ターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 _&lt;admin_user>_ と _&lt;mysql_server_name>_ に指定した値を使用します。 パスワードの入力を求められたら、Azure でデータベースの作成時に指定したパスワードを使用します。
+
+```bash
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
+```
 
 ### <a name="create-a-production-database"></a>運用データベースを作成する
 
@@ -343,7 +347,7 @@ App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/
 次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;mysql_server_name>_ を置き換えます。
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.database.windows.net" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.mysql.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
 PHP [getenv](http://php.net/manual/en/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。

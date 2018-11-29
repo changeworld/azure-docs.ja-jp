@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: a92621d852ec60fb4773957d71dc6a55caaf991c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b719f45a2b76b41408593649e9e5cfe21dcf9179
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092200"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443799"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
 
@@ -190,16 +190,16 @@ ms.locfileid: "47092200"
 4. **ソリューション エクスプローラー**で、**[ビュー]** > **[共有]** フォルダーを順に展開します。 次に *_Layout.cshtml ファイル*を開きます。
 
     置換前のコード:
-
-        ```csharp
-        @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        ```
+    
+    ```csharp
+    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    ```
 
     を以下に置き換えます。
 
-        ```csharp
-        @Html.ActionLink("Azure Redis Cache Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
-        ```
+    ```csharp
+    @Html.ActionLink("Azure Redis Cache Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    ```
 
 ### <a name="to-add-a-new-rediscache-view"></a>新しい RedisCache ビューを追加するには
 

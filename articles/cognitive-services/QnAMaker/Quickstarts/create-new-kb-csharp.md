@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/6/2018
 ms.author: diberry
-ms.openlocfilehash: bcb19ebdcf6d4ca1c01612f815700fbbc0dd2fda
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 190a937a4239c08d844d271d2e1d8e858215a5c2
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567725"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334961"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>クイック スタート: C# を使用して QnA Maker でナレッジ ベースを作成する
 
@@ -67,7 +67,7 @@ Program クラス内に次のコード ブロックを追加します。
 
 [!code-csharp[Add a POST request to create KB](~/samples-qnamaker-csharp/documentation-samples/quickstarts/create-knowledge-base/QnaQuickstartCreateKnowledgebase/Program.cs?range=91-105 "Add a POST request to create KB")]
 
-この API 呼び出しは、ヘッダー フィールド **Location** に操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。 
+この API 呼び出しは、操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。 
 
 ```JSON
 {

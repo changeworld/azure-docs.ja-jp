@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: 8f4740a559e73620500c4ab04ea6e9e25405b8a3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 7ee1df8c38ac2dbfc6618febd223d5c4bbf32be6
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263572"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425712"
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>機械学習チュートリアル: Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
 
@@ -43,9 +43,7 @@ ms.locfileid: "52263572"
 - [機械学習アルゴリズム チート シート](algorithm-cheat-sheet.md)と [Microsoft Azure Machine Learning のアルゴリズムの選択方法](algorithm-choice.md) - ダウンロードできるこのポスターと付属の記事では、Studio のアルゴリズムについて詳細に説明されています。
 - [Machine Learning Studio: アルゴリズムとモジュールのヘルプ](https://msdn.microsoft.com/library/azure/dn905974.aspx) - 機械学習アルゴリズムなど、Studio の全モジュールの完全なリファレンスです。
 
-<!-- -->
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="how-does-machine-learning-studio-help"></a>Machine Learning Studio を使う利点
 

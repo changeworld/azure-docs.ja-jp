@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 683b77e47857e4efbe2c24425953e9a3d83177f9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8b95c311cd91ab6db84fb6640be5b6c1a6c0a9a5
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418848"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443119"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -42,6 +42,8 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
 + [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
 + また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="view-metrics-of-your-apis"></a>API のメトリックを表示する
 

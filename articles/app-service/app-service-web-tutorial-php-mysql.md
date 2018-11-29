@@ -2,7 +2,7 @@
 title: Azure で PHP と MySQL Web アプリを構築する | Microsoft Docs
 description: Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。
 services: app-service\web
-documentationcenter: nodejs
+documentationcenter: php
 author: cephalin
 manager: erikre
 editor: ''
@@ -10,17 +10,17 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: nodejs
+ms.devlang: php
 ms.topic: tutorial
-ms.date: 10/20/2017
+ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b14163bfb9a5e6265158db39e98cb9b31ccef021
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 9a1468c27e668663ca9079f5f1c9e5e97e51d2d5
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494110"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291289"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>チュートリアル: Azure で PHP と MySQL Web アプリを構築する
 
@@ -32,7 +32,7 @@ ms.locfileid: "39494110"
 
 ![Azure App Service で実行される PHP アプリ](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で MySQL データベースを作成する
@@ -168,7 +168,7 @@ Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server?view=azure-cl
 次のコマンドの *\<mysql_server_name>* プレースホルダーを一意のサーバー名に、*\<admin_user>* プレースホルダーをユーザー名に、*\<admin_password>* プレースホルダーをパスワードに置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql_server_name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。
 
 ```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
+az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <admin_password> --sku-name B_Gen5_1
 ```
 
 > [!NOTE]
@@ -185,9 +185,9 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
   "resourceGroup": "myResourceGroup",
   "sku": {
     "additionalProperties": {},
-    "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "capacity": 1,
+    "family": "Gen5",
+    "name": "B_Gen5_1",
     "size": null,
     "tier": "GeneralPurpose"
   },
@@ -209,12 +209,18 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 > [アプリで使用する送信 IP アドレスのみを使用する](app-service-ip-addresses.md#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
+Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](http://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+
+```azurecli-interactive
+az mysql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address>
+```
+
 ### <a name="connect-to-production-mysql-server-locally"></a>ローカルに運用 MySQL サーバーに接続する
 
 ローカルのターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 _&lt;mysql_server_name>_ に指定した値を使用します。 パスワードの入力を求められたら、Azure でデータベースの作成時に指定したパスワードを使用します。
 
 ```bash
-mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com-P 3306 -p
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
 ```
 
 ### <a name="create-a-production-database"></a>運用データベースを作成する
@@ -618,7 +624,7 @@ Web アプリの [概要] ページを確認します。 ここでは、停止�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Azure で MySQL データベースを作成する
