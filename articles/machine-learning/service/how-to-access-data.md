@@ -99,7 +99,7 @@ ds.upload(src_dir='your source directory',
 
 または、データストアの `upload_files()` メソッドを使用して、データストアに個々のファイルの一覧をアップロードします。
 
-### <a name="download"></a>[ダウンロード]
+### <a name="download"></a>ダウンロード
 同様に、データストアからローカル ファイル システムにデータをダウンロードします。
 
 ```Python
