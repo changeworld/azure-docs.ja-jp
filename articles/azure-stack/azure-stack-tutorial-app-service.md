@@ -46,7 +46,7 @@ Azure Stack クラウド管理者は、ユーザー (テナント) が Azure Fun
 
 例として、ユーザーが DNN Web コンテンツ管理システムを作成できるようにするオファーを作成できます。 それには、SQL Server リソース プロバイダーをインストールすることによって既に有効にしている SQL Server サービスが必要です。
 
-1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *AppServiceQuota* という名前を付けます。 **[Namespace] (名前空間)** フィールドの **[Microsoft.Web]** を選択します。
+1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *AppServiceQuota* という名前を付けます。 **[Namespace]\(名前空間)** フィールドの **[Microsoft.Web]** を選択します。
 2.  [プランを作成します](azure-stack-create-plan.md)。 *TestAppServicePlan* という名前を付け、**[Microsoft.SQL]** サービスと **[AppService Quota]\(AppService クォータ\)** クォータを選択します。
 
     > [!NOTE]
