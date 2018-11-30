@@ -6,17 +6,17 @@ manager: rithorn
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/28/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: b5a99ff8cfc0a915b70c6d90b8aa04d020177d54
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.topic: overview
+ms.openlocfilehash: ea34296e170d18a1d5636c50e7cae316b1d97948
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748172"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584607"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループでリソースを整理する
 
@@ -28,12 +28,12 @@ ms.locfileid: "50748172"
 
 管理グループとサブスクリプションの柔軟な構造を作成し、リソースを階層に整理して、統一されたポリシーとアクセス管理を適用できます。 次の図は、管理グループを使用した管理のための階層を作成する例を示します。
 
-![ツリー](./media/MG_overview.png)
+![ツリー](./media/tree.png)
 
-この例のような階層を作成することでポリシーを適用できます。たとえば、"インフラストラクチャ チームの管理グループ" というグループの VM の場所を米国西部リージョンに制限して、内部コンプライアンスやセキュリティ ポリシーを有効にすることができます。 このポリシーは、その管理グループ下の両方の EA サブスクリプションに継承され、それらのサブスクリプションの下にあるすべての VM に適用されます。 このポリシーは管理グループからサブスクリプションに継承されるため、このセキュリティ ポリシーは、ガバナンスを改善するためにリソースまたはサブスクリプションの所有者が変更することができません。
+階層を作成するとポリシーを適用できます。たとえば、"インフラストラクチャ チームの管理グループ" というグループの VM の場所を米国西部リージョンに制限できます。 このポリシーは、その管理グループ下の両方の EA サブスクリプションに継承され、それらのサブスクリプションの下にあるすべての VM に適用されます。 このセキュリティ ポリシーは、ガバナンスを改善するためにリソースまたはサブスクリプションの所有者が変更することができません。
 
-管理グループを使用するもう 1 つのシナリオは、ユーザーに複数のサブスクリプションへのアクセスを提供する場合です。 その管理グループの下に複数のサブスクリプションを移動することで、管理グループに対する 1 つの[ロールベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) 割り当てを作成できます。これにより、すべてのサブスクリプションにアクセスが継承されます。
-複数のサブスクリプションに RBAC を割り当てるスクリプトを作成しなくても、管理グループへ 1 つ割り当てることで、ユーザーは必要なものすべてにアクセスできます。
+管理グループを使用する別のシナリオでは、ユーザーに複数のサブスクリプションへのアクセスを提供します。 その管理グループの下に多くのサブスクリプションを移動することで、管理グループに対する[ロールベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) 割り当てを 1 つ作成できます。これにより、すべてのサブスクリプションにそのアクセスが継承されます。
+さまざまなサブスクリプションに RBAC を割り当てるスクリプトを作成しなくても、管理グループへ 1 つ割り当てることで、ユーザーは必要なものすべてにアクセスできます。
 
 ### <a name="important-facts-about-management-groups"></a>管理グループに関する重要な事実
 
@@ -41,8 +41,8 @@ ms.locfileid: "50748172"
 - 管理グループのツリーは、最大 6 レベルの深さをサポートできます。
   - この制限には、ルート レベルまたはサブスクリプション レベルは含まれません。
 - 各管理グループとサブスクリプションは、1 つの親のみをサポートできます。
-- 各管理グループは、複数の子を持つことができます。
-- すべてのサブスクリプションと管理グループは、各ディレクトリの 1 つの階層内に格納されます。 プレビュー中の例外については、[ルート管理グループに関する重要な情報](#important-facts-about-the-root-management-group)を参照してください。
+- 各管理グループには、多数の子を含めることができます。
+- すべてのサブスクリプションと管理グループは、各ディレクトリの 1 つの階層内に存在します。 プレビュー中の例外については、[ルート管理グループに関する重要な情報](#important-facts-about-the-root-management-group)を参照してください。
 
 ## <a name="root-management-group-for-each-directory"></a>各ディレクトリのルート管理グループ
 
@@ -73,19 +73,19 @@ ms.locfileid: "50748172"
 
 ## <a name="trouble-seeing-all-subscriptions"></a>サブスクリプションの表示の問題
 
-(2018 年 6 月 25 日)より前のプレビューの管理グループの使用を早期に開始した数個のディレクトリでは、一部のサブスクリプションが階層に適用されないという問題が発生していました。  これは、階層にサブスクリプションを適用するプロセスが、ディレクトリのルート管理グループでロールまたはポリシーの割り当てが行われた後に実装されることが原因でした。
+(2018 年 6 月 25 日) より前のプレビューで初期に管理グループの使用を開始した数個のディレクトリでは、一部のサブスクリプションが階層に適用されないという問題が発生していました。  階層にサブスクリプションを適用するプロセスは、ディレクトリ内のルート管理グループに対してロールまたはポリシーの割り当てが行われた後に実装されました。
 
 ### <a name="how-to-resolve-the-issue"></a>この問題を解決する方法
 
-この問題の解決策として、セルフサービスのオプションが 2 つあります。
+この問題を解決するためのオプションは 2 つあります。
 
 1. ルート管理グループからすべてのロールとポリシーの割り当てを削除します
-    1. ルート管理グループからすべてのポリシーとロールの割り当てを削除することによって、一夜開けたときすべてのサブスクリプションが階層にバックフィルされています。  このチェックは、テナントのサブスクリプションに偶発的なアクセスやポリシーの割り当てが発生していないことを確認することが目的です。
+    1. ルート管理グループからすべてのポリシーとロールの割り当てを削除することによって、一夜開けたときすべてのサブスクリプションが階層にバックフィルされています。  このプロセスの目的は、テナントのサブスクリプションに誤ってアクセスやポリシーの割り当てが行われないようにすることです。
     1. サービスに影響を与えずにこのプロセスを実行する最善の方法として、ルート管理グループの 1 つ下のレベルのロールまたはポリシー割り当てを適用します。 次に、ルート スコープからすべての割り当てを削除します。
 1. API を直接呼び出して、バックフィル プロセスを開始します
-    1. ディレクトリ内のすべての承認された顧客は、*TenantBackfillStatusRequest* または *StartTenantBackfillRequest* API を呼び出せます。 StartTenantBackfillRequest API が呼び出されると、すべてのサブスクリプションを階層に移動する初期セットアップ プロセスが開始されます。 このプロセスでは、すべての新しいサブスクリプションが強制的にルート管理グループの子になります。 このプロセスを実行するには、ルートのすべてのポリシーまたはアクセス許可の割り当てをすべてのサブスクリプションに適用できることを示すために、ルート レベルで割り当てを変更することが必要です。
+    1. ディレクトリ内の任意のユーザーは、*TenantBackfillStatusRequest* API または *StartTenantBackfillRequest* API を呼び出すことができます。 StartTenantBackfillRequest API が呼び出されると、すべてのサブスクリプションを階層に移動する初期セットアップ プロセスが開始されます。 このプロセスでは、すべての新しいサブスクリプションが強制的にルート管理グループの子になります。 このプロセスを実行するには、ルート レベルで割り当てを変更する必要があります。 この API を呼び出すことで、ルートに対するポリシーまたはアクセスの割り当てをすべてのサブスクリプションに適用できることを示します。
 
-このバックフィル プロセスについて質問等がございましたら、managementgroups@microsoft.com にお問い合わせください。  
+このバックフィル プロセスについて質問がある場合は、managementgroups@microsoft.com までお問い合わせください。  
   
 ## <a name="management-group-access"></a>管理グループ アクセス
 
@@ -97,19 +97,33 @@ Azure 管理グループは、すべてのリソース アクセスとロール�
 
 | RBAC ロール名             | Create | 名前の変更 | Move | 削除 | アクセス権の割り当て | ポリシーの割り当て | 読み取り  |
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
-|Owner                       | ○      | ○      | ○    | ○      | ○             | ○             | ○     |
-|Contributor                 | ○      | ○      | ○    | ○      |               |               | ○     |
-|MG Contributor*             | ○      | ○      | ○    | ○      |               |               | ○     |
-|Reader                      |        |        |      |        |               |               | ○     |
-|MG Reader*                  |        |        |      |        |               |               | ○     |
-|リソース ポリシー共同作成者 |        |        |      |        |               | ○             |       |
-|User Access Administrator   |        |        |      |        | ○             |               |       |
+|Owner                       | X      | X      | X    | X      | X             | X             | X     |
+|Contributor                 | X      | X      | X    | X      |               |               | X     |
+|MG Contributor*             | X      | X      | X    | X      |               |               | X     |
+|Reader                      |        |        |      |        |               |               | X     |
+|MG Reader*                  |        |        |      |        |               |               | X     |
+|リソース ポリシー共同作成者 |        |        |      |        |               | X             |       |
+|User Access Administrator   |        |        |      |        | X             |               |       |
 
-*: MG Contributor と MG Reader は、管理グループのスコープ内でのみ、ユーザーによるそれらのアクションの実行を許可します。  
+*: MG Contributor と MG Reader は、管理グループのスコープでのみ、ユーザーによるそれらのアクションの実行を許可します。  
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>カスタム RBAC ロールの定義と割り当て
 
 現時点では、管理グループのカスタム RBAC ロールはサポートされていません。 この項目の状態については、[管理グループ フィードバック フォーラム](https://aka.ms/mgfeedback)を参照してください。
+
+## <a name="audit-management-groups-using-activity-logs"></a>アクティビティ ログを使用した監査管理グループ
+
+この API を使用してサブスクリプションを追跡するには、[Tenant Activity Log API](/rest/api/monitor/tenantactivitylogs) を使用します。 現時点では、PowerShell、CLI、または Azure portal を使用して管理グループのアクティビティを追跡することはできません。
+
+1. Azure AD テナントのテナント管理者は、[アクセス権限を昇格](../../role-based-access-control/elevate-access-global-admin.md)してから、スコープ内の監査ユーザーに閲覧者ロールを割り当てます`/providers/microsoft.insights/eventtypes/management`。
+1. 監査ユーザーは、[Tenant Activity Log API](/rest/api/monitor/tenantactivitylogs) を呼び出して、管理グループのアクティビティを確認します。 管理グループのアクティビティすべてを対象としてリソース プロバイダーの **Microsoft.Management** でフィルター処理を行います。  例:
+
+```
+GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+```
+
+> [!NOTE]
+> コマンドラインからこの API を簡単に呼び出すには、[ARMClient](https://github.com/projectkudu/ARMClient) を使用します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -117,6 +131,6 @@ Azure 管理グループは、すべてのリソース アクセスとロール�
 
 - [管理グループを作成して Azure リソースを整理する](create.md)
 - [管理グループを変更、削除、または管理する方法](manage.md)
-- [Azure PowerShell モジュールのインストール](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [REST API 仕様の確認](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Azure CLI 拡張機能のインストール](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Azure PowerShell Resources モジュールで管理グループを確認する](https://aka.ms/mgPSdocs)
+- [REST API で管理グループを確認する](https://aka.ms/mgAPIdocs)
+- [Azure CLI で管理グループを確認する](https://aka.ms/mgclidoc)
