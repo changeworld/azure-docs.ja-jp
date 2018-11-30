@@ -63,7 +63,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 | Search query (検索クエリ) |実行するクエリ。 |
 | フレンドリ名 | 表示されるわかりやすい名前。 |
 
-## <a name="number-and-list-part"></a>[Number and list] (\数値とリスト) パーツ
+## <a name="number-and-list-part"></a>[Number and list] \(数値とリスト) パーツ
 ヘッダーには、ログ検索クエリのレコード数を示す 1 つの数値が表示されます。 リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
 ![[クエリのリスト] ビュー](media/view-designer-parts/view-number-list.png)
