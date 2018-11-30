@@ -5,17 +5,17 @@ author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 6a45ffa13ead40b72fd1a0a3c2696a6e6829a4d5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.topic: conceptual
+ms.openlocfilehash: 699a9b7a371a004213419567d0672f56b5365598
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956410"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620116"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "49956410"
 
 ### <a name="create-in-portal"></a>ポータルで作成する
 
-1. [Azure Portal](http://portal.azure.com) にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 
 1. **[すべてのサービス]** > **[管理グループ]** を選択します。
 
@@ -76,8 +76,8 @@ az account management-group create --name 'Contoso'
 
 管理グループについて詳しくは、以下をご覧ください。
 
-- [Azure 管理グループでリソースを整理する](overview.md)
+- [管理グループを作成して Azure リソースを整理する](create.md)
 - [管理グループを変更、削除、または管理する方法](manage.md)
-- [Azure PowerShell モジュールのインストール](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [REST API 仕様の確認](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Azure CLI 拡張機能のインストール](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Azure PowerShell Resources モジュールで管理グループを確認する](https://aka.ms/mgPSdocs)
+- [REST API で管理グループを確認する](https://aka.ms/mgAPIdocs)
+- [Azure CLI で管理グループを確認する](https://aka.ms/mgclidoc)
