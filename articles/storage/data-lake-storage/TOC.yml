@@ -69,13 +69,15 @@ items:
     href: https://azure.microsoft.com/pricing/details/storage/data-lake/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
+  - name: 既知の問題
+    href: known-issues.md
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/windows-azure-storage
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: 55e82f76f9bf02d873715829794238de32403050
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 84f2d960b97f6e7e4a06c9af3cd4665c3ebdcdfb
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634440"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620236"

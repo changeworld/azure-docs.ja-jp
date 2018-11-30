@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb7e422e0eb4a71e0f88a911083f8f5d6fb0ef2f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: d42a9458afa6244e0b6d8e7deb420a8ac49a130f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092170"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634168"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する
 
@@ -36,8 +36,8 @@ Windows Hybrid Runbook Worker をインストールして構成するには、2 
 
 |OS  |デプロイのタイプ  |
 |---------|---------|
-|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手動](automation-windows-hrw-install.md#manual-deployment)        |
-|Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
+| Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手動](automation-windows-hrw-install.md#manual-deployment)        |
+| Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
 > Hybrid Runbook Worker ロールをサポートするサーバーの構成を Desired State Configuration (DSC) を使用して管理するには、サーバーを DSC ノードとして追加する必要があります。 DSC による管理のためのサーバーのオンボードの詳細については、「[Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
@@ -53,7 +53,7 @@ Hybrid Runbook Worker のデプロイを開始する前に、[ネットワーク
 1. Azure Portal で、Automation アカウントに移動します。
 2. **[設定]** で、**[キー]** を選択し、**[URL]** と **[プライマリ アクセス キー]** の値をメモします。 この情報は、次の手順に必要です。
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 
 管理者モードで PowerShell セッションを開き、次のコマンドを実行します。 削除処理の詳細なログを取得するには、 **-Verbose** スイッチを使用します。
 
@@ -67,7 +67,7 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
 ```
 
-### <a name="linux"></a>Linux
+### <a name="linux"></a> Linux
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -95,7 +95,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ### <a name="hybrid-worker-role"></a>Hybrid Worker ロール
 
-Hybrid Runbook Worker が Log Analytics に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 このアクセスは、Log Analytics に接続するために [Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-agent-windows.md) に加えて必要です。
+Hybrid Runbook Worker が Log Analytics に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 このアクセスは、Log Analytics に接続するために [Microsoft Monitoring Agent に必要なポートと URL](../azure-monitor/platform/agent-windows.md) に加えて必要です。
 
 エージェントと Log Analytics サービスの間の通信にプロキシ サーバーを使用する場合は、適切なリソースにアクセスできることを確認してください。 ファイアウォールを使用してインターネットへのアクセスを制限する場合は、アクセスを許可するようにファイアウォールを構成する必要があります。 Log Analytics ゲートウェイをプロキシとして使用した場合、ハイブリッド worker 用に構成されていることを確認してください。 これを行う方法の詳細については、[Automation Hybrid Worker に向けた Log Analytics ゲートウェイの構成](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers)に関するセクションを参照してください。
 

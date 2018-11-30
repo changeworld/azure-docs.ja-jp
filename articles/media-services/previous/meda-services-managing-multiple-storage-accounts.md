@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: 89d1838eb9fed1751581b026d82b06bc20de4ecc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aa9386182f521119012ea59fe6b64fb31099169e
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783271"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620270"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理
 Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。 Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。
@@ -26,7 +26,7 @@ Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカ
 * アセットを複数のストレージ アカウントに負荷分散します。
 * 大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB (テラバイト) の制限があります)。 
 
-この記事では、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) および [PowerShell](/powershell/module/azurerm.media) を使って、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。 また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。 
+この記事では、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) および [PowerShell](/powershell/module/azurerm.media) を使って、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。 また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。 
 
 ## <a name="considerations"></a>考慮事項
 Media Services アカウントに複数のストレージ アカウントをアタッチする場合は、次の考慮事項が適用されます。
@@ -38,11 +38,11 @@ Media Services アカウントに複数のストレージ アカウントをア�
 
 その他の考慮事項
 
-Media Services は、ストリーミング コンテンツ (たとえば、http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 "." は 1 つのみです。 また、ファイル名拡張子で使用できる
+Media Services は、ストリーミング コンテンツ (たとえば、 http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、**IAssetFile.Name** プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 Name プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。  "." は 1 つのみです。 また、ファイル名拡張子で使用できる
 
 ## <a name="to-attach-storage-accounts"></a>ストレージ アカウントをアタッチするには  
 
-ストレージ アカウントを AMS アカウントにアタッチするには、次の例に示すように、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) および [PowerShell](/powershell/module/azurerm.media) を使用します。
+ストレージ アカウントを AMS アカウントにアタッチするには、次の例に示すように、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) および [PowerShell](/powershell/module/azurerm.media) を使用します。
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "

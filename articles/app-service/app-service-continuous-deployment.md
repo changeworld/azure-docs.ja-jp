@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: bd440e0ef017e2bf116e80ad049883e2338efddb
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9dead2c8801340a736b6f67010a85f3dd34fbe85
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298949"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820261"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 この記事では、[Azure App Service](app-service-web-overview.md) の継続的デプロイを構成する方法を示します。 App Service は、BitBucket、GitHub、および [Azure DevOps Services](https://www.visualstudio.com/team-services/) の既存のリポジトリから最新の更新プログラムをプルすることで、これらのサービスから継続的デプロイを実行できます。
@@ -152,5 +152,5 @@ App Service プランの[価格レベル](https://azure.microsoft.com/pricing/de
 [Git に関するドキュメント]: http://git-scm.com/documentation
 
 [Create a repo (GitHub) (リポジトリの作成 (GitHub))]: https://help.github.com/articles/create-a-repo
-[Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
+[Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
 [Azure DevOps Services の概要]: https://www.visualstudio.com/docs/vsts-tfs-overview

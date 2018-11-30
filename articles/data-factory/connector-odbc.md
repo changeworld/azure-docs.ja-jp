@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 26a1448ddf3f7ffb08ab581b1dad1abfd3ca8e12
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 600b64eceb3d3187349ce6c0e4a0270f24ab8621
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045145"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976555"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-odbc-connector.md)
-> * [最新バージョン](connector-odbc.md)
+> * [現在のバージョン](connector-odbc.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、ODBC データ ストアをコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -57,7 +57,7 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
 | authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。<br/>使用可能な値は **Basic** および **Anonymous**。 | [はい] |
 | userName | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ  |
 | password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
-| 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"RefreshToken=<secret refresh token>;"`. このフィールドを SecureString とマークします。 | いいえ  |
+| credential | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"RefreshToken=<secret refresh token>;"`. このフィールドを SecureString とマークします。 | いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
 
 **例 1: 基本認証の使用**
@@ -153,7 +153,7 @@ ODBC 対応データ ストアからデータをコピーするには、コピ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -194,7 +194,7 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **OdbcSink** に設定する必要があります | [はい] |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ  |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。  例: "00:30:00" (30 分)。 |いいえ  |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 0 - 自動検出) |
 | preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |
 
@@ -289,43 +289,6 @@ Data Factory ソリューションで Microsoft Access ソースを使用する�
             "connectionString": {
                 "type": "SecureString",
                 "value": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-コピー操作で ODBC データ ストアをソース/シンク データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
-
-## <a name="ge-historian-source"></a>GE Historian ソース
-
-汎用 ODBC コネクタを使用して、GE Historian からデータをコピーできます。
-
-セルフホステッド統合ラインタイムを、データ ストアへのアクセス権付きでコンピューターに設定します。 統合ランタイムは、GE Historian 用の ODBC ドライバーを使用してデータ ストアに接続します。 そのため、ドライバーが同じコンピューターにまだインストールされていない場合は、インストールしてください。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
-
-Data Factory ソリューションで GE Historian ソースを使用する前に、「[接続の問題のトラブルシューティング](#troubleshoot-connectivity-issues)」セクションの手順を使用して、Integration Runtime がデータ ストアに接続できるかどうかを確認します。
-
-次の例に示すように、Microsoft Access データベースを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
-
-```json
-{
-    "name": "HistorianLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<GE Historian store connection string or DSN>"
             },
             "authenticationType": "Basic",
             "userName": "<username>",

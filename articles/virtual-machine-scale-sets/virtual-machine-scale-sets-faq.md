@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 7b8faca82a23875b403d0b51b2e8719549d845fb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740692"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447182"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -69,7 +69,7 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 **Q.** スケール セットは、Azure 可用性ゾーンと連携しますか。
 
-**A.** はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
+**A.**  はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
 
 
 ## <a name="autoscale"></a>自動スケール
@@ -371,7 +371,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 仮想マシン スケール セットと VM では、JSON オブジェクトに証明書がラップされている必要があります。 
 
-コンテンツ タイプとして application/x-pkcs12 もサポートされています。 application/x-pkcs12 を使用する手順については、「[PFX certificates in Azure Key Vault (Azure Key Vault 内の PFX 証明書)](http://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/)」を参照してください。
+コンテンツ タイプとして application/x-pkcs12 もサポートされています。 
  
 .cer ファイルは現在サポートされていません。 .cer ファイルを使用するには、それらを .pfx コンテナーにエクスポートする必要があります。
 

@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 30afc1c577ab6dd18374d5ef5199c7e7d9e89fe4
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140301"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425678"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP Web ロールと worker ロールの作成
 
@@ -55,7 +55,7 @@ worker ロールについては、次のコマンドを使用します。
     PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
 > [!NOTE]
-> `roleName` パラメーターは省略可能です。 省略した場合、ロール名は自動的に生成されます。 最初に作成された Web ロールは `WebRole1`、2 番目は `WebRole2` などとなります。 最初に作成された worker ロールは `WorkerRole1`、2 番目は `WorkerRole2` などとなります。
+>  `roleName` パラメーターは省略可能です。 省略した場合、ロール名は自動的に生成されます。 最初に作成された Web ロールは `WebRole1`、2 番目は `WebRole2` などとなります。 最初に作成された worker ロールは `WorkerRole1`、2 番目は `WorkerRole2` などとなります。
 >
 >
 
@@ -217,10 +217,10 @@ Web ブラウザーを開き、出力に示されているローカル アドレ
 
 詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)を参照してください。
 
-[install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[サービス定義ファイル (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[サービス構成ファイル (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
-[iis.net]: http://www.iis.net/
+[install ps and emulators]: https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
+[サービス定義ファイル (.csdef)]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[サービス構成ファイル (.cscfg)]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
-[sqlsrv drivers]: http://php.net/sqlsrv
-[sqlncli.msi x64 インストーラー]: http://go.microsoft.com/fwlink/?LinkID=239648
+[sqlsrv drivers]: https://php.net/sqlsrv
+[sqlncli.msi x64 インストーラー]: https://go.microsoft.com/fwlink/?LinkID=239648

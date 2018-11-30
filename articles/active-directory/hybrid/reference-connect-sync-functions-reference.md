@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2302061d5a3eaf9ef51543b1304104e2dbe54bd9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46307251"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425695"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: 関数リファレンス
 Azure AD Connect では、同期時の属性値を操作するために関数を使用します。  
@@ -75,22 +75,22 @@ Azure AD Connect では、同期時の属性値を操作するために関数を
 | **算術** | | | | |
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **複数値** | | | | |
-| [Contains](#contains) |[Count](#count) |[項目](#item) |[ItemOrNull](#itemornull) | |
-| [Join](#join) |[RemoveDuplicates](#removeduplicates) |[Split](#split) | | |
+| [指定値を含む](#contains) |[カウント](#count) |[項目](#item) |[ItemOrNull](#itemornull) | |
+| [Join](#join) |[RemoveDuplicates](#removeduplicates) |[分割](#split) | | |
 | **プログラム フロー** | | | | |
-| [Error](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
+| [エラー](#error) |[IIF](#iif) |[選択肢](#select) |[Switch](#switch) | |
 | [Where](#where) |[With](#with) | | | |
 | **テキスト** | | | | |
 | [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Left](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Replace](#replace) | |
+| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[*Views\\Home\\AllDates.cshtml*](#replace) | |
 | [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
 - - -
 ### <a name="bitand"></a>BitAnd
 **説明:**  
-BitAnd 関数は、値に指定のビットを設定します。
+ BitAnd 関数は、値に指定のビットを設定します。
 
 **構文:**  
 `num BitAnd(num value1, num value2)`
@@ -98,7 +98,7 @@ BitAnd 関数は、値に指定のビットを設定します。
 * value1, value2: ともに AND になる数値
 
 **解説:**  
-この関数は両方のパラメーターをバイナリ表現に変換し、ビットを次に設定します。
+ この関数は両方のパラメーターをバイナリ表現に変換し、ビットを次に設定します。
 
 * 0 - "*マスク*" と "*フラグ*" で対応するビットの 1 つまたは両方が 0 の場合
 * 1 - 対応するビットの両方が 1 の場合。
@@ -107,12 +107,12 @@ BitAnd 関数は、値に指定のビットを設定します。
 
 **例:**  
 `BitAnd(&HF, &HF7)`  
-16 進数の "F" と "F7" の AND は 7 と評価されるため、7 を返します。
+ 16 進数の "F" と "F7" の AND は 7 と評価されるため、7 を返します。
 
 - - -
 ### <a name="bitor"></a>BitOr
 **説明:**  
-BitOr 関数は、値に指定のビットを設定します。
+ BitOr 関数は、値に指定のビットを設定します。
 
 **構文:**  
 `num BitOr(num value1, num value2)`
@@ -120,18 +120,18 @@ BitOr 関数は、値に指定のビットを設定します。
 * value1, value2: ともに OR になる数値
 
 **解説:**  
-この関数は両方のパラメーターをバイナリ表現に変換して、マスクとフラグで対応するビットの 1 つまたは両方が 1 の場合はビットを 1 に設定し、対応する両方のビットが 0 の場合は 0 に設定します。 つまり、両方のパラメーターの対応するビットが 0 の場合を除くすべてのケースで 1 を返します。
+ この関数は両方のパラメーターをバイナリ表現に変換して、マスクとフラグで対応するビットの 1 つまたは両方が 1 の場合はビットを 1 に設定し、対応する両方のビットが 0 の場合は 0 に設定します。 つまり、両方のパラメーターの対応するビットが 0 の場合を除くすべてのケースで 1 を返します。
 
 - - -
 ### <a name="cbool"></a>CBool
 **説明:**  
-CBool 関数は、式の評価結果に基づいてブール値を返します。
+ CBool 関数は、式の評価結果に基づいてブール値を返します。
 
 **構文:**  
 `bool CBool(exp Expression)`
 
 **解説:**  
-式の評価結果が 0 以外の値の場合、CBool は True を返し、それ以外の場合は False を返します。
+ 式の評価結果が 0 以外の値の場合、CBool は True を返し、それ以外の場合は False を返します。
 
 **例:**  
 `CBool([attrib1] = [attrib2])`  
@@ -141,7 +141,7 @@ CBool 関数は、式の評価結果に基づいてブール値を返します�
 - - -
 ### <a name="cdate"></a>CDate
 **説明:**  
-CDate 関数は、文字列から UTC DateTime を返します。 DateTime は Sync ではネイティブの属性の型ではありませんが、一部の関数で使用されます。
+ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は Sync ではネイティブの属性の型ではありませんが、一部の関数で使用されます。
 
 **構文:**  
 `dt CDate(str value)`
@@ -149,14 +149,14 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は S
 * Value: 日付、時刻、オプションでタイム ゾーンを含む文字列
 
 **解説:**  
-文字列は常に UTC で返されます。
+ 文字列は常に UTC で返されます。
 
 **例:**  
 `CDate([employeeStartTime])`  
-従業員の作業開始時刻に基づいて、DateTime を返します。
+ 従業員の作業開始時刻に基づいて、DateTime を返します。
 
 `CDate("2013-01-10 4:00 PM -8")`  
-"2013-01-11 12:00 AM" を表す DateTime を返します。
+ "2013-01-11 12:00 AM" を表す DateTime を返します。
 
 
 - - -
@@ -353,7 +353,7 @@ X.509v3 証明書のシリアル番号を返します。
 - - -
 ### <a name="cguid"></a>CGuid
 **説明:**  
-CGuid 関数は、GUID の文字列表現をそのバイナリ表現に変換します。
+ CGuid 関数は、GUID の文字列表現をそのバイナリ表現に変換します。
 
 **構文:**  
 `bin CGuid(str GUID)`
@@ -363,7 +363,7 @@ CGuid 関数は、GUID の文字列表現をそのバイナリ表現に変換し
 - - -
 ### <a name="contains"></a>Contains
 **説明:**  
-Contains 関数は、複数値の属性内で文字列を検索します。
+ Contains 関数は、複数値の属性内で文字列を検索します。
 
 **構文:**  
 `num Contains (mvstring attribute, str search)` - 大文字小文字を区別  
@@ -377,17 +377,17 @@ Contains 関数は、複数値の属性内で文字列を検索します。
 文字列が見つかった複数値の属性にインデックスを返します。 文字列が見つからない場合は 0 を返します。
 
 **解説:**  
-複数値の文字列属性の場合、検索では、値の部分文字列が検出されます。  
+ 複数値の文字列属性の場合、検索では、値の部分文字列が検出されます。  
 参照属性の場合、一致と見なされるためには、検索された文字列は正確に値と一致する必要があります。
 
 **例:**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
-proxyAddresses 属性にプライマリ メール アドレスが含まれている場合は (大文字の "SMTP:" で表されます) proxyAddress 属性を返し、それ以外の場合はエラーを返します。
+ proxyAddresses 属性にプライマリ メール アドレスが含まれている場合は (大文字の "SMTP:" で表されます) proxyAddress 属性を返し、それ以外の場合はエラーを返します。
 
 - - -
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **説明:**  
-ConvertFromBase64 関数は、指定した base64 でエンコードされた値を正規の文字列に変換します。
+ ConvertFromBase64 関数は、指定した base64 でエンコードされた値を正規の文字列に変換します。
 
 **構文:**  
 `str ConvertFromBase64(str source)` - エンコードには Unicode を想定しています  
@@ -405,7 +405,7 @@ ConvertFromBase64 関数は、指定した base64 でエンコードされた値
 - - -
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **説明:**  
-ConvertFromUTF8Hex 関数は、指定した UTF8 の 16 進数でエンコードされた値を文字列に変換します。
+ ConvertFromUTF8Hex 関数は、指定した UTF8 の 16 進数でエンコードされた値を文字列に変換します。
 
 **構文:**  
 `str ConvertFromUTF8Hex(str source)`
@@ -423,7 +423,7 @@ ConvertFromUTF8Hex 関数は、指定した UTF8 の 16 進数でエンコード
 - - -
 ### <a name="converttobase64"></a>ConvertToBase64
 **説明:**  
-ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換します。  
+ ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換します。  
 整数の配列の値を、base 64 桁でエンコードされているそれと同等の文字列表現に変換します。
 
 **構文:**  
@@ -431,27 +431,27 @@ ConvertToBase64 関数は、文字列を Unicode の base64 文字列に変換�
 
 **例:**  
 `ConvertToBase64("Hello world!")`  
-"SABlAGwAbABvACAAdwBvAHIAbABkACEA" を返します。
+ "SABlAGwAbABvACAAdwBvAHIAbABkACEA" を返します。
 
 - - -
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **説明:**  
-ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
+ ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコードされた値に変換します。
 
 **構文:**  
 `str ConvertToUTF8Hex(str source)`
 
 **解説:**  
-この関数の出力形式は、DN 属性の形式として Azure Active Directory で使用されます。
+ この関数の出力形式は、DN 属性の形式として Azure Active Directory で使用されます。
 
 **例:**  
 `ConvertToUTF8Hex("Hello world!")`  
-48656C6C6F20776F726C6421 を返します。
+ 48656C6C6F20776F726C6421 を返します。
 
 - - -
 ### <a name="count"></a>Count
 **説明:**  
-Count 関数は、複数値の属性内の要素数を返します。
+ Count 関数は、複数値の属性内の要素数を返します。
 
 **構文:**  
 `num Count(mvstr attribute)`
@@ -459,7 +459,7 @@ Count 関数は、複数値の属性内の要素数を返します。
 - - -
 ### <a name="cnum"></a>CNum
 **説明:**  
-CNum 関数は、文字列を受け取り、数値データ型を返します。
+ CNum 関数は、文字列を受け取り、数値データ型を返します。
 
 **構文:**  
 `num CNum(str value)`
@@ -467,7 +467,7 @@ CNum 関数は、文字列を受け取り、数値データ型を返します。
 - - -
 ### <a name="cref"></a>CRef
 **説明:**  
-文字列を参照属性に変換します。
+ 文字列を参照属性に変換します。
 
 **構文:**  
 `ref CRef(str value)`
@@ -478,7 +478,7 @@ CNum 関数は、文字列を受け取り、数値データ型を返します。
 - - -
 ### <a name="cstr"></a>CStr
 **説明:**  
-CStr 関数は、文字列データ型に変換します。
+ CStr 関数は、文字列データ型に変換します。
 
 **構文:**  
 `str CStr(num value)`  
@@ -489,12 +489,12 @@ CStr 関数は、文字列データ型に変換します。
 
 **例:**  
 `CStr([dn])`  
-"cn=Joe,dc=contoso,dc=com" を返します。
+ "cn=Joe,dc=contoso,dc=com" を返します。
 
 - - -
 ### <a name="dateadd"></a>DateAdd
 **説明:**  
-指定した時間間隔が追加された日付を含む Date を返します。
+ 指定した時間間隔が追加された日付を含む Date を返します。
 
 **構文:**  
 `dt DateAdd(str interval, num value, dt date)`
@@ -515,12 +515,12 @@ CStr 関数は、文字列データ型に変換します。
 
 **例:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
-3 か月を追加した結果の "2001-04-01" を表す DateTime を返します。
+ 3 か月を追加した結果の "2001-04-01" を表す DateTime を返します。
 
 - - -
 ### <a name="datefromnum"></a>DateFromNum
 **説明:**  
-DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換します。
+ DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換します。
 
 **構文:**  
 `dt DateFromNum(num value)`
@@ -528,12 +528,12 @@ DateFromNum 関数は、AD の日付形式の値を DateTime 型に変換しま�
 **例:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
-2012-01-01 23:00:00 を表す DateTime を返します。
+ 2012-01-01 23:00:00 を表す DateTime を返します。
 
 - - -
 ### <a name="dncomponent"></a>DNComponent
 **説明:**  
-DNComponent 関数は、指定した DN コンポーネントの値を左から返します。
+ DNComponent 関数は、指定した DN コンポーネントの値を左から返します。
 
 **構文:**  
 `str DNComponent(ref dn, num ComponentNumber)`
@@ -543,12 +543,12 @@ DNComponent 関数は、指定した DN コンポーネントの値を左から�
 
 **例:**  
 `DNComponent(CRef([dn]),1)`  
-dn が "cn=Joe,ou=…," の場合は、Joe が返されます。
+ dn が "cn=Joe,ou=…," の場合は、Joe が返されます。
 
 - - -
 ### <a name="dncomponentrev"></a>DNComponentRev
 **説明:**  
-DNComponentRev 関数は、指定した DN コンポーネントの値を右 (端) から返します。
+ DNComponentRev 関数は、指定した DN コンポーネントの値を右 (端) から返します。
 
 **構文:**  
 `str DNComponentRev(ref dn, num ComponentNumber)`  
@@ -562,36 +562,36 @@ DNComponentRev 関数は、指定した DN コンポーネントの値を右 (�
 dn が "cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com" の場合、  
 `DNComponentRev(CRef([dn]),3)`  
 `DNComponentRev(CRef([dn]),1,"DC")`  
-両方が US を返します。
+ 両方が US を返します。
 
 - - -
 ### <a name="error"></a>Error
 **説明:**  
-Error 関数は、カスタム エラーを返すために使用します。
+ Error 関数は、カスタム エラーを返すために使用します。
 
 **構文:**  
 `void Error(str ErrorMessage)`
 
 **例:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
-属性 accountName が存在しない場合は、オブジェクトでエラーをスローします。
+ 属性 accountName が存在しない場合は、オブジェクトでエラーをスローします。
 
 - - -
 ### <a name="escapedncomponent"></a>EscapeDNComponent
 **説明:**  
-EscapeDNComponent 関数は、DN のコンポーネントを 1 つ受け取り、LDAP で表示できるようにそれをエスケープします。
+ EscapeDNComponent 関数は、DN のコンポーネントを 1 つ受け取り、LDAP で表示できるようにそれをエスケープします。
 
 **構文:**  
 `str EscapeDNComponent(str value)`
 
 **例:**  
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
-displayName 属性に LDAP でエスケープする必要のある文字が含まれている場合でも、LDAP ディレクトリでオブジェクトを作成できるようにします。
+ displayName 属性に LDAP でエスケープする必要のある文字が含まれている場合でも、LDAP ディレクトリでオブジェクトを作成できるようにします。
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
 **説明:**  
-FormatDateTime 関数は、DateTime を指定した形式の文字列に設定するために使用します。
+ FormatDateTime 関数は、DateTime を指定した形式の文字列に設定するために使用します。
 
 **構文:**  
 `str FormatDateTime(dt value, str format)`
@@ -600,15 +600,15 @@ FormatDateTime 関数は、DateTime を指定した形式の文字列に設定�
 * format: 変換する形式を表す文字列。
 
 **解説:**  
-形式に使用できる値については、「[ユーザー定義の日付/時刻書式 (Format 関数)](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)」を参照してください
+形式に使用できる値については、「[ユーザー定義の日付/時刻書式 (Format 関数)](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)」を参照してください
 
 **例:**  
 
 `FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
-結果は "2007-12-25" となります。
+ 結果は "2007-12-25" となります。
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
-"20140905081453.0Z" などの結果になります。
+ "20140905081453.0Z" などの結果になります。
 
 - - -
 ### <a name="guid"></a>Guid
@@ -621,7 +621,7 @@ GUID 関数は、新しいランダムな GUID を生成します。
 - - -
 ### <a name="iif"></a>IIF
 **説明:**  
-IIF 関数は、指定した条件に基づいて、使用できる一連の値のうち、いずれかを返します。
+ IIF 関数は、指定した条件に基づいて、使用できる一連の値のうち、いずれかを返します。
 
 **構文:**  
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
@@ -632,12 +632,12 @@ IIF 関数は、指定した条件に基づいて、使用できる一連の値�
 
 **例:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
- ユーザーがインターンの場合はユーザーのエイリアスの先頭に "t-" を付けて返し、そうでない場合はユーザーのエイリアスをそのまま返します。
+  ユーザーがインターンの場合はユーザーのエイリアスの先頭に "t-" を付けて返し、そうでない場合はユーザーのエイリアスをそのまま返します。
 
 - - -
 ### <a name="instr"></a>InStr
 **説明:**  
-InStr 関数は文字列内の最初の部分文字列を検索します。
+ InStr 関数は文字列内の最初の部分文字列を検索します。
 
 **構文:**  
 
@@ -655,15 +655,15 @@ InStr 関数は文字列内の最初の部分文字列を検索します。
 
 **例:**  
 `InStr("The quick brown fox","quick")`  
-評価結果は 5 になります。
+ 評価結果は 5 になります。
 
 `InStr("repEated","e",3,vbBinaryCompare)`  
-評価結果は 7 になります。
+ 評価結果は 7 になります。
 
 - - -
 ### <a name="instrrev"></a>InStrRev
 **説明:**  
-InStrRev 関数は文字列内の最後の部分文字列を検索します。
+ InStrRev 関数は文字列内の最後の部分文字列を検索します。
 
 **構文:**  
 `num InstrRev(str stringcheck, str stringmatch)`  
@@ -680,12 +680,12 @@ InStrRev 関数は文字列内の最後の部分文字列を検索します。
 
 **例:**  
 `InStrRev("abbcdbbbef","bb")`  
-7 を返します。
+ 7 を返します。
 
 - - -
 ### <a name="isbitset"></a>IsBitSet
 **説明:**  
-IsBitSet 関数は、ビットが設定されているかどうかをテストします。
+ IsBitSet 関数は、ビットが設定されているかどうかをテストします。
 
 **構文:**  
 `bool IsBitSet(num value, num flag)`
@@ -694,18 +694,18 @@ IsBitSet 関数は、ビットが設定されているかどうかをテスト�
 
 **例:**  
 `IsBitSet(&HF,4)`  
-ビット "4" が 16 進数値 "F" で設定されているため True が返されます。
+ ビット "4" が 16 進数値 "F" で設定されているため True が返されます。
 
 - - -
 ### <a name="isdate"></a>IsDate
 **説明:**  
-式が DateTime 型として評価できる場合、IsDate 関数の評価結果は True になります。
+ 式が DateTime 型として評価できる場合、IsDate 関数の評価結果は True になります。
 
 **構文:**  
 `bool IsDate(var Expression)`
 
 **解説:**  
-CDate() が成功するかどうかを判断するために使用します。
+ CDate() が成功するかどうかを判断するために使用します。
 
 - - -
 ### <a name="iscert"></a>IsCert
@@ -718,7 +718,7 @@ CDate() が成功するかどうかを判断するために使用します。
 - - -
 ### <a name="isempty"></a>IsEmpty
 **説明:**  
-属性が CS または MV に存在しても評価結果が空の文字列である場合、IsEmpty 関数の評価結果は True になります。
+ 属性が CS または MV に存在しても評価結果が空の文字列である場合、IsEmpty 関数の評価結果は True になります。
 
 **構文:**  
 `bool IsEmpty(var Expression)`
@@ -726,13 +726,13 @@ CDate() が成功するかどうかを判断するために使用します。
 - - -
 ### <a name="isguid"></a>IsGuid
 **説明:**  
-文字列が GUID に変換できる場合、IsGUID 関数の評価結果は true になります。
+ 文字列が GUID に変換できる場合、IsGUID 関数の評価結果は true になります。
 
 **構文:**  
 `bool IsGuid(str GUID)`
 
 **解説:**  
-GUID は次のいずれかのパターンに従った文字列として定義されます: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx または {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+ GUID は次のいずれかのパターンに従った文字列として定義されます: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx または {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 CGuid() が成功するかどうかを判断するために使用します。
 
@@ -743,66 +743,66 @@ StrAttribute に GUID 形式がある場合はバイナリ表現を返します�
 - - -
 ### <a name="isnull"></a>IsNull
 **説明:**  
-式の評価結果が Null の場合、IsNull 関数は true を返します。
+ 式の評価結果が Null の場合、IsNull 関数は true を返します。
 
 **構文:**  
 `bool IsNull(var Expression)`
 
 **解説:**  
-属性の場合、Null は属性の不在によって表されます。
+ 属性の場合、Null は属性の不在によって表されます。
 
 **例:**  
 `IsNull([displayName])`  
-CS または MV に属性がない場合は True を返します。
+ CS または MV に属性がない場合は True を返します。
 
 - - -
 ### <a name="isnullorempty"></a>IsNullOrEmpty
 **説明:**  
-式が null または空の文字列の場合、IsNullOrEmpty 関数は true を返します。
+ 式が null または空の文字列の場合、IsNullOrEmpty 関数は true を返します。
 
 **構文:**  
 `bool IsNullOrEmpty(var Expression)`
 
 **解説:**  
-属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。  
+ 属性の場合は、属性がないか、存在しても空の文字列の場合、評価結果は True になります。  
 この関数の逆の関数は IsPresent です。
 
 **例:**  
 `IsNullOrEmpty([displayName])`  
-CS または MV に属性がないか、空の文字列の場合は True を返します。
+ CS または MV に属性がないか、空の文字列の場合は True を返します。
 
 - - -
 ### <a name="isnumeric"></a>IsNumeric
 **説明:**  
-IsNumeric 関数は、式を数値型として評価できるかどうかを示すブール値を返します。
+ IsNumeric 関数は、式を数値型として評価できるかどうかを示すブール値を返します。
 
 **構文:**  
 `bool IsNumeric(var Expression)`
 
 **解説:**  
-CNum() が式の解析に成功するかどうかを判断するために使用します。
+ CNum() が式の解析に成功するかどうかを判断するために使用します。
 
 - - -
 ### <a name="isstring"></a>IsString
 **説明:**  
-式を文字列型として評価できる場合、IsString 関数の評価結果は True になります。
+ 式を文字列型として評価できる場合、IsString 関数の評価結果は True になります。
 
 **構文:**  
 `bool IsString(var expression)`
 
 **解説:**  
-CStr() が式の解析に成功するかどうかを判断するために使用します。
+ CStr() が式の解析に成功するかどうかを判断するために使用します。
 
 - - -
 ### <a name="ispresent"></a>IsPresent
 **説明:**  
-式の評価結果が Null でもなく、空でもない文字列の場合、IsPresent 関数は true を返します。
+ 式の評価結果が Null でもなく、空でもない文字列の場合、IsPresent 関数は true を返します。
 
 **構文:**  
 `bool IsPresent(var expression)`
 
 **解説:**  
-この関数の逆関数は IsNullOrEmpty です。
+ この関数の逆関数は IsNullOrEmpty です。
 
 **例:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -810,7 +810,7 @@ CStr() が式の解析に成功するかどうかを判断するために使用�
 - - -
 ### <a name="item"></a>Item
 **説明:**  
-Item 関数は複数値の文字列/属性から 1 つの項目を返します。
+ Item 関数は複数値の文字列/属性から 1 つの項目を返します。
 
 **構文:**  
 `var Item(mvstr attribute, num index)`
@@ -819,18 +819,18 @@ Item 関数は複数値の文字列/属性から 1 つの項目を返します�
 * index: 複数値の文字列内の項目へのインデックス。
 
 **解説:**  
-Contains 関数は複数値の属性内の項目に対するインデックスを返すため、Item 関数を Contains 関数と共に使用すると便利です。
+ Contains 関数は複数値の属性内の項目に対するインデックスを返すため、Item 関数を Contains 関数と共に使用すると便利です。
 
 インデックスが範囲外にある場合は、エラーをスローします。
 
 **例:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
-プライマリ メール アドレスを返します。
+ プライマリ メール アドレスを返します。
 
 - - -
 ### <a name="itemornull"></a>ItemOrNull
 **説明:**  
-ItemOrNull 関数は複数値の文字列/属性から 1 つの項目を返します。
+ ItemOrNull 関数は複数値の文字列/属性から 1 つの項目を返します。
 
 **構文:**  
 `var ItemOrNull(mvstr attribute, num index)`
@@ -839,14 +839,14 @@ ItemOrNull 関数は複数値の文字列/属性から 1 つの項目を返し�
 * index: 複数値の文字列内の項目へのインデックス。
 
 **解説:**  
-ItemOrNull 関数は複数値の属性内の項目に対するインデックスを返すため、ItemOrNull 関数を Contains 関数と共に使用すると便利です。
+ ItemOrNull 関数は複数値の属性内の項目に対するインデックスを返すため、ItemOrNull 関数を Contains 関数と共に使用すると便利です。
 
 インデックスが範囲外にある場合は、Null 値を返します。
 
 - - -
 ### <a name="join"></a>Join
 **説明:**  
-Join 関数は、複数値の文字列を受け取り、指定した区切り記号が項目間に挿入された、単一値の文字列を返します。
+ Join 関数は、複数値の文字列を受け取り、指定した区切り記号が項目間に挿入された、単一値の文字列を返します。
 
 **構文:**  
 `str Join(mvstr attribute)`  
@@ -856,7 +856,7 @@ Join 関数は、複数値の文字列を受け取り、指定した区切り記
 * delimiter: 返される文字列内で部分文字列を区切るために使用する任意の文字列。 省略した場合は、空白文字 (" ") が使用されます。 delimiter が長さ 0 の文字列 ("") または Nothing の場合、リスト内のすべての項目は、区切り記号なしで連結されます。
 
 **解説:**  
-Join 関数と Split 関数の間には類似点があります。 Join 関数は、文字列の配列を受け取り、区切り文字列を使用してそれらを結合し、単一の文字列を返します。 Split 関数は、文字列を受け取って区切り記号で分割し、文字列の配列を返します。 ただし、Join 関数が任意の区切り文字列を使った文字列を連結できるのに対し、Split 関数で文字列を分割する際には 1 文字の区切り記号しか使用できないという大きな違いがあります。
+ Join 関数と Split 関数の間には類似点があります。 Join 関数は、文字列の配列を受け取り、区切り文字列を使用してそれらを結合し、単一の文字列を返します。 Split 関数は、文字列を受け取って区切り記号で分割し、文字列の配列を返します。 ただし、Join 関数が任意の区切り文字列を使った文字列を連結できるのに対し、Split 関数で文字列を分割する際には 1 文字の区切り記号しか使用できないという大きな違いがあります。
 
 **例:**  
 `Join([proxyAddresses],",")`  
@@ -865,19 +865,19 @@ Join 関数と Split 関数の間には類似点があります。 Join 関数�
 - - -
 ### <a name="lcase"></a>LCase
 **説明:**  
-LCase 関数は、文字列内のすべての文字を小文字に変換します。
+ LCase 関数は、文字列内のすべての文字を小文字に変換します。
 
 **構文:**  
 `str LCase(str value)`
 
 **例:**  
 `LCase("TeSt")`  
-"test" を返します。
+ "test" を返します。
 
 - - -
 ### <a name="left"></a>Left
 **説明:**  
-Left 関数は文字列の左端から数えて指定した文字数分の文字を返します。
+ Left 関数は文字列の左端から数えて指定した文字数分の文字を返します。
 
 **構文:**  
 `str Left(str string, num NumChars)`
@@ -886,7 +886,7 @@ Left 関数は文字列の左端から数えて指定した文字数分の文字
 * NumChars: 文字列の左端から数えて返される文字数を指定する数値
 
 **解説:**  
-string 内の最初の numChars 文字分の文字を含む文字列。
+ string 内の最初の numChars 文字分の文字を含む文字列。
 
 * numChars = 0 の場合、空の文字列を返します。
 * numChars < 0 の場合、入力文字列を返します。
@@ -896,36 +896,36 @@ string に含まれる文字数が numChars で指定した数より少ない場
 
 **例:**  
 `Left("John Doe", 3)`  
-"Joh" を返します。
+ "Joh" を返します。
 
 - - -
 ### <a name="len"></a>Len
 **説明:**  
-Len 関数は文字列の文字数を返します。
+ Len 関数は文字列の文字数を返します。
 
 **構文:**  
 `num Len(str value)`
 
 **例:**  
 `Len("John Doe")`  
-8 を返します。
+ 8 を返します。
 
 - - -
 ### <a name="ltrim"></a>LTrim
 **説明:**  
-LTrim 関数は文字列の先頭の空白文字を削除します。
+ LTrim 関数は文字列の先頭の空白文字を削除します。
 
 **構文:**  
 `str LTrim(str value)`
 
 **例:**  
 `LTrim(" Test ")`  
-"Test " を返します。
+ "Test " を返します。
 
 - - -
 ### <a name="mid"></a>Mid
 **説明:**  
-Mid 関数は文字列の指定した位置から数えて、指定した文字数分の文字を返します。
+ Mid 関数は文字列の指定した位置から数えて、指定した文字数分の文字を返します。
 
 **構文:**  
 `str Mid(str string, num start, num NumChars)`
@@ -935,7 +935,7 @@ Mid 関数は文字列の指定した位置から数えて、指定した文字�
 * NumChars: 文字列の位置から数えて返される文字数を指定する数値
 
 **解説:**  
-string 内の start 位置から数えて numChars 文字分の文字を返します。  
+ string 内の start 位置から数えて numChars 文字分の文字を返します。  
 文字列内の start 位置から数えて numChars 文字分の文字が含まれる文字列。
 
 * numChars = 0 の場合、空の文字列を返します。
@@ -948,15 +948,15 @@ string で start 位置から後に numChar 文字が残っていない場合、
 
 **例:**  
 `Mid("John Doe", 3, 5)`  
-"hn Do" を返します。
+ "hn Do" を返します。
 
 `Mid("John Doe", 6, 999)`  
-"Doe" を返します。
+ "Doe" を返します。
 
 - - -
 ### <a name="now"></a>Now
 **説明:**  
-Now 関数は、コンピューターのシステムの日付と時刻に従って、現在の日付と時刻を指定する DateTime を返します。
+ Now 関数は、コンピューターのシステムの日付と時刻に従って、現在の日付と時刻を指定する DateTime を返します。
 
 **構文:**  
 `dt Now()`
@@ -964,19 +964,19 @@ Now 関数は、コンピューターのシステムの日付と時刻に従っ�
 - - -
 ### <a name="numfromdate"></a>NumFromDate
 **説明:**  
-NumFromDate 関数は、AD の日付形式で日付を返します。
+ NumFromDate 関数は、AD の日付形式で日付を返します。
 
 **構文:**  
 `num NumFromDate(dt value)`
 
 **例:**  
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
-129699324000000000 を返します。
+ 129699324000000000 を返します。
 
 - - -
 ### <a name="padleft"></a>PadLeft
 **説明:**  
-PadLeft 関数は、指定した埋め込み文字を使用して、指定した長さになるまで左側に文字列を埋め込みます。
+ PadLeft 関数は、指定した埋め込み文字を使用して、指定した長さになるまで左側に文字列を埋め込みます。
 
 **構文:**  
 `str PadLeft(str string, num length, str padCharacter)`
@@ -996,12 +996,12 @@ PadLeft 関数は、指定した埋め込み文字を使用して、指定した
 
 **例:**  
 `PadLeft("User", 10, "0")`  
-"000000User" を返します。
+ "000000User" を返します。
 
 - - -
 ### <a name="padright"></a>PadRight
 **説明:**  
-PadRight 関数は、指定した埋め込み文字を使用して、指定した長さになるまで右側に文字列を埋め込みます。
+ PadRight 関数は、指定した埋め込み文字を使用して、指定した長さになるまで右側に文字列を埋め込みます。
 
 **構文:**  
 `str PadRight(str string, num length, str padCharacter)`
@@ -1021,12 +1021,12 @@ PadRight 関数は、指定した埋め込み文字を使用して、指定し�
 
 **例:**  
 `PadRight("User", 10, "0")`  
-"User000000" を返します。
+ "User000000" を返します。
 
 - - -
 ### <a name="pcase"></a>PCase
 **説明:**  
-PCase 関数は、文字列内のスペースで区切られた単語の最初の文字を大文字に変換し、その他のすべての文字を小文字に変換します。
+ PCase 関数は、文字列内のスペースで区切られた単語の最初の文字を大文字に変換し、その他のすべての文字を小文字に変換します。
 
 **構文:**  
 `String PCase(string)`
@@ -1037,15 +1037,15 @@ PCase 関数は、文字列内のスペースで区切られた単語の最初�
 
 **例:**  
 `PCase("TEsT")`  
-"test" を返します。
+ "test" を返します。
 
 `PCase(LCase("TEST"))`  
-"Test" を返します。
+ "Test" を返します。
 
 - - -
 ### <a name="randomnum"></a>RandomNum
 **説明:**  
-RandomNum 関数は、指定した範囲内の乱数を返します。
+ RandomNum 関数は、指定した範囲内の乱数を返します。
 
 **構文:**  
 `num RandomNum(num start, num end)`
@@ -1055,24 +1055,24 @@ RandomNum 関数は、指定した範囲内の乱数を返します。
 
 **例:**  
 `Random(100,999)`  
-734 などを返します。
+ 734 などを返します。
 
 - - -
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **説明:**  
-RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意になるように処理します。
+ RemoveDuplicates 関数は複数値の文字列を受け取り、各値が一意になるように処理します。
 
 **構文:**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
 **例:**  
 `RemoveDuplicates([proxyAddresses])`  
-重複する値がすべて削除された、校正済みの proxyAddress 属性を返します。
+ 重複する値がすべて削除された、校正済みの proxyAddress 属性を返します。
 
 - - -
-### <a name="replace"></a>Replace
+### <a name="replace"></a>*Views\\Home\\AllDates.cshtml*
 **説明:**  
-Replace 関数は、見つかった文字列をすべて別の文字列に置き換えます。
+ Replace 関数は、見つかった文字列をすべて別の文字列に置き換えます。
 
 **構文:**  
 `str Replace(str string, str OldValue, str NewValue)`
@@ -1082,7 +1082,7 @@ Replace 関数は、見つかった文字列をすべて別の文字列に置き
 * NewValue: 置換する文字列。
 
 **解説:**  
-この関数は次の特殊なモニカーを認識します。
+ この関数は次の特殊なモニカーを認識します。
 
 * \n – 新しい行
 * \r – キャリッジ リターン
@@ -1090,12 +1090,12 @@ Replace 関数は、見つかった文字列をすべて別の文字列に置き
 
 **例:**  
 `Replace([address],"\r\n",", ")`  
-CRLF をコンマとスペースで置き換え、"One Microsoft Way, Redmond, WA, USA" などの文字列にします。
+ CRLF をコンマとスペースで置き換え、"One Microsoft Way, Redmond, WA, USA" などの文字列にします。
 
 - - -
 ### <a name="replacechars"></a>ReplaceChars
 **説明:**  
-ReplaceChars 関数は、ReplacePattern 文字列に見つかったすべての文字を置き換えます。
+ ReplaceChars 関数は、ReplacePattern 文字列に見つかったすべての文字を置き換えます。
 
 **構文:**  
 `str ReplaceChars(str string, str ReplacePattern)`
@@ -1120,7 +1120,7 @@ ReplaceChars 関数は、ReplacePattern 文字列に見つかったすべての�
 `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
 
 `ReplaceChars("Räksmörgås",%ReplaceString%)`  
-Raksmorgas を返します。
+ Raksmorgas を返します。
 
 `ReplaceChars("O’Neil",%ReplaceString%)`  
 "ONeil" を返します。単一引用符を削除するように定義されています。
@@ -1128,7 +1128,7 @@ Raksmorgas を返します。
 - - -
 ### <a name="right"></a>Right
 **説明:**  
-Right 関数は文字列の右端から数えて指定した文字数分の文字を返します。
+ Right 関数は文字列の右端から数えて指定した文字数分の文字を返します。
 
 **構文:**  
 `str Right(str string, num NumChars)`
@@ -1137,7 +1137,7 @@ Right 関数は文字列の右端から数えて指定した文字数分の文�
 * NumChars: 文字列の右端から数えて返される文字数を指定する数値
 
 **解説:**  
-string の末尾から数えて numChars 文字分の文字が返されます。
+ string の末尾から数えて numChars 文字分の文字が返されます。
 
 文字列内の最後の numChars 文字分の文字を含む文字列。
 
@@ -1149,19 +1149,19 @@ string の末尾から数えて numChars 文字分の文字が返されます。
 
 **例:**  
 `Right("John Doe", 3)`  
-"Doe" を返します。
+ "Doe" を返します。
 
 - - -
 ### <a name="rtrim"></a>RTrim
 **説明:**  
-RTrim 関数は文字列の末尾の空白文字を削除します。
+ RTrim 関数は文字列の末尾の空白文字を削除します。
 
 **構文:**  
 `str RTrim(str value)`
 
 **例:**  
 `RTrim(" Test ")`  
-" Test" を返します。
+ " Test" を返します。
 
 - - -
 ### <a name="select"></a>Select
@@ -1182,9 +1182,9 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 ハイフン (-) の削除後に、複数値の属性 otherPhone 内のすべての値を返します。
 
 - - -
-### <a name="split"></a>Split
+### <a name="split"></a>分割
 **説明:**  
-Split 関数は区切り記号で区切られた文字列を受け取り、複数値の文字列にします。
+ Split 関数は区切り記号で区切られた文字列を受け取り、複数値の文字列にします。
 
 **構文:**  
 `mvstr Split(str value, str delimiter)`  
@@ -1196,12 +1196,12 @@ Split 関数は区切り記号で区切られた文字列を受け取り、複�
 
 **例:**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
-proxyAddress 属性に有用な 2 つの要素が含まれる複数値の文字列を返します。
+ proxyAddress 属性に有用な 2 つの要素が含まれる複数値の文字列を返します。
 
 - - -
 ### <a name="stringfromguid"></a>StringFromGuid
 **説明:**  
-StringFromGuid 関数は、バイナリ GUID を受け取り、文字列に変換します。
+ StringFromGuid 関数は、バイナリ GUID を受け取り、文字列に変換します。
 
 **構文:**  
 `str StringFromGuid(bin GUID)`
@@ -1209,7 +1209,7 @@ StringFromGuid 関数は、バイナリ GUID を受け取り、文字列に変�
 - - -
 ### <a name="stringfromsid"></a>StringFromSid
 **説明:**  
-StringFromSid 関数は、セキュリティ識別子が含まれるバイト配列を文字列に変換します。
+ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配列を文字列に変換します。
 
 **構文:**  
 `str StringFromSid(bin ObjectSID)`  
@@ -1217,7 +1217,7 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 - - -
 ### <a name="switch"></a>Switch
 **説明:**  
-Switch 関数は、条件の評価結果に基づいて 1 つの値を返すために使用します。
+ Switch 関数は、条件の評価結果に基づいて 1 つの値を返すために使用します。
 
 **構文:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
@@ -1226,7 +1226,7 @@ Switch 関数は、条件の評価結果に基づいて 1 つの値を返すた�
 * value: 対応する式が True の場合に返される値。
 
 **解説:**  
-Switch 関数の引数リストは、式と値のペアで構成されます。 式は左から右に評価され、評価結果が True になる最初の式に関連付けられている値が返されます。 各部分が正しくペアリングされていないと、実行時エラーが発生します。
+ Switch 関数の引数リストは、式と値のペアで構成されます。 式は左から右に評価され、評価結果が True になる最初の式に関連付けられている値が返されます。 各部分が正しくペアリングされていないと、実行時エラーが発生します。
 
 たとえば、expr1 が True の場合、Switch は value1 を返します。 たとえば、expr1 が False でも expr2 が True の場合、Switch は value2 を返します。
 
@@ -1246,29 +1246,29 @@ Switch は、返される式が 1 つであってもすべての式を評価し�
 - - -
 ### <a name="trim"></a>Trim
 **説明:**  
-Trim 関数は、文字列の先頭と末尾の空白文字を削除します。
+ Trim 関数は、文字列の先頭と末尾の空白文字を削除します。
 
 **構文:**  
 `str Trim(str value)`  
 
 **例:**  
 `Trim(" Test ")`  
-"test" を返します。
+ "test" を返します。
 
 `Trim([proxyAddresses])`  
-proxyAddress 属性の値ごとに先頭と末尾の空白文字を削除します。
+ proxyAddress 属性の値ごとに先頭と末尾の空白文字を削除します。
 
 - - -
 ### <a name="ucase"></a>UCase
 **説明:**  
-UCase 関数は文字列内のすべての文字を大文字に変換します。
+ UCase 関数は文字列内のすべての文字を大文字に変換します。
 
 **構文:**  
 `str UCase(str string)`
 
 **例:**  
 `UCase("TeSt")`  
-"test" を返します。
+ "test" を返します。
 
 - - -
 ### <a name="where"></a>Where
@@ -1309,7 +1309,7 @@ userCertificate 属性内の、期限が切れていない証明書の値のみ�
 - - -
 ### <a name="word"></a>Word
 **説明:**  
-Word 関数は、使用する区切り記号と返す単語の番号を表すパラメーターに基づいて、文字列内に含まれる単語を返します。
+ Word 関数は、使用する区切り記号と返す単語の番号を表すパラメーターに基づいて、文字列内に含まれる単語を返します。
 
 **構文:**  
 `str Word(str string, num WordNumber, str delimiters)`
@@ -1319,7 +1319,7 @@ Word 関数は、使用する区切り記号と返す単語の番号を表すパ
 * delimiters: 単語を識別するために使用される区切り記号を表す文字列
 
 **解説:**  
-delimiters 内のいずれかの文字で区切られた string 内の各文字列が、単語として識別されます。
+ delimiters 内のいずれかの文字で区切られた string 内の各文字列が、単語として識別されます。
 
 * num < 1 の場合、空の文字列を返します。
 * string が null の場合、空の文字列を返します。
@@ -1328,10 +1328,10 @@ string に含まれる単語の数が指定より少ないか、区切り記号�
 
 **例:**  
 `Word("The quick brown fox",3," ")`  
-"brown" を返します。
+ "brown" を返します。
 
 `Word("This,string!has&many separators",3,",!&#")`  
-"has" を返します。
+ "has" を返します。
 
 ## <a name="additional-resources"></a>その他のリソース
 * [宣言型のプロビジョニングの式について](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)

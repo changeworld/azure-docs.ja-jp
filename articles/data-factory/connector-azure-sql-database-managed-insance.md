@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 11/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 87ca7c10095f12c82137b6287fbb895c97676062
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 561e672436c38cd0b3e637b794662483fc630676
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458998"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706723"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Database Managed Instance をコピー先またはコピー元としてデータをコピーする
 
@@ -115,7 +115,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは **SqlServerTable** に設定する必要があります。 | [はい] |
-| tableName |リンクされたサービスが参照するデータベース インスタンスのテーブルまたはビューの名前です。 | [はい] |
+| tableName |リンクされたサービスが参照するデータベース インスタンスのテーブルまたはビューの名前です。 | ソースの場合はいいえ、シンクの場合ははい |
 
 **例**
 
@@ -155,7 +155,6 @@ Azure SQL Database Managed Instance からデータをコピーする場合は�
 
 - SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために Managed Instance ソースに対してこのクエリを実行します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 - "sqlReaderQuery" や "sqlReaderStoredProcedureName" プロパティを指定しない場合は、Managed Instance に対して実行するクエリ (`select column1, column2 from mytable`) を作成するために、データセット JSON の "構造" セクションで定義された列が使用されます。 データセット定義に "構造" がない場合は、すべての列がテーブルから選択されます。
-- **sqlReaderStoredProcedureName** を使用する場合でも、ダミーの **tableName** プロパティをデータセット JSON に指定する必要があります。
 
 **例: SQL クエリの使用**
 
@@ -252,7 +251,7 @@ Azure SQL Database Managed Instance にデータをコピーする場合は、�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **SqlSink** に設定する必要があります | [はい] |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値: 10000) |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ  |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。  例: "00:30:00" (30 分)。 |いいえ  |
 | preCopyScript |コピー アクティビティでデータを Managed Instance に書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |
 | sqlWriterStoredProcedureName |ソース データをターゲット テーブルに適用する方法、たとえば、独自のビジネス ロジックを使用してアップサートまたは変換を実行する方法を定義するストアド プロシージャの名前です。 <br/><br/>このストアド プロシージャは**バッチごとに呼び出される**ことに注意してください。 1 回だけ実行され、ソース データとは関係がない操作 (削除/切り詰めなど) を実行する場合は、`preCopyScript` プロパティを使用します。 |いいえ  |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |

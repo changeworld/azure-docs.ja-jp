@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: f027ced7d6e317bfdf101cb792d9f2f2b7612242
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2294e65a552b0bf0a428e5272610abc1f63229e6
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247746"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308292"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Azure Key Vault の HSM 保護キーを生成し、転送する方法
 
@@ -491,7 +491,7 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>手順 5: キーを Azure Key Vault に転送する
 
-この最後の手順では、インターネット接続ワークステーションで、[Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-add-azurekeyvaultkey) コマンドレットを使用し、未接続ワークステーションからコピーしたキー転送パッケージを Azure Key Vault HSM にアップロードします。
+この最後の手順では、インターネット接続ワークステーションで、[Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) コマンドレットを使用し、未接続ワークステーションからコピーしたキー転送パッケージを Azure Key Vault HSM にアップロードします。
 
    ```powershell
         Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'

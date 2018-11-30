@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 42220a94eb0d0259b8b410e7343ffbfe09e8bfa5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e853ea6d05585fa764ad6e019a3a4390ed840263
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007860"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313441"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 
@@ -59,7 +59,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 ## <a name="next-steps"></a>次の手順
 この記事では、Security Center で RBAC を使用してユーザーにアクセス許可を割り当てる方法について説明し、各ロールに許可されているアクションを示しました。 サブスクリプションのセキュリティ状態を監視するために必要なロールの割り当てについて理解したら、セキュリティ ポリシーを編集し、推奨事項を適用して、次の方法を学習してください。
 
-- [Security Center でセキュリティ ポリシーを設定する](security-center-policies.md)
+- [Security Center でセキュリティ ポリシーを設定する](security-center-azure-policy.md)
 - [Security Center でセキュリティに関する推奨事項を管理する](security-center-recommendations.md)
 - [Azure リソースのセキュリティ正常性を監視する](security-center-monitoring.md)
 - [Security Center でセキュリティのアラートの管理と対応を行う](security-center-managing-and-responding-alerts.md)

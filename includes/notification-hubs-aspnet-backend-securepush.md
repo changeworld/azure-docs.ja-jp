@@ -1,3 +1,16 @@
+---
+author: spelluru
+ms.service: service-bus
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: spelluru
+ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52271014"
+---
 ## <a name="webapi-project"></a>Web API プロジェクト
 1. Visual Studio で、**ユーザーへの通知**に関するチュートリアルで作成した **AppBackend** プロジェクトを開きます。
 2. Notifications.cs の **Notifications** クラス全体を次のコードで置き換えます。 必ず、プレースホルダーを通知ハブの (フル アクセスを持つ) 接続文字列とハブの名前に置き換えます。 これらの値は [Azure ポータル](http://portal.azure.com)から取得できます。 ここで、このモジュールは、送信される、セキュリティで保護された別の通知を表します。 完全な実装では、通知はデータベースに格納されますが、ここでは、操作を簡単にするために、メモリに格納します。

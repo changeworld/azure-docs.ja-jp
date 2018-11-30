@@ -9,15 +9,15 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aff3ce4bc290f6e4ad2fb11a586372862d0c1462
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9602b8ff4d0df15b030626d5e2cfeca9bcc2bd5d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240734"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284116"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
-Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) が提供されます。 Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
+Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](https://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) が提供されます。 Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
 
 以下の表に、公開された Runbook の実行時と [Runbook のテスト](automation-testing-runbook.md)時の両方の場合の、Azure Portal での各ストリームとその動作の簡単な説明を示します。 各ストリームの詳細については、後続のセクションで説明します。
 
@@ -64,13 +64,17 @@ Workflow Test-Runbook
 
 Runbook ジョブの出力ストリームは次のようになります。
 
-    Output inside of function
-    Output outside of function
+```output
+Output inside of function
+Output outside of function
+```
 
 Runbook ジョブの詳細ストリームは次のようになります。
 
-    Verbose outside of function
-    Verbose inside of function
+```output
+Verbose outside of function
+Verbose inside of function
+```
 
 Runbook を発行したら、それを開始する前に、詳細ストリーム出力を取得するために Runbook の設定で詳細ログを有効にする必要もあります。
 
@@ -131,7 +135,7 @@ Write-Error –Message "This is an error message that will stop the runbook beca
 ```
 
 ### <a name="verbose-stream"></a>詳細ストリーム
-詳細メッセージ ストリームは、Runbook の操作に関する一般情報用です。 Runbook では [デバッグ ストリーム](#Debug) を使用できないため、デバッグ情報には詳細メッセージを使用します。 既定では、公開された Runbook の詳細メッセージはジョブ履歴に格納されません。 詳細メッセージを格納するには、Azure Portal の Runbook の [構成] タブで、公開された Runbook を詳細レコードを記録するように構成します。 ほとんどの場合、パフォーマンス上の理由から、詳細レコードを記録しないというRunbook の既定の設定を保持する必要があります。 このオプションを有効にするのは、Runbook のトラブルシューティングやデバッグをする場合のみです。
+詳細メッセージ ストリームは、Runbook の操作に関する一般情報用です。 Runbook では [デバッグ ストリーム](#debug-stream) を使用できないため、デバッグ情報には詳細メッセージを使用します。 既定では、公開された Runbook の詳細メッセージはジョブ履歴に格納されません。 詳細メッセージを格納するには、Azure Portal の Runbook の [構成] タブで、公開された Runbook を詳細レコードを記録するように構成します。 ほとんどの場合、パフォーマンス上の理由から、詳細レコードを記録しないというRunbook の既定の設定を保持する必要があります。 このオプションを有効にするのは、Runbook のトラブルシューティングやデバッグをする場合のみです。
 
 [Runbook のテスト時](automation-testing-runbook.md)には、Runbook が詳細レコードを記録するように構成されている場合でも、詳細メッセージは表示されません。 [Runbook のテスト時](automation-testing-runbook.md)に詳細メッセージを表示するには、$VerbosePreference 変数を Continue に設定する必要があります。 この変数が設定されると、Azure Portal の [テスト出力] ウィンドウに詳細メッセージが表示されます。
 

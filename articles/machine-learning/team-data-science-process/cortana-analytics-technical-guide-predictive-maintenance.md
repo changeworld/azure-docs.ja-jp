@@ -2,25 +2,21 @@
 title: 航空宇宙業界における Azure による予測メンテナンス - Cortana Intelligence Solution テクニカル ガイド | Microsoft Docs
 description: 航空宇宙、公益事業、および輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence によるソリューション テンプレートに関する技術ガイドです。
 services: machine-learning
-documentationcenter: ''
-author: fboylu
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 2c4d2147-0f05-4705-8748-9527c2c1f033
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: fboylu
-ms.openlocfilehash: 28900c39e658a2a8c66b2ded6f2d70b50bf17e80
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=fboylu, ms.author=fboylu)
+ms.openlocfilehash: 904e9c22f23255f1bee7f532d7f577c7cd457778
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231523"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443748"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
@@ -216,10 +212,10 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
    
    * Azure Stream Analytics ジョブの出力を Power BI ダッシュボードとして設定するには、[Azure Stream Analytics と Power BI のストリーミング データをリアルタイムで視覚化する分析ダッシュボード](../../stream-analytics/stream-analytics-power-bi-dashboard.md)に関する記事の手順に従う必要があります。
    * ASA クエリには、**aircraftmonitor**、**aircraftalert**、**flightsbyhour** の 3 つの出力があります。 [クエリ] タブをクリックすると、クエリを表示できます。これらの各テーブルに合わせ、ASA に出力を追加する必要があります。 最初の出力を追加するとき (**aircraftmonitor**)、**出力の別名**、**データセット名**、**テーブル名**が同じ (**aircraftmonitor**) であることを確認します。 この手順を繰り返し、**aircraftalert** と **flightsbyhour** の出力を追加します。 3 つすべての出力テーブルを追加し、ASA ジョブを開始すると、確認メッセージ ("Stream Analytics ジョブ maintenancesa02asapbi の開始に成功しました") が表示されます。
-2. [Power BI オンライン](http://www.powerbi.com)
+2.  [Power BI オンライン](http://www.powerbi.com)
    
    * [マイ ワークスペース] の左側のパネルにある [データセット] セクションには、***データセット***名 **aircraftmonitor**、**aircraftalert**、および **flightsbyhour** が表示されます。 これは、前の手順で Azure Stream Analytics からプッシュ送信したストリーミング データです。 データセット **flightsbyhour** は、その背後にある SQL クエリの性質により、ほかの 2 つのデータセットと同時に表示されない可能性があります。 ただし、1 時間後には表示されるはずです。
-   * ***[処理済み]*** ウィンドウが開き、画面の右側に表示されることを確認します。
+   *  ***[処理済み]*** ウィンドウが開き、画面の右側に表示されることを確認します。
 3. Power BI にデータが送信されていれば、ストリーミング データの視覚化を開始できます。 いくつかのホット パス視覚エフェクトがピン留めされているサンプル ダッシュボードを次に示します。 適切なデータセットに基づいて他のダッシュボード タイルを作成できます。 データ ジェネレーターの実行時間に応じて、視覚エフェクトの番号が異なる場合があります。
 
     ![ダッシュボード ビュー](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)

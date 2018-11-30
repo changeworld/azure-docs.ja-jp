@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238864"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427065"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>エネルギーの需要予測のための Cortana Intelligence ソリューション テンプレートに関する技術ガイド
 ## <a name="overview"></a>**概要**
@@ -159,17 +159,17 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 このセクションでは、Azure Stream Analytics (ホット パス) からのリアルタイムのデータのほか、Azure Machine Learning (コールド パス) からの予測結果を表示する Power BI ダッシュボードの設定方法について説明します。
 
 ### <a name="setup-hot-path-dashboard"></a>ホット パス ダッシュボードの設定
-次の手順では、ソリューションのデプロイ時に生成された Stream Analytics ジョブからのリアルタイム データの出力を表示する方法について説明します。 次の手順を実行するには、 [Power BI オンライン](http://www.powerbi.com/) アカウントが必要です。 アカウントがない場合は、 [作成](https://powerbi.microsoft.com/pricing)できます。
+次の手順では、ソリューションのデプロイ時に生成された Stream Analytics ジョブからのリアルタイム データの出力を表示する方法について説明します。 次の手順を実行するには、 [Power BI オンライン](https://www.powerbi.com/) アカウントが必要です。 アカウントがない場合は、 [作成](https://powerbi.microsoft.com/pricing)できます。
 
 1. Azure Stream Analytics (ASA) に Power BI 出力を追加します。
 
    * Azure Stream Analytics ジョブの出力を Power BI ダッシュボードとして設定するには、[Azure Stream Analytics と Power BI のストリーミング データをリアルタイムで表示するリアルタイム分析ダッシュボード](stream-analytics/stream-analytics-power-bi-dashboard.md)に関する記事の手順に従う必要があります。
    * [Azure Portal](https://portal.azure.com) で Stream Analytics ジョブを見つけます。 ジョブの名前は、<ソリューション名> + "streamingjob" + <ランダムな数字> + "asapbi" となっています (例: demostreamingjob123456asapbi)。
    * ASA ジョブに PowerBI 出力を追加します。 **[出力のエイリアス]** を「**PBIoutput**」に設定します。 **[データセット名]** と **[テーブル名]** を「**EnergyStreamData**」に設定します。 出力を追加したら、ページの下部にある **[開始]** をクリックして Stream Analytics ジョブを開始します。 確認メッセージが表示されます (例: "Stream Analytics ジョブ 'myteststreamingjob12345asablob' が正常に開始されました")。
-2. [Power BI オンライン](http://www.powerbi.com)
+2.  [Power BI オンライン](https://www.powerbi.com)
 
    * 左側のパネルにある、[マイ ワークスペース] の [データセット] セクションには、Power BI の左側のパネルに表示されている新しいデータセットが表示されます。 これは、前の手順で Azure Stream Analytics からプッシュ送信したストリーミング データです。
-   * ***[処理済み]*** ウィンドウが開き、画面の右側に表示されることを確認します。
+   *  ***[処理済み]*** ウィンドウが開き、画面の右側に表示されることを確認します。
 3. "Demand by Timestamp" タイルを作成します。
 
    * 左側のパネルの [データセット] セクションで **[EnergyStreamData]** をクリックします。
@@ -207,7 +207,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
    * ポップアップ ウィンドウの **[サーバー]** と **[データベース]** を独自のサーバーとデータベースの名前に置き換えて、**[OK]** をクリックします。 サーバー名については、ポート 1433 (**YourSolutionName.database.windows.net 1433**) を指定していることを確認してください。 画面に表示される警告メッセージは無視します。
    * 次のポップアップ ウィンドウで、左側のウィンドウに 2 つのオプション (**[Windows]** と **[データベース]**) が表示されます。 **[データベース]** をクリックし、**[ユーザー名]** と **[パスワード]** (これは、初めてソリューションをデプロイし、Azure SQL データベースを作成したときに入力したユーザー名とパスワードです) を入力します。 ***[これらの設定の適用対象レベルの選択]*** で、データベース レベル オプションをオンにします。 次に **[接続]** をクリックします。
    * 前のページに戻ったら、ウィンドウを閉じます。 メッセージが表示されます。**[適用]** をクリックします。 最後に、**[保存]** ボタンをクリックして、変更を保存します。 これで、Power BI ファイルは、サーバーへの接続を確立しました。 視覚エフェクトが空の場合、凡例の右上隅にある消しゴム アイコンをクリックして、視覚エフェクトの選択をクリアし、すべてのデータを表示します。 更新ボタンを使用して、視覚エフェクトに新しいデータを反映させます。 最初、視覚エフェクトにはシード データのみ表示されます。データ ファクトリは 3 時間ごとに更新されるようにスケジュールされています。 3 時間後、データを更新すると、視覚エフェクトに反映された新しい予測が表示されます。
-3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](http://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (または Office 365 アカウント) が必要であることに注意してください。
+3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](https://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (または Office 365 アカウント) が必要であることに注意してください。
 
    * **[公開]** をクリックします。 数秒後、緑色のチェック マークの付いた 「Power BI への公開が成功しました」と表示するウィンドウが表示されます。 次の "Power BI で demoprediction.pbix を開く" のリンクをクリックします。 詳細な手順については、「 [Power BI Desktop からの発行](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)」を参照してください。
    * 新しいダッシュボードを作成するには、左側のウィンドウで **[ダッシュボード]** セクションの横の **[+]** 記号をクリックします。 この新しいダッシュボードの名前として、「Demand Forecasting Demo」と入力します。

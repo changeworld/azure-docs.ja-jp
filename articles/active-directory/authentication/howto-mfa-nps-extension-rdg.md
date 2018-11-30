@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 7fb69fd52c03300ee554fd903cba1670f2aa2421
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 10b2b6e67c22efaf1dcab2cfe8abdd42b7576dbc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318607"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426069"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
@@ -359,7 +359,7 @@ Azure MFA ログの関連イベントを次に示します。
 
 これらのログ ファイルについては、「[Interpret NPS Database Format Log Files (NPS データベース形式のログ ファイルの解釈)](https://technet.microsoft.com/library/cc771748.aspx)」をご覧ください。 これらのログ ファイルのエントリは、スプレッドシートやデータベースにインポートしないと解釈するのが難しい可能性があります。 ログ ファイルの解釈に役立つ IAS パーサーがオンラインでいくつか見つかります。 
 
-次の画像は、このようなダウンロード可能な[シェアウェア アプリケーション](http://www.deepsoftware.com/iasviewer)の出力を示しています。 
+次の画像は、このようなダウンロード可能な[シェアウェア アプリケーション](https://www.deepsoftware.com/iasviewer)の出力を示しています。 
 
 ![シェアウェア アプリケーション](./media/howto-mfa-nps-extension-rdg/image35.png)
 

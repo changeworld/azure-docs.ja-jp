@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3579a17ab28bd39ddad5008e1d0f8f7834237807
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5936157a46643ff76b5e1cc11d636aa6be9175ff
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282001"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427473"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -80,7 +80,7 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 
 
 1. AD Connect サーバー上のパスワード ハッシュ同期エージェントは、DC 間でデータを同期するために使用される標準の [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) レプリケーション プロトコルを介して、保存されたパスワード ハッシュ (unicodePwd 属性) を 2 分ごとに DC に要求します。 サービス アカウントには、パスワード ハッシュを取得するために、Replicate Directory Changes (ディレクトリの変更のレプリケート) と Replicate Directory Changes All AD (ディレクトリの変更をすべての AD にレプリケート) の権限が必要になります (インストール時に既定で付与されます)。
-2. DC は、送信する前に、RPC セッション キーの [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) ハッシュであるキーと salt を使用して MD4 パスワード ハッシュを暗号化します。 次に、この結果を RPC 経由でパスワード ハッシュ同期エージェントに送信します。 DC は、DC のレプリケーション プロトコルを使用して同期エージェントにも salt を渡すので、エージェントはエンベロープの暗号化を解除できます。
+2. DC は、送信する前に、RPC セッション キーの [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) ハッシュであるキーと salt を使用して MD4 パスワード ハッシュを暗号化します。 次に、この結果を RPC 経由でパスワード ハッシュ同期エージェントに送信します。 DC は、DC のレプリケーション プロトコルを使用して同期エージェントにも salt を渡すので、エージェントはエンベロープの暗号化を解除できます。
 3.  パスワード ハッシュ同期エージェントは、暗号化されたエンベロープを受け取ると、[MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) と salt を使用して、受信したデータの暗号化を解除し元の MD4 形式に戻すためのキーを生成します。 パスワード ハッシュ同期エージェントがクリア テキストのパスワードにアクセスすることはありません。 パスワード ハッシュ同期エージェントによる MD5 の使用は、DC とレプリケーション プロトコルとの互換性の維持に限定されており、DC とパスワード ハッシュ同期エージェントの間でオンプレミスでのみ使用されます。
 4.  パスワード ハッシュ同期エージェントは、最初にハッシュを 32 バイトの 16 進数文字列に変換し、次にこの文字列を UTF-16 エンコーディングでバイナリに変換することで、16 バイトのバイナリ パスワード ハッシュを 64 バイトに拡張します。
 5.  パスワード ハッシュ同期エージェントは、10 バイト長の salt で構成されるユーザーごとの salt を、64 バイトの バイナリに追加し、 元のハッシュの保護を強化します。
@@ -152,7 +152,7 @@ Federal Information Processing Standard (FIPS) に従ってサーバーがロッ
 1. %programfiles%\Azure AD Sync\Bin に移動します。
 2. miiserver.exe.config を開きます。
 3. ファイルの末尾にある configuration/runtime ノードに移動します。
-4. `<enforceFIPSPolicy enabled="false"/>`
+4.  `<enforceFIPSPolicy enabled="false"/>`
 5. 変更を保存します。
 
 参考までに、このスニペットは次のようになります。

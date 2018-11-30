@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2713f48ce490aa42b6b1aa4e69a71f8f8053d1fb
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296398"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426206"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>機能: Azure AD のセルフ サービスによるパスワードのリセット
 
@@ -189,7 +189,7 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
    * **セルフ サービス サインアップを使ってサインアップしたユーザー**: パートナーを組んでいる組織が[セルフ サービス サインアップ](../users-groups-roles/directory-self-service-signup.md)機能を使ってテナントに参加している場合は、登録されたメールを使ってパスワードをリセットできます。
    * **B2B ユーザー**: 新しい [Azure AD B2B 機能](../active-directory-b2b-what-is-azure-ad-b2b.md)を使って作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使って自分のパスワードをリセットできます。
 
-このシナリオをテストするには、これらのパートナー ユーザーのいずれかで http://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている場合、パスワードのリセットは予想どおりに機能します。
+このシナリオをテストするには、これらのパートナー ユーザーのいずれかで https://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている場合、パスワードのリセットは予想どおりに機能します。
 
 > [!NOTE]
 > Azure AD テナントへのゲスト アクセスを許可されている Microsoft アカウント (Hotmail.com、Outlook.com、他の個人メール アドレスからなど) は、Azure AD SSPR を使うことができません。 このようなユーザーは、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の情報を使って、パスワードをリセットする必要があります。
@@ -202,7 +202,7 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)

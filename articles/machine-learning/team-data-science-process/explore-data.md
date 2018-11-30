@@ -1,26 +1,22 @@
 ---
 title: Team Data Science Process でのデータの探索 | Microsoft Docs
 description: さまざまなストレージ環境のデータを探索する方法について説明します。
-services: machine-learning,storage
-documentationcenter: ''
-author: deguhath
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 6eae8772-f479-4627-bb12-64f6d1440b22
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
-ms.author: deguhath
-ms.openlocfilehash: 55d92fedbb67d21d34464b792b3600eb6964840b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 261cb608aa5404b836ec3f5b1eecfa7ba4036978
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345523"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441259"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Team Data Science Process でのデータの探索
 

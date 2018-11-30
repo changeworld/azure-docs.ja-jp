@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 6b82ba53e7a469b01d77865831c2f5fb37f71044
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 565c35b296e2734df264942b9eab0a067626c368
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160843"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427184"
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>カスタム アプリに Multi-Factor Authentication を構築する (SDK)
 
@@ -44,8 +44,8 @@ SDK には、以下のアイテムが含まれています。
 * Multi-Factor Authentication 用の**ソース ファイル**
 * **クライアント証明書** 
 * **秘密キー** 
-* **呼び出し結果。** 呼び出し結果コードの一覧です。 このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。 呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。 これらは認証ステータス コードではありません。
-* **例。** Multi-Factor Authentication の基本的な実装作業のサンプル コードです。
+* **呼び出し結果。**  呼び出し結果コードの一覧です。 このファイルを開くには、ワードパッドなど、テキストの書式設定があるアプリケーションを使用します。 呼び出し結果コードは、アプリケーションに対する Multi-Factor Authentication の実装のテストとトラブルシューティングに使用します。 これらは認証ステータス コードではありません。
+* **例。**  Multi-Factor Authentication の基本的な実装作業のサンプル コードです。
 
 > [!WARNING]
 > クライアント証明書は、特定のユーザー向けに生成された一意のプライベート証明書です。 このファイルを共有しないよう、または紛失にはご注意ください。 これは、Multi-Factor Authentication サービスとの通信のセキュリティを確保するためのキーです。
@@ -76,7 +76,7 @@ SDK には、以下のアイテムが含まれています。
 
     <!DOCTYPE html>
 
-    <html xmlns="http://www.w3.org/1999/xhtml">
+    <html xmlns="https://www.w3.org/1999/xhtml">
     <head runat="server">
     <title>Multi-Factor Authentication Demo</title>
     </head>

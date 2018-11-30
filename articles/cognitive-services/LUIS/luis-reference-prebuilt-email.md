@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: c69fc9cb19871611b383ebf6603197fdcd781a03
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6d05f62ad725a89b0a34b21b8a8d36bb8fa464b1
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030599"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441013"
 ---
 # <a name="email-entity"></a>email エンティティ
 email の抽出には、発話からのメール アドレス全体が含まれます。 このエンティティは既にトレーニングされているので、メールを含む発話の例をアプリケーション意図に追加する必要はありません。 email エンティティは、`en-us` カルチャでのみサポートされます。 

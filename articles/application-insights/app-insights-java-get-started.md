@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: lagayhar
-ms.openlocfilehash: 1079b83411fd76b4b9115ee80e385f1f2c63ba85
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2538bbf32b41e51796e333c11b7af6c091a71ede
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247094"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309091"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -76,7 +76,7 @@ Spring フレームワークの方がよければ、[Spring Boot 初期化子ア
 ```
 
 * *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `<version>2.0.n</version>`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
-* *新しい SDK に更新する必要がありますか?* プロジェクトの依存関係を更新します。
+* *新しい SDK に更新する必要がありますか?*  プロジェクトの依存関係を更新します。
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Gradle を使用している場合: <a name="gradle-setup" />
 プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、build.gradle ファイルに次のコードをマージします。
@@ -492,7 +492,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [apiexceptions]: app-insights-api-custom-events-metrics.md#trackexception
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
-[eclipse]: /app-insights-java-quick-start.md
+[eclipse]: app-insights-java-quick-start.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-javascript.md

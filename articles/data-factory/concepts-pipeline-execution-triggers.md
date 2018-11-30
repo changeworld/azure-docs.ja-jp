@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: d1476eac798190104e0fcabce0a0fa9537f76c20
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 890ef4baf27e193fecc17d8435998604ce25e282
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322041"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162689"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -106,7 +106,7 @@ Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickSt
 ```json
 {
   "sourceBlobContainer": "MySourceFolder",
-  "sinkBlobCountainer": "MySinkFolder"
+  "sinkBlobContainer": "MySinkFolder"
 }
 ```
 
@@ -368,10 +368,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 |  | タンブリング ウィンドウ トリガー | スケジュール トリガー |
 |:--- |:--- |:--- |
-| **バックフィル シナリオ** | サポートされています。 パイプライン実行は、過去のウィンドウ用にスケジュールを設定できます。 | サポートされていません。 パイプライン実行は、現時点および将来の期間のみに対して実行できます。 |
+| **バックフィル シナリオ** |  サポートされています。 パイプライン実行は、過去のウィンドウ用にスケジュールを設定できます。 | サポートされていません。 パイプライン実行は、現時点および将来の期間のみに対して実行できます。 |
 | **信頼性** | 100% の信頼性です。 パイプライン実行は、指定した開始日から隙間なくすべてのウィンドウでスケジュールできます。 | 信頼性は低くなります。 |
-| **再試行機能** | サポートされています。 失敗したパイプライン実行には、既定の再試行ポリシー 0 か、トリガー定義でユーザーが指定したポリシーがあります。 コンカレンシー/サーバー/調整の制限が原因でパイプライン実行に失敗した場合は、自動的に再試行されます (たとえば、状態コードは 400 ユーザー エラー、429 要求が多すぎます、500 内部サーバー エラー)。 | サポートされていません。 |
-| **コンカレンシー** | サポートされています。 ユーザーは、トリガーのコンカレンシーの制限を明示的に設定できます。 1 から 50 個の同時実行のトリガーされたパイプライン実行が許可されます。 | サポートされていません。 |
+| **再試行機能** |  サポートされています。 失敗したパイプライン実行には、既定の再試行ポリシー 0 か、トリガー定義でユーザーが指定したポリシーがあります。 コンカレンシー/サーバー/調整の制限が原因でパイプライン実行に失敗した場合は、自動的に再試行されます (たとえば、状態コードは 400 ユーザー エラー、429 要求が多すぎます、500 内部サーバー エラー)。 | サポートされていません。 |
+| **コンカレンシー** |  サポートされています。 ユーザーは、トリガーのコンカレンシーの制限を明示的に設定できます。 1 から 50 個の同時実行のトリガーされたパイプライン実行が許可されます。 | サポートされていません。 |
 | **システム変数** | **WindowStart** および **WindowEnd** システム変数の使用がサポートされます。 ユーザーは、トリガー定義のトリガー システム変数として `triggerOutputs().windowStartTime` および `triggerOutputs().windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` と `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` です。 | サポートされていません。 |
 | **パイプラインとトリガーのリレーションシップ** | 一対一のリレーションシップをサポートします。 トリガーできるパイプラインは 1 つだけです。 | 多対多のリレーションシップをサポートします。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。 | 
 

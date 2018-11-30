@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262201"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584776"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -199,7 +199,7 @@ SQL Advanced Threat Protection (ATP) は、データの探索と分類、脆弱�
 - 潜在的に有害なアプリケーションからのアクセス 
 - Azure Database for PostgreSQL 資格情報のブルート フォース 
 
-[Azure Database for MySQL の Advanced Threat Protection](/mysql/concepts-data-access-and-security-threat-protection.md) は、PostgreSQL の高度な保護のような保護を提供します。  
+[Azure Database for MySQL の Advanced Threat Protection](../mysql/concepts-data-access-and-security-threat-protection.md) は、PostgreSQL の高度な保護のような保護を提供します。  
 
 ## <a name="centralized-security-management"></a>セキュリティの一元管理
 
@@ -220,7 +220,7 @@ SQL Advanced Threat Protection (ATP) は、データの探索と分類、脆弱�
 
 さらに、SQL クエリの結果セットの機密性が計算されるので、機密データを抽出するクエリを明示的に監査し、データを保護できます。 SQL Information Protection について詳しくは、「Azure SQL Database のデータの検出と分類」をご覧ください。
 
-Azure Security Center で [SQL Information Protection](/security-center/security-center-info-protection-policy.md) のポリシーを構成できます。
+Azure Security Center で [SQL Information Protection](../security-center/security-center-info-protection-policy.md) のポリシーを構成できます。
 
 ## <a name="azure-marketplace"></a>Azure Marketplace
 

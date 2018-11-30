@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 40a4d159afff4db78e27f89b448e21b1d94cd378
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0eead6201f737448b4de76476802518a506375da
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22982637"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446246"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API Management のアプリケーション テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
@@ -32,6 +32,8 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="ProductList"></a> アプリケーション リスト  
  **アプリケーション リスト** テンプレートを使用すると、開発者ポータルでアプリケーション リスト ページの本文をカスタマイズすることができます。  
@@ -77,10 +79,10 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|型|Description|  
+|プロパティ|type|説明|  
 |--------------|----------|-----------------|  
 |ページング|[ページング](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  
-|アプリケーション|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーに表示されるアプリケーション。|  
+|[アプリケーション]|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーに表示されるアプリケーション。|  
 |CategoryName|string|アプリケーションのカテゴリ。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
@@ -220,5 +222,5 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

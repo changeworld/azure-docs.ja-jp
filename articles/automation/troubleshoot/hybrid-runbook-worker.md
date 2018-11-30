@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6c8dc240172451118fd75b042ba267740999882d
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 38e2589365c2f1c88145fbf068d3ed267d4a4621
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321769"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284571"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hybrid Runbook Worker のトラブルシューティング
 
@@ -30,7 +30,7 @@ Hybrid Runbook Worker は、Automation アカウントと通信してワーカ�
 
 Runbook の実行が失敗し、次のエラーを受け取ります。
 
-```
+```error
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
@@ -58,7 +58,7 @@ Hybrid Runbook Worker の機能を実行するように指定されているコ�
 
 **Microsoft-SMA** のイベント ログで " *Win32 Process Exited with code [4294967295]*" という説明の対応するイベントを確認します。 このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Worker グループの Run As 資格情報が指定されていません。 「[Runbook のアクセス許可](../automation-hrw-run-runbooks.md#runbook-permissions) 」を参照して、Runbook の認証を正しく構成してあることを確認します。
 
-## <a name="linux"></a>Linux
+## <a name="linux"></a> Linux
 
 Linux Hybrid Runbook Worker は、Automation アカウントと通信してワーカーの登録、Runbook ジョブの受信、および状態の報告を行うために OMS エージェント for Linux に依存しています。 ワーカーの登録に失敗した場合に考えられるエラーの原因を次に示します。
 
@@ -90,7 +90,7 @@ OMS エージェント for Linux が実行されていない場合、次のコ�
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
 ```
 
-## <a name="windows"></a>Windows
+## <a name="windows"></a> Windows
 
 Windows Hybrid Runbook Worker は、Automation アカウントと通信して worker の登録、Runbook ジョブの受信、および状態の報告を行うために Microsoft Monitoring Agent に依存しています。 ワーカーの登録に失敗した場合に考えられるエラーの原因を次に示します。
 

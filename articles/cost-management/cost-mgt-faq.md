@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 11/14/2018
 ms.topic: troubleshooting
 ms.service: cost-management
-manager: dougeby
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 7ac115118a06df28dd5569cede4430b6f834336d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 3b137a170edf2be13fa4999947994ee12a374aa9
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684836"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276280"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn に関してよく寄せられる質問
 
@@ -62,7 +62,7 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 1.  Cloudyn ポータルで、右上にある **[設定]** をクリックして **[クラウド アカウント]** を選択します。
 2.  [Microsoft Azure Accounts] \(Microsoft Azure アカウント) タブで、**アクティブ化されていない**サブスクリプションを持つアカウントを探します。
 3.  アクティブ化されていないアカウントの右にある、鉛筆に似た **[編集]** 記号をクリックします。
-4.  テナント ID とレート ID が自動的に検出されます。 **[次へ]** をクリックします。
+4.  テナント ID とレート ID が自動的に検出されます。  **[次へ]** をクリックします。
 5.  Azure Portal にリダイレクトされます。 ポータルにサインインし、Cloudyn Collector が Azure データにアクセスすることを承認します。
 6.  次に、[Cloudyn Accounts] (Cloudyn アカウント) 管理ページにリダイレクトされ、サブスクリプションが**アクティブな**アカウント状態に更新されます。 そこには緑色のチェックマーク記号が表示されます。
 7.  1 つ以上のサブスクリプションに緑色のチェックマーク記号が表示されていない場合は、そのサブスクリプションのリーダー アプリ (CloudynCollector) を作成するためのアクセス許可がないことを示しています。 そのサブスクリプションのより高いアクセス許可を持つユーザーが手順 3 と 4 を繰り返す必要があります。  

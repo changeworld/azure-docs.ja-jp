@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b5f36bcce77ad0dac3a6e2e9da39493be6751539
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4ac036bbb94ae8b009700ff21bad1a117843584c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985847"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427201"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 プロトコル: OAuth 2.0 承認コード フロー
 
@@ -33,7 +33,7 @@ ms.locfileid: "49985847"
 > [!NOTE]
 > Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
-OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](http://tools.ietf.org/html/rfc6749)で規定されています。 [Web アプリ](v2-app-types.md#web-apps)や[ネイティブにインストールされるアプリ](v2-app-types.md#mobile-and-native-apps)を含め、大半のアプリ タイプで認証と承認を行う際にこのフローが使用されます。 アプリは、このフローによって安全に access_tokens を取得し、v2.0 エンドポイントを使用して保護されているリソースにアクセスすることができます。 
+OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](https://tools.ietf.org/html/rfc6749)で規定されています。 [Web アプリ](v2-app-types.md#web-apps)や[ネイティブにインストールされるアプリ](v2-app-types.md#mobile-and-native-apps)を含め、大半のアプリ タイプで認証と承認を行う際にこのフローが使用されます。 アプリは、このフローによって安全に access_tokens を取得し、v2.0 エンドポイントを使用して保護されているリソースにアクセスすることができます。 
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
@@ -69,7 +69,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri          | 推奨 | アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ネイティブ アプリとモバイル アプリでは、`https://login.microsoftonline.com/common/oauth2/nativeclient` の既定値を使用します。   |
 | scope                 | 必須    | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。           |
 | response_mode         | 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 `query`、`fragment`、または `form_post` を指定できます。 `query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 詳細については、[OpenID Connect プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)に関するページを参照してください。  |
-| state                 | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この値を使用すると、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードすることもできます。 |
+| state                 | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この値を使用すると、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードすることもできます。 |
 | prompt                | 省略可能    | ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は 'login'、'none'、'consent' だけです。 `prompt=login` は、その要求でユーザーに資格情報の入力を強制させ、シングル サインオンを無効にします。 `prompt=none` は反対に、ユーザーに対して対話形式のプロンプトを表示しません。 シングル サインオンによって自動的に要求を完了できない場合、v2.0 エンドポイントは `interaction_required` エラーを返します。 `prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。 |
 | login_hint            | 省略可能    | ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 アプリはしばしば前回のサインインから `preferred_username` 要求を抽出して再認証時にこのパラメーターを使用します。                                                                                                                                                                                                                                                                                                    |
 | domain_hint           | 省略可能    | `consumers` か `organizations` のいずれかを指定できます。 これが含まれる場合、v2.0 のサインイン ページでユーザーが行う電子メール ベースの検出プロセスがスキップされ、ユーザー エクスペリエンスは若干簡素化されたものになります。 多くの場合、アプリでは、前回のサインインから `tid` を抽出することで再認証時にこのパラメーターを使用します。 `tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用する必要があります。 それ以外の場合は、 `domain_hint=organizations`を指定します。                                                                                                              |
@@ -146,7 +146,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> を必ず置き換えてください)。 (`code` を必ず置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
+>  を必ず置き換えてください)。 (`code` を必ず置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
 
 | パラメーター     |                       | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |---------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -226,7 +226,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 `access_token` を無事取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、Web API への要求に使用することができます。
 
 > [!TIP]
-> ヘッダーを置き換えてください)。 (最初に `Authorization` ヘッダーを置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
+>  ヘッダーを置き換えてください)。 (最初に `Authorization` ヘッダーを置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
 > 
 > 
 
@@ -258,7 +258,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> を必ず置き換えてください)。 (`refresh_token` を必ず置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
+>  を必ず置き換えてください)。 (`refresh_token` を必ず置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
 > 
 > 
 

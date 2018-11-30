@@ -2,30 +2,26 @@
 title: データ サイエンスにおける特徴エンジニアリング | Microsoft Docs
 description: 特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 3fde69e8-5e7b-49ad-b3fb-ab8ef6503a4d
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: fd3f010c3fccca679daa6639c1427d17ae64a0d1
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 80e925fddf1aebd9f699ee8e22b96cc496faeba6
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51343994"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446677"
 ---
 # <a name="feature-engineering-in-data-science"></a>データ サイエンスにおける特徴エンジニアリング
 この記事では、特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。 このプロセスの説明に使用されている例は、Azure Machine Learning Studio から引用しています。 
 
-このタスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
+このタスクは、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の 1 ステップです。
 
 特徴エンジニアリングでは、学習プロセスの促進に役立つ生データから特徴を作成して、学習アルゴリズムの予測力を高めることを試みます。 特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、「[Team Data Science Process ライフサイクルとは?](overview.md)」をご覧ください。 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。 
 

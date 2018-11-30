@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 04c7b521ad13db9f5ec9573fd1ab966ad1282e8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 442aa7034c3fec57b3b9394e6b0f46d4dec47849
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954315"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633114"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>仮想ネットワーク サブネットの追加、変更、削除
 
@@ -69,7 +69,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 4. サブネットの一覧から、設定を変更するサブネットを選択します。 次の設定を変更できます。
 
     - **[アドレス範囲]:** サブネット内にリソースがデプロイされていない場合は、アドレス範囲を変更できます。 サブネット内にリソースが存在する場合は、まず、そのリソースを別のサブネットに移動するか、サブネットから削除する必要があります。 リソースを移動または削除する手順は、リソースによって異なります。 サブネット内のリソースを移動または削除する方法については、移動または削除するリソースの種類に応じたドキュメントをご覧ください。 「[サブネットの追加](#add-a-subnet)」の手順 5. の **[アドレス範囲]** の制約について確認してください。
-    - **[ユーザー]**: 組み込みロールまたは独自のカスタム ロールを使用して、サブネットへのアクセス権を制御できます。 サブネットにアクセスするロールとユーザーの割り当ての詳細については、[ロールの割り当てを使用した Azure リソースへのアクセス権の管理](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access)に関するページをご覧ください。
+    - **[ユーザー]**: 組み込みロールまたは独自のカスタム ロールを使用して、サブネットへのアクセス権を制御できます。 サブネットにアクセスするロールとユーザーの割り当ての詳細については、[ロールの割り当てを使用した Azure リソースへのアクセス権の管理](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment)に関するページをご覧ください。
     - **Network security group** と **Route table**: [サブネットの追加](#add-a-subnet) の手順 5 をご覧ください｡
     - **Service endpoints**: [サブネットの追加](#add-a-subnet)の手順 5 のサービス エンドポイントをご覧ください｡ 既存のサブネットに対してサービス エンドポイントを有効にする場合は､サブネット上のリソース上で重要なタスクが実行されていないことを確認してください｡ サービス エンドポイントは､*0.0.0.0/0* アドレス プレフィックスとネクスト ホップ タイプが *Internet* からなる既定のルートから始まってサービスのアドレス プレフィックスとネクスト ホップ タイプが *VirtualNetworkServiceEndpoint* からなる新しいルートまで､サブネット上のあらゆるネットワーク インターフェイスでルートを切り替えます｡ 切り替えの間､開いている TCP 接続は終了されることがあります｡ サービス エンドポイントは､すべてのネットワーク インターフェイスについて､サービスに対するトラフィック フローが新しいルートで更新されるまで有効にされません｡ ルーティングについては､[ルーティングの概要](virtual-networks-udr-overview.md)を参照してください｡
     - **サブネット委任**: [サブネットの追加](#add-a-subnet)の手順 5 のサービス エンドポイントをご覧ください。 サブネット委任は、0 または複数の委任を有効にするように変更できます。 サブネットであるサービスのあるリソースが既にデプロイされている場合、サービスのすべてのリソースが削除されるまでサブネット委任は削除できません。 別のサービスに委任するには、**[サービス]** 一覧から委任先となるサービスを選択します。 
@@ -99,7 +99,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 サブネットでタスクを実行するには、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に記載されている適切なアクションを割り当てられている[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールにアカウントが割り当てられている必要があります。
 
-|アクションを表示します。                                                                   |   Name                                       |
+|Action                                                                   |   Name                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft.Network/virtualNetworks/subnets/read                           |   仮想ネットワークのサブネットを読み取る              |
 |Microsoft.Network/virtualNetworks/subnets/write                          |   仮想ネットワークのサブネットを作成または更新する  |

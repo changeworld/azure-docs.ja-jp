@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b7b8ccf7e84239db4eef0914346c453a2f205f91
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c4a18fa022304e7ccfb4503cf2e02650555d6d7b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237895"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425124"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
 
@@ -60,7 +60,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |必須 |承認コード フローでは `code` を指定する必要があります。 |
 | redirect_uri |推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ネイティブ アプリとモバイル アプリでは、`urn:ietf:wg:oauth:2.0:oob` の既定値を使用します。 |
 | response_mode |省略可能 |結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 `query`、`fragment`、または `form_post` を指定できます。 `query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 コード フローの既定値は `query` です。  |
-| state |推奨 |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](http://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
+| state |推奨 |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
 | resource | 推奨 |対象となる Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]**、**[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、**[プロパティ]** をクリックします。 `https://graph.microsoft.com` のような外部リソースである場合もあります。 認証またはトークン要求でこれが必要です。 認証プロンプトの回数を少なくするには、認証要求に配置して、ユーザーから同意を受信できるようにします。 |
 | scope | **ignored** | v1 Azure AD アプリでは、Azure Portal のアプリケーションの **[設定]** の **[必要なアクセス許可]** で、スコープを静的に構成する必要があります。 |
 | prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。<p> 有効な値は次のとおりです。 <p> *login*: 再認証を求めるメッセージがユーザーに表示されます。 <p> *select_account*:ユーザーがアカウントを選択し、シングルサインオンを中断することを促される。 ユーザーでは、既存サインイン アカウントを選択して、記憶されているアカウントの資格情報を入力、またはまったく別のアカウントを一緒に、使用する可能性があります。 <p> *consent*: ユーザーの同意は得られていますが、更新する必要があります。 同意を求めるメッセージがユーザーに表示されます。 <p> *admin_consent*: 組織内のすべてのユーザーを代表して同意するよう求めるメッセージが管理者に表示されます |
@@ -102,7 +102,7 @@ error=access_denied
 
 | パラメーター | 説明 |
 | --- | --- |
-| error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](http://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 次の表で、Azure AD が返すエラー コードについて説明します。 |
+| error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](https://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 次の表で、Azure AD が返すエラー コードについて説明します。 |
 | error_description |エラーの詳しい説明。 このメッセージはエンドユーザー向けではありません。 |
 | state |state 値は、ランダムに生成された再利用されない値で、クロスサイト リクエスト フォージェリ (CSRF) 攻撃を防ぐために、要求で送信され、応答で返されます。 |
 
@@ -175,7 +175,7 @@ Web API リソースから `invalid_token` エラー コードが返された場
 | パラメーター | 説明 |
 | --- | --- |
 | access_token |署名された JSON Web トークン (JWT) としての要求された[アクセス トークン](access-tokens.md)です。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
-| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンに関する詳細については、「 [OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について (RFC 6750))](http://www.rfc-editor.org/rfc/rfc6750.txt) |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンに関する詳細については、「 [OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth2.0 承認フレームワーク: ベアラー トークンの使用について (RFC 6750))](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |アクセス トークンの有効期間 (秒)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
 | resource |Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 |
@@ -235,7 +235,7 @@ JSON Web トークンに関する詳細については、[JWT の IETF ドラフ
 | temporarily_unavailable |サーバーが一時的にビジー状態であるため、要求を処理できません。 |要求をやり直してください。 クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明する場合があります。 |
 
 ## <a name="use-the-access-token-to-access-the-resource"></a>リソースにアクセスするためにアクセス トークンを使用します。
-`access_token` を無事取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、Web API への要求に使用することができます。 [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) 仕様では、HTTP 要求でベアラー トークンを使用して、保護されたリソースにアクセスする方法について説明されています。
+`access_token` を無事取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、Web API への要求に使用することができます。 [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) 仕様では、HTTP 要求でベアラー トークンを使用して、保護されたリソースにアクセスする方法について説明されています。
 
 ### <a name="sample-request"></a>要求のサンプル
 ```
@@ -257,8 +257,8 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="error-parameters"></a>エラーのパラメーター
 | パラメーター | 説明 |
 | --- | --- |
-| authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p> クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が https://login.microsoftonline.com または Azure AD によってサポートされる別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
-| error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](http://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 |
+| authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p>  クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が https://login.microsoftonline.com または Azure AD によってサポートされる別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
+| error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](https://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 |
 | error_description |エラーの詳しい説明。 このメッセージはエンドユーザー向けではありません。 |
 | resource_id |リソースの一意の識別子を返します。 クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。 <p><p> クライアント アプリケーションがこの値を確認することは重要です。確認を行わない場合、悪意のあるサービスから**権限昇格**攻撃を受ける可能性があります。 <p><p> 攻撃を防止するための推奨方法として、 `resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。 たとえば、 https://service.contoso.com/data にアクセスしている場合、`resource_id` は htttps://service.contoso.com/ になります。 クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL ではじまらない `resource_id` を拒否する必要があります。 |
 

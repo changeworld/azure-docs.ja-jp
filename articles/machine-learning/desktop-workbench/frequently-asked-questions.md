@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4785f87515663831b1177c6c0958d3d965351797
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 45cf987d9af7b7dd0e8f05056b49ba56835603e7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996572"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313944"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure Machine Learning に関してよく寄せられる質問
 
@@ -116,7 +116,7 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 
 **Azure Machine Learning Workbench の使用に料金はかかりますか?**
 
-いいえ。 Azure Machine Learning Workbench は無料のアプリケーションです。 マシンとユーザーの数に応じて必要なだけダウンロード可能です。 Azure Machine Learning Workbench を使用するには、実験アカウントが必要になります。 .  
+いいえ。 Azure Machine Learning Workbench は無料のアプリケーションです。 マシンとユーザーの数に応じて必要なだけダウンロード可能です。 Azure Machine Learning Workbench を使用するには、実験アカウントが必要になります。 。  
 
 **コマンドライン機能はサポートされますか?**
 
@@ -125,7 +125,7 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 
 **ワークベンチで Jupyter Notebook を使用できますか?**
 
-はい。 Jupyter Notebook は、ブラウザーをクライアントとする場合と同じように、ワークベンチをクライアント ホスト アプリケーションとしてワークベンチで実行できます。 
+ はい。 Jupyter Notebook は、ブラウザーをクライアントとする場合と同じように、ワークベンチをクライアント ホスト アプリケーションとしてワークベンチで実行できます。 
 
 **どの Jupyter Notebook カーネルがサポートされますか?**
 
@@ -171,4 +171,4 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 
 **Azure Machine Learning と Microsoft Cognitive Toolkit の関係性はどのようなものですか?**
 
-[Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit/) は、Microsoft の新しいツールとサービスでサポートされている多くのフレームワークの 1 つです。 Cognitive Toolkit は統合型のディープ ラーニング キットであり、フィードフォワード ディープ ニューラル ネットワーク、畳み込みネット、シーケンス変換、再帰型ネットワークなどの一般的な機械学習モデルを使用および結合することができます。 Microsoft Cognitive Toolkit の詳細については、[製品ドキュメント](https://docs.microsoft.com/cognitive-toolkit/)に関するページをご覧ください。 
+[Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/) は、Microsoft の新しいツールとサービスでサポートされている多くのフレームワークの 1 つです。 Cognitive Toolkit は統合型のディープ ラーニング キットであり、フィードフォワード ディープ ニューラル ネットワーク、畳み込みネット、シーケンス変換、再帰型ネットワークなどの一般的な機械学習モデルを使用および結合することができます。 Microsoft Cognitive Toolkit の詳細については、[製品ドキュメント](https://docs.microsoft.com/cognitive-toolkit/)に関するページをご覧ください。 

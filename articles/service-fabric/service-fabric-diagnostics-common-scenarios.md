@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 35d1fa5f8963d007b1d8b59ccf0f1dec7abafa09
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 146ea6431516f7b78d23cd4b36aff43110639e83
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402236"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633097"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric で一般的なシナリオを診断する
 
@@ -142,6 +142,6 @@ ms.locfileid: "49402236"
 * [AI のアラートを設定して](../application-insights/app-insights-alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
 * [Application Insights のスマート検出](../application-insights/app-insights-proactive-diagnostics.md)は、 AI に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します
 * 検出と診断に役立つ Log Analytics [アラート](../log-analytics/log-analytics-alerts.md)についてさらに学習します。
-* オンプレミス クラスター用に、Log Analytics ではデータを Log Analytics に送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供します。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する](../log-analytics/log-analytics-oms-gateway.md)」を参照してください
+* オンプレミス クラスター用に、Log Analytics ではデータを Log Analytics に送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供します。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する](../azure-monitor/platform/gateway.md)」を参照してください
 * Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
 * Log Analytics および Log Analytics が提供するサービスの詳しい概要について、[Log Analytics とは何か](../operations-management-suite/operations-management-suite-overview.md)に関するページで確認する

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 49a2c03664ba39a624871b24c0b86a968a67eddb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a0fcb95ed34ed3d98c6b25b475c0866135897f3
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521525"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584674"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Azure Import/Export ジョブの状態を表示する
 
@@ -23,7 +23,6 @@ ms.locfileid: "39521525"
 Azure Portal から、インポート ジョブまたはエクスポート ジョブの状態を追跡できます。 **[インポート/エクスポート]** タブをクリックします。ジョブの一覧がページに表示されます。
 
 ![ジョブの状態の追跡](./media/storage-import-export-service/jobstate.png)
-
 
 ## <a name="view-job-status"></a>ジョブの状態を見る
 
@@ -74,7 +73,7 @@ Azure Portal の次の画像では、サンプル ジョブのドライブの状
 -  ジョブの種類とコピーされているデータのサイズ
 -  ジョブに含まれるディスクの数 
 
-Import/Export サービスに SLA はありませんが、ディスクの到着後 7 日から 10 日以内にコピーが完了するよう努力しております。 Azure Portal に掲載される状態に加え、REST API を使用してジョブの進行状況を追跡できます。 [List Jobs]() 操作 API 呼び出しの達成率パラメーターでは、コピーの進捗率が示されます。
+Import/Export サービスに SLA はありませんが、ディスクの到着後 7 日から 10 日以内にコピーが完了するよう努力しております。 Azure Portal に掲載される状態に加え、REST API を使用してジョブの進行状況を追跡できます。 [List Jobs](/previous-versions/azure/dn529083(v=azure.100)) 操作 API 呼び出しの達成率パラメーターでは、コピーの進捗率が示されます。
 
 
 ## <a name="next-steps"></a>次の手順
@@ -82,4 +81,3 @@ Import/Export サービスに SLA はありませんが、ディスクの到着�
 * [WAImportExport ツールを設定する](storage-import-export-tool-how-to.md)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 * [Azure Import Export REST API サンプル](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
-

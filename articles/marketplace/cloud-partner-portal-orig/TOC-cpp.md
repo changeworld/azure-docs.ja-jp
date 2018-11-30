@@ -1,6 +1,6 @@
 <!-- This TOC just covers the migrated CPP files. Relative path to files might have to be adjusted. -->
 
-# <a name="cloud-partner-portalcloud-partner-portal-getting-started-with-the-cloud-partner-portalmd"></a>[クラウド パートナー ポータル](./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+# <a name="cloud-partner-portalazuremarketplacecloud-partner-portal-origcloud-partner-portal-getting-started-with-the-cloud-partner-portal"></a>[クラウド パートナー ポータル](/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal) 
 ## <a name="virtual-machines"></a>仮想マシン
 ### <a name="dev-center-account-registrationcloud-partner-portal-dev-center-accounts-registrationmd"></a>[デベロッパー センター アカウントの登録](./cloud-partner-portal-dev-center-accounts-registration.md)
 ### <a name="author-virtual-machine-offercloud-partner-portal-publish-virtual-machinemd"></a>[仮想マシンのプランの作成](./cloud-partner-portal-publish-virtual-machine.md)

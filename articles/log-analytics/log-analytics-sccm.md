@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a4c429b1c54c6bf71175abbc763a178792281a0f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016711"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633148"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Configuration Manager を Log Analytics に接続する
 お使いの System Center Configuration Manager 環境を Azure Log Analytics に接続して、デバイス コレクション データを同期し、Log Analytics と Azure Automation でこれらのコレクションを参照することができます。  
@@ -57,7 +57,7 @@ Configuration Manager を Log Analytics に接続する方法について詳し�
 6. **[アクセスの割り当て先]** ドロップダウン リストで、前に AD で作成した Configuration Manager アプリケーションを選び、**[OK]** をクリックします。  
 
 ## <a name="download-and-install-the-agent"></a>エージェントのダウンロードとインストール
-記事「[Windows コンピューターを Azure の Log Analytics サービスに接続する](log-analytics-agent-windows.md)」を読み、 Configuration Manager サービス接続ポイントのサイト システムの役割をホストしているコンピューターに Microsoft Monitoring Agent をインストールする方法を理解します。  
+記事「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../azure-monitor/platform/agent-windows.md)」を読み、 Configuration Manager サービス接続ポイントのサイト システムの役割をホストしているコンピューターに Microsoft Monitoring Agent をインストールする方法を理解します。  
 
 ## <a name="add-a-log-analytics-connection-to-configuration-manager"></a>Configuration Manager に Log Analytics 接続を追加する
 Log Analytics 接続を追加するには、Configuration Manager 環境に[サービス接続ポイント](https://technet.microsoft.com/library/mt627781.aspx)があり、オンライン モード用に構成されている必要があります。

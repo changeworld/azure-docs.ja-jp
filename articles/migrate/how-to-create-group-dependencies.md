@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 2d2688799b1a0b4518b9c91bbc530936c834c5e3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407438"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634304"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>グループの依存関係マッピングを使用したグループの絞り込み
 
@@ -39,7 +39,7 @@ Azure Migrate は、マシンの依存関係を視覚化できるように Log A
 > Migration プロジェクトに関連付けられているワークスペースは変更できません。
 
 ### <a name="download-and-install-the-vm-agents"></a>VM エージェントをダウンロードしてインストールする
-グループの依存関係を表示するには、グループに含まれるオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。 また、インターネットに接続されていないマシンの場合、[Log Analytics ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)をダウンロードしてインストールする必要があります。
+グループの依存関係を表示するには、グループに含まれるオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。 また、インターネットに接続されていないマシンの場合、[Log Analytics ゲートウェイ](../azure-monitor/platform/gateway.md)をダウンロードしてインストールする必要があります。
 
 1. **[概要]** で **[管理]** > **[グループ]** をクリックし、必要なグループに移動します。
 2. マシンの一覧の **[依存関係エージェント]** 列で **[インストールする必要があります]** をクリックし、エージェントのダウンロードおよびインストールの方法に関する手順を表示します。
@@ -54,7 +54,7 @@ Windows マシンにエージェントをインストールするには、次の
 2. **[ようこそ]** ページで **[次へ]** をクリックします。 **[ライセンス条項]** ページで、**[同意する]** をクリックしてライセンスに同意します。
 3. **[インストール先のフォルダー]** で、既定のインストール フォルダーをそのまま使用するか変更し、**[次へ]** をクリックします。
 4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics]** > **[次へ]** の順にクリックします。
-5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
+5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。  **[次へ]** をクリックします。
 
 
 Linux マシンにエージェントをインストールするには、次の手順に従います。
@@ -71,7 +71,7 @@ Linux マシンにエージェントをインストールするには、次の�
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) および [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) オペレーティング システムの依存関係エージェントのサポートに関する詳細を確認してください。
+[Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) および [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) オペレーティング システムの依存関係エージェントのサポートに関する詳細を確認してください。
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>依存関係視覚化に基づいてグループを絞り込む
 グループのすべてのマシンにエージェントをインストールしたら、次の手順に従って、グループの依存関係を視覚化してグループを絞り込みます。

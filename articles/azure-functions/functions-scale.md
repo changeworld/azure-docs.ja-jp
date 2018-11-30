@@ -13,16 +13,16 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f597425fc3813f243950b16f5debbd63ce3a805
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: bfdd0c647021c453095ec4e05c042992011389b9
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113939"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975892"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
-Azure Functions は、従量課金プランと Azure App Service プランという 2 つの異なるモードで実行できます。 従量課金プランでは、コードの実行時にコンピューティング能力が自動的に割り当てられます。 アプリは、負荷を処理する必要があるときはスケールアウトし、コードが実行していないときはスケールダウンします。 アイドル状態の VM に対して課金されることはなく、事前に容量を予約する必要もありません。 この記事では、従量課金プランである[サーバーレス](https://azure.microsoft.com/solutions/serverless/) アプリ モデルを中心に説明します。 専用 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
+Azure Functions は、従量課金プランと Azure App Service プランという 2 つの異なるモードで実行できます。 従量課金プランでは、コードの実行時にコンピューティング能力が自動的に割り当てられます。 アプリは、負荷を処理する必要があるときはスケールアウトし、コードが実行していないときはスケールダウンします。 アイドル状態の VM に対して課金されることはなく、事前に容量を予約する必要もありません。
 
 > [!NOTE]  
 > [Linux ホスティング](functions-create-first-azure-function-azure-cli-linux.md)は現在、App Service プランでのみ利用可能です。

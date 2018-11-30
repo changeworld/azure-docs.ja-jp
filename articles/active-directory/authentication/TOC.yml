@@ -218,12 +218,12 @@ items:
   - name: サービスの更新情報
     href: ../fundamentals/whats-new.md
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+    href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 4d6edd4b7425859d9e737da81e2753f246c8357d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: abbb727dc5d8f86903412280b05d6b4e11b69209
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741251"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424914"

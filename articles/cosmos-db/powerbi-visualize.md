@@ -64,7 +64,7 @@ Azure Cosmos DB アカウントから火山データを取得し、対話型の 
 
 1. Power BI Desktop を実行します。
 
-2. ようこそ画面から直接 **[データの取得]** を実行したり、**[最近のソース]** を参照したり、**[Open Other Reports] (\他のレポートを開く)** を実行したりできます。 右上隅にある [X] を選択して画面を閉じます。 Power BI Desktop の **[レポート]** ビューが表示されます。
+2. ようこそ画面から直接 **[データの取得]** を実行したり、**[最近のソース]** を参照したり、**[Open Other Reports] \(他のレポートを開く)** を実行したりできます。 右上隅にある [X] を選択して画面を閉じます。 Power BI Desktop の **[レポート]** ビューが表示されます。
    
    ![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
 

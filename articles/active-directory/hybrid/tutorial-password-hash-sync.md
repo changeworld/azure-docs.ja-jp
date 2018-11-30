@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f830a27e9caf032443c2b27bdd2f95fa8069bcf2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4e8a39e16bd67169aac8dd7328338197b604e93f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247281"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426912"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>チュートリアル: パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
 
@@ -205,8 +205,8 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 3. [ようこそ] 画面で、ライセンス条項に同意するチェック ボックスをオンにし、 **[続行]** をクリックします。  
 4. [簡単設定] 画面で、 **[簡単設定を使う]** をクリックします。</br>  
 ![作成](media/tutorial-password-hash-sync/express1.png)</br>
-5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
-6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
+5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。  **[次へ]** をクリックします。  
+6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。  **[次へ]** をクリックします。  
 7. [構成の準備完了] 画面で、 **[インストール]** をクリックします。
 8. インストールが完了したら、 **[終了]** をクリックします。
 9. インストールの完了後、Sychronization Service Manager または同期規則エディターを使用する前に、サインアウトしてもう一度サインインします。
@@ -224,7 +224,7 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>いずれかのユーザーでサインインをテストする
 
-1.  [http://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
+1.  [https://myapps.microsoft.com](httpss://myapps.microsoft.com) に移動します。
 2. 新しいテナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。</br>
 ![確認](media/tutorial-password-hash-sync/verify1.png)</br>
 

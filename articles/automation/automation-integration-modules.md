@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 93c61f0b9b923f84b2c84d2db4456442e2f9fb27
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e4bd6a3e39fbb5d1eea4d7770d8940f801aecd43
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444506"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276488"
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation 統合モジュール
 PowerShell は、Azure Automation の基盤となるテクノロジです。 Azure Automation は PowerShell を基盤として構築されているため、PowerShell モジュールが Azure Automation の拡張性の鍵となります。 この記事では、"統合モジュール" と呼ばれる Azure Automation での PowerShell モジュールの使用の詳細と、独自の PowerShell モジュールを作成して、Azure Automation 内で統合モジュールとして確実に動作させるためのベスト プラクティスを紹介します。 
@@ -34,7 +34,7 @@ Azure Automation には、Azure の管理の自動化をすぐに開始できる
 
 モジュールに Azure Automation の接続の種類が含まれている場合は、接続の種類のプロパティを指定する `<ModuleName>-Automation.json` という名前のファイルも必ず含まれています。 この json ファイルは、圧縮ファイル (.zip) のモジュール フォルダー内に配置されており、モジュールが表すシステムやサービスに接続するために必要な "接続" のフィールドが含まれています。 これにより、最終的に Azure Automation の接続の種類が作成されます。 このファイルを使用すると、モジュールの接続の種類について、フィールド名、種類、フィールドを暗号化するか省略可能にするかを指定できます。 json ファイル形式のテンプレートを次に示します。
 
-```
+```json
 { 
    "ConnectionFields": [
    {
@@ -67,7 +67,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
 
 1. モジュール内のすべてのコマンドレットの概要、説明、ヘルプ URI を含める。 PowerShell では、コマンドレットのヘルプ情報を定義できます。定義すると、ユーザーは **Get-Help** コマンドレットを使用して、そのコマンドレットの使用方法に関するヘルプ情報を確認できます。 例として、.psm1 ファイルに記述された PowerShell モジュールの概要とヘルプ URI を定義する方法を次に示します。<br>  
    
-    ```
+    ```powershell
     <#
         .SYNOPSIS
          Gets all outgoing phone numbers for this Twilio account 
@@ -109,7 +109,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
 
     接続の種類のフィールドを含むオブジェクトをパラメーターとしてコマンドレットに渡すことができるようにすると、モジュール内のコマンドレットが Azure Automation で使いやすくなります。 この方法では、ユーザーがコマンドレットを呼び出すときに毎回接続資産のパラメーターをコマンドレットの対応するパラメーターにマッピングする必要がありません。 上記の Runbook の例では、CorpTwilio という Twilio 接続資産を使用して、Twilio にアクセスし、アカウントのすべての電話番号を返します。  接続のフィールドをコマンドレットのパラメーターにマッピングする方法を次に示します。<br>
    
-    ```
+    ```powershell
     workflow Get-CorpTwilioPhones
     {
       $CorpTwilio = Get-AutomationConnection -Name 'CorpTwilio'
@@ -120,9 +120,9 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
     }
     ```
   
-    このためのより簡単かつ優れた方法では、接続オブジェクトをコマンドレットに直接渡します。
+     このためのより簡単かつ優れた方法では、接続オブジェクトをコマンドレットに直接渡します。
    
-    ```
+    ```powershell
     workflow Get-CorpTwilioPhones
     {
       $CorpTwilio = Get-AutomationConnection -Name 'CorpTwilio'
@@ -131,9 +131,9 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
     }
     ```
    
-    パラメーターの接続フィールドではなく、接続オブジェクトをパラメーターとして直接受け取ることができるようにすると、コマンドレットをこのように動作させることができます。 Azure Automation を使用していないユーザーが、接続オブジェクトとして機能するハッシュテーブルを作成することなく、コマンドレットを呼び出すことができるようにするには、通常、それぞれにパラメーター セットが必要です。 接続フィールドのプロパティを 1 つずつ渡すには、下のパラメーター セット **SpecifyConnectionFields** を使用します。 **UseConnectionObject** を使用すると、接続をそのまま渡すことができます。 ご覧のように、 [Twilio PowerShell モジュール](https://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8) の Send-TwilioSMS コマンドレットでは、どちらの方法でも渡すことができます。 
+     パラメーターの接続フィールドではなく、接続オブジェクトをパラメーターとして直接受け取ることができるようにすると、コマンドレットをこのように動作させることができます。 Azure Automation を使用していないユーザーが、接続オブジェクトとして機能するハッシュテーブルを作成することなく、コマンドレットを呼び出すことができるようにするには、通常、それぞれにパラメーター セットが必要です。 接続フィールドのプロパティを 1 つずつ渡すには、下のパラメーター セット **SpecifyConnectionFields** を使用します。 **UseConnectionObject** を使用すると、接続をそのまま渡すことができます。 ご覧のように、 [Twilio PowerShell モジュール](https://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8) の Send-TwilioSMS コマンドレットでは、どちらの方法でも渡すことができます。 
    
-    ```
+    ```powershell
     function Send-TwilioSMS {
       [CmdletBinding(DefaultParameterSetName='SpecifyConnectionFields', `
       HelpUri='http://www.twilio.com/docs/api/rest/sending-sms')]
@@ -160,7 +160,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
 1. モジュール内のすべてのコマンドレットの出力の種類を定義する。 コマンドレットの出力の種類を定義すると、設計時の IntelliSense で、作成時に使用するコマンドレットの出力のプロパティを確認できます。 これは、Automation Runbook のグラフィカル作成時に特に役に立ちます。グラフィカル作成時にユーザーがモジュールを簡単に利用できるようにするには、設計時の情報が重要です。<br><br> ![グラフィカルな Runbook 出力の種類](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> これは、PowerShell ISE のコマンドレットの出力の "先行入力" 機能と似ていますが、実行する必要はありません。<br><br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
 1. モジュール内のコマンドレットでは、複合オブジェクト型をパラメーターとして受け取らない。 PowerShell ワークフローは、複合型が逆シリアル化された形式で格納される点が PowerShell とは異なります。 プリミティブ型はプリミティブのままですが、複合型は逆シリアル化されたバージョン (実質的にはプロパティ バッグ) に変換されます。 たとえば、Runbook (または、PowerShell ワークフロー) で **Get-Process** コマンドレットを使用した場合は、予期される [System.Diagnostic.Process] 型ではなく、[Deserialized.System.Diagnostic.Process] 型のオブジェクトが返されます。 この型には、逆シリアル化されていない型と同じプロパティがすべて揃っていますが、メソッドは 1 つもありません。 さらに、この値をパラメーターとしてコマンドレットに渡そうとすると、コマンドレットではこのパラメーターに対して [System.Diagnostic.Process] 値を予期しているため、次のエラーが表示されます。*パラメーター 'process' の引数変換を処理できません。エラー: "System.Diagnostics.Process (CcmExec)" の値を "Deserialized.System.Diagnostics.Process" 型から "System.Diagnostics.Process" 型に変換できません。*   これは、予期される [System.Diagnostic.Process] 型と渡された [Deserialized.System.Diagnostic.Process] 型で型が一致していないことが原因です。 この問題を回避する方法では、モジュールのコマンドレットでパラメーターに複合型を受け取らないようにします。 不適切な方法を次に示します。
    
-    ```
+    ```powershell
     function Get-ProcessDescription {
       param (
             [System.Diagnostic.Process] $process
@@ -171,7 +171,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
     <br>
     適切な方法を次に示します。複合オブジェクトを取得するためにコマンドレットで内部的に使用できるプリミティブを受け取って、それを使用しています。 コマンドレットは、PowerShell ワークフローではなく、PowerShell のコンテキストで実行されるため、コマンドレット内では $process は適切な [System.Diagnostic.Process] 型になります。  
    
-    ```
+    ```powershell
     function Get-ProcessDescription {
       param (
             [String] $processName
@@ -185,7 +185,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
    Runbook の接続資産はハッシュテーブルです。これは複合型ですが、これらのハッシュテーブルはキャスト例外なしでコマンドレットの -Connection パラメーターに問題なく渡すことができるようです。 技術的には、PowerShell の一部の型は、シリアル化された形式から逆シリアル化された形式に適切にキャストできます。そのため、逆シリアル化されていない型をコマンドレットにパラメーターとして渡しても受け取ることができます。 ハッシュテーブルは、そうした型の 1 つです。 モジュールの作成者が定義した型を、適切に逆シリアル化できる方法で実装することもできますが、考慮すべきトレードオフがいくつかあります。 型は、既定のコンストラクターと PSTypeConverter を持ち、すべてのプロパティがパブリックである必要があります。 ただし、モジュールの作成者が所有していない既に定義されている型は "修正" する方法がないため、すべてのパラメーターで複合型を回避することをお勧めしています。 Runbook の作成のヒント: 何らかの理由でコマンドレットが複合型のパラメーターを受け取る必要がある場合や、複合型のパラメーターが必要な他のユーザーのモジュールを使用する場合、PowerShell ワークフロー Runbook およびローカル PowerShell の PowerShell ワークフローでは、対処方法として、複合型を生成するコマンドレットと複合型を使用するコマンドレットを同じ InlineScript アクティビティでラップします。 InlineScript では、PowerShell ワークフローではなく、PowerShell としてコンテンツが実行されるため、複合型を生成するコマンドレットでは、逆シリアル化された複合型ではなく、適切な型が生成されます。
 1. モジュール内のすべてのコマンドレットをステートレスにする。 PowerShell ワークフローでは、ワークフローの異なるセッションで呼び出されたすべてのコマンドレットが実行されます。 そのため、同じモジュール内の他のコマンドレットによって作成または変更されたセッションの状態に依存するコマンドレットはすべて PowerShell ワークフロー Runbook では動作しません。  悪い例を次に示します。
    
-    ```
+    ```powershell
     $globalNum = 0
     function Set-GlobalNum {
        param(

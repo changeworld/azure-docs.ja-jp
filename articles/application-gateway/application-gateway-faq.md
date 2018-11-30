@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 8c2856f41b4623519c7bcdd97b5018129f1f23cf
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0187ef3d3b6853c1d1225fc9f208f2508372978d
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092595"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425729"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -184,7 +184,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 いいえ、これはサポートされていません。
 
-## <a name="performance"></a>パフォーマンス
+## <a name="performance"></a>[パフォーマンス]
 
 ### <a name="how-does-application-gateway-support-high-availability-and-scalability"></a>Application Gateway は高可用性とスケーラビリティをどのようにサポートしますか?
 
@@ -212,7 +212,7 @@ v2 SKU では、新しいインスタンスが障害ドメインと更新ドメ�
 
 現在、Application Gateway は **Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
 
-サブスクリプションごとに最大 50 個のアプリケーション ゲートウェイを作成でき、アプリケーション ゲートウェイごとに最大 10 個のインスタンスを使用できます。 各アプリケーション ゲートウェイは、20 個の HTTP リスナーで構成できます。 アプリケーション ゲートウェイの制限の詳細な一覧については、[Application Gateway サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)に関するページをご覧ください。
+アプリケーション ゲートウェイの制限の詳細な一覧については、[Application Gateway サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)に関するページをご覧ください。
 
 次の表では、SSL オフロードが有効になっているアプリケーション ゲートウェイ インスタンスごとにパフォーマンス スループットの平均値を示します。
 
@@ -302,7 +302,7 @@ Application Gateway でサポートされている最新の暗号スイートは
 
 ### <a name="does-the-waf-sku-offer-all-the-features-available-with-the-standard-sku"></a>WAF SKU は、Standard SKU で使用可能なすべての機能を提供しますか?
 
-はい。WAF は Standard SKU に含まれるすべての機能をサポートします。
+はい。WAF は標準 SKU に含まれるすべての機能をサポートします。
 
 ### <a name="what-is-the-crs-version-application-gateway-supports"></a>Application Gateway がサポートするのはどの CRS バージョンですか?
 
