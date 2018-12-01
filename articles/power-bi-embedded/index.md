@@ -7,15 +7,14 @@ ms.author: maghan
 manager: kfile
 layout: LandingPage
 ms.service: power-bi-embedded
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 07/31/2018
-ms.openlocfilehash: f3cc56bb3a294cd06684a14c1898389d2093aa96
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 051b7d725a121b3160e8a572c5fab91e8289f44b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391356"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678238"
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded のドキュメント
 
