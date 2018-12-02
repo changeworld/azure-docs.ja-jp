@@ -17,4 +17,4 @@ ms.locfileid: "39072778"
 ---
 |     |
 | --- |
-| Service Fabric mesh は現在プレビューの段階です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。 |
+| Service Fabric Mesh は現在プレビューの段階です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。 |
