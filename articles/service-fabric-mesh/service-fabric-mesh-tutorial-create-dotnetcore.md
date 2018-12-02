@@ -62,7 +62,7 @@ To Do アプリケーションを手動で作成しない場合は、完成し�
 
 Visual Studio を実行し、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
 
-**[新しいプロジェクト]** ダイアログの上部にある **[検索]** ボックスに「`mesh`」と入力します。 **[Service Fabric Mesh Application]\(Service Fabric Mesh アプリケーション\)** テンプレートを選択します  (テンプレートが表示されない場合は、[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)に関するページの説明に従って、mesh SDK と VS Tools プレビューをインストールしたことを確認してください)。  
+**[新しいプロジェクト]** ダイアログの上部にある **[検索]** ボックスに「`mesh`」と入力します。 **[Service Fabric Mesh Application]\(Service Fabric Mesh アプリケーション\)** テンプレートを選択します  (テンプレートが表示されない場合は、[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)に関するページの説明に従って、Mesh SDK と VS Tools プレビューをインストールしたことを確認してください)。  
 
 **[名前]** ボックスに「`todolistapp`」と入力し、**[場所]** ボックスにプロジェクト ファイルを格納する場所のフォルダー パスを設定します。
 
