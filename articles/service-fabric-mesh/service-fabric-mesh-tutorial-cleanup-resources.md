@@ -66,9 +66,9 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 
 ## <a name="next-steps"></a>次の手順
 
-Service Fabric mesh アプリケーションを Azure に発行したら、次のことを行ってみてください。
+Service Fabric Mesh アプリケーションを Azure に発行したら、次のことを行ってみてください。
 
 * サービス間通信の別の例を確認するには、[投票アプリ サンプル](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp)を調べてください
-* Service Fabric リソース モデルの詳細については、[Service Fabric mesh リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
-* Service Fabric mesh の詳細については、[Service Fabric mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
+* Service Fabric リソース モデルの詳細については、[Service Fabric Mesh リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
+* Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
 * [Cloud Shell の概要を読む](https://docs.microsoft.com/azure/cloud-shell/overview)
