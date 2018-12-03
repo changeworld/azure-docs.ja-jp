@@ -205,7 +205,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 この制限は、アプリケーションの作成中と更新中の両方に適用されます。
 
 ## <a name="how-not-to-use-application-capacity"></a>アプリケーション容量を使用すべきでない場合
-- アプリケーションを_特定_のノードのサブセットに制限するためにアプリケーション グループの機能を使用しないでください。 言い換えれば、アプリケーションを最大で 5 つのノードで実行するように指定できますが、クラスター内の 5 つの特定のノードを指定することはできません。 サービスの配置の制約を使用すれば、特定のノードにアプリケーションを制限できます。
+- アプリケーションを _特定_ のノードのサブセットに制限するためにアプリケーション グループの機能を使用しないでください。 言い換えれば、アプリケーションを最大で 5 つのノードで実行するように指定できますが、クラスター内の 5 つの特定のノードを指定することはできません。 サービスの配置の制約を使用すれば、特定のノードにアプリケーションを制限できます。
 - 同じアプリケーションの 2 つのサービスを同じノードに配置する目的では、アプリケーション容量を使用しないでください。 この場合は、[アフィニティ](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)または[配置](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)の制約を使用してください。
 
 ## <a name="next-steps"></a>次の手順
