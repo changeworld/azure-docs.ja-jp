@@ -106,7 +106,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 1. *PowerShell ISE* で \\...Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* を開きます。 
 
-1. **$DemoScenario = 2**(_アドホック レポート データベースをデプロイする)_ を設定します。
+1. **$DemoScenario = 2**(_アドホック レポート データベースをデプロイする_) を設定します。
 
 1. **F5** キーを押してスクリプトを実行し、*adhocreporting* データベースを作成します。
 
