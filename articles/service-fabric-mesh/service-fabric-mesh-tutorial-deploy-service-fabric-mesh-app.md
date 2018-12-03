@@ -24,7 +24,7 @@ ms.locfileid: "46963323"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>チュートリアル: Service Fabric Mesh アプリケーションをデプロイする
 
-このチュートリアルはシリーズの第 3 部です。ここでは、Azure Service Fabric mesh Web アプリケーションを Visual Studio から直接 発行する方法について説明します。
+このチュートリアルはシリーズの第 3 部です。ここでは、Azure Service Fabric Mesh Web アプリケーションを Visual Studio から直接 発行する方法について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 > [!div class="checklist"]
@@ -66,13 +66,13 @@ Service Fabric Mesh プロジェクトを Azure に発行するには、Visual S
 
 **[Service Fabric アプリケーションの発行]** ダイアログが表示されます。
 
-![Visual Studio - Service Fabric mesh の発行ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
+![Visual Studio - Service Fabric Mesh の発行ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
 Azure アカウントとサブスクリプションを選択します。 **[場所]** を選択します。 この記事では、**[米国東部]** を使用します。
 
 **[リソース グループ]** で、**[\<新しいリソース グループの作成...>]** を選択します。 新しいリソース グループを作成するダイアログが表示されます。 この記事では、場所として **[米国東部]** を使用し、グループに **sfmeshTutorial1RG** という名前を付けます (組織に同じサブスクリプションを使用する複数のユーザーがいる場合は、一意のグループ名を選択します)。  **[作成]** をクリックしてリソース グループを作成し、発行ダイアログに戻ります。
 
-![Visual Studio - Service Fabric mesh の新しいリソース グループ ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
+![Visual Studio - Service Fabric Mesh の新しいリソース グループ ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
 **[Service Fabric アプリケーションの発行]** ダイアログに戻り、**[Azure Container Registry]** の **[\<Create New Container Registry...>]\(<新しいコンテナー レジストリの作成...>\)** を選択します。 **[コンテナー レジストリの作成]** ダイアログで、**[コンテナー レジストリ名]** に一意の名前を使用します。 **場所**を指定します (このチュートリアルでは、**[米国東部]** を使用します)。 前の手順で作成した**リソース グループ**をドロップダウンで選択します (例: **sfmeshTutorial1RG**)。 **[SKU]** を **[Basic]** に設定し、**[作成]** をクリックして、プライベート Azure コンテナー レジストリを作成し、発行ダイアログに戻ります。
 
@@ -106,8 +106,8 @@ The application was deployed successfully and it can be accessed at http://10.00
 
 Web ブラウザーを開き、その URL に移動して、Azure で実行されている Web サイトを表示します。
 
-## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric mesh CLI の設定 
-残りの手順は、Azure Cloud Shell または Azure CLI のローカル インストールを使用して実行できます。 こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric mesh CLI 拡張モジュールをインストールしてください。
+## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定 
+残りの手順は、Azure Cloud Shell または Azure CLI のローカル インストールを使用して実行できます。 こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric Mesh CLI 拡張モジュールをインストールしてください。
 
 ## <a name="check-application-deployment-status"></a>アプリケーションのデプロイの状態を確認する
 
