@@ -31,7 +31,7 @@ JSON データから、指定された要素を取得します。
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | string | 項目を取得する要求変換で使用される ClaimTypes。 |
 | InputParameter | claimToExtract | string | 抽出する JSON 要素の名前。 |
-| OutputClaim | extractedClaim | string | このclaims transformation が呼び出された後に生成される ClaimType は、 _claimToExtract_入力パラメーターに指定された要素の値です。 |
+| OutputClaim | extractedClaim | string | このclaims transformation が呼び出された後に生成される ClaimType は、 _claimToExtract_ 入力パラメーターに指定された要素の値です。 |
 
 次の例では、JSON データから要求変換によって`emailAddress`要素が抽出されます。`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
@@ -70,7 +70,7 @@ Json データから、指定された要素の一覧を取得します。
 | InputParameter | includeEmptyClaims | string | 空の要求を含めるかどうかを指定します。 |
 | InputParameter | jsonSourceKeyName | string | 要素のキー名 |
 | InputParameter | jsonSourceValueName | string | 要素の値の名前 |
-| OutputClaim | コレクション | 文字列、int、ブール値、および datetime |抽出する要求のリスト。 要求の名前は、_jsonSourceClaim_に指定されている入力要求の名前と同じでなければなりません。 |
+| OutputClaim | コレクション | 文字列、int、ブール値、および datetime |抽出する要求のリスト。 要求の名前は、_jsonSourceClaim_ に指定されている入力要求の名前と同じでなければなりません。 |
 
 次の例では、要求変換によって、次の要求が JSON データから抽出されます。 email (文字列)、displayName (文字列)、membershipNum (int)、アクティブ (ブール値) 、および birthdate (datetime)。
 
@@ -121,7 +121,7 @@ JSON データから、指定した数値の (長) 要素を取得します。
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | string | 項目を取得する要求変換で使用される ClaimTypes。 |
 | InputParameter | claimToExtract | string | 抽出する JSON 要素の名前。 |
-| OutputClaim | extractedClaim | long | この ClaimsTransformation が呼び出された後に生成される ClaimType　は、 _claimToExtract_入力パラメーターに指定された要素の値であります。 |
+| OutputClaim | extractedClaim | long | この ClaimsTransformation が呼び出された後に生成される ClaimType　は、 _claimToExtract_ 入力パラメーターに指定された要素の値であります。 |
 
 次の例では、JSON データから要求変換によって`id`要素が抽出されます。
 
