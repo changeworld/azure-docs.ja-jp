@@ -1,5 +1,5 @@
 ---
-title: Active Directory を Azure Active Directory と接続する | Microsoft Docs
+title: Active Directory を Azure Active Directory と接続する  | Microsoft Docs
 description: Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションの ID を共通化することができます。
 keywords: Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール
 services: active-directory
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/02/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2aca42c23cc213d5d7e451105052d5d5d697b77d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: c8ab6b6e6bab7451de7d975dde644386fd4cb84e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979473"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311536"
 ---
 # <a name="hybrid-identity-and-microsoft-identity-solutions"></a>ハイブリッド ID と Microsoft の ID ソリューション
 [Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) ハイブリッド ID ソリューションを使用すると、オンプレミスのディレクトリ オブジェクトと Azure AD を同期したまま、オンプレミスでユーザーを管理できます。 オンプレミスの Windows Server Active Directory と Azure AD との同期を計画する際に最初に行う決断は、マネージド ID を使用するかフェデレーション ID を使用するかです。 
@@ -42,7 +42,7 @@ ms.locfileid: "50979473"
 ほとんどの組織では、ユーザーが Office 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースにサインインできるようにするだけで十分です。その場合は、既定のパスワード ハッシュ同期オプションをお勧めします。 これが役に立たない場合、パススルー認証と AD FS のいずれかを選択する必要があります。
 
 > [!TIP]
-> ユーザーのパスワードは、実際のユーザーのパスワードを表すハッシュ値の形式でオンプレミスの Windows Server Active Directory に格納されます。 ハッシュ値は、一方向の数学関数 (ハッシュ アルゴリズム) の結果として求められます。 一方向の関数の結果をパスワードのプレーンテキスト バージョンに戻す方法はありません。 パスワードのハッシュを使用してオンプレミスのネットワークにサインインすることはできません。 パスワードの同期を選択すると、Azure AD Connect は、オンプレミスの Active Directory からパスワード ハッシュを抽出し、パスワード ハッシュに追加のセキュリティ処理を適用してから Azure AD に同期します。 パスワード ハッシュ同期とパスワード ライトバックを組み合わせて使用すると、Azure AD でセルフサービスのパスワード リセットを有効にすることもできます。 また、企業ネットワークに接続されたドメイン参加済みコンピューターのユーザーはシングル サインオン (SSO) を有効化できます。 シングル サインオンにおいて、有効になっているユーザーはユーザー名のみを入力して、クラウド リソースに安全にアクセスできます。 
+> ユーザーのパスワードは、実際のユーザーのパスワードを表すハッシュ値の形式でオンプレミスの Windows Server Active Directory に格納されます。 ハッシュ値は、一方向の数学関数 (ハッシュ アルゴリズム) の結果として求められます。 一方向の関数の結果をパスワードのプレーンテキスト バージョンに戻す方法はありません。 パスワードのハッシュを使用してオンプレミスのネットワークにサインインすることはできません。 パスワード ハッシュの同期を選択すると、Azure AD Connect によって、オンプレミスの Active Directory からパスワード ハッシュが抽出され、パスワード ハッシュに追加のセキュリティ処理が適用されてから Azure AD に同期されます。 パスワード ハッシュ同期とパスワード ライトバックを組み合わせて使用すると、Azure AD でセルフサービスのパスワード リセットを有効にすることもできます。 また、企業ネットワークに接続されたドメイン参加済みコンピューターのユーザーはシングル サインオン (SSO) を有効化できます。 シングル サインオンにおいて、有効になっているユーザーはユーザー名のみを入力して、クラウド リソースに安全にアクセスできます。 
 >
 
 ## <a name="pass-through-authentication"></a>パススルー認証

@@ -1,5 +1,5 @@
 ---
-title: Azure AD Privileged Identity Management とは | Microsoft Docs
+title: Azure AD Privileged Identity Management とは  | Microsoft Docs
 description: Azure Active Directory Privileged Identity Management (PIM) の概要について説明します。
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 6720294fe9a3e166d0d6ef8f141e53212ef4b194
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465862"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496803"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -73,7 +73,7 @@ Privileged Identity Management では、次のシナリオがサポートされ�
 
 - 保留中の承認 (要求) を表示する
 - ロールの昇格の要求を承認または拒否する (単独および一括)
-- 自分の承認/却下の理由を説明する 
+- 自分の承認/却下の理由を説明する 
 
 **対象ロール ユーザーとして:**
 
@@ -81,22 +81,13 @@ Privileged Identity Management では、次のシナリオがサポートされ�
 - アクティブ化要求の状態を表示する
 - アクティブ化が承認された場合に Azure AD でタスクを完了する
 
-## <a name="enable-privileged-identity-management-for-your-directory"></a>ディレクトリで Privileged Identity Management を有効にする
+## <a name="who-can-do-what-in-pim"></a>PIM でだれが何をできるか
 
-Azure AD Privileged Identity Management の使用は、 [Azure Portal](https://portal.azure.com/) で開始できます。
+PIM を使用する最初のユーザーには、そのディレクトリの[セキュリティ管理者](../users-groups-roles/directory-assign-admin-roles.md#security-administrator)ロールと[特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールが自動的に割り当てられます。
 
-> [!NOTE]
-> ディレクトリで Azure AD Privileged Identity Management を有効にする操作は、Microsoft アカウント (例: @outlook.com) ではなく組織アカウント (例: @yourdomain.com) を持つグローバル管理者が行う必要があります。
+Azure AD ロールについては、PIM で他の管理者の割り当てを管理できるのは、特権ロール管理者ロールに属しているユーザーだけです。 [PIM を管理する他の管理者にアクセス権を付与する](pim-how-to-give-access-to-pim.md)ことができます。 グローバル管理者、セキュリティ管理者、セキュリティ閲覧者は、PIM における Azure AD ロールへの割り当てを閲覧することができます。
 
-1. ディレクトリのグローバル管理者として [Azure ポータル](https://portal.azure.com/) にサインインします。
-2. 組織に複数のディレクトリがある場合は、Azure Portal の右上隅に表示されているユーザー名を選択し、 Azure AD Privileged Identity Management を使用するディレクトリを選択します。
-3. **[すべてのサービス]** を選択し、[フィルター] ボックスを使用して **Azure AD Privileged Identity Management** を検索します。
-4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。 Privileged Identity Management アプリケーションが起動します。
-
-ディレクトリ内で Azure AD Privileged Identity Management を最初に使用したユーザーが、Azure AD ディレクトリ ロールに移動すると、初回割り当て操作を案内する[セキュリティ ウィザード](pim-security-wizard.md)の画面が表示されます。 手順を実行した後、ディレクトリの最初の**セキュリティ管理者**と**特権ロール管理者**に自動的に設定されます。
-
-Azure AD ロールについては、Azure AD PIM で他の管理者の割り当てを管理できるのは、特権ロール管理者ロールに属しているユーザーだけです。 [PIM でディレクトリ ロールを管理する権限を他のユーザーに付与する](pim-how-to-give-access-to-pim.md)ことができます。 グローバル管理者、セキュリティ管理者、セキュリティ閲覧者は、Azure AD PIM における Azure AD ロールへの割り当てを閲覧することができます。
-Azure RBAC ロールについては、サブスクリプション管理者、リソース所有者、リソース ユーザー アクセス管理者だけが、他の管理者の割り当てを Azure AD PIM で管理することができます。  既定では、特権ロール管理者、セキュリティ管理者、セキュリティ閲覧者であるユーザーが、Azure RBAC ロールへの割り当てを Azure AD PIM で閲覧することはできません。
+Azure リソースのロールについては、サブスクリプション管理者、リソース所有者、リソース ユーザー アクセス管理者だけが、他の管理者の割り当てを PIM で管理することができます。 既定では、特権ロール管理者、セキュリティ管理者、セキュリティ閲覧者であるユーザーが、Azure リソースのロールへの割り当てを PIM で閲覧することはできません。
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Privileged Identity Management の概要 (エントリ ポイント)
 
@@ -186,6 +177,6 @@ Azure AD Premium P2 を更新していない場合や試用版の有効期限が
 
 ## <a name="next-steps"></a>次の手順
 
+- [PIM の使用を開始する](pim-getting-started.md)
 - [PIM を使用するためのサブスクリプションの要件](subscription-requirements.md)
-- [PIM で管理できる Azure AD のディレクトリ ロール](pim-roles.md)
 - [Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

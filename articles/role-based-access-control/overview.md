@@ -1,5 +1,5 @@
 ---
-title: Azure でのロールベースのアクセス制御 (RBAC) とは | Microsoft Docs
+title: Azure でのロールベースのアクセス制御 (RBAC) とは  | Microsoft Docs
 description: Azure でのロールベースのアクセス制御 (RBAC) の概要を説明します。 ロールの割り当てを使用して、Azure でのリソースへのアクセスを制御します。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d264160fb3f1c14db3379a314e60efdadb6905b5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 19285bf7a1323e9698fe408566304d0596d1c983
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210416"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311266"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) とは
 
