@@ -69,8 +69,8 @@ Web サービスの接続情報は、Azure Machine Learning SDK を使用して�
 
 デプロイに対して認証が有効になっている場合、認証キーは自動的に作成されます。
 
-* __Azure Kubernetes Service__ にデプロイする場合、認証は__既定で有効__になります。
-* __Azure Container Instances__ にデプロイする場合、認証は__既定で無効__になります。
+* __Azure Kubernetes Service__ にデプロイする場合、認証は __既定で有効__ になります。
+* __Azure Container Instances__ にデプロイする場合、認証は __既定で無効__ になります。
 
 認証を制御するには、デプロイの作成や更新時に、`auth_enabled` パラメーターを使用します。
 
