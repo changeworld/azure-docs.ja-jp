@@ -340,7 +340,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 データには、データフレーム内の店舗とブランドの約 250 の異なる組み合わせが含まれています。 各組み合わせは、独自の売上の時系列を定義します。 
 
-[TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) クラスを使用して、_粒度_を使用する 1 つのデータ構造で、複数の系列を便利にモデル化できます。 粒度は、`store` 列と `brand` 列によって指定されます。
+[TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) クラスを使用して、_粒度_ を使用する 1 つのデータ構造で、複数の系列を便利にモデル化できます。 粒度は、`store` 列と `brand` 列によって指定されます。
 
 "_粒度_" と "_グループ_" の違いは、粒度は現実の世界で常に物理的に意味がありますが、グループは必ずしもそうである必要はありません。 ユーザーがグループ化によってモデルのパフォーマンスが向上すると確信している場合、内部パッケージ関数でグループを使用して、複数の時系列から 1 つのモデルを構築します。 既定では、グループは粒度と等しくなるように設定され、粒度ごとに 1 つのモデルが構築されます。 
 
