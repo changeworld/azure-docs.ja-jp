@@ -29,7 +29,7 @@ ms.locfileid: "23108510"
 
 このチュートリアルのガイダンスは、StorSimple 8000 シリーズの物理デバイスにのみ適用されます。 Web プロキシ構成は、StorSimple Cloud Appliance (8010 および 8020) ではサポートされません。
 
-Web プロキシは StorSimple デバイス用の_オプション_の構成です。 Web プロキシの構成には StorSimple 用 Windows PowerShell のみ使用できます。 構成には、次の 2 つの手順を実行します。
+Web プロキシは StorSimple デバイス用の _オプション_ の構成です。 Web プロキシの構成には StorSimple 用 Windows PowerShell のみ使用できます。 構成には、次の 2 つの手順を実行します。
 
 1. まず、セットアップ ウィザードまたは StorSimple 用 Windows PowerShell のコマンドレットを使用して、Web プロキシ設定を構成します。
 2. 次に、StorSimple 用 Windows PowerShell のコマンドレットを使用して、構成した Web プロキシ設定を有効にします。
