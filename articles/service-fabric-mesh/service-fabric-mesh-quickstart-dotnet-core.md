@@ -1,6 +1,6 @@
 ---
-title: クイック スタート - Web アプリを作成して Azure Service Fabric mesh にデプロイする | Microsoft Docs
-description: このクイック スタートでは、ASP.NET Core Web サイトを作成し、Azure Service Fabric mesh に発行する方法を示します。
+title: クイック スタート - Web アプリを作成して Azure Service Fabric Mesh にデプロイする | Microsoft Docs
+description: このクイック スタートでは、ASP.NET Core Web サイトを作成し、Azure Service Fabric Mesh に発行する方法を示します。
 services: service-fabric-mesh
 documentationcenter: .net
 author: tylermsft
@@ -22,7 +22,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/27/2018
 ms.locfileid: "47407401"
 ---
-# <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>クイック スタート: Web アプリを作成して Azure Service Fabric mesh にデプロイする
+# <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>クイック スタート: Web アプリを作成して Azure Service Fabric Mesh にデプロイする
 
 Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワークを管理することなく開発者がマイクロサービス アプリケーションをデプロイできるフル マネージド サービスです。
 
@@ -32,7 +32,7 @@ Azure サブスクリプションが必要です。 Azure サブスクリプシ�
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric mesh プロジェクトを作成する
+## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric Mesh プロジェクトを作成する
 
 Visual Studio を開き、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
 
@@ -40,7 +40,7 @@ Visual Studio を開き、**[ファイル]** > **[新規]** > **[プロジェク
 
 **[名前]** ボックスに「**ServiceFabricMesh1**」と入力し、**[場所]** ボックスにプロジェクト ファイル格納場所のフォルダー パスを設定します。
 
-**[ソリューションのディレクトリを作成する]** がオンになっていることを確認し、**[OK]** をクリックして Service Fabric mesh プロジェクトを作成します。
+**[ソリューションのディレクトリを作成する]** がオンになっていることを確認し、**[OK]** をクリックして Service Fabric Mesh プロジェクトを作成します。
 
 ![Visual Studio: 新しい Service Fabric Mesh プロジェクト ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
@@ -48,7 +48,7 @@ Visual Studio を開き、**[ファイル]** > **[新規]** > **[プロジェク
 
 **[OK]** をクリックすると、**[新しい Service Fabric サービス]** ダイアログが表示されます。 プロジェクトの種類として **[ASP.NET Core]** を選択し、**[Container OS]\(コンテナー OS\)** が **[Windows]** に設定されていることを確認した後、**[OK]** をクリックして ASP.NET Core プロジェクトを作成します。 
 
-![Visual Studio: 新しい Service Fabric mesh プロジェクト ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-service-fabric-service.png)
+![Visual Studio: 新しい Service Fabric Mesh プロジェクト ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-service-fabric-service.png)
 
 **[新しい ASP.NET Core Web アプリケーション]** ダイアログが表示されます。 **[Web アプリケーション]** を選択し、**[OK]** をクリックします。
 
@@ -66,23 +66,23 @@ Service Fabric Mesh アプリケーション プロジェクトと ASP.NET Core 
 
 ## <a name="publish-to-azure"></a>Azure に発行する
 
-Service Fabric mesh プロジェクトを Azure に発行するには、Visual Studio で **Service Fabric mesh プロジェクト**を右クリックし、**[発行...]** を選択します。
+Service Fabric Mesh プロジェクトを Azure に発行するには、Visual Studio で **Service Fabric Mesh プロジェクト**を右クリックし、**[発行...]** を選択します。
 
-![Visual Studio: Service Fabric mesh プロジェクトを右クリックする](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-right-click-publish.png)
+![Visual Studio: Service Fabric Mesh プロジェクトを右クリックする](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-right-click-publish.png)
 
 **[Service Fabric アプリケーションの発行]** ダイアログが表示されます。
 
-![Visual Studio: Service Fabric mesh の発行ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-dialog.png)
+![Visual Studio: Service Fabric Mesh の発行ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-dialog.png)
 
 Azure アカウントとサブスクリプションを選択します。 **[場所]** を選択します。 この記事では、**[米国東部]** を使用します。
 
 **[リソース グループ]** で、**[\<新しいリソース グループの作成...>]** を選択します。 **[リソース グループの作成]** ダイアログが表示されます。 **[リソース グループ名]** と **[場所]** を設定します。  このクイック スタートでは、場所として **[米国東部]** を使用し、グループに **sfmeshTutorial1RG** という名前を付けます (組織に同じサブスクリプションを使用する複数のユーザーがいる場合は、一意のリソース グループ名を選択します)。  **[作成]** をクリックしてリソース グループを作成し、発行ダイアログに戻ります。
 
-![Visual Studio: Service Fabric mesh の新しいリソース グループ ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
+![Visual Studio: Service Fabric Mesh の新しいリソース グループ ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
 **[Service Fabric アプリケーションの発行]** ダイアログに戻り、**[Azure Container Registry]** の **[\<Create New Container Registry...>]\(<新しいコンテナー レジストリの作成...>\)** を選択します。 **[コンテナー レジストリの作成]** ダイアログで、**[コンテナー レジストリ名]** に一意の名前を使用します。 **[場所]** を指定します (このクイック スタートでは、**[米国東部]** を使用します)。 前の手順で作成した**リソース グループ**をドロップダウンで選択します (例: **sfmeshTutorial1RG**)。 **[SKU]** を **[Basic]** に設定し、**[作成]** をクリックして発行ダイアログに戻ります。
 
-![Visual Studio: Service Fabric mesh の新しいリソース グループ ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
+![Visual Studio: Service Fabric Mesh の新しいリソース グループ ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 
 発行ダイアログで **[発行]** をクリックして、Service Fabric Mesh アプリケーションを Azure にデプロイします。
 
@@ -99,11 +99,11 @@ The application was deployed successfully and it can be accessed at http://...
 
 Web ブラウザーを開き、その URL に移動して、Azure で実行されている Web サイトを表示します。
 
-![Service Fabric mesh Web アプリケーションを実行する](media/service-fabric-mesh-tutorial-deploy-dotnetcore/deployed-web-project.png)
+![Service Fabric Mesh Web アプリケーションを実行する](media/service-fabric-mesh-tutorial-deploy-dotnetcore/deployed-web-project.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、このクイック スタートで作成したすべてのリソースを削除します。 ACR サービス リソースと Service Fabric mesh サービス リソースの両方をホストする新しいリソース グループを作成したので、このリソース グループを安全に削除できます。リソース グループを削除することで、リソース グループに関連付けられているすべてのリソースを簡単に削除できます。
+不要になったら、このクイック スタートで作成したすべてのリソースを削除します。 ACR サービス リソースと Service Fabric Mesh サービス リソースの両方をホストする新しいリソース グループを作成したので、このリソース グループを安全に削除できます。リソース グループを削除することで、リソース グループに関連付けられているすべてのリソースを簡単に削除できます。
 
 ```azurecli
 az group delete --resource-group sfmeshTutorial1RG
@@ -120,4 +120,4 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 
 Service Fabric Mesh アプリケーションの作成とデプロイについてさらに詳しく学習するには、チュートリアルを続けてください。
 > [!div class="nextstepaction"]
-> [マルチサービス Web アプリケーションを作成してデバッグし、Service Fabric mesh にデプロイする](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> [マルチサービス Web アプリケーションを作成してデバッグし、Service Fabric Mesh にデプロイする](service-fabric-mesh-tutorial-create-dotnetcore.md)
