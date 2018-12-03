@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 69bcca7871d9bf4bebf64c0c0ae1b54cd8408927
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: f94e3b5a6070da5ef9510216abd3f52a958030c5
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684122"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311383"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-node"></a>クイック スタート: Bing Entity Search SDK (Node)
 
@@ -23,6 +23,7 @@ Bing Entity Search SDK には、エンティティ クエリと結果解析の�
 
 Git Hub に [C# Bing Entity Search SDK のサンプル ソース コード](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js)があります。
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
+**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
 
 Bing Entity Search SDK を使用してコンソール アプリケーションを設定するには:
 * 開発環境で `npm install ms-rest-azure` を実行します。

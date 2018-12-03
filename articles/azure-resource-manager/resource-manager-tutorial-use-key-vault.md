@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a3ca6422bf5335604e561b71db6c75a889a74586
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 0bcff6e0cec234f17b0aaab9828602eb4a194d85
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615757"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334212"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する
 
@@ -94,7 +94,7 @@ Key Vault を作成するには：
     * **Key Vault 名**: 一意の名前を割り当てます。 
     * **テナントID**: テンプレート関数は、自動的にテナントID を取得します。既定値を変更しないでください
     * **Ad ユーザー ID**: 最後の手順から取得した、 Azure AD ユーザーオブジェクトIDを入力します。
-    * **シークレット名**: 既定の名前は**mAdminPassword**です。 ここでシークレットの名前を変更する場合は、仮想マシンを展開するときに、シークレット名を更新する必要があります。
+    * **シークレット名**: 既定の名前は**vmAdminPassword**です。 ここでシークレットの名前を変更する場合は、仮想マシンを展開するときに、シークレット名を更新する必要があります。
     * **シークレット値**: シークレットを入力します。  シークレットは、仮想マシンへのサインインに使用されるパスワードです。 最後の手順で作成した生成されるパスワードを使用することをお勧めします。
     * **上記の使用条件に同意する**: 選択。
 3. 上から**パラメーターの編集**を選択してテンプレートを確認します。

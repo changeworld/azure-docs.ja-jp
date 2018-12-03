@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 416557b11ebef953411fb6fabcddb72d08dcb5af
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 447c59d45e3b1614ce8dbddc56f9dba0dd156e90
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802986"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317060"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-c"></a>クイック スタート: Bing News Search SDK (C#)
 
@@ -24,6 +24,7 @@ Bing News Search SDK には、ニュースのクエリと結果解析のため�
 [C# Bing News Search SDK サンプルのソース コード](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch)は、Git Hub で入手できます。
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
+**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。  
 
 Bing News Search SDK を使用してコンソール アプリケーションを設定するには、Visual Studio のソリューション エクスプローラーで `Manage NuGet Packages` オプションを参照します。  `Microsoft.Azure.CognitiveServices.Search.NewsSearch` パッケージを追加します。
 

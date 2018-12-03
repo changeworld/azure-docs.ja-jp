@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 83e277eceea2df746de6f6e9a33130989e2d874d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5f59f14f93b5bfc79c07b096a07ac109be0bedb6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278363"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499088"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する
 
-このチュートリアルでは、Azure HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用してデータを読み書きする方法について説明します。
+このチュートリアルでは、Azure HDInsight で [Apache Kafka](https://kafka.apache.org/) による [Apache Spark 構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)を使用してデータを読み書きする方法について説明します。
 
 Spark 構造化ストリーミングは、Spark SQL に組み込まれたストリーミング処理エンジンであり、 静的データに対してバッチ計算と同様にストリーミング計算を表現できるようになります。 
 
@@ -35,11 +35,11 @@ Spark 構造化ストリーミングは、Spark SQL に組み込まれたスト�
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight の Spark での Jupyter Notebook の使用方法を熟知していること。 詳細については、[HDInsight の Spark を使用したデータの読み込みとクエリの実行](spark/apache-spark-load-data-run-query.md)に関するドキュメントをご覧ください。
+* HDInsight の Spark での [Jupyter Notebook](https://jupyter.org/) の使用方法を熟知していること。 詳細については、[HDInsight の Apache Spark を使用したデータの読み込みとクエリの実行](spark/apache-spark-load-data-run-query.md)に関するドキュメントを参照してください。
 
 * [Scala](https://www.scala-lang.org/) プログラミング言語の知識があること。 このチュートリアルで使用するコードは、Scala で記述されています。
 
-* Kafka トピックの作成方法を熟知していること。 詳細については、[HDInsight の Kafka のクイックスタート](kafka/apache-kafka-get-started.md)に関するドキュメントをご覧ください。
+* Kafka トピックの作成方法を熟知していること。 詳細については、[HDInsight の Apache Kafka のクイック スタート](kafka/apache-kafka-get-started.md)に関するドキュメントを参照してください。
 
 > [!IMPORTANT]
 > このドキュメントの手順には、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループが必要です。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
@@ -48,7 +48,7 @@ Spark 構造化ストリーミングは、Spark SQL に組み込まれたスト�
 >
 > 仮想ネットワークでの HDInsight の使用方法の詳細については、[仮想ネットワークを使用した HDInsight の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するドキュメントをご覧ください。
 
-## <a name="structured-streaming-with-kafka"></a>Kafka での構造化ストリーミング
+## <a name="structured-streaming-with-apache-kafka"></a>Apache Kafka での構造化ストリーミング
 
 Spark 構造化ストリーミングは、Spark SQL エンジンを基盤とするストリーム処理エンジンです。 構造化ストリーミングを使用すると、バッチ クエリと同様にストリーミング クエリを記述できます。
 
@@ -205,7 +205,7 @@ Azure Portal を使用してリソース グループを削除するには:
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Spark 構造化ストリーミングを使用して、HDInsight の Kafka からデータを読み書きする方法を説明しました。 Kafka で Storm を使用する方法については、次のリンクを参照してください。
+このチュートリアルでは、[Apache Spark 構造化ストリーミング](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)を使用して、HDInsight の [Apache Kafka](https://kafka.apache.org/) からデータを読み書きする方法を説明しました。 Kafka で [Apache Storm](https://storm.apache.org/) を使用する方法については、次のリンクを参照してください。
 
 > [!div class="nextstepaction"]
-> [Kafka での Apache Storm の使用](hdinsight-apache-storm-with-kafka.md)
+> [Apache Kafka で Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)

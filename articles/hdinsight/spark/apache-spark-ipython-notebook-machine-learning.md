@@ -9,22 +9,22 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: eac44d3b8daae27afec8aa24f4767bdb5dbf991a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a730f6ccba9f935855b233ca804a8180aa7f504b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239561"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580572"
 ---
-# <a name="tutorial-build-a-spark-machine-learning-application-in-hdinsight"></a>チュートリアル: HDInsight で Spark Machine Learning アプリケーションを作成する 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>チュートリアル: HDInsight で Apache Spark 機械学習アプリケーションを作成する 
 
-このチュートリアルでは、Jupyter Notebook を使用して、Azure HDInsight の Apache Spark Machine Learning アプリケーション構築する方法を説明します。 
+このチュートリアルでは、[Jupyter Notebook](https://jupyter.org/) を使用して、Azure HDInsight 用の [Apache Spark](https://spark.apache.org/) 機械学習アプリケーションを作成する方法について説明します。 
 
 [MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) は、分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Spark のスケーラブル Machine Learning ライブラリです。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
-> * Apache Spark Machine Learning アプリケーションを開発する
+> * Apache Spark 機械学習アプリケーションを開発する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -190,7 +190,7 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 
 このチュートリアルでは、以下の内容を学習しました。
 
-* Apache Spark Machine Learning アプリケーションを開発する
+* Apache Spark 機械学習アプリケーションを開発する
 
 次のチュートリアルに進み、Spark ジョブに IntelliJ IDEA を使用する方法を学習してください。 
 

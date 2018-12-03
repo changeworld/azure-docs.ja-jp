@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: 1997ca83ebcc7162d7056fdc099ab5b74d87fdd2
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d868bec1e19ddde556f3c387646c5d7aa898b7d9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163156"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313488"
 ---
 # <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>クイック スタート: C# を使用して Bing Web Search API を呼び出す  
 
@@ -23,8 +23,9 @@ ms.locfileid: "52163156"
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>前提条件
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
 
+## <a name="prerequisites"></a>前提条件
 このクイック スタートを実行するには、以下のものが必要です。
 
 * Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)

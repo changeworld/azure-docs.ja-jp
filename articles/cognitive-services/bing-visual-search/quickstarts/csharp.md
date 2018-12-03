@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6cec0e178c4ff5b27722cb8de258a1f78e6acc51
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 2f22c240eedf9a720912e96bc8f3c7ac269c1bc7
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883345"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441181"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-c"></a>クイック スタート: C# での最初の Bing Visual Search クエリ
 
@@ -27,7 +27,7 @@ Bing Visual Search API は、提供された画像に関する情報を返しま
 --boundary_1234-abcd
 Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
-ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
+ÿØÿà JFIF ÖÆ68g-¤CWŸþ29ÌÄøÖ‘º«™æ±èuZiÀ)"óÓß°Î= ØJ9á+*G¦...
 
 --boundary_1234-abcd--
 ```
@@ -38,10 +38,17 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 
 ## <a name="prerequisites"></a>前提条件
+このクイック スタートでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)
+Azure portal でサブスクリプションを開始するには、次の手順に従います。
+1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
+2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
+3. 新しいリソースの名前を [`Name`] に入力します。
+4. `Pay-As-You-Go` サブスクリプションを選択します。
+5. `S9` 価格レベルを選択します。
+6. [`Enable`] をクリックしてサブスクリプションを開始します。
 
-このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
+このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)  
 
 ## <a name="running-the-application"></a>アプリケーションの実行
 

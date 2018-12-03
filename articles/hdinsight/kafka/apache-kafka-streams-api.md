@@ -9,21 +9,21 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: b22a701d9e876ca011381810e330fed60b7177d4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8319376c597f16a5bfe1a357d74c59453b797e51
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278703"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495139"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>チュートリアル: Apache Kafka Streams API
 
-Kafka Streams API を使用するアプリケーションを作成し、HDInsight 上の Kafka でそれを実行する方法を説明します。 
+Apache Kafka Streams API を使用するアプリケーションを作成し、HDInsight 上の Kafka でそれを実行する方法を説明します。 
 
 このチュートリアルで使うアプリケーションはストリーミング ワード カウントです。 Kafka トピックからテキスト データを読み取り、個々のワードを抽出してから、ワードとカウントを別の Kafka トピックに保存します。
 
 > [!NOTE]
-> Kafka のストリーム処理は、多くの場合、Apache Spark または Storm を使用して実行されます。 Kafka バージョン 0.10.0 (HDInsight 3.5 および 3.6 での) では、Kafka Streams API が導入されました。 この API を使用して、入力および出力トピック間でデータ ストリームを変換できます。 場合により、Spark または Storm ストリーミング ソリューションを作成する代わりになることがあります。 
+> Kafka のストリーム処理は、多くの場合、Apache Spark または Apache Storm を使用して実行されます。 Kafka バージョン 0.10.0 (HDInsight 3.5 および 3.6 での) では、Kafka Streams API が導入されました。 この API を使用して、入力および出力トピック間でデータ ストリームを変換できます。 場合により、Spark または Storm ストリーミング ソリューションを作成する代わりになることがあります。 
 >
 > Kafka Streams の詳細については、Apache.org の「[Intro to Streams](https://kafka.apache.org/10/documentation/streams/)」ドキュメントを参照してください。
 
@@ -38,9 +38,9 @@ Kafka Streams API を使用するアプリケーションを作成し、HDInsigh
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight 3.6 クラスター上の Kafka。 HDInsight クラスターに Kafka を作成する方法については、[HDInsight での Kafka の開始](apache-kafka-get-started.md)に関するドキュメントをご覧ください。
+* HDInsight 3.6 クラスター上の Kafka。 HDInsight クラスターに Kafka を作成する方法については、[HDInsight での Apache Kafka の開始](apache-kafka-get-started.md)に関するドキュメントを参照してください。
 
-* [Kafka Consumer および Producer API](apache-kafka-producer-consumer-api.md) に関するドキュメントの手順を完了します。 このドキュメントの手順では、このチュートリアルで作成したアプリケーションとトピックの例を使用します。
+* [Apache Kafka Consumer および Producer API](apache-kafka-producer-consumer-api.md) に関するドキュメントの手順を完了します。 このドキュメントの手順では、このチュートリアルで作成したアプリケーションとトピックの例を使用します。
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
@@ -158,7 +158,7 @@ public class Stream
    
     `sshuser` は、クラスターの SSH ユーザーに置き換えます。また、`clustername` はクラスターの名前に置き換えます。 メッセージが表示されたら、SSH ユーザー アカウントのパスワードを入力します。 HDInsight での `scp` の使用の詳細については、「[HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
-## <a name="create-kafka-topics"></a>Kafka トピックの作成
+## <a name="create-apache-kafka-topics"></a>Apache Kafka トピックの作成
 
 1. クラスターとの SSH 接続を開くには、次のコマンドを使用します。
 
@@ -175,7 +175,7 @@ public class Stream
     read -p 'Enter your Kafka cluster name:' CLUSTERNAME
     ```
 
-3. Kafka ブローカー ホストと Zookeeper ホストを取得するには、次のコマンドを使用します。 プロンプトが表示されたら、クラスターのログイン (管理者) アカウントのパスワードを入力します。 パスワードを 2 回入力するように求められます。
+3. Kafka ブローカー ホストと Apache Zookeeper ホストを取得するには、次のコマンドを使用します。 プロンプトが表示されたら、クラスターのログイン (管理者) アカウントのパスワードを入力します。 パスワードを 2 回入力するように求められます。
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
@@ -255,7 +255,7 @@ public class Stream
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、HDInsight 上の Kafka で Kafka Streams API を使用する方法について説明しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
+このドキュメントでは、HDInsight 上の Kafka で Apache Kafka Streams API を使用する方法について説明しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 
-* [Kafka ログの分析](apache-kafka-log-analytics-operations-management.md)
-* [Kafka クラスター間でデータをレプリケートする](apache-kafka-mirroring.md)
+* [Apache Kafka ログを分析する](apache-kafka-log-analytics-operations-management.md)
+* [Apache Kafka クラスター間でデータをレプリケートする](apache-kafka-mirroring.md)

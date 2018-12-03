@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: f54914b846c6a001a9fb10d938a038e390abf6bf
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c1b63b12a48f5ccfb1a396ffa9282249b03893fe
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416445"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445176"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-java"></a>クイック スタート: Java での最初の Bing Visual Search クエリ
 
@@ -36,10 +36,17 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 
 ## <a name="prerequisites"></a>前提条件
+このクイック スタートでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
+
+Azure portal でサブスクリプションを開始するには、次の手順に従います。
+1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
+2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
+3. 新しいリソースの名前を [`Name`] に入力します。
+4. `Pay-As-You-Go` サブスクリプションを選択します。
+5. `S9` 価格レベルを選択します。
+6. [`Enable`] をクリックしてサブスクリプションを開始します。
 
 このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
-
-このクイック スタートでは、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)サブスクリプション キーまたは有料サブスクリプション キーを使用できます。
 
 ## <a name="running-the-application"></a>アプリケーションの実行
 

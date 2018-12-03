@@ -9,21 +9,29 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 66e17c00da898e575bb858dbe16a35d1c44a2780
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 27141c014c9ccdf9d62c9bde5c96bd31abfc025e
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226912"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447097"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>チュートリアル: Bing Visual Search SDK の画像トリミング範囲と結果
 Visual Search SDK には、画像の領域を選択し、大きな画像のトリミング範囲に類似するオンラインの画像を見つけるオプションがあります。  この例では、複数の人物が含まれた画像から 1 人だけが含まれるトリミング範囲を指定します。  コードでは、トリミング範囲と大きな画像の URL を送信し、Bing Search URL とオンラインで見つかった類似する画像の URL を含む結果を返します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません)。
+このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+このチュートリアルでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
+
+Azure portal でサブスクリプションを開始するには、次の手順に従います。
+1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
+2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
+3. 新しいリソースの名前を [`Name`] に入力します。
+4. `Pay-As-You-Go` サブスクリプションを選択します。
+5. `S9` 価格レベルを選択します。
+6. [`Enable`] をクリックしてサブスクリプションを開始します。
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
 Bing Web Search SDK を使用してコンソール アプリケーションを設定するには、Visual Studio のソリューション エクスプローラーで [NuGet パッケージの管理] オプションに移動します。 Microsoft.Azure.CognitiveServices.Search.VisualSearch パッケージを追加します。

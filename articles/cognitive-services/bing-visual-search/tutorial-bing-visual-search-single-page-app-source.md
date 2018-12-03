@@ -10,16 +10,26 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: a908bdcf447039ad3a27ceae04f0a6cfff890d21
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4e08044fbfa36663da2da9ed18adf3249cb59930
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225754"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444144"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>チュートリアル: Visual Search シングルページ Web アプリ
 
 これは、Bing Visual Search に関する [Visual Search シングルページ Web アプリ](tutorial-bing-visual-search-single-page-app.md)のチュートリアルで説明した完全なソース コードです。 アプリを実行するには、メモ帳または別のテキスト エディターにソース コードをコピーし、`bing-visual-search.html` として保存します。 保存したファイルを、Microsoft Edge やその他一般的なブラウザーで開きます。
+## <a name="prerequisites"></a>前提条件
+このクイック スタートでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
+
+Azure portal でサブスクリプションを開始するには、次の手順に従います。
+1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
+2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
+3. 新しいリソースの名前を [`Name`] に入力します。
+4. `Pay-As-You-Go` サブスクリプションを選択します。
+5. `S9` 価格レベルを選択します。
+6. [`Enable`] をクリックしてサブスクリプションを開始します。
 
 ```html
 <!DOCTYPE html>
@@ -74,7 +84,8 @@ h3 a:link {color: #087 !important;}
 
 // cookie names for data we store
 // YOUR API KEY DOES NOT GO IN THIS CODE; don't paste it in.
-API_KEY_COOKIE   = "bing-search-api-key";
+IS_API_KEY_COOKIE   = "bing-imagesearch-api-key";
+VS_API_KEY_COOKIE   = "bing-visualsearch-api-key";
 CLIENT_ID_COOKIE = "bing-search-client-id";
 
 // Bing Search API endpoint
@@ -110,19 +121,34 @@ try {
 }
 
 // get stored API subscription key, or prompt if it's not found
-function getSubscriptionKey() {
-    var key = retrieveValue(API_KEY_COOKIE);
-    while (key.length !== 32) {
-        key = prompt("Enter Bing Image Search API subscription key:", "").trim();
+function getSubscriptionKey(API_name) {
+    if (API_name == 'image_search'){
+        var key = retrieveValue(IS_API_KEY_COOKIE);
+        var message = "Enter Bing Image Search API subscription key:"
+        while (key.length !== 32) {
+            key = prompt(message, "").trim();
+        }
+        // always set the cookie in order to update the expiration date
+        storeValue(IS_API_KEY_COOKIE, key);
+    } else if (API_name == 'visual_search') {
+        var key = retrieveValue(VS_API_KEY_COOKIE);
+        var message = "Enter Bing Visual Search API subscription key:"
+        while (key.length !== 32) {
+            key = prompt(message, "").trim();
+        }
+        // always set the cookie in order to update the expiration date
+        storeValue(VS_API_KEY_COOKIE, key);
     }
-    // always set the cookie in order to update the expiration date
-    storeValue(API_KEY_COOKIE, key);
     return key;
 }
 
 // invalidate stored API subscription key so user will be prompted again
-function invalidateSubscriptionKey() {
-    storeValue(API_KEY_COOKIE, "");
+function invalidateSubscriptionKey(API_name) {
+    if(API_name == 'image_search') {
+        storeValue(IS_API_KEY_COOKIE, "");
+    } else if (API_name == 'visual_search'){
+        storeValue(VS_API_KEY_COOKIE, "");
+    }
 }
 
 // escape text for use in HTML
@@ -268,7 +294,7 @@ function handleBingResponse() {
     // Any other HTTP response is an error
     else {
         // 401 is unauthorized; force re-prompt for API key for next request
-        if (this.status === 401) invalidateSubscriptionKey();
+        if (this.status === 401) invalidateSubscriptionKey('image_search');
 
         // some error responses don't have a top-level errors object
         var errors = jsobj.errors || [jsobj];
@@ -406,7 +432,7 @@ function doNextSearchPage() {
     stack.push(parseInt(bing.offset.value, 10));
     bing.stack.value = JSON.stringify(stack);
     bing.offset.value = bing.nextoffset.value;
-    return bingImageSearch(query, bingSearchOptions(bing), getSubscriptionKey());
+    return bingImageSearch(query, bingSearchOptions(bing), getSubscriptionKey('image_search'));
 }
 
 // go to the previous page (used by previous page link)
@@ -420,7 +446,7 @@ function doPrevSearchPage() {
         var count = parseInt(bing.count.value, 10);
         bing.stack.value = JSON.stringify(stack);
         bing.offset.value = offset;
-        return bingImageSearch(query, bingSearchOptions(bing), getSubscriptionKey());
+        return bingImageSearch(query, bingSearchOptions(bing), getSubscriptionKey('image_search'));
     }
     alert("You're already at the beginning!");
     return false;
@@ -429,11 +455,15 @@ function doPrevSearchPage() {
 function newBingImageSearch(form) {
     form.offset.value = "0";
     form.stack.value = "[]";
-    return bingImageSearch(form.query.value, bingSearchOptions(form), getSubscriptionKey());
+    return bingImageSearch(form.query.value, bingSearchOptions(form), getSubscriptionKey('image_search'));
 }
 function handleVisualSearchResponse(){
     if(this.status !== 200){
         console.log(this.responseText);
+        // 401 is unauthorized; force re-prompt for Visual Search API key for next request
+        if(this.status == 401){
+            invalidateSubscriptionKey('visual_search');
+        }
         return;
     }
     let json = this.responseText;
@@ -485,7 +515,7 @@ function bingVisualSearch(insightsToken){
     catch (e) {
         renderErrorMessage("Error performing visual search: " + e.message);
     }
-    request.setRequestHeader("Ocp-Apim-Subscription-Key", getSubscriptionKey());
+    request.setRequestHeader("Ocp-Apim-Subscription-Key", getSubscriptionKey('visual_search'));
     request.setRequestHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
     request.addEventListener("load", handleVisualSearchResponse);
     request.send(requestBody);

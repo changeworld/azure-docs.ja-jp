@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: c08c9a292350adf588296c13a5ce007564899053
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 587279d247b945b787051721d256f00a090d56db
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005770"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313964"
 ---
 # <a name="what-is-apache-kafka-on-hdinsight"></a>HDInsight での Apache Kafka とは
 
@@ -26,23 +26,23 @@ ms.locfileid: "51005770"
 
 * Microsoft は、kafka の稼働時間に対し、99.9 % のサービス レベル アグリーメント (SLA) を提供しています。 詳細については、「[HDInsight の SLA](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)」を参照してください。
 
-* Kafka のバッキング ストアとして Azure Managed Disks を使用します。 Managed Disks は、Kafka ブローカーあたり最大 16 TB を提供できます。 HDInsight 上の Kafka でのマネージド ディスクの構成について詳しくは、「[HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する](apache-kafka-scalability.md)」をご覧ください。
+* Kafka のバッキング ストアとして Azure Managed Disks を使用します。 Managed Disks は、Kafka ブローカーあたり最大 16 TB を提供できます。 HDInsight 上の Kafka を使用したマネージド ディスクの構成の詳細については、[HDInsight 上の Apache Kafka のスケーラビリティの向上](apache-kafka-scalability.md)に関するページを参照してください。
 
     マネージド ディスクについて詳しくは、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
 * Kafka はラックの 1 次元ビューで設計されています。 Azure は、更新ドメイン (UD) と障害ドメイン (FD) の 2 次元にラックを分割します。 Microsoft は、複数の UD と FD の間で Kafka のパーティションとレプリカを再調整するツールを提供しています。 
 
-    詳細については、[HDInsight 上の Kafka による高可用性](apache-kafka-high-availability.md)に関するページを参照してください。
+    詳細については、[HDInsight 上の Apache Kafka による高可用性](apache-kafka-high-availability.md)に関するページを参照してください。
 
 * HDInsight を使用すると、クラスターの作成後に、worker ノード (Kafka ブローカーをホストするノード) の数を変更することができます。 スケーリングは、Azure Portal、Azure PowerShell、およびその他の Azure 管理インターフェイスで実行できます。 Kafka では、スケーリング操作の後で、パーティションのレプリカを再調整する必要があります。 パーティションを再調整することで、Kafka は新しい数のワーカー ノードを活用することができます。
 
-    詳細については、[HDInsight 上の Kafka による高可用性](apache-kafka-high-availability.md)に関するページを参照してください。
+    詳細については、[HDInsight 上の Apache Kafka による高可用性](apache-kafka-high-availability.md)に関するページを参照してください。
 
 * Azure Log Analytics を使用して、HDInsight 上の Kafka を監視できます。 Log Analytics は、ディスクおよび NIC のメトリック、Kafka からの JMX メトリックなど、仮想マシン レベルの情報を表示します。
 
-    詳細については、[HDInsight 上の Kafka のログの分析](apache-kafka-log-analytics-operations-management.md)に関するページを参照してください。
+    詳細については、[HDInsight 上の Apache Kafka のログの分析](apache-kafka-log-analytics-operations-management.md)に関するページを参照してください。
 
-### <a name="kafka-on-hdinsight-architecture"></a>HDInsight アーキテクチャ上の Kafka
+### <a name="apache-kafka-on-hdinsight-architecture"></a>HDInsight 上の Apache Kafka のアーキテクチャ
 
 次の図は、コンシューマー グループ、パーティション分割、レプリケーションを使ってイベントの並列読み取りとフォールト トレランスを実現する標準的な Kafka の構成を示しています。
 
@@ -56,29 +56,29 @@ Kafka では、**トピック**にレコード (データ) が格納されます
 
 レプリケーションによって複数ノードにパーティションが複製されて、ノード (ブローカー) の機能不全に対する保護措置が講じられています。 *(L)* で示されたパーティションは、指定されたパーティションのリーダーです。 プロデューサー トラフィックは、ZooKeeper によって管理された状態に基づいて、各ノードのリーダーにルーティングされます。
 
-## <a name="why-use-kafka-on-hdinsight"></a>HDInsight で Apache Kafka を使用する理由
+## <a name="why-use-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を使用する理由
 
 以下に、HDInsight 上の Kafka を使用して実行できる一般的なタスクと パターンを示します。
 
-* **Kafka データのレプリケーション**: Kafka には、MirrorMaker ユーティリティが用意されています。このユーティリティは、Kafka クラスター間でデータをレプリケートします。
+* **Apache Kafka データのレプリケーション**: Kafka には、MirrorMaker ユーティリティが用意されています。このユーティリティは、Kafka クラスター間でデータをレプリケートします。
 
-    MirrorMaker の使用方法については、[HDInsight 上の Kafka での Kafka トピックのレプリケート](apache-kafka-mirroring.md)に関するページを参照してください。
+    MirrorMaker の使用方法については、[HDInsight 上の Apache Kafka を使用した Apache Kafka トピックのレプリケート](apache-kafka-mirroring.md)に関するページを参照してください。
 
 * **発行-購読のメッセージング パターン**: Kafka は、Kafka トピックにレコードを発行するためのプロデューサー API を提供します。 コンシューマー API は、トピックの購読に使用されます。
 
-    詳細については、[HDInsight での Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
+    詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
 
 * **ストリーム処理**: リアルタイムのストリーム処理には、通常、Kafka と共に Apache Storm または Spark が使用されます。 Kafka 0.10.0.0 (HDInsight バージョン 3.5 および 3.6) では、Storm や Spark を必要とせずに、ストリーミング ソリューションを構築できるストリーミング API が導入されました。
 
-    詳細については、[HDInsight での Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
+    詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
 
 * **水平スケール**: Kafka は、HDInsight クラスター内のノード間でストリームを分割します。 コンシューマー プロセスを各パーティションと関連付けることにより、レコード使用時の負荷分散を実現することができます。
 
-    詳細については、[HDInsight での Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
+    詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
 
 * **順番どおりに処理**: 各パーティション内で、レコードは、受信された順番にストリームに格納されます。 パーティションごとに 1 つのコンシューマー プロセスを関連付けることで、レコードが順番通りに確実に処理されるようになります。
 
-    詳細については、[HDInsight での Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
+    詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -94,8 +94,8 @@ Kafka では、**トピック**にレコード (データ) が格納されます
 
 次のリンクを使用することで、HDInsight で Apache Kafka を使用する方法を知ることができます。
 
-* [クイック スタート: HDInsight への Kafka の作成](apache-kafka-get-started.md)
+* [クイック スタート: HDInsight 上の Apache Kafka を作成する](apache-kafka-get-started.md)
 
-* [チュートリアル: HDInsight 上の Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
+* [チュートリアル: HDInsight 上の Apache Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
 
-* [チュートリアル: HDInsight 上の Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
+* [チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 57e719c6ef75b08d8c188d2d2d344867bbf590b1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b58bfc5345e06f82b2550ea2a1a53443946f2096
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623103"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427456"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
 このチュートリアルでは、Linux 仮想マシン (VM) 向けのシステム割り当てマネージド ID を使用して、Azure AD Graph API にアクセスし、そのグループ メンバーシップを取得する方法について説明します。 Azure リソースのマネージド ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。  
 
@@ -155,7 +155,7 @@ Azure AD Graph:
    }
    ```
 
-4. VM のサービス プリンシパルのオブジェクト ID (以前の手順で取得した値) を使用して、Azure AD Graph API をクエリし、そのグループ メンバーシップを取得することができます。 `<OBJECT-ID>` は VM のサービス プリンシパルのオブジェクト ID に、`<ACCESS-TOKEN>` は以前に取得したアクセス トークンにそれぞれ置き換えます:
+4. VM のサービス プリンシパルのオブジェクト ID (以前の手順で取得した値) を使用して、Azure AD Graph API をクエリし、そのグループ メンバーシップを取得することができます。 `<OBJECT-ID>` は VM のサービス プリンシパルのオブジェクト ID に、`<ACCESS-TOKEN>` は以前に取得したアクセス トークンにそれぞれ置き換えます。
 
    ```bash
    curl 'https://graph.windows.net/myorganization/servicePrincipals/<OBJECT-ID>/getMemberGroups?api-version=1.6' -X POST -d "{\"securityEnabledOnly\": false}" -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS-TOKEN>"

@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: f1dd07756ca484171a3d662df35493efbe5a5ee7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ee6b93c26918b4f70eb23e7055db813f35d3787d
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415621"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445737"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -24,9 +24,9 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 | Windows のバージョン        | SMB のバージョン | Azure VM でマウント可能 | オンプレミスでマウント可能 |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019 (プレビュー)<sup>1</sup> | SMB 3.0 | [はい] | [はい] |
-| Windows 10<sup>2</sup> | SMB 3.0 | [はい] | [はい] |
-| Windows Server 半期チャネル<sup>3</sup> | SMB 3.0 | [はい] | [はい] |
+| Windows Server 2019    | SMB 3.0 | [はい] | [はい] |
+| Windows 10<sup>1</sup> | SMB 3.0 | [はい] | [はい] |
+| Windows Server 半期チャネル<sup>2</sup> | SMB 3.0 | [はい] | [はい] |
 | Windows Server 2016    | SMB 3.0     | [はい]                   | [はい]                  |
 | Windows 8.1            | SMB 3.0     | [はい]                   | [はい]                  |
 | Windows Server 2012 R2 | SMB 3.0     | [はい]                   | [はい]                  |
@@ -34,9 +34,8 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 | Windows 7              | SMB 2.1     | [はい]                   | いいえ                    |
 | Windows Server 2008 R2 | SMB 2.1     | [はい]                   | いいえ                    |
 
-<sup>1</sup>Windows Server 2019 は、[Windows Server Insiders プログラム](https://insider.windows.com/for-business-getting-started-server/)を通じてプレビューとして提供されています。 運用環境ではまだ Windows Server 2019 がサポートされていませんが、[Windows のトラブルシューティング ガイド](storage-troubleshoot-windows-file-connection-problems.md)の範囲を超える問題が Azure ファイル共有への接続で生じた場合は、Microsoft までお知らせください。  
-<sup>2</sup>Windows 10 バージョン 1507、1607、1703、1709、1803。  
-<sup>3</sup>Windows Server バージョン 1709 および 1803。
+<sup>1</sup>Windows 10 バージョン 1507、1607、1703、1709、1803、1809。  
+<sup>2</sup>Windows Server バージョン 1709 および 1803。
 
 > [!Note]  
 > 常に、各 Windows バージョンの最新のサポート技術情報を参照することをお勧めします。

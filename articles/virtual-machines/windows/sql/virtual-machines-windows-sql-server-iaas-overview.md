@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/12/2018
 ms.author: jroth
-ms.openlocfilehash: 905caa7d0de514ae9fd13cb058b2b7826b8b6abf
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 141a65032d3d97a7977bb3e725edb47b6f25d55c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003673"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496669"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -67,8 +67,13 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 
 利用できる Linux SQL Server 仮想マシン イメージを確認するには、「[Azure 仮想マシン (Linux) における SQL Server の概要](../../linux/sql/sql-server-linux-virtual-machines-overview.md)」を参照してください。
 
+> [!NOTE]
+> SQL Server VM のライセンス モデルを従量課金制のライセンスから自分の所有ライセンスに変更できるようになりました。 詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 
+
 ### <a id="BYOL"></a> ライセンス持ち込み
 ライセンス持ち込み (BYOL) を利用することもできます。 このシナリオでは、SQL Server ライセンスに対する追加料金はなく、VM のみに対して料金を支払います。  自分のライセンスを持ち込むと、継続的な運用環境のワークロードの費用を時間と共に削減できます。 この方法を利用するための要件については、「[SQL Server Azure VM の料金ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md#byol)」を参照してください。
+
+ライセンス持ち込みには、既存の従量課金制の SQL VM を変換する方法と、**{BYOL}** というプレフィックスでイメージをデプロイする方法とがあります。 従量制課金と BYOL との間でライセンス モデルを切り替える方法の詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 
 
 | Version | オペレーティング システム | エディション |
 | --- | --- | --- |
@@ -77,7 +82,6 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-ポータルでは、これらのイメージ名に **{BYOL}** というプレフィックスが付きます。
 
 ### <a name="connect-to-the-vm"></a>VM に接続します
 作成した SQL Server VM には、SQL Server Management Studio (SSMS) などのツールやアプリケーションから接続することができます。 その手順については、「[Azure での SQL Server 仮想マシンへの接続](virtual-machines-windows-sql-connect.md)」を参照してください。

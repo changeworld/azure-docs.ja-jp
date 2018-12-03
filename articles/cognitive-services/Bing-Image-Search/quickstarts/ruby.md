@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 4c2c91b42af46ba42bdda84d7b8b77987c7ea818
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d5772b46c167b873ed4f5d60a110d31a5c8308a5
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297334"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315938"
 ---
 # <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>クイック スタート: REST API および Ruby を使用した検索クエリの送信
 
@@ -30,7 +30,9 @@ ms.locfileid: "46297334"
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-the-application"></a>アプリケーションの作成と初期化
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+
+## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
 1. 次のパッケージをコード ファイルにインポートします。
 

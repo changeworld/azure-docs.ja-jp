@@ -14,19 +14,21 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 8/8/2018
+ms.date: 11/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: fe84dfcef2a5dad1c170592f933638b984e16a05
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 439a3338d5b2104d20e8de99a83fe19c6935a5ac
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717031"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499481"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
-Azure Virtual Network では、Azure Virtual Machines (VM) などのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 Azure Virtual Network では、次に示す重要な機能が提供されます。
+Azure Virtual Network では、Azure Virtual Machines (VM) などのさまざまな種類の Azure リソースが、他の Azure リソース、インターネット、およびオンプレミスのネットワークと安全に通信することができます。 仮想ネットワークは 1 つのリージョン内に制限されますが、仮想ネットワーク ピアリングを使用すれば、異なるリージョンの複数の仮想ネットワークを相互に接続することができます。
+
+Azure Virtual Network では、次に示す重要な機能が提供されます。
 
 ## <a name="isolation-and-segmentation"></a>分離とセグメント化
 

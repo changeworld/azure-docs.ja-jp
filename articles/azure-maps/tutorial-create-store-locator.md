@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9f77beb8c51fb3a06045183433907e1c634fb45d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7c7891d8a73142c78b1ca80027d685b93a062d06
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820275"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317910"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Azure Maps を使用してストア ロケーターを作成する
 
@@ -81,7 +81,7 @@ ms.locfileid: "51820275"
 * その他いくつかの列に、コーヒー ショップに関連したメタデータが格納されています。電話番号、Wi-Fi スポットと車椅子の利用の可否 (ブール型列)、店舗の開店時間と閉店時間 (24 時間形式) です。 実際の場所データとの関係がより強いメタデータを格納する列を独自に作成してもかまいません。
 
 > [!Note]
-> Azure Maps では、球面メルカトル図法 (EPSG:3857) が使用されます。
+> Azure Maps は、球面メルカトル図法 "EPSG:3857" でデータをレンダリングしますが、WGS84 測地系を使用する "EPSG:4325" のデータを読み取ります。 
 
 データセットをアプリケーションに公開する方法は数多く存在します。 その 1 つが、データベースにデータを読み込んだうえで、そのデータを照会してユーザーのブラウザーに結果を返す Web サービスを公開する方法です。 この方法は、データセットが大きい場合や更新頻度が高い場合に最適です。 ただし、この方法は開発作業が著しく増え、コストも大きくなります。 
 

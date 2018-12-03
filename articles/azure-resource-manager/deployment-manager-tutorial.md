@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a7829c14997287ed130b0b4300c7f5aa0f3a30
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: e4489fd9119bce0e38e14f536f41940b74205e95
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345574"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425005"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>チュートリアル: Resource Manager テンプレートで Azure Deployment Manager を使用する (プライベート プレビュー)
 
@@ -41,6 +41,8 @@ ms.locfileid: "51345574"
 > * 新規バージョンの配備
 > * リソースのクリーンアップ
 
+Azure Deployment Manager REST API のリファレンスについては、[こちら](https://docs.microsoft.com/rest/api/deploymentmanager/)でご覧いただけます。
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -50,12 +52,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [Azure Resource Manager テンプレート](./resource-group-overview.md)を開発した経験がある。
 * Azure Deployment Manager はプライベート プレビュー段階です。 Azure Deployment Manager を使用してサインアップするには、[サインアップ シート](https://aka.ms/admsignup)に記入してください。 
 * Azure PowerShell。 詳細については、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページを参照してください。
-* Deployment Manager コマンドレット。 これらのプレリリース版のコマンドレットをインストールするには、最新バージョンの PowerShellGet が必要です。 最新バージョンを入手するには、「[PowerShellGet のインストール](/powershell/gallery/installing-psget)」を参照してください。 PowerShellGet をインストールし終えたら、PowerShell ウィンドウを閉じます。 新しい PowerShell ウィンドウを開き、次のコマンドを使用します。
+* Deployment Manager コマンドレット。 これらのプレリリース版のコマンドレットをインストールするには、最新バージョンの PowerShellGet が必要です。 最新バージョンを入手するには、「[PowerShellGet のインストール](/powershell/gallery/installing-psget)」を参照してください。 PowerShellGet をインストールし終えたら、PowerShell ウィンドウを閉じます。 管理者特権の PowerShell ウィンドウを新たに開き、次のコマンドを使用します。
 
     ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
-* [Microsoft Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409)。 Azure Storage Explorer は必須ではありませんが、作業しやすくなります。
+* [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)。 Azure Storage Explorer は必須ではありませんが、作業しやすくなります。
 
 ## <a name="understand-the-scenario"></a>シナリオの理解
 
@@ -145,10 +147,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ユーザー割り当てマネージド ID を作成し、サブスクリプション用にアクセス制御を構成する必要があります。
 
 > [!IMPORTANT]
-> ユーザー割り当てマネージド ID は、[ロールアウト](#create-the-rollout-template)と同じ場所になければなりません。 現在、ロールアウトを含む Deployment Manager のリソースは、米国中部または米国東部 2 のいずれかでのみ作成できます。
+> ユーザー割り当てマネージド ID は、[ロールアウト](#create-the-rollout-template)と同じ場所になければなりません。 現在、ロールアウトを含む Deployment Manager のリソースは、米国中部または米国東部 2 のいずれかでのみ作成できます。 ただし、これが該当するのは Deployment Manager のリソース (サービス トポロジ、サービス、サービス ユニット、ロールアウト、ステップなど) だけです。 ターゲット リソースは、サポートされている任意の Azure リージョンにデプロイできます。 たとえば、このチュートリアルでは Deployment Manager のリソースを米国中部にデプロイしていますが、サービスのデプロイ先は米国東部と米国西部です。 この制限は将来解除される予定です。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. [ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を作成します。
+2. [ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) を作成します。
 3. ポータルから、左側のメニューで **[サブスクリプション]** を選択したら、お使いのサブスクリプションを選択します。
 4. **[アクセス制御 (IAM)]** を選択したら、**[追加]** を選択します。
 5. 次の値を入力または選択します。
@@ -200,6 +202,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - **dependsOn**: すべてのサービス トポロジ リソースは、成果物ソース リソースに依存します。
 - **artifacts** は、テンプレート成果物をポイントします。  ここでは相対パスが使用されます。 フルパスは、artifactSourceSASLocation (成果物ソースで定義される)、artifactRoot (成果物ソースで定義される)、templateArtifactSourceRelativePath (または parametersArtifactSourceRelativePath) を連結することで構成されます。
 
+> [!NOTE]
+> サービス ユニットの名前は、31 文字未満にする必要があります。 
+
 ### <a name="topology-parameters-file"></a>トポロジ パラメーター ファイル
 
 トポロジ テンプレートで使用されるパラメーター ファイルを作成します。
@@ -211,7 +216,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - **azureResourceLocation**: Azure の場所が不明な場合、このチュートリアルでは **centralus** を使用してください。
     - **artifactSourceSASLocation**: 配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI を入力します。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
     - **templateArtifactRoot**: 成果物のフォルダー構造を変更しない限り、このチュートリアルでは **templates/1.0.0.0** を使用してください。
-    - **tragetScriptionID**：Azure のサブスクリプション ID を入力します。
+    - **targetScriptionID**: Azure のサブスクリプション ID を入力します。
 
 > [!IMPORTANT]
 > トポロジ テンプレートとロールアウト テンプレートでは、いくつかの共通パラメーターを共有します。 これらのパラメーターは、同じ値でなければなりません。 これらのパラメーターとは、**namePrefix**、**azureResourceLocation**、**artifactSourceSASLocation** のことです (このチュートリアルでは、どちらの成果物ソースも同じストレージ アカウントを共有します)。
@@ -242,7 +247,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ルート レベルでは、成果物ソース、手順、ロールアウトの 3 つのリソースが定義されています。
 
-成果物ソースの定義は、トポロジ テンプレートで定義されているものと同じです。  詳細については、「[サービス トポロジ テンプレートの作成](#create-the-service-topology-tempate)」を参照してください。
+成果物ソースの定義は、トポロジ テンプレートで定義されているものと同じです。  詳細については、「[サービス トポロジ テンプレートの作成](#create-the-service-topology-template)」を参照してください。
 
 次のスクリーンショットでは、待機手順の定義を示しています。
 
@@ -310,7 +315,7 @@ Azure PowerShell を使用すればテンプレートを配備できます。
 
     リソースを参照するには、**[非表示型の表示]** を選択する必要があります。
 
-3. ロールアウト テンプレートの配備
+3. <a id="deploy-the-rollout-template"></a>次のロールアウト テンプレートをデプロイします。
 
     ```azurepowershell-interactive
     # Create the rollout
@@ -325,7 +330,7 @@ Azure PowerShell を使用すればテンプレートを配備できます。
 
     ```azurepowershell-interactive
     # Get the rollout status
-    $rolloutname = "<Enter the Rollout Name>"
+    $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzureRmDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName
@@ -365,7 +370,7 @@ Web アプリケーションに新しいバージョン (1.0.0.1) がある場�
 
 1. CreateADMRollout.Parameters.json を開きます。
 2. **binaryArtifactRoot** を **binaries/1.0.0.1** に更新します。
-3. 「[テンプレートの配備](#deploy-the-templates)」の指示に従って、ロールアウトを再配備します。
+3. 「[テンプレートの配備](#deploy-the-rollout-template)」の指示に従って、ロールアウトを再配備します。
 4. 「[配備の検証](#verify-the-deployment)」の指示に従って、配備を検証します。 Web ページでは、1.0.0.1 のバージョンであることを示すはずです。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

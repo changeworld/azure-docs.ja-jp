@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: ac56475f39f820c2d2af961a1813859ec42b0a46
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fa84d5a09eab56dc01a6e841323ca11d12886582
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038453"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495503"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>チュートリアル: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
 
-このチュートリアルでは、生の CSV データ ファイルを取得して HDInsight クラスターのストレージにインポートした後、Azure HDInsight の Apache Hive を使用してデータを変換します。 データを変換したら、Apache Sqoop を使用して Azure SQL データベースにデータを読み込みます。 この記事では、一般に公開されているフライト データを使用します。
+このチュートリアルでは、生の CSV データ ファイルを取得して HDInsight クラスターのストレージにインポートした後、Azure HDInsight の [Apache Hive](https://hive.apache.org/) を使用してデータを変換します。 データを変換したら、[Apache Sqoop](http://sqoop.apache.org/) を使用して Azure SQL データベースにデータを読み込みます。 この記事では、一般に公開されているフライト データを使用します。
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、Azure HDInsight バージョン 3.4 以降で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -41,13 +41,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight での Linux ベースの Hadoop クラスター**。 Linux ベースの新しい HDInsight クラスターを作成する手順については、[HDInsight での Hadoop の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
+* **HDInsight での Linux ベースの Hadoop クラスター**。 Linux ベースの新しい HDInsight クラスターを作成する手順については、[HDInsight での Apache Hadoop の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
 * **Azure SQL データベース**。 保存先データ ストアとして Azure SQL Database を使用します。 SQL データベースがない場合は、「[Azure Portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started.md)」を参照してください。
 
 * **Azure CLI**。 Azure CLI をインストールしていない場合、詳しい手順については [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関する記事をご覧ください。
 
-* **SSH クライアント**。 詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+* **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="download-the-flight-data"></a>フライト データのダウンロード
 
@@ -102,7 +102,7 @@ HDInsight クラスターに関連付けられたストレージにデータを�
 
 ## <a name="transform-data-using-a-hive-query"></a>Hive クエリを使用したデータの変換
 
-HDInsight クラスター上で Hive ジョブを実行する方法はたくさんあります。 このセクションでは、Beeline を使用して Hive ジョブを実行します。 Hive ジョブを実行するその他の方法については、[HDInsight での Hive の使用](./hadoop/hdinsight-use-hive.md)に関する記事をご覧ください。
+HDInsight クラスター上で Hive ジョブを実行する方法はたくさんあります。 このセクションでは、[Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) を使用して Hive ジョブを実行します。 Hive ジョブを実行するその他の方法については、[HDInsight での Apache Hive の使用](./hadoop/hdinsight-use-hive.md)に関するページを参照してください。
 
 Hive ジョブの一環として、.csv ファイルから **Delays** という名前の Hive テーブルにデータをインポートします。
 
@@ -269,7 +269,7 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 
 5. Enter `exit` at the `1>`」と入力して、tsql ユーティリティを終了します。
 
-## <a name="export-data-to-sql-database-using-sqoop"></a>Sqoop を使用して SQL データベースにデータをエクスポートする
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Apache Sqoop を使用して SQL データベースにデータをエクスポートする
 
 前のセクションで、変換済みデータを `/tutorials/flightdelays/output` にコピーしました。 このセクションでは、Sqoop を使用して、'/tutorials/flightdelays/output' から Azure SQL データベース内に作成したテーブルにデータをエクスポートします。 
 
@@ -311,17 +311,17 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 このチュートリアルでは、HDInsight の Apache Hadoop クラスターを使用して、データの抽出、変換、読み込み操作を実行する方法について学習しました。 Azure Data Factory を使用してオンデマンドで HDInsight Hadoop クラスターを作成する方法を学習するには、次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
->[Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-adf.md)
+>[Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-adf.md)
 
 HDInsight でのデータ操作の詳細については、次の記事を参照してください。
 
 * [チュートリアル: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
-* [HDInsight での Hive の使用][hdinsight-use-hive]
-* [HDInsight での Pig の使用][hdinsight-use-pig]
-* [HDInsight での Hadoop 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
+* [HDInsight での Apache Hive の使用][hdinsight-use-hive]
+* [HDInsight での Apache Pig の使用][hdinsight-use-pig]
+* [HDInsight 上の Apache Hadoop 用の Java MapReduce プログラムを開発する][hdinsight-develop-mapreduce]
 * [HDInsight 用 Python ストリーミング MapReduce プログラムの開発][hdinsight-develop-streaming]
-* [HDInsight での Oozie の使用][hdinsight-use-oozie]
-* [HDInsight での Sqoop の使用][hdinsight-use-sqoop]
+* [HDInsight での Apache Oozie の使用][hdinsight-use-oozie]
+* [HDInsight での Apache Sqoop の使用][hdinsight-use-sqoop]
 
 
 

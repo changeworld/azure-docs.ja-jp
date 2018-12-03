@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4cb6e79b563ac0172f93b3a721b79c230a96a1d5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 25b01de47767e335d614aa0a8cf32c344c7305d8
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457988"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442848"
 ---
 # <a name="quickstart-bing-visual-search-sdk-c"></a>クイック スタート: Bing Visual Search SDK C#
 
@@ -33,8 +33,17 @@ Git Hub に [C# Bing Visual Search SDK のサンプル ソース コード](http
 ## <a name="prerequisites"></a>前提条件
 
 * Visual Studio 2017。 必要に応じて、 https://www.visualstudio.com/vs/community/ から無料のコミュニティ バージョンをダウンロードすることができます。
-* SDK 呼び出しを認証するには、Cognitive Services API キーが必要です。 [無料試用版キー](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7)にサインアップしてください。 試用版キーは 1 秒あたり 1 回の呼び出しで 7 日間有効です。 運用環境のシナリオでは、[アクセス キーを購入](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)してください。 [価格情報](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/)も参照してください。
-* .NET コア SDK、.net コア 1.1 アプリを実行する機能。 https://www.microsoft.com/net/download/ から、Core、Framework、およびランタイムを入手できます。
+* このクイック スタートでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
+
+Azure portal でサブスクリプションを開始するには、次の手順に従います。
+1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
+2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
+3. 新しいリソースの名前を [`Name`] に入力します。
+4. `Pay-As-You-Go` サブスクリプションを選択します。
+5. `S9` 価格レベルを選択します。
+6. [`Enable`] をクリックしてサブスクリプションを開始します。
+
+* .NET Core SDK、.NET Core 1.1 アプリを実行する機能。 https://www.microsoft.com/net/download/ から、Core、Framework、およびランタイムを入手できます。
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
 

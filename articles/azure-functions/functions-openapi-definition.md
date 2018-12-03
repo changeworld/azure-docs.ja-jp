@@ -8,18 +8,19 @@ manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 12/15/2017
+ms.date: 11/26/2018
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 62c04e5893eaefcc5eb7272eb9a99cf932086205
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 2d50e4c2352444d29bdb090bc9a2a7947ecc6a50
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086866"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496028"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>関数の OpenAPI 定義の作成
+
 REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swagger.io/) ファイル) を使用して記述されます。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。
 
 このチュートリアルでは、風力タービンの応急修復がコスト効率に優れているかどうかを確認する関数を作成します。 その後、その関数を他のアプリやサービスから呼び出せるように、関数アプリの OpenAPI 定義を作成します。
@@ -33,7 +34,7 @@ REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swag
 > * 関数を呼び出して定義をテストする
 
 > [!IMPORTANT]
-> 現在、OpenAPI のプレビュー機能は、1.x ランタイムでのみ利用できます。 1.x 関数アプリを作成する方法については、[こちらにあります](./functions-versions.md#creating-1x-apps)。
+> OpenAPI 機能は現在プレビュー段階であり、Azure Functions Runtime のバージョン 1.x でのみ使用できます。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
@@ -41,6 +42,11 @@ REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swag
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
+## <a name="set-the-functions-runtime-version"></a>Functions のランタイム バージョンを設定する
+
+既定では、作成する関数アプリにバージョン 2.x のランタイムが使用されます。 関数を作成する前にランタイム バージョンを 1.x に設定する必要があります。
+
+[!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 ## <a name="create-the-function"></a>関数を作成する
 
@@ -50,34 +56,27 @@ REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swag
 
     ![Azure Portal での関数のクイック スタート ページ](media/functions-openapi-definition/add-first-function.png)
 
-2. 検索フィールドに「`http`」と入力し、HTTP トリガー テンプレートとして **C#** を選択します。 
- 
+1. 検索フィールドに「`http`」と入力し、HTTP トリガー テンプレートとして **C#** を選択します。 
+
     ![HTTP トリガーの選択](./media/functions-openapi-definition/select-http-trigger-portal.png)
 
-3. 関数の **[名前]** として「`TurbineRepair`」と入力し、**[[認証レベル]](functions-bindings-http-webhook.md#http-auth)** として `Function` を選択し、**[作成]** を選択します。  
+1. 関数の **[名前]** として「`TurbineRepair`」と入力し、**[[認証レベル]](functions-bindings-http-webhook.md#http-auth)** として `Function` を選択し、**[作成]** を選択します。  
 
     ![HTTP によってトリガーされる関数の作成](./media/functions-openapi-definition/select-http-trigger-portal-2.png)
 
 1. この run.csx ファイルの内容を次のコードに置き換えて、**[保存]** をクリックします。
 
     ```csharp
-    #r "Newtonsoft.Json"
-
     using System.Net;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Primitives;
-    using Newtonsoft.Json;
 
-    const double revenuePerkW = 0.12; 
-    const double technicianCost = 250; 
+    const double revenuePerkW = 0.12;
+    const double technicianCost = 250;
     const double turbineCost = 100;
 
-    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
-    {   
+    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    {
         //Get request body
-        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-        dynamic data = JsonConvert.DeserializeObject(requestBody);
+        dynamic data = await req.Content.ReadAsAsync<object>();
         int hours = data.hours;
         int capacity = data.capacity;
 
@@ -93,13 +92,14 @@ REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swag
             repairTurbine = "No";
         }
 
-        return (ActionResult) new OkObjectResult(new{
+        return req.CreateResponse(HttpStatusCode.OK, new{
             message = repairTurbine,
             revenueOpportunity = "$"+ revenueOpportunity,
-            costToFix = "$"+ costToFix         
-        }); 
+            costToFix = "$"+ costToFix
+        });
     }
     ```
+
     この関数コードは、応急修復がコスト効率に優れているかを示すメッセージ `Yes` または `No` のほか、タービンによって創出される収益機会とタービンの修復コストを返します。 
 
 1. 関数をテストするには、一番右の **[テスト]** をクリックして、テスト タブを展開します。**要求本文**で次の値を入力し、**[実行]** をクリックします。
@@ -132,7 +132,7 @@ OpenAPI 定義を生成する準備ができています。 この定義は、AP
     1. **[選択した HTTP メソッド]** で、**[POST]** 以外のオプションをすべてオフにし、**[保存]** をクリックします。
 
         ![[選択した HTTP メソッド]](media/functions-openapi-definition/selected-http-methods.png)
-        
+
 1. 関数アプリ名 (**function-demo-energy** など) > **[プラットフォーム機能]**  >  **[API 定義]** をクリックします。
 
     ![[API の定義]](media/functions-openapi-definition/api-definition.png)
@@ -185,6 +185,7 @@ OpenAPI 定義を生成する準備ができています。 この定義は、AP
     この定義を完全な OpenAPI 定義にするには、さらにメタデータが必要であるため、これは "_テンプレート_" として記述されています。 次の手順でこの定義を変更します。
 
 ## <a name="modify-the-openapi-definition"></a>OpenAPI 定義を変更する
+
 テンプレートの定義が生成されたので、次は、その定義を変更して、API の操作とデータ構造に関する追加のメタデータを指定します。 **[API 定義]** で、生成された定義を `post` から定義の一番下まで削除し、下のコンテンツを貼り付けて **[保存]** をクリックします。
 
 ```yaml
@@ -249,15 +250,15 @@ securityDefinitions:
 
 この場合、更新されたメタデータを貼り付けるだけで済みますが、どのような変更を既定のテンプレートに加えたかを理解することは重要です。
 
-+ API が JSON 形式のデータを生成して使用することを指定しました。
+* API が JSON 形式のデータを生成して使用することを指定しました。
 
-+ 必須パラメーターと、その名前およびデータ型を指定しました。
+* 必須パラメーターと、その名前およびデータ型を指定しました。
 
-+ 成功応答の戻り値と、その名前およびデータ型を指定しました。
+* 成功応答の戻り値と、その名前およびデータ型を指定しました。
 
-+ API と、その操作およびパラメーターのわかりやすい概要と説明を入力しました。 これは、この関数を使用するユーザーにとって重要です。
+* API と、その操作およびパラメーターのわかりやすい概要と説明を入力しました。 これは、この関数を使用するユーザーにとって重要です。
 
-+ x-ms-summary と x-ms-visibility を追加しました。これは、Microsoft Flow と Logic Apps の UI で使用されています。 詳細については、「[Microsoft Flow でのカスタム コネクタ用の OpenAPI 拡張](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/)」を参照してください。
+* x-ms-summary と x-ms-visibility を追加しました。これは、Microsoft Flow と Logic Apps の UI で使用されています。 詳細については、「[Microsoft Flow でのカスタム コネクタ用の OpenAPI 拡張](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/)」を参照してください。
 
 > [!NOTE]
 > セキュリティ定義は、API キーの既定の認証方法のまま変更していません。 別の種類の認証を使用した場合は、この定義セクションで変更してください。
@@ -265,6 +266,7 @@ securityDefinitions:
 API 操作の定義の詳細については、[オープン API 仕様](https://swagger.io/specification/#operationObject)に関するページをご覧ください。
 
 ## <a name="test-the-openapi-definition"></a>OpenAPI 定義をテストする
+
 API の定義を使用する前に、Azure Functions の UI でテストすることをお勧めします。
 
 1. 関数の **[管理]** タブの **[ホスト キー]** で、**既定**のキーをコピーします。
@@ -305,5 +307,6 @@ API の定義を使用する前に、Azure Functions の UI でテストする�
 > * 関数を呼び出して定義をテストする
 
 次のトピックに進み、作成した OpenAPI 定義を使用する PowerApps アプリを作成する方法を確認してください。
+
 > [!div class="nextstepaction"]
 > [PowerApps から関数を呼び出す](functions-powerapps-scenario.md)

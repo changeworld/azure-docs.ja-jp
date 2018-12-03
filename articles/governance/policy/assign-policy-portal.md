@@ -1,5 +1,5 @@
 ---
-title: ポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
+title: ポリシーの割り当てを作成し、Azure 内の準拠していないリソースを特定する
 description: この記事では、ポリシー定義を作成して、準拠していないリソースを特定する手順について説明します。
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 60b8663c5b465fecd3275def7d1e85f4511a23e9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ee22208f9f55840b80392ef2b0a9fce0da4c4db7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954264"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584691"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>ポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[割り当て名]** には選択したポリシー名が自動的に入力されますが、この名前は変更できます。 この例では、"*Audit VMs that do not use managed disks\(マネージド ディスクを使用しない VM の監査\)*" をそのまま使用します。 必要に応じて、**説明**を追加することもできます。 説明では、このポリシーの割り当ての詳細を示します。 **[割り当て担当者]** には、ログイン ユーザーに基づいて自動的にデータが入力されます。 このフィールドは任意です。カスタム値を入力できます。
 
-1. **[マネージド ID を作成します]** のチェックは外しておいてください。 これは、割り当てられるポリシーまたはイニシアティブに [deployIfNotExists](./concepts/effects.md#deployifnotexists) 効果を含むポリシーが含まれるときに選択する_必要があります_。 このクイック スタートに使用するポリシーにはそれが含まれないため、空のままにします。 詳細については、「[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)」と「[how remediation security works](./how-to/remediate-resources.md#how-remediation-security-works)」 (修復セキュリティのしくみ) を参照してください。
+1. **[マネージド ID を作成します]** のチェックは外しておいてください。 これは、割り当てられるポリシーまたはイニシアティブに [deployIfNotExists](./concepts/effects.md#deployifnotexists) 効果を含むポリシーが含まれるときに選択する_必要があります_。 このクイック スタートに使用するポリシーにはそれが含まれないため、空のままにします。 詳しくは、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) および[修復セキュリティのしくみ](./how-to/remediate-resources.md#how-remediation-security-works)に関するページをご覧ください。
 
 1. **[割り当て]** をクリックします。
 

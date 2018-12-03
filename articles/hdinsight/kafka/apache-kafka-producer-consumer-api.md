@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 2a441e3cd90eba8fc2b1201671047cfcd9d277a6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 947eb76f84f865135e87803b53fa94e20eecb78c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277734"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313824"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル: Apache Kafka Producer および Consumer API の使用
 
-HDInsight 上の Kafka で Kafka Producer および Consumer API を使用する方法を説明します。
+HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法を説明します。
 
 Kafka Producer API では、アプリケーションが Kafka クラスターにデータ ストリームを送信できます。 Kafka Consumer API では、アプリケーションがクラスターからデータ ストリームを読み取ることができます。
 
@@ -56,7 +56,7 @@ API の詳細については、[Producer API](https://kafka.apache.org/documenta
 
 ## <a name="set-up-your-deployment-environment"></a>デプロイ環境を設定する
 
-このチュートリアルでは、HDInsight 3.6 上の Apache Kafka が必要です。 HDInsight クラスターに Kafka を作成する方法については、[HDInsight での Kafka の開始](apache-kafka-get-started.md)に関するドキュメントをご覧ください。
+このチュートリアルでは、HDInsight 3.6 上の Apache Kafka が必要です。 HDInsight クラスターに Kafka を作成する方法については、[HDInsight での Apache Kafka の開始](apache-kafka-get-started.md)に関するドキュメントを参照してください。
 
 ## <a name="understand-the-code"></a>コードの理解
 
@@ -171,7 +171,7 @@ consumer = new KafkaConsumer<>(properties);
         read -p 'Enter your Kafka cluster name:' CLUSTERNAME
         ```
     
-    2. Kafka ブローカー ホストと Zookeeper ホストを取得するには、次のコマンドを使用します。 プロンプトが表示されたら、クラスターのログイン (管理者) アカウントのパスワードを入力します。
+    2. Kafka ブローカー ホストと Apache Zookeeper ホストを取得するには、次のコマンドを使用します。 プロンプトが表示されたら、クラスターのログイン (管理者) アカウントのパスワードを入力します。
     
         ```bash
         export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
@@ -227,8 +227,8 @@ Kafka に格納されたレコードは、受信した順番でパーティシ�
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、HDInsight 上の Kafka で Kafka Producer および Consumer API を使用する方法について説明しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
+このドキュメントでは、HDInsight 上の Kafka で Apache Kafka Producer および Consumer API を使用する方法について説明しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 
-* [Kafka ログの分析](apache-kafka-log-analytics-operations-management.md)
-* [Kafka クラスター間でデータをレプリケートする](apache-kafka-mirroring.md)
-* [HDInsight における Kafka Streams API](apache-kafka-streams-api.md)
+* [Apache Kafka ログを分析する](apache-kafka-log-analytics-operations-management.md)
+* [Apache Kafka クラスター間でデータをレプリケートする](apache-kafka-mirroring.md)
+* [HDInsight における Apache Kafka Streams API](apache-kafka-streams-api.md)

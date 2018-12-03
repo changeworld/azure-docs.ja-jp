@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/21/2018
-ms.openlocfilehash: 1f8537408325aff0ba3ec198ed0e2bb697134845
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 74cdaed91624e9d0602ce6a85ccc5cd341b9519e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036344"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496623"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
-このチュートリアルでは、Apache Storm トポロジを使用して、HDInsight の Apache Kafka でデータを読み書きする方法について説明します。 また、Storm クラスター上の HDFS 互換ストレージにデータを保持する方法についても説明します。
+このチュートリアルでは、[Apache Storm](https://storm.apache.org/) トポロジを使用して、HDInsight の [Apache Kafka](https://kafka.apache.org/) でデータを読み書きする方法について説明します。 また、Storm クラスター上の [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 互換ストレージにデータを保持する方法についても説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -37,7 +37,7 @@ ms.locfileid: "51036344"
 
 * Kafka トピックの作成方法を熟知していること。 詳細については、[HDInsight の Kafka のクイックスタート](./kafka/apache-kafka-get-started.md)に関するドキュメントをご覧ください。
 
-* Storm ソリューション (トポロジ) の作成とデプロイの方法を熟知していること。 具体的には、Flux フレームワークを使用するトポロジです。 詳細については、[Java での Storm トポロジの作成](./storm/apache-storm-develop-java-topology.md)に関するドキュメントをご覧ください。
+* Storm ソリューション (トポロジ) の作成とデプロイの方法を熟知していること。 具体的には、[Flux](https://storm.apache.org/releases/current/flux.html) フレームワークを使用するトポロジです。 詳細については、[Java での Storm トポロジの作成](./storm/apache-storm-develop-java-topology.md)に関するドキュメントをご覧ください。
 
 * [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) 以上 HDInsight 3.5 以降には Java 8 が必要です。
 
@@ -63,7 +63,7 @@ ms.locfileid: "51036344"
 
 ## <a name="storm-and-kafka"></a>Storm と Kafka
 
-Apache Storm には、Kafka を操作するためのコンポーネントがいくつか用意されています。 このチュートリアルでは、次のコンポーネントを使用します。
+Apache Storm には、Apache Kafka を操作するためのコンポーネントがいくつか用意されています。 このチュートリアルでは、次のコンポーネントを使用します。
 
 * `org.apache.storm.kafka.KafkaSpout`: このコンポーネントは Kafka からデータを読み取ります。 このコンポーネントは、次のコンポーネントに依存します。
 
@@ -82,7 +82,7 @@ Apache Storm には、Kafka を操作するためのコンポーネントがい�
 これらのコンポーネントは、`org.apache.storm : storm-kafka` パッケージで提供されます。 Storm のバージョンに適合するパッケージ バージョンを使用してください。 HDInsight 3.6 の場合、Storm のバージョンは 1.1.0 です。
 その他の Kafka コンポーネントが含まれた `org.apache.kafka : kafka_2.10` パッケージも必要です。 Kafka のバージョンに適合するパッケージ バージョンを使用してください。 HDInsight 3.6 の場合、Kafka のバージョンは 0.10.0.0 です。
 
-次の XML は、Maven プロジェクトの `pom.xml` 内の依存関係宣言を示しています。
+次の XML は、[Apache Maven](https://maven.apache.org/) プロジェクトの `pom.xml` 内の依存関係宣言を示しています。
 
 ```xml
 <!-- Storm components for talking to Kafka -->
@@ -369,7 +369,7 @@ streams:
 
 | dev.properties ファイル | 説明 |
 | --- | --- |
-| `kafka.zookeeper.hosts` | Kafka クラスターの Zookeeper ホスト。 |
+| `kafka.zookeeper.hosts` | Kafka クラスターの [Apache ZooKeeper](https://zookeeper.apache.org/) ホスト。 |
 | `kafka.broker.hosts` | Kafka ブローカー ホスト (ワーカー ノード)。 |
 | `kafka.topic` | トポロジで使用される Kafka トピック。 |
 | `hdfs.write.dir` | Kafka-reader トポロジによる書き込み先のディレクトリ。 |
@@ -384,7 +384,7 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 ![Azure 仮想ネットワークにおける Strom クラスターと Kafka クラスターの図](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
 > [!NOTE]
-> SSH や Ambari など、クラスター上の他のサービスは、インターネット経由でアクセスできます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
+> SSH や [Apache Ambari](https://ambari.apache.org/) など、クラスター上の他のサービスは、インターネット経由でアクセスできます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
 
 Azure 仮想ネットワークを作成し、その仮想ネットワーク内に Kafka クラスターと Storm クラスターを作成するには、次の手順に従います。
 
@@ -637,8 +637,8 @@ Azure Portal を使用してリソース グループを削除するには:
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Storm トポロジを使用して、HDInsight の Kafka に対して書き込み/読み取りを実行する方法を説明しました。 また、HDInsight で使用される HDFS 互換ストレージにデータを格納する方法も説明しました。
+このチュートリアルでは、[Apache Storm](https://storm.apache.org/) トポロジを使用して、HDInsight の [Apache Kafka](https://kafka.apache.org/) に対して書き込み/読み取りを実行する方法を説明しました。 また、HDInsight で使用される [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 互換ストレージにデータを格納する方法も説明しました。
 
-HDInsight の Kafka の使用方法の詳細については、[Kafka Producer および Consumer API の使用](kafka/apache-kafka-producer-consumer-api.md)に関するドキュメントをご覧ください。
+HDInsight の Apache Kafka の使用方法の詳細については、[Apache Kafka Producer および Consumer API の使用](kafka/apache-kafka-producer-consumer-api.md)に関するドキュメントを参照してください。
 
 Linux ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「[Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md)」を参照してください。

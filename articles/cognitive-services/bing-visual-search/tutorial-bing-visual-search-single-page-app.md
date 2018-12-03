@@ -10,16 +10,26 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: b493f65e47f5e4c932ed1229e4c00ee1af3cd5ab
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161856"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443897"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>チュートリアル: Visual Search シングルページ Web アプリ
 
 Bing Visual Search API は、Bing.com/images に表示される画像の詳細のようなエクスペリエンスを提供します。 Visual Search を使うと、画像を指定して、見た目が似た画像、ショッピング ソース、画像を含む Web ページなど、画像に関する分析情報を取得できます。 
+
+このチュートリアルでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
+
+Azure portal でサブスクリプションを開始するには、次の手順に従います。
+1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
+2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
+3. 新しいリソースの名前を [`Name`] に入力します。
+4. `Pay-As-You-Go` サブスクリプションを選択します。
+5. `S9` 価格レベルを選択します。
+6. [`Enable`] をクリックしてサブスクリプションを開始します。
 
 このチュートリアルでは、Bing Image Search チュートリアルのシングルページ Web アプリを拡張しています ([シングルページ Web アプリ](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)に関するページを参照)。 このチュートリアルを開始するための完全なソース コードについては、[シングルページ Web アプリ (ソース コード)](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md) に関するページを参照してください。 このチュートリアルの最終的なソース コードについては、[Visual Search シングルページ Web アプリ](tutorial-bing-visual-search-single-page-app-source.md)に関するページを参照してください。
 

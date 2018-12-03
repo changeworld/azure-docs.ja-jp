@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: edebd1361e39a338672b4249dd159e5c1d4078ce
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2df767ef92ca056535e2d70a53a1588c9e89c647
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294154"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316788"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-c"></a>クイック スタート: Bing Image Search SDK と C# を使用して画像を検索する
 
@@ -24,7 +24,6 @@ ms.locfileid: "46294154"
 このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
-
 * [Visual Studio 2017](https://visualstudio.microsoft.com/vs/whatsnew/) の任意のエディション。
 * [Cognitive Image Search NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/1.2.0)。
 
@@ -32,8 +31,9 @@ Visual Studio に Bing Image Search SDK をインストールするには、Visu
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
 
-## <a name="create-and-initialize-the-application"></a>アプリケーションの作成と初期化
+## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
 まず Visual Studio で新しい C# コンソール アプリケーションを作成します。 次のパッケージをプロジェクトに追加します。
 

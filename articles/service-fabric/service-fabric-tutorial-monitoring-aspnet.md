@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b592ac10d483bbf0ca058e87f819b8f67847c54e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9bbff92b7706fd207894616b83580c4ddf85e5eb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296110"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444786"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル: Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
 
@@ -79,6 +79,8 @@ Application Insights は、Azure のアプリケーション パフォーマン�
 1. サービス名を右クリックして、**[Application Insights の構成...]** をクリックします。
 
     ![AI の構成](./media/service-fabric-tutorial-monitoring-aspnet/configure-ai.png)
+>[!NOTE]
+>プロジェクト タイプによっては、サービスの名前を右クリックするときに、[追加]、[Application Insights Telemetry] の順にクリックする必要があります。
 
 2. **[開始 (無料)]**.をクリックします。
 3. (Azure サブスクリプションの設定にも使用した) アカウントにサインインし、Application Insights リソースを作成したサブスクリプションを選択します。 [リソース] ボックスの *[Application Insights の既存のリソース]* でリソースを探します。 **[登録]** をクリックして Application Insights をサービスに追加します。
@@ -253,7 +255,7 @@ public async Task<IActionResult> Delete(string name)
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]
 > * Application Insights をお使いのアプリケーション用に構成する
 > * 応答のテレメトリを収集してサービス間の HTTP ベース通信を追跡する

@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eebeb8d1f27631e7ecb40072f78d6a04b5152a8f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9811c51485ec30e7fe692c52f4e65cefd93e5cb0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277139"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499080"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。
@@ -62,7 +62,7 @@ Azure AD Connect で既定の構成が使用されていない場合 (たとえ�
 
 ![同期の遅延](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report-preview"></a>オブジェクト レベルの同期エラー レポート (プレビュー)
+## <a name="object-level-synchronization-error-report"></a>オブジェクト レベルの同期エラー レポート
 Windows Server AD と Azure AD との間で Azure AD Connect を使って ID データを同期するときに発生する同期エラーについてのレポートは、この機能で入手できます。
 
 * このレポートには、同期クライアント (Azure AD Connect Version 1.1.281.0 以降) によって記録されたエラーが含まれます。
@@ -74,7 +74,7 @@ Windows Server AD と Azure AD との間で Azure AD Connect を使って ID デ
   * オブジェクトとエラー (カテゴリごと) の一覧表示
   * エラーについてのすべてのデータを一元化
   * 競合エラーのあるオブジェクトを並べて比較
-  * エラー レポートを CVS としてダウンロード (近日公開予定)
+  * エラー レポートを CVS としてダウンロード
 
 ### <a name="categorization-of-errors"></a>エラー カテゴリの分類
 レポートでは、既存の同期エラーが次のカテゴリで分類されます。

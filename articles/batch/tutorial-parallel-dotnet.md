@@ -2,21 +2,21 @@
 title: 並列ワークロードの実行 - Azure Batch .NET
 description: チュートリアル - Batch .NET クライアント ライブラリを使用して、Azure Batch で ffmpeg を使用してメディア ファイルをトランスコードします。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 09/07/2018
-ms.author: danlep
+ms.date: 11/20/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 02b715ade9a9a537f6bd0e476ada299140bff4bb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 7e654e070ce64b0f5e7f9fb5734bf0ec1584dbf6
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815513"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423611"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル: .NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -41,7 +41,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 * Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-* [Windows 64 ビット版の ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip)。 この ZIP ファイルをローカル コンピューターにダウンロードします。 このチュートリアルで必要なのは、この ZIP ファイルのみです。 ファイルを解凍したり、ローカルにインストールしたりする必要はありません。 
+* [Windows 64 ビット版の ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip)。 この ZIP ファイルをローカル コンピューターにダウンロードします。 このチュートリアルで必要なのは、この ZIP ファイルのみです。 ファイルを解凍したり、ローカルにインストールしたりする必要はありません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Visual Studio ソリューション ファイル `BatchDotNetFfmpegTutorial.sln` が含まれているディレクトリに移動します。
 
-Visual Studio でソリューション ファイルを開き、`program.cs` 内の資格情報文字列を、お使いのアカウントに関して取得した値で更新します。 例: 
+Visual Studio でソリューション ファイルを開き、`Program.cs` 内の資格情報文字列を、お使いのアカウントに関して取得した値で更新します。 例: 
 
 ```csharp
 // Batch account credentials
@@ -104,7 +104,7 @@ Visual Studio またはコマンド ライン (`dotnet build` コマンドと `d
 次に、それを実行します。 サンプル アプリケーションを実行すると、コンソールの出力は次のようになります。 実行中、プールのコンピューティング ノードを開始する際に、`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` で一時停止が発生します。 
 
 ```
-Sample start: 12/12/2017 3:20:21 PM
+Sample start: 11/19/2018 3:20:21 PM
 
 Container [input] created.
 Container [output] created.
@@ -120,17 +120,15 @@ Monitoring all tasks for 'Completed' state, timeout in 00:30:00...
 Success! All tasks completed successfully within the specified timeout period.
 Deleting container [input]...
 
-Sample end: 12/12/2017 3:29:36 PM
+Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
-
 
 プール、コンピューティング ノード、ジョブ、タスクを監視するには、Azure Portal で Batch アカウントに移動します。 たとえば、プール内のコンピューティング ノードのヒート マップを確認するには、**[プール]** > *WinFFmpegPool* の順にクリックします。
 
 タスクが実行されていると、ヒート マップは次のようになります。
 
 ![プールのヒート マップ](./media/tutorial-parallel-dotnet/pool.png)
-
 
 既定の構成でアプリケーションを実行する場合、通常の実行時間は約 **10 分間**です。 プールの作成に最も時間がかかります。
 
@@ -178,7 +176,7 @@ CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 `Program.cs` 内の 2 つのメソッドは、ファイルのアップロードに関連しています。
 
 * `UploadResourceFilesToContainerAsync`: ResourceFile オブジェクトのコレクションを返し、内部的に `UploadResourceFileToContainerAsync` を呼び出して、`inputFilePaths` パラメーターで渡される各ファイルをアップロードします。
-* `UploadResourceFileToContainerAsync`: 各ファイルを BLOB として入力用コンテナーにアップロードします。 ファイルのアップロード後、BLOB の Shared Access Signature (SAS) を取得し、それを表す ResourceFile オブジェクトを返します。 
+* `UploadResourceFileToContainerAsync`: 各ファイルを BLOB として入力用コンテナーにアップロードします。 ファイルのアップロード後、BLOB の Shared Access Signature (SAS) を取得し、それを表す ResourceFile オブジェクトを返します。
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -198,9 +196,9 @@ List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
 
 次に、`CreatePoolIfNotExistAsync` が呼び出されて、コンピューティング ノードのプールが Batch アカウントに作成されます。 この定義済みのメソッドは、[BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) メソッドを使用してノードの数、VM のサイズ、プールの構成を設定します。 ここで、[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) オブジェクトでは、[ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) に、Azure Marketplace で公開されている Windows Server イメージを指定します。 Batch は、Azure Marketplace のさまざまな VM イメージだけでなく、カスタム VM イメージもサポートしています。
 
-ノードの数と VM のサイズは、定義済みの定数を使用して設定されます。 Batch では専用ノードと[低優先度ノード](batch-low-pri-vms.md)がサポートされているため、ご利用のプールではそのいずれかまたは両方を使用できます。 専用ノードは、プール用に予約されています。 低優先度ノードは、Azure の VM の余剰容量から割引価格で提供されます。 低優先度ノードは、Azure に十分な容量がない場合に使用できなくなります。 このサンプルは、既定で、サイズ *Standard_A1_v2* の低優先度ノードが 5 つだけ含まれているプールを作成します。 
+ノードの数と VM のサイズは、定義済みの定数を使用して設定されます。 Batch では専用ノードと[低優先度ノード](batch-low-pri-vms.md)がサポートされているため、ご利用のプールではそのいずれかまたは両方を使用できます。 専用ノードは、プール用に予約されています。 低優先度ノードは、Azure の VM の余剰容量から割引価格で提供されます。 低優先度ノードは、Azure に十分な容量がない場合に使用できなくなります。 このサンプルは、既定で、サイズ *Standard_A1_v2* の低優先度ノードが 5 つだけ含まれているプールを作成します。
 
-ffmpeg アプリケーションは、プールの構成に [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) を追加することで、コンピューティング ノードにデプロイされます。 
+ffmpeg アプリケーションは、プールの構成に [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) を追加することで、コンピューティング ノードにデプロイされます。
 
 [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) メソッドは、プールを Batch サービスに送信します。
 
@@ -208,7 +206,7 @@ ffmpeg アプリケーションは、プールの構成に [ApplicationPackageRe
 ImageReference imageReference = new ImageReference(
     publisher: "MicrosoftWindowsServer",
     offer: "WindowsServer",
-    sku: "2012-R2-Datacenter-smalldisk",
+    sku: "2016-Datacenter-smalldisk",
     version: "latest");
 
 VirtualMachineConfiguration virtualMachineConfiguration =
@@ -220,7 +218,7 @@ pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
     targetDedicatedComputeNodes: DedicatedNodeCount,
     targetLowPriorityComputeNodes: LowPriorityNodeCount,
-    virtualMachineSize: PoolVMSize,                                                
+    virtualMachineSize: PoolVMSize,
     virtualMachineConfiguration: virtualMachineConfiguration);
 
 pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
@@ -234,7 +232,7 @@ await pool.CommitAsync();
 
 ### <a name="create-a-job"></a>ジョブを作成する
 
-Batch ジョブでは、タスクの実行対象となるプールと、作業の優先順位やスケジュールなどのオプションの設定を指定します。 このサンプルでは、`CreateJobAsync` の呼び出しを使用してジョブを作成します。 この定義済みのメソッドは、[BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) メソッドを使用してプールにジョブを作成します。 
+Batch ジョブでは、タスクの実行対象となるプールと、作業の優先順位やスケジュールなどのオプションの設定を指定します。 このサンプルでは、`CreateJobAsync` の呼び出しを使用してジョブを作成します。 この定義済みのメソッドは、[BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) メソッドを使用してプールにジョブを作成します。
 
 [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudjob.commitasync) メソッドは、ジョブを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
 
@@ -252,7 +250,7 @@ await job.CommitAsync();
 
 このサンプルでは、コマンド ラインの実行後に MP3 ファイルの [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) オブジェクトを作成します。 各タスクの出力ファイル (この場合は 1 つ) は、タスクの [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) プロパティを使用して、リンクされているストレージ アカウントのコンテナーにアップロードされます。
 
-その後、このサンプルは、[AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
+その後、このサンプルは、[AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -289,7 +287,7 @@ return tasks
 
 ### <a name="monitor-tasks"></a>タスクの監視
 
-Batch によってタスクがジョブに追加されると、関連付けられたプール内のコンピューティング ノードで実行するために自動的にキューに登録され、スケジュールが設定されます。 指定した設定に基づいて、Batch は、タスクのキューへの登録、スケジュール設定、再試行など、タスク管理作業すべてを処理します。 
+Batch によってタスクがジョブに追加されると、関連付けられたプール内のコンピューティング ノードで実行するために自動的にキューに登録され、スケジュールが設定されます。 指定した設定に基づいて、Batch は、タスクのキューへの登録、スケジュール設定、再試行など、タスク管理作業すべてを処理します。
 
 タスクの実行を監視する方法は多数ありますが、 このサンプルでは、完了と、タスクの失敗または成功の状態のみをレポートするよう `MonitorTasks` メソッドを定義します。 `MonitorTasks` コードでは、[ODATADetailLevel](/dotnet/api/microsoft.azure.batch.odatadetaillevel) を指定して、タスクについて最小限の情報のみを効率的に選択します。 その後、[TaskStateMonitor](/dotnet/api/microsoft.azure.batch.taskstatemonitor) を作成します。これは、タスクの状態を監視するためのヘルパー ユーティリティを提供します。 `MonitorTasks` で、サンプルはすべてのタスクが制限時間内に `TaskState.Completed` に達するまで待ちます。 その後、ジョブを終了し、完了してもゼロ以外の終了コードなどのエラーが発生している可能性があるタスクに関するレポートを作成します。
 

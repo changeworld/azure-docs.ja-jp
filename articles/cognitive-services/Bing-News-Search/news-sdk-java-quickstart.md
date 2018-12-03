@@ -10,16 +10,16 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 7919f13e8c5aaa592a416190d3cd11edbf31af2c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: f01f31c5cfc30ac31ea41db2a8504454e1f05799
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802479"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316873"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-java"></a>クイック スタート: Bing News Search SDK (Java)
 
-Bing News Search SDK には、ニュースのクエリと結果の解析に関する REST API 機能が用意されています。 
+Bing News Search SDK には、ニュースのクエリと結果の解析に関する REST API 機能が用意されています。  **[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。 
 
 [Java Bing News Search SDK サンプルのソース コード](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)は、Git Hub で入手できます。
 

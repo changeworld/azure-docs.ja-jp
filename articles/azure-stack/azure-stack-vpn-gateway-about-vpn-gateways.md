@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: d94b7f7f2f032278f71053e5de8bb2935af01f3f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300151"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496211"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Azure Stack の VPN ゲートウェイについて
 
@@ -117,6 +117,10 @@ SKU を選択する場合、次を考慮してください。
 *注 (1)* - インターネット経由でのクロスプレミス接続では、VPN スループットが保証されるわけではありません。 この値は、達成可能な最大スループットです。  
 *注 (2)* - トンネルの最大数は、すべてのサブスクリプションの Azure Stack デプロイの合計です。  
 *注 (3)* - Basic SKU に対しては BGP ルーティングはサポートされません。
+
+>[!NOTE]
+>2 つの Azure Stack デプロイ間に作成できるのは、サイト間 VPN 接続だけです。  これは、同じ IP アドレスに対して許容される VPN 接続が 1 つだけであるというプラットフォームの制限によるものです。  Azure Stack では、そのシステム内のすべての VPN Gateway に単一のパブリック IP を使用するマルチテナント ゲートウェイが活用されているため、2 つの Azure Stack システム間に存在できる VPN 接続は 1 つだけです。  この制限は、単一の IP アドレスを使用する VPN Gateway に複数のサイト間 VPN 接続を接続する場合にも当てはまります。  Azure Stack では、同じ IP アドレスを使用して複数のローカル ネットワーク ゲートウェイ リソースを作成することはできません。
+
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 2e65313207e2bb29ae269425012cc6c340261ba4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b13f2e5c96ba50fc76d7bfae256e5fcc1c8b56ce
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888341"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443459"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>チュートリアル: Bing Visual Search アップロードの解説
 
@@ -23,6 +23,15 @@ ms.locfileid: "48888341"
 
 このチュートリアルは、Bing Visual Search の応答の内容を調査したい開発者向けに提供されています。 すべての利用と表示の要件を適用するわけではありません (たとえば、Microsoft のプライバシー ポリシーへのリンクを提供しません)。 すべての利用要件については、「[Bing Search API の利用と表示の要件](./use-and-display-requirements.md)」を参照してください。
 
+このチュートリアルでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
+
+Azure portal でサブスクリプションを開始するには、次の手順に従います。
+1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
+2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
+3. 新しいリソースの名前を [`Name`] に入力します。
+4. `Pay-As-You-Go` サブスクリプションを選択します。
+5. `S9` 価格レベルを選択します。
+6. [`Enable`] をクリックしてサブスクリプションを開始します。
 
 ## <a name="where-to-start"></a>どこから始めるか
 
