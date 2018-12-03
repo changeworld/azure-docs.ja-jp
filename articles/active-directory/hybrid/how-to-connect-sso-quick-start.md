@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
    - ファイアウォールまたはプロキシで DNS ホワイトリストを許可している場合は、**\*.msappproxy.net** の URL に対するポート 443 での接続をホワイトリストに登録します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
 
     >[!NOTE]
-    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用_しない_場合の詳細については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
+    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合の詳細については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
 
 * **サポートされている Azure AD Connect トポロジを使用する**: 使用している Azure AD Connect トポロジが[こちら](plan-connect-topologies.md)で説明されているサポートされているトポロジの 1 つであることを確認してください。
 
@@ -206,7 +206,7 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 
 特定のユーザーについてこの機能をテストするには、次の条件がすべて満たされていることを確認してください。
   - ユーザーが会社のデバイスでサインインしている。
-  - デバイスが Active Directory ドメインに参加している。 デバイスは、[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は_ありません_。
+  - デバイスが Active Directory ドメインに参加している。 デバイスは、[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は _ありません_。
   - デバイスが、企業のワイヤードまたはワイヤレス ネットワーク上や、VPN 接続などのリモート アクセス接続を介してドメイン コントローラー (DC) に直接接続している。
   - グループ ポリシーを使用して、このユーザーに[機能がロールアウト](##step-3-roll-out-the-feature)されている。
 
