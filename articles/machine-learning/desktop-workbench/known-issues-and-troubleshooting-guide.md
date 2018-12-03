@@ -234,7 +234,7 @@ Windows のローカル Docker コンテナーで実行している場合、`aml
 一般に、これを行う必要はありません。 ただし、インストールを消去する必要がある場合は、以下の手順で行います。
 
 - Windows の場合:
-  - 最初に、_コントロール パネル_の _[プログラムの追加と削除]_ アプレットを使って、_Azure Machine Learning Workbench_ アプリケーションのエントリを削除します。  
+  - 最初に、_コントロール パネル_ の _[プログラムの追加と削除]_ アプレットを使って、_Azure Machine Learning Workbench_ アプリケーションのエントリを削除します。  
   - その後、次のいずれかのスクリプトをダウンロードして実行します。
     - [Windows コマンド ライン スクリプト](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd)。
     - [Windows PowerShell スクリプト](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1)  (スクリプトを実行する前に、管理者特権の PowerShell ウィンドウで `Set-ExecutionPolicy Unrestricted` を実行することが必要な場合があります)。
