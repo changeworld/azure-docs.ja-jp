@@ -78,7 +78,7 @@ VM の場所を選択する際には、GPU VM が一部の Azure リージョン
 7. 残りの設定を完了し、購入情報を確認します。 [購入] をクリックして VM を作成します。 この仮想マシンに割り当てられた IP アドレスを書き留めます。 
 
 ### <a name="create-a-new-project-in-azure-ml-workbench"></a>Azure ML Workbench で新しいプロジェクトを作成する 
-_TensorFlow を使用して MNIST を分類する_例、または _CNTK を使用して MNIST データセットを分類する_例を使用できます。
+_TensorFlow を使用して MNIST を分類する_ 例、または _CNTK を使用して MNIST データセットを分類する_ 例を使用できます。
 
 ### <a name="create-a-new-compute-target"></a>新しい計算ターゲットを作成する
 Azure ML Workbench からコマンド ラインを起動します。 次のコマンドを入力します。 下の例に含まれるプレースホルダー テキストは、実際の名前、IP アドレス、ユーザー名、およびパスワードの値に置き換えてください。 
