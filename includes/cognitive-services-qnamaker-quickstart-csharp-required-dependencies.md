@@ -17,7 +17,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/02/2018
 ms.locfileid: "48019055"
 ---
-**Program.cs** の先頭で、単一の_using_文を次の行に置き換えて、プロジェクトに必要な依存関係を追加します。
+**Program.cs** の先頭で、単一の _using_ 文を次の行に置き換えて、プロジェクトに必要な依存関係を追加します。
 
 ```csharp
 using System;
