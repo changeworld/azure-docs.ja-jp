@@ -102,7 +102,7 @@ MySQL Server サービスのエンドポイントを構成するには、次の�
 5. **[パブリック ポート]** と **[プライベート ポート]** の両方に、**3306** などのポート番号を入力し、**[OK]** をクリックします。
 
 ## <a name="add-a-windows-firewall-rule-to-allow-mysql-traffic"></a>Windows Firewall ルールを追加して MySQL トラフィックを許可する
-インターネットからの MySQL トラフィックを許可する Windows ファイアウォール ルールを追加するには、MySQL サーバー仮想マシンで、_管理者特権の Windows PowerShell コマンド プロンプト_から、次のコマンドを実行します。
+インターネットからの MySQL トラフィックを許可する Windows ファイアウォール ルールを追加するには、MySQL サーバー仮想マシンで、_管理者特権の Windows PowerShell コマンド プロンプト_ から、次のコマンドを実行します。
 
     New-NetFirewallRule -DisplayName "MySQL57" -Direction Inbound –Protocol TCP –LocalPort 3306 -Action Allow -Profile Public
 
