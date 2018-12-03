@@ -48,7 +48,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
    1. コマンド プロンプトに、次のコマンドを入力します。
      
        `$MS = New-PSSession -ComputerName <IP address for DATA 0> -Credential SSAdmin -ConfigurationName "SSAdminConsole"`
-   2. 表示されたダイアログ ボックスで、デバイス管理者のパスワードを入力します。 既定のパスワードは _Password1_です。
+   2. 表示されたダイアログ ボックスで、デバイス管理者のパスワードを入力します。 既定のパスワードは _Password1_ です。
      
       ![PowerShell の [資格情報] ダイアログ ボックス](./media/storsimple-8000-create-manage-support-package/IC740962.png)
    3. **[OK]** を選択します。
