@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: c0d9494d24feaee80a9be92f047ca1d91d42c82c
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 87d15f7b351f2b8b6a8c010651d82faa66b28918
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452226"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276467"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -92,7 +92,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
     "autoUpgradeMinorVersion": true,
     "settings": {
       "skipDos2Unix":false,
-      "timestamp":123456789,          
+      "timestamp":123456789          
     },
     "protectedSettings": {
        "commandToExecute": "<command-to-execute>",

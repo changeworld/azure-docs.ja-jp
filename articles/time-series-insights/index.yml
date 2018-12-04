@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b5ef9d9c464ff9968e6a3ad8a9771271aa492abe
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 0e124b3fbf216f95a64017b7413612e0056328a3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629278"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848325"
 documentType: LandingData
 title: Azure Time Series Insights のドキュメント
 metadata:
@@ -41,7 +41,7 @@ sections:
     - image:
         src: https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg
       text: Azure Time Series Insights の探索
-      href: /azure/time-series-insights/time-series-quickstart
+      href: /azure/time-series-insights/time-series-update-quickstart
 - title: リファレンス
   items:
   - type: list

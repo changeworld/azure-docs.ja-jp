@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: f5c74055747cacbede479e12397bbb66ac74d10e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 13d09471191deed670db97a9f18e15bc9577dd1a
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615638"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713420"
 ---
 # <a name="use-the-azure-machine-learning-cli-extension"></a>Azure Machine Learning CLI 拡張機能の使用
 
@@ -43,7 +43,7 @@ CLI は、Azure Machine Learning SDK に取って代わるものではありま�
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
 > [!NOTE]
-> CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+> CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLfree)を作成してください。
 
 ## <a name="install-the-extension"></a>拡張機能のインストール
 

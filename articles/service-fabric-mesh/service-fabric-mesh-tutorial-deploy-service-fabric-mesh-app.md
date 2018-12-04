@@ -24,7 +24,7 @@ ms.locfileid: "46963323"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>チュートリアル: Service Fabric Mesh アプリケーションをデプロイする
 
-このチュートリアルはシリーズの第 3 部です。ここでは、Azure Service Fabric Mesh Web アプリケーションを Visual Studio から直接 発行する方法について説明します。
+このチュートリアルはシリーズの第 3 部です。ここでは、Azure Service Fabric mesh Web アプリケーションを Visual Studio から直接 発行する方法について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 > [!div class="checklist"]

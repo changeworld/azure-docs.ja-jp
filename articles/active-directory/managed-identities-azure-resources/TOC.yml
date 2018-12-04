@@ -73,7 +73,7 @@ items:
       href: qs-configure-powershell-windows-vm.md
     - name: Azure Resource Manager テンプレート
       href: qs-configure-template-windows-vm.md
-    - name: REST
+    - name: REST ()
       href: qs-configure-rest-vm.md
     - name: Azure SDK
       href: qs-configure-sdk-windows-vm.md
@@ -87,7 +87,7 @@ items:
       href: qs-configure-powershell-windows-vmss.md
     - name: Azure Resource Manager テンプレート
       href: qs-configure-template-windows-vmss.md
-    - name: REST
+    - name: REST ()
       href: qs-configure-rest-vmss.md
   - name: VM でのマネージド ID の利用
     items:
@@ -107,7 +107,7 @@ items:
       href: how-to-manage-ua-identity-powershell.md
     - name: Azure Resource Manager テンプレート
       href: how-to-manage-ua-identity-arm.md
-    - name: REST
+    - name: REST ()
       href: how-to-manage-ua-identity-rest.md
 - name: リファレンス
   items:
@@ -134,12 +134,12 @@ items:
   - name: Azure リソースのマネージド ID をサポートする Azure サービス
     href: services-support-msi.md
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-msi
+    href: https://stackoverflow.com/questions/tagged/azure-msi
   - name: AAD 開発者フォーラム
     href: https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences
-ms.openlocfilehash: bf5d9c7ef01b485cac235f3be179e70910e0aaaa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: e269ecd7b33738a3fde63a403d961b65e0f4deb5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221401"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841610"

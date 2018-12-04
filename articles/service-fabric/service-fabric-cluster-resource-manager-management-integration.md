@@ -77,7 +77,7 @@ HealthEvents          :
 2. アップグレード ドメインの分散の制約に現在違反していること。 これは、特定のアップグレード ドメインのレプリカ数が、そのパーティションの限度よりも多いことを示します。
 3. 違反を起こしているレプリカを含むノード。 この例では、"Node.8" という名前のノードです。
 4. このパーティションでアップグレードが現在実行されているかどうか ("Currently Upgrading -- false")
-5. このサービスの分散ポリシー: "Distribution Policy -- Packing"。 これは `RequireDomainDistribution` の[配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)で制御されます。 "パッキング" は、この例では DomainDistribution が _必須ではなかった_ ことを示しています。その結果、このサービスに配置ポリシーが指定されていなかったことがわかります。 
+5. このサービスの分散ポリシー: "Distribution Policy -- Packing"。 これは `RequireDomainDistribution` の[配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)で制御されます。 "パッキング" は、この例では DomainDistribution が_必須ではなかった_ことを示しています。その結果、このサービスに配置ポリシーが指定されていなかったことがわかります。 
 6. レポートの生成日時 (2015 年 8 月 10 日午後 7 時 13 分 2 秒)
 
 このような情報から運用環境で発生するアラートが生成され、問題点が明らかになります。また、この情報は、正しくないアップグレードを検出し、停止するためにも使用されます。 このケースでは、リソース マネージャーがアップグレード ドメインにレプリカをまとめる必要があったのはなぜなのか、理由を探ることができます。 通常、他のアップグレード ドメインのノードがダウンしていたためなどの理由で、パッキングは一時的なものです。
