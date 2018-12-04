@@ -90,7 +90,7 @@ MySQL リソース プロバイダーをデプロイするには、管理者特�
 | **VMLocalCredential** | MySQL リソースプロバイダー VM のローカル管理者アカウントの資格情報。 | _必須_ |
 | **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ |
 | **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure AD を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
-| **DependencyFilesLocalPath** | 統合システムの場合のみ、証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 切断された環境では、[mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) をこのディレクトリにダウンロードします。 必要に応じて、ここで 1 つの Windows Update MSU パッケージをコピーできます。 | _省略可能_ (統合システムまたは切断された環境には_必須_) |
+| **DependencyFilesLocalPath** | 統合システムの場合のみ、証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 切断された環境では、[mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) をこのディレクトリにダウンロードします。 必要に応じて、ここで 1 つの Windows Update MSU パッケージをコピーできます。 | _省略可能_ (統合システムまたは切断された環境には _必須_) |
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
 | **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 |
 | **RetryDuration** | 再試行間のタイムアウト間隔 (秒単位)。 | 120 |
