@@ -48,7 +48,7 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>パスワード ハッシュ同期は、パススルー認証のフォールバックとして機能しますか。
 
-いいえ。 パススルー認証は、パスワード ハッシュ同期に自動的にフェールオーバー_されません_。 ユーザーのサインイン エラーを回避するには、[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)向けにパススルー認証を構成する必要があります。
+いいえ。 パススルー認証は、パスワード ハッシュ同期に自動的にフェールオーバー _されません_。 ユーザーのサインイン エラーを回避するには、[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)向けにパススルー認証を構成する必要があります。
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
 
