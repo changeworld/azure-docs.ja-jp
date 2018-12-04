@@ -219,7 +219,7 @@ GRANT ALL PRIVILEGES ON DATABASE eventregistration TO manager;
 「`\q`」を入力して PostgreSQL クライアントを終了します。
 
 > [!NOTE]
-> ベスト プラクティスとしては、管理者ユーザーを使用する代わりに、特定のアプリケーションに対して作成するデータベース ユーザーのアクセス許可を制限します。 この例では、`manager` ユーザーには `eventregistration` データベースに_のみ_完全な権限が与えられています。
+> ベスト プラクティスとしては、管理者ユーザーを使用する代わりに、特定のアプリケーションに対して作成するデータベース ユーザーのアクセス許可を制限します。 この例では、`manager` ユーザーには `eventregistration` データベースに _のみ_ 完全な権限が与えられています。
 
 ### <a name="test-app-connectivity-to-production-database"></a>アプリから運用データベースへの接続をテストする
 
@@ -275,7 +275,7 @@ git commit -m "ensure azure automation"
 
 チュートリアルの前半で、PostgreSQL データベースに接続する環境変数を定義しました。
 
-App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用し、環境変数を_アプリ設定_として設定します。
+App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用し、環境変数を _アプリ設定_ として設定します。
 
 次の例では、データベース接続の詳細をアプリ設定として指定します。 
 
