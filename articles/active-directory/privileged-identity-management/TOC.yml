@@ -59,6 +59,8 @@ items:
     items:
     - name: ロールを割り当てる
       href: pim-resource-roles-assign-roles.md
+    - name: 外部ユーザーを招待する
+      href: pim-resource-roles-external-users.md
     - name: 要求の承認
       href: pim-resource-roles-approval-workflow.md
     - name: ロールを拡張または更新する
@@ -92,9 +94,9 @@ items:
       - name: アクセス レビューを完了する
         href: pim-resource-roles-complete-access-review.md
   expanded: true
-ms.openlocfilehash: b0f1103eca9ac1ac22c4d971b2b51b5c2012dccb
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 235d0444428072aa10558989904b92222e6fdbd1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497316"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723365"

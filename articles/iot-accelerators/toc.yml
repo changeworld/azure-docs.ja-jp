@@ -25,12 +25,14 @@ items:
       href: iot-accelerators-remote-monitoring-monitor.md
     - name: デバイスの問題の検出
       href: iot-accelerators-remote-monitoring-automate.md
-    - name: デバイスの構成と管理
+    - name: デバイスの構成
       href: iot-accelerators-remote-monitoring-manage.md
     - name: アラートでの根本原因分析の実施
       href: iot-accelerators-remote-monitoring-root-cause-analysis.md
     - name: アラートの利用とデバイスの問題の修正
       href: iot-accelerators-remote-monitoring-maintain.md
+    - name: デバイス構成の一括更新
+      href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
     - name: エッジでの異常の検出
       href: iot-accelerators-remote-monitoring-edge.md
   - name: デバイスのシミュレーション
@@ -81,6 +83,8 @@ items:
       href: iot-accelerators-remote-monitoring-add-edge-device.md
     - name: IoT Edge パッケージのインポート
       href: iot-accelerators-remote-monitoring-import-edge-package.md
+    - name: 自動デバイス管理パッケージのインポート
+      href: iot-accelerators-remote-monitoring-import-adm-package.md
     - name: SIM データの統合
       href: iot-accelerators-remote-monitoring-telefonica-sim.md
     - name: シミュレート対象デバイスを作成します
@@ -225,9 +229,9 @@ items:
     href: iot-accelerators-faq-cf.md
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
-ms.openlocfilehash: bdd52d0023fbf43343cc5108216c6f11e35b89aa
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: b36278d1e2a85cd7759d81b022fb1883b7ca2aa6
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824848"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680941"

@@ -125,8 +125,12 @@ items:
       href: profanity-filtering.md
     - name: 単語アラインメント情報を受信する
       href: word-alignment.md
+    - name: コンテンツの翻訳を防止する
+      href: prevent-translation.md
     - name: 動的ディクショナリ機能を使用する
       href: dynamic-dictionary.md
+    - name: ファイアウォールの内側で翻訳する
+      href: firewalls.md
   - name: リファレンス
     items:
     - name: v3 Translator Text API のリファレンス
@@ -235,9 +239,9 @@ items:
       href: https://stackoverflow.com/questions/tagged/microsoft-translator
     - name: UserVoice
       href: https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide
-ms.openlocfilehash: fd4087d50e8e1213d95548b148dd7ceaeaae8b8b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 4a1d51ba49f50ba5450a725e530a490f32b4acf4
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974973"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678408"

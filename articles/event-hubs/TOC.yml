@@ -104,6 +104,8 @@ items:
     maintainContext: true
 - name: ハウツー ガイド
   items:
+  - name: Python を使用したイベントの送信、受信、およびキャプチャ
+    href: event-hubs-python.md
   - name: 診断ログの設定
     href: event-hubs-diagnostic-logs.md
   - name: Apache Kafka 用 Event Hubs
@@ -184,9 +186,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 28260650a8859f76aa6d8bd6ff9333d57c65e55a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d6fb88ed6bfcf48cb35da068e50b670f4b1b685c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281458"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726969"
