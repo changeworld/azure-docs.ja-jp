@@ -39,7 +39,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 * 選択した言語に固有の要件をインストールします。
 
-    | Language | 内線番号 |
+    | 言語 | 拡張機能 |
     | -------- | --------- |
     | **C#** | [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI ツール](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
     | **Java** | [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
