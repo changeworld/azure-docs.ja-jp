@@ -40,14 +40,14 @@ ms.locfileid: "51282715"
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
-次のシナリオはサポートされて_いません_。
+次のシナリオはサポートされて _いません_。
 
 - [資格情報が漏洩した](../reports-monitoring/concept-risk-events.md#leaked-credentials)ユーザーの検出。
-- Azure AD Domain Services を使用するには、パスワード ハッシュの同期をテナントで有効にする必要があります。 そのため、パススルー認証_のみ_を使用するテナントは、Azure AD Domain Services を必要とするシナリオに対応していません。
+- Azure AD Domain Services を使用するには、パスワード ハッシュの同期をテナントで有効にする必要があります。 そのため、パススルー認証 _のみ_ を使用するテナントは、Azure AD Domain Services を必要とするシナリオに対応していません。
 - パススルー認証は [Azure AD Connect Health](whatis-hybrid-identity-health.md) にはTS統合されていません。
 
 >[!IMPORTANT]
->サポートされていないシナリオ_のみ_の対処法として (Azure AD Connect Health 統合を除く)、Azure AD Connect ウィザードの [[オプション機能]](how-to-connect-install-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。
+>サポートされていないシナリオ _のみ_ の対処法として (Azure AD Connect Health 統合を除く)、Azure AD Connect ウィザードの [[オプション機能]](how-to-connect-install-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。
 
 >[!NOTE]
 パスワード ハッシュ同期を有効にすると、オンプレミスのインフラストラクチャが中断された場合に認証をフェールオーバーするオプションが提供されます。 パススルー認証からパスワード ハッシュ同期へのこのフェールオーバーは自動的には行われません。 Azure AD Connect を使用して手動でサインイン方法を切り替える必要があります。 Azure AD Connect を実行しているサーバーで障害が発生した場合、パススルー認証をオフにするには、Microsoft サポートに対処方法をお問い合わせください。
