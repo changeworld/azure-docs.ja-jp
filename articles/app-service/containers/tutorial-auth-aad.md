@@ -115,7 +115,7 @@ app.UseCors(builder =>
     builder.WithOrigins("http://<front_end_app_name>.azurewebsites.net"));
 ```
 
-変更を保存します。 _ローカル ターミナル ウィンドウ_に戻り、次のコマンドを実行して Git リポジトリに変更をコミットします。
+変更を保存します。 _ローカル ターミナル ウィンドウ_ に戻り、次のコマンドを実行して Git リポジトリに変更をコミットします。
 
 ```bash
 git add .
