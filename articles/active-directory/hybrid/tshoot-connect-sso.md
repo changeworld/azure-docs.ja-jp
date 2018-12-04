@@ -76,7 +76,7 @@ ms.locfileid: "47055902"
 - Azure AD Connect でシームレス SSO 機能が有効になっていることを確認します。 (ポートのブロックなどが原因で) この機能を有効にできない場合は、すべての[前提条件](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)が満たされていることを確認します。
 - [Azure AD Join](../active-directory-azureadjoin-overview.md) とシームレス SSO の両方をテナントで有効にしている場合は、Azure AD Join で問題が発生していないことを確認してください。 デバイスが Azure AD に登録され、ドメインに参加している場合は、Azure AD Join の SSO がシームレス SSO よりも優先されます。 Azure AD の SSO を使用している場合、"Windows に接続済み" というサインイン タイルが表示されます。
 - Azure AD の URL (https://autologon.microsoftazuread-sso.com) が、ユーザーのイントラネット ゾーンの設定に含まれていることを確認します。
-- 会社のデバイスが Active Directory ドメインに参加していることを確認します。 シームレス SSO が機能するために、デバイスが[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は_ありません_。
+- 会社のデバイスが Active Directory ドメインに参加していることを確認します。 シームレス SSO が機能するために、デバイスが[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は _ありません_。
 - ユーザーが Active Directory ドメイン アカウントでデバイスにログオンしていることを確認します。
 - ユーザーのアカウントが、シームレス SSO が設定されている Active Directory フォレストからのものであることを確認します。
 - デバイスが企業ネットワークに接続されていることを確認します。
