@@ -394,7 +394,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>仮想アプリケーション パスを設定する
 
-Web アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく_パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
+Web アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく _パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
 
 Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、仮想アプリケーション パスを設定します。 _&lt;appname>_ プレースホルダーを置き換えます。
 
