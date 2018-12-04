@@ -43,6 +43,8 @@ items:
       href: autogen-bitrate-ladder.md
   - name: エンティティを調べる
     items:
+    - name: アカウントとアセットのフィルター
+      href: filters-dynamic-manifest-overview.md
     - name: アセット
       href: assets-concept.md
     - name: コンテンツ キー ポリシー
@@ -65,8 +67,17 @@ items:
       href: content-protection-overview.md
     - name: アクセス制御を使用したマルチ DRM システム
       href: design-multi-drm-system-with-access-control.md
-  - name: ストリーミング ライブ
+  - name: ライブ イベントのストリーミング
     href: live-streaming-overview.md
+    items:
+    - name: クラウド DVR の使用
+      href: live-event-cloud-dvr.md
+    - name: 種類の比較
+      href: live-event-types-comparison.md
+    - name: 状態と課金
+      href: live-event-states-billing.md
+    - name: Latency
+      href: live-event-latency.md
 - name: ハウツー ガイド
   items:
   - name: v2 から v3 への移行
@@ -81,6 +92,14 @@ items:
       href: job-input-from-http-how-to.md
     - name: ローカル ファイルから - .NET
       href: job-input-from-local-file-how-to.md
+  - name: フィルターの作成
+    items:
+    - name: .NET の場合
+      href: filters-dynamic-manifest-dotnet-howto.md
+    - name: REST の場合
+      href: filters-dynamic-manifest-rest-howto.md
+    - name: CLI の場合
+      href: filters-dynamic-manifest-cli-howto.md
   - name: エンコード
     items:
     - name: 変換プリセットのカスタマイズ - .NET Core
@@ -163,9 +182,9 @@ items:
     href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: bd33adb7a9ed7f20b1d0ff0172f31023239dee9b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 499be85399b338ba12a4904cc06be4ffd9bdc06c
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631472"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633029"
