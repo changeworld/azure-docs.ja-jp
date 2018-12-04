@@ -82,7 +82,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 [手順 5: 新しい自動車の価格を予測する]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
-> [Azure AI Gallery](https://gallery.cortanaintelligence.com)には、次の実験の作業コピーがあります。 「**[Your first data science experiment - Automobile price prediction ](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**」(初めてのデータ サイエンス実験 - 自動車価格の予測) にアクセスし、**[Open in Studio]\(Studio で開く\)** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
+> [Azure AI Gallery](https://gallery.cortanaintelligence.com)には、次の実験の作業コピーがあります。 「**[初めてのデータ サイエンス実験 - 自動車価格の予測 ](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**」 にアクセスし、**[Open in Studio]\(Studio で開く\)** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
 
 
 ## <a name="step-1-get-data"></a>手順 1: データを取得する

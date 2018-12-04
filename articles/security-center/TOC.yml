@@ -20,8 +20,6 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: セキュリティ ポリシーの定義
-    href: tutorial-security-policy.md
   - name: リソースの保護
     href: tutorial-protect-resources.md
   - name: インシデントへの対応
@@ -44,6 +42,8 @@ items:
     href: security-center-app-services.md
   - name: セキュリティ ポリシーの表示
     href: security-center-azure-policy.md
+  - name: セキュリティ ポリシーの編集
+    href: tutorial-security-policy.md
   - name: 情報の保護ポリシーをカスタマイズする
     href: security-center-info-protection-policy.md
   - name: Security Center の設定
@@ -219,9 +219,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 4b6187ca5b56ea634524df0294725e23f188d492
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dfcf985e2f7dec286f6b64d508e8525986315a6c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310448"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843361"

@@ -45,7 +45,7 @@ items:
     href: active-directory-b2c-apps.md
   - name: 認証プロトコル
     href: active-directory-b2c-reference-protocols.md
-  - name: 組み込みのポリシー
+  - name: ユーザー フロー
     href: active-directory-b2c-reference-policies.md
   - name: Identity Experience Framework
     items:
@@ -322,9 +322,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: b77f66eba2486adbd53575698a23209b02f12236
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f46d54408e62f04519bc8e93f619d5e8d6d8640b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633573"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720509"
