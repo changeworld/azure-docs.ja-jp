@@ -33,6 +33,8 @@ items:
     href: automation-tutorial-troubleshoot-changes.md
 - name: ハウツー ガイド
   items:
+  - name: 勤務時間外の VM の起動/停止
+    href: automation-solution-vm-management.md
   - name: オンボード
     items:
     - name: 複数の VM のポータルからのオンボード
@@ -134,8 +136,6 @@ items:
       href: automation-managing-data.md
     - name: Azure Automation Runbook に JSON オブジェクトを渡す
       href: automation-pass-json-string.md
-    - name: 勤務時間外の VM の起動/停止
-      href: automation-solution-vm-management.md
     - name: Python 2 パッケージの管理
       href: python-packages.md
   - name: Hybrid Runbook Worker
@@ -285,9 +285,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: b723e1b7a4ac2aa589a3d8f1730e71bf9cb91418
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ed1c82c799ea64c43a531d912fbc09022a918414
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820394"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838975"

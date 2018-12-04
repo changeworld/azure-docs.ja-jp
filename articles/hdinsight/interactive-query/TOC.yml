@@ -29,12 +29,12 @@ items:
     - name: Azure Data Lake Store を使用する
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
-  - name: 対話型クエリへの Hadoop の使用
+  - name: 対話型クエリに対する Apache Hadoop の使用
     items:
-    - name: Hive と Hadoop
+    - name: Apache Hive と Hadoop
       href: ../hadoop/hdinsight-use-hive.md
       items:
-      - name: Zeppelin を使用する
+      - name: Apache Zeppelin を使用する
         href: ../hdinsight-connect-hive-zeppelin.md
         maintainContext: true
       - name: Tools for Visual Studio
@@ -46,7 +46,7 @@ items:
       - name: Data Lake Tools と Hortonworks サンドボックス
         href: ../hdinsight-hadoop-emulator-visual-studio.md
         maintainContext: true
-      - name: Hive ビューを使用する
+      - name: Apache Hive ビューを使用する
         href: ../hadoop/apache-hadoop-use-hive-ambari-view.md
         maintainContext: true
       - name: Beeline を使用する
@@ -74,7 +74,7 @@ items:
     - name: Hive と Java UDF を使用する
       href: ../hadoop/apache-hadoop-hive-java-udf.md
       maintainContext: true
-    - name: Hadoop ジョブを送信する
+    - name: Apache Hadoop ジョブを送信する
       href: ../hadoop/submit-apache-hadoop-jobs-programmatically.md
       maintainContext: true
   - name: 開発
@@ -91,7 +91,7 @@ items:
     - name: C# ユーザー定義関数を使用する
       href: ../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
       maintainContext: true
-    - name: Hive および Pig での Python の使用
+    - name: Apache Hive と Apache Pig で Python を使用する
       href: ../hadoop/python-udf-hdinsight.md
       maintainContext: true
     - name: 非対話型認証 .NET HDInsight アプリケーションを作成する
@@ -104,13 +104,13 @@ items:
       maintainContext: true
     - name: Power BI を対話型クエリに接続する
       href: ./apache-hadoop-connect-hive-power-bi-directquery.md
-    - name: Power BI を Hadoop に接続する
+    - name: Power BI を Apache Hadoop に接続する
       href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
       maintainContext: true
-    - name: Excel を Hadoop に接続する
+    - name: Excel を Apache Hadoop に接続する
       href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
       maintainContext: true
-    - name: Hive の JDBC ドライバーを使用して接続する
+    - name: Apache Hive JDBC ドライバーを使用して接続する
       href: ../hadoop/apache-hadoop-connect-hive-jdbc-driver.md
       maintainContext: true
     - name: 格納されたセンサー データを分析する
@@ -122,7 +122,7 @@ items:
     - name: フライト遅延データを分析する
       href: ../hdinsight-analyze-flight-delay-data-linux.md
       maintainContext: true
-    - name: Hive で Web サイトのログを分析する
+    - name: Apache Hive を使用して Web サイトのログを分析する
       href: ../hadoop/apache-hive-analyze-website-log.md
       maintainContext: true
   - name: クラスターを拡張する
@@ -136,10 +136,10 @@ items:
     - name: スクリプト アクションを開発する
       href: ../hdinsight-hadoop-script-actions-linux.md
       maintainContext: true
-    - name: Hive ライブラリを追加する
+    - name: Apache Hive ライブラリを追加する
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: Zeppelin を使用する
+    - name: Apache Zeppelin を使用する
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
       maintainContext: true
     - name: Grafana を使用する
@@ -180,10 +180,10 @@ items:
     - name: データ アクセスを制限する
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Ambari Views のユーザー承認
+    - name: Apache Ambari ビューに対してユーザーを承認する
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: クラスターの作成
       href: ../hdinsight-hadoop-provision-linux-clusters.md
@@ -210,7 +210,7 @@ items:
     - name: オンデマンド クラスターの作成
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
-    - name: Hadoop クラスターを管理する
+    - name: Apache Hadoop クラスターの管理
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: .NET SDK の使用
@@ -223,13 +223,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Ambari Web UI を使用してクラスターを管理する
+    - name: Apache Ambari Web UI を使用したクラスターの管理
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Ambari Web UI を使用してクラスターを最適化する
+      - name: Apache Ambari Web UI を使用したクラスターの最適化
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Ambari REST API を使用する
+      - name: Apache Ambari REST API の使用
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -245,7 +245,7 @@ items:
     - name: ストレージ アカウントを追加する
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Hadoop ジョブのデータをアップロードする
+    - name: Apache Hadoop ジョブのデータのアップロード
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: 複数の HDInsight クラスターと Data Lake Store
@@ -272,13 +272,13 @@ items:
     - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: HDFS のトラブルシューティング
+    - name: Apache Hadoop HDFS のトラブルシューティング
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: HIVE のトラブルシューティング
+    - name: Apache HIVE のトラブルシューティング
       href: ../hdinsight-troubleshoot-hive.md
       maintainContext: true
-    - name: YARN のトラブルシューティング
+    - name: Apache Hadoop YARN のトラブルシューティング
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: リソース
@@ -286,25 +286,25 @@ items:
       - name: Linux での HDInsight の使用方法
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Hadoop のメモリとパフォーマンス
+      - name: Apache Hadoop のメモリとパフォーマンス
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Linux での Hadoop YARN アプリケーション ログへのアクセス
+      - name: Linux での Apache Hadoop YARN アプリケーション ログへのアクセス
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Hadoop サービスのヒープ ダンプの有効化
+      - name: Apache Hadoop サービスのヒープ ダンプの有効化
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: WebHCat エラーの説明と解決策
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: メモリ不足エラーを修正するための Hive 設定
+      - name: Apache Hive の設定によるメモリ不足エラーの解決
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Ambari ビューを使用して Tez ジョブをデバッグする
+      - name: Apache Ambari ビューを使用した Apache TEZ ジョブのデバッグ
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Hive クエリを最適化する
+      - name: Apache Hive クエリの最適化
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
     maintainContext: true
@@ -324,7 +324,7 @@ items:
     - name: Azure AD DS を使用した HDInsight でのエンタープライズ セキュリティの構成
       href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
       maintainContext: true
-    - name: Hive ポリシーを構成する
+    - name: Apatch Hive ポリシーを構成する
       href: ../domain-joined/apache-domain-joined-run-hive.md
       maintainContext: true
     - name: エンタープライズ セキュリティでのクラスターの管理
@@ -366,13 +366,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Go SDK
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST ()
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: リソース
   items:
@@ -396,9 +396,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 3f3dbea40ea402d5fc6670931ddc8fc8f85d1ca4
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5dd6517a42a906db7297cbfe5bbded3299b0834a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364321"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308409"

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f7122c6147af2ed1af1f3b5e08458fd73f9aef6d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6e6db7ef2f2de075aea41a29e69b2c674efafa17
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279106"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635358"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する  
 
@@ -132,7 +132,7 @@ ms.locfileid: "51279106"
 ### <a name="azure-resource-template-for-log-analytics"></a>Log Analytics の Azure リソース テンプレート
 Log Analytics のアラートは、保存された検索条件を定期的に実行するアラート ルールによって作成されます。 クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、1 つまたは複数のアクションが実行されます。 
 
-Log Analytics の保存された検索と Log Analytics のアラートのリソース テンプレートは、ドキュメントの Log Analytics のセクションで入手できます。 詳細については、[Log Analytics の保存された検索とアラート](../monitoring/monitoring-solutions-resources-searches-alerts.md)に関するページを参照してください。図を含むサンプルとスキーマの詳細が記載されています。
+Log Analytics の保存された検索と Log Analytics のアラートのリソース テンプレートは、ドキュメントの Log Analytics のセクションで入手できます。 詳細については、[Log Analytics の保存された検索とアラート](../azure-monitor/insights/solutions-resources-searches-alerts.md)に関するページを参照してください。図を含むサンプルとスキーマの詳細が記載されています。
 
 ### <a name="azure-resource-template-for-application-insights"></a>Application Insights の Azure リソース テンプレート
 Application Insights リソースのログ アラートの種類は、`Microsoft.Insights/scheduledQueryRules/` です。 このリソースの種類の詳細については、[Azure Monitor - Scheduled Query Rules API の API リファレンス](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)を参照してください。
@@ -223,7 +223,7 @@ Application Insights リソースのログ アラートの種類は、`Microsoft
 ### <a name="powershell-cli-or-api-for-log-analytics"></a>Log Analytics 用の PowerShell、CLI、または API
 Log Analytics のアラート REST API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 そのためこの API は、PowerShell コマンド ラインからアクセスすることができ、検索結果は JSON 形式で出力されるため、プログラムからさまざまな方法で結果を利用できます。
 
-Powershell から API にアクセスする例を含めて、詳細については、[Log Analytics での REST API によるアラート ルールの作成と管理](../log-analytics/log-analytics-api-alerts.md)についてのページを参照してください。
+Powershell から API にアクセスする例を含めて、詳細については、[Log Analytics での REST API によるアラート ルールの作成と管理](../azure-monitor/platform/api-alerts.md)についてのページを参照してください。
 
 ### <a name="powershell-cli-or-api-for-application-insights"></a>Application Insights 用の PowerShell、CLI、または API
 [Azure Monitor - Scheduled Query Rules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) は REST API であり、Azure Resource Manager REST API との完全な互換性があります。 そのためこれは、Resource Manager コマンドレットだけでなく Azure CLI を使用して、Powershell を介して使用できます。

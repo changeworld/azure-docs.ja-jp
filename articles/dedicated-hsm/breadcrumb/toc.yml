@@ -1,0 +1,26 @@
+items:
+- name: 専用 HSM
+  tocHref: /dedicated-hsm/
+  topicHref: /dedicated-hsm/index
+  items:
+  - name: 概要
+    tocHref: /dedicated-hsm/Overview/
+    topicHref: /dedicated-hsm/index
+  - name: チュートリアル
+    tocHref: /dedicated-hsm/Tutorials/
+    topicHref: /dedicated-hsm/index
+  - name: 概念
+    tocHref: /dedicated-hsm/Concepts/
+    topicHref: /dedicated-hsm/index
+  - name: ハウツー ガイド
+    tocHref: /dedicated-hsm/How-to guides/
+    topicHref: /dedicated-hsm/index
+  - name: リソース
+    tocHref: /dedicated-hsm/Resources/
+    topicHref: /dedicated-hsm/index
+ms.openlocfilehash: d8842fc5fa708e7c42a9bdf415050afc5559a1d5
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447444"

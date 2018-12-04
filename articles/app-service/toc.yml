@@ -151,6 +151,8 @@ items:
       href: app-service-ip-restrictions.md
     - name: マネージド ID の使用
       href: app-service-managed-service-identity.md
+    - name: キー コンテナーからのシークレットの参照
+      href: app-service-key-vault-references.md
     - name: アプリケーション コードでの SSL 証明書の使用
       href: app-service-web-ssl-cert-load.md
     - name: TLS 相互認証の構成
@@ -283,9 +285,9 @@ items:
       href: ip-address-change-outbound.md
     - name: SSL アドレス
       href: ip-address-change-ssl.md
-ms.openlocfilehash: 37e6469480543ecefb1f11d225520f8e5e240665
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d11a61a70b58f0f4449eb2304d3396e350c6867f
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686638"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444496"
