@@ -81,9 +81,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![対話型の Spark クエリ結果の領域グラフ](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "対話型の Spark クエリ結果の領域グラフ")
 
-10. Notebook の **[ファイル]** メニューで、**[Save and Checkpoint] (保存とチェックポイント)** をクリックします。 
+10. Notebook の **[ファイル]** メニューで、**[Save and Checkpoint]\(保存とチェックポイント)** をクリックします。 
 
-11. [次のチュートリアル](apache-spark-use-bi-tools.md)をすぐに開始する場合は、Notebook を開いたままにしておきます。 開始しない場合は、Notebook の **[ファイル]** メニューで **[Close and Halt] (閉じて停止)** を選択し、Notebook をシャットダウンしてクラスター リソースを解放します。
+11. [次のチュートリアル](apache-spark-use-bi-tools.md)をすぐに開始する場合は、Notebook を開いたままにしておきます。 開始しない場合は、Notebook の **[ファイル]** メニューで **[Close and Halt]\(閉じて停止)** を選択し、Notebook をシャットダウンしてクラスター リソースを解放します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

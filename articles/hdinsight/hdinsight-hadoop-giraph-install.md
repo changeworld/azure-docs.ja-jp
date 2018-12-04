@@ -73,7 +73,7 @@ SimpleShortestPathsComputation サンプルを使用して、グラフのオブ�
 
     tiny_graph.txt ファイルを HDInsight クラスターのプライマリ ストレージにアップロードします。 データをアップロードする方法の詳細については、「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 
-    このデータは、[source\_id, source\_value,[[dest\_id], [edge\_value],...]] の形式を使用して有向グラフ内のオブジェクト間の関係を示しています。各行は、sourceid** オブジェクトと 1 つ以上の **dest\_id** オブジェクトとの関係を表現しています。 **edge\_value** (重み) は、**source_id** と **dest\_id** の間のつながりの強さまたは距離であると考えられます。
+    このデータは、[source\_id, source\_value,[[dest\_id], [edge\_value],...]] の形式を使用して有向グラフ内のオブジェクト間の関係を示しています。各行は、**source\_id** オブジェクトと 1 つ以上の **dest\_id** オブジェクトとの関係を表現しています。 **edge\_value** (重み) は、**source_id** と **dest\_id** の間のつながりの強さまたは距離であると考えられます。
 
     この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
 
