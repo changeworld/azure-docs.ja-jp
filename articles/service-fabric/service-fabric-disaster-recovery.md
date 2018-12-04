@@ -136,7 +136,7 @@ Service Fabric にはシード ノードの概念があります。 これは基
 スタンドアロンの Service Fabric クラスターと Azure の両方について、シードを実行するのは "プライマリ ノード タイプ" です。 プライマリ ノード タイプを定義するとき、Service Fabric では、システム サービスごとに最大 9 個のシード ノードと 7 個のレプリカを作成することで、提供されるノード数が自動的に使用されます。 ランダムに発生する障害によって、こうしたシステム サービス レプリカの大部分が同時に削除されると、前に説明したように、システム サービスはクォーラム損失に移行します。 シード ノードの大部分が失われた場合、クラスターは直ちにシャット ダウンします。
 
 ## <a name="next-steps"></a>次の手順
-- [Testability フレームワーク](service-fabric-testability-overview.md)
+-  [Testability フレームワーク](service-fabric-testability-overview.md)
 - ディザスター リカバリーと高可用性に関する他のリソースを読みます。 Microsoft は、これらのトピックに関して多数のガイダンスを公開しています。 これらのドキュメントの一部は他の製品で使用するための具体的な方法に関するものですが、 Service Fabric にも適用できる多くの一般的なベスト プラクティスが含まれます。
   - [可用性のチェックリスト](../best-practices-availability-checklist.md)
   - [ディザスター リカバリー訓練の実行](../sql-database/sql-database-disaster-recovery-drills.md)
