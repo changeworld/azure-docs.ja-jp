@@ -85,7 +85,7 @@ Azure Active Directory に接続する前に、次の情報が必要です。
 | Name  | 説明 | 構成ファイルの変数名 |
 | ------------- | ------------- | ------------- |
 | テナント名  | 認証に使用する[テナント名](quickstart-create-new-tenant.md) | `tenantName`  |
-| クライアント ID  | クライアント ID は、AAD の_アプリケーション ID_ に使用される OAuth の用語です。 |  `clientID`  |
+| クライアント ID  | クライアント ID は、AAD の _アプリケーション ID_ に使用される OAuth の用語です。 |  `clientID`  |
 
 Azure Cloud Shell での登録の応答から、`appId` の値をコピーして `config.js` という名前の新しいファイルを作成します。 次に、次のコードを追加して、値をかっこで囲まれたトークンに置き換えます。
 
