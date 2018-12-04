@@ -285,7 +285,7 @@ _Views\Todos\Index.cshtml_ を開きます。
 </th>
 ```
 
-`Html.ActionLink()` ヘルパー メソッドを含む `<td>` 要素を探します。 この `<td>` の_上_に、次の Razor コードで別の `<td>` 要素を追加します。
+`Html.ActionLink()` ヘルパー メソッドを含む `<td>` 要素を探します。 この `<td>` の _上_ に、次の Razor コードで別の `<td>` 要素を追加します。
 
 ```csharp
 <td>
