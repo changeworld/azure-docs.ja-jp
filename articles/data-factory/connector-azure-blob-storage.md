@@ -37,7 +37,7 @@ Blob Storage には、サポートされているソース データ ストア�
 - そのままの BLOB のコピー、または[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用した BLOB の解析/生成。
 
 >[!NOTE]
->Azure Storage のファイアウォール設定で _信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します_オプションを有効にした場合、Azure Integration Runtime を使用した Azure Blob Storage への接続は、ADF が信頼された Microsoft サービスとして扱われないため、アクセス不可エラーで失敗します。 代わりに、セルフホステッド統合ランタイムを使用して接続してください。
+>Azure Storage のファイアウォール設定で _信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します_ オプションを有効にした場合、Azure Integration Runtime を使用した Azure Blob Storage への接続は、ADF が信頼された Microsoft サービスとして扱われないため、アクセス不可エラーで失敗します。 代わりに、セルフホステッド統合ランタイムを使用して接続してください。
 
 ## <a name="get-started"></a>作業開始
 
