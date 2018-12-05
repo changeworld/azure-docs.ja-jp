@@ -1,6 +1,7 @@
 # 概要
 ## [Windows SQL Server VM について](virtual-machines-windows-sql-server-iaas-overview.md) 
- 
+## [リリース ノート](virtual-machines-windows-sql-server-iaas-release-notes.md) 
+
 # クイック スタート
 ## [SQL VM の作成 - ポータル](quickstart-sql-vm-create-portal.md)
 ## [SQL VM の作成 - PowerShell](quickstart-sql-vm-create-powershell.md)
@@ -40,6 +41,7 @@
 #### [複数リージョン](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### フェールオーバー クラスター インスタンス
 #### [構成](virtual-machines-windows-portal-sql-create-failover-cluster.md)
+## [SQL VM のライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)
 
 # リファレンス
 ## [Azure PowerShell](/powershell/azure/overview)

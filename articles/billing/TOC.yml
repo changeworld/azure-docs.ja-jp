@@ -5,6 +5,8 @@ items:
   items:
   - name: 課金内容を確認する
     href: billing-understand-your-bill.md
+  - name: 課金内容を確認する - EA のみ
+    href: billing-understand-your-bill-ea.md
   - name: 請求書および使用状況データを取得する
     href: billing-download-azure-invoice-daily-usage-date.md
   - name: サードパーティのサービス料金
@@ -18,6 +20,8 @@ items:
   items:
   - name: 予想外のコストを防ぐ
     href: billing-getting-started.md
+  - name: EA の価格の表示
+    href: billing-ea-pricing.md
   - name: リソース タグの利用
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
   - name: コストの分析を開始する - EA のみ
@@ -82,6 +86,8 @@ items:
     href: billing-how-to-change-azure-account-profile.md
   - name: 課金情報へのアクセスを許可する
     href: billing-manage-access.md
+  - name: Azure における EA のロール
+    href: billing-understand-ea-roles.md
   - name: パートナー ID をリンクする
     href: billing-partner-admin-link-started.md
   - name: 請求先アカウントを表示する
@@ -112,7 +118,9 @@ items:
     href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
   - name: Azure リソースの移動
     href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
-  - name: Enterprise サブスクリプションの作成
+  - name: 追加のサブスクリプションの作成
+    href: billing-create-subscription.md
+  - name: プログラムによる Enterprise サブスクリプションの作成
     href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
   - name: サブスクリプション情報のエクスポート
     href: billing-export-subscriptions.md
@@ -180,9 +188,9 @@ items:
     items:
     - name: Enterprise Reporting REST API
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 88e6864df13312c1963e39ff2c23eb63fde50bc2
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 5de05f7b1426a959c046b1e651f09c2f8e584b8a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268142"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497830"

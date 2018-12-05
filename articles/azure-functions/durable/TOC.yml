@@ -1,0 +1,137 @@
+items:
+- name: Durable Functions のドキュメント
+- name: 概要
+  items:
+  - name: Azure Functions について
+    href: ../functions-overview.md
+  - name: Durable Functions について
+    href: durable-functions-overview.md
+  - name: サーバーレス サービスの比較
+    href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+- name: クイック スタート
+  items:
+  - name: 持続的な関数の作成 - C#
+    displayName: get started, chaining
+    href: durable-functions-create-first-csharp.md
+  - name: 持続的な関数の作成 - JavaScript
+    displayName: get started, chaining
+    href: quickstart-js-vscode.md
+  expanded: true
+- name: チュートリアル
+  items:
+  - name: ファンイン/ファンアウト
+    href: durable-functions-cloud-backup.md
+  - name: モニター
+    href: durable-functions-monitor.md
+  - name: 人による操作
+    href: durable-functions-phone-verification.md
+  - name: Event Grid への発行
+    href: durable-functions-event-publishing.md
+- name: サンプル
+  items:
+  - name: コード サンプル
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+
+  - name: Azure CLI
+    href: ../functions-cli-samples.md
+- name: 概念
+  items:
+  - name: 関数の種類と機能
+    href: durable-functions-types-features-overview.md
+  - name: バインド
+    href: durable-functions-bindings.md
+  - name: タイマー
+    href: durable-functions-timers.md
+  - name: 外部イベント
+    href: durable-functions-external-events.md
+  - name: サブオーケストレーション
+    href: durable-functions-sub-orchestrations.md
+  - name: タスク ハブ
+    href: durable-functions-task-hubs.md
+  - name: 信頼性の高い実行
+    href: durable-functions-checkpointing-and-replay.md
+  - name: バージョン管理
+    href: durable-functions-versioning.md
+- name: ハウツー ガイド
+  items:
+  - name: 計画と設計
+    items:
+    - name: 関数チェーン
+      href: durable-functions-sequence.md
+    - name: 永続的オーケストレーション
+      href: durable-functions-eternal-orchestrations.md
+    - name: シングルトン オーケストレーション
+      href: durable-functions-singletons.md
+    - name: パフォーマンスとスケール
+      href: durable-functions-perf-and-scale.md
+    - name: 高可用性
+      href: durable-functions-disaster-recovery-geo-distribution.md
+  - name: 開発
+    items:
+    - name: Azure Portal での作成
+      href: durable-functions-create-portal.md
+    - name: 接続の管理
+      href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: エラー処理
+      href: durable-functions-error-handling.md
+    - name: 単体テスト
+      href: durable-functions-unit-testing.md
+    - name: Web ジョブとしての作成
+      href: durable-functions-webjobs-sdk.md
+  - name: デプロイ
+    items:
+    - name: 継続的なデプロイ
+      href: ../functions-continuous-deployment.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: ZIP 展開
+      href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: パッケージから実行
+      href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+  - name: 管理
+    items:
+    - name: インスタンス管理
+      href: durable-functions-instance-management.md
+  - name: 監視
+    items:
+    - name: 関数の監視
+      href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: カスタム オーケストレーションの状態
+      href: durable-functions-custom-orchestration-status.md
+  - name: トラブルシューティング
+    items:
+    - name: 診断
+      href: durable-functions-diagnostics.md
+- name: リファレンス
+  items:
+  - name: HTTP API
+    href: durable-functions-http-api.md
+- name: リソース
+  items:
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-functions
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/functions/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/regions/services/
+  - name: ビデオ
+    href: https://www.youtube.com/c/AzureFunctions
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
+  - name: スタック オーバーフロー
+    href: http://stackoverflow.com/questions/tagged/azure-functions
+  - name: Twitter
+    href: https://twitter.com/hashtag/DurableFunctions?src=hash
+  - name: 製品フィードバックの提供
+    href: https://feedback.azure.com/forums/355860-azure-functions
+  - name: Durable Functions GitHub リポジトリ
+    href: https://github.com/Azure/azure-functions-durable-extension
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
+ms.openlocfilehash: a6a0849aa272b53131c1bef7883fd0b0f76938fa
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52636616"

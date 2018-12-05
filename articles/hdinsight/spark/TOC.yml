@@ -3,9 +3,9 @@ items:
   href: /azure/hdinsight
 - name: 概要
   items:
-  - name: HDInsight 上の Spark について
+  - name: HDInsight 上の Apache Spark について
     href: apache-spark-overview.md
-  - name: HDInsight の Hadoop コンポーネント
+  - name: HDInsight の Apache Hadoop コンポーネント
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -13,19 +13,19 @@ items:
     maintainContext: true
 - name: クイック スタート
   items:
-  - name: Spark クラスターの作成 - ポータル
+  - name: Apache Spark クラスターの作成 - ポータル
     href: apache-spark-jupyter-spark-sql-use-portal.md
-  - name: Spark クラスターの作成 - PowerShell
+  - name: Apache Spark クラスターの作成 - PowerShell
     href: apache-spark-jupyter-spark-sql-use-powershell.md
-  - name: Spark クラスターの作成 - テンプレート
+  - name: Apache Spark クラスターの作成 - テンプレート
     href: apache-spark-jupyter-spark-sql.md
 - name: チュートリアル
   items:
-  - name: Spark クラスターに対するクエリの実行
+  - name: Apache Spark クラスターに対するクエリの実行
     href: apache-spark-load-data-run-query.md
-  - name: VSCode を使用した Spark クエリの実行
+  - name: VSCode を使用した Apache Spark クエリの実行
     href: ../hdinsight-for-vscode.md
-  - name: IntelliJ を使用した Spark クエリの実行
+  - name: IntelliJ を使用した Apache Spark クエリの実行
     href: apache-spark-intellij-tool-plugin.md
   - name: BI ツールを使用したデータの分析
     href: apache-spark-use-bi-tools.md
@@ -33,7 +33,7 @@ items:
     href: apache-spark-eventhub-streaming.md
   - name: 機械学習アプリの作成
     href: apache-spark-ipython-notebook-machine-learning.md
-  - name: IntelliJ での Spark アプリの作成
+  - name: IntelliJ での Apache Spark アプリの作成
     href: apache-spark-create-standalone-application.md
 - name: 方法
   items:
@@ -47,17 +47,17 @@ items:
       maintainContext: true
   - name: 開発
     items:
-    - name: 対話型の Spark シェルを使用する
+    - name: 対話型の Apache Spark シェルを使用する
       href: apache-spark-shell.md
-    - name: Livy を使用したリモート ジョブ
+    - name: Apache Livy を使用したリモート ジョブ
       href: apache-spark-livy-rest-interface.md
     - name: Eclipse を使用してアプリを作成する
       href: apache-spark-eclipse-tool-plugin.md
     - name: IntelliJ を使用してアプリを作成する
       href: apache-spark-intellij-tool-plugin.md
-    - name: SSH を介して IntelliJ を使用してリモートで Spark ジョブをデバッグする
+    - name: SSH を介して IntelliJ を使用してリモートで Apache Spark ジョブをデバッグする
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-    - name: VPN を介して IntelliJ を使用してリモートで Spark ジョブをデバッグする
+    - name: VPN を介して IntelliJ を使用してリモートで Apache Spark ジョブをデバッグする
       href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
     - name: 非対話型認証 .NET HDInsight アプリケーションを作成する
       href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
@@ -77,9 +77,9 @@ items:
     - name: VSCode 用 PySpark
       href: ../set-up-pyspark-interactive-environment.md
       maintainContext: true
-    - name: IntelliJ での Spark のデバッグ
+    - name: IntelliJ での Apache Spark のデバッグ
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-  - name: Spark でのノートの使用
+  - name: Apache Spark での Notebook の使用
     items:
     - name: ローカルの Jupyter Notebook を使用する
       href: apache-spark-jupyter-notebook-install-locally.md
@@ -89,7 +89,7 @@ items:
       href: apache-spark-jupyter-notebook-use-external-packages.md
     - name: スクリプト アクションを使用して Jupyter で外部のパッケージを使用する
       href: apache-spark-python-package-installation.md
-    - name: Zeppelin Notebook を使用する
+    - name: Apache Zeppelin Notebook を使用する
       href: apache-spark-zeppelin-notebook.md
   - name: 他の Azure サービスの使用
     items:
@@ -97,7 +97,7 @@ items:
       href: apache-spark-use-with-data-lake-store.md
     - name: Azure SQL Database に接続する
       href: apache-spark-connect-to-sql-database.md
-    - name: Spark と Cosmos DB を使用してラムダ アーキテクチャを実装する
+    - name: Apache Spark と Cosmos DB を使用してラムダ アーキテクチャを実装する
       href: ../../cosmos-db/lambda-architecture.md
       maintainContext: true
   - name: Spark ストリーミング
@@ -106,20 +106,20 @@ items:
       href: apache-spark-streaming-overview.md
     - name: 構造化ストリーミングの概要
       href: apache-spark-structured-streaming-overview.md
-    - name: YARN で可用性の高い Spark ストリーミング ジョブを作成する
+    - name: Apache Hadoop YARN で高可用性 Apache Spark ストリーミング ジョブを作成する
       href: apache-spark-streaming-high-availability.md
-    - name: Kafka を使った構造化ストリーミング
+    - name: Apache Kafka を使用した構造化ストリーミング
       href: ../hdinsight-apache-kafka-spark-structured-streaming.md
       maintainContext: true
-    - name: Kafka から CosmosDB への構造化ストリーミング
+    - name: Apache Kafka から CosmosDB への構造化ストリーミング
       href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
       maintainContext: true
-    - name: Kafka を使った Spark ストリーミング (DStream)
+    - name: Apache Kafka を使用した Spark ストリーミング (DStream)
       href: ../hdinsight-apache-spark-with-kafka.md
       maintainContext: true
-    - name: イベント処理を 1 回のみ伴う Spark ストリーミング ジョブの作成
+    - name: イベント処理を 1 回だけ伴う Apache Spark ストリーミング ジョブを作成する
       href: apache-spark-streaming-exactly-once.md
-  - name: Spark と Machine Learning
+  - name: Apache Spark と Machine Learning
     items:
     - name: 食品検査の結果を予測する
       href: apache-spark-machine-learning-mllib-ipython.md
@@ -129,11 +129,11 @@ items:
       href: apache-spark-deep-learning-caffe.md
     - name: Microsoft Cognitive Toolkit を使用する
       href: apache-spark-microsoft-cognitive-toolkit.md
-    - name: Spark 機械学習パイプラインの作成
+    - name: Apache Spark 機械学習パイプラインを作成する
       href: apache-spark-creating-ml-pipelines.md
   - name: ビッグ データの分析
     items:
-    - name: Spark を使用して HBase データを読み取る/書き込む
+    - name: Apache Spark を使用した Apache HBase データの読み取り/書き込み
       href: ../hdinsight-using-spark-query-hbase.md
       maintainContext: true
     - name: Application Insights Telemetry ログを分析する
@@ -155,16 +155,16 @@ items:
     - name: Mono のインストールまたは更新
       href: ../hdinsight-hadoop-install-mono.md
       maintainContext: true
-    - name: Hive ライブラリを追加する
+    - name: Apache Hive ライブラリを追加する
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: Giraph の使用
+    - name: Apache Giraph を使用する
       href: ../hdinsight-hadoop-giraph-install-linux.md
       maintainContext: true
     - name: Hue を使用する
       href: ../hdinsight-hadoop-hue-linux.md
       maintainContext: true
-    - name: Solr を使用する
+    - name: Apache Solr を使用する
       href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
     - name: 空のエッジ ノードを使用する
@@ -206,18 +206,18 @@ items:
     - name: データ アクセスを制限する
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Ambari Views のユーザー承認
+    - name: Apache Ambari ビューに対してユーザーを承認する
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: クラスター リソースの管理
       href: apache-spark-resource-manager.md
-    - name: 拡張履歴サーバーを使用して Spark アプリケーションを管理する
+    - name: 拡張された History Server を使用して Apache Spark アプリケーションを管理する
       href: apache-azure-spark-history-server.md
-    - name: Spark の設定を構成する
+    - name: Apache Spark の設定を構成する
       href: apache-spark-settings.md
-    - name: Spark ジョブの最適化
+    - name: Apache Spark ジョブを最適化する
       href: apache-spark-perf.md
     - name: IO キャッシュによるキャッシュを有効にする
       href: apache-spark-improve-performance-iocache.md
@@ -262,13 +262,13 @@ items:
       - name: Azure クラシック CLI を使用する
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
-    - name: Ambari Web UI を使用してクラスターを管理する
+    - name: Apache Ambari Web UI を使用したクラスターの管理
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Ambari Web UI を使用してクラスターを最適化する
+      - name: Apache Ambari Web UI を使用したクラスターの最適化
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Ambari REST API を使用する
+      - name: Apache Ambari REST API の使用
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -278,13 +278,13 @@ items:
     - name: ストレージ アカウントを追加する
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Hadoop ジョブのデータをアップロードする
+    - name: Apache Hadoop ジョブのデータのアップロード
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: 複数の HDInsight クラスターと Data Lake Store
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
-    - name: Sqoop でデータをインポートおよびエクスポートする
+    - name: Apache Sqoop を使用したデータのインポートとエクスポート
       href: ../hadoop/hdinsight-use-sqoop.md
       items:
       - name: SSH を使用した接続
@@ -303,7 +303,7 @@ items:
     - name: ワークフローの Oozie を使用する
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: 時間ベースの Oozie コーディネーターを使用する
+    - name: 時間ベースの Apache Oozie コーディネーターを使用する
       href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: クラスターとサービスのポートと URI
@@ -323,21 +323,21 @@ items:
       maintainContext: true
   - name: トラブルシューティング
     items:
-    - name: Spark ジョブのデバッグ
+    - name: Apache Spark ジョブのデバッグ
       href: apache-spark-job-debugging.md
-    - name: ジョブ グラフによる Spark ジョブのデバッグ
+    - name: ジョブ グラフによる Apache Spark ジョブのデバッグ
       href: apache-azure-spark-history-server.md
-    - name: IntelliJ を使用した Spark ジョブのデバッグ
+    - name: IntelliJ を使用した Apache Spark ジョブのデバッグ
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
     - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: Spark のトラブルシューティング
+    - name: Apache Spark のトラブルシューティング
       href: apache-troubleshoot-spark.md
-    - name: HDFS のトラブルシューティング
+    - name: Apache Hadoop HDFS のトラブルシューティング
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: YARN のトラブルシューティング
+    - name: Apache Hadoop YARN のトラブルシューティング
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: 既知の問題
@@ -347,25 +347,25 @@ items:
       - name: Linux での HDInsight の使用方法
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Hadoop のメモリとパフォーマンス
+      - name: Apache Hadoop のメモリとパフォーマンス
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Linux での Hadoop YARN アプリケーション ログへのアクセス
+      - name: Linux での Apache Hadoop YARN アプリケーション ログへのアクセス
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Hadoop サービスのヒープ ダンプの有効化
+      - name: Apache Hadoop サービスのヒープ ダンプの有効化
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: WebHCat エラーの説明と解決策
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: メモリ不足エラーを修正するための Hive 設定
+      - name: Apache Hive の設定によるメモリ不足エラーの解決
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Ambari ビューを使用して Tez ジョブをデバッグする
+      - name: Apache Ambari ビューを使用した Apache Tez ジョブのデバッグ
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Hive クエリを最適化する
+      - name: Apache Hive クエリの最適化
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
 - name: エンタープライズ対応
@@ -384,7 +384,7 @@ items:
     - name: Azure AD DS を使用した HDInsight でのエンタープライズ セキュリティの構成
       href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
       maintainContext: true
-    - name: Hive ポリシーを構成する
+    - name: Apatch Hive ポリシーを構成する
       href: ../domain-joined/apache-domain-joined-run-hive.md
       maintainContext: true
     - name: エンタープライズ セキュリティでのクラスターの管理
@@ -426,13 +426,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Go SDK
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST API
     href: /rest/api/hdinsight/
-  - name: REST API (Spark)
+  - name: REST API (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: リソース
   items:
@@ -456,9 +456,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 53f7e70e9ce7442ab37008c1c6614eec0783fd85
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 35ef5face0f64b6766993eeb7f546923726bd166
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428285"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584334"

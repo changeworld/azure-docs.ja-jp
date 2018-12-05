@@ -3,7 +3,7 @@ items:
   href: /azure/hdinsight
 - name: 概要
   items:
-  - name: HDInsight 上の Kafka について
+  - name: HDInsight の Apache Kafka について
     href: apache-kafka-introduction.md
   - name: コンポーネントのバージョン管理
     href: ../hdinsight-component-versioning.md
@@ -13,23 +13,23 @@ items:
     maintainContext: true
 - name: クイック スタート
   items:
-  - name: Kafka クラスターの作成 - ポータル
+  - name: Apache Kafka クラスターの作成 - ポータル
     href: apache-kafka-get-started.md
-  - name: Kafka クラスターの作成 - PowerShell
+  - name: Apache Kafka クラスターの作成 - PowerShell
     href: apache-kafka-quickstart-powershell.md
-  - name: Kafka クラスターの作成 - テンプレート
+  - name: Apache Kafka クラスターの作成 - テンプレート
     href: apache-kafka-quickstart-resource-manager-template.md
 - name: チュートリアル
   items:
-  - name: 1 - Spark Structured Streaming を使用する
+  - name: 1 - Apache Spark 構造化ストリーミングを使用する
     href: ../hdinsight-apache-kafka-spark-structured-streaming.md
     maintainContext: true
-  - name: 2 - Storm で Kafka から書き込み/読み取りを行う
+  - name: 2 - Apache Storm を使用して Apache Kafka から書き込み/読み取りを行う
     href: ../hdinsight-apache-storm-with-kafka.md
     maintainContext: true
-  - name: 3 - Kafka Producer API と Consumer API を使用する
+  - name: 3 - Apache Kafka Producer API と Consumer API を使用する
     href: apache-kafka-producer-consumer-api.md
-  - name: 4 - Kafka Streams API を使用してアプリを開発する
+  - name: 4 - Apache Kafka Streams API を使用してアプリを開発する
     href: apache-kafka-streams-api.md
 - name: 概念
   items:
@@ -44,26 +44,26 @@ items:
   items:
   - name: トピックの自動作成を有効にする
     href: apache-kafka-auto-create-topics.md
-  - name: IoT Hub で Kafka を使用する
+  - name: IoT Hub と共に Apache Kafka を使用する
     href: apache-kafka-connector-iot-hub.md
   - name: HDInsight アプリをインストールする
     href: ../hdinsight-apps-install-applications.md
     maintainContext: true
-  - name: 仮想ネットワークで Kafka を使用する
+  - name: 仮想ネットワークで Apache Kafka を使用する
     href: apache-kafka-connect-vpn-gateway.md
-  - name: Kafka データのレプリケート
+  - name: Apache Kafka データをレプリケートする
     href: apache-kafka-mirroring.md
-  - name: Kafka ログの分析
+  - name: Apache Kafka ログを分析する
     href: apache-kafka-log-analytics-operations-management.md
   - name: ストリーミング パイプラインを作成する
     items:
-    - name: Spark、Kafka、および Azure Cosmos DB
+    - name: Apache Spark、Apache Kafka、Azure Cosmos DB
       href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
       maintainContext: true
-    - name: Kafka と Spark (DStream)
+    - name: Apache Kafka、Apache Spark (DStream)
       href: ../hdinsight-apache-spark-with-kafka.md
       maintainContext: true
-    - name: Azure Container Service での Kafka の使用
+    - name: Azure Container Service で Apache Kafka を使用する
       href: apache-kafka-azure-container-services.md
   - name: 開発
     items:
@@ -119,7 +119,7 @@ items:
     - name: Apache Kafka RBAC と Apache Ranger の併用
       href: ../domain-joined/apache-domain-joined-run-kafka.md
       maintainContext: true
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: Linux クラスターを作成する
       href: ../hdinsight-hadoop-provision-linux-clusters.md
@@ -143,7 +143,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
-    - name: Hadoop クラスターを管理する
+    - name: Apache Hadoop クラスターの管理
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: .NET SDK の使用
@@ -156,13 +156,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Ambari Web UI を使用してクラスターを管理する
+    - name: Apache Ambari Web UI を使用したクラスターの管理
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Ambari Web UI を使用してクラスターを最適化する
+      - name: Apache Ambari Web UI を使用したクラスターの最適化
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Ambari REST API を使用する
+      - name: Apache Ambari REST API の使用
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -172,7 +172,7 @@ items:
     - name: ストレージ アカウントを追加する
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Hadoop ジョブのデータをアップロードする
+    - name: Apache Hadoop ジョブのデータのアップロード
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: 複数の HDInsight クラスターと Data Lake Store
@@ -196,10 +196,10 @@ items:
     - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: HDFS のトラブルシューティング
+    - name: Apache Hadoop HDFS のトラブルシューティング
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: YARN のトラブルシューティング
+    - name: Apache Hadoop YARN のトラブルシューティング
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: リソース
@@ -207,13 +207,13 @@ items:
       - name: Linux での HDInsight の使用方法
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Hadoop のメモリとパフォーマンス
+      - name: Apache Hadoop のメモリとパフォーマンス
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
       - name: Linux での Hadoop YARN アプリケーション ログへのアクセス
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Hadoop サービスのヒープ ダンプの有効化
+      - name: Apache Hadoop サービスのヒープ ダンプの有効化
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
     maintainContext: true
@@ -257,7 +257,7 @@ items:
     href: ../hdinsight-go-sdk-overview.md
   - name: REST ()
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: リソース
   items:
@@ -274,9 +274,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 9b172aaedcab44b4557368c5d2a5bd6dfd010903
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 0b0fc56015adb5fcecd5bcd6ce501c828e694164
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155016"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495675"

@@ -5,7 +5,7 @@ items:
   items:
   - name: 概要
     href: r-server-overview.md
-  - name: HDInsight の Hadoop コンポーネント
+  - name: HDInsight の Apache Hadoop コンポーネント
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -71,10 +71,10 @@ items:
     - name: Mono のインストールまたは更新
       href: ../hdinsight-hadoop-install-mono.md
       maintainContext: true
-    - name: Hive ライブラリを追加する
+    - name: Apache Hive ライブラリを追加する
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: Giraph の使用
+    - name: Apache Giraph を使用する
       href: ../hdinsight-hadoop-giraph-install-linux.md
       maintainContext: true
     - name: Hue を使用する
@@ -83,10 +83,10 @@ items:
     - name: R を使用する
       href: ../hdinsight-hadoop-r-scripts-linux.md
       maintainContext: true
-    - name: Solr を使用する
+    - name: Apache Solr を使用する
       href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
-    - name: Zeppelin を使用する
+    - name: Apache Zeppelin を使用する
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
       maintainContext: true
     - name: 空のエッジ ノードを使用する
@@ -128,10 +128,10 @@ items:
     - name: データ アクセスを制限する
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Ambari Views のユーザー承認
+    - name: Apache Ambari ビューに対してユーザーを承認する
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: Linux クラスターを作成する
       href: ../hdinsight-hadoop-provision-linux-clusters.md
@@ -171,13 +171,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Ambari Web UI を使用してクラスターを管理する
+    - name: Apache Ambari Web UI を使用したクラスターの管理
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Ambari Web UI を使用してクラスターを最適化する
+      - name: Apache Ambari Web UI を使用したクラスターの最適化
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Ambari REST API を使用する
+      - name: Apache Ambari REST API の使用
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -187,13 +187,13 @@ items:
     - name: ストレージ アカウントを追加する
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Hadoop ジョブのデータをアップロードする
+    - name: Apache Hadoop ジョブのデータのアップロード
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: 複数の HDInsight クラスターと Data Lake Store
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
-    - name: Sqoop でデータをインポートおよびエクスポートする
+    - name: Apache Sqoop を使用したデータのインポートとエクスポート
       href: ../hadoop/hdinsight-use-sqoop.md
       items:
       - name: SSH を使用した接続
@@ -204,10 +204,10 @@ items:
         href: ../hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
       - name: Azure PowerShell を使用して実行する
         href: ../hadoop/apache-hadoop-use-sqoop-powershell.md
-    - name: ワークフローの Oozie を使用する
+    - name: ワークフローに Apache Oozie を使用する
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: 時間ベースの Oozie コーディネーターを使用する
+    - name: 時間ベースの Apache Oozie コーディネーターを使用する
       href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: クラスターとサービスのポートと URI
@@ -231,13 +231,13 @@ items:
     - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: HDFS のトラブルシューティング
+    - name: Apache Hadoop HDFS のトラブルシューティング
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: HIVE のトラブルシューティング
+    - name: Apache HIVE のトラブルシューティング
       href: ../hdinsight-troubleshoot-hive.md
       maintainContext: true
-    - name: YARN のトラブルシューティング
+    - name: Apache Hadoop YARN のトラブルシューティング
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: リソース
@@ -245,25 +245,25 @@ items:
       - name: Linux での HDInsight の使用方法
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Hadoop のメモリとパフォーマンス
+      - name: Apache Hadoop のメモリとパフォーマンス
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Linux での Hadoop YARN アプリケーション ログへのアクセス
+      - name: Linux での Apache Hadoop YARN アプリケーション ログへのアクセス
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Hadoop サービスのヒープ ダンプの有効化
+      - name: Apache Hadoop サービスのヒープ ダンプの有効化
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: WebHCat エラーの説明と解決策
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: メモリ不足エラーを修正するための Hive 設定
+      - name: Apache Hive の設定によるメモリ不足エラーの解決
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Ambari ビューを使用して Tez ジョブをデバッグする
+      - name: Apache Ambari ビューを使用した Apache TEZ ジョブのデバッグ
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Hive クエリを最適化する
+      - name: Apache Hive クエリの最適化
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
     maintainContext: true
@@ -305,13 +305,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Go SDK
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST ()
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: リソース
   items:
@@ -337,9 +337,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: a34bc7152f94728891092e4686ea2f5412ecd120
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: fdf844f959d7832214795155c3af5c0cf3ec6a25
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361893"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495814"

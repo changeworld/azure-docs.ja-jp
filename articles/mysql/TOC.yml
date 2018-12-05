@@ -98,6 +98,8 @@ items:
       href: concepts-database-application-development.md
     - name: 接続の回復性
       href: concepts-connectivity.md
+    - name: Azure Kubernetes Service (AKS) を使用した開発
+      href: concepts-aks.md
   - name: レプリケーション
     items:
     - name: データイン レプリケーション
@@ -232,9 +234,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: a6f77b9d823edbdffedab97202697bf9535c6b8e
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 4bb7ab9d3944d958c1975663a7334d385f8cd9ed
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276569"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496355"

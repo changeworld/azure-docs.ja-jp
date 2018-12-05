@@ -29,6 +29,8 @@ items:
       items:
       - name: .NET
         href: tutorial-net-linux-virtual-machine.md
+      - name: Python
+        href: tutorial-python-linux-virtual-machine.md
     - name: Windows 仮想マシン
       items:
       - name: .NET
@@ -53,8 +55,10 @@ items:
     href: key-vault-ovw-security-worlds.md
   - name: 論理的な削除
     href: key-vault-ovw-soft-delete.md
-  - name: ストレージ アカウント キー
+  - name: マネージド ストレージ アカウント キー - Azure CLI
     href: key-vault-ovw-storage-keys.md
+  - name: マネージド ストレージ アカウント キー - PowerShell
+    href: key-vault-overview-storage-keys-powershell.md
   - name: 調整
     href: key-vault-ovw-throttling.md
   - name: 仮想ネットワーク サービス エンドポイント
@@ -154,9 +158,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 製品フィードバック
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 569075137e9dc417764a779eaae6df96022c1a44
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 31f4ed86656bbf95527e18603c5b951d31b6e0ec
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260843"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620032"
