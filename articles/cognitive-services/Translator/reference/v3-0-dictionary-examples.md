@@ -56,7 +56,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_1 つの承認_<br/>_ヘッダー_></td>
+    <td>_One authorization_<br/>_header_</td>
     <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
   </tr>
   <tr>
@@ -104,11 +104,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
   
   * `examples`: (ソース用語、ターゲット用語) ペアの例のリスト。 リストの各要素は、次のプロパティを持つオブジェクトです。
 
-    * `sourcePrefix`: 完全な例を形成するために `sourceTerm` の値の_前_に連結する文字列。 空白文字は、必要なときは既にそこに存在するので追加しないでください。 この値は空の文字列でもかまいません。
+    * `sourcePrefix`: 完全な例を形成するために `sourceTerm` の値の _前_ に連結する文字列。 空白文字は、必要なときは既にそこに存在するので追加しないでください。 この値は空の文字列でもかまいません。
 
     * `sourceTerm`: 実際の用語検索に等しい文字列。 完全な例を形成するために、この文字列は `sourcePrefix` および `sourceSuffix` を伴って追加されます。 その値は区別されており、ユーザー インターフェイス内で、太字にするなど、マークすることができます。
 
-    * `sourceSuffix`: 完全な例を形成するために `sourceTerm` の値の_後_に連結する文字列。 空白文字は、必要なときは既にそこに存在するので追加しないでください。 この値は空の文字列でもかまいません。
+    * `sourceSuffix`: 完全な例を形成するために `sourceTerm` の値の _後_ に連結する文字列。 空白文字は、必要なときは既にそこに存在するので追加しないでください。 この値は空の文字列でもかまいません。
 
     * `targetPrefix`: ターゲットを除けば、`sourcePrefix` に類似する文字列です。
 
