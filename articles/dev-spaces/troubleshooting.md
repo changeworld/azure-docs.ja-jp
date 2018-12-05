@@ -239,7 +239,7 @@ AKS クラスター内の名前空間で Dev Spaces を有効にすると、_min
 残念ながら、これはこれらのポッドで実行されている特定のサービスに干渉することがあります。 具体的には、これは Redis Cache を実行するポッドと干渉し、マスター/スレーブ通信での接続エラーと障害の原因になります。
 
 ### <a name="try"></a>次の操作を試してください。
-影響を受けるポッドを、Dev Spaces が有効になって_いない_クラスター内の名前空間に移動し、Dev Spaces が有効になっている名前空間内の内部で残りのアプリケーションの実行を継続できます。 Dev Spaces は、Dev Spaces に非対応の名前空間の内部に _mindaro-proxy_ コンテナーをインストールしません。
+影響を受けるポッドを、Dev Spaces が有効になって _いない_ クラスター内の名前空間に移動し、Dev Spaces が有効になっている名前空間内の内部で残りのアプリケーションの実行を継続できます。 Dev Spaces は、Dev Spaces に非対応の名前空間の内部に _mindaro-proxy_ コンテナーをインストールしません。
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev Spaces が既存の Dockerfile を使用してコンテナーをビルドしていないと思われる 
 
