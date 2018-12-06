@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2fdd8a586c9c8dae0ab9cec1176b71a137893b17
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8243ee2e657f42959c9f0a71c7c50fc1a2dda737
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384995"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966417"
 documentType: LandingData
 title: Azure Cosmos DB のドキュメント
 metadata:
@@ -13,13 +13,10 @@ metadata:
   description: Azure Cosmos DB を使用して、グローバルに分散されたマルチモデル データベースを構築する方法について説明します。 チュートリアルでは、ドキュメント、キー/値、グラフ データベースを作成して照会する方法について説明します。
   services: cosmos-db
   author: SnehaGunda
-  manager: kfile
+  ms.author: sngun
   ms.service: cosmos-db
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/26/2018
-  ms.author: sngun
 abstract:
   description: Azure Cosmos DB はグローバル分散型のマルチモデル データベース サービスであり、ドキュメント、キー値、ワイドカラム、グラフのデータベースをサポートします。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Cosmos DB の使用方法を確認してください。
   aside:
@@ -161,7 +158,7 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: " スケールを目的とした Azure Cosmos DB データベース アカウントを作成する"
+    - title: " スケールを目的とした Azure Cosmos DB データベース アカウントを作成する"
       href: /learn/modules/create-cosmos-db-for-scale/
       image:
         src: /learn/achievements/create-cosmos-db-for-scale.svg
