@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 829995d40a73dc181a28a467e4d16fef0bdeb454
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 398472df7caf0f702f43bc9d025d1e6ad7dcdd7e
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990656"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275081"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Cloudyn 用にストレージ アカウントを構成する
 

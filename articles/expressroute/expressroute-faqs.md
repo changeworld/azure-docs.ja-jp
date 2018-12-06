@@ -249,7 +249,7 @@ ExpressRoute Premium は、次の機能のコレクションです。
     *  Microsoft ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。
 
 
-### <a name="limits"></a>ExpressRoute プレミアムを有効にした場合、ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数はいくつですか。
+### <a name="limits"></a>ExpressRoute プレミアムを有効にした場合、ExpressRoute 回路で有効にできる VNet と ExpressRoute Global Reach の接続数はいくつですか。
 
 次の表に、ExpressRoute の上限と、ExpressRoute 回線ごとの VNet と ExpressRoute Global Reach の数を示します。
 

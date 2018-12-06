@@ -50,7 +50,7 @@ Marketplace 管理機能により、SQL IaaS 仮想マシン イメージを使�
 Marketplace 項目を使用して SQL VM をデプロイする前に、必ず **SQL IaaS 拡張機能**の最新バージョンをダウンロードしてください。 IaaS 拡張機能や対応するポータル拡張機能により、修正プログラムの自動適用やバックアップなどの追加機能が提供されます。 この拡張機能の詳細については、「[SQL Server Agent 拡張機能による Azure Virtual Machines での管理タスクの自動化](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)」を参照してください。
 
 > [!NOTE]
-> SQL IaaS 拡張機能は、Marketplace にあるすべて SQL on Windows イメージに _必須_ です。この拡張機能をダウンロードしなかった場合、VM のデプロイは失敗します。 これは Linux ベースの SQL 仮想マシン イメージでは使用されません。
+> SQL IaaS 拡張機能は、Marketplace にあるすべて SQL on Windows イメージに_必須_です。この拡張機能をダウンロードしなかった場合、VM のデプロイは失敗します。 これは Linux ベースの SQL 仮想マシン イメージでは使用されません。
 
 SQL VM のデプロイにはその他の選択肢もあります。[Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates) のテンプレートなどです。
 
