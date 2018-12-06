@@ -141,7 +141,7 @@ Workbench では、_az ml experiment submit_ コマンドを使用して、さ�
 ## <a name="running-a-script-locally-on-workbench-installed-runtime"></a>Workbench によってインストールされたランタイムでのスクリプトのローカル実行
 Workbench では、Workbench によってインストールされた Python 3.5.2 ランタイムに対してスクリプトを直接実行できます。 この既定のランタイムは、Workbench のセットアップ時にインストールされ、Azure Machine Learning のライブラリと依存関係が含まれています。 ローカル実行の実行結果とアーティファクトは、クラウド上の実行履歴サービスに引き続き保存されます。
 
-Docker ベースの実行とは異なり、この構成は Conda によって管理_されません_。 ローカルの Workbench Python 環境のパッケージの依存関係は、手動でプロビジョニングする必要があります。
+Docker ベースの実行とは異なり、この構成は Conda によって管理 _されません_。 ローカルの Workbench Python 環境のパッケージの依存関係は、手動でプロビジョニングする必要があります。
 
 次のコマンドで、Workbench によってインストールされた Python 環境でスクリプトをローカルに実行できます。 
 
