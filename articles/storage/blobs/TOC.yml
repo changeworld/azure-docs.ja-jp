@@ -127,7 +127,7 @@ items:
     - name: アクセス層
       href: storage-blob-storage-tiers.md
     - name: Azure Blob Storage のライフサイクルの管理
-      href: ../common/storage-lifecycle-managment-concepts.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      href: storage-lifecycle-management-concepts.md
     - name: イベントへの反応
       href: storage-blob-event-overview.md
     - name: スケーラビリティとパフォーマンスのターゲット
@@ -504,66 +504,6 @@ items:
           href: /rest/api/storagerp
         - name: Import/Export
           href: /rest/api/storageimportexport
-    - name: リソース
-      items:
-      - name: Azure のロードマップ
-        href: https://azure.microsoft.com/roadmap/?category=storage
-      - name: Azure Storage クライアント ツール
-        href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: フォーラム
-        href: https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata
-      - name: 価格
-        href: https://azure.microsoft.com/pricing/details/storage/blobs/
-      - name: 料金計算ツール
-        href: https://azure.microsoft.com/pricing/calculator/
-      - name: サービスの更新情報
-        href: https://azure.microsoft.com/updates/?product=storage
-      - name: スタック オーバーフロー
-        href: http://stackoverflow.com/questions/tagged/windows-azure-storage
-      - name: ビデオ
-        href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-      - name: Azure ストレージ エクスプローラー
-        items:
-        - name: ストレージ エクスプローラー
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: ストレージ エクスプローラーのリリース ノート
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: ストレージ エクスプローラーのトラブルシューティング
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: ストレージ エクスプローラーのアクセシビリティ
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: NuGet パッケージ
-        items:
-        - name: .NET 用 Azure Storage クライアント ライブラリ
-          href: https://www.nuget.org/packages/WindowsAzure.Storage/
-        - name: Azure Storage Data Movement Library
-          href: https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/
-        - name: Azure Configuration Manager
-          href: https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/
-      - name: ソース コード
-        items:
-        - name: .NET
-          items:
-          - name: BLOB、キュー、テーブル、ファイル
-            href: https://github.com/Azure/azure-storage-net
-          - name: データの移動
-            href: https://github.com/Azure/azure-storage-net-data-movement
-          - name: リソース プロバイダー
-            href: https://github.com/Azure/azure-sdk-for-net
-        - name: Node.js
-          href: http://azure.github.io/azure-storage-node/
-        - name: Java
-          href: https://github.com/Azure/azure-storage-java
-        - name: C++
-          href: https://github.com/Azure/azure-storage-cpp
-        - name: PHP
-          href: https://github.com/Azure/azure-storage-php
-        - name: Python
-          href: https://github.com/Azure/azure-storage-python
-        - name: Ruby
-          href: https://github.com/Azure/azure-storage-ruby
-        - name: iOS
-          href: https://github.com/Azure/azure-storage-ios
 - name: Data Lake Storage Gen2
   items:
   - name: Azure Data Lake Storage Gen1 のドキュメントに切り替え
@@ -650,6 +590,8 @@ items:
         href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Azure Databricks に接続する
       href: https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html
+    - name: Azure SQL Data Warehouse への接続
+      href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-sql-data-warehouse-polybase
   - name: リファレンス
     items:
     - name: REST ()
@@ -674,9 +616,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: bda06ecb2adbcf4aeea5e2877f37b4ddf2761d80
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc45425a3e20d18bbe43e4a41ca40bd6c2fe6b9a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957523"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013647"
