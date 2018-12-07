@@ -23,8 +23,8 @@ ms.locfileid: "51613955"
 
 このドキュメントでは、次の特定の環境とツールに重点を置いています。
 
-* [Azure Notebooks](#aznotebooks): Azure クラウドでホストされている Jupyter Notebook サービスです。 これは、Azure Machine Learning SDK が既にインストールされているため、作業を開始する__最も簡単な__方法です。
-* [Data Science Virtual Machine](#dsvm): __データ サイエンスの作業のために設計された__、Azure クラウド内の仮想マシンです。 Python 3、Conda、Jupyter Notebooks、Azure Machine Learning SDK は既にインストールされています。 VM には、ML ソリューションを開発するための人気の ML フレームワーク、ツール、エディターが備わっています。 これは、おそらく Azure プラットフォームにおいて ML の__最も包括的な__開発環境です。
+* [Azure Notebooks](#aznotebooks): Azure クラウドでホストされている Jupyter Notebook サービスです。 これは、Azure Machine Learning SDK が既にインストールされているため、作業を開始する __最も簡単な__ 方法です。
+* [Data Science Virtual Machine](#dsvm): __データ サイエンスの作業のために設計された__、Azure クラウド内の仮想マシンです。 Python 3、Conda、Jupyter Notebooks、Azure Machine Learning SDK は既にインストールされています。 VM には、ML ソリューションを開発するための人気の ML フレームワーク、ツール、エディターが備わっています。 これは、おそらく Azure プラットフォームにおいて ML の __最も包括的な__ 開発環境です。
 * [Jupyter Notebook](#jupyter): Jupyter Notebooks を既に使用している場合、SDK にはインストールすべきいくつかの追加機能があります。
 * [Visual Studio Code](#vscode): Visual Studio Code を使用する場合は、いくつかの有用な拡張機能をインストールできます。
 
@@ -48,9 +48,9 @@ ms.locfileid: "51613955"
 
 ## <a id="anotebooks"></a>Azure Notebooks
 
-[Azure Notebooks](https://notebooks.azure.com) (プレビュー) は、Azure クラウドにおける対話型開発環境です。 これは、Azure Machine Learning の開発を開始する__最も簡単な__方法です。
+[Azure Notebooks](https://notebooks.azure.com) (プレビュー) は、Azure クラウドにおける対話型開発環境です。 これは、Azure Machine Learning の開発を開始する __最も簡単な__ 方法です。
 
-* Azure Machine Learning SDK は__既にインストール__されています。
+* Azure Machine Learning SDK は __既にインストール__ されています。
 * Azure portal で Azure Machine Learning サービス ワークスペースを作成した後、ボタンをクリックすると、ワークスペースを操作する Azure Notebook 環境が自動的に構成されます。
 
 Azure Notebooks を使用して開発を開始するには、[Azure Machine Learning サービスの基本操作](quickstart-get-started.md)に関するドキュメントをご覧ください。
