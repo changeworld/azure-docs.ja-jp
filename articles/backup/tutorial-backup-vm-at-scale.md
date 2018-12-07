@@ -3,18 +3,18 @@ title: Azure 仮想マシンの大規模なバックアップ
 description: 同時に複数の仮想マシンを Azure にバックアップする
 services: backup
 keywords: 仮想マシンのバックアップ; 仮想マシン バックアップ; VM のバックアップ; VM バックアップ; Azure VM のバックアップ; バックアップとディザスター リカバリー
-author: markgalioto
-ms.author: markgal
+author: rayne-wiselman
+ms.author: raynew
 ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: dfe561e7a7231c8e7f9465819a01cd4b0a35f47c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 1d9daf5bdccb24db80eaf41597daa15a08ce1bd4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434543"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878305"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -52,7 +52,7 @@ Recovery Services コンテナーには、バックアップ データと、保�
 
 Recovery Services コンテナーは、保護する仮想マシンと同じ場所にある必要があります。 複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成します。 このチュートリアルでは、Recovery Services コンテナーを "*西ヨーロッパ*" に作成します。"*myVM*" (クイックスタートで作成された仮想マシン) は西ヨーロッパに作成されたためです。
 
-Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
+Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域に状態が通知され、確認することが出来ます。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
 
 Recovery Services コンテナーを作成する場合、既定では、コンテナーには geo 冗長ストレージがあります。 データの回復性を提供するために、geo 冗長ストレージは 2 つの Azure リージョン間でデータを複数回レプリケートします。
 
