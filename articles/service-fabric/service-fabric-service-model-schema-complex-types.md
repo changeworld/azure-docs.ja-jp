@@ -3064,10 +3064,10 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 ```
 ### <a name="content-element-details"></a>Content 要素の詳細
 
-#### <a name="extension"></a>内線番号
+#### <a name="extension"></a>Extension
 |Attribute|値|
 |---|---|
-|name|内線番号|
+|name|Extension|
 |minOccurs|0|
 |maxOccurs|unbounded|
 ## <a name="fabriccertificatetype-complextype"></a>FabricCertificateType complexType
