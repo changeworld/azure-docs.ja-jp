@@ -255,7 +255,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 
 ### <a name="network-security-group"></a>ネットワーク セキュリティ グループ
 
-|  アクションを表示します。                                                        |   Name                                                                |
+|  Action                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/read                  |   ネットワーク セキュリティ グループの取得                                          |
 | Microsoft.Network/networkSecurityGroups/write                 |   ネットワーク セキュリティ グループの作成または更新                             |
@@ -265,7 +265,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 
 ### <a name="network-security-group-rule"></a>ネットワーク セキュリティ グループの規則
 
-|  アクションを表示します。                                                        |   Name                                                                |
+|  Action                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Microsoft.Network/networkSecurityGroups/rules/read            |   規則の取得                                                            |
 | Microsoft.Network/networkSecurityGroups/rules/write           |   規則の作成または更新                                               |
@@ -273,7 +273,7 @@ Azure の場所、サブスクリプション、ネットワーク セキュリ�
 
 ### <a name="application-security-group"></a>アプリケーション セキュリティ グループ
 
-|  アクションを表示します。                                                                     | Name                                                     |
+|  Action                                                                     | Name                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | IP 構成をアプリケーション セキュリティ グループに結合する|
 | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | セキュリティ ルールをアプリケーション セキュリティ グループに結合する    |
