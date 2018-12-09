@@ -155,7 +155,7 @@ ms.locfileid: "47452039"
   az group deployment operation list -g ExampleGroup -n ExampleDeployment
   ```
 
-## <a name="rest"></a>REST ()
+## <a name="rest"></a>REST
 
 1. [テンプレート デプロイに関する情報を取得する](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get)操作を行って、デプロイに関する情報を取得します。
 
