@@ -261,7 +261,7 @@ items:
     href: /powershell/module/azure/?view=azuresmps-3.7.0
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.automation
-  - name: REST ()
+  - name: REST
     href: /rest/api/automation
   - name: REST (クラシック)
     href: https://msdn.microsoft.com/library/azure/mt163781
