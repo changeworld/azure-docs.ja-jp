@@ -50,5 +50,5 @@ sections:
     items:
     - title: JavaScript
       html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">マップ コントロール</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Search Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">タイムゾーン サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">マップ アカウント管理</a></p>
