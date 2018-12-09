@@ -208,7 +208,7 @@ items:
               href: oauth2-technical-profile.md
             - name: OpenId Connect
               href: openid-connect-technical-profile.md
-            - name: REST ()
+            - name: REST
               href: restful-technical-profile.md
             - name: SAML
               href: saml-technical-profile.md
