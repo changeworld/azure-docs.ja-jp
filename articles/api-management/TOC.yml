@@ -214,7 +214,7 @@ items:
   items:
   - name: Azure PowerShell
     href: /powershell/azure/overview
-  - name: REST ()
+  - name: REST
     href: /rest/api/apimanagement/
   - name: REST (オリジナル)
     href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
