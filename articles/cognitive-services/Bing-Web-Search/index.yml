@@ -103,7 +103,7 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: REST ()
+    - title: REST
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference">Bing Web Search API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference/">Bing Web Search API v5</a></p>
     - title: SDK
       html: <p><a href="sdk-samples.md">SDK リファレンスとサンプル</a></p>
