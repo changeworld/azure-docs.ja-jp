@@ -192,7 +192,7 @@ items:
     href: /javascript/api/overview/azure/service-bus
   - name: Azure PowerShell
     href: /powershell/module/azurerm.servicebus
-  - name: REST ()
+  - name: REST
     href: /rest/api/servicebus
   - name: Quotas (クォータ)
     href: service-bus-quotas.md
