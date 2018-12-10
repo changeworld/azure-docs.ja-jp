@@ -167,7 +167,7 @@ items:
     href: /javascript/api/overview/azure/batch
   - name: Python
     href: /python/api/overview/azure/batch
-  - name: REST ()
+  - name: REST
     items:
     - name: Batch サービス
       href: /rest/api/batchservice
