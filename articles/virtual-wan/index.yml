@@ -42,5 +42,5 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/powershell/module/azurerm.network#networking">PowerShell</a></p><p><a href="/cli/azure/ext/virtual-wan">Azure CLI</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="https://go.microsoft.com/fwlink/p/?linkid=2005000">REST API リファレンスに関するページ</a></p>
