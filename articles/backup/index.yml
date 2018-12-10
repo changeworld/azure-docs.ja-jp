@@ -72,5 +72,5 @@ sections:
       html: <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p><p><a href="/cli/azure/backup?view=azure-cli-latest">Azure CLI</a></p>
     - title: 言語
       html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/backup/">Azure Backup API リファレンス</a></p>
