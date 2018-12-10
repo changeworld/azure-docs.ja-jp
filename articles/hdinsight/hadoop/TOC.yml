@@ -478,7 +478,7 @@ items:
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
-  - name: REST ()
+  - name: REST
     href: /rest/api/hdinsight/
   - name: REST (Spark)
     href: /rest/api/hdinsightspark/
