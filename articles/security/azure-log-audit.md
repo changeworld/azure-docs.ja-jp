@@ -341,7 +341,7 @@ Log Analytics の核となる機能は、Azure でホストされている Log A
 |SQL (v12)| Microsoft.Sql/<br>servers/<br>データベース||       診断||
 ||Microsoft.Sql/<br>servers/<br>elasticPools||||
 |Storage|||         スクリプト| [Azure Storage Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|Azure Virtual Machines|    Microsoft.Compute/<br>virtualMachines|  内線番号|  内線番号||
+|Azure Virtual Machines|    Microsoft.Compute/<br>virtualMachines|  拡張機能|  拡張機能||
 ||||診断||
 |仮想マシン スケール セット|    Microsoft.Compute/<br>virtualMachines    ||診断||
 ||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtualMachines||||

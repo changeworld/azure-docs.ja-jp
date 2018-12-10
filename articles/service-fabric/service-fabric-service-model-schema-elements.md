@@ -2687,7 +2687,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |type|anonymous complexType|
 |content|0 個の要素、2 個の属性|
 |定義済み|[ExtensionsType complexType](service-fabric-service-model-schema-complex-types.md#extensionstype-complextype) 内でローカルに|
-|name|内線番号|
+|name|Extension|
 |minOccurs|0|
 |maxOccurs|unbounded|
 
@@ -2736,7 +2736,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 |type|[ExtensionsType](service-fabric-service-model-schema-complex-types.md#extensionstype-complextype)|
 |content|0 個の要素、0 個の属性|
 |定義済み|グローバル|
-|name|拡張機能|
+|name|Extensions|
 
 ### <a name="xml-source"></a>XML ソース
 ```xml
