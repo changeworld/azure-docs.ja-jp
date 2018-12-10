@@ -112,7 +112,7 @@ items:
     href: http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0
   - name: Python
     href: http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html
-  - name: REST ()
+  - name: REST
     href: /rest/api/dns/
 - name: 関連項目
   items:
