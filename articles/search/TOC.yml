@@ -19,7 +19,7 @@ items:
       href: search-import-data-dotnet.md
     - name: Search
       href: search-query-dotnet.md
-  - name: REST ()
+  - name: REST
     items:
     - name: インデックスを作成する
       href: search-create-index-rest-api.md
@@ -228,7 +228,7 @@ items:
     href: /dotnet/api/?term=microsoft.azure.management.search
   - name: Python (管理)
     href: /python/api/?view=azure-python&term=search
-  - name: REST ()
+  - name: REST
     href: /rest/api/searchservice
   - name: REST (管理)
     href: /rest/api/searchmanagement
