@@ -256,7 +256,7 @@ items:
     href: /powershell/azure/overview
   - name: Azure CLI
     href: ../virtual-machines/azure-cli-arm-commands.md
-  - name: REST ()
+  - name: REST
     href: /rest/api/virtualmachinescalesets/
 - name: リソース
   items:
