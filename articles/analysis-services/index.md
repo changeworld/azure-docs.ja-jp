@@ -101,7 +101,7 @@ Analysis Services を使用してデータ モデリングを設定および管�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="/rest/api/analysisservices/">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
