@@ -72,5 +72,5 @@ sections:
       html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/?view=azurermps-6.8.1#stream_analytics">Azure PowerShell</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/microsoft.azure.management.streamanalytics?view=azuremgmtstreamanalytics-1.8.3">.NET</a></p><p><a href="https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference">Stream Analytics クエリ言語</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/streamanalytics">REST API リファレンスに関するページ</a></p>

@@ -176,7 +176,7 @@ items:
     href: http://azure.github.io/azure-storage-ios/
   - name: Android
     href: http://azure.github.io/azure-storage-android
-  - name: REST ()
+  - name: REST
     items:
     - name: BLOB、キュー、テーブル、ファイル
       href: /rest/api/storageservices
