@@ -601,7 +601,7 @@ items:
     href: /sql/connect/php/microsoft-php-driver-for-sql-server
   - name: T-SQL
     href: /sql/t-sql/language-reference
-  - name: REST ()
+  - name: REST
     href: /rest/api/sql/
   - name: SQL Server のツール
     href: /sql/tools/overview-sql-tools
