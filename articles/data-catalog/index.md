@@ -69,7 +69,7 @@ Data Catalog を使用して、組織やチームがデータ ソースを検出
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="/rest/api/datacatalog/">REST API</a></p>
                         <p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">検索構文リファレンス</a></p>
                     </div>
