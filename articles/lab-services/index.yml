@@ -58,5 +58,5 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/cli/azure/lab">Azure CLI</a></p><p><a href="/powershell/module/azurerm.devtestlabs/#devtest_labs">Azure PowerShell</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/dtl">REST API</a></p>

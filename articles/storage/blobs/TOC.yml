@@ -322,7 +322,7 @@ items:
     items:
     - name: BLOB を使用した開発
       items:
-      - name: REST ()
+      - name: REST
         href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: C++
         href: storage-c-plus-plus-how-to-use-blobs.md
@@ -424,7 +424,7 @@ items:
       href: http://azure.github.io/azure-storage-ios/
     - name: Android
       href: http://azure.github.io/azure-storage-android
-    - name: REST ()
+    - name: REST
       items:
       - name: BLOB、キュー、テーブル、ファイル
         href: /rest/api/storageservices
@@ -496,7 +496,7 @@ items:
         href: http://azure.github.io/azure-storage-ios/
       - name: Android
         href: http://azure.github.io/azure-storage-android
-      - name: REST ()
+      - name: REST
         items:
         - name: BLOB、キュー、テーブル、ファイル
           href: /rest/api/storageservices
@@ -594,7 +594,7 @@ items:
       href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-sql-data-warehouse-polybase
   - name: リファレンス
     items:
-    - name: REST ()
+    - name: REST
       href: https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2
   - name: リソース
     items:
