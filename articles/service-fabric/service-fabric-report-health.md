@@ -298,7 +298,7 @@ HealthEvents          :
                         Transitions           : ->Warning = 4/21/2015 9:12:32 PM
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 REST と、目的のエンティティに送られ、本体に正常性レポートの説明が含まれている POST 要求を使用して、正常性レポートを送信します。 たとえば、REST の送信方法については、[クラスターの正常性レポート](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster)または[サービスの正常性レポート](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)に関するページを参照してください。 すべてのエンティティがサポートされています。
 
 ## <a name="next-steps"></a>次の手順

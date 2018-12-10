@@ -122,5 +122,5 @@ sections:
       html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/appservice">REST API リファレンスに関するページ</a></p>
