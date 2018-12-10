@@ -164,7 +164,7 @@ items:
       href: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
     - name: Microsoft.Azure.Management.EventHub
       href: /dotnet/api/microsoft.azure.management.eventhub
-  - name: REST ()
+  - name: REST
     href: /rest/api/eventhub
   - name: Quotas (クォータ)
     href: event-hubs-quotas.md
