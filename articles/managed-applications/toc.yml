@@ -50,7 +50,7 @@ items:
     href: /cli/azure/managedapp
   - name: PowerShell
     href: /powershell/module/azurerm.resources
-  - name: REST ()
+  - name: REST
     href: /rest/api/resources/
   - name: ユーザー インターフェイスの関数
     href: create-uidefinition-functions.md
