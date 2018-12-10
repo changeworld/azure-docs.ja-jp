@@ -44,7 +44,7 @@ v6.2 以降、[REST API](/rest/api/servicefabric/sfclient-index) または [Serv
 
 **ContainersRetentionCount** の設定で、エラーが発生したときに保持するコンテナーの数を指定します。 負の値が指定されている場合は、エラーが発生したすべてのコンテナーが保持されます。 **ContainersRetentionCount** 属性が指定されていない場合、コンテナーは保持されません。 **ContainersRetentionCount** 属性はアプリケーション パラメーターもサポートしているため、ユーザーはテスト クラスターと運用環境クラスターで別の値を指定できます。 コンテナー サービスが他のノードに移動することを防ぐためにこの機能を使用する場合は、配置の制約を使用して、コンテナー サービスの対象を特定のノードに制約してください。 この機能を使用して保持されるコンテナーは、手動で削除する必要があります。
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 「[Get Container Logs Deployed On Node](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)」 (ノードにデプロイされているコンテナーのログを取得する) の操作を使用し、クラッシュしたコンテナーのログを取得します。 コンテナーが実行されたノードの名前、アプリケーション名、サービス マニフェスト名、コード パッケージ名を指定します。  `&Previous=true` を指定します。 応答には、コード パッケージ インスタンスのデッド コンテナーのコンテナー ログが含まれます。
 
 要求 URI の形式は次のようになります。
