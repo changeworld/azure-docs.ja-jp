@@ -131,7 +131,7 @@ Power BI Embedded を使用して、データの視覚化と対話型のレポ�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="https://docs.microsoft.com/rest/api/power-bi-embedded/">Azure Resource Manager REST API リファレンス</a></p>
                         <p><a href="https://msdn.microsoft.com/library/mt147898.aspx">REST API リファレンス</a></p>
                     </div>
