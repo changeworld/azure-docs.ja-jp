@@ -155,7 +155,7 @@ Resource Manager を使用して、グループなどのソリューション �
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="/rest/api/resources/">REST API</a></p>
                     </div>
                 </div>
