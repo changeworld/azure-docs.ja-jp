@@ -268,7 +268,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id
 
 次に、[Azure 関数を作成](../azure-functions/functions-create-first-azure-function.md)して、ストレージ アカウント内で Key Vault ログをポーリングし、新しいイベントを取得します。 これが、スケジュールでトリガーされる関数です。
 
-Azure 関数を作成するには、**[リソースの作成]** を選択し、_関数アプリ_のマーケットプレースを検索してから、**[作成]** をクリックします。 作成中、既存のホスティング プランを使用するか、新しいプランを作成できます。 動的ホスティングを選択することもできます。 関数のホスティング オプションの詳細については、「[Azure Functions のスケーリング方法](../azure-functions/functions-scale.md)」をご覧ください。
+Azure 関数を作成するには、**[リソースの作成]** を選択し、"_関数アプリ_" のマーケットプレースを検索してから、**[作成]** をクリックします。 作成中、既存のホスティング プランを使用するか、新しいプランを作成できます。 動的ホスティングを選択することもできます。 関数のホスティング オプションの詳細については、「[Azure Functions のスケーリング方法](../azure-functions/functions-scale.md)」をご覧ください。
 
 Azure 関数を作成するときに、この画面にアクセスしてタイマー関数と C\# を選択します。 次に **[この関数を作成する]** をクリックします。
 
