@@ -68,7 +68,7 @@ items:
         href: network-watcher-connectivity-powershell.md
       - name: Azure CLI
         href: network-watcher-connectivity-cli.md
-      - name: REST ()
+      - name: REST
         href: network-watcher-connectivity-rest.md
     - name: パケットをキャプチャして分析する
       items:
@@ -80,7 +80,7 @@ items:
           href: network-watcher-packet-capture-manage-powershell.md
         - name: Azure CLI
           href: network-watcher-packet-capture-manage-cli.md
-        - name: REST ()
+        - name: REST
           href: network-watcher-packet-capture-manage-rest.md
       - name: パケット キャプチャを分析する
         items:
@@ -100,7 +100,7 @@ items:
         href: network-watcher-nsg-flow-logging-powershell.md
       - name: Azure CLI
         href: network-watcher-nsg-flow-logging-cli.md
-      - name: REST ()
+      - name: REST
         href: network-watcher-nsg-flow-logging-rest.md
     - name: NSG フロー ログの分析
       items:
@@ -125,7 +125,7 @@ items:
         href: network-watcher-security-group-view-powershell.md
       - name: Azure CLI
         href: network-watcher-security-group-view-cli.md
-      - name: REST ()
+      - name: REST
         href: network-watcher-security-group-view-rest.md
     - name: コンプライアンスを実行し、ネットワークを監査する
       href: network-watcher-nsg-auditing-powershell.md
@@ -137,7 +137,7 @@ items:
         href: network-watcher-troubleshoot-manage-powershell.md
       - name: Azure CLI
         href: network-watcher-troubleshoot-manage-cli.md
-      - name: REST ()
+      - name: REST
         href: network-watcher-troubleshoot-manage-rest.md
     - name: Azure Automation を使用して VPN ゲートウェイを監視する
       href: network-watcher-monitor-with-azure-automation.md
@@ -165,7 +165,7 @@ items:
     href: /dotnet/api/overview/azure/virtual-network
   - name: Node.js
     href: /javascript/api/azure-arm-network
-  - name: REST ()
+  - name: REST
     href: /rest/api/network-watcher/
 - name: リソース
   items:
