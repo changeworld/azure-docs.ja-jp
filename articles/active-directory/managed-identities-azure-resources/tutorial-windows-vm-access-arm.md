@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 19b4a1382b2a9b6034fd6ac9feed776dcca6a124
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 53f9850d794061f5aaebc556743291ae8f3305fb
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704360"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721291"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Windows VM のシステム割り当てマネージド ID を使用して Resource Manager にアクセスする
 
@@ -41,7 +41,7 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 1.  **リソース グループ**のタブに移動します。 
 2.  **Windows VM** 用に作成した特定の**リソース グループ**を選択します。 
 3.  左側のパネルの **[アクセス制御 (IAM)]** に移動します。 
-4.  **Windows VM** 用に新しいロールの割り当てを**追加**します。  **[閲覧者]** として **[ロール]** を選択します。 
+4.  **Windows VM** 用の新しいロールの割り当てについて **[ロール割り当ての追加]** を実行します。  **[閲覧者]** として **[ロール]** を選択します。 
 5.  次のドロップダウンで、**[アクセスの割り当て先]** として **[仮想マシン]** リソースを選択します。 
 6.  次に、**[サブスクリプション]** ドロップダウンに適切なサブスクリプションが表示されていることを確認します。 **[リソース グループ]** で **[すべてのリソース グループ]** を選択します。 
 7.  最後に、**[選択]** の一覧で使用する Windows VM を選択し、**[保存]** をクリックします。

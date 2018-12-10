@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cca18b2aa5cb6f27df45e4b63e55251bea058625
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19a9ae18c7fbf3b0f663396099f065c76969206f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968851"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890383"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル: テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする
 
@@ -51,7 +51,7 @@ ms.locfileid: "46968851"
 
 * [Docker のインストール](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
-* [Azure CLI と Service Fabric Mesh CLI をローカルにインストールします](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)。
+* [Azure CLI と Service Fabric Mesh CLI をローカルにインストールします](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
@@ -359,9 +359,27 @@ To Do List アプリケーションの仕様については、[mesh_rp.windows.j
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-数分間で次のように表示されます。
+このコマンドを実行すると、次のような JSON スニペットが生成されます。 JSON 出力の ```outputs``` セクションで、```publicIPAddress``` プロパティをコピーします。
 
-`todolistappNetwork has been deployed successfully on todolistappNetwork with public ip address <IP Address>`
+```json
+"outputs": {
+    "publicIPAddress": {
+    "type": "String",
+    "value": "40.83.78.216"
+    }
+}
+```
+
+この情報は、ARM テンプレートの ```outputs``` セクションから取得されます。 下記のように、このセクションではゲートウェイ リソースを参照してパブリック IP アドレスをフェッチします。 
+
+```json
+  "outputs": {
+    "publicIPAddress": {
+      "value": "[reference('helloWorldGateway').ipAddress]",
+      "type": "string"
+    }
+  }
+```
 
 ## <a name="open-the-application"></a>アプリケーションを開く
 

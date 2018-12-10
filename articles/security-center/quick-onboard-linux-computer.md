@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/02/2018
+ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1eab54d16dcc0facace9a51a4cf5b5d1243baf4f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 48a04bbe77a6fe836c282556709e13bb9cd9a337
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025395"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848193"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイックスタート: Linux コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Linux エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。
@@ -30,7 +30,7 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-このクイックスタートを開始するには、Security Center の Standard 価格レベルを使用する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard は最初の 60 日間、無料でお試しいただけます。
+このクイックスタートを開始するには、Security Center の Standard 価格レベルを使用する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 ## <a name="add-new-linux-computer"></a>新しい Linux コンピューターの追加
 
@@ -39,7 +39,7 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 
  ![Security Center の概要][2]
 
-3. Security Center メイン メニューの **[作業の開始]** を選択します。
+3. Security Center メイン メニューの **[使用の開始]** を選択します。
 4. **[作業の開始]** タブを選択します。![[作業の開始]][3]
 
 5. **[Azure 以外のコンピューターの新規追加]** の **[構成]** をクリックします。Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。

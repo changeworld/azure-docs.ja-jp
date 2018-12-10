@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Kubernetes Service (AKS) にデプロイする'
+title: 'チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Kubernetes Service にデプロイする'
 description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects を使用することによって、いくつかの簡単な手順で ASP.NET Core アプリを Azure Kubernetes Service (AKS) に簡単にデプロイできます。
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 6e2b53e51d7da117a7f690cb676d0ec096bcb1cd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7980ea439cfd3eaefcaa308795836a909f980043
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165554"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620644"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-kubernetes-service-aks-by-using-azure-devops-projects"></a>チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Kubernetes Service (AKS) にデプロイする
+# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>チュートリアル: Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Kubernetes Service にデプロイする
 
 Azure DevOps Projects によって提供される簡略化されたエクスペリエンスを使用すると、既存のコードと Git リポジトリを使用するか、サンプル アプリケーションを選択して、Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。 
 
@@ -24,6 +24,7 @@ DevOps Projects には、以下の機能もあります。
 * Azure Kubernetes Service (AKS) などの Azure リソースを自動的に作成する。
 * CI/CD 用のビルドおよびリリース パイプラインを設定するリリース パイプラインを Azure DevOps に作成し、構成する。
 * 監視のために Azure Application Insights リソースを作成する。
+* [コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) で、AKS クラスター上のコンテナー ワークロードに対するパフォーマンスを監視できるようにする
 
 このチュートリアルでは、次のことについて説明します。
 

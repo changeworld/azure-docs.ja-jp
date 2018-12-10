@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: d6eeb62ce990c24138f14e7f3b8a1ce4048e0174
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a144433e1ff6c0f7ca4e0ed72704d339150f2d56
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50746492"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52643419"
 ---
 1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
-2. **[リソースの作成]** > **[データベース]** > **[Azure Cosmos DB]** の順にクリックします。
+2. **[リソースの作成]** > **[データベース]** > **[Azure Cosmos DB]** を選択します。
    
    ![Azure Portal の [データベース] ウィンドウ](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
 
@@ -24,14 +24,14 @@ ms.locfileid: "50746492"
  
     Setting|値|説明
     ---|---|---
-    ID|<*一意の名前を入力*>|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 指定した ID に *documents.azure.com* が付加されて URI が作成されるので、一意の ID を使用してください。<br><br>ID に含めることができるのは、英小文字、数字、ハイフン (-) のみで、3 文字以上、50 文字以内にする必要があります。
-    API|SQL|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB では、SQL (ドキュメント データベース)、Gremlin (グラフ データベース)、MongoDB (ドキュメント データベース)、Table API、および Cassandra API の 5 種類の API が提供されています。 現在は、API ごとに個別のアカウントを作成する必要があります。 <br><br>この記事ではドキュメント データベースを作成し、SQL 構文を使用してクエリを実行するため、**[SQL]** を選択します。 <br><br>[SQL API について詳しくは、こちらをご覧ください](../articles/cosmos-db/documentdb-introduction.md)|
-    サブスクリプション|*該当するサブスクリプション*|この Azure Cosmos DB アカウントに使用する Azure サブスクリプションを選択します。 
-    リソース グループ|新規作成<br><br>*上記の ID で指定したものと同じ一意の名前を入力*|**新規作成**を選択してから、自分のアカウントの新しいリソースグループの名前を入力します。 簡略化のため、ID と同じ名前を使用することができます。 
-    Location|<*ユーザーに最も近いリージョンを選択*>|Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできる、ユーザーに最も近い場所を使用します。
-    Geo 冗長の有効化| 空白 | データベースのレプリケート バージョンが 2 番目 (ペア) のリージョンに作成されます。 空白のままにします。  
+    ID|一意の名前を入力します|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 指定した ID に *documents.azure.com* が付加されて URI が作成されるので、一意の ID を使用してください。<br><br>ID に使用できるのは、英小文字、数字、ハイフン (-) のみです。 長さは 3 ～ 50 文字にする必要があります。
+    API|SQL|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB では、ドキュメント データベース用の SQL、グラフ データベース用の Gremlin、ドキュメント データベース用の MongoDB、Table API、Cassandra API の 5 種類の API が提供されています。 現在は、API ごとに別のアカウントを作成する必要があります。 <br><br>この記事では、ドキュメント データベースを作成し、SQL 構文を使用してクエリを実行するため、**[SQL]** を選択します。 <br><br>[SQL API について詳しくは、こちらをご覧ください](../articles/cosmos-db/documentdb-introduction.md)。|
+    サブスクリプション|該当するサブスクリプション|この Azure Cosmos DB アカウントに使用する Azure サブスクリプションを選択します。 
+    リソース グループ|新規作成<br><br>その後、ID で指定したものと同じ一意の名前を入力|**[新規作成]** を選択します。 その後、自分のアカウントの新しいリソースグループの名前を入力します。 簡略化するには、ID と同じ名前を使用します。 
+    Location|ユーザーに最も近いリージョンを選択|Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできる、ユーザーに最も近い場所を使用します。
+    Geo 冗長の有効化| 空白 | このオプションでは、データベースのレプリケート バージョンが 2 番目 (ペア) のリージョンに作成されます。 このチェック ボックスはオフのままにします。 
 
-    **[Create]** をクリックします。
+    **作成**を選択します。
 
     ![Azure Cosmos DB の新しいアカウント ページ](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account.png)
 

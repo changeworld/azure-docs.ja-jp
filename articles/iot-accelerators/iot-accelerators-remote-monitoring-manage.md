@@ -1,35 +1,32 @@
 ---
-title: Azure ベースのリモート監視ソリューションでデバイスを管理するチュートリアル | Microsoft Docs
-description: このチュートリアルでは、リモート監視ソリューション アクセラレータに接続されているデバイスを管理する方法を示します。
+title: Azure ベースのリモート監視ソリューションでデバイスを構成するチュートリアル | Microsoft Docs
+description: このチュートリアルでは、リモート監視ソリューション アクセラレータに接続されているデバイスを構成する方法を示します。
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: b8352b062efdb49df01834bd3c2a5e1393e11a44
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821067"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679156"
 ---
-# <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスの構成および管理
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスを構成する
 
-このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスを構成および管理します。 ソリューション アクセラレータに新しいデバイスを追加し、デバイスを構成し、デバイスのファームウェアを更新します。
+このチュートリアルでは、リモート監視ソリューション アクセラレータを使用して、接続されている IoT デバイスを構成および管理します。 ソリューション アクセラレータに新しいデバイスを追加し、デバイスを構成します。
 
-Contoso は自社の施設の 1 つを拡大するために、新しい機械を注文しました。 新しい機械が納品されるのを待つ間に、あなたはソリューションの動作をテストするためのシミュレーションを実施したいと考えています。 シミュレーションを実行するために、新しいシミュレートされたエンジン デバイスをリモート監視ソリューション アクセラレータに追加し、このシミュレートされたデバイスがアクションと構成の更新に正しく応答することをテストします。
-
-デバイスを構成および管理する拡張可能な方法を提供するために、リモート監視ソリューション アクセラレータでは[ジョブ](../iot-hub/iot-hub-devguide-jobs.md)や[ダイレクト メソッド](../iot-hub/iot-hub-devguide-direct-methods.md)などの IoT Hub 機能を使用します。 このチュートリアルではシミュレートされたデバイスを使用していますが、デバイス開発者は、[リモート監視ソリューション アクセラレータに接続された物理デバイス](iot-accelerators-connecting-devices.md)にダイレクト メソッドを実装できます。
+Contoso は自社の施設の 1 つを拡大するために、新しい機械を注文しました。 新しい機械が納品されるのを待つ間に、あなたはソリューションの動作をテストするためのシミュレーションを実施したいと考えています。 シミュレーションを実行するために、新しいシミュレートされたエンジン デバイスをリモート監視ソリューション アクセラレータに追加し、このシミュレートされたデバイスが構成の更新に正しく応答することをテストします。 このチュートリアルではシミュレートされたデバイスを使用していますが、デバイス開発者は、[リモート監視ソリューション アクセラレータに接続された物理デバイス](iot-accelerators-connecting-devices.md)にダイレクト メソッドを実装できます。
 
 このチュートリアルでは、次のことを行いました。
 
 >[!div class="checklist"]
 > * シミュレートされたデバイスをプロビジョニングする。
 > * シミュレートされたデバイスをテストする。
-> * デバイスのファームウェアを更新する。
 > * デバイスを再構成する。
 > * デバイスを整理する。
 
@@ -60,24 +57,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **[デバイスの詳細]** パネルには、デバイスに関するその他の情報 (タグ値、デバイスがサポートするメソッド、デバイスから報告されるプロパティなど) が表示されます。
 
 詳細な診断を表示するには、**[デバイスの詳細]** パネルで下へスクロールし、**[診断]** セクションを表示します。
-
-## <a name="act-on-a-device"></a>デバイスでの動作
-
-ダッシュボードから開始されたアクションにシミュレートされたエンジン デバイスが正しく応答することをテストするには、**FirmwareUpdate** メソッドを実行します。 メソッドを実行してデバイスを操作するには、デバイスの一覧でデバイスを選択し、**[ジョブ]** をクリックします。 複数のデバイスを操作する場合は、複数のデバイスを選択できます。 **[ジョブ]** パネルで、**[メソッド]** を選択します。 **エンジン** デバイス モデルでは、**FirmwareUpdate**、**FillTank**、および **EmptyTank** の 3 つのメソッドを指定します。
-
-[![エンジンのメソッド](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
-
-**[FirmwareUpdate]** を選択します。ジョブ名を **UpdateEngineFirmware**、ファームウェア バージョンを **2.0.0**、ファームウェア URI を **http://contoso.com/engine.bin** に設定し、**[適用]** をクリックします。
-
-[![ファームウェア更新メソッドをスケジュールする](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-expanded.png#lightbox)
-
-ジョブの状態を追跡するには、**[View job status]\(ジョブの状態の表示\)** をクリックします。
-
-[![スケジュールされたファームウェア更新ジョブを監視する](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-expanded.png#lightbox)
-
-ジョブが完了したら、**[デバイス]** ページに戻ります。 新しいファームウェア バージョンがエンジン デバイスに対して表示されます。
-
-**[デバイス]** ページで種類が異なる複数のデバイスを選択した場合でも、それらの複数のデバイス上でメソッドを実行するジョブを作成できます。 **[ジョブ]** パネルには、選択したすべてのデバイスに共通のメソッドのみが表示されます。
 
 ## <a name="reconfigure-a-device"></a>デバイスの再構成
 

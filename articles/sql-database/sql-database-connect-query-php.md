@@ -1,95 +1,94 @@
 ---
-title: PHP を使用して Azure SQL Database に照会する | Microsoft Docs
-description: このトピックでは、Azure SQL Database に接続して Transact-SQL ステートメントでデータベースに照会するプログラムを PHP で作成する方法について説明します。
+title: PHP を使用して Azure SQL データベースに照会する | Microsoft Docs
+description: Azure SQL データベースに接続して T-SQL ステートメントでデータベースに照会するプログラムを PHP で作成する方法。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
 ms.devlang: php
 ms.topic: quickstart
 author: CarlRabeler
 ms.author: carlrab
-ms.reviewer: ''
+ms.reviewer: v-masebo
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 08bbe22cf0435f667e1fd065e9f747c2c9a92c94
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 11/28/2018
+ms.openlocfilehash: be3ac9fab6c89c65ad9673811e108cefe2c80d00
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914177"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724249"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>クイック スタート: PHP を使用して Azure SQL Database に照会する
 
-このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを [PHP](http://php.net/manual/en/intro-whatis.php) を使って作成する方法について説明します。
+この記事では、[PHP](http://php.net/manual/en/intro-whatis.php) を使用して Azure SQL データベースに接続する方法を紹介します。 その後、T-SQL ステートメントを使用してデータを照会することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下のものが必要です。
+このサンプルを完了するには、次の前提条件を満たしている必要があります。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
+- ご使用のコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)
 
-- ご使用のオペレーティング システムに対応した PHP とそれに関連するソフトウェアをインストール済みであること。
+- ご使用のオペレーティング システムに対応した、以下の PHP 関連のソフトウェアをインストール済みであること。
 
-    - **MacOS**: Homebrew と PHP をインストールし、ODBC ドライバーと SQLCMD をインストールした後、PHP Driver for SQL Server をインストールします。 [手順 1.2、1.3、および 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/mac/) を参照してください。
-    - **Ubuntu**:  PHP と他の必須パッケージをインストールした後、PHP Driver for SQL Server をインストールします。 [手順 1.2 および 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/) を参照してください。
-    - **Windows**: 最新バージョンの PHP for IIS Express、最新バージョンの Microsoft Drivers for SQL Server in IIS Express、Chocolatey、ODBC ドライバー、SQLCMD をインストールします。 [手順 1.2 および 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/) を参照してください。    
+    - **MacOS**: Homebrew と PHP、ODBC ドライバーと SQLCMD をインストールした後、PHP Driver for SQL Server をインストールします。 [手順 1.2.、手順 1.3.、手順 2.1.](https://www.microsoft.com/sql-server/developer-get-started/php/mac/) を参照してください。
 
-## <a name="sql-server-connection-information"></a>SQL Server の接続情報
+    - **Ubuntu**: PHP と他の必須パッケージをインストールした後、PHP Driver for SQL Server をインストールします。 [手順 1.2. と手順 2.1.](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/) を参照してください。
+
+    - **Windows**: IIS Express と Chocolatey 用の PHP をインストールした後、ODBC ドライバーと SQLCMD をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/php/windows/) を参照してください。
+
+## <a name="get-database-connection"></a>データベース接続を取得する
 
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
-    
-## <a name="insert-code-to-query-sql-database"></a>SQL Database に照会するコードの挿入
 
-1. 任意のテキスト エディターで新しいファイル (**sqltest.php**) を作成します。  
+## <a name="add-code-to-query-database"></a>データベースに照会するためのコードを追加する
 
-2. その内容を次のコードで置き換えます。サーバー、データベース、ユーザー、パスワードには、実際の値を追加してください。
+1. 任意のテキスト エディターで新しいファイル (*sqltest.php*) を作成します。  
+
+1. その内容を次のコードに置き換えます。 そのうえで、サーバー、データベース、ユーザー、パスワードの適切な値を入力してください。
 
    ```PHP
    <?php
-   $serverName = "your_server.database.windows.net";
-   $connectionOptions = array(
-       "Database" => "your_database",
-       "Uid" => "your_username",
-       "PWD" => "your_password"
-   );
-   //Establishes the connection
-   $conn = sqlsrv_connect($serverName, $connectionOptions);
-   $tsql= "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
-           FROM [SalesLT].[ProductCategory] pc
-           JOIN [SalesLT].[Product] p
-        ON pc.productcategoryid = p.productcategoryid";
-   $getResults= sqlsrv_query($conn, $tsql);
-   echo ("Reading data from table" . PHP_EOL);
-   if ($getResults == FALSE)
-       echo (sqlsrv_errors());
-   while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-    echo ($row['CategoryName'] . " " . $row['ProductName'] . PHP_EOL);
-   }
-   sqlsrv_free_stmt($getResults);
+       $serverName = "your_server.database.windows.net"; // update me
+       $connectionOptions = array(
+           "Database" => "your_database", // update me
+           "Uid" => "your_username", // update me
+           "PWD" => "your_password" // update me
+       );
+       //Establishes the connection
+       $conn = sqlsrv_connect($serverName, $connectionOptions);
+       $tsql= "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
+            FROM [SalesLT].[ProductCategory] pc
+            JOIN [SalesLT].[Product] p
+            ON pc.productcategoryid = p.productcategoryid";
+       $getResults= sqlsrv_query($conn, $tsql);
+       echo ("Reading data from table" . PHP_EOL);
+       if ($getResults == FALSE)
+           echo (sqlsrv_errors());
+       while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
+        echo ($row['CategoryName'] . " " . $row['ProductName'] . PHP_EOL);
+       }
+       sqlsrv_free_stmt($getResults);
    ?>
    ```
 
 ## <a name="run-the-code"></a>コードの実行
 
-1. コマンド プロンプトで、次のコマンドを実行します。
+1. コマンド プロンプトでアプリを実行します。
 
-   ```php
+   ```bash
    php sqltest.php
    ```
 
-2. 先頭から 20 行が返されることを確認して、アプリケーション ウィンドウを閉じます。
+1. 先頭から 20 行が返されることを確認して、アプリ ウィンドウを閉じます。
 
 ## <a name="next-steps"></a>次の手順
+
 - [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
+
 - [SQL Server 用 Microsoft PHP ドライバー](https://github.com/Microsoft/msphpsql/)
+
 - [問題の報告と質問](https://github.com/Microsoft/msphpsql/issues)
-- [再試行ロジックの例: PHP を使用して SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-php-p42h]
 
-
-<!-- Link references. -->
-
-[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
-
+- [再試行ロジックの例: PHP を使用して SQL に弾性的に接続する](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

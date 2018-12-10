@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 6b44e08fc1dce489e703bea1cbef2a7e94ae0f2a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 83785e532523c3e921b0772ddaa50502b2dc867d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961041"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633794"
 ---
 # <a name="manage-conflicts-between-regions"></a>リージョン間の競合の管理
 
@@ -83,9 +83,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-with-stored-procedure"></a>ストアド プロシージャが含まれたカスタム競合解決ポリシーを作成する
+## <a name="create-a-custom-conflict-resolution-policy-with-a-stored-procedure"></a>ストアド プロシージャが含まれたカスタム競合解決ポリシーを作成する
 
-以下のサンプルでは、競合を解決するストアド プロシージャが含まれたカスタム競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 ストアド プロシージャ内でエラーが発生しない限り、これらの競合は競合フィードに表示**されません**。
+以下のサンプルでは、競合を解決するストアド プロシージャが含まれたカスタム競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 ストアド プロシージャ内でエラーが発生しない限り、これらの競合は競合フィードに表示されません。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
@@ -102,7 +102,7 @@ DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-コンテナーの作成後に `resolver` ストアド プロシージャを作成する必要があります。
+コンテナーが作成されたら、`resolver` ストアド プロシージャを作成する必要があります。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
 
@@ -114,7 +114,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-コンテナーの作成後に `resolver` ストアド プロシージャを作成する必要があります。
+コンテナーが作成されたら、`resolver` ストアド プロシージャを作成する必要があります。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
@@ -127,7 +127,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-コンテナーの作成後に `resolver` ストアド プロシージャを作成する必要があります。
+コンテナーが作成されたら、`resolver` ストアド プロシージャを作成する必要があります。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -146,7 +146,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-コンテナーの作成後に `resolver` ストアド プロシージャを作成する必要があります。
+コンテナーが作成されたら、`resolver` ストアド プロシージャを作成する必要があります。
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
@@ -154,11 +154,11 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 
 ```
 
-コンテナーの作成後に `resolver` ストアド プロシージャを作成する必要があります。
+コンテナーが作成されたら、`resolver` ストアド プロシージャを作成する必要があります。
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>最終書き込み者優先競合解決ポリシーを作成する
 
-以下のサンプルでは、最終書き込み者優先競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 パスが設定されていない場合または無効な場合は、`_ts` プロパティ (タイムスタンプ フィールド) が既定値になります。 これらの競合は競合フィードに表示**されません**。
+以下のサンプルでは、最終書き込み者優先競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 パスが設定されていない場合または無効な場合は、`_ts` プロパティが既定値になります。 このプロパティはタイムスタンプ フィールドです。 これらの競合は競合フィードに表示されません。
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -210,7 +210,7 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-`conflictResolutionPath` プロパティを省略すると、`_ts` プロパティが既定値になります。
+`conflictResolutionPath` プロパティを指定しなかった場合は、`_ts` プロパティが既定値になります。
 
 ### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
 
@@ -277,8 +277,8 @@ while conflict:
 
 ## <a name="next-steps"></a>次の手順
 
-これで、次の Cosmos DB 概念の学習に進むことができます。
+Azure Cosmos DB の次の概念について学習しましょう。
 
 * [パーティション分割とデータ分散](partition-data.md)
-* [Cosmos DB のインデックス作成](indexing-policies.md)
+* [Azure Cosmos DB のインデックス作成](indexing-policies.md)
 

@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 329bc41555f2def0e2b7001a7b445cd3de16d439
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 51c19447e115426bd39d39fedc86193c8f091df1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51826337"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843310"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>チュートリアル: リモート監視ソリューション アクセラレータを使用してエッジで異常を検出する
 
@@ -24,16 +24,26 @@ ms.locfileid: "51826337"
 
 Contoso では、温度の異常を検出するインテリジェント エッジ モジュールをオイル ポンプ ジャックにデプロイしたいと考えています。 別のエッジ モジュールからはリモート監視ソリューションにアラートを送信します。 Contoso のオペレーターは、アラートを受信するとメンテナンス技術者を派遣することができます。 また、Contoso では、ソリューションがアラートを受信したときに自動的に実行されるアクション (メールの送信など) を構成することもできます。
 
-このチュートリアルでは、お使いのローカル Windows 開発マシンを IoT Edge デバイスとして使用します。 オイル ポンプ ジャック装置をシミュレートするエッジ モジュールと温度の異常を検出するエッジ モジュールをインストールします。
+次の図は、チュートリアルのシナリオの主要コンポーネントを示しています。
+
+![概要](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 このチュートリアルでは、次のことを行いました。
 
 >[!div class="checklist"]
 > * IoT Edge デバイスをソリューションに追加する
-> * Edge マニフェストを作成する
-> * デバイス上で実行するモジュールを定義するパッケージをインポートする
+> * Edge マニフェストの作成
+> * デバイス上で実行するモジュールを定義するパッケージとしてマニフェストをインポートする
 > * IoT Edge デバイスにパッケージをデプロイする
 > * デバイスからのアラートを表示する
+
+IoT Edge デバイス上:
+
+* ランタイムはパッケージを受け取り、モジュールをインストールします。
+* ストリーム分析モジュールは、ポンプ内の温度の異常を検出し、コマンドを送信して問題を解決します。
+* ストリーム分析モジュールは、フィルターされたデータをソリューション アクセラレータに転送します。
+
+このチュートリアルでは、Linux 仮想マシンを IoT Edge デバイスとして使用します。 また、Edge モジュールをインストールしてオイル ポンプ ジャック デバイスをシミュレートします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -111,54 +121,23 @@ Edge デバイスでは、Edge ランタイムがインストールされてい�
     az vm create \
       --resource-group IoTEdgeDevices \
       --name EdgeVM \
-      --image Canonical:UbuntuServer:16.04-LTS:latest \
+      --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest \
       --admin-username azureuser \
       --generate-ssh-keys \
       --size Standard_B1ms
     ```
 
-    パブリック IP アドレスを書き留めておきます。次の手順で SSH を使用して接続する際に必要になります。
-
-1. SSH を使用して VM に接続するには、Cloud Shell で次のコマンドを実行します。
+1. デバイス接続文字列を使用して Edge ランタイムを構成するには、以前書き留めたデバイス接続文字列を使用して次のコマンドを実行します。
 
     ```azurecli-interactive
-    ssh azureuser@{vm IP address}
+    az vm run-command invoke \
+      --resource-group IoTEdgeDevices \
+      --name EdgeVM \
+      --command-id RunShellScript \
+      --scripts 'sudo /etc/iotedge/configedge.sh "YOUR_DEVICE_CONNECTION_STRING"'
     ```
 
-1. VM に接続したら、次のコマンドを実行して VM にリポジトリを設定します。
-
-    ```azurecli-interactive
-    curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
-    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-    ```
-
-1. コンテナーと Edge ランタイムを VM にインストールするには、次のコマンドを実行します。
-
-    ```azurecli-interactive
-    sudo apt-get update
-    sudo apt-get install moby-engine
-    sudo apt-get install moby-cli
-    sudo apt-get update
-    sudo apt-get install iotedge
-    ```
-
-1. デバイスの接続文字列を使用して Edge ランタイムを構成するには、構成ファイルを編集します。
-
-    ```azurecli-interactive
-    sudo nano /etc/iotedge/config.yaml
-    ```
-
-    デバイスの接続文字列を **device_connection_string** 変数に代入し、変更を保存して、エディターを終了します。
-
-1. 新しい構成を使用するために Edge ランタイムを再起動します。
-
-    ```azurecli-interactive
-    sudo systemctl restart iotedge
-    ```
-
-1. これで SSH セッションを終了し、Cloud Shell を閉じることができます。
+    接続文字列は、必ず二重引用符で囲んでください。
 
 以上で IoT Edge ランタイムを Linux デバイスにインストールし、構成が完了しました。 このチュートリアルでは後ほど、リモート監視ソリューションを使用してこのデバイスに IoT Edge モジュールをデプロイします。
 
@@ -226,7 +205,7 @@ Stream Analytics ジョブは、ポータルで定義した後に Edge モジュ
 
 1. IoT ハブの **[デバイスの自動管理]** セクションで **[IoT Edge]** をクリックします。 **[Add an IoT Edge deployment]\(IoT Edge デプロイの追加\)** をクリックします。
 
-1. **[デプロイの作成] の [Name and Label]\(名前とラベル\)** ページで、「**oil-pump-device**」という名前を入力します。  **[次へ]** をクリックします。
+1. **[デプロイの作成] の [Name and Label]\(名前とラベル\)** ページで、「**oil-pump-device**」という名前を入力します。 **[次へ]** をクリックします。
 
 1. **[デプロイの作成] の [モジュールの追加]** ページで、**[+ 追加]** をクリックします。 **[IoT Edge モジュール]** を選択します。
 
@@ -252,11 +231,11 @@ Stream Analytics ジョブは、ポータルで定義した後に Edge モジュ
 
     このコードによって、Stream Analytics モジュールからの出力が正しい場所にルーティングされます。
 
-     **[次へ]** をクリックします。
+    **[次へ]** をクリックします。
 
 1. **[デプロイの作成] の [メトリックの指定]** ページで、**[次へ]** をクリックします。
 
-1. **[デプロイの作成] の [ターゲット デバイス]** ページで、優先度として「10」を入力します。  **[次へ]** をクリックします。
+1. **[デプロイの作成] の [ターゲット デバイス]** ページで、優先度として「10」を入力します。 **[次へ]** をクリックします。
 
 1. **[デプロイの作成] の [デプロイの確認]** ページで、**[送信]** をクリックします。
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fdb856f92bf790df0065cfc74ce5896f1d10c47b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954108"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724028"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
@@ -60,9 +60,9 @@ Azure AD B2C は、ID プロバイダー、顧客、その他のシステムと�
 
 Azure AD B2C は、アプリケーションに対するサービス拒否攻撃やパスワード攻撃からの保護を行います。 Azure AD B2C は、SYN Cookie や速度と接続の制限などの検出と軽減策の手法を使用して、サービス拒否攻撃かリソースを保護します。 ブルート フォース パスワード攻撃とディクショナリ パスワード攻撃に対しても、軽減策が用意されています。
 
-#### <a name="built-in-policies"></a>組み込みのポリシー
+#### <a name="user-flows"></a>ユーザー フロー
 
-Azure AD B2C に送信される各要求は、ポリシーを指定します。 ポリシーは、アプリケーションが Azure AD B2C とやり取りする動作を制御します。 サインアップ、サインイン、プロファイルの編集などの最も一般的な ID タスクについては、組み込みのポリシーが事前に定義されています。  たとえば、サインアップのポリシーを使用して次の設定を構成し、動作を制御できます。
+Azure AD B2C に送信される各要求でユーザー フローが指定されます。これは、アプリケーションが Azure AD B2C とどのように対話するかの動作を制御するポリシーです。 Azure AD B2C ポータルでは、サインアップ、サインイン、プロファイル編集など、最も一般的な ID タスク用の定義済みのユーザー フローを利用できます。  たとえば、サインアップ ユーザー フローを使用すると、次の設定を構成して動作を制御できます。
 
 - 顧客がアプリケーションのサインアップのために使用するソーシャル アカウント
 - 名や郵便番号など、顧客から収集されたデータ

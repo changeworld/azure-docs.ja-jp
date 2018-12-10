@@ -8,17 +8,17 @@ services: mariadb
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/14/2018
-ms.openlocfilehash: ed4c05afdc5b061c7779a0b1ca34975f8b06ad7d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/03/2018
+ms.openlocfilehash: b1e458339c2befdb51439cd23ef5f22ba4379c78
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686026"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850263"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
 
-Azure Database for MariaDB は、Microsoft Cloud のリレーショナル データベース サービスです。 Azure Database for MariaDB は、[MariaDB コミュニティ エディション](https://mariadb.org/download/)のデータベース エンジン バージョン 10.2 を基にしています。 このサービスは、パブリック プレビューの段階です。 
+Azure Database for MariaDB は、Microsoft Cloud のリレーショナル データベース サービスです。 Azure Database for MariaDB は、[MariaDB コミュニティ エディション](https://mariadb.org/download/)のデータベース エンジン バージョン 10.2 を基にしています。
 
 Azure Database for MariaDB では次のものが提供されます。
 
@@ -43,7 +43,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
 
-プレビューの Azure Database for MariaDB サービスには、複数のサービス レベル (Basic、汎用、およびメモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
+Azure Database for MariaDB サービスには、複数のサービス レベル (Basic、汎用、およびメモリ最適化) が用意されています。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 
@@ -51,7 +51,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="keep-your-app-and-business-running"></a>アプリケーションとビジネスの継続的な稼働
 
-Azure の業界をリードする可用性 99.99% の SLA (パブリック プレビュー中には提供されません) は、Microsoft が管理するデータセンターのグローバル ネットワークによって実現されています。 このネットワークが、24 時間 365 日の継続的なアプリの稼働を支えています。 Azure Database for MariaDB の強みである組み込みセキュリティ、フォールト トレランス、データ保護を活かしましょう。 Azure Database for MariaDB では、ポイントインタイム リストアを使用して、サーバーを 35 日間分さかのぼって以前の状態に戻すことができます。
+Azure の業界をリードする可用性 99.99% の SLA は、Microsoft が管理するデータセンターのグローバル ネットワークによって実現されています。 このネットワークが、24 時間 365 日の継続的なアプリの稼働を支えています。 Azure Database for MariaDB の強みである組み込みセキュリティ、フォールト トレランス、データ保護を活かしましょう。 Azure Database for MariaDB では、ポイントインタイム リストアを使用して、サーバーを 35 日間分さかのぼって以前の状態に戻すことができます。
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
 

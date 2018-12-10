@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/19/2018
+ms.date: 12/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 95041ca77930d87bff6ea31e2eab89a6634cfcf5
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: b0d26704d287f2e02541cc667250af8e8005f864
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442966"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833995"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル: SQL Server データベースを使用したエッジでのデータの格納
 
@@ -36,7 +36,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 Azure IoT Edge デバイス:
 
-* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
+* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。 
 
 クラウド リソース:
 
@@ -97,9 +97,13 @@ Azure IoT Edge デバイス:
    | Provide a module name (モジュール名の指定) | モジュールに **sqlFunction** という名前を付けます。 |
    | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 文字列は最終的に、\<レジストリ名\>.azurecr.io/sqlFunction のようになります。 |
 
-   VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペース (\.vscode フォルダー、modules フォルダー、配置マニフェスト テンプレート ファイル、 \.env ファイル) が読み込まれます。 
+   VS Code ウィンドウによって、ご自身の IoT Edge ソリューション ワークスペースが読み込まれます。 
    
-4. 新しい IoT Edge ソリューションを作成するたびに、該当するレジストリの資格情報を \.env ファイルで入力するよう VS Code から求められます。 このファイルは git では無視され、IoT Edge 拡張機能が後から、ご利用の IoT Edge デバイスへのレジストリ アクセスを提供するために使用します。 \.env ファイルを開きます。 
+4. IoT Edge ソリューション内の \.env ファイルを開きます。 
+
+   新しい IoT Edge ソリューションを作成するたびに、該当するレジストリの資格情報を \.env ファイルで入力するよう VS Code から求められます。 このファイルは git では無視され、IoT Edge 拡張機能が後から、ご利用の IoT Edge デバイスへのレジストリ アクセスを提供するために使用します。 
+
+   前の手順でコンテナー レジストリを指定せずに、既定の localhost:5000 を受け入れた場合、\.env ファイルは作成されません。
 
 5. IoT Edge ランタイムがモジュール イメージにアクセスできるように、.env ファイルでこの IoT Edge ランタイムにレジストリ資格情報を渡します。 **CONTAINER_REGISTRY_USERNAME** と **CONTAINER_REGISTRY_PASSWORD** セクションを探し、等号記号の後に資格情報を挿入します。 
 
@@ -207,6 +211,16 @@ Azure IoT Edge デバイス:
 
 7. **sqlFunction.cs** ファイルを保存します。 
 
+8. **sqlFunction.csproj** ファイルを開きます。
+
+9. パッケージ参照のグループを探して、SqlClient インクルードの新しい参照を追加します。 
+
+   ```csproj
+   <PackageReference Include="System.Data.SqlClient" Version="4.5.1"/>
+   ```
+
+10. **sqlFunction.csproj** ファイルを保存します。
+
 ## <a name="add-a-sql-server-container"></a>SQL Server コンテナーの追加
 
 [配置マニフェスト](module-composition.md)では、IoT Edge ランタイムによって IoT Edge デバイスにインストールされるモジュールを宣言します。 前のセクションではカスタム関数モジュールを作成するコードを追加しましたが、SQL Server モジュールは既に作成されています。 IoT Edge ランタイムがそれを含み、デバイス上で構成するよう指定する必要があります。 
@@ -225,15 +239,15 @@ Azure IoT Edge デバイス:
 
    ```json
    "sql": {
-       "version": "1.0",
-       "type": "docker",
-       "status": "running",
-       "restartPolicy": "always",
-       "env":{},
-       "settings": {
-           "image": "",
-           "createOptions": ""
-       }
+     "version": "1.0",
+     "type": "docker",
+     "status": "running",
+     "restartPolicy": "always",
+     "env":{},
+     "settings": {
+       "image": "",
+       "createOptions": ""
+     }
    }
    ```
 
@@ -244,19 +258,19 @@ Azure IoT Edge デバイス:
 
       ```json
       "env": {
-         "ACCEPT_EULA": {"value": "Y"},
-         "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-       },
-       "settings": {
-          "image": "microsoft/mssql-server-windows-developer",
-          "createOptions": {
-              "HostConfig": {
-                  "Mounts": [{"Target": "C:\\\\mssql","Source": "sqlVolume","Type": "volume"}],
-                  "PortBindings": {
-                      "1433/tcp": [{"HostPort": "1401"}]
-                  }
-              }
+        "ACCEPT_EULA": {"value": "Y"},
+        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
+      },
+      "settings": {
+        "image": "microsoft/mssql-server-windows-developer",
+        "createOptions": {
+          "HostConfig": {
+            "Mounts": [{"Target": "C:\\\\mssql","Source": "sqlVolume","Type": "volume"}],
+            "PortBindings": {
+              "1433/tcp": [{"HostPort": "1401"}]
+            }
           }
+        }
       }
       ```
 
@@ -264,19 +278,19 @@ Azure IoT Edge デバイス:
 
       ```json
       "env": {
-         "ACCEPT_EULA": {"value": "Y"},
-         "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-       },
-       "settings": {
-          "image": "mcr.microsoft.com/mssql/server:latest",
-          "createOptions": {
-              "HostConfig": {
-                  "Mounts": [{"Target": "/var/opt/mssql","Source": "sqlVolume","Type": "volume"}],
-                  "PortBindings": {
-                      "1433/tcp": [{"HostPort": "1401"}]
-                  }
-              }
+        "ACCEPT_EULA": {"value": "Y"},
+        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
+      },
+      "settings": {
+        "image": "mcr.microsoft.com/mssql/server:latest",
+        "createOptions": {
+          "HostConfig": {
+            "Mounts": [{"Target": "/var/opt/mssql","Source": "sqlVolume","Type": "volume"}],
+            "PortBindings": {
+              "1433/tcp": [{"HostPort": "1401"}]
+            }
           }
+        }
       }
       ```
 
@@ -322,11 +336,11 @@ IoT ハブを通じてデバイスにモジュールを設定できますが、V
 
    ![単一デバイスのデプロイを作成する](./media/tutorial-store-data-sql-server/create-deployment.png)
 
-6. エクスプローラーで、ソリューション内の **config** フォルダーに移動して、**deployment.json** を選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 
+6. エクスプローラーで、ソリューション内の **config** フォルダーに移動して、**deployment.amd64** を選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。 
 
-配置が成功したら、確認メッセージが VS Code 出力に表示されます。 
+デプロイが成功すると、確認メッセージが VS Code の出力に表示されます。 
 
-デバイス上ですべてのモジュールが実行されているのを確認することもできます。 IoT Edge デバイスで、次のコマンドを実行してモジュールの状態を表示します。 これには数分かかることがあります。
+VS Code の Azure IoT Hub Devices セクションのデバイスの状態を更新します。 新しいモジュールが一覧表示され、コンテナーがインストールされ、開始されてから数分間実行されると、レポートが開始されます。 デバイス上ですべてのモジュールが実行されているのを確認することもできます。 IoT Edge デバイスで、次のコマンドを実行してモジュールの状態を表示します。 
 
    ```cmd/sh
    iotedge list
@@ -334,11 +348,11 @@ IoT ハブを通じてデバイスにモジュールを設定できますが、V
 
 ## <a name="create-the-sql-database"></a>SQL データベースの作成
 
-配置マニフェストをデバイスに適用すると、3 つのモジュールが実行されます。 tempSensor モジュールによって、シミュレートされた環境データが生成されます。 sqlFunction モジュールによってデータが取得され、データベース用にその書式が設定されます。 
+配置マニフェストをデバイスに適用すると、3 つのモジュールが実行されます。 tempSensor モジュールによって、シミュレートされた環境データが生成されます。 sqlFunction モジュールによってデータが取得され、データベース用にその書式が設定されます。 このセクションでは、温度データを格納するように SQL データベースを設定する手順を説明します。 
 
-このセクションでは、温度データを格納するように SQL データベースを設定する手順を説明します。 
+IoT Edge デバイスで次のコマンドを実行します。 これらのコマンドによって、デバイス上で実行されている **sql** モジュールに接続され、送信された温度データを保持するデータベースとテーブルが作成されます。 
 
-1. コマンドライン ツールで、データベースに接続します。 
+1. IoT Edge デバイス上のコマンドライン ツールで、データベースに接続します。 
    * Windows コンテナー:
    
       ```cmd

@@ -1,30 +1,30 @@
 ---
-title: Azure Site Recovery サービスを使用して Azure IaaS VM を別の Azure リージョンに移行する | Microsoft Docs
-description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移行します。
+title: Azure Site Recovery サービスを使用して Azure IaaS VM を別の Azure リージョンに移動する | Microsoft Docs
+description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移動します。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9ad994ad3dc1fc350a9a41c23574acfa2bae9629
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 656f58bb9864757635ab5752da6bf31320504415
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212286"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843259"
 ---
-# <a name="migrate-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移行する
+# <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
-[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、ビジネス継続性およびディザスター リカバリー (BCDR) の目的でオンプレミス マシンや Azure VM のディザスター リカバリーを管理よび調整する他に、Azure VM をセカンダリ リージョンに移行するためにも Site Recovery を使用できます。 Azure VM を移行するには、それらのレプリケーションを有効にして、プライマリ リージョンから選択したセカンダリ リージョンにフェールオーバーします。
+[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、ビジネス継続性およびディザスター リカバリー (BCDR) の目的でオンプレミス マシンや Azure VM のディザスター リカバリーを管理よび調整する他に、Azure VM をセカンダリ リージョンに移動するためにも Site Recovery を使用できます。 Azure VM を移動するには、それらのレプリケーションを有効にして、プライマリ リージョンから選択したセカンダリ リージョンにフェールオーバーします。
 
-このチュートリアルでは、Azure VM を別のリージョンに移行する方法を説明します。 このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、Azure VM を別のリージョンに移動する方法を説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Recovery Services コンテナーを作成する
 > * VM のレプリケーションを有効にする
-> * VM を移行するためにフェールオーバーを実行する
+> * VM を移動するためにフェールオーバーを実行する
 
 このチュートリアルでは、既に Azure サブスクリプションがあることを前提としています。 そうでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成してください。
 
@@ -34,7 +34,7 @@ ms.locfileid: "50212286"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 移行元の Azure リージョンに Azure VM が存在する。
+- 移動元の Azure リージョンに Azure VM が存在する。
 - [シナリオのアーキテクチャとコンポーネント](azure-to-azure-architecture.md)を理解している。
 - [サポートの制限と要件](azure-to-azure-support-matrix.md)を確認する。
 
@@ -66,12 +66,12 @@ ms.locfileid: "50212286"
 
 ### <a name="verify-vm-outbound-access"></a>VM 発信アクセスの確認
 
-1. 移行しようとする VM のネットワーク接続を制御するために認証プロキシを使用していないことを確認します。 
-2. このチュートリアルの目的から、移行しようとする VM はインターネットにアクセスでき、発信アクセスを制御するファイアウォール プロキシを使用していないことを前提としています。 これに該当しない場合は、[ここ](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity)で要件を確認してください。
+1. 移動しようとする VM のネットワーク接続を制御するために認証プロキシを使用していないことを確認します。 
+2. このチュートリアルの目的から、移動しようとする VM はインターネットにアクセスでき、発信アクセスを制御するファイアウォール プロキシを使用していないことを前提としています。 これに該当しない場合は、[ここ](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity)で要件を確認してください。
 
 ### <a name="verify-vm-certificates"></a>VM の証明書の確認
 
-移行する Azure VM に、最新のルート証明書がすべて存在することを確認します。 最新のルート証明書がない場合、セキュリティの制約のため、VM を Site Recovery に登録できません。
+移動する Azure VM に、最新のルート証明書がすべて存在することを確認します。 最新のルート証明書がない場合、セキュリティの制約のため、VM を Site Recovery に登録できません。
 
 - Windows VM については、最新のすべての Windows 更新プログラムを VM にインストールして、すべての信頼されたルート証明書をマシンに用意します。 接続されていない環境の場合は、組織の標準の Windows Update プロセスおよび証明書更新プロセスに従ってください。
 - Linux VM の場合は、Linux ディストリビューターから提供されるガイダンスに従って、VM で最新の信頼されたルート証明書と証明書失効リストを取得します。
@@ -113,7 +113,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 
 
 1. Azure Portal で **[仮想マシン]** を選択します。
-2. 移行する VM を選択します。 次に、 **[OK]** をクリックします
+2. 移動する VM を選択します。 次に、 **[OK]** をクリックします
 3. **[設定]** で、**[ディザスター リカバリー]** をクリックします。
 4. **[Configure disaster recovery]\(ディザスター リカバリーを構成する\)** > **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。
 5. このチュートリアルでは、他の既定の設定をそのまま使用します。
@@ -136,7 +136,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure VM を別の Azure リージョンに移行しました。 次は、移行した VM のディザスター リカバリーを構成できます。
+このチュートリアルでは、Azure VM を別の Azure リージョンに移動しました。 次には、移動した VM のディザスター リカバリーを構成できます。
 
 > [!div class="nextstepaction"]
 > [移行後のディザスター リカバリーのセットアップ](azure-to-azure-quickstart.md)

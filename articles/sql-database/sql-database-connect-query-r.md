@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/07/2018
-ms.openlocfilehash: 382ac23ea4c8e0ec54314bb754c00a8e6e43e9f6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 11/30/2018
+ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300967"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725745"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>クイック スタート: Azure SQL Database で Machine Learning Services と R を使用する (プレビュー)
 
@@ -51,11 +51,10 @@ SQL Database に接続して T-SQL クエリまたはストアド プロシー�
 
 ## <a name="different-from-sql-server"></a>SQL Server との違い
 
-Azure SQL Database における Machine Learning Services と R の機能は、[SQL Server Machine Learning Services](https://review.docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) と似ています。 ただし、いくつかの違いがあります。
+Azure SQL Database における Machine Learning Services と R の機能は、[SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) と似ています。 ただし、いくつかの違いがあります。
 
 - R 限定です。 現時点では、Python はサポートされていません。
 - `sp_configure` で `external scripts enabled` を構成する必要はありません。
-- スクリプトの実行アクセス許可をユーザーに与える必要はありません。
 - **sqlmlutils** でパッケージをインストールする必要があります。
 - 独立した外部のリソース ガバナンスは存在しません。 R のリソースは、SQL のリソースの一部です (割合はレベルによって異なります)。
 
@@ -82,12 +81,22 @@ Azure SQL Database における Machine Learning Services と R の機能は、[
 
 1. なんらかのエラーが発生した場合は、お使いの SQL データベースで Machine Learning Services のパブリック プレビューと R が有効になっていない可能性があります。 前出のパブリック プレビューにサインアップする方法を参照してください。
 
+## <a name="grant-permissions"></a>アクセス許可を付与する
+
+管理者の場合は、外部コードを自動的に実行できます。 他のすべてのユーザーにはアクセス許可を付与する必要があります。
+
+コマンドを実行する前に、`<username>` を有効なデータベース ユーザー ログインに置き換えてください。
+
+```sql
+GRANT EXECUTE ANY EXTERNAL SCRIPT TO <username>
+```
+
 ## <a name="basic-r-interaction"></a>R の基本的な対話式操作
 
 SQL Database では、次の 2 とおりの方法で R コードを実行できます。
 
-+ システム ストアド プロシージャ [sp_execute_external_script](https://docs.microsoft.com/sql//relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) の引数として R スクリプトを追加します。
-+ [リモート R クライアント](https://review.docs.microsoft.com/sql/advanced-analytics/r/set-up-a-data-science-client)から SQL データベースに接続し、SQL Database をコンピューティング コンテキストとして使用してコードを実行します。
++ システム ストアド プロシージャ [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) の引数として R スクリプトを追加します。
++ [リモート R クライアント](https://docs.microsoft.com/sql/advanced-analytics/r/set-up-a-data-science-client)から SQL データベースに接続し、SQL Database をコンピューティング コンテキストとして使用してコードを実行します。
 
 以下の演習では 1 つ目の対話モデルに焦点を絞り、R コードをストアド プロシージャに渡す方法を説明します。
 
@@ -119,7 +128,7 @@ SQL Database では、次の 2 とおりの方法で R コードを実行でき�
 
 ## <a name="inputs-and-outputs"></a>入力と出力
 
-[sp_execute_external_script](https://review.docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) が既定で受け取るのは、単一の入力データセットです。これは通常、有効な SQL クエリの形式で提供します。 その他の種類の入力は、SQL の変数として渡すことができます。
+[sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) が既定で受け取るのは、単一の入力データセットです。これは通常、有効な SQL クエリの形式で提供します。 その他の種類の入力は、SQL の変数として渡すことができます。
 
 このストアド プロシージャは単一の R データ フレームを出力として返しますが、スカラーやモデルを変数として出力することもできます。 たとえば、トレーニング済みのモデルをバイナリ変数として出力して、T-SQL INSERT ステートメントに渡し、そのモデルをテーブルに書き込むことができます。 また、プロットを (バイナリ形式で) 生成したり、スカラー (個別の値。日時、モデルをトレーニングする際の経過時間など) を生成したりすることもできます。
 
@@ -284,7 +293,7 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
     - モデルのトレーニングに使用する入力データを提供します。
 
     > [!TIP]
-    > 線形モデルについて復習する必要がある場合は、[線形モデルの当てはめ](https://docs.microsoft.com/r-server/r/how-to-revoscaler-linear-model)に関するチュートリアルをお勧めします。rxLinMod を使用してモデルを当てはめるプロセスが説明されています。
+    > 線形モデルについて復習する必要がある場合は、[線形モデルの当てはめ](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)に関するチュートリアルをお勧めします。rxLinMod を使用してモデルを当てはめるプロセスが説明されています。
 
     モデルをビルドするには、R コード内で式を定義し、そのデータを入力パラメーターとして渡します。
 
@@ -337,7 +346,7 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
     WHERE model_name = 'default model'
     ```
 
-4. 一般に、ストアド プロシージャ [sp_execute_external_script](https://review.docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) からの R の出力は、単一のデータ フレームに限られます。
+4. 一般に、ストアド プロシージャ [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) からの R の出力は、単一のデータ フレームに限られます。
 
     ただしデータ フレームに加えて、他の種類の出力 (スカラーなど) を返すことはできます。
 
@@ -381,7 +390,7 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
     VALUES (40), (50), (60), (70), (80), (90), (100)
     ```
 
-    この例で、モデルの基礎になっているのは、**RevoScaleR** パッケージの一部として提供されている **rxLinMod** アルゴリズムであるため、一般的な R の `predict` 関数ではなく、[rxPredict](https://docs.microsoft.com/r-server/r-reference/revoscaler/rxpredict) 関数を呼び出すことになります。
+    この例で、モデルの基礎になっているのは、**RevoScaleR** パッケージの一部として提供されている **rxLinMod** アルゴリズムであるため、一般的な R の `predict` 関数ではなく、[rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) 関数を呼び出すことになります。
 
     ```sql
     DECLARE @speedmodel varbinary(max) = 
@@ -410,7 +419,7 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
     + テーブルからモデルを取得した後、そのモデルに対して `unserialize` 関数を呼び出します。
 
         > [!TIP] 
-        > RevoScaleR に用意されている新しい[シリアル化関数](https://docs.microsoft.com/r-server/r-reference/revoscaler/rxserializemodel)もご確認ください。リアルタイム スコアリングがサポートされています。
+        > RevoScaleR に用意されている新しい[シリアル化関数](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel)もご確認ください。リアルタイム スコアリングがサポートされています。
     + `rxPredict` 関数と適切な引数をモデルに適用し、新しい入力データを提供します。
 
     + この例では、テスト フェーズ中、`str` 関数を追加して、R から返されるデータのスキーマをチェックしています。このステートメントは後から削除することができます。
@@ -439,7 +448,7 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
     R -e "install.packages('RODBCext', repos='https://cran.microsoft.com')"
     ```
 
-    "**'R' is not recognized as an internal or external command, operable program or batch file. ('R' は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。)**" というエラーが発生した場合、おそらく R.exe のパスが Windows の **PATH** 環境変数に追加されていないものと思われます。 該当するディレクトリを環境変数に追加するか、コマンド プロンプトでそのディレクトリに移動してください (例: `cd C:\Program Files\R\R-3.5.1\bin`)。
+    "'R' は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません" というエラーが発生した場合、おそらく R.exe のパスが Windows の **PATH** 環境変数に追加されていないものと思われます。 該当するディレクトリを環境変数に追加するか、コマンドを実行する前にコマンド プロンプトでそのディレクトリに移動してください (例: `cd C:\Program Files\R\R-3.5.1\bin`)。
 
 1. **R CMD INSTALL** コマンドを使用して **sqlmlutils** をインストールします。 ZIP ファイルをダウンロードしたディレクトリのパスとその ZIP ファイルの名前を指定します。 例: 
 
@@ -523,7 +532,7 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
 
 Machine Learning Services の詳細については、SQL Server Machine Learning Services に関する以下の記事を参照してください。 これらの記事は SQL Server 向けですが、大半の情報は、Azure SQL Database における Machine Learning Services と R にも当てはまります。
 
-- [SQL Server Machine Learning サービス](https://review.docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [チュートリアル: SQL Server における R を使用したデータベース内分析について学習する](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [R と SQL Server に関するエンド ツー エンドのデータ サイエンス チュートリアル](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [チュートリアル: SQL Server データで RevoScaleR R 関数を使用する](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [SQL Server Machine Learning サービス](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
+- [チュートリアル: SQL Server における R を使用したデータベース内分析について学習する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
+- [R と SQL Server に関するエンド ツー エンドのデータ サイエンス チュートリアル](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
+- [チュートリアル: SQL Server データで RevoScaleR R 関数を使用する](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

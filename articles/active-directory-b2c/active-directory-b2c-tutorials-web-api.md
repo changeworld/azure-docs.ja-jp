@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.author: davidmu
-ms.date: 01/23/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: bd900071bbcd894d4fe71e0f8a265d98348eb262
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604343"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726408"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Web アプリから ASP.NET Web API へのアクセスを許可する
 
@@ -120,7 +120,7 @@ Web API が登録され、スコープを定義したら、Azure AD B2C テナ�
 
 サンプル ソリューションには 2 つのプロジェクトがあります。
 
-**Web アプリのサンプル アプリ (TaskWebApp):** タスク リストを作成および編集するための Web アプリ。 この Web アプリでは、**サインアップまたはサインイン** ポリシーを使用して、メール アドレスでユーザーをサインアップまたはサインインします。
+**Web アプリのサンプル アプリ (TaskWebApp):** タスク リストを作成および編集するための Web アプリ。 この Web アプリでは、**サインアップまたはサインイン** ユーザー フローを使用して、メール アドレスでユーザーをサインアップまたはサインインします。
 
 **Web API のサンプル アプリ (TaskService):** タスク リストの作成、読み取り、更新、削除機能をサポートする Web API。 この Web API は Azure AD B2C によって保護されており、Web アプリによって呼び出されます。
 
@@ -162,10 +162,10 @@ Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
     <add key="ida:ClientId" value="<The Application ID for your web API obtained from the Azure portal>"/>
     ```
 
-4. サインアップおよびサインイン ポリシーの作成時に生成された名前で、ポリシーの設定を更新します。
+4. サインアップおよびサインイン ユーザー フローの作成時に生成された名前で、ユーザー フローの設定を更新します。
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
+    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_SiUpIn" />
     ```
 
 5. ポータルで作成したものと一致するようにスコープの設定を構成します。

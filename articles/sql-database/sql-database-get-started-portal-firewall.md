@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 3b9968fa0349a7c68a598681a1d6d5aad230055b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/01/2018
+ms.openlocfilehash: cab92539b5019d4807ddefb2b84279c844f53016
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913089"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721903"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して SQL データベースのサーバーレベルのファイアウォール規則を作成する
 
@@ -25,49 +25,51 @@ ms.locfileid: "50913089"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、クイック スタート「[Azure portal で Azure SQL データベースを作成する](sql-database-get-started-portal.md)」で作成したリソースを出発点として使用します。
+このクイック スタートでは、「[Azure portal で Azure SQL データベースを作成する](sql-database-get-started-portal.md)」で作成したリソースを出発点として使用します。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
-SQL Database サービスは、アプリケーションやツールに、サーバーまたはサーバー上のすべてのデータベースへの接続を禁止するファイアウォールをサーバーレベルで作成します。それらに接続するためには、ファイアウォールを開放するファイアウォール規則が作成されている必要があります。 Azure の外部 IP アドレスから接続する場合は、特定の IP アドレスまたはアドレスの範囲を対象とするファイアウォール規則を作成します。 以下の手順に従い、クライアントの IP アドレスに対して [SQL Database サーバーレベルのファイアウォール規則](sql-database-firewall-configure.md)を作成し、その IP アドレスのみに SQL Database ファイアウォールを介して外部接続できるようにします。
+SQL Database サービスは、サーバーレベルでファイアウォールを作成します。 このファイアウォールは、ファイアウォールを開くファイアウォール規則が作成されていない場合、アプリケーションやツールからサーバーまたは任意のサーバー データベースへの接続を禁止します。 Azure の外部 IP アドレスから接続する場合は、特定の IP アドレスまたはアドレスの範囲を対象とするファイアウォール規則を作成します。 ファイアウォール規則の詳細については、[SQL Database サーバーレベルのファイアウォール規則](sql-database-firewall-configure.md)に関するページを参照してください。
 
 > [!NOTE]
 > SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 >
 
-1. デプロイが完了したら、左側のメニューから **[SQL データベース]** をクリックし、**SQL データベース** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20170824.database.windows.net** など) や追加の構成オプションが表示されます。
+以下の手順に従い、クライアントの IP アドレスに対してサーバーレベルのファイアウォール規則を作成し、その IP アドレスのみに SQL Database ファイアウォールを介して外部接続できるようにします。
 
-2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。
+1. [前提条件の Azure SQL データベース](#prerequisites)のデプロイが完了したら、左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで **mySampleDatabase** を選択します。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20170824.database.windows.net** など) や追加の構成オプションが表示されます。
+
+2. この完全修飾サーバー名をコピーします。これは他のクイック スタートでサーバーとそのデータベースに接続するときに使用します。
 
    ![サーバー名](./media/sql-database-get-started-portal/server-name.png)
 
-3. 前の画像に示されているように、ツール バーの **[サーバー ファイアウォールの設定]** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
+3. ツール バーで **[サーバー ファイアウォールの設定]** を選択します。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
 
    ![サーバーのファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
-4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
+4. ツール バーの **[クライアント IP の追加]** を選択し、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-5. **[Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+   > [!IMPORTANT]
+   > 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 すべての Azure サービスに対して無効にするには、このページの **[オフ]** を選択します。
+   >
 
-6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
+5. **[保存]** を選択します。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
-これで、SQL Server Management Studio やその他のツールを使用して、SQL Database サーバーとそのデータベースに、前に作成したサーバー管理者アカウントでこの IP アドレスから接続できるようになりました。
+6. **[ファイアウォール設定]** ページを閉じます。
 
-> [!IMPORTANT]
-> 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 すべての Azure サービスに対して無効にするには、このページの **[オフ]** をクリックします。
->
+SQL Server Management Studio やその他の任意のツールを使用して、SQL Database サーバーとそのデータベースに、前に作成したサーバー管理者アカウントを使用してこの IP アドレスから接続できるようになりました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 データベースに接続してクエリを実行するためのさまざまな方法を紹介した「[次のステップ](#next-steps)」に進む場合は、これらのリソースを保存しておいてください。 一方、このクイック スタートで作成したリソースを削除する場合は、次の手順に従います。
 
 
-1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[myResourceGroup]** の順にクリックします。
-2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
+1. Azure portal の左側のメニューで、**[リソース グループ]**、**[myResourceGroup]** の順に選択します。
+2. リソース グループのページで **[削除]** を選択し、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -75,5 +77,5 @@ SQL Database サービスは、アプリケーションやツールに、サー�
   - [SQL Server Management Studio を使用して接続およびクエリを実行する](sql-database-connect-query-ssms.md)
   - [Azure Data Studio を使用して接続およびクエリを実行する](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - 初めてのデータベースを設計し、テーブルを作成して、データを挿入する方法については、次のいずれかのチュートリアルを参照してください。
- - [SSMS を使用した最初の Azure SQL データベースの設計](sql-database-design-first-database.md)
- - [C# と ADO.NET で Azure SQL データベースを設計し、接続する](sql-database-design-first-database-csharp.md)
+  - [SSMS を使用した最初の Azure SQL データベースの設計](sql-database-design-first-database.md)
+  - [C# と ADO.NET で Azure SQL データベースを設計し、接続する](sql-database-design-first-database-csharp.md)

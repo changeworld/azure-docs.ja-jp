@@ -3,18 +3,18 @@ title: Azure Maps を使った対話型のマップ検索 | Microsoft Docs
 description: Azure クイック スタート - Azure Maps を使用したデモ版の対話型マップ検索を開始する
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/26/2018
+ms.date: 12/02/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d2aa3385dd7556cfc169b42b36d94a3e1d9ee3dd
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5f828bfd2ceee81daf86382846be0c5ee7f1fe8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209974"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836578"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>Azure Maps を使用して対話形式の検索マップを起動する
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - 新しいアカウントの "*名前*"。
     - このアカウントで使う "*サブスクリプション*"。
     - このアカウントの "*リソース グループ*" です。 *[新規作成]* を選んで新しく作成することも、*[既存のものを使用]* を選んで既存のリソース グループを使うこともできます。
-    - "*リソース グループの場所*" を選びます。
+    - 任意の *[価格レベル]* を選択します。
     - *[ライセンス]* と *[プライバシーに関する声明]* の内容を読み、チェック ボックスをオンにして条件に同意します。
     - 最後に、**[作成]** ボタンをクリックします。
 

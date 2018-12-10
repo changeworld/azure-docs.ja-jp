@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 09c719dd03f375127448851d0af9dada9238d1f1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a2dea792db39c753d0ea720c8e610a399401315f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377506"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840573"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>クイック スタート: Azure Stack で PowerShell を使用して Linux サーバー仮想マシンを作成する
 
@@ -47,7 +47,7 @@ Azure Stack の PowerShell を使用して、Ubuntu Server 16.04 LTS 仮想マ�
 
 リソース グループは、Azure Stack リソースのデプロイと管理を行うことができる論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、次のコード ブロックを実行してリソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、これらの値をそのまま使用することも、新しい値を割り当てることもできます。
 
-```powershell
+```powershell  
 # Create variables to store the location and resource group names.
 $location = "local"
 $ResourceGroupName = "myResourceGroup"
@@ -61,7 +61,7 @@ New-AzureRmResourceGroup `
 
 ストレージ アカウントを作成してから、Ubuntu Server 16.04 LTS イメージのストレージ コンテナーを作成します。
 
-```powershell
+```powershell  
 # Create variables to store the storage account name and the storage account SKU information
 $StorageAccountName = "mystorageaccount"
 $SkuName = "Standard_LRS"
@@ -395,7 +395,7 @@ SSH がインストールされているクライアント システムから、
 ssh <Public IP Address>
 ```
 
-メッセージが表示されたら、ログイン ユーザーとして azureuser を入力します。 SSH キーを作成したときにパスフレーズを使用した場合は、そのパスフレーズを入力する必要があります。
+入力を求められたら、**azureuser** としてサインインします。 SSH キーを作成したときにパスフレーズを使用した場合は、そのパスフレーズを入力する必要があります。
 
 ## <a name="install-the-nginx-web-server"></a>NGINX Web サーバーのインストール
 

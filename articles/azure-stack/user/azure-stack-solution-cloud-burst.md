@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 4881f992e5362efc7e4d7ac23898684966a066e0
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095340"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890995"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>チュートリアル: Azure でクラウド間スケーリング ソリューションを作成する
 
@@ -49,7 +49,7 @@ Azure Stack でホストされる Web アプリから、Traffic Manager を介�
 -   Azure のサブスクリプション。 必要に応じて、開始前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
 
 - Azure Stack 統合システムまたは Azure Stack Development Kit のデプロイ。
-    - Azure Stack のインストール手順は、[Azure Stack Development Kit のインストール](/articles/azure-stack/asdk/asdk-install)に関するページで見つけることができます。
+    - Azure Stack のインストール手順は、[Azure Stack Development Kit のインストール](../asdk/asdk-install.md)に関するページで見つけることができます。
     - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) このインストールが完了するまで数時間かかることがあります。
 
 -   [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS サービスを Azure Stack にデプロイします。
@@ -60,7 +60,7 @@ Azure Stack でホストされる Web アプリから、Traffic Manager を介�
 
 -   テナント サブスクリプション内で Web アプリを作成します。 後で使用できるように新しい Web アプリの URL を書き留めておきます。
 
--   テナント サブスクリプション内で、VSTS 仮想マシンをデプロイします。
+-   テナント サブスクリプション内で、Azure Pipelines 仮想マシンをデプロイします。
 
 -   .NET 3.5 がインストールされた Windows Server 2016 VM が必要です。 この VM は、プライベート ビルド エージェントとして Azure Stack 上のテナント サブスクリプションに構築されます。
 
@@ -97,11 +97,13 @@ Azure Stack でホストされる Web アプリから、Traffic Manager を介�
 ハイブリッドの継続的インテグレーションおよび継続的配置 (CI/CD) を設定して、Web アプリを Azure および Azure Stack にデプロイし、両方のクラウドに変更を自動プッシュします。
 
 > [!Note]  
-> (Windows Server と SQL の) 実行および App Service のデプロイには、適切なイメージがシンジケート化された Azure Stack が必要です。 App Service ドキュメントの「[Azure Stack 上の App Service を開始する前に](/articles/azure-stack/azure-stack-app-service-before-you-get-started)」の Azure Stack オペレーター用セクションを参照してください。
+> (Windows Server と SQL の) 実行および App Service のデプロイには、適切なイメージがシンジケート化された Azure Stack が必要です。 App Service ドキュメントの「[Azure Stack 上の App Service を開始する前に](../azure-stack-app-service-before-you-get-started.md)」の Azure Stack オペレーター用セクションを参照してください。
 
-### <a name="add-code-to-visual-studio-team-services-project"></a>Visual Studio Team Services プロジェクトへのコードの追加
+### <a name="add-code-to-azure-repos"></a>Azure Repos にコードを追加する
 
-1. Visual Studio Team Services (VSTS) でのプロジェクト作成特権が付与されているアカウントを使用して、VSTS にサインインします。
+Azure Repos
+
+1. Azure Repos でのプロジェクト作成権限が付与されているアカウントを使用して、Azure Repos にサインインします。
 
     ハイブリッド CI/CD は、アプリケーション コードとインフラストラクチャ コードの両方に適用できます。 プライベート クラウド開発とホステッド クラウド開発の両方に、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を使用します。
 
@@ -117,13 +119,13 @@ Azure Stack でホストされる Web アプリから、Traffic Manager を介�
 
     ![Alt text](media\azure-stack-solution-cloud-burst\image3.png)
 
-2.  チーム エクスプローラーを使用して、コードを VSTS にチェックインします。
+2.  チーム エクスプローラーを使用して、コードを Azure Repos にチェックインします。
 
-3.  アプリケーション コードが Visual Studio Team Services にチェックインされたことを確認します。
+3.  アプリケーション コードが Azure Repos にチェックインされたことを確認します。
 
 ## <a name="create-the-build-definition"></a>ビルド定義を作成する
 
-1. VSTS にログインして、ビルド定義を作成する機能を確認します。
+1. Azure Pipelines にログインして、ビルド定義を作成する機能を確認します。
 
 2. **-r win10-x64** コードを追加します。 これは、.Net Core を使用して自己完結型のデプロイをトリガーするために必要です。
 
@@ -133,11 +135,11 @@ Azure Stack でホストされる Web アプリから、Traffic Manager を介�
 
 ## <a name="use-an-azure-hosted-agent"></a>Azure でホストされるエージェントを使用する
 
-Web アプリをビルドおよびデプロイする場合、VSTS でホステッド エージェントを使用すると便利です。 Microsoft Azure によってメンテナンスやアップグレードが自動的に実施され、開発、テスト、デプロイについても、継続的に、かつ中断されることなく実行できます。
+Web アプリをビルドおよびデプロイする場合、Azure Pipelines でホステッド エージェントを使用すると便利です。 Microsoft Azure によってメンテナンスやアップグレードが自動的に実施され、開発、テスト、デプロイについても、継続的に、かつ中断されることなく実行できます。
 
 ### <a name="manage-and-configure-the-cd-process"></a>CD プロセスを管理および構成する
 
-Visual Studio Team Services および Team Foundation Server (TFS) が提供するパイプラインは自由に構成でき、管理性にも優れ、開発、ステージング、QA、運用など、さまざまな環境へのリリースに使用できます。また、特定のステージで承認を要求することもできます。
+Azure Pipelines および Azure DevOps Server が提供するパイプラインは自由に構成でき、管理性にも優れ、開発、ステージング、QA、運用など、さまざまな環境へのリリースに使用できます。また、特定のステージで承認を要求することもできます。
 
 ## <a name="create-release-definition"></a>リリース定義の作成
 
@@ -228,11 +230,11 @@ Visual Studio Team Services および Team Foundation Server (TFS) が提供す�
 21. すべての変更を保存します。
 
 > [!Note]  
-> タスクの一部の設定は、テンプレートからリリース定義を作成したときに、[環境変数](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables)として自動的に定義されている可能性があります。 こうした設定は、タスクの設定では変更できません。これらの設定を編集するには、親環境項目を選択する必要があります
+> タスクの一部の設定は、テンプレートからリリース定義を作成したときに、[環境変数](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables)として自動的に定義されている可能性があります。 こうした設定は、タスクの設定では変更できません。これらの設定を編集するには、親環境項目を選択する必要があります
 
 ## <a name="publish-to-azure-stack-via-visual-studio"></a>Visual Studio 経由で Azure Stack に発行する
 
-Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成することにより、Azure サービス アプリを Azure Stack にデプロイすることができます。 VSTS がビルド エージェントに接続し、エージェントが Azure Stack に接続します。
+Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成することにより、Azure サービス アプリを Azure Stack にデプロイすることができます。 Azure Pipelines がビルド エージェントに接続し、エージェントが Azure Stack に接続します。
 
 1.  VSTO にサインインし、アプリの設定ページに移動します。
 
@@ -254,18 +256,18 @@ Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成�
 
 10. **[変更の保存]** を選択します。
 
-これでエンドポイント情報が存在するので、VSTS から Azure Stack への接続を使用する準備は完了です。 Azure Stack のビルド エージェントは、VSTS から命令を受け取った後、Azure Stack との通信に使用されるエンドポイント情報を伝達します。
+これでエンドポイント情報が存在するので、Azure Pipelines から Azure Stack への接続を使用する準備ができました。 Azure Stack のビルド エージェントは、Azure Pipelines から命令を受け取った後、Azure Stack との通信のためのエンドポイント情報を伝達します。
 
 ## <a name="develop-the-application-build"></a>アプリケーション ビルドを開発する
 
 > [!Note]  
-> (Windows Server と SQL の) 実行および App Service のデプロイには、適切なイメージがシンジケート化された Azure Stack が必要です。 App Service ドキュメントの「[Azure Stack 上の App Service を開始する前に](/articles/azure-stack/azure-stack-app-service-before-you-get-started)」の Azure Stack オペレーター用セクションを参照してください。
+> (Windows Server と SQL の) 実行および App Service のデプロイには、適切なイメージがシンジケート化された Azure Stack が必要です。 App Service ドキュメントの「[Azure Stack 上の App Service を開始する前に](../azure-stack-app-service-before-you-get-started.md)」の Azure Stack オペレーター用セクションを参照してください。
 
-VSTS から [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を Web アプリ コードのように使用して両方のクラウドに対してデプロイします。
+Azure Repos から [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を Web アプリ コードのように使用して両方のクラウドに対してデプロイします。
 
-### <a name="add-code-to-a-vsts-project"></a>コードを VSTS プロジェクトに追加する
+### <a name="add-code-to-a-azure-repos-project"></a>Azure Repos プロジェクトにコードを追加する
 
-1.  Azure Stack でのプロジェクト作成権限が付与されているアカウントを使用して、VSTS にサインインします。 次のキャプチャ画面は、HybridCICD プロジェクトへの接続方法を示しています。
+1.  Azure Stack でのプロジェクト作成権限が付与されているアカウントを使用して、Azure Repos にサインインします。 次のキャプチャ画面は、HybridCICD プロジェクトへの接続方法を示しています。
 
 2.  既定の Web アプリを作成して開くことで、**リポジトリを複製**します。
 
@@ -273,13 +275,13 @@ VSTS から [Azure Resource Manager テンプレート](https://azure.microsoft.
 
 1.  **WebApplication.csproj** ファイルを編集して、**Runtimeidentifier** を選択し、win10 x64 を追加します。 詳細については、「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください。
 
-2.  チーム エクスプローラーを使用して、コードを VSTS にチェックインします。
+2.  チーム エクスプローラーを使用して、コードを Azure Repos にチェックインします。
 
-3.  アプリケーション コードが Visual Studio Team Services にチェックインされたことを確認します。
+3.  アプリケーション コードが Azure Repos にチェックインされたことを確認します。
 
 ### <a name="create-the-build-definition"></a>ビルド定義を作成する
 
-1.  ビルド定義を作成できるアカウントで VSTS にサインインします。
+1.  ビルド定義を作成できるアカウントで Azure Pipelines にサインインします。
 
 2.  プロジェクトの **[Build Web Application]\(Web アプリケーションのビルド\)** ページに移動します。
 
@@ -289,17 +291,17 @@ VSTS から [Azure Resource Manager テンプレート](https://azure.microsoft.
 
 #### <a name="use-an-azure-hosted-build-agent"></a>Azure ホスト ビルド エージェントを使用する
 
-Web アプリをビルドしてデプロイする場合、VSTS でホスト ビルド エージェントを使用すると便利です。 エージェントのメンテナンスやアップグレードは Microsoft Azure によって自動的に実施されるので、中断のない継続的な開発サイクルが実現します。
+Web アプリをビルドしてデプロイする場合、Azure Pipelines でホスト ビルド エージェントを使用すると便利です。 エージェントのメンテナンスやアップグレードは Microsoft Azure によって自動的に実施されるので、中断のない継続的な開発サイクルが実現します。
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>継続的配置 (CD) プロセスを構成する
 
-Visual Studio Team Services (VSTS) および Team Foundation Server (TFS) が提供するパイプラインは自由に構成でき、管理性にも優れ、開発、ステージング、品質保証 (QA)、運用など、さまざまな環境へのリリースに使用できます。 このプロセスの一環として、アプリケーション ライフ サイクルの特定のステージで承認を要求することもできます。
+Azure Pipelines および Azure DevOps Server が提供するパイプラインは自由に構成でき、管理性にも優れ、開発、ステージング、品質保証 (QA)、運用など、さまざまな環境へのリリースに使用できます。 このプロセスの一環として、アプリケーション ライフ サイクルの特定のステージで承認を要求することもできます。
 
 #### <a name="create-release-definition"></a>リリース定義の作成
 
 アプリケーション ビルド プロセスの最後の手順は、リリース定義の作成です。 このリリース定義を使用してリリースを作成し、ビルドをデプロイします。
 
-1.  VSTS にサインインして、プロジェクトの **[ビルドとリリース]** に移動します。
+1.  Azure Pipelines にサインインして、プロジェクトの **[ビルドとリリース]** に移動します。
 
 2.  **[リリース]** タブで **[+]** を選択し、**[リリース定義の作成]** を選択します。
 
@@ -346,7 +348,7 @@ Visual Studio Team Services (VSTS) および Team Foundation Server (TFS) が提
 23. すべての変更を保存します。
 
 > [!Note]  
-> リリース タスクの一部の設定は、テンプレートからリリース定義を作成したときに、[環境変数](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables)として自動的に定義されます。 これらの設定は、タスク設定では変更できませんが、親環境項目で変更できます。
+> リリース タスクの一部の設定は、テンプレートからリリース定義を作成したときに、[環境変数](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables)として自動的に定義されます。 これらの設定は、タスク設定では変更できませんが、親環境項目で変更できます。
 
 ## <a name="create-a-release"></a>リリースを作成する
 

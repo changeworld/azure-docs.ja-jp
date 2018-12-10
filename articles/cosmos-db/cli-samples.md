@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB の Azure CLI サンプル | Microsoft Docs
+title: Azure Cosmos DB の Azure CLI サンプル
 description: Azure CLI サンプル - Azure Cosmos DB のアカウント、データベース、コンテナー、リージョン、およびファイアウォールを作成し、管理します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 461207d0c9d27ed645dcac98e6256431bb23f8ad
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 48beb93fbc5952951fff1ed31e5f8625faf78ccd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005990"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850399"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure Cosmos DB の Azure CLI サンプル
 

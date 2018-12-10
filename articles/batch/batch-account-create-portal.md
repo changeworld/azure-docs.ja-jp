@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfaee72be883ee8902fe4550890d757f114ff932
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e526c5f2f446a1ae8134a3e2ca72fcc42024d904
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426109"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724096"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -91,11 +91,11 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     ![Microsoft.Batch プロバイダーの登録][register_provider]
 
-1. **[サブスクリプション]** ページで、**[アクセス制御 (IAM)]** > **[追加]** の順に選択します。
+1. **[サブスクリプション]** ページで **[アクセス制御 (IAM)]** > **[ロールの割り当て]** > **[ロール割り当ての追加]** を選択します。
 
     ![サブスクリプションのアクセスの制御][subscription_access]
 
-1. **[アクセス許可の追加]** ページで、**[共同作成者]** ロールを選択し、Batch API を探します。 API が見つかるまで、次の各文字列を検索します。
+1. **[ロール割り当ての追加]** ページで、**[共同作成者]** ロールを選択し、Batch API を探します。 API が見つかるまで、次の各文字列を検索します。
     1. **MicrosoftAzureBatch**。
     1. **Microsoft Azure Batch**。 新しい Azure AD テナントでは、この名前が使用される場合があります。
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。 

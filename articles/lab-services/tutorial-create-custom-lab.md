@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ee2def6287a845cd0fd0260254efb20f9638ab2c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467431"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839043"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs を使用してラボを設定する
 このチュートリアルでは、Azure portal を使ってラボを作成します。 ラボの管理者は、組織のラボを設定し、ラボに VM を作成して、ポリシーを構成します。 ラボのユーザー (開発者やテスト担当者など) は、ラボの VM を要求し、VM に接続して使用します。 
@@ -80,15 +80,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. 左側のメニューで、**[構成とポリシー]** を選びます。 
 
     ![構成とポリシー](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. メニューから **[アクセス制御 (IAM)]** を選び、ツール バーの **[+ 追加]** を選びます。 
-
-    ![アクセス制御 - ユーザーの追加ボタン](./media/tutorial-create-custom-lab/access-control-add.png)
+1. メニューから **[アクセス制御 (IAM)]** を選択し、ツール バーの **[+ ロール割り当ての追加]** を選択します。 
 1. **[アクセス許可の追加]** ページで、次のようにします。
     1. **[ロール]** で、**[DevTest Labs ユーザー]** を選びます。 
     2. 追加する**ユーザー**を選びます。 
     3. **[保存]** を選択します。
-
-        ![Add permissions](./media/tutorial-create-custom-lab/add-lab-user.png)
 4. **[構成とポリシー] - [アクセス制御 (IAM)]** を閉じるには、右上隅の **[X]** を選びます。 
 
 ## <a name="cleanup-resources"></a>リソースをクリーンアップする
