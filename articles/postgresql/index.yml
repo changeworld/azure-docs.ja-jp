@@ -74,5 +74,5 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/cli/azure">Azure CLI</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/postgresql">REST API</a></p>
