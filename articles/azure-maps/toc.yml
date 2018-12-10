@@ -93,7 +93,7 @@ items:
       href: extend-geojson.md
     - name: サポートされている検索カテゴリ
       href: supported-search-categories.md
-  - name: REST ()
+  - name: REST
     items:
     - name: 位置情報サービス
       href: https://docs.microsoft.com/rest/api/maps/geolocation
