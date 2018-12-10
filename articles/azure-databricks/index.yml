@@ -60,5 +60,5 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/databricks">REST API</a></p>
