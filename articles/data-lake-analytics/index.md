@@ -135,7 +135,7 @@ Azure Data Lake Analytics を使用して、大規模なデータ セットに�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="/rest/api/datalakeanalytics/">REST API</a></p>
                     </div>
                 </div>
