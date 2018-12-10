@@ -182,7 +182,7 @@ items:
       href: schema-cscfg-role.md
     - name: NetworkConfiguration スキーマ
       href: schema-cscfg-networkconfiguration.md
-  - name: REST ()
+  - name: REST
     href: /rest/api/compute/cloudservices/
 - name: リソース
   items:
