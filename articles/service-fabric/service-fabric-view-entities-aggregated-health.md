@@ -233,7 +233,7 @@ ApplicationHealthStates :
 HealthEvents            : None
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 クラスターの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-node-health"></a>ノードの正常性の取得
@@ -302,7 +302,7 @@ _Node_1                     Ok
 _Node_0                     Ok
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 ノードの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-node-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-application-health"></a>アプリケーションの正常性の取得
@@ -448,7 +448,7 @@ DeployedApplicationHealthStates : None
 HealthEvents                    : None
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 アプリケーションの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-an-application-by-using-an-application-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-service-health"></a>サービスの正常性の取得
@@ -520,7 +520,7 @@ HealthStatistics      :
                         Partition             : 0 Ok, 1 Warning, 0 Error
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 サービスの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-partition-health"></a>パーティションの正常性の取得
@@ -612,7 +612,7 @@ HealthStatistics      :
                         Replica               : 5 Ok, 0 Warning, 0 Error
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 パーティションの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-partition-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-replica-health"></a>レプリカの正常性の取得
@@ -655,7 +655,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 レプリカの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-replica-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-deployed-application-health"></a>デプロイされたアプリケーションの正常性の取得
@@ -714,7 +714,7 @@ HealthStatistics                   :
                                      DeployedServicePackage : 2 Ok, 0 Warning, 0 Error
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 デプロイされたアプリケーションの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-deployed-application-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="get-deployed-service-package-health"></a>デプロイされたサービス パッケージの正常性の取得
@@ -784,7 +784,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 デプロイされたサービス パッケージの正常性を取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-service-package-by-using-a-health-policy)を使用できます。これらの要求の本文には、正常性ポリシーが記載されています。
 
 ## <a name="health-chunk-queries"></a>正常性チャンク クエリ
@@ -1015,7 +1015,7 @@ ApplicationHealthStateChunks :
                                     HealthState           : Ok
 ```
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 クラスターの正常性チャンクを取得するには、[GET 要求](https://docs.microsoft.com/rest/api/servicefabric/get-the-health-of-a-cluster-using-health-chunks)または [POST 要求](https://docs.microsoft.com/rest/api/servicefabric/health-of-cluster)を使用できます。これらの要求の本文には、正常性ポリシーと高度なフィルターが記載されています。
 
 ## <a name="general-queries"></a>一般クエリ
