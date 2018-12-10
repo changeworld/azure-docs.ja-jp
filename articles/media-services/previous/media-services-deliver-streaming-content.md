@@ -23,7 +23,7 @@ ms.locfileid: "33783211"
 ---
 # <a name="publish-azure-media-services-content-using-net"></a>.NET を使用した Azure Media Services コンテンツの発行
 > [!div class="op_single_selector"]
-> * [REST ()](media-services-rest-deliver-streaming-content.md)
+> * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [ポータル](media-services-portal-publish.md)
 > 
