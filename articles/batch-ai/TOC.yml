@@ -50,7 +50,7 @@ items:
     href: /javascript/api/overview/azure/batchai
   - name: Python
     href: /python/api/overview/azure/batchai
-  - name: REST ()
+  - name: REST
     href: /rest/api/batchai
 - name: リソース
   items:

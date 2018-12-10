@@ -67,5 +67,5 @@ sections:
       html: <p><a href="/powershell/module/azurerm.network#vpn">PowerShell</a></p><p><a href="/cli/azure/network/vnet-gateway">Azure CLI</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/network-gateway/">REST API リファレンスに関するページ</a></p>

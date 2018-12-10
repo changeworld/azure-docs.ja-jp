@@ -126,7 +126,7 @@ items:
     href: https://aka.ms/ams-v3-rest-sdk
   - name: SDK/ツール
     items:
-    - name: REST ()
+    - name: REST
       href: https://aka.ms/ams-v3-rest-ref
     - name: Azure CLI
       href: https://aka.ms/ams-v3-cli-ref

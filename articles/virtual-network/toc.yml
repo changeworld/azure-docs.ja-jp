@@ -335,7 +335,7 @@ items:
     href: https://docs.microsoft.com/javascript/azure#azure-sdk
   - name: Python
     href: https://azure.microsoft.com/develop/python/
-  - name: REST ()
+  - name: REST
     href: /rest/api/virtual-network
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=virtual-network

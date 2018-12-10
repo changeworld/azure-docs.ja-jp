@@ -29,7 +29,7 @@ items:
   items:
   - name: Azure PowerShell
     href: /powershell/module/azurerm.network#networking
-  - name: REST ()
+  - name: REST
     href: /rest/api/azure
   - name: Azure CLI
     href: /cli/azure/ext/virtual-wan

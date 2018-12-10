@@ -66,7 +66,7 @@
 ## [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/?view=azurermps-3.8.0)
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.network?view=azuremgmtnetwork-9.1.0-preview)
 ## [Node.js](https://azure.microsoft.com/develop/nodejs/#azure-sdk)
-## [REST ()](https://msdn.microsoft.com/library/mt163658.aspx)
+## [REST](https://msdn.microsoft.com/library/mt163658.aspx)
 
 # リソース
 ## [テンプレートの作成](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)

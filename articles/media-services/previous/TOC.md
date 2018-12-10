@@ -20,7 +20,7 @@
 ### [Azure Portal](media-services-portal-vod-get-started.md)
 ### [.NET SDK](media-services-dotnet-get-started.md)
 ### [Java](media-services-java-how-to-use.md)
-### [REST ()](media-services-rest-get-started.md)
+### [REST](media-services-rest-get-started.md)
 ## ライブ ストリーミングの実行
 ### [Azure Portal](media-services-portal-live-passthrough-get-started.md)
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -152,7 +152,7 @@
 #### [Widevine ライセンス テンプレート](media-services-widevine-license-template-overview.md)
 ### 資産配信ポリシーを構成する
 #### [.NET](media-services-dotnet-configure-asset-delivery-policy.md)
-#### [REST ()](media-services-rest-configure-asset-delivery-policy.md)
+#### [REST](media-services-rest-configure-asset-delivery-policy.md)
 ### コンテンツ キー承認ポリシーを構成する
 #### [Azure Portal](media-services-portal-configure-content-key-auth-policy.md)
 #### [.NET](media-services-dotnet-configure-content-key-auth-policy.md)

@@ -38,7 +38,7 @@
 ## [Azure CLI](/cli/azure/)
 ## [T-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)
 ## [SQL Server ドライバー](https://docs.microsoft.com/sql/connect/sql-server-drivers)
-## [REST ()](/rest/api/)
+## [REST](/rest/api/)
 
 # リソース
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server)
