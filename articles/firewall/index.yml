@@ -49,5 +49,5 @@ sections:
       html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Azure CLI</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="https://docs.microsoft.com/rest/api/firewall/">Compute REST API リファレンス</a></p>
