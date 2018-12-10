@@ -110,7 +110,7 @@ connectionPolicy.PreferredLocations = ['West US', 'East US', 'North Europe'];
 var client = new DocumentDBClient(host, { masterKey: masterKey }, connectionPolicy);
 ```
 
-## <a name="rest"></a>REST ()
+## <a name="rest"></a>REST
 データベース アカウントが複数リージョンで利用できるようになったら、クライアントは次の URI に対して GET 要求を実行してその可用性を照会できます。
 
     https://{databaseaccount}.documents.azure.com/
