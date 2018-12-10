@@ -162,7 +162,7 @@ items:
     href: http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers
   - name: Python
     href: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations
-  - name: REST ()
+  - name: REST
     href: https://msdn.microsoft.com/library/azure/mt163651.aspx
 - name: 関連項目
   items:
