@@ -152,7 +152,7 @@
       href: /dotnet/api/microsoft.azure.management.cdn
     - name: Java
       href: /java/api/com.microsoft.azure.management.cdn
-    - name: REST ()
+    - name: REST
       href: /rest/api/cdn/
 - name: リソース
   items:
