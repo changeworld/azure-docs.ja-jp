@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: ad6b296543cffedb215c87b1fc893a22b29a3052
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0fd3bebc1e2dba3ab7d1204e779a8c80b97c990b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427350"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864062"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>チュートリアル 2: Azure Container Instances (ACI) に画像分類モデルをデプロイする
 
@@ -22,7 +22,7 @@ ms.locfileid: "49427350"
 
 これで、[Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) に Web サービスとしてモデルをデプロイする準備が整いました。 Web サービスは、スコアリング ロジックとモデル自体をカプセル化する 1 つのイメージ (この場合は Docker イメージ) です。 
 
-チュートリアルのこのパートでは、Azure Machine Learning サービス (プレビュー) を使って次の作業を行います。
+チュートリアルのこのパートでは、Azure Machine Learning service を使って次の作業を行います。
 
 > [!div class="checklist"]
 > * テスト環境を設定する
@@ -35,10 +35,12 @@ ACI は運用環境のデプロイに最適ではありませんが、ワーク�
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
-便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/02.deploy-models.ipynb)として提供されています。 `02.deploy-models.ipynb`Azure Notebook またはご自身の Jupyter notebook サーバー内のいずれかのノートを実行します。
+便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb)として提供されています。 `tutorials/img-classification-part2-deploy.ipynb`Azure Notebook またはご自身の Jupyter notebook サーバー内のいずれかのノートを実行します。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
+>[!NOTE]
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.2 を使用してテストされました
 
 ## <a name="prerequisites"></a>前提条件
 

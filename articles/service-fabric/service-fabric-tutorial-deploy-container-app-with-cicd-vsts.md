@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: 06bc4be6ee485e61523d210b692c3fe2567cc62c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 2320aaf2d502280a29562a49dfff1e4e9244d079
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443493"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872970"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする
 
@@ -65,7 +65,7 @@ Visual Studio の右下隅のステータス バーにある **[ソース管理*
 
 リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいチーム プロジェクトが自分のアカウントに作成されます。 既存のチーム プロジェクトでリポジトリを作成するには、**[リポジトリ名]** の横にある **[詳細]** をクリックして、チーム プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、Web でコードを表示できます。
 
-## <a name="configure-continuous-delivery-with-vsts"></a>VSTS を利用した継続的配信を設定する
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Azure Pipelines を使用して継続的デリバリーを構成する
 
 Azure DevOps のビルド定義では、順次実行される一連のビルド ステップで構成されたワークフローを記述します。 Service Fabric クラスターをデプロイするため、Service Fabric アプリケーション パッケージおよび他のアーティファクトを生成するビルド定義を作成します。 Azure DevOps の[ビルド定義](https://www.visualstudio.com/docs/build/define/create)について詳細を確認してください。 
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: fedb41f6538e0c65114c4a28c8aa43ffc7ef6d7f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c2edb821eb8bd9a5da7a6cce81269e7d3f611722
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957602"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869893"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
@@ -29,7 +29,7 @@ Azure Virtual WAN は、Azure を介して支店間接続を最適化し、自�
 
 ## <a name="s2s"></a>サイト間接続
 
-Virtual WAN を使用してサイト間接続を作成するには、[Virtual WAN パートナー](https://go.microsoft.com/fwlink/p/?linkid=2019615)を利用するか、手動で接続を作成します。
+Virtual WAN を使用してサイト間接続を作成するには、[Virtual WAN パートナー](virtual-wan-locations-partners.md)を利用するか、手動で接続を作成します。
 
 ### <a name="s2spartner"></a>Virtual WAN パートナーとの連携
 
@@ -46,11 +46,11 @@ Virtual WAN パートナーと連携する場合のプロセスは、次のと�
 
 ポイント対サイト (P2S) 接続では、個々のクライアント コンピューターから仮想ハブへの、セキュリティで保護された接続を作成することができます。 P2S 接続は、クライアント コンピューターから接続を開始することによって確立されます。 このソリューションは、在宅勤務の人間が自宅や会議室など、リモートの場所から接続する場合に便利です。 P2S VPN は、接続する必要があるクライアントが数台のみの場合に、S2S VPN の代わりに使用するソリューションとしても便利です。
 
-手動で接続を作成するには、[Virtual WAN を使用したポイント対サイト接続の作成](https://go.microsoft.com/fwlink/p/?linkid=2020051&clcid)に関するページを参照してください。
+手動で接続を作成するには、[Virtual WAN を使用したポイント対サイト接続の作成](virtual-wan-point-to-site-portal.md)に関するページを参照してください。
 
 ## <a name="er"></a>ExpressRoute 接続 (プレビュー)
 
-手動で接続を作成するには、[Virtual WAN を使用した ExpressRoute 接続の作成](https://go.microsoft.com/fwlink/p/?linkid=2020148&clcid)に関するページを参照してください。
+手動で接続を作成するには、[Virtual WAN を使用した ExpressRoute 接続の作成](virtual-wan-expressroute-portal.md)に関するページを参照してください。
 
 
 ## <a name="resources"></a>Virtual WAN リソース
@@ -76,4 +76,4 @@ Virtual WAN パートナーと連携する場合のプロセスは、次のと�
 
 ## <a name="next-steps"></a>次の手順
 
-* [仮想 WAN のパートナーと場所](https://aka.ms/virtualwan)を確認する
+[Virtual WAN パートナーと場所](virtual-wan-locations-partners.md)に関するページを参照します。

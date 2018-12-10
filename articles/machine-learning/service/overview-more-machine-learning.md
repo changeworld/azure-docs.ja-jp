@@ -8,13 +8,13 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 09/24/2018
-ms.openlocfilehash: 182504373795b3cb0f2794acbed5e253ac6bc95c
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.date: 12/04/2018
+ms.openlocfilehash: ad6cb53bd69218d2af801cb56f882f5ffde3026c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419561"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872554"
 ---
 # <a name="what-are-the-machine-learning-product-options-from-microsoft"></a>Microsoft の機械学習製品オプションとは
 
@@ -22,22 +22,22 @@ Microsoft は、機械学習モデルを構築、デプロイ、および管理�
 
 | 機械学習製品 | 説明 | この製品でできること |
 |-|-|-|
-| クラウド内 | | |
+| "***クラウド内***" | | |
 | [Azure Machine Learning サービス](#azure-machine-learning-services) | ML 用のマネージド クラウド サービス  | Python と CLI を使用して Azure でモデルをトレーニング、デプロイ、および管理する |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio) | ML 用のドラッグ アンド ドロップのビジュアル インターフェイス | 事前に構成されたアルゴリズムを使用してモデルを構築、実験、およびデプロイする |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio) | &ndash;ML 用のドラッグ アンド ドロップ式のビジュアル インターフェイス&ndash; | 事前に構成されたアルゴリズムを使用してモデルを構築、実験、およびデプロイする |
 | [Azure Databricks](#azure-databricks) | Spark ベースの分析プラットフォーム | モデルとデータ ワークフローを構築およびデプロイする |
 | [Azure Cognitive Services](#azure-cognitive-services) | AI および ML モデルが事前に構築された Azure サービス | インテリジェントな機能をアプリに簡単に追加する |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | データ サイエンス ツールがプレインストールされた仮想マシン | 事前に構成された環境で ML ソリューションを開発する |
-| オンプレミス | | |
+| ***オンプレミスの***<br>"*(クラウド上の仮想マシンでオンプレミスのサーバーを実行することも可能)*" | | |
 | [SQL Server Machine Learning サービス](#sql-server-machine-learning-services) | SQL に組み込まれた分析エンジン | SQL Server の内部にモデルを構築およびデプロイする |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | 予測分析のためのスタンドアロンのエンタープライズ サーバー | R と Python でモデルを構築およびデプロイする |
-| 開発者用ツール | | |
+| ***開発者ツール*** | | |
 | [ML.NET](#mlnet) | オープンソースのクロスプラットフォーム ML SDK | .NET アプリケーション用の ML ソリューションを開発する |
 | [Windows ML](#windows-ml) | Windows 10 ML プラットフォーム | Windows 10 デバイス上のトレーニング済みのモデルを評価する |
 
 ## <a name="azure-machine-learning-service"></a>Azure Machine Learning サービス
 
-[Azure Machine Learning サービス](overview-what-is-azure-ml.md) (プレビュー) は、ML モデルを大規模にトレーニング、デプロイ、および管理するために使用されるフル マネージドのクラウド サービスです。 オープンソース テクノロジを完全にサポートしているため、TensorFlow、PyTorch、scikit-learn などの数万のオープンソース Python パッケージを使用できます。 データを調査および変換してから、モデルをトレーニングおよびデプロイすることを容易にするために、[Azure Notebook](https://notebooks.azure.com/)、[Jupyter Notebook](http://jupyter.org)、[Visual Studio Code Tools for AI](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/) などの豊富なツールも使用できます。 Azure Machine Learning サービスには、モデルの生成とチューニングを簡単に、効率よく、かつ正確に自動化する機能が含まれています。
+[Azure Machine Learning サービス](overview-what-is-azure-ml.md) は、ML モデルを大規模にトレーニング、デプロイ、および管理するために使用されるフル マネージド クラウド サービスです。 オープンソース テクノロジを完全にサポートしているため、TensorFlow、PyTorch、scikit-learn などの数万のオープンソース Python パッケージを使用できます。 データの探索と変換、モデルのトレーニングとデプロイを容易にするために、[Azure Notebooks](https://notebooks.azure.com/)、[Jupyter Notebook](http://jupyter.org)、[Azure Machine Learning for Visual Studio Code](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/) などの豊富なツールも利用できます。 Azure Machine Learning サービスには、モデルの生成とチューニングを簡単に、効率よく、かつ正確に自動化する機能が含まれています。
 
 Azure Machine Learning サービスは、Python と CLI を使用して ML モデルをクラウド規模でトレーニング、デプロイ、および管理する場合に使用します。
 
@@ -74,9 +74,10 @@ Cognitive Services は、デバイスやプラットフォームにまたがる�
 ## <a name="azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine
 
 [Azure Data Science Virtual Machine](../data-science-virtual-machine/overview.md) は、特にデータ サイエンスを実行するために構築された Microsoft Azure クラウド上のカスタマイズされた仮想マシン環境です。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。
-Data Science Virtual Machine は、Windows と Linux Ubuntu の両方のバージョンで使用できます (Linux CentOS では Azure Machine Learning サービスはサポートされていません)。
-特定のバージョン情報および含まれている内容の一覧については、[Azure Data Science Virtual Machine の概要](../data-science-virtual-machine/overview.md)に関するページを参照してください。
+
 Data Science Virtual Machine は、Azure Machine Learning サービスのターゲットとしてサポートされています。
+Windows と Linux Ubuntu の両方のバージョンで使用できます (Linux CentOS では Azure Machine Learning サービスはサポートされていません)。
+特定のバージョン情報および含まれている内容の一覧については、[Azure Data Science Virtual Machine の概要](../data-science-virtual-machine/overview.md)に関するページを参照してください。
 
 Data Science VM は、単一のノードでジョブを実行またはホストする必要がある場合や、 1 台のマシンで処理をリモートでスケールアップする必要がある場合に使用します。
 

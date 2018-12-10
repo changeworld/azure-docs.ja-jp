@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
 ms.author: sethm
-ms.openlocfilehash: 2fa062621e551ce7182facc45ec84b39d4c2dad7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a770c88b294de24eb9e0f482681038e4d36b1d6f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078751"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874602"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Azure Stack の VPN ゲートウェイ構成設定
 
@@ -185,7 +185,7 @@ Azure Stack で VPN 接続を設定するときは、両端で接続を構成す
 |暗号化とハッシュ アルゴリズム (暗号化)     | GCMAES256|
 |暗号化とハッシュ アルゴリズム (認証) | GCMAES256|
 |SA の有効期間 (時間)  | 27,000 秒  |
-|SA の有効期間 (バイト) | 33,553,408     |
+|SA の有効期間 (キロバイト単位) | 33,553,408     |
 |Perfect Forward Secrecy (PFS) |なし<sup>注 1 を参照してください</sup> |
 |Dead Peer Detection | サポートされています|  
 

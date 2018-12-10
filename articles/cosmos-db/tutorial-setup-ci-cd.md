@@ -4,18 +4,16 @@ description: Azure DevOps で Cosmos DB エミュレーター ビルド タス�
 services: cosmos-db
 keywords: Azure Cosmos DB Emulator
 author: deborahc
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 782975cfa548d214515761e45b8f79a2219831e2
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8b64142a7d693e8e48e1739a61978abbab740e3d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036973"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875214"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -23,7 +21,7 @@ Azure Cosmos DB エミュレーターでは、Azure Cosmos DB サービスを開
 
 Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクでは、CI 環境で同じことができます。 ビルド タスクを使用すると、ビルドとリリースのワークフローの一環として、エミュレーターに対してテストを実行できます。 タスクによって、既に実行中のエミュレーターが含まれた Docker コンテナーが起動され、ビルド定義の残りの部分で使用されるエンドポイントが提供されます。 エミュレーターのインスタンスは必要な数だけ作成して開始できます。これらのインスタンスはそれぞれ、別のコンテナーで実行されます。 
 
-この記事では、Azure DevOps で ASP.NET アプリケーション用の CI パイプラインを設定し、Cosmos DB エミュレーター ビルド タスクを使用してテストを実行する方法について説明します。 
+この記事では、Azure DevOps で ASP.NET アプリケーション用の CI パイプラインを設定し、Cosmos DB エミュレーター ビルド タスクを使用してテストを実行する方法について説明します。 同様のアプローチを使用して、Node.js または Python アプリケーション用の CI パイプラインを設定できます。 
 
 ## <a name="install-the-emulator-build-task"></a>エミュレーター ビルド タスクのインストール
 
@@ -82,6 +80,8 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
   </TestRunParameters>
 </RunSettings>
 ```
+
+Azure Cosmos DB MongoDB API を使用するアプリケーション用の CI/CD パイプラインを設定する場合、MongoDB 接続文字列には、既定でポート番号 10255 が含まれています。 ただし、このポートは現在開いていないため、接続を確立する代替としてポート 10250 を使用して必要があります。 MongoDB API 接続文字列は、サポートされるポート番号が 10255 ではなく 10250 点であること以外は同じです。
 
 `TestRunParameters` のこれらのパラメーターは、アプリケーションのテスト プロジェクトに含まれている `TestContext` プロパティを介して参照されます。 Cosmos DB に対して実行するテストの例を次に示します。
 

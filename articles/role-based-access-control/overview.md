@@ -1,5 +1,5 @@
 ---
-title: Azure でのロールベースのアクセス制御 (RBAC) とは  | Microsoft Docs
+title: Azure でのロールベースのアクセス制御 (RBAC) とは | Microsoft Docs
 description: Azure でのロールベースのアクセス制御 (RBAC) の概要を説明します。 ロールの割り当てを使用して、Azure でのリソースへのアクセスを制御します。
 services: active-directory
 documentationcenter: ''
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 19285bf7a1323e9698fe408566304d0596d1c983
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ddad471236877977fec620565d8f110e265ff72
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311266"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867900"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) とは
 
@@ -50,13 +50,14 @@ RBAC を使用してリソースへのアクセスを制御するには、ロー
 
 ### <a name="security-principal"></a>セキュリティ プリンシパル
 
-"*セキュリティ プリンシパル*" は、Azure リソースへのアクセスを要求するユーザー、グループ、サービス プリンシパルを表すオブジェクトです。
+"*セキュリティ プリンシパル*" は、Azure リソースへのアクセスを要求するユーザー、グループ、サービス プリンシパル、またはマネージド ID を表すオブジェクトです。
 
 ![ロール割り当てのセキュリティ プリンシパル](./media/overview/rbac-security-principal.png)
 
 - ユーザー - Azure Active Directory 内にプロファイルを持つ個人です。 他のテナント内のユーザーにロールを割り当てることもできます。 他の組織のユーザーについては、「[Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md)」をご覧ください。
 - グループ - Azure Active Directory 内に作成されたユーザーのセットです。 グループにロールを割り当てると、そのグループ内のすべてのユーザーがそのロールを持つようになります。 
 - サービス プリンシパル - 特定の Azure リソースにアクセスするためにアプリケーションまたはサービスによって使用されるセキュリティ ID です。 アプリケーションに対する "*ユーザー ID*" (ユーザー名とパスワード、または証明書) と考えることができます。
+- マネージド ID - Azure によって自動的に管理される Azure Active Directory 内の ID。 通常、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure サービスに対する認証を受けるための資格情報を管理するクラウド アプリケーションを開発するときに使用します。
 
 ### <a name="role-definition"></a>ロール定義
 
@@ -91,7 +92,7 @@ Azure では、複数のレベル ([管理グループ](../azure-resource-manage
 
 ### <a name="role-assignments"></a>ロールの割り当て
 
-"*ロールの割り当て*" は、アクセスの許可を目的として、特定のスコープで、ユーザー、グループ、またはサービス プリンシパルにロールの定義をバインドするプロセスです。 アクセスは、ロールの割り当てを作成することによって許可され、ロールの割り当てを削除することによって取り消されます。
+"*ロールの割り当て*" は、アクセスの許可を目的として、特定のスコープで、ユーザー、グループ、サービス プリンシパル、またはマネージド ID にロールの定義をアタッチするプロセスです。 アクセスは、ロールの割り当てを作成することによって許可され、ロールの割り当てを削除することによって取り消されます。
 
 次の図では、ロールの割り当ての例を示します。 この例では、Marketing グループには、pharma-sales リソース グループに対する[共同作成者](built-in-roles.md#contributor)ロールが割り当てられています。 つまり、Marketing グループのユーザーは、pharma-sales リソース グループ内の任意の Azure リソースを作成または管理できます。 Marketing ユーザーは、別のロール割り当ての一部になっていない限り、pharma-sales リソース グループに含まれないリソースにはアクセスできません。
 
@@ -101,9 +102,7 @@ Azure では、複数のレベル ([管理グループ](../azure-resource-manage
 
 ## <a name="deny-assignments"></a>拒否割り当て
 
-これまでの RBAC は拒否のない許可のみのモデルでしたが、限定的にですが RBAC で拒否の割り当てがサポートされるようになりました。 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、またはサービス プリンシパルに一連の拒否アクションがバインドされます。 ロールの割り当てでは "*許可される*" アクションのセットを定義しますが、拒否割り当てでは "*許可されない*" アクションのセットを定義します。 つまり、拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 ロールの割り当てより拒否割り当ての方が優先されます。
-
-現在、拒否割り当ては**読み取り専用**であり、Azure によってのみ設定されます。 独自の拒否割り当てを作成することはできませんが、有効なアクセス許可に影響を与える可能性があるので、拒否割り当てを一覧表示することはできます。 拒否割り当てに関する情報を取得するには、`Microsoft.Authorization/denyAssignments/read` アクセス許可が必要です。このアクセス許可は、ほとんどの[組み込みロール](built-in-roles.md#owner)に含まれています。 詳しくは、「[拒否割り当てについて](deny-assignments.md)」をご覧ください。
+これまでの RBAC は拒否のない許可のみのモデルでしたが、限定的にですが RBAC で拒否の割り当てがサポートされるようになりました。 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、サービス プリンシパル、またはマネージド ID に一連の拒否アクションがアタッチされます。 ロールの割り当てでは "*許可される*" アクションのセットを定義しますが、拒否割り当てでは "*許可されない*" アクションのセットを定義します。 つまり、拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 ロールの割り当てより拒否割り当ての方が優先されます。 現在、拒否割り当ては**読み取り専用**であり、Azure によってのみ設定されます。 詳細については、「[拒否割り当てについて](deny-assignments.md)」と「[Azure portal を使用して拒否割り当てを表示する](deny-assignments-portal.md)」を参照してください。
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>ユーザーがリソースへのアクセス権を持っているどうかを RBAC が特定する方法
 
