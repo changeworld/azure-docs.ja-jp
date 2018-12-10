@@ -42,7 +42,7 @@ Azure Machine Learning サービスは、次のコンピューティング タ�
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 > [!IMPORTANT]
-> <a id="pipeline-only"></a>* パイプラインで使用できるのは、Azure Databricks と Azure Data Lake Analytics __のみ__です。 パイプラインの詳細については、「[パイプラインと Azure Machine Learning](concept-ml-pipelines.md)」のドキュメントを参照してください。
+> <a id="pipeline-only"></a>* パイプラインで使用できるのは、Azure Databricks と Azure Data Lake Analytics __のみ__ です。 パイプラインの詳細については、「[パイプラインと Azure Machine Learning](concept-ml-pipelines.md)」のドキュメントを参照してください。
 
 __[Azure Container Instances (ACI)](#aci)__ はモデルのトレーニングにも使用できます。 安価で簡単に作成および操作できるサーバーレス クラウド サービスです。 ACI は、GPU アクセラレーション、自動化されたハイパーパラメーターのチューニング、自動化されたモデル選択をサポートしません。 また、パイプラインでは使用できません。
 
