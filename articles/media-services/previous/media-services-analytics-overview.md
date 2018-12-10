@@ -93,7 +93,7 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
     }
 
 
-### <a name="rest"></a>REST ()
+### <a name="rest"></a>REST
 要求:
 
     GET https://media.windows.net/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20OCR' HTTP/1.1
