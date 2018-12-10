@@ -24,7 +24,7 @@ ms.locfileid: "51254436"
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
-> * [REST ()](media-services-rest-encode-asset.md)
+> * [REST](media-services-rest-encode-asset.md)
 > * [ポータル](media-services-portal-encode.md)
 >
 >
