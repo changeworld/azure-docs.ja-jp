@@ -191,7 +191,7 @@ items:
     href: /powershell/module/azurerm.datafactories
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.datafactories.models
-  - name: REST ()
+  - name: REST
     href: /rest/api/datafactory/
   - name: JSON
     href: data-factory-json-scripting-reference.md
