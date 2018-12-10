@@ -19,7 +19,7 @@ ms.locfileid: "47093356"
 > [!div class="op_single_selector"]
 >
 > * [ポータル](search-language-support.md)
-> * [REST ()](https://msdn.microsoft.com/library/azure/dn879793.aspx)
+> * [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
 > * [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
 >
 >
