@@ -47,5 +47,5 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/cli/azure/ext/front-door">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/frontdoor">REST API</a></p>
