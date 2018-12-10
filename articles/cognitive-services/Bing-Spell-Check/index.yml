@@ -70,7 +70,7 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: REST ()
+    - title: REST
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference">Bing Spell Check API v7 リファレンス</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference">Bing Spell Check API v5 リファレンス</a> (旧バージョン)</p>
     - title: コード サンプル
       html: <p><a href="sdk.md">SDK のサンプルの概要</a></p>
