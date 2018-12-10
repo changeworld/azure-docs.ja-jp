@@ -101,7 +101,7 @@ Scheduler を使用して、クラウドで繰り返し発生するジョブを�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="/rest/api/scheduler">REST API リファレンスに関するページ</a></p>
                     </div>
                 </div>
