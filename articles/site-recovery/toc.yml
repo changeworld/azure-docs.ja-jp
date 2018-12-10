@@ -414,7 +414,7 @@ items:
     href: /powershell/module/azurerm.recoveryservices.siterecovery
   - name: Azure PowerShell クラシック
     href: /powershell/module/azure/?view=azuresmps-3.7.0
-  - name: REST ()
+  - name: REST
     href: https://msdn.microsoft.com/library/mt750497
 - name: 関連項目
   items:
