@@ -48,7 +48,7 @@ sections:
       href: https://docs.microsoft.com/azure/search/search-create-index-dotnet
     - image:
         src: /azure/search/media/index/rest.svg
-      text: REST ()
+      text: REST
       href: https://docs.microsoft.com/azure/search/search-fiddler
 - title: ステップバイステップのチュートリアル
   items:
@@ -72,5 +72,5 @@ sections:
     items:
     - title: 言語
       html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (管理)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (管理)</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/searchservice">Service API リファレンス</a></p><p><a href="/rest/api/searchmanagement">Management API リファレンス</a></p>
