@@ -67,7 +67,7 @@
       href: /cli/azure/acs
     - name: PowerShell
       href: /powershell/module/azurerm.compute
-    - name: REST ()
+    - name: REST
       href: /rest/api/container-service
 - name: リソース
   items:
