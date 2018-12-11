@@ -9,16 +9,52 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 5ceb47f437f736829d0be10a856fe787fab944b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6007a7e32e168ada529feb6aa24b8d572671d835
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261584"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291342"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
 この記事では、Azure Machine Learning service の各リリースについて説明します。 
+
+## <a name="2018-11-20"></a>2018-11-20
+
+### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Azure Machine Learning SDK for Python v0.1.80
+
++ **重大な変更** 
+  * *azureml.train.widgets* 名前空間は、*azureml.widgets* に移動されました。
+  * *azureml.core.compute.AmlCompute* では、*azureml.core.compute.BatchAICompute* クラスと *azureml.core.compute.DSVMCompute* クラスが非推奨になりました。 前者のクラスは、今後のリリースで削除されます。 現在、AmlCompute クラスには以前の定義があり、単に vm_size と max_nodes が必要で、ジョブが送信されたときにご利用のクラスターは 0 から max_nodes に自動的にスケーリングされます。 [サンプル ノートブック]https://github.com/Azure/MachineLearningNotebooks/tree/master/training) は、この情報で更新されており、使用方法の例が提供されます。 この単純化と今後のリリースで登場するより魅力あふれる多くの機能にご満足いただければ幸いです。
+
+### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure Machine Learning Data Prep SDK v0.5.1 
+
+Data Prep SDK の詳細については、[リファレンス ドキュメント](https://aka.ms/data-prep-sdk)を参照してください。
++ **新機能**
+   * DataPrep パッケージを実行して、データセットまたはデータフローに対するデータ プロファイルを表示するために、新しい DataPrep CLI が作成されました
+   * 使いやすさを向上させるために SetColumnType API が再設計されました
+   * smart_read_file から auto_read_file に名前が変更されました
+   * データ プロファイルに傾斜と尖度が含まれるようになりました
+   * 層化抽出法でサンプリングすることができます
+   * CSV ファイルを含む zip ファイルからの読み取りが可能になりました
+   * ランダム分割でデータセットを行型に分割できます (例: test-train セットに分割)
+   * .dtypes を呼び出すことでデータフローまたはデータ プロファイルから列のデータ型をすべて取得できます
+   * .row_count を呼び出すことでデータフローまたはデータ プロファイルから行数を取得できます
+
++ **バグの修正**
+   * 長整数型から倍精度浮動小数点型の変換が修正されました 
+   * 列の追加後のアサートが修正されました 
+   * 場合によってはグループが検出されない FuzzyGrouping での問題が修正されました
+   * 複数列の並べ替え順を優先する並べ替え関数が修正されました
+   * Pandas で処理される方法と同様になるように AND/OR 式が修正されました
+   * dbfs パスからの読み取りが修正されました
+   * エラー メッセージがわかりやすくなりました 
+   * AML トークンを使用してリモート コンピューティング先で読み取るときに、失敗しないようになりました
+   * Linux DSVM 上で失敗しないようになりました
+   * 文字列以外の値が文字列の述語にある場合にクラッシュしなくなりました
+   * Dataflow が正常に失敗する必要があるときに、アサーション エラーが処理されるようになりました
+   * Azure Databricks 上に保存場所をマウントした dbutils がサポートされるようになりました
 
 ## <a name="2018-11-05"></a>2018-11-05
 

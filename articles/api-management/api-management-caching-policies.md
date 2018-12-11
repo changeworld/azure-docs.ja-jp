@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 1706364ca0281240b5b887bea219620c7b4add5e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c1fd0f462a3eb960e27b002f4f7c940a6bf978c8
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246839"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620576"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -46,7 +46,7 @@ ms.locfileid: "51246839"
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
-<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">  
+<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" cache-preference="prefer-external | external | internal" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">  
   <vary-by-header>Accept</vary-by-header>  
   <!-- should be present in most cases -->  
   <vary-by-header>Accept-Charset</vary-by-header>  
@@ -68,7 +68,7 @@ ms.locfileid: "51246839"
 <policies>  
     <inbound>  
         <base />  
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" must-revalidate="true">  
+        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" must-revalidate="true" cache-preference="internal" >  
             <vary-by-query-parameter>version</vary-by-query-parameter>  
         </cache-lookup>           
     </inbound>  
@@ -112,14 +112,15 @@ ms.locfileid: "51246839"
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|allow-private-response-caching|`true` に設定すると、承認ヘッダーを含む要求をキャッシュできます。|いいえ |false|  
-|downstream-caching-type|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。|いいえ |なし|  
-|must-revalidate|ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。|いいえ |true|  
-|vary-by-developer|`true` に設定すると、開発者キーごとに応答をキャッシュします。|[はい]||  
-|vary-by-developer-groups|`true` に設定すると、ユーザー ロールごとに応答をキャッシュします。|[はい]||  
-  
+| Name                           | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| allow-private-response-caching | `true` に設定すると、承認ヘッダーを含む要求をキャッシュできます。                                                                                                                                                                                                                                                                        | いいえ        | false             |
+| cache-preference               | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` ([Azure API Management での外部 Redis Cache の使用](api-management-howto-cache-external.md)に関するページの説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ        | `prefer-external` |
+| downstream-caching-type        | この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。                                                                                                          | いいえ        | なし              |
+| must-revalidate                | ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。                                                                                                                                                                                                                      | いいえ        | true              |
+| vary-by-developer              | `true` に設定すると、開発者キーごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                         | [はい]      |                   |
+| vary-by-developer-groups       | `true` に設定すると、ユーザー ロールごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | [はい]      |                   |  
+
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
@@ -188,10 +189,10 @@ ms.locfileid: "51246839"
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|duration|キャッシュに格納されたエントリの有効期間 (秒単位)。|[はい]|該当なし|  
-  
+| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| duration         | キャッシュに格納されたエントリの有効期間 (秒単位)。                                                                                                                                                                                                                                                                                                   | [はい]      | 該当なし               |  
+
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
@@ -209,7 +210,8 @@ ms.locfileid: "51246839"
 ```xml  
 <cache-lookup-value key="cache key value"   
     default-value="value to use if cache lookup resulted in a miss"   
-    variable-name="name of a variable looked up value is assigned to" />  
+    variable-name="name of a variable looked up value is assigned to"  
+    cache-preference="prefer-external | external | internal" />  
 ```  
   
 ### <a name="example"></a>例  
@@ -230,12 +232,13 @@ ms.locfileid: "51246839"
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|default-value|キーによるキャッシュ検索で何も見つからなかった場合に、変数に割り当てられる値。 この属性が指定されない場合は `null` が割り当てられます。|いいえ |`null`|  
-|key|検索で使用するキャッシュのキー値。|[はい]|該当なし|  
-|variable-name|検索が成功した場合に、検索された値が割り当てられる[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)の名前。 検索結果で何も見つからなかった場合、変数には、`default-value` 属性の値または `null` (`default-value` 属性が省略されたとき) が割り当てられます。|[はい]|該当なし|  
-  
+| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| cache-preference | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` ([Azure API Management での外部 Redis Cache の使用](api-management-howto-cache-external.md)に関するページの説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ        | `prefer-external` |
+| default-value    | キーによるキャッシュ検索で何も見つからなかった場合に、変数に割り当てられる値。 この属性が指定されない場合は `null` が割り当てられます。                                                                                                                                                                                                           | いいえ        | `null`            |
+| key              | 検索で使用するキャッシュのキー値。                                                                                                                                                                                                                                                                                                                       | [はい]      | 該当なし               |
+| variable-name    | 検索が成功した場合に、検索された値が割り当てられる[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)の名前。 検索結果で何も見つからなかった場合、変数には、`default-value` 属性の値または `null` (`default-value` 属性が省略されたとき) が割り当てられます。                                       | [はい]      | 該当なし               |  
+
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
@@ -251,7 +254,7 @@ ms.locfileid: "51246839"
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
-<cache-store-value key="cache key value" value="value to cache" duration="seconds" />  
+<cache-store-value key="cache key value" value="value to cache" duration="seconds" cache-preference="prefer-external | external | internal" />  
 ```  
   
 ### <a name="example"></a>例  
@@ -272,11 +275,12 @@ ms.locfileid: "51246839"
   
 ### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|duration|指定された期間 (秒単位)、値がキャッシュされます。|[はい]|該当なし|  
-|key|値が格納されるキャッシュのキー。|[はい]|該当なし|  
-|value|キャッシュされる値。|[はい]|該当なし|  
+| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| cache-preference | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` ([Azure API Management での外部 Redis Cache の使用](api-management-howto-cache-external.md)に関するページの説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ        | `prefer-external` |
+| duration         | 指定された期間 (秒単位)、値がキャッシュされます。                                                                                                                                                                                                                                                                                 | [はい]      | 該当なし               |
+| key              | 値が格納されるキャッシュのキー。                                                                                                                                                                                                                                                                                                                   | [はい]      | 該当なし               |
+| value            | キャッシュされる値。                                                                                                                                                                                                                                                                                                                                     | [はい]      | 該当なし               |
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -291,7 +295,7 @@ ms.locfileid: "51246839"
   
 ```xml  
   
-<cache-remove-value key="cache key value"/>  
+<cache-remove-value key="cache key value" cache-preference="prefer-external | external | internal"  />  
   
 ```  
   
@@ -311,9 +315,10 @@ ms.locfileid: "51246839"
   
 #### <a name="attributes"></a>属性  
   
-|Name|説明|必須|既定値|  
-|----------|-----------------|--------------|-------------|  
-|key|キャッシュから削除される、前にキャッシュされた値のキー。|[はい]|該当なし|  
+| Name             | 説明                                                                                                                                                                                                                                                                                                                                                 | 必須 | 既定値           |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
+| cache-preference | 属性の次の値のいずれかを選択します。<br />- `internal` (組み込みの API Management キャッシュを使用する場合)、<br />- `external` ([Azure API Management での外部 Redis Cache の使用](api-management-howto-cache-external.md)に関するページの説明に従って、外部キャッシュを使用する場合)、<br />- `prefer-external` (構成されている場合は外部キャッシュ、そうでない場合は内部キャッシュを使用する場合)。 | いいえ        | `prefer-external` |
+| key              | キャッシュから削除される、前にキャッシュされた値のキー。                                                                                                                                                                                                                                                                                        | [はい]      | 該当なし               |
   
 #### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  

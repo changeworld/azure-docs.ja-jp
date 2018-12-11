@@ -9,12 +9,12 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 10/24/2018
-ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210688"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706808"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning サービスのしくみ: アーキテクチャと概念
 
@@ -31,7 +31,7 @@ ms.locfileid: "50210688"
 1. 満足できる実行が見つかった場合は、永続化されたモデルを __モデル レジストリ__ に登録します。
 1. スコアリング スクリプトを開発します。
 1. __イメージを作成__ し、それを __イメージ レジストリ__ に登録します。 
-1. Azure に __Web サービス__ として __イメージをデプロイ__ します。
+1. Azure に __Web サービス__として__イメージをデプロイ__します。
 
 
 [!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
@@ -156,9 +156,9 @@ Azure IoT Edge はモジュールが実行されるのを保証し、モジュ�
 
 実験の使用の例については、「[クイック スタート: Azure Machine Learning サービスの基本操作](quickstart-get-started.md)」をご覧ください。
 
-## <a name="pipelines"></a>パイプライン
+## <a name="pipeline"></a>パイプライン
 
-パイプラインの用途は、機械学習のフェーズをつなぎ合わせるワークフローを作成して管理することです。 たとえば、パイプラインにはデータ準備、モデル トレーニング、モデル デプロイ、推論の各フェーズが含まれることが考えられます。 それぞれのフェーズには、複数のステップを含めることができ、各ステップは、さまざまなコンピューティング先において無人実行することができます。
+機械学習パイプラインの用途は、機械学習のフェーズをつなぎ合わせるワークフローを作成して管理することです。 たとえば、パイプラインにはデータ準備、モデル トレーニング、モデル デプロイ、推論の各フェーズが含まれることが考えられます。 それぞれのフェーズには、複数のステップを含めることができ、各ステップは、さまざまなコンピューティング先において無人実行することができます。
 
 このサービスを使用した機械学習パイプラインの詳細については、「[パイプラインと Azure Machine Learning](concept-ml-pipelines.md)」の記事を参照してください。
 
@@ -174,7 +174,7 @@ Azure IoT Edge はモジュールが実行されるのを保証し、モジュ�
 | Azure Databricks | ✓ | &nbsp; | &nbsp; |
 | Azure Data Lake Analytics | ✓ | &nbsp; |
 | Apache Spark for HDInsight | ✓ | &nbsp; |
-| Azure コンテナー インスタンス | ✓ | ✓ |
+| Azure Container Instances | ✓ | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
 | Project Brainwave</br>(フィールド プログラマブル ゲート アレイ) | &nbsp; | ✓ |
