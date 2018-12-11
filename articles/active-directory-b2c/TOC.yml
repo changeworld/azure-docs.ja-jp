@@ -119,8 +119,10 @@ items:
         href: active-directory-b2c-custom-setup-msa-idp.md
       - name: Twitter
         href: active-directory-b2c-custom-setup-twitter-idp.md
-      - name: アクセス トークンのパススルー
-        href: idp-pass-through-custom.md
+    - name: ページ コントラクト
+      href: page-contract.md
+    - name: アクセス トークンのパススルー
+      href: idp-pass-through-custom.md
     - name: SAML プロバイダー
       items:
       - name: ADFS
@@ -222,6 +224,8 @@ items:
           href: userjourneys.md
         - name: RelyingParty
           href: relyingparty.md
+      - name: JavaScript のサンプル
+        href: javascript-samples.md
       - name: リリース ノート
         href: active-directory-b2c-developer-notes-custom.md
       - name: 信頼フレームワークの定義
@@ -322,9 +326,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: f46d54408e62f04519bc8e93f619d5e8d6d8640b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 80e90efcc500f04e3ec1f3e10c157c9b415f0eda
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720509"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079077"
