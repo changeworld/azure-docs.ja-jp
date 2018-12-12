@@ -24,7 +24,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/07/2018
 ms.locfileid: "39601266"
 ---
-# <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション 
+# <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
 Azure Active Directory、Microsoft ID、Microsoft Graph API との連携を開始した直後でも、アプリケーションに新しい機能を実装するときでも、コミュニティからヘルプを入手し、開発者として使用できるサポートのオプションを把握しておく必要があります。 この記事では、これらのオプションについて説明します。以下はその概要です。
 
@@ -46,7 +46,6 @@ Azure Active Directory、Microsoft ID、Microsoft Graph API との連携を開�
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/en-us/graph)
 ```
 ここで、*{Your Search Terms}* は検索するキーワードです。
-<br/>
 
 ## <a name="use-our-development-support-tools"></a>開発サポート ツールを使用する
 
@@ -55,8 +54,6 @@ Azure Active Directory、Microsoft ID、Microsoft Graph API との連携を開�
 |[jwt.ms](https://jwt.ms)| ID またはアクセス トークンを貼り付けて要求の名前と値をデコードする |
 |[エラー コード分析ツール](https://apps.dev.microsoft.com/portal/tools/errors)| サインイン中または同意ページで受け取ったエラー コードを貼り付けて考えられる原因や修復方法を確認する |
 |[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Microsoft Graph API に対して要求を出して応答を確認できるツール|
-
-<br/>
 
 [![Stack Overflow](./media/developer-support-help-options/stackoverflow-logo.png)](https://www.stackoverflow.com)
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow に質問を投稿する
@@ -76,7 +73,7 @@ Stack Overflow は開発に関連する質問があるときに優先して使�
 |その他認証や承認のトピックに関連する区分 |[[azure-active-directory]](http://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
-> Stack Overflow の次の投稿には、質問をするためのコツやソース コードを追加するヒントがあります。次のガイドラインに従うと、コミュニティのメンバーが質問にアクセスしてすぐに回答が得られる確率が高まります。  
+> Stack Overflow の次の投稿には、質問をするためのコツやソース コードを追加するヒントがあります。次のガイドラインに従うと、コミュニティのメンバーが質問にアクセスしてすぐに回答が得られる確率が高まります。
 > - [よい質問をする方法](https://stackoverflow.com/help/how-to-ask)
 > - [最小限の例、完全な例、実証可能な例を作成する方法](https://stackoverflow.com/help/mcve)
 
@@ -86,11 +83,9 @@ Stack Overflow は開発に関連する質問があるときに優先して使�
 [![Stack Overflow](./media/developer-support-help-options/github-logo.png)](https://www.github.com)
 ## <a name="create-a-github-issue"></a>GitHub の問題を作成する
 
- ライブラリにバグや問題が見つかった場合は、GitHub リポジトリに問題を報告してください。 ライブラリはオープンソースであるため、プル要求を送信することもできます。 次の記事には、ライブラリの一覧と GitHub リポジトリが含まれています。
+ライブラリにバグや問題が見つかった場合は、GitHub リポジトリに問題を報告してください。 ライブラリはオープンソースであるため、pull request を送信することもできます。 次の記事には、ライブラリの一覧と GitHub リポジトリが含まれています。
 
 - [ADAL、MSAL、および Owin ミドルウェア](active-directory-authentication-libraries.md)のライブラリと GitHub リポジトリ
-
-<br/>
 
 ## <a name="open-a-support-request"></a>サポート要求をオープンする
 
