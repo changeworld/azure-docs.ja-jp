@@ -209,7 +209,7 @@ Data Lake Storage Gen2 のプレビューの習得に関心がある場合は、
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="/rest/api/datalakestore">REST API</a></p>
                     </div>
                 </div>
