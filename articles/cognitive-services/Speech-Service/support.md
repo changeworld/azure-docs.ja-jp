@@ -68,13 +68,13 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 |General Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
-> Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。  
+> Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。
 > * [よい質問をする方法](https://stackoverflow.com/help/how-to-ask)
 > * [最小限の例、完全な例、実証可能な例を作成する方法](https://stackoverflow.com/help/mcve)
 
-## <a name="create-a-github-issue"></a>GitHub の問題を作成する
+## <a name="create-a-github-issue"></a>GitHub の issue を作成する
 
-多くの場合、サンプルはオープン ソースとして投稿されます。 質問や問題の場合は、それぞれの GitHub リポジトリで "*問題*" を作成します。 プル要求を送信することもできます。 次の一覧には、サンプル リポジトリへのリンクが含まれます。
+多くの場合、サンプルはオープン ソースとして投稿されます。 質問や問題の場合は、それぞれの GitHub リポジトリで "*問題*" を作成します。 pull request を送信することもできます。 次の一覧には、サンプル リポジトリへのリンクが含まれます。
 
 * [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
 * [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
