@@ -1,18 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 452032e21a649fe4d34616225bd168d441ac0267
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 6fa6a0f5a46d8e9a47a0750a66e9ca007864d40a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218639"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092633"
 documentType: LandingData
-title: Speech Service のドキュメント
+title: Speech Services のドキュメント
 metadata:
-  title: Speech Service のドキュメント - チュートリアル、クイック スタート、API リファレンス - Cognitive Services | Microsoft Docs
-  meta.description: >
-    The Speech service gives developers an easy way to add powerful speech-enabled features to their applications.
-
-    Examples include voice command control and dialogue, natural speech conversation, speech transcription and dictation, and speech translation.
+  title: Speech Services のドキュメント - チュートリアル、クイック スタート、API リファレンス
+  titleSuffix: Azure Cognitive Services
+  description: Speech Services により、開発者はアプリケーションに強力な音声認識機能を簡単に追加できます。 例として、音声コマンド制御とダイアログ、自然な言葉での会話、文字起こしやディクテーション、音声翻訳があります。
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -22,10 +20,11 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
-  ms.author: nitinme
+  ms.date: 12/06/2018
+  ms.author: erhopf
+  ms.custom: seodec18
 abstract:
-  description: Speech Service と Speech SDK を使用して、音声認識機能をアプリに追加する方法について説明します。 Speech SDK を使用して、<i>音声テキスト変換</i> (音声認識/SR)、<i>意図</i>、<i>翻訳</i>、<i>テキスト読み上げ</i> (TTS) の各機能をアプリに追加できます。 Speech Service には、HTTP 要求を実行できるプログラミング言語で動作する REST API も含まれています。
+  description: Speech Services と Speech SDK を使用して、音声認識機能をアプリに追加する方法について説明します。 Speech SDK を使用して、<i>音声テキスト変換</i> (音声認識/SR)、<i>意図</i>、<i>翻訳</i>、<i>テキスト読み上げ</i> (TTS) の各機能をアプリに追加できます。 Speech Service には、HTTP 要求を実行できるプログラミング言語で動作する REST API も含まれています。
 sections:
 - items:
   - type: list
@@ -34,15 +33,15 @@ sections:
     columns: 3
     items:
     - href: /azure/cognitive-services/speech-service/overview
-      html: <p>Azure Speech Service について説明します。</p>
+      html: <p>Azure Speech Services について説明します。</p>
       image:
         src: ../media/index/i_overview.svg
       title: Speech Service とは
     - href: /azure/cognitive-services/speech-service/get-started
-      html: <p>Speech Service に無料でサインアップする方法について説明します。</p>
+      html: <p>無料試用版にサインアップ</p>
       image:
         src: ../media/index/i_get-started.svg
-      title: Speech Service のサインアップ
+      title: Speech Services にサインアップ
     - href: /azure/cognitive-services/speech-service/speech-devices-sdk
       html: <p>音声認識ハードウェア リファレンスについて説明します。</p>
       image:
