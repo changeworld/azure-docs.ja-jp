@@ -44,7 +44,7 @@ ACR タスクの[クイック タスク](container-registry-tutorial-quick-task.
 | ローカル ファイルシステム | ローカル ファイル システム上のディレクトリ内のファイル。 | `/home/user/projects/myapp` |
 | GitHub master ブランチ | GitHub リポジトリの master (またはその他の既定の) ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub ブランチ | GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub PR | GitHub リポジトリのプル要求。 | `https://github.com/gituser/myapp-repo.git#pull/23/head` |
+| GitHub PR | GitHub リポジトリの pull request 。 | `https://github.com/gituser/myapp-repo.git#pull/23/head` |
 | GitHub のサブフォルダー | GitHub リポジトリのサブフォルダー内のファイル 例は、PR とサブフォルダーの指定の組み合わせを示しています。 | `https://github.com/gituser/myapp-repo.git#pull/24/head:myfolder` |
 | リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
 
