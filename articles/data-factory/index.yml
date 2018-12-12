@@ -60,7 +60,7 @@ sections:
       href: /azure/data-factory/quickstart-create-data-factory-python
     - image:
         src: /azure/data-factory/media/index/logo_rest.svg
-      text: REST ()
+      text: REST
       href: /azure/data-factory/quickstart-create-data-factory-rest-api
     - image:
         src: /azure/data-factory/media/index/logo_azure_resource_manager.svg
