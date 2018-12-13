@@ -17,14 +17,14 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 9b2ccce4ef6fad4f7710ba2092d67ac5f4e73b71
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 60186d44437a866793b40c9d6f0263235803475f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601266"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422441"
 ---
-# <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
+# <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション 
 
 Azure Active Directory、Microsoft ID、Microsoft Graph API との連携を開始した直後でも、アプリケーションに新しい機能を実装するときでも、コミュニティからヘルプを入手し、開発者として使用できるサポートのオプションを把握しておく必要があります。 この記事では、これらのオプションについて説明します。以下はその概要です。
 
@@ -46,6 +46,7 @@ Azure Active Directory、Microsoft ID、Microsoft Graph API との連携を開�
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/en-us/graph)
 ```
 ここで、*{Your Search Terms}* は検索するキーワードです。
+<br/>
 
 ## <a name="use-our-development-support-tools"></a>開発サポート ツールを使用する
 
@@ -54,6 +55,8 @@ Azure Active Directory、Microsoft ID、Microsoft Graph API との連携を開�
 |[jwt.ms](https://jwt.ms)| ID またはアクセス トークンを貼り付けて要求の名前と値をデコードする |
 |[エラー コード分析ツール](https://apps.dev.microsoft.com/portal/tools/errors)| サインイン中または同意ページで受け取ったエラー コードを貼り付けて考えられる原因や修復方法を確認する |
 |[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Microsoft Graph API に対して要求を出して応答を確認できるツール|
+
+<br/>
 
 [![Stack Overflow](./media/developer-support-help-options/stackoverflow-logo.png)](https://www.stackoverflow.com)
 ## <a name="post-a-question-to-stack-overflow"></a>Stack Overflow に質問を投稿する
@@ -64,16 +67,16 @@ Stack Overflow は開発に関連する質問があるときに優先して使�
 
 |コンポーネント/区分  |タグ  |
 |---------|---------|
-|ADAL ライブラリ |[[adal]](http://stackoverflow.com/questions/tagged/adal)|
-|MSAL ライブラリ     |[[msal]](http://stackoverflow.com/questions/tagged/msal)|
-|OWIN ミドルウェア  |[[azure-active-directory]](http://stackoverflow.com/questions/tagged/azure-active-directory)|
-|[Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](http://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](http://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Microsoft Graph API](https://developer.microsoft.com/graph/) |[[microsoft-graph]](http://stackoverflow.com/questions/tagged/microsoft-graph)
-|その他認証や承認のトピックに関連する区分 |[[azure-active-directory]](http://stackoverflow.com/questions/tagged/azure-active-directory)
+|ADAL ライブラリ |[[adal]](https://stackoverflow.com/questions/tagged/adal)|
+|MSAL ライブラリ     |[[msal]](https://stackoverflow.com/questions/tagged/msal)|
+|OWIN ミドルウェア  |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)|
+|[Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Microsoft Graph API](https://developer.microsoft.com/graph/) |[[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph)
+|その他認証や承認のトピックに関連する区分 |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
-> Stack Overflow の次の投稿には、質問をするためのコツやソース コードを追加するヒントがあります。次のガイドラインに従うと、コミュニティのメンバーが質問にアクセスしてすぐに回答が得られる確率が高まります。
+> Stack Overflow の次の投稿には、質問をするためのコツやソース コードを追加するヒントがあります。次のガイドラインに従うと、コミュニティのメンバーが質問にアクセスしてすぐに回答が得られる確率が高まります。  
 > - [よい質問をする方法](https://stackoverflow.com/help/how-to-ask)
 > - [最小限の例、完全な例、実証可能な例を作成する方法](https://stackoverflow.com/help/mcve)
 
@@ -83,9 +86,11 @@ Stack Overflow は開発に関連する質問があるときに優先して使�
 [![Stack Overflow](./media/developer-support-help-options/github-logo.png)](https://www.github.com)
 ## <a name="create-a-github-issue"></a>GitHub の問題を作成する
 
-ライブラリにバグや問題が見つかった場合は、GitHub リポジトリに問題を報告してください。 ライブラリはオープンソースであるため、pull request を送信することもできます。 次の記事には、ライブラリの一覧と GitHub リポジトリが含まれています。
+ ライブラリにバグや問題が見つかった場合は、GitHub リポジトリに問題を報告してください。 ライブラリはオープンソースであるため、pull request を送信することもできます。 次の記事には、ライブラリの一覧と GitHub リポジトリが含まれています。
 
 - [ADAL、MSAL、および Owin ミドルウェア](active-directory-authentication-libraries.md)のライブラリと GitHub リポジトリ
+
+<br/>
 
 ## <a name="open-a-support-request"></a>サポート要求をオープンする
 
