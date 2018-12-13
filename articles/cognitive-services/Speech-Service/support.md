@@ -68,7 +68,7 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 |General Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
-> Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。
+> Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。  
 > * [よい質問をする方法](https://stackoverflow.com/help/how-to-ask)
 > * [最小限の例、完全な例、実証可能な例を作成する方法](https://stackoverflow.com/help/mcve)
 
