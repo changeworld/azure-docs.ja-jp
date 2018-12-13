@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 8452f84c1358c410cd0431416a5b65a88a8b903e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: dd1fff79d6f611ae29307d666860d3740f4372f1
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817108"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162128"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 
-Azure Cosmos DB の統合された JavaScript 言語によるトランザクション実行によって、開発者が、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript でネイティブに記述できるしくみを説明します。 JavaScript 統合により、データベース ストレージ パーティションに直接配置して実行できるプログラム ロジックを記述できます。
+Azure Cosmos DB の統合された JavaScript 言語によるトランザクション実行によって、開発者が、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript でネイティブに記述できるしくみを説明します。 JavaScript 統合により、データベース ストレージ パーティションに直接配置して実行できるプログラム ロジックを記述できます。 
 
-この記事では、次の質問の答えを見つけることができます。
+この記事では、次の質問の答えを見つけることができます。  
 
 * どのようにしてストアド プロシージャ、トリガー、または UDF を JavaScript を使用して記述するか。
 * Cosmos DB では ACID がどのように保証されるか。
@@ -31,22 +31,22 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
 * ストアド プロシージャ、トリガー、および UDF を作成して実行するために使用できる Cosmos DB SDK はどれか。
 
 ## <a name="introduction-to-stored-procedure-and-udf-programming"></a>ストアド プロシージャと UDF プログラミングの概要
-この *"今日の T-SQL としての JavaScript (JavaScript as modern day T-SQL)"* という手法により、アプリケーション開発者は、型システムのミスマッチとオブジェクト/リレーショナル マッピング テクノロジの複雑さから解放されます。 この手法には、リッチなアプリケーションを作成する際に有用な本質的な長所もあります。
+この *"今日の T-SQL としての JavaScript (JavaScript as modern day T-SQL)"* という手法により、アプリケーション開発者は、型システムのミスマッチとオブジェクト/リレーショナル マッピング テクノロジの複雑さから解放されます。 この手法には、リッチなアプリケーションを作成する際に有用な本質的な長所もあります。  
 
 * **手続き型のロジック** : JavaScript は、高水準プログラミング言語として、ビジネス ロジックを表現するためのよく知られた優れたインターフェイスを提供します。 データにより近い複雑な一連の操作を実行できます。
-* **アトミックなトランザクション**: Cosmos DB では、単一のストアド プロシージャまたはトリガー内で実行されるデータベース操作がアトミックであることが保証されます。 このアトミック機能により、アプリケーションは、関連する操作を 1 つのバッチに結合できます。その結果は、すべてが成功するか、またはすべてが成功しないかのどちらかになります。
+* **アトミックなトランザクション**: Cosmos DB では、単一のストアド プロシージャまたはトリガー内で実行されるデータベース操作がアトミックであることが保証されます。 このアトミック機能により、アプリケーションは、関連する操作を 1 つのバッチに結合できます。その結果は、すべてが成功するか、またはすべてが成功しないかのどちらかになります。 
 * **パフォーマンス**: JSON は、Javascript 言語の型システムに本質的にマップされることに加え、Cosmos DB のストレージの基本的な単位であるため、バッファー プール内の JSON ドキュメントの遅延実体化のようないくつかの最適化を行い、それらを必要に応じて実行コードで利用することが可能になります。 ビジネス ロジックをデータベースに配置することには、より大きなパフォーマンス上のメリットがあります。
-
-  * バッチ処理 - 開発者は、挿入などの操作をグループ化してそれらを一括送信できます。 ネットワーク トラフィックの待機時間コストと、別個のトランザクションの作成に伴う格納オーバーヘッドが大幅に削減されます。
+  
+  * バッチ処理 - 開発者は、挿入などの操作をグループ化してそれらを一括送信できます。 ネットワーク トラフィックの待機時間コストと、別個のトランザクションの作成に伴う格納オーバーヘッドが大幅に削減されます。 
   * プリコンパイル - Cosmos DB では、ストアド プロシージャ、トリガー、およびユーザー定義関数 (UDF) をプリコンパイルして、JavaScript の呼び出しごとのコンパイル コストを回避しています。 手続き型のロジックのバイト コードのビルドに伴うオーバーヘッドは、最小値に平均化されます。
-  * シーケンス処理 – 多くの操作には、1 つまたは多数のセカンダリ格納操作の実行を潜在的に含む副作用 ("トリガー") が必要です。 アトミック性は別として、この操作では、サーバーに移行されたときにより高いパフォーマンスが実現されます。
+  * シーケンス処理 – 多くの操作には、1 つまたは多数のセカンダリ格納操作の実行を潜在的に含む副作用 ("トリガー") が必要です。 アトミック性は別として、この操作では、サーバーに移行されたときにより高いパフォーマンスが実現されます。 
 * **カブセル化**: ストアド プロシージャを使用して、ビジネス ロジックを 1 か所にグループ化できます。これには 2 つ利点があります。
-  * 生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。 この抽象化レイヤーは、データがスキーマを持たない場合に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。
-  * この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。
+  * 生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。 この抽象化レイヤーは、データがスキーマを持たない場合に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
+  * この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
 
 データベース トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[Azure Portal](https://portal.azure.com)、[REST API](/rest/api/cosmos-db/)、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)、および .NET、Node.js、JavaScript を含む多くのプラットフォームにある[クライアント SDK](sql-api-sdk-dotnet.md) 経由でサポートされます。
 
-このチュートリアルでは、[Node.js SDK と Q Promises](http://azure.github.io/azure-documentdb-node-q/) を使用して、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。
+このチュートリアルでは、[Node.js SDK と Q Promises](http://azure.github.io/azure-documentdb-node-q/) を使用して、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。   
 
 ## <a name="stored-procedures"></a>ストアド プロシージャ
 ### <a name="example-write-a-stored-procedure"></a>例: ストアド プロシージャを記述する
@@ -64,7 +64,7 @@ var helloWorldStoredProc = {
 }
 ```
 
-ストアド プロシージャは、コレクションごとに登録され、そのコレクションに存在するあらゆるドキュメントと添付ファイルに作用します。 次のスニペットは、helloWorld ストアド プロシージャをコレクションに登録する方法を示しています。
+ストアド プロシージャは、コレクションごとに登録され、そのコレクションに存在するあらゆるドキュメントと添付ファイルに作用します。 次のスニペットは、helloWorld ストアド プロシージャをコレクションに登録する方法を示しています。 
 
 
 ```javascript
@@ -80,7 +80,7 @@ client.createStoredProcedureAsync('dbs/testdb/colls/testColl', helloWorldStoredP
 ```
 
 
-ストアド プロシージャを登録した後、コレクションに対して実行して、その結果をクライアントで読み取ることができます。
+ストアド プロシージャを登録した後、コレクションに対して実行して、その結果をクライアントで読み取ることができます。 
 
 ```javascript
 // execute the stored procedure
@@ -92,9 +92,9 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、Cosmos DB ストレージに対して実行できるすべての操作へのアクセスを提供します。 ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定します。 詳細については、[Azure Cosmos DB JavaScript サーバー側の API リファレンス](https://azure.github.io/azure-cosmosdb-js-server/)を参照してください。
+コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、Cosmos DB ストレージに対して実行できるすべての操作へのアクセスを提供します。 ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定します。 詳細については、[Azure Cosmos DB JavaScript サーバー側の API リファレンス](https://azure.github.io/azure-cosmosdb-js-server/)を参照してください。  
 
-この例をさらに拡張して、データベースに関連するいくつかの機能をこのストアド プロシージャに追加していきます。 ストアド プロシージャを使用すると、コレクション内のドキュメントと添付ファイルの作成、更新、読み取り、照会、および削除を行うことができます。
+この例をさらに拡張して、データベースに関連するいくつかの機能をこのストアド プロシージャに追加していきます。 ストアド プロシージャを使用すると、コレクション内のドキュメントと添付ファイルの作成、更新、読み取り、照会、および削除を行うことができます。    
 
 ### <a name="example-write-a-stored-procedure-to-create-a-document"></a>例: ドキュメントを作成するストアド プロシージャを記述する
 コンテキスト オブジェクトを使用して Cosmos DB リソースとやり取りする方法を次のスニペットに示します。
@@ -118,7 +118,7 @@ var createDocumentStoredProc = {
 ```
 
 
-このストアド プロシージャは、入力として documentToCreate を受け取ります。これは、現在のコレクション内に作成するドキュメントの本文を示します。 このような操作はすべて非同期に実行され、JavaScript 関数コールバックに依存します。 コールバック関数には、操作が失敗した場合のエラー オブジェクト用と作成されたオブジェクト用の 2 つのパラメーターがあります。 コールバック内では、例外を処理することも、エラーをスローすることもできます。 コールバックが提供されていない場合にエラーが発生すると、Azure Cosmos DB ランタイムはエラーをスローします。
+このストアド プロシージャは、入力として documentToCreate を受け取ります。これは、現在のコレクション内に作成するドキュメントの本文を示します。 このような操作はすべて非同期に実行され、JavaScript 関数コールバックに依存します。 コールバック関数には、操作が失敗した場合のエラー オブジェクト用と作成されたオブジェクト用の 2 つのパラメーターがあります。 コールバック内では、例外を処理することも、エラーをスローすることもできます。 コールバックが提供されていない場合にエラーが発生すると、Azure Cosmos DB ランタイムはエラーをスローします。   
 
 上の例で操作が失敗した場合、コールバックはエラーをスローします。 それ以外の場合、コールバックは、作成されたドキュメントの ID をクライアントへの応答の本文として設定します。 入力パラメーターによってこのストアド プロシージャがどのように実行されるかを次に示します。
 
@@ -147,13 +147,13 @@ client.createStoredProcedureAsync('dbs/testdb/colls/testColl', createDocumentSto
 });
 ```
 
-このストアド プロシージャは、複数のドキュメントを複数の要求を使って個別に作成する代わりに、ドキュメント本文の配列を入力として受け取り、すべて同じストアド プロシージャの実行で作成するように変更できます。 このストアド プロシージャを使用して、Cosmos DB の効率的な一括インポーターを実装できます (このチュートリアルの後半で説明します)。
+このストアド プロシージャは、複数のドキュメントを複数の要求を使って個別に作成する代わりに、ドキュメント本文の配列を入力として受け取り、すべて同じストアド プロシージャの実行で作成するように変更できます。 このストアド プロシージャを使用して、Cosmos DB の効率的な一括インポーターを実装できます (このチュートリアルの後半で説明します)。   
 
 上の例ではストアド プロシージャの使用法について説明しました。 トリガーとユーザー定義関数 (UDF) については、このチュートリアルの後半で説明します。
 
 ### <a name="known-issues"></a>既知の問題
 
-Azure Portal を使用してストアド プロシージャを定義するときには、入力パラメーターは常に文字列としてストアド プロシージャに送信されます。 入力として文字列の配列を渡す場合でも、配列は文字列に変換されてストアド プロシージャに送信されます。 この問題を解決するため、ストアド プロシージャ内に関数を定義し、文字列を配列として解析できます。 次のコードで、文字列を配列として解析する例を示します。
+Azure Portal を使用してストアド プロシージャを定義するときには、入力パラメーターは常に文字列としてストアド プロシージャに送信されます。 入力として文字列の配列を渡す場合でも、配列は文字列に変換されてストアド プロシージャに送信されます。 この問題を解決するため、ストアド プロシージャ内に関数を定義し、文字列を配列として解析できます。 次のコードで、文字列を配列として解析する例を示します。 
 
 ```javascript
 function sample(arr) {
@@ -167,9 +167,9 @@ function sample(arr) {
 ```
 
 ## <a name="database-program-transactions"></a>プログラム データベース トランザクション
-一般的なデータベースにおけるトランザクションは、作業の単一の論理単位として実行される一連の操作として定義されます。 各トランザクションは、 **ACID の保証**を提供します。 ACID とは、Atomicity (アトミック性)、Consistency (一貫性)、Isolation (分離性)、Durability (持続性) の 4 つの特性のよく知られた頭字語です。
+一般的なデータベースにおけるトランザクションは、作業の単一の論理単位として実行される一連の操作として定義されます。 各トランザクションは、 **ACID の保証**を提供します。 ACID とは、Atomicity (アトミック性)、Consistency (一貫性)、Isolation (分離性)、Durability (持続性) の 4 つの特性のよく知られた頭字語です。  
 
-簡単に説明すると、Atomicity (アトミック性) は、トランザクション内で実行されるすべての操作が単一の単位として扱われることを保証します。その結果は、そのすべてがコミットされるか、またはまったくコミットされないかのどちらかになります。 Consistency (一貫性) は、トランザクションにまたがってデータが常に適切な内部状態にあることを保証します。 Isolation (分離性) は、2 つのトランザクションが互いに干渉しないことを保証します。通常、ほとんどの商用システムは、アプリケーション ニーズに基づいて使用できる複数の分離性レベルを提供します。 Durability (持続性) は、データベース内でコミットされたすべての変更が常に保持されることを保証します。
+簡単に説明すると、Atomicity (アトミック性) は、トランザクション内で実行されるすべての操作が単一の単位として扱われることを保証します。その結果は、そのすべてがコミットされるか、またはまったくコミットされないかのどちらかになります。 Consistency (一貫性) は、トランザクションにまたがってデータが常に適切な内部状態にあることを保証します。 Isolation (分離性) は、2 つのトランザクションが互いに干渉しないことを保証します。通常、ほとんどの商用システムは、アプリケーション ニーズに基づいて使用できる複数の分離性レベルを提供します。 Durability (持続性) は、データベース内でコミットされたすべての変更が常に保持されることを保証します。   
 
 Cosmos DB では、JavaScript はデータベースと同じメモリ空間でホストされます。 したがって、ストアド プロシージャおよびトリガー内で発生した要求は、データベース セッションと同じスコープで実行されます。 この機能により、Cosmos DB では、単一のストアド プロシージャ/トリガーに属するすべての操作の ACID が保証されます。 次のストアド プロシージャ定義を見てみましょう。
 
@@ -243,7 +243,7 @@ client.createStoredProcedureAsync(collection._self, exchangeItemsSproc)
 ストアド プロシージャが登録されているコレクションが単一パーティション コレクションである場合、トランザクションのスコープはそのコレクション内のすべてのドキュメントになります。 コレクションがパーティション分割されている場合、ストアド プロシージャは同一のパーティション キーをトランザクション スコープとして実行されます。 このとき、各ストアド プロシージャの実行には、トランザクションを実行するスコープに対応したパーティション キー値を含める必要があります。 詳細については、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関するページを参照してください。
 
 ### <a name="commit-and-rollback"></a>コミットとロールバック
-トランザクションは、Cosmos DB の JavaScript プログラミング モデルに深くネイティブに統合されています。 JavaScript 関数内では、1 つのトランザクションの下ですべての操作が自動的にラップされます。 例外が発生することなく JavaScript が完了すると、データベースに対する操作がコミットされます。 事実上、Cosmos DB では、リレーショナル データベース内の "BEGIN TRANSACTION" および "COMMIT TRANSACTION" ステートメントは暗黙的です。
+トランザクションは、Cosmos DB の JavaScript プログラミング モデルに深くネイティブに統合されています。 JavaScript 関数内では、1 つのトランザクションの下ですべての操作が自動的にラップされます。 例外が発生することなく JavaScript が完了すると、データベースに対する操作がコミットされます。 事実上、Cosmos DB では、リレーショナル データベース内の "BEGIN TRANSACTION" および "COMMIT TRANSACTION" ステートメントは暗黙的です。  
 
 スクリプトから反映された例外がある場合、Cosmos DB の JavaScript ランタイムにより、トランザクション全体がロール バックされます。 前の例に示されているように、Cosmos DB では、例外のスローは実質的に "ROLLBACK TRANSACTION" と同等です。
 
@@ -251,11 +251,11 @@ client.createStoredProcedureAsync(collection._self, exchangeItemsSproc)
 ストアド プロシージャとトリガーは、常に Azure Cosmos DB コンテナーのプライマリ レプリカ上で実行されます。 これにより、ストアド プロシージャ内からの読み取りで強固な一貫性が保証されます。 ユーザー定義関数を使用したクエリはプライマリ レプリカまたは任意のセカンダリ レプリカ上で実行できますが、ここでは適切なレプリカを選択することで、要求された一貫性レベルが満たされるようにしています。
 
 ## <a name="bounded-execution"></a>制限された実行
-すべての Cosmos DB 操作は、サーバーによって指定された要求タイムアウト期間内に完了する必要があります。 この制約は、JavaScript 関数 (ストアド プロシージャ、トリガー、およびユーザー定義関数) にも適用されます。 この制限時間内に操作が完了しなかった場合、トランザクションはロール バックされます。 JavaScript 関数は、制限時間内に完了するか、実行をバッチ処理または再開するための継続ベースのモデルを実装する必要があります。
+すべての Cosmos DB 操作は、サーバーによって指定された要求タイムアウト期間内に完了する必要があります。 この制約は、JavaScript 関数 (ストアド プロシージャ、トリガー、およびユーザー定義関数) にも適用されます。 この制限時間内に操作が完了しなかった場合、トランザクションはロール バックされます。 JavaScript 関数は、制限時間内に完了するか、実行をバッチ処理または再開するための継続ベースのモデルを実装する必要があります。  
 
-時間制限を処理するストアド プロシージャとトリガーの開発を容易にするために、コレクション オブジェクトの (ドキュメントおよび添付ファイルの作成、読み取り、置換、削除を行う) すべての関数は、操作が完了するかどうかを表すブール値を返します。 値 false は、制限時間に近づいているためプロシージャが実行を終了する必要があることを示します。  最初の受け付けられていない格納操作の前にキューに入れられた操作は、ストアド プロシージャが時間内に完了し追加の要求がキューに入れられない限り、完了することが保証されます。
+時間制限を処理するストアド プロシージャとトリガーの開発を容易にするために、コレクション オブジェクトの (ドキュメントおよび添付ファイルの作成、読み取り、置換、削除を行う) すべての関数は、操作が完了するかどうかを表すブール値を返します。 値 false は、制限時間に近づいているためプロシージャが実行を終了する必要があることを示します。  最初の受け付けられていない格納操作の前にキューに入れられた操作は、ストアド プロシージャが時間内に完了し追加の要求がキューに入れられない限り、完了することが保証されます。  
 
-さらに、JavaScript 関数は、リソースの消費に関しても制限されます。 Cosmos DB は、コレクションあたりの、または一連のコンテナーに対してスループットを予約します。 スループットは、要求単位 (RU) と呼ばれる、CPU、メモリ、および IO の消費の正規化された単位として表現されます。 JavaScript 関数は潜在的に短い時間内に大量の RU を消費する可能性があり、コレクションの制限に達した場合はレートが制限されます。 また、プリミティブなデータベース操作の可用性を保証するために、リソースを大量に使用するストアド プロシージャは隔離される可能性があります。
+さらに、JavaScript 関数は、リソースの消費に関しても制限されます。 Cosmos DB は、コレクションあたりの、または一連のコンテナーに対してスループットを予約します。 スループットは、要求単位 (RU) と呼ばれる、CPU、メモリ、および IO の消費の正規化された単位として表現されます。 JavaScript 関数は潜在的に短い時間内に大量の RU を消費する可能性があり、コレクションの制限に達した場合はレートが制限されます。 また、プリミティブなデータベース操作の可用性を保証するために、リソースを大量に使用するストアド プロシージャは隔離される可能性があります。  
 
 ### <a name="example-bulk-importing-data-into-a-database-program"></a>例: データをデータベース プログラムに一括インポートする
 コレクションへのドキュメントの一括インポートを行うストアド プロシージャの例を次に示します。 このストアド プロシージャでは、createDocument からのブール型の戻り値を調べて制限された実行を処理し、ストアド プロシージャの各呼び出しで挿入されたドキュメントの数を使用してバッチの進行状況を追跡および再開しています。
@@ -280,7 +280,7 @@ function bulkImport(docs) {
     tryCreate(docs[count], callback);
 
     // Note that there are 2 exit conditions:
-    // 1) The createDocument request was not accepted.
+    // 1) The createDocument request was not accepted. 
     //    In this case the callback will not be called, we just call setBody and we are done.
     // 2) The callback was called docs.length times.
     //    In this case all documents were created and we don’t need to call tryCreate anymore. Just call setBody and we are done.
@@ -288,7 +288,7 @@ function bulkImport(docs) {
         var isAccepted = collection.createDocument(collectionLink, doc, callback);
 
         // If the request was accepted, callback will be called.
-        // Otherwise report current count back to the client,
+        // Otherwise report current count back to the client, 
         // which will call the script again with remaining set of docs.
         if (!isAccepted) getContext().getResponse().setBody(count);
     }
@@ -352,7 +352,7 @@ client.createTriggerAsync(collection.self, validateDocumentContentsTrigger)
             source: "Network outage"
         };
 
-        // run trigger while creating above document
+        // run trigger while creating above document 
         var options = { preTriggerInclude: "validateDocumentContents" };
 
         return client.createDocumentAsync(collection.self,
@@ -367,7 +367,7 @@ client.createTriggerAsync(collection.self, validateDocumentContentsTrigger)
 });
 ```
 
-プリトリガーは入力パラメーターを持つことができません。 要求オブジェクトを使用して、操作に関連付けられた要求メッセージを操作できます。 ここでは、ドキュメントが作成されるときにプリトリガーが実行されます。要求メッセージの本文には、作成するドキュメントが JSON 形式で格納されます。
+プリトリガーは入力パラメーターを持つことができません。 要求オブジェクトを使用して、操作に関連付けられた要求メッセージを操作できます。 ここでは、ドキュメントが作成されるときにプリトリガーが実行されます。要求メッセージの本文には、作成するドキュメントが JSON 形式で格納されます。   
 
 トリガーが登録されたら、ユーザーは実行できる操作を指定できます。 このトリガーは TriggerOperation.Create によって作成されました。つまり、次のコードで示す置換操作でのこのトリガーの使用は許可されません。
 
@@ -385,7 +385,7 @@ client.replaceDocumentAsync(docToReplace.self,
 // Fails, can’t use a create trigger in a replace operation
 ```
 ### <a name="database-post-triggers"></a>データベース ポストトリガー
-ポストトリガーは、プリトリガーと同様に、ドキュメントの操作に関連付けられ、入力パラメーターを受け取りません。 ポストトリガーは、操作が完了した **後に** 実行され、クライアントに送信される応答メッセージにアクセスします。
+ポストトリガーは、プリトリガーと同様に、ドキュメントの操作に関連付けられ、入力パラメーターを受け取りません。 ポストトリガーは、操作が完了した **後に** 実行され、クライアントに送信される応答メッセージにアクセスします。   
 
 次の例にポストトリガーの使い方を示します。
 ```javascript
@@ -419,8 +419,8 @@ var updateMetadataTrigger = {
                                   if(err) throw "Unable to update metadata, abort";
                            });
                      if(!accept) throw "Unable to update metadata, abort";
-                     return;
-        }
+                     return;                    
+        }                                                                                            
     },
     triggerType: TriggerType.Post,
     triggerOperation: TriggerOperation.All
@@ -431,14 +431,14 @@ var updateMetadataTrigger = {
 ```javascript
 // register post-trigger
 client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
-    .then(function(createdTrigger) {
-        var docToCreate = {
+    .then(function(createdTrigger) { 
+        var docToCreate = { 
             name: "artist_profile_1023",
             artist: "The Band",
             albums: ["Hellujah", "Rotators", "Spinning Top"]
         };
 
-        // run trigger while creating above document
+        // run trigger while creating above document 
         var options = { postTriggerInclude: "updateMetadata" };
 
         return client.createDocumentAsync(collection.self,
@@ -447,18 +447,18 @@ client.createTriggerAsync('dbs/testdb/colls/testColl', updateMetadataTrigger)
         console.log("Error" , error);
     })
 .then(function(response) {
-    console.log(response.resource);
+    console.log(response.resource); 
 }, function(error) {
     console.log("Error" , error);
 });
 ```
 
-このトリガーは、メタデータ ドキュメントを照会し、新しく作成されたドキュメントに関する詳細情報に基づいてこれを更新します。
+このトリガーは、メタデータ ドキュメントを照会し、新しく作成されたドキュメントに関する詳細情報に基づいてこれを更新します。  
 
-ここで重要なのは、Cosmos DB でのトリガーの**トランザクション**実行です。 このポストトリガーは、元のドキュメントの作成に使用されたのと同じトランザクションの一部として実行されます。 したがって、(たとえば、メタデータ ドキュメントを更新できないという理由で) ポストトリガーから例外をスローすると、トランザクション全体が失敗し、ロール バックされます。 その結果、ドキュメントは作成されず、例外が返されます。
+ここで重要なのは、Cosmos DB でのトリガーの**トランザクション**実行です。 このポストトリガーは、元のドキュメントの作成に使用されたのと同じトランザクションの一部として実行されます。 したがって、(たとえば、メタデータ ドキュメントを更新できないという理由で) ポストトリガーから例外をスローすると、トランザクション全体が失敗し、ロール バックされます。 その結果、ドキュメントは作成されず、例外が返されます。  
 
 ## <a id="udf"></a>ユーザー定義関数
-ユーザー定義関数 (UDF) は、Azure Cosmos DB SQL クエリ言語の文法を拡張してカスタム ビジネス ロジックを実装するために使用します。 ユーザー定義関数は、クエリ内からのみ呼び出すことができます。 ユーザー定義関数は、コンテキスト オブジェクトにアクセスできず、計算のみの JavaScript として使用する必要があります。 したがって、UDF は、Cosmos DB サービスのセカンダリ レプリカで実行できます。
+ユーザー定義関数 (UDF) は、Azure Cosmos DB SQL クエリ言語の文法を拡張してカスタム ビジネス ロジックを実装するために使用します。 ユーザー定義関数は、クエリ内からのみ呼び出すことができます。 ユーザー定義関数は、コンテキスト オブジェクトにアクセスできず、計算のみの JavaScript として使用する必要があります。 したがって、UDF は、Cosmos DB サービスのセカンダリ レプリカで実行できます。  
 
 次のサンプルでは、さまざまな所得階層の税率に基づいて所得税を計算する UDF を作成し、クエリ内でこの UDF を使用して、支払った税金が $20,000 を超える人々を検索しています。
 
@@ -467,12 +467,12 @@ var taxUdf = {
     id: "tax",
     serverScript: function tax(income) {
 
-        if(income == undefined)
+        if(income == undefined) 
             throw 'no input';
 
-        if (income < 1000)
+        if (income < 1000) 
             return income * 0.1;
-        else if (income < 10000)
+        else if (income < 10000) 
             return income * 0.2;
         else
             return income * 0.4;
@@ -485,10 +485,10 @@ var taxUdf = {
 ```javascript
 // register UDF
 client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
-    .then(function(response) {
+    .then(function(response) { 
         console.log("Created", response.resource);
 
-        var query = 'SELECT * FROM TaxPayers t WHERE udf.tax(t.income) > 20000';
+        var query = 'SELECT * FROM TaxPayers t WHERE udf.tax(t.income) > 20000'; 
         return client.queryDocuments('dbs/testdb/colls/testColl',
                query).toArrayAsync();
     }, function(error) {
@@ -496,7 +496,7 @@ client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
     })
 .then(function(response) {
     var documents = response.feed;
-    console.log(response.resource);
+    console.log(response.resource); 
 }, function(error) {
     console.log("Error" , error);
 });
@@ -509,8 +509,8 @@ Azure Cosmos DB の SQL 文法を使用してクエリを発行することに�
 > `__` (二重下線) は `getContext().getCollection()` のエイリアスです。
 > <br/>
 > 言い換えると、`__` または `getContext().getCollection()` を利用し、JavaScript クエリ API にアクセスできます。
->
->
+> 
+> 
 
 サポートされている関数は次のとおりです。
 
@@ -631,7 +631,7 @@ function insertDocumentAndUpdateMetadata(doc) {
         // Update/replace the metadata document in the store.
         var isAccepted = __.replaceDocument(metaDoc._self, metaDoc, function(err) {
           if (err) throw err;
-          // Note: in case concurrent updates causes conflict with ErrorCode.RETRY_WITH, we can't read the meta again
+          // Note: in case concurrent updates causes conflict with ErrorCode.RETRY_WITH, we can't read the meta again 
           //       and update again because due to Snapshot isolation we will read same exact version (we are in same transaction).
           //       We have to take care of that on the client side.
         });
@@ -685,17 +685,17 @@ var markAntiquesSproc = new StoredProcedure
     Id = "ValidateDocumentAge",
     Body = @"
             function(docToCreate, antiqueYear) {
-                var collection = getContext().getCollection();
-                var response = getContext().getResponse();
+                var collection = getContext().getCollection();    
+                var response = getContext().getResponse();    
 
                 if(docToCreate.Year != undefined && docToCreate.Year < antiqueYear){
                     docToCreate.antique = true;
                 }
 
-                collection.createDocument(collection.getSelfLink(), docToCreate, {},
-                    function(err, docCreated, options) {
-                        if(err) throw new Error('Error while creating document: ' + err.message);
-                        if(options.maxCollectionSizeInMb == 0) throw 'max collection size not found';
+                collection.createDocument(collection.getSelfLink(), docToCreate, {}, 
+                    function(err, docCreated, options) { 
+                        if(err) throw new Error('Error while creating document: ' + err.message);                              
+                        if(options.maxCollectionSizeInMb == 0) throw 'max collection size not found'; 
                         response.setBody(docCreated);
                 });
          }"
@@ -711,7 +711,7 @@ document.Year = 1949;
 Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(UriFactory.CreateStoredProcedureUri("db", "coll", "ValidateDocumentAge"), document, 1920);
 ```
 
-このサンプルは、[SQL .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) を使用してプリトリガーを作成し、このトリガーが有効なドキュメントを作成する方法を示しています。
+このサンプルは、[SQL .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) を使用してプリトリガーを作成し、このトリガーが有効なドキュメントを作成する方法を示しています。 
 
 ```javascript
 Trigger preTrigger = new Trigger()
@@ -733,13 +733,13 @@ Document createdItem = await client.CreateDocumentAsync(UriFactory.CreateDocumen
     });
 ```
 
-次の例では、ユーザー定義関数 (UDF) を作成し、これを [SQL クエリ](sql-api-sql-query.md)で使用しています。
+次の例では、ユーザー定義関数 (UDF) を作成し、これを [SQL クエリ](how-to-sql-query.md)で使用しています。
 
 ```javascript
 UserDefinedFunction function = new UserDefinedFunction()
 {
     Id = "LOWER",
-    Body = @"function(input)
+    Body = @"function(input) 
     {
         return input.toLowerCase();
     }"
@@ -791,7 +791,7 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
 
     HTTP/1.1 200 OK
 
-    {
+    { 
       name: 'TestDocument',
       book: 'Autumn of the Patriarch',
       id: 'V7tQANV3rAkDAAAAAAAAAA==',
@@ -808,7 +808,7 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
     POST https://<url>/docs/ HTTP/1.1
     authorization: <<auth>>
     x-ms-date: Thu, 07 Aug 2014 03:43:10 GMT
-    x-ms-documentdb-pre-trigger-include: validateDocumentContents
+    x-ms-documentdb-pre-trigger-include: validateDocumentContents 
     x-ms-documentdb-post-trigger-include: bookCreationPostTrigger
 
     {
@@ -824,7 +824,7 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
 ## <a name="sample-code"></a>サンプル コード
 その他のサーバー側のコード例 ([一括削除](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/bulkDelete.js)、[更新](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/update.js)など) は、[GitHub リポジトリ](https://github.com/Azure/azure-cosmosdb-js-server/tree/master/samples)で確認できます。
 
-あなたのストアド プロシージャも共有しませんか? リポジトリに投稿し、pull request を作成しましょう。
+あなたのストアド プロシージャも共有しませんか? リポジトリに投稿し、pull request を作成しましょう。 
 
 ## <a name="next-steps"></a>次の手順
 ストアド プロシージャ、トリガー、およびユーザー定義関数を作成したら、それらを読み込み、データ エクスプローラーを使用して Azure Portal で表示できます。
@@ -834,6 +834,6 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
 * [Azure Cosmos DB JavaScript サーバー側の API リファレンス](https://azure.github.io/azure-cosmosdb-js-server/)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
 * [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
-* [セキュリティで保護されたポータブル型データベースの機能拡張](http://dl.acm.org/citation.cfm?id=276339)
-* [サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE)
+* [セキュリティで保護されたポータブル型データベースの機能拡張](http://dl.acm.org/citation.cfm?id=276339) 
+* [サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
 * [Microsoft SQL Server での .NET ランタイムのホスト](http://dl.acm.org/citation.cfm?id=1007669)
