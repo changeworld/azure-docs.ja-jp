@@ -2,18 +2,18 @@
 title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure ファイル共有を保護する方法について詳しく説明します。
 services: backup
-author: markgalioto
-ms.author: markgal
+author: rayne-wiselman
+ms.author: raynew
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: de91559d9c3626bdd07c2e497a8aa0b124f00b57
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 9ef3525d7867d0ef01b6f17035039d4a4e6def93
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434842"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874567"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -73,7 +73,7 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>同じストレージ アカウントにある 2 つの異なるファイル共有を別々のコンテナーで保護することはできますか?
 いいえ。 1 つのストレージ アカウントに存在するすべてのファイル共有は、必ず同じコンテナーで保護する必要があります。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>バックアップ
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>ファイル共有につき、いくつのオンデマンド バックアップを作成できますか? <br/>
 どの時点でも、ファイル共有のスナップショットを 200 個まで作成することができます。 この制限には、ポリシーの定義に従って Azure Backup により作成されたスナップショットの数も含まれます。 この制限に達した後でバックアップが失敗するようになったら、将来のバックアップを正常に実行できるよう、オンデマンドの復元ポイントを削除してください。
@@ -81,7 +81,7 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>ストレージ アカウントで仮想ネットワークを有効にすると、そのアカウントでのファイル共有のバックアップが失敗し始めました。 なぜですか?
 Azure ファイル共有のバックアップでは、仮想ネットワークが有効になっているストレージ アカウントがサポートされていません。 バックアップを正常に実行できるよう、ストレージ アカウントでは仮想ネットワークを無効にしてください。 
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>復元
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>削除した Azure ファイル共有から復旧できますか。 <br/>
 Azure ファイル共有を削除するときは、削除されるバックアップの一覧が表示され、確認が求められます。 削除した Azure ファイル共有を復元することはできません。

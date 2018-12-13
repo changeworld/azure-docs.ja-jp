@@ -3,7 +3,7 @@ items:
   href: /azure/hdinsight
 - name: HDInsight での対話型クエリ
   items:
-  - name: コンポーネントのバージョン管理
+  - name: HDInsight の Apache Hadoop コンポーネント
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -396,9 +396,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 5dd6517a42a906db7297cbfe5bbded3299b0834a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8a777d4f71d0592ceab6407a2e59bbed618f5f94
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308409"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323186"

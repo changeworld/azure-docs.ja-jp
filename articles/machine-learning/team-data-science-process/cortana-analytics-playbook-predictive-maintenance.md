@@ -2,24 +2,21 @@
 title: 予測メンテナンス ソリューションのための Azure AI ガイド | Microsoft Docs
 description: 複数の垂直的業界向けのメンテナンス ソリューションを実現するデータ サイエンスについて包括的に説明します。
 services: machine-learning
-author: fboylu
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 2e8b66db-91eb-432b-b305-6abccca25620
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: fboylu
-ms.openlocfilehash: 611896dc9428092a76a891168b48f6962d760e60
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=fboylu, ms.author=fboylu)
+ms.openlocfilehash: 1538357a744e4a2c885b6552ca94efc6642d2880
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254572"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444921"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -256,7 +253,7 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 > ドメインの専門家と相談して決定する必要があります。
 
 ### <a name="binary-classification"></a>二項分類
-二項分類を使用して、_機器の一部が将来的に故障する可能性を予測_ します。これを、"_将来の水平期間 X_" と呼びます。X は、ドメインの専門家と相談して、ビジネス上の問題と手持ちのデータによって決定されます。 次に例をいくつか示します。
+二項分類を使用して、_機器の一部が将来的に故障する可能性を予測_します。これを、"_将来の水平期間 X_" と呼びます。X は、ドメインの専門家と相談して、ビジネス上の問題と手持ちのデータによって決定されます。 次に例をいくつか示します。
 - _最小リード タイム_。コンポーネントを交換し、メンテナンス リソースをデプロイし、メンテナンスを実行して、この期間に発生する可能性のある問題を回避するために必要です。
 - _イベントの最小数_。問題が発生する前に発生する可能性のあるイベントの数。
 

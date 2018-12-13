@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: 25824b9959a4fef536ca9fe247f29fc9aaece1f7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 209234e91d0ff788bf828dae0e56f37f9921b5c1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626462"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835031"
 ---
 # <a name="how-to-configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する方法
 

@@ -48,16 +48,6 @@ items:
 - name: 完成済みのサンプル
   href: walkthroughs.md
   items:
-  - name: Azure Machine Learning
-    href: walkthroughs-aml-with-tdsp.md
-    items:
-    - name: Keras & Scikit Learn を使用したセンチメント分類
-      href: predict-twitter-sentiment.md
-    - name: AML テキスト分析パッケージを使用したセンチメント分類
-      href: predict-twitter-sentiment-amltextpackage.md
-    - name: AML ビジョン パッケージを使用した皮膚がんの画像分類
-      href: isic-image-classification.md
-      maintainContext: true
   - name: PySpark と Scala を使用した Spark
     href: walkthroughs-spark.md
     items:
@@ -234,14 +224,6 @@ items:
         href: cortana-analytics-architecture-predictive-maintenance.md
       - name: テクニカル ガイド
         href: cortana-analytics-technical-guide-predictive-maintenance.md
-    - name: 車両テレメトリ
-      items:
-      - name: 概要
-        href: cortana-analytics-playbook-vehicle-telemetry.md
-      - name: プレイブックの詳細情報
-        href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
-      - name: Power BI の設定
-        href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: リソース
   items:
   - name: ブログ
@@ -272,9 +254,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/azure-machine-learning
     - name: ビデオ
       href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: 64047bdb6dc25a2e31c2c5e282e7706194ff0733
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 2ba5ddbea7f84d5547c656d83ca8ac150d83cc08
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344673"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314093"

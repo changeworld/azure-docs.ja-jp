@@ -59,7 +59,7 @@ items:
       href: how-to-recognize-speech-cpp.md
     - name: Java
       href: how-to-recognize-speech-java.md
-    - name: REST
+    - name: REST ()
       href: how-to-recognize-speech-rest.md
   - name: 音声から意図を認識する
     displayName: recognize intent, intent recognition, language understanding service, luis
@@ -81,9 +81,6 @@ items:
       href: how-to-translate-speech-java.md
 - name: ハウツー ガイド
   items:
-  - name: 音声を合成する (REST)
-    displayName: synthesize speech, speech synthesis, text to speech, tts
-    href: how-to-text-to-speech.md
   - name: バッチ文字起こし (REST)
     displayName: recognize speech, speech recognition, speech to text, stt
     href: batch-transcription.md
@@ -98,6 +95,8 @@ items:
       href: how-to-customize-language-model.md
     - name: 発音をカスタマイズする
       href: how-to-customize-pronunciation.md
+    - name: カスタム音声認識エンドポイントの作成
+      href: how-to-create-custom-endpoint.md
     - name: 音声フォントをカスタマイズする (ボット ブランド音声)
       href: how-to-customize-voice-font.md
     - name: デバイスのウェイク ワードをカスタマイズする (Devices SDK)
@@ -165,7 +164,7 @@ items:
     displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows, NuGet, Maven, download, install, sample
     href: speech-sdk.md
     items:
-    - name: '[ダウンロード]'
+    - name: ダウンロード
       href: speech-sdk.md#get-the-sdk
     - name: サンプル
       href: speech-sdk.md#get-the-samples
@@ -181,7 +180,7 @@ items:
     displayName: roobo, speech devices sdk
     href: speech-devices-sdk.md
     items:
-    - name: '[ダウンロード]'
+    - name: ダウンロード
       href: get-speech-devices-sdk.md#download-the-speech-devices-sdk
     - name: サンプル
       href: https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK
@@ -203,9 +202,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: プライバシーと Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: d8bd694a976bb233ee25bca050505042759417ac
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 58ce67b6aecd137f526c275d3a7803e1eda43389
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635562"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099530"

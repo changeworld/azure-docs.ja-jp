@@ -1,23 +1,19 @@
 ---
-title: Azure Cosmos DB で SQL を使用してクエリを実行する方法  | Microsoft Docs
+title: Azure Cosmos DB で SQL を使用してクエリを実行する方法
 description: Azure Cosmos DB で SQL を使用してクエリを実行する方法について説明します
 services: cosmos-db
 author: rafats
-manager: kfile
-editor: ''
-tags: ''
+ms.author: rafats
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: rafats
-ms.openlocfilehash: a56147432d4ef1cc9ac2568259cc2bbf2c7da7ab
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7f8c3f6d11ba7551cb0d0c9398b46bb001b9b75b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162672"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832634"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル: SQL API を使って Azure Cosmos DB を照会する
 

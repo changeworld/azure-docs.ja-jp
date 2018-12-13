@@ -5,7 +5,7 @@ items:
   items:
   - name: HDInsight の Apache Kafka について
     href: apache-kafka-introduction.md
-  - name: コンポーネントのバージョン管理
+  - name: HDInsight の Apache Hadoop コンポーネント
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -210,7 +210,7 @@ items:
       - name: Apache Hadoop のメモリとパフォーマンス
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Linux での Hadoop YARN アプリケーション ログへのアクセス
+      - name: Linux での Apache Hadoop YARN アプリケーション ログへのアクセス
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
       - name: Apache Hadoop サービスのヒープ ダンプの有効化
@@ -274,9 +274,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 0b0fc56015adb5fcecd5bcd6ce501c828e694164
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 42d0916d8cca557713f9b533e08e5ab27d12293c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495675"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321496"

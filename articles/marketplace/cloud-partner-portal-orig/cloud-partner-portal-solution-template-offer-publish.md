@@ -1,5 +1,5 @@
 ---
-title: ソリューション テンプレートを発行する | Microsoft Docs
+title: Azure ソリューション テンプレートを発行する | Microsoft Docs
 description: Azure Marketplace にソリューション テンプレートを発行します。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 333eebfa1bae919c43164572c63f2de4f7251fe0
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345591"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261619"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Azure Marketplace にソリューション テンプレートを発行する
 
@@ -31,31 +31,22 @@ ms.locfileid: "51345591"
 
 ### <a name="technical"></a>技術
 
-- [Azure Resource Manager テンプレートについての理解](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-
+- [Azure Resource Manager テンプレートについて理解する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)。
 - Azure クイック スタート テンプレート:
-
     - [Azure クイック スタート テンプレート ドキュメント](https://azure.microsoft.com/documentation/templates/)
-
     - [GitHub 上の Azure クイック スタート ドキュメント](https://github.com/azure/azure-quickstart-templates)
-
  - [Azure portal ユーザー インターフェイス ファイルの作成](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
+ - [顧客の利用状況属性](./../azure-partner-customer-usage-attribution.md)を有効にして、Azure 上で顧客によるソフトウェア デプロイに関する Azure 使用状況を追跡します。
 
 ### <a name="non-technical-business-requirements"></a>技術面以外 (ビジネス要件)
 
--   貴社 (またはその子会社) は、Azure Marketplace によってサポートされる販売元の国に所在している必要があります。
-
--   Azure Marketplace でサポートされている課金モデルに対応した方法で、製品のライセンスを取得する必要があります。
-
--   無償、有償、コミュニティ サポートの活用を問わず、商業的に合理的な方法で、顧客に技術サポートを提供していただきます。
-
--   貴社のソフトウェアおよび依存関係にあるすべてのサード パーティ ソフトウェアのライセンス供与を行っていただきます。
-
--   Azure Marketplace および Azure の管理ポータルでプランが一覧表示されるための条件に適合するコンテンツを提供する必要があります。
-
--   Azure Marketplace 参加ポリシーと発行元契約の条項に同意します。
-
--   使用条件、Microsoft のプライバシーに関する声明、および Microsoft Azure 認定プログラム契約に従うことに同意します。
+- 貴社 (またはその子会社) は、Azure Marketplace によってサポートされる販売元の国に所在している必要があります。
+- Azure Marketplace でサポートされている課金モデルに対応した方法で、製品のライセンスを取得する必要があります。
+- 無償、有償、コミュニティ サポートの活用を問わず、商業的に合理的な方法で、顧客に技術サポートを提供していただきます。
+- 貴社のソフトウェアおよび依存関係にあるすべてのサード パーティ ソフトウェアのライセンス供与を行っていただきます。
+- Azure Marketplace および Azure portal にプランが掲載されるための条件を満たすコンテンツを提供します。
+- Azure Marketplace 参加ポリシーと発行元契約の条項に同意します。
+- 使用条件、Microsoft のプライバシーに関する声明、および Microsoft Azure 認定プログラム契約に従うことに同意します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -101,7 +92,7 @@ SKU は Azure Marketplace では親プランの下に表示されますが、Azu
 
     **[プラン ID]**
 
-     発行元プロファイル内のプランを表す一意識別子です。 この ID は、製品 URL、ARM テンプレート、課金レポートに表示されます。 小文字の英数字またはダッシュ (-) のみ使用できます。 この ID はダッシュで終えることはできず、長さは最大で 50 文字です。 
+     発行元プロファイル内のプランを表す一意識別子です。 この ID は、製品 URL、Azure Resource Manager テンプレート、および課金レポートに表示されます。 小文字の英数字またはダッシュ (-) のみ使用できます。 この ID はダッシュで終えることはできず、長さは最大で 50 文字です。 
     >[!Note]
     >このフィールドは、プランの運用が開始されるとロックされます。
 
@@ -128,7 +119,7 @@ SKU は Azure Marketplace では親プランの下に表示されますが、Azu
 
     ![新しい SKU](./media/cloud-partner-portal-publish-managed-app/newOffer_skus.png)
 
-    SKU ID は、プラン内の SKU を表す一意識別子です。 この ID は、製品 URL、ARM テンプレート、課金レポートに表示されます。 SKU ID は、
+    SKU ID は、プラン内の SKU を表す一意識別子です。 この ID は、製品 URL、Resource Manager テンプレート、課金レポートに表示されます。 SKU ID は、
     - 最大で 50 文字の長さにできます。
     - 小文字の英数字またはダッシュ (-) のみで構成できます。
     - ID の末尾にはダッシュを使用できません。
@@ -146,14 +137,10 @@ SKU は Azure Marketplace では親プランの下に表示されますが、Azu
 次の SKU の設定を指定します。
 
 - **[タイトル]** - SKU のタイトル。 このタイトルは、ギャラリーでこの項目に対して表示されます。
-
 - **[概要]** - SKU の概要の簡単な説明  (最大文字数は 100 文字です)。
-
 - **[説明]** - SKU の詳細な説明。
-
 - **[SKU の種類]** - [Managed Application (Preview)]\(マネージド アプリケーション (プレビュー)\) または [Solution Template]\(ソリューション テンプレート\) を値として選択できるドロップダウン リスト。 このシナリオでは、**[Solution Template]\(ソリューション テンプレート\)** を選択します。
-
-- **[Cloud Availability]\(クラウドの可用性\)** - SKU の場所。 既定値は [パブリック Azure] です。
+- **[Cloud Availability]\(クラウドの可用性\)** - SKU の場所。 既定値は **[パブリック Azure]** です。
 
 ### <a name="package-details"></a>パッケージの詳細
 
@@ -162,19 +149,16 @@ SKU の設定が完了したら、次のパッケージの詳細情報を指定�
 ![パッケージの詳細](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
 - **[現在のバージョン]** - アップロードするパッケージのバージョン。 バージョン タグが X.Y.Z 形式である必要がある (X、Y、Z は整数)。
-
 - **[パッケージ ファイル]** - このパッケージには、次のファイルが含まれています (ファイルは .zip ファイルに保存されています)。
-
     -   MainTemplate.json - デプロイ テンプレート ファイル。ソリューションまたはアプリケーションをデプロイしたり、そのソリューションに対して定義されたリソースを作成したりするために使用されます。 詳細については、[デプロイ テンプレート ファイルの作成方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)に関するページを参照してください。
-
-    -   createUIDefinition.json - このファイルは、このソリューションまたはアプリケーションをプロビジョニングするためのユーザー インターフェイスを生成するために Azure portal によって使用されます。 詳細については、「[マネージド アプリケーション用の Azure portal のユーザー インターフェイスを作成する](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)」を参照してください。
+    -   createUIDefinition.json - このファイルは、このソリューションまたはアプリケーションをプロビジョニングするためのユーザー インターフェイスを生成するために、Azure portal によって使用されます。 詳細については、「[マネージド アプリケーション用の Azure portal のユーザー インターフェイスを作成する](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)」を参照してください。
 
     >[!IMPORTANT]
     >このパッケージには、このアプリケーションをプロビジョニングするために必要となる、その他の入れ子になったテンプレートまたはスクリプトを含める必要があります。 mainTemplate.json と createUIDefinition.json は、ルート フォルダーに存在する必要があります。
 
-## <a name="to-configure-the-marketplace"></a>Marketplace を構成する
+## <a name="to-configure-the-marketplace"></a>Marketplace を構成するには
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure Portal](https://portal.azure.com/) に表示されるプランのフィールドを [Marketplace] ビューを使用して構成します。
+[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure portal](https://portal.azure.com/) に表示されるプランのフィールドを [Marketplace] ビューを使用して構成します。
 
 ### <a name="preview-subscription-ids"></a>サブスクリプション ID をプレビュー
 
@@ -182,9 +166,9 @@ SKU の設定が完了したら、次のパッケージの詳細情報を指定�
 
 ### <a name="suggested-categories"></a>推奨されるカテゴリ
 
-提供されたリストから、プランとの最適な関連付けができるカテゴリを 5 つまで選択します。 選択したカテゴリは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure Portal](https://portal.azure.com/) で利用可能な製品カテゴリにプランをマッピングするために使用されます。
+入力されたリストから、プランとの最適な関連付けができるカテゴリを 5 つまで選択します。 選択したカテゴリは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Azure Portal](https://portal.azure.com/) で利用可能な製品カテゴリにプランをマッピングするために使用されます。
 
-Azure Marketplace と Azure Portal に表示されるマーケットプレース情報の例を次に示します。
+Azure Marketplace と Azure portal に表示されるマーケットプレース情報の例を次に示します。
 
 **Azure Marketplace**
 
@@ -219,7 +203,7 @@ Cloud パートナー ポータルにアップロードされるロゴについ�
 
 -   ロゴではグラデーションの背景を使用しないでください。
 
--   ロゴにテキストを配置しないでください。 これは会社名やブランド名であっても同様です。 ロゴのルック アンド フィールは "*フラット*" にする必要があり、グラデーションは避ける必要があります。
+-   ロゴにテキストを配置しないでください。 このガイドラインは、会社名やブランド名であっても同様です。 ロゴのルック アンド フィールは "フラット" にする必要があり、グラデーションは避ける必要があります。
 
 -   ロゴは拡大しないでください。
 

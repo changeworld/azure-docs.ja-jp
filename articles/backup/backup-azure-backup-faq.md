@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 2ba6fefb9c1d952fbfdb6942694d69565a299c2e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61e8a7732b7e6dc7fd521819a135fb1a7a6a13b3
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241261"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261668"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
@@ -125,7 +125,7 @@ Windows Storage Server 2012 64 ビット | Standard、Workgroup | 最新の Serv
 Windows Server 2008 R2 SP1 64 ビット | Standard、Enterprise、Datacenter、Foundation | 最新の更新プログラムが適用されていること。
 Windows Server 2008 64 ビット | Standard、Enterprise、Datacenter | 最新の更新プログラムが適用されていること。
 
-Azure VM Linux のバックアップについては、Azure Backup は [Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md)をサポートしています。ただし、Core OS Linux は除きます。  他の個人所有の Linux ディストリビューションは、VM 上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
+Azure VM Linux のバックアップについては、Azure Backup は [Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md)をサポートしています。ただし、Core OS Linux と 32 ビットオペレーティング システムは除きます。 他の個人所有の Linux ディストリビューションは、VM 上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
 
 
 ## <a name="are-there-size-limits-for-data-backup"></a>データのバックアップにサイズ制限はありますか。

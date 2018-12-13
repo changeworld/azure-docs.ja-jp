@@ -1,6 +1,6 @@
 items:
 - name: Azure Resource Manager のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
   - name: Azure Resource Manager とは
@@ -32,6 +32,8 @@ items:
     href: resource-manager-tutorial-deploy-vm-extensions.md
   - name: SQL 拡張機能のデプロイ
     href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
+  - name: アーティファクトのセキュリティ保護
+    href: resource-manager-tutorial-secure-artifacts.md
   - name: 安全なデプロイ プラクティスの使用
     href: deployment-manager-tutorial.md
 - name: サンプル
@@ -235,9 +237,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 472d31764efb3793508502ce8585bac3f9a948cc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 47af6826974759a1b0dfea7949429c5acaca004d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315326"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252339"

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 261f66013ab9c0ba493d18b84856d17db953402e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d3d83e240fec692d5aa655923637910006c7a62f
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037000"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261474"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -47,7 +47,7 @@ Azure Blob (オブジェクト) Storage の不変ストレージを使用する�
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-Azure Blob Storage の不変ストレージでは、時間ベースのリテンションと訴訟ホールドの 2 種類の WORM (不変) ポリシーがサポートされています。 これらの不変ポリシーの作成方法の詳細については、「[Getting started](#Getting-started)」 (使用の開始) セクションを参照してください。
+Azure Blob Storage の不変ストレージでは、時間ベースのリテンションと訴訟ホールドの 2 種類の WORM (不変) ポリシーがサポートされています。 これらの不変ポリシーの作成方法の詳細については、「[Getting started](#getting-started)」 (使用の開始) セクションを参照してください。
 
 時間ベースのリテンション ポリシーまたは訴訟ホールドをコンテナーに適用すると、既存のすべての BLOB が不変 (書き込みおよび削除禁止) 状態に移行します。 コンテナーにアップロードされるすべての新しい BLOB も不変状態に移行します。
 
@@ -69,7 +69,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 ### <a name="legal-holds"></a>訴訟ホールド
 
-訴訟ホールドを設定する場合、訴訟ホールドがクリアされるまで、既存および新規のすべての BLOB が不変状態のままになります。 訴訟ホールドを設定およびクリアする方法の詳細については、「[Getting started](#Getting-started)」 (使用の開始) セクションを参照してください。
+訴訟ホールドを設定する場合、訴訟ホールドがクリアされるまで、既存および新規のすべての BLOB が不変状態のままになります。 訴訟ホールドを設定およびクリアする方法の詳細については、「[Getting started](#getting-started)」 (使用の開始) セクションを参照してください。
 
 コンテナーには、訴訟ホールドと時間ベースのリテンション ポリシーの両方を同時に適用できます。 有効なリテンション期間が終了していても、すべての訴訟ホールドがクリアされるまで、そのコンテナー内のすべての BLOB が不変状態のままになります。 逆に、すべての訴訟ホールドがクリアされていても、有効なリテンション期間が終了するまで、BLOB は不変状態のままになります。
 

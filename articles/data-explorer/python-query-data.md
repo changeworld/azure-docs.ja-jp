@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 38a7a4fa3ac0b9bfb554deeb8086dca398e5cdc1
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 14049df1116205ec5e95b052049f53738dcf50b4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956172"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863416"
 ---
 # <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>クイック スタート: Azure データ エクスプローラーの Python ライブラリを使用してデータのクエリを実行する
 
@@ -32,7 +32,7 @@ Azure データ エクスプローラーは、ログと利用統計情報デー�
 *azure-kusto-data* をインストールします。
 
 ```
-pip install azure-kusto-data==0.0.13
+pip install azure-kusto-data
 ```
 
 ## <a name="add-import-statements-and-constants"></a>import ステートメントおよび定数を追加する
