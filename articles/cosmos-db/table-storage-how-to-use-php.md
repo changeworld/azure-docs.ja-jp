@@ -1,21 +1,20 @@
 ---
-title: PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法 | Microsoft Docs
+title: PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 7ca8e786a8284fd958948e313b79e34a6f502120
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 14cb684b0cc3e93992c6ed78c53e8794214c85a8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41920091"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879733"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -178,8 +177,7 @@ catch(ServiceException $e){
 
 テーブルのプロパティと型については、「[Table サービス データ モデルについて][table-data-model]」をご覧ください。
 
-
-  **TableRestProxy** クラスには、ほかにもエンティティを挿入する 2 つのメソッド、**insertOrMergeEntity** と **insertOrReplaceEntity** が用意されています。 これらのメソッドを使用するには、新しい **Entity** を作成し、いずれかのメソッドにパラメーターとして渡します。 各メソッドは、渡されたエンティティが存在しない場合に、そのエンティティを挿入します。 エンティティが既に存在する場合、**insertOrMergeEntity** はプロパティ値が既に存在するなら更新し、存在しないなら新しいプロパティを追加します。一方、**insertOrReplaceEntity** は既存のエンティティを完全に置き換えます。 次の例は、**insertOrMergeEntity** を使用する方法を示しています。 `PartitionKey` が "tasksSeattle" で `RowKey` が "1" であるエンティティがまだ存在しない場合は挿入されます。 ただし、既に挿入されている場合 (前の例を参照)、`DueDate` プロパティが更新され、`Status` プロパティが追加されます。 `Description` プロパティと `Location` プロパティも更新されますが、値は実際には変更されないままになります。 これら後者の 2 つのプロパティは例に示しているように追加されますが、ターゲット エンティティに存在しているため、それらの既存の値は変更されないままになります。
+**TableRestProxy** クラスには、ほかにもエンティティを挿入する 2 つのメソッド、**insertOrMergeEntity** と **insertOrReplaceEntity** が用意されています。 これらのメソッドを使用するには、新しい **Entity** を作成し、いずれかのメソッドにパラメーターとして渡します。 各メソッドは、渡されたエンティティが存在しない場合に、そのエンティティを挿入します。 エンティティが既に存在する場合、**insertOrMergeEntity** はプロパティ値が既に存在するなら更新し、存在しないなら新しいプロパティを追加します。一方、**insertOrReplaceEntity** は既存のエンティティを完全に置き換えます。 次の例は、**insertOrMergeEntity** を使用する方法を示しています。 `PartitionKey` が "tasksSeattle" で `RowKey` が "1" であるエンティティがまだ存在しない場合は挿入されます。 ただし、既に挿入されている場合 (前の例を参照)、`DueDate` プロパティが更新され、`Status` プロパティが追加されます。 `Description` プロパティと `Location` プロパティも更新されますが、値は実際には変更されないままになります。 これら後者の 2 つのプロパティは例に示しているように追加されますが、ターゲット エンティティに存在しているため、それらの既存の値は変更されないままになります。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -415,7 +413,7 @@ catch(ServiceException $e){
 }
 ```
 
-同時実行のチェック用に、削除するエンティティの Etag を設定できます。そのためには、**DeleteEntityOptions->setEtag** メソッドを使い、**DeleteEntityOptions** オブジェクトを 4 番目のパラメーターとして **deleteEntity** に渡します。
+コンカレンシーのチェック用に、削除するエンティティの Etag を設定できます。そのためには、**DeleteEntityOptions-&gt;setEtag** メソッドを使い、**DeleteEntityOptions** オブジェクトを 4 番目のパラメーターとして **deleteEntity** に渡します。
 
 ## <a name="batch-table-operations"></a>バッチ テーブル処理
 **TableRestProxy->batch** メソッドを使用すると、1 つの要求で複数の処理を実行できます。 ここで示しているパターンでは、処理を **BatchRequest** オブジェクトに追加し、**BatchRequest** オブジェクトを **TableRestProxy->batch** メソッドに渡しています。 処理を **BatchRequest** オブジェクトに追加するには、次のいずれかのメソッドを複数回呼び出すことができます。

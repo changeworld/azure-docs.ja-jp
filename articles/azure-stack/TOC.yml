@@ -46,7 +46,6 @@ items:
     - name: Azure Stack のキャパシティ プランニング ツール
       href: capacity-planning-spreadsheet.md
   - name: データセンターの統合
-    href: azure-stack-customer-journey.md
     items:
     - name: Azure Stack の統合に関する一般的な考慮事項
       href: azure-stack-datacenter-integration.md
@@ -399,9 +398,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: b9b30b66508244a9d56c70b957a7b28bb023afb8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 032235db8278fca319fe43e100570d0ff165294b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190409"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079570"

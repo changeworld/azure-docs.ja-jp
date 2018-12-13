@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 9efb08922f3e6f78266baaf8ae623dd241c09522
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 867c52d87562c11eff8dfe2abd443a2c068eb9ae
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037619"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871882"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -165,7 +165,7 @@ BGP ルートの伝達は、ルート テーブルのプロパティを使用し
         - デバイスとの通信の妨げとなるネットワーク セキュリティ グループの規則が関連付けられていない。
         - 通信を拒否しない。
         - ネットワーク アドレス変換を実行し、転送することができる。または、サブネット内の宛先リソースへのトラフィックをプロキシし、トラフィックをインターネットに送信できる。 
-    - **仮想ネットワーク ゲートウェイ**: ゲートウェイが ExpressRoute 仮想ネットワーク ゲートウェイの場合、インターネットに接続されたオンプレミスのデバイスは、ネットワーク アドレス変換を実行し、転送することができます。また、ExpressRoute の[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering)を使用して、サブネット内の宛先リソースへのトラフィックをプロキシすることもできます。 
+    - **仮想ネットワーク ゲートウェイ**: ゲートウェイが ExpressRoute 仮想ネットワーク ゲートウェイの場合、インターネットに接続されたオンプレミスのデバイスは、ネットワーク アドレス変換を実行し、転送することができます。また、ExpressRoute の[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#privatepeering)を使用して、サブネット内の宛先リソースへのトラフィックをプロキシすることもできます。 
 
 仮想ネットワークが Azure VPN ゲートウェイに接続されている場合は、宛先が 0.0.0.0/0 であるルートを含む[ゲートウェイ サブネット](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)にルート テーブルを関連付けないでください。 関連付けると、ゲートウェイが正しく機能しない可能性があります。 詳細については、「[VPN Gateway の FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gatewayports)」の質問「*VPN ゲートウェイで特定のポートが開いているのはなぜですか*」を参照してください。
 

@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 01/26/2018
-ms.openlocfilehash: f865086a7e57898adb7d43ec0c02c7d38ef0da9c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 85436fedacc765dcdf6a8005cf96f3d63312504c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365574"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868805"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 
@@ -34,7 +34,7 @@ Time Series Insights には 4 つの主要な仕事があります。
 
 データが時系列かどうかわからない場合は、知っておくべきことがあります。  時系列データは、資産やプロセスの経時的な変化を表します。  時系列データには、タイムスタンプを含み、軸として時間が最も重要であるという、他のデータにはない特徴があります。  一般に、時系列データは時間順に到着し、通常はデータベースに対する更新ではなく挿入として扱われます。  Time Series Insights では、すべての新しいイベントをキャプチャし、行として保存するため、変化が経時的に測定されます。これにより、過去に遡ったり、将来の変化を予測したりできます。  大量の時系列データの保存、インデックス作成、照会、分析、視覚化は困難な場合があります。  
 
-## <a name="video"></a>ビデオ: 
+## <a name="video"></a>ビデオ
 
 ### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>このビデオでは、クラウドベースの IoT 分析プラットフォームである Time Series Insights の概要について説明します。</br>
 

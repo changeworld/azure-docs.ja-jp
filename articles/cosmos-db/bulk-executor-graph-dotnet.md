@@ -4,21 +4,18 @@ description: BulkExecutor ライブラリを使って、Azure Cosmos DB Gremlin 
 services: cosmos-db
 keywords: グラフ, Gremlin, 一括, BulkExecutor, 移行, データ, cosmosdb, cosmos, データベース, インポート
 author: luisbosquez
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 39abf6d6da8a8035cf486ceb30b9c21186bbb925
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d5a25bd7cab68f77a37b14ba41bf3cc832c2125f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234421"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836714"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>グラフの BulkExecutor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
 

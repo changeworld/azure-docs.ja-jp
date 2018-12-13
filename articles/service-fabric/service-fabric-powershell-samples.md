@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 04/09/2018
+ms.date: 11/29/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 65f6252ecfa4e5850824fc7aa2e6eca2bdb88692
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5d8137b2ca6c47713b7a681090963dd2749dd1f2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205758"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634049"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル
 
@@ -33,7 +33,6 @@ ms.locfileid: "34205758"
 |-|-|
 | **クラスターの作成** ||
 | [クラスターの作成 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Azure Service Fabric クラスターを作成します。 |
-|[テスト クラスターの作成 (Azure)](./scripts/service-fabric-powershell-create-test-cluster.md)| Azure 上で 3 ノードのテスト Service Fabric クラスターを作成します。|
 | **クラスター、ノード、およびインフラストラクチャの管理** ||
 | [アプリケーション証明書の追加](./scripts/service-fabric-powershell-add-application-certificate.md)| クラスター内のすべてのノードにアプリケーションの X.509 証明書を追加します。 |
 | [クラスター VM の RDP ポート範囲の更新](./scripts/service-fabric-powershell-change-rdp-port-range.md)|展開されたクラスター内にあるクラスター ノード VM の RDP ポート範囲を変更します。|

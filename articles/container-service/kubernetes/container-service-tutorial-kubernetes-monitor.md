@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 249e286b16b78643c33b567f705a4c92991f5553
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b2243851d62cc17dc52407dce051cc2e0f4bcb12
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404870"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889210"
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Log Analytics を使用した Kubernetes クラスターの監視
 
@@ -143,7 +143,7 @@ omsagent   3         3         3         0            3           <none>        
 
 ## <a name="access-monitoring-data"></a>監視データにアクセスする
 
-Log Analytics ポータルまたは Azure Portal で[コンテナー ソリューション](../../log-analytics/log-analytics-containers.md)を使ってコンテナー監視データを表示および分析します。
+Log Analytics ポータルまたは Azure Portal で[コンテナー ソリューション](../../azure-monitor/insights/containers.md)を使ってコンテナー監視データを表示および分析します。
 
 [Log Analytics ポータル](https://mms.microsoft.com)を使ってコンテナー ソリューションをインストールするには、**[ソリューション ギャラリー]** に移動します。 そこで、**コンテナー ソリューション**を追加します。 または、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview) からコンテナー ソリューションを追加します。
 
@@ -153,7 +153,7 @@ Log Analytics ポータルのダッシュボードで、**[コンテナー]** �
 
 同様に、Azure Portal では、**[Log Analytics]** に移動してワークスペースを選択します。 **[コンテナー]** 概要タイルを表示するには、**[ソリューション]** > **[コンテナー]** の順にクリックします。 詳細を表示するには、タイルをクリックします。
 
-監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../../log-analytics/log-analytics-queries.md)をご覧ください。
+監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../../azure-monitor/log-query/log-query-overview.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

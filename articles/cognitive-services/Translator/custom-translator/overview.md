@@ -9,14 +9,14 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: 76e6bc006ff6049b631409a3515628fbd169f713
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f845c064ec3625d205ec346ddfc90c3a1b2c3d8d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976980"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874840"
 ---
-# <a name="what-is-custom-translator-preview"></a>Custom Translator (プレビュー) とは
+# <a name="what-is-custom-translator"></a>Custom Translator とは
 
 [Custom Translator](https://portal.customtranslator.azure.ai) は、翻訳会社、アプリ開発者、および言語サービス プロバイダーがカスタマイズされたニューラル機械翻訳 (NMT) システムを構築できるようにする Microsoft Translator サービスの一機能です。 カスタマイズされた翻訳システムは、既存のアプリケーション、ワークフロー、および Web サイトにシームレスに統合されます。 [Custom Translator](https://portal.customtranslator.azure.ai/) は、統計的機械翻訳 (SMT) に対して [Microsoft Translator Hub](https://hub.microsofttranslator.com/) が提供するのと同様の機能を提供しますが、ニューラル機械翻訳 (NMT) システム専用です。
 

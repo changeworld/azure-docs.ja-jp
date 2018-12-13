@@ -126,13 +126,13 @@
 ### [長時間にわたって実行される操作の処理](media-services-dotnet-long-operations.md)
 ### [フラグメント化 MP4 ライブ取り込みの仕様](media-services-fmp4-live-ingest-overview.md)
 
-## [クリップ コンテンツ](media-services-azure-media-clipper-overview.md)
-### [使用の開始](media-services-azure-media-clipper-getting-started.md)
-### [動画の読み込み](media-services-azure-media-clipper-load-assets.md)
-### [キーボード ショートカットの構成](media-services-azure-media-clipper-keyboard-shortcuts.md)
-### [ローカライズの構成](media-services-azure-media-clipper-localization.md)
-### [クリッピング ジョブの送信](media-services-azure-media-clipper-submit-job.md)
-### [Azure Portal](media-services-azure-media-clipper-portal.md)
+<!-- ## [Clip content](media-services-azure-media-clipper-overview.md)
+### [Getting started](media-services-azure-media-clipper-getting-started.md)
+### [Load videos](media-services-azure-media-clipper-load-assets.md)
+### [Configure keyboard shortcuts](media-services-azure-media-clipper-keyboard-shortcuts.md)
+### [Configure localization](media-services-azure-media-clipper-localization.md)
+### [Submit clipping jobs](media-services-azure-media-clipper-submit-job.md)
+### [Azure portal](media-services-azure-media-clipper-portal.md) -->
 
 ## [コンテンツの保護](media-services-content-protection-overview.md)
 ### [ストレージ暗号化](media-services-rest-storage-encryption.md)

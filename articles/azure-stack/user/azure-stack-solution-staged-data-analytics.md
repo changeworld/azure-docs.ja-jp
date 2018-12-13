@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/02/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237907"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837343"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure および Azure Stack を使用して Staged Data Analytics ソリューションを作成する 
 
@@ -137,7 +137,7 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
     | サブスクリプション | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 |
     | **リソース グループ** |  |  |
     | myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |  |
-    | OS | Windows | サーバーなしのホスティングは、現時点では、Windows で実行される場合のみ使用できます。 |
+    | OS |  Windows | サーバーなしのホスティングは、現時点では、Windows で実行される場合のみ使用できます。 |
     | **ホスティング プラン** |  |  |
     | 従量課金プラン | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 既定の [従量課金プラン] では、リソースは関数の必要に応じて動的に追加されます。 このサーバーなしのホスティングでは、関数が実行された時間にのみ課金されます。 |  |
     | Location | 最寄りのリージョン | ユーザーに近いリージョン、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |
@@ -252,7 +252,7 @@ Blob とキューを含む Azure Stack ストレージ アカウントを作成�
 
 ## <a name="test-the-queue-triggered-function"></a>キューによってトリガーされる関数をテストする
 
-1.  Microsoft Azure portal で関数を参照します。 ページの下部にある **[ログ]** を展開し、ログ ストリーミングが一時停止していないことを確認します。
+1.  Azure Stack ポータルで関数を参照します。 ページの下部にある **[ログ]** を展開し、ログ ストリーミングが一時停止していないことを確認します。
 
 2.  Storage Explorer を開き、このセクションの冒頭で作成したストレージ アカウントに接続します。
 

@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: c37b416578a76e9b12e29d68e413d851796ccc6f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7e28b8938c8c0eb258fbb599dd5765258a4d52e4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26368546"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867377"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 
@@ -37,7 +37,7 @@ ms.locfileid: "26368546"
 
 BLOB コンテナーの合計サイズには、コンテナー自体のサイズとコンテナーの下のすべての BLOB のサイズが含まれます。
 
-次のセクションでは、BLOB コンテナーと BLOB のストレージ容量を計算する方法について説明します。 次のセクションでは Len(X) は文字列の文字数を表します。
+次のセクションでは、BLOB コンテナーと BLOB のストレージ容量を計算する方法について説明します。 次のセクションでは Len(X) は文字列の文字数を表します。
 
 ### <a name="blob-containers"></a>BLOB コンテナー
 
@@ -103,16 +103,16 @@ For-Each Signed Identifier[512 bytes]
 * ブロック BLOB の場合:
     * ブロック一覧の 8 バイト。
     * ブロックの数にブロック ID のサイズ (バイト単位) を掛けたもの。
-    * コミットされたブロックとコミットされていないブロックすべてのデータのサイズ。 
-    
+    * コミットされたブロックとコミットされていないブロックすべてのデータのサイズ。
+
     >[!NOTE]
     >スナップショットが使用されている場合、このサイズは、ベース BLOB またはスナップショット BLOB の一意のデータだけを含みます。 コミットされていないブロックが 1 週間後に使用されていなければ、ガベージ コレクションされます。 その後は、課金対象ではありません。
 
 * ページ BLOB の場合:
     * 連続しないデータのあるページ範囲の数に 12 バイトを掛けます。 これは **GetPageRanges** API を呼び出すときに表示される一意のページ範囲の数です。
 
-    * 保存されているすべてのページのデータのサイズ (バイト単位)。 
-    
+    * 保存されているすべてのページのデータのサイズ (バイト単位)。
+
     >[!NOTE]
     >スナップショットを使用すると、計算中のベース BLOB またはスナップショット BLOB の一意のページだけがこのサイズに含まれます。
 
@@ -120,7 +120,7 @@ For-Each Signed Identifier[512 bytes]
 
 [!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size-ex.ps1 "Calculate container size")]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - コンテナーのサイズの見積もりを提供する簡単なスクリプトについては、「[Blob ストレージ コンテナーの合計サイズを計算する](../scripts/storage-blobs-container-calculate-size-powershell.md)」を参照してください。
 

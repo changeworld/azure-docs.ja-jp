@@ -146,7 +146,7 @@ items:
       - name: Azure Stack PowerShell のインストール
         href: ../azure-stack-powershell-install.md
         maintainContext: true
-      - name: PowerShell の構成
+      - name: PowerShell で接続する
         href: azure-stack-powershell-configure-user.md
       - name: Azure Stack ツールのダウンロード
         href: ../azure-stack-powershell-download.md
@@ -218,9 +218,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 8b86c3988da2dd1669e20c8ba973fefce6ccdd54
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6824a3e9ce8cb8a3b1fc528fc591f70136d60638
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007333"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085384"

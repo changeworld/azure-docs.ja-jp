@@ -1,22 +1,20 @@
 ---
-title: Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法 | Microsoft Docs
+title: Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: d1583001550f5f272f4070006a4a6ac3be000de6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 7ddf9c3ef848537cb68dce043bb22680439e9cd5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798272"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877929"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -49,7 +47,7 @@ require "azure/storage/table"
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>Azure Storage 接続を追加する
-Azure Storage モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+Azure Storage モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 ```ruby
 Azure.config.storage_account_name = "<your Azure Storage account>"
