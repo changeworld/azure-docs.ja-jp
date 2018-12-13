@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0344095cd7c9aedd360d44f2649f27dfd78cd30
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 094f781f68b6eeb86c91364570be46fee2e568ef
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214411"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832550"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 

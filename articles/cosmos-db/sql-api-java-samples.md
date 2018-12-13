@@ -1,22 +1,21 @@
 ---
-title: 'Azure Cosmos DB: SQL API の Java のサンプル | Microsoft Docs'
+title: 'Azure Cosmos DB: SQL API の Java のサンプル'
 description: CRUD 操作など、Azure Cosmos DB SQL API を使う一般的なタスクについては、GitHub の Java のサンプルを参照してください。
 keywords: NoSQL のサンプル
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: sample
 ms.date: 02/08/2018
 ms.author: sngun
-ms.openlocfilehash: 539e863d05c2d343a643c54c39c1e5a28694c03a
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 135613be26ed0ebc5dfd180112fabb0401f60027
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163222"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874177"
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の Java のサンプル
 
@@ -123,7 +122,7 @@ Eclipse から実行するには:
 | --- | --- |
 | [インデックスの作成とインデックス作成ポリシーの設定](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L125-L141) | [Index](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._index)<br>[IndexingPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._indexing_policy) |
 
-インデックス作成の詳細については、「[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)」をご覧ください。
+インデックス作成の詳細については、「[Azure Cosmos DB インデックス作成ポリシー](index-policy.md)」をご覧ください。
 
 ## <a name="query-examples"></a>クエリのサンプル
 [DocumentQuerySamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java) ファイルは、次のタスクを実行する方法を示しています。

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0e124b3fbf216f95a64017b7413612e0056328a3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: df967fe9c77f507ca543f8c93c85f5df5b997a55
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848325"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073662"
 documentType: LandingData
 title: Azure Time Series Insights のドキュメント
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/16/2018
+  ms.date: 12/04/2018
   ms.author: anshan
 abstract:
   description: Time Series Insights 環境を設定し、IoT ソリューションまたは接続されたモノの時系列データを調査および分析する方法について説明します。 ドキュメントには、前提条件、使用方法、API リファレンスのほか、数分で作業を開始するのに役立つ記事が記載されています。
@@ -25,10 +25,10 @@ abstract:
     image:
       alt: ビデオによる Azure IoT Time Series Insights 機能の紹介
       height: 110
-      src: media/index/tsi-intro-shannon-bloch.png
+      src: media/index/new-tsi-intro.png
       width: 250
-    title: IoT アプリのための Time Series Insight。 (16:09)
-    href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Time-Series-Insight-for-IoT-apps/player
+    title: IoT アプリのための Time Series Insight。 (13:31)
+    href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
     width: 250
 sections:
 - title: 5 分間のクイック スタート
@@ -41,7 +41,7 @@ sections:
     - image:
         src: https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg
       text: Azure Time Series Insights の探索
-      href: /azure/time-series-insights/time-series-update-quickstart
+      href: /azure/time-series-insights/time-series-insights-update-quickstart
 - title: リファレンス
   items:
   - type: list
@@ -49,4 +49,4 @@ sections:
     className: cardsD
     items:
     - title: API
-      html: <p><a href="/rest/api/time-series-insights-management">リソース管理 API</a></p>   <p><a href="/rest/api/time-series-insights/time-series-insights-reference-queryapi">クエリ API</a></p><p><a href="/rest/api/time-series-insights/time-series-insights-reference-query-syntax">クエリ構文</a></p>
+      html: <p><a href="/rest/api/time-series-insights-management">リソース管理 API</a></p>   <p><a href="/rest/api/time-series-insights/ga-query-api">クエリ API</a></p><p><a href="/rest/api/time-series-insights/ga-query-syntax">クエリ構文</a></p>

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: bec94e2017660e9804bbc232e0a3163afdaafcb6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277768"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844840"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワードのリセット
 
@@ -53,9 +53,9 @@ ms.locfileid: "51277768"
       * **OMA-URI**: `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset` に設定します。
       * **データ型**: **整数**に設定します。
       * **値**: **1** に設定します。
-      * **[OK]**
-   * **[OK]**
-4. **[作成]**
+      *  **[OK]**
+   *  **[OK]**
+4.  **[作成]**
 
 ### <a name="assign-a-device-configuration-policy-in-intune"></a>Intune でデバイス構成ポリシーを割り当てる
 
@@ -66,7 +66,7 @@ ms.locfileid: "51277768"
 3. グループの名前を入力し、**[メンバーシップの種類]** で **[割り当て済み]** を選択します。
    * **[メンバー]** で、ポリシーの適用先となる Azure AD 参加済みの Windows 10 デバイスを選択します。
    * **[選択]** をクリックします。
-4. **[作成]**
+4.  **[作成]**
 
 グループの作成の詳細については、「[Azure Active Directory のグループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)」の記事を参照してください。
 
@@ -101,23 +101,29 @@ ms.locfileid: "51277768"
 
 [職場または学校アカウントのパスワードをリセットする方法](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)に関するページで、この機能の使い方がユーザー向けに説明されています。
 
-## <a name="common-issues"></a>一般的な問題
+Azure AD 監査ログには、パスワードのリセットが発生した IP アドレスと ClientType に関する情報が含まれます。
+
+![Azure AD 監査ログにおけるログオン画面のパスワードのリセットの例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+## <a name="limitations"></a>制限事項
 
 Hyper-V を使用してこの機能をテストすると、"パスワードのリセット" リンクが表示されません。
 
 * テストに使用している VM に移動して **[表示]** をクリックし、**[拡張セッション]** チェック ボックスをオフにしてください。
 
-リモート デスクトップを使用してこの機能をテストすると、"パスワードのリセット" リンクが表示されません。
+リモート デスクトップまたは拡張 VM セッションを使用してこの機能をテストすると、"パスワードのリセット" リンクが表示されません。
 
 * リモート デスクトップからのパスワードのリセットは現在サポートされていません。
 
-Windows のロック画面がレジストリ キーまたはグループ ポリシーを使って無効にされている場合、"**パスワードのリセット**" が利用できなくなります。
-
 ポリシーにより Ctrl + Alt + Del キーが必須になっている場合、またはロック画面の通知がオフになっている場合、"**パスワードのリセット**" が正しく機能しません。
 
-Azure AD 監査ログには、パスワードのリセットが発生した IP アドレスと ClientType に関する情報が含まれます。
+次のポリシー設定を選択すると、パスワードのリセット機能が無効になります
 
-![Azure AD 監査ログにおけるログオン画面のパスワードのリセットの例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+   * HideFastUserSwitching を有効または 1 に設定する
+   * DontDisplayLastUserName を有効または 1 に設定する
+   * NoLockScreen を有効または 1 に設定する
+   * EnableLostMode をデバイスに対して設定する
+   * Explorer.exe をカスタム シェルで置き換える
 
 お使いの Windows 10 マシンがプロキシ サーバーまたはファイアウォールの内側にある場合は、passwordreset.microsoftonline.com および ajax.aspnetcdn.com への HTTPS トラフィック (443) を許可する必要があります。
 

@@ -249,6 +249,13 @@ items:
       href: luis-find-region-csharp.md
     - name: REST API と Node.js を使用する
       href: luis-find-region-nodejs.md
+  - name: コンテナーの使用
+    items:
+    - name: コンテナーのインストールと実行
+      displayName: docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now
+      href: luis-container-howto.md
+    - name: コンテナーを構成する
+      href: luis-container-configuration.md
 - name: リファレンス
   items:
   - name: ユーザーのプライバシー
@@ -384,9 +391,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: d5a40f294e63ad72c667ed94fd367588537450c6
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: b870f01e9abf2da43ca21d520f1d499298fe6c95
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283265"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871237"

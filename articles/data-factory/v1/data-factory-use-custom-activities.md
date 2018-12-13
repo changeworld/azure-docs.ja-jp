@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 580dd5bf6a7e905927189f4b1ae42ab49a1cbc80
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b7a2f9350633be5ec0cb8d5a7c6e7cc5048f956a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730717"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276008"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -46,7 +46,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 ## <a name="walkthrough-create-a-custom-activity"></a>チュートリアル: カスタム アクティビティの作成
 ### <a name="prerequisites"></a>前提条件
 * Visual Studio 2012/2013/2015
-* [Azure .NET SDK](https://azure.microsoft.com/downloads/)
+*  [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch の前提条件
 このチュートリアルでは、コンピューティング リソースとして Azure Batch を使用して、カスタム .NET アクティビティを実行します。 **Azure Batch** は、大規模な並列コンピューティングやハイ パフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行するためのプラットフォーム サービスです。 多くのコンピューティング処理を要する作業を管理された**仮想マシンの集合**で実行するようにスケジュール設定し、ジョブのニーズに合わせてコンピューティング リソースを自動的に拡大/縮小できます。 Azure Batch サービスの詳細については、[Azure Batch の基礎][batch-technical-overview]に関するページをご覧ください。
@@ -55,7 +55,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 
 1. **Azure ポータル** を使用して、 [Azure Batch アカウント](http://portal.azure.com)を作成します。 手順については、「[Azure Batch アカウントの作成と管理][batch-create-account]」の記事を参照してください。
 2. Azure Batch のアカウント名とアカウント キー、URI、プール名をメモしておきます。 Azure Batch のリンクされたサービスを作成するためにこれらが必要になります。
-    1. Azure Batch アカウントのホーム ページに、`https://myaccount.westus.batch.azure.com` の形式で **URL** が表示されます。 この例では、**myaccount** が Azure Batch のアカウント名です。 リンクされたサービスの定義で使用する URI は、URL からアカウント名を除いたものです。 たとえば、「 `https://<region>.batch.azure.com`」のように入力します。
+    1. Azure Batch アカウントのホーム ページに、`https://myaccount.westus.batch.azure.com` の形式で **URL** が表示されます。 この例では、**myaccount** が Azure Batch のアカウント名です。 リンクされたサービスの定義で使用する URI は、URL からアカウント名を除いたものです。 (例: `https://<region>.batch.azure.com`)。
     2. 左側のメニューの **[キー]** をクリックして、**プライマリ アクセス キー**をコピーします。
     3. 既存のプールを使用するには、メニューの **[プール]** をクリックして、プールの **ID** をメモしておきます。 既存のプールがない場合は、次の手順に進みます。     
 2. **Azure Batch プール**を作成します。
@@ -108,7 +108,7 @@ public IDictionary<string, string> Execute(
      <li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li>
      <li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。 このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li>
      <li>右側にあるプロジェクトの種類の一覧から <b>[クラス ライブラリ]</b> を選択します。 VS 2017 で、<b>[クラス ライブラリ (.NET Framework)]</b>  を選択します。</li>
-     <li><b>MyDotNetActivity</b> for the <b>MyDotNetActivity</b>に関する記事を参照してください。</li>
+     <li> <b>MyDotNetActivity</b> for the <b>MyDotNetActivity</b>に関する記事を参照してください。</li>
      <li><b>[場所]</b> は <b>[C:\ADFGetStarted]</b> を選択します。</li>
      <li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
    </ol>
@@ -212,7 +212,7 @@ public IDictionary<string, string> Execute(
         foreach (LinkedService ls in linkedServices)
             logger.Write("linkedService.Name {0}", ls.Name);
     
-        // get the first Azure Storate linked service from linkedServices object
+        // get the first Azure Storage linked service from linkedServices object
         // using First method instead of Single since we are using the same
         // Azure Storage linked service for input and output.
         inputLinkedService = linkedServices.First(
@@ -460,7 +460,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
    2. **accessKey** プロパティに Azure Batch アカウント キーを指定します。
    3. **poolName** プロパティに、前提条件の一部として作成したプールの名前を指定します。 プールの名前の代わりにプールの ID を指定することもできます。
    4. **batchUri** プロパティに Azure Batch の URI を指定します。 例: `https://westus.batch.azure.com`.  
-   5. **AzureStorageLinkedService** for the **linkedServiceName** プロパティに Azure Batch アカウント名を指定します。
+   5.  **AzureStorageLinkedService** for the **linkedServiceName** プロパティに Azure Batch アカウント名を指定します。
 
         ```json
         {
@@ -640,7 +640,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
    ![出力スライス](./media/data-factory-use-custom-activities/OutputSlices.png)
 4. **adftutorial** コンテナー内の BLOB ストレージに出力ファイルが生成されていることを確認します。
 
-   ![カスタム アクティビティの出力][image-data-factory-ouput-from-custom-activity]
+   ![カスタム アクティビティの出力][image-data-factory-output-from-custom-activity]
 5. 出力ファイルを開くと、以下のような出力結果が表示されるはずです。
 
     ```
@@ -1063,6 +1063,6 @@ GitHub の [Azure Data Factory - ローカル環境](https://github.com/gbrueckl
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [hivewalkthrough]: data-factory-data-transformation-activities.md
 
-[image-data-factory-ouput-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
+[image-data-factory-output-from-custom-activity]: ./media/data-factory-use-custom-activities/OutputFilesFromCustomActivity.png
 
 [image-data-factory-download-logs-from-custom-activity]: ./media/data-factory-use-custom-activities/DownloadLogsFromCustomActivity.png

@@ -2,20 +2,20 @@
 title: Azure Backup とは
 description: Azure Backup を使用して、Windows Server、Windows ワークステーション、System Center DPM サーバー、Azure 仮想マシンのデータとワークロードをバックアップおよび復元します。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: バックアップと復元, 復元サービス, バックアップ ソリューション
 ms.service: backup
 ms.topic: overview
 ms.date: 8/2/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0a5b9e6cdb5329705cb3c6d4676dfc8d987119e4
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: b0d920c1a41ff679c3dedcb6745e250b77cb769a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480975"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878330"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -114,7 +114,7 @@ Azure Backup では、完全なマネージド ディスク VM を復元する�
 次のセクションの各表は、各 Azure Backup コンポーネントのさまざまな機能の可用性とサポートを簡単にまとめたものです。 追加のサポートや詳細情報については、それぞれの表に続く説明を参照してください。
 
 ### <a name="storage"></a>Storage
-| Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
+| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | Recovery Services コンテナー |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
 | Disk Storage | |![[はい]][green] |![[はい]][green] | |
@@ -155,7 +155,7 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 **増分バックアップ**では、前回のバックアップ以降に変更されたデータ ブロックのみが格納されるため、記憶域とネットワークで高い効率性が実現します。 増分バックアップでは、完全バックアップを定期的に実行する必要はありません。 この例では、最初の月に完全バックアップが行われた後、A2、A3、A4、および A9 が変更済みとしてマークされ、2 か月目に転送されます。 3 か月目は、変更された A5 のみがマークされ、転送されます。 データ移動が少ないためストレージおよびネットワーク リソースを節約でき、TCO が削減されます。
 
 ### <a name="security"></a>セキュリティ
-| Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
+| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | ネットワークのセキュリティ<br/> (対 Azure) |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
 | データのセキュリティ<br/> (Azure 内) |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
@@ -174,7 +174,7 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 Azure VM のバックアップの場合は、仮想マシン " *内* " で暗号化を設定する必要があります。 Azure Backup は Azure Disk Encryption をサポートしており、Windows 仮想マシンでは BitLocker が、Linux 仮想マシンでは **dm-crypt** が使用されます。 Azure Backup のバックエンドでは [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) が使用されており、これによって保存データが保護されます。
 
 ### <a name="network"></a>ネットワーク
-| Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
+| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | ネットワーク圧縮 <br/>(対**バックアップ サーバー**) | |![[はい]][green] |![[はい]][green] | |
 | ネットワーク圧縮 <br/>(対 **Recovery Services コンテナー**) |![[はい]][green] |![はい][green] |![[はい]][green] | |
@@ -225,7 +225,7 @@ Azure Backup は、オンプレミスのデータとクラウドのデータを�
 
 バックアップと障害復旧に関する意思決定を行うにあたっては、次の概念が役立ちます。
 
-| 概念 | 詳細 | Backup | ディザスター リカバリー (DR) |
+| 概念 | 詳細 | バックアップ | ディザスター リカバリー (DR) |
 | --- | --- | --- | --- |
 | 目標復旧時点 (RPO) |復旧を行う必要がある場合に許容されるデータ損失の量です。 |バックアップ ソリューションの許容されるRPO には幅があります。 仮想マシンのバックアップの RPO は通常 1 日であるのに対し、データベースのバックアップの RPO は最低 15 分です。 |障害復旧ソリューションでは RPO が低くなります。 DR コピーは、数秒遅れまたは数分遅れのことがあります。 |
 | 目標復旧時間 (RTO) |復旧または復元の完了に要する時間です。 |RPO が大きくなるほど、一般的にはバックアップ ソリューションで処理が必要なデータ量が増えるため、RTO は長くなります。 たとえば、オフサイトの場所からテープを輸送するのにかかる時間によっては、テープからのデータの復元に日単位の時間を要する場合があります。 |障害復旧ソリューションは、よりソースと同期されているため、RTO は短くなります。 必要な変更は少数です。 |

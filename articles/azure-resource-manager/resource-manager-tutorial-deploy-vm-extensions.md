@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2f5cffa0b31d46d76564565001aaed678eb1a649
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 7e0b3fff0ed60d5eb77194e7f9081d35f2e38571
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613588"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869639"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>チュートリアル: Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -116,7 +116,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-デプロイ手順については、「[テンプレートのデプロイ](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template)」セクションを参照してください。 生成されたパスワードを仮想マシンの管理者アカウントに対して使用することが推奨されます。 「[前提条件](#prerequisites)」を参照してください。
+デプロイ手順については、「[テンプレートのデプロイ](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」セクションを参照してください。 生成されたパスワードを仮想マシンの管理者アカウントに対して使用することが推奨されます。 「[前提条件](#prerequisites)」を参照してください。
 
 ## <a name="verify-the-deployment"></a>デプロイを検証する
 
