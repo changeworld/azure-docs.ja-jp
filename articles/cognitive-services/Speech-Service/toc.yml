@@ -59,7 +59,7 @@ items:
       href: how-to-recognize-speech-cpp.md
     - name: Java
       href: how-to-recognize-speech-java.md
-    - name: REST ()
+    - name: REST
       href: how-to-recognize-speech-rest.md
   - name: 音声から意図を認識する
     displayName: recognize intent, intent recognition, language understanding service, luis

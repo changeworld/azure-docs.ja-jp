@@ -25,6 +25,8 @@ items:
   items:
   - name: ズーム レベルとタイル グリッド
     href: zoom-levels-and-tile-grid.md
+  - name: 適切な価格レベルの選択
+    href: choose-pricing-tier.md
   - name: 対象範囲
     items:
     - name: ジオコーディングの対象範囲
@@ -45,6 +47,8 @@ items:
     items:
     - name: アカウントとキーを管理する
       href: how-to-manage-account-keys.md
+    - name: 価格レベルを管理する
+      href: how-to-manage-pricing-tier.md
     - name: 使用状況メトリックを表示する
       href: how-to-view-api-usage.md
   - name: REST API からマップ データを取得する
@@ -61,13 +65,21 @@ items:
       href: choose-map-style.md
     - name: マップ コントロールを追加する
       href: map-add-controls.md
-    - name: シンボルとマーカーを追加する
+    - name: シンボル レイヤーを追加する
       href: map-add-pin.md
     - name: ポップアップを追加する
       href: map-add-popup.md
+    - name: バブル レイヤーを追加する
+      href: map-add-bubble-layer.md
     - name: 図形を追加する
       href: map-add-shape.md
-    - name: カスタム HTML を追加する
+    - name: ヒート マップ レイヤーを追加する
+      href: map-add-heat-map-layer.md
+    - name: イメージ レイヤーを追加する
+      href: map-add-image-layer.md
+    - name: タイル レイヤーを追加する
+      href: map-add-tile-layer.md
+    - name: HTML マーカーを追加する
       href: map-add-custom-html.md
     - name: サービス
       items:
@@ -163,9 +175,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: e69f28012fcceb7aa741c1ba29c9f21537450089
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 5653e8567637877426af54e50436211637478ca5
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706247"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888598"

@@ -282,12 +282,12 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=automation
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-automation
+    href: https://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: ed1c82c799ea64c43a531d912fbc09022a918414
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4ccf447293045e67fb173e17a64d587e59afb886
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838975"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998758"

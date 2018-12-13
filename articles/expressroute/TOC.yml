@@ -178,7 +178,7 @@ items:
     href: /powershell/module/azurerm.network#expressroute
   - name: Azure CLI
     href: /cli/azure/network/express-route
-  - name: REST ()
+  - name: REST
     href: https://msdn.microsoft.com/library/azure/mt586720
   - name: REST (クラシック)
     href: https://msdn.microsoft.com/library/azure/dn606310

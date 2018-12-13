@@ -399,7 +399,7 @@ items:
     href: /powershell/module/azurerm.streamanalytics
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.streamanalytics
-  - name: REST ()
+  - name: REST
     href: /rest/api/streamanalytics
 - name: リソース
   items:

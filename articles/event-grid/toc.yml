@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Event Grid について
+  - name: Event Grid とは
     href: overview.md
   - name: メッセージング サービスの比較
     href: compare-messaging-services.md
@@ -173,9 +173,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-eventgrid
-ms.openlocfilehash: 7d478caf70b799828af5de5afc6f9b491819da8f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: b6b011471b9cc73161312786d7f961951a533100
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415799"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081474"

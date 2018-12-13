@@ -37,8 +37,8 @@ items:
         href: tutorial-net-windows-virtual-machine.md
       - name: Python
         href: tutorial-python-windows-virtual-machine.md
-  - name: Key Vault からシークレットを読み取る
-    href: tutorial-web-application-keyvault.md
+  - name: Azure コンテナー
+    href: ../container-instances/container-instances-managed-identity.md
   - name: キー ローテーションと監査を設定する
     href: key-vault-key-rotation-log-monitoring.md
 - name: サンプル
@@ -158,9 +158,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 製品フィードバック
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 31f4ed86656bbf95527e18603c5b951d31b6e0ec
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: f19dea5bd5425e863fd9df6279bb7a83c358d693
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620032"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106347"
