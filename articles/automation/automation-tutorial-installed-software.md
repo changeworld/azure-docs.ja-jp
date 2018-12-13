@@ -11,12 +11,12 @@ ms.service: automation
 ms.component: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ad9fc7deb73cdcbcf83cc10b9b28f7d7e4ac7661
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 6ff8bccc7037782b2709340312f0602b4cd7ab1f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283793"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834334"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Azure マシンと Azure 以外のマシンにインストールされているソフトウェアを検出する
 
@@ -70,7 +70,7 @@ Automation アカウントで、**[構成管理]** の **[インベントリ]** 
 
 ## <a name="onboard-a-non-azure-machine"></a>Azure 以外のマシンの配布準備
 
-Azure 以外のマシンを追加するには、お使いのオペレーティング システムに応じて、[Windows](../log-analytics/log-analytics-agent-windows.md) または [Linux](automation-linux-hrw-install.md) のエージェントをインストールします。 エージェントのインストール後、Automation アカウントに移動し、**[構成管理]** の **[インベントリ]** に移動します。 **[マシンの管理]** をクリックすると、お使いの Log Analytics ワークスペースをレポート先とするマシンのうち、ソリューションが有効にされていないマシンが一覧表示されます。 実際の環境に合った適切なオプションを選んでください。
+Azure 以外のマシンを追加するには、お使いのオペレーティング システムに応じて、[Windows](../azure-monitor/platform/agent-windows.md) または [Linux](automation-linux-hrw-install.md) のエージェントをインストールします。 エージェントのインストール後、Automation アカウントに移動し、**[構成管理]** の **[インベントリ]** に移動します。 **[マシンの管理]** をクリックすると、お使いの Log Analytics ワークスペースをレポート先とするマシンのうち、ソリューションが有効にされていないマシンが一覧表示されます。 実際の環境に合った適切なオプションを選んでください。
 
 * **[Enable on all available machines]\(使用可能なすべてのマシンで有効にします\)** - このオプションを選択すると、その時点で Log Analytics ワークスペースをレポート先とするすべてのマシンでソリューションが有効になります。
 * **[Enable on all available machines and future machines]\(使用可能なすべてのマシンおよび今後のマシンで有効にします\)** - このオプションを選択すると、Log Analytics ワークスペースをレポート先としているすべてのマシンおよび以後そのワークスペースに追加されることになるすべてのマシンでソリューションが有効になります。
@@ -113,7 +113,7 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Log Analytics でのログ ファイルの実行と検索については、[Azure Log Analytics ](../log-analytics/log-analytics-queries.md) に関するページを参照してください。
+Log Analytics でのログ ファイルの実行と検索については、[Azure Log Analytics ](../azure-monitor/log-query/log-query-overview.md) に関するページを参照してください。
 
 ### <a name="single-machine-inventory"></a>1 台のマシンのインベントリ
 

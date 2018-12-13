@@ -46,6 +46,8 @@ items:
       href: container-instances-multi-container-group.md
     - name: 仮想ネットワークのデプロイ (プレビュー)
       href: container-instances-vnet.md
+    - name: GPU リソースを使用したデプロイ (プレビュー)
+      href: container-instances-gpu.md
     - name: Azure Container Registry からのデプロイ
       href: container-instances-using-azure-container-registry.md
     - name: 環境変数の設定 (env)
@@ -90,7 +92,7 @@ items:
   items:
   - name: Azure CLI
     href: /cli/azure/container
-  - name: REST
+  - name: REST ()
     href: /rest/api/container-instances
   - name: PowerShell
     href: /powershell/module/azurerm.containerinstance#container_instances
@@ -120,9 +122,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-instances
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 3512afb8c716e16b55a5115a91e4f7011ad865bb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 06c3fcccbc447945be6385303cdb4311125bf8e3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650198"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835779"

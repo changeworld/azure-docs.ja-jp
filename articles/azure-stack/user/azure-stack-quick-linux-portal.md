@@ -7,16 +7,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
-ms.reviewer: ''
+ms.reviewer: kivenkat
 ms.custom: mvc
-ms.openlocfilehash: e82c3de4461e2d663496cd4ae4a98c10e7819466
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 0664316d73b1473ab52b08f8abead2ec33d121b6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025412"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836748"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>クイック スタート: Azure Stack ポータルで Linux サーバー仮想マシンを作成する
 
@@ -36,7 +36,7 @@ Azure Stack ポータルを使用して、Ubuntu Server 16.04 LTS 仮想マシ�
 
 * **Azure Stack Marketplace 内の Linux イメージ**
 
-   Azure Stack Marketplace には、既定では Linux イメージが含まれていません。 Linux サーバー仮想マシンを作成する前に、Azure Stack オペレーターが、必要な **Ubuntu Server 16.04 LTS** イメージを提供していることを確認してください。 オペレーターは、「[Azure から Azure Stack に Marketplace の項目をダウンロードする](../azure-stack-download-azure-marketplace-item.md)」という記事に記載されている手順を使用できます。
+   Azure Stack Marketplace には、既定では Linux イメージが含まれていません。 マーケットプレースで Azure Stack オペレーターに **Ubuntu Server 16.04 LTS** イメージを提供していることを確認してください。 オペレーターは、「[Azure から Azure Stack に Marketplace の項目をダウンロードする](../azure-stack-download-azure-marketplace-item.md)」という記事に記載されている手順を使用できます。
 
 * **SSH クライアントへのアクセス**
 
@@ -97,11 +97,11 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 
 ## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
 
-1. 仮想マシンのページで **[接続]** をクリックします。 これにより、仮想マシンに接続するために必要な SSH 接続文字列が表示されます。 
+1. 仮想マシンのページで **[接続]** をクリックします。 仮想マシンに接続するために必要な SSH 接続文字列を見つけることができます。 
 
 2. PuTTY を開きます。
 
-3. **[PuTTY Configuration]\(PuTTY の構成\)** 画面で、**[Category]\(カテゴリ\)** ウィンドウを使用して上下にスクロールします。 **[SSH]** までスクロールして **[SSH]** を展開し、**[Auth]\(認証\)** をクリックします。**[参照]** をクリックし、保存した秘密キー ファイルを選択します。
+3. [PuTTY Configuration]\(PuTTY の構成\) 画面で、**[Category]\(カテゴリ\)** ウィンドウを使用して上下にスクロールします。 **[SSH]** までスクロールして **[SSH]** を展開し、**[Auth]\(認証\)** をクリックします。**[参照]** をクリックし、保存した秘密キー ファイルを選択します。
    ![仮想マシンを接続する](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. **[Category]\(カテゴリ\)** ウィンドウで上にスクロールし、**[Session]\(セッション\)** をクリックします。
@@ -138,7 +138,7 @@ NGINX のインストールが完了したら、SSH セッションを終了し�
 3. 左側のメニューの **[設定]** で、**[受信セキュリティ規則]** をクリックします。
 4. **[追加]** をクリックします。
 5. **[名前]** で「**http**」と入力します。 **[ポート範囲]** が 80 に設定されていることと、**[アクション]** が **[許可]** に設定されていることを確認します。
-6. **[OK]**
+6.  **[OK]**
 
 ## <a name="view-the-nginx-welcome-page"></a>NGINX のようこそページの表示
 
@@ -154,4 +154,4 @@ Web ブラウザーを開き、```http://<public IP address>``` を参照しま�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Web サーバーがインストールされている基本の Linux サーバー仮想マシンを展開しました。 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)」に進んでください。
+このクイック スタートでは、Web サーバーがインストールされた基本の Linux サーバー仮想マシンをデプロイしました。 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)」に進んでください。
