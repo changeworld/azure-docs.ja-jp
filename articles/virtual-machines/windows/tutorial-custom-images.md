@@ -86,7 +86,7 @@ Set-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM -Generalized
 $vm = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroup
 ```
 
-イメージの構成を作成します。
+イメージの設定を作成します。
 
 ```azurepowershell-interactive
 $image = New-AzureRmImageConfig -Location EastUS -SourceVirtualMachineId $vm.ID 
