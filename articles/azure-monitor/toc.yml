@@ -121,13 +121,13 @@ items:
   - name: インシデントへの対応
     items:
     - name: アラート
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-overview.md
     - name: クラシック アラート
       href: platform/alerts-classic.overview.md
     - name: スマート グループ
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts-smartgroups.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-smartgroups-overview.md
     - name: 自動スケール
-      href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=/azure/azure-monitor/toc.json
+      href: platform/autoscale-overview.md
     - name: メトリック アラート
       href: platform/alerts-metric-overview.md
     - name: ログ アラート
@@ -151,7 +151,7 @@ items:
     - name: アクセスを管理する
       items:
       - name: ロールのアクセス許可とセキュリティ
-        href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
+        href: platform/roles-permissions-security.md
       - name: ワークスペース
         href: platform/manage-access.md
       - name: '[アプリケーション]'
@@ -217,7 +217,7 @@ items:
         - name: トラブルシューティング
           href: platform/diagnostics-extension-troubleshooting.md
         - name: Resource Manager テンプレートを使用した診断設定の有効化
-          href: ../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostic-logs-stream-template.md
         - name: JSON Lines 診断ログ形式の準備
           href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
         - name: VM のゲストのメトリックをメトリック ストアに送信する
@@ -441,9 +441,9 @@ items:
     - name: データのルーティング
       items:
       - name: アクティビティ ログをアーカイブする
-        href: ../monitoring-and-diagnostics/monitoring-archive-activity-log.md?toc=/azure/azure-monitor/toc.json
+        href: platform/archive-activity-log.md
       - name: 診断ログをアーカイブする
-        href: ../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/archive-diagnostic-logs.md
       - name: 診断ログを保存する
         href: ../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md?toc=/azure/azure-monitor/toc.json
       - name: アクティビティ ログの Event Hubs へのストリーム
@@ -655,7 +655,7 @@ items:
   - name: データを分析する
     items:
     - name: メトリックス エクスプローラーでのメトリック グラフの作成
-      href: ../monitoring-and-diagnostics/monitoring-metric-charts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/metrics-charts.md
     - name: アクティビティ ログでのイベントの表示
       href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
     - name: サービスの通知を表示する
@@ -740,11 +740,11 @@ items:
         - name: 動的なしきい値によるアラート
           href: platform/alerts-dynamic-thresholds.md
         - name: ログのメトリック アラートを構成する
-          href: ../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric-logs.md
         - name: Resource Manager テンプレートを使用して新しいメトリック アラートを作成する
-          href: ../monitoring-and-diagnostics/monitoring-create-metric-alerts-with-templates.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric-create-templates.md
         - name: Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
-          href: ../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-enable-template.md
         - name: クラシック メトリック アラートで webhook を呼び出す
           href: platform/alerts-webhooks.md
       - name: ログ アラートの使用
@@ -760,7 +760,7 @@ items:
         - name: アクティビティ ログ イベントでアラートを構成する
           href: platform/alerts-activity-log.md
         - name: アクティビティ ログ アラートに移行する
-          href: ../monitoring-and-diagnostics/monitoring-migrate-management-alerts.md?toc=/azure/azure-monitor/toc.json
+          href: platform/migrate-management-alerts.md
         - name: サービスの通知でアラートを構成する
           href: platform/alerts-activity-log-service-notifications.md
       - name: アプリケーション アラートの使用
@@ -776,11 +776,11 @@ items:
         - name: webhook スキーマの詳細情報
           href: platform/activity-log-alerts-webhook.md
         - name: SMS アラート動作
-          href: ../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-sms-behavior.md
         - name: アラートのレート制限
-          href: ../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-rate-limiting.md
         - name: Resource Manager を使用してアクション グループを作成する
-          href: ../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md?toc=/azure/azure-monitor/toc.json
+          href: platform/action-groups-create-resource-manager-template.md
         - name: ロジック アプリの操作を実装する
           href: platform/action-groups-logic-app.md
       - name: Operations Manager からのアラート
@@ -790,11 +790,11 @@ items:
         - name: アラート インスタンスを管理する
           href: platform/alerts-managing-alert-instances.md
         - name: スマート グループを管理する
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-smart-groups.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-smart-groups.md
         - name: アラートとスマート グループの状態を管理する
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-alert-states.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-alert-states.md
         - name: 他の監視サービスからのアラートを管理する
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-nagios-zabbix-scom.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-nagios-zabbix-scom.md
     - name: 自動スケール
       items:
       - name: 自動スケールのチュートリアル
@@ -808,7 +808,7 @@ items:
       - name: 一般的なパターン
         href: ../monitoring-and-diagnostics/monitoring-autoscale-common-scale-patterns.md?toc=/azure/azure-monitor/toc.json
       - name: カスタム メトリックを使用した自動スケール
-        href: ../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-custom-metric.md
       - name: Resource Manager テンプレートを使用した VM スケール セットの自動スケール
         href: platform/autoscale-virtual-machine-scale-sets.md
       - name: VM スケール セットでのマシンの自動スケール
@@ -958,9 +958,9 @@ items:
   - name: スキーマ
     items:
     - name: 診断ログのサービス、カテゴリ、スキーマ
-      href: ../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/tutorial-dashboards.md
     - name: アクティビティ ログのイベント スキーマ
-      href: ../monitoring-and-diagnostics/monitoring-activity-log-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/activity-log-schema.md
     - name: Azure 診断拡張機能のスキーマ
       href: platform/diagnostics-extension-schema.md
       items:
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 06ea6e43343a0cf9982a6161fbd60d5bfce6b0ba
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 037ec2d246e30725448fb3da98263b557e11186d
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322552"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384431"
