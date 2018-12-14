@@ -233,7 +233,7 @@ ms.locfileid: "53020322"
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="https://docs.microsoft.com/rest/api/redis/">REST API リファレンスに関するページ</a></p>
+                        <p><a href="https://docs.microsoft.com/rest/api/redis/">REST API リファレンス</a></p>
                     </div>
                 </div>
             </div>
