@@ -177,8 +177,8 @@
 ### [Content Moderator による処理](media-services-content-moderation.md)
 
 ## [テレメトリの構成](media-services-telemetry-overview.md)
-###[.NET](media-services-dotnet-telemetry.md)
-###[REST](media-services-rest-telemetry.md)
+### [.NET](media-services-dotnet-telemetry.md)
+### [REST](media-services-rest-telemetry.md)
 
 ## スケール
 ### [メディア処理](media-services-scale-media-processing-overview.md)
