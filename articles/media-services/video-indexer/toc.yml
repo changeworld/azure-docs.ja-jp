@@ -29,8 +29,6 @@ items:
       href: customize-person-model-overview.md
 - name: ハウツー ガイド
   items:
-  - name: v1 から v2 への移行
-    href: migrate-from-v1-to-v2.md
   - name: Azure への接続
     href: connect-to-azure.md
   - name: Azure に接続されたアカウントの管理
@@ -81,9 +79,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: リージョン
     href: regions.md
-ms.openlocfilehash: 0ede3667a745959b2d58d1ad1f37e36728fcd503
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: cf7d67c6d03a7587f9fb62c5abce87ca95f36810
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270085"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383886"
