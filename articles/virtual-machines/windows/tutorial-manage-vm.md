@@ -227,11 +227,11 @@ Start-AzureRmVM `
    -Name $vm.name
 ```
 
-## <a name="vm-power-states"></a>VM の電源の状態
+## <a name="vm-power-states"></a>VM の電源状態
 
-Azure VM は、さまざまな電源状態のいずれかになります。 この状態は、ハイパーバイザーから見た VM の現在の状態を表しています。
+Azure VM は、次のいずれかの電源状態になります。この状態は、ハイパーバイザーから見た VM の現在の電源状態を表しています。
 
-### <a name="power-states"></a>電源の状態
+### <a name="power-states"></a>電源状態
 
 | 電源の状態 | 説明
 |----|----|
@@ -243,7 +243,7 @@ Azure VM は、さまざまな電源状態のいずれかになります。 こ�
 | 割り当て解除済み | VM がハイパーバイザーから削除されているものの、コントロール プレーンでは引き続き使用可能であることを示します。 `Deallocated` 状態の仮想マシンでは、計算料金は発生しません。 |
 | - | VM の電源状態が不明であることを示します。 |
 
-### <a name="find-power-state"></a>電源の状態を確認する
+### <a name="find-power-state"></a>電源状態を確認する
 
 特定の VM の状態を取得するには、[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) コマンドを使用します。 VM の有効な名前とリソース グループを必ず指定してください。
 
