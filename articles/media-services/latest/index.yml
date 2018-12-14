@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 409a5008aa4d25b0fe868956d3da12b47e225acd
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: fdda67921db38b912679d27bf5a8c897775ad82b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377848"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137992"
 documentType: LandingData
 title: Azure Media Services v3 のドキュメント
 metadata:
   document_id: 
   title: Azure Media Services v3 のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: Learn how to stream on-demand, broadcast live, and analyze your videos with Media Services. Tutorials, API references, and more.
+  description: Media Services を使用してビデオをオンデマンドでストリーミングし、ライブ データをブロードキャストし、ビデオを分析する方法を説明します。 チュートリアルや API リファレンスなどを提供します。
   services: media-services
   author: Juliako
   manager: femila

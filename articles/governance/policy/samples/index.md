@@ -1,5 +1,5 @@
 ---
-title: Azure Policy のサンプル インデックス
+title: ポリシーのサンプルのインデックス
 description: Azure Policy のサンプルのインデックス
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 32a1ef9b20314bb0b55277faeb20f2bdc1da2d11
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 64087ed7bca32b0caa683a5b254cb5beda00b06b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054678"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311526"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル
 

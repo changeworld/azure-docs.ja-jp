@@ -100,7 +100,7 @@ items:
       items:
       - name: 動的グループの作成
         href: groups-create-rule.md
-      - name: ルール構文とプロパティ
+      - name: 動的グループの規則
         href: groups-dynamic-membership.md
       - name: グループ メンバーシップの種類の変更
         href: groups-change-type.md
@@ -120,11 +120,11 @@ items:
       href: licensing-group-advanced.md
     - name: PowerShell を使用したグループ ライセンス
       href: licensing-ps-examples.md
-    - name: 製品およびサービス プランに関するリファレンス
+    - name: 製品およびサービス プラン ID
       href: licensing-service-plan-reference.md
   - name: Azure AD 管理者ロール
     items:
-    - name: ロールとアクセス許可に関するリファレンス
+    - name: ロールとアクセス許可
       href: directory-assign-admin-roles.md
     - name: ロールの表示と割り当て
       href: directory-manage-roles-portal.md
@@ -142,7 +142,7 @@ items:
     items:
     - name: LinkedIn と Azure AD の統合
       href: linkedin-integration.md
-    - name: ユーザーの同意とデータ共有
+    - name: LinkedIn データの共有
       href: linkedin-user-consent.md
   - name: トラブルシューティング
     items:
@@ -161,9 +161,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell for Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: 23625fb345d3d27b5966be3a193e21b46408c525
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e2244b8058c53ff8d921bc54bfed71d6fe4d0df9
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514216"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133572"

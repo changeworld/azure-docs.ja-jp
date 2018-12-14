@@ -123,7 +123,7 @@ items:
         href: service-bus-amqp-request-response.md
     - name: 高度な機能
       items:
-      - name: IP 接続フィルター
+      - name: ファイアウォールの使用
         href: service-bus-ip-filtering.md
       - name: Virtual Network サービスのエンドポイント
         href: service-bus-service-endpoints.md
@@ -228,9 +228,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: 57d99167d3df488356bc4ee5c5aae0367c96a096
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: be2f26200cc998f8053bcfe349afc6271557d095
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577955"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271959"

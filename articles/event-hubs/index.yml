@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ceb148953952228e3c1c277454f93fe44f478b44
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 84bac57a763bf7089ac7e6af22247bc981eb7e43
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386673"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161204"
 documentType: LandingData
 title: Azure Event Hubs のドキュメント
 metadata:
@@ -83,7 +83,7 @@ sections:
       text: C
       href: /azure/event-hubs/event-hubs-c-getstarted-send
   - type: paragraph
-    text: イベント ハブへの<b>イベントを受信する</b>方法に関するページを参照してください。
+    text: イベント ハブから<b>イベントを受信する</b>方法に関するページを参照してください。
   - type: list
     style: icon48
     items:

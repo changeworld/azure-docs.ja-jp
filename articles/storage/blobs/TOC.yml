@@ -56,16 +56,8 @@ items:
         href: storage-secure-access-application.md
       - name: 4 - ストレージの監視とトラブルシューティングを行う
         href: storage-monitor-troubleshoot-storage-application.md
-    - name: クラウド ストレージにおける高可用性向けの設計
-      items:
-      - name: 1 - アプリケーションの可用性を高める
-        href: storage-create-geo-redundant-storage.md
-      - name: 2 - RA-GRS ストレージで障害をシミュレートする
-        href: storage-simulate-failure-ragrs-account-app.md
     - name: AzCopy を使用してデータをクラウドに移行する
       href: ../common/storage-use-azcopy-migrate-on-premises-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: クラウド ストレージで非構造化データを検索する
-      href: storage-unstructured-search.md
     - name: ストレージ アプリケーションのパフォーマンスとスケーラビリティを最適化する
       items:
       - name: 1 - VM とストレージ アカウントを作成する
@@ -76,6 +68,20 @@ items:
         href: storage-blob-scalable-app-download-files.md
       - name: 4 - スループットと待ち時間のメトリックを検証する
         href: storage-blob-scalable-app-verify-metrics.md
+    - name: 静的 Web サイトのホスト
+      items:
+      - name: 1 - 静的 Web サイトを作成する
+        href: storage-blob-static-website-host.md
+      - name: 2 - SSL を使ってカスタム ドメインを有効にする
+        href: storage-blob-static-website-custom-domain.md
+    - name: クラウド ストレージにおける高可用性向けの設計
+      items:
+      - name: 1 - アプリケーションの可用性を高める
+        href: storage-create-geo-redundant-storage.md
+      - name: 2 - RA-GRS ストレージで障害をシミュレートする
+        href: storage-simulate-failure-ragrs-account-app.md
+    - name: クラウド ストレージで非構造化データを検索する
+      href: storage-unstructured-search.md
   - name: サンプル
     items:
     - name: .NET
@@ -209,6 +215,17 @@ items:
         href: ../common/storage-security-tls.md
       - name: コンプライアンス認証
         href: ../common/storage-compliance-offerings.md
+    - name: データ転送ソリューションの比較
+      href: ../common/storage-choose-data-transfer-solution.md
+      items:
+      - name: 大規模なデータセット、低速のネットワーク帯域幅
+        href: ../common/storage-solution-large-dataset-low-network.md
+      - name: 大規模なデータセット、中速 - 高速のネットワーク帯域幅
+        href: ../common/storage-solution-large-dataset-moderate-high-network.md
+      - name: 小規模なデータセット、低速 - 中速のネットワーク帯域幅
+        href: ../common/storage-solution-small-dataset-low-moderate-network.md
+      - name: 定期的なデータの転送
+        href: ../common/storage-solution-periodic-data-transfer.md
     - name: 監視とトラブルシューティング
       items:
       - name: トラブルシューティングのチュートリアル
@@ -558,8 +575,6 @@ items:
         items:
         - name: RBAC を使用したアクセス権の管理
           href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Data Lake Storage Gen2 の評価
-      href: ../blobs/data-lake-storage-evaluation.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: 方法
     items:
     - name: Azure Storage Explorer を使用してアクセス許可を設定する
@@ -591,7 +606,7 @@ items:
     - name: Azure Databricks に接続する
       href: https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html
     - name: Azure SQL Data Warehouse への接続
-      href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-sql-data-warehouse-polybase
+      href: ../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase
   - name: リファレンス
     items:
     - name: REST
@@ -616,9 +631,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: dc45425a3e20d18bbe43e4a41ca40bd6c2fe6b9a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0c9bc9f6c1d47d6f53d0d8ec46939e11d47ac8b4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013647"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258816"

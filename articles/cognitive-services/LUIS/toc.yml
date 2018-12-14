@@ -367,6 +367,8 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: Recognizers-Text
     href: https://github.com/Microsoft/Recognizers-Text
+  - name: インテリジェント キオスク
+    href: https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk
 - name: リソース
   items:
   - name: リージョン別の提供状況
@@ -391,9 +393,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: b870f01e9abf2da43ca21d520f1d499298fe6c95
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c424f5b13250bca9b56cd161e80f7550b0555f76
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871237"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272458"

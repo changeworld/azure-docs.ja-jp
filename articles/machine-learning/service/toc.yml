@@ -1,41 +1,53 @@
 items:
-- name: Azure Machine Learning のドキュメント (プレビュー)
+- name: Azure Machine Learning のドキュメント
   href: index.yml
 - name: 概要
   items:
   - name: Azure Machine Learning サービスの概要
-    displayName: AML, services, overview
+    displayName: AML services overview
     href: overview-what-is-azure-ml.md
   - name: サービスのしくみ
-    displayName: architecture
+    displayName: architecture concepts definitions
     href: concept-azure-machine-learning-architecture.md
   - name: Workbench に起きていること
-    displayName: desktop
+    displayName: desktop ui
     href: overview-what-happened-to-workbench.md
+  - name: リリース ノート
+    displayName: what's new issues bugs
+    href: azure-machine-learning-release-notes.md
   expanded: true
 - name: クイック スタート
   items:
   - name: 作業の開始 - ポータル
+    displayName: install sdk workspace
     href: quickstart-get-started.md
   - name: 作業の開始 - Python
-    displayName: create workspace
+    displayName: create workspace install sdk
     href: quickstart-create-workspace-with-python.md
 - name: チュートリアル
   items:
-  - name: 'モデルのトレーニング: パート 1'
-    href: tutorial-train-models-with-aml.md
-  - name: 'モデルのデプロイ: パート 2'
-    href: tutorial-deploy-models-with-aml.md
-  - name: 自動化された ML モデルをトレーニングする
-    displayName: automl
-    href: tutorial-auto-train-models.md
+  - name: 画像の分類 (MNIST データ)
+    items:
+    - name: 1. モデルをトレーニングする
+      displayName: build modeling
+      href: tutorial-train-models-with-aml.md
+    - name: 2. モデルをデプロイする
+      href: tutorial-deploy-models-with-aml.md
+  - name: 回帰 (ニューヨーク市のタクシー データ)
+    items:
+    - name: 1. モデリング用にデータを準備する
+      href: tutorial-data-prep.md
+    - name: 2. ML モデルを自動トレーニングする
+      displayName: automl, automated, auto ml,
+      href: tutorial-auto-train-models.md
 - name: サンプル
-  items:
-  - name: Jupyter Notebook (GitHub)
-    displayName: example, examples
-    href: https://aka.ms/aml-notebooks
+  displayName: example, examples, jupyter, azure notebooks, python, notebook, github
+  href: samples-notebooks.md
 - name: 概念
   items:
+  - name: 自動化された機械学習
+    displayName: automl, auto ml
+    href: concept-automated-ml.md
   - name: モデル管理
     displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
@@ -49,11 +61,11 @@ items:
     href: how-to-manage-workspace.md
   - name: 開発環境をセットアップする 
     items:
-    - name: 環境を構成する
-      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm
+    - name: 開発環境を構成する
+      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm, Databricks, ADB
       href: how-to-configure-environment.md
-    - name: VS Code Tools for AI
-      displayName: Visual Studio Code, vscode
+    - name: Visual Studio Code 拡張機能
+      displayName: Visual Studio Code, vscode, tools, ai, vs
       items:
       - name: 作業開始
         href: how-to-vscode-tools.md
@@ -61,7 +73,6 @@ items:
         href: how-to-vscode-train-deploy.md
   - name: データを準備する
     displayName: data prep, etl, elt, data preparation
-    href: how-to-data-prep.md
     items:
     - name: データを読み込む
       href: how-to-load-data.md
@@ -72,17 +83,16 @@ items:
   - name: モデルをトレーニングする
     items:
     - name: トレーニング環境をセットアップする
-      displayName: compute target, dsvm, Data Science Virtual Machine, batchai, batch ai, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
+      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, Databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: トレーニング中のデータにアクセスする
       href: how-to-access-data.md
-    - name: 推定器を作成する
+    - name: トレーニングでの推定器の作成
       href: how-to-train-ml-models.md
-      items:
-      - name: PyTorch
-        href: how-to-train-pytorch.md
-      - name: TensorFlow
-        href: how-to-train-tensorflow.md
+    - name: PyTorch の使用
+      href: how-to-train-pytorch.md
+    - name: Tensorflow の使用
+      href: how-to-train-tensorflow.md
     - name: ハイパーパラメーターを調整する
       displayName: parameter
       href: how-to-tune-hyperparameters.md
@@ -90,11 +100,11 @@ items:
       href: how-to-track-experiments.md
   - name: 機械学習の自動化
     displayName: automl, auto ml
-    href: how-to-automated-ml.md
     items:
     - name: 自動トレーニングを構成する
       href: how-to-configure-auto-train.md
     - name: リモート コンピューティング ターゲットを使用する
+      displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
   - name: ONNX モデル
     items:
@@ -103,18 +113,10 @@ items:
   - name: モデルをデプロイする
     items:
     - name: モデルをデプロイする場所
-      displayName: publish
+      displayName: publish azure kubernetes azure container instances
       href: how-to-deploy-and-where.md
-    - name: ACI にデプロイする
-      displayName: Azure Container Instances
-      href: how-to-deploy-to-aci.md
-    - name: AKS にデプロイする
-      displayName: Azure Kubernetes
-      href: how-to-deploy-to-aks.md
-    - name: FPGA にデプロイする
+    - name: FPGA
       href: how-to-deploy-fpga-web-service.md
-    - name: IoT Edge にデプロイする
-      href: how-to-deploy-to-iot.md
     - name: トラブルシューティング
       href: how-to-troubleshoot-deployment.md
     - name: SSL でセキュリティ保護する
@@ -122,30 +124,34 @@ items:
   - name: Web サービスを使用する
     items:
     - name: リアルタイムで使用する
-      displayName: create client, client, consume
+      displayName: create client consume
       href: how-to-consume-web-service.md
+    - name: バッチ予測を実行する
+      href: how-to-run-batch-predictions.md
   - name: Web サービスを監視する
     items:
-    - name: データを収集して評価する
+    - name: モデルのデータを収集して評価する
       href: how-to-enable-data-collection.md
     - name: Application Insights での監視
       href: how-to-enable-app-insights.md
+  - name: 最初のパイプラインの作成
+    href: how-to-create-your-first-pipeline.md
   - name: リソース クォータを管理する
     displayName: limits
     href: how-to-manage-quotas.md
   - name: Machine Learning CLI の使用
-    displayName: cli, command line, command-line, az,
+    displayName: cli command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
 - name: リファレンス
   items:
   - name: Machine Learning SDK
-    displayName: api, core, package
+    displayName: api core package python
     href: https://aka.ms/aml-sdk
   - name: Data Prep SDK
-    displayName: api, preparation, package
+    displayName: api preparation package python
     href: https://aka.ms/data-prep-sdk
   - name: Monitoring SDK
-    displayName: api, package
+    displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
 - name: リソース
   items:
@@ -155,10 +161,8 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning-services/
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-  - name: リリース ノート
-    displayName: what's new
-    href: azure-machine-learning-release-notes.md
   - name: 既知の問題
+    displayName: bugs errors troubleshoot
     href: resource-known-issues.md
   - name: サポートを受ける
     href: support-for-aml-services.md
@@ -167,20 +171,20 @@ items:
     href: how-to-export-delete-data.md
   - name: 非推奨のドキュメント
     items:
-    - name: 移行方法
-      displayName: Workbench, upgrade, update, transfer
+    - name: Workbench からの移行
+      displayName: Workbench upgrade update transfer
       href: how-to-migrate.md
     - name: アカウント データのエクスポートまたは削除 (非推奨)
       href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
     - name: Workbench のクイック スタート (非推奨)
       href: ../desktop-workbench/quickstart-installation.md
-    - name: 'チュートリアル 1: データを準備する'
+    - name: チュートリアル 1:データを準備する
       href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
-    - name: 'チュートリアル 2: モデルを構築する'
+    - name: チュートリアル 2:モデルを構築する
       href: ../desktop-workbench/tutorial-classifying-iris-part-2.md
-    - name: 'チュートリアル 3: モデルをデプロイする'
+    - name: チュートリアル 3:モデルをデプロイする
       href: ../desktop-workbench/tutorial-classifying-iris-part-3.md
-    - name: 'チュートリアル 4: 高度なデータ準備'
+    - name: チュートリアル 4:高度なデータ準備
       href: ../desktop-workbench/tutorial-bikeshare-dataprep.md
     - name: モデル管理の概要
       href: ../desktop-workbench/model-management-overview.md
@@ -331,8 +335,6 @@ items:
         href: ../desktop-workbench/model-management-cli-reference.md
       - name: モデル データ収集 API
         href: ../desktop-workbench/model-data-collection-api-reference.md
-    - name: 古い概念
-      href: ../desktop-workbench/overview-general-concepts.md
     - name: ドメイン パッケージ
       href: ../desktop-workbench/reference-python-package-overview.md
       items:
@@ -368,9 +370,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 以前の問題
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 14ba5fa2b31c6695737b3250521d0904c950cf30
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: cf7216271dea4bcdda7bea91c1b386a4ba612f8f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264898"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310513"

@@ -137,6 +137,8 @@ items:
           href: azure-stack-solution-template-kubernetes-deploy.md
         - name: Kubernetes クラスターのトラブルシューティング
           href: azure-stack-solution-template-kubernetes-trouble.md
+      - name: Cognitive Services のデプロイ
+        href: azure-stack-solution-template-cognitive-services.md
   - name: アプリの構築
     items:
     - name: Azure Stack 向けの開発
@@ -218,9 +220,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 6824a3e9ce8cb8a3b1fc528fc591f70136d60638
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d82075d645244769fb956a61cd60341e0fd3f963
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085384"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191514"

@@ -1,16 +1,18 @@
 # [Azure Marketplace と AppSource のドキュメント](index.md)
-## [ポリシーの評価とレビュー](./rating-review-policies.md)   
+
 ## [Azure Marketplace と AppSource の概要とベネフィット](./marketplace-publishers-guide.md)  
 
 ### [マーケットプレースで公開元になる](./become-publisher.md)  
 #### [Microsoft アカウントを作成する](./guidelines.md)
 #### [デベロッパー センターに登録する](./register-dev-center.md) 
 #### [Azure パートナーの顧客の利用状況属性](./azure-partner-customer-usage-attribution.md)
-#### [クラウド マーケットプレースの潜在顧客管理](./lead-management-for-cloud-marketplace.md)
 
-### [ネットショップ](./comparing-appsource-azure-marketplace.md)  
+### [1 つのマーケットプレース、2 つのネットショップ](./comparing-appsource-azure-marketplace.md)  
 
-### [ソリューションの公開オプションを決定する](./determine-your-listing-type.md)  
+### [公開オプションと考慮事項](./determine-your-listing-type.md)
+#### [リード管理](./lead-management-for-cloud-marketplace.md)
+#### [Azure Marketplace における取引](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+#### [プライベート プラン](./private-offers.md)
 
 ### [プランの種類別の公開ガイド](./publisher-guide-by-offer-type.md)
 #### [Virtual Machines](./marketplace-virtual-machines.md)
@@ -26,8 +28,7 @@
 ### [Marketplace でのビジネスの拡大](./grow-your-business-with-azure-marketplace.md)  
 #### [推奨されるソリューション](./preferred-solutions.md) 
 #### [Marketplace コンテンツの検証](./marketplace-criteria-content-validation.md)
-#### [プライベート プラン](./private-offers.md)
-#### [Marketplace 商用トランザクションの機能と考慮事項](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+#### [ポリシーの評価とレビュー](./rating-review-policies.md)   
 
 ### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)  
 
@@ -67,8 +68,15 @@
 #### [VHD の作成に関する一般的な問題](./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 #### [VM への接続](./cloud-partner-portal/virtual-machine/cpp-connect-vm.md)
 #### [VM の構成](./cloud-partner-portal/virtual-machine/cpp-configure-vm.md)
-#### [VHD から VM をデプロイする](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
-##### [VHD デプロイ テンプレート (JSON)](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
+#### [Windows リモート管理](./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md) 
+##### [VM の作成後に WinRM を構成する](./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md)
+#### [VM のデプロイ](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
+##### [ユーザー VM イメージの作成](./cloud-partner-portal/virtual-machine/cpp-create-user-image.md)
+##### [Key Vault 証明書の作成](./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md)
+###### [キー コンテナー デプロイ テンプレート](./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md)
+#### [ユーザー VHD から VM をデプロイする](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md)
+##### [VHD デプロイ テンプレート](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
+##### [マーケットプレースから VM をデプロイする](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md)
 #### [VM イメージの認定](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
 #### [SAS URI の取得](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
 #### [SAS URL に関する一般的な問題](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
@@ -88,21 +96,53 @@
 ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 ### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
 -->
+<!-- new section for Azure apps -->
 
-## [Azure アプリケーション プラン](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
-### [マネージド アプリケーションの作成](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
-### [ソリューション テンプレートの作成](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
-### [管理ソリューションの発行](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
-### [SEO ガイダンス](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [プランの公開](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
-### [既存のプランの更新](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
-### [プランの削除](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
-<!-- Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  -->
+## [Azure アプリケーション プラン](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
+### [前提条件](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
+### [Azure アプリケーション プランの作成](./cloud-partner-portal/azure-applications/cpp-create-offer.md)
+#### [[プランの設定] タブ](./cloud-partner-portal/azure-applications/cpp-offer-settings-tab.md)
+#### [[SKU] タブ](./cloud-partner-portal/azure-applications/cpp-skus-tab.md)
+#### [[体験版] タブ](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
+#### [[Marketplace] タブ](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
+#### [[サポート] タブ](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
+<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [Azure アプリケーション プランの公開](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+### [既存のプランの更新](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
-## [SaaS アプリケーション プラン](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
-### [SaaS アプリの技術的な発行ガイド](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
-### [Azure を通じた SaaS の販売](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
+<!-- Legacy Azure App section replaced
+## [Azure application offer](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
+    Obsolete ### [Author managed application](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
+### [Author solution template](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
+### [Publish a Management Solution](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
+### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
+### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
+### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
+### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
+   Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  
+-->
+
+<!-- new for SaaS 12/05/2018 -->
+## [SaaS アプリケーション プラン](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
+### [前提条件](./cloud-partner-portal/saas-app/cpp-prerequisites.md)
+### [SaaS アプリケーション プランの作成](./cloud-partner-portal/saas-app/cpp-create-offer.md)
+#### [[プランの設定] タブ](./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md)
+#### [[技術情報] タブ](./cloud-partner-portal/saas-app/cpp-technical-info-tab.md)
+#### [[プラン] タブ](./cloud-partner-portal/saas-app/cpp-plans-tab.md)
+#### [[チャンネル情報] タブ](./cloud-partner-portal/saas-app/cpp-channel-info-tab.md)
+#### [[体験版] タブ](./cloud-partner-portal/saas-app/cpp-testdrive-tab.md)
+#### [[ネットショップの詳細] タブ](./cloud-partner-portal/saas-app/cpp-storefront-tab.md)
+#### [[連絡先] タブ](./cloud-partner-portal/saas-app/cpp-contacts-tab.md)
+### [プランの発行](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
+### [既存のプランの更新](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 ### [SaaS API](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+
+<!-- Legacy SaaS Offer replaced
+## [SaaS application offer](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
+### [SaaS apps technical publishing guide](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
+### [SaaS Sell through Azure](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
+### [SaaS APIs](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+-->
 
 ## [Containers のプラン](./cloud-partner-portal/containers/cpp-containers-offer.md)
 ### [前提条件](./cloud-partner-portal/containers/cpp-prerequisites.md)

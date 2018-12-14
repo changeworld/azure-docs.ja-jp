@@ -140,7 +140,7 @@ items:
       href: https://aka.ms/ams-v3-nodejs-ref
     - name: Go
       href: https://aka.ms/ams-v3-go-ref
-  - name: イベント スキーマ
+  - name: Event Grid スキーマ
     href: media-services-event-schemas.md
   - name: DRM ライセンス
     items:
@@ -182,9 +182,9 @@ items:
     href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: adde15ac255a6d6d918bd0caa12b8ffe47762a09
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: de72f61b7a88658a512889804295a41f8627c5f8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678459"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308840"

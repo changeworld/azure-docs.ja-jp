@@ -11,6 +11,8 @@ items:
     items:
     - name: .NET
       href: create-sql-api-dotnet.md
+    - name: .NET プレビュー
+      href: create-sql-api-dotnet-preview.md
     - name: Java
       href: create-sql-api-java.md
     - name: Node.js
@@ -78,7 +80,7 @@ items:
       href: consistency-levels.md
     - name: 適切な整合性レベルの選択
       href: consistency-levels-choosing.md
-    - name: 整合性レベルと Cosmos DB API
+    - name: 整合性レベルと Azure Cosmos DB API
       href: consistency-levels-across-apis.md
     - name: 整合性、可用性、パフォーマンスのトレードオフ
       href: consistency-levels-tradeoffs.md
@@ -112,6 +114,10 @@ items:
     items:
     - name: データベース、コンテナー、アイテムの使用
       href: databases-containers-items.md
+    - name: SQL 言語のリファレンス
+      href: sql-api-query-reference.md
+    - name: SQL クエリの例
+      href: how-to-sql-query.md
     - name: インデックス作成
       items:
       - name: 概要
@@ -138,6 +144,28 @@ items:
       href: unique-keys.md
     - name: トランザクションとオプティミスティック同時実行制御
       href: database-transactions-optimistic-concurrency.md
+  - name: Azure Cosmos DB コストの最適化
+    items:
+    - name: 価格モデル
+      href: how-pricing-works.md
+    - name: 総保有コスト (TCO)
+      href: total-cost-ownership.md
+    - name: 課金内容を確認する
+      href: understand-your-bill.md
+    - name: プロビジョニング スループット コストの最適化
+      href: optimize-cost-throughput.md
+    - name: クエリ コストの最適化
+      href: optimize-cost-queries.md
+    - name: ストレージ コストの最適化
+      href: optimize-cost-storage.md
+    - name: 読み取りと書き込みのコストの最適化
+      href: optimize-cost-reads-writes.md
+    - name: マルチリージョンのコストの最適化
+      href: optimize-cost-regions.md
+    - name: 開発/テスト ワークロードの最適化
+      href: optimize-dev-test.md
+    - name: 予約容量の前払い
+      href: cosmos-db-reserved-capacity.md
   - name: セキュリティ
     items:
     - name: 概要
@@ -158,14 +186,10 @@ items:
       href: online-backup-and-restore.md
     - name: コンプライアンス
       href: compliance.md
-  - name: 予約容量の前払い
-    href: cosmos-db-reserved-capacity.md
 - name: マルチモデルの API
   items:
   - name: SQL API ドキュメント
     items:
-    - name: はじめに
-      href: sql-api-introduction.md
     - name: モデル ドキュメント データ
       href: modeling-data.md
     - name: チュートリアル
@@ -176,8 +200,12 @@ items:
           items:
           - name: .NET
             href: sql-api-get-started.md
+          - name: .NET プレビュー
+            href: sql-api-dotnet-get-started-preview.md
           - name: .NET Core
             href: sql-api-dotnetcore-get-started.md
+          - name: .NET Core プレビュー
+            href: sql-api-dotnet-core-get-started-preview.md
           - name: Java
             href: sql-api-java-get-started.md
           - name: Async Java
@@ -188,6 +216,8 @@ items:
           items:
           - name: .NET
             href: sql-api-dotnet-application.md
+          - name: .NET プレビュー
+            href: sql-api-dotnet-application-preview.md
           - name: Java
             href: sql-api-java-application.md
           - name: Node.js
@@ -219,11 +249,9 @@ items:
     - name: ハウツー ガイド
       items:
       - name: クエリ パフォーマンスの調整
-        href: sql-api-sql-query-metrics.md
+        href: sql-api-query-metrics.md
       - name: ストアド プロシージャ、トリガー、UDF
         href: programming.md
-      - name: SQL データのパーティション分割
-        href: sql-api-partition-data.md
       - name: データの種類
         items:
         - name: Datetime
@@ -258,8 +286,6 @@ items:
         href: /rest/api/cosmos-db/
       - name: REST リソース プロバイダー
         href: /rest/api/cosmos-db-resource-provider/
-      - name: SQL 言語の構文
-        href: sql-api-sql-query-reference.md
   - name: MongoDB API ドキュメント
     items:
     - name: はじめに
@@ -282,7 +308,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: パート 4 - アカウントの作成
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: パート 5 - Cosmos DB への接続
+          - name: パート 5 - Azure Cosmos DB への接続
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: パート 6 - CRUD 操作の実行
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -441,8 +467,6 @@ items:
       href: how-to-create-container.md
     - name: コンテナーの照会
       href: how-to-query-container.md
-    - name: SQL クエリを使用してデータにクエリを実行する
-      href: how-to-sql-query.md
   - name: インデックス作成
     items:
     - name: インデックス作成の構成
@@ -453,6 +477,8 @@ items:
       href: how-to-configure-firewall.md
     - name: 仮想ネットワークからのアクセスの構成
       href: how-to-configure-vnet-service-endpoint.md
+    - name: クロス オリジン リソース共有 (CORS) の構成
+      href: how-to-configure-cross-origin-resource-sharing.md
   - name: エンタープライズ対応
     items:
     - name: バックアップからデータを復元する
@@ -503,7 +529,7 @@ items:
         href: performance-testing.md
     - name: コスト効率の優れた読み取りと書き込み
       href: key-value-store-cost.md
-  - name: Cosmos DB のデータを視覚化する
+  - name: Azure Cosmos DB のデータを視覚化する
     items:
     - name: Power BI を使用する
       href: powerbi-visualize.md
@@ -577,9 +603,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: be2c50fb19746f15d879ada3ccbdc4366a4c4763
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b172650cc0a69169bcbebf58e0a11d0bb9cd6450
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262535"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254702"
