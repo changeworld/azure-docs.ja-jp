@@ -98,7 +98,7 @@ Analysis Services を使用してデータ モデリングを設定および管�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/analysisservices/">REST API リファレンスに関するページ</a></p>
+                        <p><a href="/rest/api/analysisservices/">REST API リファレンス</a></p>
                     </div>
                 </div>
             </div>
