@@ -108,4 +108,4 @@ sections:
     - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
     - title: REST
-      html: <p><a href="/rest/api/virtual-network/">REST API リファレンスに関するページ</a></p>
+      html: <p><a href="/rest/api/virtual-network/">REST API リファレンス</a></p>
