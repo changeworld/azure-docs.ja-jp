@@ -9,16 +9,15 @@ ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: 99f172245a0a42a95928a785c4bd70efcb19a694
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 934d5929048627bf378f50814f0cecde794ddab9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093913"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727853"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
@@ -101,7 +100,7 @@ ms.locfileid: "47093913"
 #### <a name="otherwise-"></a>それ以外の場合:
 Application Insights Java SDK を手動でインストールするガイドラインに従って、適切なアペンダーの Jar (Maven Central ページに移動した後、ダウンロード セクションの 'jar' リンクをクリック) をダウンロードし、ダウンロードされたアペンダー Jar をプロジェクトに追加します。
 
-| ロガー | [ダウンロード] | ライブラリ |
+| ロガー | ダウンロード | ライブラリ |
 | --- | --- | --- |
 | Logback |[Logback アペンダー Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v2.0 |[Log4J v2 アペンダー Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |

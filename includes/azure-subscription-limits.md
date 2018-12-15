@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: fe457acc2b9787526be448880c57448af1226b08
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be75b982d3e63ecb1edd7398e32150156a06995d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264019"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52886309"
 ---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -24,7 +24,6 @@ ms.locfileid: "51264019"
 | [ローカル ネットワーク](https://msdn.microsoft.com/library/jj157100.aspx) 数 |10 |500 |
 | サブスクリプションあたりの DNS サーバー数 |9 |100 |
 | サブスクリプションあたりの予約済み IP 数 |20 |100 |
-| サブスクリプションあたりのホストされるサービスの証明書数 |199 |199 |
 | [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |256 |256 |
 
 

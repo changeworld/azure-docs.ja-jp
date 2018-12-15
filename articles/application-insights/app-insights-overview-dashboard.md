@@ -9,16 +9,15 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: 313be519662570debdd7c78a43bbfe7c27e63296
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: cd8bcc9345ec73f95e8e742446522ec41c1f0f65
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344632"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956953"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights の概要ダッシュボード
 
@@ -28,17 +27,17 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 新しい概要ダッシュボードは、既定で起動されるようになりました。
 
-![概要プレビュー ウィンドウ](.\media\app-insights-overview-dashboard\overview.png)
+![概要プレビュー ウィンドウ](./media/app-insights-overview-dashboard/overview.png)
 
 ## <a name="better-performance"></a>パフォーマンスの向上
 
 時間範囲の選択が、簡単な 1 クリックのインターフェイスに簡素化されました。
 
-![時間範囲](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
+![時間範囲](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-03.png)
 
 全体的なパフォーマンスが大幅に向上しました。 **検索**や **Analytics** のような人気のある機能に 1 回のクリックでアクセスできます。 既定の動的に更新される各 KPI タイルでは、Application Insights の対応する機能について把握できます。 失敗した要求の詳細については、**[調査]** ヘッダーの下の **[失敗]** を選択します。
 
-![エラー](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
+![エラー](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>アプリケーション ダッシュボード
 
@@ -46,11 +45,11 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 既定のダッシュボードにアクセスするには、左上隅の _[アプリケーション ダッシュボード]_ を選びます。
 
-![ダッシュボード ビュー](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
+![ダッシュボード ビュー](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-05.png)
 
 初めてダッシュボードにアクセスした場合は、既定のビューが表示されます。
 
-![ダッシュボード ビュー](.\media\app-insights-overview-dashboard\0001-dashboard.png)
+![ダッシュボード ビュー](./media/app-insights-overview-dashboard/0001-dashboard.png)
 
 気に入った場合は、既定のビューをそのままにしておけます。 または、ダッシュボードの要素を追加および削除して、チームのニーズに合わせることもできます。
 
@@ -59,7 +58,7 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 選択するだけで、概要エクスペリエンスに戻ります。
 
-![[概要] ボタン](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
+![[概要] ボタン](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-07.png)
 
 ## <a name="next-steps"></a>次の手順
 

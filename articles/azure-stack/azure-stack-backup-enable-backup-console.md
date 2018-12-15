@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: d7d47b61c926c6704a06dacc55f00d77a1266988
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d8d88484181c3c38f64cf8f00f9d8feaa3b0217a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038367"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962564"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>管理ポータルで Azure Stack のバックアップを有効にする
-Azure Stack でバックアップを生成できるように、管理ポータルでインフラストラクチャ バックアップ サービスを有効にします。 [壊滅的な障害](.\azure-stack-backup-recover-data.md)が発生した場合、これらのバックアップとクラウドの復旧を使って環境を復元できます。 クラウドを復旧する目的は、復旧の完了後に、作業者とユーザーがポータルに再度ログインできるということを確認することです。 ユーザーのサブスクリプションが復元され、これにはロールベースのアクセス許可とロール、当初のプラン、オファー、および以前に定義されていたコンピューティング、ストレージ、およびネットワークのクォータが含まれます。
+Azure Stack でバックアップを生成できるように、管理ポータルでインフラストラクチャ バックアップ サービスを有効にします。 [壊滅的な障害](./azure-stack-backup-recover-data.md)が発生した場合、これらのバックアップとクラウドの復旧を使って環境を復元できます。 クラウドを復旧する目的は、復旧の完了後に、作業者とユーザーがポータルに再度ログインできるということを確認することです。 ユーザーのサブスクリプションが復元され、これにはロールベースのアクセス許可とロール、当初のプラン、オファー、および以前に定義されていたコンピューティング、ストレージ、およびネットワークのクォータが含まれます。
 
 ただし、Infrastructure Backup サービスでは IaaS VM、ネットワーク構成、およびストレージ アカウント、BLOB、テーブルなどのストレージ リソースはバックアップされないので、クラウド復旧完了後にログインしたユーザーには、以前に存在していたリソースは表示されません。 サービスとしてのプラットフォーム (PaaS) のリソースとデータも、サービスではバックアップされません。 
 
@@ -58,31 +58,31 @@ Azure Stack でバックアップを生成できるように、管理ポータ�
     ```
 10. **[OK]** を選択して、バックアップ コントローラーの設定を保存します。
 
-    ![Azure Stack - バックアップ コントローラーの設定](media\azure-stack-backup\backup-controller-settings.png)
+    ![Azure Stack - バックアップ コントローラーの設定](media/azure-stack-backup/backup-controller-settings.png)
 
 ## <a name="start-backup"></a>バックアップの開始
 バックアップを開始するには、**[今すぐバックアップ]** をクリックして、オンデマンド バックアップを開始します。 オンデマンド バックアップを実行しても、次回のスケジュール済みバックアップの時間は変更されません。 タスクの完了後、**[基本]** で設定を確認できます。
 
-![Azure Stack - オンデマンド バックアップ](media\azure-stack-backup\scheduled-backup.png)
+![Azure Stack - オンデマンド バックアップ](media/azure-stack-backup/scheduled-backup.png)
 
 また、Azure Stack 管理コンピューターで PowerShell コマンドレット **Start-AzsBackup** を実行することもできます。 詳細については、「[Back up Azure Stack (Azure Stack のバックアップ)](azure-stack-backup-back-up-azure-stack.md)」をご覧ください。
 
 ## <a name="enable-or-disable-automatic-backups"></a>自動バックアップの有効化または無効化
 バックアップを有効にすると、バックアップが自動的にスケジュールされます。 **[基本]** で次回のスケジュールのバックアップ時間を確認できます。 
 
-![Azure Stack - オンデマンド バックアップ](media\azure-stack-backup\on-demand-backup.png)
+![Azure Stack - オンデマンド バックアップ](media/azure-stack-backup/on-demand-backup.png)
 
 スケジュールされた将来のバックアップを無効にする必要がある場合は、**[自動バックアップを無効にする]** をクリックします。 自動バックアップを無効にしてもバックアップ設定の構成は保たれ、バックアップ スケジュールは保持されます。 このアクションは、単に将来のバックアップをスキップするようスケジューラに指示するに過ぎません。 
 
-![Azure Stack - スケジュールされたバックアップの無効化](media\azure-stack-backup\disable-auto-backup.png)
+![Azure Stack - スケジュールされたバックアップの無効化](media/azure-stack-backup/disable-auto-backup.png)
 
 **[基本]** で、スケジュールされた将来のバックアップが無効にされたことを確認します。
 
-![Azure Stack - バックアップが無効にされたことの確認](media\azure-stack-backup\confirm-disable.png)
+![Azure Stack - バックアップが無効にされたことの確認](media/azure-stack-backup/confirm-disable.png)
 
 **[自動バックアップを有効にする]** をクリックして、スケジュールされた時刻に将来のバックアップを開始するようにスケジューラに通知します。 
 
-![Azure Stack - スケジュールされたバックアップの有効化](media\azure-stack-backup\enable-auto-backup.png)
+![Azure Stack - スケジュールされたバックアップの有効化](media/azure-stack-backup/enable-auto-backup.png)
 
 
 > [!Note]  

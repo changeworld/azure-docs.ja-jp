@@ -9,14 +9,15 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 9d94f897546ea1e1190aab91e80eb9868224e5a7
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0ddab6a982f54f0309e87d3b74a7f21c0bb67ced
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265461"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955515"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
+
 この記事では、Azure Database for MySQL サーバーを操作するための考慮事項とガイドラインを示します。
 
 ## <a name="what-is-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーとは
@@ -39,7 +40,7 @@ Azure Database for MySQL サーバー内には 1 つまたは複数のデータ�
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーへの接続および認証方法
 
 次の要素が、データベースへの安全なアクセスを確保するうえで役に立ちます。
-|||
+|     |     |
 | :-- | :-- |
 | **認証と権限承認** | Azure Database for MySQL サーバーは、ネイティブ MySQL 認証をサポートしています。 サーバーにはサーバーの管理者ログインで接続し、認証できます。 |
 | **プロトコル** | サービスは、MySQL で使用されるメッセージ ベースのプロトコルをサポートしています。 |
@@ -48,9 +49,11 @@ Azure Database for MySQL サーバー内には 1 つまたは複数のデータ�
 | **SSL** | アプリケーションとデータベース サーバーの間に SSL 接続を適用できます。  「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。 |
 
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
+
 Azure Database for MySQL サーバーを管理するには、Azure Portal または Azure CLI を使用します。
 
 ## <a name="next-steps"></a>次の手順
+
 - サービスの概要については、[Azure Database for MySQL の概要](./overview.md)に関するページをご覧ください
 - **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-service-tiers.md)に関するページをご覧ください
 - サービスへの接続については、「[Azure Database for MySQL の接続ライブラリ](./concepts-connection-libraries.md)」を参照してください。

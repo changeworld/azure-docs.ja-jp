@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/05/2018
-ms.openlocfilehash: 77c761ce72449f91cf91c66219ebc815d1620e94
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/04/2018
+ms.openlocfilehash: 637afab45e04c68777f8d1b42817c912cdc09941
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343676"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133749"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -22,10 +22,6 @@ ms.locfileid: "49343676"
 ## <a name="public-previews"></a>パブリック プレビュー
 
 以下の機能はパブリック プレビュー段階です。 これらの機能は現在でも利用できますが、運用環境では使用しないでください。
-
-### <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
-
-Azure Stream Analytics on IoT Edge を使用すると、開発者は、ほぼリアルタイムの分析を IoT Edge デバイスに展開できます。 詳しくは、「[Azure Stream Analytics on IoT Edge](stream-analytics-edge.md)」ドキュメントをご覧ください。
 
 ### <a name="integration-with-azure-machine-learning"></a>Azure Machine Learning との統合
 

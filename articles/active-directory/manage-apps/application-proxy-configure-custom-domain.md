@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 090df19861e00a99f0bb63bf20eb2f26dc6761fd
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b0ad4aa63dbeefce6b55e099fd51d3608ae3abb8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368480"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133351"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
@@ -40,7 +40,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 カスタム ドメインを構成する前に、次の要件が用意されていることを確認します。 
 - [検証済みのドメインが Azure Active Directory に追加されている](../fundamentals/add-custom-domain.md)。
 - ドメインのカスタム証明書 (PFX ファイル形式) 
-- [アプリケーション プロキシ経由で公開された](application-proxy-publish-azure-portal.md)オンプレミス アプリ。
+- [アプリケーション プロキシ経由で公開された](application-proxy-add-on-premises-application.md)オンプレミス アプリ。
 
 ### <a name="configure-your-custom-domain"></a>カスタム ドメインの構成
 

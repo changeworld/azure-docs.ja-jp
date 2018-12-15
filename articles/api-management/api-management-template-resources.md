@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 212e7ea7bb2ffea63c7ba210195df0da38aa8f0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22983787"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970333"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management テンプレート リソース
 Azure API Management には、開発者ポータル テンプレート用に次の種類のリソースが用意されています。  
@@ -27,6 +27,8 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 -   [文字列リソース](#strings)  
   
 -   [グリフ リソース](#glyphs)  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="strings"></a> 文字列リソース  
  API Management には、開発者ポータルで使用するための包括的な文字列リソースのセットが用意されています。 これらのリソースは、API Management でサポートされているすべての言語にローカライズされます。 既定のテンプレート セットでは、開発者ポータルに表示されるページのヘッダー、ラベル、定数文字列にこれらのリソースを使用します。 テンプレートで文字列リソースを使用するには、次の例に示すように、リソース文字列のプレフィックスに続いて文字列名を指定します。  
@@ -87,13 +89,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="ApisStrings"></a> ApisStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |PageTitleApis|API|  
   
 ###  <a name="AppDetailsStrings"></a> AppDetailsStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebApplicationsDetailsTitle|Application preview (アプリケーションのプレビュー)|  
 |WebApplicationsRequirementsHeader|必要条件|  
@@ -102,15 +104,15 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="ApplicationListStrings"></a> ApplicationListStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Are you sure that you want to remove application? (アプリケーションを削除しますか?)|  
 |WebDevelopersAppNotPublished|Not published (未発行)|  
 |WebDevelopersAppNotSubminted|Not submitted (未申請)|  
-|WebDevelopersAppTableCategoryHeader|カテゴリ|  
-|WebDevelopersAppTableNameHeader|名前|  
+|WebDevelopersAppTableCategoryHeader|Category|  
+|WebDevelopersAppTableNameHeader|Name|  
 |WebDevelopersAppTableStateHeader|状態|  
-|WebDevelopersEditLink|編集|  
+|WebDevelopersEditLink|Edit|  
 |WebDevelopersRegisterAppLink|アプリケーションを登録する|  
 |WebDevelopersRemoveLink|Remove|  
 |WebDevelopersSubmitLink|[送信]|  
@@ -118,13 +120,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="AppStrings"></a> AppStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
-|WebApplicationsHeader|アプリケーション|  
+|WebApplicationsHeader|[アプリケーション]|  
   
 ###  <a name="CommonResources"></a> CommonResources  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |NoItemsToDisplay|該当するものが見つかりません。|  
 |GeneralExceptionMessage|Something is not right. (問題があります。) It could be a temporary glitch or a bug. (一時的な障害またはバグである可能性があります。) Please, try again. (もう一度実行してください。)|  
@@ -135,7 +137,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="CommonStrings"></a> CommonStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |ButtonLabelCancel|キャンセル|  
 |ButtonLabelSave|保存|  
@@ -145,7 +147,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |PagerButtonLabelLast|Last (最後へ)|  
 |PagerButtonLabelNext|次へ|  
 |PagerButtonLabelPrevious|Prev (前へ)|  
-|PagerLabelPageNOfM|Page {0} of {1} (ページ {0}/{1})|  
+|PagerLabelPageNOfM|ページ {0} / {1}|  
 |PasswordTooShort|The Password is too short (パスワードが短すぎます)|  
 |EmailAsPassword|Do not use your email as your password (メール アドレスをパスワードとして使用しないでください)|  
 |PasswordSameAsUserName|Your password cannot contain your username (パスワードにユーザー名を含めることはできません)|  
@@ -159,22 +161,22 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="Documentation"></a> Documentation  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebDocumentationInvalidHeaderErrorMessage|Invalid header '{0}' (ヘッダー '{0}' が無効です)|  
 |WebDocumentationInvalidRequestErrorMessage|Invalid Request URL (要求 URL が無効です)|  
 |TextboxLabelAccessToken|Access token * (アクセス トークン)|  
-|DropdownOptionPrimaryKeyFormat|Primary-{0} (プライマリ-{0})|  
-|DropdownOptionSecondaryKeyFormat|Secondary-{0} (セカンダリ-{0})|  
+|DropdownOptionPrimaryKeyFormat|Primary-{0} (プライマリ -{0})|  
+|DropdownOptionSecondaryKeyFormat|Secondary-{0} (セカンダリ -{0})|  
 |WebDocumentationSubscriptionKeyText|Your subscription key (サブスクリプション キー)|  
 |WebDocumentationTemplatesAddHeaders|Add required HTTP headers (必要な HTTP ヘッダーを追加する)|  
 |WebDocumentationTemplatesBasicAuthSample|Basic Authorization Sample (基本認証のサンプル)|  
 |WebDocumentationTemplatesCurlForBasicAuth|for Basic Authorization use: --user {username}:{password} (基本認証の使用について: --ユーザー {username}:{password})|  
 |WebDocumentationTemplatesCurlValuesForPath|Specify values for path parameters (shown as {...}), your subscription key and values for query parameters (パス パラメーターの値 ({...} として表示)、サブスクリプション キー、およびクエリ パラメーターの値を指定します)|  
 |WebDocumentationTemplatesDeveloperKey|Specify your subscription key (サブスクリプション キーを指定してください)|  
-|WebDocumentationTemplatesJavaApache|This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/) (このサンプルでは、HTTP Components が提供する Apache HTTP クライアントを使用します (http://hc.apache.org/httpcomponents-client-ga/))|  
+|WebDocumentationTemplatesJavaApache|This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/) (このサンプルでは、HTTP Components の Apache HTTP クライアントを使用しています)|  
 |WebDocumentationTemplatesOptionalParams|Specify values for optional parameters, as needed (必要に応じて省略可能なパラメーターの値を指定します)|  
-|WebDocumentationTemplatesPhpPackage|This sample uses the HTTP_Request2 package. (このサンプルでは、HTTP_Request2 パッケージを使用します。) (for more information: http://pear.php.net/package/HTTP_Request2) ((詳細: http://pear.php.net/package/HTTP_Request2))|  
+|WebDocumentationTemplatesPhpPackage|This sample uses the HTTP_Request2 package. (このサンプルでは、HTTP_Request2 パッケージを使用します。) (詳細: https://pear.php.net/package/HTTP_Request2)|  
 |WebDocumentationTemplatesPythonValuesForPath|Specify values for path parameters (shown as {...}) and request body if needed (必要に応じて、パス パラメーターの値 ({...} として表示) と要求本文を指定します)|  
 |WebDocumentationTemplatesRequestBody|Specify request body (要求本文を指定します)|  
 |WebDocumentationTemplatesRequiredParams|Specify values for the following required parameters (次の必要なパラメーターの値を指定します)|  
@@ -288,26 +290,26 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |WebDocumentationOAuth2GeneralErrorMessage|Unexpected error occured. (予期しないエラーが発生しました。)|  
 |AuthorizationServerCommunicationException|Authorization server communication exception has happened. (承認サーバーの通信の例外が発生しました。) Please contact administrator. (管理者に問い合わせてください。)|  
 |TextblockSubscriptionKeyHeaderDescription|Subscription key which provides access to this API. (この API へのアクセスを提供するサブスクリプション キー。) Found in your <a href='/developer'\>Profile</a\>. (<a href='/developer'\>Profile</a\> にあります。)|  
-|TextblockOAuthHeaderDescription|OAuth 2.0 access token obtained from <i\>{0}</i\>. (OAuth 2.0 アクセス トークンを <i\>{0}</i\> から取得しました。) Supported grant types: <i\>{1}</i\>. (サポートされている付与タイプ: <i\>{1}</i\>。)|  
+|TextblockOAuthHeaderDescription|OAuth 2.0 access token obtained from <i\>{0}</i\>. (OAuth 2.0 アクセス トークンを <i>{0}</i> から取得しました。) Supported grant types: <i\>{1}</i\>. (サポートされている付与タイプ: <i>{0}</i>。)|  
 |TextblockContentTypeHeaderDescription|Media type of the body sent to the API. (この API に送信される本文のメディアの種類。)|  
 |ErrorMessageApiNotAccessible|The API you are trying to call is not accessible at this time. (呼び出そうとしている API に現在アクセスできません。) Please contact the API publisher <a href="/issues"\>here</a\>. (<a href="/issues"\>ここ</a\>から API 発行者に問い合わせてください 。)|  
 |ErrorMessageApiTimedout|The API you are trying to call is taking longer than normal to get response back. (呼び出そうとしている API は、応答を取得するのに通常より時間がかかっています。) Please contact the API publisher <a href="/issues"\>here</a\>. (<a href="/issues"\>ここ</a\>から API 発行者に問い合わせてください 。)|  
 |BadRequestParameterExpected|"'{0}' parameter is expected" ("'{0}' パラメーターが必要です")|  
 |TooltipTextDoubleClickToSelectAll|Double click to select all. (ダブルクリックしてすべて選択します。)|  
 |TooltipTextHideRevealSecret|Show/Hide (表示/非表示)|  
-|ButtonLinkOpenConsole|試してみる|  
+|ButtonLinkOpenConsole|[試用版]|  
 |SectionHeadingRequestBody|要求本文|  
 |SectionHeadingRequestParameters|要求パラメーター|  
 |SectionHeadingRequestUrl|要求 URL|  
-|SectionHeadingResponse|応答|  
+|SectionHeadingResponse|Response|  
 |SectionHeadingRequestHeaders|要求ヘッダー|  
 |FormLabelSubtextOptional|省略可能|  
 |SectionHeadingCodeSamples|コード サンプル|  
-|TextblockOpenidConnectHeaderDescription|OpenID Connect id token obtained from <i\>{0}</i\>. (OpenID Connect id トークンを <i\>{0}</i\> から取得しました。) Supported grant types: <i\>{1}</i\>. (サポートされている付与タイプ: <i\>{1}</i\>。)|  
+|TextblockOpenidConnectHeaderDescription|OpenID Connect id token obtained from <i\>{0}</i\>. (OpenID Connect id トークンを <i>{0}</i> から取得しました。) Supported grant types: <i\>{1}</i\>. (サポートされている付与タイプ: <i>{0}</i>。)|  
   
 ###  <a name="ErrorPageStrings"></a> ErrorPageStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |LinkLabelBack|戻る|  
 |LinkLabelHomePage|home page|  
@@ -325,18 +327,18 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="IssuesStrings"></a> IssuesStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebIssuesIndexTitle|発行|  
 |WebIssuesNoActiveSubscriptions|You have no active subscriptions. (アクティブなサブスクリプションがありません。) You need to subscribe for a product to report an issue. (問題を報告するには、製品をサブスクライブする必要があります。)|  
 |WebIssuesNotSignin|You're not signed in. (サインインしていません。) Please {0} to report an issue or post a comment. (問題の報告またはコメントの投稿には {0} を実行してください。)|  
 |WebIssuesReportIssueButton|Report Issue (問題の報告)|  
 |WebIssuesSignIn|sign in|  
-|WebIssuesStatusReportedBy|Status: {0} &#124; Reported by {1} (状態: {0} &#124; 報告者: {1})|  
+|WebIssuesStatusReportedBy|Status: {0} &#124; Reported by {1} (状態: {0} &#124; 報告者: {0})|  
   
 ###  <a name="NotFoundStrings"></a> NotFoundStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |LinkLabelHomePage|home page|  
 |LinkLabelSendUsEmail|Send us an e-mail (電子メールを送信する)|  
@@ -351,7 +353,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="ProductDetailsStrings"></a> ProductDetailsStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebProductsAgreement|By subscribing to {0} Product, I agree to the `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`. ({0} 製品をサブスクライブすることで、使用条件に同意します。)|  
 |WebProductsLegalTermsLink|使用条件|  
@@ -373,13 +375,13 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="ProductsStrings"></a> ProductsStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |PageTitleProducts|[成果物]|  
   
 ###  <a name="ProviderInfoStrings"></a> ProviderInfoStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |TextboxExternalIdentitiesDisabled|Sign in is disabled by the administrators at the moment. (サインインは、現在、管理者によって無効になっています。)|  
 |TextboxExternalIdentitiesSigninInvitation|Alternatively, sign in with (次のアカウントでサインインすることもできます)|  
@@ -387,14 +389,14 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SigninResources"></a> SigninResources  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |PrincipalNotFound|Principal is not found or signature is invalid (プリンシパルが見つからないか、署名が無効です)|  
 |ErrorSsoAuthenticationFailed|SSO authentication failed (SSO 認証に失敗しました)|  
 |ErrorSsoAuthenticationFailedDetailed|Invalid token provided or signature cannot be verified. (無効なトークンが指定されたか、署名を検証できません。)|  
 |ErrorSsoTokenInvalid|SSO token is invalid (SSO トークンが無効です)|  
-|ValidationErrorSpecificEmailAlreadyExists|Email '{0}' already registered (メール アドレス '{0}' が既に登録されています)|  
-|ValidationErrorSpecificEmailInvalid|Email '{0}' is invalid (メール アドレス '{0}' が無効です)|  
+|ValidationErrorSpecificEmailAlreadyExists|Email '{0}' already registered (電子メール '{0}' は既に登録されています)|  
+|ValidationErrorSpecificEmailInvalid|Email '{0}' is invalid (電子メールは '{0}' 無効です)|  
 |ValidationErrorPasswordInvalid|Password is invalid. (パスワードが無効です。) Please correct the errors and try again. (エラーを修正してやり直してください。)|  
 |PropertyTooShort|{0} is too short ({0} が短すぎます)|  
 |WebAuthenticationAddresserEmailInvalidErrorMessage|Invalid email address. (無効なメール アドレスです。)|  
@@ -408,8 +410,8 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ValidationErrorEmailInvalid|Invalid e-mail address (メール アドレスが無効です)|  
 |TextboxLabelEmail|電子メール|  
 |ValidationErrorEmailRequired|Email is required. (メール アドレスは必須です。)|  
-|WebAuthenticationErrorNoticeHeader|エラー|  
-|WebAuthenticationFieldLengthErrorMessage|{0} must be a maximum length of {1} ({0} は最大長 {1} である必要があります)|  
+|WebAuthenticationErrorNoticeHeader|Error|  
+|WebAuthenticationFieldLengthErrorMessage|{0} must be a maximum length of {1} ({0} は最大長 {0} である必要があります)|  
 |TextboxLabelEmailFirstName|名|  
 |ValidationErrorFirstNameRequired|First name is required. (名が必要です。)|  
 |ValidationErrorFirstNameInvalid|Invalid first name (名が無効です)|  
@@ -463,7 +465,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ValidationErrorAllowedTenantIsRequired|Allowed Tenant is required (許可されるテナントが必要です)|  
 |ValidationErrorTenantIsNotValid|The Azure Active Directory tenant '{0}' is not valid. (Azure Active Directory テナント '{0}' が無効です。)|  
 |WebAuthenticationActiveDirectoryTitle|Azure Active Directory|  
-|WebAuthenticationLoginUsingYourProvider|Log in using your {0} account ({0} アカウントを使用してログインします)|  
+|WebAuthenticationLoginUsingYourProvider|Log in using your {0} account ({0} アカウントを使用してログイン)|  
 |WebAuthenticationUserLimitNotice|This service has reached the maximum number of allowed users. (このサービスでは、許可されたユーザーの最大数に達しました。) Please `<a href="mailto:{0}"\>contact the administrator</a\>` to upgrade their service and re-enable user registration. (`<a href="mailto:{0}"\>contact the administrator</a\>` で管理者に連絡しサービスをアップグレードし、ユーザー登録をもう一度有効にしてください。)|  
 |WebAuthenticationUserLimitNoticeHeader|User registration disabled (ユーザー登録が無効です)|  
 |WebAuthenticationUserLimitNoticeTitle|User registration disabled (ユーザー登録が無効です)|  
@@ -483,7 +485,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SigninStrings"></a> SigninStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|パスワードを忘れた場合|  
 |WebAuthenticationIfAdministrator|If you are an Administrator you must sign in `<a href="{0}"\>here</a\>`. (管理者である場合は、ここでサインインする必要があります。)|  
@@ -495,7 +497,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SignupStrings"></a> SignupStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |PageTitleSignup|サインアップ|  
 |WebAuthenticationAlreadyAMember|Already a member? (既にメンバーの場合)|  
@@ -505,7 +507,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SubscriptionListStrings"></a> SubscriptionListStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |SubscriptionCancelConfirmation|Are you sure that you want to cancel this subscription? (このサブスクリプションを取り消しますか?)|  
 |SubscriptionRenewConfirmation|Are you sure that you want to renew this subscription? (このサブスクリプションを更新しますか?)|  
@@ -517,7 +519,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |ButtonLabelRenewSubscription|更新|  
 |WebDevelopersSubscriptionReqested|Requested on {0} (要求日時: {0})|  
 |WebDevelopersSubscriptionRequestedState|Requested (要求済み)|  
-|WebDevelopersSubscriptionTableNameHeader|名前|  
+|WebDevelopersSubscriptionTableNameHeader|Name|  
 |WebDevelopersSubscriptionTableStateHeader|状態|  
 |WebDevelopersUsageStatisticsLink|Analytics reports (分析レポート)|  
 |WebDevelopersYourSubscriptions|Your subscriptions (サブスクリプション)|  
@@ -528,7 +530,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="SubscriptionStrings"></a> SubscriptionStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |SectionHeadingCloseAccount|Looking to close your account? (アカウントを削除する場合)|  
 |PageTitleDeveloperProfile|プロファイル|  
@@ -539,14 +541,14 @@ Azure API Management には、開発者ポータル テンプレート用に次�
   
 ###  <a name="UpdateProfileStrings"></a> UpdateProfileStrings  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |ButtonLabelUpdateProfile|プロファイルの更新|  
 |PageTitleUpdateProfile|Update account information (アカウント情報の更新)|  
   
 ###  <a name="UserProfile"></a> UserProfile  
   
-|名前|テキスト|  
+|Name|Text|  
 |----------|----------|  
 |ButtonLabelChangeAccountInfo|Change account information (アカウント情報の変更)|  
 |ButtonLabelChangePassword|パスワードの変更|  
@@ -557,25 +559,25 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |TextboxLabelNotificationsSenderEmail|Notifications sender email (通知の差出人アドレス)|  
 |TextboxLabelOrganizationName|組織名|  
 |SubscriptionStateActive|アクティブ|  
-|SubscriptionStateCancelled|Cancelled|  
+|SubscriptionStateCancelled|キャンセル|  
 |SubscriptionStateExpired|有効期限切れ|  
 |SubscriptionStateRejected|拒否|  
 |SubscriptionStateRequested|Requested (要求済み)|  
 |SubscriptionStateSuspended|Suspended|  
-|DefaultSubscriptionNameTemplate|{0}  (default) ({0}  (既定))|  
+|DefaultSubscriptionNameTemplate|{0} (既定値)|  
 |SubscriptionNameTemplate|Developer access #{0} (開発者のアクセス番号 {0})|  
 |TextboxLabelSubscriptionName|サブスクリプション名|  
 |ValidationMessageSubscriptionNameRequired|サブスクリプション名を空にすることはできません。|  
 |ApiManagementUserLimitReached|This service has reached the maximum number of allowed users. (このサービスでは、許可されたユーザーの最大数に達しました。) Please upgrade to a higher pricing tier. (より上位の価格レベルにアップグレードしてください。)|  
   
 ##  <a name="glyphs"></a> グリフ リソース  
- API Management 開発者ポータル テンプレートでは、[Bootstrap の glyphicon](http://getbootstrap.com/components/#glyphicons) のページからグリフを使用できます。 このグリフのセットには、[Glyphicon](http://glyphicons.com/) の Halflings セットのフォント形式の 250 個を超えるグリフが含まれています。 このセットからグリフを使用するには、次の構文を使用してください。  
+ API Management 開発者ポータル テンプレートでは、[Bootstrap の glyphicon](https://getbootstrap.com/components/#glyphicons) のページからグリフを使用できます。 このグリフのセットには、[Glyphicon](https://glyphicons.com/) の Halflings セットのフォント形式の 250 個を超えるグリフが含まれています。 このセットからグリフを使用するには、次の構文を使用してください。  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- グリフの完全な一覧については、[Bootstrap の Glyphicon](http://getbootstrap.com/components/#glyphicons)に関するページを参照してください。
+ グリフの完全な一覧については、[Bootstrap の Glyphicon](https://getbootstrap.com/components/#glyphicons)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

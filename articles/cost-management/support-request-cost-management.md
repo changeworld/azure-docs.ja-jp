@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/24/2018
+ms.date: 12/06/2018
 ms.topic: troubleshooting
 ms.service: cost-management
-manager: dougeby
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: fdb8c1c49e1791e3dafa006928bf244e05d00909
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 4118e0bb0e42a1eec707b2fdb6682333400e2e1a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025975"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099836"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Cloudyn のサポート リクエストを作成する
 
@@ -43,7 +43,7 @@ ms.locfileid: "50025975"
 
 提出したインシデントの状態を確認するには、[すべてのサポート要求](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests)に関するセクションを参照してください。
 
-Azure アカウントを持たない従来の Cloudyn ユーザーは、 http://support.microsoft.com/oas/default.aspx?prid=16451 でサポート要求を開くことができます。
+Azure アカウントを持たない従来の Cloudyn ユーザーは、 https://support.microsoft.com/oas/default.aspx?prid=16451 でサポート要求を開くことができます。
 
 
 ## <a name="next-steps"></a>次の手順

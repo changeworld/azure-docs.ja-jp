@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: caef9a93e7d388ab55939876b7cc8344ce6370d0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0b5fe1b1df306bf0930715bc6cfb586e5445f85c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012515"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839961"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
 
@@ -83,4 +83,4 @@ ms.locfileid: "51012515"
 
 ## <a name="next-steps"></a>次の手順
 
-VM が保護されたら、フェールオーバーを開始できます。 フェールオーバーでは、セカンダリ リージョンの VM をシャットダウンし、少しのダウンタイムと共に、プライマリ リージョンに VM を作成して起動します。 プライマリ サイトへの完全なフェールオーバーを開始するのではなく、適宜、時間を選択し、テスト フェールオーバーを実行することをお勧めします。 フェールオーバーの詳細については、[こちら](site-recovery-failover.md)を参照してください。
+VM が保護されたら、フェールオーバーを開始できます。 フェールオーバーでは、セカンダリ リージョンの VM をシャットダウンし、少しのダウンタイムと共に、プライマリ リージョンに VM を作成して起動します。 プライマリ サイトへの完全なフェールオーバーを開始する前に、適宜、時間を選択し、テスト フェールオーバーを実行することをお勧めします。 フェールオーバーの詳細については、[こちら](site-recovery-failover.md)を参照してください。

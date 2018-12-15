@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2344d35827cf541f0230f74917be3ae0ea39e074
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e75b04b3220347bdaa90dbc2f21d92475df3aa47
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355351"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136258"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションの作成時に発生する問題 
 
@@ -28,7 +28,7 @@ ms.locfileid: "44355351"
 
 ## <a name="recommended-documents"></a>推奨されるドキュメント 
 
-管理ポータルでのアプリケーション プロキシ アプリケーションの作成の詳細については、「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-publish-azure-portal.md)」を参照してください。
+管理ポータルでのアプリケーション プロキシ アプリケーションの作成の詳細については、「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)」を参照してください。
 
 同ドキュメントの手順に従ってアプリケーションを作成しているときにエラーが発生した場合、アプリケーションの修復方法に関する情報や推奨事項については、そのエラーの詳細を見て確認してください。 ほとんどのエラー メッセージには、推奨される解決方法が記載されています。 
 
@@ -51,4 +51,4 @@ ms.locfileid: "44355351"
    ![通知アイコン](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>次の手順
-[Azure Portal でアプリケーション プロキシを有効にする](application-proxy-enable.md)
+[Azure Portal でアプリケーション プロキシを有効にする](application-proxy-add-on-premises-application.md)

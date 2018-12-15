@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d4b4d99ac943749faaca8cd699b1455795b9c399
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b0e24da86d253139a85e792bf3c59d777cf5db6a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625796"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833946"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -31,7 +31,7 @@ ms.locfileid: "51625796"
 
 ページ UI のカスタマイズ機能を使用することで、任意のカスタム ポリシーの外観をカスタマイズできます。 さらに、アプリケーションと Azure AD B2C との間で、ブランドと視覚的な一貫性を維持することもできます。
 
-しくみは次のとおりです。Azure AD B2C は、ユーザーのブラウザーでコードを実行する共に、[クロス オリジン リソース共有 (CORS)](http://www.w3.org/TR/cors/) と呼ばれる最新の手法を使用します。 最初に、カスタマイズされた HTML コンテンツを含むカスタム ポリシーで URL を指定します。 Azure AD B2C により、UI 要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
+しくみは次のとおりです。Azure AD B2C によって、顧客のブラウザーでコードが実行され、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) と呼ばれる最新の手法が使用されます。 最初に、カスタマイズされた HTML コンテンツを含むカスタム ポリシーで URL を指定します。 Azure AD B2C により、UI 要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
 
 ## <a name="create-your-html5-content"></a>HTML5 のコンテンツの作成
 
@@ -100,7 +100,7 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 次の手順を実行して、クロス オリジン リソース共有用に Blob Storage を構成します。
 
 1. メニューで **[CORS]** を選択します。
-2. **[許可されるオリジン]** には、`your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `fabrikam.b2clogin.com` 」のように入力します。
+2. **[許可されるオリジン]** には、`your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `fabrikam.b2clogin.com` 」のように入力します。 テナント名を入力するときは、すべて小文字を使用する必要があります。
 3. **[許可されたメソッド]** に、`GET` と `OPTIONS` を両方選択します。
 4. **[許可されたヘッダー]** に、アスタリスク (*) を入力します。
 5. **[公開されるヘッダー]** に、アスタリスク (*) を入力します。
@@ -111,7 +111,7 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 
 準備が整ったことを検証するには、次の手順を実行します。
 
-1. [www.test-cors.org](http://www.test-cors.org/) Web サイトに移動し、目的の URL を **[リモート URL]** ボックスに貼り付けます。
+1. [www.test-cors.org](https://www.test-cors.org/) Web サイトに移動し、目的の URL を **[リモート URL]** ボックスに貼り付けます。
 2. **[Send Request]\(要求を送信する\)** をクリックします。  
     エラーが発生した場合、[CORS の設定](#configure-cors)が正しいことを確認します。 場合によっては、ブラウザーのキャッシュをクリアするか、Ctrl + Shift + P キーを押してプライベート ブラウズ セッションを開く必要もあります。
 

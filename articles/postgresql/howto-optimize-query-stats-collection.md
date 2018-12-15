@@ -7,12 +7,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 8b8d1a5a16a948953838f51edca091121dc14df1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 076442d85d7f628504cca95c36f3e99f4d0c5117
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628631"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966689"
 ---
 # <a name="optimize-query-statistics-collection-in-azure-database-for-postgresql-server"></a>Azure database for PostgreSQL サーバーのクエリ統計コレクションを最適化する 
 この記事では、Azure Database for PostgreSQL サーバーのクエリ統計コレクションの最適化について説明します。
@@ -28,7 +28,7 @@ ms.locfileid: "51628631"
 
 - Azure portal で、[、[PostgreSQL リソースの管理] ページに移動し、[サーバー パラメーター] ブレードを選択します](howto-configure-server-parameters-using-portal.md)。
 
-![[PostgreSQL サーバー パラメーター] ブレード](.\media\howto-optimize-query-stats-collection\pg_stats_statements_portal.png)
+![[PostgreSQL サーバー パラメーター] ブレード](./media/howto-optimize-query-stats-collection/pg_stats_statements_portal.png)
 
 - [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用して、az postgres server configuration set `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE` を実行します。
 

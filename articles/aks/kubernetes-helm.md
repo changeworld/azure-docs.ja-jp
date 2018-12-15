@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: iainfou
-ms.openlocfilehash: fa0fcde29b94fc4107fc91d798fdba8cc8f9b790
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f9f4c1cccac7e40c7d2fd8f76221bc1870ade45f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231153"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993252"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール
 
@@ -99,7 +99,7 @@ helm search
 $ helm search
 
 NAME                           CHART VERSION    APP VERSION  DESCRIPTION
-stable/acs-engine-autoscaler   2.2.0            2.1.1        Scales worker nodes within agent pools
+stable/aks-engine-autoscaler   2.2.0            2.1.1        Scales worker nodes within agent pools
 stable/aerospike               0.1.7            v3.14.1.2    A Helm chart for Aerospike in Kubernetes
 stable/anchore-engine          0.1.7            0.1.10       Anchore container analysis and policy evaluatio...
 stable/apm-server              0.1.0            6.2.4        The server receives data from the Elastic APM a...

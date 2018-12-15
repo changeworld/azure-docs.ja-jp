@@ -3,7 +3,7 @@ title: Azure Security Center でのセキュリティ イベントの監視と�
 description: Security Center のイベント ダッシュ ボードを使用して、Azure VM と Azure 以外のコンピューターからのセキュリティ イベントを表示する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
-ms.author: terrylan
-ms.openlocfilehash: 32273647d0f773c3f47653ac6fc87fef48630c0a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: rkarlin
+ms.openlocfilehash: 5b50e9fea8edd9d73a1d382ae4135edb4e4241ec
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299289"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967829"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Azure Security Center でのセキュリティ イベントの監視と処理
 イベント ダッシュ ボードは、時間の経過とともに収集されたセキュリティ イベントの数と、注意を払う必要がある重要なイベントの一覧の概要を示します。  
