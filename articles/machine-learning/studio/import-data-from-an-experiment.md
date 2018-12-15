@@ -1,12 +1,12 @@
 ---
-title: 別の実験のデータを Machine Learning Studio にインポートする | Microsoft Docs
+title: 別の実験から Machine Learning Studio にデータをインポートする | Microsoft Docs
 description: Azure Machine Learning Studio にトレーニング データを保存して別の実験で保存する方法。
 keywords: データのインポート、データ、データ ソース、トレーニング データ
 services: machine-learning
 documentationcenter: ''
-author: deguhath
-ms.author: deguhath
-manager: jhubbard
+author: ericlicoding
+ms.custom: previous-ms.author=deguhath, previous-author=deguhath
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 7da9dcec-5693-4bb6-8166-15904e7f75c3
 ms.service: machine-learning
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 922619f09ffc72a79c5ff6dac1bbc6807c38467c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: ea6e813d78cafa4e31ea37afa2675f30bccc5c4f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344520"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258078"
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>別の実験のデータを Azure Machine Learning Studio にインポートする
 

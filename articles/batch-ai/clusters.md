@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 61294d8b6b84b03b1e0c8d79b4d2855452c7f0e6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9af8ce84805e48dd3c91dd7fb4fcf0b136fbfc60
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44056967"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410093"
 ---
 # <a name="work-with-batch-ai-clusters"></a>Batch AI クラスターの使用 
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 この記事では、Azure Batch AI でクラスターを使用する方法について説明します。 ここでは、クラスターの概念、可能な構成の種類、そして例を紹介します。 この記事内のクラスターを作成し、管理する例のほとんどは、Azure CLI を使用します。 ただし、Azure portal および Azure Batch AI SDK を含むその他のツールを使用してもクラスターを使用することができます。
 

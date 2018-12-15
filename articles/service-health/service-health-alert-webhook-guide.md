@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: 8535caf482b10912e6f7bc6df445756094d7603f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5d32c3539446482f2dcdaeb954bb704dc9b78c58
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30261414"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274925"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>webhook を使用して既存の問題管理システム用に正常性通知を構成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "30261414"
 ## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>サービス正常性の webhook ペイロードを使用してカスタム通知を構成する
 独自のカスタム webhook 統合をセットアップする場合は、サービス正常性の通知時に送信される JSON ペイロードを解析する必要があります。
 
-`ServiceHealth` webhook ペイロードの具体例については、[こちらの例](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)をご覧ください。
+`ServiceHealth` webhook ペイロードの具体例については、[こちらの例](../azure-monitor/platform/activity-log-alerts-webhook.md)をご覧ください。
 
 サービス正常性アラートを検出するには、`context.eventSource == "ServiceHealth"` を探します。 そこにあるプロパティのうち、取り込みに最も関連するプロパティは次のとおりです。
  * `data.context.activityLog.status`
@@ -102,7 +102,7 @@ https://app.azure.com/h/0DET-URB/bbadb3
 
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
-1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)」を参照してください。
+1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)」を参照してください。
 
 2. 次のような HTTP POST 要求を作成します。
 
@@ -118,6 +118,6 @@ https://app.azure.com/h/0DET-URB/bbadb3
 4. [PagerDuty](https://www.pagerduty.com/) に移動して、統合が正常に設定されたことを確認します。
 
 ## <a name="next-steps"></a>次の手順
-- [アクティビティ ログ アラート webhook スキーマ](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)を確認します。 
+- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)について学習します。
-- [アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)について学習します。
+- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。

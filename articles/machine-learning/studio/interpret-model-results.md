@@ -1,11 +1,11 @@
 ---
-title: Machine Learning でモデル結果を解釈する | Microsoft Docs
+title: Machine Learning Studio 内でモデル結果を解釈する - Azure | Microsoft Docs
 description: モデルのスコア付け出力を使用して視覚化し、アルゴリズムに最適なパラメーター セットを選択する方法。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
 ms.service: machine-learning
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: e62f4716a95a6c1840afde27361eeb756abff335
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 9f8ff93efb74bca427cf74351af9d2442f9ab757
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837006"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276487"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning"></a>Azure Machine Learning でモデル結果を解釈する
+# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 内でモデル結果を解釈する
 このトピックでは、Azure Machine Learning Studio で予測結果を視覚化し、解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Azure Machine Learning には、主に次の 4 種類の機械学習モデルがあります。
 
@@ -102,7 +102,7 @@ Web サービスを実行し、テスト インスタンスの特徴の値を入
 ### <a name="multi-class-classification"></a>多クラス分類
 **実験例**
 
-この実験では、多クラス分類の例として、文字認識タスクを実行します。 分類子は、手書きの画像から抽出されたいくつかの手書き属性値に基づいて、特定の文字 (クラス) を予測しようとします。
+この実験では、多クラス分類の例として、文字認識タスクを実行します。 分類器は、手書きの画像から抽出されたいくつかの手書き属性値に基づいて、特定の文字 (クラス) を予測しようとします。
 
 ![文字の認識の例](./media/interpret-model-results/5_1.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4c96ca70b9b6a82dcccec443ac0b1e06f96a2396
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2035d342a89ace6d286fc205c346591b29646c5d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31597413"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270146"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -146,7 +146,7 @@ Network Watcher PowerShell コマンドレットを使うには、最新の Powe
 
     ![PowerShell ファイル][functions7]
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 PowerShell コマンドレットを使用するには、認証する必要があります。 Function App で認証を構成します。 認証を構成するには、環境変数を構成して、暗号化されたキー ファイルを Function App にアップロードする必要があります。
 
@@ -331,7 +331,7 @@ $Encryptedpassword
 
     ![関数の URL のコピー][2]
 
-webhook POST 要求のペイロードでカスタム プロパティが必要な場合は、「[Azure メトリック アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)」をご覧ください。
+webhook POST 要求のペイロードでカスタム プロパティが必要な場合は、「[Azure メトリック アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)」をご覧ください。
 
 ## <a name="configure-an-alert-on-a-vm"></a>VM のアラートの構成
 

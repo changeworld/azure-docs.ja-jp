@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
-ms.date: 7/27/2018
-ms.openlocfilehash: f5694352ad80a502954c389be4aeb6341abc98d6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 07/27/2018
+ms.openlocfilehash: 266ebb21a0648f13b8f8a6f1ae71c0b6f8b9198a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989126"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270809"
 ---
 # <a name="python-packages-for-azure-machine-learning"></a>Azure Machine Learning 用 Python パッケージ
 

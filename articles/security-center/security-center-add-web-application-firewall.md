@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 8ae1a4b7b8ce2e82856b63bd108e44a111dfd3fe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5e6d7dffb831e4e6541b5ef91cfc4ae4bbe88167
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246584"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343141"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Azure Security Center で Web アプリケーション ファイアウォールを追加する
 Azure Security Center では、Web アプリケーションを保護するために、Microsoft パートナーの Web アプリケーション ファイアウォール (WAF) を追加することを勧める場合があります。 このドキュメントでは、この推奨事項を適用する方法の例を紹介します。
@@ -46,7 +46,9 @@ Security Center では、[Isolated](https://azure.microsoft.com/pricing/details/
 
 6. **[新しい Web アプリケーション ファイアウォール]** が開きます。ここで **VM 構成手順**を実行して、**WAF 情報**を提供できます。 情報ブレードで **[VM 構成]** を選択します。
 7. **[VM 構成]** で、WAF を実行する仮想マシンの起動に必要な情報を入力します。
-   ![VM configuration][4]
+
+   ![VM 構成][4]
+   
 8. **[新しい Web アプリケーション ファイアウォール]** に戻り、**[WAF 情報]** を選択します。 **[WAF 情報]** で、WAF 自体を構成します。 手順 7. では、WAF が実行される仮想マシンを構成できます。手順 8. では、WAF 自体をプロビジョニングできます。
 
 ## <a name="finalize-application-protection"></a>アプリケーション保護を完了する
@@ -73,7 +75,7 @@ Security Center では、[Isolated](https://azure.microsoft.com/pricing/details/
 
 セキュリティ センターの詳細については、次を参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) 」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」-- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。

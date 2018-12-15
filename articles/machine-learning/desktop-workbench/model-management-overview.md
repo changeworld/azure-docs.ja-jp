@@ -2,20 +2,20 @@
 title: Azure Machine Learning モデル管理の概念の概要 | Microsoft Docs
 description: このドキュメントでは、Azure Machine Learning のモデル管理の概念について説明します。
 services: machine-learning
-author: hjerezmsft
-ms.author: hjerez
+author: chris-lauren
+ms.author: clauren
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: d3f7e206e7f4aa61a8ec1272ff2670d81bb7a33e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b89e80051ec53649a3da8fadcf412c58c177525c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974682"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260210"
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning のモデル管理
 
@@ -90,7 +90,7 @@ Azure Machine Learning モデル管理では、Docker ベースのコンテナ�
 次の構成設定により、デプロイのスケールとテレメトリを制御できます。
 
 - 各 Web サービス レベルのシステム ログとモデルのテレメトリ。 有効な場合、すべての標準出力ログは [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) にストリーミングされます。 モデルのテレメトリは、ユーザー指定のストレージにアーカイブされます。 
-- 自動スケールと同時実行の制限。 これらの設定は、既存のクラスター内での負荷に基づいて、デプロイされるコンテナーの数を自動的に増やします。 予測の待機時間のスループットと一貫性も制御します。
+- 自動スケールとコンカレンシーの制限。 これらの設定は、既存のクラスター内での負荷に基づいて、デプロイされるコンテナーの数を自動的に増やします。 予測の待機時間のスループットと一貫性も制御します。
 
 ## <a name="consumption"></a>消費 
 Azure Machine Learning モデル管理は、デプロイされたモデルの REST API と共に Swagger ドキュメントを作成します。 API キーとモデル入力を使って REST API を呼び出すことによりデプロイされたモデルを使用し、基幹業務アプリケーションの一部として予測を取得できます。 REST API の呼び出しについては、Java、[Python](https://github.com/CortanaAnalyticsGallery-Int/digit-recognition-cnn-tf/blob/master/client.py)、C# の各言語のサンプル コードを GitHub で入手できます。 Azure Machine Learning モデル管理の CLI では、これらの REST API を使う簡単な方法が提供されます。 1 つの CLI コマンド、Swagger 対応のアプリケーション、または curl を使って、API を使うことができます。 
