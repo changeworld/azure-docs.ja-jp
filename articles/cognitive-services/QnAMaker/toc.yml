@@ -131,7 +131,7 @@ items:
       href: Quickstarts/go.md
 - name: リファレンス
   items:
-  - name: REST API リファレンスに関するページ
+  - name: REST API リファレンス
     href: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff
   - name: FAQ
     href: faqs.md
