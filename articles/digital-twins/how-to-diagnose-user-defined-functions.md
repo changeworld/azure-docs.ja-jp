@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 9476db888a4bfae2d43ae4eec340972d4c2eb714
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636273"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413015"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins のユーザー定義関数の問題をデバッグする方法
 
@@ -25,7 +25,7 @@ Azure Digital Twins 内で発生するあらゆる問題を診断する方法に
 
 ### <a name="enable-log-analytics-for-your-instance"></a>インスタンスのログ分析を有効にする
 
-Azure Digital Twins インスタンスのログとメトリックは Azure Monitor を通じて公開されます。 次のドキュメントでは、[Azure portal](../log-analytics/log-analytics-quick-create-workspace.md)、[Azure CLI](../log-analytics/log-analytics-quick-create-workspace-cli.md)、または [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md) を通じて [Azure Log Analytics](../log-analytics/log-analytics-queries.md) ワークスペースを作成していると仮定しています。
+Azure Digital Twins インスタンスのログとメトリックは Azure Monitor を通じて公開されます。 次のドキュメントでは、[Azure portal](../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、または [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) を通じて [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) ワークスペースを作成していると仮定しています。
 
 > [!NOTE]
 > 初めて **Log Analytics** にイベントを送信するときに 5 分の遅延が発生することがあります。
@@ -42,7 +42,7 @@ Azure Digital Twins インスタンスの診断設定が有効になっている
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
+| where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
 | クエリの値 | 置換後の文字列 |
@@ -53,7 +53,7 @@ AzureDiagnostics
 
 ```Kusto
 AzureDiagnostics
-| where Category = 'UserDefinedFunction'
+| where Category == 'UserDefinedFunction'
 ```
 
 強力なクエリ操作について詳しくは、[クエリの概要](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)に関するページをご覧ください。

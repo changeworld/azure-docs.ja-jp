@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 42697f7f4bb8c6b9ef785eef0fe2f5f33b2b38a7
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1e9a4c6355c60b18bb78aae362c1e2f142e2d864
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615605"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408002"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Azure Storage を使用して Batch AI ジョブの入力と出力を格納する
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 このガイドでは、Azure Storage を使用して、ジョブの実行時に入力ファイルと出力ファイルを格納する方法について説明します。 Azure Storage は、Batch AI によってサポートされているいくつかのストレージ オプションの 1 つです。 Batch AI は、クラウドに格納されたファイルへのシームレスなアクセスを許可し、Azure Storage システムを Batch AI ジョブまたはクラスター ファイルシステムにマウントすることにより、Azure Storage と統合されます。 
 

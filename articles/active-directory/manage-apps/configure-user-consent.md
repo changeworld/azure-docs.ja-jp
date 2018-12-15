@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 25f5d79b900cf15a9bdcb8f037fa95494c63b7e1
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 991199747f51f379ee6f3efe8009ab9166c33ac7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50088266"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832008"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する
 ユーザーがアプリケーションのアクセス許可に同意する方法を構成する方法について説明します。 管理者の同意を付与することでユーザー エクスペリエンスを簡素化できます。 この記事では、ユーザーの同意を構成するさまざまな方法を紹介します。 この方法は、Azure Active Directory (Azure AD) テナントのすべてのエンド ユーザーに適用されます。 
@@ -73,4 +73,4 @@ URL 要求を介して管理者の同意を付与します。
 
 [Azure AD v2.0 集中型アプリの同意とアクセス許可](../develop/active-directory-v2-scopes.md)
 
-[Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

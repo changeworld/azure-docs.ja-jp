@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 50becbe517e98802c9a3af91b86f845df05378a7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 316f7117ad1564f7dc7cdd1012771891b718d82e
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227520"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189627"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API を使用したフィルターの作成
 > [!div class="op_single_selector"]
@@ -42,9 +42,9 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 * [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
 * [FilterTrackSelect と FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
 
->[!NOTE]
-
->Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+> [!NOTE]
+> 
+> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 
 ## <a name="connect-to-media-services"></a>Media Services への接続
 

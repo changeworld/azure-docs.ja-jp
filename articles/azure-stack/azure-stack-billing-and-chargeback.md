@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: a5f3b206b83beb15ee3b29d5d5b9e389e85a91fb
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 32d0e0f48a99b5c06b1efa61e6e1a53cf5b0e61b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466989"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971795"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Azure Stack での使用量と請求
 
@@ -35,9 +35,9 @@ Azure Stack 内の各リソース プロバイダーは、リソース使用率�
 
 [Azure Stack インスタンスを Azure に登録](azure-stack-register.md)している場合、Azure Commerce に使用量データを送信するように Azure Stack が構成されます。 データが Azure にアップロードされたら、課金ポータルまたは Azure リソース使用量 API を使用してデータにアクセスできます。 Azure に報告される使用量データの詳細については、[使用量データの報告](azure-stack-usage-reporting.md)に関する記事をご覧ください。  
 
-次の図は、使用量パイプラインの主要なコンポーネントを示しています。 
+次の図は、使用量パイプラインの主要なコンポーネントを示しています。
 
-![使用量パイプライン](media\azure-stack-billing-and-chargeback\usagepipeline.png)
+![使用量パイプライン](media/azure-stack-billing-and-chargeback/usagepipeline.png)
 
 ## <a name="what-usage-information-can-i-find-and-how"></a>確認できる使用量情報とその確認方法
 

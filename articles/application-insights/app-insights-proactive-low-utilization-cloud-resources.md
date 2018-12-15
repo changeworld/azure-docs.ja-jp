@@ -9,16 +9,15 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: ca4f944f605db96a2cedf2682f3ff4c811007ffb
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 7cf72068b9cabceb0c5b535986ac4dfb62151b94
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094914"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726918"
 ---
 # <a name="low-cpu-utilization-in-cloud-resources-preview"></a>クラウド リソースでの低い CPU 使用率 (プレビュー)
 

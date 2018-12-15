@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 91cbebecc227d24337b2d1b421dd1611bf0fac46
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 357257d38c444eae8077568993d49816e3c090a3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390798"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966077"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の診断ログへのアクセス
 Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方法、およびそのアカウント用に収集されたログを表示する方法について説明します。
@@ -46,7 +46,7 @@ Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方
         
         * **[Stream to an event hub (イベント ハブへのストリーム)]** オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合は、ほとんどの場合、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
-        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Log Analytics サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Log Analytics ワークスペースの詳細情報を指定する必要があります。 Log Analytics の使用についての詳細は、「[Log Analytics のログ検索で収集されたデータの表示または分析](../log-analytics/log-analytics-tutorial-viewdata.md)」をご覧ください。
+        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Log Analytics サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Log Analytics ワークスペースの詳細情報を指定する必要があります。 Log Analytics の使用についての詳細は、「[Log Analytics のログ検索で収集されたデータの表示または分析](../azure-monitor/learn/tutorial-viewdata.md)」をご覧ください。
      
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
    * データを保持する日数を指定します。 リテンション期間は、Azure ストレージ アカウントを使用してログ データをアーカイブする場合のみ適用されます。
@@ -178,7 +178,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | StreamName |String |操作が実行されたパス |
 
 ## <a name="samples-to-process-the-log-data"></a>ログ データ処理のサンプル
-Azure Data Lake Storage Gen1 から Azure Log Analytics にログを送信すると (Log Analytics の使用の詳細については、「[Log Analytics のログ検索で収集されたデータの表示または分析](../log-analytics/log-analytics-tutorial-viewdata.md)」を参照)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベントの時刻でのイベント数の一覧を含むテーブルがビジュアル グラフと共に返されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。
+Azure Data Lake Storage Gen1 から Azure Log Analytics にログを送信すると (Log Analytics の使用の詳細については、「[Log Analytics のログ検索で収集されたデータの表示または分析](../azure-monitor/learn/tutorial-viewdata.md)」を参照)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベントの時刻でのイベント数の一覧を含むテーブルがビジュアル グラフと共に返されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。
 
 ```
 search *

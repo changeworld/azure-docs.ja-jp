@@ -1,18 +1,18 @@
 ---
 title: サーバーの削除と保護の無効化 | Microsoft Docs
 description: この記事では、Site Recovery コンテナーからサーバーの登録を解除して、仮想マシンと物理サーバーの保護を無効にする方法を説明します。
-author: rayne-wiselman
-manager: carmonm
+author: rajani-janaki-ram
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
-ms.author: raynew
-ms.openlocfilehash: d7dcf27e106f73c828c2c46d4d7180b1f906e4d8
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 11/27/2018
+ms.author: rajani-janaki-ram
+ms.openlocfilehash: 8e8cabe48f7f1036986a896d0449798f4aea2522
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614856"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844568"
 ---
 # <a name="remove-servers-and-disable-protection"></a>サーバーの削除と保護の無効化
 

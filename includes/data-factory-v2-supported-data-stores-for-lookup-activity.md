@@ -5,20 +5,20 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/19/2018
+ms.date: 11/28/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 3862570426c6cf2ca7e5b54e001a7dacd02a67d9
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: a5959e19c7d6470abe5487fe7c8f08ccb543fa35
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49476271"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111931"
 ---
 | Category | データ ストア |
 |:--- |:--- |
 | **Azure** |[Azure BLOB Storage](../articles/data-factory/connector-azure-blob-storage.md) |
-| &nbsp; |[Azure Cosmos DB](../articles/data-factory/connector-azure-cosmos-db.md) |
+| &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
 | &nbsp; |[Azure Database for MySQL](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
@@ -66,8 +66,8 @@ ms.locfileid: "49476271"
 | &nbsp; |[Common Data Service for Apps](../articles/data-factory/connector-dynamics-crm-office-365.md) |✓
 | &nbsp; |[Concur (プレビュー)](../articles/data-factory/connector-concur.md) |
 | &nbsp; |[Dynamics 365](../articles/data-factory/connector-dynamics-crm-office-365.md) |
+| &nbsp; |[Dynamics AX (プレビュー)](../articles/data-factory/connector-dynamics-ax.md) |
 | &nbsp; |[Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) |
-| &nbsp; |[GE Historian](../articles/data-factory/connector-odbc.md#ge-historian-source) 
 | &nbsp; |[Google AdWords (プレビュー)](../articles/data-factory/connector-google-adwords.md) |
 | &nbsp; |[HubSpot (プレビュー)](../articles/data-factory/connector-hubspot.md) |
 | &nbsp; |[Jira (プレビュー)](../articles/data-factory/connector-jira.md) |

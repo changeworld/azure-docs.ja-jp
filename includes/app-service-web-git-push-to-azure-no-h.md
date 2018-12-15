@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 9f865897ee478f25a44fe876d44aec253e84eb62
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 026540290710d039dbc06c394ab538ebe2d7c12f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38731903"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344671"
 ---
-"_ローカル ターミナル ウィンドウ_" で、ローカル Git リポジトリに Azure リモートを追加します。 _&lt;deploymentLocalGitUrl-from-create-step>_ を、[Web アプリの作成](#create)に関するセクションで保存した Git リモートの URL に置き換えます。
+"_ローカル ターミナル ウィンドウ_" で、ローカル Git リポジトリに Azure リモートを追加します。 _&lt;deploymentLocalGitUrl-from-create-step>_ を、[Web アプリの作成](#create-a-web-app)に関するセクションで保存した Git リモートの URL に置き換えます。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>

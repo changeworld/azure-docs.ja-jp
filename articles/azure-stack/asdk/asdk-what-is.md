@@ -16,15 +16,15 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 62eccba1b876ca8272dacbbd97a1d28c8b796081
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 345d62f4045e7b9279d52acf70cc340d088f5db0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138312"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961333"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Azure Stack Development Kit とは
-[Microsoft Azure Stack 統合システム](.\.\azure-stack-poc.md)には 4 ノードから 16 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。 Azure Stack 統合システムの使用により、運用ワークロード向けの新しいシナリオが可能になります。 統合システム インフラストラクチャの管理およびサービスの提供を行う Azure Stack オペレーターは、[オペレーター ドキュメント](https://docs.microsoft.com/azure/azure-stack)を参照してください。
+[Microsoft Azure Stack 統合システム](../azure-stack-poc.md)には 4 ノードから 16 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。 Azure Stack 統合システムの使用により、運用ワークロード向けの新しいシナリオが可能になります。 統合システム インフラストラクチャの管理およびサービスの提供を行う Azure Stack オペレーターは、[オペレーター ドキュメント](https://docs.microsoft.com/azure/azure-stack)を参照してください。
 
 Azure Stack Development Kit (ASDK) は、Azure Stack の単一ノード デプロイであり、**無料**でダウンロードして使用できます。 すべての ASDK コンポーネントは、単一のホスト サーバー コンピューター上で実行される仮想マシンにインストールされます。そのコンピューターは、[最低限のハードウェア要件](asdk-deploy-considerations.md#hardware)を満たす必要があります。 ASDK の目的は、"*非運用*" 環境で Azure と一貫性のある API とツールを使用して、Azure Stack の評価と最新アプリケーションの開発ができる環境を提供することです。 
 
@@ -48,9 +48,9 @@ ASDK の詳細については、次の短い動画をご覧ください。
 |説明|ASDK|マルチノード Azure Stack|
 |-----|-----|-----|
 |**スケール**|すべてのコンポーネントが、単一ノードのサーバー コンピューターにインストールされます。|サイズは 4 から 16 ノードの範囲で設定できます。|
-|**回復力**|単一ノードの構成では、高可用性は提供されません|[高可用性](.\.\azure-stack-key-features.md#high-availability-for-azure-stack)機能がサポートされています。|
-|**ネットワーク**|ASDK は、AzS-BGPNAT01 という名前の VM を使用して、すべての ASDK ネットワーク トラフィックをルーティングします。 他のスイッチ要件はありません。|AzS-BGPNAT01 VM は、マルチノード デプロイには存在しません。 Top-Of-Rack (TOR)、ベースボード管理コントローラー (BMC)、境界 (データセンター ネットワーク) スイッチなど、より複雑な[ネットワーク ルーティング インフラストラクチャ](.\.\azure-stack-network.md#network-infrastructure)が必要です。|
-|**修正プログラムと更新プログラムの処理**|ASDK の新しいバージョンに移行するには、開発キットのホスト コンピューターで ASDK を再デプロイする必要があります。|インストール済みの Azure Stack バージョンを更新するために、[修正プログラムと更新プログラム](.\.\azure-stack-updates.md)のプロセスが使用されます。|
+|**回復力**|単一ノードの構成では、高可用性は提供されません|[高可用性](../azure-stack-key-features.md#high-availability-for-azure-stack)機能がサポートされています。|
+|**ネットワーク**|ASDK は、AzS-BGPNAT01 という名前の VM を使用して、すべての ASDK ネットワーク トラフィックをルーティングします。 他のスイッチ要件はありません。|AzS-BGPNAT01 VM は、マルチノード デプロイには存在しません。 Top-Of-Rack (TOR)、ベースボード管理コントローラー (BMC)、境界 (データセンター ネットワーク) スイッチなど、より複雑な[ネットワーク ルーティング インフラストラクチャ](../azure-stack-network.md#network-infrastructure)が必要です。|
+|**修正プログラムと更新プログラムの処理**|ASDK の新しいバージョンに移行するには、開発キットのホスト コンピューターで ASDK を再デプロイする必要があります。|インストール済みの Azure Stack バージョンを更新するために、[修正プログラムと更新プログラム](../azure-stack-updates.md)のプロセスが使用されます。|
 |**サポート**|MSDN の Azure Stack フォーラム。 Microsoft カスタマー サービス & サポート (CSS) のサポートは、非運用環境では使用 "*できません*"。|[MSDN の Azure Stack フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)と完全な CSS サポート。|
 | | |
 
@@ -59,7 +59,7 @@ Azure Stack オペレーターは、ユーザーにどのサービスを提供�
 
 ### <a name="foundational-services"></a>基礎となるサービス
 ASDK をデプロイすると、Azure Stack には既定で以下の "基礎となるサービス" が含まれています。
-- コンピューティング
+- Compute
 - Storage
 - ネットワーク
 - Key Vault

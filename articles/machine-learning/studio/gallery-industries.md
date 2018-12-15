@@ -1,10 +1,9 @@
 ---
-title: Azure AI ギャラリーの業界に特化したソリューション | Microsoft Docs
-description: Azure AI ギャラリーで業界に特化したソリューションを発見します。
+title: Azure AI Gallery 業界ソリューション - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI Gallery の業界セクションは、小売、製造、銀行、医療機関などの業界に固有のさまざまなリソースがまとめられています。
 services: machine-learning
 documentationcenter: ''
-author: garyericson
-manager: jhubbard
+author: ericlicoding
 editor: cgronlun
 ms.assetid: fd2ecf9a-ff76-4a0f-8d68-7f762249648c
 ms.service: machine-learning
@@ -14,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: d64395314f73c5d359b30c15ef11bfd3078e068f
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.custom: previous-ms.author=garye, previous-author=garyericson
+ms.author: amlstudiodocs
+ms.openlocfilehash: 4f9495027c7027f659f877930b6aabc72b361ae8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346305"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269330"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Azure AI ギャラリーで業界に特化したソリューションを発見する
 
@@ -48,5 +48,5 @@ ms.locfileid: "51346305"
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

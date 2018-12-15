@@ -9,22 +9,21 @@ ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 6d161a49b35bbdfedcb27dd91f9f09dcf7ba4133
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f2f237d250a6b6e2a0f6ed2e62540968d9fcc7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122028"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997968"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
 [Application Insights](app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。
 
-[Microsoft Azure](http://azure.com) のサブスクリプションが必要になります。 Windows、Xbox Live、またはその他の Microsoft クラウド サービスの Microsoft アカウントでサインインします。 所属するチームが組織の Azure サブスクリプションを持っている場合は、自分の Microsoft アカウントを使用してサブスクリプションに追加してもらうよう所有者に依頼してください。
+[Microsoft Azure](https://azure.com) のサブスクリプションが必要になります。 Windows、Xbox Live、またはその他の Microsoft クラウド サービスの Microsoft アカウントでサインインします。 所属するチームが組織の Azure サブスクリプションを持っている場合は、自分の Microsoft アカウントを使用してサブスクリプションに追加してもらうよう所有者に依頼してください。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -125,7 +124,7 @@ TelemetryConfiguration.Active.TelemetryInitializers.Add(new OperationCorrelation
 TelemetryConfiguration.Active.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-* .NET Framework Windows アプリの場合、[こちら](http://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)の説明に従って、パフォーマンス カウンター コレクター モジュールをインストールし、初期化することもできます。
+* .NET Framework Windows アプリの場合、[こちら](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)の説明に従って、パフォーマンス カウンター コレクター モジュールをインストールし、初期化することもできます。
 
 #### <a name="full-example"></a>完全な例
 

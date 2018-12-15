@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: guaravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: rajanki
-ms.openlocfilehash: e97d736e7e117e0ccce6dc021a9de2ea15ac5484
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9b181f21affa5b762dd6e9062953badc3a37191d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210144"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841882"
 ---
 # <a name="overview-of-failback"></a>フェールバックの概要
 

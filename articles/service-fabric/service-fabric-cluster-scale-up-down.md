@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 0d809f9a1b3abbb284c3f7e0c27eb9c236692a3f
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 91516e3284ebf3588c2dba31b67cc583e4d395db
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386467"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309423"
 ---
 # <a name="read-before-you-scale"></a>スケーリングの前にお読みください
 アプリケーションのワークロードのソースとなるコンピューティング リソースのスケーリングには、意図的な計画が必要になります。スケーリングには、運用環境においてほとんどの場合 1 時間以上の時間がかかり、ワークロードやビジネス コンテキストを理解する必要があります。実際、このアクティビティを実行した経験がない場合は、このドキュメントの残りの部分に進む前に、「[Service Fabric クラスターの容量計画に関する考慮事項](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)」を読んで理解することをお勧めします。 これは、意図しない LiveSite の問題を回避するための推奨事項です。また、実行することを決定した操作を非運用環境に対して適切にテストすることもお勧めします。 いつでも、[運用上の問題を報告したり、Azure の有料サポートを要求したりする](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure)ことができます。 この記事は、コンテキストが該当するこれらの操作の実行を担当するエンジニア向けに、スケーリング操作を説明します。ただし、どのリソース (CPU、ストレージ、メモリ) をスケーリングするか、どの方向にスケーリングするか (垂直、水平)、どの方法で操作するか (リソース テンプレート デプロイ、ポータル、PowerShell/CLI) など、どのような操作が実際のユース ケースに適しているかを自分で判断して理解する必要があります。
 
-# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>自動スケール ルールを使用した、または手動による Service Fabric クラスターのスケールインとスケールアウト
+## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>自動スケール ルールを使用した、または手動による Service Fabric クラスターのスケールインとスケールアウト
 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。 Service Fabric クラスターで定義されているすべてのノード タイプは、個別の仮想マシン スケール セットとしてセットアップされます。 各ノードの種類は、個別にスケールインまたはスケールアウトでき、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 詳細については、 [Service Fabric のノードの種類](service-fabric-cluster-nodetypes.md) に関するドキュメントを参照してください。 クラスター内の Service Fabric のノードの種類はバックエンドの仮想マシン スケール セットで構成されるため、ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定する必要があります。
 
 > [!NOTE]
@@ -103,10 +103,10 @@ Service Fabric Explorer で示されているノードは、現在/過去にお�
 
 VM が削除されたときに、ノードが削除されるようにするには、2 つのオプションを使用できます。
 
-1) クラスターのノードの種類に Gold または Silver の耐久性レベルを選択します。これにより、インフラストラクチャの統合が提供されます。 これによって、スケールダウンしたときに、システム サービス (FM) の状態から自動的にノードが削除されます。
+1. クラスターのノードの種類に Gold または Silver の耐久性レベルを選択します。これにより、インフラストラクチャの統合が提供されます。 これによって、スケールダウンしたときに、システム サービス (FM) の状態から自動的にノードが削除されます。
 [耐久性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください
 
-2) VM インスタンスがスケールダウンされたら、[Remove-ServiceFabricNodeState コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)を呼び出す必要があります。
+2. VM インスタンスがスケールダウンされたら、[Remove-ServiceFabricNodeState コマンドレット](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate)を呼び出す必要があります。
 
 > [!NOTE]
 > Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、"維持クォーラム" と呼ばれます。 そのため、先に[状態の完全バックアップ](service-fabric-reliable-services-backup-restore.md)を実行していた場合を除き、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。

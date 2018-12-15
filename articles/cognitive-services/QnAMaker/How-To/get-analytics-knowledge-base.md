@@ -5,17 +5,18 @@ description: QnA Maker サービスの作成中に App Insights を有効にし�
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
+displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim88
-ms.openlocfilehash: dc363a3ba0d809a3307a6803993bdf500da45f1b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f3ca99a92d12acbf880a3a95098a90569e2a0f84
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035421"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309401"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>ナレッジ ベースに関する分析の取得
 
@@ -58,7 +59,7 @@ ms.locfileid: "47035421"
     | where url endswith "generateAnswer" and name startswith "POST"
     | parse name with *"/knowledgebases/"KbId"/generateAnswer" 
     | summarize ChatCount=count() by bin(timestamp, 1d), KbId
-``` 
+```
 
 ### <a name="total-question-traffic-in-a-given-time-period"></a>指定の期間における質問トラフィックの合計
 

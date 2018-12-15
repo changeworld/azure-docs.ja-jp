@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 98ae7fe0fde922aee28ffc05b64d223a40085447
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0b1affb708a8d481a1378fa691b6547865b0b214
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340921"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963591"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) の起動と終了
 ASDK ホスト コンピューターをただ再起動することはお勧めしません。 この記事の手順に従い、正しくシャット ダウンして ASDK サービスを再起動してください。 
@@ -62,7 +62,7 @@ ASDK のシャット ダウン方法に関係なく、次のステップを実�
    ```
 6. 出力を確認して Azure Stack サービスが正常に再起動したことを確認してください。
 
-Microsoft Azure Stack サービスの正しいシャットダウンと再起動について、推奨される手順の詳細を見るには、[Azure Stack の開始および停止](.\.\azure-stack-start-and-stop.md)をご覧ください。 
+Microsoft Azure Stack サービスの正しいシャットダウンと再起動について、推奨される手順の詳細を見るには、[Azure Stack の開始および停止](../azure-stack-start-and-stop.md)をご覧ください。 
 
 ## <a name="troubleshoot-startup-and-shutdown"></a>スタートアップおよびシャットダウンのトラブルシューティング 
 ASDK ホスト コンピューターの電源投入後 2 時間以内に Azure Stack サービスが正常に起動しない場合は、次の手順を実行します。
@@ -79,7 +79,7 @@ ASDK ホスト コンピューターの電源投入後 2 時間以内に Azure S
    ```powershell
    Test-AzureStack
    ```
-5. 出力を確認しエラーを解決します。 詳細については、[Azure Stack の検証テストの実行](.\.\azure-stack-diagnostic-test.md)に関するページをご覧ください。
+5. 出力を確認しエラーを解決します。 詳細については、[Azure Stack の検証テストの実行](../azure-stack-diagnostic-test.md)に関するページをご覧ください。
 6. PEP セッション内で **Start-AzureStack**コマンドレットを実行してから Azure Stack サービスを再起動します。
 
    ```powershell
@@ -89,4 +89,4 @@ ASDK ホスト コンピューターの電源投入後 2 時間以内に Azure S
 **Start-AzureStack**の実行が失敗した場合、[Azure Stack サポート フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack)で ASDK トラブルシューティングのサポートを得てください。 
 
 ## <a name="next-steps"></a>次の手順 
-Azure Stack 診断ツールと問題のログ記録については、「[Azure Stack の診断ツール](.\.\azure-stack-diagnostics.md)」をご覧ください。
+Azure Stack 診断ツールと問題のログ記録については、「[Azure Stack の診断ツール](../azure-stack-diagnostics.md)」をご覧ください。

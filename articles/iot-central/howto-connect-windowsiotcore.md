@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d166d490c00a9805ec9cecae6509acc531d8d711
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7d593a992d0ff189d23185b3422dee86a55308d1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959870"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309452"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -23,7 +23,7 @@ ms.locfileid: "50959870"
 
 この記事の手順を完了するには、次のものが必要です。
 
-1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページを参照してください。
+1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 2. Windows 10 IoT Core オペレーティング システムを実行しているデバイス。 このチュートリアルでは、Raspberry Pi を使用します。
 
 
@@ -57,9 +57,9 @@ Windows IoT Core デバイスを設定するには、「[Windows IoT Core デバ
 
 ### <a name="what-youll-need"></a>必要なもの
 
-Windows 10 IoT Core 物理デバイスを設定するには、まず Windows 10 IoT Core を実行しているデバイスを用意する必要があります。 Windows 10 IoT Core デバイスを設定する方法は、[ここで](https://developer.microsoft.com/en-us/windows/iot/getstarted/prototype/setupdevice)学習してください。
+Windows 10 IoT Core 物理デバイスを設定するには、まず Windows 10 IoT Core を実行しているデバイスを用意する必要があります。 Windows 10 IoT Core デバイスを設定する方法は、[ここで](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)学習してください。
 
-Azure IoT Central と通信できるクライアント アプリケーションも必要になります。 Azure SDK を使用して独自のカスタム アプリケーションを構築し、Visual Studio を使用してそれをデバイスにデプロイするか、または[事前に構築されたサンプル](https://developer.microsoft.com/en-us/windows/iot/samples)をダウンロードし、それを単純にデバイスにデプロイして実行することができます。 
+Azure IoT Central と通信できるクライアント アプリケーションも必要になります。 Azure SDK を使用して独自のカスタム アプリケーションを構築し、Visual Studio を使用してそれをデバイスにデプロイするか、または[事前に構築されたサンプル](https://developer.microsoft.com/windows/iot/samples)をダウンロードし、それを単純にデバイスにデプロイして実行することができます。 
 
 ### <a name="deploying-the-sample-client-application"></a>サンプル クライアント アプリケーションのデプロイ
 
@@ -122,4 +122,4 @@ Azure IoT Central では、Raspberry Pi 上で実行されているコードが�
 | type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| Text            | Location     | location   | 該当なし       |
+| Text            | 場所     | location   | 該当なし       |

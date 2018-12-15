@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 23d696971d49210479c675a0f3e2a0a85d1e8b3b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a25d97b3d168359358dbcf3a7460dc97eea420d9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241125"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268531"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のための自動チューニングの有効化
 

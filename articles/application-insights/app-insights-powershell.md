@@ -9,16 +9,15 @@ ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 262d2511879047d1723d3b15c4c107b80ba1c297
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 79921a3adc043dd84317b7613286ec5cdc460bde
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250342"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993749"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
 この記事では、Azure Resource 管理を使用して [Application Insights](app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の作成、[アラート](app-insights-alerts.md)の設定、[価格の詳細](app-insights-pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
@@ -38,7 +37,7 @@ ms.locfileid: "51250342"
 
 ```JSON
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "appName": {

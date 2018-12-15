@@ -8,13 +8,12 @@ ms.date: 10/22/2018
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: e78b525e1e08a05b8de6071f9ddba0dfb29ff672
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: ed64f6317fefb9e82dbe14e806499965d926d434
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087278"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316201"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 

@@ -3,7 +3,7 @@ title: Azure SQL Database の長期的なバックアップ保有期間を管理
 description: 自動バックアップを SQL Azure ストレージに保存して復元する方法について説明します
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: b4736f47d066d1e2b8e5c7115cb14abeb1cc566a
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 33086be2c85e44b81a9f444a10a683e54f8612f7
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137227"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164451"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 
@@ -173,7 +173,7 @@ $ltrBackup = $ltrBackups[0]
 Remove-AzureRmSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 > [!IMPORTANT]
-> LTR バックアップの削除は、元に戻せません。 Azure Monitor では、"長期保有バックアップを削除します" という操作をフィルター処理することで、それぞれの削除に関する通知を設定できます。 アクティビティ ログには、どのユーザーがいつ要求を行ったかに関する情報が含まれています。 詳しい手順については、[アクティビティ ログ アラートの作成](../monitoring-and-diagnostics/monitoring-create-activity-log-alerts-with-resource-manager-template.md)に関するページを参照してください。
+> LTR バックアップの削除は、元に戻せません。 Azure Monitor では、"長期保有バックアップを削除します" という操作をフィルター処理することで、それぞれの削除に関する通知を設定できます。 アクティビティ ログには、どのユーザーがいつ要求を行ったかに関する情報が含まれています。 詳しい手順については、[アクティビティ ログ アラートの作成](../azure-monitor/platform/alerts-activity-log.md)に関するページを参照してください。
 >
 
 ### <a name="restore-from-ltr-backups"></a>LTR バックアップから復元する

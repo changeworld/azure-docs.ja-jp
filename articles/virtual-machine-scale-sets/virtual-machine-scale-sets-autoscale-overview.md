@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c50e78fc7f4f5b6f779b696a3d16520d3ffccd5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 18be454c93c32e0902a55a08748045c26d649ce7
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465323"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322041"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでの自動スケールの概要
 Azure 仮想マシン スケール セットは、アプリケーションを実行する VM インスタンスの数を自動的に増減させることができます。 この自動化された柔軟性のある動作により、アプリケーションを監視してパフォーマンスを最適化する管理上の負担を減らすことができます。 肯定的なカスタマー エクスペリエンスを得られる、許容されたパフォーマンスを定義するルールを作成します。 定義したしきい値に達すると、自動スケール ルールが実行されてスケール セットの容量が調整されます。 また、決まった時間にスケール セットの容量を自動的に増減させるイベントのスケジュールを設定することもできます。 この記事では、使用できるパフォーマンス メトリックの概要と、自動スケールで実行できるアクションについて説明します。
@@ -146,4 +146,4 @@ App Insights について詳しくは、「[Application Insights とは何か?](
 
 VM インスタンスの管理方法については、[Azure PowerShell を使用した仮想マシン スケール セットの管理](virtual-machine-scale-sets-windows-manage.md)に関するページを参照してください。
 
-自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。
+自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../azure-monitor/platform/autoscale-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。

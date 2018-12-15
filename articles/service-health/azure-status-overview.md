@@ -3,7 +3,7 @@ title: Azure の状態の概要 | Microsoft Docs
 description: Azure サービスの正常性をグローバルに確認できるビュー。
 services: Azure status
 documentationcenter: ''
-author: shawntabrizi
+author: stephbaron
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/27/2018
-ms.author: shtabriz
-ms.openlocfilehash: 6bb67fa17ace2e662091c6b66a774baf9d7d8bfd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 11/16/2018
+ms.author: stbaron
+ms.openlocfilehash: 7121087d9d9699a73b88e07599f70e0c7c40c1eb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181822"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308282"
 ---
 # <a name="azure-status"></a>Azure の状態
 [Azure の状態](https://azure.microsoft.com/status/)により、Azure サービスの正常性をグローバルに確認できるビューが提供されます。 Azure の状態を利用し、サービスの可用性に関する最新情報を取得できます。 すべてのユーザーが Azure の状態にアクセス可能で、サービスの正常性について報告するすべてのサービスを表示できます。 
@@ -39,6 +39,6 @@ Azure の状態のページには常に最新の正常性情報が表示され�
 ## <a name="rss-feed"></a>RSS フィード
 Azure の状態では、サブスクライブできる、Azure サービスの正常性に対する変化についての [RSS フィード](https://azure.microsoft.com/status/feed/)も提供されます。
 
-# <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 * [サービスの正常性](./service-health-overview.md)を利用し、Azure の正常性について、よりパーソナライズしたビューを取得できる方法を学習します。
 * [リソースの正常性](./resource-health-overview.md)を利用し、Azure の特定のリソースの正常性について、よりきめ細かなビューを取得できる方法を学習します。

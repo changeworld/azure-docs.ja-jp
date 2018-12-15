@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 2ec8d53b0d8da3a7d643362abf58d3a5d4b42e74
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 82ae0ef72bb4f546a1f946f3127aa5d74bec3c3b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145227"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957761"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
 
@@ -26,11 +26,10 @@ Azure API Management では複数リージョンのデプロイメントがサ�
 
 新しい Azure API Management サービスには、最初は単一の Azure リージョン (プライマリ リージョン) 内に 1 つの[ユニット][unit]のみが含まれています。 リージョンは Azure Portal で簡単に追加できます。 各リージョンには API Management のゲートウェイ サーバーがデプロイされており、呼び出しのトラフィックは最も近いゲートウェイにルーティングされます。 リージョンがオフラインになった場合、トラフィックは自動的に次に最も近いゲートウェイにリダイレクトされます。
 
-> [!IMPORTANT]
-> 複数リージョンのデプロイは、**[Premium][Premium]** レベルでのみ提供されます。
-
 > [!NOTE]
 > Azure API Management は、リージョン間で API ゲートウェイ コンポーネントのみをレプリケートします。 サービス管理コンポーネントは、プライマリ リージョンでのみホストされます。 プライマリ リージョンでシステム停止が発生した場合、設定またはポリシーの更新プログラムを含む構成の変更を Azure API Management サービス インスタンスに適用することはできません。
+
+[!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
 ## <a name="add-region"> </a>新しいリージョンに API Management サービス インスタンスをデプロイする
 
@@ -120,5 +119,5 @@ Azure API Management は、バックエンド サービスの URL が 1 つだ�
 [Deploy an API Management service instance to a new region]: #add-region
 [Delete an API Management service instance from a region]: #remove-region
 
-[unit]: http://azure.microsoft.com/pricing/details/api-management/
-[Premium]: http://azure.microsoft.com/pricing/details/api-management/
+[unit]: https://azure.microsoft.com/pricing/details/api-management/
+[Premium]: https://azure.microsoft.com/pricing/details/api-management/

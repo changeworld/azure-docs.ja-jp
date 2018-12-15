@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: d34671d4197735ea2c30aafc8fd01a5893427ff3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9e27df857d560abdf5b6a54272bb022b6ed466ee
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226848"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079366"
 ---
 # <a name="how-to-assign-users-to-applications"></a>ユーザーをアプリケーションに割り当てる方法
 
@@ -33,15 +33,15 @@ ms.locfileid: "51226848"
 
 2.  管理者が、アプリケーションにユーザーがメンバーとなっている[グループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)。次のグループが含まれます。
 
-  * オンプレミスから同期されたグループ
+    * オンプレミスから同期されたグループ
 
-  * クラウドで作成された静的なセキュリティ グループ
+    * クラウドで作成された静的なセキュリティ グループ
 
-  * クラウドで作成された[動的なセキュリティ グループ](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
+    * クラウドで作成された[動的なセキュリティ グループ](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
 
-  * クラウドで作成された Office 365 グループ
+    * クラウドで作成された Office 365 グループ
 
-  * [すべてのユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) グループ
+    * [すべてのユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) グループ
 
 3.  管理者が [[アプリケーションのセルフ サービス アクセス]](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) を有効にして、[[アプリケーション アクセス パネル]](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) の **[アプリの追加]** 機能を**ビジネス承認なし**で使用するアプリケーションの追加をユーザーに許可します。
 

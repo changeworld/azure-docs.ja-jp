@@ -3,7 +3,7 @@ title: Azure SQL Elastic Scale の FAQ | Microsoft Docs
 description: Azure SQL Database の Elastic Scale に関してよく寄せられる質問。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 52f507d8040f6ad628f7427253ce040ac69978ef
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a8a26a0a273c8e3cf1880ce277c2d4b4241e35ee
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250970"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874738"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>エラスティック データベース ツールに関してよく寄せられる質問 (FAQ)
 

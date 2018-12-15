@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f71db50678ad0f1b37e30a4120b90d47d9090942
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: fcc5052d73d921a8181ad068453111e5ead4361a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113854"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999869"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob Storage によってトリガーされる関数の作成
 
@@ -27,7 +27,7 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](http://storageexplorer.com/)。
++ [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](https://storageexplorer.com/)。
 + Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="create-an-azure-function-app"></a>Azure Function App の作成
@@ -76,7 +76,7 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
     ![ストレージ アカウント接続の資格情報を取得します。](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
 
-1. [Microsoft Azure Storage Explorer](http://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
+1. [Microsoft Azure Storage Explorer](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
 
     ![ストレージ アカウント エクスプローラー ツールを実行します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
 

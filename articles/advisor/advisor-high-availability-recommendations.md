@@ -3,23 +3,22 @@ title: Advisor の高可用性に関する推奨事項 | Microsoft Docs
 description: Azure Advisor を使用して、Azure のデプロイの高可用性を向上させます。
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: 2216b915c47ea05d3303ca02e51e976490ea36c6
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.author: kasparks
+ms.openlocfilehash: 61e85861ab5829620699d07fe24b1ebfdfc7cbdc
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068357"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839514"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Advisor の高可用性に関する推奨事項
 
@@ -34,7 +33,7 @@ Azure Advisor を使用して、ビジネスに不可欠なアプリケーショ
 
 ## <a name="ensure-availability-set-fault-tolerance"></a>可用性セットのフォールト トレランスを確保する 
 
-アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 Advisor は、1 台の仮想マシンのみを含む可用性セットを識別し、そのセットにさらに仮想マシンを追加することを推奨します。 このような構成により、計画済みのメンテナンス イベント中でも計画外のメンテナンス イベント中でも、少なくとも 1 台の仮想マシンが利用可能となり、Azure 仮想マシンの SLA が満たされます。 仮想マシンを作成するか、既存の仮想マシンを可用性セットに追加するかを選択できます。  
+アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 Advisor は、1 台の仮想マシンのみを含む可用性セットを識別し、そのセットにさらに仮想マシンを追加することを推奨します。 このような構成により、計画済みのメンテナンス イベント中でも計画外のメンテナンス イベント中でも、少なくとも 1 台の仮想マシンが利用可能となり、Azure 仮想マシンの SLA が満たされます。 仮想マシンを作成するか、既存の仮想マシンを可用性セットに追加するかを選択できます。  
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>アプリケーション ゲートウェイのフォールト トレランスを確保する
 アプリケーション ゲートウェイを備えるミッション クリティカルなアプリケーションのビジネス継続性を確保するために、Advisor は、フォールト トレランス用に構成されていないアプリケーション ゲートウェイ インスタンスを識別し、実施できる修復アクションを提案します。 Advisor は、中規模または大規模な単一インスタンス アプリケーション ゲートウェイを識別し、少なくとも 1 つ以上のインスタンスを追加することを推奨します。 また、1 つまたは複数の小規模アプリケーション ゲートウェイを識別し、中規模または大規模な SKU に移行することを推奨します。 これらの修復アクションでは、アプリケーション ゲートウェイ インスタンスがこれらのリソースの現在の SLA 要件を満たすように構成されていることを確認します。

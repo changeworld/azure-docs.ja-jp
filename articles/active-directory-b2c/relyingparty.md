@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8f56f287fde9e17d2a17298ca04eda63b69e3636
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: aaae119ec72a713adc2faa311dbcb6bd204035fd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159926"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835099"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -28,8 +28,8 @@ ms.locfileid: "47159926"
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
   TenantId="your-tenant.onmicrosoft.com"
@@ -104,7 +104,7 @@ ms.locfileid: "47159926"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| referenceId | [はい] | ポリシーのユーザー体験の識別子です。 詳細については、「[ユーザー体験](userjourneys.md)」を参照してください |
+| ReferenceId | [はい] | ポリシーのユーザー体験の識別子です。 詳細については、「[ユーザー体験](userjourneys.md)」を参照してください |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 

@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 6fa3ba36dca45d5b99c6b5f2ba24367bcd077024
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 181f37fb72584e18cc963ba1ffde070379a1b0c6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44030074"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961461"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>ASDK を使用してAzure Stack のバックアップを検証する
-Azure Stack をデプロイし、オファー、プラン、クォータ、およびサブスクリプションなどのユーザー リソースのプロビジョニング後に、[Azure Stack インフラストラクチャのバックアップを有効にする](..\azure-stack-backup-enable-backup-console.md)必要があります。 スケジュール設定とインフラストラクチャの定期的なバックアップの実行は、突発的的なハードウェアの故障またはサービスのエラーがある場合に、インフラストラクチャ管理のデータが失われないこようにします。
+Azure Stack をデプロイし、オファー、プラン、クォータ、およびサブスクリプションなどのユーザー リソースのプロビジョニング後に、[Azure Stack インフラストラクチャのバックアップを有効にする](../azure-stack-backup-enable-backup-console.md)必要があります。 スケジュール設定とインフラストラクチャの定期的なバックアップの実行は、突発的的なハードウェアの故障またはサービスのエラーがある場合に、インフラストラクチャ管理のデータが失われないこようにします。
 
 > [!TIP]
-> お勧めする[、オンデマンド バックアップを実行](..\azure-stack-backup-back-up-azure-stack.md)使用可能な最新のインフラストラクチャ データのコピーがあることを確認するには、この手順を開始する前にします。 バックアップが正常に完了した後、必ずバックアップの ID をキャプチャしてください。 この ID は、クラウドの復旧中に必要になります。 
+> お勧めする[、オンデマンド バックアップを実行](../azure-stack-backup-back-up-azure-stack.md)使用可能な最新のインフラストラクチャ データのコピーがあることを確認するには、この手順を開始する前にします。 バックアップが正常に完了した後、必ずバックアップの ID をキャプチャしてください。 この ID は、クラウドの復旧中に必要になります。 
 
 Azure Stack インフラストラクチャ バックアップには、Azure Stack の再デプロイ中に復元できる、クラウドに関する重要なデータが含まれます。 ASDK を使用して、運用しているクラウドに影響を与えずにこれらのバックアップを検証します。 
 

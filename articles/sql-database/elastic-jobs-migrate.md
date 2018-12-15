@@ -3,7 +3,7 @@ title: 新しい Elastic Database ジョブへの移行 | Microsoft Docs
 description: 新しい Elastic Database ジョブに移行します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 650de0e0bcafe81de0426bc4ec229506c6ed4421
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4470a13dfe462671b1a58a217e679d2b40236c6a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242910"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873973"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>新しい Elastic Database ジョブへの移行
 

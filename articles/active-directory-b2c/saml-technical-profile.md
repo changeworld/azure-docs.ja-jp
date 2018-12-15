@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 347a437a9f45f29348e97c616c985764135e5427
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 47c6ee9c30e183b9991d1b670e96e937ade19d5f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687471"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838516"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML 技術プロファイルを定義する
 
@@ -74,7 +74,7 @@ SAML 応答のアサーションを暗号化する場合:
 
 ```XML
 <KeyDescriptor use="encryption">
-  <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+  <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
     <X509Data>
       <X509Certificate>valid certificate</X509Certificate>
     </X509Data>

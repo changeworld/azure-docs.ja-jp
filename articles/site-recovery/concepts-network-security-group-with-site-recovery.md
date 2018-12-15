@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: fca56453d931588fdb5e509237ac538f0de9d0ec
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4885be7547d404505b50c563036f260166cbc2cc
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214394"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833824"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Azure Site Recovery でのネットワーク セキュリティ グループ
 

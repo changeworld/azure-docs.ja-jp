@@ -9,16 +9,15 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: 41e972145d2404e46b62521c7d40d997be74a7f9
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a593e42ed87ab985d4f4584ed6b73109716120bf
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093844"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52741809"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>トレースの重大度の比率の低下 (プレビュー)
 

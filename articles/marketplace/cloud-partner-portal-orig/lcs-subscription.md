@@ -14,15 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 2d75a432e84c3490186da6f8342562fddcaa32e1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: c0109839144775e9064db4f8396f19688fcc13e8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807069"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308636"
 ---
-<a name="lcs-subscription"></a>LCS サブスクリプション
-================
+# <a name="lcs-subscription"></a>LCS サブスクリプション
 
 このチュートリアルではサブスクリプションの作成方法について学習します。 このサブスクリプションでは、Microsoft Online のテスト テナントと、環境をデプロイできる Microsoft Dynamics Lifecycle Services プロジェクトが提供されます。 また、Microsoft Online テナントで追加のユーザーを設定し、次のサービス管理機能を備えたエクスペリエンスを取得できます。 学習するスキルを次に示します。
 
@@ -32,8 +31,7 @@ ms.locfileid: "48807069"
 - Microsoft Azure Active Directory とクライアントへの新しいユーザーの追加。
 - サブスクリプション メールでのリソースの表示。
 
-<a name="key-terms"></a>キーワード
-=========
+## <a name="key-terms"></a>キーワード
 
 **Microsoft Online Services テナント** - テナントは、組織でのすべてのサブスクリプションとユーザーのグループです。 テナントは、Microsoft Online Services での最初のサブスクリプションと同時に作成されます。
 

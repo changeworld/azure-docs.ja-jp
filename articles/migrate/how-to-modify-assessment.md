@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: raynew
-ms.openlocfilehash: d0cfab51b686b5b6eb9617d4424ac3f834de8d6f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2423c4fde177ab50552af580a60c7a15550e5586
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241074"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840437"
 ---
 # <a name="customize-an-assessment"></a>評価のカスタマイズ
 
@@ -26,7 +26,6 @@ ms.locfileid: "50241074"
     **設定** | **詳細** | **既定値**
     --- | --- | ---
     **ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/> Azure Migrate は現在、30 のリージョンをサポートしています (オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、ドイツ中部、ドイツ北東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、US Gov アリゾナ、US Gov テキサス、US Gov バージニア、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2)。 |  既定の場所は、米国西部 2 です。
-    **[価格レベル]** | ターゲット Azure VM の[価格レベル (Basic/Standard)](../virtual-machines/windows/sizes-general.md) を指定できます。 たとえば、運用環境の移行を計画している場合は、Standard レベルを検討することをお勧めします。 一方、開発/テスト環境の場合は、Basic レベルを検討するかもしれません。この場合、VM の待ち時間は長くなり、コストは安くなります。 | 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
     **ストレージの種類** | このプロパティを使用して、Azure に割り当てるディスクの種類を指定できます。 オンプレミスと同様のサイズ設定の場合は、ターゲットのディスクの種類を、Premium マネージド ディスクまたは Standard マネージド ディスクのいずれかに指定できます。 パフォーマンスに基づくサイズ設定の場合は、ターゲットのディスクの種類を、Automatic、Premium マネージド ディスク、または Standard マネージド ディスクのいずれかに指定できます。 ストレージの種類を Automatic として指定すると、ディスクのパフォーマンス データ (IOPS とスループット) に基づいてディスクに関する推奨事項が実行されます。 たとえば、[単一インスタンスの VM で 99.9% の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) を達成したい場合は、ストレージの種類を、評価対象のすべてのディスクが Premium マネージド ディスクとして推奨されることが保証される Premium マネージド ディスクとして指定してください。 Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。 | 既定値は、Premium マネージド ディスクです (サイズ変更の設定基準は*オンプレミスのサイズ設定*)。
     **予約インスタンス** |  Azure 上に[予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)があるかどうかも指定できます。Azure Migrate はそれに応じてコストを見積もります。 予約インスタンスは独立リージョン (Azure Government、Germany、および China) には適用されず、Azure Migrate の従量課金制プランにのみ適用されます。 | このプロパティの既定値は、3 年間の予約インスタンスです。
     **サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 "*パフォーマンスに基づく*" サイズ変更、またはパフォーマンスの履歴を考慮しない "*オンプレミスとしての*" VM のサイズ変更を実行できます。 | パフォーマンスに基づくサイズ変更が既定のオプションです。

@@ -1,5 +1,5 @@
 ---
-title: HBase と Phoenix のバックアップとレプリケーションの設定 - Azure HDInsight
+title: Apache HBase と Apache Phoenix のバックアップとレプリケーションの設定 - Azure HDInsight
 description: HBase と Phoenix のバックアップとレプリケーションを設定します。
 services: hdinsight
 author: ashishthaps
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 0dfb1cf5ce16e9aa30bb7f9fcc43bd24ccb90d76
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 568d63f984980e91b4dc059211dcf0eaceb73820
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042221"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164230"
 ---
-# <a name="set-up-backup-and-replication-for-hbase-and-phoenix-on-hdinsight"></a>HDInsight で HBase と Phoenix のバックアップとレプリケーションを設定する
+# <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
-HBase は、データ損失を防ぐための複数の方法をサポートしています。
+Apache HBase は、データ損失を防ぐための複数の方法をサポートしています。
 
 * `hbase` フォルダーをコピーする
 * エクスポート後にインポートする
@@ -101,7 +101,7 @@ CopyTable を使用して別のクラスターのテーブルにコピーする�
 
     <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
 
-* `<ZooKeeperQuorum>` は ZooKeeper ノードのコンマ区切りリストです。次に例を示します。
+* `<ZooKeeperQuorum>` は Apache ZooKeeper ノードのコンマ区切りリストです。次に例を示します。
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
@@ -109,7 +109,7 @@ CopyTable を使用して別のクラスターのテーブルにコピーする�
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
-使用している HDInsight クラスターについてこれらの値を取得する方法の詳細については、この記事の「[ZooKeeper クォーラム リストを手動で収集する](#manually-collect-the-zookeeper-quorum-list)」を参照してください。
+使用している HDInsight クラスターについてこれらの値を取得する方法の詳細については、この記事の「[Apache ZooKeeper クォーラム リストを手動で収集する](#manually-collect-the-apache-zookeeper-quorum-list)」を参照してください。
 
 CopyTable ユーティリティでは、コピーする行の時間範囲を指定するパラメーターと、コピーするテーブル内の列ファミリのサブセットを指定するパラメーターもサポートしています。 CopyTable でサポートされているパラメーターの完全な一覧を表示するには、パラメーターを指定せずに CopyTable を実行してください。
 
@@ -120,7 +120,7 @@ CopyTable は、コピー先テーブルにコピーされる、コピー元テ�
 > [!NOTE]
 > テーブル間でのデータのコピーを自動化するには、GitHub の [Azure HBase Utils](https://github.com/Azure/hbase-utils/tree/master/replication) リポジトリにある `hdi_copy_table.sh` スクリプトを参照してください。
 
-### <a name="manually-collect-the-zookeeper-quorum-list"></a>ZooKeeper クォーラム リストを手動で収集する
+### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Apache ZooKeeper クォーラム リストを手動で収集する
 
 両方の HDInsight クラスターが同じ仮想ネットワーク内に存在する場合は、前述のとおり、内部ホスト名解決が自動的に行われます。 VPN ゲートウェイによって接続された 2 つの異なる仮想ネットワーク内の HDInsight クラスターに対して CopyTable を使用するには、クォーラム内の Zookeeper ノードのホスト IP アドレスを指定する必要があります。
 
@@ -201,8 +201,8 @@ HBase レプリケーションでは、レプリケーション元クラスタ�
 5. 既存のデータをレプリケーション元テーブルからレプリケーション先テーブルにコピーします。
 6. レプリケーションによって自動的に、レプリケーション元テーブルに対する新しいデータ変更がレプリケーション先テーブルにコピーされます。
 
-HDInsight でレプリケーションを有効にするには、実行中のレプリケーション元 HDInsight クラスターにスクリプト アクションを適用します。 クラスターでレプリケーションを有効にするチュートリアル、または Azure Resource Management テンプレートを使用して仮想ネットワークに作成されたサンプル クラスターでのレプリケーションの実験については、[HBase レプリケーションの構成](apache-hbase-replication.md)に関する記事を参照してください。 その記事では、Phoenix メタデータのレプリケーションを有効にするための手順も説明しています。
+HDInsight でレプリケーションを有効にするには、実行中のレプリケーション元 HDInsight クラスターにスクリプト アクションを適用します。 クラスターでレプリケーションを有効にするチュートリアル、または Azure Resource Management テンプレートを使用して仮想ネットワークに作成されたサンプル クラスターでのレプリケーションの実験については、[Apache HBase レプリケーションの構成](apache-hbase-replication.md)に関する記事を参照してください。 その記事では、Phoenix メタデータのレプリケーションを有効にするための手順も説明しています。
 
 ## <a name="next-steps"></a>次の手順
 
-* [HBase レプリケーションの構成](apache-hbase-replication.md)
+* [Apache HBase のレプリケーションを構成する](apache-hbase-replication.md)

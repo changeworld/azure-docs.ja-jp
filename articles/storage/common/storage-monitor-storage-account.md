@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bc03a5f43ef65ec8feaccb82fc3d31debbc6e7b9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f7b73fa4d1f596e0221c2cec3c6c7417ceb767a4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523378"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275692"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
@@ -98,7 +98,7 @@ ms.locfileid: "39523378"
 3. 新しい警告ルールの**名前**と**説明**を指定します。
 4. アラートを追加する**メトリック**を選択し、アラートの**条件**、および**しきい値**を選択します。 しきい値の単位の種類は、選択したメトリックによって異なります。 たとえば、"回数" は *ContainerCount* の単位の種類ですが、*PercentNetworkError* の単位は割合です。
 5. **期間**を選択します。 この期間内にメトリックがしきい値以上になると、アラートがトリガーされます。
-6. (省略可能) **電子メール**と **webhook** の通知を構成します。 webhook の詳細については、「[Azure メトリック アラートでの webhook の構成](../../monitoring-and-diagnostics/insights-webhooks-alerts.md)」を参照してください。 電子メールまたは webhook の通知を構成しない場合は、Azure Portal にのみアラートが表示されます。
+6. (省略可能) **電子メール**と **webhook** の通知を構成します。 webhook の詳細については、「[Azure メトリック アラートでの webhook の構成](../../azure-monitor/platform/alerts-webhooks.md)」を参照してください。 電子メールまたは webhook の通知を構成しない場合は、Azure Portal にのみアラートが表示されます。
 
 ![Azure Portal の [アラート ルールの追加] ブレード](./media/storage-monitor-storage-account/add-alert-rule.png)
 

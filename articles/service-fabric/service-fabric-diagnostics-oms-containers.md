@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: aabdae370c28f8fa633372be4505c00c25254408
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d5fd55ec93ce07e30e4c6f123f9be8492581053c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403252"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972254"
 ---
 # <a name="monitor-containers-with-log-analytics"></a>Log Analytics でコンテナーを監視
  
@@ -53,7 +53,7 @@ ms.locfileid: "49403252"
 
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics のコンテナー ソリューション](../log-analytics/log-analytics-containers.md)について説明します。
+* [Log Analytics のコンテナー ソリューション](../azure-monitor/insights/containers.md)について説明します。
 * Service Fabric のコンテナー オーケストレーションについての詳細 - [Service Fabric とコンテナー](service-fabric-containers-overview.md)
 * Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
 * Log Analytics を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)規則を設定する

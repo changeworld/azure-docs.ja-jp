@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 3556384d71649391d094172a136b863ed26fd2ad
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2c8c97d8f5477e7640df87030ed6ef27c4c7b979
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227401"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310081"
 ---
+# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Azure Marketplace にプランを発行して管理する
+
 > [!NOTE]
 > このドキュメントは最新ではなく、情報は正確ではありません。 代わりに Azure Marketplace の[販売者ガイド](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide)にアクセスして、Azure Marketplace へのプランの発行についてのガイダンスをご覧ください。
 
-# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Azure Marketplace にプランを発行して管理する
 この記事では、Azure Marketplace に掲載されるソリューションを開発者が作成、デプロイ、管理し、Azure の他の顧客やパートナーに有償で提供するための方法を紹介しています。
 
 ## <a name="marketplace-publishing"></a>Marketplace への発行

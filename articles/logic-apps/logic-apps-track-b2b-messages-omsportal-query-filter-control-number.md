@@ -9,19 +9,19 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: af1d00e49819f1d69e08c0fa99891690e07b489f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 5cfab07e19e543b7a46fcce8f449a46395c144d6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233754"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995315"
 ---
 # <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>Azure Log Analytics で Azure Logic Apps の B2B メッセージの追跡クエリを作成する
 
 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して追跡している AS2、X12、または EDIFACT メッセージを検索するために、特定の条件に基づいてアクションをフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。
 
 > [!NOTE]
-> このページでは、以前、これらのタスクの実行方法の手順を、[2019 年 1 月に廃止される](../log-analytics/log-analytics-oms-portal-transition.md) Microsoft Operations Management Suite (OMS) を使用して説明していましたが、代わりに、Azure Log Analytics を使用した手順に置き換えられています。 
+> このページでは、以前、Microsoft Operations Management Suite (OMS) を使用してこれらのタスクを実行する手順を説明していましたが、OMS は [2019 年 1 月に廃止される](../azure-monitor/platform/oms-portal-transition.md)ため、代わりに Azure Log Analytics を使用する手順に置き換えられています。 
 
 ## <a name="prerequisites"></a>前提条件
 

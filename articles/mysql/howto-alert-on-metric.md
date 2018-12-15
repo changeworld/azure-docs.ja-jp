@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 3accc31f433e6db40c7d1de2b56dfbd4180b4933
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6db451ab7de50039c38b59612dd2ab1c61c35e7b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265183"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271252"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Azure Portal を使用して Azure Database for MySQL のメトリックのアラートを設定する 
 
@@ -29,8 +29,8 @@ ms.locfileid: "35265183"
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [コマンド ライン インターフェイス (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [コマンド ライン インターフェイス (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
@@ -82,5 +82,5 @@ ms.locfileid: "35265183"
 
 
 ## <a name="next-steps"></a>次の手順
-* [アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)に関する詳細情報を確認します。
+* [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

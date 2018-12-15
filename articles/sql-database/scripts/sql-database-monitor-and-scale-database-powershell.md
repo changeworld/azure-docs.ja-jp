@@ -12,16 +12,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 8586a4eb5c4325f258ad8f461b05e7368750d17a
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 07cf57ab7095c51567caf33905fca78dd51be0fc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056123"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966621"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-single-sql-database"></a>PowerShell を使用して単一の SQL データベースを監視およびスケーリングする
 
-この PowerShell のサンプル スクリプトは、データベースのパフォーマンス メトリックを監視し、そのデータベースを上位のコンピューティング サイズにスケーリングして、パフォーマンス メトリックの 1 つに警告ルールを作成します。 
+この PowerShell のサンプル スクリプトは、データベースのパフォーマンス メトリックを監視し、そのデータベースを上位のコンピューティング サイズにスケーリングして、パフォーマンス メトリックの 1 つに警告ルールを作成します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]

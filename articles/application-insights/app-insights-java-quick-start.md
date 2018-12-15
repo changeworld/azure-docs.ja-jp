@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b36e4598f5ff20b921c5cd150ae19be233cc2d14
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 45d1275ac3b78836cbb77c4e1508d0689c215d69
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246515"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998604"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Java Web アプリケーションの監視を開始する
 
@@ -29,7 +29,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 このクイック スタートを完了するには、以下が必要です。
 
 - JRE 1.7 または 1.8 のインストール
-- [無料の Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/) をインストールします。 このクイック スタートでは Eclipse Oxygen (4.7) を使用します。
+- [無料の Eclipse IDE for Java EE Developers](https://www.eclipse.org/downloads/) をインストールします。 このクイック スタートでは Eclipse Oxygen (4.7) を使用します。
 - Azure サブスクリプションと既存の Java Dynamic Web プロジェクトが必要です。
  
 Java Dynamic Web プロジェクトをお持ちでない場合は、[Java Web アプリ作成のクイック スタート](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java)に従って作成できます。
@@ -67,7 +67,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![新しい App Insights リソースのフォーム](./media/app-insights-java-quick-start/000-j.png)
 
-2. ```http://dl.microsoft.com/eclipse``` を "Work With" フィールドにコピーし、**[Azure Toolkit for Java]** チェックボックスをオンにした後、**[Applicatin Insights Plugin for Java] を選択し**  > **[Contact all update sites during install to find required software]** チェックボックスをオフにします。
+2. ```https://dl.microsoft.com/eclipse``` を "Work With" フィールドにコピーし、**[Azure Toolkit for Java]** チェックボックスをオンにした後、**[Applicatin Insights Plugin for Java] を選択し**  > **[Contact all update sites during install to find required software]** チェックボックスをオフにします。
 
 3. インストールが完了すると、**Eclipse を再起動**するように求められます。
 
@@ -130,7 +130,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 
    ![サーバー メトリックのグラフ](./media/app-insights-java-quick-start/livemetricsjava.png)
 
-Java の監視に関する詳細については、[App Insights Java の追加ドキュメント](.\app-insights-java-get-started.md)を参照してください。
+Java の監視に関する詳細については、[App Insights Java の追加ドキュメント](./app-insights-java-get-started.md)を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 6b0068bc912de13590cd9bc7418ea6fcdb01189f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4c494eda7126a21223f65a7e52c220fca93b2e39
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420491"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184663"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
@@ -34,7 +34,7 @@ ms.locfileid: "50420491"
 
 2. Java インストールの環境変数を設定します。 `PATH` 変数には、*jdk1.8.x\bin* ディレクトリの完全なパスを含めます。 初めて Java をインストールするマシンの場合は、`JAVA_HOME` という新しい環境変数を作成し、*jdk1.8.x* ディレクトリの完全なパスに指定します。 Windows マシンでは、このディレクトリは *C:\\Program Files\\Java\\* フォルダーにあります。Windows マシンの **[コントロール パネル]** で **[システム環境変数の編集]** を探し、環境変数を作成または編集することができます。 
 
-  コマンド ウィンドウで次のコマンドを実行して、マシンに Java が正常に設定されたことを確認できます。
+   コマンド ウィンドウで次のコマンドを実行して、マシンに Java が正常に設定されたことを確認できます。
 
     ```cmd\sh
     java -version

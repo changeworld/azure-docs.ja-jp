@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5bb820d816115dccf470b6c32d080862495e8310
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6f1869b83f46f97d0c54eb874a8879521a43b1e2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434978"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387065"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -35,7 +35,7 @@ Get-AzureRmResource -ResourceGroupName demogroup | Select Name, ResourceType | F
 Azure CLI では、次を使用します。
 
 ```azurecli-interactive
-az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
+az resource list -g demogroup --query '[].{name:name, resourceType:type}' --output table
 ```
 
 リソースの種類が形式で返されます`<resource-provider>/<resource-type-name>`。 それでは、値`Microsoft.OperationalInsights/workspaces`のリソース プロバイダーが**Microsoft.OperationalInsights**であり、そのリソースの種類名は**ワークスペース**です。
@@ -89,14 +89,6 @@ az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
 | batchaccounts | [はい] | [はい] |
-
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-| リソースの種類 | リソース グループ | サブスクリプション |
-| ------------- | -------------- | ------------ |
-| クラスター | いいえ  | いいえ  |
-| fileservers | いいえ  | いいえ  |
-| ジョブ | いいえ  | いいえ  |
-| workspaces | いいえ  | いいえ  |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -203,7 +195,7 @@ az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| 格納する | [はい] | [はい] |
+| applications | [はい] | [はい] |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -547,7 +539,7 @@ az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| 格納する | [はい] | いいえ  |
+| applications | [はい] | いいえ  |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -573,7 +565,7 @@ az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | -------------- | ------------ |
-| 格納する | [はい] | [はい] |
+| applications | [はい] | [はい] |
 | ネットワーク | [はい] | [はい] |
 | volumes | [はい] | [はい] |
 
@@ -593,7 +585,7 @@ az resource list -g demogroup --query '[].{name:name, reourcetype:type}'
 | appliancedefinitions | いいえ  | いいえ  |
 | アプライアンス | いいえ  | いいえ  |
 | applicationdefinitions | いいえ  | いいえ  |
-| 格納する | いいえ  | いいえ  |
+| applications | いいえ  | いいえ  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | リソースの種類 | リソース グループ | サブスクリプション |

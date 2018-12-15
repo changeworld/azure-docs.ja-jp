@@ -1,12 +1,12 @@
 ---
-title: Machine Learning Studio にデータをインポートする | Microsoft Docs
+title: Machine Learning Studio にデータをインポートする - Azure | Microsoft Docs
 description: さまざまなデータ ソースから Azure Machine Learning Studio にデータをインポートする方法 サポートされているデータ型とデータ形式に関する説明
 keywords: データのインポート、データ形式、データ型、データ ソース、トレーニング データ
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: c194ee3b-838c-4efe-bb2a-c1d052326216
 ms.service: machine-learning
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 575e17f214561bde06b70bf87c4895ae379659f2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 2f8c1eb43fddb21a59d4f00fd86b08d3fb3608f4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344724"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269959"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする
 
@@ -38,10 +38,6 @@ Machine Learning Studio で独自のデータを使用して予測分析ソリ�
 > 
 
 この概要記事では、Machine Learning Studio で使用できるようにデータを準備する方法と、サポートされるデータ形式とデータ型についても説明します。
-
-> [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-> 
-> 
 
 ## <a name="get-data-ready-for-use-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で使用できるようにデータを準備する
 Machine Learning Studio は、区切られたテキスト データやデータベースからの構造化されたデータなど、四角形のデータや表形式のデータで作業するように設計されています。場合によっては、四角形以外のデータが使用されることもあります。

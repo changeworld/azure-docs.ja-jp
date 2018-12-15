@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 531cfb32b3433e0a376845a81a3ea5e13e6f1d11
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 2af68c0b9deb9d5b065f5fae42cf4bf927f0c671
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278686"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386456"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics を使用して Azure HDInsight クラスターを監視する
 
@@ -26,7 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Log Analytics ワークスペース**。 ワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Log Analytics 環境として考えることができます。 手順については、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)に関するページをご覧ください。
+* **Log Analytics ワークスペース**。 ワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Log Analytics 環境として考えることができます。 手順については、[Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)に関するページをご覧ください。
 
 * **Azure HDInsight クラスター**。 現在、Log Analytics は次の HDInsight クラスター タイプで使用することができます。
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
   HDInsight クラスターの作成手順については、[Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
-> [!NOTE]
+> [!NOTE]  
 > パフォーマンス向上のため、HDInsight クラスターと Log Analytics ワークスペースの両方を同じリージョンに配置することをお勧めします。 Azure Log Analytics は、すべての Azure リージョンで使用できるわけではありません。
 
 ## <a name="enable-log-analytics-by-using-the-portal"></a>ポータルを使用して Log Analytics を有効にする
@@ -91,7 +91,7 @@ HDInsight では、Azure Log Analytics に追加できるクラスター固有�
 * HDInsight Spark Monitoring
 * HDInsight Storm Monitoring
 
-管理ソリューションをインストールする手順については、「[Azure の管理ソリューション](../monitoring/monitoring-solutions.md#install-a-management-solution)」をご覧ください。 テスト用に HDInsight Hadoop Monotiring ソリューションをインストールします。 インストールが完了すると、**[概要]** の下に **HDInsightHadoop** タイルが表示されます。 **HDInsightHadoop** タイルを選択します。 HDInsightHadoop ソリューションは次のようになります。
+管理ソリューションをインストールする手順については、「[Azure の管理ソリューション](../azure-monitor/insights/solutions.md#install-a-management-solution)」をご覧ください。 テスト用に HDInsight Hadoop Monotiring ソリューションをインストールします。 インストールが完了すると、**[概要]** の下に **HDInsightHadoop** タイルが表示されます。 **HDInsightHadoop** タイルを選択します。 HDInsightHadoop ソリューションは次のようになります。
 
 ![HDInsight 監視ソリューションのビュー](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 

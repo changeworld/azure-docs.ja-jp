@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/15/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 2017e08361c9ff060fde96b78549133d48372e34
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: da88be76d01b246e273739566d629348895b68b6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853899"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971999"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Azure Stack への MySQL リソース プロバイダーのデプロイ
 
@@ -32,8 +32,8 @@ MySQL サーバー リソース プロバイダーを使用して、MySQL デー
 
 Azure Stack MySQL リソース プロバイダーをデプロイする前に、いくつかの前提条件が満たされている必要があります。 これらの要件を満たすには、特権エンドポイント VM にアクセスできるコンピューターでこの記事の手順を実行します。
 
-* まだ登録していない場合は、Azure Marketplace 項目をダウンロードできるよう、Azure に [Azure Stack を登録](.\azure-stack-registration.md)します。
-* Azure モジュールと Azure Stack PowerShell モジュールは、このインストールを実行するシステムにインストールする必要があります。 そのシステムは、最新バージョンの .NET ランタイムを伴う Windows 10 または Windows Server 2016 のイメージである必要があります。 [PowerShell for Azure Stack をインストールする](.\azure-stack-powershell-install.md)を参照してください。
+* まだ登録していない場合は、Azure Marketplace 項目をダウンロードできるよう、Azure に [Azure Stack を登録](./azure-stack-registration.md)します。
+* Azure モジュールと Azure Stack PowerShell モジュールは、このインストールを実行するシステムにインストールする必要があります。 そのシステムは、最新バージョンの .NET ランタイムを伴う Windows 10 または Windows Server 2016 のイメージである必要があります。 [PowerShell for Azure Stack をインストールする](./azure-stack-powershell-install.md)を参照してください。
 * **Windows Server 2016 Datacenter - Server Core** イメージをダウンロードして、必要な Windows Server Core VM を Azure Stack Marketplace に追加します。
 
 * MySQL リソース プロバイダー バイナリをダウンロードした後、自己展開ツールを実行してコンテンツを一時ディレクトリに展開します。
@@ -60,7 +60,7 @@ Azure Stack MySQL リソース プロバイダーをデプロイする前に、�
 
 ### <a name="certificates"></a>証明書
 
-_統合システムのインストールのみを対象_。 [Azure Stack のデプロイの PKI 要件](.\azure-stack-pki-certs.md#optional-paas-certificates)に関するページの「オプションの PaaS 証明書」セクションで説明されている SQL PaaS PKI 証明書を指定する必要があります。 **DependencyFilesLocalPath** パラメーターで指定された場所に .pfx ファイルを配置します。 ASDK システムの証明書は提供しないでください。
+_統合システムのインストールのみを対象_。 [Azure Stack のデプロイの PKI 要件](./azure-stack-pki-certs.md#optional-paas-certificates)に関するページの「オプションの PaaS 証明書」セクションで説明されている SQL PaaS PKI 証明書を指定する必要があります。 **DependencyFilesLocalPath** パラメーターで指定された場所に .pfx ファイルを配置します。 ASDK システムの証明書は提供しないでください。
 
 ## <a name="deploy-the-resource-provider"></a>リソース プロバイダーのデプロイ
 

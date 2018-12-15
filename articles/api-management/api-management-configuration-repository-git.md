@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 97ca4f69f4bf2aa814d51cc17970c1aead8399e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414405"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961011"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -43,6 +43,8 @@ Git を使用して API Management サービス インスタンスを管理す�
 5. リポジトリからサービス構成データベースに変更をデプロイする
 
 この記事では、Git を有効にして使用し、サービス構成を管理する方法について説明します。また、Git リポジトリ内のファイルとフォルダーに関するリファレンス情報も提供します。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="access-git-configuration-in-your-service"></a>サービスの Git 構成にアクセスする
 
@@ -79,7 +81,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 > このパスワードを書き留めておいてください。 このページから移動すると、パスワードが再度表示されることはありません。
 > 
 
-次の例では [Git for Windows](http://www.git-scm.com/downloads) の Git Bash ツールを使用していますが、使い慣れた Git ツールも使用できます。
+次の例では [Git for Windows](https://www.git-scm.com/downloads) の Git Bash ツールを使用していますが、使い慣れた Git ツールも使用できます。
 
 Git ツールを目的のフォルダーで開き、次のコマンドを実行して、Git リポジトリをローカル マシンに複製します (コマンドは Azure Portal で提供されます)。
 

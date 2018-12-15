@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: 3168593e30a7f5acf49960c8479da75529860a65
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8e25d90b0c86ad7d65510873416d13d93623607b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684547"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865031"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
 
@@ -35,7 +35,7 @@ SDK を使用すると、変更フィードを低レベルで制御できます�
 
 ## <a name="next-steps"></a>次の手順
 
-以下の記事を参照すれば、変更フィードに関してさらに詳しく知ることができます。
+以下の記事で、変更フィードに関してさらに詳しく知ることができます。
 
 * [変更フィードの概要](change-feed.md)
 * [Azure Functions を活用した変更フィードの使用](change-feed-functions.md)

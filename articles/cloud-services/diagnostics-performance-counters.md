@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: d3aeb930dcb325aebc8c6b0a9dfde3602312618b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001465"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322945"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
 
@@ -127,7 +127,7 @@ Cloud Services 用の Azure 診断拡張機能では、収集するパフォー�
 
 収集するパフォーマンス カウンターは、**diagnostics.wadcfgx** ファイルで定義されています。 このファイル (ロールごとに定義されています) を Visual Studio で開き、**DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 要素を探します。 新しい **PerformanceCounterConfiguration** 要素を子として追加します。 この要素には、`counterSpecifier` と `sampleRate` の 2 つの属性があります。 `counterSpecifier` 属性では、収集するシステム パフォーマンス カウンター セット (前のセクションで説明) を定義します。 `sampleRate` 値は、その値がポーリングされる頻度を示します。 全体として、すべてのパフォーマンス カウンターは、親 `PerformanceCounters` 要素の `scheduledTransferPeriod` 属性値に従って Azure に転送されます。
 
-`PerformanceCounters` スキーマ要素の詳細については、[Azure 診断スキーマ](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)に関するページを参照してください。
+`PerformanceCounters` スキーマ要素の詳細については、[Azure 診断スキーマ](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)に関するページを参照してください。
 
 `sampleRate` 属性で定義された期間は、XML 期間データ型を使用して、パフォーマンス カウンターのポーリング頻度を示します。 下の例では、頻度が `PT3M` に設定されています。これは、`[P]eriod[T]ime[3][M]inutes` (3 分ごと) を意味します。
 
@@ -297,4 +297,4 @@ counterServiceUsed.Increment();
 - [Azure Cloud Services 向けの Application Insights](../application-insights/app-insights-cloudservices.md#performance-counters)
 - [Application Insights のシステム パフォーマンス カウンター](../application-insights/app-insights-performance-counters.md)
 - [カウンター パスの指定](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Azure 診断のスキーマ - パフォーマンス カウンター](../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md#performancecounters-element)
+- [Azure 診断のスキーマ - パフォーマンス カウンター](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

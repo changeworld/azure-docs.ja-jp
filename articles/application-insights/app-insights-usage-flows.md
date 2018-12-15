@@ -8,18 +8,17 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 785da292b521dad6743dd30482f8360cbd9f78cd
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 05853cb494ef6cc615bea7eecb1cfac288b46f3b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139807"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721954"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights でユーザー フローを使用してユーザーのナビゲーション パターンを分析する
 

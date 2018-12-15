@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/19/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b5b94c959ae9820cab338f3ee3317fb3ee166d6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c1e8f94a0131ace6354d070e932e414a1897260e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286603"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166304"
 ---
 # <a name="planning-for-maintenance-on-your-azure-sql-data-warehouse"></a>Azure SQL データ ウェアハウスのメンテナンスの計画
 
@@ -32,9 +32,9 @@ Azure SQL データ ウェアハウスに計画メンテナンス イベント�
 
 ## <a name="setting-up-alerts"></a>アラートの設定
 
-計画メンテナンス ログ アラートを設定するために、[Azure Monitor](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) を使用することをお勧めします。 必要なメンテナンスが業務に与える影響を最小限に抑えるよう計画を立てるうえで、アラートが役立つ場合があります。 
+計画メンテナンス ログ アラートを設定するために、[Azure Monitor](../azure-monitor/platform/alerts-activity-log-service-notifications.md) を使用することをお勧めします。 必要なメンテナンスが業務に与える影響を最小限に抑えるよう計画を立てるうえで、アラートが役立つ場合があります。 
 
-通知を設定するには、[ログ アラートに関する手順](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)を使用してください。 
+通知を設定するには、[ログ アラートに関する手順](../azure-monitor/platform/alerts-activity-log-service-notifications.md)を使用してください。 
 
 ## <a name="next-steps"></a>次の手順
 監視の詳細については、[ワークロードの監視](sql-data-warehouse-manage-monitor.md)に関するページを参照してください。

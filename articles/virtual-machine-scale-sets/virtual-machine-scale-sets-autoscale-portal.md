@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
-ms.openlocfilehash: 6ce737cb221b948a1cc25b8a441d3b623915662b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ceb3f1da742c79d80398b87b9c4880781175690c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466521"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321513"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。
@@ -131,4 +131,4 @@ VM インスタンスの数と状態を確認するには、スケール セッ�
 
 VM インスタンスの管理方法については、[Azure PowerShell を使用した仮想マシン スケール セットの管理](virtual-machine-scale-sets-windows-manage.md)に関するページを参照してください。
 
-自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。
+自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../azure-monitor/platform/autoscale-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。

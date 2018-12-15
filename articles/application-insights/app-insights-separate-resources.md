@@ -9,16 +9,15 @@ ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 83852333d8e66c76f2d2710b1813a4400622e624
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 77c0baba1c30153730e87181e24137d9a20ea6b1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417312"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012472"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>開発、テスト、および運用のテレメトリの分離
 
@@ -33,7 +32,7 @@ Web アプリに対する Application Insights の監視を設定するときは
 通常、さまざまなシナリオに応じて、複数のリソースまたは単一の共有リソースを使用することを選択します。
 
 * 複数の独立したアプリケーション - アプリごとに別のリソースと ikey を使用します。
-* 1 つのビジネス アプリケーションの複数のコンポーネントまたはロール - すべてのコンポーネント アプリに対して[単一の共有リソース](app-insights-monitor-multi-role-apps.md)を使用します。 cloud_RoleName プロパティによって、テレメトリをフィルター処理したりセグメント化したりできます。
+* 1 つのビジネス アプリケーションの複数のコンポーネントまたはロール - すべてのコンポーネント アプリに対して[単一の共有リソース](app-insights-app-map.md)を使用します。 cloud_RoleName プロパティによって、テレメトリをフィルター処理したりセグメント化したりできます。
 * 開発、テスト、およびリリース - 'スタンプ' 内のシステムのバージョンまたは運用段階ごとに、別のリソースと ikey を使用します。
 * A |B テスト - 単一のリソースを使用します。 TelemetryInitializer を作成して、バリアント型を識別するプロパティをテレメトリに追加します。
 
@@ -114,7 +113,7 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
     ```XML
 
     <?xml version="1.0" encoding="utf-8"?>
-    <DeploymentEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
+    <DeploymentEvent xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
       <ProjectName>AppVersionExpt</ProjectName>
       <Build type="MSBuild">
         <MSBuild>

@@ -1,33 +1,31 @@
 ---
-title: Apache Spark を Azure Cosmos DB に接続する | Microsoft Docs
+title: Apache Spark を Azure Cosmos DB に接続する
 description: Apache Spark を Azure Cosmos DB に接続できるようにする Azure Cosmos DB Spark コネクタについて説明します。 Microsoft のマルチ テナントのグローバル分散型データベース システムで分散集計を実行できます。
 keywords: Apache Spark
 services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: fd1fa105a880acb0d2b18a3b69ba8d475d8f82a3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269413"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081593"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
  
-Apache Spark-Azure Cosmos DB コネクタを使用すると、Azure Cosmos DB を Apache Spark ジョブの入力または出力とすることができます。 [Spark](http://spark.apache.org/) を [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に接続すると、目まぐるしく変化するデータ サイエンスの問題を迅速に解決できます。 Azure Cosmos DB を使用してデータをすばやく保持し、クエリを実行できます。 このコネクタは、ネイティブの Azure Cosmos DB マネージド インデックスを効率的に使用します。 インデックスにより、急速に変化するグローバル分散データに対して、分析の実行時に更新可能な列や、述語によるプッシュダウン フィルターを利用できるようになります。 この種のデータは、モノのインターネット (IoT) からデータ サイエンスや分析のシナリオまで多岐にわたります。
+Apache Spark-Azure Cosmos DB コネクタを使用すると、Azure Cosmos DB を Apache Spark ジョブの入力または出力とすることができます。 [Spark](https://spark.apache.org//) を [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に接続すると、目まぐるしく変化するデータ サイエンスの問題を迅速に解決できます。 Azure Cosmos DB を使用してデータをすばやく保持し、クエリを実行できます。 このコネクタは、ネイティブの Azure Cosmos DB マネージド インデックスを効率的に使用します。 インデックスにより、急速に変化するグローバル分散データに対して、分析の実行時に更新可能な列や、述語によるプッシュダウン フィルターを利用できるようになります。 この種のデータは、モノのインターネット (IoT) からデータ サイエンスや分析のシナリオまで多岐にわたります。
 
 ## <a name="connector-components"></a>コネクタ コンポーネント
 
 Spark-Azure Cosmos DB コネクタには、次のコンポーネントがあります。
 
-* [Azure Cosmos DB](http://documentdb.com) では、多数の地理的リージョン間でスループットとストレージの両方をプロビジョニングし、柔軟に拡大縮小できます。  
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) では、多数の地理的リージョン間でスループットとストレージの両方をプロビジョニングし、柔軟に拡大縮小できます。  
 
-* [Apache Spark](http://spark.apache.org/) は、速度、使いやすさ、高度な分析に重点を置いて構築された強力なオープン ソース処理エンジンです。  
+* [Apache Spark](https://spark.apache.org/) は、速度、使いやすさ、高度な分析に重点を置いて構築された強力なオープン ソース処理エンジンです。  
 
 * [Azure Databricks の Apache Spark クラスター](https://docs.azuredatabricks.net/getting-started/index.html)では、Spark クラスターで Spark ジョブを実行できます。
 
@@ -83,7 +81,7 @@ pyDocumentDB SDK を使用して Spark を Azure Cosmos DB に接続するには
 
 6. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Python]** を選びます。 ドロップダウン リストから先ほど作成したクラスターを選び、**[作成]** を選択します。  
 
-7. "doctorwho" Azure Cosmos DB アカウントでホストされているフライト サンプル データを使用して、いくつかの Spark クエリを実行します。 (このアカウントはパブリックにアクセスできます。)[azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html` に移動します。 自分の Azure Databricks アカウントにノートブックをインポートし、実行できます。 次のセクションでは、コード ブロックの機能を詳しく説明します。
+7. "doctorwho" Azure Cosmos DB アカウントでホストされているフライト サンプル データを使用して、いくつかの Spark クエリを実行します。 このアカウントはパブリックにアクセスできます。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、[Read_Batch_PyDocumentDB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_PyDocumentDB.ipynb) ノートブックがホストされます。 自分の Azure Databricks アカウントにノートブックをインポートし、実行できます。 次のセクションでは、コード ブロックの機能を詳しく説明します。
 
 次のコード スニペットは、pyDocumentDB SDK をインポートし、Spark コンテキストでクエリを実行する方法を示しています。 コード スニペットに示されているとおり、pyDocumentDB SDK には、Azure Cosmos DB アカウントへの接続に必要な接続パラメーターが含まれています。 必要なライブラリがインポートされ、Azure Cosmos DB クライアント (pydocumentdb.document_client) を作成するようにマスター キーとホストが構成されます。
 
@@ -179,7 +177,7 @@ Java SDK 実装のデータ フローは次のとおりです。
 
 4. Twitter フィード サンプルの内容を抽出し、config.py ファイルを開きます。 masterKey、host、databaseId、collectionId、preferredLocations の各値を更新します。  
 
-5. `http://apps.twitter.com/` に移動し、Twitter フィード アプリケーションを登録します。 アプリケーションの名前を選択すると、**コンシューマー キー、コンシューマー シークレット、アクセス トークン、およびアクセス トークン シークレット**が表示されます。 これらの値をコピーし、それらを config.py ファイルで更新して、Twitter フィード アプリケーションから Twitter にプログラムでアクセスできるようにします。   
+5. `https://apps.twitter.com/` に移動し、Twitter フィード アプリケーションを登録します。 アプリケーションの名前を選択すると、**コンシューマー キー、コンシューマー シークレット、アクセス トークン、およびアクセス トークン シークレット**が表示されます。 これらの値をコピーし、それらを config.py ファイルで更新して、Twitter フィード アプリケーションから Twitter にプログラムでアクセスできるようにします。   
 
 6. config.py ファイルを保存します。 コマンド プロンプトを開き、次のコマンドを使用して、Python アプリケーションを実行します。
 
@@ -209,7 +207,7 @@ Java SDK 実装のデータ フローは次のとおりです。
 
 ### <a name="read-twitter-data-from-azure-cosmos-db"></a>Azure Cosmos DB から Twitter データを読み取る
  
-このセクションでは、Azure Cosmos DB から Twitter データのバッチを読み取る Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Read_Batch_Twitter_Data.html` に移動します。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
+このセクションでは、Azure Cosmos DB から Twitter データのバッチを読み取る Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、[Read_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_Twitter_Data.ipynb) ノートブックがホストされます。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
 
 1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[ノートブック]** の順に選択します。 
 
@@ -268,7 +266,7 @@ Java SDK では、構成マッピングのために次の値がサポートさ�
 
 ### <a name="read-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Azure Cosmos DB にストリーミングされている Twitter データを読み取る
 
-このセクションでは、ストリーミング Twitter データの変更フィードを読み取る Spark クエリを実行します。 このセクションでクエリを実行する間は、Twitter フィード アプリが稼働しており、データを Azure Cosmos DB にポンプしていることを確認してください。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Read_Stream_Twitter_Data.html` に移動します。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
+このセクションでは、ストリーミング Twitter データの変更フィードを読み取る Spark クエリを実行します。 このセクションでクエリを実行する間は、Twitter フィード アプリが稼働しており、データを Azure Cosmos DB にポンプしていることを確認してください。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、[Read_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Stream_Twitter_Data.scala) ノートブックがホストされます。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
 
 1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[ノートブック]** の順に選択します。  
 
@@ -335,7 +333,7 @@ Java SDK では、次の接続設定がサポートされます。
 
 ### <a name="write-twitter-data-to-azure-cosmos-db"></a>Azure Cosmos DB に Twitter データを書き込む 
 
-このセクションでは、Twitter データのバッチを、同じデータベース内の新しいコレクションに書き込む Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Write_Batch_Twitter_Data.html` に移動します。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
+このセクションでは、Twitter データのバッチを、同じデータベース内の新しいコレクションに書き込む Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、[Write_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Batch_Twitter_Data.ipynb) ノートブックがホストされます。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
 
 1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[ノートブック]** の順に選択します。  
 
@@ -428,7 +426,7 @@ Java SDK では、構成マッピングのために次の値がサポートさ�
 
 ### <a name="write-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Azure Cosmos DB にストリーミングされている Twitter データを書き込む 
 
-このセクションでは、ストリーミング Twitter データの変更フィードを、同じデータベース内の新しいコレクションに書き込む Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Write_Stream_Twitter_Data.html` に移動します。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
+このセクションでは、ストリーミング Twitter データの変更フィードを、同じデータベース内の新しいコレクションに書き込む Spark クエリを実行します。 [azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、[Write_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Stream_Data.scala) ノートブックがホストされます。 ノートブックを Azure Databricks アカウントにインポートし、アカウント URI、マスター キー、データベース、コレクションの各名前を更新します。 ノートブックを実行するか、次のようにして作成できます。
 
 1. Azure Databricks アカウントに移動し、**[ワークスペース]** > **[作成]** > **[ノートブック]** の順に選択します。  
 
@@ -513,4 +511,4 @@ Java SDK では、構成マッピングのために次の値がサポートさ�
 * [集計の例](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [サンプル スクリプトと Notebook](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-また、[Apache Spark SQL、DataFrames、データセット ガイド](http://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure HDInsight 上の Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) に関する記事を確認することもできます。
+また、[Apache Spark SQL、DataFrames、データセット ガイド](https://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure HDInsight 上の Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) に関する記事を確認することもできます。

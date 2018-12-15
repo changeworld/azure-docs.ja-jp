@@ -10,18 +10,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/28/2017
 ms.author: victorh
-ms.openlocfilehash: 8f2e2500c39f42ebd7fefb3cec941088edf126f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fc418f58b299dcba08fda65000c5356c51f471e6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045021"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993308"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
 
 [アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure Portal を使用して[複数の Web サイト](multiple-site-overview.md)のホスティングを構成できます。 このチュートリアルでは、仮想マシンを使用してバックエンド アドレス プールを定義します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * アプリケーション ゲートウェイの作成
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインする
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインする
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -143,7 +143,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
 ## <a name="create-routing-rules"></a>ルーティング規則の作成
 
-ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも前に配置する必要があります。 
+ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。 
 
 この例では、2 つの新しい規則を作成し、アプリケーション ゲートウェイを作成したときに作成された既定の規則を削除します。 
 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bc2fbf7aadf99a2f765def2d352819dfa6cd5fa4
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: dc0c6a37e11574cef857a7af773a9d90bea57357
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266043"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972067"
 ---
 # <a name="interactive-feature-verification-testing"></a>対話型機能検証テスト  
 
@@ -48,7 +48,7 @@ ms.locfileid: "52266043"
 
 3.  **[テスト パス]** タイルで **[開始]** を選択します。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image1.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image1.png)
 
 4.  **テスト パス** ワークフローの名前を入力します。
 
@@ -63,7 +63,7 @@ ms.locfileid: "52266043"
 > [!Note]  
 > ディスク識別の対話型機能検証テストに対して、ドメイン管理者ユーザーとパスワードを指定する必要があります。
 
-![Alt text](media\azure-stack-vaas-interactive-feature-verification\image2.png)
+![Alt text](media/azure-stack-vaas-interactive-feature-verification/image2.png)
 
 ## <a name="select-the-test"></a>テストの選択
 
@@ -72,51 +72,51 @@ ms.locfileid: "52266043"
     > [!Note]  
     > テストのバージョン番号は、2 次テストの改良が行われると増加します。 Microsoft による別段の指示がない限り、常に最新バージョンを使用することが推奨されます。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image4.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image4.png)
 
 2.  **[編集]** を選択して、ドメイン管理者ユーザーとパスワードを指定します。
 
 3.  テストの起動先として適切なテスト実行エージェントまたは DVM を選択します。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image5.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image5.png)
 
 4.  **[送信]** を選択してテストを開始します。
 
-![Alt text](media\azure-stack-vaas-interactive-feature-verification\image6.png)
+![Alt text](media/azure-stack-vaas-interactive-feature-verification/image6.png)
 
 ## <a name="start-the-test"></a>テストの開始
 
 Disk Identification Test のプロンプトが、VaaS エージェントが実行されるコンピューターに表示されます。 これは通常、Azure Stack インスタンス用の DVM またはジャンプボックスです。
 
-![Alt text](media\azure-stack-vaas-interactive-feature-verification\image8.png)
+![Alt text](media/azure-stack-vaas-interactive-feature-verification/image8.png)
 
 ## <a name="choose-the-actions"></a>アクションの選択
 
 1.  **[ドキュメント]** と **[検証]** のリンク先に移動して、このシナリオの実施方法に関する Microsoft からの指示を確認します。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image9.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image9.png)
 
 2.  **[次へ]** を選択します。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image10.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image10.png)
 
 3.  手順に従って事前チェック スクリプトを実行します。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image11.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image11.png)
 
 4.  事前チェック スクリプトが正常に完了したら、**[情報]** タブの **[ドキュメント]** リンクと **[検証]** リンクのとおりに、手動シナリオ (ディスク交換) を実行します。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image12.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image12.png)
 
 5.  手動シナリオを実施している際中は、ダイアログ ボックスを閉じないでください。
 
 6.  手動シナリオを実施し終えたら、手順に従って事後チェック スクリプトを実行します。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image13.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image13.png)
 
 7.  手動シナリオ (ディスク交換) が正常に完了した後、**[次へ]** を選択します。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image14.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image14.png)
 
 > [!Important]  
 > ウィンドウを閉じると、テストは完了する前に停止します。
@@ -125,7 +125,7 @@ Disk Identification Test のプロンプトが、VaaS エージェントが実�
 
 1.  テストが完了したら、フィードバックを送るよう求められます。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image15.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image15.png)
 
 2.  これらの質問は、Microsoft がシナリオの成功率とリリース品質を評価するのに役立てられます。
 
@@ -133,7 +133,7 @@ Disk Identification Test のプロンプトが、VaaS エージェントが実�
 
 1.  Microsoft に送信したいログ ファイルを添付します。
 
-    ![Alt text](media\azure-stack-vaas-interactive-feature-verification\image16.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image16.png)
 
 2.  フィードバック送信の EULA に同意します。
 

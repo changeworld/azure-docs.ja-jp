@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: moderakh
-ms.openlocfilehash: 65af8a27d864231e6302d813836e2f63803234d2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5f66623c8e37f0663da7defc10d87d89bd0ad99d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844789"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105780"
 ---
 # <a name="create-and-manage-resources-of-an-azure-cosmos-db-sql-api-account-using-a-java-application"></a>Java アプリケーションを使用して Azure Cosmos DB SQL API アカウントのリソースを作成および管理する
 
@@ -39,7 +39,7 @@ ms.locfileid: "52844789"
 * [Java Development Kit (JDK) 1.8 以降](https://aka.ms/azure-jdks)
     * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
     * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
-* [Maven](http://maven.apache.org/) バイナリ アーカイブの[ダウンロード](http://maven.apache.org/download.cgi)と[インストール](http://maven.apache.org/install.html)
+* [Maven](https://maven.apache.org/) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
     * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
 * [Git](https://www.git-scm.com/)
     * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。

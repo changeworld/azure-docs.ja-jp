@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ef9fe0e05343f9c99656634a075b1bd464a13c7e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379589"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972033"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>デプロイ用の Azure Stack PKI 証明書の準備
 [任意の CA から取得した](azure-stack-get-pki-certs.md)証明書ファイルは、Azure Stack の証明書要件に一致するプロパティを使用してインポートおよびエクスポートする必要があります。
@@ -38,15 +38,15 @@ ms.locfileid: "44379589"
 
 1. **証明書のインポート ウィザード**で、インポートの場所として **[ローカル コンピューター]** を選択します。 **[次へ]** を選択します。 次の画面で、再度次へをクリックします。
 
-    ![ローカル コンピューターのインポート場所](.\media\prepare-pki-certs\1.png)
+    ![ローカル コンピューターのインポート場所](./media/prepare-pki-certs/1.png)
 
 1.  **[Place all certificate in the following store]\(すべての証明書を次のストアに配置する\)** を選択し、場所として **[エンタープライズの信頼]** を選択します。 **[OK]** をクリックして証明書ストアの選択ダイアログ ボックスを閉じ、**[次へ]** をクリックします。
 
-    ![証明書ストアの構成](.\media\prepare-pki-certs\3.png)
+    ![証明書ストアの構成](./media/prepare-pki-certs/3.png)
 
     a. PFX をインポートする場合は、ダイアログがさらに表示されます。 **[秘密キーの保護]** ページで、証明書ファイルのパスワードを入力し、**[Mark this key as exportable. This allows you to back up or transport your keys at a later time]\(このキーをエクスポート可能としてマークします。これにより、後でキーをバックアップまたは転送できるようになります\)** オプションを有効にします。 **[次へ]** を選択します。
 
-    ![キーをエクスポート可能としてマークする](.\media\prepare-pki-certs\2.png)
+    ![キーをエクスポート可能としてマークする](./media/prepare-pki-certs/2.png)
 
 1. [完了] をクリックしてインポートを完了します。
 
@@ -58,11 +58,11 @@ ms.locfileid: "44379589"
 
 1. [ファイル]、[スナップインの追加と削除] をクリックし、証明書を選択して [追加] をクリックします。
 
-    ![証明書スナップインの追加](.\media\prepare-pki-certs\mmc-2.png)
+    ![証明書スナップインの追加](./media/prepare-pki-certs/mmc-2.png)
  
 1. コンピューター アカウントを選択し、[次へ] をクリックし、ローカル コンピューターを選択して完了します。 [スナップインの追加と削除] ページをクリックして閉じます。
 
-    ![証明書スナップインの追加](.\media\prepare-pki-certs\mmc-3.png)
+    ![証明書スナップインの追加](./media/prepare-pki-certs/mmc-3.png)
 
 1. [証明書]、[エンタープライズの信頼] の順に進み、[証明書の場所] を参照します。 右側に証明書が表示されることを確認します。
 
