@@ -60,4 +60,4 @@ sections:
     - title: Languages
       html: <p><a href="/dotnet/api/microsoft.azure.relay?view=azure-dotnet">.NET Framework</a></p>
     - title: REST
-      html: <p><a href="/rest/api/servicebus/">REST API リファレンスに関するページ</a></p>
+      html: <p><a href="/rest/api/servicebus/">REST API リファレンス</a></p>
