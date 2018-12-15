@@ -90,7 +90,7 @@ Azure Advisor は、ベスト プラクティスに従って Azure デプロイ�
                 <div class="card">
                     <div class="cardText">
                         <h3>REST API</h3>
-                        <p><a href="/rest/api/advisor">REST API リファレンスに関するページ</a></p>
+                        <p><a href="/rest/api/advisor">REST API リファレンス</a></p>
                         <h3>CLI</h3>
                         <p><a href="/cli/azure/advisor">CLI リファレンス</a></p>
                     </div>
