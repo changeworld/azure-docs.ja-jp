@@ -2,21 +2,20 @@
 title: Functions 1.x の Azure Cosmos DB バインド
 description: Azure Functions で Azure Cosmos DB のトリガーとバインドを使用する方法について説明します。
 services: functions
-documentationcenter: na
 author: craigshoemaker
+ms.author: cshoe
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions; cosmos-db
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
-ms.author: cshoe
-ms.openlocfilehash: 6f3b568fb23de51990f96a86cdc2b1814afe4530
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.custom: seodec18
+ms.openlocfilehash: 2a501129720447462d1e6e961597b51fa683dc1e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249924"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136207"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
@@ -24,7 +23,7 @@ ms.locfileid: "50249924"
 > * [Version 1](functions-bindings-cosmosdb.md)
 > * [Version 2](functions-bindings-cosmosdb-v2.md)
 
-この記事では、Azure Functions で [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) のバインドを操作する方法について説明します。 Azure Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
+この記事では、Azure Functions で [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) のバインドを操作する方法について説明します。 Azure Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
 
 > [!NOTE]
 > この記事は、Azure Functions 1.x を対象としています。  Functions 2.x でこれらのバインドを使用する方法については、[Azure Functions 2.x の Azure Cosmos DB のバインド](functions-bindings-cosmosdb-v2.md)に関するページを参照してください。
@@ -38,7 +37,7 @@ ms.locfileid: "50249924"
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-Functions バージョン 1.x の Azure Cosmos DB バインドは、[Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) NuGet パッケージのバージョン 1.x で提供されています。 バインドのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB) GitHub リポジトリにあります。
+Functions バージョン 1.x の Azure Cosmos DB バインドは、[Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) NuGet パッケージのバージョン 1.x で提供されています。 バインドのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
@@ -895,7 +894,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 このセクションには、次の例が含まれています。
 
-* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-string-javascript)
+* [キュー トリガー、JSON からの ID の検索](#queue-trigger-look-up-id-from-json-javascript)
 * [HTTP トリガー、クエリ文字列からの ID の検索](#http-trigger-look-up-id-from-query-string-javascript)
 * [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-javascript)
 * [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
@@ -1177,7 +1176,7 @@ F# コードを次に示します。
 
 C# および F# 関数では、関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。 
 
-JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [JavaScript の例](#input---javascript-example)を参照してください。
+JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [JavaScript の例](#input---javascript-examples)を参照してください。
 
 ## <a name="output"></a>出力
 
@@ -1196,7 +1195,7 @@ Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azur
 
 [出力の例をスキップする](#output---attributes)
 
-### <a name="ouput---c-examples"></a>出力 - C# の例
+### <a name="output---c-examples"></a>出力 - C# の例
 
 このセクションには、次の例が含まれています。
 
@@ -1571,7 +1570,7 @@ F# コードを次に示します。
     }
 ```
 
-完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
+完全な例については、「[出力 - C# の例](#output---c-examples)」を参照してください。
 
 ## <a name="output---configuration"></a>出力 - 構成
 
@@ -1606,7 +1605,7 @@ F# コードを次に示します。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Cosmos DB のサーバーレス データベース コンピューティングの詳細情報](..\cosmos-db\serverless-computing-database.md)
+* [Cosmos DB のサーバーレス データベース コンピューティングの詳細情報](../cosmos-db/serverless-computing-database.md)
 * [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
 
 <!---

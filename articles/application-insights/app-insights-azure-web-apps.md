@@ -9,16 +9,15 @@ ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: e88d38e6d95459cc1c41adecee6b7ece659eac99
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 00af4cc67dc7490727af46e12c387fb0f147371d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957252"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339843"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure Web アプリのパフォーマンスの監視
 [Azure Portal](https://portal.azure.com) では、[Azure Web アプリ](../app-service/app-service-web-overview.md)のアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
@@ -43,9 +42,9 @@ Azure で Web アプリを既に実行している場合、要求率とエラー
 
     ![Web アプリをインストルメント化する](./media/app-insights-azure-web-apps/create-resource.png)
 
-2. リソースが作成されたら、**[Web アプリの Application Insights の拡張機能を確認して更新する]** を選択して、拡張機能が最新であることを確認します。
+2. 使用するリソースを指定した後、アプリケーションのプラットフォームごとのデータを Application Insights でどのように収集するかを選択できます。
 
-     ![サイト拡張機能の確認と更新](./media/app-insights-azure-web-apps/check-and-update.png)
+    ![プラットフォームごとのオプションを選択する](./media/app-insights-azure-web-apps/choose-options.png)
 
 3. Application Insights をインストールしたら、**Web アプリをインストルメント化**します。
 
@@ -64,7 +63,7 @@ Azure で Web アプリを既に実行している場合、要求率とエラー
 
 *Application Insights を削除するか、送信先を別のリソースに切り替えるにはどうすればよいですか。*
 
-* Azure で Web アプリの制御ブレードを開き、[開発ツール] の **[拡張機能]** を開きます。 Application Insights 拡張機能を削除します。 次に、[監視] の [Application Insights] を選択し、目的のリソースを作成または選択します。
+* Azure 上で Web アプリの制御ブレードを開き、[設定] の下の **[Application Insights]** を開きます。 上部にある **[無効にする]** をクリックするか、**[Change your resource]\(自分のリソースの変更\)** セクションで新しいリソースを選択することで、Application Insights をオフにすることができます。
 
 ## <a name="build-the-app-with-application-insights"></a>Application Insights でのアプリのビルド
 Application Insights では、アプリへの SDK のインストールによって、より詳細なテレメトリを提供できます。 具体的には、トレース ログの収集、[カスタム テレメトリの作成](app-insights-api-custom-events-metrics.md)、より詳細な例外レポートの取得が可能です。
@@ -100,9 +99,9 @@ Application Insights では、アプリへの SDK のインストールによっ
 ## <a name="next-steps"></a>次の手順
 * [実行中のアプリに対してプロファイラーを実行](app-insights-profiler.md)します。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - Application Insights で Azure Functions を監視する
-* [Azure 診断](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) が Application Insights に送信されるように設定します。
-* [サービスの正常性メトリックを監視](../monitoring/monitoring-data-collection.md)して、サービスの可用性と応答性を確認します。
-* 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../monitoring-and-diagnostics/monitoring-overview-alerts.md)ます。
+* [Azure 診断](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) が Application Insights に送信されるように設定します。
+* [サービスの正常性メトリックを監視](../azure-monitor/platform/data-collection.md)して、サービスの可用性と応答性を確認します。
+* 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../azure-monitor/platform/alerts-overview.md)ます。
 * [JavaScript のアプリや Web ページに Application Insights](app-insights-javascript.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
 * [可用性 Web テストを設定](app-insights-monitor-web-app-availability.md) して、サイトがダウンした場合にアラートを送信するようにします。
 

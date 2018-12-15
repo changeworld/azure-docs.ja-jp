@@ -1,5 +1,5 @@
 ---
-title: Azure WebJobs SDK の概要
+title: WebJobs SDK の概要 - Azure
 description: イベント ドリブンのバックグラウンド処理のための WebJobs SDK の概要。 Azure サービスとサード パーティのサービス内のデータにアクセスする方法を説明します。
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 034f182cc282f50eb3a4a1de05331f42957f49fe
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140351"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339809"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -63,9 +63,9 @@ public static void Run(
 
 1. Visual Studio で、**[ファイル] > [新しいプロジェクト]** を選択します。
 
-1. **[Windows クラシック デスクトップ] > [コンソール アプリ (.NET Framework)]** を選択します。
+2. **[Windows クラシック デスクトップ] > [コンソール アプリ (.NET Framework)]** を選択します。
 
-1. プロジェクトに *WebJobsSDKSample* という名前を付け、**[OK]** を選択します。
+3. プロジェクトに *WebJobsSDKSample* という名前を付け、**[OK]** を選択します。
 
    ![[新しいプロジェクト] ダイアログ](./media/webjobs-sdk-get-started/new-project.png)
 
@@ -396,7 +396,7 @@ WebJobs SDK は、アプリ設定コレクション内で Storage の接続文�
 
 ここでは、もう一度ローカルで実行して、ログ データが Application Insights とコンソールに記録されていることを確認します。
 
-1. 「*Hello App Insights!*」をメッセージ テキストとして入力すること以外は[前](#trigger-the-function)に行ったのと同じ方法で、Visual Studio の**サーバー エクスプローラー**を使用してキュー メッセージを 作成します。
+1. 「*Hello App Insights!*」をメッセージ テキストとして入力すること以外は[前](#trigger-the-function-in-azure)に行ったのと同じ方法で、Visual Studio の**サーバー エクスプローラー**を使用してキュー メッセージを 作成します。
 
 1. プロジェクトを実行します。
 

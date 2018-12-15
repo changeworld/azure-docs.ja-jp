@@ -7,17 +7,16 @@ manager: carmonm
 ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 4b24ab406cc9cdbc3ce03ee203ec034843d5630a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2b9aee39942562ec7f17c08c0fcf46143a7a25d3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986425"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961809"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
 
@@ -29,19 +28,19 @@ ms.locfileid: "49986425"
 2. 確認するリソース グループの 1 つを選択します (多数のリソース グループがある場合は、サブスクリプションによるフィルター処理が役に立つ場合があります)。
 3. リソース グループの分析情報にアクセスするには、任意のリソース グループの左側のメニューで **[分析情報]** をクリックします。
 
-![リソース グループの分析情報の概要ページのスクリーンショット](.\media\resource-group-insights\0001-overview.png)
+![リソース グループの分析情報の概要ページのスクリーンショット](./media/resource-group-insights/0001-overview.png)
 
 ## <a name="resources-with-active-alerts-and-health-issues"></a>アクティブなアラートと正常性の問題があるリソース
 
 概要ページには、トリガーされてまだアクティブなアラートの数と、各リソースの現在の Azure Resource Health が表示されます。 このような情報を組み合わせることで、問題が発生しているリソースをすばやく見つけることができます。 アラートは、コードやインフラストラクチャの構成方法の問題を検出するために役立ちます。 Azure Resource Health によって、個々のアプリケーションに固有ではない Azure プラットフォーム自体に関する問題が明らかになります。
 
-![[Azure Resource Health] ウィンドウのスクリーンショット](.\media\resource-group-insights\0002-overview.png)
+![[Azure Resource Health] ウィンドウのスクリーンショット](./media/resource-group-insights/0002-overview.png)
 
 ### <a name="azure-resource-health"></a>Azure Resource Health
 
 Azure Resource Health を表示するには、表の上の **[Azure Resource Health を表示します]** チェックボックスをオンにします。 この列は、ページの読み込みを速くするために既定では非表示です。
 
-![リソースの正常性グラフが追加されたスクリーンショット](.\media\resource-group-insights\0003-overview.png)
+![リソースの正常性グラフが追加されたスクリーンショット](./media/resource-group-insights/0003-overview.png)
 
 既定では、リソースはアプリ層とリソースの種類によってグループ化されています。 **アプリ層**は、リソースの種類の単純な分類です。リソース グループ分析情報の概要ページのコンテキスト内にのみ存在します。 アプリケーション コード、コンピューティング インフラストラクチャ、ネットワーク、ストレージ + データベースに関連するリソースの種類があります。 管理ツールには独自のアプリ層があり、他のすべてのリソースは **[その他]** のアプリ層に属するものとして分類されます。 このグループ化機能によって、アプリケーションのどのサブシステムが正常か正常ではないかを一目で把握することができます。
 
@@ -70,33 +69,33 @@ Azure Resource Health を表示するには、表の上の **[Azure Resource Hea
 
 選択すると、左側のメニュー バーが変更され、新しいオプションが表示されます。
 
-![エラーの概要ウィンドウのスクリーンショット](.\media\resource-group-insights\00004-failures.png)
+![エラーの概要ウィンドウのスクリーンショット](./media/resource-group-insights/00004-failures.png)
 
 App Service を選択すると、Azure Monitor Workbook テンプレートのギャラリーが表示されます。
 
-![アプリケーション ブック ギャラリーのスクリーンショット](.\media\resource-group-insights\0005-failure-insights-workbook.png)
+![アプリケーション ブック ギャラリーのスクリーンショット](./media/resource-group-insights/0005-failure-insights-workbook.png)
 
 エラーの分析情報のテンプレートを選択すると、ブックが開きます。
 
-![エラー レポートのスクリーンショット](.\media\resource-group-insights\0006-failure-visual.png)
+![エラー レポートのスクリーンショット](./media/resource-group-insights/0006-failure-visual.png)
 
 任意の行を選択できます。 選択内容はグラフィカルな詳細ビューに表示されます。
 
-![エラーの詳細のスクリーンショット](.\media\resource-group-insights\0007-failure-details.png)
+![エラーの詳細のスクリーンショット](./media/resource-group-insights/0007-failure-details.png)
 
 ブックによって、簡単に使用できる形式でカスタム レポートや視覚化を作成するという困難な作業がなくなります。 ユーザーによっては、事前に構築済みのパラメーターを調整したいだけかもしれませんが、ブックは完全にカスタマイズ可能です。
 
 このブックが内部的にどのように機能するかを把握するには、上部のバーにある **[編集]** を選択します。
 
-![その他の編集オプションのスクリーンショット](.\media\resource-group-insights\0008-failure-edit.png)
+![その他の編集オプションのスクリーンショット](./media/resource-group-insights/0008-failure-edit.png)
 
 ブックのさまざまな要素の近くに複数の **[編集]** ボックスが表示されます。 操作の一覧の下にある **[編集]** ボックスを選択します。
 
-![[編集] ボックスのスクリーンショット](.\media\resource-group-insights\0009-failure-edit-graph.png)
+![[編集] ボックスのスクリーンショット](./media/resource-group-insights/0009-failure-edit-graph.png)
 
 これにより、テーブルの視覚化を推進している基礎の Log Analytics クエリが表示されます。
 
- ![Log Analytics クエリ ウィンドウのスクリーンショット](.\media\resource-group-insights\0010-failure-edit-query.png)
+ ![Log Analytics クエリ ウィンドウのスクリーンショット](./media/resource-group-insights/0010-failure-edit-query.png)
 
 クエリは直接変更することができます。 また、参照として使用し、独自のカスタム パラメーター ブックを設計するときに利用することもできます。
 
@@ -104,11 +103,11 @@ App Service を選択すると、Azure Monitor Workbook テンプレートのギ
 
 パフォーマンスには独自のブック ギャラリーがあります。 App Service の場合、事前に構築済みのアプリケーション パフォーマンス ブックには、次のビューがあります。
 
- ![パフォーマンス ビューのスクリーンショット](.\media\resource-group-insights\0011-performance.png)
+ ![パフォーマンス ビューのスクリーンショット](./media/resource-group-insights/0011-performance.png)
 
 この場合、編集を選択すると、Azure Monitor メトリックによってこの一連の視覚化が行われていることがわかります。
 
- ![Azure メトリックが表示されたパフォーマンス ビューのスクリーンショット](.\media\resource-group-insights\0012-performance-metrics.png)
+ ![Azure メトリックが表示されたパフォーマンス ビューのスクリーンショット](./media/resource-group-insights/0012-performance-metrics.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 64d30ef859dd4a64a3e59d82e6fd8c30e30c5ea3
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: b22b2f5ce9e08b3ee345d6e614c82b7dc8330453
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299726"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438695"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
@@ -401,8 +401,8 @@ IoT Hub の正常性を確認するには、次の手順を実行します。
 [lnk-ARH]: ../service-health/resource-health-overview.md
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-migrate]: iot-hub-migrate-to-diagnostics-settings.md
-[lnk-AM-metrics]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md
-[lnk-AM-schemas]: ../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md
+[lnk-AM-metrics]: ../azure-monitor/platform/metrics-supported.md
+[lnk-AM-schemas]: ../azure-monitor/platform/tutorial-dashboards.md
 [lnk-ARH-checks]: ../service-health/resource-health-checks-resource-types.md
 [lnk-monitoring-notifications]: iot-hub-monitoring-notifications-with-azure-logic-apps.md
 [lnk-devguide-heartbeat]: iot-hub-devguide-identity-registry.md#device-heartbeat

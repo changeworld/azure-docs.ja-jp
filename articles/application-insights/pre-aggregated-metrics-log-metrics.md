@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 136279a94d64b846247c436eb7a5fb487e05b41a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d095be8c5d921001ab4a492d2385938020fa8ce0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946903"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967216"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 
@@ -55,7 +55,7 @@ ms.locfileid: "46946903"
 
 [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) または [GetMetric and TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) API 呼び出しを使用して送信するすべてのメトリックは、ログとメトリック ストアの両方に自動的に格納されます。 しかし、ログベース バージョンのカスタム メトリックでは常にすべてのディメンションが保持されますが、事前集計バージョンのメトリックは既定でディメンションなしで格納されます。 [Enable alerting on custom metric dimensions]\(カスタム メトリック ディメンションのアラートを有効にする\) をオンにすることで、[[使用量と推定コスト]](https://docs.microsoft.com/azure/application-insights/app-insights-pricing) タブでカスタム メトリックのディメンションの収集を有効にすることができます。 
 
-![使用量と推定コスト](.\media\pre-aggregated-metrics-log-metrics\001-cost.png)
+![使用量と推定コスト](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
 ## <a name="why-is-collection-of-custom-metrics-dimensions-turned-off-by-default"></a>既定でカスタム メトリック ディメンションの収集が無効になる理由
 
@@ -65,7 +65,7 @@ ms.locfileid: "46946903"
 
 Azure Monitor メトリックス エクスプローラーを使用して、事前に集計されたメトリックとログベースのメトリックに基づいてグラフを描画し、そのグラフを使ってダッシュボードを作成します。 目的の Application Insights リソースを選択した後、名前空間ピッカーを使用して、標準 (プレビュー) メトリックとログベースのメトリックを切り替えるか、カスタム メトリック名前空間を作成します。
 
-![メトリック名前空間](.\media\pre-aggregated-metrics-log-metrics\002-metric-namespace.png)
+![メトリック名前空間](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>次の手順
 

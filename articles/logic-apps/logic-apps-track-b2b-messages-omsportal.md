@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233560"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996534"
 ---
 # <a name="track-b2b-messages-with-azure-log-analytics"></a>Azure Log Analytics を使用して B2B メッセージを追跡する
 
@@ -27,7 +27,7 @@ ms.locfileid: "50233560"
 * 検索機能
 
 > [!NOTE]
-> このページでは、以前、これらのタスクの実行方法の手順を、[2019 年 1 月に廃止される](../log-analytics/log-analytics-oms-portal-transition.md) Microsoft Operations Management Suite (OMS) を使用して説明していましたが、代わりに、Azure Log Analytics を使用した手順に置き換えられています。 
+> このページでは、以前、Microsoft Operations Management Suite (OMS) を使用してこれらのタスクを実行する手順を説明していましたが、OMS は [2019 年 1 月に廃止される](../azure-monitor/platform/oms-portal-transition.md)ため、代わりに Azure Log Analytics を使用する手順に置き換えられています。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,11 +37,11 @@ ms.locfileid: "50233560"
 
 * まだ実行していない場合は、[Log Analytics に診断データを発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)します。
 
-* 上記の要件を満たしたら、Log Analytics を使用して B2B 通信を追跡するために使用する Log Analytics ワークスペースも必要になります。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
+* 上記の要件を満たしたら、Log Analytics を使用して B2B 通信を追跡するために使用する Log Analytics ワークスペースも必要になります。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
 
 ## <a name="install-logic-apps-b2b-solution"></a>Logic Apps B2B ソリューションをインストールする
 
-Log Analytics でロジック アプリの B2B メッセージを追跡するには、事前に Log Analytics に **Logic Apps B2B** ソリューションを追加します。 [Log Analytics へのソリューションの追加](../log-analytics/log-analytics-quick-create-workspace.md)に関する詳細を参照してください。
+Log Analytics でロジック アプリの B2B メッセージを追跡するには、事前に Log Analytics に **Logic Apps B2B** ソリューションを追加します。 [Log Analytics へのソリューションの追加](../azure-monitor/learn/quick-create-workspace.md)に関する詳細を参照してください。
 
 1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
 

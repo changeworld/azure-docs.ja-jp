@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5a67cdcef7f39830b747dec5f2c980483e1ab91
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978337"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967897"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>RBAC の変更のアクティビティ ログを表示する
 
@@ -117,15 +117,15 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 作業を開始する基本的な手順を次に示します。
 
-1. [Log Analytics ワークスペースを作成します](../log-analytics/log-analytics-quick-create-workspace.md)。
+1. [Log Analytics ワークスペースを作成します](../azure-monitor/learn/quick-create-workspace.md)。
 
-1. ワークスペースの [Activity Log Analytics ソリューションを構成します](../log-analytics/log-analytics-activity.md#configuration)。
+1. ワークスペースの [Activity Log Analytics ソリューションを構成します](../azure-monitor/platform/collect-activity-logs.md#configuration)。
 
-1. [アクティビティ ログを表示します](../log-analytics/log-analytics-activity.md#using-the-solution)。 Activity Log Analytics の [概要] ページに簡単に移動するには、**[Log Analytics]** オプションをクリックします。
+1. [アクティビティ ログを表示します](../azure-monitor/platform/collect-activity-logs.md#using-the-solution)。 Activity Log Analytics の [概要] ページに簡単に移動するには、**[Log Analytics]** オプションをクリックします。
 
    ![Portal の Log Analytics オプション](./media/change-history-report/azure-log-analytics-option.png)
 
-1. 必要に応じて、[ログ検索](../log-analytics/log-analytics-log-search.md)ページまたは[高度な分析ポータル](../log-analytics/query-language/get-started-analytics-portal.md)を使用してログのクエリを実行し、ログを確認します。 これら 2 つのオプションの詳細については、[ログ検索ページまたは高度な分析ポータル](../log-analytics/log-analytics-log-search-portals.md)に関するページをご覧ください。
+1. 必要に応じて、[ログ検索](../log-analytics/log-analytics-log-search.md)ページまたは[高度な分析ポータル](../azure-monitor/log-query/get-started-portal.md)を使用してログのクエリを実行し、ログを確認します。 これら 2 つのオプションの詳細については、[ログ検索ページまたは高度な分析ポータル](../azure-monitor/log-query/portals.md)に関するページをご覧ください。
 
 ターゲットのリソース プロバイダー別に編成された新しいロール割り当てを返すクエリを、次に示します。
 

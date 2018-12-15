@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: a6ccfa439b58d36ee44d5f8441c2058622965653
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: dc301f218855139cfb3a5faa30109dd5a301eb07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41953973"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871202"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) のダウンロードと抽出
 開発キットのホスト コンピューターが ASDK の基本的なインストール要件を満たしていることを確認した後、次の手順は ASDK 展開パッケージをダウンロードおよび抽出して Cloudbuilder.vhdx を取得することです。
@@ -29,7 +29,7 @@ ms.locfileid: "41953973"
 1. ダウンロードを開始する前に、コンピューターが次の前提条件を満たしていることを確認します。
 
   - コンピューターには、オペレーティング システム ディスクに加えて、4 つの独立した同一の論理ハード ドライブ上に、少なくとも 60 GB の空きディスク領域が必要です。
-  - [.NET framework 4.6 (またはそれ以降のバージョン)](https://aka.ms/r6mkiy) がインストールされています。
+  - [.NET framework 4.6 (またはそれ以降のバージョン)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) がインストールされています。
 
 2. [利用開始のページに移動](https://azure.microsoft.com/overview/azure-stack/try/?v=try)し、Azure Stack Development Kit のダウンロード、詳細の入力を行い、**[送信]** をクリックします。
 3. [Azure Stack Development Kit 用のデプロイ チェッカー](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409)をダウンロードして実行します。 このスタンドアロン スクリプトでは、Azure Stack Development Kit のセットアップで実行される前提条件チェックを実行します。 Azure Stack Development Kit のより大きなパッケージをダウンロードする前に、ハードウェアとソフトウェアの要件を満たしているかどうかを確認できます。

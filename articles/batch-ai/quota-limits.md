@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cade124cefbd4e2e63ab4cb6fa4f22b3bd672ad0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 16032ec5ba1e613462f92b86281ce93153b70923
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391812"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409719"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>Batch AI サービスのクォータと制限
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 他の Azure サービスと同様に、Batch AI サービスに関連付けられている特定のリソースにも制限があります。 Batch AI では、これらの制限は、サービスがサービスが[使用可能な](https://azure.microsoft.com/global-infrastructure/services/)各リージョンのサブスクリプション レベルで適用される既定のクォータです。 ここでは、これらの既定の設定と、クォータの引き上げを要求する方法について説明します。
 

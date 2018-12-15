@@ -9,21 +9,20 @@ ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 678a31b8c07b21e4bb2c43b8e8bc286d66ee4bab
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dda4e26de74dbd5579f2dd45ea47f42c904f028f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233747"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271727"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 [Application Insights](app-insights-overview.md) では、[アラート](app-insights-alerts.md)の構成を自動化できます。
 
-さらに、[webhook を設定して、アラートへの対応を自動化](../monitoring-and-diagnostics/insights-webhooks-alerts.md)することもできます。
+さらに、[webhook を設定して、アラートへの対応を自動化](../azure-monitor/platform/alerts-webhooks.md)することもできます。
 
 > [!NOTE]
 > リソースと警告を同時に作成したい場合は、[Azure Resource Manager テンプレートの使用](app-insights-powershell.md)を検討してください。
@@ -43,15 +42,15 @@ Azure PowerShell を起動して、 [サブスクリプションに接続](/powe
 
 ```PowerShell
 
-    Add-AzureAccount
+    Add-AzureRmAccount
 ```
 
 
 ## <a name="get-alerts"></a>アラートの取得
-    Get-AzureAlertRmRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
+    Get-AzureRmAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
 ## <a name="add-alert"></a>アラートの追加
-    Add-AlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
+    Add-AzureRmMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
      -ResourceGroup "{GROUP NAME}" `
      -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
      -MetricName "{METRIC NAME}" `
@@ -70,7 +69,7 @@ Azure PowerShell を起動して、 [サブスクリプションに接続](/powe
 
 GUID は、サブスクリプション ID です (アプリケーションのインストルメンテーション キーではありません)。
 
-    Add-AlertRule -Name "slow responses" `
+    Add-AzureRmMetricAlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
@@ -84,7 +83,7 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 ## <a name="example-2"></a>例 2
 [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) を使用して "salesPerHour" という名前のメトリックを報告するアプリケーションがあります。 24 時間にわたる "salesPerHour" の平均が 100 を下回る場合は、私の同僚に電子メールを送信してください。
 
-    Add-AlertRule -Name "poor sales" `
+    Add-AzureRmMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
@@ -133,10 +132,10 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 | request、<br/>requestFailed |[サーバー要求](app-insights-configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhook
-[アラートへの対応を自動化](../monitoring-and-diagnostics/insights-webhooks-alerts.md)できます。 アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
+[アラートへの対応を自動化](../azure-monitor/platform/alerts-webhooks.md)できます。 アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
 
 ## <a name="see-also"></a>関連項目
 * [Application Insights を構成するスクリプト](app-insights-powershell-script-create-resource.md)
 * [テンプレートから Application Insights と Web テスト リソースを作成する](app-insights-powershell.md)
 * [Microsoft Azure 診断の Application Insights への結合を自動化する](app-insights-powershell-azure-diagnostics.md)
-* [アラートへの対応を自動化する](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+* [アラートへの対応を自動化する](../azure-monitor/platform/alerts-webhooks.md)

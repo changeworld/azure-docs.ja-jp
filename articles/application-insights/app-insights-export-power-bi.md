@@ -9,19 +9,18 @@ ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 71d5c26c8c41c470e188291dea4a4dab2811a67e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963117"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993356"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
-[Power BI](http://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
+[Power BI](https://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
 
 Application Insights のデータを Power BI にエクスポートする場合、3 つの方法があります。
 
@@ -41,7 +40,7 @@ Application Insights のクエリをインポートするには、Power BI の�
 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) をインストールします。
 
 ### <a name="export-an-analytics-query"></a>Analytics クエリのエクスポート
-1. [Analytics を開き、クエリを作成](../log-analytics/query-language/get-started-analytics-portal.md)します。
+1. [Analytics を開き、クエリを作成](../azure-monitor/log-query/get-started-portal.md)します。
 2. 満足のいく結果が得られるまで、クエリをテストして改善します。 エクスポートする前に、クエリが Analytics で正しく実行されることを確認します。
 3. **[エクスポート]** メニューの **[Power BI (M)]** を選択します。 テキスト ファイルを保存します。
    
@@ -52,18 +51,18 @@ Application Insights のクエリをインポートするには、Power BI の�
 
     ![詳細エディターが強調表示されている Power BI Desktop のスクリーンショット](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
 
-1. Power BI が Azure にアクセスできるようにするには、資格情報の指定が必要な場合があります。 **[組織アカウント]** を使って、Microsoft アカウントでサインインします。
+5. Power BI が Azure にアクセスできるようにするには、資格情報の指定が必要な場合があります。 **[組織アカウント]** を使って、Microsoft アカウントでサインインします。
    
     ![Power BI の [クエリの設定] ダイアログ ボックスのスクリーンショット](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
 
     資格情報を確認する必要がある場合は、クエリ エディターの **[データ ソース設定]** メニュー コマンドを使います。 Azure 用の資格情報を指定するように注意してください。これは Power BI 用の資格情報とは異なる可能性があります。
-2. クエリの視覚エフェクトを選び、x 軸、y 軸、セグメント化ディメンションの各フィールドを選びます。
+6. クエリの視覚エフェクトを選び、x 軸、y 軸、セグメント化ディメンションの各フィールドを選びます。
    
     ![Power BI Desktop の視覚エフェクト オプションのスクリーンショット](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
-3. Power BI クラウド ワークスペースにレポートを発行します。 そこから、同期されたバージョンを他の Web ページに埋め込むことができます。
+7. Power BI クラウド ワークスペースにレポートを発行します。 そこから、同期されたバージョンを他の Web ページに埋め込むことができます。
    
     ![[発行] ボタンが強調表示されている Power BI Desktop のスクリーンショット](./media/app-insights-export-power-bi/publish-power-bi.png)
-4. レポートを周期的に手動で更新するか、オプション ページで更新のスケジュールを設定します。
+8. レポートを周期的に手動で更新するか、オプション ページで更新のスケジュールを設定します。
 
 ### <a name="export-a-funnel"></a>フィルターをエクスポートする
 1. [フィルターを作成します](usage-funnels.md)。
@@ -109,7 +108,6 @@ Analytics クエリから取得するデータセットを小さくすると要�
    * 置き換え前 **https://management.azure.com/subscriptions/...**
    * 置き換え後 **https://api.applicationinsights.io/beta/apps/...**
 3. 最後に、資格情報を基本に更新して、API キーを使います。
- �
 
 **元のスクリプト**
  ```
@@ -154,6 +152,6 @@ Application Insights のグラフを他のソースのグラフや Analytics ク
 最初のインポート後は、ダッシュボードとレポートが毎日更新されます。 データセットの更新スケジュールを管理できます。
 
 ## <a name="next-steps"></a>次の手順
-* [Power BI - 詳細](http://www.powerbi.com/learning/)
-* [Analytics のチュートリアル](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Power BI - 詳細](https://www.powerbi.com/learning/)
+* [Analytics のチュートリアル](../azure-monitor/log-query/get-started-portal.md)
 

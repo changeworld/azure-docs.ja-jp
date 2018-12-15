@@ -1,26 +1,18 @@
 ---
-title: Azure CLI のサンプル - Azure SignalR Service | Microsoft Docs
+title: Azure CLI のサンプル - Azure SignalR Service
 description: Azure CLI のサンプル - Azure SignalR Service
-services: signalr
-documentationcenter: signalr
 author: sffamily
-manager: cfowler
-editor: ''
-tags: azure-service-management
 ms.service: signalr
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: signalr
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: a1ca02a5e058816c133accf3027f0a951db42cf2
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a39f0abf4f3a8cc30d6f8f83dcad7e9069f348e4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664005"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258782"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 

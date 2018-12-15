@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: 9df51626a1bd36b0ea171c89c67a5c1ca79d60e6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0d593e52c8dc3bc961df706ccef2da9da2f3f778
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873702"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087135"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Elastic Database ジョブを使ってデータベースのグループを管理する
 
@@ -127,7 +127,7 @@ ms.locfileid: "52873702"
 
 ![ターゲット グループの例](media/elastic-jobs-overview/targetgroup-examples2.png)
 
-**例 5** と "*例 6*" は、包含ルールと除外ルールを使用して Azure SQL Server、エラスティック プール、およびデータベースを結合できる高度なシナリオを示しています。<br>
+**例 5** と "**例 6**" は、包含ルールと除外ルールを使用して Azure SQL Server、エラスティック プール、およびデータベースを結合できる高度なシナリオを示しています。<br>
 **例 7** は、シャード マップ内のシャードをジョブ実行時にも評価できることを示しています。
 
 ### <a name="job"></a>ジョブ

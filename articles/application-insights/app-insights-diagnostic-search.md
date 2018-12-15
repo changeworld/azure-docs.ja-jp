@@ -9,21 +9,20 @@ ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: bf722756ed04349a06cbcb7b9686e6340e8d4b6c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c595695f3643522d36b53091656c3655f83a9345
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958408"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877838"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
 
-(データでのより複雑なクエリについては、[Analytics](../log-analytics/query-language/get-started-analytics-portal.md) を使用してください。)
+(データでのより複雑なクエリについては、[Analytics](../azure-monitor/log-query/get-started-portal.md) を使用してください。)
 
 ## <a name="where-do-you-see-search"></a>検索が表示される場所
 
@@ -102,7 +101,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 ## <a name="search-the-data"></a>データの検索
 
 > [!NOTE]
-> さらに複雑なクエリを作成するには、[検索] ブレードの上部から [**Analytics**](../log-analytics/query-language/get-started-analytics-portal.md) を開きます。
+> さらに複雑なクエリを作成するには、[検索] ブレードの上部から [**Analytics**](../azure-monitor/log-query/get-started-portal.md) を開きます。
 > 
 
 すべてのプロパティ値について語句を検索できます。 この機能は、プロパティ値を持つ[カスタム イベント](app-insights-api-custom-events-metrics.md)を作成している場合に特に便利です。 
@@ -164,7 +163,7 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>次のステップ
-* [Analytics で複雑なクエリを作成する](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analytics で複雑なクエリを作成する](../azure-monitor/log-query/get-started-portal.md)
 * [Application Insights にログとカスタム テレメトリを送信する](app-insights-asp-net-trace-logs.md)
 * [可用性と応答性のテストを設定する](app-insights-monitor-web-app-availability.md)
 * [トラブルシューティング](app-insights-troubleshoot-faq.md)

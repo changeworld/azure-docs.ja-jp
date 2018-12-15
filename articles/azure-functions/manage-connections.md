@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: glenga
-ms.openlocfilehash: eb5c302c807f85f24f53fa1ba32ef4cd7b52274a
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9780f98be7d488f87e280a1f391f7cc536ce0f8c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036463"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999562"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Azure Functions で接続を管理する方法
 
@@ -50,7 +50,7 @@ private static HttpClient httpClient = new HttpClient();
 
 public static async Task Run(string input)
 {
-    var response = await httpClient.GetAsync("http://example.com");
+    var response = await httpClient.GetAsync("https://example.com");
     // Rest of function
 }
 ```

@@ -1,19 +1,18 @@
 ---
-title: Azure Cosmos DB エクスプローラーを使用してデータを管理する | Microsoft Docs
+title: Azure Cosmos DB エクスプローラーを使用してデータを管理する
 description: Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベースのインターフェイスで、Azure Cosmos DB に格納されたデータを表示および管理することができます。
 services: cosmos-db
 author: deborahc
-manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: dech
-ms.openlocfilehash: 8d1bd0d4331937e37307140e17e5aed1a6e3b0ff
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 6e1317084ce60fb8dce64ccd7d1d93fe1ae1d9e9
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144343"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140763"
 ---
 # <a name="use-azure-cosmos-db-explorer-to-manage-your-data"></a>Azure Cosmos DB エクスプローラーを使用してデータを管理する 
 
@@ -52,4 +51,4 @@ Azure Cosmos DB エクスプローラーは、スタンドアロンの Web ベ�
 ## <a name="next-steps"></a>次の手順
 Azure Cosmos DB エクスプローラーでのデータの管理方法を学んだので、次の段階に進みましょう。
 
-* SQL 構文を使用して[クエリ](sql-api-sql-query-reference.md)の定義を開始し、ストアド プロシージャ、UDF、トリガーを使用して[サーバー側プログラミング](programming.md)を実行します。 
+* SQL 構文を使用して[クエリ](sql-api-query-reference.md)の定義を開始し、ストアド プロシージャ、UDF、トリガーを使用して[サーバー側プログラミング](programming.md)を実行します。 

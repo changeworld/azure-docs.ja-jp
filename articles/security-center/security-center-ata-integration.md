@@ -3,7 +3,7 @@ title: Microsoft Advanced Threat Analytics を Azure Security Center に接続�
 description: Azure Security Center と Microsoft Advanced Threat Analytics を統合する方法について説明します。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
-ms.author: yurid
-ms.openlocfilehash: 6129c83e33d046c2fc9ce1724a27efce5efdfa0e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: 49d6e2ded2ad4b2e5bb0ee30c323b1f459422437
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258801"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338398"
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Microsoft Advanced Threat Analytics を Azure Security Center に接続する
 このドキュメントは、Microsoft Advanced Threat Analytics と Azure Security Center 間の統合を構成する場合に役立ちます。
 
 ## <a name="why-add-advanced-threat-analytics-data"></a>Advanced Threat Analytics データを追加する理由
-[Advanced Threat Analytics (ATA)](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata) は、疑わしいユーザー動作の検出に役立つオンプレミス プラットフォームです。 接続すると、ATA で検出された疑わしいアクションを Security Center で確認できるようになります。 この統合で、ハイブリッド クラウド ワークロードに関連するすべてのセキュリティ アラートの表示、関連付け、および調査を Security Center で実行できるようになります。 
+[Advanced Threat Analytics (ATA)](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata) は、疑わしいユーザー動作の検出に役立つオンプレミス プラットフォームです。 接続すると、ATA で検出された疑わしいアクションを Security Center で確認できるようになります。 この統合で、ハイブリッド クラウド ワークロードに関連するすべてのセキュリティ アラートの表示、関連付け、および調査を Security Center で実行できるようになります。
 
 ## <a name="how-do-i-configure-this-integration"></a>この統合を構成する方法
 ATA が既にインストールされ、オンプレミスで適切に動作しているとして、次の手順に従ってこの統合を構成してください。
@@ -46,7 +46,7 @@ ATA が既にインストールされ、オンプレミスで適切に動作し�
 8. **[Advanced Threat Analytics]** で **[追加]** をクリックします。
 
     ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig3.png)
-    
+
 9. 最後の手順に進み、**[エージェントのダウンロード]** をクリックします。
 
     ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig4.png)
@@ -62,13 +62,13 @@ ATA が既にインストールされ、オンプレミスで適切に動作し�
 12. ATA Center でこのエージェントをインストールします。 インストール中に **[Connect the agent to Azure Log Analytics]\(Azure Log Analytics にエージェントを接続する\)** オプションをオンにして、指示に従って*ワークスペース ID* と*プライマリ キー*を入力します。
 
 
-インストールを完了し、統合が完了すると、ATA から Security Center に送信された新しいアラートを **[検索]** 結果で確認できるようになります。 ソリューションは **[接続済みソリューション]** の **[セキュリティ ソリューション]** に表示されます。 
+インストールを完了し、統合が完了すると、ATA から Security Center に送信された新しいアラートを **[検索]** 結果で確認できるようになります。 ソリューションは **[接続済みソリューション]** の **[セキュリティ ソリューション]** に表示されます。
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Microsoft ATA を Security Center に接続する方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 
 * [Azure Active Directory Identity Protection を Azure Security Center に接続する](security-center-aadip-integration.md)
-* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
@@ -76,5 +76,3 @@ ATA が既にインストールされ、オンプレミスで適切に動作し�
 - 「[Azure Security Center のデータ セキュリティ](security-center-data-security.md)」 - Security Center でデータがどのように管理および保護されているかを説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
-
-

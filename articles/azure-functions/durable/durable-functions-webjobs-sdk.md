@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 427c3601d6a4ca65407a98d54b0206cde9af4235
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638397"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343158"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions を WebJobs として実行する方法
 
@@ -35,7 +35,7 @@ Durable Functions のチェイニング のサンプルは、WebJobs SDK バー�
 
 * **Azure 開発**のワークロードを備えた、[Visual Studio 2017 バージョン 15.6 以降をインストールします](https://docs.microsoft.com/visualstudio/install/)。
 
-  Visual Studio は既にあるものの、必要なワークロードがない場合は、**[ツール] > [Get Tools and Features]\(ツールと機能の取得\)** を選択してワークロードを追加してください。 
+  Visual Studio は既にあるものの、必要なワークロードがない場合は、**[ツール] > [Get Tools and Features]\(ツールと機能の取得\)** を選択してワークロードを追加してください。
 
   (代わりに [Visual Studio Code](https://code.visualstudio.com/) を使うこともできますが、一部の説明は Visual Studio に固有のものです。)
 
@@ -43,7 +43,7 @@ Durable Functions のチェイニング のサンプルは、WebJobs SDK バー�
 
 ## <a name="webjobs-sdk-versions"></a>WebJobs SDK のバージョン
 
-この記事では、WebJobs SDK 2.x プロジェクト (Azure Functions バージョン 1.x に相当) の開発方法について説明します。 バージョン 3.x について詳しくは、この記事で後述する「[WebJobs SDK 3.x](#webjobs-sdk-3x)」をご覧ください。 
+この記事では、WebJobs SDK 2.x プロジェクト (Azure Functions バージョン 1.x に相当) の開発方法について説明します。 バージョン 3.x について詳しくは、この記事で後述する「[WebJobs SDK 3.x](#webjobs-sdk-3x)」をご覧ください。
 
 ## <a name="create-console-app"></a>コンソール アプリの作成
 
@@ -190,9 +190,9 @@ while (true)
 
 1. ローカルで実行するときに Application Insights でログを表示するには:
 
-  a. Application Insights リソースを作成します (アプリの種類は **[全般]**)。
+    a. Application Insights リソースを作成します (アプリの種類は **[全般]**)。
 
-  b. インストルメンテーション キーを *App.config* ファイルに保存します。
+    b. インストルメンテーション キーを *App.config* ファイルに保存します。
 
 1. プロジェクトを実行します。
 
@@ -216,8 +216,8 @@ while (true)
 
 1. 次のパッケージのプレリリース版 3.x を選択します。
 
-  * `Microsoft.Azure.WebJobs.Extensions`
-  * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
+    * `Microsoft.Azure.WebJobs.Extensions`
+    * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
 1. `Main` メソッドのコードを変更して、ストレージ接続文字列と Application Insights のインストルメンテーション キーを (.NET Core の構成フレームワークを使用して) *appsettings.json* ファイルから取得するようにします。  次に例を示します。
 
@@ -235,7 +235,7 @@ while (true)
            var config = new JobHostConfiguration();
 
            config.DashboardConnectionString = "";
-           config.StorageConnectionString = 
+           config.StorageConnectionString =
                appSettingsConfig.GetConnectionString("AzureWebJobsStorage");
            var instrumentationKey =
                appSettingsConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
@@ -258,4 +258,3 @@ while (true)
 ## <a name="next-steps"></a>次の手順
 
 WebJobs SDK について詳しくは、「[How to use the WebJobs SDK (WebJobs SDK の使用方法)](../../app-service/webjobs-sdk-how-to.md)」をご覧ください。
-

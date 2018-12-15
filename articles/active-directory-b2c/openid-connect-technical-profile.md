@@ -10,22 +10,22 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 40922080857563b86d538586b90513381edb5d89
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 9a20b8df1f0d9cddbde4c4886e11967bc8c04160
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44383060"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842417"
 ---
 # <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenId Connect 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、[OpenId Connect](http://openid.net/2015/04/17/openid-connect-certification-program/) プロトコルの ID プロバイダーにサポートを提供しています。 OpenID Connect 1.0 は OAuth 2.0 の上に ID レイヤーを定義し、現在の認証プロトコルにおいて最先端のものとなっています。  OpenId Connect 技術プロファイルを使用すると、Azure AD などの OpenId Connect ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
+Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) プロトコルの ID プロバイダーにサポートを提供しています。 OpenID Connect 1.0 は OAuth 2.0 の上に ID レイヤーを定義し、現在の認証プロトコルにおいて最先端のものとなっています。  OpenId Connect 技術プロファイルを使用すると、Azure AD などの OpenId Connect ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
 
 ## <a name="protocol"></a>プロトコル
 
-**Protocol** 要素の **Name** 属性は、`OpenIdConnect` に設定する必要があります。 たとえば、**MSA-OIDC** 技術プロファイル用のプロトコルは `OpenIdConnect` です。
+**Protocol** 要素の **Name** 属性は `OpenIdConnect` に設定する必要があります。 たとえば、**MSA-OIDC** 技術プロファイル用のプロトコルは `OpenIdConnect` です。
 
 ```XML
 <TechnicalProfile Id="MSA-OIDC">
@@ -84,7 +84,7 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](http://openid.ne
 | scope | いいえ  | OpenID Connect Core 1.0 の仕様に従って定義される、アクセス要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |
 | HttpBinding | いいえ  | アクセス トークンと要求トークンのエンドポイントに予期される HTTP バインド。 指定できる値: `GET` または `POST`。  |
 | ValidTokenIssuerPrefixes | いいえ  | Azure Active Directory などのマルチテナント ID プロバイダーを使用するときに、各テナントにサインインするために使用できるキー。 |
-| UsePolicyInRedirectUri | いいえ  | リダイレクト URI を構築するときにポリシーを使用するかどうかを示します。 ID プロバイダーでアプリケーションを構成するときは、リダイレクト URI を指定する必要があります。 リダイレクト URI は、Azure AD B2C、`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` をポイントします (login.microsoftonline.com は your-tenant-name.b2clogin.com によって変わることがあります)。  `false` を指定した場合は、使用するポリシーごとにリダイレクト URI を追加する必要があります。 たとえば、「 `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`」のように入力します。 |
+| UsePolicyInRedirectUri | いいえ  | リダイレクト URI を構築するときにポリシーを使用するかどうかを示します。 ID プロバイダーでアプリケーションを構成するときは、リダイレクト URI を指定する必要があります。 リダイレクト URI は、Azure AD B2C、`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` をポイントします (login.microsoftonline.com は your-tenant-name.b2clogin.com によって変わることがあります)。  `false` を指定した場合は、使用するポリシーごとにリダイレクト URI を追加する必要があります。 (例: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`)。 |
 | MarkAsFailureOnStatusCode5xx | いいえ  | Http 状態コードが 5xx の範囲にある場合、外部サービスへの要求を失敗としてマークする必要があるかどうかを示します。 既定では、 `false`です。 |
 | DiscoverMetadataByTokenIssuer | いいえ  | JWT トークンで発行者を使用して OIDC メタデータを検出する必要があるかどうかを示します。 |
 

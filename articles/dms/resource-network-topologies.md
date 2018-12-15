@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/8/2018
-ms.openlocfilehash: 9b036b74141ce2091d2e68b68d10c44a56a8696d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: cd62b60718a35aed9129db61413086266bb9f2c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300694"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971081"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Azure Database Migration Service を使用して Azure SQL DB Managed Instance を移行するためのネットワーク トポロジ
 この記事では、オンプレミスの SQL サーバーから Azure SQL Database Managed Instance への包括的な移行エクスペリエンスを提供するために Azure Database Migration Service で使用できる、さまざまなネットワーク トポロジについて説明します。
@@ -24,7 +24,7 @@ ms.locfileid: "51300694"
 ## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>ハイブリッド ワークロード用に構成された Azure SQL Database Managed Instance 
 Azure SQL Database マネージド インスタンスがオンプレミス ネットワークに接続されている場合は、このトポロジを使用します。 このアプローチでは、ネットワーク ルーティングが最も簡素化され、移行時に最大限のデータ スループットが得られます。
 
-![ハイブリッド ワークロード用のネットワーク トポロジ](media\resource-network-topologies\hybrid-workloads.png)
+![ハイブリッド ワークロード用のネットワーク トポロジ](media/resource-network-topologies/hybrid-workloads.png)
 
 **要件**
 - このシナリオでは、Azure SQL Database マネージド インスタンスと Azure Database Migration Service インスタンスが同じ Azure VNet 内に作成されますが、サブネットはそれぞれ別のものが使用されます。  
@@ -36,7 +36,7 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 - ロール ベースのアクセス制御 (RBAC) ポリシーが使用されていて、ユーザー アクセスは、Azure SQL Database マネージド インスタンスをホストしているのと同じサブスクリプションに制限する必要がある。
 - Azure SQL Database マネージド インスタンス用に使用される VNet と Azure Database Migration Service 用に使用される VNet が、それぞれ異なるサブスクリプションに属している。
 
-![オンプレミス ネットワークから分離されたマネージド インスタンス用のネットワーク トポロジ](media\resource-network-topologies\mi-isolated-workload.png)
+![オンプレミス ネットワークから分離されたマネージド インスタンス用のネットワーク トポロジ](media/resource-network-topologies/mi-isolated-workload.png)
 
 **要件**
 - このシナリオで Azure Database Migration Service に使用される VNet は、 https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ネットワークにも接続される必要があります。
@@ -47,7 +47,7 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 
 ソース SQL Server が Azure VM でホストされていて、Azure SQL Database Managed Instance および Azure Database Migration Service と同じ VNET を共有している場合は、このトポロジを使用します。
 
-![共有 VNET があるクラウド間移行のためのネットワーク トポロジ](media\resource-network-topologies\cloud-to-cloud.png)
+![共有 VNET があるクラウド間移行のためのネットワーク トポロジ](media/resource-network-topologies/cloud-to-cloud.png)
 
 **要件**
 - その他の要件はありません。
@@ -59,7 +59,7 @@ Azure SQL Database マネージド インスタンスがオンプレミス ネ�
 - ロール ベースのアクセス制御 (RBAC) ポリシーが使用されていて、ユーザー アクセスは、Azure SQL Database マネージド インスタンスをホストしているのと同じサブスクリプションに制限する必要がある。
 - Azure SQL Database Managed Instance 用に使用される VNet と Azure Database Migration Service 用に使用される VNet が、それぞれ異なるサブスクリプションに属している。
 
-![分離 VNET があるクラウド間移行のためのネットワーク トポロジ](media\resource-network-topologies\cloud-to-cloud-isolated.png)
+![分離 VNET があるクラウド間移行のためのネットワーク トポロジ](media/resource-network-topologies/cloud-to-cloud-isolated.png)
 
 **要件**
 - Azure SQL Database Managed Instance と Azure Database Migration Service 用に使用される VNet 間に、[VNet ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を設定します。

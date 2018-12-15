@@ -7,18 +7,17 @@ editor: tysonn
 services: azure-monitor
 documentationcenter: azure-monitor
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: bwren
-ms.openlocfilehash: f85f0785f180bf333477bd45508f8c670349669e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 68986b3d60566ee190a92c6ccf8cda767824350f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980476"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000146"
 ---
 # <a name="azure-monitor-branding-changes"></a>Azure Monitor のブランドの変更
 この記事では、Azure 管理サービスで最近行われたブランドと名称の変更について説明します。 
@@ -47,4 +46,4 @@ Operations Management Suite (OMS) は、ライセンス目的で以下の Azure 
 ## <a name="next-steps"></a>次の手順
 
 - さまざまなコンポーネントと機能については、[Azure Monitor の 概要](overview.md)に関するページを参照してください。
-- [OMS ポータルの移行](../log-analytics/log-analytics-oms-portal-transition.md)に関するページを参照してください。
+- [OMS ポータルの移行](../azure-monitor/platform/oms-portal-transition.md)に関するページを参照してください。

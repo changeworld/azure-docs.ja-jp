@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9a8c39864d05a4e2b89da7bdfc937f8d2e5dbec9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b6ec48085d5dd2ea31543e208e8d32b954cb0bca
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038421"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872852"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API を使用して Apache Hadoop クラスターを作成する
 
@@ -252,7 +252,7 @@ Azure Resource Manager テンプレートは、**リソース グループ**と�
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     このコマンドから返される値は、__オブジェクト ID__ です。 この値を保存します。
+     このコマンドから返される値は、__オブジェクト ID__です。 この値を保存します。
 
 4. **所有者**の役割を、**オブジェクト ID** 値を使用するサービス プリンシパルに割り当てます。 前に取得した**サブスクリプション ID** を使用します。
 
@@ -353,19 +353,19 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
 
-### <a name="hadoop-clusters"></a>Hadoop クラスター
+### <a name="apache-hadoop-clusters"></a>Apache Hadoop クラスター
 
-* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hadoop/hdinsight-use-pig.md)
-* [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での Apache Hadoop MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>HBase クラスター
+### <a name="apache-hbase-clusters"></a>Apache HBase クラスター
 
-* [HDInsight での HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
+* [HDInsight での Apache HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight での Apache HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a>Storm クラスター
+### <a name="apache-storm-clusters"></a>Apache Storm クラスター
 
-* [HDInsight での Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
-* [HDInsight の Storm を使用したトポロジのデプロイと監視](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [HDInsight での Apache Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
+* [HDInsight の Apache Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
+* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](storm/apache-storm-deploy-monitor-topology-linux.md)

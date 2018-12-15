@@ -9,16 +9,15 @@ ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3c3ff606958503efcf2df5fd99b6e52e4687de4a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294719"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996252"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 多くの場合、リソースの作成は IDE によって自動的に行われます。 ただし、たとえば、アプリケーションの開発ビルドと運用ビルドそれぞれに個別にリソースを設定するために、リソースを手動で作成することがあります。
@@ -26,11 +25,11 @@ Azure Application Insights には、Microsoft Azure *リソース*のアプリ�
 リソースを作成した後、インストルメンテーション キーを取得し、それを使用してアプリケーション内の SDK を構成します。 リソース キーによって、テレメトリがリソースに紐付けられます。
 
 ## <a name="sign-up-to-microsoft-azure"></a>Microsoft Azure へのサインアップ
-取得していない場合、[Microsoft アカウントをここで取得してください](http://live.com)。 (Outlook.com、OneDrive、Windows Phone、XBox Live などのサービスを利用している場合、Microsoft アカウントを持っています。)
+取得していない場合、[Microsoft アカウントをここで取得してください](https://live.com)。 (Outlook.com、OneDrive、Windows Phone、XBox Live などのサービスを利用している場合、Microsoft アカウントを持っています。)
 
-[Microsoft Azure](http://azure.com)のサブスクリプションも必要になります。 チームまたは組織で Azure サブスクリプションを所有している場合、所有者は Windows Live ID を使用してあなたを追加できます。 課金対象となるのは、使用した分だけです。 既定の Basic プランでは、試験段階の一定量を無料で使用できます。
+[Microsoft Azure](https://azure.com)のサブスクリプションも必要になります。 チームまたは組織で Azure サブスクリプションを所有している場合、所有者は Windows Live ID を使用してあなたを追加できます。 課金対象となるのは、使用した分だけです。 既定の Basic プランでは、試験段階の一定量を無料で使用できます。
 
-サブスクリプションへのアクセスを取得したら、Application Insights ([http://portal.azure.com](https://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
+サブスクリプションへのアクセスを取得したら、Application Insights ([https://portal.azure.com](https://portal.azure.com)) にログインし、Live ID を使用してログインしてください。
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 [portal.azure.com](https://portal.azure.com)で、Application Insights リソースを追加します。

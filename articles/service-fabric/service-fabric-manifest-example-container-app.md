@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: ryanwi
-ms.openlocfilehash: 6f538fa821e546d12c5a2bdb9585cc85871241fa
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 010fd442419f57f8b53705be8d3f49fdb84e28fd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094154"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262454"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>複数コンテナーのアプリケーション マニフェストとサービス マニフェストの例
 複数コンテナーの Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Windows Server 2016 コンテナー サンプル](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) のマニフェストに基づいています。
@@ -295,7 +295,7 @@ ms.locfileid: "47094154"
 イメージをプロトコルするコンテナー イメージ リポジトリの資格情報。 詳細については、「[RepositoryCredentials 要素](service-fabric-service-model-schema-elements.md#RepositoryCredentialsElementRepositoryCredentialsTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)」を参照してください。
 
 ### <a name="portbinding-element"></a>PortBinding 要素
-公開されているコンテナー ポートにバインドするエンドポイント リソースを指定します。 詳細については、「[PortBinding 要素](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)」を参照してください。
+公開されているコンテナー ポートにバインドするエンドポイント リソースを指定します。 詳細については、「[PortBinding 要素](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInServicePackageContainerPolicyTypecomplexTypeDefinedInContainerHostPoliciesTypecomplexType)」を参照してください。
 
 ### <a name="volume-element"></a>Volume 要素
 コンテナーにバインドするボリュームを指定します。 詳細については、「[Volume 要素](service-fabric-service-model-schema-elements.md#VolumeElementContainerVolumeTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)」を参照してください。
@@ -313,7 +313,7 @@ Windows Server コンテナーは、OS の異なるバージョン間では互�
  詳細については、「[EnvironmentOverrides 要素](service-fabric-service-model-schema-elements.md#EnvironmentOverridesElementEnvironmentOverridesTypeComplexTypeDefinedInServiceManifestImportelement)」を参照してください。
 
 ### <a name="environmentvariable-element"></a>EnvironmentVariable 要素
-環境変数。 詳細については、「[EnvironmentVariable 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType)」を参照してください。
+環境変数。 詳細については、「[EnvironmentVariable 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)」を参照してください。
 
 ### <a name="certificateref-element"></a>CertificateRef 要素
 コンテナー環境に公開される X509 証明書に関する情報を指定します。 証明書は、すべてのクラスター ノードの LocalMachine ストアにインストールする必要があります。
@@ -356,7 +356,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 コンテナーまたは exe に環境変数を渡します。  詳細については、「[EnvironmentVariables 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)」を参照してください。
 
 ### <a name="environmentvariable-element"></a>EnvironmentVariable 要素
-環境変数。 詳細については、「[EnvironmentVariable 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType)」を参照してください。
+環境変数。 詳細については、「[EnvironmentVariable 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)」を参照してください。
 
 ### <a name="configpackage-element"></a>ConfigPackage 要素
 Settings.xml ファイルを含む Name 属性を使用して名前が付けられたフォルダーを宣言します。 このファイルには、実行時にプロセスが読み取ることができるユーザー定義のキー値ペアの設定のセクションが含まれています。 アップグレード中に ConfigPackage のバージョンのみが変更された場合、実行中のプロセスは再起動されません。 代わりに、コールバックは構成設定が変更されたことをプロセスに通知して、動的に再読み込みされるようにします。 詳細については、「[ConfigPackage 要素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)」を参照してください。
@@ -403,7 +403,7 @@ https://hub.docker.com または Azure Container Registry のリポジトリお�
 コンテナーまたは exe に環境変数を渡します。  詳細については、「[EnvironmentVariables 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)」を参照してください。
 
 ### <a name="environmentvariable-element"></a>EnvironmentVariable 要素
-環境変数。 詳細については、「[EnvironmentVariable 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType)」を参照してください。
+環境変数。 詳細については、「[EnvironmentVariable 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)」を参照してください。
 
 ### <a name="configpackage-element"></a>ConfigPackage 要素
 Settings.xml ファイルを含む Name 属性を使用して名前が付けられたフォルダーを宣言します。 このファイルには、実行時にプロセスが読み取ることができるユーザー定義のキー値ペアの設定のセクションが含まれています。 アップグレード中に ConfigPackage のバージョンのみが変更された場合、実行中のプロセスは再起動されません。 代わりに、コールバックは構成設定が変更されたことをプロセスに通知して、動的に再読み込みされるようにします。 詳細については、「[ConfigPackage 要素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)」を参照してください。

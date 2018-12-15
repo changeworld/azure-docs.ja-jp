@@ -3,7 +3,7 @@ title: Azure Active Directory Identity Protection を Azure Security Center に�
 description: Azure Security Center を Azure Active Directory Identity Protection と統合する方法について説明します。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 0d4b77c2-dba4-4e46-8f55-ab04ddd92496
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2018
-ms.author: yurid
-ms.openlocfilehash: 9c13bd671efee5bc07885320cbaa0bd090cc1390
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: 8c0e90436cf030f1280b3c50f3fdc91c7429d542
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226362"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340302"
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Azure Active Directory Identity Protection を Azure Security Center に接続する
 このドキュメントは、Azure Active Directory (AD) Identity Protection と Azure Security Center 間の統合を構成する場合に役立ちます。
 
 ## <a name="why-connect-azure-ad-identity-protection"></a>Azure AD Identity Protection を接続する理由
-[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) を使用すると、組織の ID に影響する潜在的な脆弱性を検出することができます。 接続すると、Security Center で Azure AD Identity Protection のアラートを表示できるようになります。 この統合で、ハイブリッド クラウド ワークロードに関連するすべてのセキュリティ アラートの表示、関連付け、および調査を Security Center で実行できるようになります。 
+[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) を使用すると、組織の ID に影響する潜在的な脆弱性を検出することができます。 接続すると、Security Center で Azure AD Identity Protection のアラートを表示できるようになります。 この統合で、ハイブリッド クラウド ワークロードに関連するすべてのセキュリティ アラートの表示、関連付け、および調査を Security Center で実行できるようになります。
 
 ## <a name="how-do-i-configure-this-integration"></a>この統合を構成する方法
 組織が既に Azure AD Identity Protection を使用している場合は、以下の手順で統合を構成します。
@@ -42,13 +42,13 @@ ms.locfileid: "51226362"
 
 5. **[接続]** をクリックします。
 
-この構成が完了すると、**[セキュリティ ソリューション]** の **[接続済みのソリューション]** に Azure AD Identity Protection ソリューションが表示されます。 
+この構成が完了すると、**[セキュリティ ソリューション]** の **[接続済みのソリューション]** に Azure AD Identity Protection ソリューションが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure AD Identity Protection を Security Center に接続する方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 
 * [Microsoft Advanced Threat Analytics を Azure Security Center に接続する](security-center-ata-integration.md)
-* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
 * [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
 * [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
 * [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
@@ -56,5 +56,3 @@ ms.locfileid: "51226362"
 - 「[Azure Security Center のデータ セキュリティ](security-center-data-security.md)」 - Security Center でデータがどのように管理および保護されているかを説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
-
-

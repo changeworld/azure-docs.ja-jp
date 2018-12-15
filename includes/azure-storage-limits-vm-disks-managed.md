@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4441ad1e2940892c1627cbc2d4ee0186e4cfda17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bbb338d2b1d359d8e141b18a2beacd8b7faafe9c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264334"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53326447"
 ---
 **マネージド仮想マシンの Standard HDD**
 
@@ -33,7 +33,7 @@ ms.locfileid: "51264334"
 
 **管理対象の仮想マシンの Premium ディスク: ディスクあたりの上限**
 
-| Premium ディスクの種類  | P4               | P6               | P10             | P15 | P20              | S30              | P40              | P50              | P60 *             | P70 *             | P80 *             |
+| Premium ディスクの種類  | P4               | P6               | P10             | P15 | P20              | P30              | P40              | P50              | P60 *             | P70 *             | P80 *             |
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | ディスク サイズ (GiB)           | 32             | 64             | 128            | 256  | 512            | 1,024    | 2,048     | 4,095    | 8,192     | 16,384     | 32,767     |
 | ディスクあたりの IOPS       | 最大 120 | 最大 240              | 最大 500              | 最大 1,100 | 最大 2,300              | 最大 5,000              | 最大 7,500             | 最大 7,500              | 最大 12,500              | 最大 15,000              | 最大 20,000              |

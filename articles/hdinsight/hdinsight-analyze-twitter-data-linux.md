@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: d037c4fc65bc32ff183ddc7a8925cd2f51411ea0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 01d1ef428804838df4257a4c28dfcddbdd8f156b
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034628"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010996"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight で Apache Hive と Apache Hadoop を使用して Twitter データを分析する
 
-Apache Hive を使用して Twitter データを処理する方法を説明します。 結果として、特定の単語が含まれた最も多くのツイートを送信した Twitter ユーザーのリストが返されます。
+[Apache Hive](https://hive.apache.org/) を使用して Twitter データを処理する方法を説明します。 結果として、特定の単語が含まれた最も多くのツイートを送信した Twitter ユーザーのリストが返されます。
 
 > [!IMPORTANT]
 > このドキュメントの手順は、HDInsight 3.6 でテストされています。
@@ -182,7 +182,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 ## <a name="run-the-hiveql-job"></a>HiveQL ジョブの実行
 
-1. 次のコマンドを使用して、HiveQL ステートメントを含むファイルを作成します。
+1. 次のコマンドを使用して、[HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ステートメントを含むファイルを作成します。
 
    ```bash
    nano twitter.hql
@@ -322,13 +322,13 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、構造化されていない JSON データ セットを構造化された Hive テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
+ここでは、構造化されていない JSON データ セットを構造化された [Apache Hive](https://hive.apache.org/) テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
 
 * [HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)
 
 [curl]: http://curl.haxx.se
-[curl-download]: http://curl.haxx.se/download.html
+[curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6d908ee413b7ce24698a4e4f064b87b0341018d8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2243f2c7a351d941950686bea492aa1d6e565cd5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236898"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101366"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -73,8 +73,8 @@ Security Center では、Microsoft Monitoring Agent を使用して、Azure 仮�
 | 電源状態がオフです | VM が停止しています。  Microsoft Monitoring Agent をインストールできるのは、実行中の VM だけです。 | VM を再起動します。 |
 | Azure VM エージェントが見つからないか無効です | Microsoft Monitoring Agent がまだインストールされていません。  Security Center が拡張機能をインストールするためには、有効な Azure VM エージェントが必要です。 | Azure VM エージェントを VM にインストールするか、再インストールするか、またはアップグレードしてください。 |
 | VM がインストールの準備が整っていない状態です  | インストールする準備が VM で整っていないため、Microsoft Monitoring Agent がまだインストールされていません。 インストールする準備が VM で整っていません。VM エージェントまたは VM プロビジョニングに問題があります。 | VM の状態を確認します。 ステータス情報については、ポータルの **[Virtual Machines]** に戻って、対象の VM を選択してください。 |
-|インストールに失敗しました - 一般エラー | Microsoft Monitoring Agent はインストールされましたが、エラーが原因で正しく機能していません。 | [拡張機能を手動でインストール](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)するか、または、Security Center によって再インストールが試行されるように、拡張機能をアンインストールしてください。 |
-| インストールに失敗しました - ローカル エージェントが既にインストールされています | Microsoft Monitoring Agent のインストールに失敗しました。 ローカル エージェント (Log Analytics または SCOM) が VM にインストール済みであることが Security Center によって検出されました。 1 つの VM が 2 つの異なるワークスペースの管理下に置かれるマルチホーム構成を避けるために、Microsoft Monitoring Agent のインストールは停止されました。 | これには 2 とおりの解決方法があります。1 つは、[拡張機能を手動でインストール](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)して、それを目的のワークスペースに接続する方法です。 もう 1 つは、目的のワークスペースを既定のワークスペースとして設定し、エージェントの自動プロビジョニングを有効にする方法です。  [自動プロビジョニングの有効化](security-center-enable-data-collection.md)に関するページを参照してください。 |
+|インストールに失敗しました - 一般エラー | Microsoft Monitoring Agent はインストールされましたが、エラーが原因で正しく機能していません。 | [拡張機能を手動でインストール](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)するか、または、Security Center によって再インストールが試行されるように、拡張機能をアンインストールしてください。 |
+| インストールに失敗しました - ローカル エージェントが既にインストールされています | Microsoft Monitoring Agent のインストールに失敗しました。 ローカル エージェント (Log Analytics または SCOM) が VM にインストール済みであることが Security Center によって検出されました。 1 つの VM が 2 つの異なるワークスペースの管理下に置かれるマルチホーム構成を避けるために、Microsoft Monitoring Agent のインストールは停止されました。 | これには 2 とおりの解決方法があります。1 つは、[拡張機能を手動でインストール](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)して、それを目的のワークスペースに接続する方法です。 もう 1 つは、目的のワークスペースを既定のワークスペースとして設定し、エージェントの自動プロビジョニングを有効にする方法です。  [自動プロビジョニングの有効化](security-center-enable-data-collection.md)に関するページを参照してください。 |
 | エージェントがワークスペースに接続できません | Microsoft Monitoring Agent はインストールされましたが、ネットワーク接続が原因で正しく機能していません。  エージェントに関して、インターネット アクセスがあること、または有効な HTTP プロキシが構成されていることを確認してください。 | [監視エージェントのネットワーク要件](#troubleshooting-monitoring-agent-network-requirements)に関するページを参照してください。 |
 | エージェントの接続先ワークスペースが存在しないか不明です | VM にインストールされている Microsoft Monitoring Agent が、接続先ワークスペースにアクセスできないことを Security Center が検出しました。 | この原因として 2 つのケースが考えられます。 まず、ワークスペースが削除されて現在は存在していないことが考えられます。 適切なワークスペースを備えたエージェントを再インストールするか、またはエージェントをアンインストールして、Security Center による自動プロビジョニング インストールが作動するようにしてください。 もう 1 つは、そのワークスペースを含んでいるサブスクリプションへのアクセス許可が Security Center にないケースです。 Microsoft Security Resource Provider にサブスクリプションへのアクセスを許可するためには、Security Center にそのサブスクリプションが必要です。 その対策として、Microsoft Security Resource Provider のサブスクリプションを登録します。 この作業は、API や PowerShell、ポータルから行うことができるほか、Security Center の **[概要]** ダッシュボードから、目的のサブスクリプションにフィルターを適用するだけでも実行できます。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md#portal)」を参照してください。 |
 | エージェントが応答しないか、ID がありません | エージェントがインストールされているにもかかわらず、VM からスキャンされたセキュリティ データを Security Center が取得できません。 | エージェントからデータ (ハート ビートも含む) がまったく報告されていません。 エージェントが破損しているか、何らかの原因でトラフィックがブロックされています。 または、エージェントからはデータが報告されているものの、Azure リソース ID が欠落しているために、データを Azure VM と突き合わせることができません。 Linux のトラブルシューティングについては、「[Troubleshooting Guide for Log Analytics Agent for Linux (Log Analytics エージェント for Linux のトラブルシューティング ガイド)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)」を参照してください。 Windows のトラブルシューティングについては、「[Troubleshooting Windows Virtual Machines (Windows 仮想マシンのトラブルシューティング)](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)」を参照してください。 |

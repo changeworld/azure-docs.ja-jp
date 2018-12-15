@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: eb77046c6e673012209f0db452b20bf25046cd67
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f61a00e3ea243dfdf777af88b5f211580f35d8a0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250973"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001658"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
 
@@ -31,7 +31,7 @@ Mobile Apps のバインドを使用すると、モバイル アプリのデー�
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-Mobile Apps バインディングは [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet パッケージ、バージョン 1.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub リポジトリにあります。
+Mobile Apps バインディングは [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet パッケージ、バージョン 1.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
@@ -157,7 +157,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---usage"></a>入力 - 使用方法
 
-C# 関数では、指定の ID を含むレコードが検出されると、指定された [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) パラメーターに渡されます。 レコードが検出されなかった場合、パラメーター値は `null` になります。 
+C# 関数では、指定の ID を含むレコードが検出されると、指定された [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) パラメーターに渡されます。 レコードが検出されなかった場合、パラメーター値は `null` になります。 
 
 JavaScript 関数では、レコードは `context.bindings.<name>` オブジェクトに渡されます。 レコードが検出されなかった場合、パラメーター値は `null` になります。 
 

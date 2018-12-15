@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 2f2da5b38ab39e3636ff0ac09ac2c5515e02b0c1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 034ae29b5fabae15aa2b6b96e7fefaef23c1c5a1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492337"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275229"
 ---
 # <a name="sfctl-store"></a>sfctl store
 クラスター イメージ ストアで基本的なファイル レベルの操作を実行します。
@@ -28,14 +28,14 @@ ms.locfileid: "39492337"
 
 |コマンド|説明|
 | --- | --- |
-| delete | 既存のイメージ ストアのコンテンツを削除します。 |
+| 削除 | 既存のイメージ ストアのコンテンツを削除します。 |
 | root-info | イメージ ストアのルートにあるコンテンツ情報を取得します。 |
 | stat | イメージ ストアのコンテンツ情報を取得します。 |
 
 ## <a name="sfctl-store-delete"></a>sfctl store delete
 既存のイメージ ストアのコンテンツを削除します。
 
-指定したイメージ ストアの相対パス内で見つかった既存のイメージ ストアのコンテンツを削除します。 これを使用すると、アップロードされたアプリケーション パッケージを、それらがプロビジョニングされた後に削除することができます。
+指定したイメージ ストアの相対パス内で見つかった既存のイメージ ストアのコンテンツを削除します。 このコマンドを使用すると、アップロードされたアプリケーション パッケージを、それらがプロビジョニングされた後に削除することができます。
 
 ### <a name="arguments"></a>引数
 

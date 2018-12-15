@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/12/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: b2483d93fdc83970ca1568326f4bc728de16f77c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3df4be80e1a979590a05ff10601485e950de54bd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038869"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962219"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>パスワードではなく携帯電話でサインインする
 Microsoft Authenticator アプリを使用して、パスワードを入力した後で 2 段階認証を実行してアカウントの安全性を維持できるだけでなく、Microsoft アカウントのパスワードをまったく使用せずサインインすることもできるようになりました。
@@ -43,13 +43,13 @@ Microsoft Authenticator アプリを使用して、パスワードを入力し�
 
     ユーザー名を入力すると、2 桁の数字が表示されたページに移り、Microsoft Authenticator アプリを使ってサインインを承認するように求められます。 このサインイン方法を使用しない場合は、**[Use your password instead]\(代わりにパスワードを使用する\)** を選択し、パスワードを使用してサインインします。
 
-    ![[サインインの承認] ボックス](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
+    ![[サインインの承認] ボックス](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
 
 2. Microsoft 認証アプリで **[サインインを承認する]** ことを求める通知を受け取ります。 サインインを承認する場合は **[承認]** を選択します。 承認しない場合は、**[拒否]** を選択します。 
 
 3. **[サインインの承認]** 画面に表示される同じ番号をタップします。 携帯電話の暗証番号または生体認証キーを使用して、認証を完了します。
 
-    ![選択する番号が表示された [サインインの承認] ボックス](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
+    ![選択する番号が表示された [サインインの承認] ボックス](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
 
 ## <a name="turn-on-phone-sign-in-for-your-personal-account"></a>電話によるサインインを個人アカウントで有効にする 
 Outlook.com、Xbox、または Skype などにサインインするために使用するアカウントなど、個人の Microsoft アカウントで電話によるサインインを有効にできます。
@@ -80,7 +80,7 @@ Outlook.com、Xbox、または Skype などにサインインするために使�
 |**この機能は 2 段階認証に代わるものですか。2 段階認証を無効にする必要がありますか。**| Microsoft では、電話によるサインインを使用できる範囲を広げる作業を行っていますが、現時点では、Microsoft のエコシステムの中にはこの機能をサポートしない部分がまだ存在します。 そのような場所では、サインインのセキュリティ保護に 2 段階認証がまだ使われています。 そのため、アカウントの 2 段階認証は無効にしないでください。|
 |**アカウントの 2 段階認証を有効にしたままにする場合、2 つの通知を承認する必要がありますか。**| いいえ。 電話を使用して Microsoft アカウントにサインインすると 2 段階認証とみなされ、2 回目の承認は必要ありません。|
 |**電話を紛失した場合、または電話が手元にない場合は、どのようにしてアカウントにアクセスできますか。アカウントへのアクセス方法を教えてください。**| サインイン ページで [Use a password instead]\(代わりにパスワードを使用する)\ リンクを選択すれば、いつでもパスワードの使用に戻すことができます。 ただし、2 段階認証を使用している場合は、第 2 の方法で身元を証明する必要があることに注意してください。<br><br>**重要**<br>アカウントに、最新の認証方法を複数関連付けてあることを確認することを強くお勧めします。<br><br>個人アカウントの認証方法は [[セキュリティ設定]](https://account.live.com/proofs/manage) ページから管理することができます。 職場または学校アカウントの場合、管理者がセキュリティ情報をオンに設定している場合は、組織の [[追加のセキュリティ確認]](https://aka.ms/MFASetup) ページまたは **[Keep your account secure]\(アカウントのセキュリティ保護を維持\)** ページに移動します。 セキュリティ情報の詳細については、[セキュリティ情報の管理](security-info-manage-settings.md)に関する記事を参照してください。<br><br>認証方法を管理できない場合は、管理者に連絡する必要があります。|
-|**この機能の使用を停止してパスワードの入力に戻すにはどうすればよいですか。**|個人アカウントの場合は、サインイン時に **[Use a password instead]\(代わりにパスワードを使用する\)** リンクを選択します。 前回の選択内容が記憶され、次にサインインするときは既定で表示されます。 電話によるサインインに戻る場合は、サインイン時に **[Use an app instead]\(代わりにアプリを使用する\)** リンクを選択します。<br><br>職場または学校アカウントの場合、Microsoft Authenticator アプリを開くことでアカウントを削除する必要があります。**[アカウントの編集]** メニューを選択してからアカウントを削除します。|
+|**この機能の使用を停止してパスワードの入力に戻すにはどうすればよいですか。**|個人アカウントの場合は、サインイン時に **[Use a password instead]\(代わりにパスワードを使用する\)** リンクを選択します。 前回の選択内容が記憶され、次にサインインするときは既定で表示されます。 電話によるサインインに戻る場合は、サインイン時に **[Use an app instead]\(代わりにアプリを使用する)\** リンクを選択します。<br><br>職場または学校アカウントの場合、Microsoft Authenticator アプリを開くことでアカウントを削除する必要があります。**[アカウントの編集]** メニューを選択してからアカウントを削除します。|
 |**電話によるサインインに複数の職場または学校アカウントを使用できないのはなぜですか。**| 携帯電話は、1 つの職場または学校アカウントに登録する必要があります。 電話によるサインインを別の職場または学校アカウントで有効にするには、**[設定]** ページから古いデバイスの登録を解除する必要があります。|
 |**携帯電話を使用して自分の PC にサインインできますか。**| PC には、Windows 10 で Windows Hello を使用してサインインすることをお勧めします。 Windows Hello を使用すると、顔、指紋、または暗証番号を使用してサインインできます。|
 |**Windows Phone で電話によるサインインを使用できますか。**| いいえ。 この機能は、Windows Phone の Microsoft Authenticator アプリでサポートされていません。|

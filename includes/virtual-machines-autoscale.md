@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0e46caf855bca184ff8a714d2c93d573b910fea8
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227078"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399920"
 ---
-[仮想マシン スケール セット](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)と [Azure Monitor の自動スケール機能](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md)を使うと、[仮想マシン (VM)](../articles/virtual-machines/windows/overview.md) を簡単に[自動スケール](../articles/monitoring-and-diagnostics/insights-autoscale-best-practices.md)できます。 自動スケールを適用するには、VM がスケール セットのメンバーになっている必要があります。 この記事では、垂直方向、水平方向を問わず自動または手動で VM をスケールする方法について理解を深めることができるよう、各種の情報を紹介します。
+[仮想マシン スケール セット](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)と [Azure Monitor の自動スケール機能](../articles/azure-monitor/platform/autoscale-overview.md)を使うと、[仮想マシン (VM)](../articles/virtual-machines/windows/overview.md) を簡単に[自動スケール](../articles/azure-monitor/platform/autoscale-best-practices.md)できます。 自動スケールを適用するには、VM がスケール セットのメンバーになっている必要があります。 この記事では、垂直方向、水平方向を問わず自動または手動で VM をスケールする方法について理解を深めることができるよう、各種の情報を紹介します。
 
 ## <a name="horizontal-or-vertical-scaling"></a>水平スケーリングと垂直スケーリング
 
@@ -35,7 +35,7 @@ Azure Monitor の自動スケール機能は、水平スケーリングにのみ
  
 ### <a name="metrics"></a>メトリック
 
-Azure Monitor の自動スケール機能では、実行する VM の数を[メトリック](../articles/monitoring-and-diagnostics/insights-autoscale-common-metrics.md)に基づいて調節することができます。 既定ではディスク、ネットワーク、CPU 使用率について、VM からホストレベルの基本的なメトリックが提供されます。 診断拡張機能を使って収集対象となる診断データを構成した場合には、ディスク、CPU、メモリに関して追加のゲスト OS パフォーマンス カウンターが利用できるようになります。
+Azure Monitor の自動スケール機能では、実行する VM の数を[メトリック](../articles/azure-monitor/platform/autoscale-common-metrics.md)に基づいて調節することができます。 既定ではディスク、ネットワーク、CPU 使用率について、VM からホストレベルの基本的なメトリックが提供されます。 診断拡張機能を使って収集対象となる診断データを構成した場合には、ディスク、CPU、メモリに関して追加のゲスト OS パフォーマンス カウンターが利用できるようになります。
 
 ![メトリックの条件](./media/virtual-machines-autoscale/virtual-machines-autoscale-criteria.png)
 
@@ -49,7 +49,7 @@ Azure Monitor の自動スケール機能では、実行する VM の数を[メ�
  
 ### <a name="notifications"></a>通知
 
-[トリガーを設定](../articles/monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)し、作成した自動スケール ルールに基づいて特定の Web URL を呼び出したり、メールを送信したりすることができます。 Webhook を使用すると、後処理やカスタム通知のために、Azure アラート通知を他のシステムにルーティングすることができます。
+[トリガーを設定](../articles/azure-monitor/platform/autoscale-webhook-email.md)し、作成した自動スケール ルールに基づいて特定の Web URL を呼び出したり、メールを送信したりすることができます。 Webhook を使用すると、後処理やカスタム通知のために、Azure アラート通知を他のシステムにルーティングすることができます。
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>スケール セット内の VM を手動でスケールする
 

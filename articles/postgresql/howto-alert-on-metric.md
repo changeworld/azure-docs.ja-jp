@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: b4b15998276dd6c32e9c15622aa0251c6c066085
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: b57827cb4e8c1105c88b6fab217e17d6cf4db056
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29690256"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271233"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Azure Portal を使用して Azure Database for PostgreSQL のメトリックのアラートを設定する 
 
@@ -29,8 +29,8 @@ ms.locfileid: "29690256"
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [コマンド ライン インターフェイス (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [コマンド ライン インターフェイス (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Azure Portal でメトリックのアラート ルールを作成する
@@ -46,12 +46,12 @@ ms.locfileid: "29690256"
 
    ![メトリック アラート フォームを追加する](./media/howto-alert-on-metric/2-add-rule-form.png)
 
-   | Setting | [説明]  |
+   | Setting | 説明  |
    |---------|---------|
    | Name | アラート ルールの名前を指定します。 この値はアラート通知メールで送信されます。 |
-   | [説明] | アラート ルールの簡単な説明を入力します。 この値はアラート通知メールで送信されます。 |
+   | 説明 | アラート ルールの簡単な説明を入力します。 この値はアラート通知メールで送信されます。 |
    | アラート対象 | このアラートの対象となる**メトリック**を選択します。 |
-   | [サブスクリプション] | このフィールドには Azure Database for PostgreSQL をホストするサブスクリプションが入力されています。 |
+   | サブスクリプション | このフィールドには Azure Database for PostgreSQL をホストするサブスクリプションが入力されています。 |
    | リソース グループ | このフィールドには Azure Database for PostgreSQL のリソース グループが入力されています。 |
    | リソース | このフィールドには Azure Database for PostgreSQL の名前が入力されています。 |
    | メトリック | アラートを発行する対象のメトリックを選択します  (例: **ストレージの割合**)。 |
@@ -81,5 +81,5 @@ ms.locfileid: "29690256"
 * アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
 
 ## <a name="next-steps"></a>次の手順
-* [アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)に関する詳細情報を確認します。
+* [アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)に関する詳細情報を確認します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

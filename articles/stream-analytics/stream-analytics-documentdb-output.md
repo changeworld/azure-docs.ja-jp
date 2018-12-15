@@ -2,19 +2,19 @@
 title: Cosmos DB への Azure Stream Analytics の出力
 description: この記事では、構造化されていない JSON データに対するデータ アーカイブと待機時間の短いクエリのために、Azure Stream Analytics を使用して、Azure Cosmos DB for JSON 出力に出力を保存する方法について説明します。
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+author: mamccrea
+ms.author: mamccrea
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 8dc85c55dd67d8acd394d7922e947c91234ef23b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: c5017817c0f823a149dd0f9bced48ecca9f3c488
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957150"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106568"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -26,7 +26,10 @@ Cosmos DB を詳しく理解していない場合は、開始する前に [Azure
 > その他の Azure Cosmos DB API は、まだサポートされていません。 Azure Stream Analytics を、その他のAPI で作成した Azure Cosmos DB アカウントへ接続する場合は、データが正しく格納されない可能性があります。 
 
 ## <a name="basics-of-cosmos-db-as-an-output-target"></a>出力ターゲットとしての Cosmos DB の基礎
-Stream Analytics で Azure Cosmos DB 出力を使用すると、ストリーム処理の結果を JSON 出力として Cosmos DB コレクションに書き込むことができます。 Stream Analytics は、データベース内にコレクションを作成せず、代わりにユーザーが前もってコレクションを作成するように要求します。 これにより、Cosmos DB コレクションの課金によるコストをユーザーが制御できるようになり、[Cosmos DB API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用することでコレクションのパフォーマンス、整合性、容量などを直接調整できるようになりました。 
+Stream Analytics で Azure Cosmos DB 出力を使用すると、ストリーム処理の結果を JSON 出力として Cosmos DB コレクションに書き込むことができます。 Stream Analytics は、データベース内にコレクションを作成せず、代わりにユーザーが前もってコレクションを作成するように要求します。 これにより、Cosmos DB コレクションの課金によるコストをユーザーが制御できるようになり、[Cosmos DB API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用することでコレクションのパフォーマンス、整合性、容量などを直接調整できるようになりました。
+
+> [!Note]
+> Azure Cosmos DB のファイアウォールで許可されている IP の一覧に 0.0.0.0 を追加する必要があります。
 
 Cosmos DB コレクションの一部のオプションの詳細を以下に示します。
 

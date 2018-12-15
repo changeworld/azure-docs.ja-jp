@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery での VMware と物理サーバー ディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーするための既存の構成サーバーを管理する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/11/2018
-ms.author: raynew
-ms.openlocfilehash: e8f41ef44adbd72e8ab16329d5fec94c08df2fe7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 11/27/2018
+ms.author: ramamill
+ms.openlocfilehash: 0d45d460b56f956a97779b46a72d0e4cd97a6b41
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568456"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849702"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリー用の構成サーバーを管理する
 
@@ -222,7 +222,14 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 2. **[Configuration Server の正常性]** に有効期限日が表示されます。
 3. **[証明書の更新]** を選択します。
 
-## <a name="update-windows-licence"></a>Windows ライセンスを更新する
+## <a name="refresh-configuration-server"></a>構成サーバーを最新の情報に更新する
+
+1. Azure portal で、**[Recovery Services コンテナー]** > **[管理]** > **[Site Recovery Infrastructure]\(Site Recovery インフラストラクチャ\)** > **[For VMware & Physical machines]\(VMware および物理マシン\)** > **[構成サーバー]** の順に移動します。
+2. 最新の情報に更新する構成サーバーをクリックします。
+3. 選択した構成サーバーの詳細を含むブレードで、**[More]\(詳細\)** > **[サーバーを最新の情報に更新する]** をクリックします。
+4. **[Recovery Services コンテナー]** > **[監視]** > **[Site Recovery jobs]\(Site Recovery ジョブ\)** で、ジョブの進行状況を監視します。
+
+## <a name="update-windows-license"></a>Windows ライセンスを更新する
 
 OVF テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 中断なく使用するには、購入したライセンスで Windows をライセンス認証する必要があります。
 

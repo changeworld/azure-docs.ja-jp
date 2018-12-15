@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b42ce119db2c435f05424cceb5bb90627668bece
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f3ab50c4fdc080b157212bcc662a2acf6629483d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407199"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097966"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager と Update Management の統合
 
@@ -26,7 +26,7 @@ Configuration Manager でソフトウェア更新プログラムのデプロイ�
 
 * [Update Management ソリューション](automation-update-management.md)を Automation アカウントに追加しておく必要があります。
 * 現在 System Center Configuration Manager 環境で管理されている Windows サーバーも、Update Management ソリューションが有効になっている Log Analytics ワークスペースにレポートを行う必要があります。
-* この機能は、System Center Configuration Manager の現在のブランチ バージョン 1606 以降で有効になります。 Configuration Manager の中央管理サイトまたはスタンドアロンのプライマリ サイトを Log Analytics と統合してコレクションをインポートするには、「[Configuration Manager を Log Analytics に接続する](../log-analytics/log-analytics-sccm.md)」を参照してください。  
+* この機能は、System Center Configuration Manager の現在のブランチ バージョン 1606 以降で有効になります。 Configuration Manager の中央管理サイトまたはスタンドアロンのプライマリ サイトを Log Analytics と統合してコレクションをインポートするには、「[Configuration Manager を Log Analytics に接続する](../azure-monitor/platform/collect-sccm.md)」を参照してください。  
 * Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するように構成するか、Configuration Manager からセキュリティ更新プログラムを受信しない場合は Microsoft Update にアクセスできるように構成する必要があります。   
 
 Azure IaaS でホストされているクライアントを既存の Configuration Manager 環境でどのように管理するかは、主に Azure データセンターとインフラストラクチャの間の接続に依存します。 この接続は、Configuration Manager インフラストラクチャに必要となる可能性のある設計変更や、これらの必要な変更をサポートするための関連コストに影響します。 続行する前に評価する必要がある計画上の考慮事項を把握するには、「[Azure の Configuration Manager - よく寄せられる質問](/sccm/core/understand/configuration-manager-on-azure#networking)」を参照してください。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: db4208c8fef27d2e2085e63ba3a986456d0544bf
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: fe24307f7ed01c64217bcb1f9f7645a30bce7f44
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429118"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322825"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 用の Azure 診断拡張機能
 
@@ -37,7 +37,7 @@ Azure 診断拡張機能では、ターゲットの仮想マシンがインタ�
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-[このドキュメントでは、Azure 診断拡張機能のスキーマとプロパティ値について説明します。](../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
+[このドキュメントでは、Azure 診断拡張機能のスキーマとプロパティ値について説明します。](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
@@ -80,12 +80,12 @@ Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup `
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Azure 診断拡張機能の包括的なトラブルシューティング ガイドについては、[こちらの記事](../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md)を参照してください。
+Azure 診断拡張機能の包括的なトラブルシューティング ガイドについては、[こちらの記事](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md)を参照してください。
 
 ### <a name="support"></a>サポート
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、[サポートの要求] をクリックします。 Azure サポートの使用方法の詳細については、「 [Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure 診断拡張機能の詳細](../../monitoring-and-diagnostics/azure-diagnostics.md)
-* [拡張機能スキーマとバージョンの確認](../../monitoring-and-diagnostics/azure-diagnostics-schema.md)
+* [Azure 診断拡張機能の詳細](../../azure-monitor/platform/diagnostics-extension-overview.md)
+* [拡張機能スキーマとバージョンの確認](../../azure-monitor/platform/diagnostics-extension-schema.md)

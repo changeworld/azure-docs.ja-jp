@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: 110f487d486ccd2f1a26065aa225838a3a83c197
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6fc3fc0b7717242b6949d93f0668d7c56525ac49
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167224"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342823"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -157,10 +157,10 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 1. 可用性セットを作成します  
    更新ドメインの最大数を設定します
 1. 仮想マシン 1 を作成します  
-   この Red Hat Enterprise Linux 7.4 イメージの例では、RHEL 7 以上を使用します<https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   この Red Hat Enterprise Linux 7.4 イメージの例では、RHEL 7 以上を使用します<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    前に作成された可用性セットを選択します  
 1. 仮想マシン 2 を作成します  
-   この Red Hat Enterprise Linux 7.4 イメージの例では、RHEL 7 以上を使用します<https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   この Red Hat Enterprise Linux 7.4 イメージの例では、RHEL 7 以上を使用します<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    前に作成された可用性セットを選択します  
 1. 両方の仮想マシンに、少なくとも 1 つのデータ ディスクを追加します  
    データ ディスクは /usr/sap/`<SAPSID`> ディレクトリに使用されます

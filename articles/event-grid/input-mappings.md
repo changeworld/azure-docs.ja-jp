@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: ce9df1d45de82c759883dc90d50c28551bf62cdf
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: de509ab4fa3eb4dcc647877ed6d6ee0f114fb6f4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287306"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090274"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid スキーマへのカスタム フィールドのマップ
 
@@ -103,7 +103,7 @@ az eventgrid event-subscription create \
 az eventgrid event-subscription create \
   --source-resource-id $topicid \
   --name eventsub2 \
-  --event-delivery-schema inputeventschema \
+  --event-delivery-schema custominputschema \
   --endpoint <endpoint_URL>
 ```
 

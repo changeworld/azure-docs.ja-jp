@@ -9,16 +9,15 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: edfe2956da84347abf3e5da7a7d0fd448361c7f5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 16dd381301bdc650022ba5580f96a1733aeb32b0
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091343"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722719"
 ---
 # <a name="application-security-detection-pack-preview"></a>アプリケーション セキュリティ検出パック (プレビュー)
 

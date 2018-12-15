@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: ccfe108b895450e97df1639f6c47eb01823ce5f4
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 8afa6a29d7d97b1d961f8a8ea44a2b62896ec4da
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636766"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323065"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -94,7 +94,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 1. サブスクリプションまたはリソース グループに対して、Azure リソースとしてメトリックを発行することはできません。 
 1. 出力からの時間が 20 分を超えたメトリックはストアに保存できません。 メトリック ストアは、アラート設定やリアルタイムでのグラフ作成に最適化されています。 
 2. ディメンション名の数は値と一致する必要があり、逆も同様です。 値を確認してください。 
-2. カスタム メトリックをサポートしていないリージョンに対してメトリックを出力している可能性があります。 「[サポートされているリージョン](metrics-custom-overview.md#supported-regions)」を参照してください。 
+2. カスタム メトリックをサポートしていないリージョンに対してメトリックを出力している可能性があります。 「[サポートされているリージョン](../azure-monitor/platform/metrics-custom-overview.md#supported-regions)」を参照してください。 
 
 
 
@@ -118,4 +118,4 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 
  
 ## <a name="next-steps"></a>次の手順
-- [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
+- [カスタム メトリック](../azure-monitor/platform/metrics-custom-overview.md)の詳細を確認します。

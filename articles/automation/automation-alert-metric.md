@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 65de18445f114f468dd42c5a7e7128dd2f63d44c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959830"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185870"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>メトリック アラートによる Runbook の監視
 
@@ -51,7 +51,7 @@ Azure portal で、Automation アカウントに移動します。 **[監視]** 
 
 ### <a name="define-the-action-to-take"></a>実行するアクションを定義する
 
-1. **[3. アクション グループを定義します]** で、**[+ 新しいアクション グループ]** をクリックします。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細については、[アクション グループの作成と管理](../monitoring-and-diagnostics/monitoring-action-groups.md)に関する記事をご覧ください。
+1. **[3. アクション グループを定義します]** で、**[+ 新しいアクション グループ]** をクリックします。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細については、[アクション グループの作成と管理](../azure-monitor/platform/action-groups.md)に関する記事をご覧ください。
 
 1. **[アクション グループ名]** ボックスにフレンドリ名を入力し、短い名前を指定します。 短い名前は、通知がこのグループを使用して送信されるときに長い名前の代わりに使用されます。
 
