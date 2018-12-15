@@ -204,7 +204,7 @@ ms.locfileid: "43283600"
                 <div class="card">
                     <div class="cardText">
                         <h3>REST</h3>
-                        <p><a href="/rest/api/media">REST API リファレンスに関するページ</a></p>
+                        <p><a href="/rest/api/media">REST API リファレンス</a></p>
                     </div>
                 </div>
             </div>
