@@ -122,4 +122,4 @@ sections:
     - title: Languages
       html: <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
     - title: REST
-      html: <p><a href="/rest/api/compute">REST API リファレンスに関するページ</a></p>
+      html: <p><a href="/rest/api/compute">REST API リファレンス</a></p>
