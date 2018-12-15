@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ecb613dd2f624b9e0910a0ddcdf931f4b266aa96
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 1e529b2276d2e68c67696ba9d142760f5881a25e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036584"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012812"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight で Apache Tez UI を使用して Tez ジョブをデバッグする
-Tez UI は、Tez を実行エンジンとして使用する Hive ジョブをデバッグするために使用できます。 Tez UI を使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
+[Apache TEZ](https://tez.apache.org/) UI は、Tez を実行エンジンとして使用する [Apache Hive](https://hive.apache.org/) ジョブをデバッグするために使用できます。 Tez UI を使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
 
 > [!IMPORTANT]
 > このドキュメントの手順では、Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -32,7 +32,7 @@ Tez UI は、Tez を実行エンジンとして使用する Hive ジョブをデ
 * Windows ベースのリモート デスクトップ クライアント。
 
 ## <a name="understanding-apache-tez"></a>Apache Tez について
-Tez は、Apache Hadoop でのデータ処理のための拡張可能なフレームワークであり、従来の MapReduce 処理より高い速度を提供します。 Tez を有効にするには、次のテキストを Hive クエリの一部に含めます。
+Tez は、Apache Hadoop でのデータ処理のための拡張可能なフレームワークであり、従来の [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 処理より高い速度を提供します。 Tez を有効にするには、次のテキストを Hive クエリの一部に含めます。
 
     set hive.execution.engine=tez;
 
@@ -134,6 +134,6 @@ Tez を使用する Hive クエリを実行するには、次の手順に従い�
     ![タスクの詳細](./media/hdinsight-debug-tez-ui/taskdetails.png)
 
 ## <a name="next-steps"></a>次の手順
-ここでは、Tez ビューの使用方法を説明しました。詳細については、[HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)に関する記事を参照してください。
+ここでは、[Apache TEZ](https://tez.apache.org/) ビューの使用方法を説明しました。詳細については、[HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)に関する記事を参照してください。
 
-Tez に関する技術的な情報の詳細については、 [Hortonworks の Tez に関するページ](http://hortonworks.com/hadoop/tez/)を参照してください。
+Tez に関する技術的な情報の詳細については、[Hortonworks の Apache Tez ](https://hortonworks.com/hadoop/tez/)に関するページを参照してください。

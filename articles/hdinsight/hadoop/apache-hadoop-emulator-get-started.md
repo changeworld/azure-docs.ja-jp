@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: fc5f27ee17ba750e47c5609d9deb94d7f7c9dd8a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 074e2dd932cada5ae46ee0423dbc29fc8bc7495d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631559"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016778"
 ---
 # <a name="get-started-with-a-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Apache Hadoop サンドボックス (仮想マシンのエミュレーター) の概要
 
@@ -27,7 +27,7 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 
 
 ## <a name="download-and-install-the-virtual-machine"></a>仮想マシンのダウンロードとインストール
-1. [Hortonworks のダウンロード ページ](http://hortonworks.com/downloads/#sandbox)に移動します。
+1. [Hortonworks のダウンロード ページ](https://hortonworks.com/downloads/#sandbox)に移動します。
 
 2. **[VIRTUALBOX 用ダウンロード]** をクリックして、最新の Hortonworks Sandbox を VM にダウンロードします。 ダウンロードが始まる前に、Hortonworks に登録するように求められます。 ダウンロードは、ネットワーク速度に応じて 1 ～ 2 時間かかります。
    
@@ -78,6 +78,6 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 
 ## <a name="next-steps"></a>次の手順
 * [Hortonworks Sandbox で Visual Studio を使用する方法](../hdinsight-hadoop-emulator-visual-studio.md)
-* [Hortonworks Sandbox の使い方のヒント](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop チュートリアル: HDP の概要](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Hortonworks Sandbox の使い方のヒント](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Hadoop チュートリアル: HDP の概要](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 

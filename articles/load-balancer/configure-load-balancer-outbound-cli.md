@@ -1,5 +1,6 @@
 ---
-title: Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する | Microsoft Docs
+title: Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
+titlesuffix: Azure Load Balancer
 description: この記事では、Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 0759b6a8e3deb9bc1d04e41598e4eef9304ecd83
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 97a7e09994ab93eb75881a2eae2b49821ca8289f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416411"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085010"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
 

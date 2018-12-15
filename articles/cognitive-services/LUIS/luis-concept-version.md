@@ -1,21 +1,22 @@
 ---
-title: LUIS でのバージョン管理を理解する
-titleSuffix: Azure Cognitive Services
+title: バージョン管理
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) でバージョンを使用して変更を管理する方法を学習します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 61be39fc870eb73a5836f8e60a3495aff877d7ed
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 3dae1256e93bb15777225ada742539c5a0ebdccc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637850"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015570"
 ---
 # <a name="versions"></a>バージョン
 [バージョン](luis-how-to-manage-versions.md)を使用して同じアプリの別モデルを作成します。 

@@ -10,18 +10,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 6e2f0dadcb1158863282090bf6f81b0ae368416f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0b1615ca7cf10ebfa9453b4a15338045f2084b46
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317810"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996982"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-azure-powershell"></a>Azure PowerShell を使用して外部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
 [アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure PowerShell を使用して [Web トラフィック リダイレクト](application-gateway-multi-site-overview.md)を構成できます。 このチュートリアルでは、アプリケーション ゲートウェイに到達した Web トラフィックを外部サイトにリダイレクトするリスナーと規則を構成します。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ
@@ -115,7 +115,7 @@ $defaultListener = New-AzureRmApplicationGatewayHttpListener `
 $redirectConfig = New-AzureRmApplicationGatewayRedirectConfiguration `
   -Name myredirect `
   -RedirectType Temporary `
-  -TargetUrl "http://bing.com"
+  -TargetUrl "https://bing.com"
 $redirectRule = New-AzureRmApplicationGatewayRequestRoutingRule `
   -Name redirectRule `
   -RuleType Basic `

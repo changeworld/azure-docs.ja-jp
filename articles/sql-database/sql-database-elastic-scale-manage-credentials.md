@@ -3,7 +3,7 @@ title: Elastic Database クライアント ライブラリの資格情報を管�
 description: エラスティック データベース アプリの適切な資格情報のレベルを設定する方法 (管理者から読み取り専用)
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 116afab3a4481511ed6e1e8420b4bfa783add3d7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8f5de47e9d9c8cc50f77ddadfe9d781ef4c3bc96
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161235"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863824"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Elastic Database クライアント ライブラリへのアクセスに使用する資格情報
 [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)では、3 種類の資格情報を使用して[シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)にアクセスします。 必要に応じて、最低レベルのアクセスが可能な資格情報を使用します。

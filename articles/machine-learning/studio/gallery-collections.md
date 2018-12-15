@@ -1,11 +1,11 @@
 ---
-title: Azure AI ギャラリー コレクション | Microsoft Docs
-description: Azure AI ギャラリーでコレクションを発見および共有します。
+title: Azure AI Gallery のコレクション - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI Gallery のコレクションを使用すると、特定のソリューションまたは概念に使用する実験、API、およびその他のギャラリー項目をグループ化できます。 それらをグループ化して使用したり、後で参照するために保存したり、共有したりできます。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: b586639cc6c9d4e25d65fa9f3a510e22789acfb2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: b88489f826bbeab636903c7c9918f34d16b2f122
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346037"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271370"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Azure AI ギャラリーでコレクションを発見および共有する
 
@@ -98,4 +98,4 @@ ms.locfileid: "51346037"
 
 **[ギャラリーに移動する](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+

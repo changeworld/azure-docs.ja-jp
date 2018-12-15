@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 53e49099fd3486d51f021528c9354cf32f4952d2
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: abc1e835fa153fc5d061cca5a3eb009931240332
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492791"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276334"
 ---
 # <a name="sfctl-is"></a>sfctl is
 クエリを実行し、インフラストラクチャ サービスにコマンドを送信します。
@@ -41,7 +41,7 @@ ms.locfileid: "39492791"
 |引数|説明|
 | --- | --- |
 | --command [必須] | 呼び出されるコマンドのテキスト。 コマンドの内容は、インフラストラクチャに固有です。 |
-| --service-id | Infrastructure Service の ID。 <br><br> これは "fabric:"' URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。 |
+| --service-id | Infrastructure Service の ID。 <br><br> これは "fabric\:" URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数

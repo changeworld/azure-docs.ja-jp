@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a6a067910dcd373a4323db6612525a2bdb74745c
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 7798cea053be1662edeb5bc8bfcef00f656b8d6e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426569"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832941"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office データ接続ファイルを作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "49426569"
 **サンプル接続ファイル**
 ```
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
-xmlns="http://www.w3.org/TR/REC-html40">
+xmlns="https://www.w3.org/TR/REC-html40">
 
 <head>
 <meta http-equiv=Content-Type content="text/x-ms-odc; charset=utf-8">
@@ -50,12 +50,12 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <title>AzureAnalysisServicesConnection</title>
 <xml id=docprops><o:DocumentProperties
   xmlns:o="urn:schemas-microsoft-com:office:office"
-  xmlns="http://www.w3.org/TR/REC-html40">
+  xmlns="https://www.w3.org/TR/REC-html40">
   <o:Name>SampleAzureAnalysisServices</o:Name>
  </o:DocumentProperties>
 </xml><xml id=msodc><odc:OfficeDataConnection
   xmlns:odc="urn:schemas-microsoft-com:office:odc"
-  xmlns="http://www.w3.org/TR/REC-html40">
+  xmlns="https://www.w3.org/TR/REC-html40">
   <odc:Connection odc:Type="OLEDB">
    <odc:ConnectionString>Provider=MSOLAP.7;Data Source=asazure://<region>.asazure.windows.net/<servername>;Initial Catalog=<database>;</odc:ConnectionString>
    <odc:CommandType>Cube</odc:CommandType>

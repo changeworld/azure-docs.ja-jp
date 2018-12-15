@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: a71f28413028efe3547df7c464ec852fe2161f63
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: accb7b84793b9fc98bc20f1637ec30f97a7f4a87
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649943"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962082"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible モジュールとバージョンのマトリックス
 
@@ -133,4 +133,4 @@ Ansible には多数のモジュールが付属しています。これらのモ
 azure_preview_module プレイブック ロールは 3 週間ごとにリリースされます。
 
 ## <a name="next-steps"></a>次の手順
-プレイブック ロール関連の詳細情報については、「[Creating Reusable Playbooks](http://docs.ansible.com/ansible/latest/playbooks_reuse.html)」(再利用可能なプレイブックの作成) をご覧ください。 
+プレイブック ロール関連の詳細情報については、「[Creating Reusable Playbooks](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)」(再利用可能なプレイブックの作成) をご覧ください。 

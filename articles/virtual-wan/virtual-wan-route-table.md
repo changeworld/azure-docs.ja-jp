@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/11/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 56321c7c2239c0f1f0e73126d90a521e3cafb853
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 821aecf5549548365d95ef83ea1fcdeb017a4a21
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984196"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321445"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>トラフィックをネットワーク仮想アプライアンスに誘導するための Virtual WAN ハブ ルート テーブルを作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "46984196"
 * ハブを作成する
 * ハブの仮想ネットワーク接続を作成する
 * ハブ ルートを作成する
-* ルート テーブルを作成する
+* ルート テーブルの作成
 * ルート テーブルを適用する
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -41,7 +41,7 @@ ms.locfileid: "46984196"
 5. 2 つの VNet が既に作成されていることを確認します。 それらは、スポーク VNet として使用されます。 この記事では、VNet スポークのアドレス空間は 10.0.2.0/24 と 10.0.3.0/24 です。 VNet の作成方法に関する情報が必要な場合は、「[PowerShell を使用して仮想ネットワークを作成する](../virtual-network/quick-create-powershell.md)」を参照してください。
 6. どの VNet 内にも仮想ネットワーク ゲートウェイがないことを確認します。
 
-## <a name="signin"></a>1.サインインする
+## <a name="signin"></a>1.[サインイン]
 
 Resource Manager PowerShell コマンドレットの最新版がインストールされていることを確認します。 PowerShell コマンドレットのインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。 この点は重要です。以前のバージョンのコマンドレットには、この演習に必要な最新の値が含まれていません。
 
@@ -114,7 +114,7 @@ $routeTable = New-AzureRmVirtualHubRouteTable -Route @($route1)
 仮想ハブに変更をコミットします。
 
 ```powershell
-Set-AzureRmVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub” -RouteTable $routeTable
+Update-AzureRmVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub” -RouteTable $routeTable
 ```
 
 ## <a name="cleanup"></a>リソースをクリーンアップする

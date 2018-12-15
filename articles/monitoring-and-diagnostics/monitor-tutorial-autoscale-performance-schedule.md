@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.component: autoscale
-ms.openlocfilehash: b63e1fa316e9ebeaa564731b8bb0bc3ed5ba9036
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: adf3fdf694216353c5e6a0df8726cb5cd337ddf8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264063"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385994"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>パフォーマンス データまたはスケジュールに基づいて自動スケール設定を作成する
 
@@ -181,7 +181,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > * リソースをクリーンアップする
 
 
-自動スケール設定の詳細については、[自動スケールの概要](monitoring-overview-autoscale.md)に関する記事をご覧ください。
+自動スケール設定の詳細については、[自動スケールの概要](../azure-monitor/platform/autoscale-overview.md)に関する記事をご覧ください。
 
 > [!div class="nextstepaction"]
 > [監視データをアーカイブする](monitor-tutorial-archive-monitoring-data.md)

@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 3c7a1dd9ba688c5cc9776dbfba0841c9a06065dc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6447061e79946abf8070daf29eeb57bad7b6fa55
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419692"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184969"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
 
@@ -49,20 +49,20 @@ ms.locfileid: "50419692"
             - 先ほど作成した **_RootCA.pem_** ファイルを選択します。
             - 作業が完了したら、**[保存]** をクリックします。
 
-        ![証明書を追加する](./media/tutorial-group-enrollments/add-certificate.png)
+           ![証明書を追加する](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. 新しく作成された証明書を選択します。
             - **[確認コードを生成します]** をクリックします。 生成されたコードをコピーします。
             - 確認の手順を実行します。 "_確認コード_" を入力するか、または右クリックして実行中の PowerShell ウィンドウに貼り付けます。  **Enter** キーを押します。
             - 新しく作成した **_verifyCert4.pem_** ファイルを Azure Portal で選択します。 **[確認]** をクリックします。
 
-            ![証明書を検証する](./media/tutorial-group-enrollments/validate-certificate.png)
+              ![証明書を検証する](./media/tutorial-group-enrollments/validate-certificate.png)
 
     1. 最後に、デバイス証明書を作成し、リソースをクリーンアップする手順を実行します。
 
-    > [!NOTE]
-    > デバイス証明書を作成するとき、デバイス名には必ず小文字の英数字とハイフンだけを使ってください。
-    >
+       > [!NOTE]
+       > デバイス証明書を作成するとき、デバイス名には必ず小文字の英数字とハイフンだけを使ってください。
+       >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>デバイス登録エントリを作成する
@@ -149,7 +149,7 @@ ms.locfileid: "50419692"
 
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする
 
-1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、_ID スコープ_ と _Provisioning Service のグローバル エンドポイント_ をメモします。
+1. Device Provisioning Service の概要ブレードで、**[概要]** を選択し、_ID スコープ_と _Provisioning Service のグローバル エンドポイント_をメモします。
 
     ![サービス情報](./media/tutorial-group-enrollments/extract-dps-endpoints.png)
 
@@ -161,7 +161,7 @@ ms.locfileid: "50419692"
 
 1. 登録グループの情報を次のように入力します。
 
-    - `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` を編集して、メモした _ID スコープ_ と _Provisioning Service のグローバル エンドポイント_ を含めます。 **_{deviceName}-public.pem_** ファイルを開いて、この値を "_クライアント証明書_" として追加します。**_{deviceName}-all.pem_** ファイルを開いて、_-----BEGIN PRIVATE KEY-----_ から _-----END PRIVATE KEY-----_ までのテキストをコピーします。  これを "_クライアント証明書の秘密キー_" として使います。
+    - `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` を編集して、メモした _ID スコープ_と _Provisioning Service のグローバル エンドポイント_を含めます。 **_{deviceName}-public.pem_** ファイルを開いて、この値を "_クライアント証明書_" として追加します。**_{deviceName}-all.pem_** ファイルを開いて、_-----BEGIN PRIVATE KEY-----_ から _-----END PRIVATE KEY-----_ までのテキストをコピーします。  これを "_クライアント証明書の秘密キー_" として使います。
 
         ```java
         private static final String idScope = "[Your ID scope here]";

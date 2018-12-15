@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/11/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 00fc04afd26da2ef5741eec308835bb8c897c26b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408083"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077343"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
 
@@ -72,7 +72,7 @@ Windows を使っている場合は、次の手順に進み、クラスター �
 これで、クラスターのプラットフォームとアプリケーション ログ テーブルに正しく接続されている Log Analytics ワークスペースに Service Fabric Analytics ソリューションが追加されていることになります。 同じ方法でソースをワークスペースに追加できます。
 
 
-## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Log Analytics をデプロイする
+## <a name="deploy-log-analytics-with-azure-resource-manager"></a>Azure Resource Manager を使用して Log Analytics を展開する
 
 Resource Manager テンプレートを使用してクラスターをデプロイすると、テンプレートは新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションをそのワークスペースに追加し、適切なストレージ テーブルからデータを読み取るように構成します。
 
@@ -93,7 +93,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -Tem
 
 Azure Resource Manager は、このコマンドが既存のリソースに対する更新であると検出します。 既存のデプロイで使用されているテンプレートと、指定された新しいテンプレートの間の変更点だけを処理します。
 
-## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Azure PowerShell を使用して Log Analytics をデプロイする
+## <a name="deploy-log-analytics-with-azure-powershell"></a>Azure PowerShell を使用して Log Analytics をデプロイする
 
 `New-AzureRmOperationalInsightsWorkspace` コマンドを使って、PowerShell で Log Analytics リソースをデプロイすることもできます。 この方法を使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1) がインストールされていることを確認します。 このスクリプトを使って、新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションを追加します。 
 
@@ -123,9 +123,9 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 終了したら、前のセクションの手順に従い、Log Analytics を適切なストレージ アカウントに接続します。
 
-PowerShell を使って、他のソリューションを追加したり、Log Analytics ワークスペースに他の変更を行うこともできます。 詳しくは、「[PowerShell を使用した Log Analytics の管理](../log-analytics/log-analytics-powershell-workspace-configuration.md)」をご覧ください。
+PowerShell を使って、他のソリューションを追加したり、Log Analytics ワークスペースに他の変更を行うこともできます。 詳しくは、「[PowerShell を使用した Log Analytics の管理](../azure-monitor/platform/powershell-workspace-configuration.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 * お使いのノードに [Log Analytics エージェントをデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
 * Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
-* [Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する](../log-analytics/log-analytics-view-designer.md)
+* [Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する](../azure-monitor/platform/view-designer.md)

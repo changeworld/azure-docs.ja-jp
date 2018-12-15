@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cf3e367dad528017a98e103962c57cb758da55cb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: a7a5c097f0400d89398cef66eeb7bd0ce8d5e97b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355361"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132433"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションを構成する方法
 
@@ -28,15 +28,15 @@ ms.locfileid: "44355361"
 
 ## <a name="recommended-documents"></a>推奨されるドキュメント 
 
-管理ポータルにおけるアプリケーション プロキシ アプリケーションの初期構成と作成については、「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-publish-azure-portal.md)」の手順に従ってください。
+管理ポータルにおけるアプリケーション プロキシ アプリケーションの初期構成と作成については、「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)」の手順に従ってください。
 
-コネクタの構成の詳細については、[Azure Portal でアプリケーション プロキシを有効にする方法](application-proxy-enable.md)に関するページを参照してください。
+コネクタの構成の詳細については、[Azure Portal でアプリケーション プロキシを有効にする方法](application-proxy-add-on-premises-application.md)に関するページを参照してください。
 
 証明書のアップロードとカスタム ドメインの使用については、「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」を参照してください。
 
 ## <a name="create-the-applicationsetting-the-urls"></a>アプリケーションの作成/URL の設定
 
-「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-publish-azure-portal.md)」の手順に従ってアプリケーションを作成しているときにエラーが発生した場合、アプリケーションの修復方法に関する情報や推奨事項については、そのエラーの詳細を見て確認してください。 ほとんどのエラー メッセージには、推奨される解決方法が記載されています。 一般的なエラーを避けるために、以下の点を確認してください。
+「[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-add-on-premises-application.md)」の手順に従ってアプリケーションを作成しているときにエラーが発生した場合、アプリケーションの修復方法に関する情報や推奨事項については、そのエラーの詳細を見て確認してください。 ほとんどのエラー メッセージには、推奨される解決方法が記載されています。 一般的なエラーを避けるために、以下の点を確認してください。
 
 -   アプリケーション プロキシ アプリケーションする権限を持った管理者であること。
 
@@ -75,4 +75,4 @@ ms.locfileid: "44355361"
    ![通知アイコン](./media/application-proxy-config-how-to/error-message2.png)
 
 ## <a name="next-steps"></a>次の手順
-[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)
+[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)

@@ -2,16 +2,17 @@
 title: Azure Cosmos DB での Change Feed サポートの使用
 description: Azure Cosmos DB の Change Feed サポートを使用して、ドキュメントの変更を追跡し、トリガーなどのイベント ベースの処理を実行したり、キャッシュや分析システムを最新の状態に維持したりします。
 author: rafats
+ms.author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: 4edf637d97070416c0dc2970f4bed483e5f4f34d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: 0519bb78b01cd7cab6abaf453efd7a4595101ef4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621311"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133759"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
 
@@ -33,10 +34,10 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 | **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API**|**テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | 該当なし | [はい] | いいえ  | いいえ  | はい | いいえ  |
-|Java|該当なし|[はい]|いいえ |いいえ |はい|いいえ |
-|Python|該当なし|[はい]|いいえ |いいえ |はい|いいえ |
-|Node/JS|該当なし|[はい]|いいえ |いいえ |はい|いいえ |
+| .NET | NA | [はい] | いいえ  | いいえ  | はい | いいえ  |
+|Java|NA|[はい]|いいえ |いいえ |はい|いいえ |
+|Python|NA|[はい]|いいえ |いいえ |はい|いいえ |
+|Node/JS|NA|[はい]|いいえ |いいえ |はい|いいえ |
 
 ## <a name="change-feed-and-different-operations"></a>変更フィードとさまざまな操作
 
@@ -82,7 +83,7 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 変更フィードで簡単に実装できるシナリオの例を以下にいくつか示します。
 
-* [サーバーレス](http://azure.com/serverless) Web やモバイル アプリ内で、お客様のプロファイル、設定、場所のすべての変更などのイベントを追跡し、[Azure Functions](#azure-functions) を使用して各デバイスにプッシュ通知を送信するなど、特定のアクションをトリガーできます。 
+* [サーバーレス](https://azure.microsoft.com/en-us/solutions/serverless/) Web やモバイル アプリ内で、お客様のプロファイル、設定、場所のすべての変更などのイベントを追跡し、[Azure Functions](change-feed-functions.md) を使用して各デバイスにプッシュ通知を送信するなど、特定のアクションをトリガーできます。
 
 * たとえば、Azure Cosmos DB を使用してゲームを構築する場合、Change Feed を使用して完了したゲームのスコアに基づくリアルタイムのスコアボードを実装できます。
 
@@ -120,8 +121,8 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 ## <a name="next-steps"></a>次の手順
 
-以下の記事を参照すれば、変更フィードに関してさらに詳しく知ることができます。
+以下の記事で、変更フィードに関してさらに詳しく知ることができます。
 
 * [変更フィードを読み取るオプション](read-change-feed.md)
 * [変更フィードと Azure Functions の併用](change-feed-functions.md)
-* [変更フィード プロセッサ ライブラリの使用](change-feed-processor.md)
+* [Change Feed Processor ライブラリの使用](change-feed-processor.md)

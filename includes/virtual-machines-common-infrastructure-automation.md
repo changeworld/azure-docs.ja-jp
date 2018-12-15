@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: efca5c4155372456100126671e7d5cd1ccf0cbbc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981568"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53027923"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
@@ -23,7 +23,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
     - [Azure Automation](#azure-automation) は、Azure とオンプレミス インフラストラクチャでアクションを実行できます。
 
 - アプリケーションのデプロイと配信を自動化する
-    - サンプルには、[Azure DevOps Services](#visual-studio-team-services) や [Jenkins](#jenkins) が含まれます。
+    - サンプルには、[Azure DevOps Services](#azure-devops-services) や [Jenkins](#jenkins) が含まれます。
 
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) は、構成の管理、VM の作成、またはアプリケーションのデプロイ用の自動化エンジンです。 Ansible では、ターゲット マシンを認証および管理するために、通常は SSH キーによる、エージェントレス モデルを使用します。 構成タスクはプレイブックで定義し、特定のタスクを実行するために利用できるさまざまな Ansible モジュールが用意されています。 詳細については、「[How Ansible works (Ansible のしくみ)](https://www.ansible.com/how-ansible-works)」を参照してください。

@@ -2,18 +2,18 @@
 title: Azure の Recovery Services コンテナーを削除する
 description: この記事では、Recovery Services コンテナーを削除する方法について説明します。 この記事には、コンテナーを削除しようとしているのに削除できない場合のトラブルシューティングの手順が含まれています。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 7/6/2018
-ms.author: markgal
-ms.openlocfilehash: e5bc68b55fdefc07b9764b8393ea6f4062468252
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: raynew
+ms.openlocfilehash: d7617ce96181a0708dfa4731c07d581e332bdff4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816465"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873106"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 

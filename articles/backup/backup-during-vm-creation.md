@@ -2,19 +2,19 @@
 title: 作成時に Azure VM のバックアップを有効にする
 description: 作成プロセスの間に Azure 仮想マシンのバックアップを有効にする手順を説明します。
 services: backup, virtual-machines
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup, virtual-machines
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9fd4707a201163002cc15cc9cf97e544e76cf7c6
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 518d171c96b9c4f9bf3e195a7130f4c022b7ad07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35756279"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879878"
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>Azure 仮想マシンの作成時にバックアップを有効にする 
 

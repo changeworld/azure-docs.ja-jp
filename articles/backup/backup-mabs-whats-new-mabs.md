@@ -2,18 +2,18 @@
 title: Microsoft Azure Backup Server の新機能
 description: Microsoft Azure Backup Server には、VM、ファイルとフォルダー、ワークロードなどを保護するための高度なバックアップ機能があります。 Azure Backup Server V3 をインストールまたはアップグレードする方法を説明します。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan; kasinh
-ms.openlocfilehash: 8e80d935bac94f3d4b2380799a1aed256828af75
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: adigan
+ms.openlocfilehash: 01709bf7bdf4812802ab983729cc628101810f43
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625880"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869621"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure Backup Server の新機能
 
@@ -60,6 +60,7 @@ MABS のインストールまたはアップグレード手順の詳細につい
 ## <a name="next-steps"></a>次の手順
 
 サーバーを準備する方法、またはワークロードの保護を開始する方法を説明します。
+- [MABS V3 の既知の問題](backup-mabs-release-notes-v3.md)
 - [Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)
 - [Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
 - [Backup Server を使用した SQL Server のバックアップ](backup-azure-sql-mabs.md)

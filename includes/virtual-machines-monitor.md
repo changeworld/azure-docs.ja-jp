@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 109f4621af3e3ca617dfe521575d9352f22c5917
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227348"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399915"
 ---
-診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/application-insights/app-insights-overview.md) や [Log Analytics](../articles/log-analytics/log-analytics-queries.md) など、より高度な監視方法を使用することもできます。
+診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/application-insights/app-insights-overview.md) や [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md) など、より高度な監視方法を使用することもできます。
 
 ## <a name="diagnostics-and-metrics"></a>診断とメトリック 
 
@@ -31,7 +31,7 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 ## <a name="alerts"></a>アラート
 
-特定のパフォーマンス メトリックに基づいて[アラート](../articles/monitoring-and-diagnostics/monitoring-overview-alerts.md)を作成できます。 たとえば平均 CPU 使用率が特定のしきい値を超えたときや、空きディスク領域が特定の容量を下回ったときなどに、それらの問題に関するアラートを受け取ることができます。 アラートの構成は、[Azure Portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)、[Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md)、[Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) のいずれかで行うことができます。
+特定のパフォーマンス メトリックに基づいて[アラート](../articles/azure-monitor/platform/alerts-overview.md)を作成できます。 たとえば平均 CPU 使用率が特定のしきい値を超えたときや、空きディスク領域が特定の容量を下回ったときなどに、それらの問題に関するアラートを受け取ることができます。 アラートの構成は、[Azure Portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)、[Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md)、[Azure CLI](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md) のいずれかで行うことができます。
 
 ## <a name="azure-service-health"></a>Azure Service Health
 
@@ -50,7 +50,7 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 - [アクティビティ ログ イベントに対するアラートを設定する](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)。
 - サード パーティーのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[アクティビティ ログを Event Hubs にストリーミングする](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md)。
 - [PowerBI コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
-- アーカイブや手動での検査に使用するためにアクティビティ ログを[ストレージ アカウントに保存](../articles/monitoring-and-diagnostics/monitoring-archive-activity-log.md)する。 ログ プロファイルを使用して、リテンション期間 (日数) を指定できます。
+- アーカイブや手動での検査に使用するためにアクティビティ ログを[ストレージ アカウントに保存](../articles/azure-monitor/platform/archive-activity-log.md)する。 ログ プロファイルを使用して、リテンション期間 (日数) を指定できます。
 
 アクティビティ ログ データには、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor)、[Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) のいずれかを使ってアクセスすることもできます
 
@@ -58,7 +58,7 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 たとえば、診断ログでは次のことを実行できます。
 
-- 監査や手動での検査に使用するために診断ログを[ストレージ アカウント](../articles/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)に保存する。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
+- 監査や手動での検査に使用するために診断ログを[ストレージ アカウント](../articles/azure-monitor/platform/archive-diagnostic-logs.md)に保存する。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
 - サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを Event Hubs にストリーミング](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)する。
 - 診断ログを [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) で分析する。
 

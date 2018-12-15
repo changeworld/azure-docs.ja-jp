@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 4c58be8f501e72027e1692ceb73552a3f252f92a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 48dfa3180f040af3e8298d418cf71c537477ba5a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38603180"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956954"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Azure API Management、Event Hubs、Runscope を使用した API の監視
 [API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 しかし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは Azure Portal ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
@@ -45,7 +45,7 @@ Event Hubs には、複数のコンシューマー グループにイベント�
 ## <a name="a-policy-to-send-applicationhttp-messages"></a>application/http メッセージを送信するためのポリシー
 イベント ハブでは、イベント データを単純な文字列として受け取ります。 その文字列の内容はユーザーが決めることができます。 HTTP 要求をパッケージ化し、それを Event Hubs に送信できるようにするには、要求または応答の情報を含む文字列の形式を設定する必要があります。 このような状況で再利用できる既存の形式がある場合は、独自の解析コードを記述する必要はありません。 最初、HTTP 要求と応答の送信には [HAR](http://www.softwareishard.com/blog/har-12-spec/) を使用することを考えていました。 しかし、この形式は、JSON ベースの形式で一連の HTTP 要求を格納するために最適化されています。 この形式には必須の要素が多数含まれていたため、ネットワーク経由で HTTP メッセージを渡すシナリオでは不必要に複雑さが増しました。  
 
-代わりの方法として、HTTP 仕様の [RFC 7230](http://tools.ietf.org/html/rfc7230) に規定されている `application/http` メディア タイプを使用しました。 このメディア タイプでは、実際にネットワーク経由で HTTP メッセージを送信する際に使用されるのとまったく同じ形式が使用されますが、メッセージ全体を別の HTTP 要求の本文に含めることができます。 ここでは、本文を、Event Hubs に送信するメッセージとして使用します。 [Microsoft ASP.NET Web API 2.2 クライアント](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) ライブラリには、この形式を解析してネイティブ `HttpRequestMessage` オブジェクトと `HttpResponseMessage` オブジェクトに変換できる便利なパーサーが含まれています。
+代わりの方法として、HTTP 仕様の [RFC 7230](https://tools.ietf.org/html/rfc7230) に規定されている `application/http` メディア タイプを使用しました。 このメディア タイプでは、実際にネットワーク経由で HTTP メッセージを送信する際に使用されるのとまったく同じ形式が使用されますが、メッセージ全体を別の HTTP 要求の本文に含めることができます。 ここでは、本文を、Event Hubs に送信するメッセージとして使用します。 [Microsoft ASP.NET Web API 2.2 クライアント](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) ライブラリには、この形式を解析してネイティブ `HttpRequestMessage` オブジェクトと `HttpResponseMessage` オブジェクトに変換できる便利なパーサーが含まれています。
 
 このメッセージを作成できるようにするには、Azure API Management の C# ベースの [ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx) を使用する必要があります。 Azure Event Hubs に HTTP 要求メッセージを送信するポリシーを次に示します。
 
@@ -159,7 +159,7 @@ HTTP ヘッダーは、単純なキーと値のペアの形式のメッセージ
 `set-variable` ポリシーでは、`<inbound>` セクションと `<outbound>` セクション両方の `log-to-eventhub` ポリシーからアクセスできる値を作成します。  
 
 ## <a name="receiving-events-from-event-hubs"></a>Event Hubs からのイベントの受信
-Azure Event Hubs からのイベントは、 [AMQP プロトコル](http://www.amqp.org/)を使用して受信します。 Microsoft Service Bus チームは、クライアント ライブラリでコンシューマー側のイベントを簡単に作成できるようにしました。 サポートされている方法は 2 つあり、1 つは*ダイレクト コンシューマー*、もう 1 つは `EventProcessorHost` クラスの使用です。 これらの 2 つの方法の例については、「 [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。 簡単に 2 つの方法の違いを説明すると、`Direct Consumer`を使用すると完全に制御できるのに対して、`EventProcessorHost` を使用した場合は、一部の面倒な作業が自動的に処理されますが、これらのイベントをどのように処理するかについてはある程度憶測が立てられます。  
+Azure Event Hubs からのイベントは、 [AMQP プロトコル](https://www.amqp.org/)を使用して受信します。 Microsoft Service Bus チームは、クライアント ライブラリでコンシューマー側のイベントを簡単に作成できるようにしました。 サポートされている方法は 2 つあり、1 つは*ダイレクト コンシューマー*、もう 1 つは `EventProcessorHost` クラスの使用です。 これらの 2 つの方法の例については、「 [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。 簡単に 2 つの方法の違いを説明すると、`Direct Consumer`を使用すると完全に制御できるのに対して、`EventProcessorHost` を使用した場合は、一部の面倒な作業が自動的に処理されますが、これらのイベントをどのように処理するかについてはある程度憶測が立てられます。  
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 このサンプルでは、わかりやすくするために `EventProcessorHost` を使用していますが、これはこの特定のシナリオにとって最適ではない可能性があります。 `EventProcessorHost` では、特定のイベント プロセッサ クラス内でスレッドの問題について心配する必要がないようにする困難な処理が行われます。 ただし、このシナリオでは、メッセージを別の形式に変換し、非同期メソッドを使用してそれを別のサービスに渡しているだけです。 共有した状態を更新する必要はないため、スレッドの問題が発生するリスクはありません。 ほとんどのシナリオでは、 `EventProcessorHost` がおそらく最善の選択肢であり、最も簡単な方法であることは確実です。     
@@ -213,7 +213,7 @@ public class HttpMessage
 次に、`HttpMessage` インスタンスは、`IHttpMessageProcessor` の実装に転送されます。これは、Azure イベント ハブからのイベントの受信および解釈と実際のイベントの処理を分離するために作成したインターフェイスです。
 
 ## <a name="forwarding-the-http-message"></a>HTTP メッセージの転送
-このサンプルでは、少しひねって HTTP 要求を [Runscope](http://www.runscope.com) にプッシュ送信しました。 Runscope は、HTTP デバッグ、ログ記録、および監視に特化したクラウド ベースのサービスです。 Runscope には Free レベルが用意されているため、簡単に試すことができます。これを使用すると、API Management サービスを通過する HTTP 要求をリアルタイムで確認することができます。
+このサンプルでは、少しひねって HTTP 要求を [Runscope](https://www.runscope.com) にプッシュ送信しました。 Runscope は、HTTP デバッグ、ログ記録、および監視に特化したクラウド ベースのサービスです。 Runscope には Free レベルが用意されているため、簡単に試すことができます。これを使用すると、API Management サービスを通過する HTTP 要求をリアルタイムで確認することができます。
 
 `IHttpMessageProcessor` の実装は次のようになります。
 
@@ -260,7 +260,7 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-[Runscope 用の既存のクライアント ライブラリ](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha)を利用し、`HttpRequestMessage` と `HttpResponseMessage` のインスタンスをサービスに簡単にプッシュ送信することができました。 Runscope API にアクセスするには、アカウントと API キーが必要です。 API キーを取得するための手順については、 [Runscope API にアクセスするアプリケーションの作成](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) に関するスクリーンキャストを参照してください。
+[Runscope 用の既存のクライアント ライブラリ](https://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha)を利用し、`HttpRequestMessage` と `HttpResponseMessage` のインスタンスをサービスに簡単にプッシュ送信することができました。 Runscope API にアクセスするには、アカウントと API キーが必要です。 API キーを取得するための手順については、 [Runscope API にアクセスするアプリケーションの作成](https://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) に関するスクリーンキャストを参照してください。
 
 ## <a name="complete-sample"></a>完全なサンプル
 サンプルの[ソース コード](https://github.com/darrelmiller/ApimEventProcessor)とテストは、GitHub から入手できます。 自身でサンプルを実行するには、[API Management サービス](get-started-create-service-instance.md)、[接続されたイベント ハブ](api-management-howto-log-event-hubs.md)、および[ストレージ アカウント](../storage/common/storage-create-storage-account.md)が必要です。   

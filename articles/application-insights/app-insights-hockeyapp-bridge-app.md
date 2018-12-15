@@ -9,16 +9,15 @@ ms.assetid: 97783cc6-67d6-465f-9926-cb9821f4176e
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1951f001de1b9d0667e5d4430454b32b5a3c890e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2f9b61a212251332cd94379b40f93eb52d49c729
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957490"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870074"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
 
@@ -61,7 +60,7 @@ Analytics はデータのアドホック クエリのための強力なツール
 
 ![[分析]](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [Analytics の詳細](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analytics の詳細](../azure-monitor/log-query/get-started-portal.md)
 
 ## <a name="continuous-export"></a>連続エクスポート
 連続エクスポートを使用すると、Azure Blob Storage コンテナーにデータをエクスポートできます。 これは、Application Insights で現在提供されている保有期間よりも長くデータを保持する必要がある場合に非常に便利です。 データは、Blob Storage で保持し、SQL データベースやお好みのデータ ウェアハウス ソリューションに加工処理することができます。
@@ -69,5 +68,5 @@ Analytics はデータのアドホック クエリのための強力なツール
 [連続エクスポートの詳細](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>次の手順
-* [Analytics をデータに適用する](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analytics をデータに適用する](../azure-monitor/log-query/get-started-portal.md)
 

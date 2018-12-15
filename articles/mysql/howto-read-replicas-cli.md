@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: c1c550e6b99b9933b66c85e1de7e0a5cc2eb711d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 637c1b77a4ced9c8f7542548a56d8e3b0315d075
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564845"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136309"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
@@ -36,6 +36,7 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 ```
 
 `az mysql server replica create` コマンドには、次のパラメーターが必要です。
+
 | Setting | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |
@@ -57,6 +58,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 ```
 
 `az mysql server replica stop` コマンドには、次のパラメーターが必要です。
+
 | Setting | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  レプリカ サーバーが存在するリソース グループ。  |
@@ -90,6 +92,7 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 ```
 
 `az mysql server replica list` コマンドには、次のパラメーターが必要です。
+
 | Setting | 値の例 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  レプリカ サーバーを作成するリソース グループ。  |

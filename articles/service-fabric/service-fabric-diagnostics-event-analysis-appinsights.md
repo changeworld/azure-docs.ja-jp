@@ -12,22 +12,24 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/04/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: aedbc5925a6e101299170843abef79ef6125eafe
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 815b792f8584e984ff77c32265de65f9b633adb1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230422"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322791"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
-Microsoft Azure Application Insights は、アプリケーションの監視と診断のための拡張可能なプラットフォームです。 このプラットフォームには、強力な分析ツールとクエリ ツール、カスタマイズ可能なダッシュボードや視覚化、さらには自動アラート通知を含むオプションが含まれています。 これは、Service Fabric アプリケーションとサービスの監視と診断用に推奨されるプラットフォームです。 この記事を読むと、次の一般的な問題に対処できます
+Azure Monitor の一部である Application Insights は、アプリケーションの監視と診断のための拡張可能なプラットフォームです。 このプラットフォームには、強力な分析ツールとクエリ ツール、カスタマイズ可能なダッシュボードや視覚化、さらには自動アラート通知を含むオプションが含まれています。 Application Insights と Service Fabric の統合には、Visual Studio と Azure portal のツール エクスペリエンスだけでなく、Service Fabric 固有のメトリックが含まれているため、すぐに使える包括的なロギング エクスペリエンスが実現します。 Application Insights を使用すると、多くのログが自動的に作成され、収集されますが、アプリケーションにさらにカスタム ログを追加して、診断エクスペリエンスをさらに豊かにすることをお勧めします。
+
+この記事を読むと、次の一般的な問題に対処できます。
 
 * アプリケーションとサービスの内部で何が行われているかを理解し、テレメトリを収集する方法
 * 互いに通信しているアプリケーション (特にサービス) のトラブルシューティングを行う方法
-* サービスのパフォーマンスに関するメトリック (たとえば、ページの読み込み時間や http 要求など) を取得する方法
+* サービスのパフォーマンスに関するメトリック (たとえば、ページの読み込み時間や HTTP 要求など) を取得する方法
 
 この記事の目的は、Application Insights 内から情報を取得し、トラブルシューティングを行う方法を示すことです。 Service Fabric で Application Insights を設定および構成する方法については、この[チュートリアル](service-fabric-tutorial-monitoring-aspnet.md)をご覧ください。
 
@@ -52,7 +54,7 @@ Application Insights ポータルの機能についてさらに調べるには�
 >[!NOTE]
 >これは現在、Windows クラスターにのみ当てはまります。
 
-WAD から Azure Application Insights にデータを送信する主な方法は 2 つあります。この方法は、[この記事](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)で説明しているように、Application Insights シンクを WAD 構成に追加することで実行できます。
+WAD から Azure Application Insights にデータを送信する主な方法は 2 つあります。この方法は、[この記事](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)で説明しているように、Application Insights シンクを WAD 構成に追加することで実行できます。
 
 #### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Azure portal でクラスターを作成するときに、Application Insights のインストルメンテーション キーを追加する
 
@@ -86,7 +88,7 @@ Resource Manager テンプレートの "WadCfg" に、次の 2 つの変更を�
 
 上記の両方のコード スニペットには、シンクを記述するために "applicationInsights" という名前が使用されていました。 これは要件ではなく、シンクの名前が "sinks" に含まれている限り、任意の文字列で名前を設定できます。
 
-現時点では、クラスターのログは Application Insights のログ ビューアーに**トレース**として表示されます。 プラットフォームからのトレースのほとんどは "情報" レベルであるため、シンクの構成を変更して "重大" または "エラー" タイプのログのみを送信することも検討できます。 これは、[この記事](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)で説明するように、シンクに "チャネル" を追加することで実現できます。
+現時点では、クラスターのログは Application Insights のログ ビューアーに**トレース**として表示されます。 プラットフォームからのトレースのほとんどは "情報" レベルであるため、シンクの構成を変更して "重大" または "エラー" タイプのログのみを送信することも検討できます。 これは、[この記事](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)で説明するように、シンクに "チャネル" を追加することで実現できます。
 
 >[!NOTE]
 >ポータルまたは Resource Manager テンプレートのいずれかで間違った Application Insights キーを使用した場合、手動でキーを変更してクラスターを更新するか、再デプロイする必要があります。
@@ -110,7 +112,7 @@ EventFlow を使用してイベントを集計する場合は、必ず `Microsof
 
 EventFlow と WAD は集計ソリューションとして使用することをお勧めします。これは診断と監視を行うモジュール性の高いアプローチが可能になるためです。つまり、EventFlow からの出力を変更する場合、実際のインストルメンテーションを変更する必要はなく、構成ファイルを簡単に変更するだけで済みます。 ただし、Application Insights の利用に投資し、別のプラットフォームに変更する可能性が低い場合は、Application Insights の新しい SDK を使用してイベントを集計し、それを Application Insights に送信することを検討してください。 つまり、データを Application Insights に送信するように EventFlow を設定する必要はなくなり、代わりに ApplicationInsight の Service Fabric NuGet パッケージをインストールすることになります。 パッケージの詳細は、[こちら](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)をご覧ください。
 
-[Application Insights のマイクロサービスとコンテナーのサポート](https://azure.microsoft.com/blog/app-insights-microservices/)により、開発中の新機能 (現在はまだベータ版) が表示され、Application Insights を使用した、より豊かで、細かい設定が不要なモニタリング オプションを利用できます。 これには、依存関係の追跡 (クラスター内すべてのサービスやアプリケーションおよびそれらの間の通信の AppMap 構築に使用されます)、サービスからのトレースの関連付けの向上 (アプリやサービスのワークフローの問題点を特定するのに役立ちます) が含まれます。
+[Application Insights のマイクロサービスとコンテナーのサポート](https://azure.microsoft.com/blog/app-insights-microservices/)により、開発中の新機能 (現在はまだベータ版) が表示され、Application Insights を使用した、より豊かで、細かい設定が不要なモニタリング オプションを利用できます。 これには、依存関係の追跡 (クラスター内すべてのサービスやアプリケーションおよびそれらの間の通信の AppMap 構築に使用されます)、サービスからのトレースの関連付けの向上 (アプリケーションやサービスのワークフローの問題点を特定するのに役立ちます) が含まれます。
 
 .NET で開発中で、Service Fabric のプログラミング モデルの一部を使用する可能性があり、イベントとログ データを視覚化して分析するためのプラットフォームとして Application Insights を使用する場合は、Application Insights SDK ルートをたどる監視および診断ワークフローを作成することをお勧めします。 Application Insights を使用したログの収集と表示を開始するには、[こちら](../application-insights/app-insights-asp-net-more.md)と[こちら](../application-insights/app-insights-asp-net-trace-logs.md)をご覧ください。
 

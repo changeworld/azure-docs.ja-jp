@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1bfa52d07ddc4eaf86bce17c0ad7c63493a8b5fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dccbd2d87b5a5616c25caed070a337eff9fa753e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255729"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956654"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -23,7 +23,7 @@ ms.locfileid: "51255729"
 
 この記事の手順を完了するには、次のものが必要です。
 
-1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページを参照してください。
+1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 1. DevKit デバイス。 DevKit デバイスを購入するには、「[MXChip IoT DevKit](http://mxchip.com/az3166)」を参照してください。
 
 
@@ -49,12 +49,12 @@ Azure IoT Central アプリケーションでは、**MXChip** デバイス テ�
     * デバイス ID **<span style="color:Red">(小文字のみ)</span>** を入力するか、推奨デバイス ID を使います。
     * デバイス名を入力するか、推奨名を使います
     
-    ![デバイスの追加](media\concepts-connectivity\add-device.png)
+    ![デバイスの追加](media/concepts-connectivity/add-device.png)
 
 
 1. デバイス ページの **[接続]** をクリックして、追加したデバイスの **スコープ ID、デバイス ID、プライマリ キー**などの接続の詳細を取得します。
  
-    ![接続の詳細](media\concepts-connectivity\device-connect.PNG)
+    ![接続の詳細](media/concepts-connectivity/device-connect.PNG)
 
 3. これらの詳細を保存します。DevKit デバイスを準備するときに、インターネットから一時的に切断します。 
 

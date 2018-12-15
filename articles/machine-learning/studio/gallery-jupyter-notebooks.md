@@ -1,11 +1,11 @@
 ---
-title: Azure AI ギャラリー Jupyter Notebooks | Microsoft Docs
-description: Azure AI ギャラリーで Jupyter Notebooks を発見します。
+title: Azure AI Gallery の Jupyter Notebooks - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI ギャラリーで Jupyter Notebooks を発見します。 ギャラリーの Notebook は、高度な機械学習手法とソリューションのチュートリアルと詳細な説明を提供します。
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 556e0671-1b50-4bcb-92eb-889962310633
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 81a2f444012085782c377de050e7cb5445f8ebb3
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: b927b63744c9871c2a2d5451c685714c2d2ea6de
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344656"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268225"
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Azure AI ギャラリーで Jupyter Notebooks を発見する
 
@@ -40,7 +40,7 @@ ms.locfileid: "51344656"
 
 ![独自のコメントを追加する](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 Machine Learning Studio ワークスペースに、ギャラリーから任意の Notebook のコピーをダウンロードできます。
 
 ### <a name="download-from-the-gallery"></a>ギャラリーからのダウンロード
@@ -68,5 +68,5 @@ Notebook は、Studio の **[Notebooks]** ページ ([Studio ホーム ページ
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: c077e8592157b5c09dd1bc99934afd9f687b1da1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8841a4d216160af4ed731570b40754307ffbb5a4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282528"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996056"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>重複属性同期エラーを診断して修正する
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) Connect Health では、同期エラーの解�
 - 重複属性同期エラーを絞り込む診断手順を提供します。 そして、具体的な修正方法を提供します。
 - Azure AD から専用のシナリオに修正を適用して、1 ステップでエラーを解決します。
 - この機能を有効にするために、アップグレードや構成の必要がない。
-Azure AD の詳細については、「[ID 同期と重複属性の回復性](https://aka.ms/dupattributeresdocs)」をご覧ください。
+Azure AD の詳細については、「[ID 同期と重複属性の回復性](how-to-connect-syncservice-duplicate-attribute-resiliency.md)」をご覧ください。
 
 ## <a name="problems"></a>問題が発生した場合
 ### <a name="a-common-scenario"></a>一般的なシナリオ

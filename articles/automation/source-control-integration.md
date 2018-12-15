@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023749"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342240"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -50,7 +50,7 @@ Automation アカウント内で、**[Source Control (preview)] (ソース管理
 |プロパティ  |説明  |
 |---------|---------|
 |ソース管理名     | ソース管理のわかりやすい名前        |
-|ソース管理の種類     | ソース管理のソースの種類。 使用できるオプションは次のとおりです。</br> Github</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
+|ソース管理の種類     | ソース管理のソースの種類。 使用できるオプションは次のとおりです。</br> GitHub</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |リポジトリ     | リポジトリまたはプロジェクトの名前。 この値は、ソース管理リポジトリから取得されます。 例: $/ContosoFinanceTFVCExample         |
 |[Branch]\(ブランチ\)     | ソース ファイルの抽出元のブランチ。 TFVC ソース管理の種類では、ブランチのターゲット設定は使用できません。          |
 |フォルダー パス     | 同期する Runbook が含まれているフォルダー。例: /Runbooks         |
@@ -62,7 +62,7 @@ Automation アカウント内で、**[Source Control (preview)] (ソース管理
 
 ## <a name="syncing"></a>同期中
 
-ソース管理の統合の構成時に自動同期を構成すると、初期同期が自動的に開始されます。 自動同期が設定されていない場合は、**[Source control (Preview)] (ソース管理 (プレビュー))** ページの表でソースを選択します。 **[Start Sync] (同期の開始)** をクリックして、同期プロセスを開始します。  
+ソース管理の統合の構成時に自動同期を構成すると、初期同期が自動的に開始されます。 自動同期が設定されていない場合は、**[Source control (Preview)] (ソース管理 (プレビュー))** ページの表でソースを選択します。 **[Start Sync] (同期の開始)** をクリックして、同期プロセスを開始します。
 
 **[Sync jobs] (同期ジョブ)** タブをクリックすると、現在の同期ジョブまたは以前の同期ジョブの状態を表示することができます。**[ソース管理]** ドロップダウン リストで、ソース管理を選択します。
 

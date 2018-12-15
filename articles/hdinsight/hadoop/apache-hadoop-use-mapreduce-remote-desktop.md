@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b8cd389bee98058e5362a217268fb53d6aaf3424
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c0040958cbf748d3eafb3ee60806b064e4e0b1ba
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634483"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435788"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>HDInsight 上の Apache Hadoop でリモート デスクトップを使用して MapReduce を使用する
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
 この記事では、リモート デスクトップを使用して HDInsight クラスター上の Apache Hadoop に接続した後、Hadoop コマンドを使用して MapReduce ジョブを実行する方法について説明します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > リモート デスクトップは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
 > HDInsight 3.4 以上での HDInsight クラスターへの接続と MapReduce ジョブの実行に関する情報については、[SSH による MapReduce の使用](apache-hadoop-use-mapreduce-ssh.md)に関するページを参照してください。
@@ -40,7 +40,7 @@ HDInsight クラスターのデスクトップに接続したら、次の手順�
 
 1. HDInsight デスクトップから、 **Hadoop コマンド ライン**を起動します。 これにより、**c:\apps\dist\hadoop-&lt;version number>** ディレクトリに新しいコマンド プロンプトが開きます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > Hadoop の更新に応じて、バージョン番号が変わります。 **HADOOP_HOME** 環境変数を使用して、パスを探します。 たとえば、 `cd %HADOOP_HOME%` では、バージョン番号がわからなくても、ディレクトリは Hadoop ディレクトリに変更されます。
    >
    >
@@ -94,5 +94,5 @@ HDInsight での MapReduce ジョブに関する全般的な情報:
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)

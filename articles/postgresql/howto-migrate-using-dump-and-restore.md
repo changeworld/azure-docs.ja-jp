@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 7c67cac7a5579386921b2b949e9312cb4e5da172
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2aa59bcf0d56358601b81730abe330a56ca35d02
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984674"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966910"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
 [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) を使用して PostgreSQL データベースをダンプ ファイルに抽出し、[pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) を使用して、pg_dump によって作成されたアーカイブ ファイルから PostgreSQL データベースを復元することができます。
@@ -71,7 +71,7 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
     ```
 
 ### <a name="for-the-restore"></a>復元
-- バックアップ ファイルは､移行先の Azure Database for PostgreSQL サーバーと同じリージョンにある Azure VM に移動し、その VM から pg_restore を実行することで､ネットワーク待機時間を短縮することをお勧めします。 また､VM は [accelerated networking](..\virtual-network\create-vm-accelerated-networking-powershell.md) を有効にした状態で作成することもお勧めします。
+- バックアップ ファイルは､移行先の Azure Database for PostgreSQL サーバーと同じリージョンにある Azure VM に移動し、その VM から pg_restore を実行することで､ネットワーク待機時間を短縮することをお勧めします。 また､VM は [accelerated networking](../virtual-network/create-vm-accelerated-networking-powershell.md) を有効にした状態で作成することもお勧めします。
 - 既定では、すでにその設定になっているはずですが､ダンプ ファイルを開いて､データの insert 後に create index ステートメントがあることを確認してください｡ そのようになっていない場合は、データの insert の後に create index ステートメントを移動します。
 - -fc および -j *#* スイッチを付けて復元することで､復元を並列処理します。 *#* ターゲット サーバーのコアの数です。 *#* をターゲット サーバーのコア数の 2 倍に設定することで､その影響を確認することもできます｡ 例: 
 

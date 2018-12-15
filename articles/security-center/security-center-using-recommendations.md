@@ -3,7 +3,7 @@ title: Azure Security Center の推奨事項を使用してセキュリティを
 description: " セキュリティ ポリシーと Azure Security Center の推奨事項を使用して、セキュリティ攻撃を軽減する方法を説明します。 "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
-ms.author: terrylan
-ms.openlocfilehash: 3640e4affe42986106791cba50f6cbfd97906806
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: rkarlin
+ms.openlocfilehash: d496f3f28cee711109c5c200102d48482bf6cd9c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308326"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340697"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
 セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。
@@ -30,7 +30,7 @@ ms.locfileid: "52308326"
 >
 
 ## <a name="managing-security-recommendations"></a>セキュリティ管理に関する推奨事項
-セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。 Security Center では、セキュリティに関する会社の要件に合わせてポリシーを定義できます。 詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-azure-policy.md)」を参照してください。
+セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。 Security Center では、セキュリティに関する会社の要件に合わせてポリシーを定義できます。 詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」を参照してください。
 
 リソース グループに対するセキュリティ ポリシーは、サブスクリプション レベルから継承されます。
 
