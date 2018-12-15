@@ -123,4 +123,4 @@ sections:
     - title: Languages
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
     - title: REST
-      html: <p><a href="/rest/api/appservice">REST API リファレンスに関するページ</a></p>
+      html: <p><a href="/rest/api/appservice">REST API リファレンス</a></p>
