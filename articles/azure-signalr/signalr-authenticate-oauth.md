@@ -58,7 +58,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 * [Git](https://git-scm.com/)
 * [.NET コア SDK](https://www.microsoft.com/net/download/windows) 
 * [構成済みの Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) github リポジトリのダウンロードまたは複製。
+* [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub リポジトリのダウンロードまたは複製。
 
 
 ## <a name="create-an-oauth-app"></a>OAuth アプリを作成する
@@ -71,9 +71,9 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
     | 設定名 | 推奨値 | 説明 |
     | ------------ | --------------- | ----------- |
-    | アプリケーション名 | *Azure SignalR チャット* | github ユーザーは、認証しているアプリを認識して信頼することができる必要があります。   |
+    | アプリケーション名 | *Azure SignalR チャット* | GitHub ユーザーは、認証しているアプリを認識して信頼することができる必要があります。   |
     | ホームページ URL | *http://localhost:5000/home* | |
-    | アプリケーションの説明 | "*Azure SignalR サービスと Github 認証を使用するチャット ルーム サンプル*" | 使用されている認証のコンテキストをアプリケーションのユーザーが理解するために役立つ、アプリケーションの有益な説明。 |
+    | アプリケーションの説明 | "*Azure SignalR サービスと GitHub 認証を使用するチャット ルーム サンプル*" | 使用されている認証のコンテキストをアプリケーションのユーザーが理解するために役立つ、アプリケーションの有益な説明。 |
     | 認証コールバックの URL | *http://localhost:5000/signin-github* | この設定は、OAuth アプリケーションの最も重要な設定です。 認証の成功後に GitHub がユーザーに返すコールバック URL です。 このチュートリアルでは、*/signin-github* の *AspNet.Security.OAuth.GitHub* パッケージの既定のコールバック URL を使用する必要があります。  |
 
 4. 新しい OAuth アプリの登録が完了したら、次のコマンドを使用して、*クライアント ID* と*クライアント シークレット*を Secret Manager に追加します。 *Your_GitHub_Client_Id* と *Your_GitHub_Client_Secret* を実際の OAuth アプリの値に置き換えます。
