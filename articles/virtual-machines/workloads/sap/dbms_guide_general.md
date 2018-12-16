@@ -297,7 +297,7 @@ SAP アプリケーション レイヤーと DBMS 層の間にこの 2 つの層
 
 このような設定の例は、[この記事](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)の SQL server Always On に関する説明で公開されています。
 
-Azure 内の SAP インフラストラクチャ展開の参照として公開済みの github の JSON テンプレートを使用することを選択した場合、この [SAP 3 層 システム用](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md)テンプレートを調査する必要があります。 このテンプレートでも、Azure Load Balancer の正しい設定を調べることができます。
+Azure 内の SAP インフラストラクチャ展開の参照として公開済みの GitHub の JSON テンプレートを使用することを選択した場合、この [SAP 3 層 システム用](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md)テンプレートを調査する必要があります。 このテンプレートでも、Azure Load Balancer の正しい設定を調べることができます。
 
 ### <a name="azure-accelerated-networking"></a>Azure Accelerated Networking
 Azure VM 間のネットワーク待機時間をさらに短縮するには、SAP ワークロード用の Azure VM をデプロイするときに [Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) オプションを選択することを強くお勧めします。 SAP アプリケーション レイヤーと SAP DBMS 層の場合は特に推奨されます。 
