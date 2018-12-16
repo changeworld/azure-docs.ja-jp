@@ -41,7 +41,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 ## <a name="prerequisites"></a>前提条件
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows) をインストールする
-* github リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。 
+* GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。 
 
 ## <a name="create-an-azure-signalr-resource"></a>Azure SignalR リソースの作成
 
