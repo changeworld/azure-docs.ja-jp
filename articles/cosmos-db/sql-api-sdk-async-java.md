@@ -44,9 +44,9 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 
 <tr><td>**作業開始**</td><td>[Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started)</td></tr>
 
-<tr><td>**Code sample**</td><td>[Github](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)</td></tr>
+<tr><td>**Code sample**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)</td></tr>
 
-<tr><td>**パフォーマンスに関するヒント**</td><td>[Github の Readme](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
+<tr><td>**パフォーマンスに関するヒント**</td><td>[GitHub の Readme](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
 
 <tr><td>**サポートされている最小ランタイム**</td><td>[JDK 8](https://aka.ms/azure-jdks)</td></tr>
 </table></br>
@@ -59,7 +59,7 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * 書き込み再試行パスで NPE バグを修正しました。
 * エンドポイント管理で NPE バグを修正しました。
-* 脆弱性のある依存関係をアップグレードしました ([github #68](https://github.com/Azure/azure-cosmosdb-java/issues/68))。
+* 脆弱性のある依存関係をアップグレードしました ([GitHub #68](https://github.com/Azure/azure-cosmosdb-java/issues/68))。
 * Netty ネットワーク ログのトラブルシューティング用のサポートが追加されました。
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
@@ -68,16 +68,16 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * プロキシのサポートを追加しました。
 * リソース トークンの承認のサポートを追加しました。
-* 大規模なパーティション キーの処理でバグを修正しました ([github #63](https://github.com/Azure/azure-cosmosdb-java/issues/63))。
+* 大規模なパーティション キーの処理でバグを修正しました ([GitHub #63](https://github.com/Azure/azure-cosmosdb-java/issues/63))。
 * ドキュメントを改善しました。
 * SDK はより詳細なモジュールを再構築しました。
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
-* 英語以外のロケールのバグを修正しました ([github #51](https://github.com/Azure/azure-cosmosdb-java/issues/51))。
+* 英語以外のロケールのバグを修正しました ([GitHub #51](https://github.com/Azure/azure-cosmosdb-java/issues/51))。
 * 競合リソースにヘルパー メソッドを追加しました。
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
-* パフォーマンス上の理由とライセンス上の理由により、org.json 依存関係を jackson に置き換えました ([github #29](https://github.com/Azure/azure-cosmosdb-java/issues/29))。
+* パフォーマンス上の理由とライセンス上の理由により、org.json 依存関係を jackson に置き換えました ([GitHub #29](https://github.com/Azure/azure-cosmosdb-java/issues/29))。
 * 非推奨の OfferV2 クラスを削除しました。
 * スループット コンテンツに対応するために Offer クラスにアクセサー メソッドを追加しました。
 * org.json 型を返すドキュメント/リソース内のメソッドが jackson オブジェクト型を返すように変更されました。
@@ -90,18 +90,18 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 * 一意なインデックス ポリシーのサポートが追加されました。
 * フィード オプションに、応答継続トークンのサイズを制限するためのサポートが追加されました。
 * クロス パーティション クエリに、パーティション分割のサポートが追加されました。
-* Json のタイムスタンプ シリアル化のバグを修正しました ([github #32](https://github.com/Azure/azure-cosmosdb-java/issues/32))。
+* Json のタイムスタンプ シリアル化のバグを修正しました ([GitHub #32](https://github.com/Azure/azure-cosmosdb-java/issues/32))。
 * Json 列挙型のシリアル化のバグを修正しました。
-* サイズが 2 MB のドキュメントを管理する際のバグを修正しました ([github #33](https://github.com/Azure/azure-cosmosdb-java/issues/33))。
-* バグのため、依存関係 com.fasterxml.jackson.core:jackson-databind が 2.9.5 にアップグレードされました ([jackson-databind: github #1599](https://github.com/FasterXML/jackson-databind/issues/1599))
-* バグのため、rxjava-extras への依存関係が 0.8.0.17 にアップグレードされました ([rxjava-extras: github #30](https://github.com/davidmoten/rxjava-extras/issues/30))。
+* サイズが 2 MB のドキュメントを管理する際のバグを修正しました ([GitHub #33](https://github.com/Azure/azure-cosmosdb-java/issues/33))。
+* バグのため、依存関係 com.fasterxml.jackson.core:jackson-databind が 2.9.5 にアップグレードされました ([jackson-databind: GitHub #1599](https://github.com/FasterXML/jackson-databind/issues/1599))
+* バグのため、rxjava-extras への依存関係が 0.8.0.17 にアップグレードされました ([rxjava-extras: GitHub #30](https://github.com/davidmoten/rxjava-extras/issues/30))。
 * pom ファイル内のメタデータの記述が、ドキュメントの残りの部分とインラインとなるように更新されました。
-* 構文の改善 ([github #41](https://github.com/Azure/azure-cosmosdb-java/issues/41))、([github #40](https://github.com/Azure/azure-cosmosdb-java/issues/40))。
+* 構文の改善 ([GitHub #41](https://github.com/Azure/azure-cosmosdb-java/issues/41))、([GitHub #40](https://github.com/Azure/azure-cosmosdb-java/issues/40))。
 
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * クエリでのバック プレッシャーのサポートが追加されました。
 * クエリでのパーティション キーの範囲 ID のサポートが追加されました。
-* 要求ヘッダーでより大規模な継続トークンを許可できるように修正しました (bugfix github #24)。
+* 要求ヘッダーでより大規模な継続トークンを許可できるように修正しました (bugfix GitHub #24)。
 * メイン スレッドの終了後、JVM が確実にシャットダウンされるように、Netty 依存関係を 4.1.22.Final にアップグレードしました。
 * マスター ソースを読み取るときに、セッション トークンを渡さないように修正しました。
 * サンプルをさらに追加しました。
