@@ -586,7 +586,7 @@ ProgrammaticAdPage.xaml.cs ファイルは、AdHandlerPlugin を作成し、Time
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>広告をサポートする IOS ビデオ プレーヤーの実装
-Microsoft Media Platform: Player Framework for iOS には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)からダウンロードできます。 github ページには、Player Framework に関する追加情報とプレーヤー サンプルの概要が記載された Wiki へのリンク ( [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)) があります。
+Microsoft Media Platform: Player Framework for iOS には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)からダウンロードできます。 GitHub ページには、Player Framework に関する追加情報とプレーヤー サンプルの概要が記載された Wiki へのリンク ( [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)) があります。
 
 ### <a name="scheduling-ads-with-vmap"></a>VMAP を使用した広告のスケジュール設定
 次のサンプルは、VMAP ファイルを使用して広告のスケジュールを設定する方法を示しています。
