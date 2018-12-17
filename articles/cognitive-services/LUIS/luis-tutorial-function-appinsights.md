@@ -36,7 +36,7 @@ ms.locfileid: "49321956"
 > [!Tip]
 > サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
 
-このチュートリアルのすべてのコードは、[LUIS-Samples github リポジトリ](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)で利用できます。このチュートリアルに関連付けられている各行は `//APPINSIGHT:` でコメントが付けられています。 
+このチュートリアルのすべてのコードは、[LUIS-Samples GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs)で利用できます。このチュートリアルに関連付けられている各行は `//APPINSIGHT:` でコメントが付けられています。 
 
 ## <a name="web-app-bot-with-luis"></a>LUIS を使用する Web アプリ ボット
 このチュートリアルでは、次のようなコードがあるか、[他のチュートリアル](luis-nodejs-tutorial-build-bot-framework-sample.md)を完了していることを前提としています。 
