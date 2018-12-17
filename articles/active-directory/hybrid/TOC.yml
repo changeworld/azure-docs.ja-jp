@@ -17,8 +17,56 @@ items:
   expanded: true
 - name: 概念
   items:
+  - name: Azure AD Connect と Connect Health
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
+    items:
+    - name: Azure AD Connect と Connect Health とは
+      href: whatis-azure-ad-connect.md
+    - name: 適切な認証の選択
+      href: https://docs.microsoft.com/azure/security/azure-ad-choose-authn
+    - name: ID 同期と重複属性の回復性
+  - name: パスワード ハッシュの同期
+    items:
+    - name: パスワード ハッシュ同期とは
+      href: whatis-phs.md
+    - name: パスワード ハッシュ同期のしくみ
+      href: how-to-connect-password-hash-synchronization.md
+  - name: パススルー認証
+    items:
+    - name: パススルー認証とは
+      href: how-to-connect-pta.md
+    - name: パススルー認証のしくみ
+      href: how-to-connect-pta-how-it-works.md
+    - name: パススルー認証の現在の制限事項
+      href: how-to-connect-pta-current-limitations.md
+    - name: パススルー認証のセキュリティの詳細
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: パススルー認証とユーザーのプライバシー
+      href: how-to-connect-pta-user-privacy.md
+  - name: フェデレーション
+    items:
+    - name: フェデレーションとは
+      href: whatis-fed.md
+    - name: フェデレーションのしくみ
+      href: how-to-connect-fed-whatis.md
+    - name: Azure AD のフェデレーション互換性リスト
+      href: how-to-connect-fed-compatibility.md
+  - name: シングル サインオン
+    items:
+    - name: シングル サインオンとは
+      href: how-to-connect-sso.md
+    - name: シングル サインオンのしくみ
+      href: how-to-connect-sso-how-it-works.md
+    - name: シングル サインオンとユーザーのプライバシー
+      href: how-to-connect-sso-user-privacy.md
   - name: Azure AD Connect 同期
     items:
+    - name: Azure AD Connect 同期とは
+      href: how-to-connect-sync-whatis.md
+    - name: Azure AD Connect 同期機能
+      href: how-to-connect-syncservice-features.md
+    - name: Azure AD Connect 同期サービス マネージャーとは
+      href: how-to-connect-sync-service-manager-ui.md
     - name: Azure AD Connect Sync 技術的概念
       href: how-to-connect-sync-technical-concepts.md
     - name: Azure AD Connect sync アーキテクチャについて
@@ -33,8 +81,6 @@ items:
       href: concept-azure-ad-connect-sync-user-and-contacts.md
     - name: シャドウ属性について
       href: how-to-connect-syncservice-shadow-attributes.md
-  - name: ID 同期と重複属性の回復性
-    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
 - name: ハウツー ガイド
   items:
   - name: インストールとアップグレード
@@ -87,6 +133,12 @@ items:
       href: plan-connect-userprincipalname.md
     - name: インスタンスに関する特別な考慮事項
       href: reference-connect-instances.md
+    - name: 移行
+      items:
+      - name: フェデレーションから PHS への移行
+        href: plan-migrate-adfs-password-hash-sync.md
+      - name: フェデレーションから PTA への移行
+        href: plan-migrate-adfs-pass-through-authentication.md
     - name: ハイブリッド ID の設計上の考慮事項
       items:
       - name: ハイブリッド ID の設計上の考慮事項の概要
@@ -119,8 +171,6 @@ items:
         href: plan-hybrid-identity-design-considerations-tools-comparison.md
   - name: Azure AD Connect の管理
     items:
-    - name: パスワード ハッシュ同期とは
-      href: how-to-connect-password-hash-synchronization.md
     - name: デバイスの書き戻しを有効にする
       href: how-to-connect-device-writeback.md
     - name: デバイス オプション
@@ -141,10 +191,14 @@ items:
       href: how-to-connect-sync-change-addsacct-pass.md
     - name: ADConnectivityTools PowerShell モジュールとは
       href: how-to-connect-adconnectivitytools.md
+  - name: パススルー認証の管理
+    items:
+    - name: パススルー認証の概要
+      href: how-to-connect-pta-quick-start.md
+    - name: パススルー認証に関する FAQ
+      href: how-to-connect-pta-faq.md
   - name: フェデレーション サービスを管理する
     items:
-    - name: Azure AD Connect とのフェデレーションとは
-      href: how-to-connect-fed-whatis.md
     - name: Azure AD Connect とのフェデレーションを管理する
       href: how-to-connect-fed-management.md
     - name: フェデレーションに使用する複数ドメインのサポート
@@ -159,40 +213,14 @@ items:
       href: how-to-connect-azure-ad-trust.md
     - name: O365 RP のハッシュ アルゴリズムを変更する
       href: how-to-connect-fed-sha256-guidance.md
-    - name: Azure AD のフェデレーション互換性リスト
-      href: how-to-connect-fed-compatibility.md
     - name: SAML 2.0 サーバーを IDP として使用する
       href: how-to-connect-fed-saml-idp.md
     - name: ハイブリッド Azure AD 参加の構成後のタスク
       href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
-  - name: パススルー認証の管理
-    items:
-    - name: パススルー認証とは
-      href: how-to-connect-pta.md
-    - name: パススルー認証の概要
-      href: how-to-connect-pta-quick-start.md
-    - name: パススルー認証のしくみ
-      href: how-to-connect-pta-how-it-works.md
-    - name: パススルー認証の現在の制限事項
-      href: how-to-connect-pta-current-limitations.md
-    - name: パススルー認証のセキュリティの詳細
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: パススルー認証とユーザーのプライバシー
-      href: how-to-connect-pta-user-privacy.md
-    - name: パススルー認証の現在の制限事項
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: パススルー認証に関する FAQ
-      href: how-to-connect-pta-faq.md
   - name: シングル サインオンの管理
     items:
-    - name: シングル サインオンとは
-      href: how-to-connect-sso.md
     - name: シングル サインオンの概要
       href: how-to-connect-sso-quick-start.md
-    - name: シングル サインオンのしくみ
-      href: how-to-connect-sso-how-it-works.md
-    - name: シングル サインオンとユーザーのプライバシー
-      href: how-to-connect-sso-user-privacy.md
     - name: シングル サインオンに関する FAQ
       href: how-to-connect-sso-faq.md
   - name: Azure AD Connect Health を管理する
@@ -213,10 +241,6 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: Azure AD Connect 同期を管理する
     items:
-    - name: Azure AD Connect 同期とは
-      href: how-to-connect-sync-whatis.md
-    - name: Azure AD Connect 同期機能
-      href: how-to-connect-syncservice-features.md
     - name: 運用のタスクを管理する
       href: how-to-connect-sync-operations.md
     - name: 既定の構成の変更するためのベスト プラクティス
@@ -233,8 +257,6 @@ items:
       href: how-to-connect-sync-feature-scheduler.md
     - name: Azure AD Connect 同期サービス マネージャー
       items:
-      - name: Azure AD Connect 同期サービス マネージャーとは
-        href: how-to-connect-sync-service-manager-ui.md
       - name: サービス マネージャーの [操作] タブの管理
         href: how-to-connect-sync-service-manager-ui-operations.md
       - name: サービス マネージャーによるコネクタの使用
@@ -303,9 +325,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools リファレンス
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 07a3bfd816cd57ecbe77bf7e7435be99a0321fd2
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 53da6c08a48f14034e95094ec698f4ec55703466
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335454"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342495"

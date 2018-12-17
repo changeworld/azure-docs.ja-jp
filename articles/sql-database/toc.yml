@@ -157,14 +157,8 @@ items:
       href: sql-database-managed-instance-create-manage.md
     - name: リソース制限
       href: sql-database-managed-instance-resource-limits.md
-    - name: VNet 構成
-      items:
-      - name: VNet 構成
-        href: sql-database-managed-instance-vnet-configuration.md
-      - name: 接続のアーキテクチャ
-        href: sql-database-managed-instance-connectivity-architecture.md
-      - name: 管理エンドポイント
-        href: sql-database-managed-instance-management-endpoint.md
+    - name: 接続のアーキテクチャ
+      href: sql-database-managed-instance-connectivity-architecture.md
     - name: T-SQL の相違点
       href: sql-database-managed-instance-transact-sql-information.md
   - name: サービスとしてのプラットフォーム
@@ -287,34 +281,28 @@ items:
       href: elastic-jobs-overview.md
   - name: SQL 機能の比較
     href: sql-database-features.md
-  - name: 監視とパフォーマンスのチューニング
+  - name: 監視とチューニング
     items:
-    - name: 監視とチューニングの概要
+    - name: 監視とパフォーマンスのチューニング
       href: sql-database-monitor-tune-overview.md
-    - name: インテリジェント パフォーマンス
+    - name: パフォーマンスの監視
       items:
-      - name: チューニング操作と推奨事項
-        href: sql-database-performance.md
       - name: '[Query Performance Insight]'
         href: sql-database-query-performance.md
-      - name: データベース アドバイザーのパフォーマンスに関する推奨事項
-        href: sql-database-advisor.md
-    - name: 高度な監視
-      items:
       - name: Azure SQL Analytics の監視
         href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
       - name: 診断テレメトリのログ記録
         href: sql-database-metrics-diag-logging.md
-    - name: Intelligent Insights によるパフォーマンスの分析
-      href: sql-database-intelligent-insights.md
-    - name: 自動チューニング
-      href: sql-database-automatic-tuning.md
-    - name: インテリジェントなクエリの処理
+    - name: インテリジェント パフォーマンス
       items:
-      - name: インテリジェントなクエリの処理
-        href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-      - name: アダプティブ クエリ処理
-        href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
+      - name: 自動チューニング
+        href: sql-database-automatic-tuning.md
+      - name: Intelligent Insights によるパフォーマンスの分析
+        href: sql-database-intelligent-insights.md
+      - name: チューニング操作と推奨事項
+        href: sql-database-performance.md
+      - name: データベース アドバイザーのパフォーマンスに関する推奨事項
+        href: sql-database-advisor.md
   - name: データベース機能
     items:
     - name: データベース機能
@@ -409,10 +397,20 @@ items:
       href: sql-database-managed-instance-migrate.md
     - name: マネージド インスタンスへの TDE 証明書の移行
       href: sql-database-managed-instance-migrate-tde-certificate.md
+    - name: Managed Instance サブネットのサイズの決定
+      href: sql-database-managed-instance-determine-size-vnet-subnet.md
+    - name: Managed Instance 用の新しい VNet とサブネットの作成
+      href: sql-database-managed-instance-create-vnet-subnet.md
+    - name: Managed Instance 用の既存の VNet とサブネットの構成
+      href: sql-database-managed-instance-configure-vnet-subnet.md
     - name: カスタム DNS の構成
       href: sql-database-managed-instance-custom-dns.md
     - name: ネットワーク構成の同期
       href: sql-database-managed-instance-sync-network-configuration.md
+    - name: 管理エンドポイント IP アドレスの検索
+      href: sql-database-managed-instance-find-management-endpoint-ip-address.md
+    - name: 組み込みのファイアウォール保護の確認
+      href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
     - name: トランザクション レプリケーション
       href: replication-with-sql-database-managed-instance.md
     - name: 脅威検出の構成
@@ -668,9 +666,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: bb051db62acda98e40be09c174216208578afccc
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d94f4fb39ccdee60fae434204369fd844aedeb20
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320967"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384277"

@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/23/2018
 ms.author: b-juche
-ms.openlocfilehash: 6869d60bfadbeb3f3ed9c7b67d3560e49c73e65b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 23ec6d3a91dea91fba8565280bcce4e9385f49ae
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010244"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413243"
 ---
 # <a name="azure-netapp-files-documentation"></a>Azure NetApp Files のドキュメント
 
 Azure NetApp Files を使用して、NetApp のアカウント、容量プール、ボリュームの作成および管理、エクスポート ポリシーの構成、仮想マシンのボリュームのマウント、スナップショットの管理を行う方法について説明します。
 
 > [!IMPORTANT] 
-> このドキュメントで説明されているすべてのタスクでは、パブリック プレビュー プログラムに参加しており、Microsoft.NetApp Azure リソース プロバイダーにアクセスするためのホワイトリストに登録されていることが必要です。 パブリック プレビュー プログラムへの参加の詳細については、[Azure NetApp Files パブリック プレビューのサインアップ ページ](https://aka.ms/nfspublicpreview)をご覧ください。 
+> このドキュメントで説明されているすべてのタスクでは、パブリック プレビュー プログラムに参加しており、Microsoft.NetApp Azure リソース プロバイダーにアクセスするためのホワイトリストに登録されていることが必要です。 パブリック プレビュー プログラムへの参加を要求するには、「[Azure NetApp Files に登録する](azure-netapp-files-register.md)」を参照してください。 
 
 <ul class="panelContent cardsFTitle">
     <li>

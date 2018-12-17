@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dd8976bc9c78045830ab499f48775bcb051f6c71
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: bf2b326b6e0003b9a690e560d5a312f16659dad9
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455744"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406745"
 documentType: LandingData
 title: Azure HDInsight のドキュメント
 metadata:
@@ -70,12 +70,12 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: Hadoop &#58; <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">ETL 操作を実行する</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">オンデマンド クラスターを作成する</a>
-    - html: Spark &#58; <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">対話型のクエリを実行する</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">データを視覚化する</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">機械学習</a>
-    - html: Kafka &#58; <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Kafka を使った構造化ストリーミング</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">HDInsight の Storm で使用する</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Kafka の Producer API と Consumer API を使用する</a>
-    - html: HBase &#58; <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">VNET に HBase クラスターを作成する</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Apache Phoenix を使用する</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Spark に接続する</a>
+    - html: Apache Hadoop&#58; <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">ETL 操作を実行する</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">オンデマンド クラスターを作成する</a>
+    - html: Apache Spark&#58; <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">対話型のクエリを実行する</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">データを視覚化する</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">機械学習</a>
+    - html: Apache Kafka&#58; <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Kafka を使った構造化ストリーミング</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">HDInsight の Storm で使用する</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Kafka の Producer API と Consumer API を使用する</a>
+    - html: Apache HBase &#58; <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">VNET に HBase クラスターを作成する</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Apache Phoenix を使用する</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Spark に接続する</a>
     - html: 対話型クエリ&#58;<a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">直接クエリを使用して Power BI に接続する</a>
-    - html: Storm &#58; <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Java で Storm のトポロジを作成する</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">HDInsight 上に Storm のトポロジをデプロイする</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Storm から Data Lake Store に書き込む</a>
+    - html: Apache Storm&#58; <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Java で Storm のトポロジを作成する</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">HDInsight 上に Storm のトポロジをデプロイする</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Storm から Data Lake Store に書き込む</a>
     - html: ML サービス &#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">R Tools for Visual Studio を使用する</a>
 - title: リファレンス
   items:

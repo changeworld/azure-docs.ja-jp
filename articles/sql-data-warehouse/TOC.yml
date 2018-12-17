@@ -20,6 +20,8 @@ items:
 - name: リリース ノート
   href: release-notes.md
   items:
+  - name: 2018 年 12 月
+    href: release-notes-december-2018.md
   - name: 2018 年 10 月
     href: release-notes-october-2018.md
   - name: 2018 年 9 月
@@ -67,7 +69,7 @@ items:
       href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
     - name: ファイアウォール規則
       href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: ファイアウォールの仮想ネットワーク ルール
+    - name: Virtual Network サービスのエンドポイント
       href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
     - name: Authentication
       href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
@@ -78,7 +80,7 @@ items:
     - name: 多要素認証
       href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
     - name: 監査
-      href: sql-data-warehouse-auditing-overview.md
+      href: ../sql-database/sql-database-auditing.md?toc=/azure/sql-data-warehouse/toc.json
     - name: 列レベルのセキュリティ
       href: column-level-security.md
     - name: 行レベルのセキュリティ
@@ -271,6 +273,8 @@ items:
       href: sql-data-warehouse-reference-tsql-statements.md
   - name: システム ビュー
     href: sql-data-warehouse-reference-tsql-system-views.md
+  - name: Gen2 下位のコンピューティング レベル
+    href: gen2-lower-tier-regions.md
   - name: PowerShell コマンドレット
     href: sql-data-warehouse-reference-powershell-cmdlets.md
   - name: REST API
@@ -303,9 +307,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: '[データ管理]'
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: ec30b0d6cdfeea74350bfdfdc6503992adf20285
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: c619d60db23b710ce5696504ca1a6bf3ce1bd4c1
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578180"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435669"

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7591e1303e69df522a02b08a079ac00bdac5f6bc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0049468330a9fcb26f023de2a8adb5dfd1544321
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870301"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436808"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -48,7 +48,7 @@ sections:
       image:
         src: media/index/i_perftier.svg
       title: 価格/サービス プラン
-    - href: /azure/sql-database/sql-database-scale-resources
+    - href: /azure/sql-database/sql-database-scalability-index
       html: <p>ニーズに応じて簡単にデータベースをスケールアップ、スケールアウト、シャード化して、アプリケーションのパフォーマンスを向上させます。</p>
       image:
         src: media/index/i_scale.svg
@@ -78,11 +78,11 @@ sections:
       image:
         src: media/index/i_security.svg
       title: 高度なセキュリティ
-    - href: /azure/sql-database/sql-database-technical-overview#built-in-intelligence
-      html: <p>組み込みのインテリジェンスによって、データベースの運用コストと管理コストが大幅に削減され、アプリケーションのパフォーマンスとセキュリティの両方が最大化されます。</p>
+    - href: /azure/sql-database/sql-database-monitoring-tuning-index
+      html: <p>組み込みの監視とインテリジェントなチューニングによって、データベースの運用コストと管理コストが大幅に削減され、アプリケーションのパフォーマンスが最大化されます。</p>
       image:
         src: media/index/i_intelligence.svg
-      title: 組み込みのインテリジェンス
+      title: 監視とチューニング
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph

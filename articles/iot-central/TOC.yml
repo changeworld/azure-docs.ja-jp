@@ -101,6 +101,10 @@ items:
       href: howto-create-and-manage-applications-as-CSP.md
     - name: ホーム ページを構成する
       href: howto-configure-homepage.md
+  - name: パーソナル化
+    items:
+    - name: ユーザー設定の管理
+      href: howto-manage-preferences.md
 - name: 関連項目
   items:
   - name: 解決方法
@@ -133,9 +137,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: サポートされているブラウザー
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: 691a3c5da906a66d4773ebaf458c3e99e6a03f99
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 045599c517c9ba4c85b0e2bb7d7bec6c531b0439
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316320"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407764"

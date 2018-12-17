@@ -631,9 +631,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: 0c9bc9f6c1d47d6f53d0d8ec46939e11d47ac8b4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: fe6113657f033501f53b761b71fe4bc0104bf611
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258816"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386980"

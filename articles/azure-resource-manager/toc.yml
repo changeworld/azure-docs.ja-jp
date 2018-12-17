@@ -44,6 +44,19 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: 概念
   items:
+  - name: テンプレートの構造
+    href: resource-group-authoring-templates.md
+    items:
+    - name: parameters
+      href: resource-manager-templates-parameters.md
+    - name: variables
+      href: resource-manager-templates-variables.md
+    - name: Functions
+      href: resource-group-authoring-templates.md#functions
+    - name: リソース
+      href: resource-manager-templates-resources.md
+    - name: 出力
+      href: resource-manager-templates-outputs.md
   - name: リソース プロバイダーと種類
     href: resource-manager-supported-services.md
   - name: 管理グループ
@@ -65,65 +78,50 @@ items:
   items:
   - name: テンプレートの作成
     items:
-    - name: テンプレート セクション
-      href: resource-group-authoring-templates.md
-      items:
-      - name: parameters
-        href: resource-manager-templates-parameters.md
-      - name: variables
-        href: resource-manager-templates-variables.md
-      - name: Functions
-        href: resource-group-authoring-templates.md#functions
-      - name: リソース
-        href: resource-manager-templates-resources.md
-      - name: 出力
-        href: resource-manager-templates-outputs.md
-    - name: リンクされたテンプレートと入れ子になったテンプレート
-      href: resource-group-linked-templates.md
-    - name: リソースの依存関係
+    - name: サブスクリプションでリソース グループとリソースを作成する
+      href: deploy-to-subscription.md
+    - name: リソースの依存関係を定義する
       href: resource-group-define-dependencies.md
+    - name: テンプレートをモジュール化する
+      href: resource-group-linked-templates.md
+    - name: シークレットを管理する
+      href: resource-manager-keyvault-parameter.md
     - name: 複数のインスタンスの作成
       href: resource-group-create-multiple.md
-    - name: テンプレートでのリソース グループの作成
-      href: create-resource-group-in-template.md
-    - name: サブスクリプションでのリソースの作成
-      href: deploy-to-subscription.md
+    - name: テンプレートの拡張機能を使用する
+      href: resource-manager-use-extensions.md
     - name: リソースの更新
       href: /azure/architecture/building-blocks/extending-templates/update-resource
-  - name: デプロイ
+  - name: テンプレートのデプロイ
     items:
-    - name: Azure PowerShell
-      items:
-      - name: テンプレートのデプロイ
-        href: resource-group-template-deploy.md
-      - name: SAS トークンを使用してプライベートのテンプレートをデプロイする
-        href: resource-manager-powershell-sas-token.md
-      - name: テンプレートをエクスポートして再デプロイする
-        href: resource-manager-export-template-powershell.md
-    - name: Azure CLI
-      items:
-      - name: テンプレートのデプロイ
-        href: resource-group-template-deploy-cli.md
-      - name: SAS トークンを使用してプライベートのテンプレートをデプロイする
-        href: resource-manager-cli-sas-token.md
-      - name: テンプレートをエクスポートして再デプロイする
-        href: resource-manager-export-template-cli.md
-    - name: Azure ポータル
-      items:
-      - name: リソースのデプロイ
-        href: resource-group-template-deploy-portal.md
-      - name: テンプレートをエクスポートする
-        href: resource-manager-export-template.md
-    - name: REST API
+    - name: ポータルを使用したデプロイ
+      href: resource-group-template-deploy-portal.md
+    - name: Azure CLI を使用したデプロイ
+      href: resource-group-template-deploy-cli.md
+    - name: Azure PowerShell を使用したデプロイ
+      href: resource-group-template-deploy.md
+    - name: REST API を使用したデプロイ
       href: resource-group-template-deploy-rest.md
-    - name: 複数のリソース グループまたはサブスクリプション
+    - name: テンプレートのエクスポート
+      items:
+      - name: ポータルの使用
+        href: resource-manager-export-template.md
+      - name: Azure CLI の使用
+        href: resource-manager-export-template-cli.md
+      - name: Azure PowerShell の使用
+        href: resource-manager-export-template-powershell.md
+    - name: SAS トークンを使用してテンプレートをセキュリティ保護する
+      items:
+      - name: Azure CLI の使用
+        href: resource-manager-cli-sas-token.md
+      - name: PowerShell の使用
+        href: resource-manager-powershell-sas-token.md
+    - name: 複数のリソース グループまたはサブスクリプションへのデプロイ
       href: resource-manager-cross-resource-group-deployment.md
     - name: Azure DevOps Services を使用した継続的インテグレーション
       href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
       maintainContext: true
-    - name: デプロイメント時にセキュリティで保護された値を渡す
-      href: resource-manager-keyvault-parameter.md
-  - name: 管理
+  - name: テンプレートの管理
     items:
     - name: Azure PowerShell
       href: powershell-azure-resource-manager.md
@@ -146,13 +144,13 @@ items:
       href: resource-manager-api-authentication.md
     - name: リソースのロック
       href: resource-group-lock-resources.md
-  - name: Audit
+  - name: デプロイの監査
     items:
     - name: アクティビティ ログを表示する
       href: resource-group-audit.md
     - name: デプロイ操作を表示する
       href: resource-manager-deployment-operations.md
-  - name: トラブルシューティング
+  - name: デプロイのトラブルシューティング
     items:
     - name: デプロイ エラーのトラブルシューティング
       href: resource-manager-common-deployment-errors.md
@@ -237,9 +235,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 47af6826974759a1b0dfea7949429c5acaca004d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 166a23d480db7dfda7a78a5a63e7717b5e721bb9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252339"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436791"

@@ -26,7 +26,7 @@ items:
   - name: Eclipse を使用して ESP クラスターにリンクする
     href: ../spark/apache-spark-eclipse-tool-plugin.md
     maintainContext: true
-  - name: ESP クラスターで Oozie を使用する
+  - name: ESP クラスターで Apache Oozie を使用する
     href: hdinsight-use-oozie-domain-joined-clusters.md
 - name: データのセキュリティ保護
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
@@ -39,10 +39,10 @@ items:
   - name: HDInsight とオンプレミス ネットワークの接続
     href: ../connect-on-premises-network.md
     maintainContext: true
-  - name: Azure VNet での HBase クラスターの作成
+  - name: Azure VNet での Apache HBase クラスターの作成
     href: ../hbase/apache-hbase-provision-vnet.md
     maintainContext: true
-  - name: Azure VNet での HBase クラスター レプリケーション
+  - name: Azure VNet での Apache HBase クラスターのレプリケーション
     href: ../hbase/apache-hbase-replication.md
     maintainContext: true
 - name: Log Analytics を使用した監視
@@ -70,13 +70,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Go SDK
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: リソース
   items:
@@ -100,9 +100,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 08e08fba0b9957babd391cada4a665e5d99fdd90
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 838d344742cdb9c19224b6831540736a86fc5b33
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155713"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433653"

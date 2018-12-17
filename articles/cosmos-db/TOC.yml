@@ -164,7 +164,7 @@ items:
       href: optimize-cost-regions.md
     - name: 開発/テスト ワークロードの最適化
       href: optimize-dev-test.md
-    - name: 予約容量の前払い
+    - name: 予約容量による最適化
       href: cosmos-db-reserved-capacity.md
   - name: セキュリティ
     items:
@@ -603,9 +603,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: b172650cc0a69169bcbebf58e0a11d0bb9cd6450
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d31364cb9d458e54ae407d10fd88d8db4e9f457f
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254702"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384668"

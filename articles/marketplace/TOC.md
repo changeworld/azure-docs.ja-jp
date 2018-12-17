@@ -83,21 +83,6 @@
 ### [VM プランの公開](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
 ### [既存のプランの更新](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
-<!-- Following legacy VM section was replaced.  -->
-<!-- 
-## Virtual machines
-### [Dev center account registration](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [Author virtual machine offer](./cloud-partner-portal-orig/cloud-partner-portal-publish-virtual-machine.md)
-### [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md)
-### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer.md)
-### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-delete-an-offer.md)
-### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
-### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
--->
-<!-- new section for Azure apps -->
-
 ## [Azure アプリケーション プラン](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 ### [前提条件](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
 ### [Azure アプリケーション プランの作成](./cloud-partner-portal/azure-applications/cpp-create-offer.md)
@@ -201,7 +186,16 @@
 ### [BPM と手法](./cloud-partner-portal-orig/bpm-and-methodologies.md)
 ### [ヘルプ Wiki](./cloud-partner-portal-orig/help-wiki.md)
 
-## [コンサルティング サービス](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+<!--
+## [Consulting services](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+-->
+## [コンサルティング サービス](./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)
+### [前提条件](./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md)
+### [コンサルティング サービス オファーの作成](./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md)
+#### [[プランの設定] タブ](./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md)
+#### [ネットショップの詳細タブ](./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md)
+### [コンサルティング サービス オファーの発行](./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md) 
+
 ## [公開元プロファイルの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
 ## [ユーザーの管理](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
 ## [GDPR コンプライアンス](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)

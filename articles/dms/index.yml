@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a314401883d0325029ce50502f85c335458e3959
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9bbf1c5e5ff58d746a0749f0423f8ca42d2971b4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285052"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338262"
 documentType: LandingData
 title: Azure Database Migration Service のドキュメント
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/30/2018
+  ms.date: 12/12/2018
   ms.author: rajpo
 abstract:
   description: Azure Database Migration Service を使用すると、複数のデータベース ソースから Azure データ プラットフォームに、ダウンタイムを最小限に抑えながらシームレスに移行できます。 このサービスでは、Data Migration Assistant を使用して評価レポートを生成します。評価レポートには、移行を実行する前に必要な変更について推奨される手順が記載されています。 移行プロセスを開始する準備ができたら、Azure Database Migration Service によって、必要な手順がすべて実行されます。
@@ -70,6 +70,8 @@ sections:
     style: unordered
     className: spaced noBullet
     items:
+    - html: <a href="/azure/dms/resource-scenario-status">Azure Database Migration Service によってサポートされる移行シナリオの状態</a>
     - html: <a href="/azure/dms/pre-reqs">Azure Database Migration Service を使用するための前提条件の概要</a>
     - html: <a href="/azure/dms/faq">Azure Database Migration Service の使用に関する FAQ</a>
     - html: <a href="/azure/dms/known-issues-azure-sql-online">Azure SQL DB へのオンライン移行に関する既知の問題と移行の制限事項</a>
+    - html: <a href="/azure/dms/dms-tools-matrix">データ移行シナリオ用のサービスとツール</a>
