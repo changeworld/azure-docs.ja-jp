@@ -101,6 +101,8 @@ items:
       href: sql-database-service-tiers-dtu.md
     - name: 予約容量の前払い
       href: sql-database-reserved-capacity.md
+    - name: Premium RS サービス レベルから移行する
+      href: sql-database-service-tiers-prs.md
   - name: コンピューティングとストレージ
     items:
     - name: 概要
@@ -115,7 +117,7 @@ items:
       href: sql-database-service-tier-hyperscale-faq.md
   - name: Single Database
     items:
-    - name: 単一データベース
+    - name: 単一データベースの概要
       href: sql-database-single-index.yml
     - name: 作成と管理
       href: sql-database-single-databases-manage.md
@@ -149,7 +151,7 @@ items:
       href: sql-database-single-database-scale.md
   - name: マネージド インスタンス
     items:
-    - name: マネージド インスタンス
+    - name: 複数のマネージド インスタンスの概要
       href: sql-database-managed-instance-index.yml
     - name: マネージド インスタンスの概要
       href: sql-database-managed-instance.md
@@ -163,7 +165,7 @@ items:
       href: sql-database-managed-instance-transact-sql-information.md
   - name: サービスとしてのプラットフォーム
     items:
-    - name: サービスとしてのプラットフォーム
+    - name: サービスとしてのプラットフォームの概要
       href: sql-database-paas.yml
     - name: ビジネス継続性
       href: sql-database-business-continuity.md
@@ -195,7 +197,7 @@ items:
         href: sql-database-disaster-recovery-drills.md
   - name: セキュリティ
     items:
-    - name: セキュリティ
+    - name: セキュリティの概要
       href: sql-database-security-index.yml
     - name: セキュリティの概要
       href: sql-database-security-overview.md
@@ -249,7 +251,7 @@ items:
         href: transparent-data-encryption-byok-azure-sql.md
   - name: スケーラビリティ
     items:
-    - name: スケーラビリティ
+    - name: スケーラビリティの概要
       href: sql-database-scalability-index.yml
     - name: スケールアップ/スケールダウン
       href: sql-database-scale-resources.md
@@ -283,6 +285,8 @@ items:
     href: sql-database-features.md
   - name: 監視とチューニング
     items:
+    - name: 監視とチューニングの概要
+      href: sql-database-monitoring-tuning-index.yml
     - name: 監視とパフォーマンスのチューニング
       href: sql-database-monitor-tune-overview.md
     - name: パフォーマンスの監視
@@ -315,8 +319,12 @@ items:
       href: sql-database-temporal-tables.md
 - name: ハウツー ガイド
   items:
+  - name: 概要
+    href: sql-database-howto.md
   - name: 単一データベース
     items:
+    - name: 概要
+      href: sql-database-howto-single-database.md
     - name: SQL Database への移行
       href: sql-database-cloud-migrate.md
     - name: 移行後の SQL Database の管理
@@ -393,6 +401,8 @@ items:
         href: elastic-jobs-migrate.md
   - name: マネージド インスタンス
     items:
+    - name: 概要
+      href: sql-database-howto-managed-instance.md
     - name: マネージド インスタンスへの移行
       href: sql-database-managed-instance-migrate.md
     - name: マネージド インスタンスへの TDE 証明書の移行
@@ -666,9 +676,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: d94f4fb39ccdee60fae434204369fd844aedeb20
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d276b202da8055965a43f5313b6a8c4b335f74b2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384277"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436026"

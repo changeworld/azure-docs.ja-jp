@@ -80,7 +80,7 @@ items:
       href: consistency-levels.md
     - name: 適切な整合性レベルの選択
       href: consistency-levels-choosing.md
-    - name: 整合性レベルと Azure Cosmos DB API
+    - name: 整合性レベルと Cosmos DB API
       href: consistency-levels-across-apis.md
     - name: 整合性、可用性、パフォーマンスのトレードオフ
       href: consistency-levels-tradeoffs.md
@@ -144,6 +144,12 @@ items:
       href: unique-keys.md
     - name: トランザクションとオプティミスティック同時実行制御
       href: database-transactions-optimistic-concurrency.md
+  - name: サーバー側プログラミング
+    items:
+    - name: ストアド プロシージャ、トリガー、UDF
+      href: stored-procedures-triggers-udfs.md
+    - name: JavaScript クエリ API
+      href: javascript-query-api.md
   - name: Azure Cosmos DB コストの最適化
     items:
     - name: 価格モデル
@@ -178,8 +184,6 @@ items:
       href: firewall-support.md
     - name: 仮想ネットワークからのアクセス
       href: vnet-service-endpoint.md
-    - name: キー コンテナーのサポート
-      href: access-secrets-from-keyvault.md
   - name: エンタープライズ対応
     items:
     - name: オンラインのバックアップと復元
@@ -250,8 +254,14 @@ items:
       items:
       - name: クエリ パフォーマンスの調整
         href: sql-api-query-metrics.md
-      - name: ストアド プロシージャ、トリガー、UDF
-        href: programming.md
+      - name: サーバー側プログラミング
+        items:
+        - name: ストアド プロシージャ、トリガー、UDF を書き込む
+          href: how-to-write-stored-procedures-triggers-udfs.md
+        - name: JavaScript クエリ API を使用してストアド プロシージャとトリガーを書き込む
+          href: how-to-write-javascript-query-api.md
+        - name: ストアド プロシージャ、トリガー、UDF の使用
+          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: データの種類
         items:
         - name: Datetime
@@ -308,7 +318,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: パート 4 - アカウントの作成
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: パート 5 - Azure Cosmos DB への接続
+          - name: パート 5 - Cosmos DB への接続
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: パート 6 - CRUD 操作の実行
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -479,6 +489,8 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: クロス オリジン リソース共有 (CORS) の構成
       href: how-to-configure-cross-origin-resource-sharing.md
+    - name: Key Vault を使用したセキュリティ保護
+      href: access-secrets-from-keyvault.md
   - name: エンタープライズ対応
     items:
     - name: バックアップからデータを復元する
@@ -529,7 +541,7 @@ items:
         href: performance-testing.md
     - name: コスト効率の優れた読み取りと書き込み
       href: key-value-store-cost.md
-  - name: Azure Cosmos DB のデータを視覚化する
+  - name: Cosmos DB のデータを視覚化する
     items:
     - name: Power BI を使用する
       href: powerbi-visualize.md
@@ -603,9 +615,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: d31364cb9d458e54ae407d10fd88d8db4e9f457f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384668"
+ms.locfileid: "53410110"

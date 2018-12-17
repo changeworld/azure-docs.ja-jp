@@ -91,7 +91,7 @@
 #### [[体験版] タブ](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
 #### [[Marketplace] タブ](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
 #### [[サポート] タブ](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
-<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [技術資産の作成](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 ### [Azure アプリケーション プランの公開](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 ### [既存のプランの更新](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
