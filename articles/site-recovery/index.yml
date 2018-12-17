@@ -82,4 +82,4 @@ sections:
     - title: コマンド ライン
       html: <p><a href="/powershell/module/azurerm.siterecovery/">Azure PowerShell</a></p>
     - title: REST
-      html: <p><a href="/rest/api/site-recovery/">REST API リファレンスに関するページ</a></p>
+      html: <p><a href="/rest/api/site-recovery/">REST API リファレンス</a></p>

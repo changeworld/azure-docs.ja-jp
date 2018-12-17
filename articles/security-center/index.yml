@@ -85,5 +85,5 @@ sections:
     style: cards
     className: cardsD
     items:
-    - html: <a href="https://msdn.microsoft.com/library/mt704034(Azure.100).aspx">REST API リファレンスに関するページ</a>
+    - html: <a href="https://msdn.microsoft.com/library/mt704034(Azure.100).aspx">REST API リファレンス</a>
     - html: <a href="https://azure.microsoft.com/updates/?product=security-center">サービスの更新情報</a>
