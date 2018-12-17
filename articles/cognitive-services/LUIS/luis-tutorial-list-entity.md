@@ -37,7 +37,7 @@ ms.locfileid: "47036781"
 > [!Tip]
 > サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
 
-このチュートリアルのコードは、すべて [LUIS-Samples github リポジトリ](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity)で入手できます。 
+このチュートリアルのコードは、すべて [LUIS-Samples GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity)で入手できます。 
 
 ## <a name="use-homeautomation-app"></a>HomeAutomation アプリを使用する
 HomeAutomation アプリを使用すると、照明、エンターテイメント システム、暖房や冷房などの環境制御などのデバイスを制御できます。 このようなシステムには、製造元の名前、ニックネーム、頭字語、スラングなどのさまざまな名前があります。 
