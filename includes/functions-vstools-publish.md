@@ -21,7 +21,7 @@ ms.locfileid: "51028143"
 
     ![発行先の選択](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
-    **[Run from Zip]\(Zip から実行する\)** を有効にすると、Azure の関数アプリはデプロイ パッケージから直接実行されます。 詳細については、「[Run your Azure Functions from a package file](../articles/azure-functions/run-functions-from-deployment-package.md)」(パッケージ ファイルから Azure Functions を実行する) を参照してください。
+    **[Run from Zip]\(Zip から実行\)** を有効にすると、Azure の関数アプリはデプロイ パッケージから直接実行されます。 詳細については、「[Run your Azure Functions from a package file](../articles/azure-functions/run-functions-from-deployment-package.md)」(パッケージ ファイルから Azure Functions を実行する) を参照してください。
      
     >[!CAUTION]
     >**[既存のものを選択]** を選択すると、Azure の既存の関数アプリ内のすべてのファイルがローカル プロジェクトのファイルによって上書きされます。 このオプションは、既存の関数アプリへの更新を再発行する場合にのみ使用します。
