@@ -46,7 +46,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-github から Flask-MongoDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。
+GitHub から Flask-MongoDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -134,7 +134,7 @@ github から Flask-MongoDB API アプリを複製し、接続文字列を設定
 
 ## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
 
-このアプリをデプロイするには、Azure で新しい Web アプリを作成し、この github リポジトリのフォークで継続的配置を有効にします。 この[チュートリアル](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)に従って、Azure で Github による継続的配置を設定します。
+このアプリをデプロイするには、Azure で新しい Web アプリを作成し、この GitHub リポジトリのフォークで継続的配置を有効にします。 この[チュートリアル](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)に従って、Azure で GitHub による継続的配置を設定します。
 
 Azure にデプロイする場合は、アプリケーション キーを削除し、以下のセクションがコメント アウトされていないことを確認する必要があります。
 
@@ -153,7 +153,7 @@ Azure にデプロイする場合は、アプリケーション キーを削除�
 </a>
 
 > [!NOTE]
-> Github またはその他のソース管理オプションでコードを格納することを計画している場合は、必ずコードから接続文字列を削除してください。 代わりに、Web アプリのアプリケーション設定で設定することができます。
+> GitHub またはその他のソース管理オプションでコードを格納することを計画している場合は、必ずコードから接続文字列を削除してください。 代わりに、Web アプリのアプリケーション設定で設定することができます。
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
