@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: f46d5a31667f52f553bcfdbd20ff56439d526144
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0dd6430021eed5571a6590f411a68e747cd7b506
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163309"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274889"
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Azure SQL Database Query Performance Insight
 リレーショナル データベースのパフォーマンスの管理とチューニングは、かなりの専門知識と時間の投入を必要とする困難な作業です。 Query Performance Insight を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
@@ -25,7 +25,7 @@ ms.locfileid: "47163309"
 * データベース リソース (DTU) の消費量の詳細な情報。 
 * CPU/期間/実行回数の上位クエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。
 * クエリの詳細にドリルダウンして、テキストやリソース使用率履歴を表示する機能。 
-* [SQL Azure Database Advisor](sql-database-advisor.md)  
+*  [SQL Azure Database Advisor](sql-database-advisor.md)  
 
 
 

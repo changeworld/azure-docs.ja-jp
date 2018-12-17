@@ -1,11 +1,11 @@
 ---
-title: Machine Learning Web サービスをデプロイする | Microsoft Docs
-description: トレーニング実験を予測実験に変換する方法、デプロイメントの準備をする方法、Azure Machine Learning Web サービスとしてデプロイする方法について説明します。
+title: Machine Learning Studio Web サービスをデプロイする - Azure | Microsoft Docs
+description: トレーニング実験を予測実験に変換する方法、デプロイメントの準備をする方法、Azure Machine Learning Studio Web サービスとしてデプロイする方法について説明します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 0f22f22d40410b258b3945d9e78938384ce64767
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 71315b6c36a9e41e5805d5a15bde5b1d1d84f2b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128400"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269925"
 ---
-# <a name="deploy-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスをデプロイする
+# <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Azure Machine Learning Studio Web サービスをデプロイする
 Azure Machine Learning では、予測分析ソリューションをビルド、テスト、およびデプロイできます。
 
 大まかに次の 3 つの手順で行われます。
@@ -31,7 +31,7 @@ Azure Machine Learning では、予測分析ソリューションをビルド、
 * **[予測実験に変換する]** - 既存のデータでモデルが学習され、それを使用して新しいデータをスコア付けする準備ができると、予測用に実験を用意し、合理化します。
 * **[Web サービスとしてデプロイする]** - 予測実験を[New]または[従来]の Azure Web サービスとしてデプロイできます。 ユーザーはご利用のモデルにデータを送信し、モデルの予測を受信できます。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="create-a-training-experiment"></a>トレーニング実験を作成する
 予測分析モデルを学習するには、Azure Machine Learning Studio を使用してトレーニング実験を作成します。ここではトレーニング データを読み込み、必要に応じてデータを用意し、機械学習アルゴリズムに適用し、結果を評価するさまざまなモジュールを含めることができます。 実験を繰り返し、別の機械学習アルゴリズムを試して結果を比較したり評価したりできます。

@@ -14,19 +14,19 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 07ebf23270addc63793278d4e0510c187289b82c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 71be338aeb6d0234d22d412d6838e36a26797b20
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154547"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002124"
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>App Service への既存の Node.js Azure Mobile Service のアップグレード
 App Service Mobile は、Microsoft Azure を使用してモバイル アプリケーションを構築する新しい方法です。 詳細については、「 [Mobile Apps とは]」を参照してください。
 
 この記事では、既存の Node.js バックエンド アプリケーションを Azure Mobile Services から新しい App Service Mobile Apps にアップグレードする方法について説明します。 このアップグレードの実行中も、既存の Mobile Services アプリケーションの動作を続行できます。  Node.js バックエンド アプリケーションにアップグレードする必要がある場合は、[既存の .NET Mobile Services のアップグレード](app-service-mobile-net-upgrading-from-mobile-services.md)に関するページを参照してください。
 
-Azure App Service にアップグレードされたモバイル バックエンドは、App Service のすべての機能にアクセスでき、Mobile Services の価格ではなく [App Service の価格]に従って課金されます。
+Azure App Service にアップグレードされたモバイル バックエンドは、App Service のすべての機能にアクセスでき、Mobile Services の価格ではなく [App Service 価格]に従って課金されます。
 
 ## <a name="migrate-vs-upgrade"></a>移行とアップグレード
 [!INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
@@ -39,7 +39,7 @@ Azure App Service にアップグレードされたモバイル バックエン�
 ### <a name="improvements-in-mobile-apps-nodejs-server-sdk"></a>Mobile Apps Node.js サーバー SDK の機能強化
 新しい [Mobile Apps SDK](https://www.npmjs.com/package/azure-mobile-apps) にアップグレードすると、次のような多くの機能が強化されます。
 
-* [Express フレームワーク](http://expressjs.com/en/index.html)に基づく新しい軽量の Node SDK は、リリースされる新しい Node のバージョンに対応できるように設計されています。Express ミドルウェアでアプリケーションの動作をカスタマイズすることができます。
+* [Express フレームワーク](https://expressjs.com/en/index.html)に基づく新しい軽量の Node SDK は、リリースされる新しい Node のバージョンに対応できるように設計されています。Express ミドルウェアでアプリケーションの動作をカスタマイズすることができます。
 * Mobile Services SDK に比べ、パフォーマンスが大幅に向上します。
 * モバイル バックエンドと共に Web サイトをホストできるようになりました。同様に、既存の express.v4 アプリケーションに Azure Mobile SDK を簡単に追加することができます。
 * クロスプラットフォームとローカル開発用に構築されており、Mobile Apps SDK を開発して Windows、Linux、および OSX プラットフォーム上でローカルに実行できます。 デプロイメントの前の [Mocha](https://mochajs.org/) テストの実行などの一般的な Node 開発手法を簡単に使用できるようになりました。
@@ -160,13 +160,13 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service 価格]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [認証の概念]: ../app-service/app-service-authentication-overview.md
 [認証のクイック スタート]: app-service-mobile-auth.md
 
 [Azure Portal]: https://portal.azure.com/
-[OData]: http://www.odata.org
+[OData]: https://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [basicapp sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
 [todo sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
@@ -175,6 +175,6 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 [QueryJS]: https://github.com/Azure/queryjs
 [Node.js Tools 1.1 for Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [mssql Node.js package]: https://www.npmjs.com/package/mssql
-[Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
+[Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
+[ExpressJS Middleware]: https://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston

@@ -10,16 +10,15 @@ ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 7f0334bdd1922c6ec410ca912ccfbf639e5c770f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 14f373b5459aaa7a9e51ba284f6a30094c4e7617
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634440"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194183"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure での管理ソリューションのデータ収集の詳細
 この記事には、Microsoft で利用可能な[管理ソリューションの](solutions.md)一覧を、詳細なドキュメントへのリンクと共に示します。  また、Log Analytics へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を理解できます。 
@@ -31,17 +30,17 @@ ms.locfileid: "52634440"
 列の説明を次に示します。
 
 - **Microsoft Monitoring Agent** - Windows および Linux 上で使用される、SCOM から管理パックを、また、Azure から管理ソリューションを実行するエージェント。 この構成では、エージェントは Operations Manager 管理グループに接続されずに、直接 Log Analytics に接続されます。 
-- **Operations Manager** - Microsoft Monitoring Agent と同一のエージェント。 この構成では、Log Analytics に接続されている [Operations Manager 管理グループに接続](../../log-analytics/log-analytics-om-agents.md)されます。 
+- **Operations Manager** - Microsoft Monitoring Agent と同一のエージェント。 この構成では、Log Analytics に接続されている [Operations Manager 管理グループに接続](../../azure-monitor/platform/om-agents.md)されます。 
 -  **Azure Storage** - ソリューションは、Azure ストレージ アカウントからデータを収集します。 
 - **Operations Manager が必要か** - 接続された Operations Manager 管理グループが、該当の管理ソリューションによるデータ収集を必要とします。 
-- **管理グループ経由で送信される Operations Manager エージェント データ** - エージェントが[ SCOM 管理グループに接続されている](../../log-analytics/log-analytics-om-agents.md)場合、データは管理サーバーから Log Analytics へ送信されます。 この場合、エージェントが直接、Log Analytics に接続される必要はありません。 このボックスに印がない場合、エージェントが SCOM 管理グループに接続されている場合でも、データはエージェントから直接 Log Analytics に送信されます。 また、エージェントは、[Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)経由で Log Analytics と通信できる必要があります。
+- **管理グループ経由で送信される Operations Manager エージェント データ** - エージェントが[ SCOM 管理グループに接続されている](../../azure-monitor/platform/om-agents.md)場合、データは管理サーバーから Log Analytics へ送信されます。 この場合、エージェントが直接、Log Analytics に接続される必要はありません。 このボックスに印がない場合、エージェントが SCOM 管理グループに接続されている場合でも、データはエージェントから直接 Log Analytics に送信されます。 また、エージェントは、[Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)経由で Log Analytics と通信できる必要があります。
 - **収集の頻度** - 管理ソリューションによってデータが収集される頻度を示します。 
 
 
 
 | **管理ソリューション** | **プラットフォーム** | **Microsoft Monitoring Agent** | **Operations Manager エージェント** | **Azure Storage** | **Operations Manager が必要か** | **管理グループ経由で送信される Operations Manager エージェント データ** | **収集の頻度** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [アクティビティ ログ分析](../../log-analytics/log-analytics-activity.md) | Azure | | | | | | 通知時 |
+| [アクティビティ ログ分析](../../azure-monitor/platform/collect-activity-logs.md) | Azure | | | | | | 通知時 |
 | [AD 評価](../../azure-monitor/insights/ad-assessment.md) | Windows |&#8226; |&#8226; | | |&#8226; |7 日 |
 | [AD レプリケーションの状態](../../azure-monitor/insights/ad-replication-status.md) | Windows |&#8226; |&#8226; | | |&#8226; |5 日 |
 | [Agent Health](solution-agenthealth.md) | Windows および Linux | &#8226; | &#8226; | | | &#8226; | 1 分 |
@@ -49,17 +48,17 @@ ms.locfileid: "52634440"
 | [アラート管理](../../azure-monitor/platform/alert-management-solution.md) (Zabbix) | Linux |&#8226; | | | | |1 分 |
 | [アラート管理](../../azure-monitor/platform/alert-management-solution.md) (Operations Manager) | Windows | |&#8226; | |&#8226; |&#8226; |3 分 |
 | [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | 該当なし |
-| [Application Insights Connector (プレビュー)](../../log-analytics/log-analytics-app-insights-connector.md) | Azure | | | |  |  | 通知時 |
+| [Application Insights Connector (プレビュー)](../../azure-monitor/platform/app-insights-connector.md) | Azure | | | |  |  | 通知時 |
 | [Automation Hybrid Worker](../../automation/automation-hybrid-runbook-worker.md) |  Windows | &#8226; | &#8226; |  |  |  | 該当なし |
 | [Azure Application Gateway 分析](../../azure-monitor/insights/azure-networking-analytics.md) | Azure |  |  |  |  |  | 通知時 |
 | **管理ソリューション** | **プラットフォーム** | **Microsoft Monitoring Agent** | **Operations Manager エージェント** | **Azure Storage** | **Operations Manager が必要か** | **管理グループ経由で送信される Operations Manager エージェント データ** | **収集の頻度** |
 | [Azure ネットワーク セキュリティ グループ分析 (非推奨)](../../azure-monitor/insights/azure-networking-analytics.md) | Azure |  |  |  |  |  | 通知時 |
-| [Azure SQL Analytics (プレビュー)](../../log-analytics/log-analytics-azure-sql.md) |  Windows | | | | | | 1 分 |
+| [Azure SQL Analytics (プレビュー)](../../azure-monitor/insights/azure-sql.md) |  Windows | | | | | | 1 分 |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | 通知時 |
 | [Capacity and Performance (プレビュー)](../../azure-monitor/insights/capacity-performance.md) | Windows |&#8226; |&#8226; | | |&#8226; |着信時 |
 | [変更の追跡](../../automation/automation-change-tracking.md) | Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |
 | [変更の追跡](../../automation/automation-change-tracking.md) | Linux |&#8226; | | | | |1 時間に 1 回 |
-| [Containers](../../log-analytics/log-analytics-containers.md) | Windows および Linux | &#8226; | &#8226; |  |  |  | 3 分 |
+| [Containers](../../azure-monitor/insights/containers.md) | Windows および Linux | &#8226; | &#8226; |  |  |  | 3 分 |
 | [Key Vault Analytics](../../azure-monitor/insights/azure-key-vault.md) | Windows | | | | | |通知時 |
 | [マルウェアの評価](../../security-center/security-center-install-endpoint-protection.md) | Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |
 | [ネットワーク パフォーマンス監視](../../azure-monitor/insights/network-performance-monitor.md) |  Windows | &#8226; | &#8226; |  |  |  | TCP ハンドシェイク (5 秒ごと)、データ送信 (3 分ごと) |
@@ -79,4 +78,4 @@ ms.locfileid: "52634440"
 
 
 ## <a name="next-steps"></a>次の手順
-* [クエリを作成](../../log-analytics/log-analytics-queries.md)して、管理ソリューションで収集したデータを分析する方法を確認します。
+* [クエリを作成](../../azure-monitor/log-query/log-query-overview.md)して、管理ソリューションで収集したデータを分析する方法を確認します。

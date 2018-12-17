@@ -8,18 +8,17 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: c04af7fcf996c9b86c472383eac5658e5504b27e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: b24febdc8be0c3c839880bea15bf566484aea88f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139824"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727309"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Azure Monitor ブックを使用した対話型レポートの作成
 

@@ -9,17 +9,16 @@ ms.assetid: 379721d1-0f82-445a-b416-45b94cb969ec
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: aa9c02e069700ab236c4b9fc78482450b5911e93
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5614832863fa801f931fc5cf08ca7ebf7c317488
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983874"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997662"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
@@ -101,15 +100,15 @@ Application Insights を Web アプリにインストールし、[可用性 Web 
 * テレメトリによる確かな証拠に基づいて次の開発サイクルを決定します。
 
 ## <a name="get-started"></a>作業開始
-Application Insights は、Microsoft Azure でホストされる多数のサービスの 1 つであり、テレメトリは分析と表示のために Microsoft Azure に送信されます。 このため、他の操作を行う前に、 [Microsoft Azure](http://azure.com)のサブスクリプションが必要になります。 サインアップは無料で、Application Insights の基本的な[価格プラン](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。大幅に増えた使用量に対応するようアプリケーションを拡大しない限り、料金は発生しません。 組織に既にサブスクリプションがある場合は、それにユーザーの Microsoft アカウントを追加することができます。
+Application Insights は、Microsoft Azure でホストされる多数のサービスの 1 つであり、テレメトリは分析と表示のために Microsoft Azure に送信されます。 このため、他の操作を行う前に、 [Microsoft Azure](https://azure.com)のサブスクリプションが必要になります。 サインアップは無料で、Application Insights の基本的な[価格プラン](https://azure.microsoft.com/pricing/details/application-insights/)を選択できます。大幅に増えた使用量に対応するようアプリケーションを拡大しない限り、料金は発生しません。 組織に既にサブスクリプションがある場合は、それにユーザーの Microsoft アカウントを追加することができます。
 
 作業の開始方法はいくつかあります。 目的に適した方法から始めてください。 後で、他のものを追加することもできます。
 
-* **実行時: サーバー上の Web アプリをインストルメント化します。** コードを更新しなくて済みます。 サーバーへの管理者アクセスが必要になります。
+* **実行時: サーバー上の Web アプリをインストルメント化します。**  コードを更新しなくて済みます。 サーバーへの管理者アクセスが必要になります。
   * [**オンプレミスまたは VM 上の IIS**](app-insights-monitor-performance-live-website-now.md)
   * [**Azure Web アプリまたは VM**](app-insights-monitor-performance-live-website-now.md)
   * [**J2EE**](app-insights-java-live.md)
-* **開発時: コードに Application Insights を追加します。** カスタム テレメトリを記述したり、バックエンド アプリおよびデスクトップ アプリをインストルメント化したりすることができます。
+* **開発時: コードに Application Insights を追加します。**  カスタム テレメトリを記述したり、バックエンド アプリおよびデスクトップ アプリをインストルメント化したりすることができます。
   * [Visual Studio](app-insights-asp-net.md) 2013 Update 2 以降。
   * [Java](app-insights-java-get-started.md)
   * [Node.js](app-insights-nodejs.md)
@@ -135,7 +134,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 * 質問および問題点:
   * [Troubleshooting][qna]
   * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
-  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+  * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * ご提案:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * ブログ:
@@ -159,6 +158,6 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 [java]: app-insights-java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md
 [platforms]: app-insights-platforms.md
-[portal]: http://portal.azure.com/
+[portal]: https://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md

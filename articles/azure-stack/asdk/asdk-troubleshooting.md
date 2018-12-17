@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 999017e24f6c4c24735b7e0cc818bf20aaabab62
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3caa45064c41b641aa913e210aa698d818d5355e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338575"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970272"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Microsoft Azure Stack Development Kit (ASDK) のトラブルシューティング
 このドキュメントでは、ASDK の一般的なトラブルシューティング情報を提供します。 記載されていない問題が発生している場合は、[Azure Stack MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)で追加のサポートと情報についてご確認ください。  
@@ -64,7 +64,7 @@ Azure Stack に VM をデプロイする前に、まず Windows Server イメー
 
 "孤立" VHD が表示された場合、それが削除されたストレージ アカウントのフォルダーの一部であるかどうかを知ることが重要です。 ストレージ アカウントが削除されていない場合は、まだ存在していても正常です。
 
-リテンション期間しきい値と、オンデマンドの再利用の設定について詳しくは、[ストレージ アカウントの管理](.\.\azure-stack-manage-storage-accounts.md)に関するページを参照してください。
+リテンション期間しきい値と、オンデマンドの再利用の設定について詳しくは、[ストレージ アカウントの管理](../azure-stack-manage-storage-accounts.md)に関するページを参照してください。
 
 ## <a name="storage"></a>Storage
 ### <a name="storage-reclamation"></a>記憶域の再利用
@@ -72,4 +72,3 @@ Azure Stack に VM をデプロイする前に、まず Windows Server イメー
 
 ## <a name="next-steps"></a>次の手順
 [Azure Stack サポート フォーラムを参照する](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)
-

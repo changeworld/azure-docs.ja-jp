@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: ddfcb90090d82d8fe947292737163a81c715b32d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972829"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970588"
 ---
 # <a name="local-forwarder"></a>ローカル フォワーダー
 
@@ -28,7 +27,7 @@ ms.locfileid: "46972829"
 
 ローカル フォワーダーは、[GitHub 上のオープン ソース プロジェクト](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases)です。 複数のプラットフォームでローカル フォワーダーを実行するには、さまざまな方法があります。
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a> Windows
 
 #### <a name="windows-service"></a>Windows サービス
 
@@ -40,7 +39,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 1. GitHub 上の[ローカル フォワーダー リリース ページ](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases)から LF.WindowsServiceHost.zip ファイルをダウンロードします。
 
-    ![ローカル フォワーダーのリリース ダウンロード ページのスクリーンショット](.\media\opencensus-local-forwarder\001-local-forwarder-windows-service-host-zip.png)
+    ![ローカル フォワーダーのリリース ダウンロード ページのスクリーンショット](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
 2. この例では、デモを簡単にするために、.zip ファイルをパス `C:\LF-WindowsServiceHost` に抽出します。
 
@@ -56,7 +55,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     サービス GUI を介して新しいサービスを調べるには、「``services.msc``」と入力します
         
-     ![ローカル フォワーダー サービスのスクリーンショット](.\media\opencensus-local-forwarder\002-services.png)
+     ![ローカル フォワーダー サービスのスクリーンショット](./media/opencensus-local-forwarder/002-services.png)
 
 3. 新しいローカル フォワーダーを**右クリック**し、**[開始]** を選択します。 サービスは実行中の状態になります。
 
@@ -74,7 +73,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
 6. 目的の設定が構成され、ローカル フォワーダーがトレース データを適切にリッスンしていることを確認するために、``LocalForwarder.log`` ファイルを確認します。 ファイルの末尾に次の図のような結果が表示されます。
 
-    ![LocalForwarder.log ファイルのスクリーンショット](.\media\opencensus-local-forwarder\003-log-file.png)
+    ![LocalForwarder.log ファイルのスクリーンショット](./media/opencensus-local-forwarder/003-log-file.png)
 
 #### <a name="console-application"></a>コンソール アプリケーション
 
@@ -89,7 +88,7 @@ E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
 E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
 ```
 
-### <a name="linux"></a>Linux
+### <a name="linux"></a> Linux
 
 Windows と同様に、このリリースには、コンソール ホストの次の実行可能バージョンが付属しています。
 * フレームワーク依存の .NET Core バイナリ */ConsoleHost/publish/Microsoft.LocalForwarder.ConsoleHost.dll*。 このバイナリを実行するには、.NET Core ランタイムをインストールする必要があります。詳細については、このダウンロード [ページ](https://www.microsoft.com/net/download/dotnet-core/2.1)を参照してください。

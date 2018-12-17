@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f3e45d62f5117ade9109733d3cc5aba629bf9c7d
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 09be96a4a6fd4e36412e4e0958683a14873e172d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389736"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961826"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL Data Warehouse データ統合パートナー
 データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事は、Azure SQL Data Warehouse をサポートするデータ統合ソリューションを提供している Microsoft パートナー企業について説明しています。
@@ -23,7 +23,7 @@ ms.locfileid: "49389736"
 ## <a name="data-integration-partners"></a>データ統合パートナー
 | パートナー | 説明 | リンク | ビデオ |
 | --- | --- | --- | --- |
-| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer は、セルフサービス型データ分析のための再現可能なワークフローの提供を通じて、従来のアプローチのように分析に数週間も費やすことなく、数時間で深い洞察をもたらします。 Alteryx Designer は、統一された直観的なユーザー インターフェースを使用した、データ準備、データ ブレンド、予測分析、統計分析、および空間分析を組み合わせることにより、データ アナリストを支援します。 |[Marketplace][alteryx_marketplace]<br>[Web サイト][alteryx_designer_website]<br>[ホワイト ペーパー][alteryx_whitepaper]<br>[データシート][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] |[![Alteryx ビデオ](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
+| ![Alteryx][1] |**Alteryx**<br>  Alteryx Designer は、セルフサービス型データ分析のための再現可能なワークフローの提供を通じて、従来のアプローチのように分析に数週間も費やすことなく、数時間で深い洞察をもたらします。 Alteryx Designer は、統一された直観的なユーザー インターフェースを使用した、データ準備、データ ブレンド、予測分析、統計分析、および空間分析を組み合わせることにより、データ アナリストを支援します。 |[Marketplace][alteryx_marketplace]<br>[Web サイト][alteryx_designer_website]<br>[ホワイト ペーパー][alteryx_whitepaper]<br>[データシート][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] |[![Alteryx ビデオ](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
 | ![Attunity][2] |**Attunity**<br>Attunity CloudBeam は、SQL Data Warehouse にデータを読み込むための、自動化および最適化されたソリューションを提供します。 "クリックして読み込み" 設計を使用して、SQL Server、Oracle、DB2、Sybase、mySQL など、多種多様なデータベースからのバッチ読み込みと増分レプリケーションを簡素化し、迅速化します。 |[Marketplace][attunity_marketplace]<br>[クイック スタート][attunity_quickstart]<br>[Web サイト][attunity_cloudbeam_website]<br>[データシート][attunity_cloudbeam_datasheet]<br>[Twitter][attunity_cloudbeam_twitter]<br>[YouTube][attunity_cloudbeam_youtube] |[![Attunity ビデオ](./media/sql-data-warehouse-partner-data-integration/attunity_video.jpg)](https://www.youtube.com/watch?v=w14zuSjMlok) |
 | ![Bryte Systems][3] |**Bryte Systems**<br>Bryte Systems は、さまざまなデータベースやソースから SQL Data Warehouse へのデータ転送を自動化します。 Bryte Systems は、データの移動および統合テクノロジの専門企業です。 クラウド ベースのデータ ウェアハウスと Data Lake を構築することで、知見を見いだすことができます。 |[Web サイト][bryte_systems_azure_website] | |
 | ![Informatica][4] |**Informatica Cloud Services for Azure – Pay-As-You-Go**<br> Informatica Cloud Services for Azure (従量課金制) で Azure サービスの価値を最適化し、ハイブリッド データ セット全体から行動につながる洞察を導き出しましょう。 Informatica Cloud は、データ統合、クラウド分析、アプリケーション統合、およびデータ管理におけるクラス最高のソリューションを提供します。 セルフ サービス型のデータ移行、統合、および管理機能により、SaaS アプリケーション、Hadoop ベースの Data Lake、その他のオンプレミス データ ソース (Oracle、SAP) などのさまざまなソースから、Azure に迅速かつ確実にペタバイト級のデータをインポート、エクスポート、同期、スケジュールできます。 Informatica Cloud Services for Azure は、Azure SQL Data Warehouse、SQL Database、Blob Storage、Data Lake Store、および Azure Cosmos DB へのネイティブな高ボリューム、高パフォーマンスな接続を実現します。 |[Marketplace][informatica_Cloud_Services_marketplace]<br>[無料試用版][informatica_cloud_free_trial]<br>[構成ガイド][informatica_cloud_services_config]<br>[Web サイト][informatica_Cloud_Services_website]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
@@ -70,7 +70,7 @@ ms.locfileid: "49389736"
 <!--Website Links -->
 [alteryx_designer_website]:http://www.alteryx.com/partners/microsoft/
 [attunity_cloudbeam_website]:http://www.attunity.com/attunity-cloudbeam-for-azure/
-[bryte_systems_azure_website]:http://www.bryte.com.au/azure-integration/
+[bryte_systems_azure_website]:http://www.bryteflow.com/
 [informatica_Cloud_Services_website]:https://www.informatica.com/products/cloud-integration.html
 [informatica_PowerCenter_website]:https://www.informatica.com/products/data-integration/powercenter.html
 [redgate_website]:http://dataplatformstudio.com/

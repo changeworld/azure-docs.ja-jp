@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7c06d53e3823bd81707608f566f581fa44638fc
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 26aeb5641533125dcd909ae96d28c8274677cf30
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037764"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013443"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -109,7 +109,7 @@ namespace HDInsightManagement
 このプログラムを実行すると、プロンプトが表示されます。  プロンプトを表示しない場合は、「 [非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)」をご覧ください。
 
 ## <a name="create-clusters"></a>クラスターの作成
-[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
+ [.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 
 ## <a name="list-clusters"></a>クラスターの一覧表示
 次のコード スニペットは、クラスターと一部のプロパティを一覧表示します。
@@ -228,7 +228,7 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 これは、ポータルを使用して行うこともできます。 [Azure Portal ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページをご覧ください。
 
 ## <a name="update-http-user-credentials"></a>HTTP ユーザーの資格情報の更新
-[HTTP アクセス許可の付与/取り消し](#grant/revoke-access)と同じ手順です。HTTP アクセスがクラスターで許可されている場合、最初に取り消す必要があります。  次に、新しい HTTP ユーザーの資格情報を使用してアクセス許可を付与してください。
+[HTTP アクセスの付与/取り消し](#grant/revoke-access)と同じ手順です。  クラスターに HTTP アクセスが許可されている場合は、まずそれを取り消す必要があります。  次に、新しい HTTP ユーザーの資格情報を使用してアクセス許可を付与してください。
 
 ## <a name="find-the-default-storage-account"></a>既定のストレージ アカウントの検索
 次のコード スニペットは、クラスターの既定のストレージ アカウント名と既定のストレージ アカウント キーを取得する方法を示しています。
@@ -242,25 +242,25 @@ foreach (var key in results.Configuration.Keys)
 ```
 
 ## <a name="submit-jobs"></a>ジョブの送信
-**MapReduce ジョブを送信するには**
+**Apache Hadoop MapReduce ジョブを送信するには**
 
-[HDInsight での Hadoop MapReduce のサンプルの実行](hadoop/apache-hadoop-run-samples-linux.md)に関する記事をご覧ください。
+[HDInsight での Apache Hadoop MapReduce のサンプルの実行](hadoop/apache-hadoop-run-samples-linux.md)に関する記事をご覧ください。
 
 **Apache Hive ジョブを送信するには** 
 
-[.NET SDK を使用した Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関する記事をご覧ください。
+[.NET SDK を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関するページを参照してください。
 
 **Apache Pig ジョブを送信するには**
 
-[.NET SDK を使用した Pig ジョブの実行](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)に関する記事をご覧ください。
+[.NET SDK を使用して Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)に関するページを参照してください。
 
 **Apache Sqoop ジョブを送信するには**
 
-「 [Hadoop .NET SDK と HDInsight の使用](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)」を参照してください。
+[HDInsight での Apache Sqoop の使用](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)に関するページを参照してください。
 
 **Apache Oozie ジョブを送信するには**
 
-「 [HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行](hdinsight-use-oozie-linux-mac.md)」を参照してください。
+[HDInsight での Apache Oozie と Hadoop を使用したワークフローの定義と実行](hdinsight-use-oozie-linux-mac.md)に関するページを参照してください。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
 [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
@@ -273,9 +273,9 @@ foreach (var key in results.Configuration.Keys)
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
 * [Azure HDInsight の概要][hdinsight-get-started]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

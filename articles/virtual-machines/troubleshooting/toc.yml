@@ -8,6 +8,7 @@ items:
   - name: クラシック デプロイの割り当ての失敗
     href: allocation-failure-classic.md
 - name: RDP
+  href: rdp.md
   items:
   - name: RDP のリセット
     href: reset-rdp.md
@@ -161,9 +162,9 @@ items:
   href: understand-vm-reboot.md
 - name: リモートのトラブルシューティング ツール
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 933976034950fbd454789dc620aa34ec9b1598c1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: af1f284108a326b3ce099ee49cb15a8f51cc61af
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306473"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434860"

@@ -9,16 +9,15 @@ ms.assetid: 12f3dbb9-915f-4087-87c9-807286030b0b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: 92b13c27d5f9c110dbcb4aa70aa9b8ddde17531a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 8e8a2e19e97bc07ed481adb3ecc3ae1d34ea8368
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096742"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721002"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>既にライブの Java Web アプリ向けの Application Insights
 
@@ -32,7 +31,7 @@ J2EE サーバーで既に実行されている Web アプリケーションが�
 > 
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1.Application Insights のインストルメンテーション キーを取得する
-1. [Microsoft Azure ポータル](https://portal.azure.com)
+1.  [Microsoft Azure ポータル](https://portal.azure.com)
 2. 新しい Application Insights リソースを作成し、アプリケーション タイプを Java Web アプリケーションに設定します。
    
     ![名前を入力し、[Java Web アプリケーション] を選択した後、[作成] をクリックします](./media/app-insights-java-live/02-create.png)

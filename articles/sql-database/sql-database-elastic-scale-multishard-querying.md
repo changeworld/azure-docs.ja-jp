@@ -3,7 +3,7 @@ title: シャード化された Azure SQL Database をクエリする | Microsof
 description: エラスティック データベース クライアント ライブラリを使用して複数のシャードを対象にクエリを実行します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 93408b266a239e897b49ab2482818a5221742685
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: bc0ca62699c21848e4d5fdc18bef292dce4634bf
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870404"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863467"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Elastic Database ツールを使用したマルチシャード クエリ
 
@@ -67,6 +67,6 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 
 ## <a name="multi-shard-queries-and-split-merge-operations"></a>マルチシャード クエリと分割/マージ操作
 
-マルチシャード クエリでは、照会されたデータベース上のシャードレットが進行中の分割/マージ操作に参加しているかどうかは確認されません。 (「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください)。そのため、同じマルチシャード クエリ内で複数のデータベースに対して同じシャードレットの行が表示される不整合が発生する可能性があります。 これらの制限を考慮したうえで、マルチシャード クエリを実行するときは、進行中の分割/マージ操作とシャード マップへの変更をドレインすることを検討してください。
+マルチシャード クエリでは、照会されたデータベース上のシャードレットが進行中の分割/マージ操作に参加しているかどうかは確認されません。  (「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください)。そのため、同じマルチシャード クエリ内で複数のデータベースに対して同じシャードレットの行が表示される不整合が発生する可能性があります。 これらの制限を考慮したうえで、マルチシャード クエリを実行するときは、進行中の分割/マージ操作とシャード マップへの変更をドレインすることを検討してください。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

@@ -9,16 +9,15 @@ ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: b1cd2e8d7649de48f34efb0c7d839e17906a29bf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 258147498c4b37a5a00482090d5408f7c5619557
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044987"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681298"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Application Insights の .NET トレース ログを調べる
 ASP.NET アプリケーションで診断トレースに NLog、log4Net、または System.Diagnostics.Trace を使用している場合、ログを [Azure Application Insights][start] に送信し、そこで調査したり、検索したりできます。 ログはアプリケーションから送信される他の利用統計情報と結合されます。それにより、互いのユーザー要求にサービスを提供することに関連付けられているトレースを特定し、それらを他のイベントや例外レポートに相互に関連付けることができます。
@@ -53,7 +52,7 @@ System.Diagnostics.Trace を使用している場合は、web.config にエン�
 
 または、ソリューション エクスプローラーでプロジェクトを右クリックし、 **Application Insights を構成** します。 **[トレース コレクションの構成]** を選択します。
 
-*Application Insights のメニューや Log Collector のオプションが表示されない場合は、* [トラブルシューティング](#troubleshooting)をお試しください。
+*Application Insights のメニューや Log Collector のオプションが表示されない場合は、*  [トラブルシューティング](#troubleshooting)をお試しください。
 
 ## <a name="manual-installation"></a>手動のインストール
 Application Insights インストーラーでサポートされていない種類のプロジェクト (Windows デスクトップ プロジェクトなど) の場合は、手動でインストールします。

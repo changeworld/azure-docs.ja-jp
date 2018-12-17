@@ -7,19 +7,19 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/6/2018
+ms.date: 11/06/2018
 ms.author: tylerfox
-ms.openlocfilehash: 4bf46501a75b9dd5be7ae1b446a0db90c20be559
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8454a22b02f28ece45ce04464f8f2658f745b53e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235260"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163346"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell を使用して、Azure のワークロードのデプロイと管理を制御し自動化することができます。 この記事では、Azure PowerShell を使用して Azure HDInsight の Apache Hadoop クラスターを管理する方法について説明します。 HDInsight PowerShell コマンドレットの一覧については、[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn479228.aspx)をご覧ください。
+Azure PowerShell を使用して、Azure のワークロードのデプロイと管理を制御し自動化することができます。 この記事では、Azure PowerShell を使用して Azure HDInsight の [Apache Hadoop](https://hadoop.apache.org/) クラスターを管理する方法について説明します。 HDInsight PowerShell コマンドレットの一覧については、[HDInsight コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn479228.aspx)をご覧ください。
 
 **前提条件**
 
@@ -41,7 +41,7 @@ Get-Module *azure*
 以前のバージョンをアンインストールするには、コントロール パネルで [プログラムと機能] を実行します。
 
 ## <a name="create-clusters"></a>クラスターの作成
-[Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+ [Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 
 ## <a name="list-clusters"></a>クラスターの一覧表示
 現在のサブスクリプションにあるクラスターすべてを一覧表示するには次のコマンドを使用します。
@@ -80,12 +80,12 @@ Remove-AzureRmResourceGroup -Name <Resource Group Name>
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
-* Hadoop
+* Apache Hadoop
 
     保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
 
     データ ノードの数を減らして Hadoop クラスターのスケールを小さくした場合、クラスター内の一部のサービスが再起動されます。 サービスを再起動すると、スケール設定処理の完了時に、実行中および保留中のすべてのジョブが失敗します。 ただし、処理が完了した後にジョブを再送信できます。
-* hbase
+* Apache HBase
 
     実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。 地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。 ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
 
@@ -95,7 +95,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
     >balancer
     ```
 
-* Storm
+* Apache Storm
 
     実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
 
@@ -207,25 +207,25 @@ $resourceGroupName = $cluster.ResourceGroup
 
 
 ## <a name="submit-jobs"></a>ジョブの送信
-**MapReduce ジョブを送信するには**
+**Apache Hadoop MapReduce ジョブを送信するには**
 
 「[HDInsight に含まれる MapReduce サンプルを実行する](hadoop/apache-hadoop-run-samples-linux.md)」を参照してください。
 
-**Hive ジョブを送信するには**
+**Apache Hive ジョブを送信するには**
 
-「 [PowerShell を使用して Hive クエリを実行](hadoop/apache-hadoop-use-hive-powershell.md)」を参照してください。
+「[PowerShell を使用して Apache Hive クエリを実行する](hadoop/apache-hadoop-use-hive-powershell.md)」を参照してください。
 
-**Pig ジョブを送信するには**
+**Apache Pig ジョブを送信するには**
 
-「 [PowerShell を使用した Pig ジョブの実行](hadoop/apache-hadoop-use-pig-powershell.md)」を参照してください。
+[PowerShell を使用して Apache Pig ジョブを実行する](hadoop/apache-hadoop-use-pig-powershell.md)に関するページを参照してください。
 
-**Sqoop ジョブを送信するには**
+**Apache Sqoop ジョブを送信するには**
 
-「 [Hadoop .NET SDK と HDInsight の使用](hadoop/hdinsight-use-sqoop.md)」を参照してください。
+[HDInsight での Apache Sqoop の使用](hadoop/hdinsight-use-sqoop.md)に関するページを参照してください。
 
-**Oozie ジョブを送信するには**
+**Apache Oozie ジョブを送信するには**
 
-「 [HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行](hdinsight-use-oozie.md)」を参照してください。
+「[HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行](hdinsight-use-oozie.md)」を参照してください。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
 [HDInsight へのデータのアップロード][hdinsight-upload-data]に関するページを参照してください。
@@ -236,12 +236,12 @@ $resourceGroupName = $cluster.ResourceGroup
 * [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
 * [HDInsight クラスターの作成][hdinsight-provision]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
-* [プログラムによる Hadoop ジョブの送信][hdinsight-submit-jobs]
+* [プログラムによる Apache Hadoop ジョブの送信][hdinsight-submit-jobs]
 * [Azure HDInsight の概要][hdinsight-get-started]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
