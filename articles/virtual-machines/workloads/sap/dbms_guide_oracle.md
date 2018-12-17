@@ -496,7 +496,7 @@ Azure の Oracle データベースのディザスター リカバリーにつ�
 Oracle Linux での Azure Accelerated Networking のサポートは、Oracle Linux 7 Update 5 (Oracle Linux 7.5) で提供されています。 最新の Oracle Linux 7.5 リリースにアップグレードできない場合、Oracle UEK カーネルの代わりに RedHat 互換カーネル (RHCK) を使用することで回避できる可能性があります。 Oracle Linux 内で RHEL カーネルを使用することは、SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179) に従ってサポートされています。 Azure 高速ネットワークの場合、最小 RHCKL カーネル リリースは 3.10.0-862.13.1.el7 でなければなりません。
 
 Azure Marketplace に基づかないイメージから VM をデプロイするのでない場合は、以下を実行して VM にコピーする追加の構成ファイルが必要になります。 
-<pre><code># Copy settings from github to correct place in VM
+<pre><code># Copy settings from GitHub to correct place in VM
 sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.githubusercontent.com/LIS/lis-next/master/hv-rhel7.x/hv/tools/68-azure-sriov-nm-unmanaged.rules 
 </code></pre>
 
