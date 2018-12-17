@@ -10,18 +10,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 5bec7be5f7ad744960d2602aaf24fec51d869267
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 108045c691d711dfdd12df39fe72e536f842f68f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056251"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993212"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
 [アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure Portal を使用して [URL パス ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 このチュートリアルでは、仮想マシンを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * アプリケーション ゲートウェイの作成
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインする
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインする
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -154,7 +154,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログイ�
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 http://http://40.121.222.19 など。
+2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 http:// http://40.121.222.19 など。
 
     ![アプリケーション ゲートウェイでのベース URL のテスト](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
