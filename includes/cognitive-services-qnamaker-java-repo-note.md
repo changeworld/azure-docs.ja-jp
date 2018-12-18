@@ -17,5 +17,5 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
 ms.locfileid: "47044494"
 ---
-> [!NOTE] 
-> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-java** Github リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-java)から入手できます。
+> [!NOTE]
+> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-java** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-java)から入手できます。
