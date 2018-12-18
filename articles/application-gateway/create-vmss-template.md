@@ -26,7 +26,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 この記事では、GitHub から既存の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)をダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
 
-GitHub から直接テンプレートをデプロイするだけで、変更を加えない場合は、Github からのテンプレートのデプロイに進んでください。
+GitHub から直接テンプレートをデプロイするだけで、変更を加えない場合は、GitHub からのテンプレートのデプロイに進んでください。
 
 ## <a name="scenario"></a>シナリオ
 
