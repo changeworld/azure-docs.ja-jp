@@ -82,5 +82,5 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 
 ## <a name="next-steps"></a>次の手順
 * [概要チュートリアル](functions-api-definition-getting-started.md)。 OpenAPI 定義が動作することを確認するチュートリアルを試してください。
-* [Azure Functions GitHub リポジトリ](https://github.com/Azure/Azure-Functions/) API 定義のサポート プレビューについてフィードバックを提供するには、Functions リポジトリを参照してください。 更新が必要な内容については、Github の問題を作成してください。
+* [Azure Functions GitHub リポジトリ](https://github.com/Azure/Azure-Functions/) API 定義のサポート プレビューについてフィードバックを提供するには、Functions リポジトリを参照してください。 更新が必要な内容については、GitHub の問題を作成してください。
 * [Azure Functions の開発者向けガイド](functions-reference.md) 関数のコーディングとトリガーおよびバインドの定義に関して学習してください。
