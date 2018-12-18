@@ -28,7 +28,7 @@ Azure Cognitive Services でのコンテナーのサポートを使用すると�
 
 ## <a name="features-and-benefits"></a>機能とメリット
 
-- **データの制御**: お客様は、Cognitive Services を使用してそのデータを完全に制御できます。  これは、クラウドにデータを送信することはできないが、Cognitive Services テクノロジにアクセスする必要があるお客様にとって重要です。 ハイブリッド環境でデータ、管理、ID、セキュリティの整合性をサポートします。
+- **データの制御**: お客様は、Cognitive Services を使用してそのデータを完全に制御できます。 これは、クラウドにデータを送信することはできないが、Cognitive Services テクノロジにアクセスする必要があるお客様にとって重要です。 ハイブリッド環境でデータ、管理、ID、セキュリティの整合性をサポートします。
 - **モデルの更新の制御**: お客様は、ソリューションにデプロイされているモデルのバージョン管理と更新を柔軟に行うことができます。
 - **移植可能なアーキテクチャ**: クラウド、オンプレミス、エッジにデプロイできる移植可能なアプリケーション アーキテクチャを作成できます。 コンテナーは、[Azure Kubernetes Service](/azure/aks/)、[Azure Container Instances](/azure/container-instances/)、または [Azure Stack](/azure/azure-stack/) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイすることもできます。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」をご覧ください。
 - **高スループット/低待機時間**: お客様は、アプリケーションのロジックとデータに物理的に近い Azure Kubernetes Service で Cognitive Services を実行できるようにすることで、高いスループットと低待機時間の要件に合わせてスケーリングできます。
@@ -61,7 +61,7 @@ Azure Cognitive Services コンテナーを使用するには、次の前提条�
 
 コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。
 
-**Microsoft Container Registry と Docker に関する知識**: レジストリ、リポジトリ、コンテナー、コンテナー イメージなどの Microsoft Container Registry と Docker の両方の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。  
+**Microsoft Container Registry と Docker に関する知識**: レジストリ、リポジトリ、コンテナー、コンテナー イメージなどの Microsoft Container Registry と Docker の両方の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。
 
 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。
 
@@ -69,7 +69,7 @@ Docker やコンテナーの基礎に関する入門情報については、「[
 
 ## <a name="developer-samples"></a>開発者向けサンプル
 
-開発者向けサンプルは、[Github リポジトリ](https://github.com/Azure-Samples/cognitive-services-containers-samples)から入手できます。 
+開発者向けサンプルは、[GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-containers-samples)から入手できます。
 
 ## <a name="next-steps"></a>次の手順
 
