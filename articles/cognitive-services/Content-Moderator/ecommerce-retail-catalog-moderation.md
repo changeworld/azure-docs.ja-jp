@@ -66,7 +66,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
 > [!NOTE]
 > このチュートリアルは、次のエンドポイントで表示できるリージョンのサブスクリプション キーを使用するように設計されています。 実際の API キーとリージョン キーを一致させてください。そうしないと、次のエンドポイントではお使いのキーが機能しない可能性があります。
 
-         // Your API keys
+        // Your API keys
         public const string ContentModeratorKey = "XXXXXXXXXXXXXXXXXXXX";
         public const string ComputerVisionKey = "XXXXXXXXXXXXXXXXXXXX";
         public const string CustomVisionKey = "XXXXXXXXXXXXXXXXXXXX";
@@ -128,11 +128,11 @@ Content Moderator にサインアップしてチームを作成する方法に�
 4. ログインするには、使用できるインターネット アカウントのリストから選択します。
 5. サービス ページに表示される API キーをメモします。
     
-   ![Computer Vision API キー](images/tutorial-computer-vision-keys.PNG)
+    ![Computer Vision API キー](images/tutorial-computer-vision-keys.PNG)
     
 6. Computer Vision API を使用して画像をスキャンする関数のプロジェクト ソース コードを参照してください。
 
-         public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
+        public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
         {
             var File = ImageUrl;
             string Body = $"{{\"URL\":\"{File}\"}}";
@@ -149,7 +149,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
                 ComputerVisionPrediction CVObject = JsonConvert.DeserializeObject<ComputerVisionPrediction>(Response.Content.ReadAsStringAsync().Result);
 
                 if ((CVObject.categories[0].detail != null) && (CVObject.categories[0].detail.celebrities.Count() > 0))
-                {                 
+                {
                     ReviewTags[2].Value = "true";
                 }
             }
@@ -161,7 +161,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
 
 1. [Custom Vision API プレビュー](https://www.customvision.ai/)に[サインイン](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)します。
 2. [クイック スタート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)を使用して、旗、おもちゃ、ペンが存在する可能性があるコンテンツを検出するカスタム分類子を構築します。
-   ![Custom Vision のトレーニング画像](images/tutorial-ecommerce-custom-vision.PNG)
+    ![Custom Vision のトレーニング画像](images/tutorial-ecommerce-custom-vision.PNG)
 3. カスタム分類子の[予測エンドポイント URL を取得します](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api)。
 4. 画像をスキャンするためにカスタム分類子の予測エンドポイントを呼び出す関数については、プロジェクトのソース コードを参照してください。
 
@@ -179,7 +179,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
                 SaveCustomVisionTags(response.Content.ReadAsStringAsync().Result, ref ReviewTags);
             }
             return response.IsSuccessStatusCode;
-        }       
+        }
  
 ## <a name="reviews-for-human-in-the-loop"></a>human-in-the-loop (人間参加) のレビュー
 
@@ -224,7 +224,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
 
 1. このトップレベル関数では、前述のテキスト ファイルに含まれるすべての画像 URL がループ処理されます。
 2. 画像 URL は各 API でスキャンされ、一致信頼度スコアが基準に該当する場合、ヒューマン モデレーター用のレビューが作成されます。
-             // for each image URL in the file... foreach (var Url in Urls) { // Initiatize a new review tags array ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
+            // for each image URL in the file... foreach (var Url in Urls) { // Initiatize a new review tags array ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
 
                 // Evaluate for potential adult and racy content with Content Moderator API
                 EvaluateAdultRacy(Url, ref ReviewTags);
