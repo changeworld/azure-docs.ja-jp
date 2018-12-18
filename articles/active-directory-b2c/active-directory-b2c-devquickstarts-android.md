@@ -54,7 +54,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポ�
 
 ## <a name="download-the-sample-code"></a>サンプル コードのダウンロード
 
-AppAuth と Azure AD B2C を使用する実稼働するサンプルが [github](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) の説明に従って、独自の Azure AD B2C 構成を使用してアプリを開始できます。
+AppAuth と Azure AD B2C を使用する実稼働するサンプルが [GitHub](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) の説明に従って、独自の Azure AD B2C 構成を使用してアプリを開始できます。
 
 サンプルは、[AppAuth](https://openid.github.io/AppAuth-Android/) によって提供されたサンプルを変更したものです。 AppAuth とその機能の詳細については、AppAuth のページを参照してください。
 
