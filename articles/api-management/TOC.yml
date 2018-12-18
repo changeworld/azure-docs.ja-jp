@@ -170,7 +170,7 @@ items:
       href: api-management-api-templates.md
     - name: '[成果物]'
       href: api-management-product-templates.md
-    - name: '[アプリケーション]'
+    - name: アプリケーション
       href: api-management-application-templates.md
     - name: 発行
       href: api-management-issue-templates.md
