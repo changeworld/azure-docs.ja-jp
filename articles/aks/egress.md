@@ -28,7 +28,7 @@ ms.locfileid: "47408524"
 
 ## <a name="egress-traffic-overview"></a>エグレス トラフィックの概要
 
-AKS クラスターからの送信トラフィックは [Azure Load Balancer の規則に従っています｡][outbound-connections] `LoadBalancer` 型の最初の Kubernetes サービスが作成される前、エーAKS クラスターのエージェント ノードはどれも Azure Load Balancer プールのメンバーではありません。 この構成では、どのノードもインスタンス レベルのパブリック IP アドレスが持たないことになります｡ Azure では、送信フローを構成可能でも決定論的でもないパブリック ソース IP アドレスに変換します。
+AKS クラスターからの送信トラフィックは [Azure Load Balancer の規則に従っています｡][outbound-connections] `LoadBalancer` 型の最初の Kubernetes サービスが作成される前、AKS クラスターのエージェント ノードはどれも Azure Load Balancer プールのメンバーではありません。 この構成では、どのノードもインスタンス レベルのパブリック IP アドレスが持たないことになります｡ Azure では、送信フローを構成可能でも決定論的でもないパブリック ソース IP アドレスに変換します。
 
 `LoadBalancer` 型の Kubernetes サービスが作成されると、エージェント ノードは Azure Load Balancer プールに追加されます。 送信フローの場合、Azure はこれをロード バランサーで構成された最初のパブリック IP アドレスに変換します。 このパブリック IP アドレスで、そのリソースの有効期間の間のみ有効です。 Kubernetes LoadBalancer サービスを削除すると、関連付けられているロード バランサーと IP アドレスも削除されます。 デプロイし直された Kubernetes サービスに対して特定の IP アドレスを割り当てるか､あるいは IP アドレスを保持する場合は、静的パブリック IP アドレスを作成して､使用することができます。
 
