@@ -23,7 +23,7 @@ ms.locfileid: "47056691"
 
 この記事は、SaaS テナント モデルまたはパターンに関する 81 分間のビデオの時間位置への注釈付きインデックスです。 この記事から、ビデオの後方や前方の興味のある位置にスキップできます。 ビデオでは、Azure SQL Database でのマルチテナント データベース アプリケーションに関する主要な設計オプションが説明されています。 ビデオには、デモ、管理コードのチュートリアル、および場合によってはドキュメントより詳細な経験に基づく情報が含まれます。
 
-ビデオでは、以下のドキュメントの情報が詳しく説明されています。 
+ビデオでは、以下のドキュメントの情報が詳しく説明されています。
 - *概念:* [マルチテナント SaaS データベース テナント パターン][saas-concept-design-patterns-563e]
 - *チュートリアル:* [Wingtip Tickets SaaS アプリケーションのデプロイ][saas-how-welcome-wingtip-app-679t]
 
@@ -63,8 +63,8 @@ ms.locfileid: "47056691"
 - [17.正規のハイブリッド マルチテナント SaaS アプリ、0:47:33](#anchor-image-wtip-min04733)
 - [18.Wingtip SaaS サンプル アプリ、0:48:10](#anchor-image-wtip-min04810)
 - [19.チュートリアルで調査されているシナリオとパターン、0:49:10](#anchor-image-wtip-min04910)
-- [20.チュートリアルと Github リポジトリのデモ、0:50:18](#anchor-image-wtip-min05018)
-- [21.Github リポジトリ Microsoft/WingtipSaaS、0:50:38](#anchor-image-wtip-min05038)
+- [20.チュートリアルと GitHub リポジトリのデモ、0:50:18](#anchor-image-wtip-min05018)
+- [21.GitHub リポジトリ Microsoft/WingtipSaaS、0:50:38](#anchor-image-wtip-min05038)
 - [22.パターンの調査、0:56:20](#anchor-image-wtip-min05620)
 - [23.テナントのプロビジョニングとオンボード、0:57:44](#anchor-image-wtip-min05744)
 - [24.テナントとアプリケーションの接続のプロビジョニング、0:58:58](#anchor-image-wtip-min05858)
@@ -199,13 +199,13 @@ ms.locfileid: "47056691"
 
 
 &nbsp; <a name="anchor-image-wtip-min05018"/>
-#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20.チュートリアルと Github リポジトリのデモ、0:50:12
-[![チュートリアルと Github リポジトリのデモ][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
+#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20.チュートリアルと GitHub リポジトリのデモ、0:50:12
+[![チュートリアルと GitHub リポジトリのデモ][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
 
 
 &nbsp; <a name="anchor-image-wtip-min05038"/>
-#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21.Github リポジトリ Microsoft/WingtipSaaS、0:50:32
-[![Github リポジトリ Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
+#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21.GitHub リポジトリ Microsoft/WingtipSaaS、0:50:32
+[![GitHub リポジトリ Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
 
 
 &nbsp; <a name="anchor-image-wtip-min05620"/>
@@ -298,10 +298,10 @@ ms.locfileid: "47056691"
 
 - *チュートリアル:* [Wingtip Tickets SaaS アプリケーションのデプロイ][saas-how-welcome-wingtip-app-679t]
 
-- Wingtip Tickets SaaS テナント アプリケーションのさまざまなバージョンの Github リポジトリ:
-    - [Github リポジトリ - スタンドアロン アプリケーション モデル用][github-wingtip-standaloneapp].
-    - [Github リポジトリ - テナントごとの DB モデル][github-wingtip-dbpertenant].
-    - [Github リポジトリ - マルチテナント DB モデル][github-wingtip-multitenantdb].
+- Wingtip Tickets SaaS テナント アプリケーションのさまざまなバージョンの GitHub リポジトリ:
+    - [GitHub リポジトリ - スタンドアロン アプリケーション モデル用][github-wingtip-standaloneapp].
+    - [GitHub リポジトリ - テナントごとの DB モデル][github-wingtip-dbpertenant].
+    - [GitHub リポジトリ - マルチテナント DB モデル][github-wingtip-multitenantdb].
 
 
 
@@ -354,9 +354,9 @@ ms.locfileid: "47056691"
 
 [image-wtip-min04910-scenarios-tutorials]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min04910-scenarios-patterns-explored-tutorials.png "チュートリアルで調査されているシナリオとパターン"
 
-[image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "チュートリアルと Github リポジトリのデモ"
+[image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "チュートリアルと GitHub リポジトリのデモ"
 
-[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "Github リポジトリ Microsoft/WingtipSaaS"
+[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "GitHub リポジトリ Microsoft/WingtipSaaS"
 
 [image-wtip-min05620-exploring-patterns]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05620-exploring-patterns-tutorials.png "パターンの調査"
 
