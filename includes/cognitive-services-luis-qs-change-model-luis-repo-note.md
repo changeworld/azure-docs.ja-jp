@@ -17,5 +17,5 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
 ms.locfileid: "47044144"
 ---
-> [!NOTE] 
-> 例の `utterances.json` ファイルを含む完成したソリューションは、[**LUIS-Samples** の Github リポジトリ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/change-model/)から入手できます。
+> [!NOTE]
+> 例の `utterances.json` ファイルを含む完成したソリューションは、[**LUIS-Samples** の GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/change-model/)から入手できます。
