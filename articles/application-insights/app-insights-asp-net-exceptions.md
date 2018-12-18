@@ -205,7 +205,7 @@ Application Insights Web SDK バージョン 2.6 (beta3 以降) では、Applica
 ### <a name="prior-versions-support"></a>以前のバージョンのサポート
 Application Insights Web SDK 2.5 (および以前) の MVC 4 (および以前) を使用する場合は、次の例を参照して例外を追跡します。
 
-[CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) 構成が `Off` の場合、[HTTP モジュール](https://msdn.microsoft.com/library/ms178468.aspx)で例外を収集できます。 ただし、`RemoteOnly` (既定) または `On` の場合、例外は消去され、Application Insights が自動回収する例外はなくなります。 これを解決するには、[System.Web.Mvc.HandleErrorAttribute クラス](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)をオーバーライドし、次のようにオーバーライドしたクラスを異なる MVC バージョンに適用します ([github ソース](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs))。
+[CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) 構成が `Off` の場合、[HTTP モジュール](https://msdn.microsoft.com/library/ms178468.aspx)で例外を収集できます。 ただし、`RemoteOnly` (既定) または `On` の場合、例外は消去され、Application Insights が自動回収する例外はなくなります。 これを解決するには、[System.Web.Mvc.HandleErrorAttribute クラス](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)をオーバーライドし、次のようにオーバーライドしたクラスを異なる MVC バージョンに適用します ([GitHub ソース](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs))。
 
 ```csharp
     using System;
