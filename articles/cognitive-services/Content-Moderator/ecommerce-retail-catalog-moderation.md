@@ -249,4 +249,4 @@ Content Moderator にサインアップしてチームを作成する方法に�
 
 ## <a name="next-steps"></a>次の手順
 
-Github の[プロジェクト ソース ファイル](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)を使用して、チュートリアルを構築し、拡張します。
+GitHub の[プロジェクト ソース ファイル](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)を使用して、チュートリアルを構築し、拡張します。
