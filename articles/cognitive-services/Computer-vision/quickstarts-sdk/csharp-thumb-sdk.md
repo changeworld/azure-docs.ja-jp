@@ -30,9 +30,9 @@ ms.locfileid: "51854086"
 ## <a name="generatethumbnailasync-method"></a>GenerateThumbnailAsync メソッド
 
 > [!TIP]
-> 最新のコードを Visual Studio ソリューションとして [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
+> 最新のコードを Visual Studio ソリューションとして [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
 
-`GenerateThumbnailAsync` メソッドと `GenerateThumbnailInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[サムネイル取得 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) をラップします。  これらのメソッドを使用して画像のサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision は、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
+`GenerateThumbnailAsync` メソッドと `GenerateThumbnailInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[サムネイル取得 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) をラップします。 これらのメソッドを使用して画像のサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision は、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
 
 このサンプルを実行するには、次の手順を実行します。
 
