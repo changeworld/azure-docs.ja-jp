@@ -185,6 +185,7 @@ Content Moderator にサインアップしてチームを作成する方法に�
 
 1. 前述のセクションでは、成人とわいせつ (Content Moderator)、有名人 (Computer Vision)、旗 (Custom Vision) について受信画像をスキャンしました。
 2. 各スキャンの一致しきい値に基づいて、微妙な場合にレビュー ツールで人がレビューできるようにします。
+
         public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata) {
 
             ReviewCreationRequest Review = new ReviewCreationRequest();
@@ -207,7 +208,10 @@ Content Moderator にサインアップしてチームを作成する方法に�
 
 1. このチュートリアルでは、画像 URL のリストが記載されたテキスト ファイルが "C:Test" ディレクトリにあるとします。
 2. 次のコードは、ファイルの存在をチェックし、すべての URL をメモリに読み込みます。
-            // Check for a test directory for a text file with the list of Image URLs to scan var topdir = @"C:\test\"; var Urlsfile = topdir + "Urls.txt";
+
+            // Check for a test directory for a text file with the list of Image URLs to scan
+            var topdir = @"C:\test\";
+            var Urlsfile = topdir + "Urls.txt";
 
             if (!Directory.Exists(topdir))
                 return;
@@ -224,7 +228,12 @@ Content Moderator にサインアップしてチームを作成する方法に�
 
 1. このトップレベル関数では、前述のテキスト ファイルに含まれるすべての画像 URL がループ処理されます。
 2. 画像 URL は各 API でスキャンされ、一致信頼度スコアが基準に該当する場合、ヒューマン モデレーター用のレビューが作成されます。
-            // for each image URL in the file... foreach (var Url in Urls) { // Initiatize a new review tags array ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
+
+            // for each image URL in the file...
+            foreach (var Url in Urls)
+            {
+                // Initiatize a new review tags array
+                ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
 
                 // Evaluate for potential adult and racy content with Content Moderator API
                 EvaluateAdultRacy(Url, ref ReviewTags);
