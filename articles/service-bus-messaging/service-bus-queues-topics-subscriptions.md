@@ -32,9 +32,9 @@ Service Bus のメッセージング機能の中核を形成するメッセー�
 
 ### <a name="create-queues"></a>キューの作成
 
-キューは、[Azure Portal](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)[CLI](service-bus-quickstart-cli.md)、または [Resource Manager テンプレート](service-bus-resource-manager-namespace-queue.md)を使用して作成します。 その後、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトを使用して、メッセージの送信と受信を行います。 
+キューは、[Azure Portal](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)[CLI](service-bus-quickstart-cli.md)、または [Resource Manager テンプレート](service-bus-resource-manager-namespace-queue.md)を使用して作成します。 その後、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトを使用して、メッセージの送信と受信を行います。
 
-キューの簡単な作成方法と、キューに対するメッセージの送信と受信を行う方法については、各メソッドの[クイック スタート](service-bus-quickstart-portal.md)を参照してください。 キューの使用方法の詳細なチュートリアルについては、「[Service Bus のキューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。 
+キューの簡単な作成方法と、キューに対するメッセージの送信と受信を行う方法については、各メソッドの[クイック スタート](service-bus-quickstart-portal.md)を参照してください。 キューの使用方法の詳細なチュートリアルについては、「[Service Bus のキューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 作業用サンプルについては、GitHub の [BasicSendReceiveUsingQueueClient サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient)を参照してください。
 
@@ -56,9 +56,9 @@ Service Bus がメッセージを受信する 2 つの異なるモードを指�
 
 ### <a name="create-topics-and-subscriptions"></a>トピックとサブスクリプションを作成する
 
-トピックの作成は、前のセクションで説明したキューの作成と似ています。 メッセージの送信は、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) クラスを使用して行います。 メッセージを受信するには、トピックに対して 1 つまたは複数のサブスクリプションを作成します。 キューの場合に似ていますが、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトの代わりに [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) オブジェクトを使用して、サブスクリプションからメッセージを受信します。 サブスクリプション クライアントを作成し、トピックの名前とサブスクリプションの名前、さらに必要に応じて受信モードをパラメーターとして渡します。 
+トピックの作成は、前のセクションで説明したキューの作成と似ています。 メッセージの送信は、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) クラスを使用して行います。 メッセージを受信するには、トピックに対して 1 つまたは複数のサブスクリプションを作成します。 キューの場合に似ていますが、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトの代わりに [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) オブジェクトを使用して、サブスクリプションからメッセージを受信します。 サブスクリプション クライアントを作成し、トピックの名前とサブスクリプションの名前、さらに必要に応じて受信モードをパラメーターとして渡します。
 
-完全な作業用サンプルについては、Github の [BasicSendReceiveUsingTopicSubscriptionClient サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)を参照してください。
+完全な作業用サンプルについては、GitHub の [BasicSendReceiveUsingTopicSubscriptionClient サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)を参照してください。
 
 ### <a name="rules-and-actions"></a>ルールとアクション
 
@@ -66,7 +66,7 @@ Service Bus がメッセージを受信する 2 つの異なるモードを指�
 
 完全な作業用サンプルについては、GitHub の [TopicSubscriptionWithRuleOperationsSample サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)を参照してください。
 
-使用可能なフィルター値の詳細については、[SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) クラスと [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) クラスのドキュメントを参照してください。 
+使用可能なフィルター値の詳細については、[SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) クラスと [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) クラスのドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
