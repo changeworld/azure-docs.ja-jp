@@ -30,9 +30,9 @@ ms.locfileid: "51852488"
 ## <a name="recognizetextasync-method"></a>RecognizeTextAsync メソッド
 
 > [!TIP]
-> 最新のコードを Visual Studio ソリューションとして [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
+> 最新のコードを Visual Studio ソリューションとして [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
 
-`RecognizeTextAsync` メソッドと `RecognizeTextInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[テキスト認識 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) をラップします。 `GetTextOperationResultAsync` メソッドは、[テキスト認識操作の結果を取得する API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) をラップします。  これらのメソッドを使って画像内のテキストを検出し、認識した文字をマシンに抽出して、使用可能な文字ストリームにします。
+`RecognizeTextAsync` メソッドと `RecognizeTextInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[テキスト認識 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) をラップします。 `GetTextOperationResultAsync` メソッドは、[テキスト認識操作の結果を取得する API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) をラップします。 これらのメソッドを使って画像内のテキストを検出し、認識した文字をマシンに抽出して、使用可能な文字ストリームにします。
 
 このサンプルを実行するには、次の手順を実行します。
 
