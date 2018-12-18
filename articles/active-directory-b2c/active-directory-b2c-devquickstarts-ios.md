@@ -50,7 +50,7 @@ Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポ�
 ポリシーを作成したら、アプリを構築できます。
 
 ## <a name="download-the-sample-code"></a>サンプル コードのダウンロード
-AppAuth と Azure AD B2C を使用する実稼働するサンプルが [github](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 独自の Azure AD B2C テナントを使用するには、[README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) の指示に従います。
+AppAuth と Azure AD B2C を使用する実稼働するサンプルが [GitHub](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c) に用意されています。 そのコードをダウンロードして実行できます。 独自の Azure AD B2C テナントを使用するには、[README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) の指示に従います。
 
 このサンプルは、[GitHub の iOS AppAuth プロジェクト](https://github.com/openid/AppAuth-iOS)の README の指示に従って作成されています。 サンプルとライブラリの動作の詳細については、GitHub の AppAuth README を参照します。
 
