@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="download-a-sample-data-file"></a>サンプル データ ファイルをダウンロードする
 サンプル JSON データ ファイルをダウンロードし、Azure BLOB ストレージに保存します。
 
-1. このサンプル JSON データ ファイルを [Github から](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)ローカル コンピューターにダウンロードします。 右クリックし、名前を付けて、生ファイルをローカルに保存します。
+1. このサンプル JSON データ ファイルを [GitHub から](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)ローカル コンピューターにダウンロードします。 右クリックし、名前を付けて、生ファイルをローカルに保存します。
 
 2. まだストレージ アカウントがない場合は、作成します。
     - Azure Portal で、**[リソースの作成]** を選択します。 **[ストレージ]** カテゴリを選択し、**[ストレージ アカウント]** を選択します
