@@ -71,11 +71,11 @@ items:
     - name: データ ソース
       href: platform/data-sources.md
     - name: Azure データ ソース
-      href: ../monitoring-and-diagnostics/monitoring-data-sources.md?toc=/azure/azure-monitor/toc.json
+      href: platform/data-sources-reference.md
     - name: アクティビティ ログ
-      href: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=/azure/azure-monitor/toc.json
+      href: platform/activity-logs-overview.md
     - name: 診断ログ
-      href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
+      href: platform/diagnostic-logs-overview.md
     - name: ログ データ インジェスト時間
       href: platform/data-ingestion-time.md
     - name: メトリック ストアへのカスタム メトリックの送信
@@ -445,13 +445,13 @@ items:
       - name: 診断ログをアーカイブする
         href: platform/archive-diagnostic-logs.md
       - name: 診断ログを保存する
-        href: ../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostic-logs-stream-log-store.md
       - name: アクティビティ ログの Event Hubs へのストリーム
         href: ../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md?toc=/azure/azure-monitor/toc.json
       - name: ログとメトリックをイベント ハブにストリーミングする
         href: ../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md?toc=/azure/azure-monitor/toc.json
       - name: 診断ログをイベント ハブにストリーミングする
-        href: ../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostic-logs-stream-event-hubs.md
       - name: アプリケーション データを Log Analytics に送信する
         href: platform/app-insights-connector.md
       - name: アプリケーション データをエクスポートする
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 9be0566a2e0fddc61d5c7028e9ecc7a24930b2f2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 31569287fa00f123d3462d6d3dc5bf35a3650d19
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438389"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549448"

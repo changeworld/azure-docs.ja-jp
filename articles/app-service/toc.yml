@@ -102,19 +102,19 @@ items:
     - name: アプリケーションのデプロイ
       items:
       - name: ZIP または WAR のデプロイ
-        href: app-service-deploy-zip.md
+        href: deploy-zip.md
       - name: FTP 経由でのデプロイ
-        href: app-service-deploy-ftp.md
+        href: deploy-ftp.md
       - name: クラウドの同期を使用したデプロイ
-        href: app-service-deploy-content-sync.md
+        href: deploy-content-sync.md
       - name: 継続的なデプロイ
-        href: app-service-continuous-deployment.md
+        href: deploy-continuous-deployment.md
       - name: ローカル Git からのデプロイ
-        href: app-service-deploy-local-git.md
+        href: deploy-local-git.md
       - name: テンプレートを使用したデプロイ
-        href: app-service-deploy-complex-application-predictably.md
+        href: deploy-complex-application-predictably.md
     - name: デプロイメント資格情報の設定
-      href: app-service-deployment-credentials.md
+      href: deploy-configure-credentials.md
     - name: ステージング環境の作成
       href: web-sites-staged-publishing.md
     - name: Resource Manager テンプレートのガイダンス
@@ -257,9 +257,9 @@ items:
       href: ip-address-change-outbound.md
     - name: SSL アドレス
       href: ip-address-change-ssl.md
-ms.openlocfilehash: 2a0dc03143688e1aadb0666242d44ab06763f04b
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2c1d686bc6dfb46bcacccb68063553739a5d9947
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437879"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542409"

@@ -55,7 +55,7 @@
 ### [サーバーレス アプリ](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [マイクロサービス クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## デプロイ
-### [ソース管理からの Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
+### [ソース管理からの Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)
 ### [ローカルなマイクロサービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -75,7 +75,7 @@
 ## セキュリティ保護
 ### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
-## Backup
+## バックアップ
 ### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/web-sites-backup)
 ### [仮想マシン](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
@@ -95,7 +95,7 @@
 ## SDK
 ### [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
 ### [Java](https://docs.microsoft.com/java/api/)
-### [Node.js](http://azure.github.io/azure-sdk-for-node/)
+### [Node.JS](http://azure.github.io/azure-sdk-for-node/)
 ### [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 ### [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/)
 ### [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
