@@ -30,7 +30,7 @@ ms.locfileid: "51853933"
 ## <a name="analyzeimageasync-method"></a>AnalyzeImageAsync メソッド
 
 > [!TIP]
-> 最新のコードを Visual Studio ソリューションとして [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
+> 最新のコードを Visual Studio ソリューションとして [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
 
 `AnalyzeImageAsync` メソッドと `AnalyzeImageInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[画像分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) をラップします。 これらのメソッドを使って、画像の内容に基づく視覚的特徴を抽出したり、取得する特徴を選択したりすることができます。その例を次に示します。
 
