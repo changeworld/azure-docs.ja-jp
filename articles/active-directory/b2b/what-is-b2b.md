@@ -73,7 +73,7 @@ Azure AD B2B では、パートナーが各自の ID 管理ソリューション
 
 貴社のニーズに応じて、外部のパートナーの受け入れ方法をカスタマイズすることができます。
 - [B2B コラボレーションの招待 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用すると、セルフサービス サインアップ ポータルの作成など、オンボーディング エクスペリエンスをカスタマイズすることができます。 
-- [Github](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) に提供されているセルフサービス ポータル用のサンプル コードを使用します。
+- [GitHub](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) に提供されているセルフサービス ポータル用のサンプル コードを使用します。
 
 ![サインアップ ポータル](media/what-is-b2b/sign-up-portal.png)
 
