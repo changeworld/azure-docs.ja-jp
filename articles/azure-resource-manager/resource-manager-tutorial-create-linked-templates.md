@@ -143,7 +143,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 ## <a name="upload-the-linked-template"></a>リンクされたテンプレートをアップロードする
 
-テンプレートは、デプロイを実行する場所からアクセス可能である必要があります。 この場所には、Azure ストレージ アカウント、Github、Dropbox などがあります。 テンプレートに機密情報が含まれている場合は、それらへのアクセスを保護するようにしてください。 このチュートリアルでは、「 [チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」で使用した、Cloud シェル デプロイ方法を使用します。 メイン テンプレート (azuredeploy.json) は、シェルにアップロードされます。 リンクされたテンプレート (linkedTemplate.json) は、別の場所で共有する必要があります。  このチュートリアルのタスクを減らすために、前のセクションで定義したリンクされたテンプレートが、[Azure ストレージ アカウント](https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json)にアップロードされています。
+テンプレートは、デプロイを実行する場所からアクセス可能である必要があります。 この場所には、Azure ストレージ アカウント、GitHub、Dropbox などがあります。 テンプレートに機密情報が含まれている場合は、それらへのアクセスを保護するようにしてください。 このチュートリアルでは、「 [チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」で使用した、Cloud シェル デプロイ方法を使用します。 メイン テンプレート (azuredeploy.json) は、シェルにアップロードされます。 リンクされたテンプレート (linkedTemplate.json) は、別の場所で共有する必要があります。  このチュートリアルのタスクを減らすために、前のセクションで定義したリンクされたテンプレートが、[Azure ストレージ アカウント](https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json)にアップロードされています。
 
 ## <a name="call-the-linked-template"></a>リンクされたテンプレートを呼び出す
 
