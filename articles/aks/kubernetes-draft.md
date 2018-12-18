@@ -16,7 +16,7 @@ ms.locfileid: "44345949"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Draft の使用
 
-オープン ソース ツールである Draft を使用すると、アプリケーション コンテナーをパッケージ化して Kubernetes クラスターにデプロイできるため、開発サイクル (開発に重点を置いた "内部ループ") に集中できます。 Draft はコードの開発時に、バージョン コントロールにコミットする前に機能します。 Draft を使用すると、コードの変更が発生したときに、アプリケーションを Kubernetes にすばやく再デプロイできます。 Draft の詳細については、[Github の Draft のドキュメント][draft-documentation]をご覧ください。
+オープン ソース ツールである Draft を使用すると、アプリケーション コンテナーをパッケージ化して Kubernetes クラスターにデプロイできるため、開発サイクル (開発に重点を置いた "内部ループ") に集中できます。 Draft はコードの開発時に、バージョン コントロールにコミットする前に機能します。 Draft を使用すると、コードの変更が発生したときに、アプリケーションを Kubernetes にすばやく再デプロイできます。 Draft の詳細については、[GitHub の Draft のドキュメント][draft-documentation]をご覧ください。
 
 この記事では、AKS で Draft と Kubernetes クラスターを使用する方法について説明します。
 
