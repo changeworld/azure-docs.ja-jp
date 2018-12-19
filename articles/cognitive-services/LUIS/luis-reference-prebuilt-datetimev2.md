@@ -22,7 +22,7 @@ ms.locfileid: "47036696"
 **datetimeV2** 作成済みエンティティは、日付と時刻の値を抽出します。 これらの値は、クライアント プログラムで使用できるように標準化された形式に解決されます。 発話に完全ではない日付または時刻が含まれる場合、LUIS は "_過去と未来両方の値_" をエンドポイントの応答に含めます。 このエンティティは既にトレーニングされているので、datetimeV2 を含む発話の例をアプリケーション意図に追加する必要はありません。 
 
 ## <a name="types-of-datetimev2"></a>datetimeV2 のタイプ
-datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) Github リポジトリから管理されます。
+datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-DateTime.yaml) GitHub リポジトリから管理されます。
 
 ## <a name="example-json"></a>JSON の例 
 次の例の JSON 応答には、`datetimeV2` エンティティとサブタイプ `datetime` が含まれます。 他のタイプの datetimeV2 エンティティの例については、「[datetimeV2 のサブタイプ](#subtypes-of-datetimev2)</a>」をご覧ください。
