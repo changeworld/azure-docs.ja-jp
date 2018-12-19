@@ -57,7 +57,7 @@ Emotion API を使用して、イメージ内の顔で表現された感情を�
   ![Emotion 機能インターフェイス](../Images/EmotionKey.png)
 
 3.  「**シナリオの選択**」の下で、「**Detect emotion using a stream**」(ストリームを使用して感情を検出する) または「**Detect emotion using a URL**」(URL を使用して感情を検出する) の 2 つのシナリオのいずれかを選択し、画面の指示に従います。 Microsoft は、アップロードしたイメージを受け取り、Emotion API および関連サービスを向上させるために使用できます。 イメージを送信することにより、[開発者の倫理規定](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)に従っていることを確認します。
-4.  このアプリケーション例で使用するイメージ例があります。 これらのイメージは、**データ** フォルダーの下の [Face API Github リポジトリ](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data)にあります。 これらのイメージの使用は公正使用契約に基づいて許諾されています。つまり、これらのイメージはこの例をテストする目的で使用できますが、再発行に使用することはできません。
+4.  このアプリケーション例で使用するイメージ例があります。 これらのイメージは、**データ** フォルダーの下の [Face API GitHub リポジトリ](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data)にあります。 これらのイメージの使用は公正使用契約に基づいて許諾されています。つまり、これらのイメージはこの例をテストする目的で使用できますが、再発行に使用することはできません。
 
 ## <a name="Review">確認し学習する</a>
 実行中のアプリケーションがあるので、このアプリ例が Microsoft Cognitive Services とどのように統合するか見てみましょう。 これにより、このアプリのビルドの継続や、Microsoft Emotion API を使用した独自のアプリの開発が簡単になります。
