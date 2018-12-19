@@ -21,7 +21,7 @@ ms.locfileid: "47041882"
 序数は、セット内のオブジェクトの数値表現 `first`、`second`、`third` です。 このエンティティは既にトレーニングされているので、序数メールを含む発話の例をアプリケーション意図に追加する必要はありません。 ordinal エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされます。 
 
 ## <a name="types-of-ordinal"></a>ordinal の種類
-ordinal は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) Github リポジトリから管理されます。
+ordinal は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) GitHub リポジトリから管理されます。
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>作成済み ordinal エンティティの解決
 次の例では、**builtin.ordinal** エンティティの解決を示します。
