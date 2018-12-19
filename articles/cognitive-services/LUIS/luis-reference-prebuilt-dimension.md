@@ -22,7 +22,7 @@ ms.locfileid: "47034690"
 
 ## <a name="types-of-dimension"></a>dimension のタイプ
 
-dimension は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) Github リポジトリから管理されます。
+dimension は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) GitHub リポジトリから管理されます。
 
 
 ## <a name="resolution-for-dimension-entity"></a>dimension エンティティの解決
