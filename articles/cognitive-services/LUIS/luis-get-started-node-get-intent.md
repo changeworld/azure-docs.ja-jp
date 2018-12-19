@@ -31,7 +31,7 @@ ms.locfileid: "47038920"
 
 
 > [!NOTE] 
-> 完成した Node.js ソリューションは、[**LUIS-Samples** の Github リポジトリ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/analyze-text/node)から入手できます。
+> 完成した Node.js ソリューションは、[**LUIS-Samples** の GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/analyze-text/node)から入手できます。
 
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
