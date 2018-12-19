@@ -34,7 +34,7 @@ Service Fabric ステートフル サービスの単体テストにより、従�
 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) のバージョン 3.3.0 以降では、レプリカのオーケストレーションと状態管理の両方をモックするための API が提供されています。 これは各例で使用されます。
 
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
-[Github](https://github.com/loekd/ServiceFabric.Mocks)
+[GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
 *ServiceFabric.Mocks は、Microsoft が所有または管理しているわけではありません。ただし、現在、ステートフル サービスの単体テストのための Microsoft 推奨ライブラリとなっています。*
 
