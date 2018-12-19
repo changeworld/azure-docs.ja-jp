@@ -6,12 +6,12 @@ description: Microsoft Azure Cloud Services を使用して、強力なアプリ
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: b37a419affcaffeec6c9931f7ff4ecca49e377d5
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: af59a3f4d631992c2319a79f40a721c45535bb91
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410382"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581064"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -5238,7 +5238,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/azure-resource-manager/resource-group-overview">
+                                <a href="/azure/azure-resource-manager/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">

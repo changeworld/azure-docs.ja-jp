@@ -87,10 +87,22 @@ items:
     href: active-directory-b2c-reference-mfa.md
   - name: Identity Experience Framework
     items:
-    - name: カスタム ポリシーの作成
-      href: active-directory-b2c-get-started-custom.md
     - name: Application Insights を使用したログの収集
       href: active-directory-b2c-troubleshoot-custom.md
+    - name: ユーザー入力の構成
+      href: active-directory-b2c-configure-signup-self-asserted-custom.md
+    - name: カスタム ポリシーの作成
+      href: active-directory-b2c-get-started-custom.md
+    - name: UI のカスタマイズ
+      href: active-directory-b2c-ui-customization-custom.md
+    - name: UI の動的なカスタマイズ
+      href: active-directory-b2c-ui-customization-custom-dynamic.md
+    - name: トークンのカスタマイズ
+      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+    - name: カスタム属性を定義する
+      href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+    - name: '[サインインしたままにする] の有効化'
+      href: active-directory-b2c-reference-kmsi-custom.md
     - name: RESTful API の統合
       items:
       - name: ユーザー入力の検証
@@ -123,6 +135,10 @@ items:
       href: page-contract.md
     - name: アクセス トークンのパススルー
       href: idp-pass-through-custom.md
+    - name: パスワードの複雑さ
+      href: active-directory-b2c-reference-password-complexity-custom.md
+    - name: パスワードの変更
+      href: active-directory-b2c-reference-password-change-custom.md
     - name: SAML プロバイダー
       items:
       - name: ADFS
@@ -131,24 +147,6 @@ items:
         href: active-directory-b2c-setup-sf-app-custom.md
     - name: ユーザー動作の追跡
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
-    - name: ユーザー フロー
-      items:
-      - name: ユーザー入力の構成
-        href: active-directory-b2c-configure-signup-self-asserted-custom.md
-      - name: カスタム属性
-        href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
-      - name: UI のカスタマイズ
-        href: active-directory-b2c-ui-customization-custom.md
-      - name: UI の動的なカスタマイズ
-        href: active-directory-b2c-ui-customization-custom-dynamic.md
-      - name: トークンのカスタマイズ
-        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
-      - name: パスワードの複雑さ
-        href: active-directory-b2c-reference-password-complexity-custom.md
-      - name: パスワードの変更
-        href: active-directory-b2c-reference-password-change-custom.md
-      - name: '[サインインしたままにする] の有効化'
-        href: active-directory-b2c-reference-kmsi-custom.md
     - name: リファレンス
       items:
       - name: 要求リゾルバー
@@ -326,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 80e90efcc500f04e3ec1f3e10c157c9b415f0eda
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d61d6726d388fd7bf18f1bcbc168078afadd1a71
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079077"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579806"

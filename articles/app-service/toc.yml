@@ -4,7 +4,7 @@ items:
 - name: 概要
   items:
   - name: Web Apps について
-    href: app-service-web-overview.md
+    href: overview.md
   - name: App Service on Linux について
     href: containers/app-service-linux-intro.md
   - name: App Service 環境について
@@ -57,11 +57,11 @@ items:
 - name: サンプル
   items:
   - name: Azure CLI
-    href: app-service-cli-samples.md
+    href: samples-cli.md
   - name: Azure PowerShell
-    href: app-service-powershell-samples.md
+    href: samples-powershell.md
   - name: Resource Manager テンプレート
-    href: app-service-rm-template-samples.md
+    href: samples-resource-manager-templates.md
 - name: 概念
   items:
   - name: App Service の特長
@@ -257,9 +257,9 @@ items:
       href: ip-address-change-outbound.md
     - name: SSL アドレス
       href: ip-address-change-ssl.md
-ms.openlocfilehash: 2c1d686bc6dfb46bcacccb68063553739a5d9947
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2256595005b39000cbad8e4967276beb65f22de3
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542409"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599690"

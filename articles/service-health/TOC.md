@@ -6,7 +6,7 @@
 ## [Resource Health とは](resource-health-overview.md)
 # 方法
 ## [Service Health イベントのアラートの構成](../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
-### [Azure Portal を使用したサービス正常性通知の表示](../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
+### [Azure Portal を使用したサービス正常性通知の表示](../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
 ## [Webhook を使用したサービス正常性通知の構成](service-health-alert-webhook-guide.md)
 ### [ServiceNow での構成](service-health-alert-webhook-servicenow.md)
 ### [PagerDuty での構成](service-health-alert-webhook-pagerduty.md)

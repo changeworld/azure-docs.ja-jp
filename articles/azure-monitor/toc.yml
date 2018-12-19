@@ -9,7 +9,7 @@ items:
     href: azure-monitor-rebrand.md
 - name: クイック スタート
   items:
-  - name: アプリケーション
+  - name: '[アプリケーション]'
     items:
     - name: .NET アプリケーション
       href: ../application-insights/quick-monitor-portal.md?toc=/azure/azure-monitor/toc.json
@@ -39,11 +39,11 @@ items:
   - name: Log Analytics でデータを視覚化する
     href: learn/tutorial-logs-dashboards.md
   - name: プラットフォーム メトリックとログ データのアーカイブ
-    href: ../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-archive-data.md
   - name: ログ データに基づくアラート
     href: learn/tutorial-response.md
   - name: パフォーマンスとスケジュールに基づく自動スケール
-    href: ../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-autoscale-performance-schedule.md
   - name: アプリケーションのランタイムの例外を見つける
     href: ../application-insights/app-insights-tutorial-runtime-exceptions.md?toc=/azure/azure-monitor/toc.json
   - name: アプリケーションのパフォーマンスの問題を見つける
@@ -154,7 +154,7 @@ items:
         href: platform/roles-permissions-security.md
       - name: ワークスペース
         href: platform/manage-access.md
-      - name: アプリケーション
+      - name: '[アプリケーション]'
         href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
       - name: IP アドレス
         href: ../application-insights/app-insights-ip-addresses.md?toc=/azure/azure-monitor/toc.json
@@ -367,8 +367,6 @@ items:
           href: ../application-insights/app-insights-sharepoint.md?toc=/azure/azure-monitor/toc.json
         - name: Dynamics CRM
           href: ../application-insights/app-insights-sample-mscrm.md?toc=/azure/azure-monitor/toc.json
-        - name: その他のプラットフォーム
-          href: ../application-insights/app-insights-platforms.md?toc=/azure/azure-monitor/toc.json
       - name: スマート検出
         href: ../application-insights/app-insights-proactive-diagnostics.md?toc=/azure/azure-monitor/toc.json
         items:
@@ -426,10 +424,8 @@ items:
         href: platform/data-collector-api.md
       - name: Log Analytics データ コレクター API パイプラインの例
         href: platform/create-pipeline-datacollector-api.md
-      - name: アプリケーション データ
-        href: ../application-insights/app-insights-analytics-import.md?toc=/azure/azure-monitor/toc.json
       - name: メトリック ストア REST API
-        href: ../monitoring-and-diagnostics/metrics-store-custom-rest-api.md?toc=/azure/azure-monitor/toc.json
+        href: platform/metrics-store-custom-rest-api.md
       - name: Linux VM の ゲスト OS のメトリックをメトリック ストアに送信する (Telegraf)
         href: platform/collect-custom-metrics-linux-telegraf.md
     - name: System Center
@@ -447,9 +443,9 @@ items:
       - name: 診断ログを保存する
         href: platform/diagnostic-logs-stream-log-store.md
       - name: アクティビティ ログの Event Hubs へのストリーム
-        href: ../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/activity-logs-stream-event-hubs.md
       - name: ログとメトリックをイベント ハブにストリーミングする
-        href: ../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: 診断ログをイベント ハブにストリーミングする
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: アプリケーション データを Log Analytics に送信する
@@ -538,7 +534,7 @@ items:
       - name: Docker アプリケーションの監視
         href: ../application-insights/app-insights-docker.md?toc=/azure/azure-monitor/toc.json
     - name: リソース グループの監視
-      href: ../monitoring-and-diagnostics/resource-group-insights.md?toc=/azure/azure-monitor/toc.json
+      href: insights/resource-group-insights.md
     - name: データベースの監視
       items:
       - name: Azure SQL
@@ -642,7 +638,7 @@ items:
       items:
       - name: ログ
         href: platform/dashboards.md
-      - name: アプリケーション
+      - name: '[アプリケーション]'
         href: ../application-insights/app-insights-dashboards.md?toc=/azure/azure-monitor/toc.json
     - name: Power BI
       items:
@@ -659,7 +655,7 @@ items:
     - name: アクティビティ ログでのイベントの表示
       href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
     - name: サービスの通知を表示する
-      href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
+      href: platform/service-notifications.md
     - name: ログ データのクエリ
       items:
       - name: クエリ言語のドキュメント
@@ -754,7 +750,7 @@ items:
         - name: ログ アラートの webhook アクション
           href: platform/alerts-log-webhook.md
         - name: ログ アラートのトラブルシューティング
-          href: ../monitoring-and-diagnostics/alert-log-troubleshoot.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alert-log-troubleshoot.md
       - name: アクティビティ ログ アラートの使用
         items:
         - name: アクティビティ ログ イベントでアラートを構成する
@@ -800,7 +796,7 @@ items:
       - name: 自動スケールのチュートリアル
         href: platform/autoscale-get-started.md
       - name: 自動スケール設定について
-        href: ../monitoring-and-diagnostics/monitoring-understanding-autoscale-settings.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-understanding-settings.md
       - name: ベスト プラクティス
         href: platform/autoscale-best-practices.md
       - name: 一般的なメトリック
@@ -818,7 +814,7 @@ items:
     - name: サービスの通知
       items:
       - name: サービスの通知を表示する
-        href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
+        href: platform/service-notifications.md
       - name: サービスの通知でアラートを構成する
         href: platform/alerts-activity-log-service-notifications.md
     - name: IT Service Management
@@ -846,10 +842,10 @@ items:
     - name: PowerShell
       items:
       - name: Azure PowerShell のサンプル
-        href: ../monitoring-and-diagnostics/insights-powershell-samples.md?toc=/azure/azure-monitor/toc.json
+        href: platform/powershell-quickstart-samples.md
       - name: PowerShell コマンドレット
         href: platform/powershell-workspace-configuration.md
-      - name: アプリケーション
+      - name: '[アプリケーション]'
         items:
         - name: Application Insights リソースの作成
           href: ../application-insights/app-insights-powershell.md?toc=/azure/azure-monitor/toc.json
@@ -869,7 +865,7 @@ items:
         href: platform/rest-api-walkthrough.md
       - name: アラート API
         href: platform/api-alerts.md
-    - name: アプリケーション
+    - name: '[アプリケーション]'
       items:
       - name: Microsoft Flow での自動化
         href: ../application-insights/app-insights-automate-with-flow.md?toc=/azure/azure-monitor/toc.json
@@ -879,7 +875,7 @@ items:
         href: ../application-insights/automate-custom-reports.md?toc=/azure/azure-monitor/toc.json
   - name: Extend
     items:
-    - name: アプリケーション
+    - name: '[アプリケーション]'
       items:
       - name: カスタム イベントとメトリックの API
         href: ../application-insights/app-insights-api-custom-events-metrics.md?toc=/azure/azure-monitor/toc.json
@@ -915,6 +911,8 @@ items:
       href: ../application-insights/application-insights-correlation.md?toc=/azure/azure-monitor/toc.json
     - name: NuGet パッケージ
       href: ../application-insights/app-insights-nuget.md?toc=/azure/azure-monitor/toc.json
+    - name: プラットフォームのサポート
+      href: ../application-insights/app-insights-platforms.md?toc=/azure/azure-monitor/toc.json
   - name: Application Insights データ モデル
     items:
     - name: 概要
@@ -954,7 +952,7 @@ items:
     - name: サポートされるメトリック
       href: platform/metrics-supported.md
     - name: 新しいアラートでサポートされるメトリック
-      href: ../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-metric-near-real-time.md
   - name: スキーマ
     items:
     - name: 診断ログのサービス、カテゴリ、スキーマ
@@ -975,7 +973,7 @@ items:
     - name: 従来の自動スケールとメトリック API
       href: ./platform/classic-api-retirement-metrics-autoscale.md
     - name: 従来のアラートと監視
-      href: ../monitoring-and-diagnostics/monitoring-classic-retirement.md?toc=/azure/azure-monitor/toc.json
+      href: platform/monitoring-classic-retirement.md
     - name: Log Analytics から Azure へのアラートの拡張
       href: platform/alerts-extend.md
     - name: OMS ポータルから Azure Portal にアラートをコピーする
@@ -1010,9 +1008,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 31569287fa00f123d3462d6d3dc5bf35a3650d19
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0187e9a74da758a5756ce3841953141093aa203c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549448"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601017"
