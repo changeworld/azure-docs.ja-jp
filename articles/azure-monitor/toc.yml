@@ -9,7 +9,7 @@ items:
     href: azure-monitor-rebrand.md
 - name: クイック スタート
   items:
-  - name: '[アプリケーション]'
+  - name: アプリケーション
     items:
     - name: .NET アプリケーション
       href: ../application-insights/quick-monitor-portal.md?toc=/azure/azure-monitor/toc.json
@@ -154,7 +154,7 @@ items:
         href: platform/roles-permissions-security.md
       - name: ワークスペース
         href: platform/manage-access.md
-      - name: '[アプリケーション]'
+      - name: アプリケーション
         href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
       - name: IP アドレス
         href: ../application-insights/app-insights-ip-addresses.md?toc=/azure/azure-monitor/toc.json
@@ -638,7 +638,7 @@ items:
       items:
       - name: ログ
         href: platform/dashboards.md
-      - name: '[アプリケーション]'
+      - name: アプリケーション
         href: ../application-insights/app-insights-dashboards.md?toc=/azure/azure-monitor/toc.json
     - name: Power BI
       items:
@@ -845,7 +845,7 @@ items:
         href: platform/powershell-quickstart-samples.md
       - name: PowerShell コマンドレット
         href: platform/powershell-workspace-configuration.md
-      - name: '[アプリケーション]'
+      - name: アプリケーション
         items:
         - name: Application Insights リソースの作成
           href: ../application-insights/app-insights-powershell.md?toc=/azure/azure-monitor/toc.json
@@ -865,7 +865,7 @@ items:
         href: platform/rest-api-walkthrough.md
       - name: アラート API
         href: platform/api-alerts.md
-    - name: '[アプリケーション]'
+    - name: アプリケーション
       items:
       - name: Microsoft Flow での自動化
         href: ../application-insights/app-insights-automate-with-flow.md?toc=/azure/azure-monitor/toc.json
@@ -875,7 +875,7 @@ items:
         href: ../application-insights/automate-custom-reports.md?toc=/azure/azure-monitor/toc.json
   - name: Extend
     items:
-    - name: '[アプリケーション]'
+    - name: アプリケーション
       items:
       - name: カスタム イベントとメトリックの API
         href: ../application-insights/app-insights-api-custom-events-metrics.md?toc=/azure/azure-monitor/toc.json
