@@ -21,7 +21,7 @@ ms.locfileid: "47033891"
 作成済みの currency エンティティは、LUIS アプリのカルチャに関係なく、多くの貨幣単位や国の通貨を検出します。 このエンティティは既にトレーニングされているので、通貨を含む発話の例をアプリケーション意図に追加する必要はありません。 currency エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 
 
 ## <a name="types-of-currency"></a>currency の種類
-currency は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) Github リポジトリから管理されます。
+currency は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) GitHub リポジトリから管理されます。
 
 ## <a name="resolution-for-currency-entity"></a>currency エンティティの解決
 次の例では、**builtin.currency** エンティティの解決を示します。
