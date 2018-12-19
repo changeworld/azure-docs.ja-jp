@@ -21,7 +21,7 @@ ms.locfileid: "47041170"
 パーセンテージの値は、分数 `3 1/2` またはパーセンテージ `2%` として出現する可能性があります。 このエンティティは既にトレーニングされているので、パーセンテージを含む発話の例をアプリケーション意図に追加する必要はありません。 percentage エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 
 
 ## <a name="types-of-percentage"></a>percentage のタイプ
-percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) Github リポジトリから管理されます。
+percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) GitHub リポジトリから管理されます。
 
 ## <a name="resolution-for-prebuilt-percentage-entity"></a>作成済み percentage エンティティの解決
 次の例では、**builtin.percentage** エンティティの解決を示します。
