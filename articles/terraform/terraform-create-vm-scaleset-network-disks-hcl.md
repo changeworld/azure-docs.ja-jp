@@ -30,7 +30,7 @@ ms.locfileid: "51228404"
 > * SSH 経由で VM に接続するジャンプボックスを作成してデプロイする
 
 > [!NOTE]
-> この記事で使用される Terraform 構成ファイルの最新バージョンは、[Github の Awesome Terraform リポジトリ](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss)にあります。
+> この記事で使用される Terraform 構成ファイルの最新バージョンは、[GitHub の Awesome Terraform リポジトリ](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss)にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
