@@ -21,7 +21,7 @@ ms.locfileid: "47039634"
 LUIS アプリ ID と LUIS サブスクリプション ID がある場合は、エンドポイントのクエリに使用するリージョンを見つけることができます。
 
 > [!NOTE] 
-> 完成した C# ソリューションは、[**LUIS-Samples** の Github リポジトリ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/csharp/)から入手できます。
+> 完成した C# ソリューションは、[**LUIS-Samples** の GitHub リポジトリ](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/csharp/)から入手できます。
 
 ## <a name="luis-endpoint-query-strategy"></a>LUIS エンドポイントのクエリ戦略
 各 LUIS エンドポイントのクエリに以下が必要です。
