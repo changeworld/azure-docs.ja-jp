@@ -78,7 +78,7 @@ items:
       href: batch-virtual-network.md
     - name: Azure ファイル共有をマウントする
       href: pool-file-shares.md
-    - name: コンピューティング集中型 VM を使用する
+    - name: RDMA または GPU インスタンスを使用する
       href: batch-pool-compute-intensive-sizes.md
     - name: Linux コンピューティング ノードを使用する
       href: batch-linux-nodes.md
@@ -218,9 +218,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-batch
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=batch
-ms.openlocfilehash: 4cf95728868db40f148d2750360f7055606d568d
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 507e9873cfa3a477dada8825b518e9af2df5882e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433312"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582322"

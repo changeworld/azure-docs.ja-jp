@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: da70af8eb2239fb9246071605aa5323e2e9e041e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eea9875be7926614811327dfeb89b721b43436e2
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958443"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580274"
 documentType: LandingData
 title: Computer Vision API のドキュメント
 metadata:
-  title: Computer Vision API のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  title: API ドキュメント - Computer Vision - Azure Cognitive Services | Microsoft Docs
   description: Computer Vision を使用して画像を処理し、情報を返す方法を説明します。 チュートリアルでは、この API を使用するアプリを構築する方法を説明します。
   services: cognitive-services
   author: nitinme
@@ -20,6 +20,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/24/2018
   ms.author: nitinme
+ms.custom: seodec18
 abstract:
   description: クラウドベースの Computer Vision API を使用すると、開発者は画像を処理し、情報を返すための高度なアルゴリズムにアクセスできます。 画像をアップロードするか、画像の URL を指定すると、Microsoft Computer Vision のアルゴリズムによって、入力とユーザーの選択に基づいてさまざまな方法でビジュアル コンテンツが分析されます。 クイック スタート、チュートリアル、サンプルを使用して、さまざまな方法でビジュアル コンテンツを分析する方法をご確認ください。
   aside:
@@ -101,4 +102,4 @@ sections:
     - title: PowerShell
       html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
     - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>

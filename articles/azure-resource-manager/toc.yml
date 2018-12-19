@@ -94,7 +94,7 @@ items:
       href: /azure/architecture/building-blocks/extending-templates/update-resource
   - name: テンプレートのデプロイ
     items:
-    - name: ポータルを使用したデプロイ
+    - name: Azure portal を使用したデプロイ
       href: resource-group-template-deploy-portal.md
     - name: Azure CLI を使用したデプロイ
       href: resource-group-template-deploy-cli.md
@@ -123,27 +123,27 @@ items:
       maintainContext: true
   - name: テンプレートの管理
     items:
-    - name: Azure PowerShell
-      href: powershell-azure-resource-manager.md
-    - name: Azure CLI
-      href: cli-azure-resource-manager.md
-    - name: Azure ポータル
+    - name: Azure portal を使用した管理
       href: resource-group-portal.md
-    - name: タグを使用してリソースを整理する
-      href: resource-group-using-tags.md
-    - name: リソースを新しいグループまたはサブスクリプションに移動する
+    - name: Azure PowerShell を使用した管理
+      href: powershell-azure-resource-manager.md
+    - name: Azure CLI を使用した管理
+      href: cli-azure-resource-manager.md
+    - name: リソースの移動
       href: resource-group-move-resources.md
       items:
       - name: 移動操作のサポートについて (リソースの種類別)
         href: move-support-resources.md
+    - name: タグを使用したリソースの編成
+      href: resource-group-using-tags.md
+    - name: リソースのロック
+      href: resource-group-lock-resources.md
+    - name: サブスクリプションにアクセスするための認証 API
+      href: resource-manager-api-authentication.md
     - name: EA サブスクリプションを作成する
       href: programmatically-create-subscription.md
     - name: EA サブスクリプションを作成するためのアクセスを許可する
       href: grant-access-to-create-subscription.md
-    - name: サブスクリプションにアクセスするための認証 API
-      href: resource-manager-api-authentication.md
-    - name: リソースのロック
-      href: resource-group-lock-resources.md
   - name: デプロイの監査
     items:
     - name: アクティビティ ログを表示する
@@ -211,7 +211,7 @@ items:
     href: /rest/api/resources/
   - name: REST - Deployment Manager
     href: /rest/api/deploymentmanager/
-  - name: PowerShell
+  - name: Azure PowerShell
     href: /powershell/module/azurerm.resources
   - name: Azure CLI
     href: /cli/azure/resource
@@ -235,9 +235,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 166a23d480db7dfda7a78a5a63e7717b5e721bb9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 47766ce1bd0250c1eeaa269c4bc2436a2e117f02
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436791"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600966"

@@ -72,6 +72,8 @@ items:
   - name: ライブ イベントのストリーミング
     href: live-streaming-overview.md
     items:
+    - name: おすすめのライブ エンコーダー
+      href: recommended-on-premises-live-encoders.md
     - name: クラウド DVR の使用
       href: live-event-cloud-dvr.md
     - name: 機能の比較
@@ -184,9 +186,9 @@ items:
     href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: 3f1f685eecbec2cba5659ae58bcd22812548206b
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9c42d463bc88ae936e0fbe965fd4039a716e3052
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386358"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557174"

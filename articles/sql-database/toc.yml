@@ -311,8 +311,8 @@ items:
     items:
     - name: データベース機能
       href: sql-database-develop-overview.md
-    - name: JSON データ
-      href: sql-database-json-features.md
+    - name: マルチモデル機能
+      href: sql-database-multi-model-features.md
     - name: メモリ内
       href: sql-database-in-memory.md
     - name: テンポラル テーブル
@@ -501,6 +501,8 @@ items:
     items:
     - name: 接続
       href: sql-database-libraries.md
+    - name: JSON データの使用
+      href: sql-database-json-features.md
     - name: Spark コネクタの使用
       href: sql-database-spark-connector.md
     - name: アプリの認証
@@ -676,9 +678,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: d276b202da8055965a43f5313b6a8c4b335f74b2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3a4a06a79b0931c95bf1ef35e250711f1cd90de8
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436026"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541797"

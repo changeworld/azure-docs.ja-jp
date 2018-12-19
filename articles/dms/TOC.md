@@ -19,6 +19,7 @@
 ## [PowerShell を使用した SQL Server から Azure SQL DB への移行](howto-sql-server-to-azure-sql-powershell.md)
 ## [PowerShell を使用した SQL Server から Azure SQL DB MI への移行](howto-sql-server-to-azure-sql-mi-powershell.md)
 ## [移行アクティビティの監視](how-to-monitor-migration-activity.md)
+## [SSIS パッケージを Azure に移行する](how-to-migrate-ssis-packages.md)
 
 # リソース
 ## [データベース移行シナリオ状態](resource-scenario-status.md)

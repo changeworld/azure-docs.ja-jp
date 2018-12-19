@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bcd8b3c4b58bc5376815f52888b945f88b5b68ea
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 53e50e0ca02b3c837d71d8384a8b3d968fd4e929
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257728"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607713"
 documentType: LandingData
 title: Speech Services のドキュメント
 metadata:
@@ -65,13 +65,15 @@ sections:
     - image:
         src: media/index/logo_java.jpg
     - image:
+        src: media/index/logo_python.svg
+    - image:
         src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_nodejs.svg
     - image:
         src: media/index/logo_js.svg
     - image:
-        src: media/index/logo_rest_sr.svg
-    - image:
-        src: media/index/logo_rest_tts.svg
+        src: media/index/logo_rest.svg
     rows:
     - title: Windows 10 (x64)
       values:
@@ -80,9 +82,9 @@ sections:
       - href: quickstart-cpp-windows
       - href: quickstart-csharp-dotnetcore-windows
       - href: quickstart-java-jre
+      - href: quickstart-python
       - href: 
-      - href: 
-      - href: 
+      - href: quickstart-js-node
       - href: 
     - title: Windows 10 (x86)
       values:
@@ -93,7 +95,7 @@ sections:
       - href: 
       - href: 
       - href: 
-      - href: 
+      - href: quickstart-js-node
       - href: 
     - title: Linux (x64)
       values:
@@ -102,9 +104,9 @@ sections:
       - href: quickstart-cpp-linux
       - href: quickstart-csharp-dotnetcore-windows
       - href: quickstart-java-jre
+      - href: quickstart-python
       - href: 
-      - href: 
-      - href: 
+      - href: quickstart-js-node
       - href: 
     - title: Linux (x86)
       values:
@@ -115,9 +117,9 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: quickstart-js-node
       - href: 
-      - href: 
-    - title: Android (ARM32/ARM64)
+    - title: Android (ARM32/64)
       values:
       - href: 
       - href: 
@@ -139,6 +141,28 @@ sections:
       - href: 
       - href: 
       - href: 
+    - title: iOS (ARM64)
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: quickstart-objectivec-ios
+      - href: 
+      - href: 
+    - title: macOS (x64)
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: quickstart-python
+      - href: 
+      - href: quickstart-js-node
+      - href: 
     - title: Devices SDK (ARM64)
       values:
       - href: 
@@ -150,19 +174,10 @@ sections:
       - href: 
       - href: 
       - href: 
-    - title: iOS (ARM64)
+    - title: '[ブラウザー] ボタンを'
       values:
       - href: 
       - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: quickstart-objectivec-ios
-      - href: 
-      - href: 
-      - href: 
-    - title: Web
-      values:
       - href: 
       - href: 
       - href: 
@@ -170,7 +185,17 @@ sections:
       - href: 
       - href: 
       - href: quickstart-js-browser
-      - href: rest-apis
+    - title: REST
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
       - href: rest-apis
 - title: ステップバイステップのチュートリアル
   items:
@@ -204,6 +229,8 @@ sections:
         <p><a href="https://aka.ms/csspeech/cppref">C++ API</a></p>
 
         <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
+
+        <p><a href="https://aka.ms/csspeech/pythonref">Python API</a></p>
 
         <p><a href="https://aka.ms/csspeech/objectivecref">Objective-C API</a></p>
 

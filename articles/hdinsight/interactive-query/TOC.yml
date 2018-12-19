@@ -26,7 +26,7 @@ items:
     - name: Azure Storage を使用する
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: Azure Data Lake Store を使用する
+    - name: Azure Data Lake Storage を使用する
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: 対話型クエリに対する Apache Hadoop の使用
@@ -49,7 +49,7 @@ items:
       - name: Apache Hive ビューを使用する
         href: ../hadoop/apache-hadoop-use-hive-ambari-view.md
         maintainContext: true
-      - name: Beeline を使用する
+      - name: Apache Hive Beeline を使用する
         href: ../hadoop/apache-hadoop-use-hive-beeline.md
         maintainContext: true
       - name: REST API を使用する
@@ -71,7 +71,7 @@ items:
         href: ../hadoop/apache-hadoop-use-hive-query-console.md
         maintainContext: true
       maintainContext: true
-    - name: Hive と Java UDF を使用する
+    - name: Apache Hive で Java UDF を使用する
       href: ../hadoop/apache-hadoop-hive-java-udf.md
       maintainContext: true
     - name: Apache Hadoop ジョブを送信する
@@ -396,9 +396,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 8a777d4f71d0592ceab6407a2e59bbed618f5f94
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 285c0718e92d8b20d820e9680c968747a370f668
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323186"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606590"

@@ -19,8 +19,14 @@ items:
         href: data-box-deploy-ordered.md
       - name: 2 - 設定
         href: data-box-deploy-set-up.md
-      - name: 3 - データのコピー
-        href: data-box-deploy-copy-data.md
+      - name: 3 - 接続とコピー
+        items:
+        - name: SMB 経由
+          href: data-box-deploy-copy-data.md
+        - name: NFS 経由
+          href: data-box-deploy-copy-data-via-nfs.md
+        - name: REST 経由
+          href: data-box-deploy-copy-data-via-rest.md
       - name: 4 - 返却、アップロード、確認
         href: data-box-deploy-picked-up.md
     - name: 概念
@@ -28,7 +34,11 @@ items:
       - name: 安全性のガイドラインを読む
         href: data-box-safety.md
       - name: 要件を確認する
-        href: data-box-system-requirements.md
+        items:
+        - name: Data Box の場合
+          href: data-box-system-requirements.md
+        - name: Data Box Blob ストレージの場合
+          href: data-box-system-requirements-rest.md
       - name: 制限を理解する
         href: data-box-limits.md
       - name: セキュリティを確認する
@@ -98,9 +108,9 @@ items:
       href: https://azure.microsoft.com/pricing/details/storage/databox/
     - name: Data Box Disk の価格
       href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: bd23df1abd99ba3fd89a4b382c6c5f00c8b80f1f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 4ca0a1e04f558396cb72b0617c9bee6349a0fe54
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739194"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540522"

@@ -84,18 +84,14 @@ items:
       href: how-to-register-device-cli.md
     - name: Visual Studio Code
       href: how-to-register-device-vscode.md
-  - name: IoT Edge ランタイムのインストール
+  - name: IoT Edge のインストールと管理
     items:
     - name: Linux X64
       href: how-to-install-iot-edge-linux.md
     - name: Linux ARM32
       href: how-to-install-iot-edge-linux-arm.md
-    - name: Windows コンテナーを使用した Windows
-      href: how-to-install-iot-edge-windows-with-windows.md
-    - name: Linux コンテナーを使用した Windows
-      href: how-to-install-iot-edge-windows-with-linux.md
-    - name: IoT Core
-      href: how-to-install-iot-core.md
+    - name: Windows X64
+      href: how-to-install-iot-edge-windows.md
     - name: ランタイム バージョンの更新
       href: how-to-update-iot-edge.md
   - name: DPS による自動プロビジョニング
@@ -107,23 +103,7 @@ items:
   - name: VS 2017 でのモジュールの開発とデバッグ
     href: how-to-visual-studio-develop-csharp-module.md
   - name: VS Code でのモジュールの開発とデバッグ
-    items:
-    - name: Azure Functions
-      href: how-to-develop-csharp-function.md
-    - name: C#
-      href: how-to-develop-csharp-module.md
-    - name: Python
-      href: how-to-develop-python-module.md
-    - name: Node.js
-      href: how-to-develop-node-module.md
-    - name: Java
-      href: how-to-develop-java-module.md
-    - name: C
-      href: how-to-develop-c-module.md
-    - name: 複数のモジュールの開発
-      href: how-to-develop-multiple-modules-vscode.md
-    - name: 複数のモジュールのデバッグ
-      href: how-to-debug-multiple-modules-vscode.md
+    href: how-to-vs-code-develop-module.md
   - name: モジュールのデプロイ
     items:
     - name: Azure ポータル
@@ -226,9 +206,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 0f761c4395dc1e96aa58acc9dc737f115fcde09b
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1f56b5e15759bc0c386ecf9649cbc78b611705ad
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340846"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558585"

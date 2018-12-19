@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6b7e0bf650d46f7e445aacc4bb61efca94510716
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 1a16dd52d06e4ee31e6645d6e5a4090afd897de9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538669"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605400"
 documentType: LandingData
-title: Web Apps のドキュメント
+title: App Service のドキュメント
 metadata:
   document_id: 6c8db72a-cdb7-8fb7-ed57-ed75afcca4d0
-  title: Azure Web Apps のドキュメント - チュートリアル、API リファレンス
-  meta.description: Learn how to use App Service Web Apps to build and host websites and web applications.
+  title: Azure App Service のドキュメント - チュートリアル、API リファレンス
+  meta.description: Learn how to use App Service to build and host websites and web applications.
   services: app-service
   author: czeumault
   manager: carolz
@@ -21,21 +21,21 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Azure Web Apps を使用すると、インフラストラクチャを管理することなく、お好きなプログラミング言語で Web アプリケーションを構築してホストすることができます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Azure DevOps、または任意の Git リポジトリからの自動デプロイが可能になります。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Web Apps の使用方法を確認してください。
+  description: Azure App Service を使用すると、インフラストラクチャを管理することなく、任意のプログラミング言語で Web アプリケーションを構築し、ホストできます。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Azure DevOps、または任意の Git リポジトリからの自動デプロイが可能になります。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Web Apps の使用方法を確認してください。
   aside:
     image:
       alt: 
       height: 110
       src: https://docs.microsoft.com/azure/app-service/media/index/create-a-web-app-with-nodejs-and-azure-app-service.png
       width: 250
-    title: Node.js と Azure App Service を使用して Web アプリを作成する。 (2:41)
+    title: Node.js と Azure App Service を使用して Web アプリを作成する (2:41)
     href: https://azure.microsoft.com/resources/videos/create-a-web-app-with-nodejs-and-azure-app-service/
     width: 250
 sections:
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: Web Apps を使用してクラウドに最初のアプリケーションをデプロイする方法について説明します。
+    text: App Service を使用してクラウドに最初のアプリケーションをデプロイする方法について説明します。
   - type: list
     style: icon48
     items:
@@ -165,4 +165,4 @@ sections:
     - title: Languages
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
     - title: REST
-      html: <p><a href="/rest/api/appservice">REST API リファレンスに関するページ</a></p>
+      html: <p><a href="/rest/api/appservice">REST API リファレンス</a></p>

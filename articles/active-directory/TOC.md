@@ -275,6 +275,7 @@
 ##### [ギャラリー アプリケーションへのユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題](manage-apps/application-provisioning-config-problem-storage-limit.md)
 ##### [ユーザーがプロビジョニングされない - ギャラリー アプリ](manage-apps/application-provisioning-config-problem-no-users-provisioned.md)
 ##### [間違ったユーザーがプロビジョニングされている - ギャラリー アプリ](manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md)
+##### [SCIM 互換性に関する問題 - ギャラリー以外のアプリ](manage-apps/application-provisioning-config-problem-scim-compatibility.md)
 
 #### シングル サインオン
 ##### [方法の選択](manage-apps/single-sign-on-modes.md)
@@ -321,10 +322,10 @@
 ## [トラブルシューティング](fundamentals/active-directory-troubleshooting-support-howto.md)
 
 ## Azure AD の概念実証 (PoC) のデプロイ
-### [PoC プレイブック: はじめに](active-directory-playbook-intro.md)
-### [PoC プレイブック: 主な要素](active-directory-playbook-ingredients.md)
-### [PoC プレイブック: 実装](active-directory-playbook-implementation.md)
-### [PoC プレイブック: 構成要素](active-directory-playbook-building-blocks.md)
+### [PoC プレイブック:概要](active-directory-playbook-intro.md)
+### [PoC プレイブック:内容](active-directory-playbook-ingredients.md)
+### [PoC プレイブック:実装](active-directory-playbook-implementation.md)
+### [PoC プレイブック:構成要素](active-directory-playbook-building-blocks.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory)
@@ -347,5 +348,5 @@
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
