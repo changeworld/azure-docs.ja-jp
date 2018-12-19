@@ -21,7 +21,7 @@ ms.locfileid: "47033024"
 作成済みの age エンティティは、数値と、年数、月数、週数、日数の両方で、年齢の値をキャプチャします。 このエンティティは既にトレーニングされているので、年齢を含む発話の例をアプリケーション意図に追加する必要はありません。 age エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされます。 
 
 ## <a name="types-of-age"></a>age のタイプ
-age は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) Github リポジトリから管理されます。
+age は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) GitHub リポジトリから管理されます。
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>作成済み age エンティティの解決
 次の例では、**builtin.age** エンティティの解決を示します。
