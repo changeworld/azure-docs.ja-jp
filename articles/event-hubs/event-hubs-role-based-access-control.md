@@ -33,7 +33,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 次のセクションでは、対話型の Azure AD ユーザーにサインオンを求めるサンプル アプリケーションを作成して実行するために必要な手順、そのユーザー アカウントに Event Hubs のアクセス権を付与する方法、およびその ID を使って Event Hubs にアクセスする方法について説明します。 
 
-この概要では、簡単なコンソール アプリケーションについて説明します。[そのコードは Github にあります](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)。
+この概要では、簡単なコンソール アプリケーションについて説明します。[そのコードは GitHub にあります](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Rbac/EventHubsSenderReceiverRbac/)。
 
 ### <a name="create-an-active-directory-user-account"></a>Active Directory のユーザー アカウントを作成する
 
