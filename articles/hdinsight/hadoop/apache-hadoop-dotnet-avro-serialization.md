@@ -20,7 +20,7 @@ ms.locfileid: "51634007"
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Microsoft Avro ライブラリを使用して Apache Hadoop のデータをシリアル化する
 
 >[!NOTE]
->Microsoft は Avro SDK のサポートを終了しました。 Avro ライブラリはオープン ソース コミュニティによってサポートされています。 ライブラリのソースは [Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) にあります。
+>Microsoft は Avro SDK のサポートを終了しました。 Avro ライブラリはオープン ソース コミュニティによってサポートされています。 ライブラリのソースは [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) にあります。
 
 このトピックでは、[Microsoft Avro ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro)を使用して、オブジェクトとその他のデータ構造をストリームにシリアル化し、メモリ、データベース、またはファイルに格納する方法を示します。 さらに、逆シリアル化を行って元のオブジェクトを回復する方法についても説明します。
 
@@ -53,7 +53,7 @@ Apache Avro のシリアル化形式は、Azure HDInsight やその他の Apache
 * <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a> (6.0.4 以降)
 
 > [!Note]
-> Microsoft Avro ライブラリを NuGet パッケージとして使用することはできなくなっています。 Avro ライブラリを使用したい場合は、[Microsoft.Hadoop.Avro Github リポジトリ](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro)を複製し、お使いのコンピューター上でコードをコンパイルします。
+> Microsoft Avro ライブラリを NuGet パッケージとして使用することはできなくなっています。 Avro ライブラリを使用したい場合は、[Microsoft.Hadoop.Avro GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro)を複製し、お使いのコンピューター上でコードをコンパイルします。
 
 ## <a name="compile-schemas-using-avro-library"></a>Avro ライブラリを使用したスキーマのコンパイル
 Microsoft Avro ライブラリには、コード生成ユーティリティがあります。このユーティリティにより、あらかじめ定義した JSON スキーマに基づいて、C# のデータ型を自動的に作成できます。 このコード生成ユーティリティは、バイナリの実行可能ファイルとして配布されませんが、次の手順に従って簡単に作成できます。
