@@ -17,7 +17,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/29/2018
 ms.locfileid: "50211487"
 ---
-# <a name="qna-maker-rest-api-with-c"></a>C# での QnA Maker REST API 
+# <a name="qna-maker-rest-api-with-c"></a>C# での QnA Maker REST API
 <a name="HOLTop"></a>
 
 この記事では、C# で [Microsoft QnA Maker API](../Overview/overview.md)  を使用し、次を行う方法について説明します。
@@ -37,11 +37,11 @@ ms.locfileid: "50211487"
 - [現在の一連の単語変更を取得します。](#GetAlterations)
 - [現在の一連の単語変更を置換します。](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません)。
+このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です (無料の Community Edition でかまいません)。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft QnA Maker API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
 
@@ -211,7 +211,7 @@ namespace QnAMaker
 
 **ナレッジ ベースの応答を作成する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -412,7 +412,7 @@ namespace QnAMaker
 
 **ナレッジ ベースの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -529,7 +529,7 @@ namespace QnAMaker
 
 **ナレッジ ベースの応答を公開する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -646,7 +646,7 @@ namespace QnAMaker
 
 **ナレッジ ベースの応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -738,7 +738,7 @@ namespace QnAMaker
 
 **ナレッジ ベースの応答をダウンロードする**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -854,7 +854,7 @@ namespace QnAMaker
 
 **回答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -954,7 +954,7 @@ namespace QnAMaker
 
 **ナレッジ ベースの詳細応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1051,7 +1051,7 @@ namespace QnAMaker
 
 **ユーザー応答のナレッジ ベースを取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1173,7 +1173,7 @@ namespace QnAMaker
 
 **ナレッジ ベースの応答を削除する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1257,7 +1257,7 @@ namespace QnAMaker
 
 **エンドポイント キーの応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1345,7 +1345,7 @@ namespace QnAMaker
 
 **エンドポイント キーの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1430,7 +1430,7 @@ namespace QnAMaker
 
 **単語変更の応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1554,7 +1554,7 @@ namespace QnAMaker
 
 **単語変更の応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1569,6 +1569,6 @@ namespace QnAMaker
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
 [QnA Maker の概要](../Overview/overview.md)
