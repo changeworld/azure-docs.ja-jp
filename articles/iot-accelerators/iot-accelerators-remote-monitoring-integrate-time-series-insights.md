@@ -212,7 +212,7 @@ Time Series Insights の統合を完了するには、更新されたマイク�
 
 1. **[設定]** > **[キー]** の順に移動して、アプリケーション用に新しいキーを作成します。 キー値を安全な場所にコピーしてください。
 
-1. 最新のタグを使用して、Github リポジトリから[最新の docker compose yaml ファイル](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm)をプルします。 
+1. 最新のタグを使用して、GitHub リポジトリから[最新の docker compose yaml ファイル](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm)をプルします。 
 
 1. [SSH キーを作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)に記載されている手順に従って、VM に SSH で接続します。
 
