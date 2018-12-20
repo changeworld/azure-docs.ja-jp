@@ -1,27 +1,20 @@
 ---
-title: Azure SignalR Service の使用方法に関するクイック スタート | Microsoft Docs
+title: Azure SignalR Service の使用方法に関するクイック スタート
 description: Azure SignalR Service を使って ASP.NET Core MVC アプリによるチャット ルームを作成する方法について説明します。
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET
-ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: b667f38c4e3d2a3fad323171a3b3b49ed3619fd9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 805f8d55b1627ad12ce58e8a64728a42867a858e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959480"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260618"
 ---
-# <a name="quickstart-create-a-chat-room-with-signalr-service"></a>クイック スタート: SignalR Service を使ってチャット ルームを作成する
+# <a name="quickstart-create-a-chat-room-with-signalr-service"></a>クイック スタート:SignalR Service を使ってチャット ルームを作成する
 
 
 Azure SignalR Service は、開発者がリアルタイムの機能を使って Web アプリケーションを簡単に作成できるようにするための Azure サービスです。 このサービスは、[SignalR for ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction) に基づいています。
@@ -133,8 +126,8 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 SignalR では、ハブはクライアントから呼び出せる一連のメソッドを公開する、コア コンポーネントです。 このセクションでは、次の 2 つのメソッドでハブ クラスを定義します。 
 
-* `Broadcast`: このメソッドは、すべてのクライアントにメッセージをブロードキャストします。
-* `Echo`: このメソッドは、メッセージを呼び出し元に返送します。
+* `Broadcast`:このメソッドは、すべてのクライアントにメッセージをブロードキャストします。
+* `Echo`:このメソッドは、メッセージを呼び出し元に返送します。
 
 いずれのメソッドでも、ASP.NET Core SignalR SDK によって提供されている、`Clients` インターフェイスが使用されます。 このインターフェイスを使用すると、接続されているすべてのクライアントにアクセスし、それらのクライアントにコンテンツをプッシュできます。
 

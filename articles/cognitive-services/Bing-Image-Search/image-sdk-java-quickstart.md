@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Java 用 Bing Image Search SDK を使用して画像を検索する'
+title: クイック スタート:イメージを検索する - Bing Image Search SDK for Java
 description: このクイック スタートを利用し、Bing Image Search SDK を使用して最初の画像検索を行います。この SDK は、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Java アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初のイメージの URL を表示します。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,21 +10,22 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 81bd7356579b3e4f7b82497bb2163c85374fd0d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 810cdc2029462b225b5d53634f1730cbcbb8d785
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316329"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254889"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>クイック スタート: Bing Image Search SDK と Java を使用して画像を検索する
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>クイック スタート:Bing Image Search SDK for Java を使用してイメージを検索する
 
 このクイック スタートを利用し、Bing Image Search SDK を使用して最初の画像検索を行います。この SDK は、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Java アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初のイメージの URL を表示します。
 
 このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
-**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 最新バージョンの [Java Development Kit](https://aka.ms/azure-jdks) (JDK)
 

@@ -12,20 +12,14 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: アップロード、エンコード、およびストリーミング
-    items:
-    - name: .NET の場合
-      href: stream-files-tutorial-with-api.md
-    - name: REST の場合
-      href: stream-files-tutorial-with-rest.md
-  - name: ライブ ストリーム配信
-    items:
-    - name: .NET Core の場合
-      href: stream-live-tutorial-with-api.md
-  - name: ビデオの分析
-    items:
-    - name: .NET の場合
-      href: analyze-videos-tutorial-with-api.md
+  - name: リモート ファイルのエンコードとビデオのストリーミング – REST
+    href: stream-files-tutorial-with-rest.md
+  - name: アップロードされたファイルのエンコードとビデオのストリーミング – .NET
+    href: stream-files-tutorial-with-api.md
+  - name: ライブ ストリーム配信 - .NET
+    href: stream-live-tutorial-with-api.md
+  - name: ビデオの分析 - .NET
+    href: analyze-videos-tutorial-with-api.md
 - name: サンプル
   items:
   - name: Azure のコード サンプル
@@ -186,9 +180,9 @@ items:
     href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: 9c42d463bc88ae936e0fbe965fd4039a716e3052
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 49c15b2540b33a3f37f4f276b435ce3f4508b513
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557174"
+ms.locfileid: "53582509"

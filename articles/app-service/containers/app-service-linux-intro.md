@@ -1,5 +1,5 @@
 ---
-title: App Service on Linux の概要 | Microsoft Docs
+title: App Service on Linux の概要 - Azure | Microsoft Docs
 description: Azure App Service on Linux について説明します。
 keywords: Azure App Service, Linux, OSS
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
-ms.custom: mvc
-ms.openlocfilehash: 3910e13900ec1774e5a1fe449b4f510a661f1f53
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: ac8d5ddb843227e5c5d8e7508c3ea46946f4850e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165324"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257881"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -31,7 +31,7 @@ ms.locfileid: "52165324"
 
 App Service on Linux では、開発者の生産性を向上させるために、多数の組み込みイメージがサポートされています。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、[独自の Docker イメージを作成](tutorial-custom-docker-image.md)して Web App for Containers にデプロイする方法があります。
 
-| Language | サポートされているバージョン |
+| 言語 | サポートされているバージョン |
 |---|---|
 | Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1、10.10 |
 | Java * | Tomcat 8.5、9.0、Java SE、WildFly 14 (いずれも JRE 8 を実行) |

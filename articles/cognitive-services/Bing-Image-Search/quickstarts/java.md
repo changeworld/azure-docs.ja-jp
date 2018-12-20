@@ -1,7 +1,7 @@
 ---
-title: 'クイック スタート: Java で画像検索を実行する - Bing Image Search API'
+title: クイック スタート:イメージを検索する - Bing Image Search REST API と Java
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな Java アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
+description: このクイック スタートを使用して、Java を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 63add2406b4535747c09299ecc0df6d1b6b47da3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 17dcf33074e7ee097a8778b3b867cb196cd814c2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315870"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258170"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>クイック スタート: Bing Image Search REST API と Java を使用して検索クエリを送信する
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-java"></a>クイック スタート:Bing Image Search REST API と Java を使用してイメージを検索する
 
 このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな Java アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
 
@@ -27,7 +28,7 @@ ms.locfileid: "52315870"
 このサンプルのソース コードは、追加のエラー処理とコードの注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
-* **[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+* **[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 * [Java Development Kit(JDK) 7 または 8](https://aka.ms/azure-jdks)
 

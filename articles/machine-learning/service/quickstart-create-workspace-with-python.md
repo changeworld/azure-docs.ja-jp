@@ -1,6 +1,7 @@
 ---
-title: 'クイック スタート: Python SDK を使用して機械学習サービス ワークスペースを作成する - Azure Machine Learning'
-description: Azure Machine Learning の利用を開始します。 Python SDK をインストールし、それを使用してワークスペースを作成します。 このワークスペースが、Azure Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。
+title: クイック スタート:Python で作業開始
+titleSuffix: Azure Machine Learning service
+description: Python で Azure Machine Learning service の作業を開始します。 Python SDK を使用して、機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなるワークスペースを作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +10,17 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 12/04/2018
-ms.openlocfilehash: f16d39238b46a811f34fdfe291d6c09bee662b9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 3ab55cec4b8483cf254ec3d9fe68521baca9cdf5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870073"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268514"
 ---
-# <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>クイック スタート: Python を使用して Azure Machine Learning の利用を開始する
+# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>クイック スタート:Python SDK を使用して Azure Machine Learning の利用を開始する
 
-このクイック スタートでは、Azure Machine Learning SDK for Python を使用して Machine Learning サービスの[ワークスペース](concept-azure-machine-learning-architecture.md)を作成して使用します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。 このクイック スタートでは、まず独自の Python 環境と Jupyter Notebook サーバーを構成します。 インストールなしで実行する場合は、「[クイック スタート: Azure portal を使用した Azure Machine Learning の基本操作](quickstart-get-started.md)」を参照してください。
+このクイック スタートでは、Azure Machine Learning SDK for Python を使用して Machine Learning サービスの[ワークスペース](concept-azure-machine-learning-architecture.md)を作成して使用します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。 このクイック スタートでは、まず独自の Python 環境と Jupyter Notebook サーバーを構成します。 インストールなしで実行するには、「[クイック スタート: Azure portal を使用した Azure Machine Learning の基本操作](quickstart-get-started.md)」を参照してください。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
@@ -38,14 +40,12 @@ ms.locfileid: "52870073"
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
->[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.2 を使用してテストされました 
-
-
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLfree)を作成してください。
-
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
 ## <a name="install-the-sdk"></a>SDK のインストール
+
+>[!NOTE]
+> この記事のコードには、Azure Machine Learning SDK バージョン 1.0.2 以降が必要です。 
 
 *2018 年 9 月 27 日より後に作成されたデータ サイエンス仮想マシンを使用する場合は、このセクションをスキップします。* これらのデータ サイエンス仮想マシンには、Python SDK がプレインストールされています。
 
@@ -204,6 +204,6 @@ Machine Learning のチュートリアルでそれを使用するには、他に
 これらのパッケージのインストール後、モデルのトレーニングとデプロイを行うチュートリアルに進みます。 
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
+> [チュートリアル:画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
 
 [GitHub でより高度な例](https://aka.ms/aml-notebooks)を確認することもできます。

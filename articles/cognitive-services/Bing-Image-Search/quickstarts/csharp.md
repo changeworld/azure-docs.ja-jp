@@ -1,7 +1,7 @@
 ---
-title: 'クイック スタート: C# で画像検索を実行する - Bing Image Search API'
+title: クイック スタート:イメージを検索する - Bing Image Search REST API と C#
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな C# アプリケーションは、HTTP の画像検索クエリを API に送信し、返された最初の画像の URL を表示します。
+description: このクイック スタートを使用して、C# を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: 3819b476c5d3638f409b4195d6340920032d7b99
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 67dd91d7555ebd1e72cea168fc8b841bf4ed9175
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307493"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249517"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-api-and-c"></a>クイック スタート: Bing Image Search API と C# を使用して検索クエリを送信する
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>クイック スタート:Bing Image Search REST API と C# を使用してイメージを検索する
 
 このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答の検索結果を表示することができます。 このシンプルな C# アプリケーションは、HTTP の画像検索クエリを API に送信し、返された最初の画像の URL を表示します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "52307493"
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 

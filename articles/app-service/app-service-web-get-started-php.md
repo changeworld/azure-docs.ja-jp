@@ -1,5 +1,5 @@
 ---
-title: Azure で PHP Web アプリを作成する | Microsoft Docs
+title: PHP Web アプリの作成 - Azure App Service | Microsoft Docs
 description: Azure App Service の Web Apps で、初めての PHP の Hello World を数分でデプロイします。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin;cfowler
-ms.custom: mvc
-ms.openlocfilehash: 0dd8f90a39abc18263fcaa5bdb63a5b743728952
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.custom: seodec18
+ms.openlocfilehash: 02c80f3b3883af4b32b5bc0fb837680dad1e0ecf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42884966"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261553"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "42884966"
 このクイック スタートを完了するには、以下が必要です。
 
 * <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
-* <a href="http://php.net/manual/install.php" target="_blank">PHP をインストールする</a>
+* <a href="https://php.net/manual/install.php" target="_blank">PHP をインストールする</a>
 
 ## <a name="download-the-sample-locally"></a>サンプルをローカルでダウンロードする
 

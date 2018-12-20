@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c2f5ff778b49ffb544c53b41cf515e820d646249
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 3ae454be8327c1f9ce605899e4b26105d44ab0f6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157855"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189304"
 ---
-# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>クイック スタート: Azure IoT C SDK を使用してシミュレートされた TPM デバイスをプロビジョニングする
+# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>クイック スタート:Azure IoT C SDK を使用してシミュレートされた TPM デバイスをプロビジョニングする
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -25,8 +25,8 @@ ms.locfileid: "50157855"
 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」を確認してください。 また、このクイック スタートを続行する前に、[Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
-- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
-- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
+- [個々の登録](concepts-service.md#individual-enrollment):単一デバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
@@ -142,15 +142,15 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 3. **[Add enrollment]\(登録の追加\)** で、次の情報を入力し、**[保存]** をクリックします。
 
-    - **メカニズム:** ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
-    - **保証キー:** *tpm_device_provision* プロジェクトを実行することで TPM デバイスに対して生成された*保証キー*を入力します。
-    - **登録 ID:** *tpm_device_provision* プロジェクトを実行することで TPM デバイスに対して生成された*登録 ID* を入力します。
-    - **IoT Edge device \(IoT Edge デバイス\):** **[無効]** を選択します。
-    - **IoT Hub のデバイス ID:** デバイスに ID を割り当てるために、「**test-docs-device**」と入力します。
+    - **メカニズム**:ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
+    - **保証キー**:*tpm_device_provision* プロジェクトを実行することで TPM デバイスに対して生成された "*保証キー*" を入力します。
+    - **登録 ID**:*tpm_device_provision* プロジェクトを実行することで TPM デバイスに対して生成された "*登録 ID*" を入力します。
+    - **IoT Edge デバイス**:**[無効]** を選択します。
+    - **IoT Hub のデバイス ID**:デバイスに ID を割り当てるために、「**test-docs-device**」と入力します。
 
-    ![ポータルでデバイス登録情報を入力](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+      ![ポータルでデバイス登録情報を入力](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
-    登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
+      登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
 
 <a id="firstbootsequence"></a>

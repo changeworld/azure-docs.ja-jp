@@ -1,5 +1,5 @@
 ---
-title: Azure App Service on Linux で Python Web アプリを作成する | Microsoft Docs
+title: Linux での Python Web アプリの作成 - Azure App Service | Microsoft Docs
 description: Azure App Service on Linux で、初めての Python の Hello World アプリを数分でデプロイします。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 5f9d694d47c0bd0765af7871d7e535a4174c30ff
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec18
+ms.openlocfilehash: d9d6f3549ec5db914536400fac53de60f2ad4a94
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404729"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261852"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python Web アプリを作成する (プレビュー)
 

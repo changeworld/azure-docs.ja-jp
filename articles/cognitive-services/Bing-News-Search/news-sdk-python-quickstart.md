@@ -1,7 +1,7 @@
 ---
-title: 'クイック スタート: Bing News Search SDK (Python)'
+title: クイック スタート:ニュース検索を実行する - Bing News Search SDK for Python
 titleSuffix: Azure Cognitive Services
-description: Bing News Search SDK コンソール アプリケーションの設定。
+description: このクイック スタートを使用して、Bing News Search SDK for Python を使ってニュースを検索し、応答を処理します。
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,21 +10,22 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: 6e029b7e830b6ec157d03d17dc24e65282a9c742
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 3489a9634cecd776afc8619a81acd72a2649ec36
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316805"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261199"
 ---
-# <a name="quickstart-bing-news-search-sdk-with-python"></a>クイック スタート: Bing News Search SDK (Python)
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>クイック スタート:Bing News Search SDK for Python を使ってニュース検索を実行する
 
 News Search SDK には、Web クエリと結果解析のための REST API 機能が含まれています。 
 
 [Python Bing News Search SDK サンプルのソース コード](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py)は、Git Hub で入手できます。
 
 ## <a name="application-dependencies"></a>アプリケーションの依存関係
-**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 Python をまだインストールしていない場合は、インストールします。 この SDK は、Python 2.7、3.3、3.4、3.5、3.6 と互換性があります。
 

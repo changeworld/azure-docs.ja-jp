@@ -1,5 +1,5 @@
 ---
-title: Azure App Service on Linux 向けに Python アプリを構成する
+title: Linux に Python アプリを構成する - Azure App Service
 description: このチュートリアルでは、Azure App Service on Linux 向けに Python アプリを作成および構成するためのオプションについて説明します。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
-ms.custom: mvc
-ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18
+ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633650"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249636"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Azure App Service on Linux 向けに Python アプリを構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "51633650"
 
 ## <a name="set-python-version"></a>Python バージョンの設定
 
-2 つの基本イメージ (Python 3.6 と Python 3.7) を使用できます。 どちらの Python ベースのイメージでも、アプリを作成できます。 たとえば、Python 3.7 を使用してアプリを作成するには、Cloud Shell で次のコマンドを実行します。
+2 つの基本イメージを使用できます。Python 3.6 および Python 3.7。 どちらの Python ベースのイメージでも、アプリを作成できます。 たとえば、Python 3.7 を使用してアプリを作成するには、Cloud Shell で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
@@ -48,7 +48,7 @@ App Service on Linux にデプロイされた Python アプリは、GitHub リ�
 
 このコンテナーには次の特性があります。
 
-- アプリは、[Gunicorn WSGI HTTP サーバー](http://gunicorn.org/)を使用して実行されます。このとき、追加の引数 `--bind=0.0.0.0 --timeout 600` が使用されます。
+- アプリは、[Gunicorn WSGI HTTP サーバー](https://gunicorn.org/)を使用して実行されます。このとき、追加の引数 `--bind=0.0.0.0 --timeout 600` が使用されます。
 
 - 既定では、基本のイメージに Flask Web フレームワークが含まれています。ただし、コンテナーは、WSGI に準拠していて Python 3.7 と互換性のある他のフレームワーク (Django など) をサポートしています。
 
@@ -59,9 +59,9 @@ App Service on Linux にデプロイされた Python アプリは、GitHub リ�
 App Service on Linux コンテナーでは、起動中に次の手順が実行されます。
 
 1. カスタム スタートアップ コマンドが指定されているかどうかをチェックし、指定されている場合はこれを適用します。
-1. Django アプリの *wsgi.py* ファイルが存在するかどうかをチェックし、存在する場合はそのファイルを使用して Gunicorn を起動します。
-1. *application.py* という名前のファイルがあるかどうかをチェックし、ある場合は Flask アプリを想定して `application:app` を使って Gunicorn を起動します。
-1. 他のアプリが見つからない場合は、コンテナーに組み込まれている既定のアプリを起動します。
+2. Django アプリの *wsgi.py* ファイルが存在するかどうかをチェックし、存在する場合はそのファイルを使用して Gunicorn を起動します。
+3. *application.py* という名前のファイルがあるかどうかをチェックし、ある場合は Flask アプリを想定して `application:app` を使って Gunicorn を起動します。
+4. 他のアプリが見つからない場合は、コンテナーに組み込まれている既定のアプリを起動します。
 
 次のセクションでは、各オプションについてさらに詳しく説明します。
 
@@ -100,7 +100,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-また、`--workers=4` のように、Gunicorn の追加の引数をコマンドに指定することもできます。 詳細については、「[Running Gunicorn (Gunicorn の実行)」](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org) を参照してください。
+また、`--workers=4` のように、Gunicorn の追加の引数をコマンドに指定することもできます。 詳細については、「[Running Gunicorn (Gunicorn の実行)」](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org) を参照してください。
 
 カスタム コマンドを指定するには、次の手順を実行します。
 
