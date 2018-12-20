@@ -66,7 +66,7 @@ Jupyter Notebook には、 https://&lt;クラスター名&gt;.azurehdinsight.net
 
 **[Scala]** を選択すると、PySpark API を使用したいくつかのパッケージ済みノートブックのサンプルが含まれるディレクトリが表示されます。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/Scala)で、この記事の Spark に関する一連のトピックのコード サンプルが含まれる Exploration-Modeling-and-Scoring-using-Scala.ipynb ノートブックを入手できます。
 
-Github から Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、 **[Upload]** ボタンをクリックします。 エクスプローラーで Scala Notebook の GitHub (raw コンテンツ) URL を貼り付け、 **[開く]** をクリックします。 Scala Notebook は次の URL で入手できます。
+GitHub から Spark クラスター上の Jupyter Notebook サーバーに Notebook を直接アップロードできます。 Jupyter のホーム ページで、 **[Upload]** ボタンをクリックします。 エクスプローラーで Scala Notebook の GitHub (raw コンテンツ) URL を貼り付け、 **[開く]** をクリックします。 Scala Notebook は次の URL で入手できます。
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
