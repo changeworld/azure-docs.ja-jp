@@ -38,7 +38,7 @@ Modbus ゲートウェイの機能をテストしたい方のために、Microso
 mcr.microsoft.com/azureiotedge/modbus:1.0
 ```
 
-独自のモジュールを作成し、実際の環境に合わせてカスタマイズする場合は、Github で公開されているオープン ソースの [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトをご利用ください。 プロジェクトのガイダンスに従って独自のコンテナー イメージを作成できます。 独自のコンテナー イメージを作成する場合、コンテナー イメージをレジストリに発行する手順やカスタム モジュールをデバイスにデプロイする手順については、[C# IoT Edge モジュールの開発とデプロイ](tutorial-csharp-module.md)に関するページを参照してください。 
+独自のモジュールを作成し、実際の環境に合わせてカスタマイズする場合は、GitHub で公開されているオープン ソースの [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトをご利用ください。 プロジェクトのガイダンスに従って独自のコンテナー イメージを作成できます。 独自のコンテナー イメージを作成する場合、コンテナー イメージをレジストリに発行する手順やカスタム モジュールをデバイスにデプロイする手順については、[C# IoT Edge モジュールの開発とデプロイ](tutorial-csharp-module.md)に関するページを参照してください。 
 
 
 ## <a name="run-the-solution"></a>ソリューションを実行する
