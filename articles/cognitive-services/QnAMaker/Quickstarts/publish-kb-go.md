@@ -27,7 +27,7 @@ ms.locfileid: "52165086"
 ## <a name="prerequisites"></a>前提条件
 
 * [Go 1.10.1](https://golang.org/dl/)
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。
 
 * URL の kbid クエリ文字列パラメーターに含まれている QnA Maker ナレッジ ベース (KB) ID (下図)。
 
@@ -35,8 +35,8 @@ ms.locfileid: "52165086"
 
     まだナレッジ ベースがない場合は、[新しいナレッジ ベースの作成](create-new-kb-csharp.md)に関するページを参照し、このクイック スタート用のサンプルを作成してください。
 
-> [!NOTE] 
-> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-go** Github リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/tree/master/documentation-samples/quickstarts/publish-knowledge-base)から入手できます。
+> [!NOTE]
+> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-go** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/tree/master/documentation-samples/quickstarts/publish-knowledge-base)から入手できます。
 
 ## <a name="create-a-go-file"></a>Go ファイルを作成する
 
@@ -62,7 +62,7 @@ func main() {
 
 ## <a name="add-required-constants"></a>必要な定数を追加する
 
-**main** 
+**main**
 
 
  関数内に、QnA Maker にアクセスするために必要な定数を追加します。 サンプルの値は実際の値に変更してください。
@@ -93,11 +93,11 @@ go build publish-kb.go
 ./publish-kb
 ```
 
-[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 
-ナレッジ ベースが公開された後、[回答を生成するためのエンドポイント URL](../Tutorials/create-publish-answer.md#generating-an-answer) が必要になります。 
+ナレッジ ベースが公開された後、[回答を生成するためのエンドポイント URL](../Tutorials/create-publish-answer.md#generating-an-answer) が必要になります。
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
