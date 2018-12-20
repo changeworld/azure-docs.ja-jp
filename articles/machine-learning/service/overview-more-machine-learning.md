@@ -1,5 +1,5 @@
 ---
-title: Microsoft の機械学習製品オプションを比較する - Azure | Microsoft Docs
+title: Microsoft の機械学習製品オプションの比較
 description: 機械学習モデルを構築、デプロイ、および管理するための Microsoft のさまざまな製品を比較します。 ソリューションとしてどの製品を選択するかを決定します。
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: ad6cb53bd69218d2af801cb56f882f5ffde3026c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872554"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274123"
 ---
-# <a name="what-are-the-machine-learning-product-options-from-microsoft"></a>Microsoft の機械学習製品オプションとは
+# <a name="what-are-the-machine-learning-products-at-microsoft"></a>Microsoft の機械学習製品とは
 
 Microsoft は、機械学習モデルを構築、デプロイ、および管理するためのさまざまな製品オプションを提供しています。 これらの製品を比較し、機械学習ソリューションを最も効率的に開発するために必要なものを選択します。
 
@@ -41,8 +41,7 @@ Microsoft は、機械学習モデルを構築、デプロイ、および管理�
 
 Azure Machine Learning サービスは、Python と CLI を使用して ML モデルをクラウド規模でトレーニング、デプロイ、および管理する場合に使用します。
 
->[!Note]
-> Azure Machine Learning を無料でお試しいただけます。 クレジット カードも Azure サブスクリプションも必要ありません。 今すぐ使ってみてください。 https://azure.microsoft.com/free/
+[無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
 ## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 

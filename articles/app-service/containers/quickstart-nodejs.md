@@ -1,5 +1,5 @@
 ---
-title: Azure App Service on Linux での Node.js の作成 | Microsoft Docs
+title: Linux での Node.js Web アプリの作成 - Azure App Service | Microsoft Docs
 description: Azure App Service on Linux で、初めての Node.js の Hello World を数分でデプロイします。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 44c3f8ce05854e993ad551a025eec447d882c326
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.custom: seodec18
+ms.openlocfilehash: 22a022b12e931fd4edf139038eb7506e69422f8e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969546"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253581"
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js Web アプリの作成
 
@@ -64,7 +64,7 @@ mkdir quickstart
 cd quickstart
 ```
 
-次に、次のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。
+次に、以下のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。
 
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world

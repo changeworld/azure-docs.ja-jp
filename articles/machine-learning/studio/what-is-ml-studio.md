@@ -1,12 +1,12 @@
 ---
-title: Azure Machine Learning Studio とは  | Microsoft Docs
+title: 概要 - Azure Machine Learning Studio | Microsoft Docs
 description: そのまま使うことのできるアルゴリズムやモジュールを含んだライブラリから、ドラッグ アンド ドロップでモデルをすばやく構築できるツール Azure ML Studio の概要です。
 keywords: azure machine learning、azure ml、ml studio
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.component: studio
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: d893a0817be6ae8a271d403ed0477fa04238954b
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b1c0d3da6dba4bf56baaf583d89c58fdc13ef83f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264405"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250520"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio とは
 Microsoft Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 Machine Learning Studio でモデルを Web サービスとして公開すれば、カスタム アプリや BI ツール (Excel など) からそのモデルを簡単に利用することができます。
@@ -41,7 +41,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 > 
 > 
 
-![Azure ML Studio の図: 実験の作成、各種ソースのデータの読み取り、スコア付けされたデータの書き込み、モデルの書き込み][ml-studio-overview]
+![Azure ML Studio の図:実験の作成、各種ソースのデータの読み取り、スコア付けされたデータの書き込み、モデルの書き込み][ml-studio-overview]
 
 ## <a name="get-started-with-machine-learning-studio"></a>Machine Learning Studio の概要
 [Machine Learning Studio](https://studio.azureml.net) を初めて起動したときには、 **ホーム** ページが表示されます。 そこからドキュメントやビデオ、ウェビナーなど、有益なリソースにアクセスすることができます。
@@ -146,19 +146,19 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 モデルをトレーニングしたら、残りのテスト データを使用してそのモデルを評価します。 モデルが正確に予測できるかどうか確認できるように、結果がすでに分かっているデータを使用します。
 
 ## <a name="other-common-machine-learning-terms"></a>その他の一般的な機械学習用語
-* **アルゴリズム**: 自己完結型の一連のルールで、データ処理、演算、自動推理を通じて問題を解決するために使用されます。
-* **異常検出**: 異常なイベントや値にフラグを設定し、問題の検出を支援するモデルです。 たとえばクレジットカードの不正使用の検出では、異常な購入を検出します。
-* **カテゴリ データ**: カテゴリに分類して、グループに分けることができるデータです。 たとえば自動車のカテゴリ データ セットでは、年式、製造元、モデル、価格が特定できます。
-* **分類**: カテゴリのグループ化が既に分かっているデータ セットに基づいて、データ ポイントをカテゴリに整理するためのモデルです。
-* **特徴エンジニアリング**: データ セットに関連する特徴を抽出、選択するプロセスで、データ セットを強化し、結果を向上させます。 たとえば、航空運賃のデータは曜日や休日で強化できます。 「 [Azure Machine Learning での特徴エンジニアリングと特徴選択](../team-data-science-process/create-features.md)」をご覧ください。
-* **モジュール**: 小規模なデータ セットを入力、編集できるデータ入力モジュールなど、Machine Learning Studio モデルの機能部分です。 Machine Learning Studio ではアルゴリズムもモジュールの種類になります。
-* **モデル**: 教師あり学習モデルは、機械学習実験の産物で、トレーニング データ セット、アルゴリズム モジュール、機能モジュール (スコア モデル モジュールなど) で構成されます。
-* **数値データ**: 測定値 (継続的なデータ) や数値 (不連続データ) としての意味があるデータです。 *定量的データ*とも呼ばれます。
-* **パーティション**: データをサンプルに分割するメソッドです。 詳細情報は「 [パーティションとサンプル](https://msdn.microsoft.com/library/azure/dn905960.aspx) 」をご覧ください。
-* **予測**: 予測とは、機械学習モデルからの値の予測になります。 "予測スコア" という用語を目にすることもあると思いますが、 予測スコアはモデルの最終出力ではありません。 モデルの評価の後にスコアが続きます。
-* **回帰**: 年や製造元に基づいて自動車の価格を予測するなど、独立変数に基づいて値を予測するためのモデルです。
-* **スコア**: Machine Learning Studio の [スコア モデル モジュール](https://msdn.microsoft.com/library/azure/dn905995.aspx) を使用してトレーニング済みの分類や回帰モデルから生成された予測値です。 分類モデルも、予測された値の確率のスコアを返します。 モデルからスコアを生成したら、 [モデルの評価モジュール](https://msdn.microsoft.com/library/azure/dn905915.aspx)を使用してモデルの精度を評価できます。
-* **サンプル**: 全体を代表するために使用するデータ セットの一部です。 サンプルはランダムに選択したり、データ セットの特定の機能に基づいて選択したりできます。
+* **アルゴリズム**:自己完結型の一連のルールで、データ処理、演算、自動推理を通じて問題を解決するために使用されます。
+* **異常検出**:異常なイベントや値にフラグを設定し、問題の検出を支援するモデルです。 たとえばクレジットカードの不正使用の検出では、異常な購入を検出します。
+* **カテゴリ データ**:カテゴリに分類して、グループに分けることができるデータです。 たとえば自動車のカテゴリ データ セットでは、年式、製造元、モデル、価格が特定できます。
+* **分類**:カテゴリのグループ化が既に分かっているデータ セットに基づいて、データ ポイントをカテゴリに整理するためのモデルです。
+* **特徴エンジニアリング**:データ セットに関連する特徴を抽出、選択するプロセスで、データ セットを強化し、結果を向上させます。 たとえば、航空運賃のデータは曜日や休日で強化できます。 「 [Azure Machine Learning での特徴エンジニアリングと特徴選択](../team-data-science-process/create-features.md)」をご覧ください。
+* **モジュール**:小規模なデータ セットを入力、編集できるデータ入力モジュールなど、Machine Learning Studio モデルの機能部分です。 Machine Learning Studio ではアルゴリズムもモジュールの種類になります。
+* **モデル**:教師あり学習モデルは、機械学習実験の産物で、トレーニング データ セット、アルゴリズム モジュール、機能モジュール (スコア モデル モジュールなど) で構成されます。
+* **数値データ**:測定値 (継続的なデータ) や数値 (不連続データ) としての意味があるデータです。 *定量的データ*とも呼ばれます。
+* **パーティション**:データをサンプルに分割するメソッドです。 詳細情報は「 [パーティションとサンプル](https://msdn.microsoft.com/library/azure/dn905960.aspx) 」をご覧ください。
+* **予測**:予測とは、機械学習モデルからの値の予測になります。 "予測スコア" という用語を目にすることもあると思いますが、 予測スコアはモデルの最終出力ではありません。 モデルの評価の後にスコアが続きます。
+* **回帰**:年や製造元に基づいて自動車の価格を予測するなど、独立変数に基づいて値を予測するためのモデルです。
+* **スコア**:Machine Learning Studio の[スコア モデル モジュール](https://msdn.microsoft.com/library/azure/dn905995.aspx)を使用してトレーニング済みの分類や回帰モデルから生成された予測値です。 分類モデルも、予測された値の確率のスコアを返します。 モデルからスコアを生成したら、 [モデルの評価モジュール](https://msdn.microsoft.com/library/azure/dn905915.aspx)を使用してモデルの精度を評価できます。
+* **サンプル**:全体を代表するために使用するデータ セットの一部です。 サンプルはランダムに選択したり、データ セットの特定の機能に基づいて選択したりできます。
 
 ## <a name="next-steps"></a>次の手順
 [ステップ バイ ステップ チュートリアル](create-experiment.md)を使用し、また[サンプル上に構築](sample-experiments.md)することによって予測分析と機械学習の基礎について学習できます。  

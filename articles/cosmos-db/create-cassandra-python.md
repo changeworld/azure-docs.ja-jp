@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Cassandra API (Python) - Azure Cosmos DB'
+title: クイック スタート:Cassandra API (Python) - Azure Cosmos DB
 description: このクイック スタートでは、Azure Cosmos DB の Apache Cassandra API を使って、Python でプロファイル アプリケーションを作成する方法を示します
 services: cosmos-db
 author: SnehaGunda
@@ -10,14 +10,14 @@ ms.custom: quick start connect, mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 5ffd134bd4e47f92264f8b299f8fd4bdb76f6c9f
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: c9a0d6ce868fd7fcf14f4b4c1690c99b7f964f8a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870318"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253512"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>クイックスタート: Python と Azure Cosmos DB で Cassandra アプリを構築する
+# <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>クイック スタート:Python と Azure Cosmos DB で Cassandra アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -36,7 +36,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 さらに、次のものが必要です。
 * [Python](https://www.python.org/downloads/) バージョン v2.7.14
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Apache Cassandra 用 Python ドライバー](https://github.com/datastax/python-driver)
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
@@ -138,7 +138,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 アプリはこの接続文字列によって、ホストされているデータベースと通信できます。
 
-1. [Azure portal](http://portal.azure.com/) で **[接続文字列]** を選択します。 
+1. [Azure portal](https://portal.azure.com/) で **[接続文字列]** を選択します。 
 
     画面右側の ![コピー ボタン](./media/create-cassandra-python/copy.png) ボタンを使って、一番上にある [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
 

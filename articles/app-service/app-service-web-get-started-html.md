@@ -1,5 +1,5 @@
 ---
-title: Azure で静的 HTML Web アプリを作成する | Microsoft Docs
+title: 静的 HTML Web アプリを作成する - Azure App Service | Microsoft Docs
 description: 静的 HTML のサンプル アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。
 services: app-service\web
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: cee0bdffb99076903df988d30fcaa4f6cb2234c6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.custom: seodec18
+ms.openlocfilehash: c7d01d4c079eacfd2af1ebad4ac41d70f792a0bb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123192"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253579"
 ---
-# <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的 HTML Web アプリを作成する
+# <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的な HTML Web アプリを作成する
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイック スタートでは、基本的な HTML+CSS サイトを Azure Web Apps にデプロイする方法を示します。 このクイック スタートは [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で行いますが、これらのコマンドは [Azure CLI](/cli/azure/install-azure-cli) を使用してローカルで実行することもできます。
 

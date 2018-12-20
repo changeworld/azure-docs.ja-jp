@@ -1,30 +1,22 @@
 ---
-title: Azure SignalR Service サーバーレス クイック スタート - JavaScript | Microsoft Docs
+title: Azure SignalR Service サーバーレス クイック スタート - JavaScript
 description: Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.tgt_pltfrm: Node.js
-ms.workload: tbd
 ms.date: 09/23/2018
 ms.author: zhshang
-ms.openlocfilehash: 12ac64a89f27744e1e731633d784135c97c423e0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f0044ca206d15762d44d8d4ea2d58c93950c5e1e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991030"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252458"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>クイック スタート: JavaScript を使用した Azure Functions と SignalR Service によるチャット ルームの作成
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用してチャット ルームを作成する
 
 Azure SignalR Service を使用すると、アプリケーションにリアルタイム機能を簡単に追加できます。 Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このクイック スタートでは、SignalR Service および Functions を使用して、サーバーレスかつリアルタイムのチャット アプリケーションを構築する方法を説明します。
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,16 +30,13 @@ Azure Functions アプリをローカルで実行するために、[Azure Functi
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
-
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
-
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -86,9 +75,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
     ![SignalR Service の作成](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
 
-
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
-
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

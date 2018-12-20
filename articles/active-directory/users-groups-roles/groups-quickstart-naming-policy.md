@@ -14,14 +14,14 @@ ms.date: 08/08/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 8ebdb22ba5ca04a5c811b3b368055f5f4371c75f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 8c5d980f25e196add6885d250665eae7127456f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40208903"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273121"
 ---
-# <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート: Azure Active Directory におけるグループの名前付けポリシー
+# <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート:Azure Active Directory におけるグループの名前付けポリシー
 
 このクイック スタートでは、Azure Active Directory (Azure AD) テナントに存在するグループの並べ替えと検索がしやすいよう、ユーザーによって作成される Office 365 グループの名前付けポリシーをテナントに設定します。 名前付けポリシーの使用例を次に示します。
 
@@ -80,7 +80,7 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
   
 ### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>手順 3: 名前付けポリシーとカスタム禁止単語を設定する
 
-1. Azure AD PowerShell でグループ名のプレフィックスとサフィックスを設定します。
+1. Azure AD PowerShell でグループ名のプレフィックスとサフィックスを設定します。 機能を適切に動作させるには、設定に [GroupName] を含める必要があります。
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -102,19 +102,19 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-1. Azure AD PowerShell でグループ名のプレフィックスとサフィックスを設定します。
+1. Azure AD PowerShell でグループ名のプレフィックスとサフィックスを空にします。
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =""
   ````
   
-2. 制限するカスタム禁止単語を設定します。 次の例は、独自のカスタム単語を追加する方法を示しています。
+2. カスタム禁止単語を空にします。
   
   ````
   $Setting["CustomBlockedWordsList"]=""
   ````
   
-3. 次の例のように、新しいポリシーの設定を保存して有効にします。
+3. 設定を保存します。
   
   ````
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting

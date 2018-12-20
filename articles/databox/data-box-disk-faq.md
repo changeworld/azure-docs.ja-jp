@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 12/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f437f1fd61cfdaa4d2ff908f6e294fa0c679b9a5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238133"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273060"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>Azure Data Box Disk とは (プレビュー)
+# <a name="what-is-azure-data-box-disk-preview"></a>Azure Data Box Disk とは  (プレビュー)
 
 Microsoft Azure Data Box Disk クラウド ソリューションを使用すると、迅速かつ安価な信頼性の高い方法で、数テラバイトのデータを Azure に送信できます。 この FAQ では、Azure portal での Data Box Disk の使用に関して多く寄せられる質問とその回答を紹介しています。 
 
@@ -59,7 +59,7 @@ A.  プレビュー段階中は、米国、カナダ、オーストラリア、�
 A. Data Box Disk のプレビューは、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、および北ヨーロッパでサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. Data Box Disk に関して何か問題が発生した場合、どこに連絡すればよいですか?
-A. Data Box Disk に関して何か問題が発生した場合は、[Data Box Disk サポート](mailto:expresspodsupport@microsoft.com)にお問い合わせください。
+A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft サポートに問い合わせ](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)てください。
 
 ## <a name="configure-and-connect"></a>構成と接続
  
@@ -108,7 +108,7 @@ A.  Robocopy や Diskboss などの SMB コピー ツールを使用して、デ
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Q. データのコピーを高速化するうえで何かヒントはありますか?
 A.  コピー処理は、次の方法で高速化できます。
 
-- データ コピーのストリームを複数使用する。 たとえば、Robocopy でマルチスレッド オプションを使用します。 このときに使用する具体的なコマンドについて詳しくは、「[チュートリアル: Azure Data Box Disk にデータをコピーして確認する](data-box-disk-deploy-copy-data.md#copy-data-to-disks)」をご覧ください。
+- データ コピーのストリームを複数使用する。 たとえば、Robocopy でマルチスレッド オプションを使用します。 使用される正確なコマンドについては、「[チュートリアル: Azure Data Box Disk へのデータのコピーと検証](data-box-disk-deploy-copy-data.md#copy-data-to-disks)」を参照してください。
 - 複数のセッションを使用する。
 - ネットワーク共有経由でコピーすることは避け (ネットワーク速度によって制限される可能性があるため)、ディスクが接続されているコンピューターのローカルにデータを置くようにします。
 - コピー処理全体を通して USB 3.0 以降を使用する。 [USBView ツール](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview)をダウンロードします。このツールを使って、コンピューターに接続されている USB コントローラーと USB デバイスを特定してください。

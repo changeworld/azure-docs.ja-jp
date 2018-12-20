@@ -1,5 +1,5 @@
 ---
-title: Azure App Service Environment の強制トンネリングを構成する
+title: App Service Environment を強制トンネリングされるように構成する - Azure
 description: 送信トラフィックが強制トンネリングされている場合に App Service Environment が機能するように設定します
 services: app-service
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.custom: mvc
-ms.openlocfilehash: ba93aab14c8eaccf9e3ed9ae9db0d169f41dddea
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.custom: seodec18
+ms.openlocfilehash: 89827cdc7d29a817c83fd16ec2a4340f06c8343c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024047"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272737"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 
@@ -105,13 +105,13 @@ ASE から外に出て行く送信トラフィックを、Azure Storage に向�
 
 3. ご利用の App Service Environment からインターネットに向かうすべての送信トラフィックに使用されるアドレスを取得します。 トラフィックをオンプレミスでルーティングする場合、それらのアドレスはご利用の NAT またはゲートウェイの IP となります。 NVA を経由するよう App Service Environment の送信トラフィックをルーティングする場合は、その NVA のパブリック IP がエグレス アドレスになります。
 
-4. "_(既存の App Service 環境でエグレス アドレスを設定する場合)_" resources.azure.com に移動し、Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name> に移動します。 すると、ご利用の App Service Environment を表す JSON を確認できます。 一番上に**読み取り/書き込み**の表示があることを確認してください。 **[編集]** を選択します。 一番下までスクロールします。 **userWhitelistedIpRanges** の値を **null** から次のような値に変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
+4. _既存の App Service 環境でエグレス アドレスを設定するには:_ resources.azure.com に移動し、Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name> に移動します。 すると、ご利用の App Service Environment を表す JSON を確認できます。 一番上に**読み取り/書き込み**の表示があることを確認してください。 **[編集]** を選択します。 一番下までスクロールします。 **userWhitelistedIpRanges** の値を **null** から次のような値に変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
    一番上にある **[PUT]** を選択します。 このオプションは、App Service Environment 上のスケール操作をトリガーし、ファイアウォールを調整します。
 
-_(エグレス アドレスを持った ASE を作成する場合)_ [テンプレートを使用した App Service Environment の作成][template]に関するページの説明に従い、適切なテンプレートを入手してください。  azuredeploy.json ファイルの ("properties" ブロックではなく) "resources" セクションを編集します。実際の値に合わせて、**userWhitelistedIpRanges** の行を追加してください。
+_エグレス アドレスを持つ ASE を作成するには_:[テンプレートを使用した App Service 環境の作成][template]に関するページの説明に従い、適切なテンプレートを入手してください。  azuredeploy.json ファイルの ("properties" ブロックではなく) "resources" セクションを編集します。実際の値に合わせて、**userWhitelistedIpRanges** の行を追加してください。
 
     "resources": [
       {

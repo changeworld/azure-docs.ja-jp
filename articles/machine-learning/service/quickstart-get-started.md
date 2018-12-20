@@ -1,24 +1,26 @@
 ---
-title: 'クイック スタート: Azure portal で機械学習サービス ワークスペースを作成する - Azure Machine Learning'
-description: Azure portal を使用して Azure Machine Learning ワークスペースを作成します。 このワークスペースが、Azure Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。
+title: Azure portal を使用したクイック スタート
+titleSuffix: Azure Machine Learning service
+description: Azure Machine Learning service の利用を開始します。 Azure portal を使用して、機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなるワークスペースを作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: quickstart
 ms.reviewer: sgilley
-author: rastala
-ms.author: roastala
-ms.date: 09/24/2018
-ms.openlocfilehash: 7ed45b5e8a8c3cab26c0998260055ffd7a0f0c5d
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+author: hning86
+ms.author: haining
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: c215a3947069e572f73692ea54010c77d78ae4fd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710258"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273563"
 ---
-# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>クイック スタート: Azure portal を使用した Azure Machine Learning の基本操作
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>クイック スタート:Azure portal を使用した Azure Machine Learning の基本操作
 
-このクイック スタートでは、Azure portal を使用して Azure Machine Learning ワークスペースを作成します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。 このクイック スタートではクラウド リソースを使用するため、インストールは不要です。 独自の Jupyter Notebook サーバーを構成する場合は、「[クイック スタート: Python を使用して Azure Machine Learning の利用を開始する](quickstart-create-workspace-with-python.md)」を参照してください。
+このクイック スタートでは、Azure portal を使用して Azure Machine Learning ワークスペースを作成します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。 このクイック スタートではクラウド リソースを使用するため、インストールは不要です。 代わりに独自の Jupyter ノートブック サーバーを構成するには、「[クイック スタート: Python を使用して Azure Machine Learning の利用を開始する](quickstart-create-workspace-with-python.md)」を参照してください。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -35,9 +37,9 @@ ms.locfileid: "51710258"
   - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
   - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
-作成するリソースは、Machine Learning サービスに関連したその他のチュートリアルおよびハウツー記事の前提条件として使用できます。 他の Azure サービスと同様に、Machine Learning に関連付けられている特定のリソースにも制限があります。 たとえば、Azure Batch AI クラスターのサイズです。 既定の制限と、クォータを増やす方法については、[この記事](how-to-manage-quotas.md)を参照してください。
+作成するリソースは、Machine Learning サービスに関連したその他のチュートリアルおよびハウツー記事の前提条件として使用できます。 他の Azure サービスと同様に、コンピューティング クラスターのサイズなど、Machine Learning に関連付けられている特定のリソースには制限があります。 詳細については、[既定の制限とクォータを増やす方法](how-to-manage-quotas.md)に関するページをご覧ください。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLfree)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成 
@@ -69,7 +71,7 @@ Azure Notebooks では、Jupyter ノートブック向けの無料のクラウ�
 
 組織によっては、サインインするには[管理者の同意](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent)が必要な場合があります。
 
-サインイン後、新しいタブが開き、`Clone Library` プロンプトが表示されます。 `Clone` を選択します
+サインイン後、新しいタブが開き、`Clone Library` プロンプトが表示されます。 [`Clone`] を選択します。
 
 
 ### <a name="run-the-notebook"></a>ノートブックを実行する
@@ -117,4 +119,4 @@ Pi を概算するコードではランダムな値が使用されるため、�
 ワークフローを詳しく体験するには、Machine Learning チュートリアルに従って、モデルをトレーニングし、デプロイします。  
 
 > [!div class="nextstepaction"]
-> [チュートリアル: 画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
+> [チュートリアル:画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)

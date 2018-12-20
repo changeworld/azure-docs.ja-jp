@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 02/27/2018
+ms.date: 12/07/2018
 ms.author: danlep
-ms.openlocfilehash: 2694e8cdc4f1918aab36794804ff48f5a70b44be
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a7b61702feb062c57fdec84f335ace44a47d0283
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739687"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249483"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances のクォータとリージョンの可用性
 
@@ -26,13 +26,14 @@ ms.locfileid: "50739687"
 
 Azure Container Instances は、指定された CPU とメモリ制限を備えた以下のリージョンで利用できます。
 
-| Location | OS | CPU | メモリ (GB) |
+| 場所 | OS | CPU | メモリ (GB) |
 | -------- | -- | :---: | :-----------: |
-| 米国東部、北ヨーロッパ、西ヨーロッパ、米国西部、米国西部 2 | Linux | 4 | 14 |
-| オーストラリア東部、米国東部 2、東南アジア | Linux | 2 | 7 |
-| カナダ中部、インド中部、米国中南部 | Linux | 2 | 3.5 |
-| 米国東部、西ヨーロッパ、米国西部 | Windows | 4 | 14 |
-| オーストラリア東部、カナダ中部、インド中部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、米国西部 2 | Windows | 2 | 3.5 |
+| 米国東部、北ヨーロッパ、西ヨーロッパ、米国西部、米国西部 2 |  Linux | 4 | 14 |
+| 東日本 |  Linux | 2 | 8 |
+| オーストラリア東部、米国東部 2、東南アジア |  Linux | 2 | 7 |
+| カナダ中部、インド中部、東アジア、米国中北部、米国中南部 |  Linux | 2 | 3.5 |
+| 米国東部、西ヨーロッパ、米国西部 |  Windows | 4 | 14 |
+| オーストラリア東部、カナダ中部、インド中部、東アジア、米国東部 2、東日本、米国中北部、北ヨーロッパ、米国中南部、東南アジア、米国西部 2 |  Windows | 2 | 3.5 |
 
 これらのリソース制限内で作成されたコンテナー インスタンスは、デプロイ リージョン内での利用の対象になります。 リージョンでの負荷が高い場合、インスタンスのデプロイ時に失敗することがあります。 このようなデプロイの失敗を減らすために、より低い CPU とメモリの設定でインスタンスをデプロイしてみるか、デプロイを後で試してみてください。
 

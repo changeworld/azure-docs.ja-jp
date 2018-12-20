@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Xamarin を使用した todo アプリの構築'
+title: Azure Cosmos DB は:Xamarin を使用した todo アプリの構築
 description: Azure Cosmos DB への接続とデータの照会に使用できる Xamarin コード サンプルについて説明します
 services: cosmos-db
 author: codemillmatt
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 0099bacb98d921a852ece8787bcb7152c5eae3f2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f955e0386cd601212eb992870f02607538b537e2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838575"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252628"
 ---
-# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB: Xamarin を使用した todo アプリの構築
+# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB は:Xamarin を使用した todo アプリの構築
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -90,7 +90,7 @@ Mac を使用している場合は、**無料**の [Visual Studio for Mac](https
 
 ここで Azure Portal に戻り、API キー情報を取得して、アプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB SQL API アカウントの左のナビゲーションから、**[キー]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側のコピー ボタンを使用して、URI と主キーを APIKeys.cs ファイルにコピーします。
+1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB SQL API アカウントの左のナビゲーションから、**[キー]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側のコピー ボタンを使用して、URI と主キーを APIKeys.cs ファイルにコピーします。
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-xamarin-dotnet/keys.png)
 
@@ -114,9 +114,9 @@ Mac を使用している場合は、**無料**の [Visual Studio for Mac](https
 
 ToDoItems ソリューションのコードには、次の項目が含まれています。
 
-* ToDoItems.Core: Xamarin.Forms プロジェクトと Azure Cosmos DB 内に todo 項目を保持する共有アプリケーション ロジックのコードを含む .NET Standard プロジェクトです。
-* ToDoItems.Android: このプロジェクトには、Android アプリが含まれています。
-* ToDoItems.iOS: このプロジェクトには、iOS アプリが含まれています。
+* ToDoItems.Core:Xamarin.Forms プロジェクトと Azure Cosmos DB 内に todo 項目を保持する共有アプリケーション ロジックのコードを含む .NET Standard プロジェクトです。
+* ToDoItems.Android:このプロジェクトには、Android アプリが含まれています。
+* ToDoItems.iOS:このプロジェクトには、iOS アプリが含まれています。
 
 次に、アプリが Azure Cosmos DB とどのようにやり取りするかを簡単に見ていきましょう。
 
