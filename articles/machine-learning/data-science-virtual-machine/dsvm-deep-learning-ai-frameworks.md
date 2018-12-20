@@ -72,7 +72,7 @@ ms.locfileid: "51241924"
 | サンプルへのリンク      | https://github.com/fchollet/keras/tree/master/examples      |
 | DSVM 上の関連ツール      | Microsoft Cognitive Toolkit、TensorFlow、Theano      |
 | 使用/実行方法    | * ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/>
- * Jupyter で、Github の場所からサンプルをダウンロードし、[Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続してサンプル ディレクトリを開きます。 |
+ * Jupyter で、GitHub の場所からサンプルをダウンロードし、[Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続してサンプル ディレクトリを開きます。 |
 
 ## <a name="caffe"></a>Caffe
 
