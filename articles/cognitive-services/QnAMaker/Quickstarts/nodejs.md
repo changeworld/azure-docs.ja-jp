@@ -17,7 +17,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/29/2018
 ms.locfileid: "50214989"
 ---
-# <a name="qna-maker-rest-api-with-nodejs"></a>Node.js での QnA Maker REST API 
+# <a name="qna-maker-rest-api-with-nodejs"></a>Node.js での QnA Maker REST API
 <a name="HOLTop"></a>
 
 この記事では、Node.js で [Microsoft QnA Maker API](../Overview/overview.md)  を使用し、次を行う方法について説明します。
@@ -37,7 +37,7 @@ ms.locfileid: "50214989"
 - [現在の一連の単語変更を取得します。](#GetAlterations)
 - [現在の一連の単語変更を置換します。](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -210,7 +210,7 @@ create_kb (path, content, function (result) {
 
 **ナレッジ ベースの応答を作成する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -410,7 +410,7 @@ update_kb (path, content, function (result) {
 
 **ナレッジ ベースの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -544,7 +544,7 @@ publish_kb (path, '', function (result) {
 
 **ナレッジ ベースの応答を公開する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -677,7 +677,7 @@ replace_kb (path, content, function (result) {
 
 **ナレッジ ベースの応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -783,7 +783,7 @@ get_qna (path, function (result) {
 
 **ナレッジ ベースの応答をダウンロードする**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -927,7 +927,7 @@ get_answers (method, content, function (result) {
 
 **回答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1042,7 +1042,7 @@ get_kb (path, function (result) {
 
 **ナレッジ ベースの詳細応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1154,7 +1154,7 @@ get_kbs (path, function (result) {
 
 **ユーザー応答のナレッジ ベースを取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1294,7 +1294,7 @@ delete_kb (path, '', function (result) {
 
 **ナレッジ ベースの応答を削除する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1394,7 +1394,7 @@ get_keys (path, function (result) {
 
 **エンドポイント キーの応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1520,7 +1520,7 @@ refresh_keys (path, content, function (result) {
 
 **エンドポイント キーの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1621,7 +1621,7 @@ get_alterations (path, function (result) {
 
 **単語変更の応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1750,7 +1750,7 @@ put_alterations (path, content, function (result) {
 
 **単語変更の応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1765,6 +1765,6 @@ put_alterations (path, content, function (result) {
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
 [QnA Maker の概要](../Overview/overview.md)
