@@ -156,7 +156,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 ### <a name="configure-hive"></a>Hive を構成する
 
-1. 1 か月のフライト データを含むサンプル CSV ファイルをダウンロードします。 ZIP ファイル `2017-01-FlightData.zip` を [HDInsight Github リポジトリ](https://github.com/hdinsight/hdinsight-dev-guide)からダウンロードし、その CSV ファイル `2017-01-FlightData.csv` を解凍します。 
+1. 1 か月のフライト データを含むサンプル CSV ファイルをダウンロードします。 ZIP ファイル `2017-01-FlightData.zip` を [HDInsight GitHub リポジトリ](https://github.com/hdinsight/hdinsight-dev-guide)からダウンロードし、その CSV ファイル `2017-01-FlightData.csv` を解凍します。 
 
 2. この CSV ファイルを、HDInsight クラスターに接続されている Azure Storage アカウントにコピーして、`/example/data/flights` フォルダーに配置します。
 
