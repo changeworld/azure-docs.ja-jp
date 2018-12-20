@@ -24,8 +24,8 @@ ms.locfileid: "49954292"
 > * [.NET SDK の使用](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Python の使用](data-lake-store-service-to-service-authenticate-python.md)
 > * [REST API の使用](data-lake-store-service-to-service-authenticate-rest-api.md)
-> 
->  
+>
+>
 
 この記事では、.NET SDK を使用して、Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します。 .NET SDK を使用した Data Lake Storage Gen1 に対するエンド ユーザー認証については、[Data Lake Storage Gen1 による .NET SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-net-sdk.md)に関するページを参照してください。
 
@@ -93,7 +93,7 @@ ms.locfileid: "49954292"
         var adlCreds = GetCreds_SPI_SecretKey(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, secret_key);
     }
 
-上記のスニペットでは、ヘルパー関数 `GetCreds_SPI_SecretKey` を使用しています。 このヘルパー関数のコードは[こちらの Github で](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey)入手できます。
+上記のスニペットでは、ヘルパー関数 `GetCreds_SPI_SecretKey` を使用しています。 このヘルパー関数のコードは[こちらの GitHub で](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey)入手できます。
 
 ## <a name="service-to-service-authentication-with-certificate"></a>証明書によるサービス間認証
 
@@ -113,7 +113,7 @@ ms.locfileid: "49954292"
         var adlCreds = GetCreds_SPI_Cert(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, cert);
     }
 
-上記のスニペットでは、ヘルパー関数 `GetCreds_SPI_Cert` を使用しています。 このヘルパー関数のコードは[こちらの Github で](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert)入手できます。
+上記のスニペットでは、ヘルパー関数 `GetCreds_SPI_Cert` を使用しています。 このヘルパー関数のコードは[こちらの GitHub で](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert)入手できます。
 
 ## <a name="next-steps"></a>次の手順
 この記事では、.NET SDK からサービス間認証を使って Data Lake Storage Gen1 に対して認証を行う方法について説明しました。 これで、.NET SDK を使用して Data Lake Storage Gen1 を操作する方法について説明した次の記事に進めるようになりました。
