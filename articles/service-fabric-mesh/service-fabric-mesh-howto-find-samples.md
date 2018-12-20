@@ -20,7 +20,7 @@ ms.locfileid: "52891892"
 
 次の表は、利用可能な Service Fabric Mesh のサンプル アプリケーションをまとめたものです。 これらのサンプルのソース コードには、Service Fabric リソース モデルを使用して特定のシナリオを実現する方法が示されています。
 
-テンプレートを Azure に直接デプロイする方法については、[Github のサンプル テンプレートページ](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/README.md)をご覧ください。
+テンプレートを Azure に直接デプロイする方法については、[GitHub のサンプル テンプレートページ](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/README.md)をご覧ください。
 
 
 |サンプル テンプレート|シナリオの説明|ソース コード|開発者ツール|
