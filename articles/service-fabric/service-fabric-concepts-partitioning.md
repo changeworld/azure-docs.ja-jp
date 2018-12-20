@@ -362,7 +362,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     
     ![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-サンプルの完全なソース コードについては、 [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)を参照してください。
+サンプルの完全なソース コードについては、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)を参照してください。
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services および Reliable Actor によるサブプロセスのフォーク
 Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。 
