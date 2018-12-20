@@ -37,7 +37,7 @@ ms.locfileid: "50212473"
 - [現在の一連の単語変更を取得します。](#GetAlterations)
 - [現在の一連の単語変更を置換します。](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -149,7 +149,7 @@ while False == done:
 
 **ナレッジ ベースの応答を作成する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -289,7 +289,7 @@ while False == done:
 
 **ナレッジ ベースの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -378,7 +378,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの応答を公開する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -466,7 +466,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -530,7 +530,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの応答をダウンロードする**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -631,7 +631,7 @@ print (pretty_print(result))
 
 **回答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -704,7 +704,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの詳細応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -774,7 +774,7 @@ print (pretty_print(result))
 
 **ユーザー応答のナレッジ ベースを取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -869,7 +869,7 @@ print (pretty_print(result))
 
 **ナレッジ ベースの応答を削除する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -927,7 +927,7 @@ print (pretty_print(result))
 
 **エンドポイント キーの応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -995,7 +995,7 @@ print (pretty_print(result))
 
 **エンドポイント キーの応答を更新する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1054,7 +1054,7 @@ print (pretty_print(result))
 
 **単語変更の応答を取得する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1138,7 +1138,7 @@ print (pretty_print(result))
 
 **単語変更の応答を置換する**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -1153,6 +1153,6 @@ print (pretty_print(result))
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
 [QnA Maker の概要](../Overview/overview.md)
