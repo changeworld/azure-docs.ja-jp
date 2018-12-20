@@ -237,27 +237,21 @@ items:
       href: ai-gallery-control-personal-data-dsr.md
 - name: リソース
   items:
-  - name: R 開発者ガイド
-    href: ../r-developers-guide.md
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: Net# ニューラル ネットワーク仕様言語
     href: azure-ml-netsharp-reference-guide.md
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/machine-learning/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=machine-learning
-  - name: ブログ
-    href: http://blogs.technet.com/b/machinelearning/
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-machine-learning
-  - name: ビデオ
-    href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: 77caf4b0144b8c7d7a7a48053d55864bfa9ae286
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+  - name: R 開発者ガイド
+    href: ../r-developers-guide.md
+ms.openlocfilehash: 8aaf830dc13919a664a931b5d08a11c817e8dc51
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287593"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628308"

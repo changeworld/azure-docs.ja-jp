@@ -276,7 +276,7 @@ items:
     - name: 求人情報アプリ
       href: http://aka.ms/azjobsdemo
     - name: Search Analyzer のデモ
-      href: http://alice.unearth.ai/
+      href: https://alice.unearth.ai/
     - name: Search のユース ケース
       href: https://searchsamples.azurewebsites.net/
   - name: FAQ
@@ -285,9 +285,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 8e4704546a4fe18f834fd6dd39a138658de03e08
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2731d89b7f5c1595c4a44206d22708859a5515fa
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262063"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633846"

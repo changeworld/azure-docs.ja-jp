@@ -227,7 +227,7 @@ items:
       topicHref: /azure/cognitive-services/computer-vision/
     - name: Content Moderator
       tocHref: /azure/cognitive-services/content-moderator/
-      topicHref: /azure/cognitive-services/content-moderator/overview
+      topicHref: /azure/cognitive-services/content-moderator/
     - name: Custom Decision Service
       tocHref: /azure/cognitive-services/custom-decision-service/
       topicHref: /azure/cognitive-services/custom-decision-service/custom-decision-service-overview
@@ -344,6 +344,9 @@ items:
   - name: Data Lake Storage Gen1
     tocHref: /azure/data-lake-store/
     topicHref: /azure/data-lake-store/
+  - name: 専用 HSM
+    tocHref: /azure/dedicated-hsm/
+    topicHref: /azure/dedicated-hsm/
   - name: Devtest ラボ
     tocHref: /azure/devtest-lab/
     topicHref: /azure/devtest-lab/
@@ -509,6 +512,9 @@ items:
   - name: ネットワーク
     tocHref: /azure/networking/
     topicHref: /azure/networking/networking-overview
+  - name: Notebook
+    tocHref: /azure/notebooks/
+    topicHref: /azure/notebooks/azure-notebooks-overview
   - name: Notification Hubs
     tocHref: /azure/notification-hubs/
     topicHref: /azure/notification-hubs/
@@ -524,9 +530,9 @@ items:
   - name: Power BI ワークスペース コレクション
     tocHref: /azure/power-bi-workspace-collections/
     topicHref: /azure/power-bi-workspace-collections/
-  - name: Redis Cache
-    tocHref: /azure/redis-cache/
-    topicHref: /azure/redis-cache/
+  - name: Azure Cache for Redis
+    tocHref: /azure/azure-cache-for-redis/
+    topicHref: /azure/azure-cache-for-redis/
   - name: RemoteApp
     tocHref: /azure/remoteapp/
     topicHref: /azure/remoteapp/
@@ -617,14 +623,14 @@ items:
       - name: SAP
         tocHref: /azure/virtual-machines/workloads/sap/
         topicHref: /azure/virtual-machines/workloads/sap/get-started
-    - name: " Linux"
+    - name: Linux
       tocHref: /azure/virtual-machines/linux/
       topicHref: /azure/virtual-machines/linux/
       items:
       - name: Linux クラシック デプロイ
         tocHref: /azure/virtual-machines/linux/classic/
         topicHref: /azure/virtual-machines/linux/classic/
-    - name: " Windows"
+    - name: Windows
       tocHref: /azure/virtual-machines/windows/
       topicHref: /azure/virtual-machines/windows/
       items:
@@ -640,9 +646,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 33835959e4a8524c6f9f6ed43a9f7daddf9f7dec
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 65afb479aeb8ca5018d360a7f07440488d3dfd7f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635851"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651913"

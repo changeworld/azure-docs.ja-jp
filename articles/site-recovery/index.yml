@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 60b5524721fc1573df545655fe1569feb53eb4c2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bed37d98b988ce81ffcb8c18f2289a9e6ff880c5
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835694"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651930"
 documentType: LandingData
 title: Site Recovery のドキュメント
 metadata:
@@ -15,7 +15,6 @@ metadata:
   manager: carolz
   ms.service: site-recovery
   ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/27/2018
   ms.author: carolz
