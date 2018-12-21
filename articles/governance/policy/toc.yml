@@ -200,7 +200,7 @@ items:
       - name: SQL Server バージョン 12.0 が必要
         displayName: deny, builtin
         href: samples/require-sql-12.md
-    - name: '[SQL データベース]'
+    - name: SQL データベース
       items:
       - name: 許可されている SQL DB の SKU
         displayName: deny
