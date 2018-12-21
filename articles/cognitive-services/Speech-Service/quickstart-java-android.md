@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Android で Java と Speech Service SDK を使用して音声を認識する'
+title: 'クイック スタート: 音声を認識する (Java (Android)) - 音声サービス'
 titleSuffix: Azure Cognitive Services
 description: Android で Java と Speech Service SDK を使用して音声を認識する方法について説明します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 0785383d8b5a8ab282d8097d5229fa5a8aade06f
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219428"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090110"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート: Android で Speech SDK を使用して Java で音声を認識する
 
@@ -42,7 +42,7 @@ ms.locfileid: "51219428"
 
    ![[新しいプロジェクトの作成] ウィザードのスクリーンショット](media/sdk/qs-java-android-02-create-android-project.png)
 
-1. **[ターゲットの Android デバイス]** 画面で、**[Phone and Tablet]\(電話およびタブレット\)** のみ選択します。 下にあるドロップダウン リストで、**[API 23: Android 6.0 (Marshmallow)]** を選択し、**[次へ]** を選択します。
+1. **[ターゲットの Android デバイス]** 画面で、**[Phone and Tablet]\(電話およびタブレット\)** のみ選択します。 その下のドロップダウン リストから **[API 23: Android 6.0 (Marshmallow)]** を選択し、**[次へ]** を選択します。
 
    ![[新しいプロジェクトの作成] ウィザードのスクリーンショット](media/sdk/qs-java-android-03-target-android-devices.png)
 
@@ -63,7 +63,7 @@ Cognitive Services Speech SDK の現在のバージョンは `1.1.0` です。
 Android 用 Speech SDK は、必要なライブラリと、それを使用するために必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。
 ホストされている Maven リポジトリの場所は https://csspeechstorage.blob.core.windows.net/maven/ です。
 
-Speech SDK を使用するためにプロジェクトを設定します。 Android Studio のメニュー バーから **[ファイル]** > **[Project Structure]** (プロジェクトの構造) を選択してプロジェクトの構造のウィンドウ開きます。 [Project Structure] (プロジェクトの構造) ウィンドウで、次の変更を行います。 
+Speech SDK を使用するためにプロジェクトを設定します。 Android Studio のメニュー バーから **[ファイル]** > **[Project Structure]** (プロジェクトの構造) を選択してプロジェクトの構造のウィンドウ開きます。 [Project Structure] (プロジェクトの構造) ウィンドウで、次の変更を行います。
 
 1. ウィンドウの左側にあるリストから、**[プロジェクト]** を選択します。 **[Default Library Repository]\(既定のライブラリ リポジトリ\)** 設定を編集して、コンマと、一重引用符で囲んだ Maven リポジトリの URL を追加します。 'https://csspeechstorage.blob.core.windows.net/maven/'
 
@@ -118,7 +118,7 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
    * `onCreate` メソッドには、マイクとインターネットのアクセス許可を要求し、ネイティブ プラットフォーム バインディングを初期化するコードが含まれています。 ネイティブ プラットフォーム バインディングの構成は 1 回だけ必要です。 アプリケーションの初期化中に早期に行う必要があります。
-   
+
    * メソッド `onSpeechButtonClicked` は上述の通りボタン クリック ハンドラーです。 ボタンを押下すると、音声テキスト変換がトリガーされます。
 
 1. 同じファイル内で、文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
