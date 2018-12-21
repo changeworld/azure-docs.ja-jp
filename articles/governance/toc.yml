@@ -13,7 +13,7 @@ items:
     items:
     - name: Create
       href: management-groups/create.md
-    - name: '[管理]'
+    - name: 管理
       href: management-groups/manage.md
   - name: リソース グラフ
     href: resource-graph/overview.md
