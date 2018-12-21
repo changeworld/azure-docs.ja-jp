@@ -3,7 +3,7 @@ title: Azure AD v2.0 ASP.NET Core Web アプリのクイック スタート | Mi
 description: OpenID Connect を使用して、ASP.NET Core Web アプリで Microsoft サインインを実装する方法について説明します
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/09/2018
-ms.author: andret
+ms.date: 12/05/2018
+ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4849ffcc6fd71a0b88b270f2e6cbdb23b18ecc76
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 3e571958daa72c0cb3e80bfac81d022c2f223f11
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611643"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993586"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート: ASP.NET Core Web アプリに Microsoft サインインを追加する
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "51611643"
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
 > クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
 > * [簡易] [選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [手動] [選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [手動] [選択肢 2: アプリケーションを登録し、コード サンプルを手動で構成する](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
@@ -44,7 +44,7 @@ ms.locfileid: "51611643"
 > 1. アプリケーションの名前を入力し、**[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションとコード サンプルを登録して手動で構成する
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選択肢 2: アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する
 >
 > #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
@@ -139,7 +139,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `.AddAzureAd` を含む行によって、Azure AD 認証がアプリケーションに追加されます。 さらに、Azure AD v2.0 エンドポイントを使用してサインインするように構成されます。
 
-> |Where  |  |
+> |各値の説明:  |  |
 > |---------|---------|
 > | ClientId  | Azure portal に登録されているアプリケーションのアプリケーション (クライアント) ID。 |
 > | Authority | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は https://login.microsoftonline.com/{tenant}/v2.0。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |

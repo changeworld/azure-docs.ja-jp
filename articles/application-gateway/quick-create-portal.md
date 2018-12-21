@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6ad839b9cf1179e282b9163df5a38e13417408e2
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 7e11affece7e7eb133aa22e159ec07d4f15e96f7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706230"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999595"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure Portal
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>クイック スタート: Azure Application Gateway による Web トラフィックのルーティング - Azure portal
 
-Azure Application Gateway では、ポートにリスナーを割り当て、ルールを作成し、バックエンド プールにリソースを追加することによって、アプリケーション Web トラフィックを特定のリソースにルーティングできます。
+Azure Application Gateway では、ポートにリスナーを割り当て、規則を作成し、バックエンド プールにリソースを追加することによって、アプリケーション Web トラフィックを特定のリソースにルーティングできます。
 
 このクイック スタートでは、Azure Portal を使用して、そのバックエンド プール内の 2 つの仮想マシンで、アプリケーション ゲートウェイをすばやく作成する方法を示します。 さらに、それをテストし、正しく動作していることを確認します。
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -87,10 +87,10 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサイン�
     - *azureuser* - 管理者のユーザー名です。
     - *Azure123456!* 入力します。
 
-   他の既定値をそのまま使用し、**[Next: Disks]\(次へ: ディスク\)** をクリックします。
-4. ディスクの既定値をそのまま使用し、**[Next: Networking]\(次へ: ネットワーク\)** をクリックします。
+   他の既定値をそのまま使用し、**[次へ: ディスク]** をクリックします。
+4. 既定値をそのまま使用し、**[次へ: ネットワーク]** をクリックします。
 5. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。
-6. 他の既定値をそのまま使用し、**[Next: Management]\(次へ: 管理\)** をクリックします。
+6. 他の既定値をそのまま使用し、**[次へ: 管理]** をクリックします。
 7. **[オフ]** をクリックして、ブート診断を無効にします。 他の既定値をそのまま使用し、**[確認および作成]** をクリックします。
 8. 概要ページの設定を確認して、**[作成]** をクリックします。
 9. 仮想マシンの作成が完了するのを待って先に進みます。

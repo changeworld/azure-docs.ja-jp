@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bee684409b2ef3fffeb9f175c2b469d3736b6484
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986456"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993838"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>チュートリアル: 高可用性 MySQL データベースの提供
 
@@ -46,7 +46,7 @@ Azure Stack オペレーターとして、MySQL Server データベースをホ�
 > MySQL クラスターを作成するには、以下のすべてが必要です。
 
 - [レプリケーション付きの MySQL](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster)。 これは、MySQL クラスターのデプロイに使用される Bitnami ソリューション テンプレートです。
-- [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview)。 credativ によって提供されている Microsoft Azure のバックポート カーネル付き Debian 8 "Jessie"。 Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。
+- [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian)。 credativ によって提供されている Microsoft Azure のバックポート カーネル付き Debian 8 "Jessie"。 Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。
 - [Linux 2.0 用のカスタム スクリプト](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.custom-script-linux?tab=Overview)。 カスタム スクリプト拡張機能は、VM のプロビジョニング後に VM のカスタマイズ タスクを実行するためのツールです。 この拡張機能を仮想マシンに追加すると、Azure ストレージからスクリプトをダウンロードして VM 上で実行できます。 カスタム スクリプト拡張タスクは、Azure PowerShell コマンドレットと Azure クロスプラットフォーム コマンドライン インターフェイス (xPlat CLI) を使用して自動化することもできます。
 - Linux Extension 1.4.7 用 VM アクセス。 VM アクセス拡張機能を使用すると、パスワード、SSH キー、または SSH 構成をリセットして、VM へのアクセスを再獲得することができます。 また、この拡張機能を使用して、パスワードまたは SSH キーを使用して新しいユーザーを追加したり、ユーザーを削除したりすることもできます。 この拡張機能は、Linux VM をターゲットとしています。
 

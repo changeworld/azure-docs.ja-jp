@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 6e75ceb388b3111ea9ec31ba6bffded4077a019b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ab8a6d5b6d4bb52863e77b844a4008bb80d840be
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248678"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993960"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>クイック スタート: Translator Text API と Python を使用して翻訳の代替候補を取得する
 
@@ -69,7 +69,7 @@ else:
 `params` は、ソース言語と出力言語を設定するために使用されます。 このサンプルでは、英語 (`en`) とスペイン語 (`es`) を使用します。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Dictionary Lookup](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: 辞書検索](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup)」をご覧ください。
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -167,7 +167,7 @@ python dictionary-lookup.py
 
 ## <a name="see-also"></a>関連項目
 
-テキストの表記変換に加えて、Translator Text API を使用して次の操作を行う方法を学習します。
+Translator Text API を使用して以下を実行する方法を確認します。
 
 * [テキストを翻訳する](quickstart-python-translate.md)
 * [テキストを表記変換する](quickstart-python-transliterate.md)

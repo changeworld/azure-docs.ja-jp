@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 08bce244dc4eafcd423123b1230fe4aa8b4ed04e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 09ba81e4d895afeccf41617039732ae3e72147d7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092044"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972424"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
@@ -37,7 +37,7 @@ ms.locfileid: "43092044"
 ## <a name="overview"></a>概要
 ソリューションの概略図を次に示します。 
 
-![データの増分読み込み](media\tutorial-Incrementally-copy-powershell\incrementally-load.png)
+![データの増分読み込み](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
 
 このソリューションを作成するための重要な手順を次に示します。 
 
@@ -188,7 +188,7 @@ END
     ```
 
 * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、共同作成者または所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します

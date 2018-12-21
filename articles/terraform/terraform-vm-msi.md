@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6fef56d780fe664e79f66fa23be526aec71d7e7b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242094"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971166"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Azure Marketplace イメージを使用して Azure リソースのマネージド ID を使用する Terraform Linux 仮想マシンを作成する
 
@@ -37,7 +37,7 @@ Terraform Linux 仮想マシンのインスタンスを作成する手順を以�
 
 3. 右下にある Terraform の詳細タブで、**[作成]** ボタンを選択します。
 
-    ![Terraform 仮想マシンの作成](media\terraformmsi.png)
+    ![Terraform 仮想マシンの作成](media/terraformmsi.png)
 
 4. 以降のセクションでは、Terraform Linux 仮想マシンを作成するウィザードの各ステップでの入力について説明します。 次のセクションでは、これらの各手順を構成するために必要な入力を一覧表示します。
 
@@ -56,7 +56,7 @@ Terraform Linux 仮想マシンのインスタンスを作成する手順を以�
 
 2. **追加設定**
 
-   * **サイズ**: 仮想マシンのサイズ。 
+   * **[サイズ]**:仮想マシンのサイズ。 
    * **VM ディスクの種類**: SSD または HDD。
 
 3. **[Summary Terraform]\(Terraform の概要\)**

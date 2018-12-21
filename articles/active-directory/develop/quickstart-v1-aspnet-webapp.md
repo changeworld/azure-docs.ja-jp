@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: a421527de275d38650c314d3722a7d2f93e8331d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 10de179c6055feb46439792ea74a0a3131f39646
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285018"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970658"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -56,9 +56,9 @@ ms.locfileid: "52285018"
 | [Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/) | アプリケーションで認証に OpenIDConnect を使用できるようにするためのミドルウェア |
 | [Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies) |アプリケーションで Cookie を使用してユーザー セッションを維持できるようにするためのミドルウェア |
 | [Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb) | ASP.NET 要求パイプラインを使用した、IIS 上での OWIN ベース アプリケーションの実行が可能 |
-|  |  | 
+|  |  |
 
-## <a name="step-1-set-up-your-project"></a>手順 1: プロジェクトを設定する
+## <a name="step-1-set-up-your-project"></a>手順 1: プロジェクトの設定
 
 これらの手順では、ASP.NET プロジェクトで OpenID 接続を使用して、OWIN ミドルウェアから認証パイプラインをインストールおよび構成する方法を示します。
 
@@ -73,7 +73,7 @@ ms.locfileid: "52285018"
 3. アプリケーションに名前を付けて、**[OK]** を選択します。
 4. **[Empty]** を選択して、**MVC** 参照を追加するチェック ボックスをオンにします。
 
-## <a name="step-3-add-authentication-components"></a>手順 3: 認証コンポーネントを追加する
+## <a name="step-3-add-authentication-components"></a>手順 3: 認証コンポーネントの追加
 
 1. Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に移動します。
 2. パッケージ マネージャー コンソールのウィンドウで以下を入力し、**OWIN ミドルウェア NuGet パッケージ**を追加します。
@@ -104,11 +104,11 @@ OWIN ミドルウェアの*スタートアップ クラス*を作成するには
 
 1. *OWIN* と *Microsoft.IdentityModel* の名前空間を `Startup.cs` に追加します。
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Startup.cs?name=AddedNameSpaces "Startup.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Startup.cs?name=AddedNameSpaces "Startup.cs")]
 
 2. スタートアップ クラスを次のコードに置き換えます。
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Startup.cs?name=Startup "Startup.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Startup.cs?name=Startup "Startup.cs")]
 
 <!--start-collapse-->
 > [!NOTE]
@@ -129,11 +129,11 @@ OWIN ミドルウェアの*スタートアップ クラス*を作成するには
 4.  これに `HomeController` という名前を付け、**[追加]** を選択します。
 5.  クラスに **OWIN** 名前空間を追加します。
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\HomeController.cs?name=AddedNameSpaces "HomeController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=AddedNameSpaces "HomeController.cs")]
 
 6. コードを使用して認証チャレンジを開始し、サインインとサインアウトを処理する以下のメソッドをコントローラーに追加します。
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\HomeController.cs?name=SigInAndSignOut "HomeController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=SigInAndSignOut "HomeController.cs")]
 
 ## <a name="step-6-create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>手順 6: アプリのホーム ページを作成し、サインイン ボタンでユーザーをサインインする
 
@@ -158,11 +158,11 @@ Visual Studio で新しいビューを作成してサインイン ボタンを�
 1. これに **ClaimsController** という名前を付けます。
 1. コントローラー クラスのコードを、以下のコードに置き換えます。これによって、クラスに `[Authorize]` 属性が追加されます。
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
 
 <!--start-collapse-->
 > [!NOTE]
-> `[Authorize]` 属性を使用しているため、このコントローラーのすべてのメソッドは、ユーザーが認証されている場合にのみ実行できます。 認証されていないユーザーがコントローラーにアクセスしようとすると、OWIN は認証チャレンジを開始し、ユーザーに認証を強制します。 上記のコードは、ユーザーのトークンに含まれる特定のユーザー属性のユーザーの要求コレクションを参照します。 これらの属性には、ユーザーのフルネームとユーザー名、さらにグローバル ユーザー識別子のサブジェクトが含まれます。 また、ユーザーの組織の ID を表す*テナント ID* も含まれています。 
+> `[Authorize]` 属性を使用しているため、このコントローラーのすべてのメソッドは、ユーザーが認証されている場合にのみ実行できます。 認証されていないユーザーがコントローラーにアクセスしようとすると、OWIN は認証チャレンジを開始し、ユーザーに認証を強制します。 上記のコードは、ユーザーのトークンに含まれる特定のユーザー属性のユーザーの要求コレクションを参照します。 これらの属性には、ユーザーのフルネームとユーザー名、さらにグローバル ユーザー識別子のサブジェクトが含まれます。 また、ユーザーの組織の ID を表す*テナント ID* も含まれています。
 <!--end-collapse-->
 
 ## <a name="step-8-create-a-view-to-display-the-users-claims"></a>手順 8: ユーザー要求を表示するビューを作成する
@@ -187,7 +187,7 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
     <add key="ClientId" value="Enter_the_Application_Id_here" />
     <add key="RedirectUrl" value="Enter_the_Redirect_Url_here" />
     <add key="Tenant" value="common" />
-    <add key="Authority" value="https://login.microsoftonline.com/{0}" /> 
+    <add key="Authority" value="https://login.microsoftonline.com/{0}" />
     ```
 2. ソリューション エクスプローラーで、プロジェクトを選択して <i>[プロパティ]</i> ウィンドウを確認します ([プロパティ] ウィンドウが表示されない場合は F4 キーを押します)
 3. [SSL 有効] を <code>True</code> に変更します
@@ -208,7 +208,7 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
 > [!TIP]
 > アカウントが複数のディレクトリにアクセスするように構成されている場合は、Azure portal の右上にあるアカウント名をクリックし、選択したディレクトリを指定されたとおりに検証して、アプリケーションを登録する組織の適切なディレクトリを選択したことを確認します。<br/>![正しいディレクトリの選択](./media/quickstart-v1-aspnet-webapp/tenantselector.png)
 
-## <a name="step-10-configure-sign-in-options"></a>手順 10: サインイン オプションを構成する
+## <a name="step-10-configure-sign-in-options"></a>手順 10: サインイン オプションの構成
 
 1 つの組織の Azure AD インスタンスに属するユーザーのみにサインインを許可するか、任意の組織に属するユーザーからのサインインを受け入れるようにアプリケーションを構成できます。 次のいずれかの手順に従ってください。
 
@@ -227,10 +227,12 @@ Azure AD と統合されている会社または組織の職場および学校�
 このオプションは、基幹業務アプリケーションで一般的なシナリオです。
 
 アプリケーションが特定の Azure AD インスタンスに属するアカウント (そのインスタンスの *ゲスト アカウント* を含む) からのサインインのみを受け入れるようにする場合は、以下の手順を実行します。
+
 1. `Common` からの *web.config* の `Tenant` パラメーターを組織のテナント名前と置き換えます (例: *contoso.onmicrosoft.com*)。
 1. [*OWIN Startup クラス*](#configure-the-authentication-pipeline) 内の `ValidateIssuer` 引数を `true` に変更します。
 
 特定の組織の一覧のみからユーザーを許可するには、次の手順を実行します。
+
 1. `ValidateIssuer` を true に設定します。
 1. 組織の一覧を指定するには、`ValidIssuers` パラメーターを使用します。
 
@@ -259,7 +261,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 <!--end-configure-arp-->
 <!--start-test-->
 
-## <a name="step-11-test-your-code"></a>手順 11: コードをテストする
+## <a name="step-11-test-your-code"></a>手順 11: コードのテスト
 
 1. **F5** を押して、Visual Studio でプロジェクトを実行します。 ブラウザーが開き、`http://localhost:{port}` に移動します。**[Microsoft アカウントでサインイン]** ボタンが表示されます。
 1. サインイン用ボタンを選択します。
