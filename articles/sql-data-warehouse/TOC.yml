@@ -305,7 +305,7 @@ items:
       href: sql-data-warehouse-partner-business-intelligence.md
     - name: データ統合
       href: sql-data-warehouse-partner-data-integration.md
-    - name: '[データ管理]'
+    - name: データ管理
       href: sql-data-warehouse-partner-data-management.md
 ms.openlocfilehash: c619d60db23b710ce5696504ca1a6bf3ce1bd4c1
 ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
