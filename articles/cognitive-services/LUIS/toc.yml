@@ -119,7 +119,7 @@ items:
       href: luis-concept-feature.md
     - name: パターン
       href: luis-concept-patterns.md
-  - name: '[データ管理]'
+  - name: データ管理
     items:
     - name: データの変更
       href: luis-concept-data-alteration.md
@@ -215,7 +215,7 @@ items:
       href: luis-interactive-test.md
     - name: バッチ テスト
       href: luis-how-to-batch-test.md
-  - name: '[発行]'
+  - name: 発行
     href: luis-how-to-publish-app.md
   - name: アプリの管理
     items:
