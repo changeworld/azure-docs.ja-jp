@@ -95,7 +95,7 @@ items:
   - name: Speech Devices SDK を取得する
     displayName: roobo, speech devices sdk, download
     href: get-speech-devices-sdk.md
-  - name: '[カスタマイズ]'
+  - name: カスタマイズ
     items:
     - name: 音響モデルをカスタマイズする
       href: how-to-customize-acoustic-models.md
