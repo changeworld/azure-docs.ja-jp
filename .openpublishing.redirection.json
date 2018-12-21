@@ -7,6 +7,16 @@
             "redirect_document_id": false
         },
         {
+            "source_path": "articles/cognitive-services/bing-visual-search/tutorial-bing-visual-search-single-page-app-source.md",
+            "redirect_url": "/azure/cognitive-services/bing-visual-search/tutorial-bing-visual-search-single-page-app",
+            "redirect_document_id": true
+        },
+        {
+            "source_path": "articles/cognitive-services/bing-visual-search/sdk.md",
+            "redirect_url": "/azure/cognitive-services/bing-visual-search/visual-search-sdk-c-sharp",
+            "redirect_document_id": true
+        },
+        {
             "source_path": "articles/machine-learning/service/how-to-deploy-to-aks.md",
             "redirect_url": "/azure/machine-learning/service/how-to-deploy-and-where",
             "redirect_document_id": false
@@ -32378,8 +32388,13 @@
         },
         {
             "source_path":  "articles/log-analytics/log-analytics-usage.md",
-            "redirect_url":  "/azure/azure-monitor/platform/data-usage",
-            "redirect_document_id":  true
+            "redirect_url":  "/azure/azure-monitor/platform/manage-cost-storage",
+            "redirect_document_id":  false
+        },
+        {
+            "source_path":  "articles/azure-monitor/platform/data-usage.md",
+            "redirect_url":  "/azure/azure-monitor/platform/manage-cost-storage",
+            "redirect_document_id":  false
         },
         {
             "source_path":  "articles/monitoring-and-diagnostics/alert-activity-log.md",
@@ -32872,6 +32887,61 @@
             "redirect_document_id":  true
         },
         {
+            "source_path":  "articles/application-insights/app-insights-asp-net.md",
+            "redirect_url":  "/azure/azure-monitor/app/asp-net",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/app-insights-asp-net-core.md",
+            "redirect_url":  "/azure/azure-monitor/app/asp-net-core",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/app-insights-asp-net-dependencies.md",
+            "redirect_url":  "/azure/azure-monitor/app/asp-net-dependencies",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/app-insights-asp-net-exceptions.md",
+            "redirect_url":  "/azure/azure-monitor/app/asp-net-exceptions",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/app-insights-asp-net-more.md",
+            "redirect_url":  "/azure/azure-monitor/app/asp-net-more",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/app-insights-asp-net-trace-logs.md",
+            "redirect_url":  "/azure/azure-monitor/app/asp-net-trace-logs",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/app-insights-asp-net-troubleshoot-no-data.md",
+            "redirect_url":  "/azure/azure-monitor/app/asp-net-troubleshoot-no-data",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/auto-collect-dependencies.md",
+            "redirect_url":  "/azure/azure-monitor/app/auto-collect-dependencies",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/automate-custom-reports.md",
+            "redirect_url":  "/azure/azure-monitor/app/automate-custom-reports",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/app-insights-automate-with-flow.md",
+            "redirect_url":  "/azure/azure-monitor/app/automate-with-flow",
+            "redirect_document_id":  true
+        },
+        {
+            "source_path":  "articles/application-insights/automate-with-logic-apps.md",
+            "redirect_url":  "/azure/azure-monitor/app/automate-with-logic-apps",
+            "redirect_document_id":  true
+        },
+        {
             "source_path":  "articles/storage/common/storage-lifecycle-managment-concepts.md",
             "redirect_url":  "/azure/storage/common/storage-lifecycle-management-concepts",
             "redirect_document_id":  true
@@ -33285,6 +33355,16 @@
 			{
 			"source_path": "articles/application-insights/app-insights-analytics-import.md",
 			"redirect_url": "/azure/azure-monitor/platform/data-collector-api",
+			"redirect_document_id": false
+        },
+        {
+            "source_path": "articles/cognitive-services/LUIS/luis-quickstart-intent-and-key-phrase.md",
+            "redirect_url": "/azure/cognitive-services/LUIS/luis-reference-prebuilt-keyphrase",
+            "redirect_document_id": true
+        },
+		{
+			"source_path": "articles/application-insights/app-insights-pricing-enterprise-details.md",
+			"redirect_url": "/azure/application-insights/app-insights-pricing",
 			"redirect_document_id": false
         }
     ]
