@@ -1,6 +1,6 @@
 ---
 title: クイック スタート - Azure PowerShell を使用して Windows IaaS VM を暗号化する | Microsoft Docs
-description: このクイック スタートでは、Azure PowerShell を使用して Windows 仮想マシンを暗号化する方法について説明します。
+description: このクイック スタートでは、Azure PowerShell を使用して Azure 上で Windows IaaS VM を暗号化する方法について説明します。
 services: security
 documentationcenter: na
 author: mestew
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 531da9af871595e6f8bf5d22832367bbfb301dab
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.custom: seodec18
+ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245873"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087866"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して Windows IaaS VM を暗号化する
 
-Azure Disk Encryption を使用して、Windows と Linux の IaaS 仮想マシンのディスクを暗号化できます。 このソリューションは、ディスクの暗号化キーとシークレットを制御および管理できるように、Azure Key Vault と統合されています。 Azure Disk Encryption を使用することで、保存時の VM を業界標準の暗号化テクノロジで確実にセキュリティ保護できます。 このクイック スタートでは、Windows Server 2016 の VM を作成し、OS ディスクを暗号化します。 
+Azure Disk Encryption を使用して、Windows と Linux の IaaS 仮想マシンのディスクを暗号化できます。 このソリューションは、ディスクの暗号化キーとシークレットを制御および管理できるように、Azure Key Vault と統合されています。 Azure Disk Encryption を使用することで、保存時の VM を業界標準の暗号化テクノロジで確実にセキュリティ保護できます。 このクイック スタートでは、Windows Server 2016 の VM を作成し、OS ディスクを暗号化します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -40,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 1. **[Windows PowerShell ISE]** を右クリックし、**[管理者として実行]** をクリックします。
-1. **[Administrator: Windows PowerShell ISE (管理者: Windows PowerShell ISE)]** ウィンドウで、**[表示]** をクリックし、**[Show Script Pane (スクリプト ウィンドウの表示)]** をクリックします。
+1. **[管理者: Windows PowerShell ISE]** ウィンドウで、**[表示]** をクリックし、**[スクリプト ウィンドウの表示]** をクリックします。
 1. スクリプト ウィンドウで、次のコマンドレットを入力します。 
 
      ```azurepowershell
@@ -54,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="bkmk_PrereqScript"></a> Azure Disk Encryption の前提条件スクリプトを実行する
  **ADEPrereqScript.ps1** では、リソース グループとキー コンテナーが作成され、キー コンテナーのアクセス ポリシーが設定されます。 また、このスクリプトでは、誤って削除されるのを防ぐため、キー コンテナーに対するリソース ロックも作成されます。  
 
-1. **[Administrator: Windows PowerShell ISE]\(管理者: Windows PowerShell ISE\)** ウィンドウで、**[ファイル]** をクリックし、**[開く]** をクリックします。 **ADEPrereqScript.ps1** ファイルに移動してダブルクリックします。 スクリプトがスクリプト ウィンドウで開かれます。
+1. **[管理者: Windows PowerShell ISE]** ウィンドウで、**[ファイル]** をクリックし、**[開く]** をクリックします。 **ADEPrereqScript.ps1** ファイルに移動してダブルクリックします。 スクリプトがスクリプト ウィンドウで開かれます。
 2. **[スクリプトの実行]** の緑色の矢印をクリックするか F5 キーを押して、スクリプトを実行します。 
 3. 新しい**リソース グループ**と新しい**キー コンテナー**の名前を入力します。 後でリソース グループを削除するので、このクイック スタートでは既存のリソース グループまたはキー コンテナーを使用しないでください。 
 4. リソースを作成する場所を入力します (例: **EastUS**)。 場所の一覧を取得するには、`Get-AzureRMLocation` を使用します。
@@ -68,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成 
 ディスクを暗号化できるように、仮想マシンを作成する必要があります。 スクリプトでは、8 GB の RAM と 30 GB の OS ディスクを使用して Windows Server 2016 VM が作成されます。 
 
-1. スクリプトを **[Administrator: Windows PowerShell ISE]\(管理者: Windows PowerShell ISE\)** スクリプト ウィンドウにコピーし、先頭の 3 つの変数を変更します。 リソース グループと場所は、[前提条件スクリプト](#bkmk_PrereqScript)で使用したものと同じにする必要があります。  
+1. スクリプトを **[管理者: Windows PowerShell ISE]** スクリプト ウィンドウにコピーし、先頭の 3 つの変数を変更します。 リソース グループと場所は、[前提条件スクリプト](#bkmk_PrereqScript)で使用したものと同じにする必要があります。  
 
    ```azurepowershell
     # Variables for common values

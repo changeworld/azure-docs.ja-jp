@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル 4: 完全なテキスト一致 - LUIS リスト エンティティ'
+title: 完全なテキスト一致
 titleSuffix: Azure Cognitive Services
 description: 事前に定義された項目の一覧に一致するデータを取得します。 一覧の各項目には、同様に完全に一致するシノニムを含めることができます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 2ce6e7c796faf0c7377a33dabe1e8c05e81fde2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5706e0b124bb9ceaf1abf7228faf088dc4e510ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280710"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096691"
 ---
-# <a name="tutorial-4-extract-exact-text-matches"></a>チュートリアル 4: 完全なテキスト一致を抽出する
+# <a name="tutorial-4-extract-exact-text-matches"></a>チュートリアル 4:完全なテキスト一致を抽出する
 このチュートリアルでは、事前に定義された項目の一覧に一致するデータを取得する方法について説明します。 一覧の各項目には、シノニムの一覧を含めることができます。 人事アプリの場合、従業員は、名前、電子メール、電話番号、米国連邦税 ID などのいくつかの重要な情報で識別できます。 
 
 人事アプリは、あるビルから別のビルにどの従業員が移動するかを特定する必要があります。 従業員の移動に関する発話の場合、LUIS はその意図を特定し、従業員を移動するための標準的な指示をクライアント アプリケーションが作成できるように従業員を抽出します。
@@ -41,7 +42,7 @@ ms.locfileid: "51280710"
 > * [発行]
 > * エンドポイントから意図とエンティティを取得する
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>既存のアプリを使用する
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
@@ -57,7 +58,7 @@ ms.locfileid: "51280710"
 
 ## <a name="moveemployee-intent"></a>MoveEmployee 意図
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
@@ -84,7 +85,7 @@ ms.locfileid: "51280710"
 
     番号と datetimeV2 が前のチュートリアルで追加され、いずれかの発話の例に見つかると自動的にラベルが付けられることに注意してください。
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="employee-list-entity"></a>従業員のリスト エンティティ
 これで **MoveEmployee** 意図に発話の例が含まれたので、LUIS は従業員が何かを理解する必要があります。 
@@ -106,11 +107,11 @@ ms.locfileid: "51280710"
 
 3. エンティティ ポップアップ ダイアログで、エンティティ名として「`Employee`」を入力し、エンティティ型として **[リスト]** を指定します。 **[完了]** を選択します。  
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "新しいエンティティの作成ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![新しいエンティティ作成のポップアップ ダイアログのスクリーンショット](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "新しいエンティティ作成のポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
 4. 従業員エンティティ ページで、新しい値として「`Employee-24612`」と入力します。
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "値の入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
+    [![値入力のスクリーンショット](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "値入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
 5. シノニムについては、次の値を追加します。
 
@@ -122,7 +123,7 @@ ms.locfileid: "51280710"
     |個人の携帯電話番号|425-555-1212|
     |米国連邦政府の社会保障番号|123-45-6789|
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "シノニムの入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
+    [![シノニム入力のスクリーンショット](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "シノニム入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 6. 新しいシノニムとして「`Employee-45612`」と入力します。
 
@@ -150,7 +151,7 @@ ms.locfileid: "51280710"
 
 2. アドレスの URL の末尾に移動し、「`shift 123-45-6789 from Z-1242 to T-54672`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 ラベル付けされた発話に、この発話と一致するものはありません。したがって、テストは適切で、`MoveEmployee` 意図が返され `Employee` が抽出されるはずです。
 
-  ```JSON
+  ```json
   {
     "query": "shift 123-45-6789 from Z-1242 to T-54672",
     "topScoringIntent": {

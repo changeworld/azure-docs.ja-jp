@@ -1,27 +1,22 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos DB のファイアウォールを作成する | Microsoft Docs
+title: Azure PowerShell スクリプト - Azure Cosmos DB のファイアウォールを作成する
 description: Azure PowerShell サンプル スクリプト - Azure Cosmos DB のファイアウォールを作成する
 services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
 ms.service: cosmos-db
+author: SnehaGunda
+ms.author: sngun
 ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 05/10/2017
-ms.author: sngun
-ms.openlocfilehash: b6f6d58772ffef385abb0c7ad4d59e301afd2b61
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 013afdbcde94ef7b5224408b7643037051083df4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41920067"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955022"
 ---
-# <a name="azure-cosmos-db-create-a-firewall-using-powershell"></a>Azure Cosmos DB: PowerShell を使用してファイアウォールを作成する
+# <a name="azure-cosmos-db-create-a-firewall-using-powershell"></a>Azure Cosmos DB は:PowerShell を使用してファイアウォールを作成する
 
 この PowerShell サンプル スクリプトでは、任意の種類の Azure Cosmos DB API アカウントのファイアウォールを作成します。 
 

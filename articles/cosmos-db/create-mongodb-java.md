@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Java と MongoDB API によるコンソール アプリの構築'
+title: Azure Cosmos DB は:Java と MongoDB API によるコンソール アプリの構築
 description: Azure Cosmos DB MongoDB API への接続とクエリに使用できる Java コード サンプルについて説明します。
 services: cosmos-db
 author: slyons
@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: sclyon
-ms.openlocfilehash: c77d6610939322fcf258e1b650672f319baf0815
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 30e87ba14c6754fa39269f3afac318a02cf99a2c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832413"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162021"
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB: Java と Azure Portal による MongoDB API コンソール アプリの構築
+# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB は:Java と Azure portal による MongoDB API コンソール アプリの構築
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -53,7 +53,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-github から MongoDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub から MongoDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 

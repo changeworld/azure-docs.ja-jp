@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 2bc0579d3dd60d66a23a29dabff7e43ca8dfee76
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578351"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435397"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -113,6 +113,10 @@ Azure Container Registry (ACR) をコンテナーのイメージ ストアとし
   - *Microsoft.Compute/disks/read*
   - *Microsoft.Compute/disks/write*
 - または、リソース グループに対する[ストレージ アカウント共同作成者][rbac-storage-contributor]の組み込みロールを割り当てます。
+
+### <a name="azure-container-instances"></a>Azure Container Instances
+
+Virtual Kubelet を使用して AKS と統合し、AKS クラスターとは別のリソース グループで Azure Container Instances (ACI) を実行する場合は、AKS サービス プリンシパルに ACI リソース グループに対する "*共同作成者*" 権限を与える必要があります。
 
 ## <a name="additional-considerations"></a>追加の考慮事項
 

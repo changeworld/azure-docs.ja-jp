@@ -1,5 +1,5 @@
 ---
-title: Azure App Service on Linux で Java Enterprise Web アプリを構築する | Microsoft Docs
+title: Linux 上で Java Enterprise Web アプリを構築する - Azure App Service | Microsoft Docs
 description: Azure App Service on Linux 上の Wildfly で動作する Java Enterprise アプリを取得する方法について説明します。
 author: JasonFreeberg
 manager: routlaw
@@ -10,16 +10,17 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
-ms.openlocfilehash: 0772dbb1aaa6b00994bd653c19b006114377dc5f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165460"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344229"
 ---
-# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル: Azure で Java EE と Postgres の Web アプリを構築する
+# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル:Azure で Java EE と Postgres の Web アプリを構築する
 
-このチュートリアルでは、Azure App Service に Java Enterprise Edition (EE) Web アプリを作成し、それを Postgres データベースに接続する方法について説明します。 完了すると、Azure [App Service on Linux](app-service-linux-intro.md) で稼働中の [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) にデータを格納する [WildFly](http://www.wildfly.org/about/) アプリケーションが完成します。
+このチュートリアルでは、Azure App Service に Java Enterprise Edition (EE) Web アプリを作成し、それを Postgres データベースに接続する方法について説明します。 完了すると、Azure [App Service on Linux](app-service-linux-intro.md) で稼働中の [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) にデータを格納する [WildFly](https://www.wildfly.org/about/) アプリケーションが完成します。
 
 このチュートリアルで学習する内容は次のとおりです。
 > [!div class="checklist"]
@@ -32,8 +33,8 @@ ms.locfileid: "52165460"
 ## <a name="prerequisites"></a>前提条件
 
 1. [Git をダウンロードし、インストールします](https://git-scm.com/)
-1. [Maven 3 をダウンロードし、インストールします](https://maven.apache.org/install.html)
-1. [Azure CLI をダウンロードし、インストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+2. [Maven 3 をダウンロードし、インストールします](https://maven.apache.org/install.html)
+3. [Azure CLI をダウンロードし、インストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 ## <a name="clone-and-edit-the-sample-app"></a>サンプル アプリを複製して編集する
 
@@ -160,10 +161,10 @@ _pom.xml_ で、お客様の Postgres サーバー名、管理者ログイン名
 
 再構成した目的のアプリケーションをデプロイする前に、Postgres モジュールとその依存関係を設定して WildFly アプリケーション サーバーを更新する必要があります。 サーバーを構成するには、`wildfly_config/` ディレクトリに 4 つのファイルが必要になります。
 
-- **postgresql-42.2.5.jar**: この JAR ファイルは、Postgres 用の JDBC ドライバーです。 詳細については、[公式 Web サイト](https://jdbc.postgresql.org/index.html)を参照してください。
-- **postgres-module.xml**: この XML ファイルでは、Postgres モジュール (org.postgres) の名前が宣言されます。 また、モジュールを使用するために必要なリソースと依存関係が指定されます。
-- **jboss_cli_commands.cl**: このファイルには、JBoss CLI によって実行される構成コマンドが含まれています。 これらのコマンドでは、WildFly アプリケーション サーバーへの Postgres モジュールの追加、資格情報の指定、JNDI 名の宣言、タイムアウトのしきい値の設定などを行います。JBoss CLI を使い慣れていない場合は、[公式ドキュメント](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)を参照してください。
-- **startup_script.sh**: 最後のこのシェル スクリプトは、お客様の App Service インスタンスが起動されるたびに実行されます。 このスクリプトで実行される機能は、`jboss_cli_commands.cli` 内のコマンドを JBoss CLI にパイプ処理することの 1 つだけです。
+- **postgresql-42.2.5.jar**:この JAR ファイルは、Postgres 用の JDBC ドライバーです。 詳細については、[公式 Web サイト](https://jdbc.postgresql.org/index.html)を参照してください。
+- **postgres-module.xml**:この XML ファイルでは、Postgres モジュール (org.postgres) の名前が宣言されます。 また、モジュールを使用するために必要なリソースと依存関係が指定されます。
+- **jboss_cli_commands.cl**:このファイルには、JBoss CLI によって実行される構成コマンドが含まれています。 これらのコマンドでは、WildFly アプリケーション サーバーへの Postgres モジュールの追加、資格情報の指定、JNDI 名の宣言、タイムアウトのしきい値の設定などを行います。JBoss CLI を使い慣れていない場合は、[公式ドキュメント](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)を参照してください。
+- **startup_script.sh**:最後のこのシェル スクリプトは、お客様の App Service インスタンスが起動されるたびに実行されます。 このスクリプトで実行される機能は、`jboss_cli_commands.cli` 内のコマンドを JBoss CLI にパイプ処理することの 1 つだけです。
 
 これらのファイル、特に _jboss_cli_commands.cli_ の内容を読むことを強くお勧めします。
 

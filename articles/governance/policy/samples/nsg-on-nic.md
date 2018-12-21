@@ -1,5 +1,5 @@
 ---
-title: Azure Policy のサンプル - すべての NIC 上の NSG x
+title: サンプル - すべての NIC 上の NSG x
 description: このサンプル ポリシーでは、特定のネットワーク セキュリティ グループが、すべての仮想ネットワーク インターフェイスで使用されている必要があります。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 9e853e293611d58ac936228fd02fcd0c0a6d8dda
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e24697620b61e942699f2748590c94f1063d3216
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948300"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313481"
 ---
 # <a name="nsg-x-on-every-nic"></a>すべての NIC 上の NSG X
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 
-- 他のサンプルについては、「[Azure Policy のサンプル](index.md)」を確認してください。
+- 他のサンプルについては、「[Azure Policy のサンプル](index.md)」をご確認ください。

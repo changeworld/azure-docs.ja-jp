@@ -10,14 +10,14 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: b8cdf6cb07215f4c1e2a472f60513aff765dcfb5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 1ce74afd8ee2266439a591730686b4f5277e1b03
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603196"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322007"
 ---
-# <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用してデスクトップ アプリから Node.js Web API へのアクセスを許可する
+# <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してデスクトップ アプリから Node.js Web API へのアクセスを許可する
 
 このチュートリアルでは、Azure Active Directory (Azure AD) B2C で保護された Node.js Web API リソースを Windows Presentation Foundation (WPF) デスクトップ アプリから呼び出す方法について説明します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "45603196"
 
 * [デスクトップ アプリにおける Azure Active Directory B2C を使用したユーザーの認証に関するチュートリアル](active-directory-b2c-tutorials-desktop-app.md)を完了する。
 * **.NET デスクトップ開発**と **ASP.NET および Web 開発**のワークロードと共に、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールする。
-* [Node.js](https://nodejs.org/en/download/)
+*  [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="register-web-api"></a>Web API の登録
 
@@ -125,7 +125,7 @@ Node.js Web API サンプルでは、Passport.js ライブラリを使用して�
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
 
-1. Node.js Web API サンプルの `index.html` ファイルを開きます。
+1. Node.js Web API サンプルの `index.js` ファイルを開きます。
 2. Azure AD B2C テナントの登録情報でサンプルを構成します。 次のコード行を変更します。
 
 ```nodejs

@@ -1,5 +1,5 @@
 ---
-title: Azure Policy サンプル - Azure AD 管理者の不在を監査する
+title: サンプル - Azure AD 管理者の不在を監査する
 description: このサンプル ポリシーでは、Azure Active Directory 管理者が SQL Server に割り当てられていない場合に、監査を行います。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: f85653f57d5052c60ca2a6170370513c88c3b8cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4ca215fbb905eed22b1e1911d25a773e236fe4c2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965298"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311747"
 ---
 # <a name="audit-no-azure-active-directory-administrator"></a>Azure Active Directory 管理者不在時の監査
 

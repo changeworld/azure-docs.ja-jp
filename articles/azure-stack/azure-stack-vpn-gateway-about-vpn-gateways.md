@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 86fcec0321e8f1b92fdc554532cb8f949b1b1569
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496211"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081390"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Azure Stack の VPN ゲートウェイについて
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure 仮想ネットワークとオンプレミスのサイトとの間でネットワーク トラフィックを送信する前に、仮想ネットワーク用の仮想ネットワーク ゲートウェイを作成する必要があります。
 
@@ -108,9 +108,9 @@ SKU を選択する場合、次を考慮してください。
 
 |   | VPN Gateway のスループット *(1)* | VPN Gateway の IPsec トンネルの最大数 *(2)* |
 |-------|-------|-------|
-|**Basic SKU** ***(3)***    | 100 Mbps  | 10    |
-|**Standard SKU**       | 100 Mbps  | 10    |
-|**高パフォーマンス SKU** | 200 Mbps    | 5 |
+|**Basic SKU** ***(3)***    | 100 Mbps  | 20    |
+|**Standard SKU**       | 100 Mbps  | 20    |
+|**高パフォーマンス SKU** | 200 Mbps    | 10    |
 
 **テーブルの注意事項:**
 

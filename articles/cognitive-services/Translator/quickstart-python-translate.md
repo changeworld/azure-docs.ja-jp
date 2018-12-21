@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: 3ba8064a6d13cfe9d2a2ae2ac496cfa8302989cd
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: db2328d09f9e06ccabdc2408327a342fe94fefe0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085990"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999578"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>クイック スタート: Python で Translator Text API を使用して文字列を翻訳する
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>クイック スタート: Python と Translator Text API を使用して文字列を翻訳する
 
 このクイック スタートでは、Python と Translator Text REST API を使用して、テキスト文字列を英語からイタリア語とドイツ語に翻訳する方法を学習します。
 
@@ -69,7 +69,7 @@ else:
 `params` は、出力言語を設定するために使用されます。 このサンプルでは、英語からイタリア語とドイツ語 (`it` と `de`) に翻訳しています。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate)」をご覧ください。
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -161,7 +161,7 @@ python translate-text.py
 
 ## <a name="see-also"></a>関連項目
 
-テキスト翻訳に加えて、Translator Text API を使用して次の操作を行う方法を学習します。
+Translator Text API を使用して以下を実行する方法を確認します。
 
 * [テキストを表記変換する](quickstart-python-transliterate.md)
 * [入力によって言語を識別する](quickstart-python-detect.md)

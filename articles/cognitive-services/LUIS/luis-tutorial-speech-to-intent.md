@@ -1,21 +1,22 @@
 ---
-title: LUIS で Speech C# SDK を使用する
+title: Speech C# SDK を使用する
 titleSuffix: Azure Cognitive Services
-description: 音声サービスを使用すると、1 回の要求を使用して音声を受け取り、LUIS 予測 JSON オブジェクトを返せます。 この記事では、C# プロジェクトをダウンロードして Visual Studio で使用し、マイクに向かって発話して LUIS 予測情報を受け取ります。 プロジェクトでは、参照として既に含まれている Speech NuGet パッケージを使用します。
+description: 音声サービスを使用すると、1 回の要求を使用して音声を受け取り、LUIS 予測 JSON オブジェクトを返せます。 この記事では、C# プロジェクトをダウンロードして Visual Studio で使用し、マイクに向かって発話して LUIS 予測情報を受け取ります。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: c2581abc782558ca114cc3a5d4f6224d132bce5d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 1bc3b9e016bed59f6453c26371cce7bd089568aa
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139093"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162633"
 ---
 # <a name="integrate-speech-service"></a>音声サービスを統合する
 [音声サービス](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)を使用すると、1 回の要求を使用して音声を受け取り、LUIS 予測 JSON オブジェクトを返せます。 この記事では、C# プロジェクトをダウンロードして Visual Studio で使用し、マイクに向かって発話して LUIS 予測情報を受け取ります。 プロジェクトでは、参照として既に含まれている Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) パッケージを使用します。 
@@ -26,7 +27,7 @@ ms.locfileid: "50139093"
 Azure Portal で、**Language Understanding** (LUIS) キーを[作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)します。 
 
 ## <a name="import-human-resources-luis-app"></a>人事管理 LUIS アプリをインポートする
-この記事のインテントと発話は、[LUIS サンプル](https://github.com/Microsoft/LUIS-Samples) Github リポジトリにある LUIS アプリからのものです。 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) ファイルをダウンロードし、`.json` 拡張子を付けて保存し、LUIS に[インポート](luis-how-to-start-new-app.md#import-new-app)します。 
+この記事の意図と発話は、[LUIS サンプル](https://github.com/Microsoft/LUIS-Samples) GitHub リポジトリにある LUIS アプリからのものです。 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) ファイルをダウンロードし、`.json` 拡張子を付けて保存し、LUIS に[インポート](luis-how-to-start-new-app.md#import-new-app)します。 
 
 このアプリには、人事分野に関連するインテント、エンティティ、および発話があります。 発話の例を次に示します。
 
@@ -65,7 +66,7 @@ Azure Portal で、**Language Understanding** (LUIS) キーを[作成](luis-how-
 
 Speech SDK が既に参照として含まれています。 
 
-[![](./media/luis-tutorial-speech-to-intent/nuget-package.png "Microsoft.CognitiveServices.Speech NuGet パッケージを表示した Visual Studio 2017 のスクリーン ショット")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Microsoft.CognitiveServices.Speech NuGet パッケージが表示された Visual Studio 2017 のスクリーンショット](./media/luis-tutorial-speech-to-intent/nuget-package.png "Microsoft.CognitiveServices.Speech NuGet パッケージが表示された Visual Studio 2017 のスクリーンショット")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>C# コードを編集する
 `Program.cs` ファイルを開き、次の変数を変更します。

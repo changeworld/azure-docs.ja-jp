@@ -70,6 +70,8 @@ items:
     items:
     - name: Python を使用して Databricks から接続する
       href: connect-from-databricks.md
+    - name: Jupyter Notebook と Kqlmagic を使用してデータを分析する
+      href: kqlmagic.md
     - name: Grafana でデータを視覚化する
       href: grafana.md
   - name: トラブルシューティング
@@ -112,9 +114,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 5773939edb8bb846325e5709cc46273b9669117b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fdde75acc0d975db194108458ca308c459b4f9a7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606829"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653018"

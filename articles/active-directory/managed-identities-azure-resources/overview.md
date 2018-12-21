@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: daveba
-ms.openlocfilehash: e025d9041358fbb9dee9b64519e012c4c1988024
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6b1eb36ae661d758f78f98de37f33c4b56741f89
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987262"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320780"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
@@ -34,7 +34,15 @@ Azure リソースのマネージド ID は、Azure サブスクリプション�
 > [!NOTE]
 > Azure リソースのマネージド ID は、以前のマネージドサービス ID (MSI) の新しい名前です。
 
-## この機能の働きを教えてください<a name="how-does-it-work"></a>
+## <a name="terminology"></a>用語集
+
+Azure リソースのマネージド ID のドキュメント セット全体で、次の用語が使用されます。
+
+- **クライアント ID** - Azure AD によって生成される一意識別子で、初期プロビジョニングの間にアプリケーションおよびサービス プリンシパルと結び付けられます。
+- **プリンシパル ID** - マネージド ID に対するサービス プリンシパル オブジェクトのオブジェクト ID であり、Azure リソースへのロールベースのアクセス権を付与するために使用されます。
+- **Azure Instance Metadata Service (IMDS)** - Azure Resource Manager を使用して作成されたすべての IaaS VM にアクセスできる REST エンドポイントです。 このエンドポイントは、VM からのみアクセスできる、よく知られているルーティング不可 IP アドレス (169.254.169.254) で使用できます。
+
+## Azure リソースのマネージド ID のしくみ<a name="how-does-it-work"></a>
 
 マネージド ID には、次の 2 種類があります。
 

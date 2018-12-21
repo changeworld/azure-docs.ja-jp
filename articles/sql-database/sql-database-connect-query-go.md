@@ -11,31 +11,31 @@ author: David-Engel
 ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: c270fef40b732f170add32ef52eeadc790d8cd83
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/07/2018
+ms.openlocfilehash: 34b3ee54c48040eaa6f7b7569921678869baa84b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913508"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092368"
 ---
 # <a name="quickstart-use-go-to-query-an-azure-sql-database"></a>クイック スタート: Go を使用して Azure SQL Database に照会する
 
-このクイックスタートでは、[Go](https://godoc.org/github.com/denisenkom/go-mssqldb) を使用して Azure SQL データベースに接続する方法を紹介します。 Transact-SQL ステートメントを使用してデータを照会および変更する方法についても説明します。
+このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントを実行しデータの照会と変更を行うプログラムを [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) を使って作成する方法について説明します。 [Go](https://golang.org/) は、シンプルで信頼性と効率性の高いソフトウェアを簡単に構築できるオープン ソース プログラミング言語です。  
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次の前提条件を満たしている必要があります。
+このチュートリアルを完了するには、次のものが必要です。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
+- お使いのコンピューターのパブリック IP アドレスに対して構成された[サーバーレベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
 
-- ご使用のオペレーティング システムに対応した Go とそれに関連するソフトウェアをインストール済みであること。
+- ご使用のオペレーティング システムがインストールされた Go とそれに関連するソフトウェア:
 
     - **MacOS**: Homebrew と GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/) を参照してください。
-    - **Ubuntu**: - GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/) を参照してください。
-    - **Windows**: - GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/) を参照してください。    
+    - **Ubuntu**:GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/) を参照してください。
+    - **Windows**:GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/) を参照してください。    
 
 ## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
@@ -49,7 +49,7 @@ ms.locfileid: "50913508"
    mkdir SqlServerSample
    ```
 
-2. ディレクトリを **SqlServerSample** に変更し、Go の SQL Server ドライバーを取得してインストールします。
+2. ディレクトリを **SqlServerSample** に変更し、Go の SQL Server ドライバーをインストールします。
 
    ```bash
    cd SqlServerSample
@@ -59,7 +59,7 @@ ms.locfileid: "50913508"
 
 ## <a name="create-sample-data"></a>サンプル データの作成
 
-1. 任意のテキスト エディターを使用して、**SqlServerSample**フォルダーに **CreateTestData.sql** という名前のファイルを作成します。 その中に次の T-SQL コードをコピーして貼り付けます。 このコードは、スキーマとテーブルを作成し、数行を挿入します。
+1. 任意のテキスト エディターで、**SqlServerSample** フォルダーに **CreateTestData.sql** という名前のファイルを作成します。 ファイルに、スキーマ、テーブルを作成して数行を挿入する次の T-SQL コードをコピーして貼り付けます。
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -82,7 +82,7 @@ ms.locfileid: "50913508"
    GO
    ```
 
-2. Sqlcmd を使用してデータベースに接続し、SQL スクリプトを実行してスキーマを作成し、数行を挿入します。 サーバー、データベース、ユーザー名、パスワードを適切な値に置き換えてください。
+2. `sqlcmd` を使用してデータベースに接続し、新しく作成した SQL スクリプトを実行します。 サーバー、データベース、ユーザー名、パスワードを適切な値に置き換えてください。
 
    ```bash
    sqlcmd -S your_server.database.windows.net -U your_username -P your_password -d your_database -i ./CreateTestData.sql
@@ -92,7 +92,7 @@ ms.locfileid: "50913508"
 
 1. **sample.go**という名前のファイルを **SqlServerSample** フォルダーに作成します。
 
-2. そのファイルを開いて、その内容を次のコードに置き換えます。 適切なサーバー、データベース、ユーザー名、パスワードを追加します。 この例では、GoLang Context メソッドを使用して、データベース サーバーにアクティブな接続があることを確認します。
+2. ファイルを開き、次のコードを貼り付けます。 適切なサーバー、データベース、ユーザー名、パスワードを追加します。 この例では、GoLang Context メソッドを使用して、データベース サーバーにアクティブな接続があることを確認します。
 
    ```go
    package main

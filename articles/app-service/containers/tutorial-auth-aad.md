@@ -1,6 +1,6 @@
 ---
-title: Azure App Service on Linux でユーザーをエンド ツー エンドで認証および承認する | Microsoft Docs
-description: App Service の認証と承認を使用して、App Service アプリをセキュリティで保護する方法について説明します (リモート API へのアクセスなど)。
+title: Linux でユーザーをエンド ツー エンドで認証および承認する - Azure App Service | Microsoft Docs
+description: App Service の認証と承認を使用して、Linux 上で実行されている App Service アプリ (リモート API へのアクセスを含む) をセキュリティで保護する方法について説明します。
 keywords: App Service, Azure App Service, authN, authZ, 保護, セキュリティ, 多層, Azure Active Directory, Azure Ad
 services: app-service\web
 documentationcenter: dotnet
@@ -14,16 +14,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
-ms.openlocfilehash: a468c5d0f73cc182927f26ea9b7a85e2c5afb7c8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.custom: seodec18
+ms.openlocfilehash: 65c503c96305cf23b97511dd06a56b5eb6fcc1be
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766361"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409413"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>チュートリアル: Azure App Service on Linux でユーザーをエンド ツー エンドで認証および承認する
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 さらに、App Service には、[ユーザーの認証と承認](../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ASP.NET Core アプリと Angular.js フロントエンドを使用していますが、これは単なる例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。自分の言語に適用する方法については、以下のチュートリアルで学習することができます。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 さらに、App Service には、[ユーザーの認証と承認](../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ここでは ASP.NET Core アプリと Angular.js フロントエンドが使用されていますが、これはほんの一例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。このチュートリアルに沿って、お好みの言語に適用する方法を学習することができます。
 
 チュートリアルでは、サンプル アプリを使用して、自己完結型アプリをセキュリティで保護する方法を示します (「[バックエンド アプリの認証と承認を有効にする](#enable-authentication-and-authorization-for-back-end-app)」を参照)。
 
@@ -42,7 +43,7 @@ ms.locfileid: "33766361"
 > * 未認証の要求に対してアプリをセキュリティで保護する
 > * Azure Active Directory を ID プロバイダーとして使用する
 > * サインインしたユーザーの代わりにリモート アプリにアクセスする
-> * トークン認証を使用したサービス間呼び出しをセキュリティで保護する
+> * トークン認証を使用して、サービス間呼び出しをセキュリティで保護する
 > * サーバー コードのアクセス トークンを使用する
 > * クライアント (ブラウザー) コードのアクセス トークンを使用する
 
@@ -115,7 +116,7 @@ app.UseCors(builder =>
     builder.WithOrigins("http://<front_end_app_name>.azurewebsites.net"));
 ```
 
-変更を保存します。 _ローカル ターミナル ウィンドウ_ に戻り、次のコマンドを実行して Git リポジトリに変更をコミットします。
+変更を保存します。 _ローカル ターミナル ウィンドウ_に戻り、次のコマンドを実行して Git リポジトリに変更をコミットします。
 
 ```bash
 git add .
@@ -154,13 +155,13 @@ http://<front_end_app_name>.azurewebsites.net
 ![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/azure-run.png)
 
 > [!NOTE]
-> アプリが再起動されると、新しいデータが消去されていることに気付く場合があります。 サンプル ASP.NET Core アプリはメモリ内データベースを使用するため、この動作は仕様です。
+> アプリが再起動されると、新しいデータが消去されていることに気付く場合があります。 サンプル ASP.NET Core アプリではメモリ内データベースが使用されているため、この動作は仕様です。
 >
 >
 
 ## <a name="call-back-end-api-from-front-end"></a>フロントエンドからバックエンド API を呼び出す
 
-この手順では、バックエンド API にアクセスするために、フロントエンド アプリのサーバー コードをポイントします。 後で、フロントエンドからバックエンドへの認証済みアクセスを有効にします。
+この手順では、フロントエンド アプリのサーバー コードを、バックエンド API へのアクセスに合わせて設定します。 後で、フロントエンドからバックエンドへの認証済みアクセスを有効にします。
 
 ### <a name="modify-front-end-code"></a>フロントエンド コードを変更する
 
@@ -237,7 +238,7 @@ git push frontend master
 
 この手順では、2 つのアプリの認証と承認を有効にします。 また、フロントエンド アプリも構成して、バックエンド アプリへの認証済みの呼び出しを行うために使用できるアクセス トークンが生成されるようにします。
 
-ID プロバイダーとして Azure Active Directory を使用します。 詳細については、[App Services アプリケーション用の Azure Active Directory 認証の構成](../app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関するページを参照してください。
+ID プロバイダーとして Azure Active Directory を使用します。 詳細については、[App Services アプリケーション用の Azure Active Directory 認証の構成](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関するページを参照してください。
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>バックエンド アプリの認証と承認を有効にする
 
@@ -358,7 +359,7 @@ git push frontend master
 
 ## <a name="call-api-securely-from-browser-code"></a>ブラウザー コードから API を安全に呼び出す
 
-この手順では、フロントエンドの Angular.js アプリをバックエンド API にポイントします。 そのようにして、アクセス トークンを取得し、それを使用してバックエンド アプリへの API 呼び出しを行う方法を学習します。
+この手順では、フロントエンドの Angular.js アプリをバックエンド API に合わせて設定します。 そのようにして、アクセス トークンを取得し、それを使用してバックエンド アプリへの API 呼び出しを行う方法を学習します。
 
 サーバー コードは要求ヘッダーにアクセスできますが、クライアント コードは `GET /.auth/me` にアクセスして同じアクセス トークンを取得することができます (「[Retrieve tokens in app code (アプリ コードでトークンを取得する)](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#retrieve-tokens-in-app-code)」を参照)。
 
@@ -366,7 +367,7 @@ git push frontend master
 > このセクションでは、標準の HTTP メソッドを使用して、セキュリティで保護された HTTP 呼び出しを行います。 ただし、[Active Directory Authentication Library (ADAL) for JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js) を使用すると、Angular.js アプリケーション パターンの簡略化に役立ちます。
 >
 
-### <a name="point-angularjs-app-to-back-end-api"></a>Angular.js app をバックエンド API にポイントする
+### <a name="point-angularjs-app-to-back-end-api"></a>Angular.js アプリをバックエンド API に合わせて設定する
 
 ローカル リポジトリで、_wwwroot/index.html_ を開きます。
 
@@ -448,7 +449,7 @@ az group delete --name myAuthResourceGroup
 > * 未認証の要求に対してアプリをセキュリティで保護する
 > * Azure Active Directory を ID プロバイダーとして使用する
 > * サインインしたユーザーの代わりにリモート アプリにアクセスする
-> * トークン認証を使用したサービス間呼び出しをセキュリティで保護する
+> * トークン認証を使用して、サービス間呼び出しをセキュリティで保護する
 > * サーバー コードのアクセス トークンを使用する
 > * クライアント (ブラウザー) コードのアクセス トークンを使用する
 

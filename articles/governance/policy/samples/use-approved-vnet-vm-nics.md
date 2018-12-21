@@ -1,5 +1,5 @@
 ---
-title: Azure Policy のサンプル - VM ネットワーク インターフェイスへの承認された vNet の使用
+title: サンプル - VM ネットワーク インターフェイスに承認された vNet を使用する
 description: このサンプル ポリシーは、承認された仮想ネットワークがネットワーク インターフェイスで使用されていることが要件です。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 2a0b3ac82d6ff8e7c6df850e5303c342cc269834
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9e99e6614a5ddfb1f692e5db99c95b3907051fa5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959174"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308803"
 ---
 # <a name="use-approved-vnet-for-vm-network-interfaces"></a>VM ネットワーク インターフェイスでの承認された vNet の使用
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 
-- 他のサンプルについては、「[Azure Policy のサンプル](index.md)」を参照してください
+- 他のサンプルについては、「[Azure Policy のサンプル](index.md)」をご確認ください。

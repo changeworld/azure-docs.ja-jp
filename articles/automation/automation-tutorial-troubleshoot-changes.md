@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: 変更, 追跡, オートメーション
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e4ea8f92a562ea4bc90df98d6e459377b9886777
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844908"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190018"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -102,7 +102,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|Windows レジストリ キー   | ファイル確認のためのパス (例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup")。      |
+|Windows レジストリ キー   | ファイル確認のためのパス。その例を次に示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="add-a-windows-file"></a>Windows ファイルを追加する
 
@@ -117,7 +117,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。         |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
-|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
 
 ### <a name="add-a-linux-file"></a>Linux ファイルを追加する
 
@@ -135,7 +135,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
 |sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
 |リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクをフォローします。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクをフォローします。また、返された内容の処理を変更することができます。      |
-|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用可能なオプション: **True** または **False**。|
+|すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
 
    > [!NOTE]
    > "管理" リンク オプションはお勧めしません。 ファイルのコンテンツの取得はサポートされていません。
@@ -177,12 +177,11 @@ Azure portal に変更を表示することは有益ですが、サービスの�
 
 サービス停止アラートを追加するには、Azure portal で **[監視]** に移動します。 **[共有サービス]** で、**[アラート]** を選択し、**[+ 新しいアラート ルール]** をクリックします。
 
-**[1. アラートの条件を定義します]** で、**[+ ターゲットの選択]** をクリックします。 **[Filter by resource type]\(リソースの種類でフィルター処理\)** で **[Log Analytics]** を選択します。 Log Analytics ワークスペースを選択し、**[完了]** をクリックします。
+**[選択]** をクリックしてリソースを選択します。 **[リソースの選択]** ページで、**[リソースの種類でフィルター]** ボックスの一覧から **[Log Analytics]** を選択します。 Log Analytics ワークスペースを選択し、**[完了]** をクリックします。
 
 ![リソースの選択](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-**[+ 条件の追加]** を選択します。
-**[シグナル ロジックの構成]** の表で、**[カスタム ログ検索]** を選択します。 [検索クエリ] ボックスに次のクエリを入力します。
+**[条件の追加]** をクリックし、**[シグナル ロジックの構成]** ページの表から **[カスタム ログ検索]** を選択します。 [検索クエリ] ボックスに次のクエリを入力します。
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -194,11 +193,9 @@ ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName ==
 
 ![シグナル ロジックの構成](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-**[2. アラートの詳細を定義します]** で、アラートの名前と説明を入力します。 **[重大度]** を、**[情報 (重大度 2)]**、**[警告 (重大度 1)]** または **[重大 (重大度 0)]** に設定します。
+**[アクション グループ]** の **[新規作成]** を選択します。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/platform/action-groups.md)に関するページを参照してください。
 
-![アラートの詳細を定義する](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
-
-**[3. アクション グループを定義します]** で、**[新しいアクション グループ]** を選択します。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細については、[アクション グループの作成および管理](../monitoring-and-diagnostics/monitoring-action-groups.md)に関するページを参照してください。
+**[アラートの詳細]** で、アラートの名前と説明を入力します。 **[重大度]** を、**[情報 (重大度 2)]**、**[警告 (重大度 1)]** または **[重大 (重大度 0)]** に設定します。
 
 **[アクション グループ名]** ボックスに、アラートの名前と短い名前を入力します。 短い名前は、通知がこのグループを使用して送信されるときに長い名前の代わりに使用されます。
 

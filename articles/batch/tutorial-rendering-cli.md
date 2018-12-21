@@ -2,21 +2,21 @@
 title: クラウドでのシーンのレンダリング - Azure Batch
 description: チュートリアル - Batch Rendering サービスと Azure コマンド ライン インターフェイスを使用して Arnold で Autodesk 3DS Max シーンをレンダリングする方法
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 10/24/2018
-ms.author: danlep
+ms.date: 12/11/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 9f9464874230538bf2976b47896dae8e67c9744f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 0b9f6e440140edbec59d1bf837a0dfb16ab44d5f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024394"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323424"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル: Azure Batch を使用したシーンのレンダリング 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル:Azure Batch を使用したシーンのレンダリング 
 
 Azure Batch は、クラウド規模のレンダリング機能を従量課金ベースで提供します。 Azure Batch は、Autodesk Maya、3ds Max、Arnold、V-Ray などのレンダリング アプリをサポートしています。 このチュートリアルでは、Azure コマンド ライン インターフェイスを使用して Batch で小さいシーンをレンダリングする手順を紹介します。 学習内容は次のとおりです。
 
@@ -124,7 +124,7 @@ az storage blob upload-batch \
       "publisher": "batch",
       "offer": "rendering-windows2016",
       "sku": "rendering",
-      "version": "1.2.1"
+      "version": "1.3.1"
     },
     "nodeAgentSKUId": "batch.node.windows amd64"
   },

@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Azure portal を使用して Azure Databricks で Spark ジョブを実行する'
+title: クイック スタート:Azure portal を使用して Azure Databricks で Spark ジョブを実行する
 description: このクイックスタートでは、Azure Portal を使用して Azure Databricks ワークスペースと Apache Spark クラスターを作成し、Spark ジョブを実行する方法を示します。
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 080bf465d65199c54e0d09eab8c7bccbc9616ed7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c8f280d58d12df33b687fa9c09712176987cdd1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568956"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259547"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Databricks で Spark ジョブを実行する
 
 このクイックスタートでは、Azure Databricks ワークスペースと、そのワークスペース内の Apache Spark クラスターを作成する方法を示します。 最後に、Databricks クラスターで Spark ジョブを実行する方法を説明します。 Azure Databricks の詳細については、「[Azure Databricks とは](what-is-azure-databricks.md)」を参照してください。
 
@@ -76,7 +76,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     * クラスターの名前を入力します。
     * この記事では、**4.0** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
     
     **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
@@ -91,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. まだストレージ アカウントがない場合は、作成します。
     - Azure Portal で、**[リソースの作成]** を選択します。 **[ストレージ]** カテゴリを選択し、**[ストレージ アカウント]** を選択します
     - ストレージ アカウントに一意の名前を指定してください。
-    - **[アカウントの種類]** で **[Blob ストレージ]** を選択します
+    - **アカウントの種類**を選択します。**Blob Storage**
     - **リソース グループ**名を選択します。 Databricks ワークスペースを作成したのと同じリソース グループを使用します。
     
     詳細については、[Azure Blob ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)に関するページを参照してください。
@@ -200,7 +200,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![Databricks クラスターを停止する](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
 ## <a name="next-steps"></a>次の手順
 

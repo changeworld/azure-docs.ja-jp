@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5d64aa8b50cdde23d1bb8980510cfac202204f9a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11c68b61802f6c7b3755da71c176ea777f171e4c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262456"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409838"
 ---
 # <a name="query-containers-in-azure-cosmos-db"></a>Azure Cosmos DB のコンテナーを照会する
 
@@ -20,7 +20,7 @@ ms.locfileid: "51262456"
 
 ## <a name="in-partition-query"></a>インパーティション クエリ
 
-コンテナー内のデータを照会すると、Cosmos DB により、フィルターに指定したパーティション キー値に対応するパーティションにクエリが自動ルーティングされます。 たとえば、ここでのクエリはパーティション キー "XMS-0001" を含むパーティションのみにルーティングされます。
+コンテナー内のデータを照会し、クエリにパーティション キー フィルターが指定されている場合、Azure Cosmos DB により、フィルターに指定したパーティション キー値に対応するパーティションにクエリが自動ルーティングされます。 たとえば、次のクエリは、パーティション キー値 "XMS-0001"に対応するすべてのドキュメントを保持する DeviceId パーティションにルーティングされます。
 
 ```csharp
 // Query using partition key into a class called, DeviceReading
@@ -58,9 +58,9 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 次のパラメーターを調整することで、並列クエリの実行を管理できます。
 
-- **MaxDegreeOfParallelism**: コンテナーのパーティションに対する同時ネットワーク接続数の上限を設定します。 このプロパティを -1 に設定した場合、並列処理次数は SDK によって管理されます。 MaxDegreeOfParallelism が指定されていないか、0 (既定値) に設定されている場合、コンテナーのパーティションへのネットワーク接続は 1 つのみです。
+- **MaxDegreeOfParallelism**:コンテナーのパーティションに対する同時ネットワーク接続数の上限を設定します。 このプロパティを -1 に設定した場合、並列処理次数は SDK によって管理されます。 MaxDegreeOfParallelism が指定されていないか、0 (既定値) に設定されている場合、コンテナーのパーティションへのネットワーク接続は 1 つのみです。
 
-- **MaxBufferedItemCount**: クエリの待ち時間とクライアント側のメモリ使用率のバランスを調整します。 このオプションを省略するか -1 に設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
+- **MaxBufferedItemCount**:クエリの待ち時間とクライアント側のメモリ使用率のバランスを調整します。 このオプションを省略するか -1 に設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
 
 コレクションが同じ状態の場合、並列クエリでは順次実行と同じ順序で結果が返されます。 並べ替え演算子 (ORDER BY、TOP、またはその両方) を含むクロスパーティション クエリを実行したときは、Azure Cosmos DB SDK からパーティション全体に並列クエリが発行され、部分的に並べ替えられた結果がクライアント側でマージされて、グローバルに並べ替えられた結果が作成されます。
 

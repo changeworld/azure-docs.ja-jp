@@ -1,5 +1,5 @@
 ---
-title: 既存のカスタム SSL 証明書の Azure Web Apps へのバインド | Microsoft Docs
+title: 既存のカスタム SSL 証明書のバインド - Azure App Service | Microsoft Docs
 description: Azure App Service で、Web アプリ、モバイル アプリのバックエンド、または API アプリにカスタム SSL 証明書をバインドする方法について説明します。
 services: app-service\web
 documentationcenter: nodejs
@@ -14,15 +14,15 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 57046b9e199fbe5e88d0ea7fa25248641693508a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636458"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256997"
 ---
-# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>チュートリアル: 既存のカスタム SSL 証明書を Azure Web Apps にバインドする
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>チュートリアル:既存のカスタム SSL 証明書の Azure Web Apps へのバインド
 
 Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、信頼された証明機関から購入したカスタム SSL 証明書を [Azure Web Apps](app-service-web-overview.md) にバインドする方法について説明します。 完了したら、カスタムの DNS ドメインの HTTPS エンドポイントで、Web アプリにアクセスできるようになります。
 
@@ -139,9 +139,9 @@ App Service による証明書のアップロードが完了すると、**[SSL �
 >
 >
 
-**[SSL Type] \(SSL の種類)** で、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
+**[SSL Type] \(SSL の種類)** で、**[Server Name Indication (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication)** ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
 
-- **SNI ベースの SSL** - SNI ベースの SSL バインドを複数追加することができます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](http://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。
+- **SNI ベースの SSL** - SNI ベースの SSL バインドを複数追加することができます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。
 - **IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 複数のドメインを保護するには、同じ SSL 証明書を使用してすべてのドメインを保護する必要があります。 これは、SSL バインドの従来のオプションです。
 
 **[Add Binding] \(バインドの追加)** をクリックします。

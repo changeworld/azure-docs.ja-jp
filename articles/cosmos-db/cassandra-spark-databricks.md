@@ -35,7 +35,7 @@ ms.locfileid: "47222030"
 * **Cassandra コネクタ用の Cassandra API インスタンス構成:**
 
   Cassandra API のコネクタでは、spark コンテキストのために、Cassandra への接続の詳細の初期化が必要です。 Databricks のノートブックを起動すると、spark コンテキストは既に初期化されています。停止して再初期化することはお勧めしません。 解決方法の一つとして、クラスターの spark 構成で、Cassandra API インスタンスの構成情報をクラスターレベルで追加することができます。 これは、クラスターあたり 1 回限りのアクティビティです。 Spark の構成情報に、以下のコードをスペース区切りのキー値のペアとして追加します。
- 
+
   ```scala
   spark.cassandra.connection.host YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com
   spark.cassandra.connection.port 10350
@@ -54,7 +54,7 @@ ms.locfileid: "47222030"
 
 ## <a name="sample-notebooks"></a>ノートブックのサンプル
 
-Azure Databricks の[ノートブックのサンプル](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala)は、Github リポジトリからダウンロードできます。 ここには、Spark から Azure Cosmos DB Cassandra API への接続方法や、データに対してさまざまな CRUD 操作を実行する方法などのサンプルがあります。 また、Databricks のクラスタ ワークスペースに[すべてのノートブックをインポート](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc)して、実行することもできます。 
+Azure Databricks の[ノートブックのサンプル](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala)は、GitHub リポジトリからダウンロードできます。 ここには、Spark から Azure Cosmos DB Cassandra API への接続方法や、データに対してさまざまな CRUD 操作を実行する方法などのサンプルがあります。 また、Databricks のクラスタ ワークスペースに[すべてのノートブックをインポート](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc)して、実行することもできます。
 
 ## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>Spark Scala プログラムから Azure Cosmos DB Cassandra API にアクセスする
 

@@ -1,5 +1,5 @@
 ---
-title: Azure App Service で PostgreSQL 向けの Python Web アプリを構築する | Microsoft Docs
+title: Linux 上の PostgreSQL を使用して Python Web アプリを構築する - Azure App Service | Microsoft Docs
 description: PostgreSQL データベースに接続するデータ駆動型の Python アプリを Azure 上で実行する方法について説明します。
 services: app-service\web
 documentationcenter: python
@@ -11,13 +11,13 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
-ms.custom: mvc
-ms.openlocfilehash: 3963e2ffb521a4b4732814e9b2992f4e83af1835
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 8846ec386ad1776172ae1949b5e0f26e03ddf1df
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865626"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337991"
 ---
 # <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>Azure App Service で Python と PostgreSQL Web アプリを構築する
 
@@ -205,7 +205,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > この設定により、Azure ネットワーク内のすべての IP からネットワーク接続できます。 運用環境で使用する場合、[アプリで使用されている送信 IP アドレスのみを使用する](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、最も制限の厳しいファイアウォール規則を構成してみてください。
 
-Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](http://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+Cloud Shell 内で *\<you_ip_address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address> --name AllowLocalClient
@@ -287,7 +287,7 @@ Django では、受信要求の `HTTP_HOST` ヘッダーが検証されます。
 ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
-次に、Django では[運用環境での静的ファイルの使用](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)はサポートされないため、これを手動で有効にする必要があります。 このチュートリアルでは、[WhiteNoise](http://whitenoise.evans.io/en/stable/) を使用します。 WhiteNoise パッケージは _requirements.txt_ に既に含まれています。 必要なのは、それを使用するように Django を構成することだけです。 
+次に、Django では[運用環境での静的ファイルの使用](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/)はサポートされないため、これを手動で有効にする必要があります。 このチュートリアルでは、[WhiteNoise](https://whitenoise.evans.io/en/stable/) を使用します。 WhiteNoise パッケージは _requirements.txt_ に既に含まれています。 必要なのは、それを使用するように Django を構成することだけです。 
 
 _azuresite/settings.py_ で、`MIDDLEWARE` 設定を見つけ、一覧の `django.middleware.security.SecurityMiddleware` ミドルウェアのすぐ下に `whitenoise.middleware.WhiteNoiseMiddleware` ミドルウェアを追加します。 `MIDDLEWARE` 設定は次のようになります。
 
@@ -307,7 +307,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ```
 
-WhiteNoise の構成の詳細については、[WhiteNoise のドキュメント](http://whitenoise.evans.io/en/stable/)を参照してください。
+WhiteNoise の構成の詳細については、[WhiteNoise のドキュメント](https://whitenoise.evans.io/en/stable/)を参照してください。
 
 > [!IMPORTANT]
 > データベースの設定セクションは、環境変数の使用に関するセキュリティのベスト プラクティスに既に従っています。 完全なデプロイの推奨事項については、[Django ドキュメントのデプロイ チェックリスト](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/)を参照してください。
@@ -335,7 +335,7 @@ git commit -am "configure for App Service"
 
 チュートリアルの前半で、PostgreSQL データベースに接続する環境変数を定義しました。
 
-App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用し、環境変数を _アプリ設定_ として設定します。
+App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用し、環境変数を_アプリ設定_として設定します。
 
 次の例では、データベース接続の詳細をアプリ設定として指定します。 
 

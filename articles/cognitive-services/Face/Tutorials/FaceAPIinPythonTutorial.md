@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: dc84014f3dce027c830f3f46b4aba16b775251d8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 1e35d650f6fc99bff5bf49e517e2b38fcdc58dde
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853151"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077003"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>クイック スタート: 画像内の顔を検出してフレームに収める Python スクリプトの作成
 
@@ -28,14 +28,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
 - [Python 2.7 以降または 3.5 以降](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) ツール
-- Face API Python SDK。 これは、次のコマンドを実行してインストールできます。
-    ```bash
-    pip install cognitive_face
-    ```
+
+## <a name="get-the-face-sdk"></a>Face SDK を取得する
+
+Face Python SDK をインストールするには、コマンド プロンプトを開いて次のコマンドを実行します。
+
+```shell
+pip install cognitive_face
+```
 
 ## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
 
-新しい Python スクリプト _FaceQuickstart.py_ を作成します。 次のコードを追加します。 これは、顔検出のコア機能です。 `<Subscription Key>` は、実際のキーの値に置き換える必要があります。 また、`BASE_URL` の値も、実際のキーに合った正しいリージョン識別子を使用するように変更する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。 必要に応じて、`img_url` を、使用する任意の画像の URL に設定します。
+_FaceQuickstart.py_ という名前の新しい Python スクリプトを作成し、次のコードを追加します。 これは、顔検出のコア機能です。 `<Subscription Key>` は、実際のキーの値に置き換える必要があります。 また、`BASE_URL` の値も、実際のキーに合った正しいリージョン識別子を使用するように変更する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。 必要に応じて、`img_url` を、使用する任意の画像の URL に設定します。
 
 このスクリプトでは、**cognitive_face.face.detect** メソッドを呼び出して顔を検出します。これは、[Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) REST API をラップし、顔のリストを返します。
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 7b9c9a600d105d4b7fbbeb4f52ee42b5eb2bcaaa
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 928b8fd8ef076afa2c60c870fb705a9a682003d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275872"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093609"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -51,15 +51,15 @@ Cloudyn ポータルですべての使用状況とコストを確認します。
 
 レポートの例を以下に示します。
 
-![レポートの例](./media/tutorial-review-usage/actual-cost01.png)
+![実績経過コスト レポートの例](./media/tutorial-review-usage/actual-cost01.png)
 
 レポートには、過去 30 日間の支出がすべて表示されます。 Azure サービスに関する支出のみを表示するには、サービス グループを適用してから、すべての Azure サービスをフィルターします。 次の図は、フィルターされたサービスを示しています。
 
-![フィルターされたサービス](./media/tutorial-review-usage/actual-cost02.png)
+![フィルター処理された Azure サービスを示す例](./media/tutorial-review-usage/actual-cost02.png)
 
 前の例では、2018-10-29 以降に費やされた金額が以前より少なくなっています。 しかし、列が多すぎると、傾向がわかりにくくなる場合があります。 レポート ビューを折れ線グラフや面グラフに変更して、他のビューでデータを確認できます。 次の画像では、傾向がわかりやすくなっています。
 
-![レポートにおける傾向](./media/tutorial-review-usage/actual-cost03.png)
+![Azure VM コストの減少傾向を示す例](./media/tutorial-review-usage/actual-cost03.png)
 
 この例を続けると、Azure VM のコストが低下したことを確認できます。 他の Azure サービスのコストも、その日に低下し始めています。 ここで、支出低下の原因を確認します。 この例では、大規模な作業のプロジェクトが完了したため、多くの Azure サービスの使用量も低下しました。
 
@@ -77,19 +77,19 @@ Cloudyn ポータルですべての使用状況とコストを確認します。
 
 ポータルの上部にあるメニューで、**[オプティマイザー]** > **[Sizing Optimization]\(サイズ設定の最適化\)** > **[Cost Effective Sizing Recommendations]\(コスト効率の高いサイズ設定に関する推奨事項\)** の順にクリックします。 必要に応じて、フィルターを適用して結果を減らします。 以下に例の画像を示します。
 
-![Azure VM](./media/tutorial-review-usage/sizing01.png)
+![Azure VM の費用効果の高いサイズ設定に関する推奨事項レポート](./media/tutorial-review-usage/sizing01.png)
 
 この例では、推奨事項に従って VM インスタンスの種類を変更することで、2,382 ドル節約できました。 最初の推奨事項を参照するには、**[詳細]** の下にあるプラス記号 (+) をクリックします。 最初の推奨事項の詳細は次のように示されます。
 
-![推奨事項の詳細](./media/tutorial-review-usage/sizing02.png)
+![推奨事項の詳細を示す例](./media/tutorial-review-usage/sizing02.png)
 
 **[候補リスト]** の横にあるプラス記号をクリックして、VM インスタンス ID を表示します。
 
-![候補リスト](./media/tutorial-review-usage/sizing03.png)
+![サイズを変更する VM 候補の一覧を示す例](./media/tutorial-review-usage/sizing03.png)
 
 使用状況の非効率性の検出に関するチュートリアル ビデオを見るには、[Cloudyn での VM サイズの最適化](https://youtu.be/1xaZBNmV704)に関する記事を参照してください。
 
-Azure Cost Management では、Azure サービスのコスト節約のための推奨事項も提供されます。 詳細については、「[チュートリアル: 推奨事項に従ってコストを最適化する](tutorial-acm-opt-recommendations.md)」を参照してください。
+Azure Cost Management では、Azure サービスのコスト節約のための推奨事項も提供されます。 詳細については、「[チュートリアル: Optimize costs from recommendations](tutorial-acm-opt-recommendations.md)」 (チュートリアル: 推奨事項に従ってコストを最適化する) を参照してください。
 
 ## <a name="create-alerts-for-unusual-spending"></a>異常な支出に対するアラートを作成する
 
@@ -99,7 +99,7 @@ Azure Cost Management では、Azure サービスのコスト節約のための�
 
 [Save or Schedule this report]\(このレポートを保存またはスケジュールする\) ボックスの **[スケジュール]** タブを使用して、必要な頻度でレポートを自分自身にメールで送信するようにします。 必ず **[メールで送信]** を選択してください。 使用したタグ、グループ、およびフィルターは、メールで送信されるレポートに含まれます。 **[しきい値]** タブをクリックして、**[Actual Cost vs.Threshold]\(実際のコスト対しきい値\)** を選択します。 総予算が 20,000 ドルで、コストがその約半分に近づいたときに通知を受け取る場合は、10,000 ドルに対して**赤色のアラーム**、9,000 ドルに対して**黄色のアラーム**を作成します。 入力する値にコンマは含めないでください。 次に、連続アラートの数を選択します。 指定したアラートの合計数に達すると、それ以上アラートは送信されません。 スケジュールされたレポートを保存します。
 
-![レポートの例](./media/tutorial-review-usage/schedule-alert01.png)
+![支出しきい値に基づいて赤色と黄色のアラートが示された例](./media/tutorial-review-usage/schedule-alert01.png)
 
 原価率対予算のしきい値メトリックを選択して、アラートを作成することもできます。 そのメトリックを使用すると、通貨値の代わりに、予算のパーセンテージを使用できます。
 

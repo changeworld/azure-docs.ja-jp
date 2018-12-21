@@ -1,25 +1,25 @@
 ---
-title: メールと添付ファイルを処理するワークフローの作成 - Azure Logic Apps | Microsoft Docs
-description: このチュートリアルでは、Azure Logic Apps、Azure Storage、Azure Functions を使ってメールと添付ファイルを処理できるように、自動化されたワークフローを作成する方法について説明します。
+title: チュートリアル - メールと添付ファイルの処理を自動化する - Azure Logic Apps | Microsoft Docs
+description: チュートリアル - Azure Logic Apps、Azure Storage、Azure Functions を使ってメールと添付ファイルを処理する自動化されたワークフローを作成する
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
+ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.reviewer: klam, LADocs
-ms.openlocfilehash: 3d4e91465e2f9986ec1029b304e1c026e39f45b6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: cc3a2e96222e06324500e2203d870c06d0f3e8c0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231970"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140508"
 ---
-# <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Azure Logic Apps を使用したメールと添付ファイルの処理
+# <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>チュートリアル: Azure Logic Apps を使用してメールと添付ファイルの処理を自動化する
 
-Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを初めとする各種の SaaS (サービスとしてのソフトウェア) アプリとオンプレミス システムの垣根を越えてワークフローを自動化したりデータを統合したりすることができます。 このチュートリアルでは、受信メールと添付ファイルを処理する[ロジック アプリ](../logic-apps/logic-apps-overview.md)の作成方法を紹介します。 このロジック アプリは、対象のコンテンツを処理して Azure Storage に保存し、その内容の確認依頼通知を送信するものです。 
+Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを初めとする各種の SaaS (サービスとしてのソフトウェア) アプリとオンプレミス システムの垣根を越えてワークフローを自動化したりデータを統合したりすることができます。 このチュートリアルでは、受信メールと添付ファイルを処理する[ロジック アプリ](../logic-apps/logic-apps-overview.md)の作成方法を紹介します。 このロジック アプリは、電子メールのコンテンツを分析し、そのコンテンツを Azure Storage に保存して、コンテンツの確認依頼通知を送信します。 
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -246,11 +246,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="monitor-incoming-email"></a>受信メールを監視する
 
-1. デザイナーの検索ボックスに、フィルターとして「新しい電子メールが届いたとき」と入力します。 メール プロバイダーのトリガーとして、**[新しい電子メールが届いたとき - <*お使いのメール プロバイダー*>]** を選択します。
+1. デザイナーの検索ボックスに、フィルターとして「新しい電子メールが届いたとき」と入力します。 お使いの電子メール プロバイダーに対して、**[When a new email arrives \(新しい電子メールが届いたとき\)] - <*お使いの電子メール プロバイダー*>** のトリガーを選択します。
 
    例: 
 
-   ![メール プロバイダーの "新しい電子メールが届いたとき" トリガーを選択](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
+   ![電子メール プロバイダーに対して、[When a new email arrives \(新しい電子メールが届いたとき\)] のトリガーを選択する](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
    * Azure の職場または学校アカウントには、Office 365 Outlook を選択します。 
    * 個人用 Microsoft アカウントには、Outlook.com を選択します。 
@@ -328,7 +328,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
          "and": [ {
             "equals": [
                "@triggerBody()?['HasAttachment']",
-                 "True"
+                 "true"
             ]
          } ]
       },
@@ -377,15 +377,15 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[true の場合] 内でアクションを追加する](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-2. 検索ボックスで "azure functions" を検索し、アクションとして **[Azure 関数を選択する - Azure Functions]** を選択します。
+2. 検索ボックスで、「azure functions」を検索して、**[Azure 関数を選択する - Azure Functions]** アクションを選択します。
 
    ![アクションとして [Azure 関数を選択する] を選択する](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
-3. あらかじめ作成しておいた関数アプリ **CleanTextFunctionApp** を選択します。
+3. 以前に作成しておいた関数アプリ **CleanTextFunctionApp** を選択します。
 
    ![Azure 関数アプリを選択](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function-app.png)
 
-4. **RemoveHTMLFunction** 関数を選択します。
+4. 次に、お使いの関数 **RemoveHTMLFunction** を選択します。
 
    ![Azure 関数を選択](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function.png)
 
@@ -518,7 +518,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ループへのアクションの追加](./media/tutorial-process-email-attachments-workflow/for-each-add-action.png)
 
-2. 検索ボックスに、フィルターとして「BLOB の作成」と入力し、アクションとして **[BLOB の作成 - Azure Blob Storage]** を選択します。
+2. 検索ボックスに、フィルターとして「BLOB の作成」と入力し、**[BLOB の作成 - Azure Blob Storage]** を選択します。
 
    ![BLOB の作成アクションを追加](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 

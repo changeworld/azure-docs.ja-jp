@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 16e2da864d51cbc44457715813e851fd873c8746
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a90ef531cedb5e4c32a8f0af8b6cca86a93fb39a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276671"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997123"
 ---
 # <a name="what-is-azure-cost-management"></a>Azure Cost Management とは
 
@@ -41,7 +41,7 @@ Cost Management は、コスト分析、予算、推奨事項、コスト管理�
 
 ## <a name="consider-cloudyn"></a>Cloudyn の検討
 
-[Cloudyn](overview.md) は、Cost Management に関連する Azure サービスです。 Cloudyn を使うと、クラウドの使用状況や Azure リソースの支出を追跡できます。 AWS や Google などの他のクラウド プロバイダーもサポートしています。 わかりやすいダッシュボードのレポートは、コストの割り当てとショーバック/チャージバックに役立ちます。 現在の Cost Management は、ショーバック/チャージ バックや他のクラウド サービス プロバイダーをサポートしていません。 しかし、Cloudyn はそれらをサポート _している_ 選択肢の 1 つです。 現時点では、Cost Management は、Azure EA アカウントのみをサポートします。 Cost Management は、個人アカウント、従量課金制アカウント、Microsoft クラウド サービス プロバイダー アカウントをサポートしていませんが、Cloudyn はサポートしています。 これらのアカウントのいずれかを持っている場合、コストを管理するために Cloudyn を使用することができます。
+[Cloudyn](overview.md) は、Cost Management に関連する Azure サービスです。 Cloudyn を使うと、クラウドの使用状況や Azure リソースの支出を追跡できます。 AWS や Google などの他のクラウド プロバイダーもサポートしています。 わかりやすいダッシュボードのレポートは、コストの割り当てとショーバック/チャージバックに役立ちます。 現在の Cost Management は、ショーバック/チャージ バックや他のクラウド サービス プロバイダーをサポートしていません。 しかし、Cloudyn はそれらをサポート_している_選択肢の 1 つです。 現時点では、Cost Management は、Azure EA アカウントのみをサポートします。 Cost Management は、個人アカウント、従量課金制アカウント、Microsoft クラウド サービス プロバイダー アカウントをサポートしていませんが、Cloudyn はサポートしています。 これらのアカウントのいずれかを持っている場合、コストを管理するために Cloudyn を使用することができます。
 
 ## <a name="additional-azure-tools"></a>その他の Azure ツール
 

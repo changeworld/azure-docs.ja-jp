@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: danlep
-ms.openlocfilehash: 01281c0328fab85814ff93c73f9ea25e0d4c1b08
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 41a3a801214ff00c01397034e26fde6946ab97f0
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232802"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407815"
 ---
-# <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>CLI の例: クラスター構成ファイルを使用した Batch AI クラスターの作成
+# <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>CLI の例:クラスター構成ファイルを使用した Batch AI クラスターの作成
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 このスクリプトは、JSON 構成ファイルを使用して Batch AI クラスターの設定を指定する方法を示しています。 `az batchai cluster create` の対応するコマンド ライン パラメーターの代わりに、これらの設定を使用します。 構成ファイルは、複数のファイル システムをクラスター ノードにマウントするときや、複数のクラスターで同じ構成を使用する必要があるときに便利です。
 

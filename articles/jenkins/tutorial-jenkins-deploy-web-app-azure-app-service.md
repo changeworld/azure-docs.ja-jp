@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 274de7ac63df0afc1a59e197deebeb7929cf1ef8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: b65972b79fd16b912abfbd2e35642ef5d9f5adc4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855013"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438474"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル: Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure App Service にデプロイする
 
@@ -43,7 +43,7 @@ ms.locfileid: "51855013"
 
 * Java Development Kit (JDK) と Maven ツールがインストールされた、Azure Linux VM 上の [Jenkins](https://jenkins.io/) サーバー
 
-  Jenkins サーバーがない場合はまず、[Azure Linux VM での Jenkins サーバーの作成](/azure/jenkins/install-jenkins-solution-template)に関するページの手順を Azure portal で完了してください
+  Jenkins サーバーがない場合は、まず、Azure portal で [Azure Linux VM での Jenkins サーバーの作成](/azure/jenkins/install-jenkins-solution-template)に関するページの手順を完了してください。
 
 * サンプル Java Web アプリ用の作業コピー ([フォーク](#fork)) を取得するための [GitHub](https://github.com) アカウント。 
 
@@ -92,7 +92,7 @@ Jenkins によって GitHub が監視され、お客様の GitHub フォーク�
 > 
 > 以下の手順では、Jenkins が GitHub と連携できるよう、お客様の GitHub ユーザー名とパスワードを使用して個人用アクセス トークン資格情報を作成します。 
 > ただし、お客様の GitHub アカウントで 2 要素認証が使用される場合は、GitHub でお客様のトークンを作成して、代わりにそのトークンが使用されるよう Jenkins を設定します。 
-> 詳細については、[Jenkins の GitHub プライグイン](https://wiki.jenkins.io/display/JENKINS/Github+Plugin)に関するドキュメントを参照してください。
+> 詳細については、[Jenkins の GitHub プライグイン](https://wiki.jenkins.io/display/JENKINS/GitHub+Plugin)に関するドキュメントを参照してください。
 
 1. **[Manage Jenkins]\(Jenkins の管理\)** ページで **[Configure System]\(システムの構成\)** を選択します。 
 
@@ -164,7 +164,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------| 
-   | **サブスクリプション ID** | <*yourAzureSubscription-ID*> | お客様の Azure サブスクリプションの GUID 値 <p>**ヒント**: お客様の Azure サブスクリプション ID がわからない場合は、コマンド ラインまたは Cloud Shell で次の Azure CLI コマンドを実行してから `id` GUID 値を使用します。 <p>`az account list` | 
+   | **サブスクリプション ID** | <*yourAzureSubscription-ID*> | お客様の Azure サブスクリプションの GUID 値 <p>**ヒント**:お客様の Azure サブスクリプション ID がわからない場合は、コマンド ラインまたは Cloud Shell で次の Azure CLI コマンドを実行してから `id` GUID 値を使用します。 <p>`az account list` | 
    | **クライアント ID** | <*yourAzureServicePrincipal-ID*> | お客様の Azure サービス プリンシパル用に先ほど生成された `appId` GUID 値 | 
    | **クライアント シークレット** | <*yourSecurePassword*> | `password` 値、またはお客様が自分の Azure サービス プリンシパルに指定した "シークレット" | 
    | **テナント ID** | <*yourAzureActiveDirectoryTenant-ID*> | お客様の Azure Active Directory テナントの `tenant` GUID 値 | 

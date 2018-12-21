@@ -1,5 +1,5 @@
 ---
-title: Azure で Node.js とMongoDB Web アプリを構築する | Microsoft Docs
+title: MongoDB を使用して Node.js アプリをビルドする - Azure App Service | Microsoft Docs
 description: MongoDB 接続文字列を使用して Cosmos DB データベースに接続する Node.js アプリを Azure で動作させる方法について説明します。
 services: app-service\web
 documentationcenter: nodejs
@@ -14,21 +14,21 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 2363f7f2e17bfc451ea9fd5486ba60fbc8ccb993
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.custom: seodec18
+ms.openlocfilehash: 3666af764fa20a8343addedbddcdb12de0daf4a1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364287"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251506"
 ---
-# <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>チュートリアル: Azure で Node.js と MongoDB Web アプリを構築する
+# <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>チュートリアル:Azure で Node.js とMongoDB Web アプリを構築する
 
 > [!NOTE]
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、「[Azure App Service on Linux で Node.js および MongoDB の Web アプリを構築する](./containers/tutorial-nodejs-mongodb-app.md)」をご覧ください。
 >
 
-Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure で Node.js Web アプリを作成し、MongoDB データベースに接続する方法について説明します。 完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が [Azure App Service](app-service-web-overview.md) で実行されます。 単純化するために、サンプル アプリケーションでは [MEAN.js Web フレームワーク](http://meanjs.org/)を使用します。
+Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure で Node.js Web アプリを作成し、MongoDB データベースに接続する方法について説明します。 完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が [Azure App Service](app-service-web-overview.md) で実行されます。 単純化するために、サンプル アプリケーションでは [MEAN.js Web フレームワーク](https://meanjs.org/)を使用します。
 
 ![Azure App Service で実行されている MEAN.js アプリ](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -49,10 +49,10 @@ Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホ
 このチュートリアルを完了するには、以下が必要です。
 
 1. [Git をインストールする](https://git-scm.com/)
-1. [Node.js および NPM をインストールする](https://nodejs.org/)
-1. [Bower をインストールする](https://bower.io/) ([MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) で必要です)
-1. [Gulp.js をインストールします](http://gulpjs.com/) ([MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started) で必要です)
-1. [MongoDB Community Edition をインストールして実行する](https://docs.mongodb.com/manual/administration/install-community/) 
+2. [Node.js および NPM をインストールする](https://nodejs.org/)
+3. [Bower をインストールする](https://bower.io/) ([MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) で必要です)
+4. [Gulp.js をインストールします](https://gulpjs.com/) ([MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started) で必要です)
+5. [MongoDB Community Edition をインストールして実行する](https://docs.mongodb.com/manual/administration/install-community/) 
 
 ## <a name="test-local-mongodb"></a>ローカル MongoDB をテストする
 
@@ -310,10 +310,10 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ``` 
 
-デプロイ プロセスにより、`npm install` の後、[Gulp](http://gulpjs.com/) が実行されます。 App Service では、デプロイ時に Gulp および Grunt タスクが実行されません。そのため、このサンプル リポジトリには、それを有効にする追加の 2 つのファイルがルート ディレクトリにあります。 
+デプロイ プロセスにより、`npm install` の後、[Gulp](https://gulpjs.com/) が実行されます。 App Service では、デプロイ時に Gulp および Grunt タスクが実行されません。そのため、このサンプル リポジトリには、それを有効にする追加の 2 つのファイルがルート ディレクトリにあります。 
 
 - _.deployment_ - このファイルは、カスタム デプロイ スクリプトとして `bash deploy.sh`を実行するよう App Service に指示します。
 - _deploy.sh_- カスタム デプロイ スクリプト。 ファイルを確認すると、`npm install` と `bower install` の後に `gulp prod` が実行されることがわかります。 
@@ -344,7 +344,7 @@ http://<app_name>.azurewebsites.net
 
 ### <a name="update-the-data-model"></a>データ モデルを更新する
 
-_modules/articles/server/models/article.server.model.js_ を開きます。
+_modules/articles/server/models/article.server.model.js_を開きます。
 
 `ArticleSchema` に `comment` という `String` 型を追加します。 完了すると、スキーマ コードは次のようになります。
 

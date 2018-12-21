@@ -1,6 +1,6 @@
 ---
-title: データのアップロード (.NET - Azure Search) | Microsoft Docs
-description: .NET SDK を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。
+title: .NET SDK を使用してコードでデータをアップロードする - Azure Search
+description: C# のサンプル コードと .NET SDK を使用して、Azure Search の全文検索可能なインデックスにデータをアップロードする方法について説明します。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
-ms.openlocfilehash: dc59531b282f6c99dd399ac384a8c6264ee260ea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: ae723e07f92a05f128ca78a7c5974cd0ebc55ac6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258767"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313294"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>.NET SDK を使用した Azure Search へのデータのアップロード
 > [!div class="op_single_selector"]
@@ -204,7 +205,7 @@ public partial class Hotel
 }
 ```
 
-最初に気付くのは、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっているのに対し ("camel case")、`Hotel` の各パブリック プロパティの名前は大文字で始まっています ("Pascal case")。 これは、ターゲット スキーマをアプリケーション開発者が制御できない場合にデータ バインドを実行する .NET アプリケーションでの一般的なシナリオです。 プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
+最初に注目すべき点は、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっている ("キャメル ケース") のに対し、`Hotel` の各パブリック プロパティの名前は大文字で始まっています ("パスカル ケース")。 これは、ターゲット スキーマをアプリケーション開発者が制御できない場合にデータ バインドを実行する .NET アプリケーションでの一般的なシナリオです。 プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
 
 > [!NOTE]
 > Azure Search .NET SDK は、 [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) ライブラリを使用して、カスタムのモデル オブジェクトから JSON 形式へのシリアル化や JSON 形式からの逆シリアル化を行います。 必要に応じてこのシリアル化をカスタマイズできます。 詳細については、「[JSON.NET を使用したシリアル化のカスタマイズ](search-howto-dotnet-sdk.md#JsonDotNet)」を参照してください。 一例として、上記のサンプル コードで `DescriptionFr` プロパティに `[JsonProperty]` 属性を使用できます。

@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7e71b4f93f3b890ea73e36052570f9047fc8f32
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43a059e13945be3e39f65995e18ccd552727b874
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228234"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312580"
 ---
-# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>クイック スタート: Service Fabric に Java Reliable Services アプリケーションをデプロイする
+# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>クイック スタート:Service Fabric に Java Reliable Services アプリケーションをデプロイする
 
 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。
 
@@ -67,7 +67,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 2. Eclipse を開きます。
 3. [ファイル]、[インポート]、Gradle、既存の Gradle プロジェクトの順にクリックして、ウィザードに従います。
-4. [ディレクトリ] をクリックし、GitHub から複製した `service-fabric-java-quickstart` フォルダーから `Voting` ディレクトリを選択します。 [完了] をクリックします。 
+4. [ディレクトリ] をクリックし、GitHub から複製した `service-fabric-java-quickstart` フォルダーから `Voting` ディレクトリを選択します。 [完了] をクリックします。
 
     ![Eclipse の [インポート] ダイアログ](./media/service-fabric-quickstart-java/eclipseimport.png)
 
@@ -116,9 +116,9 @@ Service Fabric Explorer を使用するには、パーティ クラスターの 
 
 お使いのシステムに証明書をインポートするのに最適な任意の方法を使用します。 例: 
 
-* Windows の場合: PFX ファイルをダブルクリックし、プロンプトに従って個人用ストア `Certificates - Current User\Personal\Certificates` に証明書をインストールします。 または、**ReadMe** 手順の PowerShell コマンドを使用できます。
-* Mac の場合: PFX ファイルをダブルクリックし、プロンプトに従ってキーチェーンに証明書をインストールします。
-* Ubuntu の場合: Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明書を Firefox にインポートするには、ブラウザーの右上隅にあるメニュー ボタンをクリックし、**[オプション]** をクリックします。 **環境設定**ページで、検索ボックスを使用して "証明書" を検索します。 **[証明書を表示]** をクリックし、**[あなたの証明書]** タブを選択します。次に、**[インポート]** をクリックし、プロンプトに従って証明書をインポートします。
+* Windows の場合:PFX ファイルをダブルクリックし、プロンプトに従って個人用ストア `Certificates - Current User\Personal\Certificates` に証明書をインストールします。 または、**ReadMe** 手順の PowerShell コマンドを使用できます。
+* Mac の場合:PFX ファイルをダブルクリックし、プロンプトに従ってキーチェーンに証明書をインストールします。
+* Ubuntu の場合:Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明書を Firefox にインポートするには、ブラウザーの右上隅にあるメニュー ボタンをクリックし、**[オプション]** をクリックします。 **環境設定**ページで、検索ボックスを使用して "証明書" を検索します。 **[証明書を表示]** をクリックし、**[あなたの証明書]** タブを選択します。次に、**[インポート]** をクリックし、プロンプトに従って証明書をインポートします。
 
    ![Firefox での証明書のインストール](./media/service-fabric-quickstart-java/install-cert-firefox.png)
 
@@ -132,7 +132,7 @@ Service Fabric Explorer を使用するには、パーティ クラスターの 
     openssl x509 -in [CERTIFICATE_PEM_FILE] -fingerprint -noout
     ```
 
-2. `Voting/VotingApplication/ApplicationManifest.xml` ファイルの **ApplicationManifest** タグに次のスニペットを追加します。 前の手順で得た拇印 (セミコロンを除く) を **X509FindValue** に指定する必要があります。 
+2. `Voting/VotingApplication/ApplicationManifest.xml` ファイルの **ApplicationManifest** タグに次のスニペットを追加します。 前の手順で得た拇印 (セミコロンを除く) を **X509FindValue** に指定する必要があります。
 
     ```xml
     <Certificates>

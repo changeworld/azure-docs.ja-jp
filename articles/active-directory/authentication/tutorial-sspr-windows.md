@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5c40e6c681a4f37c61519040eb32531d3c8f071c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844840"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437148"
 ---
-# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワードのリセット
+# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワード リセット
 
 このチュートリアルでは、ユーザーが Windows 10 のログイン画面から自分のパスワードをリセットできるようにします。 新しい Windows 10 April 2018 Update では、**Azure AD に参加済み**または**ハイブリッド Azure AD に参加済み**のデバイスを所有しているユーザーが、ログイン画面の "パスワードのリセット" リンクを使用できます。 このリンクをユーザーがクリックすると、使い慣れたセルフサービスによるパスワードのリセット (SSPR) 機能が利用できます。
 
@@ -29,8 +29,8 @@ ms.locfileid: "52844840"
 ## <a name="prerequisites"></a>前提条件
 
 * 以下の条件を満たす Windows 10 April 2018 Update 以降のクライアント。
-   * [Azure AD 参加済み](../device-management-azure-portal.md)または 
-   * [ハイブリッド Azure AD 参加済み](../device-management-hybrid-azuread-joined-devices-setup.md)
+   * [Azure AD 参加済みマシン](../device-management-azure-portal.md)または
+   * [Hybrid Azure AD 参加済みマシン](../device-management-hybrid-azuread-joined-devices-setup.md)と、ドメイン コントローラーへのネットワーク接続。
 * Azure AD のセルフ サービス パスワード リセットを有効にする必要があります。
 
 ## <a name="configure-reset-password-link-using-intune"></a>Intune を使用して "パスワードのリセット" リンクを構成する
@@ -125,7 +125,11 @@ Hyper-V を使用してこの機能をテストすると、"パスワードの�
    * EnableLostMode をデバイスに対して設定する
    * Explorer.exe をカスタム シェルで置き換える
 
+この機能は、802.1x ネットワーク認証がデプロイされ、[ユーザー ログオンの直前に実行する] オプションが有効になっているネットワークでは動作しません。 802.1x ネットワーク認証がデプロイされているネットワークでこの機能を有効にするには、マシン認証を使用することをお勧めします。
+
 お使いの Windows 10 マシンがプロキシ サーバーまたはファイアウォールの内側にある場合は、passwordreset.microsoftonline.com および ajax.aspnetcdn.com への HTTPS トラフィック (443) を許可する必要があります。
+
+ハイブリッド ドメイン参加済みのシナリオでは、SSPR ワークフローが完了する場所にシナリオが存在し、Active Directory のドメイン コントローラーが必要ありません。 ドメイン コントローラーとの接続は、新しいパスワードを初めて使用するときに必要です。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

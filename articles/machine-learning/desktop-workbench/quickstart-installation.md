@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 3/7/2018
+ms.date: 03/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: a45b8e1dd2f59bf1399c92e3ff1a3c66ca8956ed
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 21ab3448f080e7f4874464dbb4befc0cbed63282
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956882"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276504"
 ---
-# <a name="quickstart-install-and-get-started-with-azure-machine-learning-service"></a>クイック スタート: Azure Machine Learning サービスのインストールと基本操作
+# <a name="quickstart-install-and-get-started-with-azure-machine-learning-service"></a>クイック スタート:Azure Machine Learning service のインストールと基本操作
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -69,7 +69,7 @@ Azure Portal を使用して Azure Machine Learning アカウントをプロビ�
    [Experimentation account name]\(実験アカウント名\) | "_一意の名前_" |アカウントを識別する一意の名前を入力します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 
    [サブスクリプション] | _該当するサブスクリプション_ |実験に使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となっている適切なサブスクリプションを選択してください。
    リソース グループ | "_リソース グループ名_" | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力してこの実験アカウント用に新しいリソース グループを作成します。 
-   Location | _ユーザーに最も近いリージョン_ | ユーザーとデータ リソースに最も近い場所を選択します。
+   場所 | _ユーザーに最も近いリージョン_ | ユーザーとデータ リソースに最も近い場所を選択します。
    [Number of seats]\(シート数\) | 2 | 接続クライアント数を入力します。 [シートあたりの価格](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。<br/><br/>このクイック スタートで必要なシート数は 2 つだけです。 シートは、必要に応じて Azure Portal から追加したり削除したりすることができます。
    ストレージ アカウント | "_一意の名前_" | **[新規作成]** を選択し、[Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal)を作成するための名前を指定します。 名前は 3 文字以上 24 文字以下にする必要があり、英数字だけを使用することができます。 または、**[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のストレージ アカウントを選択します。 このストレージ アカウントは、プロジェクト アーティファクトと実行履歴データを保持するために必要であり、そのために使用されます。 
    [Workspace for Experimentation account]\(実験アカウントのワークスペース\) | IrisGarden<br/>(チュートリアルで使用する名前) | このアカウントのワークスペースの名前を指定します。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
@@ -117,7 +117,7 @@ Azure Machine Learning Workbench には Windows 版と macOS 版があります�
    
    | |Azure Machine Learning Workbench のインストール パス|
    |--------|------------------------------------------------|
-   |Windows|C:\Users\\<user\>\AppData\Local\AmlWorkbench|
+   | Windows|C:\Users\\<user\>\AppData\Local\AmlWorkbench|
    |macOS|/Applications/Azure ML Workbench.app|
 
    必要な依存コンポーネントが、インストーラーによってすべてダウンロードされ、セットアップされます (Python、Miniconda、その他の関連ライブラリなど)。 このインストールには、Azure のクロスプラットフォーム コマンドライン ツール (Azure CLI) も含まれます。
@@ -213,7 +213,7 @@ Azure Machine Learning CLI のコマンドに関するヘルプは、--help 引�
 あやめのモデルを Web サービスとしてデプロイする方法など、このワークフローをさらに深く体験したい場合は、"*あやめの分類*" のチュートリアルを最後まで進めてください。 このチュートリアルでは、[データの準備](../desktop-workbench/tutorial-classifying-iris-part-1.md)、[実験](../desktop-workbench/tutorial-classifying-iris-part-2.md)、[モデル管理](../desktop-workbench/tutorial-classifying-iris-part-3.md)の詳細な手順を説明しています。 
 
 > [!div class="nextstepaction"]
-> [チュートリアル : あやめの分類 (パート 1)](../desktop-workbench/tutorial-classifying-iris-part-1.md)
+> [チュートリアル:あやめの分類 (パート 1)](../desktop-workbench/tutorial-classifying-iris-part-1.md)
 
 >[!NOTE]
 > モデル管理アカウントは作成しましたが、Web サービスをデプロイするために必要な環境がまだセットアップされていません。 [デプロイ環境](../desktop-workbench/deployment-setup-configuration.md)のセットアップ方法を確認してください。

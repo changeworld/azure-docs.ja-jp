@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure Cosmos DB Gremlin API の概要
 description: Azure Cosmos DB を使用し、Apache TinkerPop の Gremlin グラフ クエリ言語を使って待ち時間の短い大規模なグラフの格納、クエリの実行、トラバースを行う方法について説明します。
 services: cosmos-db
@@ -8,29 +8,29 @@ ms.component: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: f2ca118e137104c6dddd2945b7b88b2f535621eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e9e0d2f452a21f2da29568b953238318cb4477df
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849234"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077450"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB の概要: Gremlin API
 
 [Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 また、マルチモデル データベースでもあり、ドキュメント、キーと値、グラフ、列指向の各データ モデルがサポートされています。 Azure Cosmos DB Gremlin API は、グラフ データの保存と操作に使用されます。 Gremlin API ではグラフ データのモデル化がサポートされており、グラフ データを走査する API が用意されています。
 
-この記事では、Azure Cosmos DB Gremlin API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間で、グラフにクエリを実行し、グラフの構造とスキーマを簡単に改善できます。 Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) を使用できます。
+この記事では、Azure Cosmos DB Gremlin API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間で、グラフにクエリを実行し、グラフの構造とスキーマを簡単に改善できます。 Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](https://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) を使用できます。
 
 ## <a name="what-is-a-graph-database"></a>グラフ データベースとは
 実世界で出現するデータは、自然に結び付けられています。 従来のデータ モデリングはエンティティに重点を置いています。 しかし、多くのアプリケーションでは、当然、エンティティとリレーションシップの両方をモデル化するというニーズがあります。
 
-[グラフ](http://mathworld.wolfram.com/Graph.html)とは、[頂点](http://mathworld.wolfram.com/GraphVertex.html)と[辺](http://mathworld.wolfram.com/GraphEdge.html)で構成された構造です。 頂点と辺は、いずれも任意の数のプロパティを持つことができます。 
+[グラフ](https://mathworld.wolfram.com/Graph.html)とは、[頂点](http://mathworld.wolfram.com/GraphVertex.html)と[辺](http://mathworld.wolfram.com/GraphEdge.html)で構成された構造です。 頂点と辺は、いずれも任意の数のプロパティを持つことができます。 
 
-* **頂点** - 頂点は、人、場所、イベントなどの個々のオブジェクトを表します。 
+* **頂点** - 頂点は、人、場所、イベントなどの個々のオブジェクトを表します。
 
-* **辺** - 辺は、頂点間のリレーションシップを表します。 たとえば、あるユーザーは、別のユーザーと知り合いで、あるイベントに関連があり、ある場所に最近行ったような場合です。 
+* **辺** - 辺は、頂点間のリレーションシップを表します。 たとえば、あるユーザーは、別のユーザーと知り合いで、あるイベントに関連があり、ある場所に最近行ったような場合です。
 
-* **プロパティ** - プロパティは頂点と辺に関する情報を表します。 プロパティの例として、名前と年齢を持つ頂点があります。 辺には、タイム スタンプや重みなどのプロパティがあります。 正式には、このモデルは[プロパティ グラフ](http://tinkerpop.apache.org/docs/current/reference/#intro)と呼ばれます。 Azure Cosmos DB は、プロパティ グラフ モデルをサポートしています。
+* **プロパティ** - プロパティは頂点と辺に関する情報を表します。 プロパティの例として、名前と年齢を持つ頂点があります。 辺には、タイム スタンプや重みなどのプロパティがあります。 正式には、このモデルは[プロパティ グラフ](https://tinkerpop.apache.org/docs/current/reference/#intro)と呼ばれます。 Azure Cosmos DB は、プロパティ グラフ モデルをサポートしています。
 
 たとえば、次のサンプル グラフは、ユーザー、モバイル デバイス、関心事、オペレーティング システムの間のリレーションシップを示しています。
 
@@ -41,7 +41,7 @@ ms.locfileid: "52849234"
 グラフ データベースが提供する高速トラバーサルと、深さ優先探索、幅優先探索、ダイクストラ法などのグラフ アルゴリズムを組み合わせることで、ソーシャル ネットワーク、コンテンツ管理、レコメンデーションなどのさまざまな分野の問題を解決できます。
 
 ## <a name="features-of-azure-cosmos-db-graph-database"></a>Azure Cosmos DB グラフ データベースの機能
- 
+
 Azure Cosmos DB は、グローバル配布、ストレージとスループットのエラスティック スケーリング、自動インデックス作成とクエリ、調整可能な整合性レベルを提供し、TinkerPop 標準をサポートする、完全に管理されたグラフ データベースです。
 
 ![Azure Cosmos DB グラフ アーキテクチャ](./media/graph-introduction/cosmosdb-graph-architecture.png)
@@ -80,18 +80,18 @@ Azure Cosmos DB では、同じコンテナーやデータベース内でドキ�
 
 ## <a name="get-started"></a>作業開始
 
-Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell、または Azure portal を使用して Azure Cosmos DB Gremlin API アカウントを作成し、アカウントにアクセスできます。 アカウントを作成したら、Gremlin の WebSocket フロントエンドを提供する Gremlin API サービス エンドポイント (`https://<youraccount>.gremlin.cosmosdb.azure.com`) を使用して、そのアカウント内のグラフ データベースにアクセスできます。 [Gremin コンソール](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)などの TinkerPop 互換ツールを構成してこのエンドポイントに接続し、Java、Node.js、または任意の Gremlin クライアント ドライバーでアプリケーションを構築できます。
+Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell、または Azure portal を使用して Azure Cosmos DB Gremlin API アカウントを作成し、アカウントにアクセスできます。 アカウントを作成したら、Gremlin の WebSocket フロントエンドを提供する Gremlin API サービス エンドポイント (`https://<youraccount>.gremlin.cosmosdb.azure.com`) を使用して、そのアカウント内のグラフ データベースにアクセスできます。 [Gremin コンソール](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)などの TinkerPop 互換ツールを構成してこのエンドポイントに接続し、Java、Node.js、または任意の Gremlin クライアント ドライバーでアプリケーションを構築できます。
 
 次の表に、Azure Cosmos DB に対して使用できる一般的な Gremlin ドライバーを示します。
 
 | ダウンロード | ドキュメント | Getting Started (概要) | サポートされているコネクタのバージョン |
 | --- | --- | --- | --- |
-| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Github の Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [.NET を使用してグラフを作成する](create-graph-dotnet.md) | 3.4.0-RC2 |
-| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Java を使用してグラフを作成する](create-graph-java.md) | 3.2.0 以降 |
+| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Github の Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [.NET を使用してグラフを作成する](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Java を使用してグラフを作成する](create-graph-java.md) | 3.2.0 以降 |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [GitHub の Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) | [Node.js を使用してグラフを作成する](create-graph-nodejs.md) | 2.6.0|
-| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub の Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Python を使用してグラフを作成する](create-graph-python.md) | 3.2.7 |
-| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Github の Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [PHP を使用してグラフを作成する](create-graph-php.md) | 3.1.0 |
-| [Gremlin コンソール](https://tinkerpop.apache.org/downloads.html) | [TinkerPop ドキュメント](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gremlin コンソールを使用してグラフを作成する](create-graph-gremlin-console.md) | 3.2.0 以降 |
+| [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub の Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Python を使用してグラフを作成する](create-graph-python.md) | 3.2.7 |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [GitHub の Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [PHP を使用してグラフを作成する](create-graph-php.md) | 3.1.0 |
+| [Gremlin コンソール](https://tinkerpop.apache.org/downloads.html) | [TinkerPop ドキュメント](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gremlin コンソールを使用してグラフを作成する](create-graph-gremlin-console.md) | 3.2.0 以降 |
 
 ## <a name="graph-database-design-considerations"></a>グラフ データベースの設計に関する考慮事項
 
@@ -111,11 +111,11 @@ Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell�
 
 ![グラフの設計に関する考慮事項の例](./media/graph-introduction/graph-design-considerations-example.png)
 
-* クエリによっては、District->Store のリレーションシップが、Store 頂点をフィルター処理するために独自に使用される可能性があります。 たとえば、クエリが "特定の地区に属するすべての店舗を取得する"形式であるとします。 この場合、District エンティティを自身の頂点から Store 頂点のプロパティに折りたたむことを検討する価値があります。 
+* クエリによっては、District->Store のリレーションシップが、Store 頂点をフィルター処理するために独自に使用される可能性があります。 たとえば、クエリが "特定の地区に属するすべての店舗を取得する"形式であるとします。 この場合、District エンティティを自身の頂点から Store 頂点のプロパティに折りたたむことを検討する価値があります。
 
 * このアプローチには、一度に 3 つのグラフ オブジェクト (District、District->Store、Store) を取得するのではなく、1 つの Store 頂点を取得することによって、各 Store 頂点を取得するコストが削減されるという利点があります。 これにより、パフォーマンスが向上するだけでなく、クエリあたりのコストも削減できます。
 
-* Store 頂点は、Employee と Product という 2 つの異なるエンティティにリンクしているためです。 これにより、走査される可能性が増えるので、Store は必要な頂点になります。  
+* Store 頂点は、Employee と Product という 2 つの異なるエンティティにリンクしているためです。 これにより、走査される可能性が増えるので、Store は必要な頂点になります。
 
 
 

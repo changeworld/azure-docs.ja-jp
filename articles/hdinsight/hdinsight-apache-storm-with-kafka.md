@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: HDInsight の Apache Storm と Apache Kafka - Azure '
+title: 'チュートリアル: Apache Storm と Apache Kafka を使用してデータの読み書きを行う - Azure HDInsight'
 description: HDInsight の Apache Storm と Apache Kafka を使用してストリーミング パイプラインを作成する方法について説明します。 このチュートリアルでは、KafkaBolt コンポーネントと KafkaSpout コンポーネントを使用して Kafka からデータをストリーミングします。
 services: hdinsight
 author: hrasheed-msft
@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 05/21/2018
-ms.openlocfilehash: 74cdaed91624e9d0602ce6a85ccc5cd341b9519e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/06/2018
+ms.openlocfilehash: 1c2a61ba936fa86bb3acb560909b29cda762693c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496623"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166576"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -65,19 +65,19 @@ ms.locfileid: "52496623"
 
 Apache Storm には、Apache Kafka を操作するためのコンポーネントがいくつか用意されています。 このチュートリアルでは、次のコンポーネントを使用します。
 
-* `org.apache.storm.kafka.KafkaSpout`: このコンポーネントは Kafka からデータを読み取ります。 このコンポーネントは、次のコンポーネントに依存します。
+* `org.apache.storm.kafka.KafkaSpout`:このコンポーネントは Kafka からデータを読み取ります。 このコンポーネントは、次のコンポーネントに依存します。
 
-    * `org.apache.storm.kafka.SpoutConfig`: スパウト コンポーネントの構成を提供します。
+    * `org.apache.storm.kafka.SpoutConfig`:スパウト コンポーネントの構成を提供します。
 
     * `org.apache.storm.spout.SchemeAsMultiScheme` と `org.apache.storm.kafka.StringScheme`: Kafka のデータを Storm のタプルに変換します。
 
-* `org.apache.storm.kafka.bolt.KafkaBolt`: このコンポーネントはデータを Kafka に書き込みます。 このコンポーネントは、次のコンポーネントに依存します。
+* `org.apache.storm.kafka.bolt.KafkaBolt`:このコンポーネントはデータを Kafka に書き込みます。 このコンポーネントは、次のコンポーネントに依存します。
 
-    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`: 書き込まれるトピックを記述します。
+    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`:書き込みの対象となるトピックを記述します。
 
-    * `org.apache.kafka.common.serialization.StringSerializer`: データを文字列値としてシリアル化するようにボルトを構成します。
+    * `org.apache.kafka.common.serialization.StringSerializer`:データを文字列値としてシリアル化するようにボルトを構成します。
 
-    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: Storm トポロジ内で使用されるタプル データ構造から、Kafka に格納されたフィールドにマップします。
+    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`:Storm トポロジ内で使用されるタプル データ構造から、Kafka に格納されたフィールドにマップします。
 
 これらのコンポーネントは、`org.apache.storm : storm-kafka` パッケージで提供されます。 Storm のバージョンに適合するパッケージ バージョンを使用してください。 HDInsight 3.6 の場合、Storm のバージョンは 1.1.0 です。
 その他の Kafka コンポーネントが含まれた `org.apache.kafka : kafka_2.10` パッケージも必要です。 Kafka のバージョンに適合するパッケージ バージョンを使用してください。 HDInsight 3.6 の場合、Kafka のバージョンは 0.10.0.0 です。
@@ -135,21 +135,21 @@ Apache Storm には、Apache Kafka を操作するためのコンポーネント
 
 これらのトポロジの実行時に、次のパラメーターが設定されます。
 
-* `${kafka.topic}`: トポロジの読み取り/書き込みの対象になる Kafka トピックの名前。
+* `${kafka.topic}`:トポロジの読み取り/書き込みの対象になる Kafka トピックの名前。
 
-* `${kafka.broker.hosts}`: Kafka ブローカーが実行されるホスト。 ブローカー情報は、KafkaBolt が Kafka への書き込み時に使用します。
+* `${kafka.broker.hosts}`:Kafka ブローカーが実行されるホスト。 ブローカー情報は、KafkaBolt が Kafka への書き込み時に使用します。
 
-* `${kafka.zookeeper.hosts}`: Kafka クラスター上で Zookeeper が実行されるホスト。
+* `${kafka.zookeeper.hosts}`:Kafka クラスター上で Zookeeper が実行されるホスト。
 
-* `${hdfs.url}`: HDFSBolt コンポーネントのファイル システム URL。 Azure ストレージ アカウントと Azure Data Lake Store のどちらにデータを書き込むかを示します。
+* `${hdfs.url}`:HDFSBolt コンポーネントのファイル システム URL。 Azure ストレージ アカウントと Azure Data Lake Store のどちらにデータを書き込むかを示します。
 
-* `${hdfs.write.dir}`: データの書き込み先のディレクトリ。
+* `${hdfs.write.dir}`:データの書き込み先のディレクトリ。
 
 Flux トポロジの詳細については、[https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html) を参照してください。
 
 ### <a name="kafka-writer"></a>Kafka-writer
 
-Kafka-writer トポロジでは、Kafka ボルト コンポーネントがパラメーターとして 2 つの文字列値を受け取ります。 これらのパラメーターは、ボルトから __キー__ 値および __メッセージ__ 値として Kafka に送信するタプル フィールドを示します。 キーは、Kafka でデータをパーティション分割するために使用されます。 メッセージは格納されるデータです。
+Kafka-writer トポロジでは、Kafka ボルト コンポーネントがパラメーターとして 2 つの文字列値を受け取ります。 これらのパラメーターは、ボルトから__キー__値および__メッセージ__値として Kafka に送信するタプル フィールドを示します。 キーは、Kafka でデータをパーティション分割するために使用されます。 メッセージは格納されるデータです。
 
 この例では、`com.microsoft.example.SentenceSpout` コンポーネントは、`key` と `message` の 2 つのフィールドを含むタプルを生成します。 Kafka ボルトはこれらのフィールドを抽出し、フィールド内のデータを Kafka に送信します。
 
@@ -411,7 +411,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     | --- | --- |
     | サブスクリプション | お使いの Azure サブスクリプション |
     | リソース グループ | リソースが含まれるリソース グループ。 |
-    | Location | リソースが作成される Azure リージョン。 |
+    | 場所 | リソースが作成される Azure リージョン。 |
     | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 |
     | [Storm Cluster Name]\(Storm クラスター名\) | Storm クラスターの名前。 |
     | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターの管理者ユーザー名。 |
@@ -565,13 +565,13 @@ Kafka では、"_トピック_" にデータが格納されます。 Storm ト�
 
     このコマンドで使用されているパラメーターの意味は次のとおりです。
 
-    * `org.apache.storm.flux.Flux`: Flux を使用してこのトポロジを構成および実行します。
+    * `org.apache.storm.flux.Flux`:Flux を使用してこのトポロジを構成および実行します。
 
-    * `--remote`: トポロジを Nimbus に送信します。 トポロジは、クラスター内のワーカー ノード全体に配布されます。
+    * `--remote`:トポロジを Nimbus に送信します。 トポロジは、クラスター内のワーカー ノード全体に配布されます。
 
-    * `-R /writer.yaml`: `writer.yaml` ファイルを使用して、トポロジを構成します。 `-R` は、このリソースが jar ファイル内に含まれていることを指示しています。 リソースは jar のルートにあるため、`/writer.yaml` がリソースへのパスになります。
+    * `-R /writer.yaml`:`writer.yaml` ファイルを使用して、トポロジを構成します。 `-R` は、このリソースが jar ファイル内に含まれていることを指示しています。 リソースは jar のルートにあるため、`/writer.yaml` がリソースへのパスになります。
 
-    * `--filter`: `dev.properties` ファイルの値を使用して、`writer.yaml` トポロジのエントリを作成します。 たとえば、ファイル内の `kafka.topic` エントリの値を使用して、トポロジの定義内の `${kafka.topic}` エントリを置き換えます。
+    * `--filter`:`dev.properties` ファイルの値を使用して、`writer.yaml` トポロジのエントリを作成します。 たとえば、ファイル内の `kafka.topic` エントリの値を使用して、トポロジの定義内の `${kafka.topic}` エントリを置き換えます。
 
 ## <a name="start-the-reader"></a>リーダーの起動
 

@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Cassandra API (.NET) - Azure Cosmos DB'
+title: 'クイック スタート: Cassandra API と .NET - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使用して、Azure Portal と .NET でプロファイル アプリケーションを作成する方法を示します。
 services: cosmos-db
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 3708027b766ff9070831dd3677e821565e0dd4fa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 50c2362e961d882afc109a0554303d364d52384b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994957"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089432"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>クイックスタート: .NET と Azure Cosmos DB で Cassandra アプリをビルドする
+# <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>クイック スタート: .NET と Azure Cosmos DB で Cassandra アプリをビルドする
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -96,7 +96,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 * uprofile キースペースに接続する新しいセッションで IMapper オブジェクトを使用し、ユーザーのエンティティを挿入します。
 
     ```csharp
-    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
+    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
 * すべてのユーザーの情報を取得するクエリを実行します。
@@ -118,7 +118,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 アプリはこの接続文字列情報によって、ホストされているデータベースと通信できます。
 
-1. [Azure portal](http://portal.azure.com/) で **[接続文字列]** を選択します。
+1. [Azure portal](https://portal.azure.com/) で **[接続文字列]** を選択します。
 
     画面右側の ![コピー ボタン](./media/create-cassandra-dotnet/copy.png) を使用してユーザー名の値をコピーします。
 

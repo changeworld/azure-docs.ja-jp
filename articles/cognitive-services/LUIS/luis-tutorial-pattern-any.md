@@ -1,8 +1,9 @@
 ---
-title: 'チュートリアル 5: 自由形式テキストのための Pattern.any エンティティ'
+title: Pattern.any エンティティ
 titleSuffix: Azure Cognitive Services
 description: 発話が正しい形式であって、データの末尾が発話の残りの単語と混同しやすい可能性がある場合に、pattern.any エンティティを使用して発話からデータを抽出し ます。
 services: cognitive-services
+ms.custom: seodec18
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
@@ -10,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9038947ad20f63638af1830ca660de8cac802d9b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4551968cc446bb949d0b18cb77211808169cb907
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282092"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103474"
 ---
 # <a name="tutorial-5-extract-free-form-data"></a>チュートリアル 5: 自由形式のデータを抽出する
 
@@ -59,7 +60,7 @@ pattern.any エンティティは、エンティティの表現が原因で発�
 > * トレーニング
 > * 新しいパターンをテストする
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>既存のアプリを使用する
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 

@@ -1,17 +1,17 @@
 ---
-title: Azure CLI スクリプト - Azure Cosmos DB のアカウント キーを取得する | Microsoft Docs
+title: Azure CLI スクリプト - Azure Cosmos DB のアカウント キーを取得する
 description: Azure CLI のサンプル スクリプト - Azure Cosmos DB のアカウント キーを取得する
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 342c874fc3ada6f9a2480db2632a74cd51031305
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 354184313e541dfa0cbe32c36abbd097c9a97b3c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005184"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965890"
 ---
 # <a name="get-account-keys-for-azure-cosmos-db-using-the-azure-cli"></a>Azure CLI を使用して Azure Cosmos DB のアカウント キーを取得する
 

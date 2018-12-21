@@ -13,14 +13,15 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0bcff6e0cec234f17b0aaab9828602eb4a194d85
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 3a84f9ed35bac7f56d4a6aa2af94d1c28e335b74
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334212"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093201"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する
+# <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>チュートリアル: Resource Manager Template deployment で Azure Key Vault を統合する
 
 Azure Key Vault からシークレット値を取得し、Resource Manager のデプロイ時にシークレット値をパラメーターとして渡す方法を説明します。 値の Key Vault ID のみを参照するため、値が公開されることはありません。 詳しくは、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./resource-manager-keyvault-parameter.md)」を参照してください
 
@@ -48,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager Template deployment で Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:Resource Manager Template deployment で Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-the-key-vault"></a>Key Vault を準備する
 
@@ -82,7 +83,7 @@ Key Vault を作成するには：
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 テンプレートが Key Vault と Key Vault シークレットを作成します。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatekeyvault%2FCreateKeyVault.json"><img src="./media/resource-manager-tutorial-use-key-vault/deploy-to-azure.png" /></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatekeyvault%2FCreateKeyVault.json"><img src="./media/resource-manager-tutorial-use-key-vault/deploy-to-azure.png" alt="deploy to azure"/></a>
 
 2. 次の値を選択または入力します。  値を入力した後に**購入**を選択しないでください。
 
@@ -94,7 +95,7 @@ Key Vault を作成するには：
     * **Key Vault 名**: 一意の名前を割り当てます。 
     * **テナントID**: テンプレート関数は、自動的にテナントID を取得します。既定値を変更しないでください
     * **Ad ユーザー ID**: 最後の手順から取得した、 Azure AD ユーザーオブジェクトIDを入力します。
-    * **シークレット名**: 既定の名前は**vmAdminPassword**です。 ここでシークレットの名前を変更する場合は、仮想マシンを展開するときに、シークレット名を更新する必要があります。
+    * **シークレット名**: 既定の名前は **vmAdminPassword** です。 ここでシークレットの名前を変更する場合は、仮想マシンを展開するときに、シークレット名を更新する必要があります。
     * **シークレット値**: シークレットを入力します。  シークレットは、仮想マシンへのサインインに使用されるパスワードです。 最後の手順で作成した生成されるパスワードを使用することをお勧めします。
     * **上記の使用条件に同意する**: 選択。
 3. 上から**パラメーターの編集**を選択してテンプレートを確認します。

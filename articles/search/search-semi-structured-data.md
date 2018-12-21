@@ -1,5 +1,5 @@
 ---
-title: Azure Search で Azure クラウド ストレージから半構造化データを検索するチュートリアル | Microsoft Docs
+title: Azure クラウド ストレージでの半構造化データの検索に関するチュートリアル - Azure Search
 description: このチュートリアルでは、半構造化された Azure BLOB データを Azure Search を使用して検索する方法について説明します。
 author: HeidiSteen
 manager: cgronlun
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
-ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec2018
+ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005079"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313826"
 ---
-# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>チュートリアル: Azure クラウド ストレージで半構造化データを検索する
+# <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>チュートリアル:Azure クラウド ストレージで半構造化データを検索する
 
 2 部構成のチュートリアル シリーズでは、Azure Search を使用して半構造化データと非構造化データを検索する方法について説明します。 [パート 1](../storage/blobs/storage-unstructured-search.md) では非構造化データの検索について説明しましたが、ストレージ アカウントの作成など、このチュートリアルを行うための重要な前提条件も含まれています。 
 
@@ -59,7 +60,7 @@ Postman を開始し、HTTP 要求を設定します。 このツールに慣れ
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure ポータル](http://portal.azure.com)にサインインします。
+[Azure Portal](http://portal.azure.com) にサインインします。
 
 ## <a name="upload-the-sample-data"></a>サンプル データのアップロード
 

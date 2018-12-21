@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
 ms.author: rodrigoa
-ms.openlocfilehash: 56ac08593d29a9003f5509f2be52f50fa250bd75
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431597"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088879"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル: Azure Stream Analytics の JavaScript ユーザー定義関数
  
@@ -58,7 +58,7 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 4.  **[新しい関数]** ブレードの **[関数の種類]** で、**[JavaScript]** を選択します。 既定の関数テンプレートがエディターに表示されます。
 5.  **[UDF alias (UDF エイリアス)]** に「**hex2Int**」と入力し、関数の実装を次のように変更します。
 
-    ```
+    ```javascript
     // Convert Hex value to integer.
     function hex2Int(hexValue) {
         return parseInt(hexValue, 16);
@@ -73,7 +73,7 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
 1. クエリ エディターの **[ジョブ トポロジ]** で、**[クエリ]** を選択します。
 2.  クエリを編集し、次のようにユーザー定義関数を呼び出します。
 
-    ```
+    ```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -129,14 +129,14 @@ Stream Analytics ジョブ出力を入力として使用し、その入力が JS
 
 **JavaScript ユーザー定義関数の定義:**
 
-```
+```javascript
 function main(x) {
 return JSON.stringify(x);
 }
 ```
 
 **サンプル クエリ:**
-```
+```SQL
 SELECT
     DataString,
     DataValue,
@@ -152,7 +152,7 @@ FROM
 
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。  
+1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。  
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
 ## <a name="get-help"></a>問い合わせ

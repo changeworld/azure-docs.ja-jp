@@ -1,37 +1,37 @@
 ---
-title: 'チュートリアル 3: 正規表現に一致するデータ - 正しい形式のデータを抽出する'
+title: 正規表現エンティティ
 titleSuffix: Azure Cognitive Services
 description: 正規表現エンティティを使用して一貫した形式のデータを発話から抽出する
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 82d7e5ab57d9cf12c6917386282182faacb07725
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d4deeec2c5af5047fa16a2d80f0992409d517910
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282392"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135578"
 ---
-# <a name="tutorial-3-extract-well-formatted-data"></a>チュートリアル 3: 正しい形式のデータを抽出する
+# <a name="tutorial-3-extract-well-formatted-data"></a>チュートリアル 3:正しい形式のデータを抽出する
 このチュートリアルでは、**正規表現**エンティティを使用して一貫した形式のデータを発話から抽出するよう、Human Resources アプリを修正します。
 
 エンティティの目的は、発話に含まれている重要なデータを抽出することです。 このアプリでは正規表現エンティティを使用して、書式設定された人事 (HR) のフォーム番号を発話から抽出します。 発話の意図は常に機械学習によって決定されますが、この特定のエンティティ型は機械学習されません。 
 
 **発話の例を次に示します。**
 
-```
-Where is HRF-123456?
-Who authored HRF-123234?
-HRF-456098 is published in French?
-HRF-456098
-HRF-456098 date?
-HRF-456098 title?
-```
+|発話の例|
+|--|
+|HRF-123456 はどこにありますか?|
+|誰が HRF-123234 を作成しましたか?|
+|HRF-456098 はフランス語で発行されますか?|
+|HRF-456098|
+|HRF-456098 の日付は?|
  
 正規表現がこのデータの種類に適しているのは次の場合です。
 
@@ -48,7 +48,7 @@ HRF-456098 title?
 > * [発行]
 > * エンドポイントから意図とエンティティを取得する
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>既存のアプリを使用する
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
@@ -63,7 +63,7 @@ HRF-456098 title?
 
 ## <a name="findform-intent"></a>FindForm 意図
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
@@ -90,7 +90,7 @@ HRF-456098 title?
 
     アプリケーションには、前のチュートリアルで追加された事前構築済みの番号エンティティがあるため、各フォーム番号がタグ付けされています。 クライアント アプリケーションにとってはこれで十分な場合がありますが、番号は、番号の種類と共にラベル付けされません。 適切な名前で新しいエンティティを作成すると、クライアント アプリケーションは、LUIS から返されたときに適切にエンティティを処理できます。
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="regular-expression-entity"></a>正規表現エンティティ 
 フォーム番号と一致する正規表現のエンティティは `hrf-[0-9]{6}` です。 この正規表現はリテラル文字の `hrf-` と一致しますが、大文字小文字およびカルチャのバリアントは無視します。 0 ～ 9 の 6 桁の数字と正確に一致します。
@@ -129,7 +129,7 @@ LUIS では、発話が意図に追加されるときに、発話をトークン
 
 2. アドレスの URL の末尾に移動し、「`When were HRF-123456 and hrf-234567 published in the last year?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`FindForm` 意図と 2 つのフォーム番号 `HRF-123456` と `hrf-234567` が返される必要があります。
 
-    ```JSON
+    ```json
     {
       "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {

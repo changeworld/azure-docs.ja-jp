@@ -9,22 +9,22 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 5bf3e6d8839c3ec08bae03772d9a7ab011c67857
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4784672364e2bdf44f0415ab4e1e386a5a80076b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228404"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313056"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform を使用して Azure 仮想マシン スケール セットを作成する
 
-[Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets)では、負荷分散された同一の仮想マシンのグループを作成および管理できます。この場合、需要や定義したスケジュールに応じて仮想マシン インスタンスの数を自動的に増減できます。 
+[Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets)では、負荷分散された同一の仮想マシンのグループを作成および管理できます。この場合、需要や定義したスケジュールに応じて仮想マシン インスタンスの数を自動的に増減できます。
 
 このチュートリアルでは、[Azure Cloud Shell](/azure/cloud-shell/overview) を使用して次のタスクを実行する方法について説明します。
 
 > [!div class="checklist"]
 > * Terraform デプロイを設定する
-> * Terraform デプロイ用の変数と出力を使用する 
+> * Terraform デプロイ用の変数と出力を使用する
 > * ネットワーク インフラストラクチャを作成してデプロイする
 > * 仮想マシン スケール セットを作成してデプロイし、ネットワークにアタッチする
 > * SSH 経由で VM に接続するジャンプボックスを作成してデプロイする
@@ -34,11 +34,11 @@ ms.locfileid: "51228404"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 
-- **Terraform のインストール**: [Terraform および Azure へのアクセスの構成](/azure/virtual-machines/linux/terraform-install-configure)に関する記事の指示に従ってください
+- **Terraform のインストール**:[Terraform および Azure へのアクセスの構成](/azure/virtual-machines/linux/terraform-install-configure)に関する記事の指示に従ってください
 
-- **SSH キー ペアの作成**: SSH キー ペアをまだ持っていない場合は、[Azure 内に Linux VM 用の SSH 公開/秘密キーの組を作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に関する記事の手順に従います。
+- **SSH キー ペアの作成**:SSH キー ペアをまだ持っていない場合は、[Azure 内に Linux VM 用の SSH 公開/秘密キーの組を作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に関する記事の手順に従います。
 
 ## <a name="create-the-directory-structure"></a>ディレクトリ構造を作成する
 
@@ -122,7 +122,8 @@ Azure Cloud Shell 内で、次の手順を実行します。
 
 1. I キーを選択し、挿入モードに入ります。
 
-1. 次のコードをエディターに貼り付けて、仮想マシンの完全修飾ドメイン名 (FQDN) が表示されるようにします。 :
+1. 次のコードをエディターに貼り付けて、仮想マシンの完全修飾ドメイン名 (FQDN) が表示されるようにします。
+:
 
   ```JSON
     output "vmss_public_ip" {
@@ -139,9 +140,9 @@ Azure Cloud Shell 内で、次の手順を実行します。
     ```
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>テンプレートでネットワーク インフラストラクチャを定義する
-このセクションでは、新しい Azure リソース グループに次のネットワーク インフラストラクチャを作成します。 
+このセクションでは、新しい Azure リソース グループに次のネットワーク インフラストラクチャを作成します。
 
-  - 10.0.0.0/16 のアドレス空間を使用する 1 つの 仮想ネットワーク (VNET) 
+  - 10.0.0.0/16 のアドレス空間を使用する 1 つの 仮想ネットワーク (VNET)
   - 10.0.2.0/24 のアドレス空間を使用する 1 つのサブネット
   - 2 つのパブリック IP アドレス。 1 つは仮想マシン スケール セット ロード バランサーに使用され、もう 1 つは SSH ジャンプボックスへの接続に使用されます。
 
@@ -155,7 +156,7 @@ Azure Cloud Shell 内で、次の手順を実行します。
 
 1. I キーを選択し、挿入モードに入ります。
 
-1. 次のコードをファイルの末尾に貼り付けて、仮想マシンの完全修飾ドメイン名 (FQDN) が表示されるようにします。 
+1. 次のコードをファイルの末尾に貼り付けて、仮想マシンの完全修飾ドメイン名 (FQDN) が表示されるようにします。
 
   ```JSON
   resource "azurerm_resource_group" "vmss" {
@@ -210,7 +211,7 @@ Azure Cloud Shell 内で、次の手順を実行します。
 1. Terraform を初期化します。
 
   ```bash
-  terraform init 
+  terraform init
   ```
 
 1. 次のコマンドを実行して、Azure に定義済みインフラストラクチャをデプロイします。
@@ -235,8 +236,8 @@ Azure Cloud Shell 内で、次の手順を実行します。
 このセクションでは、次のリソースをテンプレートに追加する方法について説明します。
 
 - Azure Load Balancer およびアプリケーションにサービスを提供するルール (この記事で前に構成したパブリック IP アドレスに接続します)
-- Azure バックエンド アドレス プール (ロード バランサーに割り当てます) 
-- アプリケーションで使用する正常性プローブ ポート (ロード バランサー上に構成します) 
+- Azure バックエンド アドレス プール (ロード バランサーに割り当てます)
+- アプリケーションで使用する正常性プローブ ポート (ロード バランサー上に構成します)
 - ロード バランサーの背後に構成される仮想マシン スケール セット (この記事で前にデプロイした VNET 上で実行されます)
 - [cloud-init](http://cloudinit.readthedocs.io/en/latest/) を使用する、仮想マシン スケールのノード上の [Nginx](http://nginx.org/)。
 
@@ -359,7 +360,7 @@ Cloud Shell で、次の手順を実行します。
     :wq
     ```
 
-1. スケール セットの一部である仮想マシンの cloud-init 構成として機能する `web.conf` という名前のファイルを作成します。 
+1. スケール セットの一部である仮想マシンの cloud-init 構成として機能する `web.conf` という名前のファイルを作成します。
 
     ```bash
     vi web.conf
@@ -407,7 +408,7 @@ Cloud Shell で、次の手順を実行します。
   variable "admin_password" {
       description = "Default password for admin account"
   }
-  ``` 
+  ```
 
 1. Esc キーを押して、挿入モードを終了します。
 
@@ -430,14 +431,14 @@ Cloud Shell で、次の手順を実行します。
 1. Azure で新しいリソースをデプロイします。
 
   ```bash
-  terraform apply 
+  terraform apply
   ```
 
   このコマンドの出力は次のスクリーンショットのようになります。
 
   ![Terraform の仮想マシン スケール セットのリソース グループ](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
-1. ブラウザーを開き、コマンドから返された FQDN に接続します。 
+1. ブラウザーを開き、コマンドから返された FQDN に接続します。
 
   ![FQDN の参照の結果](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
@@ -545,7 +546,7 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
 1. ジャンプボックスをデプロイします。
 
   ```bash
-  terraform apply 
+  terraform apply
   ```
 
 デプロイが完了すると、リソース グループの内容は次のスクリーンショットのようになります。
@@ -555,7 +556,7 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
 > [!NOTE]
 > パスワードを使用してログインする機能は、デプロイしたジャンプボックスと仮想マシン スケール セットでは無効にされています。 仮想マシンにアクセスするには、SSH を使用してログインします。
 
-## <a name="environment-cleanup"></a>環境のクリーンアップ 
+## <a name="environment-cleanup"></a>環境のクリーンアップ
 
 このチュートリアルで作成された Terraform リソースを削除するには、Cloud Shell に次のコマンドを入力します。
 
@@ -566,9 +567,9 @@ terraform destroy
 この削除プロセスが完了するまでに数分かかることがあります。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Terraform を使用して Azure 仮想マシン スケール セットを作成する方法について説明しました。 Azure 上の Terraform の詳細については、次のリソースもご覧ください。 
+この記事では、Terraform を使用して Azure 仮想マシン スケール セットを作成する方法について説明しました。 Azure 上の Terraform の詳細については、次のリソースもご覧ください。
 
- [Microsoft.com の Terraform ハブ](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure プロバイダーのドキュメント](https://aka.ms/terraform)  
- [Terraform Azure プロバイダーのソース](https://aka.ms/tfgit)  
- [Terraform Azure モジュール](https://aka.ms/tfmodules)
+[Microsoft.com での Terraform Hub](https://docs.microsoft.com/azure/terraform/)
+[Terraform Azure プロバイダー ドキュメント](https://aka.ms/terraform)
+[Terraform Azure プロバイダー ソース](https://aka.ms/tfgit)
+[Terraform Azure モジュール](https://aka.ms/tfmodules)

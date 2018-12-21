@@ -11,12 +11,12 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 807fd49a54c82b0930134beb8413e14c1c28b278
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8844260c4364776ad0fc828dcd66932d37474ecf
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115563"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164621"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 
@@ -52,7 +52,7 @@ Node.js クライアントは、準備タスク (後述) と、ストレージ �
 
 それでは、Node.js クライアントを作成するプロセスを 1 つずつ実践していきましょう。
 
-### <a name="step-1-install-azure-batch-sdk"></a>手順 1: Azure Batch SDK をインストールする
+### <a name="step-1-install-azure-batch-sdk"></a>手順 1:Azure Batch SDK をインストールする
 
 Node.js 向け Azure Batch SDK をインストールするには、npm install コマンドを使用します。
 
@@ -65,7 +65,7 @@ Node.js 向け Azure Batch SDK をインストールするには、npm install �
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>ステップ 2: Azure Batch アカウントを作成する
+### <a name="step-2-create-an-azure-batch-account"></a>手順 2:Azure Batch アカウントを作成する
 
 [Azure Portal](batch-account-create-portal.md) またはコマンド ライン ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) から作成できます。
 
@@ -85,7 +85,7 @@ Node.js 向け Azure Batch SDK をインストールするには、npm install �
 
 以降の手順で使用するため、キーをコピーして保存します。
 
-### <a name="step-3-create-an-azure-batch-service-client"></a>手順 3: Azure Batch サービス クライアントを作成する
+### <a name="step-3-create-an-azure-batch-service-client"></a>手順 3:Azure Batch サービス クライアントを作成する
 以下のコード スニペットでは、azure-batch Node.js モジュールをインポートしたうえで、Batch サービス クライアントを作成します。 最初に、先ほどの手順でコピーしておいた Batch アカウントのキーを使って SharedKeyCredentials オブジェクトを作成する必要があります。
 
 ```nodejs
@@ -119,7 +119,7 @@ Azure Batch の URI は、Azure Portal の [概要] タブにあります。 こ
 
 
 
-### <a name="step-4-create-an-azure-batch-pool"></a>手順4: Azure Batch プールを作成する
+### <a name="step-4-create-an-azure-batch-pool"></a>手順 4:Azure Batch プールを作成する
 Azure Batch プールは、複数の VM (別名 Batch ノード) で構成されています。 Azure Batch サービスでは、そのノードにタスクをデプロイして管理します。 プールには以下の構成パラメーターを定義できます。
 
 * 仮想マシン イメージの種類
@@ -254,7 +254,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
 ```
 
 
-### <a name="step-4-submit-an-azure-batch-job"></a>手順 4: Azure Batch ジョブを送信する
+### <a name="step-4-submit-an-azure-batch-job"></a>手順 4:Azure Batch ジョブを送信する
 Azure Batch ジョブは、よく似たタスクを論理的なグループにまとめたものです。 今回のシナリオの場合、"csv を処理して JSON に変換する" ためのジョブです。 このジョブでは、それぞれのタスクが各 Azure ストレージ コンテナーに存在する csv ファイルを処理します。
 
 タスクはいずれも並行して実行され、多数のノードにデプロイされます。Azure Batch サービスは、そのオーケストレーションを担当します。
@@ -279,14 +279,14 @@ Linux ノードの場合には通常、実際のタスクの実行前に前提�
 
 準備タスクは、Azure Batch ジョブの送信中に指定します。 準備タスクの構成パラメーターは以下のとおりです。
 
-* **ID**: 準備タスクの一意の識別子。
-* **commandLine**: タスクの実行可能ファイルを実行するためのコマンド ライン。
-* **resourceFiles**: このタスクを実行するためにダウンロードが必要なファイルの詳細を指定したオブジェクトの配列。  オプションは以下のとおりです。
-    - blobSource: ファイルの SAS の URI。
-    - filePath: ファイルのダウンロードと保存のためのローカル パス。
-    - fileMode: 0770 を既定値とする 8 進数形式の値 (Linux ノードのみ該当)。
-* **waitForSuccess**: true に設定すると、準備タスクが失敗した場合にタスクが実行されなくなります。
-* **runElevated**: タスクの実行に昇格された特権が必要な場合には true に設定します。
+* **ID**:準備タスクの一意の識別子
+* **commandLine**:タスクの実行可能ファイルを実行するためのコマンド ライン
+* **resourceFiles**:このタスクを実行するためにダウンロードが必要なファイルの詳細を指定したオブジェクトの配列。  オプションは以下のとおりです。
+    - blobSource:ファイルの SAS の URI
+    - filePath:ファイルのダウンロードと保存のためのローカル パス
+    - fileMode:0770 を既定値とする 8 進数形式の値 (Linux ノードのみ該当)
+* **waitForSuccess**:true に設定すると、準備タスクが失敗した場合にタスクが実行されなくなります
+* **runElevated**:タスクの実行に昇格された特権が必要な場合には true に設定します。
 
 以下のコード スニペットでは、準備タスク スクリプトの構成サンプルを示しています。
 
@@ -311,14 +311,14 @@ var job_prep_task_config = {id:"installprereq",commandLine:"sudo sh startup_prer
 ```
 
 
-### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>手順 5: ジョブの Azure Batch タスクを送信する
+### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>手順 5:ジョブの Azure Batch タスクを送信する
 
 csv を処理するジョブが作成できたので、このジョブのためのタスクを作成しましょう。 コンテナーが 4 つあるとすると、コンテナーごとに 1 つずつ、計 4 つのタスクを作成する必要があります。
 
 [Python スクリプト](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py)を見ると、次の 2 つのパラメーターを受け取ることがわかります。
 
-* コンテナー名: ファイルをダウンロードする Storage コンテナー
-* パターン: ファイル名のパターンを指定するオプションのパラメーター
+* コンテナー名:ファイルをダウンロードするストレージ コンテナー
+* パターン:ファイル名パターンの省略可能なパラメーター
 
 以下のコードは、コンテナーが "con1"、"con2"、"con3"、"con4" の 4 つであると仮定して、先ほど作成した Azure Batch ジョブ "process csv" にタスクを送信する方法を示しています。
 

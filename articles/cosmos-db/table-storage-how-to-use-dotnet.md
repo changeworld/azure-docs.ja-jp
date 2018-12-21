@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: fd437e42c404bec71036e760b95aef7e005d3fd9
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 23ee4142dbf3d3c07eb89640554a464d0ac51822
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880201"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102998"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>.NET を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -78,7 +78,7 @@ Azure クラウド サービス、Azure Web アプリ、デスクトップ ア�
 
 * [.NET 用 Microsoft Azure Cosmos DB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。 このパッケージを使用すると、Azure Table ストレージ アカウントまたは Azure Cosmos DB Table API アカウント内のデータ リソースにプログラムでアクセスできます。 このライブラリは、現在、.NET Standard だけで利用できます。まだ .NET Core では利用できません。
 
-* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
+* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/):このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
 
 NuGet パッケージを取得するには、次の手順に従います。
 
@@ -88,7 +88,7 @@ NuGet パッケージを取得するには、次の手順に従います。
 4. "WindowsAzure.ConfigurationManager" をオンラインで検索し、**[インストール]** を選択して Microsoft Azure Configuration Manager ライブラリをインストールします。
 
 > [!NOTE]
-> .NET 用 Storage Common ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet で入手できる ODataLib パッケージで解決されます。 ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。 ストレージ クライアント ライブラリで使用される ODataLib パッケージは、[OData](http://nuget.org/packages/Microsoft.Data.OData/)、[Edm](http://nuget.org/packages/Microsoft.Data.Edm/)、[Spatial](http://nuget.org/packages/System.Spatial/) です。 これらのライブラリが Azure Table ストレージ クラスで使用されるときは、Storage Common ライブラリを使用したプログラミングの必須の依存関係です。
+> .NET 用 Storage Common ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet で入手できる ODataLib パッケージで解決されます。 ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。 ストレージ クライアント ライブラリで使用される ODataLib パッケージは、[OData](https://nuget.org/packages/Microsoft.Data.OData/)、[Edm](https://nuget.org/packages/Microsoft.Data.Edm/)、[Spatial](https://nuget.org/packages/System.Spatial/) です。 これらのライブラリが Azure Table ストレージ クラスで使用されるときは、Storage Common ライブラリを使用したプログラミングの必須の依存関係です。
 > 
 > 
 
@@ -453,7 +453,7 @@ table.Execute(insertOrReplaceOperation);
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
-テーブル クエリでは、エンティティのすべてのプロパティではなくごくわずかのプロパティだけをエンティティから取得できます。 プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。 次のコードのクエリは、テーブル内のエンティティの電子メール アドレスだけを返します。 これは、[DynamicTableEntity][dotnet_DynamicTableEntity] のクエリと [EntityResolver][dotnet_EntityResolver] を使用して行われます。 プロジェクションの詳細については、[アップサートとクエリ プロジェクションの概要に関するブログ記事][blog_post_upsert]をご覧ください。 プロジェクションはストレージ エミュレーターではサポートされていません。したがって、このコードは Table service のアカウントを使用している場合にのみ機能します。
+テーブル クエリでは、エンティティのすべてのプロパティではなくごくわずかのプロパティだけをエンティティから取得できます。 プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。 次のコードのクエリは、テーブル内のエンティティの電子メール アドレスだけを返します。 これは、[DynamicTableEntity][dotnet_DynamicTableEntity] のクエリと [EntityResolver][dotnet_EntityResolver] を使用して行われます。 プロジェクションはストレージ エミュレーターではサポートされていません。したがって、このコードは Table service のアカウントを使用している場合にのみ機能します。
 
 ```csharp
 // Retrieve the storage account from the connection string.
@@ -576,9 +576,6 @@ do
 * リレーショナル データを格納する方法については、「[.NET (C#) を使用して SQL Database に接続する](../sql-database/sql-database-develop-dotnet-simple.md)」を参照してください。
 
 [Download and install the Azure SDK for .NET]: /develop/net/
-[Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
-
-[blog_post_upsert]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
 
 [dotnet_api_ref]: https://msdn.microsoft.com/library/azure/mt347887.aspx
 [dotnet_CloudTableClient]: https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.cloudtableclient.aspx

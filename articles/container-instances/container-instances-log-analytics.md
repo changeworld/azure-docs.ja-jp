@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 7f4af06222141eb0e143e67ba4bfcdcb2f5f92fa
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4dbcccc1a4b23ca37918495dc536df08a70cade7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614006"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337888"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Azure Log Analytics によるコンテナー インスタンスのログ記録
 
@@ -24,7 +24,7 @@ Log Analytics にコンテナー インスタンス データを送信するに�
 
 コンテナー インスタンスでログ記録を有効にするには、次のものが必要です。
 
-* [Log Analytics ワークスペース](../log-analytics/log-analytics-quick-create-workspace.md)
+* [Log Analytics ワークスペース](../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](/cli/azure/install-azure-cli) (または [Cloud Shell](/azure/cloud-shell/overview))
 
 ## <a name="get-log-analytics-credentials"></a>Log Analytics の資格情報を取得する
@@ -135,7 +135,7 @@ ContainerInstanceLog_CL
 Azure Log Analytics でのログのクエリとアラートの構成について詳しくは、以下をご覧ください。
 
 * [Log Analytics でのログ検索について](../log-analytics/log-analytics-log-search.md)
-* [Azure Monitor での統合アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+* [Azure Monitor での統合アラート](../azure-monitor/platform/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>コンテナーの CPU とメモリを監視する

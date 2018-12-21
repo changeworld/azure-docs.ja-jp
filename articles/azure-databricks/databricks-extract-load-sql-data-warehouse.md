@@ -10,14 +10,14 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 11/19/2018
-ms.openlocfilehash: 5a6d3265fde3b7633036ddc4cae0a5ea7d246957
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 48b2cdb26994d01dfced8216bb70493802f672a7
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265272"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413678"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したデータの抽出、変換、読み込み
+# <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使ったデータの抽出、変換、読み込み
 
 このチュートリアルでは、Azure Databricks を使用して ETL (データの抽出、変換、読み込み) 操作を実行します。 Azure Data Lake Store から Azure Databricks にデータを抽出し、Azure Databricks でデータの変換を実行した後、その変換済みのデータを Azure SQL Data Warehouse に読み込みます。
 
@@ -44,9 +44,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、次の要件を満たしてください。
-- Azure SQL Data Warehouse を作成し、サーバー レベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。[Azure SQL Data Warehouse の作成に関するクイック スタート](../sql-data-warehouse/create-data-warehouse-portal.md)の手順に従ってください。
+- Azure SQL Data Warehouse を作成し、サーバー レベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。[Azure SQL データ ウェアハウスの作成に関するクイック スタート](../sql-data-warehouse/create-data-warehouse-portal.md)の手順に従ってください。
 - Azure SQL Data Warehouse に使用するデータベース マスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」の手順に従ってください。
-- Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 [Azure BLOB ストレージ アカウントの作成に関するクイック スタート](../storage/blobs/storage-quickstart-blobs-portal.md)の手順に従ってください。
+- Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 [Azure BLOB ストレージ アカウントの作成に関するクイック スタート](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
-このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。 
+このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。
 
 1. Azure Portal で、**[リソースの作成]** > **[データ + 分析]** > **[Azure Databricks]** の順に選択します。
 
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![Azure Databricks ワークスペースを作成する](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "Azure Databricks ワークスペースを作成する")
 
     次の値を指定します。
-     
+    
     |プロパティ  |[説明]  |
     |---------|---------|
     |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します        |
@@ -96,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     * クラスターの名前を入力します。
     * この記事では、**4.0** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
     
     **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
@@ -106,11 +106,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[ストレージ]** > **[Data Lake Store]** を選択します。
 3. **[新しい Data Lake Store]** ブレードで、次のスクリーンショットに示されているように値を指定します。
-   
+
     ![新しい Azure Data Lake Store アカウントの作成](./media/databricks-extract-load-sql-data-warehouse/create-new-datalake-store.png "新しい Azure Data Lake アカウントの作成")
 
-    次の値を指定します。 
-     
+    次の値を指定します。
+    
     |プロパティ  |[説明]  |
     |---------|---------|
     |**名前**     | Data Lake Store アカウントの一意の名前を入力します。        |
@@ -125,7 +125,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次に、Azure Active Directory のサービス プリンシパルを作成し、作成済みの Data Lake Store アカウントに関連付けます。
 
 ### <a name="create-an-azure-active-directory-service-principal"></a>Azure Active Directory のサービス プリンシパルを作成する
-   
+
 1. [Azure Portal](https://portal.azure.com) で、**[すべてのサービス]** を選択し、**Azure Active Directory** を探します。
 
 2. **[アプリの登録]** を選択します。
@@ -376,9 +376,9 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
 
 このセクションでは、変換したデータを Azure SQL Data Warehouse にアップロードします。 Azure Databricks 用の Azure SQL Data Warehouse コネクタを使用すると、データフレームを SQL Data Warehouse のテーブルとして直接アップロードすることができます。
 
-前述のように、SQL Data Warehouse コネクタは、Azure Databricks と Azure SQL Data Warehouse との間でデータをアップロードするための一時記憶域の場所として Azure Blob Storage を使用します。 それにはまず、そのストレージ アカウントに接続するための構成を指定します。 このアカウントは、この記事の前提条件としてあらかじめ作成しておく必要があります。
+前述のように、SQL Data Warehouse コネクタは、Azure Databricks と Azure SQL Data Warehouse との間でデータをアップロードするための一時的な保存場所として Azure Blob Storage を使用します。 それにはまず、そのストレージ アカウントに接続するための構成を指定します。 このアカウントは、この記事の前提条件としてあらかじめ作成しておく必要があります。
 
-1. Azure Databricks から Azure Storage アカウントにアクセスするための構成を指定します。 お客様の BLOB ストレージ用の URL をポータルでコピーしたら、必ず先頭から *https://* を削除してください。 
+1. Azure Databricks から Azure Storage アカウントにアクセスするための構成を指定します。 お客様の BLOB ストレージ用の URL をポータルでコピーしたら、必ず先頭から *https://* を削除してください。
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"
@@ -410,7 +410,7 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
-        
+    
         renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall)
@@ -434,7 +434,7 @@ Azure Data Lake Store から Azure Databricks にデータが抽出されまし�
 
 ![Databricks クラスターを停止する](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks クラスターを停止する")
 
-クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
+クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。

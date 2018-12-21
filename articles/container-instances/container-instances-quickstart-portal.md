@@ -1,21 +1,21 @@
 ---
-title: クイック スタート - Azure Container Instances でアプリケーションを実行する
-description: このクイック スタートでは、Azure portal を使用して、Docker コンテナーで実行されているアプリケーションを Azure Container Instances にデプロイします
+title: クイック スタート - Azure Container Instances でアプリケーションを実行する - Portal
+description: このクイック スタートでは、Azure portal を使用して、Azure Container Instances の分離されたコンテナーで実行されるように Docker コンテナー アプリケーションをデプロイします
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857722"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190290"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>クイック スタート: Azure Container Instances でアプリケーションを実行する
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>クイック スタート:Azure portal を使って Azure Container Instances でコンテナー アプリケーションを実行する
 
 Docker コンテナーを Azure で簡単にすばやく実行するには、Azure Container Instances を使用します。 仮想マシンをデプロイしたり、Kubernetes などの完全なコンテナー オーケストレーション プラットフォームを使用したりする必要はありません。 このクイック スタートでは、Azure portal を使用して Azure でコンテナーを作成し、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 いくつかの設定を構成し、コンテナーをデプロイした後は、実行中のアプリケーションを参照できます。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [Container name] (コンテナー名): `mycontainer`
 * [Container image] (コンテナー イメージ): `microsoft/aci-helloworld`
-* リソース グループ: **[新規作成]** > `myResourceGroup`
+* リソース グループ:**新規作成** > `myResourceGroup`
 
 ![Azure ポータルで新しいコンテナー インスタンスの基本設定を構成][aci-portal-03]
 

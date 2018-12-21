@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: e671c75b1ceee0e42b3af9ddc149edf2f3b0040c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.custom: seodec18
+ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822366"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087935"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル: データをエクスポートし、管理する
 
@@ -48,13 +48,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 コスト管理 + 課金 &gt; コスト管理 &gt; サブスクリプションを選択するか、サブスクリプション内のリソース グループを選択する &gt; エクスポート &gt; **追加**。
 
-エクスポートの名前を入力し、[Daily export of month-to-date costs]\(過去 1 か月間のコストを毎日エクスポート\) オプションを選択します。  **[次へ]** をクリックします。
+エクスポートの名前を入力し、[Daily export of month-to-date costs]\(過去 1 か月間のコストを毎日エクスポート\) オプションを選択します。 **[次へ]** をクリックします。
 
-![新しいエクスポート: エクスポートの種類](./media/tutorial-export-acm-data/basics_exports.png)
+![エクスポートの種類を示す新しいエクスポートの例](./media/tutorial-export-acm-data/basics_exports.png)
 
-Azure Storage アカウントのサブスクリプションを指定して、お使いのストレージ アカウントを選択します。  エクスポート ファイルの保存先となるストレージ コンテナーとディレクトリ パスを指定します。   **[次へ]** をクリックします。
+Azure Storage アカウントのサブスクリプションを指定して、お使いのストレージ アカウントを選択します。  エクスポート ファイルの保存先となるストレージ コンテナーとディレクトリ パスを指定します。  **[次へ]** をクリックします。
 
-![新しいエクスポート: ストレージ](./media/tutorial-export-acm-data/storage_exports.png)
+![ストレージ アカウントの詳細を示す新しいエクスポートの例](./media/tutorial-export-acm-data/storage_exports.png)
 
 エクスポートの詳細を確認して **[作成]** をクリックします。
 
@@ -68,15 +68,15 @@ Azure Storage アカウントのサブスクリプションを指定して、お
 
 エクスポートの一覧で、ストレージ アカウント名をクリックします。 ストレージ アカウント ページで、[Explorer で開く] をクリックします。 確認ボックスが表示されたら、**[はい]** をクリックし、Azure Storage Explorer でファイルを開きます。
 
-![ストレージ アカウント ページ](./media/tutorial-export-acm-data/storage-account-page.png)
+![情報の例と、[Explorer で開く] へのリンクを示すストレージ アカウント ページ](./media/tutorial-export-acm-data/storage-account-page.png)
 
 ストレージ エクスプローラーで、開くコンテナーに移動し、当月のフォルダーを選択します。 CSV ファイルの一覧が表示されます。 ファイルを選択して **[開く]** をクリックします。
 
-![ストレージ エクスプローラー](./media/tutorial-export-acm-data/storage-explorer.png)
+![ストレージ エクスプローラーに表示される情報の例](./media/tutorial-export-acm-data/storage-explorer.png)
 
 ファイルは、CSV ファイル拡張子を開くように設定されているプログラムまたはアプリケーションで開きます。 今回の例では Excel が使用されます。
 
-![データのエクスポート例](./media/tutorial-export-acm-data/example-export-data.png)
+![Excel に表示されるエクスポートした CSV データの例](./media/tutorial-export-acm-data/example-export-data.png)
 
 ## <a name="access-exported-data-from-other-systems"></a>エクスポートしたデータに他のシステムからアクセスする
 

@@ -17,20 +17,20 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 2d8741f6c65002d7f3701784e5fffe67b0e9bf50
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 7f7ae858f633a910b796f544ed69a582e749beaf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287236"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311067"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート: Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
 Android アプリケーションを開発している場合、Azure Active Directory (Azure AD) ユーザーには簡単にサインインできるのでお勧めです。 Azure AD を使用すると、アプリケーションから Microsoft Graph または独自の保護された Web API を介してユーザー データにアクセスできます。
 
-Azure AD Authentication Library (ADAL) Android ライブラリは業界標準の OAuth 2.0 と OpenID Connect を使用して [Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/) アカウントをサポートしているので、アプリから [Microsoft Azure Cloud](https://cloud.microsoft.com) & [Microsoft Graph API](https://developer.microsoft.com/graph) を使い始めることができます。
+Azure AD Authentication Library (ADAL) Android ライブラリは業界標準の OAuth 2.0 と OpenID Connect を使用して [Microsoft Azure Active Directory アカウント](https://azure.microsoft.com/services/active-directory/)をサポートしているので、アプリから [Microsoft Azure Cloud](https://cloud.microsoft.com) と [Microsoft Graph API](https://developer.microsoft.com/graph) を使い始めることができます。
 
 このクイック スタートでは、次の方法について説明します。
 
@@ -43,7 +43,7 @@ Azure AD Authentication Library (ADAL) Android ライブラリは業界標準の
 
 作業を開始するには、ユーザーを作成し、アプリケーションを登録できるようにするために Azure AD テナントが必要になります。 テナントを所有していない場合は、「 [How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](quickstart-create-new-tenant.md)」を参照して取得してください。
 
-## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>シナリオ: ユーザーにサインインして Microsoft Graph を呼び出す
+## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>シナリオ:ユーザーにサインインして Microsoft Graph を呼び出す
 
 ![トポロジ](./media/quickstart-v1-android/active-directory-android-topology.png)
 
@@ -56,18 +56,18 @@ Azure AD Authentication Library (ADAL) Android ライブラリは業界標準の
 ```Java
 // Initialize your app with MSAL
 AuthenticationContext mAuthContext = new AuthenticationContext(
-        MainActivity.this, 
-        AUTHORITY, 
+        MainActivity.this,
+        AUTHORITY,
         false);
 
 
 // Perform authentication requests
 mAuthContext.acquireToken(
-    getActivity(), 
-    RESOURCE_ID, 
-    CLIENT_ID, 
-    REDIRECT_URI,  
-    PromptBehavior.Auto, 
+    getActivity(),
+    RESOURCE_ID,
+    CLIENT_ID,
+    REDIRECT_URI,
+    PromptBehavior.Auto,
     getAuthInteractiveCallback());
 
 // ...
@@ -76,7 +76,7 @@ mAuthContext.acquireToken(
 mAuthResult.getAccessToken()
 ```
 
-## <a name="step-1-register-and-configure-your-app"></a>手順 1: アプリを登録して構成する
+## <a name="step-1-register-and-configure-your-app"></a>手順 1:アプリの登録と構成
 
 [Azure Portal](https://portal.azure.com) を使用して、Microsoft にネイティブ クライアント アプリケーションを登録する必要があります。
 
@@ -95,13 +95,13 @@ mAuthResult.getAccessToken()
     - **[追加]** を選択し、**[API を選択します]** 内の ***[Microsoft Graph]*** を選択します。
     - アクセス許可 **[サインインとユーザー プロファイルの読み取り]** を選択し、**[選択]** を選択して保存します。
         - このアクセス許可は `User.Read` スコープにマップされます。
-    - 省略可能: **[必要なアクセス許可] > [Windows Azure Active Directory]** 内で、選択したアクセス許可 **[サインインとユーザー プロファイルの読み取り]** を削除します。 これで、ユーザーの同意ページにアクセス許可が 2 回表示されなくなります。
+    - 省略可能:**[必要なアクセス許可] > [Windows Azure Active Directory]** 内で、選択したアクセス許可 **[サインインとユーザー プロファイルの読み取り]** を削除します。 これで、ユーザーの同意ページにアクセス許可が 2 回表示されなくなります。
 
 4. おめでとうございます! アプリの構成が完了しました。 次のセクションでは、以下を実行する必要があります。
     - `Application ID`
     - `Redirect URI`
 
-## <a name="step-2-get-the-sample-code"></a>手順 2: サンプル コードを取得する
+## <a name="step-2-get-the-sample-code"></a>手順 2:サンプル コードの取得
 
 1. コードを複製します。
     ```
@@ -110,14 +110,14 @@ mAuthResult.getAccessToken()
 2. Android Studio でサンプルを開きます。
     - **[Open an existing Android Studio project]\(既存の Android Studio プロジェクトを開く\)** を選択します。
 
-## <a name="step-3-configure-your-code"></a>手順 3: コードを構成する
+## <a name="step-3-configure-your-code"></a>手順 3:コードの構成
 
 このコード サンプルのすべての構成は、***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java*** ファイルにあります。
 
 1. 定数 `CLIENT_ID` を `ApplicationID` で置き換えます。
 2. 定数 `REDIRECT URI` を以前 (`http://localhost`) に構成した `Redirect URI` で置き換えます。
 
-## <a name="step-4-run-the-sample"></a>手順 4 - サンプルを実行する
+## <a name="step-4-run-the-sample"></a>手順 4:サンプルを実行する
 
 1. **[ビルド]、[プロジェクトのクリーン]** の順に選択します。
 2. **[実行]、[アプリの実行]** の順に選択します。

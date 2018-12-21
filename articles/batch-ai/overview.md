@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 08/01/2018
 ms.author: danlep
-ms.openlocfilehash: 98497812e75d07fc153e0e351331c05484164fdd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 37f1bf5dc20d097f7f5f560e3bf1fdd25dc38045
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052701"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408053"
 ---
 # <a name="what-is-azure-batch-ai"></a>Azure Batch AI とは
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Azure Batch AI は、データ サイエンティストと AI 研究者が複雑なインフラストラクチャを管理することなく、Azure で機械学習と AI のモデルを大規模にトレーニングしてテストするのに役立つマネージド サービスです。 コンピューティング リソース、実行するジョブ、モデルの入力と出力の保存先を記述すれば、残りは Batch AI が処理します。
 
@@ -49,13 +52,13 @@ Batch AI を使用すると、さまざまな方法でモデルを大規模に�
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-Batch AI SDK、コマンド ライン スクリプト、または Azure portal を使用して、コンピューティング リソースを管理し、AI のトレーニングとテストのジョブをスケジュールします。 
+Batch AI SDK、コマンド ライン スクリプト、または Azure portal を使用して、コンピューティング リソースを管理し、AI のトレーニングとテストのジョブをスケジュールします。 
 
 * **VM のクラスターのプロビジョニングとスケーリング** - ノード (VM) 数を選択し、トレーニングのニーズに応じて、GPU 対応の VM サイズまたは他の VM サイズを選択します。 リソースを必要なときだけ使用するために、ノード数を自動または手動でスケールアップまたはスケールダウンします。 
 
 * **依存関係とコンテナーの管理** - 既定では、Batch AI クラスターは、GPU または CPU でコンテナー ベースのトレーニング フレームワークを実行するための依存関係が事前インストールされた Linux VM イメージを実行します。 追加の構成では、カスタム イメージを提供するか、スタートアップ スクリプトを実行します。
 
-* **データの分散** - 1 つまたは複数のストレージ オプション (Azure Files、Azure Blob Storage、マネージド NFS サーバー) を選択して、入力データ、スクリプト、ジョブ出力を管理します。 Batch AI では、高性能並列ファイル システムなどのカスタム ストレージ ソリューションもサポートされています。 単純な構成ファイルを使用して、クラスター ノードとジョブ コンテナーにストレージ ファイル システムをマウントします。
+* **データの配布** - 入力データと、スクリプトとジョブの出力を管理するための 1 つまたは複数のストレージ オプションを選択します。Azure Files、Azure Blob ストレージ、またはマネージド NFS サーバー。 Batch AI では、高性能並列ファイル システムなどのカスタム ストレージ ソリューションもサポートされています。 単純な構成ファイルを使用して、クラスター ノードとジョブ コンテナーにストレージ ファイル システムをマウントします。
 
 * **ジョブのスケジュール** - 優先度ベースのジョブ キューにジョブを送信してクラスター リソースを共有し、低優先度 VM と予約済みインスタンスを利用します。
 

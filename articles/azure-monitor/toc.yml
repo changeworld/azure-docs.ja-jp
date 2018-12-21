@@ -320,7 +320,7 @@ items:
         - name: 依存関係
           href: ../application-insights/app-insights-asp-net-dependencies.md?toc=/azure/azure-monitor/toc.json
         - name: リリース注釈
-          href: ../application-insights/app-insights-annotations.md?toc=/azure/azure-monitor/toc.json
+          href: app/annotations.md
         - name: ApplicationInsights.config
           href: ../application-insights/app-insights-configuration-with-applicationinsights-config.md?toc=/azure/azure-monitor/toc.json
         - name: スナップショット デバッガー
@@ -397,7 +397,7 @@ items:
         - name: スナップショット デバッガー
           href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
         - name: Analytics
-          href: ../application-insights/app-insights-analytics-troubleshooting.md?toc=/azure/azure-monitor/toc.json
+          href: app/analytics-troubleshooting.md
         - name: Java
           href: ../application-insights/app-insights-java-troubleshoot.md?toc=/azure/azure-monitor/toc.json
         - name: Usage analytics
@@ -476,7 +476,7 @@ items:
         - name: ライブ ストリーム
           href: ../application-insights/app-insights-live-stream.md?toc=/azure/azure-monitor/toc.json
         - name: アプリケーション マップ
-          href: ../application-insights/app-insights-app-map.md?toc=/azure/azure-monitor/toc.json
+          href: app/app-map.md
         - name: トランザクションの診断
           href: ../application-insights/app-insights-transaction-diagnostics.md?toc=/azure/azure-monitor/toc.json
         - name: HockeyApp データ
@@ -639,7 +639,7 @@ items:
       - name: ログ
         href: platform/dashboards.md
       - name: アプリケーション
-        href: ../application-insights/app-insights-dashboards.md?toc=/azure/azure-monitor/toc.json
+        href: app/app-insights-dashboards.md
     - name: Power BI
       items:
       - name: ログ データをエクスポートする
@@ -711,7 +711,7 @@ items:
       - name: ログ データ
         items:
         - name: アプリケーション データ
-          href: ../application-insights/app-insights-analytics.md?toc=/azure/azure-monitor/toc.json
+          href: app/analytics.md
         - name: 標準のプロパティ
         - name: テキスト データの解析
           href: log-query/parse-text.md
@@ -764,7 +764,7 @@ items:
         - name: 可用性
           href: ../application-insights/app-insights-monitor-web-app-availability.md?toc=/azure/azure-monitor/toc.json
         - name: メトリック アラート
-          href: ../application-insights/app-insights-alerts.md?toc=/azure/azure-monitor/toc.json
+          href: app/alerts.md
       - name: アラートでのアクション グループの使用
         items:
         - name: アクション グループを作成する
@@ -878,11 +878,11 @@ items:
     - name: アプリケーション
       items:
       - name: カスタム イベントとメトリックの API
-        href: ../application-insights/app-insights-api-custom-events-metrics.md?toc=/azure/azure-monitor/toc.json
+        href: app/api-custom-events-metrics.md
       - name: .NET SDK でのカスタム操作の追跡
         href: ../application-insights/application-insights-custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json
       - name: テレメトリのフィルター処理および前処理
-        href: ../application-insights/app-insights-api-filtering-sampling.md?toc=/azure/azure-monitor/toc.json
+        href: app/api-filtering-sampling.md
       - name: サンプリング
         href: ../application-insights/app-insights-sampling.md?toc=/azure/azure-monitor/toc.json
     - name: 監視ソリューション
@@ -1008,9 +1008,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 0187e9a74da758a5756ce3841953141093aa203c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 819cce3f144c3073f5b831d78cb3d9fa1b0a0a8a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601017"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726450"

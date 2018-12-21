@@ -13,14 +13,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 03/20/2018
+ms.date: 12/13/2018
 ms.author: jdial
-ms.openlocfilehash: 3a57827616e4722b8520dcddb64e4e67fa8c79c9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ebc0e18ecea61705ea8cb925a25d4233bfc9a2cb
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599899"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340506"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>多層アプリケーション用のネットワークの作成のスクリプト サンプル
 
@@ -32,10 +32,11 @@ Azure [Cloud Shell](https://shell.azure.com/powershell) から、またはロー
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
+<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 --> 仮想ネットワークを作成すると (特に、-Subnet オプションを指定して New-AzureRmVirtualNetwork コマンドレットを使用した場合)、サブネット ID が割り当てられます。 New-AzureRmVirtualNetwork を呼び出す前に New-AzureRmVirtualNetworkSubnetConfig コマンドレットを使用してサブネットを構成した場合は、New-AzureRmVirtualNetwork を呼び出すまでサブネット ID は表示されません。
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、VM、およびすべての関連リソースを削除します。
 

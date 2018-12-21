@@ -1,5 +1,5 @@
 ---
-title: 既存のカスタム DNS 名を Azure Web Apps にマップする | Microsoft Docs
+title: 既存のカスタム DNS 名をマップする - Azure App Service | Microsoft Docs
 description: 既存のカスタム DNS ドメイン名 (バニティ ドメイン) を、Azure App Service の Web アプリ、モバイル アプリ バックエンド、または API アプリに追加する方法について説明します。
 keywords: App Service, Azure App Service, ドメイン マッピング, ドメイン名, 既存のドメイン, ホスト名
 services: app-service\web
@@ -15,21 +15,21 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 30199005db93f9a43a37d2c72bb34dd772265419
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.custom: seodec18
+ms.openlocfilehash: 2debb52c703aaa25b2ff0a182bed3e07431b6f48
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664889"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270265"
 ---
-# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>チュートリアル: 既存のカスタム DNS 名を Azure Web Apps にマップする
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>チュートリアル:既存のカスタム DNS 名を Azure Web Apps にマップする
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、既存のカスタム DNS 名を Azure Web Apps にマップする方法について説明します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * CNAME レコードを使用してサブドメイン (たとえば `www.contoso.com`) をマップする
@@ -52,7 +52,7 @@ ms.locfileid: "43664889"
 
 ## <a name="prepare-the-app"></a>アプリの準備
 
-Web アプリにカスタム DNS 名をマップするには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (**Shared**、**Basic**、**Standard**、または **Premium**) である必要があります。 この手順では、App Service アプリがサポートされている価格レベルであることを確認します。
+Web アプリにカスタム DNS 名をマップするには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (Azure Functions の **Shared**、**Basic**、**Standard**、**Premium**、または **従量課金**) である必要があります。 この手順では、App Service アプリがサポートされている価格レベルであることを確認します。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -351,7 +351,7 @@ Set-AzureRmWebApp `
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * CNAME レコードを使用してサブドメインをマップする

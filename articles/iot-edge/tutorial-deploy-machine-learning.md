@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge で Machine Learning を展開する | Microsoft Docs
+title: Azure Machine Learning をデバイスに展開するチュートリアル - Azure IoT Edge | Microsoft Docs
 description: このチュートリアルでは、Azure Machine Learning をモジュールとしてエッジ デバイスに展開します
 author: kgremban
 manager: philmea
@@ -8,13 +8,13 @@ ms.date: 11/15/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: c98dc9019421133b83ab9aec29f725852315f6ba
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: db8318e94b646d57c00bc2e6958ba9e7f46ec7af
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977211"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344032"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -115,7 +115,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 
 1. **[レジストリ設定]** セクションで、Azure コンテナー レジストリからコピーした資格情報を追加します。 
 
-   ![レジストリ資格情報を追加する](./media/tutorial-deploy-machine-learning/registry-settings.png)
+   ![レジストリの資格情報をマニフェストに追加する](./media/tutorial-deploy-machine-learning/registry-settings.png)
 
 1. 以前 IoT Edge デバイスに tempSensor モジュールを展開したことがある場合は、自動で入力されていることがあります。 モジュールの一覧にない場合は追加します。
 
@@ -174,7 +174,7 @@ Linux デバイスでこれらのコマンドを実行する場合、管理者�
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>IoT ハブに届くデータを表示する
 
-IoT Hub が受信する device-to-cloud メッセージは、[Visual Studio Code 用の Azure IoT Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して表示できます。
+[Visual Studio Code 用の Azure IoT Hub Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (以前の Azure IoT Toolkit の拡張機能) を使用して、IoT ハブが受け取る device-to-cloud メッセージを表示できます。
 
 次の手順は、IoT ハブに届く device-to-cloud メッセージを監視するように Visual Studio Code を設定する方法を示しています。 
 
@@ -182,7 +182,7 @@ IoT Hub が受信する device-to-cloud メッセージは、[Visual Studio Code
 
 2. **[...]** を選択した後、メニューで **[Set IoT Hub Connection String]\(IoT Hub の接続文字列の設定\)** を選択します。
 
-   ![IoT Hub デバイスのその他のメニュー](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![IoT Hub 接続文字列を設定する](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. ページの上部に表示されるテキスト ボックスに、IoT Hub の iothubowner の接続文字列を入力します。 IoT Hub デバイスの一覧に、お使いの IoT Edge デバイスが表示されます。
 

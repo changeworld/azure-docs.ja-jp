@@ -4,21 +4,20 @@ description: モノのインターネット (IoT) からのストリーミング
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: overview
 ms.workload: data-services
-ms.custom: mvc
-ms.date: 03/27/2018
-ms.openlocfilehash: 7b38548ce3266d74ffd51ce75ffa92bdb4ac24b9
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.custom: seodec18
+ms.date: 12/07/2018
+ms.openlocfilehash: 9cd1a8a095c697c4baeaa435f80c136ce49e0313
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437622"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098578"
 ---
-# <a name="what-is-stream-analytics"></a>Stream Analytics とは
+# <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics とは
 
 Azure Stream Analytics は、デバイスからの大量のデータ ストリームを分析することができるイベント処理エンジンです。 受信データは、デバイス、センサー、Web サイト、ソーシャル メディア フィード、アプリケーションなどから得ることができます。 また、データ ストリームから情報を抽出し、パターンや関係を把握することもできます。 そうしたパターンを使用して、別のアクション (アラートなど) をダウンストリームでトリガーしたり、レポート ツールに情報をフィードしたり、後で使用できるようにその情報を保存したりすることができます。
 
@@ -42,13 +41,13 @@ Azure Stream Analytics の出発点となるのは、ストリーミング デ�
 
 次の画像は、Stream Analytics のパイプラインを示したものです。Stream Analytics ジョブでは、入出力されるすべてのデータを使用できるほか、一部のデータを選んで使用することもできます。 この画像は、Stream Analytics に対してデータがどのように送信され、分析され、その後他のアクション (保存、プレゼンテーションなど) に送信されるかを示しています。
 
-![Stream Analytics パイプライン](./media/stream-analytics-introduction/stream_analytics_intro_pipeline.png)
+![Stream Analytics 導入のパイプライン](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
 
 ## <a name="key-capabilities-and-benefits"></a>主要な機能と利点
 
 Azure Stream Analytics は、あらゆるジョブの規模に対応するスケーラビリティ、使いやすさ、柔軟性、信頼性を実現する設計になっています。 複数のデータセンターおよびソブリン クラウドにまたがって使用することができます。 次の画像は、Azure Stream Analytics の主な機能を示しています。
 
-![Stream Analytics の主な機能](./media/stream-analytics-introduction/stream_analytics_key_capabilities.png)
+![Stream Analytics の主な機能](./media/stream-analytics-introduction/stream-analytics-key-capabilities.png)
 
 ## <a name="ease-of-getting-started"></a>簡単に始められる
 
@@ -64,7 +63,7 @@ Stream Analytics クエリ言語には、ストリーミング データを分�
 
 クエリ言語の機能は、別の関数を定義したり呼び出したりすることで拡張することができます。 Azure Machine Learning サービスで関数の呼び出しを定義することにより、Azure Machine Learning のソリューションを最大限に活かすことができます。また、JavaScript のユーザー定義関数 (UDF) を組み込んで、Stream Analytics のクエリ内で複雑な計算を行うこともできます。
 
-## <a name="fully-managed"></a>完全管理型 
+## <a name="fully-managed"></a>フル マネージド 
 
 Azure Stream Analytics は、Azure のフル マネージド サーバーレス (PaaS) プランです。 つまり、目的のジョブを実行するために、自分でハードウェアをプロビジョニングしたりクラスターを管理したりする必要はありません。 ジョブは、Azure Stream Analytics によって完全に管理され、クラウドにおける複雑なコンピューティング クラスターの設定や、ジョブを実行するために必要なパフォーマンス チューニングは Azure Stream Analytics によって行われます。 Azure Event Hubs や Azure IoT Hub と統合することで、接続されたデバイス、クリックストリーム、およびログ ファイルから 1 秒間に数百万ものイベントを取り込むことができます。 イベント ハブのパーティション機能を使用すると、計算を論理上のステップに分割できます。スケーラビリティを高めるために、分割した各ステップは、さらに分割できるようになっています。
 

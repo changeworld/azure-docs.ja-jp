@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0d9ad11ab9a53cf5de51dd3f262dc16054be5d85
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633050"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438610"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル: Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
@@ -39,7 +39,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 1. ブラウザーから、URL `https://<ClusterName>.azurehdinsight.net/Ranger/` を使用して Ranger 管理ユーザー インターフェイスに接続します。 必ず、`<ClusterName>` をお使いの Kafka クラスターの名前に変更してください。
 
-    > [!NOTE] 
+    > [!NOTE]  
     > Ranger の資格情報は、Hadoop クラスターの資格情報と同じではありません。 ブラウザーで Hadoop のキャッシュされた資格情報が使用されないように、新しい InPrivate ブラウザー ウィンドウを使用して Ranger 管理 UI に接続してください。
 
 2. Azure Active Directory (AD) 管理者の資格情報を使用してサインインします。 Azure AD 管理者の資格情報は、HDInsight クラスターの資格情報や Linux HDInsight ノード SSH の資格情報と同じではありません。
@@ -74,7 +74,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
    ![Apache Ranger 管理 UI の作成ポリシー](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
 
-   >[!NOTE] 
+   >[!NOTE]   
    >**[ユーザーの選択]** にドメイン ユーザーが自動的に設定されない場合は、Ranger が Azure AD と同期されるまでしばらく待ってください。
 
 4. **[Add]** をクリックしてポリシーを保存します。
@@ -113,17 +113,17 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. 次のコマンドを使用して、Kafka ブローカー ホストと Zookeeper ホストを取得します。 プロンプトが表示されたら、クラスターの管理者アカウント用のパスワードを入力します。
+3. Kafka ブローカー ホストと Apache Zookeeper ホストを取得するには、次のコマンドを使用します。 プロンプトが表示されたら、クラスターの管理者アカウント用のパスワードを入力します。
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
-> [!Note]
+> [!Note]  
 > 開発環境をまだ設定していない場合は、先に進む前に設定してください。 SSH クライアントと scp、Java JDK、Apache Maven などのコンポーネントが必要となります。 詳細については、これらの[設定手順](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)を参照してください。
 1. [Apache Kafka Domain-Joined Producer Consumer サンプル](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)をダウンロードします。
 
-1. 「[チュートリアル: Apache Kafka Producer および Consumer API の使用](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)」の「**例を構築してデプロイする**」にある手順 2. と手順 3. を行います。
+1. 「**例を構築してデプロイする**」の手順 2. と手順 3. を行います (「[チュートリアル: Apache Kafka Producer および Consumer API の使用](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)」)。
 
 1. 次のコマンドを実行します。
 
@@ -132,7 +132,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
-   >[!NOTE] 
+   >[!NOTE]   
    >Zookeeper znode `/config/topics` に書き込むことができるのは、root など、Kafka サービスのプロセス所有者のみです。 特権のないユーザーがトピックを作成する場合は、Ranger ポリシーが適用されます。 これは、`kafka-topics.sh` スクリプトと Zookeeper が直接通信してトピックを作成するためです。 エントリは Zookeeper ノードに追加され、ブローカー側のウォッチャーによって適宜、トピックが監視され、作成されます。 ranger プラグインを使用して承認を行うことはできません。上記のコマンドは Kafka ブローカーを介して `sudo` を使用して実行されます。
 
 
@@ -210,5 +210,5 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Kafka に自分のキーを持ち込む](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
-* [Enterprise セキュリティ パッケージを使用する HDInsight セキュリティの概要](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)
+* [Apache Kafka に自分のキーを持ち込む](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
+* [Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)

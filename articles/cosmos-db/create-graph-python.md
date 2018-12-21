@@ -10,14 +10,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: eb7959b1a41c602ce4f34750802d962fe4ff84cf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b8a26164145360bdd46656a86817b8ec61bcb56c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839315"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081491"
 ---
-# <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure Portal を使用してグラフ データベースを作成する
+# <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure portal を使用してグラフ データベースを作成する
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -42,7 +42,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 加えて次の作業を行います。
 * [Python](https://www.python.org/downloads/) バージョン v3.5 以降
 * [pip パッケージ マネージャー](https://pip.pypa.io/en/stable/installing/)
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Gremlin 用 Python ドライバー](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
@@ -101,7 +101,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ここで Azure Portal に戻り、接続情報を取得して、アプリにコピーします。 これらの設定により、アプリはホストされているデータベースと通信できるようになります。
 
-1. [Azure Portal](http://portal.azure.com/) で **[キー]** をクリックします。 
+1. [Azure Portal](https://portal.azure.com/) で **[キー]** をクリックします。 
 
     URI の値の最初の部分をコピーします。
 

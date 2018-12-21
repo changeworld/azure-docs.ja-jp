@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 342fdce9a0e9b47380a8d8c975703ebb7f57e3b6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e31f35aadfa7e46426a1779cdc057691bef91336
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087131"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965549"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
@@ -43,7 +43,7 @@ ms.locfileid: "43087131"
 ## <a name="overview"></a>概要
 ソリューションの概略図を次に示します。 
 
-![データの増分読み込み](media\tutorial-Incremental-copy-portal\incrementally-load.png)
+![データの増分読み込み](media/tutorial-Incremental-copy-portal/incrementally-load.png)
 
 このソリューションを作成するための重要な手順を次に示します。 
 

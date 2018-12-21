@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/19/2018
 ms.author: wesmc
-ms.openlocfilehash: 28884b9b7d29a3c8da1fee0f0b54269bdaadf926
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b8623acc9d29f083e34c7fa7494e866317146802
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427624"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252560"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Android)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Android)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -36,11 +36,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="prerequisites"></a>前提条件
 
 
-* Android Studio (https://developer.android.com/studio/)。 Android Studio のインストールの詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。 
+* Android Studio (https://developer.android.com/studio/)。 Android Studio のインストールの詳細については、[Android のインストール](https://developer.android.com/studio/install)に関するページを参照してください。
 
-* この記事のサンプルでは、Android SDK 27 を使用しています。 
+* この記事のサンプルでは、Android SDK 27 を使用しています。
 
-* このクイック スタートには 2 つのサンプル アプリケーションが必要です ([Device SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)と [Service SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample))。 どちらのサンプルも、GitHub 上の azure-iot-samples-java リポジトリに含まれています。 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリをダウンロードまたは複製してください。
+* このクイック スタートでは、2 つのサンプル アプリケーションが必要です ([Device SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)と [Service SDK サンプル Android アプリケーション](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample))。 どちらのサンプルも、GitHub 上の azure-iot-samples-java リポジトリに含まれています。 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリをダウンロードまたは複製してください。
 
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
@@ -51,15 +51,15 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-android.md)を完了した場合は、この手順を省略して、前のクイック スタートで登録したものと同じデバイスを使用できます。
+前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-android.md)を完了した場合は、この手順を省略して、前のクイック スタートで登録したものと同じデバイスを使用します。
 
 デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
-   **MyAndroidDevice**: この値は、登録済みデバイスに付けられた名前です。 示されているように、MyAndroidDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **MyAndroidDevice**:この値は、登録済みデバイスに付けられた名前です。 示されているように、MyAndroidDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
@@ -69,7 +69,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -87,8 +87,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="retrieve-the-service-connection-string"></a>サービス接続文字列を取得する
 
 また、バックエンド サービス アプリケーションが IoT ハブに接続してメソッドを実行したりメッセージを取得したりできるようにするには、"_サービス接続文字列_" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
-   
-**YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+
+**YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIoTHubName --output table
@@ -131,7 +131,7 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
 
 1. Azure Cloud Shell を使用して、次のコマンドを実行して接続し、お使いの IoT ハブからのメッセージを読み取ります。
 
-   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+   **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
@@ -145,11 +145,11 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
 
 ## <a name="call-the-direct-method"></a>ダイレクト メソッドを呼び出す
 
-サービス アプリケーションは、IoT ハブ上のサービス側エンドポイントに接続します。 アプリケーションは、IoT ハブを通してデバイスへのダイレクト メソッド呼び出しを行った後、受信確認をリッスンします。 
+サービス アプリケーションは、IoT ハブ上のサービス側エンドポイントに接続します。 アプリケーションは、IoT ハブを通してデバイスへのダイレクト メソッド呼び出しを行った後、受信確認をリッスンします。
 
 このアプリは、単独の物理 Android デバイスまたは Android Emulator 上で実行します。
 
-通常、IoT ハブのバックエンド サービス アプリケーションはクラウドで実行されます。クラウドの方が、IoT ハブ上のあらゆるデバイスを制御する、慎重な扱いを要する接続文字列に伴うリスクを容易に軽減できます。 この例では、デモンストレーションの目的に限って、Android アプリとして実行しています。 このクイック スタートの他の言語のバージョンでは、もっとバックエンド サービス アプリケーションにふさわしい例が紹介されています。 
+通常、IoT ハブのバックエンド サービス アプリケーションはクラウドで実行されます。クラウドの方が、IoT ハブ上のあらゆるデバイスを制御する、慎重な扱いを要する接続文字列に伴うリスクを容易に軽減できます。 この例では、デモンストレーションの目的に限って、Android アプリとして実行しています。 このクイック スタートの他の言語のバージョンでは、もっとバックエンド サービス アプリケーションにふさわしい例が紹介されています。
 
 1. このサービスの GitHub サンプル Android プロジェクトを Android Studio で開きます。 このプロジェクトは、複製またはダウンロードした [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) リポジトリのコピーの次のディレクトリにあります。
 
@@ -159,14 +159,14 @@ az iot hub show-connection-string --hub-name YourIoTHubName --output table
 
     ```
     ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}
-    DeviceId=MyAndroidDevice    
+    DeviceId=MyAndroidDevice
     ```
 
 3. Android Studio で、**[File]\(ファイル\)** > **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
 
 4. ビルドが完了したら、**[Run]\(実行\)** > **[Run 'app']\(<アプリ> の実行\)** をクリックします。 単独の物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
 
-5. アプリの読み込み後、**[Set Messaging Interval]\(メッセージ送信間隔の設定\)** の値を **1000** に更新し、**[Invoke]\(呼び出し\)** をクリックします。 
+5. アプリの読み込み後、**[Set Messaging Interval]\(メッセージ送信間隔の設定\)** の値を **1000** に更新し、**[Invoke]\(呼び出し\)** をクリックします。
 
     利用統計情報メッセージの送信間隔はミリ秒単位です。 このデバイス サンプルでは、利用統計情報の送信間隔が既定で 5 秒に設定されています。 この変更によって、利用統計情報が 1 秒おきに送信されるように Android IoT デバイスが更新されます。
 

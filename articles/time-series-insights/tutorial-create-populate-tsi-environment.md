@@ -1,19 +1,20 @@
 ---
-title: Azure Time Series Insights 環境を作成する
+title: Azure Time Series Insights 環境の作成 | Microsoft Docs
 description: シミュレートされたデバイスからのデータが入力された Time Series Insights 環境を作成する方法について説明します。
 services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 46fecf6f1b2826f0e23b7b6c4f4511ce9a662d1c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 1a5f9901dfb3b08a068d1051b7ea434f1d5d5412
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365691"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278493"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル: Azure Time Series Insights 環境を作成する
 
@@ -26,9 +27,9 @@ ms.locfileid: "46365691"
 > * デバイス シミュレーションを実行して TSI 環境にデータをストリーミングする
 > * シミュレートされたテレメトリ データを確認する
 
-## <a name="video"></a>ビデオ: 
+## <a name="video"></a>ビデオ
 
-### <a name="in-this-video-we-show-you-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-that-can-be-used-to-get-started-with-time-series-insightsbr"></a>このビデオでは、Azure IoT Solution Accelerator を使用して、Time Series Insights を使用するために使うデータを生成する方法を紹介します。</br>
+このビデオでは、Azure IoT Solution Accelerator を使用して、Time Series Insights を使用するために使うデータを生成する方法を紹介します。
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
@@ -228,7 +229,7 @@ Azure Portal の左側のメニューで、次のように操作します。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * TSI 環境の作成 

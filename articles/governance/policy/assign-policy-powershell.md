@@ -1,24 +1,24 @@
 ---
-title: クイック スタート - PowerShell を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
-description: このクイック スタートでは、PowerShell を使用して Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
+title: Azure PowerShell を使用して準拠していないリソースを識別するポリシーを作成する
+description: Azure PowerShell を使用して、準拠していないリソースを識別するための Azure Policy の割り当てを作成します。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 3a71815e3a400b4366a2f60637cb0daab77b1cd6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.custom: seodec18
+ms.openlocfilehash: 32fe811c80fd34b4ea3390a3f46a1d36aba7534e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946172"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310710"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-the-azure-rm-powershell-module"></a>クイック スタート: Azure RM PowerShell モジュールを使用してポリシーの割り当てを作成し、準拠していないリソースを特定する
+# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Azure PowerShell を使用して準拠していないリソースを識別するためのポリシー割り当てを作成する
 
-Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 このクイックスタートでは、ポリシーの割り当てを作成して、マネージド ディスクを使用していない仮想マシンを特定します。 完了すると、ポリシーの割り当てに "*準拠していない*" 仮想マシンが特定されます。
+Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 このクイック スタートでは、マネージド ディスクを使用していない仮想マシンを識別するためのポリシー割り当てを作成します。 完了すると、ポリシーの割り当てに "*準拠していない*" 仮想マシンが特定されます。
 
 AzureRM PowerShell モジュールは、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、AzureRM を使用してポリシーの割り当てを作成する方法について説明します。 このポリシーは、準拠していないリソースを Azure 環境内から特定するものです。
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [ARMClient](https://github.com/projectkudu/ARMClient) をまだインストールしていない場合はインストールします。 Azure Resource Manager ベースの API に HTTP 要求を送信するツールです。
 - 開始する前に、最新バージョンの PowerShell がインストールされていることを確認してください。 詳細については、[Azure PowerShell の概要](/powershell/azureps-cmdlets-docs)に関するページを参照してください。
 - AzureRM PowerShell モジュールを最新バージョンに更新します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
-- Azure PowerShell を使用して Policy Insights リソース プロバイダーを登録します。 リソース プロバイダーを登録すると、そのリソース プロバイダーで、ご利用のサブスクリプションを確実に動作させることができます。 リソース プロバイダーを登録するには、リソース プロバイダーのアクションの登録操作を実行するためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録する以下のコマンドを実行します。
+- Azure PowerShell を使用して Policy Insights リソース プロバイダーを登録します。 リソース プロバイダーを登録すると、そのリソース プロバイダーで、ご利用のサブスクリプションを確実に動作させることができます。 リソース プロバイダーを登録するには、リソース プロバイダーの登録操作のためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録する以下のコマンドを実行します。
 
   ```azurepowershell-interactive
   Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
@@ -39,21 +39,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
-このクイック スタートでは、ポリシー割り当てを作成し、"*管理ディスクのない仮想マシンを監査*" 定義を割り当てます。 このポリシー定義で、ポリシー定義に設定されている条件に準拠していないリソースを特定します。
+このクイック スタートでは、ポリシー割り当てを作成して、"*マネージド ディスクを使用していない VM を監査*" 定義を割り当てます。 このポリシー定義では、ポリシー定義で設定されている条件に準拠していないリソースが識別されます。
 
 ポリシーの割り当てを新たに作成するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
 $rg = Get-AzureRmResourceGroup -Name '<resourceGroupName>'
 $definition = Get-AzureRmPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs that do not use managed disks' }
-New-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit Virtual Machines without Managed Disks Assignment' -Scope $rg.ResourceId -PolicyDefinition $definition
+New-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs without managed disks Assignment' -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
 上記のコマンドでは次の情報を使用します。
 
 - **Name** - 割り当ての実際の名前。  この例では、*audit-vm-manageddisks* が使用されました。
-- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、"*Audit Virtual Machines without Managed Disks Assignment*" を使用します。
-- **Definition** - 割り当ての作成に使用するポリシー定義。 ここでは、*マネージド ディスクを使用しない監査 VM* というポリシー定義の ID です。
+- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、"*Audit VMs without managed disks Assignment*" を使用します。
+- **Definition** - 割り当ての作成に使用するポリシー定義。 ここでは、"*Managed Disks を使用していない VM の監査*" というポリシー定義の ID です。
 - **Scope** - スコープによって、ポリシーの割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。 &lt;scope&gt; は、実際のリソース グループの名前に置き換えてください。
 
 以上の手順で、準拠していないリソースを特定し、環境のコンプライアンスの状態を理解できるようになりました。
@@ -63,7 +63,7 @@ New-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit Vi
 以下、作成したポリシーの割り当てに準拠していないリソースを特定する方法について説明します。 次のコマンドを実行します。
 
 ```azurepowershell-interactive
-$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks Assignment' }
+$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
 $policyAssignment.PolicyAssignmentId
 ```
 
@@ -105,7 +105,7 @@ armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/provider
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-以降、この一連のガイドは、このクイックスタートに基づいて執筆しています。 続けて残りのチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 続行する予定がない場合は、次のコマンドを実行して、作成した割り当てを削除してください。
+作成した割り当てを削除するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
 Remove-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>'
@@ -115,7 +115,7 @@ Remove-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscripti
 
 このクイックスタートでは、ポリシー定義を割り当てて、Azure 環境内で準拠していないリソースを特定しました。
 
-ポリシーの割り当てについてさらに詳しく学び、**今後**作成されるリソースが準拠していることを確認するには、次に進んでください。
+新しいリソースが準拠していることを検証するためのポリシーの割り当てについて詳しく学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [ポリシーの作成と管理](./tutorials/create-and-manage.md)

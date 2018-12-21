@@ -10,12 +10,12 @@ ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a42deb6bc039602c4bda523d2ab1ee5a69bb5644
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cbc86405225cca0d5144b48b113cf41607ce16f4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303538"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434122"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect データベースを SQL Server Express から SQL Server に移動する 
 
@@ -30,7 +30,7 @@ ms.locfileid: "46303538"
 次の手順を使用して、Azure AD Connect データベースをリモート SQL Server に移動します。
 
 1.  Azure AD Connect サーバーで **[サービス]** に移動し、**Microsoft Azure AD Sync** サービスを停止します。
-2. **%Program Files%\Microsoft Azure AD Sync/Data/** フォルダーを見つけて、**ADSync.mdf** ファイルと **ADSync_log.mdf** ファイルをリモート SQL Server にコピーします。
+2. **%Program Files%\Microsoft Azure AD Sync/Data/** フォルダーを見つけて、**ADSync.mdf** ファイルと **ADSync_log.ldf** ファイルをリモート SQL Server にコピーします。
 3. Azure AD Connect サーバーで **Microsoft Azure AD Sync** サービスを再起動します。
 4. [コントロール パネル] -- [プログラム] -- [プログラムと機能] に移動して、Azure AD Connect をアンインストールします。  Microsoft Azure AD Connect を選択し、上部の [アンインストール] をクリックします。
 5. リモート SQL サーバーで、SQL Server Management Studio を開きます。

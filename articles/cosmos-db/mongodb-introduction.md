@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB の概要: MongoDB API'
+title: Azure Cosmos DB の概要:MongoDB API
 description: 人気のある OSS MongoDB API と Azure Cosmos DB を使用して、大量の JSON ドキュメントを低待機時間で格納およびクエリする方法を説明します。
 keywords: MongoDB とは
 services: cosmos-db
@@ -9,30 +9,32 @@ ms.component: cosmosdb-mongo
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: 9acad93382a7a88b7af7c72a7308e64dc428cef5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0d36d4c18860f6448d98d9d67b854d91b07ea9d2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863994"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409090"
 ---
-# <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB の概要: MongoDB API
+# <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB の概要:MongoDB API
 
-[Azure Cosmos DB](../cosmos-db/introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 
+[Azure Cosmos DB](../cosmos-db/introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 
 
-![Azure Cosmos DB: MongoDB API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
+![Azure Cosmos DB は:MongoDB API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
 [MongoDB](https://docs.mongodb.com/manual/introduction/) 向けに作成されたアプリのデータ ストアとして Azure Cosmos DB データベースを使用できます。 つまり、既存の[ドライバー](https://docs.mongodb.org/ecosystem/drivers/)を使用することで、MongoDB 用に記述されたアプリケーションが Azure Cosmos DB と通信し、MongoDB データベースではなく Azure Cosmos DB データベースを使用できるようになりました。 多くの場合、接続文字列を変更するだけで、MongoDB から Azure Cosmos DB に使用を切り替えることができます。 この機能を使用すると、既にある MongoDB のスキルとツールを無駄にすることなく、Azure Cosmos DB とその[包括的な業界トップレベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) によって、グローバル配布の MongoDB データベース アプリケーションを簡単に作成し、Azure クラウドで実行することができます。
 
-**MongoDB の互換性**: Azure Cosmos DB では MongoDB ワイヤ プロトコルが実装されているので、既にある MongoDB のノウハウ、アプリケーション コード、ツールを活用できます。 MongoDB を使用してアプリケーションを開発し、グローバルに分散されたフル マネージドの Azure Cosmos DB サービスを使用して運用環境にデプロイできます。 サポートされているバージョンについて詳しくは、「[MongoDB のプロトコル サポート](mongodb-feature-support.md#mongodb-protocol-support)」をご覧ください。
+**MongoDB の互換性**:Azure Cosmos DB では MongoDB ワイヤ プロトコルが実装されているので、既にある MongoDB のノウハウ、アプリケーション コード、ツールを活用できます。 MongoDB を使用してアプリケーションを開発し、グローバルに分散されたフル マネージドの Azure Cosmos DB サービスを使用して運用環境にデプロイできます。 サポートされているバージョンについて詳しくは、「[MongoDB のプロトコル サポート](mongodb-feature-support.md#mongodb-protocol-support)」をご覧ください。
+
+Azure Cosmos DB の MongoDB API は、Azure Stream Analytics などのサービスの直接のエンドポイントとして使用することはできません。これは、MongoDB API がネイティブ MongoDB と同じ[クライアント ドライバー](https://docs.mongodb.org/ecosystem/drivers/)を使用しているためです。 Azure Stream Analytics と統合するには、Azure Cosmos DB の MongoDB API にデータを書き込むことができるミドルウェア サービスとして、[Azure App Service](../app-service/app-service-web-overview.md) または [Azure Functions Service](../azure-functions/functions-overview.md) を使用することを検討してください。
 
 ## <a name="what-is-the-benefit-of-using-azure-cosmos-db-for-mongodb-applications"></a>MongoDB 用の Azure Cosmos DB を使用するメリット
 
-**スループットとストレージのスケールを柔軟に調整:** アプリケーションのニーズに合わせて MongoDB データベースを簡単にスケールアップまたはスケールダウンできます。 データはソリッドステート ディスク (SSD) に格納されるため、予測可能かつ低いレイテンシが期待できます。 Azure Cosmos DB は、実質的に無制限のストレージ サイズとプロビジョニング スループットにスケーリングできる MongoDB コレクションをサポートしています。 アプリケーションの成長に合わせて Azure Cosmos DB のスケールを臨機応変に拡張し、予測したとおりのパフォーマンスをシームレスに確保することができます。 
+**弾力的にスケーラブルなスループットとストレージ:** MongoDB データベースを簡単にスケールアップまたはスケールダウンして、アプリケーションのニーズを満たすことができます。 データはソリッドステート ディスク (SSD) に格納されるため、予測可能かつ低いレイテンシが期待できます。 Azure Cosmos DB は、実質的に無制限のストレージ サイズとプロビジョニング スループットにスケーリングできる MongoDB コレクションをサポートしています。 アプリケーションの成長に合わせて Azure Cosmos DB のスケールを臨機応変に拡張し、予測したとおりのパフォーマンスをシームレスに確保することができます。 
 
-**複数リージョンのレプリケーション**: Azure Cosmos DB は、MongoDB アカウントに関連付けられているすべてのリージョンにデータを透過的にレプリケートします。これにより、整合性、可用性、パフォーマンスを所定のレベルで確保して、これらのトレードオフを実現しながら、データへのグローバル アクセスを必要とするアプリケーションを開発できます。 Azure Cosmos DB は、マルチホーミング API を使用した透過的なリージョン内フェールオーバーを提供します。また、スループットとストレージを世界規模で弾力的にスケールすることもできます。 詳細については、[データのグローバル分散](distribute-data-globally.md)に関するページを参照してください。
+**複数リージョンのレプリケーション:** Azure Cosmos DB は、MongoDB アカウントに関連付けられているすべてのリージョンにデータを透過的にレプリケートします。これにより、整合性、可用性、パフォーマンスを所定のレベルで確保して、これらのトレードオフを実現しながら、データへのグローバル アクセスを必要とするアプリケーションを開発できます。 Azure Cosmos DB は、マルチホーミング API を使用した透過的なリージョン内フェールオーバーを提供します。また、スループットとストレージを世界規模で弾力的にスケールすることもできます。 詳細については、[データのグローバル分散](distribute-data-globally.md)に関するページを参照してください。
 
-**サーバー管理が不要**: MongoDB データベースは管理およびスケールが不要です。 Azure Cosmos DB はフル マネージドのサービスです。つまり、インフラストラクチャまたは仮想マシンを自分で管理する必要がありません。 Azure Cosmos DB は、30 を超える [Azure リージョン](https://azure.microsoft.com/regions/services/)で使用できます。
+**サーバー管理が不要**:MongoDB データベースは管理およびスケールが不要です。 Azure Cosmos DB はフル マネージドのサービスです。つまり、インフラストラクチャまたは仮想マシンを自分で管理する必要がありません。 Azure Cosmos DB は、30 を超える [Azure リージョン](https://azure.microsoft.com/regions/services/)で使用できます。
 
 **調整可能な整合性レベル:** Azure Cosmos DB はマルチモデルの API をサポートしているので、一貫性設定をアカウント レベルに適用でき、一貫性の強制は API ごとに制御されます。 MongoDB 3.6 まではセッションの一貫性の概念がなかったため、セッションの一貫性を使用するために MongoDB API アカウントを設定すると、MongoDB API を使用したときに一貫性が Eventual にダウングレードされます。 MongoDB API アカウントに read-your-own-write (RYOW) の保証が必要な場合、アカウントの既定の一貫性レベルは Strong または Bounded Stateless に設定する必要があります。 詳細については、[整合性レベルを使用して可用性とパフォーマンスを最大化する方法](consistency-levels.md)に関するページを参照してください。
 
@@ -44,9 +46,9 @@ ms.locfileid: "52863994"
 |Bounded Staleness| Strong |
 | Strong | Strong |
 
-**自動インデックス作成:** 既定では、Azure Cosmos DB は MongoDB データベースのドキュメント内のすべてのプロパティのインデックスを自動的に作成するので、スキーマや、セカンダリ インデックスの作成は不要です。 また、Azure Cosmos DB では、一意なインデックスの機能により、既に自動でインデックスが作成されているドキュメントの任意のフィールドに対して一意性制約を設定することができます。
+**インデックスの自動作成**:既定では、Azure Cosmos DB は MongoDB データベースのドキュメント内のすべてのプロパティのインデックスを自動的に作成するので、スキーマや、セカンダリ インデックスの作成は不要です。 また、Azure Cosmos DB では、一意なインデックスの機能により、既に自動でインデックスが作成されているドキュメントの任意のフィールドに対して一意性制約を設定することができます。
 
-**エンタープライズ グレード**: Azure Cosmos DB では、ローカルとリージョンで障害が発生した場合に 99.99% の可用性とデータ保護を実現する、複数のローカル レプリカがサポートされます。 Azure Cosmos DB には、エンタープライズ グレードの[コンプライアンス認定](https://www.microsoft.com/trustcenter)とセキュリティ機能があります。 
+**エンタープライズ グレード**:Azure Cosmos DB では、ローカルとリージョンで障害が発生した場合に 99.99% の可用性とデータ保護を実現する、複数のローカル レプリカがサポートされます。 Azure Cosmos DB には、エンタープライズ グレードの[コンプライアンス認定](https://www.microsoft.com/trustcenter)とセキュリティ機能があります。 
 
 ## <a name="how-to-get-started"></a>ファースト ステップ
 

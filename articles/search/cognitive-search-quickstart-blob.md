@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Portal を使用した Azure Search でのコグニティブ検索パイプラインの作成 |Microsoft Docs'
+title: 'クイック スタート: Azure portal のコグニティブ検索パイプライン - Azure Search'
 description: サンプル データを使用した Azure Portal でのデータの抽出、自然言語、および画像処理のスキルの例。
 manager: cgronlun
 author: HeidiSteen
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: bc88ca63f14c5480210455abcf403771b6a4c232
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.custom: seodec2018
+ms.openlocfilehash: 7d579bfdaf38b6c06b26cfa7b36f8e4d2ac5a1f2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264130"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386266"
 ---
-# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>クイック スタート: スキルとサンプル データを使用したコグニティブ検索パイプラインの作成
+# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>クイック スタート:スキルとサンプル データを使用してコグニティブ検索パイプラインを作成する
 
 コグニティブ検索 (プレビュー) は、データの抽出、自然言語処理 (NLP)、画像処理のスキルを Azure Search インデックス作成パイプラインに追加して、検索できないコンテンツや非構造化コンテンツを検索可能にします。 エンティティの認識または画像分析などのスキルによって作成された情報は、Azure Search のインデックスに追加されます。
 
@@ -47,7 +48,9 @@ ms.locfileid: "52264130"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は、後日、発表される予定です。 
+> 2018 年 12 月 21 日から、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができるようになります。 これにより、スキルセットの実行への課金を開始できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
+>
+> 組み込みスキルの実行は、既存の [Cognitive Services の従来課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格はプレビュー価格で課金され、[Azure Search 価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +69,7 @@ Azure サービスはこのシナリオでのみ使用されます。 必要な�
 
 1. **[リソースの作成]** をクリックし、Azure Search を検索して、**[作成]** をクリックします。 Search サービスを設定するのが初めてのために、さらにサポートが必要な場合は、「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」をご覧ください。
 
-  ![ダッシュボード ポータル](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Portal での Azure Search サービスの作成")
+  ![ダッシュボード ポータル](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Portal での Azure Search サービスの作成")
 
 1. [リソース グループ] では、このクイックスタートで作成するすべてのリソースを含めるリソース グループを作成します。 これにより、クイックスタートが完了した後で、リソースをクリーンアップしやすくなります。
 
@@ -76,16 +79,18 @@ Azure サービスはこのシナリオでのみ使用されます。 必要な�
 
   Free サービスは、3 つのインデックス、16 MB の最大 BLOB サイズ、および 2 分のインデックス作成に制限されていて、コグニティブ検索の全機能をテストするには不十分です。 さまざまなレベルの制限を確認するには、「[サービスの制限](search-limits-quotas-capacity.md)」をご覧ください。
 
+  ![ポータルのサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service1.png "ポータルのサービス定義のページ")
+  ![ポータルのサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service2.png "ポータルのサービス定義のページ")
   > [!NOTE]
-  > コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行は、現時点では無料を含むすべてのレベルで使用可能です。 この機能の価格は後日発表される予定です。
+  > コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行は、現時点では無料を含むすべてのレベルで使用可能です。 有料の Cognitive Services リソースを関連付けることなく、限られた数のエンリッチメントを実行することができます。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
 
 1. サービス情報にすばやくアクセスするために、サービスをダッシュボードにピン留めします。
 
-  ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service.png "Portal のサービス定義のページ")
+  ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service3.png "Portal のサービス定義のページ")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Azure BLOB サービスを設定し、サンプル データを読み込む
 
-エンリッチメント パイプラインは、[Azure Search インデクサー](search-indexer-overview.md)でサポートされる Azure データ ソースから取得されます。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
+エンリッチメント パイプラインは、[Azure Search インデクサー](search-indexer-overview.md)でサポートされる Azure データ ソースから取得されます。 コグニティブ検索では Azure Table Storage はサポートされていないことに注意してください。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
 
 1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 
 
@@ -99,18 +104,18 @@ Azure サービスはこのシナリオでのみ使用されます。 必要な�
 
 Azure Search サービスのダッシュボード ページに戻り、コマンド バーの **[データのインポート]** をクリックして、4 つの手順でエンリッチメントを設定します。
 
-### <a name="step-1-create-a-data-source"></a>手順 1: データ ソースを作成する
+### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 
 **[データへの接続]** > **[Azure Blob Storage]** で、作成したアカウントとコンテナーを選択します。 データ ソースの名前を指定し、残りの部分には既定値を使用します。 
 
-   ![Azure BLOB の構成](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   ![Azure BLOB の構成](./media/cognitive-search-quickstart-blob/blob-datasource2.png)
 
 
 **[OK]** をクリックしてデータ ソースを作成します。
 
 **データのインポート** ウィザードを使用する利点の 1 つは、インデックスも作成できることです。 データ ソースが作成されると、ウィザードによりインデックス スキーマが同時に構築されます。 インデックスの作成には数秒かかる場合があります。
 
-### <a name="step-2-add-cognitive-skills"></a>手順 2: コグニティブ スキルを追加する
+### <a name="step-2-add-cognitive-skills"></a>手順 2:コグニティブ スキルを追加する
 
 次に、エンリッチメント ステップをインデックス作成パイプラインに追加します。 Portal には、画像分析とテキスト分析用の定義済みのコグニティブ スキルが表示されます。 Portal では、スキルセットは 1 つのソース フィールドで動作します。 それは小さいターゲットのように見えることもありますが、Azure BLOB の場合は `content` フィールドにほとんどの BLOB ドキュメント (たとえば、Word 文書または PowerPoint デッキ) が含まれています。 そのため、BLOB のすべてのコンテンツがここにあるため、このフィールドは理想的な入力です。
 
@@ -124,7 +129,7 @@ Azure Search サービスのダッシュボード ページに戻り、コマン
 
 自然言語処理スキルは、サンプルのデータ セット内のテキスト コンテンツで動作します。 画像処理のオプションは選択していないため、サンプルのデータ セット内にある JPEG ファイルはこのクイックスタートでは処理されません。 
 
-### <a name="step-3-configure-the-index"></a>手順 3: インデックスを構成する
+### <a name="step-3-configure-the-index"></a>手順 3:インデックスの構成
 
 データ ソースを使用して作成したインデックスを覚えていますか。 この手順では、そのスキーマを表示し、可能性のあるすべての設定を変更できます。 
 
@@ -149,7 +154,7 @@ Azure Search サービスのダッシュボード ページに戻り、コマン
 > [!NOTE]
 > 使用されていないフィールドは、簡略化のためにスクリーンショットから削除されています。 Portal で実行している場合は、リストに追加のフィールドが表示されます。
 
-### <a name="step-4-configure-the-indexer"></a>手順 4: インデクサーを構成する
+### <a name="step-4-configure-the-indexer"></a>手順 4:インデクサーを構成する
 
 インデクサーは、インデックス作成プロセスを開始する高度なリソースです。 これは、データ ソース名、インデックス、および実行の頻度を指定します。 **データのインポート** ウィザードの最終的な結果は常に、繰り返し実行できるインデクサーです。
 
@@ -210,4 +215,4 @@ CTRL + F キーでは、特定の結果セット内のドキュメントの数�
 または、サンプル データと作成したサービスを再利用し、次のチュートリアルで、同じタスクをプログラムで実行する方法について学習します。 
 
 > [!div class="nextstepaction"]
-> [チュートリアル: コグニティブ検索 REST API について学習する](cognitive-search-tutorial-blob.md)
+> [チュートリアル:コグニティブ検索 REST API について学習する](cognitive-search-tutorial-blob.md)

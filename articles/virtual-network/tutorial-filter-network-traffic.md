@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 06/20/2018
+ms.date: 12/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a731c1e0617fe0ccf9d571dd2b7d0c2ad107bc9e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 68fdb158a7d4c723bffb54f33203120afb72a8ef
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901400"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385399"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>チュートリアル: ネットワーク セキュリティ グループと Azure portal を使用してネットワーク トラフィックをフィルター処理する
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>チュートリアル: Azure portal を使用してネットワーク セキュリティ グループでネットワーク トラフィックをフィルター処理する
 
-ネットワーク セキュリティ グループを使用して、仮想ネットワーク サブネットとの間で送受信されるネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、IP アドレス、ポート、およびプロトコルでネットワーク トラフィックをフィルター処理するセキュリティ規則が含まれています。 セキュリティ規則は、サブネットに展開されたリソースに適用されます。 このチュートリアルで学習する内容は次のとおりです。
+ネットワーク セキュリティ グループを使用して、仮想ネットワーク サブネットとの間で送受信されるネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループには、IP アドレス、ポート、およびプロトコルでネットワーク トラフィックをフィルター処理するセキュリティ規則が含まれています。 セキュリティ規則は、サブネットに展開されたリソースに適用されます。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * ネットワーク セキュリティ グループと規則を作成する
@@ -38,9 +38,9 @@ ms.locfileid: "37901400"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal (https://portal.azure.com) にログインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -54,7 +54,7 @@ Azure Portal (https://portal.azure.com) にログインします。
     | アドレス空間           | 10.0.0.0/16                                        |
     | サブスクリプション            | サブスクリプションを選択します。                          |
     | リソース グループ          | **[新規作成]** を選択し、「*myResourceGroup*と入力します。 |
-    | Location                | **[米国東部]** を選択します。                                |
+    | 場所                | **[米国東部]** を選択します。                                |
     | サブネット名            | mySubnet                                           |
     | サブネット アドレス範囲  | 10.0.0.0/24                                        |
 
@@ -63,7 +63,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 アプリケーション セキュリティ グループを使用すると、Web サーバーなど、同様の機能を持つサーバーをグループ化できます。
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
-2. **[Marketplace を検索]** ボックスで、「*Application security group*」と入力します。 検索結果に **Application security group** が表示されたら、それを選択し、**[Everything]** の下にある **[Application security group]** を再度選択して、**[作成]** を選択します。
+2. **[Marketplace を検索]** ボックスに、「*アプリケーション セキュリティ グループ*」と入力します。 検索結果に**アプリケーション セキュリティ グループ**が表示されたら、それを選択し、**[すべて]** の下の**アプリケーション セキュリティ グループ** をもう一度選択します。次に、**[作成]** を選択します。
 3. 以下の情報を入力するか選んだ後、**[作成]** を選びます。
 
     | Setting        | 値                                                         |
@@ -71,7 +71,7 @@ Azure Portal (https://portal.azure.com) にログインします。
     | Name           | myAsgWebServers                                               |
     | サブスクリプション   | サブスクリプションを選択します。                                     |
     | リソース グループ | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します。 |
-    | Location       | 米国東部                                                       |
+    | 場所       | 米国東部                                                       |
 
 4. 手順 3 を繰り返し、次の値を指定します。
 
@@ -80,7 +80,7 @@ Azure Portal (https://portal.azure.com) にログインします。
     | Name           | myAsgMgmtServers                                              |
     | サブスクリプション   | サブスクリプションを選択します。                                     |
     | リソース グループ | **[既存のものを使用]**、**[myResourceGroup]** の順に選択します。 |
-    | Location       | 米国東部                                                       |
+    | 場所       | 米国東部                                                       |
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
@@ -93,7 +93,7 @@ Azure Portal (https://portal.azure.com) にログインします。
     |Name|myNsg|
     |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ | **[既存のものを使用]**、*[myResourceGroup]* の順に選択します。|
-    |Location|米国東部|
+    |場所|米国東部|
 
 ## <a name="associate-network-security-group-to-subnet"></a>ネットワーク セキュリティ グループをサブネットに関連付ける
 
@@ -114,7 +114,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 
     | Setting                 | 値                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | 変換先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgWebServers]** を選択します。  |
+    | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgWebServers]** を選択します。  |
     | 宛先ポート範囲 | 「80,443」と入力                                                                                                    |
     | プロトコル                | [TCP] を選択                                                                                                      |
     | Name                    | Allow-Web-All                                                                                                   |
@@ -123,7 +123,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 
     | Setting                 | 値                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | 変換先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgMgmtServers]** を選択します。 |
+    | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgMgmtServers]** を選択します。 |
     | 宛先ポート範囲 | 「3389」と入力                                                                                                      |
     | プロトコル                | [TCP] を選択                                                                                                      |
     | 優先順位                | 「110」と入力                                                                                                       |
@@ -152,14 +152,14 @@ Azure Portal (https://portal.azure.com) にログインします。
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ| **[既存のものを使用]** を選択し、**[myResourceGroup]** を選択します。|
-    |Location| **[米国東部]** を選択します。|
+    |場所| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、**[選択]** を選択します。
 5. **[設定]** で、次の値を選択し、それ以外の値は既定値をそのまま使用して、**[OK]** を選択します。
 
     |Setting|値|
     |---|---|
-    |Virtual network |**[myVirtualNetwork]** を選択する|
+    |仮想ネットワーク |**[myVirtualNetwork]** を選択する|
     |ネットワーク セキュリティ グループ | **[Advanced] \(詳細設定)** を選択します。|
     |ネットワーク セキュリティ グループ (ファイアウォール)| **[(new) myVmWeb-nsg]** を選択し、**[ネットワーク セキュリティ グループの選択]** で、**[なし]** を選択します。 |
 

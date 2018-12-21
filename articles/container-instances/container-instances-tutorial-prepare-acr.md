@@ -1,21 +1,21 @@
 ---
-title: Azure Container Instances チュートリアル - Azure Container Registry の準備
-description: Azure Container Instances チュートリアル 2 / 3 - Azure Container Registry の準備
+title: チュートリアル - Azure Container Instances 用にコンテナー レジストリを準備する
+description: Azure Container Instances チュートリアル 2/3 - Azure コンテナー レジストリの準備とイメージのプッシュ
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: e7cf9c5fad6219e71205c181b2dbb6828595afdd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: eeb0fe5b19f23e101eab9393dca64e1e13bf6922
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855444"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188923"
 ---
-# <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル: Azure Container Registry をデプロイして使用する
+# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>チュートリアル:Azure コンテナー レジストリをデプロイし、コンテナー イメージをプッシュする
 
 これは 3 つのパートで構成されるチュートリアルの 2 番目のタスクです。 チュートリアルの[パート 1](container-instances-tutorial-prepare-app.md) では、Node.js Web アプリケーションの Docker コンテナー イメージを作成しました。 このチュートリアルでは、このイメージを Azure Container Registry にプッシュします。 コンテナー イメージを作成していない場合は、[チュートリアル 1 - コンテナー イメージの作成](container-instances-tutorial-prepare-app.md)に関するページに戻ってください。
 

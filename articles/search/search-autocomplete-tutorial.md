@@ -1,5 +1,5 @@
 ---
-title: Azure Search を使用して検索ボックスにオートコンプリートを追加するチュートリアル | Microsoft Docs
+title: 検索ボックスにオートコンプリートを追加するチュートリアル - Azure Search
 description: データ中心アプリケーションのエンド ユーザー エクスペリエンスを Azure Search のオートコンプリート API と検索候補 API を使用して向上させる方法の例。
 manager: pablocas
 author: mrcarter8
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec2018
+ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578176"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316184"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>チュートリアル: Azure Search を使用して検索ボックスにオートコンプリートを追加する
 
@@ -126,7 +127,7 @@ F5 キーを押してアプリケーションを起動します。
 
 1. Controllers ディレクトリ内の HomeController.cs ファイルを開きます。 
 
-1. 最初に気付くのは、クラスの上部にある InitSearch と呼ばれるメソッドです。  これは、Azure Search サービスに対する認証済み HTTP インデックス クライアントを作成します。  この動作の詳細については、「[.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)」を参照してください。
+1. 最初に気付くのは、クラスの上部にある InitSearch と呼ばれるメソッドです。  これは、Azure Search サービスに対する認証済み HTTP インデックス クライアントを作成します。  この動作の詳細については、次のチュートリアルを参照してください: [.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 1. Suggest 関数に移動します。
 

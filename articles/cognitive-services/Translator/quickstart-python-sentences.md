@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 文の長さを取得する、Python - Translator Text API'
+title: 'クイック スタート: クイック スタート: 文の長さを取得する (Python) - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Translator Text REST API を使用して、文の長さ (文字数) を調べる方法について説明します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 64831f13811029263a2b76f8030589d9329dd318
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 1d7ba50bf57a5c7f88f4380c4874d6053f07082e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086133"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992604"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>クイック スタート: Translator Text API と Python を使用して文の長さを調べる
+# <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-python"></a>クイック スタート: クイック スタート: Translator Text API と Python を使用して文の長さを調べる
 
 このクイック スタートでは、Python と Translator Text REST API を使用して、文の長さ (文字数) を調べる方法について説明します。
 
@@ -69,7 +69,7 @@ else:
 このサンプルでは、指定されたテキストの言語を設定するために、`params` を使用しています。 `breaksentence` ルートに必ずしも `params` は必要ありません。 要求に含めなかった場合、指定されたテキストの言語の検出を API が試み、その情報が信頼度スコアと一緒に応答として返されます。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence)」を参照してください。
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -153,7 +153,7 @@ python sentence-length.py
 
 ## <a name="see-also"></a>関連項目
 
-テキストの表記変換に加えて、Translator Text API を使用して次の操作を行う方法を学習します。
+Translator Text API を使用して以下を実行する方法を確認します。
 
 * [テキストを翻訳する](quickstart-python-translate.md)
 * [テキストを表記変換する](quickstart-python-transliterate.md)

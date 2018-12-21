@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: manayar
-ms.openlocfilehash: 551d90661f845aa98a41ed7de0b75c657c234f52
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2a1f79656fa70b4fa895235aff177ca47dc29664
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741404"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413644"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 仮想マシン スケール セットと接続されたデータ ディスク
 [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) では、使用できるストレージを拡張するために、データ ディスクをアタッチした VM インスタンスがサポートされています。 新たに作成するスケール セットや既存のスケール セットにデータ ディスクをアタッチすることができます。
 
 > [!NOTE]
->  データ ディスクがアタッチされたスケール セットを作成する場合、(スタンドアロン型の Azure VM と同様に) ディスクを使用する VM 内からディスクをマウントおよびフォーマットする必要があります。 このプロセスを完了するには、スクリプトを呼び出して VM 上のすべてのデータ ディスクをパーティション化およびフォーマットするカスタム スクリプト拡張機能を使用する方法が便利です。 詳細については、[Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) または [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks) の例を参照してください。
+> データ ディスクがアタッチされたスケール セットを作成する場合、(スタンドアロン型の Azure VM と同様に) ディスクを使用する VM 内からディスクをマウントおよびフォーマットする必要があります。 このプロセスを完了するには、スクリプトを呼び出して VM 上のすべてのデータ ディスクをパーティション化およびフォーマットするカスタム スクリプト拡張機能を使用する方法が便利です。 詳細については、[Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) または [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks) の例を参照してください。
 
 
 ## <a name="create-and-manage-disks-in-a-scale-set"></a>スケール セットのディスクを作成、管理する
@@ -39,7 +39,7 @@ ms.locfileid: "50741404"
 
 
 ## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>データ ディスクをアタッチして Service Fabric クラスターを作成する
-Azure で実行されている [Service Fabric](/azure/service-fabric) クラスター内の各[ノード タイプ](../service-fabric/service-fabric-cluster-nodetypes.md)は、仮想マシン スケール セットによって提供されます。  Azure Resource Manager テンプレートを使用して、Service Fabric クラスターを構成するスケール セットにデータ ディスクを接続できます。 [既存のテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)を出発点として使用できます。 テンプレートで _Microsoft.Compute/virtualMachineScaleSets_ リソースの _storageProfile_ 内に _dataDisks_ セクションを追加して、そのテンプレートをデプロイします。 次の例では、128 GB のデータ ディスクがアタッチされます。
+Azure で実行されている [Service Fabric](/azure/service-fabric) クラスター内の各[ノード タイプ](../service-fabric/service-fabric-cluster-nodetypes.md)は、仮想マシン スケール セットによって提供されます。 Azure Resource Manager テンプレートを使用して、Service Fabric クラスターを構成するスケール セットにデータ ディスクを接続できます。 [既存のテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)を出発点として使用できます。 テンプレートで _Microsoft.Compute/virtualMachineScaleSets_ リソースの _storageProfile_ 内に _dataDisks_ セクションを追加して、そのテンプレートをデプロイします。 次の例では、128 GB のデータ ディスクがアタッチされます。
 
 ```json
 "dataDisks": [
@@ -51,19 +51,19 @@ Azure で実行されている [Service Fabric](/azure/service-fabric) クラス
 ]
 ```
 
-クラスターがデプロイされるときに、データ ディスクのパーティション、フォーマット、マウントを自動的に行えます。  カスタム スクリプト拡張機能をスケール セットの _virtualMachineProfile_ の _extensionProfile_ に追加します。
+クラスターがデプロイされるときに、データ ディスクのパーティション、フォーマット、マウントを自動的に行えます。 カスタム スクリプト拡張機能をスケール セットの _virtualMachineProfile_ の _extensionProfile_ に追加します。
 
 Windows クラスターでデータ ディスクを自動的に準備するには、以下を追加します。
 
 ```json
 {
-    "name": "customScript",    
-    "properties": {    
-        "publisher": "Microsoft.Compute",    
-        "type": "CustomScriptExtension",    
-        "typeHandlerVersion": "1.8",    
-        "autoUpgradeMinorVersion": true,    
-        "settings": {    
+    "name": "customScript",
+    "properties": {
+        "publisher": "Microsoft.Compute",
+        "type": "CustomScriptExtension",
+        "typeHandlerVersion": "1.8",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
         "fileUris": [
             "https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.ps1"
         ],

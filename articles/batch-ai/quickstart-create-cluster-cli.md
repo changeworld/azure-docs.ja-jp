@@ -15,14 +15,17 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 09/03/2018
 ms.author: danlep
-ms.openlocfilehash: 0d4ba7edfb22a6710222c854ceb2bf86284d2d77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1ea12c9a544704ea91b85ae944e611e6769b5592
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057800"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407135"
 ---
-# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-cli"></a>クイック スタート: Azure CLI を使用して Batch AI トレーニング ジョブ用のクラスターを作成する
+# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Batch AI トレーニング ジョブ用のクラスターを作成する
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 このクイック スタートでは、Azure CLI を使用して、AI および機械学習モデルのトレーニングに使用できる Batch AI クラスターを作成する方法について説明します。 Batch AI は、データ サイエンティストや AI 研究者が、Azure 仮想マシンのクラスター上で、AI および機械学習モデルを大規模にトレーニングするためのマネージド サービスです。
 

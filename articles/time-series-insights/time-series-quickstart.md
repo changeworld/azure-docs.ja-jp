@@ -9,16 +9,16 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: quickstart
 ms.workload: big-data
-ms.custom: mvc
+ms.custom: mvc seodec18
 ms.date: 11/15/2017
-ms.openlocfilehash: 6d1e5951ed8cdd9542463ffc57be81e55e4b9194
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 6b2a21cf50c03c8e44794540074dabf90049bc7c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629635"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275518"
 ---
-# <a name="quickstart-explore-azure-time-series-insights"></a>クイック スタート: Azure Time Series Insights の探索
+# <a name="quickstart-explore-azure-time-series-insights"></a>クイック スタート:Azure Time Series Insights の探索
 このクイック スタートでは、無料のデモンストレーション環境で Azure Time Series Insights エクスプローラーの使用を開始する方法を示します。 Web ブラウザーを使用して大量の IoT データを視覚化する方法について説明した後、Time Series Insights エクスプローラーの主な機能について説明します。 
 
 Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、フル マネージドの分析、ストレージ、および視覚化サービスです。 データのグローバルなビューが表示され、隠れた傾向の発見、異常の特定、および根本原因の分析をほぼリアルタイムで実行できるようになるため、IoT ソリューションをすばやく検証して、ミッション クリティカルなデバイスのコストのかかるダウンタイムを回避できます。  時系列データを格納またはクエリする必要のあるアプリケーションを構築している場合は、Time Series Insights の REST API を使用して開発できます。

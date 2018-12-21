@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル 2: 事前構築済みの意図とエンティティ - 事前構築済みの一般的な発話を使用する - LUIS で一般的なデータを抽出する'
+title: 事前構築済みの意図とエンティティを追加する
 titleSuffix: Azure Cognitive Services
 description: Human Resources チュートリアル アプリに事前構築済みの意図とエンティティを追加して、意図の予測の取得とデータの抽出を迅速化します。 発話に事前構築済みエンティティのラベルを付ける必要はありません。 このエンティティは自動的に検出されます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d73284ecf40b2dfcd4954c1ddee82bf92a8931b9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b6fb603b84cdcf3cb0f75d0020fa2047a0a838d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281797"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074078"
 ---
-# <a name="tutorial-2-identify-common-intents-and-entities"></a>チュートリアル 2: 一般的な意図とエンティティを識別する
+# <a name="tutorial-2-identify-common-intents-and-entities"></a>チュートリアル 2:一般的な意図とエンティティを識別する
 このチュートリアルでは、Human Resources アプリに変更を加えます。 Human Resources チュートリアル アプリに事前構築済みの意図とエンティティを追加して、意図の予測の取得とデータの抽出を迅速化します。 エンティティは自動的に検出されるため、事前構築済みのエンティティがある発話にはラベルを付ける必要がありません。
 
 一般的な主題領域やデータ型の事前構築済みモデルは、モデルをすばやく構築するのに役立ち、モデルがどのように機能するかの例を提供します。 
@@ -29,7 +30,7 @@ ms.locfileid: "51281797"
 > * 事前構築済み意図を追加する 
 > * 事前構築済みエンティティを追加する 
 > * トレーニング 
-> * [発行] 
+> * 発行 
 > * エンドポイントから意図とエンティティを取得する
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
@@ -48,7 +49,7 @@ ms.locfileid: "51281797"
 ## <a name="add-prebuilt-intents"></a>事前構築済み意図を追加する
 LUIS には、ユーザーの一般的な意図を使用する際に役立つ事前構築済み意図が用意されています。  
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Add prebuilt intent]\(事前構築済み意図の追加\)** を選択します。 
 
@@ -80,7 +81,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>[発行]
+## <a name="publish"></a>発行
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
@@ -90,7 +91,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 2. ブラウザーのアドレス バーで URL の末尾に移動して「`I want to cancel on March 3`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話の**クエリ**です。 
 
-    ```JSON
+    ```json
     {
       "query": "I want to cancel on March 3",
       "topScoringIntent": {

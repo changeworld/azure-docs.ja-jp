@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory で組織のグループとメンバーを表示するためのクイック スタート | Microsoft Docs
-description: Azure portal を使用して、組織のグループとそれらに割り当てられているメンバーを検索し、表示する方法に関する手順のクイック スタート。
+description: 組織のグループとそれらに割り当てられているメンバーを検索して表示する方法に関する手順。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,14 +10,14 @@ ms.component: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 9da9f055163f5df4ea064bd46caa811e39fba20c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 002b4bb4ab20e531132b461f90857cfab6aecfd3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056405"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087476"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -43,11 +43,11 @@ _MDM policy - West_ という名前の新しいグループを作成します。
 
 2. **[グループ]** ページの入力を完了します。
     
-    - **[グループの種類]:** **[セキュリティ]** を選択します
+    - **グループの種類:** **[セキュリティ]** を選択します。
     
-    - **[グループ名:]** 「_MDM policy - West_」と入力します
+    - **グループ名:** 「_MDM policy - West_」と入力します
     
-    - **[メンバーシップの種類]**: **[割り当て済み]** を選択します。
+    - **メンバーシップの種類:** **[割り当て済み]** を選択します。
 
 3. **作成**を選択します。
 
@@ -58,9 +58,9 @@ _Alain Charon_ という名前の新しいユーザーを作成します。 ユ�
 
 2. **[ユーザー]** ページの入力を完了します。
 
-    - **[名前]:** 「_Alain Charon_」と入力します。
+    - **名前:** 「_Alain Charon_」と入力します。
 
-    - **[ユーザー名]:** 「*alain@contoso.com*」と入力します。
+    - **ユーザー名:** 「*alain@contoso.com*」と入力します。
 
 3. 提供される自動生成されたパスワードを **[パスワード]** ボックスにコピーし、**[作成]** を選択します。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Edge SQL モジュールを使用したデータの格納 | Microsoft Docs
+title: 'チュートリアル: SQL モジュールを使用してデータを格納する - Azure IoT Edge | Microsoft Docs'
 description: SQL Server モジュールを使用して IoT Edge デバイスでデータをローカルに格納する方法について説明します
 services: iot-edge
 author: kgremban
@@ -8,15 +8,15 @@ ms.author: kgremban
 ms.date: 12/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: b0d26704d287f2e02541cc667250af8e8005f864
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 0193d79dec663b089184099c2a4d275c91380c8b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833995"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163414"
 ---
-# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル: SQL Server データベースを使用したエッジでのデータの格納
+# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 
 Azure IoT Edge と SQL Server を使用し、エッジでデータを格納してクエリを実行します。 Azure IoT Edge には、デバイスがオフラインになった場合にメッセージをキャッシュして、接続が再確立されるとそれらのメッセージを転送するという基本のストレージ機能があります。 しかし、ローカルでデータのクエリを実行する機能など、より高度なストレージ機能が必要になる場合があります。 ローカルなデータベースを組み込むことで、IoT Hub への接続を維持することなく、IoT Edge デバイスでより複雑なコンピューティングを実行できます。 たとえば、機械学習モジュールの改善とレポート目的で、マシン上のセンサーが 1 か月に 1 回、クラウドにデータをアップロードします。 一方、マシンの作業に従事する現場の技術者は、過去数日間のセンサー データにローカルからアクセスすることができます。
 
@@ -163,7 +163,7 @@ Azure IoT Edge デバイス:
                        {
                            //Execute the command and log the # rows affected.
                            var rows = await cmd.ExecuteNonQueryAsync();
-                           log.Info($"{rows} rows were updated");
+                           logger.LogInformation($"{rows} rows were updated");
                        }
                    }
 
@@ -251,7 +251,7 @@ Azure IoT Edge デバイス:
    }
    ```
 
-   ![SQL サーバー コンテナーの追加](./media/tutorial-store-data-sql-server/view_json_sql.png)
+   ![SQL Server モジュールをマニフェストに追加する](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
 5. IoT Edge デバイス上の Docker コンテナーの種類に応じて、**sql** モジュール パラメーターを次のコードに更新します。
    * Windows コンテナー:
@@ -324,7 +324,7 @@ Azure IoT Edge デバイス:
 
 IoT ハブを通じてデバイスにモジュールを設定できますが、Visual Studio Code を通じて IoT ハブとデバイスにアクセスすることもできます。 このセクションでは、IoT ハブへのアクセスを設定してから、VS Code を使用してソリューションを IoT Edge デバイスに配置します。 
 
-1. VS Code コマンド パレットで、**Azure IoT Hub: Select IoT Hub** を選択します。
+1. VS Code コマンド パレットで、**[Azure IoT Hub: Select IoT Hub]\(Azure IoT Hub: IoT ハブの選択\)** を選びます。
 
 2. プロンプトに従って Azure アカウントにサインインします。 
 
@@ -416,7 +416,7 @@ SQL コマンド ツール内から次のコマンドを実行して、書式設
    GO
    ```
 
-   ![ローカル データの表示](./media/tutorial-store-data-sql-server/view-data.png)
+   ![ローカル データベースのコンテンツを表示する](./media/tutorial-store-data-sql-server/view-data.png)
 
 
 

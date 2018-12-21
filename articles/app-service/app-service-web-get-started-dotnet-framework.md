@@ -1,5 +1,5 @@
 ---
-title: Azure に C# ASP.NET Framework Web アプリを作成する | Microsoft Docs
+title: C# ASP.NET Framework Web アプリを作成する - Azure App Service | Microsoft Docs
 description: 既定の C# ASP.NET Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cce14d91509fe051beef87acdaeac9a92d998ef6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.custom: seodec18
+ms.openlocfilehash: 5f32ed74086b26f91f3ab24cd619bb117d497012
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053780"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251268"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure に ASP.NET Framework Web アプリを作成する
 
@@ -101,7 +101,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 | Setting | 推奨値 | 説明 |
 |-|-|-|
 |App Service プラン| myAppServicePlan | App Service プランの名前です。 |
-| Location | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
+| 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
 | サイズ | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
 **[OK]** を選択します。

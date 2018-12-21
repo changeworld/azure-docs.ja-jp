@@ -1,5 +1,5 @@
 ---
-title: Azure で PHP と MySQL Web アプリを構築する | Microsoft Docs
+title: MySQL を使用して PHP アプリをビルドする - Azure App Service | Microsoft Docs
 description: Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。
 services: app-service\web
 documentationcenter: php
@@ -14,15 +14,15 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 9a1468c27e668663ca9079f5f1c9e5e97e51d2d5
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.custom: seodec18
+ms.openlocfilehash: a20373e43780cea10e550ae968deb2a8720b9a9f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291289"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251676"
 ---
-# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>チュートリアル: Azure で PHP と MySQL Web アプリを構築する
+# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>チュートリアル:Azure で PHP と MySQL Web アプリを構築する
 
 > [!NOTE]
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service に展開するには、「[Azure App Service on Linux で PHP と MySQL Web アプリを構築する](./containers/tutorial-php-mysql-app.md)」をご覧ください。
@@ -49,7 +49,7 @@ ms.locfileid: "52291289"
 このチュートリアルを完了するには、以下が必要です。
 
 * [Git をインストールする](https://git-scm.com/)
-* [PHP 5.6.4 以降をインストールする](http://php.net/downloads.php)
+* [PHP 5.6.4 以降をインストールする](https://php.net/downloads.php)
 * [Composer をインストールする](https://getcomposer.org/doc/00-intro.md)
 * Laravel で必要な PHP 拡張機能 (OpenSSL、PDO-MySQL、Mbstring、Tokenizer、XML) を有効にする
 * [MySQL をインストールして起動する](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
@@ -66,7 +66,7 @@ ms.locfileid: "52291289"
 mysql -u root -p
 ```
 
-パスワードの入力を求められたら、`root` アカウントのパスワードを入力します。 ルート アカウントのパスワードを思い出せない場合は、「[MySQL: root のパスワードをリセットする方法](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html)」を参照してください。
+パスワードの入力を求められたら、`root` アカウントのパスワードを入力します。 ルート アカウントのパスワードを忘れた場合は、「[MySQL:How to Reset the Root Password](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html)」 (MySQL: root のパスワードをリセットする方法) を参照してください。
 
 コマンドが正常に実行されれば、MySQL サーバーは実行されています。 正常に実行されない場合は、[MySQL のインストール後の手順](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html)に従って、MySQL サーバーが起動されたことを確認してください。
 
@@ -394,7 +394,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>仮想アプリケーション パスを設定する
 
-Web アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく _パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
+Web アプリの仮想アプリケーション パスを設定します。  この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく_パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
 
 Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、仮想アプリケーション パスを設定します。 _&lt;appname>_ プレースホルダーを置き換えます。
 
@@ -598,9 +598,9 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 任意のタイミングでログのストリーミングを停止するには、`Ctrl` + `C` キーを押します。
 
 > [!TIP]
-> PHP アプリケーションは、標準の [error_log()](http://php.net/manual/function.error-log.php) を使用してコンソールに出力できます。 サンプル アプリケーションでは、_app/Http/routes.php_ でこの方法を使用しています。
+> PHP アプリケーションは、標準の [error_log()](https://php.net/manual/function.error-log.php) を使用してコンソールに出力できます。 サンプル アプリケーションでは、_app/Http/routes.php_ でこの方法を使用しています。
 >
-> Web フレームワークとして、[Laravel では、ログ記録プロバイダーとして Monolog を使用](https://laravel.com/docs/5.4/errors)しています。 Monolog でメッセージをコンソールに出力する方法については、「[PHP: How to use monolog to log to console (php://out) (PHP: monolog を使用してコンソールにログを出力する方法 (php://out)) ](http://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out)」を参照してください。
+> Web フレームワークとして、[Laravel では、ログ記録プロバイダーとして Monolog を使用](https://laravel.com/docs/5.4/errors)しています。 Monolog でコンソールにメッセージを出力する方法については、「[PHP:How to use monolog to log to console (php://out)](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out)」 (PHP: monolog を使用してコンソールにログを記録する方法 (php://out)) を参照してください。
 >
 >
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8b7848392ebd8ec44dcf646b13911aaafe905ae3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 16942e183152720dc958b6c0ccecde1dee2e5cde
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158919"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185173"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>クイック スタート: シミュレートされた X.509 デバイスを Azure IoT C SDK を使用してプロビジョニングする
 
@@ -25,8 +25,8 @@ ms.locfileid: "50158919"
 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」を確認してください。 また、このクイック スタートを続行する前に、[Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
-- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
-- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
+- [個々の登録](concepts-service.md#individual-enrollment): 単一デバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
@@ -138,12 +138,12 @@ Azure IoT C SDK のサンプル コードを使用して、シミュレートさ
 3. **[Add Enrollment] (登録の追加)** で、次の情報を入力し、**[保存]** ボタンをクリックします。
 
     - **メカニズム:** ID 構成証明の "*メカニズム*" として **[X.509]** を選択します。
-    - **[Primary certificate .pem or .cer file]\(プライマリ証明書 .pem または .cer ファイル\):** **[ファイルの選択]** をクリックし、先ほど作成した証明書ファイル X509testcert.pem を選択します。
-    - **IoT Hub のデバイス ID:** デバイスに ID を割り当てるために、「**test-docs-cert-device**」と入力します。
+    - **プライマリ証明書の .pem ファイルまたは .cer ファイル:** **[ファイルの選択]** をクリックし、先ほど作成した証明書ファイル X509testcert.pem を選択します。
+    - **IoT Hub のデバイス ID**: デバイスに ID を割り当てるために、「**test-docs-cert-device**」と入力します。
 
-    [![X.509 構成証明の個々の登録をポータルで追加](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
+      [![X.509 構成証明の個々の登録をポータルで追加](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
-    登録に成功すると、*[個々の登録]* タブの *[登録 ID]* 列に X.509 デバイスが **riot-device-cert** として表示されます。 
+      登録に成功すると、*[個々の登録]* タブの *[登録 ID]* 列に X.509 デバイスが **riot-device-cert** として表示されます。 
 
 
 

@@ -1,28 +1,29 @@
----
-title: 'チュートリアル: ナレッジ ベースを作成、発行し、ナレッジ ベースから回答する - REST、C# - QnA Maker'
-titleSuffix: Azure Cognitive Services
+﻿---
+title: 作成、発行、回答
+titleSuffix: QnA Maker - Azure Cognitive Services
 description: この REST ベースのチュートリアルでは、プログラムでナレッジ ベースを作成して発行した後、そのナレッジ ベースから質問に回答する手順について説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 013b74165afe6eafee337bd00ca88b1034ad5662
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: dd5bc95be3959e7af5911d8a765791718680581a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299563"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162938"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>チュートリアル: C# を使用してナレッジ ベースを作成し、質問に回答する
 
-このチュートリアルでは、プログラムでナレッジ ベース (KB) を作成、発行した後、そのナレッジ ベースを使用してユーザーの質問に回答する手順について説明します。 
+このチュートリアルでは、プログラムでナレッジ ベース (KB) を作成、発行した後、そのナレッジ ベースを使用してユーザーの質問に回答する手順について説明します。
 
 > [!div class="checklist"]
-* ナレッジ ベースの作成 
+* ナレッジ ベースの作成
 * 作成の状態を確認する
 * ナレッジ ベースをトレーニングして発行する
 * エンドポイント情報を取得する
@@ -33,21 +34,21 @@ ms.locfileid: "51299563"
 
 * [ナレッジ ベース (KB) を作成する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 * [取得操作の詳細](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
-* [ナレッジ ベースの詳細を取得する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
+* [ナレッジ ベースの詳細を取得する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails)
 * [ナレッジ ベースのエンドポイントを取得する](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
-* [[発行]](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
+* [[発行]](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe)
 
 ## <a name="prerequisites"></a>前提条件
 
 * 最新の [**Visual Studio Community エディション**](https://www.visualstudio.com/downloads/)。
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。
 
-> [!NOTE] 
-> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** Github リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)から入手できます。
+> [!NOTE]
+> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)から入手できます。
 
 ## <a name="create-a-knowledge-base-project"></a>ナレッジ ベース プロジェクトを作成する
 
-[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)] 
+[!INCLUDE [Create Visual Studio Project](../../../../includes/cognitive-services-qnamaker-quickstart-csharp-create-project.md)]
 
 ## <a name="add-the-required-dependencies"></a>必要な依存関係を追加する
 
@@ -83,7 +84,7 @@ Program クラス内に次のコード ブロックを追加します。
 
 [!code-csharp[Add a POST request to create KB](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=124-141 "Add a POST request to create KB")]
 
-この API 呼び出しは、操作 ID を含んだ JSON 応答を返します。 後で、このプログラムではこの操作 ID を使用して、KB が正常に作成されたかどうかを判断します。 
+この API 呼び出しは、操作 ID を含んだ JSON 応答を返します。 後で、このプログラムではこの操作 ID を使用して、KB が正常に作成されたかどうかを判断します。
 
 ```JSON
 {
@@ -101,7 +102,7 @@ Program クラス内に次のコード ブロックを追加します。
 
 [!code-csharp[Add GET request to determine creation status](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=142-151 "Add GET request to determine creation status")]
 
-この API 呼び出しは、操作の状態を含んだ JSON 応答を返します。 
+この API 呼び出しは、操作の状態を含んだ JSON 応答を返します。
 
 ```JSON
 {
@@ -113,7 +114,7 @@ Program クラス内に次のコード ブロックを追加します。
 }
 ```
 
-成功または失敗が返されるまで、この呼び出しを繰り返します。 
+成功または失敗が返されるまで、この呼び出しを繰り返します。
 
 ```JSON
 {
@@ -128,13 +129,13 @@ Program クラス内に次のコード ブロックを追加します。
 
 ## <a name="add-createkb-method"></a>CreateKB メソッドを追加する
 
-次のメソッドでは、KB を作成して状態を確認するための呼び出しをカプセル化します。  _create_ という **操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 KB の作成には多少時間がかかる場合があるため、成功と失敗のどちらかの状態になるまで、呼び出しを繰り返して状態をチェックする必要があります。 操作が成功すると、KB ID が **resourceLocation** で返されます。 
+次のメソッドでは、KB を作成して状態を確認するための呼び出しをカプセル化します。 _create_ という **操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 KB の作成には多少時間がかかる場合があるため、成功と失敗のどちらかの状態になるまで、呼び出しを繰り返して状態をチェックする必要があります。 操作が成功すると、KB ID が **resourceLocation** で返されます。
 
 [!code-csharp[Add GET request to determine creation status](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=152-227 "Add GET request to determine creation status")]
 
 ## <a name="add-publish-method"></a>publish メソッドを追加する
 
-ナレッジ ベースの作成に成功したら、その KB を発行します。 トレーニング API の呼び出しが必要になる場合があります。 このバージョンではそれは必要ありません。 
+ナレッジ ベースの作成に成功したら、その KB を発行します。 トレーニング API の呼び出しが必要になる場合があります。 このバージョンではそれは必要ありません。
 
 次のコードは、KB を公開するための HTTPS 要求を QnA Maker API に送信し、その応答を受信するものです。
 
@@ -145,7 +146,7 @@ Program クラス内に次のコード ブロックを追加します。
 それ以外の応答の場合は、その応答がそのまま返されます。
 
 ## <a name="generating-an-answer"></a>回答を生成する
-KB にアクセスして質問を送信し、最適な回答を受け取るために、プログラムには、KB の詳細 API の "_エンドポイント ホスト_" とエンドポイント API の "_プライマリ エンドポイント キー_"が必要です。 これらのメソッドは、回答を生成するメソッドと合わせて次のセクションに含まれています。 
+KB にアクセスして質問を送信し、最適な回答を受け取るために、プログラムには、KB の詳細 API の "_エンドポイント ホスト_" とエンドポイント API の "_プライマリ エンドポイント キー_"が必要です。 これらのメソッドは、回答を生成するメソッドと合わせて次のセクションに含まれています。
 
 次の表は、データを使用して URI を構築する方法を示しています。
 
@@ -157,7 +158,7 @@ KB にアクセスして質問を送信し、最適な回答を受け取るた�
 
 |ヘッダー名|ヘッダー値|
 |--|--|
-|Authorization|`Endpoint ` + **プライマリ エンドポイント**<br>例: `Endpoint xxxxxxx`<br>`Endpoint` というテキストとプライマリ エンドポイントの値の間のスペースに注意してください。 
+|Authorization|`Endpoint ` + **プライマリ エンドポイント**<br>例: `Endpoint xxxxxxx`<br>`Endpoint` というテキストとプライマリ エンドポイントの値の間のスペースに注意してください。
 
 要求の本文では、適切な JSON を渡す必要があります。
 
@@ -168,11 +169,11 @@ KB にアクセスして質問を送信し、最適な回答を受け取るた�
 ```
 
 ## <a name="get-kb-details"></a>KB の詳細を取得する
-KB の詳細を取得するために次のメソッドを追加します。 これらの詳細には、KB のホスト名が含まれます。 ホスト名は、QnA Maker のリソースの作成時に入力した QnA Maker Azure Web サービスの名前です。 
+KB の詳細を取得するために次のメソッドを追加します。 これらの詳細には、KB のホスト名が含まれます。 ホスト名は、QnA Maker のリソースの作成時に入力した QnA Maker Azure Web サービスの名前です。
 
 [!code-csharp[Get KB Details](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=260-273 "Add publish method")]
 
-この API 呼び出しにより、JSON 応答が返されます。 
+この API 呼び出しにより、JSON 応答が返されます。
 
 ```JSON
 {
@@ -194,11 +195,11 @@ KB の詳細を取得するために次のメソッドを追加します。 こ�
 ```
 
 ## <a name="get-kb-endpoints"></a>KB のエンドポイントを取得する
-QnA Maker のプライマリ エンドポイントを取得するために次のメソッドを追加します。 これらのエンドポイントは KB に関連付けられておらず、Azure portal の QnA Maker のリソース キーに関連付けられたすべての KB に対して有効です。  
+QnA Maker のプライマリ エンドポイントを取得するために次のメソッドを追加します。 これらのエンドポイントは KB に関連付けられておらず、Azure portal の QnA Maker のリソース キーに関連付けられたすべての KB に対して有効です。
 
 [!code-csharp[Get KB Endpoints](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=274-289 "Get KB Endpoints")]
 
-この API 呼び出しにより、JSON 応答が返されます。 
+この API 呼び出しにより、JSON 応答が返されます。
 
 ```JSON
 {
@@ -210,11 +211,11 @@ QnA Maker のプライマリ エンドポイントを取得するために次の
 ```
 
 ## <a name="get-an-answer"></a>回答を取得する
-ユーザーの質問に対する回答を取得するために次のメソッドを追加します。 
+ユーザーの質問に対する回答を取得するために次のメソッドを追加します。
 
 [!code-csharp[Get Answer](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=290-315 "Get Answer")]
 
-この API 呼び出しにより、JSON 応答が返されます。 
+この API 呼び出しにより、JSON 応答が返されます。
 
 ```JSON
 {
@@ -234,15 +235,15 @@ QnA Maker のプライマリ エンドポイントを取得するために次の
 ```
 
 ## <a name="main-method"></a>Main メソッド
-Main メソッドでは、作成、発行、回答の生成を実行する同期呼び出しが示されています。 
+Main メソッドでは、作成、発行、回答の生成を実行する同期呼び出しが示されています。
 
 [!code-csharp[Main method](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=316-337 "Main method")]
 
 ## <a name="build-and-run-the-program"></a>プログラムをビルドして実行する
 
-プログラムをビルドして実行します。 
+プログラムをビルドして実行します。
 
-作成されたナレッジ ベースは、QnA Maker ポータルの [[My knowledge bases]\(マイ ナレッジ ベース\)](https://www.qnamaker.ai/Home/MyServices) ページで確認できます。 回答の生成 API を使用する方法がわかったら、任意の言語または HTTP 要求フレームワークでその API を使用できます。 
+作成されたナレッジ ベースは、QnA Maker ポータルの [[My knowledge bases]\(マイ ナレッジ ベース\)](https://www.qnamaker.ai/Home/MyServices) ページで確認できます。 回答の生成 API を使用する方法がわかったら、任意の言語または HTTP 要求フレームワークでその API を使用できます。
 
 ## <a name="next-steps"></a>次の手順
 

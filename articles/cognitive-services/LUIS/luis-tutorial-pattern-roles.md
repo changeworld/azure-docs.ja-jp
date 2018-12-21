@@ -1,7 +1,8 @@
 ---
-title: 'チュートリアル 4: 文脈的に関連するデータのパターン ロール'
+title: パターンの役割
 titleSuffix: Azure Cognitive Services
 description: パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。
+ms.custom: seodec18
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277838"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094408"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>チュートリアル 4: 文脈的に関連するパターンを抽出する
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>チュートリアル 4:文脈的に関連するパターンを抽出する
 
 このチュートリアルでは、パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。  パターンを使用するとき、意図に必要な発話の例は少なくなります。
 
@@ -28,7 +29,7 @@ ms.locfileid: "51277838"
 
 新しい従業員と家族を、現在の都市から、架空の会社が所在する都市に移動させる必要があります。 新しい従業員はどの都市からも来る可能性があるため、場所を検出する必要があります。 リスト エンティティのようなセット リストは、リスト内の都市しか抽出されないため、機能しません。
 
-移動元と移動先の都市に関連付けられたロール名は、すべてのエンティティ間で一意である必要があります。 ロールが一意であることを確認する簡単な方法は、命名方針によってそれらのロールを上位のエンティティと結び付けることです。 **NewEmployeeRelocation** エンティティは、2 つのロール **NewEmployeeReloOrigin** と **NewEmployeeReloDestination** を持つシンプル エンティティです。 Relo は Relocation (配置換え) の略です。
+移動元と移動先の都市に関連付けられたロール名は、すべてのエンティティ間で一意である必要があります。 ロールが一意であることを確認する簡単な方法は、命名方針によってそれらのロールを上位のエンティティと結び付けることです。 **NewEmployeeRelocation** エンティティは、2 つのロール **NewEmployeeReloOrigin** と **NewEmployeeReloDestination** があるシンプルなエンティティです。 Relo は Relocation (配置換え) の略です。
 
 発話の例「`Move new employee Robert Williams from Sacramento and San Francisco`」には機械学習エンティティしか含まれていないため、エンティティが検出されるよう、十分な発話例を意図に提供することが重要です。  
 
@@ -49,7 +50,7 @@ ms.locfileid: "51277838"
 > * 都市のフレーズ リストを作成する
 > * エンドポイントから意図とエンティティを取得する
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>既存のアプリを使用する
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
@@ -64,7 +65,7 @@ ms.locfileid: "51277838"
 
 ## <a name="create-new-entities"></a>新しいエンティティの作成
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 左側のナビゲーションから **[エンティティ]** を選択します。 
 
@@ -128,7 +129,7 @@ ms.locfileid: "51277838"
 
 2. アドレスの URL の末尾に移動し、「`Move Wayne Berry from Miami to Mount Vernon`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Newark to Columbus",
       "topScoringIntent": {
@@ -254,11 +255,11 @@ ms.locfileid: "51277838"
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. アドレスの URL の末尾に移動し、「`Move wayne berry from miami to mount vernon`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Miami to Mount Vernon",
       "topScoringIntent": {

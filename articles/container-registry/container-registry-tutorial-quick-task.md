@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Container Registry Task を使用してクラウド内のコンテナー イメージをビルドする
+title: チュートリアル - クラウドでコンテナー イメージをビルドする - Azure Container Registry タスク
 description: このチュートリアルでは、Azure Container Registry Task (ACR Task) 使用して Azure で Docker コンテナー イメージをビルドして、Azure Container Instances にデプロイする方法を説明します。
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 7ac4fb62c6832920634de96c3e5befb15ce3b3a4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: eafd6a75b4297056bcf4c5415f77179cefde6541
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854730"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256691"
 ---
-# <a name="tutorial-build-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>チュートリアル: Azure Container Registry Task を使用してクラウド内のコンテナー イメージをビルドする
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする
 
 **ACR Task** は、Azure Container Registry 内の機能スイートで、Azure での合理的かつ効率的な Docker コンテナー イメージ ビルドを実現します。 この記事では、ACR Task の*クイック タスク*機能を使用する方法を説明します。
 
@@ -220,8 +220,8 @@ az keyvault secret set \
 
 Azure キー コンテナーを作成してに 2 つのシークレットを格納します。
 
-* `$ACR_NAME-pull-usr`: サービス プリンシパルID。コンテナー レジストリの**ユーザー名**として使用します。
-* `$ACR_NAME-pull-pwd`: サービス プリンシパルのパスワード。コンテナー レジストリの**パスワード**として使用します。
+* `$ACR_NAME-pull-usr`:サービス プリンシパル ID。コンテナー レジストリの**ユーザー名**として使用します。
+* `$ACR_NAME-pull-pwd`:サービス プリンシパルのパスワード。コンテナー レジストリの**パスワード**として使用します。
 
 これらのシークレットは、アプリケーションおよびサービスがレジストリからイメージをプルしたときの名前で参照できます。
 

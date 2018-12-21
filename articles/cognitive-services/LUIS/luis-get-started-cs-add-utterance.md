@@ -1,21 +1,22 @@
 ---
-title: C# クイック スタート - モデルの変更と LUIS アプリのトレーニング
-titleSuffix: Azure Cognitive Services
-description: この C# クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。 発話の例は、意図にマッピングされる会話形式のユーザー テキストです。 意図に対する発話の例を与えるには、ユーザーによって入力されるどのようなテキストが、どの意図に属しているかを LUIS に学習させます。
+title: 変更、アプリのトレーニング、C#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: この C# クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aab9651092f7ad5dbc78c31db8df4ef3538fedfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 23692bd6a0c708b2747a3cc211b8238d30dfe5db
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039974"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161748"
 ---
 # <a name="quickstart-change-model-using-c"></a>クイック スタート: C# を使ってモデルを変更する
 
@@ -56,7 +57,7 @@ Visual Studio プロジェクトに **JsonFormatterPlus** と **CommandLineParse
 ### <a name="write-the-c-code"></a>C# コードを作成する
 次のような **Program.cs** ファイルを作成します。
 
-```CSharp
+```C#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,9 +99,7 @@ LUIS ID と文字列を **Program** クラスに追加します。
 
 発話の例をファイルから追加するメソッドを **Program** クラスに追加します。
 
-   [!code-csharp[Add example utterances from file.
-](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.
-")]
+   [!code-csharp[Add example utterances from file.](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.")]
 
 モデルに変更が適用されたら、モデルをトレーニングします。 メソッドを **Program** クラスに追加します。
 
@@ -128,7 +127,7 @@ Visual Studio でコードをビルドします。
 
 プロジェクトの /bin/Debug ディレクトリで、コマンド ラインからアプリケーションを実行します。 
 
-```CMD
+```console
 ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
 ```
 

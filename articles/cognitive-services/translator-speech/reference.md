@@ -49,7 +49,7 @@ Translator Text API にアクセスするには、[Microsoft Azure にサイン�
 ## <a name="5-process-the-results"></a>5.結果の処理
 **サービスからストリーミングで返された結果を処理します。** 部分的な結果、最終的な結果、およびテキスト読み上げオーディオ セグメントの形式については、後述する `/speech/translate` 操作を参照してください。
 
-Translator Speech API の使用例を示すコード サンプルは、[Microsoft Translator Github サイト](https://github.com/MicrosoftTranslator)から入手できます。
+Translator Speech API の使用例を示すコード サンプルは、[Microsoft Translator GitHub サイト](https://github.com/MicrosoftTranslator)から入手できます。
 
 ## <a name="implementation-notes"></a>実装に関するメモ
 
@@ -109,7 +109,7 @@ GET /speech/translate によって音声翻訳のセッションが確立され�
 {
   type: "final"
   id: "23",
-  recognition: "what was said", 
+  recognition: "what was said",
   translation: "translation of what was said",
   audioStreamPosition: 319680,
   audioSizeBytes: 35840,
@@ -140,7 +140,7 @@ Text 型の WebSocket メッセージを使用してサービスからクライ�
 {
   type: "partial"
   id: "23.2",
-  recognition: "what was", 
+  recognition: "what was",
   translation: "translation of what was",
   audioStreamPosition: 319680,
   audioSizeBytes: 25840,
@@ -190,46 +190,3 @@ Text 型の WebSocket メッセージを使用してサービスからクライ�
 |401    |権限がありません。 資格情報が設定されていること、資格情報が有効であること、および Azure Data Market サブスクリプションが健全な状態で、利用可能な残量があることを確認します。|||
 |500    |エラーが発生しました。 エラーが解決しない場合は、それをクライアント トレース識別子 (X-ClientTraceId) または要求識別子 (X-RequestId) と一緒にご報告ください。|||
 |503    |サーバーが一時的に使用できません。 要求を再試行してください。 エラーが解決しない場合は、それをクライアント トレース識別子 (X-ClientTraceId) または要求識別子 (X-RequestId) と一緒にご報告ください。|||
-
-    
-
-
-    
-
-
-
-
-
-    
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-            
-
-
-
-
-        
-
-
-
-
-
-
-
-
-

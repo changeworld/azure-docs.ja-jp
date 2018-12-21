@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.author: dech
-ms.openlocfilehash: ef805ff82b8f44f4caeeafdc8867d851f4501894
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c0b1ed5aff7f22000a179983396239c24d21a311
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852649"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101332"
 ---
 # <a name="tutorial-develop-an-aspnet-mvc-web-application-with-azure-cosmos-db-by-using-net-preview-sdk"></a>チュートリアル: Azure Cosmos DB で .NET プレビュー SDK を使用して ASP.NET MVC Web アプリケーションを開発する 
 
@@ -47,7 +47,7 @@ ms.locfileid: "52852649"
 
 この記事の手順を実行する前に、以下のリソースがあることを確認してください。
 
-* **アクティブな Azure アカウント:** アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。 
+* **アクティブな Azure アカウント:** Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -194,7 +194,7 @@ ms.locfileid: "52852649"
 
 この作業が済んだら、Visual Studio に表示されている cshtml ドキュメントをすべて閉じてください。これらのビューは後で使用します。
 
-## <a name="connect-to-cosmosdb"></a>手順 5: Azure Cosmos DB に接続する 
+## <a name="connect-to-cosmosdb"></a>手順 5: Azure Cosmos DB への接続 
 
 MVC の標準的な構成要素を準備できたので、次に Azure Cosmos DB に接続するコードを追加し、CRUD 操作を実行します。 
 
@@ -264,7 +264,7 @@ MVC の標準的な構成要素を準備できたので、次に Azure Cosmos DB
 
 5. アプリケーションのテストが完了したら、Ctrl キーを押しながら F5 キーを押してアプリケーションのデバッグを中止します。 これで、アプリケーションをデプロイする準備が整いました。
 
-## <a name="deploy-the-application-to-azure"></a>手順 7: アプリケーションをデプロイする 
+## <a name="deploy-the-application-to-azure"></a>手順 7: アプリケーションのデプロイ 
 以上で、Azure Cosmos DB と連携するアプリケーションが完成しました。今度は、この Web アプリを Azure App Service にデプロイします。  
 
 1. アプリケーションを発行するために、**ソリューション エクスプローラー**のプロジェクトを右クリックし、**[発行]** を選択します。
@@ -288,8 +288,8 @@ MVC の標準的な構成要素を準備できたので、次に Azure Cosmos DB
 > [Azure Cosmos DB の SQL API アカウントで格納されたデータにアクセスする Java Web アプリケーションを構築する]( sql-api-java-application.md)
 
 
-[Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
-[Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
-[Preventing Cross-Site Request Forgery]: http://go.microsoft.com/fwlink/?LinkID=517254
-[Basic CRUD Operations in ASP.NET MVC]: http://go.microsoft.com/fwlink/?LinkId=317598
+[Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx
+[Microsoft Web Platform Installer]: https://www.microsoft.com/web/downloads/platform.aspx
+[Preventing Cross-Site Request Forgery]: https://go.microsoft.com/fwlink/?LinkID=517254
+[Basic CRUD Operations in ASP.NET MVC]: https://go.microsoft.com/fwlink/?LinkId=317598
 [GitHub]: https://github.com/Azure-Samples/cosmos-dotnet-todo-app

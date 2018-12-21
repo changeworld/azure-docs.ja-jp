@@ -1,5 +1,5 @@
 ---
-title: Azure Container Registry チュートリアル - geo レプリケーション Azure Container Registry の準備
+title: チュートリアル - Azure に geo レプリケートされている Docker レジストリを作成する
 description: Azure Container Registry を作成し、geo レプリケーションを構成して、Docker イメージを準備し、それをレジストリにデプロイします。 3 部構成のシリーズのパート 1。
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9d1371dc02f37889b15b3448d82c62d76472f847
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: db00672c7cbb39002c4a40eb7397af76e4c8189a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854305"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261315"
 ---
-# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル: geo レプリケーション Azure Container Registry の準備
+# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル:geo レプリケーション Azure Container Registry の準備
 
 Azure Container Registry は、デプロイの近くにネットワークを確保できる Azure にデプロイされたプライベート Docker レジストリです。 この一連の 3 つのチュートリアルの記事では、geo レプリケーションを使用して、Linux コンテナーで実行する ASP.NET Core Web アプリケーションを、2 つの [Web Apps for Containers](../app-service/containers/index.yml) インスタンスにデプロイする方法について説明します。 Azure が最も近い geo レプリケーション レポジトリからの各 Web アプリ インスタンスにイメージをデプロイする方法を確認します。
 
@@ -49,8 +49,8 @@ Azure Cloud Shell には、このチュートリアルの各ステップを完�
 
 次の設定で、新しいレジストリを構成します。
 
-* **レジストリ名**: Azure 内でグローバルに一意で、5 ～ 50 文字の英数字を含むレジストリ名を作成します。
-* **リソース グループ**: **[新規作成]** > `myResourceGroup`
+* **レジストリ名**:Azure 内でグローバルに一意で、5 - 50 文字の英数字を含むレジストリ名を作成します
+* **リソース グループ**:**新規作成** > `myResourceGroup`
 * **場所**: `West US`
 * **管理者ユーザー**: `Enable` (イメージをプルするために、Web App for Containers に必要)
 * **SKU**: `Premium` (geo レプリケーションに必要)

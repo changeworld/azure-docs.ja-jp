@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする | Microsoft Docs
-description: SQL Database 拡張機能を使用して、Azure Resource Manager テンプレートで SQL BACPAC ファイルをインポートする方法について説明します
+description: SQL Database 拡張機能を使用して、Azure Resource Manager テンプレートで SQL BACPAC ファイルをインポートする方法について説明します。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/04/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9f1b3ea74c59383561b019d32a80f1502716b29e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 249356644772ae75b12f5c940ff5f9ed49b2c795
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879227"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995002"
 ---
-# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする
+# <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする
 
-Azure SQL Database 拡張機能を使用して BACPAC ファイルをインポートする方法について説明します。 このチュートリアルでは、テンプレートを作成して Azure SQL サーバー、SQL データベース、BACPAC ファイルをデプロイします。 Azure Resource Manager テンプレートを使用して Azure 仮想マシン拡張機能をデプロイする方法については、「[チュートリアル: Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする](./resource-manager-tutorial-deploy-vm-extensions.md)」を参照してください。
+Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、メイン テンプレート ファイルに加え、デプロイを完了するために必要なすべてのファイルです。 BACPAC ファイルは成果物です。 このチュートリアルでは、テンプレートを作成して Azure SQL サーバー、SQL データベースをデプロイし、BACPAC ファイルをインポートします。 Azure Resource Manager テンプレートを使用して Azure 仮想マシン拡張機能をデプロイする方法については、「[チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする](./resource-manager-tutorial-deploy-vm-extensions.md)」を参照してください。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager Template deployment で Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC ファイルを準備する
 
@@ -68,12 +68,13 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)をご覧ください。
     * `Microsoft.SQL/servers/securityAlertPolicies` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)をご覧ください。
     * `Microsoft.SQL.servers/databases`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
+
     カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 4. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
-テンプレートには 2 つのリソースをさらに追加する必要があります。
+テンプレートには 2 つのリソースをさらに追加します。
 
 * SQL データベース拡張機能を使用して BACPAC ファイルをインポートできるようにするには、Azure サービスへのアクセスを許可する必要があります。 次の JSON を SQL サーバー定義に追加します。
 
@@ -82,7 +83,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
         "type": "firewallrules",
         "name": "AllowAllAzureIps",
         "location": "[parameters('location')]",
-        "apiVersion": "2014-04-01",
+        "apiVersion": "2015-05-01-preview",
         "dependsOn": [
             "[variables('databaseServerName')]"
         ],
@@ -126,11 +127,11 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
     リソース定義を理解するには、[SQL Database 拡張機能のリファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions)に関するページを参照してください。 以下にいくつかの重要な要素を示します。
 
-    * **dependsOn**: 拡張機能リソースは、SQL データベースが作成された後に作成される必要があります。
-    * **storageKeyType**: 使用するストレージ キーの種類。 値は `StorageAccessKey` と `SharedAccessKey` のいずれかにできます。 提供される BACPAC ファイルはパブリック アクセスが有効な Azure ストレージ アカウントで共有されるため、ここでは "SharedAccessKey" が使用されます。
-    * **storageKey**: 使用するストレージ キー。 ストレージ キーの種類が SharedAccessKey の場合は、前に "?" が付いている必要があります。
-    * **storageUri**: 使用するストレージ URI。 提供される BACPAC ファイルを使用しない場合は、値を更新する必要があります。
-    * **administratorLoginPassword**: SQL 管理者のパスワード。 生成されたパスワードを使用することが推奨されます。 「[前提条件](#prerequisites)」を参照してください。
+    * **dependsOn**:拡張機能リソースは、SQL データベースが作成された後に作成される必要があります。
+    * **storageKeyType**:使用するストレージ キーの種類。 値は `StorageAccessKey` と `SharedAccessKey` のいずれかにできます。 提供される BACPAC ファイルはパブリック アクセスが有効な Azure ストレージ アカウントで共有されるため、ここでは "SharedAccessKey" が使用されます。
+    * **storageKey**:使用するストレージ キー。 ストレージ キーの種類が SharedAccessKey の場合は、前に "?" が付いている必要があります。
+    * **storageUri**:使用するストレージ URI。 提供される BACPAC ファイルを使用しない場合は、値を更新する必要があります。
+    * **administratorLoginPassword**:SQL 管理者のパスワード。 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -151,7 +152,7 @@ New-AzureRmResourceGroupDeployment -Name $deploymentName `
     -TemplateFile azuredeploy.json
 ```
 
-生成されたパスワードを使用することが推奨されます。 「[前提条件](#prerequisites)」を参照してください。
+生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
 
 ## <a name="verify-the-deployment"></a>デプロイを検証する
 
@@ -170,7 +171,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、SQL サーバーと SQL データベースをデプロイして、BACPAC ファイルをインポートしました。 複数のリージョンにわたって Azure リソースをデプロイする方法のほか、安全なデプロイの実践については、以下を参照してください
+このチュートリアルでは、SQL サーバーと SQL データベースをデプロイして、BACPAC ファイルをインポートしました。 BACPAC ファイルは Azure ストレージ アカウントに格納されます。 URL が与えられたユーザーは誰でもファイルにアクセスできます。 BACPAC ファイル (成果物) をセキュリティで保護する方法については次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Deployment Manager の使用](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [成果物のセキュリティ保護](./resource-manager-tutorial-secure-artifacts.md)

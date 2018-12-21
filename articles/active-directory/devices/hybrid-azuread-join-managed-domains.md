@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b8d45e72e15ff86b53f7355634e8f197b94260bd
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963933"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435431"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル: マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -53,7 +53,11 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 -  [デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)
   
 
-この記事のシナリオを構成するには、[Azure AD Connect の最新バージョン](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 以降) がインストールされている必要があります。 
+この記事のシナリオを構成するための要件を次に示します。
+
+- スキーマ レベルが 85 以降のオンプレミス Active Directory (AD)。 詳細については、「[Upgrade your Active Directory Schema (Active Directory スキーマをアップグレードする)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema)」を参照してください。
+
+- [最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 以降) がインストールされていること。 
 
 Azure AD Connect が、Azure AD に参加するハイブリッド Azure AD にするデバイスのコンピューター オブジェクトを同期済みであることを確認します。 コンピューター オブジェクトが特定の組織単位 (OU) に属している場合、これらの OU を Azure AD Connect についても構成する必要があります。
 
@@ -140,6 +144,8 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
  
 - デバイスの登録用のローカル イントラネット設定の構成
 
+- シームレス シングル サインオン (SSO) の構成
+
 - ダウンレベルの Windows デバイスの制御 
 
 
@@ -151,7 +157,7 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 
     
-**[ユーザーはデバイスを Azure AD に登録できます]** というポリシーは、**[すべて]** に設定する必要があります。
+次のポリシーを **[すべて]** に設定する必要があります。**[ユーザーはデバイスを Azure AD に登録できます]**
 
 ![デバイスを登録する](media/hybrid-azuread-join-managed-domains/23.png)
 
@@ -166,6 +172,11 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 - `https://autologon.microsoftazuread-sso.com`
 
 さらに、ユーザーのローカル イントラネット ゾーンで **[スクリプトを介したステータス バーの更新を許可する]** を有効にする必要があります。
+
+
+### <a name="configure-seamless-sso"></a>シームレス SSO の構成
+
+Azure AD クラウド認証方法として Pass-through Authentication (PTA) または Password Hash Sync (PHS) を使用しているマネージド ドメインで、ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加を正常に完了するには、[シームレス SSO を構成](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature)する必要もあります。 
 
 
 ### <a name="control-windows-down-level-devices"></a>ダウンレベルの Windows デバイスの制御 

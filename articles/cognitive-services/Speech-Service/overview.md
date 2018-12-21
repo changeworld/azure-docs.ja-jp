@@ -1,37 +1,36 @@
 ---
 title: Speech Service とは
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services の一部である Speech Service では、これまで別々に提供されていた複数の音声サービス (Bing Speech (音声認識とテキスト読み上げで構成)、Custom Speech、音声翻訳) が統合されています。
+description: Azure Cognitive Services の一部である Speech Service は、以前は個別に使用できた次のような複数の音声サービスを 1 つにまとめたものです(Bing Speech (音声認識とテキスト読み上げを構成)、Custom Speech、Speech Translation)。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: ba4204c23f3467ff07940fd6a72464e67604dde1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e86adfd4e832e6b9514e4813ddd4a942b07ca624
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470448"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336596"
 ---
-# <a name="what-is-the-speech-service"></a>Speech Service とは
+# <a name="what-is-speech-services"></a>Speech Service とは
 
-
-他の Azure 音声サービスと同じように、Speech Service は、Cortana や Microsoft Office などの製品で使用されている音声認識テクノロジを利用しています。
+他の Azure 音声サービスと同じように、Speech Service では、Cortana や Microsoft Office などの製品で使用されている音声認識テクノロジが利用されています。
 
 Speech Service では、以前は [Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/speech/home)、[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/)、[Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home)、および [Custom Voice](http://customvoice.ai/) の各サービスで利用可能であった Azure 音声機能が統合されています。 現在は、1 つのサブスクリプションで、これらすべての機能にアクセスできます。
 
-## <a name="main-speech-service-functions"></a>Speech Service の主要機能
+## <a name="main-speech-services-functions"></a>Speech Service の主要機能
 
 Speech Service の主要機能には、音声テキスト変換 (音声認識また文字起こしとも呼ばれます)、テキスト読み上げ (音声合成)、および音声翻訳があります。
 
 |関数|機能|
 |-|-|
 |[音声テキスト変換](speech-to-text.md)| <li>連続するリアルタイムの音声をテキストに書き起こします。<li>音声録音から音声を一括で文字起こしできます。 <li>中間結果、音声の終わりの検出、テキストの自動的な書式設定、および不適切な表現のマスキングをサポートします。 <li>[Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) を呼び出して、文字起こしされた音声からユーザーの意図を導き出すことができます。\*|
-|[テキスト読み上げ](text-to-speech.md)| <li>テキストを自然な音声に変換します。 <li>複数の性別やサポートされている多くの言語の方言が用意されています。 <li>プレーンテキストの入力または音声合成マークアップ言語 (SSML) をサポートします。 |
+|[Text-to-Speech](text-to-speech.md)| <li>**新規**:人の音声 (英語) とほとんど区別できないニューラル テキスト読み上げ音声を提供します。 <li>テキストを自然な音声に変換します。 <li>複数の性別やサポートされている多くの言語の方言が用意されています。 <li>プレーンテキストの入力または音声合成マークアップ言語 (SSML) をサポートします。 |
 |[音声翻訳](speech-translation.md)| <li>ストリーミング オーディオをほぼリアルタイムで翻訳します。<li> 録音された音声も処理できます。<li>テキストまたは合成された音声として結果を提供します。 |
 
 
@@ -44,7 +43,7 @@ Speech Service の音声テキスト変換機能とテキスト読み上げ機�
 |音声テキスト変換|[音響モデル](how-to-customize-acoustic-models.md)|特定の話者や環境 (社内や工場内など) で文字起こしする際に有用です。|
 ||[言語モデル](how-to-customize-language-model.md)|フィールド固有の語彙や文法 (医療や IT の専門用語など) で文字起こしする際に有用です。|
 ||[発音モデル](how-to-customize-pronunciation.md)|略語と頭字語 (たとえば "IOU" を "I owe you" と発音) を文字起こしする際に有用です。 |
-|テキストから音声へ|[音声フォント](how-to-customize-voice-font.md)|人間の音声サンプルでモデルをトレーニングして、アプリに独自の音声を与えます。|
+|テキスト読み上げ|[音声フォント](how-to-customize-voice-font.md)|人間の音声サンプルでモデルをトレーニングして、アプリに独自の音声を与えます。|
 
 アプリの音声テキスト変換機能またはテキスト読み上げ機能で標準モデルを使用するすべての場所で、カスタム モデルを使用できます。
 
@@ -57,13 +56,13 @@ Speech Service には、HTTP 要求を実行できるプログラミング言語
 |<br>方法|音声<br>テキスト変換|テキストから<br>音声|音声<br>翻訳|<br>説明|
 |-|-|-|-|-|
 |[Speech SDK](speech-sdk.md)|[はい]|いいえ |[はい]|C#、C++、および Java 用のネイティブ API による開発の簡略化。|
-|[REST](rest-apis.md)|[はい]|[はい]|いいえ |アプリケーションに音声を簡単に追加できる HTTP ベースの単純な API。|
+|[REST API](rest-apis.md)|[はい]|[はい]|いいえ |アプリケーションに音声を簡単に追加できる HTTP ベースの単純な API。|
 
 ### <a name="websockets"></a>WebSocket
 
-Speech Service には、音声テキスト変換と音声翻訳をストリーミングするための Websocket プロトコルもあります。 Speech SDK は、これらのプロトコルを使用して、Speech Service と通信します。 Speech Service との独自の Websocket 通信を実装する代わりに、Speech SDK を使用してください。
+Speech Service では、音声テキスト変換と音声翻訳をストリーミングするための Websocket プロトコルもサポートされています。 Speech SDK は、これらのプロトコルを使用して、Speech Service と通信します。 Speech Service との独自の Websocket 通信を実装する代わりに、Speech SDK を使用してください。
 
-Websocket 経由で Bing Speech または Translator Speech を使用するコードが既に存在する場合は、Speech Service を使用するようにコードを更新できます。 WebSocket プロトコルには互換性があります。違うのはエンドポイントだけです。
+Websocket 経由で Bing Speech または Translator Speech を使用するコードが既に存在する場合は、Speech Service を使用するようにコードを更新できます。 WebSocket プロトコルには互換性がありますが、エンドポイントは異なります。
 
 ### <a name="speech-devices-sdk"></a>Speech Devices SDK
 

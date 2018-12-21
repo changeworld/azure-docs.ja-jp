@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/27/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: f2cb5d33b8d7a7442da16a38e268c56de363a9c6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: secdec18
+ms.openlocfilehash: 9a27efe7908b2a15ceb823d7a85c4a12603731ab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274084"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075983"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Cloudyn で Azure サブスクリプションとアカウントをアクティブ化する
 
@@ -41,7 +41,7 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 3. Azure Active Directory で **[ユーザー設定]** を選択します。
 4. **[アプリの登録]** オプションを確認します。
     - **[はい]** に設定されている場合は、管理者以外のユーザーでも AD アプリを登録できます。 この設定は、Azure AD テナント内のすべてのユーザーがアプリを登録できることを意味します。  
-    ![アプリの登録](./media/activate-subs-accounts/app-register.png)
+    ![[ユーザー設定] で [アプリの登録] を選択](./media/activate-subs-accounts/app-register.png)
     - **[アプリの登録]** オプションが **[いいえ]** に設定されている場合は、テナント管理者ユーザーのみが Azure Active Directory アプリを登録できます。 テナント管理者が CloudynCollector アプリケーションを登録する必要があります。
 
 
@@ -53,12 +53,12 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 
 1. Cloudyn ポータルで、右上にある歯車アイコンをクリックし、**[クラウド アカウント]** を選択します。
 2. **[Add new account]\(新しいアカウントの追加\)** をクリックし、**[Add new account]\(新しいアカウントの追加\)** ボックスを表示します。 必要な情報を入力します。  
-    ![[Add new account]\(新しいアカウントの追加\) ボックス](./media/activate-subs-accounts//add-new-account.png)
+    ![[新しいアカウントを追加] ボックスに必要な情報を入力](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>サブスクリプションを更新する
 
 1. アカウント管理で Cloudyn に既に存在する _アクティブ化されていない_ サブスクリプションを更新する場合は、親 _テナント GUID_ の右にある編集用の鉛筆アイコンをクリックします。 サブスクリプションは親テナントの下でグループ化されるため、サブスクリプションを個別にアクティブ化しないようにします。
-    ![サブスクリプションの再検出](./media/activate-subs-accounts/existing-sub.png)
+    ![[サブスクリプションの再検出] ボックスで自分のテナント ID を選択](./media/activate-subs-accounts/existing-sub.png)
 2. 必要に応じて、テナント ID を入力します。 テナント ID がわからない場合は、次の手順を使って調べます。
     1. [Azure Portal](https://portal.azure.com) にサインインします。
     2. Azure Portal で、**[Azure Active Directory]** を選びます。
@@ -106,7 +106,7 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 Cloudyn を有効にできるのは、Azure サービス管理者だけです。 共同管理者のアクセス許可では不十分です。 ただし、この管理者の要件は回避できます。 Azure Active Directory 管理者に、PowerShell スクリプトを使用して **CloudynAzureCollector** を承認するアクセス許可を付与するように要求できます。 次のスクリプトは、Azure Active Directory の Service Principal **CloudynAzureCollector** を登録するアクセス許可を付与します。
 
 
-```
+```powershell
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #Tenant - enter your tenant ID or Name

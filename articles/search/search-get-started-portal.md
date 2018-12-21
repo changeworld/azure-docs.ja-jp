@@ -1,5 +1,5 @@
 ---
-title: ポータルを使用した Azure Search のインデックス作成、クエリ、フィルター処理に関するチュートリアル | Microsoft Docs
+title: Azure portal でのインデックス作成、クエリ、フィルタリングに関するチュートリアル - Azure Search
 description: このチュートリアルでは、Azure portal で、定義済みのサンプル データを使用して Azure Search のインデックスを生成します。 フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索などについて確認します。
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: aac579da3aaf6ab1507bbc12d79a5b183a82d665
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.custom: seodec2018
+ms.openlocfilehash: d8b95aaab99fc4f0aa5df21374d6ec023f869b7d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592757"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314025"
 ---
-# <a name="tutorial-use-built-in-tools-for-azure-search-indexing-and-queries"></a>チュートリアル: ビルトイン ツールを使用した Azure Search のインデックス作成とクエリ
+# <a name="tutorial-use-built-in-portal-tools-for-azure-search-indexing-and-queries"></a>チュートリアル: ポータルのビルトイン ツールを使用した Azure Search のインデックス作成とクエリ
 
 Azure Search の概念について簡単に確認したり導入に向けて準備したりするには、Azure portal の Azure Search サービス ページに用意されているビルトイン ツールをご活用ください。 これらのツールは、.NET と REST API の機能をすべて備えているわけではありません。 しかし一連のウィザードとエディターを通じて、Azure Search をコーディングなしで体験でき、サンプル データ セットに対する有益なクエリをすぐに記述することができます。
 
@@ -106,7 +107,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![インデクサーの進行状況のメッセージ][4]
 
-### <a name="step-4-view-the-index"></a>手順 4: インデックスを確認する
+### <a name="step-4-view-the-index"></a>手順 4: インデックスの表示
 
 サービス ダッシュボードのタイルでは、リソース内の各種オブジェクトの概要情報を確認するだけでなく、そこから詳しい情報にアクセスできるようになっています。 **[インデックス]** タイルには、前の手順で作成した *realestate-us-sample* インデックスを含む既存のインデックスが一覧表示されます。
 

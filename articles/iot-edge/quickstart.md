@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge + Windows クイック スタート | Microsoft Docs
-description: シミュレートされたエッジ デバイスで分析を実行して Azure IoT Edge を試します
+title: Windows 上に Azure IoT Edge デバイスを作成するクイック スタート | Microsoft Docs
+description: このクイック スタートでは、IoT Edge デバイスを作成した後、Azure portal から事前作成されたコードをリモートで展開する方法を学習します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,15 +8,15 @@ ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 78cb00c568942e6b8c0f5da035381c82f5789a08
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 941d5d8f356fbd1477b4559f1475511165c01341
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977014"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340098"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Azure Portal から Windows デバイスに展開する - プレビュー
+# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>クイック スタート:初めての IoT Edge モジュールを Azure portal から Windows デバイスに展開する - プレビュー
 
 このクイック スタートでは、Azure IoT Edge クラウド インターフェイスを使用して、事前作成されたコードを IoT Edge デバイスにリモートで展開します。 このタスクを実行するには、最初に Windows デバイスを使用して IoT Edge デバイスをシミュレートし、モジュールを展開します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "51977014"
 3. IoT Edge ランタイムをデバイスにインストールして開始します。
 4. モジュールを IoT Edge デバイスにリモートでデプロイし、テレメトリを IoT Hub に送信します。
 
-![クイック スタートのアーキテクチャ](./media/quickstart/install-edge-full.png)
+![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart/install-edge-full.png)
 
 このクイック スタートで展開するモジュールは、温度、湿度、および圧力のデータを生成するシミュレートされたセンサーです。 その他の Azure IoT Edge チュートリアルは、ここで行う作業を基盤としており、ビジネスに関する分析情報を得るためにシミュレートされたデータを分析するモジュールをデプロイします。
 
@@ -72,7 +72,7 @@ IoT Edge デバイス:
 
 このクイック スタートでは、最初に Azure CLI で IoT Hub を作成します。
 
-![IoT Hub を作成する](./media/quickstart/create-iot-hub.png)
+![図 - クラウドで IoT ハブを作成する](./media/quickstart/create-iot-hub.png)
 
 このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブを作成済みである場合は、その IoT ハブを使用できます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。
 
@@ -87,7 +87,7 @@ IoT Edge デバイス:
 ## <a name="register-an-iot-edge-device"></a>IoT Edge デバイスを登録する
 
 新しく作成された IoT Hub に IoT Edge デバイスを登録します。
-![デバイスを登録する](./media/quickstart/register-device.png)
+![図 - IoT ハブ ID でデバイスを登録する](./media/quickstart/register-device.png)
 
 お使いの IoT ハブと通信できるようにシミュレートされたデバイスのデバイス ID を作成します。 デバイス ID はクラウドに置かれるので、デバイスの一意の接続文字列を使用して、物理デバイスとデバイス ID とを関連付けることになります。
 
@@ -112,7 +112,7 @@ IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作を
 ## <a name="install-and-start-the-iot-edge-runtime"></a>IoT Edge ランタイムをインストールして開始する
 
 Azure IoT Edge ランタイムを IoT Edge デバイスにインストールし、デバイスの接続文字列を使用してその構成を行います。
-![デバイスを登録する](./media/quickstart/start-runtime.png)
+![図 - デバイスでランタイムを開始する](./media/quickstart/start-runtime.png)
 
 IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 **IoT Edge セキュリティ デーモン**は、Edge デバイスが起動するたびに開始され、IoT Edge エージェントを起動してデバイスをブートストラップします。 **IoT Edge エージェント**は、IoT Edge ハブなど、IoT Edge デバイス上のモジュールの展開と監視を容易にします。 **IoT Edge ハブ**は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。
 
@@ -175,7 +175,7 @@ IoT Edge デバイスの構成はこれで完了です。 クラウドからモ�
 ## <a name="deploy-a-module"></a>モジュールを展開する
 
 Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統計情報を送信するモジュールを展開します。
-![デバイスを登録する](./media/quickstart/deploy-module.png)
+![図 - クラウドからデバイスにモジュールを展開する](./media/quickstart/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
@@ -199,7 +199,7 @@ iotedge logs tempSensor -f
 
   ![モジュールからのデータを表示する](./media/quickstart/iotedge-logs.png)
 
-[Visual Studio Code 用の Azure IoT Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)を使用して、IoT ハブに到着したメッセージを監視することもできます。 
+[Visual Studio Code 用の Azure IoT Hub Toolkit の拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (旧称: Azure IoT Toolkit 拡張機能) を使用して、IoT ハブに到着したメッセージを監視することもできます。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

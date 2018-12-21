@@ -1,5 +1,5 @@
 ---
-title: 'Azure portal: SQL マネージド インスタンスの作成 | Microsoft Docs'
+title: Azure portal:SQL マネージド インスタンスの作成 | Microsoft Docs
 description: SQL マネージド インスタンス、ネットワーク環境、アクセス用のクライアント VM を作成します。
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: d5be25abc634200e0c0afed6946b38fd163fb78e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 4b8c67cfff89b54b4776ebc8b4586cd8f52950b3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890502"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342614"
 ---
-# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>クイック スタート: Azure SQL Database Managed Instance を作成する
+# <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>クイック スタート:Azure SQL Database マネージド インスタンスの作成
 
 このクイック スタートでは、Azure portal で Azure SQL Database [マネージド インスタンス](sql-database-managed-instance.md)を作成する方法について説明します。
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    |**マネージド インスタンス管理者ログイン**|任意の有効なユーザー名|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 "serveradmin" は予約済みのサーバー レベルのロールであるため、使用しないでください。|
    |**パスワード**|有効なパスワード|パスワードは 16 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
    |**場所**|マネージド インスタンスの作成先となる場所|リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
-   |**Virtual Network**|**[Create new virtual network]\(新しい仮想ネットワークを作成する)** を選択するか、以前にこのフォームで指定したリソース グループに作成した仮想ネットワークを選択。| カスタム設定を使用するマネージド インスタンスの仮想ネットワークを構成する場合は、GitHub の「[Configure SQL Managed Instance virtual network environment template (SQL マネージド インスタンスの仮想ネットワーク環境テンプレートを構成する)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment)」を参照。 マネージド インスタンスのネットワーク環境を構成するための要件については、「[Azure SQL Database Managed Instance の VNet を構成する](sql-database-managed-instance-vnet-configuration.md)」を参照。 |
+   |**Virtual Network**|**[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワーク/サブネットが淡色表示されている場合は、新しいマネージド インスタンスのターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](sql-database-managed-instance-configure-vnet-subnet.md)必要があります。 マネージド インスタンスのネットワーク環境を構成するための要件については、「[Azure SQL Database Managed Instance の VNet を構成する](sql-database-managed-instance-connectivity-architecture.md)」を参照。 |
    |**[リソース グループ]**|新規または既存のリソース グループ|有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
 
    ![マネージド インスタンス フォーム](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)

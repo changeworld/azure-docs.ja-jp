@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: サムネイルの生成 - SDK、C# - Computer Vision'
+title: クイック スタート:サムネイルの生成 - SDK、C# - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像からサムネイルを生成します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: d3340131c1f174201cc9fd1dcb31bd4a4b8cd07a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: a4a6dac4ca42f98bd03da022aaed79db094a9ed6
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854086"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413287"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>クイック スタート: Computer Vision SDK と C# によるサムネイルの生成
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# によるサムネイルの生成
 
 このクイック スタートでは、Computer Vision Windows クライアント ライブラリを使って、画像からサムネイルを生成します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "51854086"
 > [!TIP]
 > 最新のコードを Visual Studio ソリューションとして [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
 
-`GenerateThumbnailAsync` メソッドと `GenerateThumbnailInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[サムネイル取得 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) をラップします。 これらのメソッドを使用して画像のサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision は、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
+`GenerateThumbnailAsync` メソッドと `GenerateThumbnailInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[サムネイル取得 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) をラップします。  これらのメソッドを使用して画像のサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision では、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
 
 このサンプルを実行するには、次の手順を実行します。
 

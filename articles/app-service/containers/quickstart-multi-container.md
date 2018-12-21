@@ -1,5 +1,5 @@
 ---
-title: Docker Compose 構成を使用して Azure Web App for Containers にマルチコンテナー (プレビュー) アプリを作成する
+title: Docker Compose を使用してマルチコンテナー アプリを作成する - Azure App Service
 description: 最初のマルチコンテナー アプリを数分で Azure Web App for Containers にデプロイする
 keywords: azure app service, Web アプリ, linux, docker, compose, マルチコンテナー, マルチ コンテナー, コンテナー用の Web アプリ, 複数のコンテナー, コンテナー, kubernetes, wordpress, azure db for mysql, コンテナーを使用した運用データベース
 services: app-service\web
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec18
+ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576784"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316582"
 ---
-# <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Web App for Containers を使用してマルチコンテナー (プレビュー) アプリを作成する
+# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose 構成を使用してマルチコンテナー (プレビュー) アプリを作成する
 
 [Web App for Containers](app-service-linux-intro.md) には、Docker イメージを柔軟に使用できる機能があります。 このクイック スタートでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で Docker Compose 構成を使用して Web App for Containers にマルチコンテナー アプリをデプロイする方法を示します。 Kubernetes と Azure DB for MySQL を使用する完全なエンド ツー エンド ソリューションの場合は、[マルチコンテナーのチュートリアル](tutorial-multi-container-app.md)に従ってください。
 
@@ -48,7 +48,7 @@ mkdir quickstart
 cd quickstart
 ```
 
-次に、次のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。 その後、`multicontainerwordpress` ディレクトリに移動します。
+次に、以下のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。 その後、`multicontainerwordpress` ディレクトリに移動します。
 
 ```bash
 git clone https://github.com/Azure-Samples/multicontainerwordpress

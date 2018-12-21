@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 4881f992e5362efc7e4d7ac23898684966a066e0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 57624133b249a8ec2ece90eac4a64729e4d15151
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890995"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968205"
 ---
-# <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>チュートリアル: Azure でクラウド間スケーリング ソリューションを作成する
+# <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>チュートリアル: Azure でクラウドの間スケーリング ソリューションを作成する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack でホストされる Web アプリから、Traffic Manager を介した自動スケーリングを備える Azure でホストされる Web アプリに切り替えて、負荷時に柔軟でスケーラブルなクラウド ユーティリティを実現する手動トリガー プロセスを提供するクラウド間ソリューションを作成する方法について説明します。
 
@@ -107,17 +107,17 @@ Azure Repos
 
     ハイブリッド CI/CD は、アプリケーション コードとインフラストラクチャ コードの両方に適用できます。 プライベート クラウド開発とホステッド クラウド開発の両方に、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を使用します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image1.JPG)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image1.JPG)
 
 2. 既定の Web アプリを作成して開くことで、**リポジトリを複製**します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image2.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image2.png)
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>両方のクラウドで App Services の自己完結型 Web アプリ デプロイを作成する
 
 1.  **WebApplication.csproj** ファイルを編集します。 **Runtimeidentifier** を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。 
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image3.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image3.png)
 
 2.  チーム エクスプローラーを使用して、コードを Azure Repos にチェックインします。
 
@@ -129,7 +129,7 @@ Azure Repos
 
 2. **-r win10-x64** コードを追加します。 これは、.Net Core を使用して自己完結型のデプロイをトリガーするために必要です。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image4.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image4.png)
 
 3. ビルドを実行します。 [自己完結型のデプロイ ビルド](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)のプロセスにより、Azure および Azure Stack 上で実行できる成果物が発行されます。
 
@@ -143,87 +143,87 @@ Azure Pipelines および Azure DevOps Server が提供するパイプライン�
 
 ## <a name="create-release-definition"></a>リリース定義の作成
 
-![Alt text](media\azure-stack-solution-cloud-burst\image5.png)
+![Alt text](media/azure-stack-solution-cloud-burst/image5.png)
 
 1.  VSO の [ビルドとリリース] ページの **[リリース] タブ**で **[+]** ボタンを選択して、新しいリリースを追加します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image6.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image6.png)
 
 2. Azure App Service Deployment テンプレートを適用します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image7.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image7.png)
 
 3. [成果物の追加] で、Azure Cloud ビルド アプリに対して成果物を追加します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image8.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image8.png)
 
 4. [パイプライン] タブで、環境の**フェーズ、タスク** リンクを選択し、Azure のクラウド環境の値を設定します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image9.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image9.png)
 
 5. **環境名**を設定し、Azure クラウド エンドポイントに対して Azure **サブスクリプション**を選択します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image10.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image10.png)
 
 6. [環境名] で、必須の **Azure アプリ サービス名**を設定します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image11.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image11.png)
 
 7. Azure クラウドでホストされる環境のエージェント キューで、「**Hosted VS2017**」と入力します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image12.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image12.png)
 
 8. [Azure App Service 配置] メニューで、環境に対して有効な**パッケージまたはフォルダー**を選択します。 **[OK]** を選択して、**フォルダーの場所**を選択します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image13.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image13.png)
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image14.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image14.png)
 
 9. すべての変更を保存し、**リリース パイプライン**に戻ります。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image15.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image15.png)
 
 10. Azure Stack アプリのビルドを選択して、新しい成果物を追加します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image16.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image16.png)
 
 11. Azure App Service の配置を適用して、環境をもう 1 つ追加します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image17.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image17.png)
 
 12. 新しい環境に Azure Stack という名前を付けます。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image18.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image18.png)
 
 13. **[タスク]** タブで Azure Stack 環境を見つけます。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image19.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image19.png)
 
 14. Azure Stack エンドポイントのサブスクリプションを選択します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image20.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image20.png)
 
 15. [App Service の名前] として、Azure Stack Web アプリの名前を設定します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image21.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image21.png)
 
 16. Azure Stack エージェントを選択します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image22.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image22.png)
 
 17. [Azure App Service 配置] セクションで、環境に対して有効な**パッケージまたはフォルダー**を選択します。 **[OK]** を選択して、フォルダーの場所を選択します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image23.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image23.png)
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image24.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image24.png)
 
 18. [変数] タブで、`VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS` という名前の変数を追加し、その値を **true** に設定し、スコープを Azure Stack に設定します。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image25.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image25.png)
 
 19. 両方の成果物で**継続的**配置トリガー アイコンを選択し、**継続的**配置トリガーを有効にします。
 
-    ![Alt text](media\azure-stack-solution-cloud-burst\image26.png)
+    ![Alt text](media/azure-stack-solution-cloud-burst/image26.png)
 
 20. Azure Stack 環境で**配置前**条件アイコンを選択し、トリガーを**リリース後**に設定します。
 
@@ -273,7 +273,7 @@ Azure Repos から [Azure Resource Manager テンプレート](https://azure.mic
 
 #### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>両方のクラウドで App Services の自己完結型 Web アプリ デプロイを作成する
 
-1.  **WebApplication.csproj** ファイルを編集して、**Runtimeidentifier** を選択し、win10 x64 を追加します。 詳細については、「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください。
+1.  **WebApplication.csproj** ファイルを編集します。**Runtimeidentifier** を選択し、win10 x64 を追加します。 詳細については、「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください。
 
 2.  チーム エクスプローラーを使用して、コードを Azure Repos にチェックインします。
 
@@ -307,7 +307,7 @@ Azure Pipelines および Azure DevOps Server が提供するパイプライン�
 
 3.  **[テンプレートの選択]** で **[Azure App Service の配置]** を選択し、**[適用]** を選択します。
 
-4.  **[成果物の追加]** の **[ソース (ビルド定義)] から Azure Cloud ビルド アプリを選択します。
+4.  **[成果物の追加]** の **[ソース (ビルド定義)]** から Azure Cloud ビルド アプリを選択します。
 
 5.  **[パイプライン]** タブで、**1 フェーズ**、**1 タスク**のリンクを選択し、**環境のタスクを表示**します。
 

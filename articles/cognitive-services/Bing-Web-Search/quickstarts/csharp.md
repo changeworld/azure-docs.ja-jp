@@ -1,7 +1,7 @@
 ---
-title: 'クイック スタート: C# で検索を実行する - Bing Web Search API'
+title: クイック スタート:C# を使用して Web 検索を実行する - Bing Web Search REST API
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、C# を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
+description: このクイック スタートを使用して、C# を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,26 +10,27 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: d868bec1e19ddde556f3c387646c5d7aa898b7d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 844fe2f65b59caba41697db00e809e34e1fe1017
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313488"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258663"
 ---
-# <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>クイック スタート: C# を使用して Bing Web Search API を呼び出す  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>クイック スタート:Bing Web Search REST API と C# を使用して Web を検索する
 
 このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを実行するには、以下のものが必要です。
 
-* Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)
-* Linux/macOS: [Mono](http://www.mono-project.com/)  
+* Windows:[Visual Studio 2017](https://www.visualstudio.com/downloads/)
+* Linux/macOS:[モノラル](http://www.mono-project.com/)  
 * サブスクリプション キー
 
 このサンプル プログラムは、.NET Core クラスのみを使用します。
