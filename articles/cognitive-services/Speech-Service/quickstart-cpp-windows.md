@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Windows デスクトップで C++ と Speech Service SDK を使用して音声を認識する'
+title: 'クイック スタート: 音声を認識する (C++ (Windows)) - Speech Services'
 titleSuffix: Azure Cognitive Services
 description: Windows デスクトップで C++ と Speech Service SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 8947ba3f39cebf51e956db0d841e393963832bc4
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 454b84f4ba5e492f61daf67c980b204c82a2090d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218739"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075189"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート: Windows デスクトップで C++ と Speech SDK を使用して音声を認識する
+# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート: Windows 上で C++ と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -31,11 +31,11 @@ ms.locfileid: "51218739"
 
 1. Visual Studio 2017 を起動します。
 
-1. **[Desktop development with C++]\(C++ によるデスクトップ開発)** ワークロードを使用できることを確認します。 Visual Studio のメニュー バーから **[ツール]** > **[Get Tools and Features]\(ツールと機能の入手)** を選択し、Visual Studio インストーラーを開きます。 このワークロードが既に有効になっている場合は、次のステップまでスキップします。 
+1. **[Desktop development with C++]\(C++ によるデスクトップ開発)** ワークロードを使用できることを確認します。 Visual Studio のメニュー バーから **[ツール]** > **[Get Tools and Features]\(ツールと機能の入手)** を選択し、Visual Studio インストーラーを開きます。 このワークロードが既に有効になっている場合は、次のステップまでスキップします。
 
     ![Visual Studio の [ワークロード] タブのスクリーンショット](media/sdk/vs-enable-cpp-workload.png)
 
-    それ以外の場合、**[Desktop development with C++]\(C++ によるデスクトップ開発)** の横にあるチェック ボックスをオンにします。 
+    それ以外の場合、**[Desktop development with C++]\(C++ によるデスクトップ開発)** の横にあるチェック ボックスをオンにします。
 
 1. **[NuGet パッケージ マネージャー]** コンポーネントを使用できることを確認します。 まだ有効になっていない場合は、Visual Studio インストーラーのダイアログ ボックスの **[個別のコンポーネント]** タブに切り替えて、**[NuGet パッケージ マネージャー]** をクリックします。
 

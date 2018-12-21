@@ -69,6 +69,9 @@ items:
     maintainContext: true
   - name: リージョンと可用性
     href: ../virtual-machines/windows/regions-and-availability.md
+    items:
+    - name: スケール セット内の障害ドメインを管理する
+      href: virtual-machine-scale-sets-manage-fault-domains.md
     maintainContext: true
   - name: VM の種類とサイズ
     href: ../virtual-machines/windows/sizes.md
@@ -264,17 +267,17 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=compute
   - name: 価格
     items:
-    - name: " Linux"
+    - name: Linux
       href: https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/
-    - name: " Windows"
+    - name: Windows
       href: https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-vm-scale-set
-ms.openlocfilehash: cac22fb318ff0695c928b1f24cad1886c2c3d4c5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: e62a69cfc8167f53888daacc8ce67da839149795
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323305"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634339"

@@ -48,7 +48,7 @@ items:
     - name: Azure Storage を使用する
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: Azure Data Lake Store を使用する
+    - name: Azure Data Lake Storage を使用する
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: バッチ クエリへの Apache Hadoop の使用
@@ -63,7 +63,7 @@ items:
         href: apache-hadoop-use-hive-visual-studio.md
       - name: Apache Hive ビューを使用する
         href: apache-hadoop-use-hive-ambari-view.md
-      - name: Beeline を使用する
+      - name: Apache Hive Beeline を使用する
         href: apache-hadoop-use-hive-beeline.md
       - name: REST API を使用する
         href: apache-hadoop-use-hive-curl.md
@@ -105,7 +105,7 @@ items:
         href: apache-hadoop-use-pig-curl.md
       - name: リモート デスクトップを使用する
         href: apache-hadoop-use-pig-remote-desktop.md
-    - name: DataFu と Apache Pig を使用する
+    - name: Apache DataFu と Apache Pig を使用する
       href: apache-hadoop-use-pig-datafu-udf.md
     - name: Apache Hadoop ジョブを送信する
       href: submit-apache-hadoop-jobs-programmatically.md
@@ -201,7 +201,7 @@ items:
     - name: Mono のインストールまたは更新
       href: ../hdinsight-hadoop-install-mono.md
       maintainContext: true
-    - name: Hive ライブラリを追加する
+    - name: Apache Hive ライブラリを追加する
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
     - name: Apache Giraph を使用する
@@ -337,7 +337,7 @@ items:
     - name: Apache Hadoop ジョブのデータのアップロード
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: 複数の HDInsight クラスターと Data Lake Store
+    - name: 複数の HDInsight クラスターと Data Lake Storage
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: Apache Sqoop を使用したデータのインポートとエクスポート
@@ -559,9 +559,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 43ebb63bdda8c484ce1c2d2828293032ea90013c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: f1d3fbab35ddedf3a1dc9360ecc4dbe38591e58c
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321154"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653698"

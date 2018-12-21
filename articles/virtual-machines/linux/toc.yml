@@ -282,6 +282,8 @@ items:
       href: capture-image.md
     - name: Packer でイメージを作成する
       href: build-image-with-packer.md
+    - name: Azure での RHEL イメージ
+      href: rhel-images.md
     - name: 既存のディスクをダウンロードする
       href: download-vhd.md
   - name: 可用性とスケール
@@ -546,9 +548,9 @@ items:
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: e6420c4777e86cecacb1177270c8e5ea9445744d
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: fbf98c5c016d6a64c68c4459b4d27ce5c2f46da6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890638"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652654"

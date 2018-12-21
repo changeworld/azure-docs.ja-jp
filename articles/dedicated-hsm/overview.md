@@ -1,6 +1,6 @@
 ---
-title: 専用 HSM とは  | Microsoft Docs
-description: Azure の専用 HSM は、FIPS 140-2 レベル 3 認定を満たしたキーの保管機能を Azure 内で実現します
+title: 専用 HSM とは  - Azure Dedicated HSM | Microsoft Docs
+description: Azure Dedicated HSM の概要では、FIPS 140-2 レベル 3 認定を満たす Azure 内でのキーの保管機能について説明します
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
@@ -10,19 +10,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.custom: mvc
-ms.date: 11/26/2018
+ms.custom: mvc, seodec18
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 92d77ec886a0f37c28f5e3031a7e14f63299c8aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 1eeafa33c8c1cdbcd7d0e55e3860dda1b8d451fe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427116"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080080"
 ---
-# <a name="what-is-dedicated-hsm"></a>専用 HSM とは
+# <a name="what-is-azure-dedicated-hsm"></a>Azure Dedicated HSM とは何か
 
-Azure の専用 HSM は、きわめて厳しいセキュリティ要件を満たした暗号化キーの保管機能を Azure 内で実現するものです。 FIPS 140-2 レベル 3 検証済みデバイスを必要としていて、HSM アプライアンスを完全かつ独占的に制御する必要のあるお客様にとって、専用 HSM は理想的なソリューションです。 HSM デバイスは、複数の Azure リージョン全体にグローバルにデプロイされ、高可用性を確保するために一対のデバイスとして容易にプロビジョニングして構成することができます。 HSM を複数のリージョン全体にプロビジョニングすることで、リージョン レベルのフェールオーバーに対応することもできます。 Microsoft では、Gemalto の [SafeNet Luna Network HSM 7 (Model A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) アプライアンスを使用して専用 HSM サービスを提供してきました。 このデバイスは、最高レベルのパフォーマンスと暗号統合オプションを備えています。 プロビジョニングした HSM は、お客様の仮想ネットワークに直接接続されます。また、ポイント対サイト VPN 接続またはサイト間 VPN 接続を構成することで、オンプレミスのアプリケーションや管理ツールからもアクセスすることができます。 お客様には、HSM デバイスを構成して管理するためのソフトウェアとドキュメントが Gemalto のサポート ポータルを通じて提供されます。
+Azure Dedicated HSM は、Azure 内に暗号化キーの保管場所を提供する Azure サービスです。 Dedicated HSM は、最も厳格なセキュリティ要件に適合しています。 それは、FIPS 140-2 レベル 3 検証済みデバイスを必要としていて、HSM アプライアンスを完全かつ独占的に制御する必要のあるお客様にとって、理想的なソリューションです。 HSM デバイスは、複数の Azure リージョン全体にグローバルにデプロイされ、高可用性を確保するために一対のデバイスとして容易にプロビジョニングして構成することができます。 HSM を複数のリージョン全体にプロビジョニングすることで、リージョン レベルのフェールオーバーに対応することもできます。 Microsoft では、Gemalto の [SafeNet Luna Network HSM 7 (Model A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) アプライアンスを使用して専用 HSM サービスを提供してきました。 このデバイスは、最高レベルのパフォーマンスと暗号統合オプションを備えています。 プロビジョニングした HSM は、お客様の仮想ネットワークに直接接続されます。また、ポイント対サイト VPN 接続またはサイト間 VPN 接続を構成することで、オンプレミスのアプリケーションや管理ツールからもアクセスすることができます。 お客様には、HSM デバイスを構成して管理するためのソフトウェアとドキュメントが Gemalto のサポート ポータルを通じて提供されます。
 
 ## <a name="why-use-azure-dedicated-hsm"></a>Azure の専用 HSM を使用する理由
 

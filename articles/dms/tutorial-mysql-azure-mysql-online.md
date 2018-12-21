@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Database Migration Service を使用して MySQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs'
+title: チュートリアル:Azure Database Migration Service を使用して MySQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs
 description: Azure Database Migration Service を使用して、オンプレミスの MySQL から Azure Database for MySQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 3c3127c7fd94ae0f66cd083e8a83dd9119f71dcb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a820287c79dcd8d904c9029de3f58d930118e840
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867938"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959514"
 ---
-# <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル: DMS を使用して MySQL を Azure Database for MySQL にオンラインで移行する
+# <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの MySQL インスタンスから [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**Employees** サンプル データベースを MySQL 5.7 のオンプレミス インスタンスから Azure Database for MySQL に移行します。
 
 このチュートリアルでは、以下の内容を学習します。
@@ -121,24 +121,24 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
  
-   ![ポータルのサブスクリプションの表示](media\tutorial-mysql-to-azure-mysql-online\portal-select-subscriptions.png)
+   ![ポータルのサブスクリプションの表示](media/tutorial-mysql-to-azure-mysql-online/portal-select-subscriptions.png)
        
 2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、**[リソース プロバイダー]** を選択します。
  
-    ![リソース プロバイダーの表示](media\tutorial-mysql-to-azure-mysql-online\portal-select-resource-provider.png)
+    ![リソース プロバイダーの表示](media/tutorial-mysql-to-azure-mysql-online/portal-select-resource-provider.png)
     
 3.  移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
  
-    ![リソース プロバイダーの登録](media\tutorial-mysql-to-azure-mysql-online\portal-register-resource-provider.png)    
+    ![リソース プロバイダーの登録](media/tutorial-mysql-to-azure-mysql-online/portal-register-resource-provider.png)    
 
 ## <a name="create-a-dms-instance"></a>DMS インスタンスを作成する
 1.  Azure portal で **[+ リソースの作成]** を選択し、Azure Database Migration Service を検索して、ドロップダウン リストから **[Azure Database Migration Service]** を選択します。
 
-    ![Azure Marketplace](media\tutorial-mysql-to-azure-mysql-online\portal-marketplace.png)
+    ![Azure Marketplace](media/tutorial-mysql-to-azure-mysql-online/portal-marketplace.png)
 
 2.  **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
  
-    ![Azure Database Migration Service インスタンスを作成する](media\tutorial-mysql-to-azure-mysql-online\dms-create1.png)
+    ![Azure Database Migration Service インスタンスを作成する](media/tutorial-mysql-to-azure-mysql-online/dms-create1.png)
   
 3.  **[移行サービスの作成]** 画面で、サービスの名前、サブスクリプション、新規または既存のリソース グループを指定します。
 
@@ -154,7 +154,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     適切な Azure Database Migration Service レベルの選択について不明な点がある場合は、[Azure Database Migration Service (Azure DMS) レベルの選択](https://go.microsoft.com/fwlink/?linkid=861067)に関するブログの推奨事項を参照してください。 
 
-     ![Azure Database Migration Service インスタンス設定を構成する](media\tutorial-mysql-to-azure-mysql-online\dms-settings3.png)
+     ![Azure Database Migration Service インスタンス設定を構成する](media/tutorial-mysql-to-azure-mysql-online/dms-settings3.png)
 
 7.  **[作成]** を選択して、サービスを作成します。
 
@@ -163,17 +163,17 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
 1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
  
-      ![Azure Database Migration Service のすべてのインスタンスを検索する](media\tutorial-mysql-to-azure-mysql-online\dms-search.png)
+      ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-mysql-to-azure-mysql-online/dms-search.png)
 
 2. **[Azure Database Migration Services]** 画面で、作成した Azure Database Migration Service インスタンスの名前を検索して選択します。
  
-     ![Azure Database Migration Service のインスタンスを検索する](media\tutorial-mysql-to-azure-mysql-online\dms-instance-search.png)
+     ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-mysql-to-azure-mysql-online/dms-instance-search.png)
  
 3. **[+ 新しい移行プロジェクト]** を選択します。
 4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類]** テキスト ボックスで **[MySQL]** を選択した後、**[対象サーバーの種類]** テキスト ボックスで **[AzureDbForMySQL]** を選択します。
 5. **[アクティビティの種類を選択します]** セクションで、**[オンライン データの移行]** を選択します。
 
-    ![Database Migration Service プロジェクトを作成する](media\tutorial-mysql-to-azure-mysql-online\dms-create-project4.png)
+    ![Database Migration Service プロジェクトを作成する](media/tutorial-mysql-to-azure-mysql-online/dms-create-project4.png)
 
     > [!NOTE]
     > または、**[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
@@ -183,22 +183,22 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 ## <a name="specify-source-details"></a>ソース詳細を指定する
 1. **[Add Source Details]\(ソースの詳細の追加\)** 画面で、ソース MySQL インスタンスの接続の詳細を指定します。
  
-    ![[Add Source Details]\(ソースの詳細の追加\) 画面](media\tutorial-mysql-to-azure-mysql-online\dms-add-source-details.png)   
+    ![[Add Source Details]\(ソースの詳細の追加\) 画面](media/tutorial-mysql-to-azure-mysql-online/dms-add-source-details.png)   
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 1. **[保存]** を選択し、**[対象の詳細]** 画面でターゲット Azure Database for MySQL の接続の詳細を指定します。これは、mysqldump を使用して **Employees** スキーマがデプロイされた Azure Database for MySQL の事前プロビジョニング済みのインスタンスです。
 
-    ![[ターゲットの詳細] 画面](media\tutorial-mysql-to-azure-mysql-online\dms-add-target-details.png)
+    ![[ターゲットの詳細] 画面](media/tutorial-mysql-to-azure-mysql-online/dms-add-target-details.png)
 
 2. **[保存]** を選択し、**[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
 
     ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service は既定でターゲット データベースを選択します。
 
-    ![ターゲット データベースにマップする](media\tutorial-mysql-to-azure-mysql-online\dms-map-target-details.png)
+    ![ターゲット データベースにマップする](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
 
 3.  **[保存]** を選択し、**[移行の概要]** 画面で、**[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
 
-    ![移行の概要](media\tutorial-mysql-to-azure-mysql-online\dms-migration-summary.png)
+    ![移行の概要](media/tutorial-mysql-to-azure-mysql-online/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>移行を実行する
 - **[移行の実行]** を選択します。
@@ -208,22 +208,22 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 ## <a name="monitor-the-migration"></a>移行を監視する
 1. 移行アクティビティ画面で、移行の **[状態]** が **[完了]** になるまで **[最新の情報に更新]** を選択して表示を更新します。
 
-     ![アクティビティの状態 - 完了](media\tutorial-mysql-to-azure-mysql-online\dms-activity-completed.png)
+     ![アクティビティの状態 - 完了](media/tutorial-mysql-to-azure-mysql-online/dms-activity-completed.png)
 
 2. **[データベース名]** で、特定のデータベースを選択して、**データ全体の読み込み**操作と**増分データ同期**操作の移行状態を取得します。
 
     データ全体の読み込みには初回の読み込みの移行状態が表示され、データ増分同期には変更データ キャプチャ (CDC) の状態が表示されます。
    
-     ![アクティビティの状態 - 全体の読み込み完了](media\tutorial-mysql-to-azure-mysql-online\dms-activity-full-load-completed.png)
+     ![アクティビティの状態 - 全体の読み込み完了](media/tutorial-mysql-to-azure-mysql-online/dms-activity-full-load-completed.png)
 
-     ![アクティビティの状態 - 増分データ同期](media\tutorial-mysql-to-azure-mysql-online\dms-activity-incremental-data-sync.png)
+     ![アクティビティの状態 - 増分データ同期](media/tutorial-mysql-to-azure-mysql-online/dms-activity-incremental-data-sync.png)
 
 ## <a name="perform-migration-cutover"></a>一括移行を実行する
 初回の全体の読み込みが完了すると、データベースは **[一括準備完了]** とマークされます。
 
 1. データベースの移行を完了する準備ができたら、**[一括で開始]** を選択します。
 
-    ![一括で開始](media\tutorial-mysql-to-azure-mysql-online\dms-start-cutover.png)
+    ![一括で開始](media/tutorial-mysql-to-azure-mysql-online/dms-start-cutover.png)
  
 2.  ソース データベースに対するすべての受信トランザクションを必ず停止してください。**[保留中の変更]** カウンターが **0** を示すまで待ってください。
 3.  **[確認]** を選択し、**[適用]** を選択します。

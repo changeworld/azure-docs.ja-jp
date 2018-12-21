@@ -1,21 +1,22 @@
 ---
-title: Java クイック スタート - モデルの変更と LUIS アプリのトレーニング
-titleSuffix: Azure Cognitive Services
-description: この Java クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。 発話の例は、意図にマッピングされる会話形式のユーザー テキストです。 意図に対する発話の例を与えるには、ユーザーによって入力されるどのようなテキストが、どの意図に属しているかを LUIS に学習させます。
+title: 変更、アプリのトレーニング、Java
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: この Java クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bfe4aae25a34799370e52c8677871a62935ab5c2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 206b345fedb033a6b98e350fec8c66a3496f5236
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419743"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080828"
 ---
 # <a name="quickstart-change-model-using-java"></a>クイック スタート: Java を使ってモデルを変更する 
 
@@ -71,14 +72,14 @@ ms.locfileid: "50419743"
 
 依存関係を使用して AddUtterance をコンパイルする
 
-```CMD
+```console
 > javac -classpath gson-2.8.2.jar AddUtterances.java
 ```
 
 ## <a name="run-code"></a>コードの実行
 引数を指定せずに `AddUtterance` を呼び出すと、アプリに LUIS の発話は追加されますが、トレーニングは実行されません。
 
-```CMD
+```console
 > java -classpath .;gson-2.8.2.jar AddUtterances
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: '仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する: Azure Resource Manager | Microsoft Docs'
+title: 仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する:Azure Resource Manager | Microsoft Docs
 description: 仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成します。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: cced9a313664eaeaed4dd1298488670960b76413
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d57e251b241297c461b117edec8fee6316b337b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195772"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098034"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
 
@@ -59,11 +59,11 @@ ms.locfileid: "32195772"
 
 仮想ネットワーク ピアリングの作成に使用するアカウントは、必要なロールまたはアクセス許可を持っている必要があります。 次の例では、Hub-RM と Spoke-Classic という名前の 2 つの仮想ネットワークをピアリングする場合、各仮想ネットワークに対して次のロールまたはアクセス許可を持っている必要があります。
     
-|仮想ネットワーク|デプロイ モデル|ロール|アクセス許可|
+|仮想ネットワーク|デプロイメント モデル|Role|アクセス許可|
 |---|---|---|---|
-|Hub-RM|Resource Manager|[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |クラシック|[	従来のネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
-|Spoke-Classic|Resource Manager|[	ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
+|Hub-RM|リソース マネージャー|[Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
+| |クラシック|[Classic Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
+|Spoke-Classic|リソース マネージャー|[Network Contributor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||クラシック|[従来のネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 [組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)と、特定のアクセス許可を[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法 (Resource Manager のみ) の詳細を参照してください。
@@ -79,7 +79,7 @@ ms.locfileid: "32195772"
     - **[リモート ゲートウェイを使用する]** オプションを設定します。
     - [OK] をクリックします。
 
-    ![spokerm-to-hubrm](./media/vpn-gateway-peering-gateway-transit/spokerm-hubrm-peering.png)
+      ![spokerm-to-hubrm](./media/vpn-gateway-peering-gateway-transit/spokerm-hubrm-peering.png)
 
 2. ピアリングが既に作成されている場合は、ピアリング リソースに移動し、手順 (1) で示したスクリーン ショットのように **[リモート ゲートウェイを使用する]** オプションを有効にします。
 
@@ -90,7 +90,7 @@ ms.locfileid: "32195772"
     - **[ゲートウェイ転送を許可する]** オプションを設定します。
     - [OK] をクリックします。
 
-    ![hubrm-to-spokerm](./media/vpn-gateway-peering-gateway-transit/hubrm-spokerm-peering.png)
+      ![hubrm-to-spokerm](./media/vpn-gateway-peering-gateway-transit/hubrm-spokerm-peering.png)
 
 4. ピアリングが既に作成されている場合は、ピアリング リソースに移動し、手順 (3) で示したスクリーン ショットのように **[ゲートウェイ転送を許可する]** オプションを有効にします。
 

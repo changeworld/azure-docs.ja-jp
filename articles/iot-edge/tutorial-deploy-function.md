@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge で Azure 関数を展開する | Microsoft Docs
-description: このチュートリアルでは、Azure 関数をモジュールとしてエッジ デバイスに展開します。
+title: 'チュートリアル: Azure 関数をデバイスに展開する - Azure IoT Edge | Microsoft Docs'
+description: このチュートリアルでは、Azure 関数を IoT Edge モジュールとして開発した後、エッジ デバイスにそれを展開します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,13 +8,13 @@ ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: d0ae009db0d9470942a4ff5d7c09e2cdd7bcdd53
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 1488f6aff202f8b307b883d8a795d7df20066661
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165622"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081882"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル: Azure 関数を IoT Edge モジュールとして展開する
 
@@ -27,7 +27,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 > * フィルター処理されたデータを表示する。
 
 <center>
-![チュートリアル アーキテクチャ図](./media/tutorial-deploy-function/FunctionsTutDiagram.png)
+![図 - チュートリアルのアーキテクチャ、関数モジュールのステージングと展開](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 
 >[!NOTE]
@@ -63,7 +63,7 @@ Azure IoT Edge デバイス:
 
 1. [Azure portal](https://portal.azure.com) で、**[リソースの作成]** > **[コンテナー]** > **[コンテナー レジストリ]** の順に選択します。
 
-    ![コンテナー レジストリの作成](./media/tutorial-deploy-function/create-container-registry.png)
+    ![Azure portal を使用したコンテナー レジストリの作成](./media/tutorial-deploy-function/create-container-registry.png)
 
 2. コンテナー レジストリを作成するには、以下の値を指定します。
 
@@ -72,7 +72,7 @@ Azure IoT Edge デバイス:
    | レジストリ名 | 一意の名前を指定します。 |
    | サブスクリプション | ドロップダウン リストで、サブスクリプションを選択します。 |
    | リソース グループ | IoT Edge のクイック スタートおよびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
-   | Location | 近くの場所を選択します。 |
+   | 場所 | 近くの場所を選択します。 |
    | 管理者ユーザー | **[有効]** に設定します。 |
    | SKU | **[Basic]** を選択します。 | 
 

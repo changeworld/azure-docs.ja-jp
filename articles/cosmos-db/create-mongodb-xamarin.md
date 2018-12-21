@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: .NET と MongoDB API を使用して Xamarin.Forms アプリを構築する'
+title: 'Azure Cosmos DB: .NET と MongoDB API を使用して Xamarin.Forms アプリをビルドする'
 description: Azure Cosmos DB MongoDB API への接続とクエリに使用できる Xamarin コード サンプルについて説明します。
 services: cosmos-db
 author: codemillmatt
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 4fde6d203999b15f0f60d4879c2fdc595e1fb7e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ece6780803809829e69fccc320ae65a0c7b0f94b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835558"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089260"
 ---
-# <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>クイック スタート: .NET と Azure portal を使用して MongoDB API Xamarin.Forms アプリを構築する
+# <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>クイック スタート: .NET と Azure portal を使用して MongoDB API Xamarin.Forms アプリをビルドする
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -156,7 +156,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使って、プライマリ接続文字列をコピーします。
+1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使って、プライマリ接続文字列をコピーします。
 
 2. **TaskList.Core** プロジェクトの **Helpers** ディレクトリにある **APIKeys.cs** ファイルを開きます。
 

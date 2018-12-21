@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 48e338a08330e0674cc4410adf135ec546a5e1c3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230599"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084014"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -82,13 +82,13 @@ Snapshot Debugger は、お使いのアプリケーションで最も一般的�
 
     ![スナップショットをデバッグする](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-01.png)
 
-4. 有効な値を持つ最初の呼び出しが **ValidZipCode** であるため、郵便番号が整数に変換できない文字で提供されていたことが確認できます。  これは、修正する必要があるコードのエラーのようです。
+3. 有効な値を持つ最初の呼び出しが **ValidZipCode** であるため、郵便番号が整数に変換できない文字で提供されていたことが確認できます。  これは、修正する必要があるコードのエラーのようです。
 
     ![スナップショットをデバッグする](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-5. 修正する必要がある実際のコードがあるスナップショットを Visual Studio にダウンロードするには、**[Download Snapshot]\(スナップショットのダウンロード\)** をクリックします。
-6. スナップショットは、Visual Studio に読み込まれます。
-7. これで、例外の原因となったコード行を素早く特定する デバッグ セッションを Visual Studio で実行できます。
+4. このオプションを Visual Studio にダウンロードして、修正する必要がある実際のコードをそこで見つけることができます。 これを行うには、**[スナップショットのダウンロード]** をクリックします。
+5. スナップショットは、Visual Studio に読み込まれます。
+6. これで、例外の原因となったコード行を素早く特定するデバッグ セッションを Visual Studio Enterprise で実行できます。
 
     ![コードの例外](media/app-insights-tutorial-runtime-exceptions/exception-code.png)
 

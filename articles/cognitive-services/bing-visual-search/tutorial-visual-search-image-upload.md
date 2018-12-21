@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: b13f2e5c96ba50fc76d7bfae256e5fcc1c8b56ce
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 24b4bacd6a369812a07095b1d9c114f557d10d57
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443459"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960059"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>チュートリアル: Bing Visual Search アップロードの解説
 
@@ -27,7 +27,7 @@ ms.locfileid: "52443459"
 
 Azure portal でサブスクリプションを開始するには、次の手順に従います。
 1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
-2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
+2. ドロップダウン リストの [Marketplace] から [`Bing Search v7`] を選択します。
 3. 新しいリソースの名前を [`Name`] に入力します。
 4. `Pay-As-You-Go` サブスクリプションを選択します。
 5. `S9` 価格レベルを選択します。
@@ -1340,4 +1340,4 @@ buildDiv 関数は addDivContent 関数を呼び出して、各タグの折り�
 
 ## <a name="next-steps"></a>次の手順
 
-分析情報トークンを使用して分析情報を取得する方法については、[Bing Visual Search SDK の ImageInsightsToken のチュートリアル](.\tutorial-visual-search-insights-token.md)を参照してください。
+分析情報トークンを使用して分析情報を取得する方法については、[Bing Visual Search SDK の ImageInsightsToken のチュートリアル](./tutorial-visual-search-insights-token.md)を参照してください。

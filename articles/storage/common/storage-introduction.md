@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: b1fb9be6c05edbd85a709632a001fe1c1b8b4c6c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e483997140efc1d75466d887e42383d887f8a6f4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247791"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963251"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -29,10 +29,10 @@ Azure Storage は、最新のデータ ストレージ シナリオ用の Micros
 
 Azure Storage には、次のデータ サービスが含まれます。 
 
-- [Azure BLOB](../blobs/storage-blobs-introduction.md): テキストおよびバイナリ データのための高度にスケーラブルなオブジェクト ストア。
-- [Azure Files](../files/storage-files-introduction.md): クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
-- [Azure キュー](../queues/storage-queues-introduction.md): アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。 
-- [Azure テーブル](../tables/table-storage-overview.md): 構造化データのスキーマレス ストレージのための NoSQL ストア。
+- [Azure BLOB](../blobs/storage-blobs-introduction.md):テキストおよびバイナリ データのための高度にスケーラブルなオブジェクト ストア。
+- [Azure ファイル](../files/storage-files-introduction.md):クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
+- [Azure キュー](../queues/storage-queues-introduction.md):アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。 
+- [Azure テーブル](../tables/table-storage-overview.md):構造化データのスキーマレス ストレージのための NoSQL ストア。
 
 それぞれのサービスには、ストレージ アカウントを通じてアクセスします。 作業を開始するには、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
 
@@ -50,7 +50,7 @@ BLOB ストレージは、次の目的に最適です。
 
 BLOB ストレージ内のオブジェクトには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 ユーザーまたはクライアント アプリケーションは、URL、[Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage)、または Azure Storage クライアント ライブラリを介して BLOB にアクセスできます。 ストレージ クライアント ライブラリは、[.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)、[Node.js](http://azure.github.io/azure-storage-node)、[Python](https://azure-storage.readthedocs.io/)、[PHP](http://azure.github.io/azure-storage-php/)、[Ruby](http://azure.github.io/azure-storage-ruby) など、さまざまな言語で利用できます。
 
-BLOB ストレージの詳細については、「[Introduction to object storage on Azure (Azure のオブジェクト ストレージの概要)](../blobs/storage-blobs-introduction.md)」を参照してください。
+Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
 
 ## <a name="azure-files"></a>Azure Files
 [Azure Files](../files/storage-files-introduction.md) では、標準的なサーバー メッセージ ブロック (SMB) プロトコルを使用してアクセスできる可用性の高いネットワーク ファイル共有を設定することができます。 つまり、複数の VM が、読み取りアクセス権と書き込みアクセス権の両方を使用して同じファイルを共有できます。 また、REST インターフェイスまたはストレージ クライアント ライブラリを使用してファイルを読み取ることもできます。

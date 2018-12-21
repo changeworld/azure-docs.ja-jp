@@ -15,14 +15,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 8b9daa0fbbf84e0f602498a0847c9e120f709b17
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057739"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408937"
 ---
-# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Batch AI トレーニング ジョブ用のクラスターを作成する
+# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Batch AI トレーニング ジョブ用のクラスターを作成する
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 このクイック スタートでは、Azure portal を使用して、AI および機械学習モデルのトレーニングに使用できる Batch AI クラスターを作成する方法について説明します。 Batch AI は、データ サイエンティストや AI 研究者が、Azure 仮想マシンのクラスター上で、AI および機械学習モデルを大規模にトレーニングするためのマネージド サービスです。
 
@@ -91,7 +94,7 @@ Batch AI ファイル サーバーは単一ノード NFS であり、クラス�
    |**VM サイズ**     |Standard NC6|
    |**ターゲット ノード数**     |1|
 
-3. **管理者ユーザー名**を入力し、SSH 公開キー ファイルの内容を **[SSH キー]** にコピーします。 このページの残りの値には既定値をそのまま使用し、**[Next: Node setup]\(次へ: ノードのセットアップ\)** を選択します。
+3. **管理者ユーザー名**を入力し、SSH 公開キー ファイルの内容を **[SSH キー]** にコピーします。 このページのその他の値には既定値をそのまま使用し、**[次へ:ノードのセットアップ]** を選択します。
 
    ![クラスターの基本情報の入力](./media/quickstart-create-cluster-portal/create-cluster.png)
 

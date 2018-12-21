@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Database Migration Service を使用して PostgreSQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs'
+title: チュートリアル:Azure Database Migration Service を使用して PostgreSQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs
 description: Azure Database Migration Service を使用して、オンプレミスの PostgreSQL から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: ba27ceb784cf139c288a89f3191282fb9b364ddc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 8780e145845d820ef0c6ff2c43891287c1902e2c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864378"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000910"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル: DMS を使用して PostgreSQL を Azure Database for PostgreSQL にオンラインで移行する
+# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用して PostgreSQL をオンラインで Azure Database for PostgreSQ に移行する
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの PostgreSQL インスタンスから [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを PostgreSQL 9.6 のオンプレミス インスタンスから Azure Database for PostgreSQL に移行します。
 
 このチュートリアルでは、以下の内容を学習します。
@@ -38,7 +38,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-- [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.5、9.6、または 10.3 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンが 9.5.11、9.6.7、10.3、またはそれ以降のバージョンである必要があります 詳しくは、「[サポートされている PostgreSQL Database バージョン](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)」の記事をご覧ください。
+- [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.5、9.6、または 10 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンが 9.5.11、9.6.7、10、またはそれ以降のバージョンである必要があります 詳しくは、「[サポートされている PostgreSQL Database バージョン](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)」の記事をご覧ください。
 
     また、オンプレミスの PostgreSQL のバージョンが、Azure Database for PostgreSQL のバージョンと一致する必要があります。 たとえば、PostgreSQL 9.5.11.5 は Azure Database for PostgreSQL 9.5.11 にのみ移行でき、 バージョン 9.6.7 には移行できません。
 
@@ -52,7 +52,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 - CLI を呼び出すには、次の 2 つの方法があります。
     - Azure Portal の右上隅にある [Cloud Shell] ボタンを選択します。
  
-       ![Azure Portal の [Cloud Shell] ボタン](media\tutorial-postgresql-to-azure-postgresql-online\cloud-shell-button.png)
+       ![Azure Portal の [Cloud Shell] ボタン](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
  
     - CLI をローカルにインストールして実行します。 CLI 2.0 は、Azure リソースを管理するためのコマンドライン ツールです。
      
@@ -188,10 +188,10 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     ```
 
     たとえば、次の設定でサービスを作成するには、下記のコマンドを実行します。
-    - 場所: East US2
-    - サブスクリプション: 97181df2-909d-420b-ab93-1bff15acb6b7
-    - リソース グループ名: PostgresDemo
-    - DMS サービス名: PostgresCLI
+    - 場所:米国東部 2
+    - サブスクリプション:97181df2-909d-420b-ab93-1bff15acb6b7
+    - リソース グループ名:PostgresDemo
+    - DMS サービス名:PostgresCLI
 
     ```
     az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
@@ -233,12 +233,12 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     ```
     たとえば、次のパラメーターを使用してプロジェクトを作成するには、下記のコマンドを実行します。
 
-      - 場所: 米国中西部
-      - リソース グループ名: PostgresDemo
-      - サービス名: PostgresCLI
-      - プロジェクト名: PGMigration
-      - ソース プラットフォーム: PostgreSQL
-      - ターゲット プラットフォーム: AzureDbForPostgreSql
+      - 場所:米国中西部
+      - リソース グループ名:PostgresDemo
+      - サービス名:PostgresCLI
+      - プロジェクト名:PGMigration
+      - ソース プラットフォーム:PostgreSQL
+      - ターゲット プラットフォーム:AzureDbForPostgreSql
  
     ```
     az dms project create -l eastus2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql

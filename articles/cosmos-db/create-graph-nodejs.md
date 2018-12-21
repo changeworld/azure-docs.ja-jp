@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 0f2bcc34a1f82c33c8f640dce8eecccf312651fb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 58fca9e66b0be12992d7762824df4ceb9a22e614
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844212"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073416"
 ---
-# <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Azure Cosmos DB: Gremlin API を使用した Node.js アプリケーションの構築
+# <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Azure Cosmos DB: Gremlin API を使用して Node.js アプリケーションをビルドする
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -36,7 +36,7 @@ Azure Cosmos DB は、Microsoft が提供するグローバルに分散された
 
 このサンプルを実行する前に、以下の前提条件を満たしている必要があります。
 * [Node.js](https://nodejs.org/en/) バージョン v0.10.29 以降
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

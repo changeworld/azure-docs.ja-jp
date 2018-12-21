@@ -28,6 +28,8 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
+  - name: v2 から v3 への移行
+    href: migrate-from-v2-to-v3.md
   - name: コンテンツの分析
     href: analyzing-video-audio-files-concept.md
   - name: コンテンツのエンコード
@@ -78,8 +80,6 @@ items:
       href: live-event-latency.md
 - name: ハウツー ガイド
   items:
-  - name: v2 から v3 への移行
-    href: migrate-from-v2-to-v3.md
   - name: アカウントの作成 - CLI
     href: create-account-cli-how-to.md
   - name: API へのアクセス - CLI
@@ -90,6 +90,8 @@ items:
       href: job-input-from-http-how-to.md
     - name: ローカル ファイルから - .NET
       href: job-input-from-local-file-how-to.md
+    - name: ローカル ファイルから - REST
+      href: upload-files-rest-how-to.md
   - name: フィルターの作成
     items:
     - name: .NET の場合
@@ -180,9 +182,9 @@ items:
     href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: 49c15b2540b33a3f37f4f276b435ce3f4508b513
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aafc49b10a012bab6c3dc3d455480deca44fde32
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582509"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631993"

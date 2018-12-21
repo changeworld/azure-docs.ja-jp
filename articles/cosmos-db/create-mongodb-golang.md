@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築'
+title: 'Azure Cosmos DB: Golang と Azure portal を使用して MongoDB API コンソール アプリをビルドする'
 description: Azure Cosmos DB への接続とデータの照会に使用できる Golang コード サンプルについて説明します
 services: cosmos-db
 author: slyons
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 04149e12e2926888bab82495a0924df94d6e3450
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a05ca8602ad3b5ea3135ad2ce915bdc38359bfd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836170"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089561"
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
+# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Golang と Azure portal を使用して MongoDB API コンソール アプリをビルドする
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -63,7 +63,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     go get gopkg.in/mgo.v2
     ```
 
-[mgo](http://labix.org/mgo) ドライバーは、[Go 言語](http://golang.org/)用の [MongoDB](http://www.mongodb.org/) ドライバーです。標準的な Go 記法に準拠したごく単純な API の下で、十分にテストされた豊富な一連の機能が実装されています。
+[mgo](https://labix.org/mgo) ドライバーは、[Go 言語](https://golang.org/)用の [MongoDB](https://www.mongodb.com/) ドライバーです。標準的な Go 記法に準拠したごく単純な API の下で、十分にテストされた豊富な一連の機能が実装されています。
 
 <a id="connection-string"></a>
 
@@ -95,7 +95,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Azure Cosmos DB への Go アプリの接続
 
-Azure Cosmos DB では、SSL 対応の MongoDB がサポートされています。 SSL 対応の MongoDB に接続するには、[mgo.DialInfo](http://gopkg.in/mgo.v2#DialInfo) で **DialServer** 関数を定義し、接続の際に [tls.*Dial*](http://golang.org/pkg/crypto/tls#Dial) 関数を使用する必要があります。
+Azure Cosmos DB では、SSL 対応の MongoDB がサポートされています。 SSL 対応の MongoDB に接続するには、[mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) で **DialServer** 関数を定義し、接続の際に [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) 関数を使用する必要があります。
 
 次の Golang コード スニペットは、Go アプリを Azure Cosmos DB MongoDB API と接続します。 *DialInfo* クラスには、MongoDB クラスターとのセッションを確立するためのオプションがあります。
 

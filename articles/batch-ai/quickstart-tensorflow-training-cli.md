@@ -15,14 +15,17 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 09/03/2018
 ms.author: danlep
-ms.openlocfilehash: 99d864a5d519ce56a559bea4db7fe89a113e47b9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ROBOTS: NOINDEX
+ms.openlocfilehash: 979253021f5503295e0572759b510e074ceb1a6b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157924"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408070"
 ---
-# <a name="quickstart-train-a-deep-learning-model-with-batch-ai"></a>クイック スタート: Batch AI を使用してディープ ラーニング モデルをトレーニングする
+# <a name="quickstart-train-a-deep-learning-model-with-batch-ai"></a>クイック スタート:Batch AI を使用してディープ ラーニング モデルをトレーニングする
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 このクイック スタートでは、Batch AI によって管理されている GPU 対応仮想マシンでサンプル ディープ ラーニング モデルをトレーニングする方法について説明します。 Batch AI は、データ サイエンティストや AI 研究者が、Azure 仮想マシンのクラスター上で、AI および機械学習モデルを大規模にトレーニングするためのマネージド サービスです。 
 

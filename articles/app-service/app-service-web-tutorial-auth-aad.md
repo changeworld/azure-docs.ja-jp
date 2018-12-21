@@ -1,5 +1,5 @@
 ---
-title: Azure App Service でユーザーをエンド ツー エンドで認証および承認する | Microsoft Docs
+title: ユーザーをエンド ツー エンドで認証および承認する - Azure App Service | Microsoft Docs
 description: App Service の認証と承認を使用して、リモート API へのアクセスを含む App Service アプリをセキュリティで保護する方法について説明します。
 keywords: App Service, Azure App Service, authN, authZ, 保護, セキュリティ, 多層, Azure Active Directory, Azure Ad
 services: app-service\web
@@ -14,14 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
-ms.openlocfilehash: 9b66dad87708ad127186b0bbbc39965fe90b6b75
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 7c1e07d73d110d5ef7f681486479ec65ff436b19
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416156"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408856"
 ---
-# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル: Azure App Service でユーザーをエンド ツー エンドで認証および承認する
+# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
 [Azure App Service](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、App Service には、[ユーザーの認証と承認](app-service-authentication-overview.md)のためのサポートが組み込まれています。 このチュートリアルでは、App Service の認証と承認を使用してアプリケーションをセキュリティで保護する方法を示します。 ここでは ASP.NET Core アプリと Angular.js フロントエンドが使用されていますが、これはほんの一例です。 App Service の認証と承認では、すべての言語のランタイムがサポートされています。このチュートリアルに沿って、お好みの言語に適用する方法を学習することができます。
 
@@ -213,11 +214,11 @@ git push frontend master
 
 この手順では、2 つのアプリの認証と承認を有効にします。 また、フロントエンド アプリも構成して、バックエンド アプリへの認証済みの呼び出しを行うために使用できるアクセス トークンが生成されるようにします。
 
-ID プロバイダーとして Azure Active Directory を使用します。 詳細については、[App Services アプリケーション用の Azure Active Directory 認証の構成](app-service-mobile-how-to-configure-active-directory-authentication.md)に関するページを参照してください。
+ID プロバイダーとして Azure Active Directory を使用します。 詳細については、[App Services アプリケーション用の Azure Active Directory 認証の構成](configure-authentication-provider-aad.md)に関するページを参照してください。
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>バックエンド アプリの認証と承認を有効にする
 
-[Azure Portal](https://portal.azure.com) で、左側のメニューから **[リソース グループ]** > **[myAuthResourceGroup]** > _\<back\_end\_app\_name>_ の順にクリックして、バックエンド アプリの管理ページを開きます。
+[Azure portal](https://portal.azure.com) で、左側のメニューから **[リソース グループ]** > **[myAuthResourceGroup]** > _\<back\_end\_app\_name>_ の順にクリックして、バックエンド アプリの管理ページを開きます。
 
 ![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-auth-aad/portal-navigate-back-end.png)
 

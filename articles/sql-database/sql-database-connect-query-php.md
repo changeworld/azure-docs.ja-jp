@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: be3ac9fab6c89c65ad9673811e108cefe2c80d00
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b768b50af7ad6736e5cc3c885e6ac5016976f48a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724249"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958544"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>クイック スタート: PHP を使用して Azure SQL Database に照会する
 
@@ -32,9 +32,9 @@ ms.locfileid: "52724249"
 
 - ご使用のオペレーティング システムに対応した、以下の PHP 関連のソフトウェアをインストール済みであること。
 
-    - **MacOS**: Homebrew と PHP、ODBC ドライバーと SQLCMD をインストールした後、PHP Driver for SQL Server をインストールします。 [手順 1.2.、手順 1.3.、手順 2.1.](https://www.microsoft.com/sql-server/developer-get-started/php/mac/) を参照してください。
+    - **MacOS**: PHP と ODBC ドライバーをインストールした後、PHP Driver for SQL Server をインストールします。 [手順 1、2、および 3](/sql/connect/php/installation-tutorial-linux-mac) を参照してください。
 
-    - **Ubuntu**: PHP と他の必須パッケージをインストールした後、PHP Driver for SQL Server をインストールします。 [手順 1.2. と手順 2.1.](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/) を参照してください。
+    - **Linux**: PHP と ODBC ドライバーをインストールした後、PHP Driver for SQL Server をインストールします。 [手順 1、2、および 3](/sql/connect/php/installation-tutorial-linux-mac) を参照してください。
 
     - **Windows**: IIS Express と Chocolatey 用の PHP をインストールした後、ODBC ドライバーと SQLCMD をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/php/windows/) を参照してください。
 
@@ -91,4 +91,4 @@ ms.locfileid: "52724249"
 
 - [問題の報告と質問](https://github.com/Microsoft/msphpsql/issues)
 
-- [再試行ロジックの例: PHP を使用して SQL に弾性的に接続する](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [再試行ロジックの例:PHP を使用して SQL に弾性的に接続する](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

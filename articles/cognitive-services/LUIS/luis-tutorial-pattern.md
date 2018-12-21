@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル 3: LUIS の予測を改善するためのパターン'
+title: パターン
 titleSuffix: Azure Cognitive Services
 description: パターンを使用して意図とエンティティの予測を改善しますが、提供する発話の例は減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例によって提供されます。
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 7ba5db8e50e8da5b274f73046d56f7816ca8834d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 346d8a83661c487a1d9a11e4da7d7bb67843e0b4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138329"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075524"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>チュートリアル 3: 一般的な発話の形式を追加する
+# <a name="tutorial-3-add-common-utterance-formats"></a>チュートリアル 3:一般的な発話の形式を追加する
 
 このチュートリアルでは、パターンを使用して意図とエンティティの予測を改善しますが、提供する発話の例は減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例によって提供されます。 パターンは、式の照合と機械学習の組み合わせです。  テンプレート発話の例は、意図の発話と共に、どのような発話が意図に適合するかを LUIS がより適切に解釈できるようにします。 
 
@@ -27,7 +28,7 @@ ms.locfileid: "50138329"
 > * 既存のチュートリアル アプリを使用する 
 > * 意図を作成する
 > * トレーニング
-> * [発行]
+> * 発行
 > * エンドポイントから意図とエンティティを取得する
 > * パターンを作成する
 > * パターン予測の改善を検証する
@@ -96,7 +97,7 @@ ms.locfileid: "50138329"
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>[発行]
+## <a name="publish"></a>発行
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
@@ -106,7 +107,7 @@ ms.locfileid: "50138329"
 
 2. アドレスの URL の末尾に移動し、「`Who is the boss of Jill Jones?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {
@@ -229,7 +230,7 @@ ms.locfileid: "50138329"
 
 LUIS がクライアント アプリに予測を返したら、そのクライアント アプリで意図の名前を関数名として使用でき、従業員エンティティをその関数へのパラメーターとして使用できます。
 
-```Javascript
+```nodejs
 OrgChartManager(employee){
     ///
 }
@@ -277,7 +278,7 @@ OrgChartManager(employee){
 
 3. アドレスの URL の末尾に移動し、発話として「`Who is the boss of Jill Jones?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {

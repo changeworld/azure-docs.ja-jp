@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 画像の分析 - SDK、C# - Computer Vision'
+title: クイック スタート:画像の分析 - SDK、C# - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像を分析します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: 7de7a87c73c2dabddf2268a6a0bc2992d6017e4d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 0983978221e9872e92ca366edd3bd3f2bfd9c3f4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853933"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413321"
 ---
-# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>クイック スタート: Computer Vision SDK と C# による画像の分析
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# による画像の分析
 
 このクイック スタートでは、Computer Vision Windows クライアント ライブラリを使ってローカル画像とリモート画像の両方を分析し、視覚的特徴を抽出します。
 
@@ -162,7 +162,7 @@ namespace ImageAnalyze
 
 成功した場合、各画像について最も関連性の高いキャプションが応答に表示されます。
 
-生の JSON 出力の例については、[C# を使ったローカル画像の分析に関する API クイック スタート](../QuickStarts/CSharp-analyze.md#examine-the-response)をご覧ください。
+[API のクイック スタートの C# を使ったローカル画像の分析](../QuickStarts/CSharp-analyze.md#examine-the-response)で生の JSON 出力の例を参照してください。
 
 ```
 http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg

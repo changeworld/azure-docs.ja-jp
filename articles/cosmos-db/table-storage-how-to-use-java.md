@@ -9,12 +9,12 @@ ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: d7be0ed8d59063f75b3d4fadbf69237bdb2d0d13
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e6bae31f0e3558f274ee638c380e69c15b7c3889
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863688"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079315"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -455,7 +455,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
-テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。 プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。 次のコードのクエリは、**select** メソッドを使って、テーブル内のエンティティの電子メール アドレスだけを返します。 結果は **EntityResolver** によって **String** コレクションへのプロジェクション (サーバーから返されるエンティティの型変換) が行われます。 プロジェクションの詳細については、「[Azure Tables: Introducing Upsert and Query Projection (Azure Tables: アップサートとクエリ プロジェクションの概要)][Azure Tables: Introducing Upsert and Query Projection]」をご覧ください。 プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
+テーブルに対するクエリでは、ごくわずかのプロパティだけをエンティティから取得できます。 プロジェクションと呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティがある場合に役立ちます。 次のコードのクエリは、**select** メソッドを使って、テーブル内のエンティティの電子メール アドレスだけを返します。 結果は **EntityResolver** によって **String** コレクションへのプロジェクション (サーバーから返されるエンティティの型変換) が行われます。 プロジェクションの詳細については、[Azure テーブル: アップサートおよびクエリ プロジェクションの概要][Azure Tables: Introducing Upsert and Query Projection] に関するページを参照してください。 プロジェクションはローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。
 
 ```java
 try
@@ -497,7 +497,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>エンティティの挿入または置換を行う
-エントリをテーブルに追加するときは、多くの場合、そのエントリがテーブル内に既に存在しているかどうかを把握していません。 エンティティの挿入または置換操作では、エンティティが存在しない場合にそのエンティティを挿入し、エンティティが存在する場合はその既存のエンティティを置き換えるという操作を 1 つの要求で処理することができます。 これまでの例に対して、次のコードは "Walter Harp" のエンティティを挿入または置換します。 新しいエンティティを作成すると、このコードは **TableOperation.insertOrReplace** メソッドを呼び出します。 その後、**CloudTable** オブジェクトの **execute** を呼び出し、テーブルとそのテーブルの挿入および置換操作をパラメーターとして渡します。 エンティティの一部のみ更新するには、**TableOperation.insertOrMerge** メソッドを代わりに使えます。 挿入または置換はローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。 挿入または置換、挿入またはマージの詳細については、「[Azure Tables: Introducing Upsert and Query Projection (Azure Tables: アップサートとクエリ プロジェクションの概要)][Azure Tables: Introducing Upsert and Query Projection]」をご覧ください。
+エントリをテーブルに追加するときは、多くの場合、そのエントリがテーブル内に既に存在しているかどうかを把握していません。 エンティティの挿入または置換操作では、エンティティが存在しない場合にそのエンティティを挿入し、エンティティが存在する場合はその既存のエンティティを置き換えるという操作を 1 つの要求で処理することができます。 これまでの例に対して、次のコードは "Walter Harp" のエンティティを挿入または置換します。 新しいエンティティを作成すると、このコードは **TableOperation.insertOrReplace** メソッドを呼び出します。 その後、**CloudTable** オブジェクトの **execute** を呼び出し、テーブルとそのテーブルの挿入および置換操作をパラメーターとして渡します。 エンティティの一部のみ更新するには、**TableOperation.insertOrMerge** メソッドを代わりに使えます。 挿入または置換はローカル ストレージ エミュレーターではサポートされていません。したがって、このコードはテーブル サービスのアカウントを使用している場合にのみ機能します。 挿入または置換、および挿入またはマージの詳細については、この [Azure テーブル: アップサートおよびクエリ プロジェクションの概要][Azure Tables: Introducing Upsert and Query Projection] に関するページを参照してください。
 
 ```java
 try
@@ -598,14 +598,12 @@ catch (Exception e)
 * [Azure Storage SDK for Java][Azure Storage SDK for Java]
 * [Azure ストレージ クライアント SDK リファレンス][Azure ストレージ クライアント SDK リファレンス]
 * [Azure Storage REST API][Azure Storage REST API]
-* [Azure Storage チーム ブログ][Azure Storage Team Blog]
+* [Azure Storage チームのブログ][Azure Storage チームのブログ]
 
 詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。
 
-[Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
+[Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Azure ストレージ クライアント SDK リファレンス]: http://azure.github.io/azure-storage-java/
+[Azure ストレージ クライアント SDK リファレンス]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

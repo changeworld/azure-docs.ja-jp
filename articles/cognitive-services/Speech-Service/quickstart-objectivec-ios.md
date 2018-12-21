@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: iOS で Objective-C と Speech Service SDK を使用して音声を認識する'
+title: 'クイック スタート: 音声を認識する (Objective-C) - 音声サービス'
 titleSuffix: Azure Cognitive Services
 description: iOS で Objective-C と Speech Service SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: chlandsi
-ms.openlocfilehash: 7d1e05e13e55b8b7bc07eda71d63f96f12c81ff9
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: eaa44f942082c6bd062599dbdd0401fe4505daf4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219190"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090209"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>クイック スタート: iOS で Objective-C と Speech Service SDK を使用して音声を認識する
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>クイック スタート: iOS 上で Objective-C と Speech Service SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -25,8 +25,11 @@ ms.locfileid: "51219190"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Speech サービスのサブスクリプション キー。 「[Speech サービスを無料で試す](get-started.md)」を参照してください。
-* iOS 開発環境として Xcode 9.4.1 がインストールされている Mac。 このチュートリアルは iOS バージョン 11.4 を対象としています。 まだ Xcode をお持ちでない場合は、[App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) からインストールできます。
+開始する前の前提条件の一覧を次に示します。
+
+* 音声サービス用の[サブスクリプション キー](get-started.md)
+* macOS コンピューターと [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 以降
+* iOS バージョン 11.4 以降に設定されたターゲット
 
 ## <a name="get-the-speech-sdk-for-ios"></a>iOS 用の Speech SDK を取得する
 
@@ -37,7 +40,7 @@ Cognitive Services Speech SDK の現在のバージョンは `1.1.0` です。
 Mac および iOS 用の Cognitive Services Speech SDK は、現在は Cocoa フレームワークとして配布されています。
 これは https://aka.ms/csspeech/iosbinary からダウンロードできます。 ファイルをホーム ディレクトリにダウンロードします。
 
-## <a name="create-an-xcode-project"></a>Xcode プロジェクトの作成 
+## <a name="create-an-xcode-project"></a>Xcode プロジェクトの作成
 
 Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリックして新しいプロジェクトを開始します。
 テンプレートの選択ダイアログで、"iOS Single View App" テンプレートを選択します。
@@ -54,7 +57,7 @@ Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリッ�
     1. ホーム ディレクトリを選択して、プロジェクトを配置します。 これにより、ホーム ディレクトリ内に `helloworld` ディレクトリが作成され、Xcode プロジェクトのすべてのファイルが入れられます。
     1. このサンプル プロジェクトの Git リポジトリの作成を無効にします。
     1. *[Project Settings]* で、SDK へのパスを調整します。
-        1. **[General]** タブの **[Embedded Binaries]** ヘッダーの下で、フレームワークとして SDK ライブラリを追加し (**[Add embedded binaries]** > **[Add other...]** >)、ホーム ディレクトリに移動して、ファイル `MicrosoftCognitiveServicesSpeech.framework` を選択します。 これにより、SDK のライブラリは、ヘッダー **[Linked Framework and Libraries]** にも自動的に追加されます。
+        1. **[Embedded Binaries]\(埋め込みバイナリ\)** ヘッダーの下の **[全般]** タブで、フレームワークとして SDK ライブラリを追加します (**[Add embedded binaries]\(埋め込みバイナリの追加\)** > **[Add other...]\(その他の追加...\)**)。ホーム ディレクトリに移動し、`MicrosoftCognitiveServicesSpeech.framework`ファイルを選択します。 これにより、SDK のライブラリは、ヘッダー **[Linked Framework and Libraries]** にも自動的に追加されます。
         ![追加されたフレームワーク](media/sdk/qs-objectivec-framework.png)
         1. **[Build Settings]** タブに移動し、**[All]** の設定をアクティブにします。
         1. ディレクトリ `$(SRCROOT)/..` を、**[Search Paths]** 見出しの下にある *[Framework Search Paths]* に追加します。
@@ -103,4 +106,3 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 
 > [!div class="nextstepaction"]
 > [サンプルを入手する](speech-sdk.md#get-the-samples)
-

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: cded90d4f36e353241bb594bae35b7c7e03599b9
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 0ede6c0c55e2f953e0d109d2d371313759ed4d06
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436011"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965157"
 ---
 # <a name="what-is-api-management"></a>API Management とは
 
@@ -32,10 +32,8 @@ API Management (APIM) が組織にもたらす利点は、外部のパートナ�
 API Management を使用するには、管理者が API を作成します。 API はそれぞれ、少なくとも 1 つの操作で構成され、1 つまたは複数の成果物に追加することができます。 API を使用する開発者は、その API を含んだ成果物をサブスクライブしたうえで、使用ポリシーが適用されていればその範囲の中で、API の操作を呼び出すことができます。 一般的なシナリオは、次のとおりです。
 
 * **モバイル インフラストラクチャのセキュリティを強化する**。API キーによるアクセス制御、スロットル処理による DOS 攻撃の防止、JWT トークン検証などの高度なセキュリティ ポリシーの使用によって、これを行います。
-* 
-  **ISV パートナー エコシステムを可能にする**。開発者ポータルを通したパートナーとの迅速な協力の提供と、パートナーによる使用の準備が整っていない内部実装から切り離された API ファサードの構築によって、これを行います。
-* 
-  **内部 API プログラムを実行する**。組織が可用性と API に対する最新の変更を伝達するための一元的な場所の提供と、組織アカウントに基づいたアクセスの制限によって、これを行います。そのすべてが、API ゲートウェイとバックエンドの間のセキュリティ保護されたチャネルに基づいて実行されます。
+* **ISV パートナー エコシステムを可能にする**。開発者ポータルを通したパートナーとの迅速な協力の提供と、パートナーによる使用の準備が整っていない内部実装から切り離された API ファサードの構築によって、これを行います。
+* **内部 API プログラムを実行する**。組織が可用性と API に対する最新の変更を伝達するための一元的な場所の提供と、組織アカウントに基づいたアクセスの制限によって、これを行います。そのすべてが、API ゲートウェイとバックエンドの間のセキュリティ保護されたチャネルに基づいて実行されます。
 
 システムは、次のコンポーネントで構成されます。
 
@@ -61,7 +59,7 @@ API Management を使用するには、管理者が API を作成します。 AP
   * API キーを取得するために、アカウントを作成してサブスクライブします。
   * 自分自身の使用に関する分析にアクセスします。
 
-詳細については、 [クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper) に関する PDF ホワイトペーパーをご覧ください。 CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。 
+詳しくは、「[Cloud-based API Management: Harnessing the Power of APIs](https://j.mp/ms-apim-whitepaper)」(クラウドベースの API 管理: API のパワーを利用する) ホワイトペーパー (PDF) をご覧ください。 CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。 
  
  * API の一般的な要件と課題
  * API の分離とファサードの提供

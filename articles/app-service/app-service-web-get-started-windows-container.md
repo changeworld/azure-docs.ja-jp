@@ -1,5 +1,5 @@
 ---
-title: Azure でのカスタム Windows コンテナーの実行 (プレビュー) | Microsoft Docs
+title: カスタム Windows コンテナー (プレビュー) を実行する - Azure App Service | Microsoft Docs
 description: カスタム Windows コンテナーを Azure App Service にデプロイする方法について説明します。
 services: app-service\web
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/17/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: e2d058cfe6d6a31f557708277902063e51f54bc5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.custom: seodec18
+ms.openlocfilehash: 0883784d5c7f833556a07f2bc6431470febdc4c7
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971369"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384158"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Azure でのカスタム Windows コンテナーの実行 (プレビュー)
 
-[Azure App Service](app-service-web-overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 Windows 環境があらかじめ構成されていることで、オペレーティング システムは、管理アクセスやソフトウェアのインストール、グローバル アセンブリ キャッシュへの変更などができないようにロックされます (「[Azure App Service におけるオペレーティング システムの機能](web-sites-available-operating-system-functionality.md)」を参照)。 アプリケーションから利用すべき領域が事前構成済みの環境を超える場合は、カスタムの Windows コンテナーをデプロイすることで対応できます。 このクイック スタートでは、Visual Studio から Windows イメージ内の ASP.NET アプリを [Docker Hub](https://hub.docker.com/) にデプロイし、Azure App Service のカスタム コンテナーで実行する方法を示します。
+[Azure App Service](app-service-web-overview.md) は、IIS 上で稼働する ASP.NET や IIS 上で稼働する Node.js など、Windows 上の定義済みのアプリケーション スタックを提供します。 Windows 環境があらかじめ構成されていることで、オペレーティング システムは、管理アクセスやソフトウェアのインストール、グローバル アセンブリ キャッシュへの変更などができないようにロックされます (「[Azure App Service におけるオペレーティング システムの機能](operating-system-functionality.md)」を参照)。 アプリケーションから利用すべき領域が事前構成済みの環境を超える場合は、カスタムの Windows コンテナーをデプロイすることで対応できます。 このクイック スタートでは、Visual Studio から Windows イメージ内の ASP.NET アプリを [Docker Hub](https://hub.docker.com/) にデプロイし、Azure App Service のカスタム コンテナーで実行する方法を示します。
 
 ![](media/app-service-web-get-started-windows-container/app-running-vs.png)
 

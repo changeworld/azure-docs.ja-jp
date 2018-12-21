@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dfdad89d628fda476ecef1c43246ce3927927555
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a861a88c8534fa50405109efd738deb8486081e4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863501"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075566"
 ---
-# <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル: リンクされた Azure Resource Manager テンプレートの作成
+# <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル:リンクされた Azure Resource Manager テンプレートの作成
 
-リンクされた Azure Resource Manager テンプレートを作成する方法について説明します。 リンクされたテンプレートを使用すると、あるテンプレートから別のテンプレートを呼び出すことができます。 これは、テンプレートをモジュール化する場合に役立ちます。 このチュートリアルでは、[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)で使用したのと同じテンプレートを使用し、仮想マシン、仮想ネットワーク、およびその他の依存リソース (ストレージ アカウントを含む) を作成します。 リンクされたテンプレートに、ストレージ アカウントのリソースを分離します。
+リンクされた Azure Resource Manager テンプレートを作成する方法について説明します。 リンクされたテンプレートを使用すると、あるテンプレートから別のテンプレートを呼び出すことができます。 これは、テンプレートをモジュール化する場合に役立ちます。 このチュートリアルでは、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)」で使用したものと同じテンプレートを使用し、仮想マシン、仮想ネットワーク、その他の依存リソース (ストレージ アカウントを含む) を作成します。 リンクされたテンプレートにストレージ アカウントのリソース作成を分離します。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -33,6 +33,7 @@ ms.locfileid: "52863501"
 > * リンクされたテンプレートにリンクする
 > * 依存関係を構成する
 > * テンプレートのデプロイ
+> * 追加のプラクティス
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -46,11 +47,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager Template deployment で Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。 これは、「[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」で使用されているのと同じテンプレートです。 以下と同じ使用するテンプレートの 2 つのコピーを保存します。
+Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。 これは「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)」で使用されたものと同じテンプレートです。 以下と同じ使用するテンプレートの 2 つのコピーを保存します。
 
 * **メイン テンプレート**: ストレージ アカウントを除くすべてのリソースを作成します。
 * **リンクされたテンプレート**: ストレージ アカウントを作成します。
@@ -70,7 +71,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     * `Microsoft.Network/networkInterfaces` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。 
     * `Microsoft.Compute/virtualMachines` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
 
-    カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+    テンプレートをカスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 5. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 6. **[ファイル]** > **[名前を付けて保存]** を選択し、このファイルの別のコピーを **linkedTemplate.json** という名前で作成します。
 
@@ -78,10 +79,27 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 リンクされたテンプレートにより、ストレージ アカウントが作成されます。 リンクされたテンプレートは、ストレージ アカウントを作成するスタンドアロンのテンプレートとほぼ同じです。 このチュートリアルでは、リンクされたテンプレートから、値をメイン テンプレートに渡し返す必要があります。 この値は `outputs` 要素で定義されます。
 
-1. linkedTemplate.json が開いていない場合、Visual Studio Code で開きます。
+1. linkedTemplate.json が開いていない場合、このファイルを Visual Studio Code で開きます。
 2. 次の変更を行います。
 
     * ストレージ アカウントを除くすべてのリソースを削除します。 合計で 4 つのリソースを削除します。
+    * ストレージ アカウント リソースの **name** 要素の値を次の目的で更新します。
+
+        ```json
+          "name": "[parameters('storageAccountName')]",
+        ```
+    * **variables** 要素とすべての変数定義を削除します。
+    * **location** 以外のパラメーターをすべて削除します。
+    * **storageAccountName** というパラメーターを追加します。 ストレージ アカウント名は、パラメーターとして、メイン テンプレートから、リンクされたテンプレートに渡されます。
+
+        ```json
+        "storageAccountName":{
+        "type": "string",
+        "metadata": {
+            "description": "Azure Storage account name."
+        }
+        },
+        ```
     * **outputs** 要素を更新します。その結果、次のようになります。
 
         ```json
@@ -93,9 +111,6 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
         }
         ```
         **storageUri**は、メイン テンプレートの仮想マシン リソース定義で必要です。  この値を、出力値としてメイン テンプレートに値を渡し返します。
-    * 使用されないパラメーターを削除します。 これらのパラメーターの下には、緑の波線が表示されます。 **location** というパラメーターを 1 つだけ残します。
-    * **variables** 要素を削除します。 これらは、このチュートリアルでは必要ありません。
-    * **storageAccountName** というパラメーターを追加します。 ストレージ アカウント名は、パラメーターとして、メイン テンプレートから、リンクされたテンプレートに渡されます。
 
     完了すると、テンプレートは次のようになります。
 
@@ -143,7 +158,68 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 ## <a name="upload-the-linked-template"></a>リンクされたテンプレートをアップロードする
 
-テンプレートは、デプロイを実行する場所からアクセス可能である必要があります。 この場所には、Azure ストレージ アカウント、GitHub、Dropbox などがあります。 テンプレートに機密情報が含まれている場合は、それらへのアクセスを保護するようにしてください。 このチュートリアルでは、「 [チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」で使用した、Cloud シェル デプロイ方法を使用します。 メイン テンプレート (azuredeploy.json) は、シェルにアップロードされます。 リンクされたテンプレート (linkedTemplate.json) は、別の場所で共有する必要があります。  このチュートリアルのタスクを減らすために、前のセクションで定義したリンクされたテンプレートが、[Azure ストレージ アカウント](https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json)にアップロードされています。
+メイン テンプレートとリンクされたテンプレートには、デプロイを実行する場所からアクセス可能にする必要があります。 このチュートリアルでは、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)」で使用されたものと同じテンプレートです。 メイン テンプレート (azuredeploy.json) は、シェルにアップロードされます。 リンクされたテンプレート (linkedTemplate.json) は、別の場所で安全に共有する必要があります。 次の PowerShell スクリプトでは、Azure Storage アカウントが作成され、ストレージ アカウントにテンプレートがアップロードされ、テンプレート ファイルへの制限付きアクセスを付与する目的で SAS トークンが生成されます。 チュートリアルを簡単にするために、スクリプトによって、リンクされたテンプレートが完全な形で共有の場所からダウンロードされます。 自分で作成したリンク済みテンプレートを使用する場合、[Cloud Shell](https://shell.azure.com) を使用してリンク済みテンプレートをアップロードし、独自のリンク済みテンプレートを使用するようにスクリプトを変更します。
+
+> [!NOTE]
+> スクリプトによって、8 時間以内に使用するように SAS トークンに制限が与えられます。 このチュートリアルを完了するためにもっと時間が必要な場合、有効期限を延ばしてください。
+
+```azurepowershell-interactive
+$projectNamePrefix = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+
+$resourceGroupName = $projectNamePrefix + "rg"
+$storageAccountName = $projectNamePrefix + "store"
+$containerName = "linkedtemplates" # The name of the Blob container to be created.
+
+$linkedTemplateURL = "https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json" # A completed linked template used in this tutorial.
+$fileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
+
+# Download the tutorial linked template
+Invoke-WebRequest -Uri $linkedTemplateURL -OutFile "$home/$fileName"
+
+# Create a resource group
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+# Create a storage account
+$storageAccount = New-AzureRmStorageAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Name $storageAccountName `
+    -Location $location `
+    -SkuName "Standard_LRS"
+
+$context = $storageAccount.Context
+
+# Create a container
+New-AzureStorageContainer -Name $containerName -Context $context
+
+# Upload the linked template
+Set-AzureStorageBlobContent `
+    -Container $containerName `
+    -File "$home/$fileName" `
+    -Blob $fileName `
+    -Context $context
+
+# Generate a SAS token
+$templateURI = New-AzureStorageBlobSASToken `
+    -Context $context `
+    -Container $containerName `
+    -Blob $fileName `
+    -Permission r `
+    -ExpiryTime (Get-Date).AddHours(8.0) `
+    -FullUri
+
+echo "You need the following values later in the tutorial:"
+echo "Resource Group Name: $resourceGroupName"
+echo "Linked template URI with SAS token: $templateURI"
+```
+
+1. 緑のボタン **[試してみる]** を選択し、Azure Cloud Shell ウィンドウが開きます。
+2. **[コピー]** を選択し、PowerShell スクリプトがコピーされます。
+3. Shell ウィンドウ (濃紺色の部分) 内のどこでもよいので右クリックし、**[貼り付け]** を選択します。
+4. Shell ウィンドウの端にある 2 つの値をメモします (リソース グループ名とリンク済みテンプレート URI)。 値は、このチュートリアルの後の方で必要になります。
+5. **[フォーカス モードの終了]** を選択し、Shell ウィンドウを閉じます。
+
+実際には、メイン テンプレートをデプロイするときに SAS トークンを生成します。また、安全性を高める目的で、SAS トークンの有効期限を短くします。 詳細については、「[デプロイ時に SAS トークンを指定する](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment)」を参照してください。
 
 ## <a name="call-the-linked-template"></a>リンクされたテンプレートを呼び出す
 
@@ -151,13 +227,27 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 1. azuredeploy.json が開いていない場合、Visual Studio Code で開きます。
 2. テンプレートからストレージ アカウント リソース定義を削除します。
+
+    ```json
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "apiVersion": "2018-07-01",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {}
+    },
+    ```
 3. 次の json スニペットを、ストレージ アカウント定義があった場所に追加します。
 
     ```json
     {
-      "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
       "properties": {
           "mode": "Incremental",
           "templateLink": {
@@ -176,13 +266,14 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     * メイン テンプレートの `Microsoft.Resources/deployments` リソースは、別のテンプレートにリンクするために使用されます。
     * `deployments` リソースは、`linkedTemplate` という名前を持っています。 この名前は、[依存関係を構成する](#configure-dependency)場合に使用されます。  
     * リンクされたテンプレートを呼び出すときは、[増分](./deployment-modes.md)デプロイ モードのみを使用できます。
-    * `templateLink/uri` には、リンクされたテンプレート URI が含まれています。 リンクされたテンプレートは、共有ストレージ アカウントにアップロードされました。 インターネット上の別の場所にテンプレートをアップロードする場合は、URI を更新できます。
+    * `templateLink/uri` には、リンクされたテンプレート URI が含まれています。 (SAS トークン付きの) リンクされたテンプレートをアップロードしたときに与えられた URI にこの値を更新します。
     * メイン テンプレートから、リンクされたテンプレートに値を渡すには、`parameters` を使用します。
-4. 変更を保存します。
+4. (SAS トークン付きの) リンクされたテンプレートをアップロードしたときに与えられた値に `uri` 要素の値が更新されていることを確認します。 実際には、URI にパラメーターを与えることをお勧めします。
+5. 変更後のテンプレートを保存します。
 
 ## <a name="configure-dependency"></a>依存関係を構成する
 
-「[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」で説明したように、仮想マシン リソースはストレージ アカウントによって異なります。
+「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)」の内容を思い出してください。仮想マシンのリソースはストレージ アカウントに依存します。
 
 ![Azure Resource Manager テンプレートの依存関係図](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
@@ -208,12 +299,13 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
     "*linkedTemplate*" は、デプロイ リソースの名前です。  
 3. 前のスクリーンショットに示すように、**properties/diagnosticsProfile/bootDiagnostics/storageUri** を更新します。
+4. 変更後のテンプレートを保存します。
 
 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](./resource-group-linked-templates.md)」を参照してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-デプロイ手順については、「[テンプレートのデプロイ](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」セクションを参照してください。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
+デプロイ手順については、「[テンプレートのデプロイ](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」セクションを参照してください。 リンクされたテンプレートを保存するためのストレージ アカウントと同じリソース グループ名を使用します。 次のセクションでリソースをクリーンアップする作業が楽になります。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -224,9 +316,16 @@ Azure リソースが不要になったら、リソース グループを削除�
 3. リソース グループ名を選択します。  リソース グループ内の合計 6 つのリソースが表示されます。
 4. トップ メニューから **[リソース グループの削除]** を選択します。
 
+## <a name="additional-practice"></a>追加のプラクティス
+
+プロジェクトを改善する目的で、完成したプロジェクトに次の追加変更を行います。
+
+1. リンクされたテンプレートの URI 値がパラメーターから取得されるようにメイン テンプレート (azuredeploy.json) を変更します。
+2. リンクされたテンプレートをアップロードするときに SAS トークンを生成する代わりに、メイン テンプレートをデプロイするときにこのトークンを生成します。 詳細については、「[デプロイ時に SAS トークンを指定する](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment)」を参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、リンクされたテンプレートを開発してデプロイしました。 仮想マシン拡張機能を使用してデプロイ後のタスクを実行する方法については、次を参照してください
+このチュートリアルでは、テンプレートをメイン テンプレートとリンクされたテンプレートにモジュール化しました。 仮想マシン拡張機能を使用してデプロイ後のタスクを実行する方法については、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [仮想マシン拡張機能のデプロイ](./deployment-manager-tutorial.md)

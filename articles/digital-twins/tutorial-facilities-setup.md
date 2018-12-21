@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 61b81602342b910a50c0cc6318746ec85a659a92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582334"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080591"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>チュートリアル: Azure Digital Twins をデプロイし、空間グラフを構成する
 
@@ -33,7 +33,7 @@ Azure Digital Twins サービスを使用して、建物内の物理的なエリ
 > * 建物をプロビジョニングする。
 
 
-これらのチュートリアルで使用および変更するサンプルは、概念についてさらに詳しく説明されている、[使用可能な部屋を見つけるためのクイック スタート](quickstart-view-occupancy-dotnet.md)のサンプルと同じです。
+これらのチュートリアルで使用および変更するサンプルは、概念についてさらに詳しく説明されている、[空き部屋を見つけるためのクイック スタート](quickstart-view-occupancy-dotnet.md)のサンプルと同じです。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -69,7 +69,7 @@ Digital Twins では、[Azure Active Directory](../active-directory/fundamentals
 このセクションでは、[Digital Twins REST API](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index) と通信する Azure Digital Twins アプリケーションについて説明します。 
 
 ### <a name="download-the-sample"></a>サンプルのダウンロード
-[使用可能な部屋を見つけるためのクイック スタート](quickstart-view-occupancy-dotnet.md)用に既にサンプルをダウンロードしている場合は、これらの手順をスキップできます。
+[空き部屋を見つけるためのクイック スタート](quickstart-view-occupancy-dotnet.md)用に既にサンプルをダウンロードしている場合は、これらの手順をスキップできます。
 
 1. [Digital Twins .NET サンプル](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip)をダウンロードします。 
 2. お客様のマシン上に zip フォルダーの内容を展開します。 
@@ -136,7 +136,7 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
 ```
 
-この関数では、同じフォルダー内の **provisionSample.yaml** が使用されています。 このファイルを開き、オフィス ビルの階層が *Venue*、*Floor*、*Area*、*Rooms* となっている点に注目してください。 これらの物理空間のいずれにも、"*デバイス*" と "*センサー*" を含めることができます。 各エントリには、Floor、Room など、あらかじめ定義された `type` があります。 
+この関数では、同じフォルダー内の **provisionSample.yaml** が使用されています。 このファイルを開き、オフィス ビルの階層が *Venue*、*Floor*、*Area*、*Rooms* となっている点に注目してください。 これらの物理空間のいずれにも、*devices* と *sensors* を含めることができます。 各エントリには、Floor、Room など、あらかじめ定義された `type` があります。 
 
 サンプルの **yaml** ファイルでは、`Default` Digital Twins オブジェクト モデルを使用して空間グラフが表示されます。 このモデルでは、ほとんどの型に汎用的な名前が与えられています。 建物であれば、汎用的な名前で十分です。 たとえば、SensorDataType の Temperature、SpaceBlobType の Mapがあります。 空間型の例としては、FocusRoom、ConferenceRoom などのサブタイプを備えた Room があります。 
 
@@ -163,6 +163,9 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
     > `dataType` キーと `hardwareId` キーがこのスニペットの上のステートメントに揃っていることを確認します。 また、エディターで空白がタブに置き換えられないことを確認します。 
 
 provisionSample.yaml ファイルを保存して閉じます。 次のチュートリアルでは、このファイルに情報をさらに追加したうえで、Azure Digital Twins のサンプルの建物をプロビジョニングします。
+
+> [!TIP]
+> [Azure Digital Twins グラフ ビューア―](https://github.com/Azure/azure-digital-twins-graph-viewer)を使って、空間グラフを表示および変更できます。
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

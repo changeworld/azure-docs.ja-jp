@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 01b1a770959b29969fbfd0b4575a45b9c53318b6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bdfe390314f2d2174a26e9b321022a3589a06467
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867972"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086541"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 
@@ -49,19 +49,19 @@ ms.locfileid: "52867972"
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Java Development Kit (JDK) 7 以降](https://aka.ms/azure-jdks)。
-* [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
+* [Eclipse IDE for Java EE Developers。](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](../app-service/app-service-web-get-started-java.md)
 
-これらのツールを初めてインストールする場合は、coreservlets.com の [TomCat7 のインストールと Eclipse での使用のチュートリアル](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) のクイック スタート セクションで、インストール プロセスの手順を参照してください。
+これらのツールを初めてインストールする場合は、coreservlets.com の「[Tutorial: Installing TomCat7 and Using it with Eclipse](https://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)」 (チュートリアル: TomCat7 のインストールと Eclipse での使用) の「Quick Start」 (クイック スタート) セクションで、インストール プロセスの手順を参照してください。
 
-## <a id="CreateDB"></a>手順 1. Azure Cosmos DB アカウントを作成する
-まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルにAzure Cosmos DB Emulator を使用する場合は、「[手順 2: Java JSP アプリケーションを作成する](#CreateJSP)」に進むことができます。
+## <a id="CreateDB"></a>手順 1:Azure Cosmos DB アカウントを作成する
+まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルで Azure Cosmos DB Emulator を使用する場合は、「[手順 2: Java JSP アプリケーションを作成する](#CreateJSP)」に進むことができます。
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 [!INCLUDE [keys](../../includes/cosmos-db-keys.md)]
 
-## <a id="CreateJSP"></a>手順 2: Java JSP アプリケーションを作成する
+## <a id="CreateJSP"></a>手順 2:Java JSP アプリケーションを作成する
 JSP アプリケーションを作成するには:
 
 1. 最初に、Java プロジェクトを作成します。 Eclipse を起動し、**[File]**、**[New]**、**[Dynamic Web Project]** の順にクリックします。 使用可能なプロジェクトとして **[Dynamic Web Project]** が表示されない場合は、**[File]**、**[New]**、**[Project]**、の順にクリックし、**[Web]** を展開します。さらに、**[Dynamic Web Project]** をクリックし、**[Next]** をクリックします。
@@ -83,8 +83,8 @@ JSP アプリケーションを作成するには:
    
     ![Hello World – Java アプリケーションのチュートリアル](./media/sql-api-java-application/image12.png)
 
-## <a id="InstallSDK"></a>手順 3: SQL Java SDK をインストールする
-SQL Java SDK とその依存関係をインストールするには、[Apache Maven](http://maven.apache.org/) を使うのが最も簡単です。
+## <a id="InstallSDK"></a>手順 3:SQL Java SDK をインストールする
+SQL Java SDK とその依存関係をインストールするには、[Apache Maven](https://maven.apache.org/) を使うのが最も簡単です。
 
 そのためには、次の手順に従ってプロジェクトを maven プロジェクトに変換する必要があります。
 
@@ -106,7 +106,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
 6. **[OK]** をクリックします。Maven によって SQL Java SDK がインストールされます。
 7. pom.xml ファイルを保存します。
 
-## <a id="UseService"></a>手順 4: Java アプリケーションで Azure Cosmos DB サービスを使用する
+## <a id="UseService"></a>手順 4:Java アプリケーションで Azure Cosmos DB サービスを使用する
 1. まず、TodoItem.java で TodoItem オブジェクトを定義します。
    
         @Data
@@ -118,7 +118,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
             private String name;
         }
    
-    このプロジェクトでは、[Project Lombok](http://projectlombok.org/) を使用して、コンストラクター、getter、setter、ビルダーを生成します。 または、手動でこのコードを記述したり、IDE で自動的に生成もできます。
+    このプロジェクトでは、[Project Lombok](https://projectlombok.org/) を使用して、コンストラクター、getter、setter、ビルダーを生成します。 または、手動でこのコードを記述したり、IDE で自動的に生成もできます。
 2. Azure Cosmos DB サービスを呼び出すには、新しい **DocumentClient**をインスタンス化する必要があります。 一般に、後続の要求ごとに新しいクライアントを構築するのではなく、 **DocumentClient** を再利用することをお勧めします。 **DocumentClientFactory**の中にラップすることによって、クライアントを再利用できます。 [手順 1.](#CreateDB) でクリップボードに保存した URI とプライマリ キー値を DocumentClientFactory.java に貼り付ける必要があります。 [YOUR\_ENDPOINT\_HERE] を URI 値で置き換え、[YOUR\_KEY\_HERE] をプライマリ キー値で置き換えます。
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
@@ -340,7 +340,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
             return true;
         }
 
-## <a id="Wire"></a>手順 5: Java アプリケーション開発プロジェクトの残りの部分を接続する
+## <a id="Wire"></a>手順 5:Java アプリケーション開発プロジェクトの残りの部分を接続する
 これで、楽しい作業が終わりました。残っているのは簡単なユーザー インターフェイスの作成と DAO への連結です。
 
 1. まず、DAO を呼び出すためのコントローラーの作成から始めましょう。
@@ -712,7 +712,7 @@ SQL Java SDK とその依存関係をインストールするには、[Apache Ma
 5. これで完成です。 後はアプリケーションをテストするだけです。 アプリケーションをローカルで実行し、項目の名前とカテゴリを入力して、 **[Add Task]** をクリックして、いくつかの Todo 項目を追加します。
 6. 項目が表示されたら、チェック ボックスを切り替え、 **[Update Tasks]** をクリックすることで、その項目が完了しているかどうかを確認できます。
 
-## <a id="Deploy"></a>手順 6. Azure Web Sites に Java アプリケーションをデプロイする
+## <a id="Deploy"></a>手順 6:Azure Web Sites に Java アプリケーションをデプロイする
 Azure Web Sites での Java アプリケーションのデプロイは簡単です。アプリケーションを WAR ファイルとしてエクスポートし、ソース管理 (例: Git) または FTP を使用してアップロードするだけです。
 
 1. アプリケーションを WAR ファイルとしてエクスポートするには、**Project Explorer** でプロジェクトを右クリックし、**[Export]\(エクスポート\)**、**[WAR File]\(WAR ファイル\)** の順にクリックします。
@@ -729,7 +729,7 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 ## <a id="GetProject"></a>GitHub からのプロジェクトの入手
 このチュートリアルのサンプルはすべて、GitHub の [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトに含まれています。 todo プロジェクトを Eclipse にインポートするには、「 [前提条件](#Prerequisites) 」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。
 
-1. [Project Lombok](http://projectlombok.org/)をインストールします。 Lombok は、プロジェクトのコンストラクター、getter、setter の生成に使用します。 lombok.jar ファイルをダウンロードしたら、ファイルをダブルクリックしてコマンド ラインからインストールします。
+1. [Project Lombok](https://projectlombok.org/)をインストールします。 Lombok は、プロジェクトのコンストラクター、getter、setter の生成に使用します。 lombok.jar ファイルをダウンロードしたら、ファイルをダブルクリックしてコマンド ラインからインストールします。
 2. Eclipse が開いている場合は、いったん終了してから再起動して Lombok を読み込みます。
 3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
 4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。

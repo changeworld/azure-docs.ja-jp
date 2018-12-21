@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する'
+title: 'クイック スタート: 音声認識 (Javascript (ブラウザー)) - 音声サービス'
 titleSuffix: Azure Cognitive Services
 description: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: 1e844f83c715dd8ac78a3340628988625e95a4ba
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: f8b6f4d39ce4dc65d691ec6a0e3d0734abb19734
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218442"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087917"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>クイック スタート: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する
 

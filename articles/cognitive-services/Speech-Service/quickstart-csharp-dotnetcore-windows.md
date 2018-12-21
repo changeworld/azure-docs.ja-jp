@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Windows の .NET Core で C# と Speech Service SDK を使用して音声を認識する'
+title: 'クイック スタート: 音声を認識する (.NET Core (Windows)) - Speech Services'
 titleSuffix: Azure Cognitive Services
 description: Windows の .NET Core で C# と Speech Service SDK を使用して音声を認識する方法について説明します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 891de4700470931d8eaec3e2a3bb7ca2110e48dd
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e82e39eb3fc6c7ebaf4798ad10038bfd2fa9a41b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469137"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085486"
 ---
-# <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-by-using-the-speech-sdk"></a>クイック スタート: Windows の .NET Core 下で Cognitive Services Speech SDK を使用して C# で音声を認識する
+# <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-by-using-the-speech-sdk"></a>クイック スタート: Windows の .NET Core で Speech SDK を使用して C# で音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 

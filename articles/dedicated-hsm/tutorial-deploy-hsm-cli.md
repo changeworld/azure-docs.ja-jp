@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル – Azure Dedicated HSM: CLI を使用して既存の仮想ネットワークに HSM をデプロイする | Microsoft Docs'
-description: CLI を使用して専用 HSM をデプロイする方法について示すチュートリアル
+title: 'チュートリアル: Azure CLI を使用して既存の仮想ネットワークにデプロイする - Azure Dedicated HSM | Microsoft Docs'
+description: CLI を使用して専用 HSM を既存の仮想ネットワークにデプロイする方法について示すチュートリアル
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
@@ -8,19 +8,19 @@ manager: mbaldwin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: ca30dc9d86db8faabfdd3791b74b9f86c9480ea5
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d8171a3c506ed53c986db6cddd959411f0a146aa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679649"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080318"
 ---
-# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-cli"></a>チュートリアル - CLI を使用して既存の仮想ネットワークに HSM をデプロイする
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>チュートリアル: CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
 Azure Dedicated HSM では、完全な管理制御と完全な管理責任が備わった、お客様専用の物理デバイスが提供されます。 物理デバイスを使用するので、確実に容量が効果的に管理されるよう、Microsoft がデバイスの割り当てを制御する必要があります。 そのため、Dedicated HSM サービスは通常、Azure サブスクリプション内でリソース プロビジョニング用には表示されません。 Dedicated HSM サービスへのアクセスを必要とする Azure のお客様は、まず、Microsoft アカウント担当者に連絡して、Dedicated HSM サービスへの登録を依頼しなければなりません。 このプロセスが正常に完了した場合にのみ、プロビジョニングが可能になります。 
 
@@ -130,7 +130,7 @@ HSM はお客様の仮想ネットワークにプロビジョニングされる�
 
 コマンド シェルのツール バーにはアップロード/ダウンロードのオプションがあり、これを選択して、お客様のファイル共有にテンプレート ファイルとパラメーター ファイルをアップロードする必要があります。
 
-![サブスクリプションの状態](media/tutorial-deploy-hsm-cli/file-share.png)
+![ファイル共有](media/tutorial-deploy-hsm-cli/file-share.png)
 
 ファイルがアップロードされたら、リソースを作成する準備が整います。 新しい HSM リソースを作成する前に、前提条件となるいくつかのリソースが揃っていることを確認する必要があります。 コンピューティング、HSM、およびゲートウェイのためのサブネット範囲が含まれた仮想ネットワークが必要です。 以下のコマンドは、このような仮想ネットワークを作成するコマンドの例です。
 
@@ -191,7 +191,7 @@ az resource show \
    --ids /subscriptions/$subid/resourceGroups/myRG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSM2
 ```
 
-![プロビジョニングの状態](media/tutorial-deploy-hsm-cli/progress-status2.png)
+![プロビジョニングの出力](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
 また、[Azure Resource Explorer](https://resources.azure.com/) を使用してリソースを表示できるようになりました。   エクスプローラーで、左側の [サブスクリプション]、Dedicated HSM 用の特定のサブスクリプション、[リソース グループ]、お客様が使用したリソース グループの順に展開し、最後に [リソース] 項目を選択します。
 

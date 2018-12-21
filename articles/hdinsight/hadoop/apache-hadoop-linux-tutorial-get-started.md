@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Resource Manager テンプレートを使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する '
+title: クイック スタート:Apache Hive で Resource Manager とクエリ データを使用して Apache Hadoop クラスターを作成する - Azure HDInsight
 description: HDInsight クラスターを作成する方法、および Hive でデータを照会する方法について説明します。
 keywords: Hadoop の概要, Hadoop Linux, Hadoop クイックスタート, Hive の概要, Hive クイックスタート
 services: hdinsight
@@ -7,19 +7,19 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,hdiseo17may2017,mvc
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.openlocfilehash: cc726156273591215e5a311065ae2fe6dd87402c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 845aa85a025d75dcc0e80b59fbc1620d8cbae082
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634444"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435744"
 ---
-# <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>クイック スタート: Resource Manager テンプレートを使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する
+# <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する
 
-この記事では、Resource Manager テンプレートを使用して HDInsight で [Apache Hadoop](http://hadoop.apache.org/) クラスターを作成し、HDInsight で Hive ジョブを実行する方法について説明します。 Hadoop ジョブのほとんどはバッチ ジョブです。 クラスターを作成し、いくつかのジョブを実行して、クラスターを削除します。 この記事では、3 つのすべてのタスクを実行します。
+この記事では、Resource Manager テンプレートを使用して HDInsight で [Apache Hadoop](https://hadoop.apache.org/) クラスターを作成し、HDInsight で Hive ジョブを実行する方法について説明します。 Hadoop ジョブのほとんどはバッチ ジョブです。 クラスターを作成し、いくつかのジョブを実行して、クラスターを削除します。 この記事では、3 つのすべてのタスクを実行します。
 
 このクイックスタートでは、Resource Manager テンプレートを使用して HDInsight Hadoop クラスターを作成します。 [Azure Portal](apache-hadoop-linux-create-cluster-get-started-portal.md) を使用してクラスターを作成することもできます。
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. 次のスクリーンショットで提案されているように値を入力するか、選択します。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 指定する値は一意である必要があり、名前付けガイドラインに従う必要があります。 テンプレートでは、検証チェックは実行されません。 指定した値が既に使用されている場合、またはガイドラインに従ってない場合、テンプレートを送信した後にエラーが発生します。       
     > 
     >
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |**クラスター ログイン名とパスワード**     | 既定のログイン名は **admin** です。パスワードは 10 文字以上で、数字、大文字、小文字、英数字以外の文字 (' " ` を除く\) が少なくとも 1 つずつ含まれる必要があります。 "Pass@word1" などのよく使われるパスワードを**指定していない**ことを確認してください。|
     |**SSH ユーザー名とパスワード**     | 既定のユーザー名は **sshuser** です。  SSH ユーザー名は、変更が可能です。  SSH ユーザーのパスワードには、クラスターのログイン パスワードと同じ要件が適用されます。|
        
-    一部のプロパティは、テンプレートにハードコーディングされています。  これらの値はテンプレートから構成することができます。 これらのプロパティの詳細については、[HDInsight での Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+    一部のプロパティは、テンプレートにハードコーディングされています。  これらの値はテンプレートから構成することができます。 これらのプロパティについて詳しくは、[HDInsight での Apache Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。
 
 3. **[上記の使用条件に同意する]**、**[ダッシュボードにピン留めする]** の順に選択し、**[購入]** を選択します。 ポータルのダッシュボードに、**[デプロイを送信しています]** という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
 
@@ -70,10 +70,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 5. タイルには、クラスターに関連付けられている既定のストレージも一覧表示されます。 各クラスターには、[Azure ストレージ アカウント](../hdinsight-hadoop-use-blob-storage.md)または [Azure Data Lake アカウント](../hdinsight-hadoop-use-data-lake-store.md)との依存関係があります。 このアカウントを、既定のストレージ アカウントと呼びます。 HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure リージョンに配置されている必要があります。 クラスターを削除しても、ストレージ アカウントは削除されません。
     
 
-> [!NOTE]
+> [!NOTE]  
 > その他のクラスター作成方法と、このチュートリアルで使うプロパティの詳細については、[HDInsight クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。       
-> 
->
+
 
 ## <a name="use-vscode-to-run-hive-queries"></a>VS Code を使用して Hive クエリを実行する
 
@@ -92,15 +91,15 @@ HDInsight Tools for VS Code を使用すると、対話型 Hive クエリを HDI
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. スクリプト エディターを右クリックし、**[HDInsight: Hive Interactive]** を選択してクエリを送信します。 また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。 その後すぐに、クエリの結果が新しいタブに表示されます。
+4. スクリプト エディターを右クリックし、**[HDInsight:Hive Interactive]** を選択してクエリを送信します。 また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。 その後すぐに、クエリの結果が新しいタブに表示されます。
 
    ![対話型 Hive の結果](./media/apache-hadoop-linux-tutorial-get-started/interactive-hive-result.png)
 
-    - **[結果]** パネル: 結果全体を CSV、JSON、または Excel ファイルとしてローカル パスに保存したり、複数の行だけを選択したりできます。
+    - **[結果]** パネル:結果全体を CSV、JSON、または Excel ファイルとしてローカル パスに保存したり、複数の行だけを選択したりできます。
 
-    - **[メッセージ]** パネル: **行**の番号を選択すると、実行中のスクリプトの最初の行にジャンプします。
+    - **[メッセージ]** パネル:**行**の番号を選択すると、実行中のスクリプトの最初の行にジャンプします。
 
-対話型クエリは、[Hive バッチ ジョブ](#submit-hive-batch-scripts)よりもはるかに短時間で実行されます。
+対話型クエリは、[Apache Hive バッチ ジョブ](#submit-hive-batch-scripts)よりもはるかに短時間で実行されます。
 
 ### <a name="submit-hive-batch-scripts"></a>Hive バッチ スクリプトの送信
 
@@ -113,7 +112,7 @@ HDInsight Tools for VS Code を使用すると、対話型 Hive クエリを HDI
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. スクリプト エディターを右クリックし、**[HDInsight: Hive Batch]** を選択して Hive ジョブを送信します。 
+4. スクリプト エディターを右クリックし、**[HDInsight:Hive Batch]** を選択して Hive ジョブを送信します。 
 
 5. 送信先のクラスターを選択します。  
 
@@ -121,7 +120,7 @@ HDInsight Tools for VS Code を使用すると、対話型 Hive クエリを HDI
 
    ![Hive ジョブの結果の送信](./media/apache-hadoop-linux-tutorial-get-started/submit-Hivejob-result.png)
 
-[対話型 Hive クエリ](#submit-interactive-hive-queries)は、バッチ ジョブよりもはるかに短時間で送信されます。
+[対話型 Apache Hive クエリ](#submit-interactive-hive-queries)は、バッチ ジョブよりもはるかに短時間で送信されます。
 
 ## <a name="use-visualstudio-to-run-hive-queries"></a>Visual Studio を使用して Hive クエリを実行する
 
@@ -148,7 +147,7 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
    
     ![HDInsight Visual Studio Tools での IntelliSense の例 2 のスクリーンショット](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-column-name.png "U-SQL IntelliSense")
    
-   > [!NOTE]
+   > [!NOTE]  
    > IntelliSense は、HDInsight のツール バーで選択されているクラスターのメタデータのみを推奨します。
    > 
    
@@ -181,7 +180,7 @@ Hive ソリューションを作成して実行するには:
 
 ## <a name="run-hive-queries"></a>Hive クエリの実行
 
-[Apache Hive](hdinsight-use-hive.md) は、HDInsight で使用される最も一般的なコンポーネントです。 HDInsight で Hive ジョブを実行する方法は多数存在します。 このチュートリアルでは、ポータルから Ambari Hive ビューを使用します。 Hive ジョブを送信する他の方法については、「 [HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)」を参照してください。
+[Apache Hive](hdinsight-use-hive.md) は、HDInsight で使用される最も一般的なコンポーネントです。 HDInsight で Hive ジョブを実行する方法は多数存在します。 このチュートリアルでは、ポータルから Ambari Hive ビューを使用します。 Hive ジョブを送信する他の方法については、[HDInsight で Apache Hive を使用する方法](hdinsight-use-hive.md)に関するページを参照してください。
 
 1. Ambari を開くには、前のスクリーンショットから、**[クラスター ダッシュボード]** を選択します。  ブラウザーで **https://&lt;クラスター名>.azurehdinsight.net** に移動することもできます。&lt;クラスター名> は、前のセクションで作成したクラスターです。
 
@@ -199,10 +198,9 @@ Hive ソリューションを作成して実行するには:
 
     ![HDInsight Hive ビュー](./media/apache-hadoop-linux-tutorial-get-started/hiveview-1.png "HDInsight Hive ビューのクエリ エディター")
    
-   > [!NOTE]
+   > [!NOTE]  
    > Hive では、セミコロンが必要です。       
-   > 
-   > 
+
 
 5. **[Execute (実行)]** を選択します。 **[QUERY]\(クエリ\)** タブの下に **[RESULTS]\(結果\)** タブが表示され、ジョブについての情報が表示されます。 
    
@@ -218,7 +216,7 @@ Hive ソリューションを作成して実行するには:
 
     ![Hive クエリの結果を保存](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-hive-view-save-results.png "Hive クエリの結果を保存")
 
-Hive ジョブが完了したら、[結果を Azure SQL データベースまたは SQL Server データベースにエクスポート](apache-hadoop-use-sqoop-mac-linux.md)できます。[Excel を利用して結果を視覚化](apache-hadoop-connect-excel-power-query.md)することもできます。 HDInsight で Hive を使用する方法の詳細については、「[HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)」をご覧ください。
+Hive ジョブが完了したら、[結果を Azure SQL データベースまたは SQL Server データベースにエクスポート](apache-hadoop-use-sqoop-mac-linux.md)できます。[Excel を利用して結果を視覚化](apache-hadoop-connect-excel-power-query.md)することもできます。 HDInsight で Hive を使用する方法の詳細については、[HDInsight で Apache Hadoop と共に Apache Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](hdinsight-use-hive.md)方法に関するページを参照してください。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
@@ -227,10 +225,8 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 記事を完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 
 
-> [!NOTE]
+> [!NOTE]  
 > *すぐに*次のチュートリアルに進み、HDInsight で Hadoop を使用して ETL 操作を実行する方法を学習する場合は、クラスターを実行したままにしておいてかまいません。 そのチュートリアルでは Hadoop クラスターを再度作成する必要があるからです。 ただし、すぐに次のチュートリアルに進まない場合は、クラスターを今すぐ削除する必要があります。
-> 
-> 
 
 **クラスターと既定のストレージ アカウントを削除するには、次の手順に従います。**
 
@@ -251,13 +247,13 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 実際のデータを使用する準備が整っていて、HDInsight のデータの格納方法や HDInsight にデータを取り込む方法を確認する場合は、以下の記事を参照してください。
 
 * HDInsight で Azure Storage を使用する方法の詳細については、[HDInsight での Azure Storage の使用](../hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。
-* Data Lake Storage で HDInsight クラスターを作成する方法について詳しくは、「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+* Data Lake Storage で HDInsight クラスターを作成する方法については、「[Quickstart:Set up clusters in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」(クイック スタート: HDInsight のクラスターを設定する) を参照してください。
 * データを HDInsight にアップロードする方法については、[データを HDInsight にアップロードする方法](../hdinsight-upload-data.md)に関する記事を参照してください。
 
 HDInsight でデータを分析する方法の詳細については、次の記事を参照してください。
 
-* Visual Studio から Hive クエリを実行する方法など、HDInsight で Hive を使用する方法の詳細については、[HDInsight での Hive の使用](hdinsight-use-hive.md)に関する記事を参照してください。
-* データの変換に使用される言語 Pig の詳細については、[HDInsight での Pig の使用](hdinsight-use-pig.md)に関する記事を参照してください。
+* Visual Studio から Hive クエリを実行する方法など、HDInsight で Hive を使用する方法の詳細については、[HDInsight での Apache Hive の使用](hdinsight-use-hive.md)に関する記事を参照してください。
+* データの変換に使用される言語 Pig の詳細については、[HDInsight での Apache Pig の使用](hdinsight-use-pig.md)に関する記事を参照してください。
 * Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである MapReduce の詳細については、[HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)に関する記事を参照してください。
 * HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](apache-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
 * HDInsight Tools for VS Code を使用して HDInsight 上のデータを分析する方法については、「[Azure HDInsight Tool for Visual Studio Code の使用](../hdinsight-for-vscode.md)」をご覧ください。
@@ -265,7 +261,7 @@ HDInsight でデータを分析する方法の詳細については、次の記�
 
 HDInsight クラスターの作成または管理の詳細については、以下の記事を参照してください。
 
-* Linux ベースの HDInsight クラスターを管理する方法については、「 [Ambari を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」を参照してください。
+* Linux ベースの HDInsight クラスターを管理する方法については、[Apache Ambari を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)に関するページを参照してください。
 * HDInsight クラスターの作成時に選択できるオプションの詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 
@@ -275,5 +271,3 @@ HDInsight クラスターの作成または管理の詳細については、以�
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-

@@ -1,6 +1,6 @@
 ---
-title: 'クイック スタート: Azure Active Directory にアクセスして新しいテナントを作成する | Microsoft Docs'
-description: Azure Active Directory の検索方法と、組織の新しいテナントの作成方法に関する手順を説明したクイック スタート。
+title: 'クイック スタート: アクセスして新しいテナントを作成する - Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory の検索方法と、組織の新しいテナントの作成方法に関する手順。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
-custom: it-pro
-ms.openlocfilehash: eacb2e7c52adae9de0b74c3dade59446cc8459ed
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: cd179d371ec75a2e6ca258a1efbc2361e50a5438
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023552"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083275"
 ---
-# <a name="quickstart-access-azure-active-directory-to-create-a-new-tenant"></a>クイック スタート: Azure Active Directory にアクセスして新しいテナントを作成する
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
 
 このクイック スタートでは、Azure portal と Azure Active Directory にアクセスする方法と、組織の基本的なテナントを作成する方法について説明します。

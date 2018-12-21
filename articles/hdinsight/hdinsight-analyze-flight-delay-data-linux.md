@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: HDInsight の Hive を使用して抽出、変換、読み込み (ETL) を実行する - Azure '
+title: 'チュートリアル:HDInsight の Hive を使用して抽出、変換、読み込み (ETL) を実行する - Azure '
 description: 生の CSV データセットからデータを抽出し、HDInsight の Hive を使用してデータを変換した後、Apache Sqoop を使用することで変換済みデータを Azure SQL データベースに読み込む方法について説明します。
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: fa84d5a09eab56dc01a6e841323ca11d12886582
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c0123008e5b15d6d3edce27245a7ed1fa6c431e7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495503"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015055"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>チュートリアル: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
+# <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
 
 このチュートリアルでは、生の CSV データ ファイルを取得して HDInsight クラスターのストレージにインポートした後、Azure HDInsight の [Apache Hive](https://hive.apache.org/) を使用してデータを変換します。 データを変換したら、[Apache Sqoop](http://sqoop.apache.org/) を使用して Azure SQL データベースにデータを読み込みます。 この記事では、一般に公開されているフライト データを使用します。
 
@@ -315,7 +315,7 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 
 HDInsight でのデータ操作の詳細については、次の記事を参照してください。
 
-* [チュートリアル: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
+* [チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
 * [HDInsight での Apache Hive の使用][hdinsight-use-hive]
 * [HDInsight での Apache Pig の使用][hdinsight-use-pig]
 * [HDInsight 上の Apache Hadoop 用の Java MapReduce プログラムを開発する][hdinsight-develop-mapreduce]
@@ -325,13 +325,13 @@ HDInsight でのデータ操作の詳細については、次の記事を参照�
 
 
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 
 [rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md

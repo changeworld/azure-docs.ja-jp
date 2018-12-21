@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: テキストの抽出 - SDK、C# - Computer Vision'
+title: クイック スタート:テキストの抽出 - SDK、C# - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像からテキストを抽出します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
-ms.openlocfilehash: c1b25db440023618d3d633f9a2b2ebcd5c0a6293
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c0323c215e83850dc53acd5e350d7eeeeb9a05b1
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852488"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413219"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>クイック スタート: Computer Vision SDK と C# によるテキストの抽出
+# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>クイック スタート:Computer Vision SDK と C# によるテキストの抽出
 
 このクイック スタートでは、Computer Vision Windows クライアント ライブラリを使って、画像から手書きテキストまたは印刷されたテキストを抽出します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "51852488"
 > [!TIP]
 > 最新のコードを Visual Studio ソリューションとして [GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
 
-`RecognizeTextAsync` メソッドと `RecognizeTextInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[テキスト認識 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) をラップします。 `GetTextOperationResultAsync` メソッドは、[テキスト認識操作の結果を取得する API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) をラップします。 これらのメソッドを使って画像内のテキストを検出し、認識した文字をマシンに抽出して、使用可能な文字ストリームにします。
+`RecognizeTextAsync` メソッドと `RecognizeTextInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[テキスト認識 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) をラップします。 `GetTextOperationResultAsync` メソッドは、[テキスト認識操作の結果を取得する API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) をラップします。  これらのメソッドを使って画像内のテキストを検出し、認識した文字をマシンに抽出して、使用可能な文字ストリームにします。
 
 このサンプルを実行するには、次の手順を実行します。
 
@@ -188,7 +188,7 @@ namespace ExtractText
 
 成功した場合、各画像について認識されたテキストの行が応答に表示されます。
 
-生 JSON 出力の例については、[クイック スタート: 手書きテキストの抽出 - REST、C#](../QuickStarts/CSharp-hand-text.md#examine-the-response)をご覧ください。
+「[クイック スタート:手書きテキストの抽出 - REST、C#](../QuickStarts/CSharp-hand-text.md#examine-the-response)」で生の JSON の出力例を参照してください。
 
 ```cmd
 Calling GetHandwritingRecognitionOperationResultAsync()

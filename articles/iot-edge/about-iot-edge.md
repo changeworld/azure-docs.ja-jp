@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1a1281be1c1b58b21406dad5826e240ccac6c898
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 08a6134d61c4f93f891488ef24a7b81e81645897
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567766"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089804"
 ---
 # <a name="what-is-azure-iot-edge"></a>Azure IoT Edge とは
 
@@ -71,7 +71,7 @@ Azure IoT Edge は、Azure IoT ソリューション アクセラレータ と�
 * まとまったデバイスに対してワークロードを送信する。
 * 現場のデバイスで実行されるワークロードを監視する。
 
-![デバイスのテレメトリ、洞察、アクションは、クラウドとの間で調整されます。](./media/about-iot-edge/cloud-interface.png)
+![デバイスのテレメトリとアクションはクラウドで調整される](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル 1: アクティブ ラーニングによるエンドポイント発話の確認'
+title: エンドポイントの発話の確認
 titleSuffix: Azure Cognitive Services
 description: LUIS HTTP エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d2400c09a7d18faccc94464158419c81962d4a86
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: bc641732d74dac4f566420ada6338362932df4d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282154"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080454"
 ---
-# <a name="tutorial-1-fix-unsure-predictions"></a>チュートリアル 1: 不明な予測を修正する
+# <a name="tutorial-1-fix-unsure-predictions"></a>チュートリアル 1:不明な予測を修正する
 このチュートリアルでは、LUIS HTTPS エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。 
 
 このレビュー プロセスも、LUIS がユーザーのアプリ ドメインを学習する方法の 1 つとなります。 LUIS は、レビュー リストにある発話を選択しました。 このリストには、次の特徴があります。
@@ -61,7 +62,7 @@ ms.locfileid: "51282154"
 
 ## <a name="review-endpoint-utterances"></a>エンドポイントの発言の確認
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 左側のナビゲーションから **[Review endpoint utterances]\(エンドポイントの発話の確認\)** を選択します。 このリストは、**ApplyForJob** という意図がフィルターで抽出されています。 
 
@@ -118,7 +119,7 @@ LUIS は、トレーニングされてはじめて変更を認識します。
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>[発行]
+## <a name="publish"></a>発行
 
 このアプリをインポートした場合は、**[感情分析]** を選択する必要があります。
 
@@ -132,7 +133,7 @@ LUIS は、トレーニングされてはじめて変更を認識します。
 
 2. アドレスの URL の末尾に移動し、「`Are there any natural language processing jobs in my department right now?`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
-  ```JSON
+  ```json
   {
     "query": "are there any natural language processing jobs in my department right now?",
     "topScoringIntent": {

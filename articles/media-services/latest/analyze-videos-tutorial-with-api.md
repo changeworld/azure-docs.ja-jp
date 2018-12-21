@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services を使用してビデオを分析する | Microsoft Docs
+title: Media Services を使用してビデオを分析する - Azure | Microsoft Docs
 description: Azure Media Services を使用してビデオを分析するには、このチュートリアルの手順に従います。
 services: media-services
 documentationcenter: ''
@@ -9,17 +9,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 3f0d6784f7b7c476313c5cc4190cacd99e4c3973
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: 42ffecec896265f99a8f1f0b43b47c1988a493d6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612766"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133895"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>チュートリアル: API を使用した Media Services v3 によるビデオ分析
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>チュートリアル:API を使用して Media Services v3 でビデオを分析する
 
 このチュートリアルでは、Azure Media Services を使用したビデオの分析について説明します。 記録されたビデオまたはオーディオ コンテンツに関する詳細な分析情報を得る必要のある多くのシナリオがあります。 たとえば、より高い顧客満足度を実現するため、組織は音声テキスト変換処理を実行して、カスタマー サポートの記録をインデックスとダッシュボードを含む検索可能なカタログに変換できます。 その後、一連の一般的なクレームとそのソース、各種の有益な情報など、ビジネスの分析情報を取得することができます。
 
@@ -115,7 +115,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 #### <a name="job"></a>ジョブ
 
-上で説明したように、[Transform](https://docs.microsoft.com/rest/api/media/transforms) オブジェクトはレシピであり、[Job](https://docs.microsoft.com/rest/api/media/jobs) は **Transform** が特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。 ビデオの場所は、HTTPS URL、SAS URL、または Media Services アカウント内にあるアセットを使用して指定できます。 
+上で説明したように、[Transform](https://docs.microsoft.com/rest/api/media/transforms) オブジェクトはレシピであり、[Job](https://docs.microsoft.com/rest/api/media/jobs) は **Transform** が特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。 ビデオの場所は、HTTPS URL、SAS URL、または Media Service アカウント内のアセットを使用して指定できます。 
 
 この例では、ジョブの入力はローカル ビデオです。  
 

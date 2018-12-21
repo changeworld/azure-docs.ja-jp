@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0b4e334ea9a423ed4eb9a0830d68ad7f4b843a88
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6075086b390a14e807e493bd574ac889b81272bf
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833651"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437352"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>クイック スタート: Azure Kubernetes Service (AKS) クラスターのデプロイ
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>クイック スタート:Azure Kubernetes Service (AKS) クラスターのデプロイ
 
 このクイックスタートでは、Azure Portal を使用して AKS クラスターをデプロイします。 次に、このクラスターで、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションが実行されます。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。
 
@@ -36,27 +36,27 @@ Azure portal の左上隅で、**[リソースの作成]** > **[Kubernetes Servi
 AKS クラスターを作成するには、次の手順を実行します。
 
 1. **[基本]** - 次のオプションを構成します。
-    - *[プロジェクトの詳細]*: Azure サブスクリプションを選択し、Azure リソース グループ (たとえば、*myResourceGroup*) を選択または作成します。 **Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。
-    - *[クラスターの詳細]*: AKS クラスターのリージョン、Kubernetes バージョン、および DNS 名プレフィックスを選択します。
-    - *[規模の設定]*: AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは**できません**。
+    - *プロジェクトの詳細*:Azure サブスクリプションを選択し、Azure リソース グループ (たとえば、*myResourceGroup*) を選択または作成します。 **Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。
+    - *クラスターの詳細*:AKS クラスターのリージョン、Kubernetes バージョン、および DNS 名プレフィックスを選択します。
+    - *[規模の設定]*:AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは**できません**。
         - クラスターにデプロイするノードの数を選択します。 このクイック スタートでは、**[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整**できます**。
     
     ![AKS クラスターの作成 - 基本情報を入力する](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    完了したら、**[Next: Authentication]\(次: 認証\)** を選択します。
+    **[次へ:認証]** を選択します。
 
-1. **[認証]** - 次のオプションを構成します。
+1. **認証**:次のオプションを構成します。
     - 新しいサービス プリンシパルを作成するか、既存のものを使用するように "*構成*" します。 既存の SPN を使用する場合は、SPN クライアント ID とシークレットを指定する必要があります。
     - Kubernetes のロールベースのアクセス制御 (RBAC) のオプションを有効にします。 これらのコントロールを使用すると、AKS クラスターにデプロイされた Kubernetes リソースへのアクセスをより詳細に制御できます。
 
-    完了したら、**[Next: Networking] (次へ: ネットワーク)** を選択します。
+    **[次へ:ネットワーク]** を完了後に選択します。
 
-1. **[ネットワーキング]**: 次のネットワーク オプションを構成します。これは既定値として設定する必要があります。
+1. **ネットワーク**:次のネットワーク オプションを構成します。
     
     - **[HTTP アプリケーションのルーティング]** - パブリック DNS 名の自動作成を使用して統合イングレス コントローラーを構成するには、**[はい]** を選択します。 HTTP ルーティングの詳細については、[AKS の HTTP ルーティングと DNS][http-routing]に関するページを参照してください。
     - **[ネットワーク構成]** - [Azure CNI][azure-cni] を使用した高度なネットワーク構成ではなく、[kubenet][kubenet] Kubernetes プラグインを使用した **[基本]** ネットワーク構成を選択します。 ネットワーク オプションの詳細については、[AKS ネットワークの概要][aks-network]に関するページを参照してください。
     
-    完了したら、**[Next: Monitoring] (次へ: 監視)** を選択します。
+    **[次へ:監視]** を完了後に選択します。
 
 1. AKS クラスターのデプロイ時に、AKS クラスターとクラスターで実行されているポッドの正常性を監視するように、コンテナーの Azure Monitor を構成することができます。 コンテナーの正常性の監視の詳細については、[Azure Kubernetes Service の正常性の監視][aks-monitor]に関するページを参照してください。
 
@@ -88,7 +88,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-次の出力例は、前の手順で作成した単一ノードを示しています。
+次の出力例は、前の手順で作成した単一ノードを示しています。 ノードの状態が "準備完了" であることを確認します。
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION

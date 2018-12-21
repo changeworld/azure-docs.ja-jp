@@ -9,14 +9,17 @@ ms.topic: tutorial
 ms.date: 09/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: de19b20865127fd37cd7bc1ac854288a95a68091
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 45255845d8645391ee33471830ac2ef27870a40d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058136"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408631"
 ---
-# <a name="tutorial-train-a-distributed-model-with-horovod"></a>チュートリアル: Horovod を使用して分散モデルをトレーニングする
+# <a name="tutorial-train-a-distributed-model-with-horovod"></a>チュートリアル:Horovod を使用して分散モデルをトレーニングする
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 このチュートリアルでは、Batch AI クラスターの複数のノードで分散ディープ ラーニング モデルを並列実行してモデルをトレーニングします。 Batch AI は、Azure GPU のクラスター上で機械学習および AI モデルを大規模にトレーニングするためのマネージド サービスです。 
 

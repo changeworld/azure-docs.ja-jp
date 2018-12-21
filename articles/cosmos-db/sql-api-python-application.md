@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af8b2c3f0b319ce9769e9789f6639e1d5eb266f6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a2c7b7c5dc68bb96e0b54dc89f2c170cdb20c792
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865218"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081916"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Azure Cosmos DB を使用した Python Flask Web アプリケーションの作成
 
@@ -62,14 +62,14 @@ ms.locfileid: "52865218"
 * [Python 2.7 用の Microsoft Visual C++ コンパイラ](https://www.microsoft.com/en-us/download/details.aspx?id=44266)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>手順 1: Azure Cosmos DB データベース アカウントを作成する
-まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルに Azure Cosmos DB Emulator を使用する場合は、「[手順 2. 新しい Python Flask Web アプリケーションを作成する](#step-2-create-a-new-python-flask-web-application)」に進むことができます。
+まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルで Azure Cosmos DB Emulator を使用する場合は、「[手順 2: 新しい Python Flask Web アプリケーションを作成する](#step-2-create-a-new-python-flask-web-application)」をスキップできます。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <br/>
 次は、新しい Python Flask Web アプリケーションをゼロから作成する方法について確認しましょう。
 
-## <a name="step-2-create-a-new-python-flask-web-application"></a>手順 2. 新しい Python Flask Web アプリケーションを作成する
+## <a name="step-2-create-a-new-python-flask-web-application"></a>手順 2: 新しい Python Flask Web アプリケーションを作成する
 1. Visual Studio で、**[ファイル]** メニューの **[新規作成]** をポイントし、**[プロジェクト]** をクリックします。
    
     **[新しいプロジェクト]** ダイアログ ボックスが表示されます。
@@ -365,7 +365,7 @@ def vote():
     ![投票結果のページが表示されているスクリーン ショット](./media/sql-api-python-application/cosmos-db-voting-results.png)
 6. Shift + F5 キーを押して、プロジェクトのデバッグを停止します。
 
-## <a name="step-5-deploy-the-web-application-to-azure"></a>手順 5: Web アプリケーションを Azure にデプロイする
+## <a name="step-5-deploy-the-web-application-to-azure"></a>ステップ 5: Web アプリケーションを Azure にデプロイする
 Azure Cosmos DB に対してローカルで適切に動作する完全なアプリケーションを入手できたので、web.config ファイルを作成して、ローカル環境と一致するようにサーバーのファイルを更新し、Azure 上に完成したアプリを表示します。 これは、Visual Studio 2017 固有の手順です。 異なるバージョンの Visual Studio を使用している場合は、[Azure App Service への公開](/visualstudio/python/publishing-to-azure)に関する記事をご覧ください。
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[新しい項目]** の順に選択します。表示されたダイアログ ボックスで、**[Azure web.config (Fast CGI)]** テンプレートを選択し、**[OK]** をクリックします。 これにより、お使いのプロジェクトのルートに、`web.config` ファイルが作成されます。 
@@ -436,4 +436,4 @@ Web アプリケーションに機能を追加する場合は、[Azure Cosmos DB
 
 Azure、Visual Studio、Python の詳細については、「 [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)」を参照してください。 
 
-Python Flask の追加のチュートリアルについては、 [Flask メガ チュートリアルのパート 1: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)というブログ記事を参照してください。 
+Python Flask の追加のチュートリアルについては、「[The Flask Mega-Tutorial, Part I: Hello, World!](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)」(Flask メガ チュートリアルのパート 1: Hello, World!) を参照してください。 

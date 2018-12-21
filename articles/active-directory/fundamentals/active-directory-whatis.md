@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory の概要 | Microsoft Docs
+title: Azure Active Directory とは | Microsoft Docs
 description: 必要な用語、対象ユーザー、ライセンスの基本、および関連する機能を含め、Azure Active Directory について学習します。
 services: active-directory
 author: eross-msft
@@ -8,12 +8,13 @@ ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.openlocfilehash: 1b1561ed8470c39b13def72774e253db28bf58d8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 80c3108d468465e68d554b3d36c527c5ccd4a13c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686587"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085928"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは 
 Azure Active Directory (Azure AD) は、Microsoft のクラウドベースの ID およびアクセス管理サービスです。 Azure AD を使用すると、従業員が次のリソースにサインインおよびアクセスしやすくなります。
@@ -51,7 +52,7 @@ Azure AD の実装を強化するために、Azure Active Directory Basic、Prem
 
 - **"従量課金制" の機能ライセンス。** Azure Active Directory Business-to-Customer (B2C) などの機能ライセンスを別途取得することもできます。 B2C は、顧客向けアプリ用の ID およびアクセス管理ソリューションを提供するのに役立つ可能性があります。 詳細については、「[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)」を参照してください。
 
-Azure サブスクリプションを Azure AD に関連付ける方法の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。ユーザーにライセンスを割り当てる方法の詳細については、「[方法: Azure Active Directory ライセンスを割り当てる、または削除する](license-users-groups.md)」を参照してください。
+Azure サブスクリプションの Azure AD への関連付けの詳細については「[方法: Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する](active-directory-how-subscriptions-associated-directory.md)」を、ライセンスのユーザーへの割り当ての詳細については「[方法: Azure Active Directory ライセンスを割り当てる、または削除する](license-users-groups.md)」を参照してください。
 
 ## <a name="terminology"></a>用語集
 Azure AD とそのドキュメントについてより深く理解するためには、次の用語をご確認いただく必要があります。
@@ -74,10 +75,10 @@ Azure AD とそのドキュメントについてより深く理解するため�
 ## <a name="what-features-work-in-azure-ad"></a>Azure AD で利用できる機能
 Azure AD ライセンスを選択すると、組織向けの次の機能の一部またはすべてにアクセスできるようになります。
 
-|Category|説明|
+|カテゴリ|説明|
 |-------|-----------|
 |アプリケーション管理|アプリケーション プロキシ、シングル サインオン、マイ アプリ ポータル (別称: アクセス パネル)、サービスとしてのソフトウェア (SaaS) アプリを使用して、クラウドおよびオンプレミスのアプリを管理します。 詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../manage-apps/application-proxy.md)」および「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」を参照してください。|
-|Authentication|Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタムの禁止パスワード リスト、スマート ロックアウトを管理します。 詳細については、「[Azure AD Authentication のドキュメント](../authentication/index.yml)」を参照してください。|
+|認証|Azure Active Directory のセルフサービスのパスワード リセット、Multi-Factor Authentication、カスタムの禁止パスワード リスト、スマート ロックアウトを管理します。 詳細については、「[Azure AD Authentication のドキュメント](../authentication/index.yml)」を参照してください。|
 |企業間 (B2B)|自社データの管理を続けながら、ゲスト ユーザーと外部パートナーを管理します。 詳細については、「[Azure Active Directory B2B のドキュメント](../b2b/index.yml)」を参照してください。|
 |企業-消費者間 (B2C)|アプリの使用時にユーザーがサインアップおよびサインインする方法や自分のプロファイルを管理する方法をカスタマイズして制御します。 詳細については、「[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)」を参照してください。|
 |条件付きアクセス|クラウド アプリへのアクセスを管理します。 詳細については、「[Azure AD の条件付きアクセスのドキュメント](../conditional-access/index.yml)」を参照してください。|
@@ -86,8 +87,8 @@ Azure AD ライセンスを選択すると、組織向けの次の機能の一�
 |ドメイン サービス|ドメイン コントローラーを使用せずにドメインに Azure 仮想マシンを参加させます。 詳細については、「[Azure AD Domain Services のドキュメント](../../active-directory-domain-services/index.yml)」を参照してください。|
 |エンタープライズ ユーザー|グループと管理者のロールを使用して、ライセンスの割り当てとアプリへのアクセスを管理し、委任を設定します。 詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。|
 |ハイブリッド ID|Azure Active Directory Connect と Connect Health を使用して、場所 (クラウドまたはオンプレミス) に関係なく、すべてのリソースに対する認証と認可のための単一のユーザー ID を提供します。 詳細については、「[ハイブリッド ID のドキュメント](../hybrid/index.yml)」を参照してください。|
-|Identity Governance|従業員、ビジネス パートナー、ベンダー、サービス、およびアプリのアクセス制御を通じて、組織の ID を管理します。 アクセス レビューを実行することもできます。 詳細については、「[Azure AD Identity Governance とは](../governance/identity-governance-overview.md)」および [Azure AD アクセス レビュー](../governance/access-reviews-overview.md)に関するページを参照してください。|
-|Identity Protection|組織の ID に影響を及ぼす潜在的な脆弱性を検出するほか、疑わしいアクションに対応するようにポリシーを構成し、適切なアクションを行って解決します。 詳細については、[Azure AD Identity Protection](../identity-protection/index.yml) に関するページを参照してください。|
+|ID 管理|従業員、ビジネス パートナー、ベンダー、サービス、およびアプリのアクセス制御を通じて、組織の ID を管理します。 アクセス レビューを実行することもできます。 詳細については、「[Azure AD Identity Governance とは](../governance/identity-governance-overview.md)」および [Azure AD アクセス レビュー](../governance/access-reviews-overview.md)に関するページを参照してください。|
+|ID 保護|組織の ID に影響を及ぼす潜在的な脆弱性を検出するほか、疑わしいアクションに対応するようにポリシーを構成し、適切なアクションを行って解決します。 詳細については、[Azure AD Identity Protection](../identity-protection/index.yml) に関するページを参照してください。|
 |Azure リソースのマネージド ID|Key Vault を含む、任意の Azure AD でサポートされている認証サービスに対して認証できる、Azure AD の自動管理されたマネージド ID を Azure サービスに提供します。 詳細については、「[Azure リソースのマネージド ID とは](../managed-identities-azure-resources/overview.md)」を参照してください。|
 |Privileged Identity Management (PIM)|組織内でのアクセスを管理、制御、および監視します。 この機能には、Azure AD 内のリソース、Azure のリソース、その他 Microsoft Online Services (Office 365、Intune など) へのアクセスが含まれます。 詳しくは、[Azure AD Privileged Identity Management](../privileged-identity-management/index.yml) に関するページを参照してください。|
 |レポートと監視|環境におけるセキュリティや使用パターンに関する分析情報を得ることができます。 詳細については、「[Azure Active Directory のレポートと監視](../reports-monitoring/index.yml)」を参照してください。|

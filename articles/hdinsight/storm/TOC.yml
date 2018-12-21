@@ -42,11 +42,11 @@ items:
     - name: Apache Kafka と Apache Storm (Java)
       href: ../hdinsight-apache-storm-with-kafka.md
       maintainContext: true
-    - name: イベント ハブ、Storage、Data Lake Store (Java)
+    - name: イベント ハブ、Storage、Data Lake Storage (Java)
       href: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
     - name: Event Hubs と Apache Storm (C# および Java)
       href: apache-storm-develop-csharp-event-hub-topology.md
-    - name: Azure Storage/Data Lake Store (Java)
+    - name: Azure Storage/Data Lake Storage (Java)
       href: apache-storm-write-data-lake-store.md
     - name: Event Hubs、Apache HBase (Java)
       href: apache-storm-sensor-data-analysis.md
@@ -156,7 +156,7 @@ items:
     - name: Apache Hadoop ジョブのデータのアップロード
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: 複数の HDInsight クラスターと Data Lake Store
+    - name: 複数の HDInsight クラスターと Data Lake Storage
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: Apache Sqoop を使用したデータのインポートとエクスポート
@@ -316,9 +316,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 8003378277a74a4ca1f35c54794e4c4045113d8a
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: e9a96fb58a68b7ff896545e442a03eaa6c90a9c7
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321837"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635359"

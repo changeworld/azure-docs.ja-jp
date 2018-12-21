@@ -1,6 +1,6 @@
 ---
-title: Custom Vision を Azure IoT Edge デバイスにデプロイする | Microsoft Docs
-description: Custom Vision と IoT Edge を使用して、コンピューター ビジョン モデルをコンテナーとして実行する方法について説明します。
+title: 'チュートリアル: デバイスに Custom Vision 分類器をデプロイする - Azure IoT Edge | Microsoft Docs'
+description: このチュートリアルでは、Custom Vision と IoT Edge を使用して、コンピューター ビジョン モデルをコンテナーとして実行する方法について説明します。
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -8,13 +8,13 @@ ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: a8f72c62393f6ba470c31a55668382ae0beb290e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566484"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075830"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル: Custom Vision Service を使用してエッジで画像の分類を実行する
 
@@ -99,7 +99,7 @@ Azure IoT Edge デバイス:
 
 5. **[Upload 10 files]\(10 ファイルをアップロード\)** を選択します。 
 
-   ![hemlock というタグの付いたファイルをアップロードする](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Custom Vision にドクニンジンのタグが付けられたファイルをアップロードする](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. 画像が正常にアップロードされたら、**[完了]** を選択します。
 
@@ -117,7 +117,7 @@ Azure IoT Edge デバイス:
 
 1. 分類器をトレーニングした後、分類器の [パフォーマンス] ページで **[エクスポート]** を選択します。 
 
-   ![画像分類器をエクスポートする](./media/tutorial-deploy-custom-vision/export.png)
+   ![トレーニング済みの画像分類器をエクスポートする](./media/tutorial-deploy-custom-vision/export.png)
 
 2. プラットフォームとして **[DockerFile]** を選択します。 
 
