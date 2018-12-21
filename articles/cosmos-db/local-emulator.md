@@ -70,7 +70,7 @@ Azure Cosmos DB Emulator のハードウェア要件とソフトウェア要件�
 
 * ソフトウェア要件
   * Windows Server 2012 R2、Windows Server 2016、または Windows 10
-*   最小ハードウェア要件
+* 最小ハードウェア要件
   * 2 GB の RAM
   * 10 GB のハードディスク空き容量
 
@@ -353,7 +353,7 @@ PowerShell からエミュレーターを制御するためのコマンドの概
 
 #### <a name="syntax"></a>構文
 
- `Stop-CosmosDbEmulator [-NoWait]`
+`Stop-CosmosDbEmulator [-NoWait]`
 
 #### <a name="remarks"></a>解説
 
