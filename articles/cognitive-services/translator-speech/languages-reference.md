@@ -23,11 +23,11 @@ ms.locfileid: "49345205"
 
 Translator Speech は、そのサービスでサポートされる言語の一覧を継続的に拡張しています。 Translator Speech サービスで現在使用可能な言語のセットを取得するには、この API を使います。
 
-使用可能な言語を取得するための API の使用例を示すコード サンプルは、[Microsoft Translator Github サイト](https://github.com/MicrosoftTranslator)から入手できます。
+使用可能な言語を取得するための API の使用例を示すコード サンプルは、[Microsoft Translator GitHub サイト](https://github.com/MicrosoftTranslator)から入手できます。
 
 ## <a name="implementation-notes"></a>実装に関するメモ
 
-GET /languages 
+GET /languages
 
 音声の文字起こし、文字起こししたテキストの翻訳、翻訳の合成音声の生成には、広範な言語セットを使用できます。
 
@@ -125,7 +125,7 @@ GET /languages
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 サポート対象言語のセットが記述されているオブジェクト。
 
-ModelExample の値: 
+ModelExample の値:
 
 Langagues { speech (object, optional), text (object, optional), tts (object, optional) }
 
@@ -133,17 +133,17 @@ Langagues { speech (object, optional), text (object, optional), tts (object, opt
 
 |ヘッダー|説明|type|
 :--|:--|:--|
-X-RequestId|要求を識別するためにサーバーによって生成され、トラブルシューティングのために使用される値。|string|
+X-RequestId|要求を識別するためにサーバーによって生成され、トラブルシューティングのために使用される値。|文字列|
 
 ### <a name="parameters"></a>parameters
 
 |パラメーター|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|
-|api-version    |クライアントによって要求される API のバージョン。 使用できる値: `1.0`。|クエリ|string|
+|api-version    |クライアントによって要求される API のバージョン。 使用できる値: `1.0`。|クエリ|文字列|
 |scope  |クライアントに返す、サポートされている言語または音声のセット。 このパラメーターは、キーワードのコンマ区切り一覧として指定されます。 次のキーワードを使用できます。<ul><li>`speech`: 音声の文字起こしにサポートされている言語のセットを提供します。</li><li>`tts`: テキスト音声変換にサポートされている音声のセットを提供します。</li><li>`text`: テキストの翻訳にサポートされている言語のセットを提供します。</li></ul>値が指定されていない場合、`scope` の既定値は `text` です。|query|文字列|
-|X-ClientTraceId    |クライアントによって生成される GUID であり、要求を追跡するのに使用されます。 問題のトラブルシューティングを容易にするため、クライアントは要求のたびに新しい値を指定し、それを記録する必要があります。|ヘッダー|string|
+|X-ClientTraceId    |クライアントによって生成される GUID であり、要求を追跡するのに使用されます。 問題のトラブルシューティングを容易にするため、クライアントは要求のたびに新しい値を指定し、それを記録する必要があります。|ヘッダー|文字列|
 |Accept-Language    |応答内のフィールドには、言語や地域の名前などがあります。 名前が返される言語を定義するには、このパラメーターを使用します。 言語は、整形式の BCP 47 言語タグを使用して指定します。 `text` スコープで返される言語識別子の一覧からタグを選択します。 サポートされていない言語の場合、名前は英語で提供されます。<br/>たとえば、フランス語の名前を要求するには値 `fr` を使用し、繁体字中国語の名前を要求するには値 `zh-Hant` を使用します。|ヘッダー|文字列|
-    
+
 ### <a name="response-messages"></a>応答メッセージ
 
 |HTTP 状態コード|理由|
