@@ -18,7 +18,7 @@ ms.locfileid: "46297062"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) 用のアプリケーションの準備
 
-このチュートリアルは、7 つあるうちの 1 番目で、複数コンテナー アプリケーションを Kubernetes で使用する準備をします。 Docker Compose などの既存の開発ツールは、アプリケーションをローカルでビルドしてテストするために使用されます。 学習内容は次のとおりです。
+7 つのパートのうちの 1 番目であるこのチュートリアルでは、複数コンテナー アプリケーションを Kubernetes で使用する準備をします。 Docker Compose などの既存の開発ツールは、アプリケーションをローカルでビルドしてテストするために使用されます。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * GitHub からサンプル アプリケーション ソースを複製する
