@@ -24,11 +24,11 @@ ms.locfileid: "52849234"
 ## <a name="what-is-a-graph-database"></a>グラフ データベースとは
 実世界で出現するデータは、自然に結び付けられています。 従来のデータ モデリングはエンティティに重点を置いています。 しかし、多くのアプリケーションでは、当然、エンティティとリレーションシップの両方をモデル化するというニーズがあります。
 
-[グラフ](http://mathworld.wolfram.com/Graph.html)とは、[頂点](http://mathworld.wolfram.com/GraphVertex.html)と[辺](http://mathworld.wolfram.com/GraphEdge.html)で構成された構造です。 頂点と辺は、いずれも任意の数のプロパティを持つことができます。 
+[グラフ](http://mathworld.wolfram.com/Graph.html)とは、[頂点](http://mathworld.wolfram.com/GraphVertex.html)と[辺](http://mathworld.wolfram.com/GraphEdge.html)で構成された構造です。 頂点と辺は、いずれも任意の数のプロパティを持つことができます。
 
-* **頂点** - 頂点は、人、場所、イベントなどの個々のオブジェクトを表します。 
+* **頂点** - 頂点は、人、場所、イベントなどの個々のオブジェクトを表します。
 
-* **辺** - 辺は、頂点間のリレーションシップを表します。 たとえば、あるユーザーは、別のユーザーと知り合いで、あるイベントに関連があり、ある場所に最近行ったような場合です。 
+* **辺** - 辺は、頂点間のリレーションシップを表します。 たとえば、あるユーザーは、別のユーザーと知り合いで、あるイベントに関連があり、ある場所に最近行ったような場合です。
 
 * **プロパティ** - プロパティは頂点と辺に関する情報を表します。 プロパティの例として、名前と年齢を持つ頂点があります。 辺には、タイム スタンプや重みなどのプロパティがあります。 正式には、このモデルは[プロパティ グラフ](http://tinkerpop.apache.org/docs/current/reference/#intro)と呼ばれます。 Azure Cosmos DB は、プロパティ グラフ モデルをサポートしています。
 
@@ -41,7 +41,7 @@ ms.locfileid: "52849234"
 グラフ データベースが提供する高速トラバーサルと、深さ優先探索、幅優先探索、ダイクストラ法などのグラフ アルゴリズムを組み合わせることで、ソーシャル ネットワーク、コンテンツ管理、レコメンデーションなどのさまざまな分野の問題を解決できます。
 
 ## <a name="features-of-azure-cosmos-db-graph-database"></a>Azure Cosmos DB グラフ データベースの機能
- 
+
 Azure Cosmos DB は、グローバル配布、ストレージとスループットのエラスティック スケーリング、自動インデックス作成とクエリ、調整可能な整合性レベルを提供し、TinkerPop 標準をサポートする、完全に管理されたグラフ データベースです。
 
 ![Azure Cosmos DB グラフ アーキテクチャ](./media/graph-introduction/cosmosdb-graph-architecture.png)
@@ -86,11 +86,11 @@ Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell�
 
 | ダウンロード | ドキュメント | Getting Started (概要) | サポートされているコネクタのバージョン |
 | --- | --- | --- | --- |
-| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Github の Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [.NET を使用してグラフを作成する](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [GitHub の Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [.NET を使用してグラフを作成する](create-graph-dotnet.md) | 3.4.0-RC2 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Java を使用してグラフを作成する](create-graph-java.md) | 3.2.0 以降 |
 | [Node.js](https://www.npmjs.com/package/gremlin) | [GitHub の Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) | [Node.js を使用してグラフを作成する](create-graph-nodejs.md) | 2.6.0|
 | [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [GitHub の Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Python を使用してグラフを作成する](create-graph-python.md) | 3.2.7 |
-| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Github の Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [PHP を使用してグラフを作成する](create-graph-php.md) | 3.1.0 |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [GitHub の Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [PHP を使用してグラフを作成する](create-graph-php.md) | 3.1.0 |
 | [Gremlin コンソール](https://tinkerpop.apache.org/downloads.html) | [TinkerPop ドキュメント](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gremlin コンソールを使用してグラフを作成する](create-graph-gremlin-console.md) | 3.2.0 以降 |
 
 ## <a name="graph-database-design-considerations"></a>グラフ データベースの設計に関する考慮事項
@@ -111,11 +111,11 @@ Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell�
 
 ![グラフの設計に関する考慮事項の例](./media/graph-introduction/graph-design-considerations-example.png)
 
-* クエリによっては、District->Store のリレーションシップが、Store 頂点をフィルター処理するために独自に使用される可能性があります。 たとえば、クエリが "特定の地区に属するすべての店舗を取得する"形式であるとします。 この場合、District エンティティを自身の頂点から Store 頂点のプロパティに折りたたむことを検討する価値があります。 
+* クエリによっては、District->Store のリレーションシップが、Store 頂点をフィルター処理するために独自に使用される可能性があります。 たとえば、クエリが "特定の地区に属するすべての店舗を取得する"形式であるとします。 この場合、District エンティティを自身の頂点から Store 頂点のプロパティに折りたたむことを検討する価値があります。
 
 * このアプローチには、一度に 3 つのグラフ オブジェクト (District、District->Store、Store) を取得するのではなく、1 つの Store 頂点を取得することによって、各 Store 頂点を取得するコストが削減されるという利点があります。 これにより、パフォーマンスが向上するだけでなく、クエリあたりのコストも削減できます。
 
-* Store 頂点は、Employee と Product という 2 つの異なるエンティティにリンクしているためです。 これにより、走査される可能性が増えるので、Store は必要な頂点になります。  
+* Store 頂点は、Employee と Product という 2 つの異なるエンティティにリンクしているためです。 これにより、走査される可能性が増えるので、Store は必要な頂点になります。
 
 
 
