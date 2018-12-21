@@ -4,7 +4,7 @@ description: Visual Studio Code を使用して Azure SQL Database に接続す�
 keywords: SQL Database への接続
 services: sql-database
 ms.service: sql-database
-ms.subservice: scenario
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,29 +12,29 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: ea4809368189a3fefac95c867e2b29d0b8f58442
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/06/2018
+ms.openlocfilehash: 786b4fab42fb49cd44c1985bfa04ce33e77cadf0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868533"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098986"
 ---
-# <a name="quickstart-azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>クイック スタート: Azure SQL Database: Visual Studio Code を使って接続とデータの照会を行う
+# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: Visual Studio Code を使って Azure SQL Database に接続して照会する
 
-[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows で使用できるグラフィカル コード エディターです。Microsoft SQL Server、Azure SQL Database、SQL Data Warehouse のデータを照会するために、[mssql 拡張機能](https://aka.ms/mssql-marketplace)など、各種の拡張機能をサポートしています。 このクイック スタートでは、Visual Studio Code を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
+[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows に対応するグラフィカル コード エディターです。 Microsoft SQL Server、Azure SQL Database、および SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。 このクイック スタートでは、Visual Studio Code を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを実行してデータを照会、挿入、更新、削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
+このチュートリアルを完了するには、次のものが必要です。
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-#### <a name="install-vs-code"></a>VS コードをインストールします。
+#### <a name="install-visual-studio-code"></a>Visual Studio Code のインストール
 
-開始する前に、必ず最新バージョンの [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおいてください。 mssql 拡張機能のインストール ガイダンスについては、「[Install VS Code (VS コードのインストール)](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code)」と「[mssql for Visual Studio Code (Visual Studio Code 用 mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。 
+必ず最新の [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおきます。 mssql 拡張機能のインストールのガイダンスについては、「[Install VS Code (VS コードのインストール)](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code)」と「[mssql for Visual Studio Code (Visual Studio Code 用 mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。 
 
-## <a name="configure-vs-code"></a>VS Code の構成 
+## <a name="configure-visual-studio-code"></a>Visual Studio Code を構成する 
 
 ### <a name="mac-os"></a>**Mac OS**
 macOS では、mssql 拡張機能で使用される .Net Core の前提条件として、OpenSSL をインストールする必要があります。 使用するターミナルを開き、次のコマンドを入力して、**brew** と **OpenSSL** をインストールします。 
@@ -58,58 +58,53 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
-Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
-
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 ## <a name="set-language-mode-to-sql"></a>言語モードを SQL に設定
 
-Visual Studio Code で言語モードを **[SQL]** に設定し、mssql コマンドと T-SQL IntelliSense を有効にします。
+Visual Studio Code で、言語モードを **[SQL]** に設定し、mssql コマンドと T-SQL IntelliSense を有効にします。
 
 1. 新しい Visual Studio Code ウィンドウを開きます。 
 
-2. ステータス バーの右下隅の **[プレーン テキスト]** をクリックします。
-3. 表示された **[言語モードの選択]** ドロップダウン メニューで「**SQL**」と入力し、**Enter** キーを押して、言語モードを SQL に設定します。 
+2. **CTRL** + **N** キーを押します。 新しいプレーンテキスト ファイルが開きます。 
 
-   ![SQL 言語モード](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
+3. ステータス バーの右下隅の **[プレーン テキスト]** を選択します。
+
+4. 開かれた **[言語モードの選択]** ドロップダウン メニューで、**[SQL]** を選択します。 
 
 ## <a name="connect-to-your-database"></a>データベースに接続する
 
 Visual Studio Code を使用して、Azure SQL Database サーバーに対する接続を確立します。
 
 > [!IMPORTANT]
-> 続行する前に、サーバー、データベース、およびログイン情報が準備できていることを確認します。 接続プロファイル情報の入力を開始した後は、Visual Studio Code からフォーカスを移動すると、接続プロファイルの作成をやり直さなければならなくなります。
+> 続行する前に、サーバーおよびログインの情報が準備できていることを確認します。 接続プロファイル情報の入力を開始した後は、Visual Studio Code からフォーカスを移動すると、プロファイルの作成をやり直さなければならなくなります。
 >
 
-1. VS Code で、**Ctrl + Shift + P** キー (または **F1** キー) を押してコマンド パレットを開きます。
+1. Visual Studio Code で、**Ctrl + Shift + P** キー (または **F1** キー) を押してコマンド パレットを開きます。
 
-2. 「**sqlcon**」と入力して **Enter** キーを押します。
+2. **[MS SQL:Connect]\(MS SQL: 接続\)** を選択して、**Enter** キーを押します。
 
-3. **Enter** キーを押して **[接続プロファイルの作成]** を選択します。 これで、SQL Server インスタンスの接続プロファイルが作成されます。
+3. **[接続プロファイルの作成]** を選択します。
 
-4. プロンプトに従って、新しい接続プロファイルの接続プロパティを指定します。 それぞれの値を指定したら、**Enter** キーを押して続行します。 
+4. プロンプトに従って、新しいプロファイルの接続プロパティを指定します。 それぞれの値を指定したら、**Enter** キーを押して続行します。 
 
-   | Setting       | 推奨値 | 説明 |
+   | プロパティ       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **[サーバー名] | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |
-   | **データベース名** | mySampleDatabase | 接続先のデータベースの名前です。 |
-   | **認証** | SQL ログイン| このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
-   | **ユーザー名** | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
-   | **[パスワード (SQL ログイン)]** | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
-   | **[パスワードを保存しますか?]** | はい/いいえ | パスワードを毎回入力する手間を省くには、[はい] を選択します。 |
-   | **[このプロファイルの名前を入力してください]** | プロファイル名 (**mySampleDatabase** など) | 保存されたプロファイル名によって、以降のログインで、より速く接続できるようになります。 | 
+   | **サーバー名** | 完全修飾サーバー名 | 例: **mynewserver20170313.database.windows.net** |
+   | **データベース名** | mySampleDatabase | 接続先のデータベース。 |
+   | **認証** | SQL ログイン| このチュートリアルでは、SQL 認証を使用します。 |
+   | **ユーザー名** | ユーザー名 | サーバーを作成するために使用するサーバー管理者アカウントのユーザー名。 |
+   | **[パスワード (SQL ログイン)]** | パスワード | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
+   | **[パスワードを保存しますか?]** | はい/いいえ | パスワードを毎回入力する手間を省くには、**[はい]** を選択します。 |
+   | **[このプロファイルの名前を入力してください]** | プロファイル名 (**mySampleProfile** など) | 保存されたプロファイルによって、以降のログインでは、より速く接続できるようになります。 | 
 
-5. **Esc** キーを押して、プロファイルが作成され、接続が確立されたことを示す情報メッセージを閉じます。
-
-6. ステータス バーで接続を確認します。
-
-   ![接続の状態](./media/sql-database-connect-query-vscode/vscode-connection-status.png)
+   成功した場合、プロファイルが作成され接続されたことを示す通知が表示されます。
 
 ## <a name="query-data"></a>データのクエリを実行する
 
-次のコードを使用して、カテゴリ別で上位 20 の製品を照会します。ここでは [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用します。
+次の [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL ステートメントを使用して、カテゴリごとに上位 20 個の製品を照会します。
 
-1. **エディター** ウィンドウで、空のクエリ ウィンドウに次のクエリを入力します。
+1. エディター ウィンドウで、次の SQL クエリを貼り付けます。
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -118,15 +113,15 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. **Ctrl + Shift + E** キーを押して、Product と ProductCategory のテーブルからデータを取得します。
+2. **Ctrl** + **Shift** + **E** キーを押してクエリを実行し、`Product` および `ProductCategory` テーブルから結果を表示します。
 
-    ![クエリ](./media/sql-database-connect-query-vscode/query.png)
+    ![2 つのテーブルからデータを取得するクエリ](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>データを挿入する
 
-次のコードを使用して、SalesLT.Product テーブルに新しい製品を挿入します。ここでは [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用します。
+次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用して、`SalesLT.Product` テーブルに新しい製品を追加します。
 
-1. **エディター** ウィンドウで、前のクエリを削除して次のクエリを入力します。
+1. 前のクエリを次のクエリに置き換えます。
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -148,13 +143,13 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
            ,GETDATE() );
    ```
 
-2. **Ctrl + Shift + E** キーを押して、新しい行を Product テーブルに挿入します。
+2. **Ctrl** + **Shift** + **E** キーを押して、`Product` テーブルに新しい行を挿入します。
 
 ## <a name="update-data"></a>データの更新
 
-次のコードを使用して、先ほど追加した新しい製品を更新します。ここでは [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用します。
+次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用して、追加された製品を更新します。
 
-1.  **エディター** ウィンドウで、前のクエリを削除して次のクエリを入力します。
+1. 前のクエリを次のクエリに置き換えます。
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -162,23 +157,23 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
    WHERE Name = 'myNewProduct';
    ```
 
-2. **Ctrl + Shift + E** キーを押して、Product テーブルの指定した行を更新します。
+2. **Ctrl** + **Shift** + **E** キーを押して、`Product` テーブルの指定した行を更新します。
 
 ## <a name="delete-data"></a>データの削除
 
-次のコードを使用して、先ほど追加した新しい製品を削除します。ここでは [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを使用します。
+次の [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL ステートメントを使用して、新しい製品を削除します。
 
-1. **エディター** ウィンドウで、前のクエリを削除して次のクエリを入力します。
+1. 前のクエリを次のクエリに置き換えます。
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. **Ctrl + Shift + E** キーを押して、Product テーブルの指定した行を削除します。
+2. **Ctrl** + **Shift** + **E** キーを押して、`Product` テーブルの指定した行を削除します。
 
 ## <a name="next-steps"></a>次の手順
 
-- SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
-- Azure Portal を使用して接続とクエリを実行するには、[Azure Portal の SQL クエリ エディターを使用した接続とクエリ実行](sql-database-connect-query-portal.md)に関するページをご覧ください。
+- SQL Server Management Studio を使用して接続と照会を行うには、「[クイック スタート: SQL Server Management Studio を使用して Azure SQL Database に接続しクエリを実行する](sql-database-connect-query-ssms.md)」を参照してください。
+- Azure portal を使用して接続と照会を行うには、「[クイック スタート: Azure portal の SQL クエリ エディターを使って接続とデータの照会を行う](sql-database-connect-query-portal.md)」を参照してください。
 - Visual Studio Code の使用に関するMSDN マガジンの記事については、[MSSQL 拡張機能によるデータベース IDE の作成に関するブログの投稿](https://msdn.microsoft.com/magazine/mt809115)を参照してください。

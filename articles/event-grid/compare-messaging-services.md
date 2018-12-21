@@ -1,21 +1,22 @@
 ---
-title: Azure メッセージング サービスの比較
-description: Azure Event Grid、Event Hubs、Service Bus を比較します。 さまざまなシナリオでどのサービスを使うべきか、お勧めします。
+title: Azure メッセージングの比較 - Event Grid、Event Hubs、Service Bus
+description: Azure Event Grid、Event Hubs、および Service Bus の 3 つの Azure メッセージング サービスについて説明します。 さまざまなシナリオでどのサービスを使うべきか、お勧めします。
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 07/05/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 0eeded4e6bfe9041b360441d1e7b2a5c7dd4a099
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852199"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166525"
 ---
-# <a name="choose-between-azure-services-that-deliver-messages"></a>メッセージを配信する Azure サービスの選択
+# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Azure メッセージング サービスの中から選択する - Azure Event Grid、Event Hubs、および Service Bus
 
 Azure には、ソリューション全体にわたるイベント メッセージの配信を支援する 3 つのサービスがあります。 これらのサービスを次に示します。
 
@@ -33,7 +34,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 イベントは、状態または状態変更の軽量の通知です。 イベントの発行元は、イベントの処理方法に関して何も予測していません。 通知の処理方法はイベントの処理者が決定します。 イベントは、個別の単位またはシリーズの一部になることができます。
 
-個別のイベントは、状態の変更を報告し、対応可能です。 処理者が次の手順を実行するために必要なのは、何かが起こったことを知ることだけです。 イベント データには、発生した事象に関する情報は含まれますが、イベントをトリガーしたデータは含まれていません。 たとえば、あるイベントは、ファイルが作成されたことを処理者に通知します。 このイベントにファイルに関する一般情報が含まれることはありますが、ファイル自体は含まれません。 個別のイベントは、スケーリングする必要があるサーバーレス ソリューションに最適です。
+個別のイベントは、状態の変更を報告し、対応可能です。 処理者が次の手順を実行するために必要なのは、何かが起こったことを知ることだけです。 イベント データには、発生した事象に関する情報は含まれますが、イベントをトリガーしたデータは含まれていません。 たとえば、あるイベントは、ファイルが作成されたことを処理者に通知します。 このイベントにファイルに関する一般情報が含まれることはありますが、ファイル自体は含まれません。 個別のイベントは、スケーリングする必要がある[サーバーレス](http://azure.com/serverless) ソリューションに最適です。
 
 一連のイベントは、状態を報告し、分析可能です。 イベントは、時間順に並べられ、相互に関連付けられています。 処理者は、一連のイベントを分析して、何が起こったかを知る必要があります。
 

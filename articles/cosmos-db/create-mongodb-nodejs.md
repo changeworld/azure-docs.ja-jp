@@ -1,23 +1,22 @@
 ---
-title: Node.js を使用して MongoDB アプリを Azure Cosmos DB に接続する
-description: 既存の Node.js MongoDB アプリを Azure Cosmos DB に接続する方法について説明します
-services: cosmos-db
+title: Node.js MongoDB アプリを Azure Cosmos DB に接続する
+description: このクイック スタートは、Node.js で記述された既存の MongoDB アプリを Azure Cosmos DB に接続する方法を示します。
 author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.custom: quick start connect, mvc, devcenter
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 06/19/2017
-ms.author: sngun
-ms.openlocfilehash: 6844fc2450154b7e71c74ad9728929c3dc9df2f9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: d9754cf66b05059c986c7ffbff94290e207f706a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844483"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141382"
 ---
-# <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: 既存の Node.js MongoDB Web アプリを移行する 
+# <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB は:既存の Node.js MongoDB Web アプリの移行 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -45,13 +44,13 @@ CLI をローカルにインストールして使用する場合、このトピ�
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
-`npm` コマンドと `git` コマンドを実行するには、Azure CLI に加えて、[Node.js](https://nodejs.org/) と [Git](http://www.git-scm.com/downloads) がローカルにインストールされていることが必要です。
+`npm` コマンドと `git` コマンドを実行するには、Azure CLI に加えて、[Node.js](https://nodejs.org/) と [Git](https://www.git-scm.com/downloads) がローカルにインストールされていることが必要です。
 
 Node.js の実用的な知識が必要です。 このクイック スタートは、一般的な Node.js アプリケーションの開発を支援するためのものではありません。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-次のコマンドを実行して、サンプル リポジトリを複製します。 このサンプル レポジトリには、既定の [MEAN.js](http://meanjs.org/) アプリケーションが含まれています。
+次のコマンドを実行して、サンプル リポジトリを複製します。 このサンプル レポジトリには、既定の [MEAN.js](https://meanjs.org/) アプリケーションが含まれています。
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -180,7 +179,7 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>キーを取得する
 
-Azure Cosmos DB データベースに接続するには、データベース キーが必要です。 [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) コマンドを使用して、プライマリ キーを取得します。
+Azure Cosmos DB データベースに接続するには、データベース キーが必要です。 [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys) コマンドを使用して、プライマリ キーを取得します。
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"

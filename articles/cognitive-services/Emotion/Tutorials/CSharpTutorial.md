@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: 画像から顔の表情を認識する - Emotion API (C#)'
+title: 'チュートリアル: 画像から顔の表情を認識する - Emotion API、C#'
 titlesuffix: Azure Cognitive Services
 description: 画像から顔の表情を認識する基本的な Windows アプリケーションについて説明します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: f3a84a68718fba29e2a4b2fae057e68976119c95
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: da605ec4013fb11606f99f3d9a2dcfcfcab00d3b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237026"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163329"
 ---
 # <a name="tutorial-recognize-emotions-on-a-face-in-an-image"></a>チュートリアル: 画像から顔の表情を認識する
 
@@ -50,7 +50,7 @@ Emotion API を使用して、イメージ内の顔で表現された感情を�
 
 3.  Ctrl キーと Shift キーを押しながら B キーを押すか、リボン メニューで **[ビルド]** をクリックしてから **[Build Solution]**(ソリューションのビルド) を選択します。
 
-## <a name="Step3">手順 3: 例を実行する</a>
+## <a name="Step3">手順 3:例を実行する</a>
 1.  ビルドが完了したら、**F5** キーを押すか、リボン メニューの **[Start]**(開始) をクリックして例を実行します。
 2.  「**Paste your subscription key here to start**」(開始するにはここにサブスクリプション キーを貼り付けてください) と記されている**テキスト ボックス**を含む Emotion API ウィンドウを探します。 次のスクリーンショットに示すように、テキスト ボックスにサブスクリプション キーを貼り付けます。 [Save Key]\(キーの保存) ボタンをクリックすると、自分の PC またはラップトップにサブスクリプション キーを残すことを選択できます。 サブスクリプション キーをシステムから削除する場合は、[キーの削除] をクリックして、PC またはラップトップからキーを削除します。
 

@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: C# で好ましくない要素を検出するためにテキスト コンテンツを分析する'
+title: 'クイック スタート: C# で好ましくない要素を検出するためにテキストの内容を分析する'
 titlesuffix: Azure Cognitive Services
 description: Content Moderator SDK for .NET を使用してさまざまな好ましくない要素を検出するためにテキスト コンテンツを分析する方法
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 10/31/2018
 ms.author: sajagtap
-ms.openlocfilehash: 0540a81db93570928dd33b66a69b6883b2df0cd9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 74c2142e8f6839422446767cd0c70b34daa3f1ad
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007690"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103249"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>クイック スタート: C# で好ましくない要素を検出するためにテキスト コンテンツを分析する 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>クイック スタート: C# で好ましくない要素を検出するためにテキストの内容を分析する 
 
 この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) の使用を開始するために役立つ情報とコード サンプルを提供します。 潜在的に好ましくない素材をモデレートすることを目的として、テキスト コンテンツの用語ベースのフィルター処理と分類を実行する方法を学習します。
 
@@ -47,59 +47,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 *Program.cs* ファイルの先頭に次の `using` ステートメントを追加します。
 
-```csharp
-using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=1-8)]
 
 ### <a name="create-the-content-moderator-client"></a>Content Moderator クライアントを作成する
 
 サブスクリプション用の Content Moderator クライアント プロバイダーを作成するために、*Program.cs* ファイルに次のコードを追加します。 コードは、同じ名前空間内の **Program** クラスの近くに追加します。 **AzureRegion** フィールドと **CMSubscriptionKey** フィールドを、リージョン識別子とサブスクリプション キーの値で更新する必要があります。
 
-```csharp
-// Wraps the creation and configuration of a Content Moderator client.
-public static class Clients
-{
-    // The region/location for your Content Moderator account, 
-    // for example, westus.
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    // The base URL fragment for Content Moderator calls.
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
-
-    // Your Content Moderator subscription key.
-    private static readonly string CMSubscriptionKey = "YOUR API KEY";
-
-    // Returns a new Content Moderator client for your subscription.
-    public static ContentModeratorClient NewClient()
-    {
-        // Create and initialize an instance of the Content Moderator API wrapper.
-        ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
-
-        client.Endpoint = AzureBaseURL;
-        return client;
-    }
-}
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=54-77)]
 
 ### <a name="set-up-input-and-output-targets"></a>入力と出力のターゲットを設定する
 
 次の静的フィールドを _Program.cs_ 内の **Program** クラスに追加します。 これらは、入力テキスト コンテンツと出力 JSON コンテンツ用のファイルを指定します。
 
-```csharp
-// The name of the file that contains the text to evaluate.
-private static string TextFile = "TextFile.txt";
-
-// The name of the file to contain the output from the evaluation.
-private static string OutputFile = "TextModerationOutput.txt";
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
 *TextFile.txt* 入力ファイルを作成し、それに合わせてパスを更新する必要があります (相対パスは実行ディレクトリを基準にしています)。 _TextFile.txt_ を開き、モデレートするテキストを追加します。 このクイック スタートでは、次のサンプル テキストを使用します。
 
@@ -119,34 +79,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 
 これらの操作の詳細については、「[次の手順](#next-steps)」セクションのリンク先を参照してください。
 
-```csharp
-// Load the input text.
-string text = File.ReadAllText(TextFile);
-Console.WriteLine("Screening {0}", TextFile);
-
-text = text.Replace(System.Environment.NewLine, " ");
-byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(text);
-MemoryStream stream = new MemoryStream(byteArray);
-
-// Save the moderation results to a file.
-using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
-{
-    // Create a Content Moderator client and evaluate the text.
-    using (var client = Clients.NewClient())
-    {
-        // Screen the input text: check for profanity,
-        // autocorrect text, check for personally identifying
-        // information (PII), and classify the text into three categories
-        outputWriter.WriteLine("Autocorrect typos, check for matching terms, PII, and classify.");
-        var screenResult =
-        client.TextModeration.ScreenText("text/plain", stream, "eng", true, true, null, true);
-        outputWriter.WriteLine(
-                JsonConvert.SerializeObject(screenResult, Formatting.Indented));
-    }
-    outputWriter.Flush();
-    outputWriter.Close();
-}
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=23-48)]
 
 ## <a name="run-the-program"></a>プログラムの実行
 

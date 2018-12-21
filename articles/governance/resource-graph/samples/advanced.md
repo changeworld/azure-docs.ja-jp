@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Graph の高度なクエリ
+title: 高度なクエリのサンプル
 description: いくつかの高度なクエリを実行するには、Azure Resource Graph を使用します。
 services: resource-graph
 author: DCtheGeek
@@ -8,13 +8,13 @@ ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 43cf9f5ec0f9c265efa0e59eadbf6c9bbe4f7c3f
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 8599d535a3a522d742207a655a8f4098d6f3f18f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51682881"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309391"
 ---
 # <a name="advanced-resource-graph-queries"></a>Resource Graph の高度なクエリ
 
@@ -71,7 +71,7 @@ Search-AzureRmGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a> regexに一致する仮想マシン
 
-このクエリは、[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_ と呼ばれる) に一致する仮想マシンを検索します。
+このクエリは、[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_と呼ばれる) に一致する仮想マシンを検索します。
 **matches regex @** では、一致させる regex を定義することができます。ここでは `^Contoso(.*)[0-9]+$` を指定しています。 その regex の定義は以下のように説明されています。
 
 - `^` - 一致は、文字列の先頭から始まる必要があります。

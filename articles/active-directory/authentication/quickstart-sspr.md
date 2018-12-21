@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: c40cb3192d514d990ea2a5d66e1484ff204e9b10
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: d04d27ee6136edec8d9af16f9133cf9a7cc0720c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223559"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311560"
 ---
-# <a name="quickstart-self-service-password-reset"></a>クイック スタート: セルフサービスによるパスワードのリセット
+# <a name="quickstart-self-service-password-reset"></a>クイック スタート:セルフサービスのパスワード リセット
 
 このクイック スタートでは、IT 管理者がユーザーにパスワードのリセットやアカウントのロック解除を許可するための単純な方法として、セルフサービスによるパスワードのリセット (SSPR) を構成する方法を説明します。
 
@@ -25,7 +25,7 @@ ms.locfileid: "39223559"
 
 * 少なくとも試用版ライセンスが有効になっている、動作している Azure AD テナント。
 * 全体管理者特権を持つアカウント。
-* 管理者が知っているパスワードを持つ、管理者以外のテスト ユーザー。ユーザーを作成する必要がある場合は、「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
+* 管理者が知っているパスワードを持つ、管理者以外のテスト ユーザー。ユーザーを作成する必要がある場合は、「[クイック スタート:Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
 * 管理者以外のテスト ユーザーが所属している、テストするパイロット グループ。グループを作成する必要がある場合は、「[Azure Active Directory でグループを作成し、メンバーを追加する](../active-directory-groups-create-azure-portal.md)」を参照してください。
 
 ## <a name="enable-self-service-password-reset"></a>セルフ サービスのパスワード リセットを有効にする
@@ -39,7 +39,7 @@ ms.locfileid: "39223559"
     * **[Save]** をクリックします。
 
 3. **[認証方法]** ページで、以下を選択します。
-   * リセットのために必要な方法の数: **1**
+   * リセットに必要な方法の数:**1**
    * ユーザーが使用できる方法:
       * **携帯電話**
       * **会社電話**
@@ -48,8 +48,8 @@ ms.locfileid: "39223559"
     ![認証][Authentication]
 
 4. **[登録]** ページで、以下を選択します。
-   * サインイン時にユーザーに登録を求める: **はい**
-   * ユーザーが認証情報を再確認するように求められるまでの日数を設定する: **365**
+   * サインイン時にユーザーに登録を求める:**はい**
+   * ユーザーが認証情報を再確認するように求められるまでの日数を設定する:**365**
 
 ## <a name="test-self-service-password-reset"></a>セルフサービスによるパスワードのリセットをテストする
 
@@ -64,7 +64,7 @@ ms.locfileid: "39223559"
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-セルフサービスのパスワード リセットは簡単に無効にできます。 Azure AD テナントを開いて **[パスワードのリセット]** > **[プロパティ]** の順に移動し、**[セルフ サービスによるパスワードのリセットが有効]** の **[なし]** を選択します。
+セルフサービスのパスワード リセットは簡単に無効にできます。 Azure AD テナントを開いて **[プロパティ]** > **[パスワードのリセット]** の順に移動し、**[セルフ サービスによるパスワードのリセットが有効]** の **[なし]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

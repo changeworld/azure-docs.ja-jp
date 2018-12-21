@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 119853df5b5234b65bdade890df1fecb72c326b7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a82e7d795d9e40ebef8cf0937dd2b91f5bacd42e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157379"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138876"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用した Azure ファイル共有の作成および管理 
 このガイドでは、PowerShell を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -49,7 +49,7 @@ $storageAcct = New-AzureRmStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
-これで、最初の Azure ファイル共有を作成できます。 ファイル共有は、[New-AzureStorageShare](/powershell/module/azurerm.storage/new-azurestorageshare) コマンドレットを使用して作成できます。 この例では、`myshare` という名前の共有を作成します。
+これで、最初の Azure ファイル共有を作成できます。 ファイル共有は、[New-AzureStorageShare](/powershell/module/azure.storage/new-azurestorageshare) コマンドレットを使用して作成できます。 この例では、`myshare` という名前の共有を作成します。
 
 ```azurepowershell-interactive
 New-AzureStorageShare `
@@ -79,7 +79,7 @@ SMB を使用してファイル共有をマウントするには、お使いの 
 次の例は、AzureRM PowerShell モジュールを使用してファイル REST プロトコルで Azure ファイル共有を操作する方法を示しています。 
 
 #### <a name="create-directory"></a>ディレクトリを作成する
-Azure ファイル共有のルートで *myDirectory* という名前の新しいディレクトリを作成するには、[New-AzureStorageDirectory](/powershell/module/azurerm.storage/new-azurestoragedirectory) コマンドレットを使用します。
+Azure ファイル共有のルートで *myDirectory* という名前の新しいディレクトリを作成するには、[New-AzureStorageDirectory](/powershell/module/azure.storage/new-azurestoragedirectory) コマンドレットを使用します。
 
 ```azurepowershell-interactive
 New-AzureStorageDirectory `
@@ -227,16 +227,18 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 また、リソースを 1 つずつ削除することもできます。
 
 - このクイック スタートで作成した Azure ファイル共有を削除する場合。
-```azurepowershell-interactive
-Get-AzureStorageShare -Context $storageAcct.Context | Where-Object { $_.IsSnapshot -eq $false } | ForEach-Object { 
-    Remove-AzureStorageShare -Context $storageAcct.Context -Name $_.Name
-}
-```
+
+    ```azurepowershell-interactive
+    Get-AzureStorageShare -Context $storageAcct.Context | Where-Object { $_.IsSnapshot -eq $false } | ForEach-Object { 
+        Remove-AzureStorageShare -Context $storageAcct.Context -Name $_.Name
+    }
+    ```
 
 - ストレージ アカウント自体を削除する場合 (この場合、作成した Azure ファイル共有が暗黙的に削除されます。また、Azure BLOB ストレージ コンテナーなど、作成されたその他のストレージ リソースも暗黙的に削除されます)。
-```azurepowershell-interactive
-Remove-AzureRmStorageAccount -ResourceGroupName $storageAcct.ResourceGroupName -Name $storageAcct.StorageAccountName
-```
+
+    ```azurepowershell-interactive
+    Remove-AzureRmStorageAccount -ResourceGroupName $storageAcct.ResourceGroupName -Name $storageAcct.StorageAccountName
+    ```
 
 ## <a name="next-steps"></a>次の手順
 

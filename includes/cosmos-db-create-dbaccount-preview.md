@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/24/2018
 ms.author: dech
 ms.custom: include file
-ms.openlocfilehash: 6169821d0e81f0af108dccbfa761f5512e352628
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3915df46495e754843009a761e9a07aa2daddae2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853518"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53286187"
 ---
 1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[リソースの作成]** > **[データベース]** > **[Azure Cosmos DB]** の順にクリックします。
@@ -26,8 +26,8 @@ ms.locfileid: "52853518"
     ---|---|---
     サブスクリプション|*該当するサブスクリプション*|この Azure Cosmos DB アカウントに使用する Azure サブスクリプションを選択します。 
     リソース グループ|新規作成<br><br><*一意の名前を入力*>|**新規作成**を選択してから、自分のアカウントの新しいリソースグループの名前を入力します。 簡略化のため、アカウント名と同じ名前を使用できます。 
-    アカウント名|<*一意の名前を入力*>|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 指定した ID に *documents.azure.com* が付加されて URI が作成されるので、一意の ID を使用してください。<br><br>ID に含めることができるのは、英小文字、数字、ハイフン (-) のみで、3 文字以上、50 文字以内にする必要があります。
-    API|コア (SQL)|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB では、SQL (ドキュメント データベース)、Gremlin (グラフ データベース)、MongoDB (ドキュメント データベース)、Table API、および Cassandra API の 5 種類の API が提供されています。 現在は、API ごとに個別のアカウントを作成する必要があります。 <br><br>この記事ではドキュメント データベースを作成し、SQL 構文を使用してクエリを実行するため、**[コア SQL]** を選択します。 <br><br>[SQL API について詳しくは、こちらをご覧ください](../articles/cosmos-db/documentdb-introduction.md)|
+    アカウント名|<*一意の名前を入力*>|自分の Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 指定した ID に *documents.azure.com* が付加されて URI が作成されるので、一意の ID を使用してください。<br><br>ID に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 31 文字にする必要があります。
+    API|コア (SQL)|API によって、作成するアカウントの種類が決まります。 Azure Cosmos DB には、5 種類の API が用意されています。Azure Cosmos DB では、SQL (ドキュメント データベース)、Gremlin (グラフ データベース)、MongoDB (ドキュメント データベース)、Table API、および Cassandra API です。 現在は、API ごとに個別のアカウントを作成する必要があります。 <br><br>この記事ではドキュメント データベースを作成し、SQL 構文を使用してクエリを実行するため、**[コア SQL]** を選択します。 <br><br>[SQL API について詳しくは、こちらをご覧ください](../articles/cosmos-db/documentdb-introduction.md)|
     場所|<*ユーザーに最も近いリージョンを選択*>|Azure Cosmos DB アカウントをホストする地理的な場所を選択します。 データに最も高速にアクセスできる、ユーザーに最も近い場所を使用します。
     Geo 冗長の有効化| 空白 | データベースのレプリケート バージョンが 2 番目 (ペア) のリージョンに作成されます。 空白のままにします。  
     マルチリージョンの書き込み| 空白 | これにより、データベースの各リージョンを、読み取りリージョンと書き込みリージョンの両方にすることができます 空白のままにします。  

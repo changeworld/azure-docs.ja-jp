@@ -1,5 +1,6 @@
 ---
-title: 'チュートリアル: Azure Machine Learning サービスで画像分類モデルをトレーニングする'
+title: イメージの分類チュートリアル:モデルをトレーニングする
+titleSuffix: Azure Machine Learning service
 description: このチュートリアルでは、Azure Machine Learning サービスを使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをトレーニングする方法について説明します。 このチュートリアルは、2 部構成のシリーズのパート 1 です。
 services: machine-learning
 ms.service: machine-learning
@@ -8,19 +9,20 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 11/21/2018
-ms.openlocfilehash: 067a8deb935fb8a49d72c6ce441e8d9760c5390c
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: a2208e160d641d762b57668cdc635fe877677ff5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283657"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310115"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>チュートリアル #1: Azure Machine Learning サービスで画像分類モデルをトレーニングする
+# <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>チュートリアル:Azure Machine Learning service でイメージ分類モデルをトレーニングする
 
-このチュートリアルでは、機械学習モデルのトレーニングをローカルに行ったり、リモートのコンピューティング リソース上で行ったりします。 Python Jupyter Notebook 内の Azure Machine Learning サービス (プレビュー) に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
+このチュートリアルでは、機械学習モデルのトレーニングをローカルに行ったり、リモートのコンピューティング リソース上で行ったりします。 Python Jupyter Notebook 内の Azure Machine Learning サービスに関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
 
-このチュートリアルでは、Azure Machine Learning サービスで [MNIST](http://yann.lecun.com/exdb/mnist/) データセットや [scikit-learn](http://scikit-learn.org) を使用して、単純なロジスティック回帰をトレーニングします。  MNIST は、70,000 ものグレースケールのイメージから成る、人気のあるデータセットです。 各イメージは、0 から 9 までの数値を表す 28x28 ピクセルの手書き数字です。 多クラス分類子を作成して、特定のイメージが表す数字を識別することが目標です。 
+このチュートリアルでは、Azure Machine Learning サービスで [MNIST](https://yann.lecun.com/exdb/mnist/) データセットや [scikit-learn](https://scikit-learn.org) を使用して、単純なロジスティック回帰をトレーニングします。  MNIST は、70,000 ものグレースケールのイメージから成る、人気のあるデータセットです。 各イメージは、0 から 9 までの数値を表す 28x28 ピクセルの手書き数字です。 多クラス分類子を作成して、特定のイメージが表す数字を識別することが目標です。 
 
 以下の項目について説明します。
 
@@ -33,19 +35,17 @@ ms.locfileid: "52283657"
 
 その後[このチュートリアルのパート 2](tutorial-deploy-models-with-aml.md) で、モデルを選択してデプロイする方法を学習します。 
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://aka.ms/AMLfree)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 0.1.79 を使用してテストされました
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.2 を使用してテストされました
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
-便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)として提供されています。 `01.train-models.ipynb`Azure Notebook またはご自身の Jupyter notebook サーバー内のいずれかのノートを実行します。
+便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)として提供されています。 `tutorials/img-classification-part1-training.ipynb`Azure Notebook またはご自身の Jupyter notebook サーバー内のいずれかのノートを実行します。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
->[!NOTE]
-> このチュートリアルは、Azure Machine Learning SDK バージョン 0.1.74 でテストされました 
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 
@@ -94,11 +94,11 @@ from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-remote-compute-target"></a>リモート コンピューティング ターゲットの作成
+### <a name="create-or-attach-existing-amlcompute"></a>AMlCompute の作成または既存のアタッチ
 
-Azure ML Managed Compute は、Azure 仮想マシン (GPU をサポートする VM を含む) のクラスター上で、データ サイエンティストが機械学習モデルをトレーニングすることを可能にする管理されたサービスです。  このチュートリアルでは、トレーニング環境として Azure Managed Compute クラスターを作成します。 このコードは、クラスターがまだワークスペース内にない場合にクラスターを作成します。 
+Azure Machine Learning Managed Compute(AmlCompute) は、Azure 仮想マシン (GPU をサポートする VM を含む) のクラスター上で、データ サイエンティストが機械学習モデルをトレーニングすることを可能にする管理されたサービスです。  このチュートリアルでは、トレーニング環境として AmlCompute を作成します。 このコードは、まだワークスペース内にない場合に、コンピューティング クラスターを作成します。
 
- **クラスターの作成には約 5 分かかります。** ワークスペース内にクラスターが既存の場合は、このコードはそのクラスターを使用し、作成プロセスをスキップします。
+ **コンピューティングの作成には約 5 分かかります。** ワークスペース内にコンピューティングが既にある場合は、このコードではそれを使用して、作成プロセスをスキップします。
 
 
 ```python
@@ -107,12 +107,17 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("BATCHAI_CLUSTER_NAME", "cpucluster")
-compute_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 0)
-compute_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 4)
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+import os
+
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
 # This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
-vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_D2_V2")
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
 
 
 if compute_name in ws.compute_targets:
@@ -132,7 +137,7 @@ else:
     # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
+     # For a more detailed view of current AmlCompute status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -320,11 +325,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 以下の、スクリプトがデータを取得してモデルを保存する方法に注目してください。
 
 + トレーニング スクリプトが引数を読み取り、データが含まれるディレクトリを検出します。  後でジョブを送信する際に、次のように、引数にデータストアを指定します。`parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
-    
+
 + トレーニング スクリプトが、outputs という名前のディレクトリ内にモデルを保存します。 <br/>
 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 このディレクトリ内に書き込まれたものはすべてワークスペース内に自動的にアップロードされます。 チュートリアルの後半で、このディレクトリからモデルにアクセスします。
-
 データセットを正しく読み込むために、`utils.py` ファイルがトレーニング スクリプトから参照されます。  このスクリプトをスクリプト フォルダーにコピーして、リモート リソース上でトレーニング スクリプトと共にアクセスできるようにします。
 
 
@@ -340,12 +344,12 @@ shutil.copy('utils.py', script_folder)
 
 * 推定オブジェクトの名前 `est`
 * スクリプトが含まれるディレクトリ。 このディレクトリ内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 
-* コンピューティング ターゲット。  ここでは、作成した Batch AI クラスターを使用します
+* コンピューティング ターゲット。  ここでは、作成した Azure Machine Learning コンピューティング クラスターを使用します。
 * トレーニング スクリプト名 train.py
 * トレーニング スクリプトからの必須パラメーター 
 * トレーニングに必要な Python パッケージ
 
-このチュートリアルでは、このターゲットは Batch AI クラスターです。 スクリプト フォルダー内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 データストア (`ds.as_mount()`) を使用するために data_folder が設定されます。
+このチュートリアルでは、このターゲットは AmlCompute です。 スクリプト フォルダー内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。 データストア (`ds.as_mount()`) を使用するために data_folder が設定されます。
 
 ```python
 from azureml.train.estimator import Estimator
@@ -380,15 +384,15 @@ run
 
 待っている間に次のことが行われます。
 
-- **イメージの作成**: 推定で指定した Python 環境と一致する Docker イメージが作成されます。 このイメージがワークスペースにアップロードされます。 イメージの作成とアップロードには**約 5 分**かかります。 
+- **イメージの作成**:推定で指定した Python 環境と一致する Docker イメージが作成されます。 このイメージがワークスペースにアップロードされます。 イメージの作成とアップロードには**約 5 分**かかります。 
 
   その後の実行のためにコンテナーがキャッシュに入れられるので、この段階は Python 環境ごとに 1 回行われます。  イメージの作成中に、ログが実行履歴にストリーミングされます。 これらのログを使用して、イメージの作成の進行状況を監視できます。
 
-- **拡大縮小**: リモート クラスターで、現在使用可能なノードよりも多くのノードを実行する必要がある場合、自動的にノードが追加されます。 通常、拡大縮小には**約 5 分**かかります。
+- **拡大縮小**:リモート クラスターで、現在使用可能なノードよりも多くのノードを実行する必要がある場合、自動的にノードが追加されます。 通常、拡大縮小には**約 5 分**かかります。
 
-- **実行**: この段階では、必要なスクリプトとファイルがコンピューティング ターゲットに送信され、データ ストアがマウント/コピーされてから、entry_script が実行されます。 ジョブの実行中に、stdout と ./logs ディレクトリが実行履歴にストリーミングされます。 これらのログを使用して、実行の進行状況を監視できます。
+- **実行**:この段階では、必要なスクリプトとファイルがコンピューティング ターゲットに送信され、データ ストアがマウント/コピーされてから、entry_script が実行されます。 ジョブの実行中に、stdout と ./logs ディレクトリが実行履歴にストリーミングされます。 これらのログを使用して、実行の進行状況を監視できます。
 
-- **後処理**: この実行の ./outputs ディレクトリがワークスペース内の実行履歴に上書きコピーされ、これらの結果にアクセスできるようになります。
+- **後処理**:この実行の ./outputs ディレクトリがワークスペース内の実行履歴に上書きコピーされ、これらの結果にアクセスできるようになります。
 
 
 複数の方法で、実行中のジョブの進行状況を確認できます。 このチュートリアルでは、`wait_for_completion` メソッドに加えて Jupyter ウィジェットを使用します。 

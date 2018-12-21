@@ -1,21 +1,21 @@
 ---
 title: Azure で CSP パートナー情報を使用して Cloudyn に登録する | Microsoft Docs
-description: CSP パートナー情報を使用して、Cloudyn に登録します。
+description: このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
-ms.custom: ''
+ms.custom: seodec18
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 7d89446869815e5fb33ed0f95739054552268fae
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 0cded27e5c7a7105c3e22f55fa02394572d0932f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274757"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099894"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 
@@ -33,13 +33,13 @@ CSP パートナーであれば、Cloudyn に登録できます。 この登録�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-- Azure Portal ( http://portal.azure.com ) にサインインします。
+- Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="register-with-cloudyn"></a>Cloudyn に登録する
 
 1. Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。
 2. **[概要]** の **[Cloudyn]** をクリックします｡  
-    ![Cloudyn のページ](./media/quick-register-csp/cost-mgt-billing-service.png)
+    ![Azure portal に表示される [Cloudyn] ページ](./media/quick-register-csp/cost-mgt-billing-service.png)
 3. **[Cloudyn]** ページで **[Cloudyn に移動します]** をクリックします。新しいウィンドウで Cloudyn 登録ページが開きます。
 4. Cloudyn ポータル試用版登録のページで、会社名を入力し、**[Microsoft CSP Partner Program Administrator]\(Microsoft CSP パートナー プログラム管理者\)** を選択し、**[次へ]** をクリックします。  
 5. **[アプリケーション ID]**、**[Commerce ID]\(コマース ID\)**、**[Application Secret key]\(アプリケーションの秘密鍵\)** を入力し、**[Default Pricing Plan]\(既定の料金プラン\)** を選択します。 手元に情報がない場合は、パートナー センター ポータル ([https://partnercenter.microsoft.com](https://partnercenter.microsoft.com)) にプライマリ管理者アカウントでサインインして、次の手順を実行します。
@@ -48,9 +48,9 @@ CSP パートナーであれば、Cloudyn に登録できます。 この登録�
   3. ご自分の Web アプリケーションから、**アプリ ID** の GUID をコピーします。
   4. ご自分の Web アプリケーションから、**Commerce ID** の GUID をコピーします。
   5. キーの有効期間は、必要に応じて、1 年または 2 年を選択します。 **[キーの追加]** を選択し、秘密鍵の値をコピーして保存します。  
-    ![パートナー センター](./media/quick-register-csp/csp-partner-center.png)
+    ![資格情報のコピーを行うパートナー ダッシュボード](./media/quick-register-csp/csp-partner-center.png)
   6. Cloudyn の登録ページに戻って、情報を貼り付けます。  
-      ![CSP アカウントの資格情報](./media/quick-register-csp/csp-reg.png)
+      ![Cloudyn の登録ページに資格情報を貼り付ける](./media/quick-register-csp/csp-reg.png)
 6. 使用条件に同意し、情報を検証します。 **[次へ]** をクリックし、Cloudyn を承認して Azure リソース データを収集します。 収集されたデータには、お客様のサブスクリプションの使用状況、パフォーマンス、請求、サブスクリプションからのタグ データなどが含まれています。  
 7. **[Invite other stakeholders]\(その他の関係者を招待\)** の下に電子メール アドレスを入力することで、ユーザーを追加できます。 完了したら、**[次へ]** をクリックします。 請求データをすべて Cloudyn に追加するには、約 2 時間かかります。
 8. **[Go to Cloudyn]\(Cloudyn に移動\)** をクリックして Cloudyn ポータルを開くと、**[Cloud Accounts Management]\(クラウド アカウント管理\)** ページに、登録された CSP アカウント情報が表示されます。
@@ -59,7 +59,7 @@ CSP パートナーであれば、Cloudyn に登録できます。 この登録�
 
 既定で Partner Center API は直接 CSP にのみアクセスできます。 ただし、直接 CSP プロバイダーは、Cloudyn のエンティティ グループを使用して、間接 CSP 顧客またはパートナーのアクセスを構成できます。
 
-間接 CSP 顧客またはパートナーのアクセスを有効にするには、「[試用版の登録を作成する](#create-a-trial-registration)」の手順に従って試用版の登録を設定します。 次に、以下の手順を完了して、Cloudyn エンティティ グループを使用して間接 CSP データをセグメント化します。 次に、エンティティ グループに適切なユーザーのアクセス許可を割り当てます。
+間接 CSP 顧客またはパートナーのアクセスを有効にするには、「[Cloudyn に登録する](#register-with-cloudyn)」の手順に従って試用版の登録を設定します。 次に、以下の手順を完了して、Cloudyn エンティティ グループを使用して間接 CSP データをセグメント化します。 次に、エンティティ グループに適切なユーザーのアクセス許可を割り当てます。
 
 1. [エンティティの作成](tutorial-user-access.md#create-and-manage-entities)に関する情報を参照して、エンティティ グループを作成します。
 2. 「[Assigning subscriptions to Cost Entities](https://support.cloudyn.com/hc/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities)」(サブスクリプションをコスト エンティティに割り当てる) の手順に従って実行します。 間接 CSP 顧客のアカウントとその Azure サブスクリプションを、以前に作成したエンティティに関連付けます。

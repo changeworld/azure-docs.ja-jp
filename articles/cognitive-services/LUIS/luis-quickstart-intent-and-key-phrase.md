@@ -1,21 +1,22 @@
 ---
-title: 'チュートリアル 8: LUIS でのキー フレーズ抽出'
+title: キー フレーズの抽出
 titleSuffix: Azure Cognitive Services
 description: keyPhrase 事前構築済みエンティティを使用して、発話から主題を抽出します。 発話に事前構築済みエンティティのラベルを付ける必要はありません。 このエンティティは自動的に検出されます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d6feb24b1e59aee70204d8438f1a4c51f71d1835
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0a064966f118925d2a08e0ff1ce6efc7683cac96
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281814"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096929"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>チュートリアル 8: 発話のキー フレーズを抽出する
 このチュートリアルでは、事前構築済みの keyPhrase エンティティを使用して、発話から主題を抽出します。 発話に事前構築済みエンティティのラベルを付ける必要はありません。 このエンティティは自動的に検出されます。
@@ -31,7 +32,6 @@ ms.locfileid: "51281814"
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * 既存のチュートリアル アプリを使用する
 > * keyPhrase エンティティを追加する 
@@ -56,7 +56,7 @@ ms.locfileid: "51281814"
 ## <a name="add-keyphrase-entity"></a>keyPhrase エンティティを追加する 
 発話から主題を抽出する keyPhrase 事前構築済みエンティティを追加します。
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
 
@@ -84,7 +84,7 @@ ms.locfileid: "51281814"
 
 2. アドレスの URL の末尾に移動し、「`does form hrf-123456 cover the new dental benefits and medical plan`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
     
-    ```JSON
+    ```json
     {
       "query": "does form hrf-123456 cover the new dental benefits and medical plan",
       "topScoringIntent": {

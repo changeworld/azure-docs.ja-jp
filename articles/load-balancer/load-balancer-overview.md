@@ -1,5 +1,6 @@
 ---
-title: Azure Load Balancer の概要 | Microsoft Docs
+title: Azure Load Balancer の概要
+titlesuffix: Azure Load Balancer
 description: Azure Load Balancer の機能の概要、アーキテクチャ、実装。 Load Balancer の動作とクラウドでの活用について説明します。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for.
 ms.devlang: na
 ms.topic: overview
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 6368b47400f6ea06babfe538cf6f58b18cc49117
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 3b1f2374618a0fdb446c4d0bf59fa14a828639ea
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219581"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185615"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -27,7 +29,7 @@ Load Balancer は、ロード バランサーのフロントエンドで到着�
 
 さらに、パブリック ロード バランサー は、プライベート IP アドレスをパブリック IP アドレスに変換することによって、仮想ネットワーク内の仮想マシン (VM) の送信接続を提供できます。
 
-Azure Load Balancer は、Basic と Standard の 2 種類の SKU で使用できます。 両者の間には、スケール、機能、および料金の違いがあります。 Basic Load Balancer で可能なシナリオをすべて、Standard Load Balancer でも作成できますが、アプローチは若干異なる場合があります。 Load Balancer について学習するときは、基礎および SKU 固有の違いを理解することが重要です。
+Azure Load Balancer は、2 つの SKU であるBasic と Standard で使用できます。 両者の間には、スケール、機能、および料金の違いがあります。 Basic Load Balancer で可能なシナリオをすべて、Standard Load Balancer でも作成できますが、アプローチは若干異なる場合があります。 Load Balancer について学習するときは、基礎および SKU 固有の違いを理解することが重要です。
 
 ## <a name="why-use-load-balancer"></a>ロード バランサーを使用する理由 
 
@@ -62,7 +64,7 @@ Load Balancer リソースはオブジェクトであり、その中では、ユ
 
     ![ハッシュベースの分散](./media/load-balancer-overview/load-balancer-distribution.png)
 
-    *図; ハッシュベースの分散*
+    *図: ハッシュベースの分散*
 
 * **ポート フォワーディング**
 
@@ -144,7 +146,7 @@ Load Balancer は、Basic と Standard 両方の SKU をサポートし、シナ
 * **仮想ネットワーク内**: 仮想ネットワーク内の VM から、同じ仮想ネットワーク内に存在する一連の VM に負荷を分散する。
 * **クロスプレミス仮想ネットワークの場合**: オンプレミスのコンピューターから、同じ仮想ネットワーク内に存在する一連の VM に負荷を分散する。 
 * **多層アプリケーションの場合**: バックエンド層がインターネットに接続しない、インターネットに接続する多層アプリケーションの負荷を分散する。 バックエンド層では、インターネットに接続する層からのトラフィックを負荷分散する必要があります (次の図を参照)。
-* **基幹業務アプリケーションの場合**: ロード バランサーのハードウェアやソフトウェアを追加せずに、Azure でホストされている基幹業務アプリケーションの負荷を分散する。 このシナリオには、トラフィックが負荷分散されるコンピューターのセットに含まれるオンプレミスのサーバーが含まれます。
+* **基幹業務アプリケーション**: 負荷分散用のハードウェアやソフトウェアの追加を伴わずに、Azure でホストされている基幹業務アプリケーションの負荷を分散する。 このシナリオには、トラフィックが負荷分散されるコンピューターのセットに含まれるオンプレミスのサーバーが含まれます。
 
 ![内部ロード バランサーの例](./media/load-balancer-overview/IC744147.png)
 

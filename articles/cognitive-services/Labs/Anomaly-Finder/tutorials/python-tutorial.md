@@ -10,12 +10,12 @@ ms.component: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 98f83fbc4db8685526833c3d4f1d15903419ad3f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d1e9afc32625cdbf97f576ee091d7dc03271e2fc
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887753"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164808"
 ---
 # <a name="tutorial-anomaly-detection-with-python-application"></a>チュートリアル: Python アプリケーションによる異常検出
 
@@ -31,7 +31,7 @@ ms.locfileid: "48887753"
 
 ## <a name="download-the-example-code"></a>サンプル コードをダウンロードする
 
-1. [GitHub のチュートリアル ノートブック](https://github.com/MicrosoftAnomalyDetection/python-sample)に移動します。
+1. [GitHub でチュートリアル ノートブック](https://github.com/MicrosoftAnomalyDetection/python-sample)に移動します。
 2. 緑色のボタンをクリックし、チュートリアルを複製またはダウンロードします。 
 
 ## <a name="opening-the-tutorial-notebook-in-jupyter"></a>Jupyter でチュートリアル ノートブックを開く

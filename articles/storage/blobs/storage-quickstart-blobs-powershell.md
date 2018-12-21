@@ -6,24 +6,26 @@ author: roygara
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/14/2018
+ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 13d28e43f9f712f5e597da8171ba9ebf4118bd49
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 700a4c22b7ae08449e2bb599b99cd7438e74ba6d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712043"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312002"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 Azure PowerShell モジュールを使用して Azure リソースを作成および管理します。 Azure リソースの作成または管理は、PowerShell のコマンド ラインまたはスクリプトから行うことができます。 このガイドでは、PowerShell を使用してローカル ディスクと Azure Blob Storage の間でファイルを転送する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+Azure Storage にアクセスするには、Azure サブスクリプションが必要です。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 このクイック スタートには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+
+[!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 

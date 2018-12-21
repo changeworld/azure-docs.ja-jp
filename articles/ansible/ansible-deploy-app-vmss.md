@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: c1e38064e8abe53c96a70fb189b3d9e4cc4bc4e4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 049fc711d0cf6a69b584ad3926bd9e9c0fc9e27d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413997"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408376"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Ansible を使用して Azure 内の仮想マシン スケール セットにアプリケーションをデプロイする
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 また、Ansible を使用して、Azure にアプリケーションをデプロイすることもできます。 この記事では、Java アプリケーションを Azure 仮想マシン スケール セット (VMSS) にデプロイする方法について説明します。  
@@ -35,7 +35,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 
 このサンプルのプレイブックは、`get-hosts-tasks.yml` という名前で保存します。 
 
-  ```yaml
+  ```yml
   - name: Get facts for all Public IPs within a resource groups
     azure_rm_publicipaddress_facts:
       resource_group: "{{ resource_group }}"
@@ -63,7 +63,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 
 このセクションでは、git を使用して GitHub から Java サンプル プロジェクトを複製することにより、プロジェクトを作成します。 次のプレイブックを `app.yml` という名前で保存します。
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       repo_url: https://github.com/spring-guides/gs-spring-boot.git
@@ -87,7 +87,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 
 ansible-playbook コマンドを実行すると、次のような出力が表示されます。これを見ると、作成されたサンプルのアプリは、GitHub から複製されたことがわかります。
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -110,7 +110,7 @@ Ansible プレイブックの次のセクションでは、**saclesethosts** と
 
 (`admin_password` は、自分のパスワードに変更してください。)
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -167,7 +167,7 @@ Ansible プレイブックの次のセクションでは、**saclesethosts** と
 
 ansible-playbook コマンドを実行して出力された内容を見ると、サンプルの Java アプリケーションが仮想マシン スケール セットのホスト グループにインストールされていることがわかります。
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -208,4 +208,4 @@ ansible-playbook コマンドを実行して出力された内容を見ると、
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"] 
-> [VMSS 用の Ansible サンプル プレイブック](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Ansible を使用して仮想マシン スケール セットを自動的にスケーリングする](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

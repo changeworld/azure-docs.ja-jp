@@ -9,23 +9,23 @@ ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a914a95831176a51cc6b5e2c5bf69ef1ad60bcc0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a218cf9b3d89236128c83d8b879691940e432a55
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035927"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341560"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack ストレージの開発ツールの概要
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Microsoft Azure Stack には、Blob Storage、Table Storage、Queue Storage など一連のストレージ サービスがあります。
 
 この記事は、Azure Stack ストレージの開発ツールを初めて使うときのガイドとしてご利用ください。 より詳細な情報とサンプル コードについては、該当する Azure ストレージのチュートリアルでご覧いただけます。
 
-> [!NOTE]  
-> Azure Stack ストレージと Azure ストレージには、プラットフォームごとの固有の要件など、既知の違いがあります。 たとえば、Azure Stack には、クライアント ライブラリとエンドポイント サフィックスにある特定の要件があります。 詳しくは、「[Azure Stack ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
+> [!NOTE]
+> Azure Stack ストレージと Azure ストレージには、プラットフォームごとの固有の要件など、既知の違いがあります。 たとえば、Azure Stack には、クライアント ライブラリとエンドポイント サフィックスにある特定の要件があります。 詳しくは、「[Azure Stack Storage:違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
 
 ## <a name="azure-client-libraries"></a>Azure のクライアント ライブラリ
 

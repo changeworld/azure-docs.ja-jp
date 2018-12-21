@@ -1,23 +1,23 @@
 ---
-title: クイック スタート - Azure Container Instances でアプリケーションを実行する
-description: このクイック スタートでは、Azure PowerShell を使用して、Docker コンテナーで実行されているアプリケーションを Azure Container Instances にデプロイします
+title: クイック スタート - Azure Container Instances でアプリケーションを実行する - PowerShell
+description: このクイック スタートでは、Azure PowerShell を使用して、Docker コンテナー アプリケーションを Azure Container Instances にデプロイします
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 33444e810a2deebee11e535c73ce3e249f42b340
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: b17cca7f0c00aba260b97b29345ff33156a50138
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854645"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183949"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>クイック スタート: Azure Container Instances でアプリケーションを実行する
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使って Azure Container Instances でコンテナー アプリケーションを実行する
 
-Docker コンテナーを Azure で簡単にすばやく実行するには、Azure Container Instances を使用します。 仮想マシンをデプロイしたり、Kubernetes などの完全なコンテナー オーケストレーション プラットフォームを使用したりする必要はありません。 このクイック スタートでは、Azure portal を使用して Azure で Windows コンテナーを作成し、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 1 つのデプロイ コマンドを実行して数秒後には、実行中のアプリケーションを参照できます。
+Docker コンテナーを Azure で簡単にすばやく実行するには、Azure Container Instances を使用します。 仮想マシンをデプロイしたり、Kubernetes などの完全なコンテナー オーケストレーション プラットフォームを使用したりする必要はありません。 このクイック スタートでは、Azure portal を使用して Azure で Windows コンテナーを作成し、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 1 つのデプロイ コマンドを実行して数秒後には、実行中のアプリケーションを閲覧できます。
 
 ![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][qs-powershell-01]
 

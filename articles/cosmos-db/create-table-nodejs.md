@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: a547e52fffb981747c2a752778cbf187d37549d9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 870b07013aa279a20dd231fecc83775fd1aebc5c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841297"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166100"
 ---
-# <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>クイックスタート: Node.js と Azure Cosmos DB での Table API アプリの構築
+# <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>クイック スタート: Node.js と Azure Cosmos DB での Table API アプリの構築
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -38,7 +38,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 加えて次の作業を行います。
 
 * [Node.js](https://nodejs.org/en/) バージョン v0.10.29 以降
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -58,7 +58,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-github で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -82,7 +82,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
 
-1. [Azure Portal](http://portal.azure.com/) で **[接続文字列]** をクリックします。 
+1. [Azure Portal](https://portal.azure.com/) で **[接続文字列]** をクリックします。 
 
     ![[接続文字列] ウィンドウに表示されている必要な接続文字列情報をコピーします。](./media/create-table-nodejs/connection-string.png)
 

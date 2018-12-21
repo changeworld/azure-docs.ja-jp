@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: JavaScript SDK を使用して Node.js アプリを構築して Azure Cosmos DB SQL API データを管理する'
+title: Azure Cosmos DB は:JavaScript SDK を使用して Node.js アプリをビルドして Azure Cosmos DB SQL API データを管理する
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Node.js コード サンプルについて説明します
 services: cosmos-db
 author: deborahc
@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 615e03e1905fc282a8561138904a965db6226837
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ae935157264dd5fa33df9afd0d8f7d5447855a92
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833014"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161291"
 ---
-# <a name="azure-cosmos-db-build-a-nodejs-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Azure Cosmos DB: JavaScript SDK を使用して Node.js アプリを構築して Azure Cosmos DB SQL API データを管理する
+# <a name="azure-cosmos-db-build-a-nodejs-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Azure Cosmos DB は:JavaScript SDK を使用して Node.js アプリをビルドして Azure Cosmos DB SQL API データを管理する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -39,7 +39,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 * 加えて次の作業を行います。
     * [Node.js](https://nodejs.org/en/) バージョン v6.0.0 以降
-    * [Git](http://git-scm.com/)
+    * [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -59,7 +59,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-ここで、GitHub から SQL API アプリの複製を作成し、接続文字列を設定して実行します。
+では、GitHub から SQL API アプリを複製し、接続文字列を設定して実行しましょう。
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -135,7 +135,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[キー]** をクリックしてから **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、URI とプライマリ キーを `config.js` ファイルにコピーします。
+1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[キー]** をクリックしてから **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、URI とプライマリ キーを `config.js` ファイルにコピーします。
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
 

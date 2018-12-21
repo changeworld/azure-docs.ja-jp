@@ -10,7 +10,7 @@ items:
   - name: App Service 環境について
     href: environment/intro.md
   - name: ホスティング オプションの比較
-    href: choose-web-site-cloud-service-vm.md
+    href: overview-compare.md
 - name: クイック スタート
   items:
   - name: .NET Core アプリの作成
@@ -67,26 +67,26 @@ items:
   - name: App Service の特長
     href: app-service-how-works-readme.md
   - name: App Service プラン
-    href: azure-web-sites-web-hosting-plans-in-depth-overview.md
+    href: overview-hosting-plans.md
   - name: OS 機能
     href: operating-system-functionality.md
   - name: セキュリティ
-    href: app-service-security.md
+    href: overview-security.md
     items:
     - name: 認証と権限承認
-      href: app-service-authentication-overview.md
+      href: overview-authentication-authorization.md
     - name: OS とランタイムの修正プログラムの適用
-      href: app-service-patch-os-runtime.md
+      href: overview-patch-os-runtime.md
   - name: 受信 IP と送信 IP
-    href: app-service-ip-addresses.md
+    href: overview-inbound-outbound-ips.md
   - name: Hybrid Connections (ハイブリッド接続)
     href: app-service-hybrid-connections.md
   - name: Traffic Manager 統合
     href: web-sites-traffic-manager.md
   - name: ローカル キャッシュ
-    href: app-service-local-cache-overview.md
+    href: overview-local-cache.md
   - name: 診断
-    href: app-service-diagnostics.md
+    href: overview-diagnostics.md
 - name: ハウツー ガイド
   items:
   - name: アプリの構成
@@ -116,17 +116,17 @@ items:
     - name: デプロイメント資格情報の設定
       href: deploy-configure-credentials.md
     - name: ステージング環境の作成
-      href: web-sites-staged-publishing.md
+      href: deploy-staging-slots.md
     - name: Resource Manager テンプレートのガイダンス
-      href: web-sites-rm-template-guidance.md
+      href: deploy-resource-manager-template.md
   - name: カスタム ドメインのマップ
     items:
     - name: ドメインの購入
-      href: custom-dns-web-site-buydomains-web-app.md
+      href: manage-custom-dns-buy-domain.md
     - name: Traffic Manager を使用したドメインのマップ
       href: web-sites-traffic-manager-custom-domain-name.md
     - name: アクティブなドメインの移行
-      href: app-service-custom-domain-name-migrate.md
+      href: manage-custom-dns-migrate-domain.md
   - name: アプリのセキュリティ保護
     items:
     - name: SSL 証明書の購入
@@ -148,7 +148,7 @@ items:
     - name: IP の制限
       href: app-service-ip-restrictions.md
     - name: マネージド ID の使用
-      href: app-service-managed-service-identity.md
+      href: overview-managed-identity.md
     - name: キー コンテナーからのシークレットの参照
       href: app-service-key-vault-references.md
     - name: アプリケーション コードでの SSL 証明書の使用
@@ -164,19 +164,19 @@ items:
     - name: 複数のインスタンスへのスケールアウト
       href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
     - name: 高密度ホスティング
-      href: app-service-high-density-hosting.md
+      href: manage-scale-per-app.md
   - name: アプリの監視
     items:
     - name: クォータとアラート
       href: web-sites-monitor.md
     - name: ログの有効化
-      href: web-sites-enable-diagnostic-log.md
+      href: troubleshoot-diagnostic-logs.md
   - name: アプリの管理
     items:
     - name: ホスティング プランの管理
       href: app-service-plan-manage.md
     - name: アプリのバックアップ
-      href: web-sites-backup.md
+      href: manage-backup.md
     - name: バックアップの復元
       href: web-sites-restore.md
     - name: スナップショットの復元
@@ -188,9 +188,9 @@ items:
   - name: バックグラウンド タスクの実行
     items:
     - name: Web ジョブの作成
-      href: web-sites-create-web-jobs.md
+      href: webjobs-create.md
     - name: VS を使用した Web ジョブの開発
-      href: websites-dotnet-deploy-webjobs.md
+      href: webjobs-dotnet-deploy-vs.md
     - name: WebJobs SDK の概要
       href: webjobs-sdk-get-started.md
     - name: WebJobs SDK の使用
@@ -230,7 +230,7 @@ items:
   - name: トラブルシューティング
     items:
     - name: Visual Studio を使用したトラブルシューティング
-      href: web-sites-dotnet-troubleshoot-visual-studio.md
+      href: troubleshoot-dotnet-visual-studio.md
     - name: Node.js アプリのトラブルシューティング
       href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
     - name: HTTP 502 と 503 のトラブルシューティング
@@ -257,9 +257,9 @@ items:
       href: ip-address-change-outbound.md
     - name: SSL アドレス
       href: ip-address-change-ssl.md
-ms.openlocfilehash: 2256595005b39000cbad8e4967276beb65f22de3
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e18c991d1ca722b16af2d5df9f2eb3a3d08127d3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599690"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716210"

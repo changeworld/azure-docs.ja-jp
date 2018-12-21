@@ -4,15 +4,15 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 98ff54bcfe67d79d8c15da666aad0bebfe48f6e0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839736"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250586"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -22,10 +22,10 @@ Azure Migrate サービスは、Azure への移行についてオンプレミス
 
 Azure Migrate によって次のことが可能になります。
 
-- **Azure 対応性を評価する**: オンプレミスのマシンが Azure での実行に適しているかどうかを評価します。
-- **推奨サイズを把握する**: オンプレミス VM のパフォーマンス履歴から、Azure VM の推奨サイズが得られます。
-- **毎月のコストを見積もる**: オンプレミスのマシンを Azure で実行するためのコストを見積もります。  
-- **高い信頼性で移行する**: オンプレミスのマシンの依存関係を視覚化して、同時に評価および移行するマシンのグループを作成します。
+- **Azure 対応性の状態を評価する**:オンプレミスのマシンが Azure での実行に適しているかどうかを評価します。
+- **推奨サイズを把握する**:オンプレミス VM のパフォーマンス履歴から、Azure VM の推奨サイズが得られます。
+- **毎月のコストを見積もる**:オンプレミスのマシンを Azure で実行するためのコストを見積もります。  
+- **高い信頼性で移行する**:オンプレミスのマシンの依存関係を視覚化して、同時に評価および移行するマシンのグループを作成します。
 
 ## <a name="current-limitations"></a>現時点での制限事項
 
@@ -34,10 +34,14 @@ Azure Migrate によって次のことが可能になります。
 - 1 回の検出で最大 1,500 個の VM を検出でき、1 つのプロジェクトで最大 1,500 個の VM を検出できます。 さらに、一度に最大 1,500 個の VM を評価できます。
 - より大規模な環境を検出する場合は、検出を分割して、複数のプロジェクトを作成できます。 [詳細情報](how-to-scale-assessment.md)。 Azure Migrate では、サブスクリプションあたり最大 20 個のプロジェクトをサポートしています。
 - Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
--  Azure Migrate プロジェクトを作成できるのは米国の地理的な場所のみです。 ただし、対象となる任意の Azure の場所について移行を計画することができます。
-    - オンプレミス環境で検出されたメタデータだけが、移行プロジェクト リージョンに保存されます。
-    - メタデータは、米国中西部と米国東部のいずれかの選択した地理的なリージョンに格納されます。
-    - 新しい Log Analytics ワークスペースを作成して依存関係の視覚化を使用する場合、ワークスペースはプロジェクトと同じリージョンに作成されます。
+-  Azure Migrate プロジェクトは、次の地域でのみ作成できます。 ただし、他の Azure のターゲット場所について評価を作成できないという訳ではありません。
+    **地理的な場所** | **保存場所**
+    --- | ---
+    米国 | 米国中西部または米国東部
+    Azure Government | 米国政府バージニア州
+
+    移行プロジェクトに関連付けられた地理的な場所は、オンプレミス環境から検出されたメタデータを保存するために使用されます。 メタデータは、移行プロジェクトに指定された地理的な場所に基づいたいずれかのリージョンに保存されます。 新しい Log Analytics ワークスペースを作成して依存関係の視覚化を使用する場合、ワークスペースはプロジェクトと同じリージョンに作成されます。
+- 依存関係可視化機能は、Azure Government では使用できません。
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>支払い対象について
@@ -93,8 +97,8 @@ Azure Migrate の価格について、[詳しくはこちら](https://azure.micr
 
 オンプレミスのマシンを評価したら、いくつかのツールを使用して移行を実行できます。
 
-- **Azure Site Recovery**: Azure Site Recovery を使用して Azure に移行することができます。 そのためには、ストレージ アカウントや仮想ネットワークなど、必要な [Azure コンポーネントを準備](../site-recovery/tutorial-prepare-azure.md)します。 オンプレミスで、[VMware 環境を準備](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md)します。 すべての準備が整ったら、Azure へのレプリケーションを設定して有効にし、VM を移行します。 [詳細情報](../site-recovery/vmware-azure-tutorial.md)。
-- **Azure Database Migration**: オンプレミスのマシンで SQL Server、MySQL、Oracle などのデータベースを実行している場合は、[Azure Database Migration Service](../dms/dms-overview.md) を使用して Azure に移行することができます。
+- **Azure Site Recovery**:Azure Site Recovery を使用して Azure に移行することができます。 そのためには、ストレージ アカウントや仮想ネットワークなど、必要な [Azure コンポーネントを準備](../site-recovery/tutorial-prepare-azure.md)します。 オンプレミスで、[VMware 環境を準備](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md)します。 すべての準備が整ったら、Azure へのレプリケーションを設定して有効にし、VM を移行します。 [詳細情報](../site-recovery/vmware-azure-tutorial.md)。
+- **Azure Database Migration**:オンプレミスのマシンで SQL Server、MySQL、Oracle などのデータベースを実行している場合は、[Azure Database Migration Service](../dms/dms-overview.md) を使用して Azure に移行することができます。
 
 
 ## <a name="next-steps"></a>次の手順

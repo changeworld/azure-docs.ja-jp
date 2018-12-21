@@ -1,21 +1,22 @@
 ---
-title: 'チュートリアル: QnA Maker ポータルでナレッジ ベースを作成、発行し、ナレッジ ベースから回答する'
+title: QnA Maker での作成、発行、回答
 titleSuffix: Azure Cognitive Services
 description: このポータルベースのチュートリアルでは、プログラムでナレッジ ベースを作成して発行した後、そのナレッジ ベースから質問に回答する手順について説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 08f708f740b90f27af5443b46c5d03bef688bd45
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9853e84ffd2de8a1dfd6d9c4f32f58bb36b16403
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221605"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164434"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>チュートリアル: QnA Maker ポータルでナレッジ ベースを作成して質問に回答する
 
@@ -96,7 +97,7 @@ ms.locfileid: "50221605"
 
 KB が発行されると、エンドポイントが表示されます。
 
-![[発行]](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
+![[発行] ページのエンドポイントの設定](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
 ## <a name="use-curl-to-query-for-an-faq-answer"></a>curl を使用して FAQ の回答を照会する
 

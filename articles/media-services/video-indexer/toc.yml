@@ -79,9 +79,11 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: リージョン
     href: regions.md
-ms.openlocfilehash: cf7d67c6d03a7587f9fb62c5abce87ca95f36810
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+  - name: FAQ
+    href: faq.md
+ms.openlocfilehash: 7a27bcc85798215250f7445be2523f8b3e192867
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383886"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724013"

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: e11ae90655e1d4ce7a2475f0eacefb25491416da
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: ab1e879a7c145699779f6af3a97cef0ee6b5d219
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582396"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105514"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>クイック スタート: Azure Digital Twins を使用して空き部屋を探す
 
@@ -71,7 +71,7 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 - カスタム関数。 
 - 1 つのロール割り当て。
  
-空間グラフは、[provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) ファイルを使用してプロビジョニングします。
+空間グラフは、[provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) ファイルを使用してプロビジョニングします。 
 
 1. `dotnet run ProvisionSample` を実行します。
     >[!NOTE]
@@ -88,6 +88,9 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 1. 実行の最後に、デバイス シミュレーター サンプルで使用するデバイスの `ConnectionString` をコピーします。 下の図で示されている文字列のみをコピーします。
 
     ![サンプルをプロビジョニングする][1]
+
+    >[!TIP]
+    > [Azure Digital Twins グラフ ビューアー](https://github.com/Azure/azure-digital-twins-graph-viewer)を使って、空間グラフを表示および変更できます。
 
 ## <a name="send-sensor-data"></a>センサー データの送信
 

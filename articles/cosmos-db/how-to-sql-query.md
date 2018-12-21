@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f7b3826e1e77933b49f0a742ebf8dfb994bf7ea9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fb8e2b11ce6178c10fb9dc7d13c5c7d817ece821
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848733"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344110"
 ---
-# <a name="query-azure-cosmos-db-data-with-sql-queries"></a>SQL クエリを使用して Azure Cosmos DB のデータのクエリを行う
+# <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Azure Cosmos DB からのデータのクエリを実行するための SQL クエリの例
 
 Azure Cosmos DB では、SQL API アカウントで JSON クエリ言語として SQL (構造化照会言語) を使用する項目のクエリがサポートされています。 Azure Cosmos DB 用のクエリ言語を設計では、次の 2 つの目標が考慮されています。
 
@@ -21,7 +21,7 @@ Azure Cosmos DB では、SQL API アカウントで JSON クエリ言語とし�
 
 * Azure Cosmos DB では、クエリ言語の基盤として JavaScript のプログラミング モデルを使用します。 SQL API は、JavaScript の型システム、式評価、関数呼び出しを基盤としています。 これによって、リレーショナル プロジェクション、JSON 項目全体の階層型ナビゲーション、自己結合、空間クエリ、完全に JavaScript で記述されたユーザー定義関数 (UDF) の呼び出しなどに対して、自然なプログラミング モデルが提供されます。
 
-この記事では、簡単な JSON 項目を使用して SQL クエリの例をいくつか説明します。 Azure Cosmos DB SQL 言語の構文については、[SQL 構文リファレンス](sql-api-sql-query-reference.md)に関するページをご覧ください。
+この記事では、簡単な JSON 項目を使用して SQL クエリの例をいくつか説明します。 Azure Cosmos DB SQL 言語の構文については、[SQL 構文リファレンス](sql-api-query-reference.md)に関するページをご覧ください。
 
 ## <a id="GettingStarted"></a>SQL コマンドを使ってみる
 
@@ -86,7 +86,7 @@ Azure Cosmos DB では、SQL API アカウントで JSON クエリ言語とし�
 
 Azure Cosmos DB の SQL クエリ言語の重要な項目について理解するため、このデータに対していくつかのクエリを実行してみます。
 
-**クエリ 1**: たとえば以下のクエリを実行すると、id フィールドが `AndersenFamily` に一致する項目が返されます。 `SELECT *` であるため、クエリの出力は完全な JSON 項目です。構文については、[SELECT ステートメント](sql-api-sql-query-reference.md#select-query)に関するセクションを参照してください。
+**クエリ 1**:たとえば以下のクエリを実行すると、id フィールドが `AndersenFamily` に一致する項目が返されます。 `SELECT *` であるため、クエリの出力は完全な JSON 項目です。構文については、[SELECT ステートメント](sql-api-query-reference.md#select-query)に関するセクションを参照してください。
 
 ```sql
     SELECT *
@@ -116,7 +116,7 @@ Azure Cosmos DB の SQL クエリ言語の重要な項目について理解す�
     }]
 ```
 
-**クエリ 2:** ここで、この JSON 出力を異なる形式に変更する必要がある場合を考えてみます。 このクエリは、住所の都市名と州名が同じ場合に、2 つの特定のフィールド (Name と City) を持つ JSON オブジェクトを表現します。 この場合、"NY, NY" の一致となります。
+**クエリ 2**:ここで、この JSON 出力を異なる形式に変更する必要がある場合を考えてみます。 このクエリは、住所の都市名と州名が同じ場合に、2 つの特定のフィールド (Name と City) を持つ JSON オブジェクトを表現します。 この場合、"NY, NY" の一致となります。
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -135,7 +135,7 @@ Azure Cosmos DB の SQL クエリ言語の重要な項目について理解す�
     }]
 ```
 
-**クエリ 3**: このクエリでは、ID が `WakefieldFamily` と一致する家族の子供の名前がすべて返されます。
+**クエリ 3**:このクエリでは、ID が `WakefieldFamily` と一致する家族の子供の名前が、住んでいる都市の順にすべて返されます。
 
 ```sql
     SELECT c.givenName
@@ -166,7 +166,7 @@ Azure Cosmos DB の SQL クエリ言語の重要な項目について理解す�
 
 ## <a id="SelectClause"></a>SELECT 句
 
-すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。 通常は、各クエリで FROM 句のソースが列挙されます。 次に WHERE 句のフィルターがソースに適用され、JSON 項目のサブセットが取得されます。 最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。 構文については、「[SELECT 句](sql-api-sql-query-reference.md#bk_select_query)」をご覧ください。
+すべてのクエリは ANSI-SQL 標準に従って SELECT 句とオプションの FROM および WHERE 句で構成されます。 通常は、各クエリで FROM 句のソースが列挙されます。 次に WHERE 句のフィルターがソースに適用され、JSON 項目のサブセットが取得されます。 最後に SELECT 句を使用して、要求された JSON 値が特定のリストにプロジェクションされます。 構文については、「[SELECT 句](sql-api-query-reference.md#bk_select_query)」をご覧ください。
 
 一般的な SELECT クエリの例を次に示します。
 
@@ -260,7 +260,7 @@ Azure Cosmos DB の SQL クエリ言語の重要な項目について理解す�
 
 ## <a id="FromClause"></a>FROM 句
 
-FROM <from_specification> 句はオプションです (ソースがクエリの後半でフィルター処理またはプロジェクションされる場合を除く)。 構文については、「[FROM 句](sql-api-sql-query-reference.md#bk_from_clause)」をご覧ください。 `SELECT * FROM Families` というクエリは、Families コンテナー全体がソースとなり、このソースを対象に列挙が行われることを示します。 特別な識別子 ROOT を使うと、コンテナー名の代わりにコンテナーを表現することができます。
+FROM <from_specification> 句はオプションです (ソースがクエリの後半でフィルター処理またはプロジェクションされる場合を除く)。 構文については、「[FROM 句](sql-api-query-reference.md#bk_from_clause)」をご覧ください。 `SELECT * FROM Families` というクエリは、Families コンテナー全体がソースとなり、このソースを対象に列挙が行われることを示します。 特別な識別子 ROOT を使うと、コンテナー名の代わりにコンテナーを表現することができます。
 クエリごとに以下のバインド規則が強制されます。
 
 * コンテナーは、`SELECT f.id FROM Families AS f` またはシンプルに `SELECT f.id FROM Families f` のようにエイリアス化することができます。 ここで、`f` は `Families` に相当します。 `AS` は識別子をエイリアス化するためのオプションのキーワードです。  
@@ -313,7 +313,7 @@ FROM <from_specification> 句はオプションです (ソースがクエリの�
     ]
 ```
 
-上記の例はソースとしての配列を使用しましたが、次の例で示すようにソースとしてオブジェクトを使うこともできます。ソースにある有効な JSON 値 (未定義ではない) は、クエリの結果に含まれると見なされます。 `address.state` 値を持たない家族は、クエリ結果から除外されます。
+上記の例では配列をソースとして使用していますが、以下の例のようにオブジェクトをソースとして使用することもできます。ソースで検索できる有効なすべての JSON 値 (未定義でないもの) は、クエリ結果に含まれると見なされます。 `address.state` 値を持たない家族は、クエリ結果から除外されます。
 
 **クエリ**
 
@@ -333,7 +333,7 @@ FROM <from_specification> 句はオプションです (ソースがクエリの�
 
 ## <a id="WhereClause"></a>WHERE 句
 
-WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。 これにより、ソースが提供する JSON 項目を結果に含めるために満たす必要がある条件が指定されます。 結果の対象となるには、指定された条件についてすべての JSON 項目が "true" と評価される必要があります。 WHERE 句がインデックス レイヤーで使用されることで、結果に含めることが可能なソース項目の最小のサブセットが判断されます。 構文については、「[WHERE 句](sql-api-sql-query-reference.md#bk_where_clause)」をご覧ください。
+WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。 これにより、ソースが提供する JSON 項目を結果に含めるために満たす必要がある条件が指定されます。 結果の対象となるには、指定された条件についてすべての JSON 項目が "true" と評価される必要があります。 WHERE 句がインデックス レイヤーで使用されることで、結果に含めることが可能なソース項目の最小のサブセットが判断されます。 構文については、「[WHERE 句](sql-api-query-reference.md#bk_where_clause)」をご覧ください。
 
 以下のクエリでは、name プロパティを含み、その値が `AndersenFamily` であるような項目が要求されます。 name プロパティを備えていない、またはその値が `AndersenFamily` に一致しない項目はすべて除外されます。
 
@@ -1411,14 +1411,14 @@ Cosmos DB の関数と ANSI SQL の主な違いとして、Cosmos DB の関数�
 
 | **使用方法** | **説明** |
 |-----------|------------|
-| [IS_ARRAY (expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_array) | 値の型が配列であるかどうかを示すブール値を返します。 |
-| [IS_BOOL (expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_bool) | 値の型がブール値であるかどうかを示すブール値を返します。 |
-| [IS_NULL (expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_null) | 値の型が null であるかどうかを示すブール値を返します。 |
-| [IS_NUMBER (expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_number) | 値の型が数値であるかどうかを示すブール値を返します。 |
-| [IS_OBJECT (expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object) | 値の型が JSON オブジェクトであるかどうかを示すブール値を返します。 |
-| [IS_STRING (expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_string) | 値の型が文字列であるかどうかを示すブール値を返します。 |
-| [IS_DEFINED (expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_defined) | プロパティに値が代入されているかどうかを示すブール値を返します。 |
-| [IS_PRIMITIVE (expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_primitive) | 値の型が文字列、数値、ブール値、null のいずれであるかを示すブール値を返します。 |
+| [IS_ARRAY (expr)](sql-api-query-reference.md#bk_is_array) | 値の型が配列であるかどうかを示すブール値を返します。 |
+| [IS_BOOL (expr)](sql-api-query-reference.md#bk_is_bool) | 値の型がブール値であるかどうかを示すブール値を返します。 |
+| [IS_NULL (expr)](sql-api-query-reference.md#bk_is_null) | 値の型が null であるかどうかを示すブール値を返します。 |
+| [IS_NUMBER (expr)](sql-api-query-reference.md#bk_is_number) | 値の型が数値であるかどうかを示すブール値を返します。 |
+| [IS_OBJECT (expr)](sql-api-query-reference.md#bk_is_object) | 値の型が JSON オブジェクトであるかどうかを示すブール値を返します。 |
+| [IS_STRING (expr)](sql-api-query-reference.md#bk_is_string) | 値の型が文字列であるかどうかを示すブール値を返します。 |
+| [IS_DEFINED (expr)](sql-api-query-reference.md#bk_is_defined) | プロパティに値が代入されているかどうかを示すブール値を返します。 |
+| [IS_PRIMITIVE (expr)](sql-api-query-reference.md#bk_is_primitive) | 値の型が文字列、数値、ブール値、null のいずれであるかを示すブール値を返します。 |
 
 これらの関数を使用すると、次の例に示すようなクエリを実行できます。
 
@@ -1440,22 +1440,22 @@ Cosmos DB の関数と ANSI SQL の主な違いとして、Cosmos DB の関数�
 
 | 使用法 | 説明 |
 | --- | --- |
-| [LENGTH (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) | 指定された文字列式の文字数を返します。 |
-| [CONCAT (str_expr, str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) | 2 つ以上の文字列値を連結した結果である文字列を返します。 |
-| [SUBSTRING (str_expr, num_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) | 文字列式の一部を返します。 |
-| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) | 1 つ目の文字列式が 2 つ目の文字列で始まっているかどうかを示すブール値を返します。 |
-| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) | 1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
-| [CONTAINS (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) | 1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。 |
-| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) | 1 つ目に指定された文字列式内で 2 つ目の文字列式が最初に出現する箇所の開始位置を返します。文字列が見つからない場合は -1 を返します。 |
-| [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) | 指定された文字数分、文字列の左側の部分を返します。 |
-| [RIGHT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) | 指定された文字数分、文字列の右側の部分を返します。 |
-| [LTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) | 文字列式の先頭の空白を削除して返します。 |
-| [RTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) | 文字列式のすべての後続の空白を切り捨てて返します。 |
-| [LOWER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) | 文字列式の大文字データを小文字に変換して返します。 |
-| [UPPER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) | 文字列式の小文字データを大文字に変換して返します。 |
-| [REPLACE (str_expr, str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) | 指定された文字列値のすべての出現箇所をもう 1 つの文字列値に置き換えます。 |
+| [LENGTH (str_expr)](sql-api-query-reference.md#bk_length) | 指定された文字列式の文字数を返します。 |
+| [CONCAT (str_expr, str_expr [, str_expr])](sql-api-query-reference.md#bk_concat) | 2 つ以上の文字列値を連結した結果である文字列を返します。 |
+| [SUBSTRING (str_expr, num_expr, num_expr)](sql-api-query-reference.md#bk_substring) | 文字列式の一部を返します。 |
+| [STARTSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_startswith) | 1 つ目の文字列式が 2 つ目の文字列で始まっているかどうかを示すブール値を返します。 |
+| [ENDSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_endswith) | 1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
+| [CONTAINS (str_expr, str_expr)](sql-api-query-reference.md#bk_contains) | 1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。 |
+| [INDEX_OF (str_expr, str_expr)](sql-api-query-reference.md#bk_index_of) | 1 つ目に指定された文字列式内で 2 つ目の文字列式が最初に出現する箇所の開始位置を返します。文字列が見つからない場合は -1 を返します。 |
+| [LEFT (str_expr, num_expr)](sql-api-query-reference.md#bk_left) | 指定された文字数分、文字列の左側の部分を返します。 |
+| [RIGHT (str_expr, num_expr)](sql-api-query-reference.md#bk_right) | 指定された文字数分、文字列の右側の部分を返します。 |
+| [LTRIM (str_expr)](sql-api-query-reference.md#bk_ltrim) | 文字列式の先頭の空白を削除して返します。 |
+| [RTRIM (str_expr)](sql-api-query-reference.md#bk_rtrim) | 文字列式のすべての後続の空白を切り捨てて返します。 |
+| [LOWER (str_expr)](sql-api-query-reference.md#bk_lower) | 文字列式の大文字データを小文字に変換して返します。 |
+| [UPPER (str_expr)](sql-api-query-reference.md#bk_upper) | 文字列式の小文字データを大文字に変換して返します。 |
+| [REPLACE (str_expr, str_expr, str_expr)](sql-api-query-reference.md#bk_replace) | 指定された文字列値のすべての出現箇所をもう 1 つの文字列値に置き換えます。 |
 | [REPLICATE (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | 文字列値を指定された回数だけ繰り返します。 |
-| [REVERSE (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) | 文字列値の順序を逆にして返します。 |
+| [REVERSE (str_expr)](sql-api-query-reference.md#bk_reverse) | 文字列値の順序を逆にして返します。 |
 
 これらの関数を使用して、次のようなクエリを実行できます。 たとえば、次のようにすると、ファミリ名を大文字で返すことができます。
 
@@ -1522,10 +1522,10 @@ Cosmos DB の関数と ANSI SQL の主な違いとして、Cosmos DB の関数�
 
 | 使用法 | 説明 |
 | --- | --- |
-| [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |指定された配列式の要素の数を返します。 |
-| [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |2 つ以上の配列値を連結した結果である配列を返します。 |
-| [ARRAY_CONTAINS (arr_expr, expr [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |配列に指定された値が含まれているかどうかを示すブール値を返します。 一致が完全か部分的かを指定できます。 |
-| [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |配列式の一部を返します。 |
+| [ARRAY_LENGTH (arr_expr)](sql-api-query-reference.md#bk_array_length) |指定された配列式の要素の数を返します。 |
+| [ARRAY_CONCAT (arr_expr, arr_expr [, arr_expr])](sql-api-query-reference.md#bk_array_concat) |2 つ以上の配列値を連結した結果である配列を返します。 |
+| [ARRAY_CONTAINS (arr_expr, expr [, bool_expr])](sql-api-query-reference.md#bk_array_contains) |配列に指定された値が含まれているかどうかを示すブール値を返します。 一致が完全か部分的かを指定できます。 |
+| [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](sql-api-query-reference.md#bk_array_slice) |配列式の一部を返します。 |
 
 配列関数を使用すると、JSON に含まれる配列を操作できます。 例として、親の 1 人が "Robin Wakefield" である項目がすべて返されるクエリを次に示します。 
 
@@ -1627,7 +1627,7 @@ Cosmos DB を使用した LINQ クエリ サポートのアーキテクチャは
 
 ### <a name="net-and-json-mapping"></a>.NET と JSON のマッピング
 
-.NET オブジェクトと JSON 項目の間のマッピングは自然です。データ メンバーの各フィールドは JSON オブジェクトにマッピングされます。ここで、フィールド名はオブジェクトの "キー" 部分にマッピングされ、"値" 部分は再帰的にオブジェクトの値部分にマッピングされます。 次の例を考えてみましょう。以下に示すように、作成された Family オブジェクトが JSON 項目にマッピングされています。 同様に JSON 項目から .NET オブジェクトへのマッピングも行われています。
+.NET オブジェクトと JSON 項目の間のマッピングは自然です。データ メンバーの各フィールドは JSON オブジェクトにマッピングされます。ここで、フィールド名はオブジェクトの "キー" 部分にマッピングされ、"値" 部分は再帰的にオブジェクトの値部分にマッピングされます。 次の例を考えてみます。以下の例では、作成された Family オブジェクトが JSON 項目にマップされています。 同様に JSON 項目から .NET オブジェクトへのマッピングも行われています。
 
 **C# クラス**
 
@@ -1735,19 +1735,19 @@ Cosmos DB クエリ プロバイダーは、LINQ クエリから Cosmos DB SQL �
 
 SQL .NET SDK に含まれる LINQ プロバイダーでサポートされる LINQ 演算子の一覧です。
 
-* **Select**: オブジェクトの構築など、プロジェクションによって SQL SELECT に変換します。
-* **Where**: フィルターによって SQL WHERE に変換します。また、&&、||、および ! から SQL 演算子への 変換をサポートします。
-* **SelectMany**: SQL JOIN 句に対して配列をアンワインドできます。 配列要素に関してフィルターする式を連結または入れ子にするために使用できます。
-* **OrderBy と OrderByDescending**: ORDER BY の昇順/降順に変換します。
+* **Select**:オブジェクトの構築など、プロジェクションによって SQL SELECT に変換します。
+* **Where**:フィルターによって SQL WHERE に変換します。また、&&、||、および ! から SQL 演算子への 変換をサポートします。
+* **SelectMany**:SQL JOIN 句に対して配列をアンワインドできます。 配列要素に関してフィルターする式を連結または入れ子にするために使用できます。
+* **OrderBy と OrderByDescending**:ORDER BY の昇順/降順に変換します
 * 集計のための **Count**、**Sum**、**Min**、**Max**、**Average** 演算子と非同期でそれに相当する **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync**、**AverageAsync** 演算子。
-* **CompareTo**: 範囲比較に変換します。 .NET では文字列を比較できないので、一般的に文字列に使用されます。
-* **Take**: クエリからの結果を制限するために SQL TOP に変換します。
-* **数学関数**: .NET の Abs、Acos、Asin、Atan、Ceiling、Cos、Exp、Floor、Log、Log10、Pow、Round、Sign、Sin、Sqrt、Tan、Truncate から、同等の SQL 組み込み関数への変換をサポートします。
-* **文字列関数**: .NET の Concat、Contains、EndsWith、IndexOf、Count、ToLower、TrimStart、Replace、Reverse、TrimEnd、StartsWith、SubString、ToUpper から、同等の SQL 組み込み関数への変換をサポートします。
-* **配列関数**: .NET のからの変換をサポートしています。NET の Concat、Contains、Count から、同等の SQL 組み込み関数への変換をサポートします。
-* **地理空間の拡張関数**: スタブ メソッドの Distance、Within、IsValid、IsValidDetailed から、同等の SQL 組み込み関数への変換をサポートします。
-* **ユーザー定義関数の拡張関数**: スタブ メソッドの UserDefinedFunctionProvider.Invoke から、対応するユーザー定義関数への変換をサポートします。
-* **その他**: 合体演算子と条件演算子の変換をサポートします。 コンテキストに応じて、Contains から、CONTAINS、ARRAY_CONTAINS、または SQL IN に変換できます。
+* **CompareTo**:範囲比較に変換します。 .NET では文字列を比較できないので、一般的に文字列に使用されます。
+* **Take**:クエリからの結果を制限するために SQL TOP に変換します。
+* **数学関数**:.NET の Abs、Acos、Asin、Atan、Ceiling、Cos、Exp、Floor、Log、Log10、Pow、Round、Sign、Sin、Sqrt、Tan、Truncate から、同等の SQL 組み込み関数への変換をサポートします。
+* **文字列関数**:.NET の Concat、Contains、EndsWith、IndexOf、Count、ToLower、TrimStart、Replace、Reverse、TrimEnd、StartsWith、SubString、ToUpper から、同等の SQL 組み込み関数への変換をサポートします。
+* **配列関数**:.NET のからの変換をサポートしています。NET の Concat、Contains、Count から、同等の SQL 組み込み関数への変換をサポートします。
+* **地理空間の拡張関数**:スタブ メソッドの Distance、Within、IsValid、IsValidDetailed から、同等の SQL 組み込み関数への変換をサポートします。
+* **ユーザー定義関数の拡張関数**:スタブ メソッドの UserDefinedFunctionProvider.Invoke から、対応するユーザー定義関数への変換をサポートします。
+* **その他**:合体演算子と条件演算子の変換をサポートします。 コンテキストに応じて、Contains から、CONTAINS、ARRAY_CONTAINS、または SQL IN に変換できます。
 
 ### <a name="sql-query-operators"></a>SQL クエリ演算子
 
@@ -2117,7 +2117,7 @@ Cosmos DB は、HTTP を介したオープンな RESTful プログラミング �
 
 コンテナーで構成されたインデックス作成ポリシーが指定されたクエリをサポートできない場合、Azure Cosmos DB サーバーによって 400 "Bad Request" が返されます。 このエラー メッセージは、ハッシュ (等値) 検索用に構成されたパスに対する範囲クエリと、インデックス作成から明示的に除外されたパスのために返されます。 `x-ms-documentdb-query-enable-scan` ヘッダーを指定することで、インデックスを利用できない場合のクエリによるスキャン実行を許可することができます。
 
-`x-ms-documentdb-populatequerymetrics` ヘッダーを `True` に設定することによって、クエリ実行についての詳細なメトリックを取得できます。 詳細については、[Azure Cosmos DB の SQL クエリ メトリック](sql-api-sql-query-metrics.md)に関するページをご覧ください。
+`x-ms-documentdb-populatequerymetrics` ヘッダーを `True` に設定することによって、クエリ実行についての詳細なメトリックを取得できます。 詳細については、[Azure Cosmos DB の SQL クエリ メトリック](sql-api-query-metrics.md)に関するページをご覧ください。
 
 ### <a id="DotNetSdk"></a>C# (.NET) SDK
 
@@ -2253,17 +2253,17 @@ Cosmos DB が提供するプログラミング モデルでは、ストアド �
 ## <a id="References"></a>参考資料
 
 1. [Azure Cosmos DB の概要][introduction]
-2. [Azure Cosmos DB SQL の仕様](http://go.microsoft.com/fwlink/p/?LinkID=510612)
+2. [Azure Cosmos DB SQL の仕様](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmosdb-dotnet)
 4. [Azure Cosmos DB の一貫性レベル][consistency-levels]
-5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
-6. JSON [http://json.org/](http://json.org/)
-7. Javascript 仕様 [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
-8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
-9. 大規模データベースのクエリ評価手法 [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
+5. ANSI SQL 2011 [https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
+6. JSON [https://json.org/](https://json.org/)
+7. Javascript 仕様 [https://www.ecma-international.org/publications/standards/Ecma-262.htm](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+8. LINQ [https://msdn.microsoft.com/library/bb308959.aspx](https://msdn.microsoft.com/library/bb308959.aspx) 
+9. 大規模データベースのクエリ評価手法 [https://dl.acm.org/citation.cfm?id=152611](https://dl.acm.org/citation.cfm?id=152611)
 10. 「Query Processing in Parallel Relational Database Systems」(IEEE Computer Society Press、1994 年)
 11. 「Query Processing in Parallel Relational Database Systems」(Lu、Ooi、Tan、IEEE Computer Society Press、1994 年)
-12. 「Pig Latin: A Not-So-Foreign Language for Data Processing」(Christopher Olston、Benjamin Reed、Utkarsh Srivastava、Ravi Kumar、Andrew Tomkins、SIGMOD、2008 年)
+12. Christopher Olston、Benjamin Reed、Utkarsh Srivastava、Ravi Kumar、Andrew Tomkins:「Pig Latin:A Not-So-Foreign Language for Data Processing」(SIGMOD、2008 年)
 13. G. Graefe. The Cascades framework for query optimization. IEEE Data Eng. Bull., 18(3): 1995.
 
 [1]: ./media/how-to-sql-query/sql-query1.png

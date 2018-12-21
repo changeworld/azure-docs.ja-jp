@@ -33,6 +33,8 @@ items:
     href: signalr-overview-scale-aspnet-core.md
   - name: Azure Functions を使用してリアルタイム アプリをビルドする
     href: signalr-overview-azure-functions.md
+  - name: アクセス キーのローテーション
+    href: signalr-key-rotation.md
 - name: リソース
   items:
   - name: SignalR のロードマップ
@@ -47,9 +49,9 @@ items:
     href: https://forums.asp.net/1254.aspx
   - name: Twitter
     href: https://twitter.com/SignalR
-ms.openlocfilehash: e67749dfa19999658cbb3f63fcd6653d37a1a5f7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3ea848614be75a785f03bd81065651f77f02efe8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946359"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628461"

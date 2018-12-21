@@ -1,21 +1,22 @@
 ---
-title: 'チュートリアル: ナレッジ ベースを作成、発行し、ナレッジ ベースから回答する - REST、C# - QnA Maker'
-titleSuffix: Azure Cognitive Services
+title: 作成、発行、回答
+titleSuffix: QnA Maker - Azure Cognitive Services
 description: この REST ベースのチュートリアルでは、プログラムでナレッジ ベースを作成して発行した後、そのナレッジ ベースから質問に回答する手順について説明します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 013b74165afe6eafee337bd00ca88b1034ad5662
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: dd5bc95be3959e7af5911d8a765791718680581a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299563"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162938"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>チュートリアル: C# を使用してナレッジ ベースを作成し、質問に回答する
 
@@ -43,7 +44,7 @@ ms.locfileid: "51299563"
 * [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
 
 > [!NOTE] 
-> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** Github リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)から入手できます。
+> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)から入手できます。
 
 ## <a name="create-a-knowledge-base-project"></a>ナレッジ ベース プロジェクトを作成する
 

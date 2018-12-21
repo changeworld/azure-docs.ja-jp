@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル 1: カスタム LUIS アプリで意図を検出する'
+title: 意図の予測
 titleSuffix: Azure Cognitive Services
 description: ユーザーの意図を予測するカスタム アプリを作成します。 このアプリは、メール アドレスや日付などの発話テキストからさまざまなデータ要素を抽出しないため、最も単純な種類の LUIS アプリです。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 30c9f572d77caacbeecf5f15d74fd8517e9fa883
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b1a9718fdf7222dae06f7fe9b3a0f14b50293c08
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426861"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097796"
 ---
-# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>チュートリアル 1: ユーザーの意図を特定するカスタム アプリを構築する
+# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>チュートリアル 1:ユーザーの意図を特定するカスタム アプリを構築する
 
 このチュートリアルでは、発話 (テキスト) に基づいてユーザーの意図を予測する人事 (HR) カスタム アプリを作成します。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
 
@@ -43,11 +44,11 @@ LUIS は、JSON 応答を返した後は、この要求の処理を終えてい�
 
 2. **[Create new app]\(新しいアプリの作成\)** を選択します。  
 
-    [![](media/luis-quickstart-intents-only/app-list.png "Language Understanding (LUIS) の [My Apps]\(マイ アプリ) ページのスクリーンショット")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+    [![Language Understanding (LUIS) の [マイ アプリ] ページのスクリーンショット](media/luis-quickstart-intents-only/app-list.png "Language Understanding (LUIS) の [マイ アプリ] ページのスクリーンショット")](media/luis-quickstart-intents-only/app-list.png#lightbox)
 
 3. ポップアップ ダイアログ ボックスで、名前として「`HumanResources`」と入力し、既定のカルチャである **[English]\(英語)** はそのままにします。 説明は空のままにします。
 
-    ![LUIS の新規アプリ](./media/luis-quickstart-intents-only/create-app.png)
+    ![LUIS の新しい HumanResources アプリを作成する](./media/luis-quickstart-intents-only/create-app.png)
 
     次に、アプリの **[Intents]\(意図\)** ページに **None** 意図が表示されます。
 
@@ -55,7 +56,7 @@ LUIS は、JSON 応答を返した後は、この要求の処理を終えてい�
 
 1. **[Create new intent]\(意図の新規作成\)** を選択します。 新しい意図の名前として「`GetJobInformation`」と入力します。 この意図は、ユーザーが社内で空きのある仕事に関する情報を欲したすべてのタイミングで予測されます。
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "Language Understanding (LUIS) の [New intent]\(新しい意図) ダイアログ ボックスのスクリーンショット")
+    ![Language Understanding (LUIS) の新しい意図ダイアログのスクリーンショット](media/luis-quickstart-intents-only/create-intent.png "Language Understanding (LUIS) の新しい意図ダイアログのスクリーンショット")
 
 2. _発話例_ を提供することで、この意図についてはどのような種類の発話を予測する必要があるか、LUIS のトレーニングを行っています。 この意図に、ユーザーの質問として予想される発話例をいくつか追加します。次はその例です。
 
@@ -69,7 +70,7 @@ LUIS は、JSON 応答を返した後は、この要求の処理を終えてい�
     |新しい仕事はありますか。|
     |シアトル オフィスに新しいポストはありますか。|
 
-    [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "MyStore 意図用の新しい発話を入力しているスクリーンショット")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![MyStore の意図の新しい発話を入力しているスクリーンショット](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "MyStore の意図の新しい発話を入力しているスクリーンショット")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
@@ -150,7 +151,7 @@ LUIS の Web サイトに戻り、ユーザーの発話が、仕事への応募�
     |ポスト 654234 向けの職務経歴書|
     |ジョブ 567890 の書類|
 
-    [![](media/luis-quickstart-intents-only/utterance-applyforjob.png "ApplyForJob 意図用の新しい発話を入力しているスクリーンショット")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+    [![ApplyForJob の意図に新しい発話を入力しているスクリーンショット](media/luis-quickstart-intents-only/utterance-applyforjob.png "ApplyForJob の意図に新しい発話を入力しているスクリーンショット")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
 
     現時点ではその意図が正しいことを LUIS が判断できないため、ラベル付きの意図は赤で囲まれています。 アプリをトレーニングすることで、LUIS にその発話が正しい意図であることを指示します。 
 
@@ -168,7 +169,7 @@ LUIS の Web サイトに戻り、ユーザーの発話が、仕事への応募�
 
 2. ブラウザーの新しいウィンドウで、URL の最後に `Can I submit my resume for job 235986` と入力します。 
 
-    ```JSON
+    ```json
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {

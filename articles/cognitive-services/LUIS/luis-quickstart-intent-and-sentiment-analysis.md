@@ -1,21 +1,22 @@
 ---
-title: 'チュートリアル 9: LUIS でのポジティブ、ネガティブ、およびニュートラルを含む感情分析'
+title: センチメント分析
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から抽出する方法を示すアプリを作成します。 感情は発話全体から決定されます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 95d1c4ffe76cf4c652f347014a838f1250c0ca15
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d93c7619bb670a81372ab83359836a78b8956b09
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277479"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098937"
 ---
 # <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>チュートリアル 9: 発話全体から感情を抽出する
 このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から抽出する方法を示すアプリを作成します。 感情は発話全体から決定されます。
@@ -60,7 +61,7 @@ ms.locfileid: "51277479"
 ## <a name="employeefeedback-intent"></a>EmployeeFeedback 意図 
 新しい意図を追加して、会社のメンバーから従業員のフィードバックをキャプチャします。 
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。
 
@@ -94,7 +95,7 @@ ms.locfileid: "51277479"
 
 2. **[Sentiment Analysis]\(感情分析\)** を切り替えてこの設定を有効にします。 
 
-    ![](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
+    ![感情分析を発行設定として有効にする](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
 ## <a name="publish"></a>[発行]
 
@@ -106,7 +107,7 @@ ms.locfileid: "51277479"
 
 2. アドレスの URL の末尾に移動し、「`Jill Jones work with the media team on the public portal was amazing`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、感情分析が抽出された `EmployeeFeedback` 意図を返す必要があります。
     
-    ```JSON
+    ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {

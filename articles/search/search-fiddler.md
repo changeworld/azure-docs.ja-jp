@@ -1,5 +1,5 @@
 ---
-title: Fiddler または Postman での REST API の探索 (Azure Search REST) | Microsoft Docs
+title: Fiddler または Postman Web HTTP テスト ツールで REST API を調べる - Azure Search
 description: Fiddler または Postman を使用して HTTP 要求と REST API 呼び出しを Azure Search に発行する方法について説明します。
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: f73ec81686575efde70b7f90239299ec4deca00c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190187"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312987"
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Fiddler または Postman を使用して Azure Search REST API を探索する
 
@@ -65,7 +66,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ### <a name="fiddler"></a>Fiddler
 
-次のスクリーン ショットのように要求を作成します。 動詞として **PUT** を選択します。 `User-Agent=Fiddler` が自動的に追加されます。 その下の新しい行に 2 つの追加の要求ヘッダーを貼り付けることができます。 サービスの管理者アクセス キーを使用して、サービスのコンテンツ タイプと API キーを含めます。
+次のスクリーンショットのように要求を作成します。 動詞として **PUT** を選択します。 `User-Agent=Fiddler` が自動的に追加されます。 その下の新しい行に 2 つの追加の要求ヘッダーを貼り付けることができます。 サービスの管理者アクセス キーを使用して、サービスのコンテンツ タイプと API キーを含めます。
 
 ![Fiddler の要求ヘッダー][1]
 
@@ -74,7 +75,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 ### <a name="postman"></a>postman
 
-次のスクリーン ショットのように要求を作成します。 動詞として **PUT** を選択します。 
+次のスクリーンショットのように要求を作成します。 動詞として **PUT** を選択します。 
 
 ![Postman の要求ヘッダー][6]
 
@@ -110,13 +111,13 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 ### <a name="fiddler"></a>Fiddler
 
-次のスクリーン ショットのようにインデックス定義を要求本文にコピーし、右上の **[Execute]\(実行\)** をクリックして完成した要求を送信します。
+次のスクリーンショットのようにインデックス定義を要求本文にコピーし、右上の **[Execute]\(実行\)** をクリックして完成した要求を送信します。
 
 ![Fiddler の要求本文][7]
 
 ### <a name="postman"></a>postman
 
-次のスクリーン ショットのようにインデックス定義を要求本文にコピーし、右上の **[Send]\(送信\)** をクリックして完成した要求を送信します。
+次のスクリーンショットのようにインデックス定義を要求本文にコピーし、右上の **[Send]\(送信\)** をクリックして完成した要求を送信します。
 
 ![Postman の要求本文][8]
 
@@ -200,13 +201,13 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 
 ### <a name="fiddler"></a>Fiddler
 
-動詞を **POST** に変更します。 `/docs/index` を含めるように URL を変更します。 次のスクリーン ショットのようにドキュメントを要求本文にコピーし、要求を実行します。
+動詞を **POST** に変更します。 `/docs/index` を含めるように URL を変更します。 次のスクリーンショットのようにドキュメントを要求本文にコピーし、要求を実行します。
 
 ![Fiddler の要求ペイロード][9]
 
 ### <a name="postman"></a>postman
 
-動詞を **POST** に変更します。 `/docs/index` を含めるように URL を変更します。 次のスクリーン ショットのようにドキュメントを要求本文にコピーし、要求を実行します。
+動詞を **POST** に変更します。 `/docs/index` を含めるように URL を変更します。 次のスクリーンショットのようにドキュメントを要求本文にコピーし、要求を実行します。
 
 ![Postman の要求ペイロード][10]
 
@@ -217,7 +218,7 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
 + 検索文字列など、クエリ パラメーターを含めるようにエンドポイントを変更します。 クエリの URL は `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11` のようになります
 + 要求ヘッダーは変更しないでください
 
-このクエリでは、"motel" という用語を検索し、検索結果でドキュメント数を返します。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーン ショットのようになります。 状態コードは 200 になります。
+このクエリでは、"motel" という用語を検索し、検索結果でドキュメント数を返します。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーンショットのようになります。 状態コードは 200 になります。
 
  ![Postman のクエリ応答][11]
 

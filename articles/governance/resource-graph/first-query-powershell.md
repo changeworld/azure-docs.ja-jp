@@ -1,20 +1,20 @@
 ---
-title: Azure PowerShell を使用して最初の Resource Graph クエリを実行します
+title: Azure PowerShell を使用して最初のクエリを実行する
 description: この記事では、Azure PowerShell の Resource Graph モジュールを有効にして、最初のクエリを実行する手順について説明します。
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: resource-graph
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 001805aaf87ed6c3481a8ad8378cdc22ef74d274
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.custom: seodec18
+ms.openlocfilehash: 5ffc93afdfff1a069d00b61868b5ae025121198c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646390"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310727"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -37,9 +37,6 @@ Azure Resource Graph モジュールには、次のソフトウェアが必要�
   - PowerShell Core については、Azure PowerShell モジュールの**Az**バージョンを使用してください。
 
   - Windows PowerShell については、Azure PowerShell モジュールの**AzureRm**バージョンを使用してください。
-
-  > [!NOTE]
-  > Cloud Shell にモジュールをインストールすることは現在推奨されません。
 
 - PowerShellGet 2.0.1 以上。 インストールされていない場合、または更新されていない場合は、こちらの[手順](/powershell/gallery/installing-psget)に従ってください。
 

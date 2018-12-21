@@ -1,6 +1,6 @@
 ---
-title: インデックスの作成 (.NET API - Azure Search) | Microsoft Docs
-description: Azure Search .NET SDK を使用して、コードでインデックスを作成します。
+title: .NET API を使用してコードでインデックスを作成する - Azure Search
+description: Azure Search .NET SDK と C# のサンプル コードを使用して、全文検索可能なインデックスを作成する方法について説明します。
 author: brjohnstmsft
 manager: jlembicz
 tags: azure-portal
@@ -10,12 +10,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: a1c9340acdc2521b9b74f47b0e17d0e4d37aea77
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 6d111b1be310a345e23c440f1af9da4183efff43
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236569"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312597"
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>.NET SDK を使用した Azure Search インデックスの作成
 > [!div class="op_single_selector"]

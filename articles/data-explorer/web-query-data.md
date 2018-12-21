@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7b9bc52e07bccf931593cd2dbddd68e973d1b26c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394359"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106449"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>クイック スタート: Azure Data Explorer でデータのクエリを実行する
 
@@ -134,7 +134,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 次のクエリを実行します。
 
-    ```Kutso
+    ```Kusto
     StormEvents
     | sort by StartTime desc
     | where DamageProperty > 5000
@@ -148,7 +148,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     このパネルは Excel のピボット テーブル フィールド リストと同様に機能し、グリッド自体でさらに分析を実行できます。
 
-1. **[Pivot Mode]\(ピボット モード\)** を選択し、**State** を **[Row groups]\(行グループ\)** に、**DamageProperty** を **[Values]\(値\)** に、**EventType** を **[Column labels]\(列ラベル\)** に、それぞれドラッグします。  
+1. **[Pivot Mode]\(ピボット モード\)** を選択し、**State** 列を **[Row groups]\(行グループ\)** に、**DamageProperty** 列を **[Values]\(値\)** に、**EventType** 列を **[Column labels]\(列ラベル\)** に、それぞれドラッグします。  
 
     ![ピボット モード](media/web-query-data/pivot-mode.png)
 

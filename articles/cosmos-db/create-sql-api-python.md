@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Python と SQL API によるアプリの構築'
+title: Azure Cosmos DB は:Python と SQL API によるアプリの構築
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Python コード サンプルについて説明します
 services: cosmos-db
 author: SnehaGunda
@@ -10,14 +10,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: a12107fe0dd25a383e7be1adbc717c7c1c654fa5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6f3f1f6eb89127e6b0ac0e2983a27dfd731651cb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846540"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094238"
 ---
-# <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure Portal による SQL API アプリの構築
+# <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB は:Python と Azure Portal による SQL API アプリの構築
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -153,7 +153,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で Azure Cosmos DB アカウントにアクセスし、左側のナビゲーションにある **[キー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使用して、**[URI]** と **[主キー]** を `CosmosGetStarted.py` ファイルにコピーします。
+1. [Azure Portal](https://portal.azure.com/) で Azure Cosmos DB アカウントにアクセスし、左側のナビゲーションにある **[キー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使用して、**[URI]** と **[主キー]** を `CosmosGetStarted.py` ファイルにコピーします。
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
 

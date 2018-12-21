@@ -1,6 +1,6 @@
 ---
-title: 暗号化されたストレージ アカウントをデプロイするための Azure Resource Manager テンプレートの作成 | Microsoft Docs
-description: Visual Studio Code を使用して、暗号化されたストレージ アカウントをデプロイするためのテンプレートを作成します。
+title: Azure Resource Manager テンプレートのリファレンスを活用する | Microsoft Docs
+description: Azure Resource Manager テンプレートのリファレンスを活用して、暗号化されたストレージ アカウントをデプロイするためのテンプレートを作成します。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,17 +10,18 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6c75c0ce7d12f65878ec8cde0f265022c7beeb29
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: 1f831f2d962626de6f847e2fe775605b7bfca5b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613513"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097592"
 ---
-# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>チュートリアル: Resource Manager テンプレートを使用して、暗号化された Azure ストレージ アカウントをデプロイする
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>チュートリアル: Azure Resource Manager テンプレートのリファレンスを活用する
 
 テンプレート スキーマ情報を見つける方法のほか、その情報を使用して Azure Resource Manager テンプレートを作成する方法について説明します。
 
@@ -77,9 +78,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure テンプレート](https://docs.microsoft.com/azure/templates/)を参照します。
 2. **[タイトルでフィルター処理します]** で、**ストレージ アカウント**を入力します。
-3. 次のスクリーンショットに示すように、**Reference/Template reference/Storage/Storage Accounts** を選択します。
+3. 次のスクリーンショットに示すように、**Reference/Template reference/Storage/<Version>/Storage Accounts** を選択します。
 
     ![Resource Manager テンプレート参照ストレージ アカウント](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
+
+    選択するべきバージョンがわからない場合は、最新バージョンを使用します。
 
 4. 暗号化関連の定義情報を見つけます。  
 

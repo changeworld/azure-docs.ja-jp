@@ -1,21 +1,22 @@
 ---
-title: Python クイック スタート - モデルの変更と LUIS アプリのトレーニング
-titleSuffix: Azure Cognitive Services
-description: この Python クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。 発話の例は、意図にマッピングされる会話形式のユーザー テキストです。 意図に対する発話の例を与えるには、ユーザーによって入力されるどのようなテキストが、どの意図に属しているかを LUIS に学習させます。
+title: 変更、アプリのトレーニング、Python
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: この Python クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: ff076954d51605935bb41488ec6a757c2f7806a1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6d05859977a7cba385877298405b9ce77034da68
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040178"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166355"
 ---
 # <a name="quickstart-change-model-using-python"></a>クイック スタート: Python を使ってモデルを変更する
 
@@ -46,7 +47,7 @@ Python 3.6 を使用してコマンドラインからアプリケーションを
 
 引数を指定せずに add-utterance を呼び出すと、アプリに発話は追加されますが、トレーニングは実行されません。
 
-```CMD
+```console
 > python add-utterances-3-6.py
 ```
 
@@ -83,7 +84,7 @@ Python 3.6 を使用してコマンドラインからアプリケーションを
 }
 ```
 
-```JSON
+```json
 Requested training status.
 [
    {

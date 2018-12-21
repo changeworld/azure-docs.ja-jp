@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 89f5ae27e7ce3ec3155fd3fdbf42bb0f4322aa10
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 50abe2b067770976f19ae9b70c97c2df8354640f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835065"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091580"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -35,10 +35,10 @@ Azure Cosmos DB は、グローバルに分散された複数モデルのデー�
 * **データに対するアクセスとクエリのため、各種のデータ モデルと人気の API をサポート**
     * Azure Cosmos DB の基盤となるアトム レコード シーケンス (ARS) ベースのデータ モデルでは、ドキュメント、グラフ、キーと値、テーブル、列ファミリの各データ モデルなど、複数のデータ モデルをネイティブでサポートします。
     * 次のデータ モデルの API は SDK でサポートされており、複数の言語で利用できます。
-        * [SQL API](sql-api-introduction.md): 豊富な SQL クエリ機能を備えたスキーマのない JSON データベース エンジン。
-        * [MongoDB API](mongodb-introduction.md): Azure Cosmos DB データベースを利用する非常にスケーラブルな*サービスとしての MongoDB*。 MongoDB の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
-        * [Cassandra API](cassandra-introduction.md): Azure Cosmos DB データベースを利用するグローバルに分散されたサービスとしての Cassandra。 [Apache Cassandra](https://cassandra.apache.org/) の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
-        * [Gremlin API](graph-introduction.md): フル マネージドの、水平方向にスケーラブルなグラフ データベース サービス。Open Gremlin API (Apache Gremlin の [Apache TinkerPop 仕様](http://tinkerpop.apache.org/)に基づきます) をサポートする緊密に接続されたデータセットを使用するアプリケーションを簡単に構築して実行できます。
+        * [SQL API](sql-api-introduction.md): 豊富な SQL クエリ機能を備えた、スキーマのない JSON データベース エンジン。
+        * [MongoDB API](mongodb-introduction.md): Azure Cosmos DB プラットフォームを利用する非常にスケーラブルな*サービスとしての MongoDB*。 MongoDB の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
+        * [Cassandra API](cassandra-introduction.md): Azure Cosmos DB プラットフォームを利用するグローバルに分散されたサービスとしての Cassandra。 [Apache Cassandra](https://cassandra.apache.org/) の既存のライブラリ、ドライバー、ツール、およびアプリケーションと互換性があります。
+        * [Gremlin API](graph-introduction.md): フル マネージドの、水平方向にスケーラブルなグラフ データベース サービス。Open Gremlin API (Apache Gremlin の [Apache TinkerPop 仕様](https://tinkerpop.apache.org/)に基づきます) をサポートする緊密に接続されたデータセットを使用するアプリケーションを簡単に構築して実行できます。
         * [テーブル API](table-introduction.md): 既存の Azure テーブル ストレージ アプリケーションに高度な機能 (自動インデックス作成、低待機時間の保証、グローバルな分散など) を提供する、キーと値のデータベース サービス。アプリを変更する必要はありません。
         * 他のデータ モデルおよび API も近日対応予定です。
 

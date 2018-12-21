@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 07be154f05441c94e32b05fc8354f59b88713929
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 5899b2b667df4800bf98aa6ed7b70f2f8ba4f931
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456936"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337106"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする
+# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする
 
 このクイック スタートでは、Windows 開発マシン上でデバイス シミュレーターを作成して実行する方法について説明します。 ここでは、Device Provisioning Service インスタンスとの認証と IoT ハブへの割り当てに対称キーを使用するように、このシミュレートされたデバイスを構成します。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のサンプル コードを使用して、プロビジョニングを開始するデバイスのブート シーケンスをシミュレートします。 デバイスは、プロビジョニング サービス インスタンスへの個々の登録に基づいて認識され、IoT ハブに割り当てられます。
 
@@ -83,7 +83,7 @@ ms.locfileid: "49456936"
 4. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
@@ -91,7 +91,7 @@ ms.locfileid: "49456936"
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -114,13 +114,13 @@ ms.locfileid: "49456936"
 
 3. **[Add enrollment]\(登録の追加\)** で、次の情報を入力し、**[保存]** をクリックします。
 
-    - **メカニズム:** ID 構成証明の*メカニズム*として **[対称キー]** を選択します。
+    - **メカニズム**:ID 構成証明の*メカニズム*として **[対称キー]** を選択します。
 
-    - **キーの自動生成**: このボックスをオンにします。
+    - **キーの自動生成**:このボックスをオンにします。
 
-    - **登録 ID**: 登録を識別する登録 ID を入力します。 小文字の英字、数字、ダッシュ ('-') 文字のみを使用します。 たとえば、「 `symm-key-device-007` 」のように入力します。
+    - **登録 ID**:登録を識別する登録 ID を入力します。 小文字の英字、数字、ダッシュ ('-') 文字のみを使用します。 たとえば、「 `symm-key-device-007` 」のように入力します。
 
-    - **IoT Hub のデバイス ID:** デバイス識別子を入力します。 たとえば、「**device-007**」と入力します。
+    - **IoT Hub のデバイス ID**:デバイス識別子を入力します。 たとえば、「**device-007**」と入力します。
 
     ![ポータルで対称キーの構成証明に対する個々の登録を追加する](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
@@ -165,22 +165,25 @@ ms.locfileid: "49456936"
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
-
-7. Visual Studio の *ソリューション エクスプローラー* ウィンドウで、**hsm\_security\_client** プロジェクトに移動し、展開します。 **[ソース ファイル]** を展開し、**hsm\_client\_key.c** を開きます。 
-
-    `REGISTRATION_NAME` および `SYMMETRIC_KEY_VALUE` 定数の宣言を探します。 ファイルに次の変更を加えて保存します。
-
-    `REGISTRATION_NAME` 定数の値を実際の**登録 ID** に変更します。
-    
-    `SYMMETRIC_KEY_VALUE` 定数の値を実際の**主キー**に変更します。
+6. **prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを探します。
 
     ```c
-    static const char* const REGISTRATION_NAME = "symm-key-device-007";
-    static const char* const SYMMETRIC_KEY_VALUE = "<enter your Symmetric primary key>";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-7. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
+    関数呼び出しのコメントを解除し、プレースホルダーの値 (山かっこを含む) を、自分の登録 ID と主キーの値に置き換えます。
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("symm-key-device-007", "your primary key here");
+    ```
+   
+    ファイルを保存します。
+
+7. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+
+8. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
 
     次の出力は、シミュレートされたデバイスが正常に起動し、IoT ハブに割り当てられるプロビジョニング サービス インスタンスに接続する例です。
 
@@ -198,7 +201,7 @@ ms.locfileid: "49456936"
     Press enter key to exit:
     ```
 
-8. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、**[IoT デバイス]** タブをクリックします。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効**な*状態*で **[IoT デバイス]** ブレードに表示されます。 必要に応じて、一番上の **[更新]** ボタンをクリックします。 
+9. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、**[IoT デバイス]** タブをクリックします。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効**な*状態*で **[IoT デバイス]** ブレードに表示されます。 必要に応じて、一番上の **[更新]** ボタンをクリックします。 
 
     ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device/hub-registration.png) 
 

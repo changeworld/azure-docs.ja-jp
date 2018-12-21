@@ -1,5 +1,5 @@
 ---
-title: Azure Policy のサンプル - マネージド ディスクを使用して VM を作成する
+title: サンプル - マネージド ディスクを使用して VM を作成する
 description: このサンプル ポリシーは、仮想マシンでマネージド ディスクが使用されていることが要件です。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 9939451c1665f975dd651f97fee5ef079a842e83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a123734f9ee44718723f8e932d645ac54c599ebf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978380"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310680"
 ---
 # <a name="create-vm-using-managed-disk"></a>マネージド ディスクを使用して VM を作成する
 
@@ -71,4 +70,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 
-- 他のサンプルについては、「[Azure Policy のサンプル](index.md)」を参照してください
+- 他のサンプルについては、「[Azure Policy のサンプル](index.md)」をご確認ください。

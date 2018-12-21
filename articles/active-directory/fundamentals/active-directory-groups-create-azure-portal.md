@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory を使用して基本グループを作成してメンバーを追加する方法 | Microsoft Docs
-description: Azure Active Directory を使用した基本グループの作成方法について説明します。
+title: 基本グループを作成してメンバーを追加する - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory を使用した基本グループの作成方法に関する手順です。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,16 +11,15 @@ ms.topic: quickstart
 ms.date: 08/22/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 36bd0ca06859c1952a75b1aa8397fba88dc22d40
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: be3271a1105e8222ae04e17140c6e925a1c612f9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574914"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105455"
 ---
-# <a name="how-to-create-a-basic-group-and-add-members-using-azure-active-directory"></a>方法: Azure Active Directory を使用して基本グループを作成してメンバーを追加する
-
+# <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Azure Active Directory を使用して基本グループを作成してメンバーを追加する
 Azure Active Directory (Azure AD) ポータルを使用して、基本グループを作成できます。 この記事の目的に合わせて、基本グループは、リソース所有者 (管理者) によって単一リソースに追加され、そのリソースにアクセスする必要がある特定のメンバー (従業員) を含みます。 動的なメンバーシップやルールの作成など、より複雑なシナリオについては、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
 
 ## <a name="create-a-basic-group-and-add-members"></a>基本グループを作成してメンバーを追加する

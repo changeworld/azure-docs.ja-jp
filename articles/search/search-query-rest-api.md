@@ -1,6 +1,6 @@
 ---
-title: インデックスの照会 (REST API - Azure Search) | Microsoft Docs
-description: Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理と並べ替えを行います。
+title: REST API を使用してコードでインデックスのクエリを実行する - Azure Search
+description: Azure Search で検索クエリを作成するための HTTP コマンドと REST API コードです。 検索結果のフィルター処理と並べ替えを行うための検索パラメーターを追加します。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -8,12 +8,13 @@ services: search
 ms.service: search
 ms.topic: quickstart
 ms.date: 04/20/2018
-ms.openlocfilehash: 035dc4ac349513867253e5593e01fab4fec62f6b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: ccdb872646dded34cb50cd64f56733445132c4b7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186513"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316937"
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>REST API を使用した Azure Search インデックスの照会
 > [!div class="op_single_selector"]

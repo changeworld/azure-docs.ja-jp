@@ -1,6 +1,6 @@
 ---
-title: インデックスの照会 (.NET API - Azure Search) | Microsoft Docs
-description: Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理と並べ替えを行います。
+title: .NET SDK を使用してコードでインデックスのクエリを行う - Azure Search
+description: Azure Search で検索クエリを作成するための C# コードの例です。 検索結果のフィルター処理と並べ替えを行うための検索パラメーターを追加します。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
-ms.openlocfilehash: 5b7f454fed6206ac57799d6f1e86152cd52dc9e9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 5c89902da5e773c60c8e2694159ddeed874ecab2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254419"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317000"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>.NET SDK を使用した Azure Search インデックスの照会
 > [!div class="op_single_selector"]

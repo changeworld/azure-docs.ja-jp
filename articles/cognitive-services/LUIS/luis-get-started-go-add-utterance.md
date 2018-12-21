@@ -1,22 +1,25 @@
 ---
-title: Go 言語クイック スタート - モデルの変更と LUIS アプリのトレーニング
-description: この Go 言語クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。 発話の例は、意図にマッピングされる会話形式のユーザー テキストです。 意図に対する発話の例を与えるには、ユーザーによって入力されるどのようなテキストが、どの意図に属しているかを LUIS に学習させます。
-titleSuffix: Microsoft Cognitive Services
+title: 変更、アプリのトレーニング、Go
+description: この Go 言語クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
+titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 2cd8c1aa2deb2af97d4f720efa0e40146b15b888
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e3fb6b2532f2dc99a48cc3c2eac9029367c52185
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031868"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100295"
 ---
 # <a name="quickstart-change-model-using-go"></a>クイック スタート: Go を使ってモデルを変更する
+
+このクイック スタートでは、LUIS エンドポイントに発話を渡して、意図とエンティティを取得します。
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -66,7 +69,7 @@ ms.locfileid: "47031868"
 
 2. コマンド プロンプトに次のテキストを入力して、コマンド ラインから Go アプリケーションを実行します。 
 
-    ```CMD
+    ```console
     add-utterances -appID <your-app-id> -authoringKey <add-your-authoring-key> -version <your-version-id> -region westus -utteranceFile utterances.json
 
     ```
@@ -75,7 +78,7 @@ ms.locfileid: "47031868"
 
     このコマンド プロンプトを実行すると、次の結果が表示されます。
 
-    ```CMD
+    ```console
     add example utterances requested
     [
         {

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 0e9203f5b4e2a9043e242b804c82017cf6fc3ee1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 55a1d16ce1617ecf7bc28c7c62de8557ceeea311
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010805"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412913"
 ---
 # <a name="set-up-a-capacity-pool"></a>容量プールを設定する
 容量プールを設定すると、そこにボリュームを作成できるようになります。  
@@ -55,6 +55,6 @@ ms.locfileid: "39010805"
 
 ## <a name="next-steps"></a>次の手順 
 
-1. [Azure NetApp Files のボリュームを作成する](azure-netapp-files-create-volumes.md)
-2. [ボリュームのエクスポート ポリシーを構成する (省略可能)](azure-netapp-files-configure-export-policy.md)
+[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)
+
 

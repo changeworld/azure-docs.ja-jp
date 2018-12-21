@@ -1,29 +1,22 @@
 ---
-title: 'チュートリアル: Azure Functions を使用した Azure SignalR Service 認証 | Microsoft Docs'
+title: チュートリアル:Azure Functions を使用した Azure SignalR Service 認証
 description: このチュートリアルでは、Azure SignalR Service クライアントを認証する方法について説明します
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
-ms.workload: tbd
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: 8af657c39217f3edcadef6ec0981a31ec7e89aa6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34cbb4d2c8a1e84499961802ca7bd07408375345
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978426"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409394"
 ---
-# <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>チュートリアル: Azure Functions を使用した Azure SignalR Service 認証
+# <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>チュートリアル:Azure Functions を使用した Azure SignalR Service 認証
 
-Azure Functions、App Service 認証、および SignalR Service を使用して、認証とプライベート メッセージングを使用してチャットルームを構築する手順を説明したチュートリアルです。
+Azure Functions、App Service 認証、および SignalR Service を使用して、認証とプライベート メッセージングを備えたチャットルームを構築する手順を説明したチュートリアルです。
 
 ## <a name="introduction"></a>はじめに
 
@@ -39,21 +32,19 @@ Azure Functions、App Service 認証、および SignalR Service を使用して
 
 * [Git](https://git-scm.com/downloads)
 * [Node.js](https://nodejs.org/en/download/) (Version 10.x)
-* [.NET SDK](https://www.microsoft.com/net/download) (Version 2.x、Functions 拡張機能に必要)
+* [.NET SDK](https://www.microsoft.com/net/download) (Version 2.x、Functions 拡張機能用に必須)
 * [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools) (Version 2)
 * [Visual Studio Code](https://code.visualstudio.com/) (VS Code) と次の拡張機能
-    * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions): Azure Functions は VS Code で使用します
-    * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): テスト用の Web ページをローカルで提供します
-
+  * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions): Azure Functions は VS Code で使用します
+  * [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer): テスト用の Web ページをローカルで提供します
 
 ## <a name="sign-into-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure portal](https://portal.azure.com/) に移動し、資格情報を使用してサインインします。
 
+## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service のインスタンスを作成する
 
-## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service インスタンスを作成する
-
-Azure Functions アプリをローカルでビルドしてテストします。 このアプリは Azure の SignalR Service インスタンス (事前に作成しておく必要があります) にアクセスします。
+Azure Functions アプリをローカルでビルドしてテストします。 このアプリは Azure にある SignalR Service のインスタンス (事前に作成しておく必要があります) にアクセスします。
 
 1. 新しい Azure リソースを作成するには、**[リソースの作成]** (**+**) ボタンをクリックします。
 
@@ -65,49 +56,49 @@ Azure Functions アプリをローカルでビルドしてテストします。 
 
     | Name | 値 |
     |---|---|
-    | リソース名 | SignalR Service インスタンスの一意の名前 |
+    | リソース名 | SignalR Service のインスタンス用の一意の名前 |
     | リソース グループ | 新しいリソース グループを作成する |
     | Location | 近くの場所を選択します |
     | 価格レベル | 無料 |
-    
-1. **[作成]** をクリックします。
 
+1. **[作成]** をクリックします。
 
 ## <a name="initialize-the-function-app"></a>関数アプリを初期化する
 
-### <a name="create-a-new-azure-functions-project"></a>新しい Azure Functions プロジェクトを作成する
+### <a name="create-a-new-azure-functions-project"></a>新しい Azure Functions のプロジェクトを作成する
 
 1. 新しい VS Code ウィンドウでメニューの `File > Open Folder` を使用し、適切な場所に空のフォルダーを作成して開きます。 これは、ビルドするアプリケーションのメイン プロジェクト フォルダーになります。
 
 1. VS Code で Azure Functions 拡張機能を使用して、メイン プロジェクト フォルダー内の関数アプリを初期化します。
     1. VS Code でメニューから **[表示]、[コマンド パレット]** の順に選択してコマンド パレットを開きます (ショートカットは `Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)。
-    1. **[Azure Functions: Create New Project]\(Azure Functions: 新しいプロジェクトの作成\)** コマンドを探して選択します。
-    1. メイン プロジェクト フォルダーが表示されます。 それを選択します (または [参照] を使用して選択します)。
+    1. **Azure Functions: Create New Project** コマンドを検索して選択します。
+    1. メイン プロジェクト フォルダーが表示されます。 それを選択します (または [参照] を使用して検索します)。
     1. 言語を選択するプロンプトで、**[JavaScript]** を選択します。
 
     ![Function App を作成する](media/signalr-authenticate-azure-functions/signalr-create-vscode-app.png)
 
-
 ### <a name="install-function-app-extensions"></a>関数アプリ拡張機能をインストールする
 
-このチュートリアルでは、Azure SignalR Service との対話に Azure Functions バインドを使用します。 他のほとんどのバインドと同様に、SignalR Service バインドは拡張機能として使用できます。拡張機能を使用するには、Azure Functions Core Tools CLI を使用してインストールする必要があります。
+このチュートリアルでは、Azure SignalR Service との対話に Azure Functions バインドを使用します。 他のほとんどのバインドと同様に、SignalR Service バインドは拡張機能として使用できます。この拡張機能を使用するには、Azure Functions Core Tools CLI を使用してあらかじめインストールしておく必要があります。
 
-1. メニューから **[表示]、[統合ターミナル]** の順に選択して (または Ctrl + ` キー) VS Code でターミナルを開きます。
+1. メニューから **[表示]、[統合ターミナル]** の順に選択して (または Ctrl + \` キー) VS Code でターミナルを開きます。
 
 1. メイン プロジェクト フォルダーが現在のディレクトリであることを確認します。
 
 1. SignalR Service 関数アプリ拡張機能をインストールします。
-    ```
+
+    ```bash
     func extensions install -p Microsoft.Azure.WebJobs.Extensions.SignalRService -v 1.0.0-preview1-10002
     ```
 
 ### <a name="configure-application-settings"></a>アプリケーション設定の構成
 
-Azure Functions ランタイムをローカルで実行してデバッグする場合、アプリケーション設定は **local.settings.json** から読み取られます。 以前に作成した SignalR Service インスタンスの接続文字列でこのファイルを更新します。
+Azure Functions ランタイムをローカルで実行してデバッグする場合、アプリケーション設定は **local.settings.json** から読み取られます。 以前に作成した SignalR Service のインスタンスの接続文字列でこのファイルを更新します。
 
 1. VS Code のエクスプローラー ウィンドウで **local.settings.json** を選択して開きます。
 
 1. ファイルの内容を次のように置き換えます。
+
     ```json
     {
         "IsEncrypted": false,
@@ -123,9 +114,9 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
     }
     ```
 
-    * `AzureSignalRConnectionString` という Azure SignalR Service 接続文字列を設定に入力します。 Azure portal の Azure SignalR Service リソースの **[キー]** ページから値を取得します。プライマリまたはセカンダリの接続文字列を使用できます。
+    * `AzureSignalRConnectionString` という名前の設定に Azure SignalR Service の接続文字列を入力します。 Azure portal にある Azure SignalR Service リソースの **[キー]** ページから値を取得します。プライマリまたはセカンダリのどちらの接続文字列でも使用できます。
     * `WEBSITE_NODE_DEFAULT_VERSION` 設定はローカルでは使用されませんが、Azure にデプロイする場合は必須です。
-    * `Host` セクションでは、ローカルの Functions ホスト用のポートと CORS 設定を構成します (この設定を Azure で実行しても効果はありません)。
+    * `Host` セクションでは、ローカルの Functions ホスト用のポートと CORS 設定を構成します (この設定は Azure での実行時に影響を与えません)。
 
     ![SignalR Service キーを取得する](media/signalr-authenticate-azure-functions/signalr-get-key.png)
 
@@ -133,14 +124,13 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 
     ![ローカル設定を更新する](media/signalr-authenticate-azure-functions/signalr-update-local-settings.png)
 
-
 ## <a name="create-a-function-to-authenticate-users-to-signalr-service"></a>SignalR Service に対してユーザーを認証する関数を作成する
 
-チャット アプリをブラウザーで初めて開く場合、Azure SignalR Service に接続できる有効な接続資格情報が必要です。 関数アプリで *SignalRInfo* という HTTP によってトリガーされる関数を作成し、この接続情報を返します。
+チャット アプリをブラウザーで初めて開くと、Azure SignalR Service に接続できる有効な接続資格情報が要求されます。 関数アプリで *SignalRInfo* という HTTP によってトリガーされる関数を作成し、この接続情報を返します。
 
 1. VS Code コマンド パレットを開きます (`Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)。
 
-1. **[Azure Functions: 関数の作成]** コマンドを探して選択します。
+1. **Azure Functions: Create Function** コマンドを探して選択します。
 
 1. 入力を求められたら、次の情報を指定します。
 
@@ -150,10 +140,10 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
     | テンプレート | HTTP トリガー |
     | Name | SignalRInfo |
     | 承認レベル | Anonymous |
-    
+
     新しい関数を含む **SignalRInfo** というフォルダーが作成されます。
 
-1. **SignalRInfo/function.json** を開き、関数のバインドを構成します。 ファイルの内容を次のように変更します。 これにより、クライアントが `chat` という Azure SignalR Service ハブに接続するための有効な資格情報を生成する入力バインドが追加されます。
+1. **SignalRInfo/function.json** を開き、その関数のバインドを構成します。 ファイルの内容を次のように変更します。 これにより、クライアントが `chat` という Azure SignalR Service ハブに接続するための有効な資格情報を生成する入力バインドが追加されます。
 
     ```json
     {
@@ -194,14 +184,13 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 
     この関数は、入力バインドから SignalR の接続情報を受け取り、それを HTTP 応答の本文でクライアントに返します。
 
-
 ## <a name="create-a-function-to-send-chat-messages"></a>チャット メッセージを送信する関数を作成する
 
 また、チャット メッセージを送信するには、Web アプリに HTTP API が必要です。 *SendMessage* という HTTP によってトリガーされる関数を作成します。この関数は、SignalR Service を使用して、接続されているすべてのクライアントにメッセージを送信します。
 
 1. VS Code コマンド パレットを開きます (`Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)。
 
-1. **[Azure Functions: 関数の作成]** コマンドを探して選択します。
+1. **Azure Functions: Create Function** コマンドを探して選択します。
 
 1. 入力を求められたら、次の情報を指定します。
 
@@ -211,7 +200,7 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
     | テンプレート | HTTP トリガー |
     | Name | SendMessage |
     | 承認レベル | Anonymous |
-    
+
     新しい関数を含む **SendMessage** というフォルダーが作成されます。
 
 1. **SendMessage/function.json** を開き、関数のバインドを構成します。 ファイルの内容を次のように変更します。
@@ -250,17 +239,18 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 1. ファイルを保存します。
 
 1. **SendMessage/index.js** を開き、関数の本文を表示します。 ファイルの内容を次のように変更します。
+
     ```javascript
     module.exports = function (context, req) {
         const message = req.body;
         message.sender = req.headers && req.headers['x-ms-client-principal-name'] || '';
-            
+
         let recipientUserId = '';
         if (message.recipient) {
             recipientUserId = message.recipient;
             message.isPrivate = true;
         }
-    
+
         context.bindings.signalRMessages = [{
             'userId': recipientUserId,
             'target': 'newMessage',
@@ -269,12 +259,12 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
         context.done();
     };
     ```
+
     この関数は、HTTP 要求から本文を取り出し、SignalR Service に接続されたクライアントに送信し、各クライアントで `newMessage` という関数を呼び出します。
 
     この関数は送信元の ID を読み取ることができます。また、メッセージ本文の *recipient* 値を受け取り、メッセージを 1 人のユーザーに限定して送信することができます。 これらの機能はこのチュートリアルの後半で使用します。
 
 1. ファイルを保存します。
-
 
 ## <a name="create-and-run-the-chat-client-web-user-interface"></a>チャット クライアント Web ユーザー インターフェイスの作成と実行
 
@@ -290,24 +280,21 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 
 1. **F5** キーを押して関数アプリをローカルで実行し、デバッガーをアタッチします。
 
-1. **index.html** を開いた状態で、VS Code コマンド パレットを開き (`Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)、**[Live Server: Open with Live Server]\(Live Server: Live Server で開く\)** を選択して Live Server を起動します。 Live Server はブラウザーでアプリケーションを開きます。
+1. **index.html** を開いた状態で、VS Code コマンド パレットを開き (`Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)、**Live Server: Open with Live Server** を選択して Live Server を起動します。 Live Server はブラウザーでアプリケーションを開きます。
 
 1. アプリケーションが開きます。 チャット ボックスにメッセージを入力して Enter キーを押します。 アプリケーションを更新して新しいメッセージを表示します。 認証が構成されていないため、すべてのメッセージは "匿名" として送信されます。
-
 
 ## <a name="deploy-to-azure-and-enable-authentication"></a>Azure をデプロイして認証を有効にする
 
 これまではローカルで関数アプリとチャット アプリケーションを実行してきました。 次は Azure にデプロイし、アプリケーションで認証とプライベート メッセージングを有効にします。
 
-
 ### <a name="log-into-azure-with-vs-code"></a>VS Code で Azure にログインする
 
 1. VS Code コマンド パレットを開きます (`Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)。
 
-1. **[Azure: サインイン]** コマンドを探して選択します。
+1. **Azure: Sign in** コマンドを検索して選択します。
 
 1. 指示に従って、ブラウザーでサインイン プロセスを完了します。
-
 
 ### <a name="configure-function-app-for-authentication"></a>認証のために関数アプリを構成する
 
@@ -331,10 +318,9 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 
 1. ファイルを保存します。
 
-
 ### <a name="deploy-function-app"></a>関数アプリをデプロイする
 
-1. VS Code コマンド パレットを開き (`Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)、**[Azure Functions: Deploy to Function App]\(Azure Functions: 関数アプリにデプロイ\)** を選択します。 
+1. VS Code コマンド パレットを開き (`Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)、**Azure Functions:Deploy to Function App** を選択します。
 
 1. 入力を求められたら、次の情報を指定します。
 
@@ -344,19 +330,18 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
     | サブスクリプション | サブスクリプションを選択します。 |
     | 関数アプリ | **[Create New Function App]\(新しい関数アプリの作成\)** を選択します |
     | 関数アプリ名 | 一意の名前を入力します |
-    | リソース グループ | SignalR Service インスタンスと同じリソース グループを選択します |
+    | リソース グループ | SignalR Service のインスタンスと同じリソース グループを選択します |
     | ストレージ アカウント | **[新しいストレージ アカウントの作成]** を選択します |
     | ストレージ アカウント名 | 一意の名前を入力します (3 から 24 文字、英数字のみ) |
     | Location | 近くの場所を選択します |
-    
-    新しい関数アプリが Azure に作成され、デプロイが開始されます。 デプロイが完了するまで待ちます。
 
+    新しい関数アプリが Azure に作成され、デプロイが開始されます。 デプロイが完了するまで待ちます。
 
 ### <a name="upload-function-app-local-settings"></a>関数アプリのローカル設定アップロードする
 
 1. VS Code コマンド パレットを開きます (`Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)。
 
-1. **[Azure Functions: Upload local settings]\(Azure Functions: ローカル設定のアップロード\)** コマンドを探して選択します。
+1. **Azure Functions: Upload local settings** コマンドを検索して選択します。
 
 1. 入力を求められたら、次の情報を指定します。
 
@@ -369,14 +354,13 @@ Azure Functions ランタイムをローカルで実行してデバッグする�
 
 ローカル設定は Azure の関数アプリにアップロードされます。 既存の設定を上書きすることを確認するメッセージが表示されたら、**[すべてはい]** を選択します。
 
-
 ### <a name="enable-function-app-cross-origin-resource-sharing-cors"></a>関数アプリのクロス オリジン リソース共有 (CORS) を有効にする
 
 CORS 設定は **local.settings.json** にありますが、Azure の関数アプリには反映されません。 別に設定する必要があります。
 
 1. VS Code コマンド パレットを開きます (`Ctrl-Shift-P`、macOS: `Cmd-Shift-P`)。
 
-1. **[Azure Functions: Open in portal]\(Azure Functions: ポータルで開く\)** コマンドを探して選択します。
+1. **Azure Functions: Open in portal** コマンドを検索して選択します。
 
 1. サブスクリプションと関数アプリ名を選択して、Azure portal で関数アプリを開きます。
 
@@ -395,7 +379,6 @@ CORS 設定は **local.settings.json** にありますが、Azure の関数ア�
 > [!NOTE]
 > 実際のアプリケーションでは、すべての送信元 (`*`) で CORS を許可するのではなく、必要な各ドメインに特定の CORS エントリを入力する方が安全な方法です。
 
-
 ### <a name="update-the-web-app"></a>Web アプリを更新する
 
 1. Azure portal で関数アプリの概要ページに移動します。
@@ -404,13 +387,11 @@ CORS 設定は **local.settings.json** にありますが、Azure の関数ア�
 
     ![URL を取得する](media/signalr-authenticate-azure-functions/signalr-get-url.png)
 
-
 1. VS Code で **index.html** を開き、`apiBaseUrl` の値を関数アプリの URL に置き換えます。
 
 1. Azure Active Directory、Facebook、Twitter、Microsoft アカウント、または Google を使用した認証でアプリケーションを構成できます。 `authProvider` の値を設定して、使用する認証プロバイダーを選択します。
 
 1. ファイルを保存します。
-
 
 ### <a name="deploy-the-web-application-to-blob-storage"></a>BLOB ストレージに Web アプリケーションをデプロイする
 
@@ -454,7 +435,6 @@ Web アプリケーションは、Azure Blob Storage の静的 Web サイト機�
 
 1. **[静的な Web サイト]** ページに戻ります。 **[プライマリ エンドポイント]** をメモします。 これは作成する Web アプリケーションの URL です。
 
-
 ### <a name="enable-app-service-authentication"></a>App Service 認証を有効にする
 
 App Service 認証は、Azure Active Directory、Facebook、Twitter、Microsoft アカウント、Google による認証をサポートしています。
@@ -469,12 +449,11 @@ App Service 認証は、Azure Active Directory、Facebook、Twitter、Microsoft 
 
 1. 選択したログイン プロバイダーのドキュメントに従って構成を完了します。
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)
-    - [Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication)
-    - [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication)
-    - [Microsoft アカウント](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)
-    - [Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication)
-
+    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+    - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
+    - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
+    - [Microsoft アカウント](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
+    - [Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)
 
 ### <a name="try-the-application"></a>アプリケーションを試す
 
@@ -490,11 +469,9 @@ App Service 認証は、Azure Active Directory、Facebook、Twitter、Microsoft 
 
 ![デモ](media/signalr-authenticate-azure-functions/signalr-serverless-chat.gif)
 
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 このチュートリアルで作成したリソースをクリーンアップするには、Azure portal を使用してリソース グループを削除します。
-
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD の ID セキュリティ スコアとは (プレビュー) | Microsoft Docs
-description: ID セキュリティ スコアを使用して Azure AD テナントのセキュリティ体制を強化する方法について説明します。
+title: ID セキュリティ スコアとは  - Azure Active Directory (パブリック プレビュー) | Microsoft Docs
+description: ID セキュリティ スコアを使用して Azure AD テナントのセキュリティ体制を強化する方法に関する手順です。
 services: active-directory
 keywords: ID セキュリティ スコア、Azure AD、会社のリソースへのアクセスのセキュリティ保護
 documentationcenter: ''
@@ -16,14 +16,15 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: a9bb22cae2e9fcd607a81d442f4fb51f12c43454
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: it-pro
+ms.openlocfilehash: 5a133d0a38852ca3e95e3ae07716c4fbd3c87f5d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224139"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092086"
 ---
-# <a name="what-is-the-identity-secure-score-in-azure-ad---preview"></a>Azure AD の ID セキュリティ スコアとは (プレビュー)
+# <a name="what-is-the-identity-secure-score-in-azure-active-directory-public-preview"></a>Azure Active Directory の ID セキュリティ スコアとは (パブリック プレビュー)
 
 Azure AD テナントはどの程度セキュリティ保護されていますか。 この質問にどう答えていいかわからない場合は、この記事を読んで、ID セキュリティ体制を監視したり、強化したりするために ID セキュリティ スコアがどのように役立つかを学習してください。 
 

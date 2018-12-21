@@ -1,5 +1,5 @@
 ---
-title: Azure Policy のサンプル - SQL Server の監査設定の監査
+title: サンプル - SQL Server の監査設定の監査
 description: このサンプル ポリシーでは、SQL サーバーの監査設定を監査します。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 258d56f70349c99faf6053de46886b736ffb95cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7a9f5779b8a0c853d938734f82f3bd63e7f0a45b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949612"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53307871"
 ---
 # <a name="audit-sql-server-audit-settings"></a>SQL Server の監査設定の監査
 
@@ -98,4 +97,4 @@ az policy assignment delete --name "SQL Audit audit" --resource-group myResource
 
 ## <a name="next-steps"></a>次の手順
 
-- 他のサンプルについては、「[Azure Policy のサンプル](index.md)」を参照してください
+- 他のサンプルについては、「[Azure Policy のサンプル](index.md)」をご確認ください。

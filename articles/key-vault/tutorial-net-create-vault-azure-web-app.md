@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: defe1a109381c7ee44c6fc5e5db4c6f6ecc5ac6f
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 50a7f3166d677fe1af961866ccae4445a3d810b8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706842"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322143"
 ---
-# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>チュートリアル: .NET で Azure Web アプリを使用して Azure Key Vault を使用する
+# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>チュートリアル:.NET で Azure Web アプリを使用して Azure Key Vault を使用する
 
 Azure Key Vault は、API キーやデータベース接続文字列などのシークレットを保護するのに役立ちます。 アプリケーション、サービス、IT リソースへのアクセス手段が得られます。
 
@@ -56,7 +56,7 @@ Azure Key Vault は、API キーやデータベース接続文字列などのシ
 
 Azure Key Vault は資格情報を安全に格納します。そのためコードには資格情報が含まれません。 ただし、キーを取得するためには Azure Key Vault に対して認証を行う必要があります。 Key Vault に対して認証を行うには、資格情報が必要となります。 これは従来からあるブートストラップ問題のジレンマです。 マネージド サービス ID (MSI) は、このプロセスを簡素化する "_ブートストラップ ID_" を提供することによって、この問題を解決します。
 
-Azure サービス (Virtual Machines、App Service、Functions など) に対して MSI を有効にすると、Azure によって[サービス プリンシパル](key-vault-whatis.md#basic-concepts)が作成されます。 MSI は、サービスのインスタンスのプリンシパルを Azure Active Directory (Azure AD) に作成し、サービス プリンシパルの資格情報をそのインスタンスに挿入します。
+Azure サービス (例:Virtual Machines、App Service、Functions) に対して MSI を有効にすると、Azure によって[サービス プリンシパル](key-vault-whatis.md#basic-concepts)が作成されます。 MSI は、サービスのインスタンスのプリンシパルを Azure Active Directory (Azure AD) に作成し、サービス プリンシパルの資格情報をそのインスタンスに挿入します。
 
 ![MSI ダイアグラム](media/MSI.png)
 
@@ -88,9 +88,9 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 ご利用のリソース グループにキー コンテナーを作成するには、次の情報を入力します。
 
-* キー コンテナー名: 数字、文字、ハイフン (例: 0 から 9、a から z、A から Z、-) のみを含んだ 3 から 24 文字の文字列。
+* キー コンテナー名: 数字、文字、ハイフンのみを含んだ 3 から 24 文字の文字列 (例:0 から 9、a から z、A から Z、-)。
 * リソース グループ名
-* 場所: **米国西部**
+* 場所:**[米国西部]**
 
 Azure CLI で、次のコマンドを入力します。
 
@@ -132,7 +132,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
    - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
 3. About.cshtml.cs ファイルに次のコードをインポートします。
 
-   ```
+   ```csharp
     using Microsoft.Azure.KeyVault;
     using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Services.AppAuthentication;
@@ -140,7 +140,7 @@ az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
 
 4. AboutModel クラスのコードは次のようになります。
 
-   ```
+   ```csharp
     public class AboutModel : PageModel
     {
         public string Message { get; set; }
@@ -220,7 +220,7 @@ Azure Key Vault は、資格情報やその他のシークレットを安全に�
 
 1. アプリケーションを Azure に発行するときの `PrincipalId` をメモします。 手順 1. で実行したコマンドの出力形式は次のとおりです。
 
-   ```
+   ```json
    {
      "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
      "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",

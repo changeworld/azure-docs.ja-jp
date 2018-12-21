@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Java (Windows または Linux) での音声認識'
+title: 'クイック スタート: 音声を認識する、Java - Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Java (Windows または Linux) での音声認識方法の詳細
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: 2b39084443690b99391268acb6352763657e2a3c
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 7d1f26a43866025c3b542fc10a3f316ad0d1dc37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218578"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103121"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>クイック スタート: Windows または Linux で Java と Speech Service SDK を使用して音声を認識する
 

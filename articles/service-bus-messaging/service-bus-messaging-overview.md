@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 7b4045737ea2be466a436e6abb0de6a1a61e6a5b
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 55a651080c4ed1d22901681317046f0853e257f0
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636596"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163108"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 
-Microsoft Azure Service Bus は、完全なマネージド エンタープライズ統合メッセージ ブローカーです。 Service Bus の最も一般的な用途は、アプリとサービスを相互に分離する場合です。Service Bus は非同期データと状態転送に適した信頼性の高い安全なプラットフォームです。 データは、*メッセージ*を使用してさまざまなアプリとサービス間で転送されます。 メッセージはバイナリ形式であり、JSON、XML、または単なるテキストを含むことができます。 
+Microsoft Azure Service Bus は、フル マネージド エンタープライズ[統合](http://azure.com/integration)メッセージ ブローカーです。 Service Bus の最も一般的な用途は、アプリとサービスを相互に分離する場合です。Service Bus は非同期データと状態転送に適した信頼性の高い安全なプラットフォームです。 データは、*メッセージ*を使用してさまざまなアプリとサービス間で転送されます。 メッセージはバイナリ形式であり、JSON、XML、または単なるテキストを含むことができます。 
 
 一般的なメッセージング シナリオの例を次にいくつか示します。
 

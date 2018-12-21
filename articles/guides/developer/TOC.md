@@ -36,7 +36,7 @@
 
 # 概念
 ## [請求とサブスクリプション](https://docs.microsoft.com/azure/billing/billing-getting-started)
-## [ホスティングの比較](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
+## [ホスティングの比較](https://docs.microsoft.com/azure/app-service/overview-compare)
 ## [App Service とは](https://docs.microsoft.com/azure/app-service/overview)
 ## 仮想マシン
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
@@ -76,11 +76,11 @@
 ### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
 ## バックアップ
-### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/manage-backup)
 ### [仮想マシン](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 ## 監視
-### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)
+### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring)
 ### [マイクロサービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)

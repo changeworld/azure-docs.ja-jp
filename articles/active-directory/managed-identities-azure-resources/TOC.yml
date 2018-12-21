@@ -56,7 +56,7 @@ items:
   - name: Azure Service Bus
     href: /azure/service-bus-messaging/service-bus-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
   - name: Azure App Service と Azure Functions
-    href: /azure/app-service/app-service-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
+    href: /azure/app-service/overview-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
   - name: Azure Event Hubs
     href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
   - name: Azure Container Instances
@@ -153,9 +153,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-msi
   - name: AAD 開発者フォーラム
     href: https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences
-ms.openlocfilehash: 488481d3f7ba19f7d08c6a16443405ec58b5d462
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fd1da572bcd8dbf88fa2c3f54dd11f85bc489c93
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104315"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718629"

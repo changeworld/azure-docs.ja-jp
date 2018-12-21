@@ -1,5 +1,5 @@
 ---
-title: Azure Search でのコグニティブ検索 API を呼び出すチュートリアル | Microsoft Docs
+title: コグニティブ検索 API を呼び出すためのチュートリアル - Azure Search
 description: このチュートリアルでは、データの抽出と変換のために Azure Search のインデックス作成で行われる、データ抽出、自然言語、画像の AI 処理の例を段階的に説明していきます。
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 4694d7a580c9544e43cf0b56b192b55c02257531
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 4b78675de2902736b90afa1df9ad66e2df2b0f77
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730666"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386232"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>チュートリアル: コグニティブ検索 API を呼び出す方法を学習する (プレビュー)
 
@@ -34,7 +35,9 @@ ms.locfileid: "45730666"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は、後日、発表される予定です。 
+> 2018 年 12 月 21 日から、Azure Search のスキルセットに Cognitive Services リソースを関連付けることができるようになります。 これにより、スキルセットの実行への課金を開始できます。 この日付には、ドキュメント クラッキング ステージの一部として画像抽出への課金も開始します。 ドキュメントからのテキスト抽出は、引き続き追加コストなしで提供されます。
+>
+> 組み込みスキルの実行は、既存の [Cognitive Services の従来課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格はプレビュー価格で課金され、[Azure Search 価格のページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,30 +55,31 @@ Azure Search への REST 呼び出しを行うには、PowerShell、または Te
 
 1. **[リソースの作成]** をクリックし、Azure Search を検索して、**[作成]** をクリックします。 Search サービスを初めて設定する場合は、「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」をご覧ください。
 
-  ![ダッシュボード ポータル](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Portal での Azure Search サービスの作成")
+  ![ダッシュボード ポータル](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Portal での Azure Search サービスの作成")
 
 1. [リソース グループ] では、このチュートリアルで作成するすべてのリソースを含めるリソース グループを作成します。 これにより、チュートリアルが完了した後で、リソースをクリーンアップしやすくなります。
 
-1. [場所] では、**[米国中南部]** または **[西ヨーロッパ]** のいずれかを選択します。 現在のところ、プレビューはこれらの領域でのみ使用可能です。
+1. [場所] には、Cognitive Search が[サポートされているリージョン](https://docs.microsoft.com/en-us/azure/search/cognitive-search-quickstart-blob#supported-regions)を 1 つ選択します。
 
 1. [価格レベル] では、チュートリアルとクイックスタートを完了するために、**Free** のサービスを作成することができます。 独自のデータを使用して詳しく調査する場合は、**Basic** や **Standard** などの[有料のサービス](https://azure.microsoft.com/pricing/details/search/)を作成します。 
 
   Free サービスは、3 つのインデックス、16 MB の最大 BLOB サイズ、および 2 分のインデックス作成に制限されていて、コグニティブ検索の全機能をテストするには不十分です。 さまざまなレベルの制限を確認するには、「[サービスの制限](search-limits-quotas-capacity.md)」をご覧ください。
 
-  > [!NOTE]
-  > コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行は、現時点では無料を含むすべてのレベルで使用可能です。 この機能の価格は後日発表される予定です。
+  ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service1.png "Portal のサービス定義のページ")
+  ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service2.png "Portal のサービス定義のページ")
 
+ 
 1. サービス情報にすばやくアクセスするために、サービスをダッシュボードにピン留めします。
 
-  ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service.png "Portal のサービス定義のページ")
+  ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service3.png "Portal のサービス定義のページ")
 
-1. サービスを作成した後は、次の情報を収集します。[概要] ページの **URL**、および [キー] ページの **api キー** (プライマリまたはセカンダリのいずれか)。
+1. サービスが作成されたら、次の情報を収集します。[概要] ページの **URL**、および [キー] ページの **api-key** (プライマリまたはセカンダリ)。
 
   ![Portal のエンドポイントとキーの情報](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Portal のエンドポイントとキーの情報")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Azure BLOB サービスを設定し、サンプル データを読み込む
 
-エンリッチメント パイプラインは、Azure データ ソースから取得されます。 ソース データは、サポートされているデータ ソースの種類の [Azure Search インデクサー](search-indexer-overview.md)から取得する必要があります。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
+エンリッチメント パイプラインは、Azure データ ソースから取得されます。 ソース データは、サポートされているデータ ソースの種類の [Azure Search インデクサー](search-indexer-overview.md)から取得する必要があります。 コグニティブ検索では Azure Table Storage はサポートされていないことに注意してください。 この演習では、BLOB ストレージを使用して複数のコンテンツ タイプを示します。
 
 1. [サンプル データをダウンロードします](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)。 サンプル データは、さまざまなタイプの小さいファイル セットで構成されています。 
 
@@ -127,7 +131,7 @@ api-key: [admin key]
 403 または 404 エラーが発生した場合は、要求の構造を確認してください。`api-version=2017-11-11-Preview` はエンドポイント上にある必要があり、`api-key` は `Content-Type` の後のヘッダーにある必要があり、その値は Search サービスに対して有効である必要があります。 このチュートリアルでは、残りの手順でこのヘッダーを再利用できます。
 
 > [!TIP]
-> 多くの作業を実行する前に、この時点で、プレビュー機能のサポートされている提供場所 (米国中南部または西ヨーロッパ) のいずれかで、Search サービスが実行されていることを確認することをお勧めします。
+> 多くの作業を実行する前に、ここで、プレビュー機能を提供するサポートされている場所 (米国中南部または西ヨーロッパ) のいずれかで検索サービスが実行されていることを確認することをお勧めします。
 
 ## <a name="create-a-skillset"></a>スキルセットを作成する
 
@@ -523,7 +527,7 @@ Content-Type: application/json
 2. スキルセットとインデックスの定義を変更します。
 3. サービスにインデックスとインデクサーを再作成して、パイプラインを実行します。 
 
-インデックスとインデクサーは Portal を使用して削除できます。 スキルセットは、削除することを決定した場合は、HTTP コマンドを使用しないと削除できません。
+ポータルを使用して、インデックス、インデクサ、およびスキルセットを削除できます。
 
 ```http
 DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview
