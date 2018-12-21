@@ -1,21 +1,21 @@
 ---
-title: Ansible (プレビュー) を使用して Azure Application Gateway で Web トラフィックを管理する
+title: Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
 description: Ansible を使用して Azure Application Gateway を作成および構成し、Web トラフィックを管理する方法について説明する
 ms.service: ansible
-keywords: Ansible、Azure、DevOps、Bash、プレイブック、Azure アプリケーションゲートウェイ、ロード バランサー、Web トラフィック
+keywords: Ansible、Azure、DevOps、Bash、プレイブック、アプリケーションゲートウェイ、ロード バランサー、Web トラフィック
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: e3c165c87d6c179141f2ddd44f00f0f62a84b285
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: af7f22ae5c289a01e6876d8ce586cb32383c8d3b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912868"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253363"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible-preview"></a>Ansible (プレビュー) を使用して Azure Application Gateway で Web トラフィックを管理する
+# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
 
 [Azure アプリケーション ゲートウェイ](https://docs.microsoft.com/azure/application-gateway/)は、アプリケーションに対するトラフィックを管理できる Web トラフィック ロードバランサーです。
 
@@ -34,7 +34,7 @@ Ansible は、環境内のリソースのデプロイと構成を自動化する
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 `sudo pip install ansible[azure]==2.7.0rc2` を実行すると、Ansible 2.7 RC をインストールすることができます。 Ansible 2.7 のリリース後は、バージョンを指定する必要はありません。
+> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Machine Learning サービス (プレビュー) であやめの分類のチュートリアル用のデータを準備する | Microsoft Docs
-description: このチュートリアルでは、Azure Machine Learning サービス (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 これはパート 1 であり、データの準備について説明します。
+description: このチュートリアルでは、Azure Machine Learning service (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 これはパート 1 であり、データの準備について説明します。
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
+ms.date: 03/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dd10581888da64114debec40cba8564023033864
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990163"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278510"
 ---
-# <a name="tutorial-1-classify-iris---preparing-the-data"></a>チュートリアル 1: あやめの分類 - データを準備する
+# <a name="tutorial-1-classify-iris---preparing-the-data"></a>チュートリアル 1:あやめの分類 - データを準備する
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -152,7 +152,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    1. 右クリックしてそれを選択します。 
    1. ドロップダウン メニューから **[Value Counts]\(値のカウント\)** を選択します。 
 
-   データの下に **[Inspectors]\(インスペクター\)** ウィンドウが表示されます。 4 つのバーのあるヒストグラムが表示されます。 ターゲット列には、**Iris-virginica**、**Iris-versicolor**、**Iris-setosa**、および **(null)** という 4 種類の値が含まれています。
+   データの下に **[Inspectors]\(インスペクター\)** ウィンドウが表示されます。 4 つのバーのあるヒストグラムが表示されます。 ターゲット列には、4 種類の値が含まれています。**Iris-virginica**、**Iris-versicolor**、**Iris-setosa**、および **(null)** です。
 
    ![[Value Counts]\(値のカウント\) を選択する](media/tutorial-classifying-iris/value_count.png)
 

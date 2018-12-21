@@ -1,14 +1,13 @@
 ---
-title: 'クイック スタート: パブリック ロード バランサーの作成 - Azure CLI | Microsoft Docs'
+title: クイック スタート:Basic Load Balancer を作成する - Azure CLI
+titlesuffix: Azure Load Balancer
 description: このクイックスタートでは、Azure CLI を使用してパブリック ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: ''
+ms.custom: mvc
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: get-started-article
@@ -16,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 3eb7ae721b0c275ffa39e04904e19c067b949214
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 60cdf251d9a862f8bae80f4f782c6ad94c0b85ce
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965498"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260771"
 ---
-# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート: Azure CLI を使用して VM の負荷を分散するパブリック ロード バランサーを作成する
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散するロード バランサーを作成する
 
-このクイック スタートでは、Azure Load Balancer を作成する方法を示します。 ロード バランサーをテストするには、Ubuntu サーバーを実行する 2 つの仮想マシン (VM) をデプロイし、Web アプリの負荷を分散します。
+このクイック スタートでは、Azure Load Balancer を作成して Azure の仮想マシン間でインターネット トラフィックを負荷分散する方法を示します。 ロード バランサーをテストするには、Ubuntu サーバーを実行する 2 つの仮想マシン (VM) をデプロイし、Web アプリの負荷を分散します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 

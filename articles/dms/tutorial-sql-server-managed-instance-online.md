@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: ccbfc6e204981a4e14812759715d0482e5b6cb67
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 030cd89bbd6407cd2e83a9b56942adbf419e069b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874763"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956705"
 ---
-# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル: DMS を使用して SQL Server を Azure SQL Database Managed Instance にオンラインで移行する
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル: DMS を使用して、SQL Server を Azure SQL Database Managed Instance にオンラインで移行する
 Azure Database Migration Service を使用すれば、オンプレミスの SQL Server インスタンスから [Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance.md) に、最小限のダウンタイムでデータベースを移行できます。 一定の手作業が必要になる可能性のあるその他の方法については、記事「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](../sql-database/sql-database-managed-instance-migrate.md)」を参照してください。
 
 >[!IMPORTANT]
@@ -64,24 +64,24 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
 
-    ![ポータルのサブスクリプションの表示](media\tutorial-sql-server-to-managed-instance-online\portal-select-subscriptions.png)        
+    ![ポータルのサブスクリプションの表示](media/tutorial-sql-server-to-managed-instance-online/portal-select-subscriptions.png)        
 2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、**[リソース プロバイダー]** を選択します。
 
-    ![リソース プロバイダーの表示](media\tutorial-sql-server-to-managed-instance-online\portal-select-resource-provider.png)
+    ![リソース プロバイダーの表示](media/tutorial-sql-server-to-managed-instance-online/portal-select-resource-provider.png)
 
 3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
 
-    ![リソース プロバイダーの登録](media\tutorial-sql-server-to-managed-instance-online\portal-register-resource-provider.png)   
+    ![リソース プロバイダーの登録](media/tutorial-sql-server-to-managed-instance-online/portal-register-resource-provider.png)   
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Azure Database Migration Service インスタンスを作成する
 
 1. Azure portal で **[+ リソースの作成]** を選択し、**Azure Database Migration Service** を検索して、ドロップダウン リストから **[Azure Database Migration Service]** を選択します。
 
-     ![Azure Marketplace](media\tutorial-sql-server-to-managed-instance-online\portal-marketplace.png)
+     ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance-online/portal-marketplace.png)
 
 2. **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
 
-    ![Azure Database Migration Service インスタンスを作成する](media\tutorial-sql-server-to-managed-instance-online\dms-create1.png)
+    ![Azure Database Migration Service インスタンスを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create1.png)
 
 3. **[移行サービスの作成]** 画面で、サービスの名前、サブスクリプション、新規または既存のリソース グループを指定します。
 
@@ -102,7 +102,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
    
     コストと価格レベルの詳細については、[価格に関するページ](https://aka.ms/dms-pricing)を参照してください。
    
-    ![DMS サービスを作成する](media\tutorial-sql-server-to-managed-instance-online\dms-create-service3.png)
+    ![DMS サービスを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-service3.png)
 
 7.  **[作成]** を選択して、サービスを作成します。
 
@@ -112,7 +112,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
 
-    ![Azure Database Migration Service のすべてのインスタンスを検索する](media\tutorial-sql-server-to-managed-instance-online\dms-search.png)
+    ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-sql-server-to-managed-instance-online/dms-search.png)
 
 2. **[Azure Database Migration Service]** 画面で、作成したインスタンスの名前を検索して、そのインスタンスを選択します。
  
@@ -120,7 +120,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[ソース サーバーの種類]** テキスト ボックスで **[SQL Server]** を選択し、**[ターゲット サーバーの種類]** テキスト ボックスで **[Azure SQL Database Managed Instance]** を選択したら、**[アクティビティの種類の選択]** で **[オンライン データの移行 (プレビュー)]** を選択します。
 
-   ![DMS のプロジェクトを作成する](media\tutorial-sql-server-to-managed-instance-online\dms-create-project3.png)
+   ![DMS のプロジェクトを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 
 5. **[アクティビティの作成と実行]** を選択してプロジェクトを作成ます。
 
@@ -135,7 +135,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
     > [!CAUTION]
     > 自己署名証明書を使用して暗号化されている SSL 接続のセキュリティは強力ではありません。 man-in-the-middle (中間者) 攻撃を受ける可能性が高くなります。 運用環境や、インターネットに接続されているサーバーでは、自己署名証明書を使用した SSL を信頼しないでください。
 
-   ![ソースの詳細](media\tutorial-sql-server-to-managed-instance-online\dms-source-details2.png)
+   ![ソースの詳細](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
 3. **[保存]** を選択します。
 
@@ -151,7 +151,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 3. **SQL ユーザー**と**パスワード**を提示して、Azure SQL Database Managed Instance のターゲット インスタンスに接続します。
 
-    ![ターゲットを選択する](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
+    ![ターゲットを選択する](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
 2.  **[保存]** を選択します。
 
@@ -159,7 +159,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 1. **[ソース データベースの選択]** 画面で、移行するソース データベースを選択します。
 
-    ![ソース データベースを選択する](media\tutorial-sql-server-to-managed-instance-online\dms-select-source-databases2.png)
+    ![ソース データベースを選択する](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
 2. **[保存]** を選択します。
 
@@ -175,7 +175,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
     |**Azure Storage Account のサブスクリプション** | Azure Storage Account を収納するサブスクリプションを選択します。 |
     |**Azure Storage アカウント** | DMS が SMB ネットワーク共有からバックアップ ファイルをアップロードして、データベース移行に使用できるように、Azure Storage Account を選択します。  最適なファイル アップロードのパフォーマンスを得るには、DMS サービスと同じ地域にある Storage Account を選択することをお勧めします。 |
     
-    ![移行設定の構成](media\tutorial-sql-server-to-managed-instance-online\dms-configure-migration-settings4.png)
+    ![移行設定の構成](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
 2. **[保存]** を選択します。
  
@@ -185,7 +185,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 2. 移行プロジェクトに関連付けられた詳細を確認します。
  
-    ![移行プロジェクトの概要](media\tutorial-sql-server-to-managed-instance-online\dms-project-summary3.png)
+    ![移行プロジェクトの概要](media/tutorial-sql-server-to-managed-instance-online/dms-project-summary3.png)
 
 ## <a name="run-and-monitor-the-migration"></a>移行を実行して監視する
 
@@ -193,11 +193,11 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 2. 移行アクティビティ画面で、**[更新]** を選択して表示を更新します。
  
-   ![進行中の移行アクティビティ](media\tutorial-sql-server-to-managed-instance-online\dms-monitor-migration2.png)
+   ![進行中の移行アクティビティ](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration2.png)
 
     データベースとログインのカテゴリを展開して、該当するサーバー オブジェクトの移行状態を監視できます。
 
-   ![進行中の移行アクティビティ](media\tutorial-sql-server-to-managed-instance-online\dms-monitor-migration-extend2.png)
+   ![進行中の移行アクティビティ](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>移行カットオーバーの実行
 
@@ -213,11 +213,11 @@ Azure SQL Database Managed Instance のターゲット インスタンスで完�
 
 4.  **[確認]** を選択したら、**[適用]** を選択します。
 
-    ![カットオーバー完了の準備](media\tutorial-sql-server-to-managed-instance-online\dms-complete-cutover.png)
+    ![カットオーバー完了の準備](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
 5.  データベース移行の状態が **[完了]** と表示されたら、Azure SQL Database Managed Instance の新しいターゲット インスタンスにアプリケーションを接続します。
 
-    ![カットオーバー完了](media\tutorial-sql-server-to-managed-instance-online\dms-cutover-complete.png)
+    ![カットオーバー完了](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 
 ## <a name="next-steps"></a>次の手順
 

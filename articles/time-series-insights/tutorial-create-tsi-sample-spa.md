@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights シングルページ Web アプリの作成
+title: Azure Time Series Insights シングルページ Web アプリの作成 | Microsoft Docs
 description: TSI 環境のデータを照会してレンダリングするシングルページ Web アプリケーションを作成する方法について説明します。
 author: ashannon7
 ms.service: time-series-insights
@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: fccd509d4f16cee86d30feb0e838f1493cae4e0b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626757"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275841"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>チュートリアル: Azure Time Series Insights シングルページ Web アプリの作成
 
@@ -34,7 +35,7 @@ ms.locfileid: "39626757"
 前述のとおり、TSI サンプル アプリケーションが、このチュートリアルで使用される設計とコードのベースになります。 コード内では、TSI JavaScript クライアント ライブラリが使用されます。 TSI クライアント ライブラリによって、2 つの主な API カテゴリの抽象化が提供されます。
 
 - **TSI Query API を呼び出すためのラッパー メソッド**: JSON ベースの式を使用して TSI データを照会できるようにする REST API。 メソッドは、ライブラリの `TsiClient.server` 名前空間の下に整理されています。
-- **いくつかの種類のグラフ コントロールを作成してデータを設定するためのメソッド**: Web ページで TSI データを視覚化するために使用されるメソッド。 メソッドは、ライブラリの `TsiClient.ux` 名前空間の下に整理されています。
+- **いくつかの種類のグラフ コントロールを作成してデータを設定するためのメソッド**: TSI データを Web ページで視覚化するために使用されるメソッド。 メソッドは、ライブラリの `TsiClient.ux` 名前空間の下に整理されています。
 
 このチュートリアルでは、サンプル アプリケーションの TSI 環境からのデータも使用します。 TSI サンプル アプリケーションの構造と TSI クライアント ライブラリの使用の詳細については、チュートリアル「[Azure Time Series Insights JavaScript クライアント ライブラリを調べる](tutorial-explore-js-client-lib.md)」を参照してください。
 
@@ -192,7 +193,7 @@ Azure Portal の左側のメニューで、次のように操作します。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * アプリケーションの設計

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 947eb76f84f865135e87803b53fa94e20eecb78c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd4c077e23170a295a29a75df08cf8f29f8ba3e4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313824"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413355"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>チュートリアル: Apache Kafka Producer および Consumer API の使用
 
@@ -49,7 +49,7 @@ API の詳細については、[Producer API](https://kafka.apache.org/documenta
 
 * `JAVA_HOME` - JDK がインストールされているディレクトリを指している必要があります。
 * `PATH` - 次のパスを含む必要があります。
-  
+
     * `JAVA_HOME` (または同等のパス)。
     * `JAVA_HOME\bin` (または同等のパス)。
     * Maven がインストールされているディレクトリ。
@@ -62,16 +62,16 @@ API の詳細については、[Producer API](https://kafka.apache.org/documenta
 
 アプリケーションの例は、[https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) の `Producer-Consumer` サブディレクトリにあります。 アプリケーションは、主に次の 4 つのファイルで構成されます。
 
-* `pom.xml`: このファイルは、プロジェクトの依存関係、Java バージョン、およびパッケージ化メソッドを定義します。
-* `Producer.java`: このファイルは、Producer API を使用して Kafka にランダムな文を送信します。
-* `Consumer.java`: このファイルは、Consumer API を使用して Kafka からデータを読み取り、それを STDOUT に出力します。
-* `Run.java`: プロデューサーおよびコンシューマーのコードの実行に使用されるコマンド ライン インターフェイスです。
+* `pom.xml`:このファイルは、プロジェクトの依存関係、Java バージョン、およびパッケージ化方法を定義します。
+* `Producer.java`:このファイルは、Producer API を使用して Kafka にランダムな文を送信します。
+* `Consumer.java`:このファイルは、Consumer API を使用して Kafka からデータを読み取り、それを STDOUT に出力します。
+* `Run.java`:プロデューサーおよびコンシューマーのコードの実行に使用されるコマンド ライン インターフェイスです。
 
 ### <a name="pomxml"></a>Pom.xml
 
 `pom.xml` ファイル内で理解すべき重要な点は、次のとおりです。
 
-* 依存関係: このプロジェクトは、`kafka-clients` パッケージによって提供される Kafka Producer および Consumer API に依存します。 次の XML コードがこの依存関係を定義します。
+* 依存関係:このプロジェクトは、`kafka-clients` パッケージによって提供される Kafka Producer および Consumer API に依存します。 次の XML コードがこの依存関係を定義します。
 
     ```xml
     <!-- Kafka client for producer/consumer operations -->
@@ -85,10 +85,10 @@ API の詳細については、[Producer API](https://kafka.apache.org/documenta
     > [!NOTE]
     > `${kafka.version}` エントリは `pom.xml` の `<properties>..</properties>` セクション内で宣言され、Kafka バージョンの HDInsight クラスターに構成されています。
 
-* プラグイン: Maven プラグインはさまざまな機能を備えています。 このプロジェクトでは、次のプラグインが使用されます。
+* プラグイン:Maven プラグインはさまざまな機能を備えています。 このプロジェクトでは、次のプラグインが使用されます。
 
-    * `maven-compiler-plugin`: プロジェクトで使用される Java バージョンを 8 に設定するために使用します。 これは、HDInsight 3.6 によって使用される Java のバージョンです。
-    * `maven-shade-plugin`: このアプリケーションとすべての依存関係を含む uber jar を生成するために使用します。 また、アプリケーションのエントリ ポイントの設定にも使用されるため、メイン クラスを指定しなくても Jar ファイルを直接実行できます。
+    * `maven-compiler-plugin`:プロジェクトで使用される Java バージョンを 8 に設定するために使用されます。 これは、HDInsight 3.6 によって使用される Java のバージョンです。
+    * `maven-shade-plugin`:このアプリケーションとすべての依存関係を含む uber jar を生成するために使用されます。 また、アプリケーションのエントリ ポイントの設定にも使用されるため、メイン クラスを指定しなくても Jar ファイルを直接実行できます。
 
 ### <a name="producerjava"></a>Producer.java
 
@@ -145,11 +145,11 @@ consumer = new KafkaConsumer<>(properties);
     このコマンドにより、`kafka-producer-consumer-1.0-SNAPSHOT.jar` というファイルを含む `target` という名前のディレクトリが作成されます。
 
 3. 次のコマンドを使用して、HDInsight クラスターに `kafka-producer-consumer-1.0-SNAPSHOT.jar` ファイルをコピーします。
-   
+
     ```bash
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
-   
+
     **SSHUSER** は、クラスターの SSH ユーザーに置き換えます。また、**CLUSTERNAME** はクラスターの名前に置き換えます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
 
 ## <a id="run"></a>例を実行する
@@ -190,11 +190,11 @@ consumer = new KafkaConsumer<>(properties);
     ```
 
 4. プロデューサーが完了したら、次のコマンドを使用してトピックから読み取ります。
-   
+
     ```bash
     java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS
     ```
-   
+
     読み取られたレコードが、レコードの件数とともに表示されます。
 
 5. __Ctrl+C__ キーを使用してコンシューマーを終了します。
@@ -204,7 +204,7 @@ consumer = new KafkaConsumer<>(properties);
 Kafka コンシューマーは、レコードを読み取る際に、コンシューマー グループを使用します。 複数のコンシューマーで同じグループを使用すると、トピックからの読み取りの負荷が分散されます。 グループ内の各コンシューマーは、レコードの一部を受け取ります。
 
 コンシューマー アプリケーションは、グループ ID として使用されるパラメーターを受け取ります。 たとえば、次のコマンドは `mygroup` のグループ ID を使用して、コンシューマーを起動します。
-   
+
 ```bash
 java -jar kafka-producer-consumer.jar consumer test $KAFKABROKERS mygroup
 ```

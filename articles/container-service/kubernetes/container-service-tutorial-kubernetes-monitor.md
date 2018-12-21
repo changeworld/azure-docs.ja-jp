@@ -1,24 +1,27 @@
 ---
-title: Azure Container Service チュートリアル - Kubernetes の監視
+title: (非推奨) Azure Container Service チュートリアル - Kubernetes の監視
 description: Azure Container Service チュートリアル - Log Analytics を使用した Kubernetes の監視
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b2243851d62cc17dc52407dce051cc2e0f4bcb12
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 6f95aa701228730682c0122dc1fd46d8a2537ce1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889210"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001608"
 ---
-# <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Log Analytics を使用した Kubernetes クラスターの監視
+# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(非推奨) Log Analytics を使用した Kubernetes クラスターの監視
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[コンテナーに対する Azure Monitor (プレビュー) の概要](../../azure-monitor/insights/container-insights-overview.md)」を参照してください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Kubernetes クラスターとコンテナーの監視は重要なことであり、複数のアプリを含む大規模な運用クラスターを管理するときは特に重要です。
 

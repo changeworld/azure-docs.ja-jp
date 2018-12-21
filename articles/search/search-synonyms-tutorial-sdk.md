@@ -1,6 +1,6 @@
 ---
-title: Azure Search における同意語 (C# チュートリアル) | Microsoft Docs
-description: このチュートリアルでは、Azure Search のインデックスに同意語機能を追加します。
+title: シノニム C# チュートリアル - Azure Search
+description: この C# チュートリアルでは、Azure Search のインデックスにシノニム機能を追加する方法を学習します。 シノニム マップとは、同等の用語の一覧です。 シノニムをサポートするフィールドでは、ユーザー指定の用語とそれに関連するすべてのシノニムを含むように、クエリが拡張されます。
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: b239fdc176951066699c557eaae5f7fe08a6c26f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990563"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309231"
 ---
-# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>チュートリアル: Azure Search に使用する同意語を C# で追加する
+# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>チュートリアル: C# で Azure Search にシノニムを追加する
 
 シノニムは、意味的に入力用語と同等と見なされる用語を一致させることにより、クエリを拡張します。 たとえば、"car" を "automobile" または "vehicle" という用語が含まれているドキュメントと一致させたい場合があります。 
 

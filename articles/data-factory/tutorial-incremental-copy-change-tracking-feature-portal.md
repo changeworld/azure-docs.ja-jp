@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: f06094fb82f10276f7a41d1b22f6dd99836a497f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: eaafc8acb73dd48e213d05d953d9ada457c53132
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095512"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957267"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 このチュートリアルでは、ソース Azure SQL Database から**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
@@ -322,7 +322,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="review-the-results"></a>結果の確認
 `adftutorial` コンテナーの `incchgtracking` フォルダーに、`incremental-<GUID>.txt` という名前のファイルが確認できます。 
 
-![フル コピーからの出力ファイル](media\tutorial-incremental-copy-change-tracking-feature-portal\full-copy-output-file.png)
+![フル コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
 このファイルには、Azure SQL Database からのデータが存在します。
 
@@ -445,7 +445,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ### <a name="review-the-results"></a>結果の確認
 `adftutorial` コンテナーの `incchgtracking` フォルダーにもう 1 つファイルが確認できます。 
 
-![増分コピーからの出力ファイル](media\tutorial-incremental-copy-change-tracking-feature-portal\incremental-copy-output-file.png)
+![増分コピーからの出力ファイル](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
 このファイルに含まれているのは、Azure SQL Database からの差分データのみです。 `U` と記録されているレコードはデータベース内の更新された行で、`I` は追加された行です。 
 

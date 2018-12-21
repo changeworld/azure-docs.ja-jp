@@ -1,5 +1,5 @@
 ---
-title: Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成 | Microsoft Docs
+title: Linux で SQL Database を使用して .NET Core アプリをビルドする - Azure App Service | Microsoft Docs
 description: SQL Database に接続された .NET Core アプリを Azure App Service on Linux で動作させる方法について説明します。
 services: app-service\web
 documentationcenter: dotnet
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: ddea4621277303dd6c153205b683b4eea0151db0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: cb81699671bd2a0e86838d043ad0a4442eb79a6c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432264"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254243"
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成
 
@@ -330,7 +330,7 @@ _Views\Todos\Index.cshtml_ を開きます。
 
 ```csharp
 <td>
-    @Html.DisplayFor(modelItem => item.CreatedDate)
+    @Html.DisplayFor(modelItem => item.Done)
 </td>
 ```
 

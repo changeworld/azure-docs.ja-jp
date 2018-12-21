@@ -1,22 +1,19 @@
 ---
-title: 'Azure Cosmos DB: SQL API の .NET のサンプル | Microsoft Docs'
+title: 'Azure Cosmos DB: SQL API の .NET のサンプル'
 description: CRUD 操作など、Azure Cosmos DB SQL API を使う一般的なタスクについては、GitHub の C# .NET のサンプルを参照してください。
 keywords: NoSQL のサンプル
-services: cosmos-db
 author: rnagpal
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
-ms.devlang: na
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 5cee4a736232e7734be85b2940ce457bfbfd1613
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 9c16a882e49ceec4fc733cb3a8c1061dd1949e28
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262294"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166627"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の .NET のサンプル
 > [!div class="op_single_selector"]
@@ -29,20 +26,22 @@ ms.locfileid: "52262294"
 > 
 > 
 
-Azure Cosmos DB リソースに対する CRUD 操作などの一般的な操作を実行する最新のサンプル ソリューションは、[azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) GitHub レポジトリにあります。 この記事では、次の内容について説明します。
+Azure Cosmos DB リソースに対する CRUD 操作などの一般的な操作を実行する最新のサンプル ソリューションは、[azure-cosmos-dotnet-v2](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples) GitHub リポジトリにあります。 この記事では、次の内容について説明します。
 
 * 各サンプル C# プロジェクト ファイルのタスクへのリンク。 
 * 関連する API リファレンス コンテンツへのリンク。
+
+.NET SDK バージョン 3.0 (プレビュー) のコード サンプルについては、[azure-cosmos-dotnet-v3](https://github.com/Azure/azure-cosmos-dotnet-v3) GitHub リポジトリの最新のサンプルをご覧ください。 
 
 **前提条件**
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)こともできます: Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
+- [Visual Studio サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)ことができます。Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-[Microsoft.Azure.DocumentDB NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)も必要です。 
+[Microsoft.Azure.DocumentDB NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)も必要です。 
 
 > [!NOTE]
 > 各サンプルは自己完結型であり、自身をセットアップし、自身をクリーンアップします。 そのため、サンプルでは、CreateDocumentCollectionAsync() への複数の呼び出しを発行します。 これが行われるたびに、作成中のコレクションのパフォーマンス階層ごとに 1 時間の使用量に対するサブスクリプションが課金されます。 
@@ -147,7 +146,7 @@ DatabaseManagement プロジェクトのサンプルの [RunDatabaseDemo](https:
 | [変更フィードを読み取る](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
 | [パーティション キーの範囲を読み取る](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
 
-変更フィード プロセッサのサンプル: [変更フィード移行ツール](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)は、変更フィード プロセッサ ライブラリを使用してデータを別の Cosmos DB コレクションにレプリケートする方法を示しています。   
+変更フィード プロセッサのサンプル:[変更フィード移行ツール](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool)では、変更フィード プロセッサ ライブラリを使用してデータを別の Cosmos DB コレクションにレプリケートする方法を示します。   
 
 ## <a name="server-side-programming-examples"></a>サーバー側プログラミングのサンプル
 サーバー側プログラミング ファイル [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) は、次のタスクを実行する方法を示しています。

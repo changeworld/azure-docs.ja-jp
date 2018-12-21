@@ -4,14 +4,16 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: c5200e7e4d5550f26343fab1561c214ee19d6741
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b385c3e3e5f39e812545143df4a3adcc08ebfce5
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572392"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002203"
 ---
-# <a name="container-service-frequently-asked-questions"></a>Container Service についてよく寄せられる質問
+# <a name="deprecated-container-service-frequently-asked-questions"></a>(非推奨) Container Service についてよく寄せられる質問
+
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 ## <a name="orchestrators"></a>オーケストレーター
 
@@ -78,8 +80,8 @@ Azure Portal や Azure Resource Explorer などの Azure ツールではクラ�
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>どのバージョンのオーケストレーターがクラスターで実行されているかを確認するには、どうすればよいですか。
 
 * DC/OS: [Mesosphere のドキュメント](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)を参照してください
-* Docker Swarm: `docker version` を実行します
-* Kubernetes: `kubectl version` を実行します
+* Docker Swarm: `docker version` を実行します。
+* Kubernetes: `kubectl version` を実行します。
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>デプロイ後にオーケストレーターをアップグレードするには、どうすればよいですか。
 

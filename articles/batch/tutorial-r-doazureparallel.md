@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: fb616dc95cc7dd7dbb25f2deb832b517d0747ae4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 305ea27e787196f648fcb4c536f33b12c924c015
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315452"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164697"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル: Azure Batch での並列 R シミュレーションの実行 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル:Azure Batch で並列 R シミュレーションを実行する 
 
 R セッションから直接 Azure Batch を使用できる軽量な R パッケージである [doAzureParallel](http://www.github.com/Azure/doAzureParallel) を使用して、大規模な並列 R ワークロードを実行します。 doAzureParallel パッケージは、一般的な [foreach](http://cran.r-project.org/web/packages/foreach/index.html) R パッケージに基づいて作成されています。 doAzureParallel は foreach ループの各イテレーションを取得し、それを Azure Batch タスクとして送信します。
 

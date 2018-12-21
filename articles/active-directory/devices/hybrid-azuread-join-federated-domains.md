@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/07/2018
+ms.date: 12/04/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c35c16e1414b1287fa891d1ce1f65ca8eff3d2c5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277972"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434955"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -53,9 +53,12 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 -  [デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)
 
 
+
 このチュートリアルのシナリオを構成するための要件を次に示します。
 
 - Windows Server 2012 R2 と AD FS
+
+- スキーマ レベルが 85 以降のオンプレミス Active Directory (AD)。 詳細については、「[Upgrade your Active Directory Schema (Active Directory スキーマをアップグレードする)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema)」を参照してください。
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) バージョン 1.1.819.0 以降。 
  
@@ -167,7 +170,7 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 
     
-**[ユーザーはデバイスを Azure AD に登録できます]** というポリシーは、**[すべて]** に設定する必要があります。
+次のポリシーを **[すべて]** に設定する必要があります。**[ユーザーはデバイスを Azure AD に登録できます]**
 
 ![デバイスを登録する](./media/hybrid-azuread-join-federated-domains/23.png)
 

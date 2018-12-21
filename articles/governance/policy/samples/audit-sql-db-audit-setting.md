@@ -1,5 +1,5 @@
 ---
-title: Azure Policy サンプル - SQL DB レベルの監査設定を監査する
+title: サンプル - SQL DB レベルの監査設定の監査
 description: このサンプル ポリシーは、SQL データベースの監査設定が指定された設定と一致しない場合に、この設定の監査を行います。
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 22755f2be4a335a8527fb4723aa329e3048b9f5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 24313c83809734367459937d2b02441896b6a5fb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970738"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315317"
 ---
 # <a name="audit-sql-db-level-audit-setting"></a>SQL DB レベルの監査設定の監査
 

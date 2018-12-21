@@ -1,33 +1,26 @@
 ---
-title: Azure SignalR Service クライアントを認証するためのチュートリアル | Microsoft Docs
+title: Azure SignalR Service クライアントの認証についてのチュートリアル
 description: このチュートリアルでは、Azure SignalR Service クライアントを認証する方法について説明します
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
-ms.workload: tbd
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 8751e3485b97b67fd8dd4821480fecd7735c08cd
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: beaedf754df2b1c4739c5dfb2abcdc40c163dc81
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268514"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254124"
 ---
-# <a name="tutorial-azure-signalr-service-authentication"></a>チュートリアル: Azure SignalR Service の認証
+# <a name="tutorial-azure-signalr-service-authentication"></a>チュートリアル:Azure SignalR Service の認証
 
-このチュートリアルは、クイック スタートで導入したチャット ルーム アプリケーションをベースにしています。 まだ「[Create a chat room with SignalR Service (SignalR Service を使用してチャット ルームを作成する)](signalr-quickstart-dotnet-core.md)」を完了していない場合は、先にこの演習を完了してください。 
+このチュートリアルは、クイック スタートで導入したチャット ルーム アプリケーションをベースにしています。 まだ「[Create a chat room with SignalR Service (SignalR Service を使用してチャット ルームを作成する)](signalr-quickstart-dotnet-core.md)」を完了していない場合は、先にこの演習を完了してください。
 
-このチュートリアルでは、独自の認証を実装し、Microsoft Azure SignalR サービスと統合する方法を学習します。 
+このチュートリアルでは、独自の認証を実装し、Microsoft Azure SignalR サービスと統合する方法を学習します。
 
-クイック スタートのチャット ルーム アプリケーションで最初に使用した認証は、現実のシナリオでは単純すぎます。 アプリケーションでは各クライアントが自分の ID を主張することができ、サーバーは単にそれを受け入れます。 このアプローチは、悪意のあるユーザーが機密データにアクセスするために他人を偽装する可能性がある現実のアプリケーションではあまり役に立ちません。 
+クイック スタートのチャット ルーム アプリケーションで最初に使用した認証は、現実のシナリオでは単純すぎます。 アプリケーションでは各クライアントが自分の ID を主張することができ、サーバーは単にそれを受け入れます。 このアプローチは、悪意のあるユーザーが機密データにアクセスするために他人を偽装する可能性がある現実のアプリケーションではあまり役に立ちません。
 
 [GitHub](https://github.com/) は、[OAuth](https://oauth.net/) と呼ばれる一般的な業界標準プロトコルに基づく認証 API を提供します。 これらの API により、サード パーティ アプリケーションは GitHub アカウントを認証できます。 このチュートリアルでは、これらの API を使用して、チャット ルーム アプリケーションへのクライアント ログインを許可する前の GitHub アカウントによる認証を実装します。 GitHub アカウントの認証後、アカウント情報は Web クライアントが認証に使用できるように Cookie として追加されます。
 
@@ -37,9 +30,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 このチュートリアルのコードは、[AzureSignalR-samples の GitHub リポジトリ](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/GitHubChat)でダウンロードすることができます。
 
-
 ![Azure でホストされている OAuth Complete](media/signalr-authenticate-oauth/signalr-oauth-complete-azure.png)
-
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -56,10 +47,9 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 * [GitHub](https://github.com/) で作成されたアカウント
 * [Git](https://git-scm.com/)
-* [.NET コア SDK](https://www.microsoft.com/net/download/windows) 
+* [.NET コア SDK](https://www.microsoft.com/net/download/windows)
 * [構成済みの Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) GitHub リポジトリのダウンロードまたは複製。
-
+* GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する
 
 ## <a name="create-an-oauth-app"></a>OAuth アプリを作成する
 
@@ -73,14 +63,13 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
     | ------------ | --------------- | ----------- |
     | アプリケーション名 | *Azure SignalR チャット* | GitHub ユーザーは、認証しているアプリを認識して信頼することができる必要があります。   |
     | ホームページ URL | *http://localhost:5000/home* | |
-    | アプリケーションの説明 | "*Azure SignalR サービスと GitHub 認証を使用するチャット ルーム サンプル*" | 使用されている認証のコンテキストをアプリケーションのユーザーが理解するために役立つ、アプリケーションの有益な説明。 |
+    | アプリケーションの説明 | *Azure SignalR サービスと GitHub 認証を使用するチャット ルーム サンプル* | 使用されている認証のコンテキストをアプリケーションのユーザーが理解するために役立つ、アプリケーションの有益な説明。 |
     | 認証コールバックの URL | *http://localhost:5000/signin-github* | この設定は、OAuth アプリケーションの最も重要な設定です。 認証の成功後に GitHub がユーザーに返すコールバック URL です。 このチュートリアルでは、*/signin-github* の *AspNet.Security.OAuth.GitHub* パッケージの既定のコールバック URL を使用する必要があります。  |
 
 4. 新しい OAuth アプリの登録が完了したら、次のコマンドを使用して、*クライアント ID* と*クライアント シークレット*を Secret Manager に追加します。 *Your_GitHub_Client_Id* と *Your_GitHub_Client_Secret* を実際の OAuth アプリの値に置き換えます。
 
         dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
         dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
-
 
 ## <a name="implement-the-oauth-flow"></a>OAuth フローを実装する
 
@@ -127,7 +116,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
         });
     ```
 
-4. `GetUserCompanyInfoAsync` ヘルパー メソッドを `Startup` クラスに追加します。    
+4. `GetUserCompanyInfoAsync` ヘルパー メソッドを `Startup` クラスに追加します。
 
     ```csharp
     private static async Task GetUserCompanyInfoAsync(OAuthCreatingTicketContext context)
@@ -149,14 +138,14 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
             });
             context.Principal.AddIdentity(companyIdentity);
         }
-    }        
+    }
     ```
 
 5. Startup クラスの `Configure` メソッドを次のコード行で更新し、ファイルを保存します。
 
-        app.UseAuthentication();
-
-
+    ```csharp
+    app.UseAuthentication();
+    ```
 
 ### <a name="add-an-authentication-controller"></a>認証コントローラーを追加する
 
@@ -189,14 +178,14 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
                 return Redirect("/");
             }
         }
-    }    
+    }
     ```
 
-3. 変更を保存します。    
+3. 変更を保存します。
 
 ### <a name="update-the-hub-class"></a>Hub クラスを更新する
 
-既定では、Web クライアントが SignalR Service に接続しようとすると、内部的に提供されるアクセス トークンに基づいて接続が許可されます。 このアクセス トークンは、認証済み ID に関連付けられていません。 このアクセスは、実際には匿名アクセスです。 
+既定では、Web クライアントが SignalR Service に接続しようとすると、内部的に提供されるアクセス トークンに基づいて接続が許可されます。 このアクセス トークンは、認証済み ID に関連付けられていません。 このアクセスは、実際には匿名アクセスです。
 
 このセクションでは、ハブ クラスに `Authorize` 属性を追加し、認証されたユーザーの要求からユーザー名を読み取るようにハブ メソッドを更新することで、実際の認証を有効にします。
 
@@ -265,7 +254,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
         }
         return '';
     }
-    var username = getCookie('githubchat_username');    
+    var username = getCookie('githubchat_username');
     ```
 
 2. Cookie を使用するために追加したコード行のすぐ下に、`appendMessage` 関数の次の定義を追加します。
@@ -327,8 +316,8 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
             messageInput.focus();
             event.preventDefault();
         });
-    }    
-    ```    
+    }
+    ```
 
 4. *index.html* の末尾で、以下のように `connection.start()` のエラー ハンドラーを更新して、ユーザーにログインを求めるメッセージを表示するようにします。
 
@@ -349,13 +338,11 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
         });
     ```
 
-5. 変更を保存します。    
-
-
+5. 変更を保存します。
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドし、ローカルで実行する
 
-1. すべてのファイルの変更を保存します。 
+1. すべてのファイルの変更を保存します。
 
 2. .NET Core CLI を使用してアプリケーションをビルドし、コマンド シェルで次のコマンドを実行します。
 
@@ -371,22 +358,21 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
         Hosting environment: Production
         Content root path: E:\Testing\chattest
         Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.    
+        Application started. Press Ctrl+C to shut down.
 
-4. ブラウザー ウィンドウを起動して、`http://localhost:5000` に移動します。 上部の **[here]** リンクをクリックして、GitHub にログインします。 
+4. ブラウザー ウィンドウを起動して、`http://localhost:5000` に移動します。 上部の **[here]** リンクをクリックして、GitHub にログインします。
 
     ![Azure でホストされている OAuth Complete](media/signalr-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-    GitHub アカウントへのチャット アプリのアクセスを承認するように求めるメッセージが表示されます。 **[Authorize]** ボタンをクリックします。 
-    
+    GitHub アカウントへのチャット アプリのアクセスを承認するように求めるメッセージが表示されます。 **[Authorize]** ボタンをクリックします。
+
     ![OAuth アプリを承認する](media/signalr-authenticate-oauth/signalr-authorize-oauth-app.png)
-    
+
     リダイレクトされてチャット アプリケーションに戻り、GitHub アカウント名でログインされます。 Web アプリケーションは、追加された新しい認証を使用してユーザーを認証することによって、アカウント名を判別しました。
 
     ![識別されたアカウント](media/signalr-authenticate-oauth/signalr-oauth-account-identified.png)
 
-    チャット アプリが GitHub で認証を実行し、認証情報をクッキーとして保存するようになりました。他のユーザーが自分のアカウントで認証を行い、他のワークステーションから通信できるようにするには、チャット アプリを Azure にデプロイする必要があります。 
-
+    チャット アプリが GitHub で認証を実行し、認証情報をクッキーとして保存するようになりました。他のユーザーが自分のアカウントで認証を行い、他のワークステーションから通信できるようにするには、チャット アプリを Azure にデプロイする必要があります。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -401,7 +387,6 @@ az extension add -n signalr
 ```
 
 以下のリソースを作成する場合は、SignalR Service リソースと同じリソース グループを使用してください。 このようにすると、後ですべてのリソースを削除する場合に、クリーンアップが容易になります。 この例では、前のチュートリアルで推奨されたグループ名である *SignalRTestResources* が使用されたと仮定しています。
-
 
 ### <a name="create-the-web-app-and-plan"></a>Web アプリと計画を作成する
 
@@ -426,18 +411,13 @@ az appservice plan create --name $WebAppPlan --resource-group $ResourceGroupName
 # Create the new Web App
 az webapp create --name $WebAppName --resource-group $ResourceGroupName \
     --plan $WebAppPlan
-
-
 ```
-
 
 | パラメーター | 説明 |
 | -------------------- | --------------- |
-| ResourceGroupName | このリソース グループ名は、前のチュートリアルで指定されたものです。 すべてのチュートリアル リソースをまとめてグループ化しておくことをお勧めします。 前のチュートリアルで使用したのと同じリソース グループを使用します。 | 
-| WebAppPlan | 新しい一意の App Service プラン名を入力します。 | 
-| WebAppName | これが新しい Web アプリの名前になり、URL の一部になります。 一意の名前を使用してください。 たとえば、signalrtestwebapp22665120 です。   | 
-
-
+| ResourceGroupName | このリソース グループ名は、前のチュートリアルで指定されたものです。 すべてのチュートリアル リソースをまとめてグループ化しておくことをお勧めします。 前のチュートリアルで使用したのと同じリソース グループを使用します。 |
+| WebAppPlan | 新しい一意の App Service プラン名を入力します。 |
+| WebAppName | これが新しい Web アプリの名前になり、URL の一部になります。 一意の名前を使用してください。 たとえば、signalrtestwebapp22665120 です。   |
 
 ### <a name="add-app-settings-to-the-web-app"></a>アプリ設定を Web アプリに追加する
 
@@ -467,7 +447,7 @@ WebAppName=myWebAppName
 signalRhostname=$(az signalr show --name $SignalRServiceResource \
     --resource-group $ResourceGroupName --query hostName -o tsv)
 
-# Get the SignalR primary key 
+# Get the SignalR primary key
 signalRprimarykey=$(az signalr key list --name $SignalRServiceResource \
     --resource-group $ResourceGroupName --query primaryKey -o tsv)
 
@@ -477,27 +457,24 @@ connstring="Endpoint=https://$signalRhostname;AccessKey=$signalRprimarykey;"
 #Add an app setting to the web app for the SignalR connection
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "Azure__SignalR__ConnectionString=$connstring" 
+    --settings "Azure__SignalR__ConnectionString=$connstring"
 
 #Add the app settings to use with GitHub authentication
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "GitHubClientId=$GitHubClientId" 
+    --settings "GitHubClientId=$GitHubClientId"
 az webapp config appsettings set --name $WebAppName \
     --resource-group $ResourceGroupName \
-    --settings "GitHubClientSecret=$GitHubClientSecret" 
-
+    --settings "GitHubClientSecret=$GitHubClientSecret"
 ```
 
 | パラメーター | 説明 |
 | -------------------- | --------------- |
 | GitHubClientId | この変数に GitHub OAuth アプリのシークレット クライアント ID を割り当てます。 |
 | GitHubClientSecret | この変数に GitHub OAuth アプリのシークレット パスワードを割り当てます。 |
-| ResourceGroupName | この変数を、前のセクションで使用したのと同じリソース グループ名に更新します。 | 
-| SignalRServiceResource | この変数を、クイック スタートで作成した SignalR Service リソースの名前に更新します。 たとえば、signalrtestsvc48778624 です。 | 
-| WebAppName | この変数を、前のセクションで作成した新しい Web アプリの名前に更新します。 | 
-
-
+| ResourceGroupName | この変数を、前のセクションで使用したのと同じリソース グループ名に更新します。 |
+| SignalRServiceResource | この変数を、クイック スタートで作成した SignalR Service リソースの名前に更新します。 たとえば、signalrtestsvc48778624 です。 |
+| WebAppName | この変数を、前のセクションで作成した新しい Web アプリの名前に更新します。 |
 
 ### <a name="configure-the-web-app-for-local-git-deployment"></a>ローカル Git デプロイ用に Web アプリを構成する
 
@@ -524,19 +501,16 @@ az webapp deployment user set --user-name $DeploymentUserName \
 az webapp deployment source config-local-git --name $WebAppName \
     --resource-group $ResourceGroupName \
     --query [url] -o tsv
-
 ```
 
 | パラメーター | 説明 |
 | -------------------- | --------------- |
 | DeploymentUserName | 新しいデプロイ ユーザー名を選択します。 |
 | DeploymentUserPassword | 新しいデプロイ ユーザーのパスワードを選択します。 |
-| ResourceGroupName | 前のセクションで使用したのと同じリソース グループ名を使用します。 | 
-| WebAppName | これが前に作成した新しい Web アプリの名前になります。 | 
-
+| ResourceGroupName | 前のセクションで使用したのと同じリソース グループ名を使用します。 |
+| WebAppName | これが前に作成した新しい Web アプリの名前になります。 |
 
 このコマンドから返される Git デプロイ URL を書き留めておきます。 この URL は、後で使用します。
-
 
 ### <a name="deploy-your-code-to-the-azure-web-app"></a>Azure Web アプリにコードをデプロイする
 
@@ -544,24 +518,32 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 1. プロジェクト ディレクトリのルートに移動します。 Git リポジトリを使用してプロジェクトを初期化していない場合は、次のコマンドを実行します。
 
-        git init
+    ```bash
+    git init
+    ```
 
 2. 前に書き留めておいた Git デプロイ URL のリモートを追加します。
 
-        git remote add Azure <your git deployment url>
+    ```bash
+    git remote add Azure <your git deployment url>
+    ```
 
 3. 初期化されたリポジトリ内のすべてのファイルをステージングし、コミットを追加します。
 
-        git add -A
-        git commit -m "init commit"
+    ```bash
+    git add -A
+    git commit -m "init commit"
+    ```
 
-4. Azure の Web アプリにコードをデプロイします。        
+4. Azure の Web アプリにコードをデプロイします。
 
-        git push Azure master
+    ```bash
+    git push Azure master
+    ```
 
     Azure にコードをデプロイするための認証を求めるメッセージが表示されます。 前に作成したデプロイ ユーザーのユーザー名とパスワードを入力します。
 
-### <a name="update-the-github-oauth-app"></a>GitHub OAuth アプリを更新する 
+### <a name="update-the-github-oauth-app"></a>GitHub OAuth アプリを更新する
 
 最後に、GitHub OAuth アプリの**ホームページ URL** と**認証コールバックの URL** を、ホストされている新しいアプリを指すように更新する必要があります。
 
@@ -574,33 +556,27 @@ az webapp deployment source config-local-git --name $WebAppName \
     | ホームページ URL | https://signalrtestwebapp22665120.azurewebsites.net/home |
     | 認証コールバックの URL | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
 
-
 3. Web アプリの URL に移動し、アプリケーションをテストします。
 
     ![Azure でホストされている OAuth Complete](media/signalr-authenticate-oauth/signalr-oauth-complete-azure.png)
-
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 次のチュートリアルに進む場合は、このクイック スタートで作成したリソースを維持して、次のチュートリアルで再利用することができます。
 
-クイック スタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。 
+クイック スタートのサンプル アプリケーションの使用を終える場合は、課金を避けるために、このクイック スタートで作成した Azure リソースを削除することができます。
 
 > [!IMPORTANT]
 > いったん削除したリソース グループを元に戻すことはできません。リソース グループとそこに存在するすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 このサンプルのホストとなるリソースを、保持するリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、個々のブレードから各リソースを個別に削除することができます。
-> 
-> 
 
 [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
 **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*SignalRTestResources* という名前のリソース グループを使用しました。 結果一覧でリソース グループの **[...]** をクリックし、**[リソース グループの削除]** をクリックします。
 
-   
 ![削除](./media/signalr-authenticate-oauth/signalr-delete-resource-group.png)
 
-
 リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** をクリックします。
-   
+
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
 ## <a name="next-steps"></a>次の手順

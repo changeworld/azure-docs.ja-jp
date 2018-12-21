@@ -1,5 +1,5 @@
 ---
-title: マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護 | Microsoft Docs
+title: マネージド ID を使用した SQL Database 接続のセキュリティ保護 - Azure App Service | Microsoft Docs
 description: マネージド ID を使用してデータベース接続をより安全にする方法と、これを他の Azure サービスに適用する方法について説明します。
 services: app-service\web
 documentationcenter: dotnet
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8c31e410713e4ba8ce6443170ba5ad5c2e740419
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: b7d8a9b0ef48f7daed74fb15263e516d820a6a38
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52677935"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259071"
 ---
-# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル: マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル:マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
 
 [App Service](app-service-web-overview.md) では、Azure の高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、[Azure SQL Database](/azure/sql-database/) やその他の Azure サービスへのアクセスをセキュリティ保護するためのターンキー ソリューションである[マネージド ID](app-service-managed-service-identity.md) もアプリ向けに提供しています。 App Service のマネージド ID を使用すると、接続文字列内の認証情報などのシークレットをアプリから排除することで、アプリのセキュリティを強化できます。 このチュートリアルでは、「[チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」で構築したサンプル ASP.NET Web アプリにマネージド ID を追加します。 作業が完了すると、サンプル アプリは、ユーザー名とパスワードを必要とせずに SQL Database に安全に接続するようになります。
 
@@ -44,7 +44,7 @@ ms.locfileid: "52677935"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事は、「[チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」の続きです。 このチュートリアルを完了していない場合は、最初にこのチュートリアルに従って作業してください。 または、SQL Database を使用して独自の ASP.NET アプリに合わせた手順を実行することもできます。
+この記事は、「[チュートリアル:SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」の続きです。 このチュートリアルを完了していない場合は、最初にこのチュートリアルに従って作業してください。 または、SQL Database を使用して独自の ASP.NET アプリに合わせた手順を実行することもできます。
 
 <!-- ![app running in App Service](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png) -->
 
@@ -95,11 +95,10 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 ## <a name="modify-aspnet-code"></a>ASP.NET コードを変更する
 
-Visual Studio の **DotNetAppSqlDb** プロジェクトで _packages.config_ を開き、パッケージの一覧に次の行を追加します。
+Visual Studio で、パッケージ マネージャー コンソールを開き、NuGet パッケージ [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) を追加します。
 
-```xml
-<package id="Microsoft.Azure.Services.AppAuthentication" version="1.1.0-preview" targetFramework="net461" />
-<package id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.14.2" targetFramework="net461" />
+```PowerShell
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.1.0-preview
 ```
 
 _Models\MyDatabaseContext.cs_ を開き、ファイルの先頭に次の `using` ステートメントを追加します。

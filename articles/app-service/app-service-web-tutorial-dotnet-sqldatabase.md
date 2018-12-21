@@ -1,5 +1,5 @@
 ---
-title: SQL Database を使用して Azure に ASP.NET アプリを作成する | Microsoft Docs
+title: SQL Database を使用して ASP.NET アプリをビルドする - Azure App Service | Microsoft Docs
 description: C# ASP.NET アプリを SQL Server データベースと共に Azure にデプロイする方法について説明します。
 services: app-service\web
 documentationcenter: ''
@@ -14,15 +14,15 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 783bf93c8507e76717a4293b2b29a9c11e9a1eed
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: 14dbd723772caa0045e9744ddb726060e3a1b8cf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353818"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257779"
 ---
-# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する
+# <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル:SQL Database を使用して Azure に ASP.NET アプリを作成する
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure でデータ主導の ASP.NET Web アプリを開発し、それを [Azure SQL Database](../sql-database/sql-database-technical-overview.md) に接続する方法について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。
 

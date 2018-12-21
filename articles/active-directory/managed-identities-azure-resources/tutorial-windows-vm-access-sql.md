@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 5d67d25912df5040665b3a04858be0f3807e8112
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ee4b504cf26456baa7d10eab05305eee5e36c35a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623827"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191905"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -63,6 +63,8 @@ VM にデータベースへのアクセス権を付与するには次の 2 つ�
 
 - [SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](/azure/sql-database/sql-database-aad-authentication-configure)
+
+SQL DB では、一意の AAD 表示名が必要です。 これにより、ユーザー、グループ、サービス プリンシパル (アプリケーション)、およびマネージド ID 用に有効化された VM 名などの AAD アカウントの表示名を、AAD で一意に定義する必要があります。 SQL DB では、このようなユーザーの T-SQL の作成時に AAD 表示名がチェックされ、一意でない場合には、指定したアカウントに一意の AAD 表示名を指定するように要求するコマンドが失敗します。
 
 1.  SQL Server Management Studio を起動します。
 2.  **[サーバーに接続]** ダイアログで、**[サーバー名]** フィールドに SQL サーバーの名前を入力します。

@@ -1,5 +1,5 @@
 ---
-title: Ansible (プレビュー) を使用した Azure Database for MySQL サーバーの作成と構成
+title: Ansible を使用した Azure Database for MySQL サーバーの作成と構成
 description: Ansible を使用して Azure Database for MySQL サーバーを作成して構成する方法を学習します。
 ms.service: ansible
 keywords: ansible、azure、devops、bash、プレイブック、mysql、データベース
@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: b549aeaf24bd774245ee1f2ff6924ac1f6dbeee3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6fd08e21fe0573d48ae7752eb410845062932b5e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427898"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255943"
 ---
-# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible-preview"></a>Ansible (プレビュー) を使用した Azure Database for MySQL サーバーの作成と構成
+# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible"></a>Ansible を使用した Azure Database for MySQL サーバーの作成と構成
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) は、高可用な MySQL データベースをクラウドで実行し、管理し、スケーリングするために使用されるマネージド サービスです。 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 
 
 このクイック スタートでは、Ansible を使用して、Azure Database for MySQL サーバーを作成し、そのファイアウォール規則を構成する方法を示します。 これらのタスクは、Azure portal を使用して 5 分程度で完了できます。
@@ -25,7 +25,7 @@ ms.locfileid: "49427898"
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 `sudo pip install ansible[azure]==2.7.0rc2` を実行すれば、Ansible 2.7 RC バージョンをインストールすることができます。 Ansible 2.7 のリリース後は、既定のバージョンが 2.7 になるため、ここでバージョンを指定する必要はありません。
+> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。  

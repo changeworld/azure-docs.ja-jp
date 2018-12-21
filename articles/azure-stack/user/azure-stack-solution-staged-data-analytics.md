@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d63faf63012360d4448166ac5d69eba6ede9d0ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837343"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969534"
 ---
-# <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure および Azure Stack を使用して Staged Data Analytics ソリューションを作成する 
+# <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>チュートリアル:Azure と Azure Stack を使用してステージング データ分析ソリューションを作成する 
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 オンプレミス環境とパブリック クラウド環境の両方を使用して、複数施設の企業の需要に応える方法について説明します。 Azure Stack は、特にセキュリティ、機密性、企業ポリシー、および規制の諸要件が場所やユーザーごとに異なる場合に、ローカルおよびリモートデータを収集、処理、保存、および分散するための迅速で安全で柔軟なソリューションを提供します。
 
@@ -81,29 +81,29 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
 3.  アカウントに関する次の情報を使用します。
 
-    a.  名前: **<任意>**
+    a.  名前:**<任意>**
 
     b.  デプロイ モデル: **Resource Manager**
 
-    c.  アカウントの種類: **ストレージ (汎用 v1)**
+    c.  アカウントの種類: **Storage (汎用 V1)**
 
     d.  場所: **米国西部**
 
     e.  レプリケーション: **ローカル冗長ストレージ (LRS)**
 
-    f.  パフォーマンス:**標準**
+    f.  パフォーマンス: **Standard**
 
     g.  安全な転送が必須: **無効**
 
-    h.  サブスクリプション: 1 つ選択
+    h.  サブスクリプション:いずれかを選択します。
 
-    i.  リソース グループ: 新しいリソース グループを指定するか、既存のリソース グループを選択
+    i.  リソース グループ: 新しいリソース グループを指定するか、既定のリソース グループを選択します。
 
     j.  仮想ネットワークの構成: **無効**
 
 4.  **[作成]** をクリックしてストレージ アカウントを作成します。
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image1.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image1.png)
 
 5.  作成し終えたら、ストレージ アカウントの名前を選択します。
 
@@ -111,11 +111,11 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
 7.  ブレードの上部で **[+ Container] (+ コンテナー)** を選択し、**[コンテナー]** を選択します。
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image2.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image2.png)
 
-8.  名前: **<任意>**
+8.  名前:**任意**
 
-9.  パブリック アクセス レベル: **コンテナー** (コンテナーと BLOB の匿名読み取りアクセス)
+9.  パブリック アクセス レベル: **コンテナー** (コンテナーと BLOB 用の匿名読み取りアクセス)
 
 10.  **[OK]** を選択します。
 
@@ -146,31 +146,31 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
     **例:**
 
-    ![新しい関数アプリの設定を定義する](media\azure-stack-solution-staged-data-analytics\image6.png)
+    ![新しい関数アプリの設定を定義する](media/azure-stack-solution-staged-data-analytics/image6.png)
 
 5.  **[作成]** を選択して、Function App をプロビジョニングし、デプロイします。
 
 6.  ポータルの右上隅の通知アイコンを選択し、"**デプロイメントに成功しました**" というメッセージが表示されるまで待ちます。
 
-    ![新しい関数アプリの設定を定義する](media\azure-stack-solution-staged-data-analytics\image7.png)
+    ![新しい関数アプリの設定を定義する](media/azure-stack-solution-staged-data-analytics/image7.png)
 
 7.  **[リソースに移動]** を選択して、新しい関数アプリを確認します。
 
-![Function App が正常に作成されました。](media\azure-stack-solution-staged-data-analytics\image8.png)
+![Function App が正常に作成されました。](media/azure-stack-solution-staged-data-analytics/image8.png)
 
 ### <a name="add-a-function-to-the-azure-stack-function-app"></a>Azure Stack 関数アプリに関数を追加する
 
 1.  **[関数]**、続いて **[+New Function] (+ 新しい関数)** ボタンをクリックして、新しい関数を作成します。
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image3.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image3.png)
 
 2.  **[タイマー トリガー]** を選択します。
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image4.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image4.png)
 
-3.  言語として **[C]\#** を選択し、関数に `upload-to-azure` という名前を付けます。スケジュールを `0 0 * * * *` に設定します。これは CRON 表記では 1 時間に 1 回です。
+3.  言語として [**C\#**] を選択し、関数に `upload-to-azure` という名前を付けます。スケジュールを `0 0 * * * *` に設定します (これは CRON 表記で 1 時間に一度を意味します)。
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image5.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image5.png)
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Blob Storage でトリガーされる関数の作成
 
@@ -178,19 +178,19 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
 2.  検索フィールドに、「`blob`」と入力し、**BLOB トリガー** テンプレート用の目的の言語を選択します。
 
-  ![Blob Storage トリガー テンプレートを選択します。](media\azure-stack-solution-staged-data-analytics\image10.png)
+  ![Blob Storage トリガー テンプレートを選択します。](media/azure-stack-solution-staged-data-analytics/image10.png)
 
 3.  次の表で指定されている設定を使用してください。
 
-    | Setting | 推奨値 | 説明 |
+    | 設定 | 推奨値 | 説明 |
     | ------- | ------- | ------- |
-    | Name | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
-    | Path | \<上記のストレージの場所からのパス> | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、name パラメーターとしてバインディングで渡されます。 |
+    | 名前 | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
+    | パス | \<上記のストレージの場所からのパス> | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、name パラメーターとしてバインディングで渡されます。 |
     | ストレージ アカウント接続 | Function App 接続 | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。 |
 
     **例:**
 
-    ![Blob Storage でトリガーされる関数を作成します。](media\azure-stack-solution-staged-data-analytics\image11.png)
+    ![Blob Storage でトリガーされる関数を作成します。](media/azure-stack-solution-staged-data-analytics/image11.png)
 
 4.  **[作成]** を選択すると、関数が作成されます。
 
@@ -202,7 +202,7 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
 3.  ストレージ アカウント、**Blob コンテナー**、以前に作成した Blob を展開します。 **[アップロード]**、**[ファイルのアップロード]** の順に選択します。
 
-    ![Blob コンテナーにファイルをアップロードします。](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Blob コンテナーにファイルをアップロードします。](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  [ファイルのアップロード] ダイアログ ボックスで、[ファイル] フィールドを選択します。 画像ファイルなど、ローカル コンピューター上のファイルを参照して選択し、**[開く]**、**[アップロード]** の順に選択します。
 
@@ -210,7 +210,7 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
     **例:**
 
-    ![ログ内のメッセージを表示します。](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![ログ内のメッセージを表示します。](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="create-an-azure-stack-storage-account"></a>Azure Stack ストレージ アカウントを作成する
 
@@ -232,9 +232,9 @@ Blob とキューを含む Azure Stack ストレージ アカウントを作成�
 
 4.  **[OK]** を選択します。
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image14.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image14.png)
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image15.png)
+    ![Alt text](media/azure-stack-solution-staged-data-analytics/image15.png)
 
 ## <a name="create-a-queue-triggered-function"></a>キューによってトリガーされる関数の作成
 
@@ -242,10 +242,10 @@ Blob とキューを含む Azure Stack ストレージ アカウントを作成�
 
 2.  次の表で指定されている設定を使用してください。
 
-    | Setting | 推奨値 | 説明 |
+    | 設定 | 推奨値 | 説明 |
     | ------- | ------- | ------- |
-    | Name | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
-    | Path | \<上記のストレージの場所からのパス> | 監視されているストレージ内の位置。 キューのファイル名が name パラメーターとしてバインディングで渡されます。 |
+    | 名前 | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
+    | パス | \<上記のストレージの場所からのパス> | 監視されているストレージ内の位置。 キューのファイル名が name パラメーターとしてバインディングで渡されます。 |
     | ストレージ アカウント接続 | Function App 接続 | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。 |
 
 3.  **[作成]** を選択すると、関数が作成されます。
@@ -258,7 +258,7 @@ Blob とキューを含む Azure Stack ストレージ アカウントを作成�
 
 3.  ストレージ アカウント、**Blob コンテナー**、以前に作成した Blob を展開します。 **[アップロード]**、**[ファイルのアップロード]** の順に選択します。
 
-    ![Blob コンテナーにファイルをアップロードします。](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Blob コンテナーにファイルをアップロードします。](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  [ファイルのアップロード] ダイアログ ボックスで、[ファイル] フィールドを選択します。 画像ファイルなど、ローカル コンピューター上のファイルを参照して選択し、**[開く]**、**[アップロード]** の順に選択します。
 
@@ -266,7 +266,7 @@ Blob とキューを含む Azure Stack ストレージ アカウントを作成�
 
   **例:**
 
-    ![ログ内のメッセージを表示します。](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![ログ内のメッセージを表示します。](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>安全に格納およびアクセスされる準拠データ
 

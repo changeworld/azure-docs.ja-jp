@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Database Migration Service を使用して SQL Server の Azure SQL Database へのオンライン移行を実行する | Microsoft Docs'
+title: 'チュートリアル: Azure Database Migration Service を使用して SQL Server の Azure Database へのオンライン移行を実行する | Microsoft Docs'
 description: Azure Database Migration Service を使用して、SQL Server のオンプレミスから Azure SQL Database へのオンライン移行を実行する方法について説明します。
 services: dms
 author: pochiraju
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 2df899d1e9db0e2936d69636f4c9d5cd463e68c7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: aea6b9628ffff4ba5075338c48340b88c95b6174
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872223"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956859"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-online-using-dms"></a>チュートリアル: DMS を使用して SQL Server を Azure SQL Database にオンラインで移行する
 Azure Database Migration Service を使用して、最短のダウンタイムでオンプレミスの SQL Server インスタンスから [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) にデータベースを移行することができます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2016 (以降) のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。
@@ -59,7 +59,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 - ターゲットの Azure SQL Database インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL データベースに対する CONTROL DATABASE アクセス許可を含めます。
 - ソース SQL Server のバージョンは SQL Server 2005 以降である必要があります。 SQL Server インスタンスが実行されているバージョンを確認する方法については、「[バージョン、エディション、および SQL Server の更新プログラム レベルとそのコンポーネントを確認する方法](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an)」の記事を参照してください。
 - データベースは、一括ログ復旧モードか完全復旧モードのいずれかでなければなりません。 SQL Server インスタンス用に構成された回復モデルを確認する方法については、[データベースの回復モデルを表示または変更する方法 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server?view=sql-server-2017) に関する記事を参照してください。
-- データベースの完全データベース バックアップを必ず作成してください。 完全データベース バックアップを作成するには、[データベースの復旧モデルの表示または変更 (Transact-SQL)](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105)) に関する記事を参照してください。
+- データベースの完全データベース バックアップを必ず作成してください。 完全データベース バックアップを作成するには、「[データベースの完全バックアップを作成する方法 (Transact-SQL)](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105))」の記事を参照してください。
 - いずれかのテーブルに主キーがない場合は、データベースと特定のテーブルで変更データ キャプチャ (CDC) を有効にします。
     > [!NOTE]
     > 以下のスクリプトを使用すると、主キーがないテーブルを見つけることができます。
@@ -120,7 +120,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
     評価が完了すると、次のグラフィックに結果が表示されます。
 
-    ![データ移行の評価](media\tutorial-sql-server-to-azure-sql-online\dma-assessments.png)
+    ![データ移行の評価](media/tutorial-sql-server-to-azure-sql-online/dma-assessments.png)
 
     評価では、Azure SQL Database について、機能パリティの問題と移行の障害となっている問題が特定されます。
 
@@ -143,52 +143,52 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
     上記の手順を実行すると、DMA のインターフェイスの表示が次の図のようになります。
     
-    ![Data Migration Assistant プロジェクトを作成する](media\tutorial-sql-server-to-azure-sql-online\dma-create-project.png)
+    ![Data Migration Assistant プロジェクトを作成する](media/tutorial-sql-server-to-azure-sql-online/dma-create-project.png)
 
 4.  **[作成]** を選択してプロジェクトを作成します。
 5.  DMA で、SQL Server のソース接続詳細を指定し、**[接続]** を選択した後、**AdventureWorks2012** データベースを選択します。
 
-    ![Data Migration Assistant のソース接続詳細](media\tutorial-sql-server-to-azure-sql-online\dma-source-connect.png)
+    ![Data Migration Assistant のソース接続詳細](media/tutorial-sql-server-to-azure-sql-online/dma-source-connect.png)
 
 6.  **[次へ]** を選択し、**[Connect to target server]\(対象サーバーへの接続\)** で Azure SQL データベースのターゲット接続の詳細を指定し、**[接続]** を選択し、Azure SQL Database で事前プロビジョニングした **AdventureWorksAzure** データベースを選択します。
 
-    ![Data Migration Assistant のターゲット接続詳細](media\tutorial-sql-server-to-azure-sql-online\dma-target-connect.png)
+    ![Data Migration Assistant のターゲット接続詳細](media/tutorial-sql-server-to-azure-sql-online/dma-target-connect.png)
 
 7.  **[次へ]** を選択して **[オブジェクトの選択]** 画面に進みます。この画面では、Azure SQL Database にデプロイする必要がある **AdventureWorks2012** データベース内のスキーマ オブジェクトを指定できます。
 
     既定では、すべてのオブジェクトが選択されています。
 
-    ![SQL スクリプトを生成する](media\tutorial-sql-server-to-azure-sql-online\dma-assessment-source.png)
+    ![SQL スクリプトを生成する](media/tutorial-sql-server-to-azure-sql-online/dma-assessment-source.png)
 
 8.  **[SQL スクリプトの生成]** を選択して SQL スクリプトを作成し、スクリプトにエラーがないかを確認します。
 
-    ![スキーマ スクリプト](media\tutorial-sql-server-to-azure-sql-online\dma-schema-script.png)
+    ![スキーマ スクリプト](media/tutorial-sql-server-to-azure-sql-online/dma-schema-script.png)
 
 9.  **[Deploy schema]\(スキーマのデプロイ\)** を選択して Azure SQL データベースにスキーマをデプロイし、スキーマがデプロイされたら、対象サーバーに異常がないかをチェックします。
 
-    ![スキーマをデプロイする](media\tutorial-sql-server-to-azure-sql-online\dma-schema-deploy.png)
+    ![スキーマをデプロイする](media/tutorial-sql-server-to-azure-sql-online/dma-schema-deploy.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
  
-   ![ポータルのサブスクリプションの表示](media\tutorial-sql-server-to-azure-sql-online\portal-select-subscription1.png)
+   ![ポータルのサブスクリプションの表示](media/tutorial-sql-server-to-azure-sql-online/portal-select-subscription1.png)
        
 2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、**[リソース プロバイダー]** を選択します。
  
-    ![リソース プロバイダーの表示](media\tutorial-sql-server-to-azure-sql-online\portal-select-resource-provider.png)
+    ![リソース プロバイダーの表示](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
     
 3.  移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
  
-    ![リソース プロバイダーの登録](media\tutorial-sql-server-to-azure-sql-online\portal-register-resource-provider.png)    
+    ![リソース プロバイダーの登録](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)    
 
 ## <a name="create-an-instance"></a>インスタンスを作成する
 1.  Azure portal で **[+ リソースの作成]** を選択し、Azure Database Migration Service を検索して、ドロップダウン リストから **[Azure Database Migration Service]** を選択します。
 
-    ![Azure Marketplace](media\tutorial-sql-server-to-azure-sql-online\portal-marketplace.png)
+    ![Azure Marketplace](media/tutorial-sql-server-to-azure-sql-online/portal-marketplace.png)
 
 2.  **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
  
-    ![Azure Database Migration Service インスタンスを作成する](media\tutorial-sql-server-to-azure-sql-online\dms-create1.png)
+    ![Azure Database Migration Service インスタンスを作成する](media/tutorial-sql-server-to-azure-sql-online/dms-create1.png)
   
 3.  **[移行サービスの作成]** 画面で、サービスの名前、サブスクリプション、新規または既存のリソース グループを指定します。
 
@@ -206,7 +206,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
     適切な Azure Database Migration Service レベルの選択について不明な点がある場合は、[この投稿](https://go.microsoft.com/fwlink/?linkid=861067)の推奨事項を参照してください。  
 
-     ![Azure Database Migration Service インスタンス設定を構成する](media\tutorial-sql-server-to-azure-sql-online\dms-settings2.png)
+     ![Azure Database Migration Service インスタンス設定を構成する](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
 
 7.  **[作成]** を選択して、サービスを作成します。
 
@@ -215,17 +215,17 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
 1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
  
-      ![Azure Database Migration Service のすべてのインスタンスを検索する](media\tutorial-sql-server-to-azure-sql-online\dms-search.png)
+      ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-sql-server-to-azure-sql-online/dms-search.png)
 
 2. **[Azure Database Migration Services]** 画面で、作成した Azure Database Migration Service インスタンスの名前を検索して選択します。
  
-     ![Azure Database Migration Service のインスタンスを検索する](media\tutorial-sql-server-to-azure-sql-online\dms-instance-search.png)
+     ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-sql-server-to-azure-sql-online/dms-instance-search.png)
  
 3. **[+ 新しい移行プロジェクト]** を選択します。
 4. **[新しい移行プロジェクト]** 画面で、プロジェクトの名前を指定し、**[ソース サーバーの種類を選択する]** テキスト ボックスで **SQL Server** を選択した後、**[対象サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択します。
 5. **[アクティビティの種類を選択します]** セクションで、**[オンライン データの移行]** を選択します。
 
-    ![Database Migration Service プロジェクトを作成する](media\tutorial-sql-server-to-azure-sql-online\dms-create-project3.png)
+    ![Database Migration Service プロジェクトを作成する](media/tutorial-sql-server-to-azure-sql-online/dms-create-project3.png)
 
     > [!NOTE]
     > または、**[プロジェクトのみを作成します]** を選択して移行プロジェクトを作成しておき、移行は後で実行することもできます。
@@ -234,7 +234,7 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 
 7. **[アクティビティの作成と実行]** を選択してプロジェクトを作成し、移行アクティビティを実行します。
 
-    ![データベース移行サービス アクティビティの作成と実行](media\tutorial-sql-server-to-azure-sql-online\dms-create-and-run-activity.png)
+    ![データベース移行サービス アクティビティの作成と実行](media/tutorial-sql-server-to-azure-sql-online/dms-create-and-run-activity.png)
  
 ## <a name="specify-source-details"></a>ソース詳細を指定する
 1. **[移行ソースの詳細]** 画面で、ソース SQL Server インスタンスの接続の詳細を指定します。
@@ -248,55 +248,55 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
     > [!CAUTION]
     > 自己署名証明書を使用して暗号化されている SSL 接続のセキュリティは強力ではありません。 man-in-the-middle (中間者) 攻撃を受ける可能性が高くなります。 運用環境や、インターネットに接続されているサーバーでは、自己署名証明書を使用した SSL を信頼しないでください。
 
-   ![ソースの詳細](media\tutorial-sql-server-to-azure-sql-online\dms-source-details3.png)
+   ![ソースの詳細](media/tutorial-sql-server-to-azure-sql-online/dms-source-details3.png)
 
 ## <a name="specify-target-details"></a>ターゲット詳細を指定する
 1. **[保存]** を選択し、**[Migration target details]\(移行ターゲットの詳細\)** 画面でターゲット Azure SQL Database Server の接続の詳細を指定します。これは、DMA を使用して **AdventureWorks2012** スキーマをデプロイした、事前プロビジョニング済みの Azure SQL Database です。
 
-    ![ターゲットを選択する](media\tutorial-sql-server-to-azure-sql-online\dms-select-target3.png)
+    ![ターゲットを選択する](media/tutorial-sql-server-to-azure-sql-online/dms-select-target3.png)
 
 2. **[保存]** を選択し、**[ターゲット データベースへマッピング]** 画面で、移行用のソース データベースとターゲット データベースをマップします。
 
     ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service は既定でターゲット データベースを選択します。
 
-    ![ターゲット データベースにマップする](media\tutorial-sql-server-to-azure-sql-online\dms-map-targets-activity3.png)
+    ![ターゲット データベースにマップする](media/tutorial-sql-server-to-azure-sql-online/dms-map-targets-activity3.png)
 
 3. **[保存]** を選択し、**[テーブルの選択]** 画面でテーブルの一覧を展開して、影響を受けるフィールドの一覧を確認します。
 
     Azure Database Migration Service では、ターゲット Azure SQL Database インスタンスに存在する空のソース テーブルがすべて自動的に選択されます。 データが既に含まれているテーブルを再移行する場合は、このブレードでテーブルを明示的に選択する必要があります。
 
-    ![テーブルを選択する](media\tutorial-sql-server-to-azure-sql-online\dms-configure-setting-activity3.png)
+    ![テーブルを選択する](media/tutorial-sql-server-to-azure-sql-online/dms-configure-setting-activity3.png)
 
 4.  **[保存]** を選択し、**[移行の概要]** 画面で、**[アクティビティ名]** テキスト ボックスに移行アクティビティの名前を指定します。概要を見直して、ソースとターゲットの詳細が先ほど指定した内容と一致していることを確認します。
 
-    ![移行の概要](media\tutorial-sql-server-to-azure-sql-online\dms-migration-summary.png)
+    ![移行の概要](media/tutorial-sql-server-to-azure-sql-online/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>移行を実行する
 - **[移行の実行]** を選択します。
 
     移行アクティビティ ウィンドウが表示されます。アクティビティの **[状態]** は **[初期化中]** になります。
 
-    ![アクティビティの状態 - 初期化中](media\tutorial-sql-server-to-azure-sql-online\dms-activity-status2.png)
+    ![アクティビティの状態 - 初期化中](media/tutorial-sql-server-to-azure-sql-online/dms-activity-status2.png)
 
 ## <a name="monitor-the-migration"></a>移行を監視する
 1. 移行アクティビティ画面で、移行の **[状態]** が **[実行中]** になるまで **[最新の情報に更新]** を選択して表示を更新します。
 
 2. 特定のデータベースを選択して、**データ全体の読み込み**操作と**増分データ同期**操作の移行状態を取得します。
 
-    ![アクティビティの状態 - 進行中](media\tutorial-sql-server-to-azure-sql-online\dms-activity-in-progress.png)
+    ![アクティビティの状態 - 進行中](media/tutorial-sql-server-to-azure-sql-online/dms-activity-in-progress.png)
 
 ## <a name="perform-migration-cutover"></a>一括移行を実行する
 初回の全体の読み込みが完了すると、データベースは **[一括準備完了]** とマークされます。
 
 1. データベースの移行を完了する準備ができたら、**[一括で開始]** を選択します。
 
-    ![一括で開始](media\tutorial-sql-server-to-azure-sql-online\dms-start-cutover.png)
+    ![一括で開始](media/tutorial-sql-server-to-azure-sql-online/dms-start-cutover.png)
  
 2.  ソース データベースに対するすべての受信トランザクションを必ず停止してください。**[保留中の変更]** カウンターが **0** を示すまで待ってください。
 3.  **[確認]** を選択し、**[適用]** を選択します。
 4. データベースの移行の状態に **[完了]** が表示されたら、アプリケーションを新しいターゲット Azure SQL Database に接続します。
  
-    ![アクティビティの状態 - 完了](media\tutorial-sql-server-to-azure-sql-online\dms-activity-completed.png)
+    ![アクティビティの状態 - 完了](media/tutorial-sql-server-to-azure-sql-online/dms-activity-completed.png)
 
 ## <a name="next-steps"></a>次の手順
 - Azure Database for MySQL へのオンライン移行の実行時の既知の問題と制限事項については、[Azure SQL Database のオンライン移行に伴う既知の問題と回避策](known-issues-azure-sql-online.md)に関する記事を参照してください。

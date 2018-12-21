@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 19e7506dac82e4d12d5aecbdb5ae1c14fb944c29
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 632393696274eaf6f876ea717b5fccf7d4fbea3f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961537"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965395"
 ---
-# <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure および Azure Stack を使用して地理的分散アプリ ソリューションを作成する
+# <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack を使用して地理的に分散されたアプリ ソリューションを作成する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
 
 地理的分散アプリ パターンを使用して、さまざまなメトリックに基づき、特定のエンドポイントにトラフィックを送信する方法について説明します。 地理的ベースのルーティングとエンドポイント構成で Traffic Manager プロファイルを作成すると、リージョンの要件、企業および国際的な規制、およびデータ ニーズに基づいて、情報がエンドポイントにルーティングされます。
 
@@ -65,9 +65,9 @@ ms.locfileid: "46961537"
 
 -   **アプリ フットプリントのスケーリングに関する戦略:** アプリケーションのフットプリントは単一リージョン内の複数の App Service Environment に分散されるのか、 複数のリージョンなのか、 両方のアプローチの組み合わせか、 この決定は、顧客のトラフィックが発生する場所に加えて、アプリをサポートするバックエンド インフラストラクチャの他の要素のスケーラビリティに関する期待事項に基づく必要があります。 たとえば、完全にステートレスなアプリケーションでは、各 Azure リージョンで複数の App Service Environment を組み合わせ、さらに複数の Azure リージョンにデプロイされた App Service Environment を掛け合わせることで、大規模なスケーリングを実施できます。 選択できるグローバルな Azure リージョンは 15 以上あるため、顧客はスケーラビリティのきわめて高いアプリケーション フットプリントを世界規模で構築できます。 この記事のサンプル アプリでは、単一の Azure リージョン (米国中南部) に 3 つの App Service 環境が作成されています。
 
--   **App Service 環境の命名規則:** 各 App Service 環境に一意の名前が必要です。 1 つや 2 つではなく数の多い App Service 環境では、各 App Service 環境を識別しやすい命名規則があると便利です。 サンプル アプリでは、シンプルな命名規則が使用されています。 3 つの App Service Environment の名前は *fe1ase*、*fe2ase*、*fe3ase* です。
+-   **App Service Environment の名前付け規則:** 各 App Service Environment には一意の名前が必要です。 1 つや 2 つではなく数の多い App Service 環境では、各 App Service 環境を識別しやすい命名規則があると便利です。 サンプル アプリでは、シンプルな命名規則が使用されています。 3 つの App Service Environment の名前は *fe1ase*、*fe2ase*、*fe3ase* です。
 
--   **アプリの命名規則**: アプリのインスタンスが複数デプロイされるため、デプロイされたアプリの各インスタンスに名前が必要です。 App Service 環境の場合、同じアプリ名を複数の App Service 環境で使用できます。 App Service 環境ごとに一意のドメイン サフィックスがあるため、開発者は各環境でまったく同じアプリ名を再利用できます。 たとえば、開発者は、*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* のようなアプリ名を設定できます。このシナリオのアプリでは、各アプリ インスタンスに一意の名前が付けられます。 使用されているアプリ インスタンス名は *webfrontend1*、*webfrontend2*、*webfrontend3* です。
+-   **アプリの名前付け規則**: アプリのインスタンスが複数デプロイされるため、デプロイされたアプリの各インスタンスに名前が必要です。 App Service 環境の場合、同じアプリ名を複数の App Service 環境で使用できます。 App Service 環境ごとに一意のドメイン サフィックスがあるため、開発者は各環境でまったく同じアプリ名を再利用できます。 たとえば、開発者は、*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* のようなアプリ名を設定できます。このシナリオのアプリでは、各アプリ インスタンスに一意の名前が付けられます。 使用されているアプリ インスタンス名は *webfrontend1*、*webfrontend2*、*webfrontend3* です。
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
@@ -75,13 +75,13 @@ ms.locfileid: "46961537"
 > 
 > [ハイブリッド アプリケーションのための設計の考慮事項](https://aka.ms/hybrid-cloud-applications-pillars)に関するホワイト ペーパーでは、ハイブリッド アプリケーションを設計、デプロイ、および運用するためのソフトウェア品質の重要な要素 (配置、スケーラビリティ、可用性、回復性、管理容易性、およびセキュリティ) についてレビューしています。 これらの設計の考慮事項は、ハイブリッド アプリケーションの設計を最適化したり、運用環境での課題を最小限に抑えたりするのに役立ちます。
 
-## <a name="part-1-create-a-geo-distributed-app"></a>パート 1: 地理的に分散したアプリを作成する
+## <a name="part-1-create-a-geo-distributed-app"></a>パート 1:地理的分散アプリを作成する
 
 このパートでは、Web アプリを作成します。
 
 > [!div class="checklist"]
 > - Web アプリを作成し発行する
-> - コードを VSTS プロジェクトに追加する
+> - Azure Repos にコードを追加する
 > - アプリ ビルドを複数のクラウド ターゲットにポイントします。
 > - CD プロセスを管理および構成する
 
@@ -108,130 +108,130 @@ Web アプリ作成用の DNS ゾーン ファイルを更新し、ドメイン�
 > [!Note]  
 > (Windows Server と SQL の) 実行および App Service のデプロイには、適切なイメージがシンジケート化された Azure Stack が必要です。 App Service ドキュメントの「[Azure Stack 上の App Service を開始する前に](/articles/azure-stack/azure-stack-app-service-before-you-get-started)」の Azure Stack オペレーター用セクションを参照してください。
 
-#### <a name="add-code-to-vsts-project"></a>コードを VSTS プロジェクトに追加する
+#### <a name="add-code-to-azure-repos"></a>Azure Repos にコードを追加する
 
-1. VSTS での**プロジェクト作成特権が付与されているアカウント**を使用して、Visual Studio にサインインします。
+1. Azure Repos 上で**プロジェクト作成権限が付与されているアカウント**を使用して、Visual Studio にサインインします。
 
     ハイブリッドの継続的インテグレーション/継続的デリバリー (CI/CD) は、アプリケーション コードとインフラストラクチャ コードの両方に適用できます。 プライベート クラウド開発とホステッド クラウド開発の両方に、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を使用します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image1.JPG)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image1.JPG)
 
 2. 既定の Web アプリを作成して開くことで、**リポジトリを複製**します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image2.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image2.png)
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>両方のクラウドで Web アプリ デプロイを作成する
 
-1.  **WebApplication.csproj** ファイルを編集して、**Runtimeidentifier** を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
+1.  **WebApplication.csproj** ファイルを編集します。**Runtimeidentifier** を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image3.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
-1.  チーム エクスプローラーを使用して、**コードを VSTS にチェックインします**。
+1.  チーム エクスプローラーを使用して、**コードを Azure Repos にチェックインします**。
 
-2.  **アプリケーション コード**が Visual Studio Team Services にチェックインされたことを確認します。
+2.  **アプリケーション コード**が Azure Repos にチェックインされたことを確認します。
 
 ### <a name="create-the-build-definition"></a>ビルド定義を作成する
 
-1. **VSTS にログイン**して、ビルド定義を作成する機能を確認します。
+1. **Azure Pipelines にログイン**して、ビルド定義を作成する機能を確認します。
 
 2. **-r win10-x64** コードを追加します。 これは、.Net Core を使用して自己完結型のデプロイをトリガーするために必要です。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image4.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image4.png)
 
 3. **ビルドを実行します**。 [自己完結型のデプロイ ビルド](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)のプロセスにより、Azure および Azure Stack 上で実行できる成果物が発行されます。
 
 **Azure ホステッド エージェントを使用する**
 
-Web アプリをビルドおよびデプロイする場合、VSTS でホステッド エージェントを使用すると便利です。 Microsoft Azure によってメンテナンスやアップグレードが自動的に実施され、開発、テスト、デプロイについても、継続的に、かつ中断されることなく実行できます。
+Web アプリをビルドおよびデプロイする場合、Azure Pipelines でホステッド エージェントを使用すると便利です。 Microsoft Azure によってメンテナンスやアップグレードが自動的に実施され、開発、テスト、デプロイについても、継続的に、かつ中断されることなく実行できます。
 
 ### <a name="manage-and-configure-the-cd-process"></a>CD プロセスを管理および構成する
 
-Visual Studio Team Services (VSTS) および Team Foundation Server (TFS) が提供するパイプラインは自由に構成でき、管理性にも優れ、開発、ステージング、QA、運用など、さまざまな環境へのリリースに使用できます。また、特定のステージで承認を要求することもできます。
+Azure DevOps および Azure DevOps Server が提供するパイプラインは自由に構成でき、管理性にも優れ、開発、ステージング、QA、運用など、さまざまな環境へのリリースに使用できます。また、特定のステージで承認を要求することもできます。
 
 #### <a name="create-release-definition"></a>リリース定義の作成
 
 
-![Alt text](media\azure-stack-solution-geo-distributed\image5.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image5.png)
 
 1.  Visual Studio Online (VSO) の [ビルドとリリース] ページの **[リリース] タブ**で **[+]** ボタンを選択して、新しいリリースを追加します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image6.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. **Azure App Service の配置**テンプレートを適用します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image7.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image7.png)
 
 3. [成果物の追加] プルダウン メニューで、Azure Cloud ビルド アプリに対して**成果物を追加**します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image8.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image8.png)
 
 4. [パイプライン] タブで、環境の**フェーズ、タスク** リンクを選択し、Azure のクラウド環境の値を設定します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image9.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image9.png)
 
 5. **環境名**を設定し、Azure クラウド エンドポイントに対して Azure **サブスクリプション**を選択します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image10.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image10.png)
 
 6. [環境名] で、必須の **Azure アプリ サービス名**を設定します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image11.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image11.png)
 
 7. Azure クラウドでホストされる環境のエージェント キューで、「**Hosted VS2017**」と入力します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image12.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image12.png)
 
 8. [Azure App Service 配置] メニューで、環境に対して有効な**パッケージまたはフォルダー**を選択します。 [OK] を選択して、**フォルダーの場所**を選択します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image13.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image13.png)
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image14.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image14.png)
 
 9. すべての変更を保存し、**リリース パイプライン**に戻ります。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image15.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image15.png)
 
 10. Azure Stack アプリのビルドを選択して、**新しい成果物**を追加します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image16.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image16.png)
 
 11. **Azure App Service の配置**を適用して、環境をもう 1 つ追加します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image17.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image17.png)
 
 12. 新しい環境に **Azure Stack** という名前を付けます。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image18.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image18.png)
 
 13. **[タスク]** タブで Azure Stack 環境を見つけます。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image19.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image19.png)
 
 14. Azure Stack エンドポイントの**サブスクリプション**を選択します。
 
-  ![Alt text](media\azure-stack-solution-geo-distributed\image20.png)
+  ![Alt text](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. **[App Service の名前]** として、Azure Stack Web アプリの名前を設定します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image21.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image21.png)
 
 16. **Azure Stack エージェント**を選択します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image22.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image22.png)
 
 17. [Azure App Service 配置] セクションで、環境に対して有効な**パッケージまたはフォルダー**を選択します。 [OK] を選択して、**フォルダーの場所**を選択します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image23.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image23.png)
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image24.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image24.png)
 
 18. **[変数]** タブで、`VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS` という名前の変数を追加し、その値を `true` に設定し、スコープを `Azure Stack` に設定します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image25.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image25.png)
 
 19. 両方の成果物で**継続的**配置トリガー アイコンを選択し、**継続的**配置トリガーを有効にします。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image26.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image26.png)
 
 20. Azure Stack 環境で**配置前**条件アイコンを選択し、トリガーを**リリース後**に設定します。
 
@@ -244,7 +244,7 @@ Visual Studio Team Services (VSTS) および Team Foundation Server (TFS) が提
 
 [Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 
 
-![Alt text](media\azure-stack-solution-geo-distributed\image27.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
 > - 既存のカスタム DNS 名を Azure Web Apps にマップする
@@ -296,7 +296,7 @@ DNS レコード ページは、**[My domains] (マイ ドメイン)** で表示
 
 以下のスクリーンショットは、DNS レコード ページの例です。
 
-![DNS レコード ページの例](media\azure-stack-solution-geo-distributed\image28.png)
+![DNS レコード ページの例](media/azure-stack-solution-geo-distributed/image28.png)
 
 1.  ドメイン名レジストラーで、**[Add or Create] (追加または作成)** を選択してレコードを作成します。 プロバイダーによっては、追加するレコード タイプごとに異なるリンクが用意されています。 プロバイダーのドキュメントを参照してください。
 
@@ -306,7 +306,7 @@ DNS レコード ページは、**[My domains] (マイ ドメイン)** で表示
 
 CNAME を追加した後の DNS レコード ページは次の例のようになります。
 
-![Azure アプリへのポータル ナビゲーション](media\azure-stack-solution-geo-distributed\image29.png)
+![Azure アプリへのポータル ナビゲーション](media/azure-stack-solution-geo-distributed/image29.png)
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>Azure で CNAME レコード マッピングを有効にする
 
@@ -348,9 +348,9 @@ CNAME を追加した後の DNS レコード ページは次の例のように�
 
   アプリの **[カスタム ドメイン]** ページに新しいホスト名が反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
   
-  ![Alt text](media\azure-stack-solution-geo-distributed\image31.png) 
+  ![Alt text](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  エラーが発生した場合は、検証エラーの通知がページの下部に表示されます。 ![検証エラー](media\azure-stack-solution-geo-distributed\image32.png)
+  エラーが発生した場合は、検証エラーの通知がページの下部に表示されます。 ![検証エラー](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  上記の手順を繰り返して、ワイルドカード ドメイン (\*northwindcloud.com) をマップできます。 これにより、それぞれに個別の CNAME レコードを作成せずに、このアプリ サービスに別のサブドメインを追加できます。 レジストラーの指示に従って、この設定を構成します。
@@ -404,17 +404,17 @@ App Service で証明書を使用するには、証明書が次のすべての�
 
 2.  左側のメニューで、**[App Services]** を選択し、Web アプリ名を選択します。
 
-![Web アプリの選択](media\azure-stack-solution-geo-distributed\image33.png)
+![Web アプリの選択](media/azure-stack-solution-geo-distributed/image33.png)
 
 #### <a name="check-the-pricing-tier"></a>価格レベルの確認
 
 1.  Web アプリ ページの左側のナビゲーションで **[設定]** セクションまでスクロールし、**[スケール アップ (App Service プラン)]** を選択します。
 
-    ![スケール アップ メニュー](media\azure-stack-solution-geo-distributed\image34.png)
+    ![スケール アップ メニュー](media/azure-stack-solution-geo-distributed/image34.png)
 
 1.  Web アプリが **Free** レベルまたは **Shared** レベルに含まれていないことを確認します。 Web アプリの現在の層が濃青色のボックスに強調表示されます。
 
-    ![価格レベルの確認](media\azure-stack-solution-geo-distributed\image35.png)
+    ![価格レベルの確認](media/azure-stack-solution-geo-distributed/image35.png)
 
 カスタム SSL は、**Free** レベルまたは **Shared** レベルではサポートされていません。 アップスケールするには、次のセクション、**[価格レベルの選択]** ページの手順に従い、[[Upload and bind your SSL certificate] (SSL 証明書のアップロードおよびバインド)](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl) にスキップします。
 
@@ -424,11 +424,11 @@ App Service で証明書を使用するには、証明書が次のすべての�
 
 2.  **[選択]** を選択します。
 
-![価格レベルの選択](media\azure-stack-solution-geo-distributed\image36.png)
+![価格レベルの選択](media/azure-stack-solution-geo-distributed/image36.png)
 
 通知が表示されたら、スケール操作は完了です。
 
-![スケール アップの通知](media\azure-stack-solution-geo-distributed\image37.png)
+![スケール アップの通知](media/azure-stack-solution-geo-distributed/image37.png)
 
 #### <a name="bind-your-ssl-certificate-and-merge-intermediate-certificates"></a>SSL 証明書をバインドし、中間証明書を結合する
 
@@ -491,11 +491,11 @@ IIS または **Certreq.exe** を使用して証明書の要求を生成した�
 
 5.  **[アップロード]** を選択します。
 
-![証明書のアップロード](media\azure-stack-solution-geo-distributed\image38.png)
+![証明書のアップロード](media/azure-stack-solution-geo-distributed/image38.png)
 
 App Service による証明書のアップロードが完了すると、**[SSL 設定]** ページにアップロードした証明書が表示されます。
 
-![Alt text](media\azure-stack-solution-geo-distributed\image39.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image39.png)
 
 #### <a name="bind-your-ssl-certificate"></a>SSL 証明書のバインド
 
@@ -514,11 +514,11 @@ App Service による証明書のアップロードが完了すると、**[SSL �
 
     1.  **[バインドの追加]** を選択します。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image40.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image40.png)
 
 App Service による証明書のアップロードが完了すると、**[SSL バインド]** セクションにアップロードした証明書が表示されます。
 
-![Alt text](media\azure-stack-solution-geo-distributed\image41.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image41.png)
 
 #### <a name="remap-the-a-record-for-ip-ssl"></a>IP SSL の A レコードを再マップする
 
@@ -534,7 +534,7 @@ A レコードが Web アプリにマップされた場合、ドメイン レジ
 
 さまざまなブラウザーで https://<your.custom.domain> を参照して、Web アプリが提供されていることを確認します。
 
-![Alt text](media\azure-stack-solution-geo-distributed\image42.png)
+![Alt text](media/azure-stack-solution-geo-distributed/image42.png)
 
 > [!Note]  
 > 証明書の検証エラーが発生した場合、自己署名証明書が原因であるか、PFX ファイルにエクスポートするときに中間証明書が除外された可能性があります。
@@ -545,7 +545,7 @@ A レコードが Web アプリにマップされた場合、ドメイン レジ
 
 Web アプリページで、**[SSL 設定]** を選択します。 その後、**[HTTPS のみ]** で、**[On]** を選択します。
 
-![HTTPS の適用](media\azure-stack-solution-geo-distributed\image43.png)
+![HTTPS の適用](media/azure-stack-solution-geo-distributed/image43.png)
 
 操作が完了すると、アプリを指定する HTTP URL のいずれかに移動します。 例: 
 
@@ -561,7 +561,7 @@ Web アプリページで、**[SSL 設定]** を選択します。 その後、*
 
 2.  **[TLS version] (TLS バージョン)** で、最低限の TLS バージョンを選択します。
 
-![TLS 1.1/1.2 の適用](media\azure-stack-solution-geo-distributed\image44.png)
+![TLS 1.1/1.2 の適用](media/azure-stack-solution-geo-distributed/image44.png)
 
 ### <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 
@@ -583,7 +583,7 @@ Web アプリページで、**[SSL 設定]** を選択します。 その後、*
 
     7.  Traffic Manager プロファイルは、グローバルなデプロイが完了すると、それぞれのリソース グループ内にリソースの 1 つとして表示されます。
 
-    ![Alt text](media\azure-stack-solution-geo-distributed\image45.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image45.png)
 
 ### <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
@@ -632,7 +632,7 @@ Web アプリページで、**[SSL 設定]** を選択します。 その後、*
 
 1.  両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
 
-  ![Alt text](media\azure-stack-solution-geo-distributed\image46.png)
+  ![Alt text](media/azure-stack-solution-geo-distributed/image46.png)
 
 **グローバル エンタープライズは、地理的分散機能に依存する**
 

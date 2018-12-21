@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 1c50b1bc362a66b17097575336bcb2c9bd4856ca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0bab289fedbbceb2d5cb763bd0f55e455bb60a29
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866085"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093025"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL チュートリアル: SQL API Java コンソール アプリケーションの作成
 
@@ -56,7 +56,7 @@ Azure Cosmos DB Java SDK 用 SQL API の NoSQL チュートリアルへようこ
 
 * [Git](https://git-scm.com/downloads)。
 * [Java Development Kit (JDK) 7 以降](https://aka.ms/azure-jdks)。
-* [Maven](http://maven.apache.org/download.cgi)。
+* [Maven](https://maven.apache.org/download.cgi)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1: Azure Cosmos DB アカウントを作成する
 それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「[GitHub プロジェクトを複製する](#GitClone)」に進んでかまいません。 Azure Cosmos DB Emulator を使用する場合は、[DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターをセットアップし、「[GitHub プロジェクトを複製する](#GitClone)」に進んでください。
@@ -98,7 +98,7 @@ Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-
     database.setId("familydb");
     this.client.createDatabase(database, null);
 
-## <a id="CreateColl"></a>手順 5: コレクションを作成する
+## <a id="CreateColl"></a>手順 5: コレクションの作成
 > [!WARNING]
 > **createCollection** は、予約済みのスループットで新しいコレクションを作成します。これによって価格に影響があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 > 
@@ -117,7 +117,7 @@ Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
+## <a id="CreateDoc"></a>手順 6: JSON ドキュメントの作成
 ドキュメントは、**DocumentClient** クラスの [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、Azure Cosmos DB の[データ移行ツール](import-data.md)を使用して、データをデータベースにインポートできます。
 
     // Insert your Java objects as documents 
@@ -140,7 +140,7 @@ Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-
 
 ![Java コンソール アプリケーションを作成するために NoSQL チュートリアルで使用されるアカウント、オンライン データベース、コレクション、およびドキュメントの間の階層関係を示す図](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>手順 7: Azure Cosmos DB リソースにクエリを実行する
+## <a id="Query"></a>手順 7: Azure Cosmos DB リソースを照会する
 Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富な[クエリ](how-to-sql-query.md)がサポートされています。  次のサンプル コードは、[queryDocuments](/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) メソッドが含まれている SQL 構文を使用して Azure Cosmos DB のドキュメントを照会する方法を示します。
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(

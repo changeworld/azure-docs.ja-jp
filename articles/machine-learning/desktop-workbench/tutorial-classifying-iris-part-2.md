@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/15/2018
+ms.date: 03/15/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6faabc3003048c93c08451c537496e762352b50b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2e4ede4a699eaac1e5f8c632901239fb04ebcd30
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997319"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276759"
 ---
-# <a name="tutorial-2-classify-iris---build-a-model"></a>チュートリアル 2: あやめの分類: モデルを構築する
+# <a name="tutorial-2-classify-iris---build-a-model"></a>チュートリアル 2:あやめの分類: モデルを構築する
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 

@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/13/2018
+ms.date: 03/13/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 52757098436349d38538f4c2168a70e53ad58421
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946614"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270163"
 ---
-# <a name="tutorial-3-classify-iris-deploy-a-model"></a>チュートリアル 3: あやめの分類: モデルをデプロイする
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>チュートリアル 3:アヤメの分類:モデルをデプロイする
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -168,7 +168,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    az provider show -n Microsoft.ContainerRegistry 
    ``` 
 
-   出力の 3 行目に **"registrationState": "Registering"** と表示されます。 出力に **"registrationState": "Registered"** と表示されるまで、しばらく待ってから **show** コマンドを繰り返します。
+   出力の 3 行目に **"registrationState":"Registering"** と表示されます。 しばらく待ってから、出力に **"registrationState": "Registered"** と表示されるまで **show** コマンドを繰り返します。
 
    >[!NOTE] 
    ACS クラスターにデプロイする場合は、まったく同じ方法を使って、**Microsoft.ContainerService** リソース プロバイダーも登録する必要があります。
@@ -234,24 +234,24 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
    **az ml service create realtime** コマンドでは、次のスイッチを使用します。
 
-   * `-f`: スコア付けスクリプト ファイルの名前。
+   * `-f`:スコア付けスクリプト ファイルの名前。
 
-   * `--model-file`: モデル ファイル。 このケースでは、pickle から出力された model.pkl ファイルになります。
+   * `--model-file`:モデル ファイル。 このケースでは、pickle から出力された model.pkl ファイルになります。
 
-   * `-s`: サービス スキーマ。 前の手順で **score_iris.py** スクリプトをローカルに実行したことによって生成されたものです。
+   * `-s`:サービス スキーマ。 前の手順で **score_iris.py** スクリプトをローカルに実行したことによって生成されたものです。
 
-   * `-n`: アプリ名。すべて小文字にする必要があります。
+   * `-n`:アプリ名。すべて小文字にする必要があります。
 
-   * `-r`: モデルのランタイム。 このケースでは、Python モデルになります。 有効なランタイムは `python` と `spark-py` です。
+   * `-r`:モデルのランタイム。 このケースでは、Python モデルになります。 有効なランタイムは `python` と `spark-py` です。
 
-   * `--collect-model-data true`: このスイッチは、データ収集を有効にするものです。
+   * `--collect-model-data true`:このスイッチは、データ収集を有効にするものです。
 
-   * `-c`: 追加のパッケージが指定されている conda 依存関係ファイルのパス。
+   * `-c`:追加のパッケージが指定されている conda 依存関係ファイルのパス。
 
    >[!IMPORTANT]
    >サービス名 (新しい Docker イメージ名) はすべて小文字であることが必要です。 そうしないと、エラーが発生します。 
 
-1. このコマンドを実行すると、環境のセットアップの一環として作成したストレージ アカウントに、モデル ファイルとスコア付けファイルがアップロードされます。 このデプロイ プロセスによって、モデル、スキーマ、スコア付けファイルが含まれた Docker イメージが作成され、Azure Container Registry (**\<ACR_name\>.azurecr.io/\<imagename\>:\<version\>**) にプッシュされます。 
+1. このコマンドを実行すると、環境のセットアップの一環として作成したストレージ アカウントに、モデル ファイルとスコア付けファイルがアップロードされます。 このデプロイ プロセスによって、モデル、スキーマ、スコア付けファイルが含まれた Docker イメージが作成され、Azure コンテナー レジストリ (**\<ACR_name\>.azurecr.io/\<imagename\>:\<version\>**) にプッシュされます。 
 
    さらに、そのイメージがローカルのコンピューターにプルダウンされ、そのイメージに基づいて Docker コンテナーが起動されます。 ご利用の環境がクラスター モードで構成されている場合は、Azure Cloud Services の Kubernetes クラスターに Docker コンテナーがデプロイされます。
 
@@ -351,15 +351,15 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 1. このデータを Azure Blob Storage から取り出して利用することができます。 データは、次のような Microsoft のソフトウェアやオープン ソースの各種ツールで使用できます。
 
-   * Machine Learning: データ ソースとして CSV ファイルを追加して開く。
+   * Machine Learning:データ ソースとして CSV ファイルを追加して開く。
 
-   * Excel: 日々の CSV ファイルをスプレッドシートとして開く。
+   * Excel:日々の CSV ファイルをスプレッドシートとして開く。
 
-   * [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): BLOB の CSV データからプルしたデータを使ってグラフを作成する。
+   * [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/):BLOB の CSV データからプルしたデータを使ってグラフを作成する。
 
-   * [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): CSV データを Hive テーブルに読み込み、BLOB に対して SQL クエリを直接実行する。
+   * [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started):CSV データを Hive テーブルに読み込み、BLOB に対して SQL クエリを直接実行する。
 
-   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): CSV データの大部分を含んだデータフレームを作成する。
+   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview):CSV データの大部分を含んだデータフレームを作成する。
 
       ```python
       var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")

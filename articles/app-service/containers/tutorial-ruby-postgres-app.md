@@ -1,5 +1,5 @@
 ---
-title: Azure App Service on Linux で Ruby および Postgres の Web アプリを構築する | Microsoft Docs
+title: Linux 上の Postgres を使用して Ruby Web アプリを構築する - Azure App Service | Microsoft Docs
 description: Ruby アプリを Azure で動作させて、Azure の PostgreSQL データベースに接続する方法について説明します。
 services: app-service\web
 documentationcenter: ''
@@ -11,21 +11,21 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 925537b3dff852921aad1e74d009e09fc90c394a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 247c4f24869901f0f50b081d8f57b7e3841a8e8a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445078"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271030"
 ---
 # <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres の Web アプリを構築する
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Ruby Web アプリを作成し、PostgreSQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Ruby on Rails](http://rubyonrails.org/) アプリが完成します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Ruby Web アプリを作成し、PostgreSQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Ruby on Rails](https://rubyonrails.org/) アプリが完成します。
 
 ![Azure App Service で動作している Ruby on Rails アプリ](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で PostgreSQL データベースを作成する
@@ -43,7 +43,7 @@ ms.locfileid: "39445078"
 
 * [Git をインストールする](https://git-scm.com/)
 * [Ruby 2.3 をインストールする](https://www.ruby-lang.org/en/documentation/installation/)
-* [Ruby on Rails 5.1 をインストールする](http://guides.rubyonrails.org/v5.1/getting_started.html)
+* [Ruby on Rails 5.1 をインストールする](https://guides.rubyonrails.org/v5.1/getting_started.html)
 * [PostgreSQL をインストールして実行する](https://www.postgresql.org/download/)
 
 ## <a name="prepare-local-postgres"></a>ローカル Postgres を準備する
@@ -92,7 +92,7 @@ bundle install --path vendor/bundle
 
 ### <a name="run-the-sample-locally"></a>ローカルでサンプルを実行する
 
-[Rails の移行](http://guides.rubyonrails.org/active_record_migrations.html#running-migrations)を実行して、アプリケーションで必要なテーブルを作成します。 移行で作成されるテーブルを確認するには、Git レポジトリの _db/migrate_ ディレクトリを調べます。
+[Rails の移行](https://guides.rubyonrails.org/active_record_migrations.html#running-migrations)を実行して、アプリケーションで必要なテーブルを作成します。 移行で作成されるテーブルを確認するには、Git レポジトリの _db/migrate_ ディレクトリを調べます。
 
 ```bash
 rake db:create
@@ -496,7 +496,7 @@ Web アプリの [概要] ページを確認します。 ここでは、停止�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Azure で Postgres データベースを作成する

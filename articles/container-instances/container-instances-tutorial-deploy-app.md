@@ -1,21 +1,21 @@
 ---
-title: Azure Container Instances チュートリアル - アプリのデプロイ
-description: Azure Container Instances チュートリアル 3 / 3 - アプリケーションのデプロイ
+title: チュートリアル - Azure Container Instances にコンテナー アプリをデプロイする
+description: Azure Container Instances チュートリアル 3/3 - Azure Container Instances にコンテナー アプリケーションをデプロイする
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9e8a72564151bea9194ef5180589fa8eae001df5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863722"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191104"
 ---
-# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>チュートリアル: Azure Container Instances へのコンテナーのデプロイ
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>チュートリアル:Azure Container Instances にコンテナー アプリケーションをデプロイする
 
 これは、3 部構成のシリーズの最後のチュートリアルです。 シリーズではこれまで、[コンテナー イメージを作成](container-instances-tutorial-prepare-app.md)して、[Azure Container Registry にプッシュ](container-instances-tutorial-prepare-acr.md)しました。 この記事で Azure Container Instances にコンテナーをデプロイして、このシリーズは完了です。
 

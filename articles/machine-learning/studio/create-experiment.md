@@ -1,13 +1,12 @@
 ---
-title: Machine Learning Studio での簡単な実験 | Microsoft Docs
+title: 簡単な実験 - Azure Machine Learning Studio | Microsoft Docs
 description: この機械学習のチュートリアルでは、簡単なデータ サイエンスの実験手順を説明しています。 回帰アルゴリズムを使用して自動車の価格を予測します。
 keywords: 実験, 線形回帰, 機械学習アルゴリズム, 機械学習チュートリアル, 予測モデリング手法, データ サイエンス実験
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: seodec18
+ms.author: garye
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: 7ee1df8c38ac2dbfc6618febd223d5c4bbf32be6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b3d8aa709fefcf0eb8c16117f62cbe3bab8e319a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425712"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262420"
 ---
-# <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>機械学習チュートリアル: Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
+# <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>チュートリアル:Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
 
 **Azure Machine Learning Studio** の使用経験がない方は、このチュートリアルをご覧ください。
 
@@ -41,7 +40,7 @@ ms.locfileid: "52425712"
 - [Machine Learning の基礎とアルゴリズムの使用例](basics-infographic-with-algorithm-examples.md) - このインフォグラフィックは、Machine Learning Studio に含まれているさまざまな種類の機械学習アルゴリズムの詳細について知りたい場合に役立ちます。
 - [Machine Learning ガイド](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1) - このガイドでは、上記のインフォグラフィックと同様の情報が対話形式で説明されています。
 - [機械学習アルゴリズム チート シート](algorithm-cheat-sheet.md)と [Microsoft Azure Machine Learning のアルゴリズムの選択方法](algorithm-choice.md) - ダウンロードできるこのポスターと付属の記事では、Studio のアルゴリズムについて詳細に説明されています。
-- [Machine Learning Studio: アルゴリズムとモジュールのヘルプ](https://msdn.microsoft.com/library/azure/dn905974.aspx) - 機械学習アルゴリズムなど、Studio の全モジュールの完全なリファレンスです。
+- [Machine Learning Studio:アルゴリズムとモジュールのヘルプ](https://msdn.microsoft.com/library/azure/dn905974.aspx) - 機械学習アルゴリズムなど、Studio の全モジュールの完全なリファレンスです。
 
 
 
@@ -67,25 +66,25 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 この機械学習のチュートリアルでは、Machine Learning Studio で 5 つの基本的なステップに従って、モデルを作成、トレーニング、スコア付けする実験を構築します。
 
 - **モデルの作成**
-    - [手順 1: データを取得する]
-    - [手順 2: データを準備する]
-    - [手順 3: 特徴を定義する]
+    - [手順 1:データを取得する]
+    - [手順 2:データを準備する]
+    - [手順 3:特徴を定義する]
 - **モデルのトレーニング**
-    - [手順 4: 学習アルゴリズムを選択して、適用する]
+    - [手順 4:学習アルゴリズムを選択して、適用する]
 - **モデルのスコア付けとテスト**
-    - [手順 5: 新しい自動車の価格を予測する]
+    - [手順 5:新しい自動車の価格を予測する]
 
-[手順 1: データを取得する]: #step-1-get-data
-[手順 2: データを準備する]: #step-2-prepare-the-data
-[手順 3: 特徴を定義する]: #step-3-define-features
-[手順 4: 学習アルゴリズムを選択して、適用する]: #step-4-choose-and-apply-a-learning-algorithm
-[手順 5: 新しい自動車の価格を予測する]: #step-5-predict-new-automobile-prices
+[手順 1:データを取得する]: #step-1-get-data
+[手順 2:データを準備する]: #step-2-prepare-the-data
+[手順 3:特徴を定義する]: #step-3-define-features
+[手順 4:学習アルゴリズムを選択して、適用する]: #step-4-choose-and-apply-a-learning-algorithm
+[手順 5:新しい自動車の価格を予測する]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
 > [Azure AI Gallery](https://gallery.cortanaintelligence.com)には、次の実験の作業コピーがあります。 「**[初めてのデータ サイエンス実験 - 自動車価格の予測 ](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**」 にアクセスし、**[Open in Studio]\(Studio で開く\)** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
 
 
-## <a name="step-1-get-data"></a>手順 1: データを取得する
+## <a name="step-1-get-data"></a>手順 1:データを取得する
 
 機械学習の実行にはまずデータが必要です。
 使用できるサンプル データセットがいくつか Machine Learning Studio に含まれています。また、多数のソースからデータをインポートできます。 この例では、ワークスペースに含まれているサンプル データセットである**Automobile price data (Raw)** を使用します。
@@ -124,7 +123,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 右上隅の "**x**" をクリックして、視覚化ウィンドウを閉じます。
 
-## <a name="step-2-prepare-the-data"></a>手順 2: データを準備する
+## <a name="step-2-prepare-the-data"></a>手順 2:データを準備する
 
 通常、データセットには、分析前にある程度の前処理が必要です。 たとえば、さまざまな行の中に、値が不足している列があります。 モデルがデータを正しく分析するには、これらの不足値を整理する必要があります。 この例では、値が不足している行をすべて削除します。 また、不足している値の大部分は、**normalized-losses** 列にあります。したがって、モデルからこの列も一緒に除外します。
 
@@ -186,7 +185,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 データが整理できたので、予測モデルで使用する特徴を指定する準備が整いました。
 
-## <a name="step-3-define-features"></a>手順 3: 特徴を定義する
+## <a name="step-3-define-features"></a>手順 3:特徴を定義する
 
 機械学習において 「*特徴*」 とは、関心のある項目を個別に測定できるプロパティです。 この例のデータセットでは、各行が 1 台の車を表し、各列がその車の特徴に対応します。
 
@@ -219,7 +218,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 これにより、フィルター処理されたデータセットが生成されます。このデータセットには、次の手順で使用する学習アルゴリズムに渡す特徴のみが含まれます。 後でこの手順に戻り、別の特徴を選択して再度実行することができます。
 
-## <a name="step-4-choose-and-apply-a-learning-algorithm"></a>手順 4: 学習アルゴリズムを選択して、適用する
+## <a name="step-4-choose-and-apply-a-learning-algorithm"></a>手順 4:学習アルゴリズムを選択して、適用する
 
 データが準備できました。予測モデルの構築に必要なのは、トレーニングとテストです。 このデータを使用してモデルのトレーニングとテストを行い、価格を予測する精度を確認します。
 <!-- For now, don't worry about *why* we need to train and then test a model.-->
@@ -273,7 +272,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 <br/>
 ***実行後の実験の状態***
 
-## <a name="step-5-predict-new-automobile-prices"></a>手順 5: 新しい自動車の価格を予測する
+## <a name="step-5-predict-new-automobile-prices"></a>手順 5:新しい自動車の価格を予測する
 
 これまでにデータの 75% を使用してモデルをトレーニングしました。ここからは残りの 25% のデータにスコアを付け、モデルの精度を確認します。
 
@@ -304,11 +303,11 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 作成したモデルに対して、以下の統計値が表示されます。
 
-- **Mean Absolute Error** (MAE、平均絶対誤差): 絶対誤差の平均です ( *誤差* とは、予測された値と実際の値との差です)。
-- **Root Mean Squared Error** (RMSE、二乗平均平方根誤差): テスト データセットに対して実行した予測の二乗誤差平均の平方根です。
-- **Relative Absolute Error** (相対絶対誤差): 実際の値とすべての実際の値の平均との絶対差を基準にした絶対誤差の平均です。
-- **Relative Squared Error** (相対二乗誤差): 実際の値とすべての実際の値の平均との二乗差を基準にした二乗誤差の平均です。
-- **Coefficient of Determination** (決定係数): **R-2 乗値**ともいいます。どの程度モデルが高い精度でデータと適合するかを示す統計指標です。
+- **Mean Absolute Error** (MAE、平均絶対誤差):絶対誤差の平均です (*誤差* とは、予測された値と実際の値との差です)。
+- **Root Mean Squared Error** (RMSE、二乗平均平方根誤差):テスト データセットに対して実行した予測の二乗誤差平均の平方根です。
+- **Relative Absolute Error** (相対絶対誤差):実際の値とすべての実際の値の平均との絶対差を基準にした絶対誤差の平均です。
+- **Relative Squared Error** (相対二乗誤差):実際の値とすべての実際の値の平均との二乗差を基準にした二乗誤差の平均です。
+- **Coefficient of Determination** (決定係数):**R-2 乗値**ともいいます。どの程度モデルが高い精度でデータと適合するかを示す統計指標です。
 
 この誤差の統計情報は、それぞれ小さいほど良いとされます。 値が小さいほど、予測が実際の値により近いことを示します。 **Coefficient of Determination**では、値が 1 (1.0) に近づくほど、予測の精度が高くなります。
 
