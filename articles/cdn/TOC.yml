@@ -52,7 +52,7 @@ items:
       href: cdn-media-streaming-optimization.md
     - name: 動的サイト アクセラレーション
       href: cdn-dynamic-site-acceleration.md
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: エンドポイントの作成
       href: cdn-create-endpoint-how-to.md
