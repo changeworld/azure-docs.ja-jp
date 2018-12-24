@@ -1,21 +1,22 @@
 ---
-title: Azure Event Hubs データを SQL Data Warehouse に移行する | Microsoft Docs
+title: イベント データを SQL Data Warehouse に移行する - Azure Event Hubs | Microsoft Docs
 description: このチュートリアルでは、Event Grid によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
-ms.date: 08/27/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 9673a7bff8e2d22764be28abef807434c53cc552
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 03ebdabf60882a73eb15cbd36481068591bbd3bc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145112"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086285"
 ---
-# <a name="process-and-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを処理して SQL Data Warehouse に移行する
+# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを SQL Data Warehouse に移行する
 
 Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) は、Event Hubs のストリーミング データを Azure Blob Storage アカウントまたは Azure Data Lake Store に自動的に配信するもっとも簡単な方法です。 その後、データを処理して、SQL Data Warehouse や Cosmos DB などの選択した他の宛先ストレージに配信できます。 このチュートリアルでは、[Event Grid](https://docs.microsoft.com/azure/event-grid/overview) によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
 

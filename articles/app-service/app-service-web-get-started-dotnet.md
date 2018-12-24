@@ -1,6 +1,6 @@
 ---
-title: Azure に C# ASP.NET Core Web アプリを作成する | Microsoft Docs
-description: 既定の C# ASP.NET Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。
+title: C# ASP.NET Core Web アプリを作成する - Azure App Service | Microsoft Docs
+description: 既定の C# ASP.NET Core Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: ad17488c4e1fd5eb3965049b26d3f00270dce50f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.custom: seodec18
+ms.openlocfilehash: 70c24b8aef1672696c0e7d7289e23b98b6b49dfe
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51301035"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341441"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure に ASP.NET Core Web アプリを作成する
 
@@ -104,7 +104,7 @@ Visual Studio で、 **[ファイル]、[新規作成]、[プロジェクト]** 
 | Setting | 推奨値 | 説明 |
 |-|-|-|
 |App Service プラン| myAppServicePlan | App Service プランの名前です。 |
-| Location | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
+| 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
 | サイズ | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
 **[OK]** を選択します。
