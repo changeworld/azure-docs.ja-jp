@@ -82,11 +82,11 @@ CAR (カスタマイズ分析レポート) をここにアップロードしま�
 
 ### <a name="does-solution-enable-translations"></a>Does solution enable translation(s)? (ソリューションで翻訳を有効にしますか?)
 
-\'[はい]\' または \'[いいえ]\' を選択します。
+[はい] または [いいえ] を選択します。
 
 ### <a name="does-solution-include-localizations"></a>Does solution include Localization(s)? (ソリューションにローカライズを含めますか?)
 
-\'[はい]\' または \'[いいえ]\' を選択します。
+[はい] または [いいえ] を選択します。
 
 ### <a name="product-version"></a>製品バージョン
 
