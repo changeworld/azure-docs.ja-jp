@@ -27,13 +27,13 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 属性マッピングの式の構文は、Visual Basic のApplications (VBA) 関数に似ています。
 
 * 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。 <br>
-  *FunctionName(<<引数 1>>,<<argument N>>)*
-* 各関数内で他の関数を入れ子にすることができます。 例:  <br> *FunctionOne (FunctionTwo(<<argument1>>))*
+  *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
+* 各関数内で他の関数を入れ子にすることができます。 例:  <br> *FunctionOne (FunctionTwo(`<<argument1>>`))*
 * 関数には、次の 3 つの異なる種類の引数を渡すことができます。
   
   1. 属性。角かっこで囲む必要があります。 例: [attributeName]
   2. 文字列定数。二重引用符で囲む必要があります。 例: "United States"
-  3. 他の関数 例: FunctionOne(<<argument1>>, FunctionTwo(<<argument2>>))
+  3. 他の関数 例: FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
 * 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 例: "Company name: \"Contoso\""
 
 ## <a name="list-of-functions"></a>関数の一覧
