@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Azure Cosmos DB について
+  - name: Azure Cosmos DB の概要
     href: introduction.md
 - name: クイック スタート
   items:
@@ -192,7 +192,7 @@ items:
       href: compliance.md
 - name: マルチモデルの API
   items:
-  - name: SQL API ドキュメント
+  - name: SQL API
     items:
     - name: モデル ドキュメント データ
       href: modeling-data.md
@@ -296,11 +296,11 @@ items:
         href: /rest/api/cosmos-db/
       - name: REST リソース プロバイダー
         href: /rest/api/cosmos-db-resource-provider/
-  - name: MongoDB API ドキュメント
+  - name: MongoDB API
     items:
     - name: はじめに
       href: mongodb-introduction.md
-    - name: MongoDB のサポート
+    - name: ワイヤ プロトコルのサポート
       href: mongodb-feature-support.md
     - name: チュートリアル
       items:
@@ -346,11 +346,11 @@ items:
         href: mongodb-time-to-live.md
       - name: データのインデックス作成を管理する
         href: mongodb-indexing.md
-  - name: Gremlin API のドキュメント
+  - name: Gremlin API
     items:
     - name: はじめに
       href: graph-introduction.md
-    - name: Gremlin サポート
+    - name: ワイヤ プロトコルのサポート
       href: gremlin-support.md
     - name: チュートリアル
       items:
@@ -362,11 +362,11 @@ items:
         href: bulk-executor-graph-dotnet.md
       - name: グラフ データのパーティション分割
         href: graph-partitioning.md
-  - name: Cassandra API ドキュメント
+  - name: Cassandra API
     items:
     - name: はじめに
       href: cassandra-introduction.md
-    - name: Cassandra のサポート
+    - name: ワイヤ プロトコルのサポート
       href: cassandra-support.md
     - name: チュートリアル
       items:
@@ -400,7 +400,7 @@ items:
         href: cassandra-spark-aggregation-ops.md
       - name: テーブル データをコピーする
         href: cassandra-spark-table-copy-ops.md
-  - name: テーブル API ドキュメント
+  - name: テーブル API
     items:
     - name: はじめに
       href: table-introduction.md
@@ -615,9 +615,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0afac84a08028219e5aa0acdc94ec9775d16c368
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410110"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728025"
