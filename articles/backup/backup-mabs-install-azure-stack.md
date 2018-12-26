@@ -3,23 +3,22 @@ title: Azure Stack への Azure Backup Server のインストール | Microsoft 
 description: Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップします。
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 keywords: Azure Backup Server; ワークロードの保護; ワークロードのバックアップ
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
-ms.author: markgal
-ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: raynew
+ms.openlocfilehash: 1e8c8efa590b6cce4543255dd33afbfd79aecef6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576699"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877169"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -91,7 +90,7 @@ Azure Backup Server の仮想マシンは、ドメインに参加させる必要
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Azure Stack で IaaS VM を使用する
 
-Azure Backup Server のサーバーを選ぶときは、Windows Server 2012 R2 Datacenter または Windows Server 2016 Datacenter のギャラリー イメージから開始します。 推奨される仮想マシンの作成方法については、[Azure Portal で初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 サーバーの仮想マシン (VM) に推奨される最小要件は A2 Standard (2 コア、3.5 GB RAM) です。
+Azure Backup Server のサーバーを選ぶときは、Windows Server 2012 R2 Datacenter または Windows Server 2016 Datacenter のギャラリー イメージから開始します。 推奨される仮想マシンの作成方法については、[Azure Portal で初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 サーバー仮想マシン (VM) に推奨される最小要件はA2 Standard (2 コア、3.5 GB RAM) です。
 
 Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
@@ -356,7 +355,7 @@ Azure サブスクリプションの状態が "*有効期限切れ*" または "
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 Microsoft Azure Backup Server がセットアップ段階 (またはバックアップや復元) でエラーにより失敗した場合は、[エラー コードのドキュメント](https://support.microsoft.com/kb/3041338)を参照してください。
-[Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
+ [Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>次の手順
 
