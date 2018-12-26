@@ -2,26 +2,26 @@
 title: Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理する
 description: PowerShell を使用して Azure で Resource Manager によりデプロイされた VM のバックアップをデプロイおよび管理する
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 10/20/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 855a046425f051739f61c74b551d4ffea7b9120a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 814afb8731f8e4da3d3cbc75ef69c3b5da487914
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252362"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877872"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>PowerShell を使用して仮想マシンをバックアップし、復元する
 
 この記事では、Azure PowerShell コマンドレットを使用して Recovery Services コンテナーに Azure 仮想マシン (VM) をバックアップする方法と Recovery Services コンテナーから Azure 仮想マシンを回復する方法について説明します。 Recovery Services コンテナーは、Azure Backup サービスと Azure Site Recovery サービスでデータと資産を保護するために使用される Azure Resource Manager のリソースです。 
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります: [Resource Manager デプロイ モデルとクラシック デプロイ モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルで作成された VM を対象とします。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager モデルで作成された VM を対象とします。
 >
 >
 
@@ -40,7 +40,7 @@ AzureRm.RecoveryServices.Backup PowerShell コマンドレット リファレン
 
 開始するには
 
-1. [最新バージョンの PowerShell をダウンロードします](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (バージョン 1.4.0 以降が必要)。
+1. [最新バージョンの PowerShell をダウンロードします](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (必要な最小バージョンは1.4.0 です)
 
 2. 以下のコマンドを入力して、使用可能な Azure Backup の PowerShell コマンドレットを検索します。
    
@@ -54,7 +54,7 @@ AzureRm.RecoveryServices.Backup PowerShell コマンドレット リファレン
 3. **Connect-AzureRmAccount** を使用して Azure アカウントにサインインします。 このコマンドレットを実行すると、アカウントの資格情報を入力する Web ページが表示されます。
 
     * または、**-Credential** パラメーターを使用して、**Connect-AzureRmAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含められます。
-    * CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 たとえば、「**Connect-AzureRmAccount -Tenant "fabrikam.com"**」と入力します。
+    * CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 例: **Connect-AzureRmAccount -Tenant "fabrikam.com"**
 
 4. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
 

@@ -3,7 +3,7 @@ title: クラウド データベースにまたがる分散トランザクショ
 description: Azure SQL Database を使用した Elastic Database トランザクションの概要
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 02cf72bf9fe06993ef859d1789983b7611c8472e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2418de5c20c34ae82ad36a914955fb338afd2822
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257471"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877186"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>クラウド データベースにまたがる分散トランザクション
 Azure SQL Database (SQL DB) のエラスティック データベース トランザクションは、SQL DB 内の複数のデータベースにまたがるトランザクションを実行する機能です。 SQL DB の Elastic Database トランザクションは、.NET アプリケーションから ADO .NET を介して利用できます。[System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。 ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) をご覧ください。
@@ -30,8 +30,8 @@ Azure SQL Database (SQL DB) のエラスティック データベース トラ�
 SQL DB のエラスティック データベース トランザクションの特長は、複数の異なる SQL Database に格納されているデータに対して不可分な変更をアプリケーションから実行できることです。 プレビュー版では、C# と .NET によるクライアント側の開発に重点が置かれています。 T-SQL を使用したサーバー側の開発も今後予定されています。  
 エラスティック データベース トランザクションが想定しているシナリオは次のとおりです。
 
-* Azure におけるマルチデータベース アプリケーション: このシナリオでは、データが垂直にパーティション分割され、SQL DB 内の複数のデータベースに格納されます (各データベースに異なる種類のデータが格納されます)。 場合によっては、特定の操作で変更対象となるデータが複数のデータベースにまたがって保存されていることがあります。 そこでアプリケーションからエラスティック データベース トランザクションを使用し、複数のデータベースに対する変更を調整し、原子性 (不可分な状態) を維持します。
-* Azure におけるシャード化されたデータベース アプリケーション: このシナリオでは、データ層で [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)または自己シャーディングを使用して、SQL DB 内の複数のデータベースに対して水平にデータをパーティション分割します。 シャーディングされたマルチテナント アプリケーションで、不可分な変更を複数のテナントにまたがって実行しなければならないケースはその代表的な事例です。 たとえば、異なるデータベースに存在している 2 つのテナント間の転送が考えられます。 もう 1 つの事例としては、大規模なテナントの容量のニーズに応えるために、きめ細かなシャーディングを行うケースです。当然、同じテナント用の複数のデータベースに、不可分な操作を分散させる必要があります。 また、複数のデータベースにレプリケートされた参照データに対して不可分な更新を行うケースもあります。 こうした境界に沿って複数のデータベースに対して行う不可分なトランザクション操作が、このプレビュー機能によって調整できるようになりました。
+* Azure におけるマルチデータベース アプリケーション:このシナリオでは、データが垂直にパーティション分割され、SQL DB 内の複数のデータベースに格納されます (各データベースに異なる種類のデータが格納されます)。 場合によっては、特定の操作で変更対象となるデータが複数のデータベースにまたがって保存されていることがあります。 そこでアプリケーションからエラスティック データベース トランザクションを使用し、複数のデータベースに対する変更を調整し、原子性 (不可分な状態) を維持します。
+* Azure におけるシャード化されたデータベース アプリケーション:このシナリオでは、データ層で [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)または自己シャーディングを使用して、SQL DB 内の複数のデータベースに対して水平にデータをパーティション分割します。 シャーディングされたマルチテナント アプリケーションで、不可分な変更を複数のテナントにまたがって実行しなければならないケースはその代表的な事例です。 たとえば、異なるデータベースに存在している 2 つのテナント間の転送が考えられます。 もう 1 つの事例としては、大規模なテナントの容量のニーズに応えるために、きめ細かなシャーディングを行うケースです。当然、同じテナント用の複数のデータベースに、不可分な操作を分散させる必要があります。 また、複数のデータベースにレプリケートされた参照データに対して不可分な更新を行うケースもあります。 こうした境界に沿って複数のデータベースに対して行う不可分なトランザクション操作が、このプレビュー機能によって調整できるようになりました。
   エラスティック データベース トランザクションは、2 フェーズ コミットを使用することで、データベース間のトランザクションの原子性を確保しています。 1 回のトランザクションの中で同時に扱うデータベースが 100 個未満のトランザクションには、この方法が適しています。 これらの制限に強制力はありませんが、制限を超えたときにエラスティック データベース トランザクションのパフォーマンスと成功率に生じる影響を見込んでおくことが必要です。
 
 ## <a name="installation-and-migration"></a>インストールと移行
@@ -122,18 +122,18 @@ Azure App Services では、ゲスト OS のアップグレードは現在サポ
 
 次の PowerShell コマンドレットを使って、エラスティック データベースのトランザクション用のサーバー間通信リレーションシップを管理できます。
 
-* **New-AzureRmSqlServerCommunicationLink**: Azure SQL DB において 2 つの論理サーバー間に新しい通信リレーションシップを構築できます。 リレーションシップは対象です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
-* **Get-AzureRmSqlServerCommunicationLink**: 既存の通信リレーションシップとそのプロパティを取得します。
-* **Remove-AzureRmSqlServerCommunicationLink**: 既存の通信リレーションシップを削除します。 
+* **New-AzureRmSqlServerCommunicationLink**:このコマンドレットを使用して Azure SQL DB で 2 つの論理サーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対象です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
+* **Get-AzureRmSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
+* **Remove-AzureRmSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップを削除します。 
 
 ## <a name="monitoring-transaction-status"></a>トランザクションの状態の監視
-現在実行されているエラスティック データベース トランザクションの状態と進行状況は、SQL DB の動的管理ビュー (DMV) を使用して監視します。 トランザクションに関連したすべての DMV は、SQL DB の分散トランザクションにとって重要となります。 対応する DMV の一覧については、 [トランザクション関連の動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)を参照してください。
+現在実行されているエラスティック データベース トランザクションの状態と進行状況は、SQL DB の動的管理ビュー (DMV) を使用して監視します。 トランザクションに関連したすべての DMV は、SQL DB の分散トランザクションにとって重要となります。 対応する DMV の一覧については、「[トランザクション関連の動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)」を参照してください。
 
 次の DMV が特に重要となります。
 
-* **sys.dm\_tran\_active\_transactions**: 現在アクティブなトランザクションとその状態を一覧表示します。 同じ分散トランザクションに属している子トランザクションは、UOW (Unit Of Work: 作業単位) 列で確認できます。 同じ分散トランザクションに属しているトランザクションはすべて同じ UOW 値を共有します。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms174302.aspx)をご覧ください。
-* **sys.dm\_tran\_database\_transactions**: トランザクションに関する追加情報 (ログにおけるトランザクションの位置など) が表示されます。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms186957.aspx)をご覧ください。
-* **sys.dm\_tran\_locks**: 現在実行中のトランザクションによって保持されているロックの情報が表示されます。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms190345.aspx)をご覧ください。
+* **sys.dm\_tran\_active\_transactions**:現在アクティブなトランザクションとその状態を一覧表示します。 同じ分散トランザクションに属している子トランザクションは、UOW (Unit Of Work: 作業単位) 列で確認できます。 同じ分散トランザクションに属しているトランザクションはすべて同じ UOW 値を共有します。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms174302.aspx)をご覧ください。
+* **sys.dm\_tran\_database\_transactions**:トランザクションに関する追加情報 (ログにおけるトランザクションの位置など) が表示されます。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms186957.aspx)をご覧ください。
+* **sys.dm\_tran\_locks**:実行中のトランザクションによって現在保持されているロックの情報が表示されます。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms190345.aspx)をご覧ください。
 
 ## <a name="limitations"></a>制限事項
 SQL DB のエラスティック データベース トランザクションには現在、次の制限が適用されます。

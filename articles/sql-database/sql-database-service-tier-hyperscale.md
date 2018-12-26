@@ -12,21 +12,26 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 526b6ac9c510b13461181d76c0032602d8f3f435
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 80e807a8fcbd6c087ad0995a4481180fa28ef42f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377984"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872892"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>最大 100 TB のハイパースケール サービス レベル (プレビュー)
+
+Azure SQL Database は、インフラストラクチャに障害が発生した場合でも 99.99% の可用性を確保するために、クラウド環境に合わせて調整された SQL Server データベース エンジン アーキテクチャに基づいています。 Azure SQL Database で使用されているアーキテクチャ モデルは 3 つあります。
+- General Purpose/Standard 
+- Business Critical/Premium
+- ハイパースケール
 
 Azure SQL Database の Hyperscale サービス レベルは、仮想コアベースの購入モデルにおける最新のサービス レベルです。 このサービス レベルは、拡張性の高いストレージおよびコンピューティング パフォーマンス レベルであり、Azure のアーキテクチャを利用して、General Purpose および Business Critical サービス レベルの制限を大きく超えて、Azure SQL Database 用のストレージおよびコンピューティング リソースをスケールアウトします。
 
 > [!IMPORTANT]
 > ハイパースケール サービス レベルは現在パブリック プレビュー段階であり、一部の Azure リージョンのみで使用できます。 完全なリージョンの一覧については、[ハイパースケール サービス レベル対応リージョン](#available-regions)をご覧ください。 ハイパースケール データベースで本番用のワークロードを実行することは、現時点ではお勧めしません。 ハイパースケール データベースを他のサービス レベルに更新することはできません。 テスト用として、現在のデータベースのコピーを作成し、そのコピーをハイパースケール サービス レベルに更新することをお勧めします。
 > [!NOTE]
-> 仮想コアベースの購入モデルでの General Purpose サービス レベルと Business Critical サービス レベルについて詳しくは、「[General Purpose and Business Critical service tiers](sql-database-service-tiers-general-purpose-business-critical.md)」(General Purpose サービス レベルと Business Critical サービス レベル) をご覧ください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-service-tiers.md)に関する記事をご覧ください。
+> 仮想コアベースの購入モデルでの General Purpose サービス レベルと Business Critical サービス レベルの詳細については、[General Purpose](sql-database-service-tier-general-purpose.md) サービス レベルと [Business Critical](sql-database-service-tier-business-critical.md) サービス レベルの記事を参照してください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-service-tiers.md)に関する記事をご覧ください。
 > [!IMPORTANT]
 > ハイパースケール サービス レベルは現在パブリック プレビュー段階です。 ハイパースケール データベースで本番用のワークロードを実行することは、現時点ではお勧めしません。 ハイパースケール データベースを他のサービス レベルに更新することはできません。 テスト用として、現在のデータベースのコピーを作成し、そのコピーをハイパースケール サービス レベルに更新することをお勧めします。
 
@@ -142,7 +147,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 ## <a name="available-regions"></a>対応リージョン
 
-ハイパースケール サービス レベルは現在パブリック プレビュー段階であり、EastUS1、EastUS2、WestUS2、CentralUS、NorthCentralUS、WestEurope、NorthEurope、UKWest、AustraliaEast、AustraliaSouthEast、SouthEastAsia、JapanEast、KoreaCentral の Azure リージョンで入手できます。
+ハイパースケール サービス レベルは現在パブリック プレビュー段階であり、次の Azure リージョンで使用できます。EastUS1、EastUS2、WestUS2、CentralUS、NorthCentralUS、WestEurope、NorthEurope、UKWest、AustraliaEast、AustraliaSouthEast、SouthEastAsia、JapanEast、KoreaCentral
 
 ## <a name="known-limitations"></a>既知の制限事項
 
@@ -159,6 +164,6 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 - ハイパースケールの FAQ については、[ハイパースケールに関するよくあるご質問](sql-database-service-tier-hyperscale-faq.md)をご覧ください。
 - サービス レベルについては、[サービス レベル](sql-database-service-tiers.md)に関するページをご覧ください
-- サーバーおよびサブスクリプション レベルの制限については詳しくは、[論理サーバーでのリソース制限の概要](sql-database-resource-limits-logical-server.md)に関するページをご覧ください。
+- サーバーおよびサブスクリプション レベルの制限については、[論理サーバー上のリソース制限の概要](sql-database-resource-limits-logical-server.md)に関するページをご覧ください。
 - 単一データベースの購入モデルの制限について詳しくは、「[Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](sql-database-vcore-resource-limits-single-databases.md)」をご覧ください。
 - 機能比較一覧については、[SQL 共通機能](sql-database-features.md)に関する記事をご覧ください。

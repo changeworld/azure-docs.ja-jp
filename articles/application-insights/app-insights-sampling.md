@@ -9,17 +9,16 @@ ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 7fca6ffa9efa3eed9f7c74ee89ad8bb9651494bb
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 103f4b10d5fbb7fbcf9c3721a82fe4075abe0dc4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044707"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877617"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -35,7 +34,7 @@ ms.locfileid: "48044707"
 * サンプリングはまた、ネットワーク トラフィックも削減するために、ポータルでは [使用量と推定コスト] ページ、ASP.NET SDK では .config ファイル、Java SDK では ApplicationInsights.xml ファイルのいずれかで手動で設定することもできます。
 * カスタム イベントをログに記録していて、イベントのセットがまとめて保持または破棄されていることを確認したい場合は、同じ OperationId 値があることを確認します。
 * サンプリング除数 *n* は、`itemCount` プロパティでレコードごとに報告されます。この値は、"要求カウント" または "イベント数" というわかりやすい名前で検索結果に表示されます。 サンプリング操作が行われていない場合、`itemCount==1` となります。
-* Analytics クエリを作成する場合は、 [サンプリングを考慮する](../log-analytics/query-language/aggregations.md)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
+* Analytics クエリを作成する場合は、 [サンプリングを考慮する](../azure-monitor/log-query/aggregations.md)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
 
 ## <a name="types-of-sampling"></a>サンプリングの種類
 現在は 3 つのサンプリング メソッドがあります。
@@ -207,7 +206,7 @@ SDK ベースのアダプティブ サンプリングまたは固定レート �
 ### <a name="configuring-fixed-rate-sampling-in-aspnet"></a>ASP.NET での固定レート サンプリングの構成 ###
 
 1. **プロジェクトの NuGet パッケージ**を Application Insights の最新の*プレリリース* バージョンに更新します。 Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選びます。**[プレリリースを含める]** をオンにして、Microsoft.ApplicationInsights.Web を検索します。 
-2. **アダプティブ サンプリングを無効にする**: [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で、`AdaptiveSamplingTelemetryProcessor` ノードを削除するか、コメントにします。
+2. **アダプティブ サンプリングを無効にする**:[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で、`AdaptiveSamplingTelemetryProcessor` ノードを削除するか、コメントにします。
    
     ```xml
    
@@ -264,7 +263,7 @@ SDK ベースのアダプティブ サンプリングまたは固定レート �
         <IncludedType>Exception</IncludedType>
     </IncludedTypes>
 ```
-サンプリングに含めたり、サンプリングから除外したりできるテレメトリの種類は、依存関係、イベント、例外、ページ ビュー、要求、およびトレースです。
+サンプリングに含めたり、サンプリングから除外したりできるテレメトリの種類は、依存関係、イベント、例外、ページビュー、要求、およびトレースです。
 
 > [!NOTE]
 > サンプリング率には、N を整数として 100/N に近い割合を選択します。  サンプリングでは現在、その他の値はサポートされていません。

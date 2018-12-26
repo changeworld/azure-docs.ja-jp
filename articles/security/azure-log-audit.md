@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e2dabc66a906d35525f51bf9a1c09b62430ded55
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a1e9647e64556a7c7f2444fa2711a2eb61d230a3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434009"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874585"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 
@@ -147,7 +147,7 @@ Azure AD の監査レポートのイベントは、180 日間保持されます�
 
 ![Azure 診断を使用する仮想マシン ログ](./media/azure-log-audit/azure-log-audit-fig3.png)
 
-### <a name="azure-virtual-machineshttpsazuremicrosoftcomdocumentationlearning-pathsvirtual-machines-that-are-running-microsoft-windows-and-service-fabrichttpsdocsmicrosoftcomazureservice-fabricservice-fabric-overview"></a>Microsoft Windows および [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) が稼動している [Azure 仮想マシン](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+### <a name="azure-virtual-machineslearnpathsdeploy-a-website-with-azure-virtual-machines-that-are-running-microsoft-windows-and-service-fabrichttpsdocsmicrosoftcomazureservice-fabricservice-fabric-overview"></a>Microsoft Windows および [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) が稼動している [Azure 仮想マシン](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
 
 仮想マシンで Azure 診断を有効にするには、次のいずれかを実行します。
 
@@ -187,9 +187,9 @@ Storage Analytics では、次の種類の認証済み要求と匿名要求が�
 ### <a name="azure-networking-logs"></a>Azure のネットワーク ログ
 Azure でのネットワーク ログおよび監視が指す意味は広く、大まかに次の 2 つのカテゴリを対象としています。
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): シナリオベースのネットワーク監視は、Network Watcher の機能を使用して実現できます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
+* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher):シナリオベースのネットワーク監視は、Network Watcher の機能を使用して実現できます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
 
-* [リソース監視](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): リソース レベルの監視は、診断ログ、メトリック、トラブルシューティング、リソース正常性という 4 つの機能で構成されています。 これらの機能はすべて、ネットワーク リソース レベルで構築されています。
+* [リソース監視](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring):リソース レベルの監視は、診断ログ、メトリック、トラブルシューティング、リソース正常性という 4 つの機能で構成されています。 これらの機能はすべて、ネットワーク リソース レベルで構築されています。
 
 ![Azure のネットワーク ログ](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -219,19 +219,19 @@ Network Watcher には、診断ログ ビューが用意されています。 �
 
 
 Network Watcher には現在、前述のログ機能に加えて、次の機能があります。
-- [トポロジ](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): リソース グループ内のネットワーク リソース間のさまざまな相互接続および関連付けを表示するネットワーク レベルのビューが用意されています。
+- [トポロジ](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview):リソース グループ内のネットワーク リソース間のさまざまな相互接続および関連付けを表示するネットワーク レベルのビューが用意されています。
 
-- [可変パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): 仮想マシンで送受信されるパケット データをキャプチャします。 詳細なフィルター オプションときめ細やかなコントロール (時間やサイズの制限の設定など) により、多様性が備わっています。 パケット データは、*.cap* ファイル形式で BLOB ストアまたはローカル ディスクに保管できます。
+- [可変パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview):仮想マシンで送受信されるパケット データをキャプチャします。 詳細なフィルター オプションときめ細やかなコントロール (時間やサイズの制限の設定など) により、多様性が備わっています。 パケット データは、*.cap* ファイル形式で BLOB ストアまたはローカル ディスクに保管できます。
 
-* [IP フロー検証](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): フロー情報の 5 タプル パケット パラメーター (つまり、宛先 IP、送信元 IP、宛先ポート、送信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがセキュリティ グループにより拒否された場合、そのパケットを拒否した規則とグループが返されます。
+* [IP フロー検証](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview):フロー情報の 5 タプル パケット パラメーター (つまり、宛先 IP、送信元 IP、宛先ポート、送信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがセキュリティ グループにより拒否された場合、そのパケットを拒否した規則とグループが返されます。
 
-* [次ホップ](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Azure ネットワーク ファブリックにおけるルーティング対象パケットの次ホップを特定します。これにより、誤って構成されたユーザー定義のルートを診断できます。
+* [次ホップ](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview):Azure ネットワーク ファブリックにおけるルーティング対象パケットの次ホップを特定します。これにより、誤って構成されたユーザー定義のルートを診断できます。
 
-* [セキュリティ グループ ビュー](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) - VM に適用されている有効な適用セキュリティ規則を確認できます。
+* [セキュリティ グループ ビュー](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview):VM に適用されている有効な適用セキュリティ規則を確認できます。
 
-* [仮想ネットワーク ゲートウェイと接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): 仮想ネットワーク ゲートウェイと接続のトラブルシューティングに役立ちます。
+* [Virtual Network ゲートウェイと接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest):仮想ネットワーク ゲートウェイと接続のトラブルシューティングに役立ちます。
 
-* [ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
+* [ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits):ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -245,25 +245,25 @@ Application Insights は、パフォーマンスと使いやすさを継続的�
 
 Application Insights は、開発チーム用のツールであり、アプリのパフォーマンスや使用状況を把握できるように支援します。 以下を監視します。
 
-* **要求率、応答時間、およびエラー率**: 最も人気のあるページがどの時間帯にどの場所のユーザーからアクセスされているかを調べます。 最もパフォーマンスの高いページを確認します。 要求が増えると応答時間と失敗率が高くなる場合は、リソースに問題がある可能性があります。
+* **要求率、応答時間、および失敗率**:最も人気の高いページ、時刻、およびユーザーの場所がわかります。 最もパフォーマンスの高いページを確認します。 要求が増えると応答時間と失敗率が高くなる場合は、リソースに問題がある可能性があります。
 
-* **依存率、応答時間、およびエラー率**: 外部サービスによって応答が遅くなっているかどうかを調べます。
+* **依存率、応答時間、および失敗率**:外部サービスによって動作速度が遅くなっているかどうかがわかります。
 
-* **例外**: 集計された統計を分析します。または特定のインスタンスを選択し、スタック トレースと関連する要求を調べます。 サーバーとブラウザーの両方の例外が報告されます。
+* **例外**:集計された統計を分析します。または特定のインスタンスを選択し、スタック トレースと関連する要求を調べます。 サーバーとブラウザーの両方の例外が報告されます。
 
-* **ページ ビューと読み込みのパフォーマンス**: ユーザーのブラウザーからレポートを取得します。
+* **ページ ビューと読み込みのパフォーマンス**:ユーザーのブラウザーからレポートを取得します。
 
-* **AJAX 呼び出し**: Web ページのレート、応答時間、およびエラー率。
+* **AJAX 呼び出し**:Web ページのレート、応答時間、およびエラー率を取得します。
 
 * **ユーザー数とセッション数**。
 
-* **パフォーマンス カウンター**: Windows または Linux サーバー マシンからデータ (CPU、メモリ、ネットワーク使用率など) を取得します。
+* **パフォーマンス カウンター**:Windows または Linux サーバー マシンからデータ (CPU、メモリ、ネットワーク使用率など) を取得します。
 
-* **ホスト診断**: Docker または Azure からデータを取得します。
+* **ホスト診断**:Docker または Azure からデータを取得します。
 
-* **診断トレース ログ**: トレース イベントを要求に関連付けることができるように、アプリからデータを取得します。
+* **診断トレース ログ**:トレース イベントを要求に関連付けることができるように、アプリからデータを取得します。
 
-* **カスタム イベントとメトリック**: 販売された品目や勝利したゲームなどのビジネス イベントを追跡するためにクライアントまたはサーバーのコード内に書き込んだデータを取得します。
+* **カスタム イベントとメトリック**:販売された品目や勝利したゲームなどのビジネス イベントを追跡するためにクライアントまたはサーバーのコード内に書き込んだデータを取得します。
 
 次の表は、統合シナリオとその説明の一覧です。
 
@@ -288,11 +288,11 @@ Azure Security Center の脅威検出は、Azure のリソース、ネットワ�
 
 Security Center には、シグネチャ ベースの手法とは比較にならない高度なセキュリティ分析が採用されています。 これは、大規模なデータおよび[機械学習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)テクノロジに比較的進歩をもたらし、クラウド ファブリック全体でイベントを評価します。 このように、手作業に頼った手法や攻撃の進化を予測する手法では特定できない脅威も検出できます。 こうしたセキュリティ分析の例を次に示します。
 
-* **統合された脅威インテリジェンス**: グローバルな脅威インテリジェンスを適用して、既知の有害因子を探します。情報源としては、Microsoft 製品とサービス、Microsoft Digital Crimes Unit (DCU)、Microsoft Security Response Center (MSRC)、外部フィードがあります。
+* **統合された脅威インテリジェンス**:グローバルな脅威インテリジェンスを適用して、既知の有害因子を探します。情報源としては、Microsoft 製品とサービス、Microsoft Digital Crimes Unit (DCU)、Microsoft Security Response Center (MSRC)、外部フィードがあります。
 
-* **行動分析**: 既知のパターンを適用することによって悪質な行動を検出します。
+* **行動分析**:既知のパターンを適用することによって悪質な行動を検出します。
 
-* **異常検出**: 統計プロファイルを使用して、過去のベースラインを構築します。 確立された基準からの逸脱に、攻撃ベクトルとの一致が疑われる場合、警告が生成されます。
+* **異常検出**:統計プロファイルを使用して、過去のベースラインを構築します。 確立された基準からの逸脱に、攻撃ベクトルとの一致が疑われる場合、警告が生成されます。
 
 セキュリティ操作およびインシデント対応チームの多くが、SIEM ソリューションを、セキュリティ警告のトリアージと調査の開始点として使用します。 Azure Log Integration を使用すると、Security Center のアラートや、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントを Log Analytics または SIEM ソリューションとほぼリアルタイムで同期させることができます。
 
@@ -367,24 +367,24 @@ Log Integration では現在、Azure アクティビティ ログ、Windows 仮�
 |診断ログ (リソース ログ)|  [はい]|
 |VM ログ|   はい (JSON 経由ではなく転送されたイベントの場合)|
 
-[Azure Log Integration の使用](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started): このチュートリアルでは、Azure Log Integration のインストールに加え、Azure Storage のログ、Azure アクティビティ ログ、Azure Security Center アラート、Azure AD 監査ログの統合について説明します。
+[Azure Log Integration の使用](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started):このチュートリアルでは、Azure Log Integration のインストールに加え、Azure Storage のログ、Azure アクティビティ ログ、Azure Security Center アラート、Azure AD 監査ログの統合について説明します。
 
 SIEM の統合シナリオ:
 
-* [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/): このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure ログ統合を構成する方法について説明します。
+* [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/):このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure Log Integration を構成する方法について説明します。
 
-* [Azure ログ統合の FAQ](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq): この記事は、Azure ログ統合について寄せられる質問とその回答です。
+* [Azure Log Integration の FAQ](https://docs.microsoft.com/azure/security/security-azure-log-integration-faq):この記事は、Azure ログ統合について寄せられる質問とその回答です。
 
-* [Security Center アラートと Azure Log Integration の統合](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration): この記事では、Security Center アラート、Azure 診断ログで収集された仮想マシンのセキュリティ イベント、Azure 監査ログを Log Analytics または SIEM ソリューションと同期させる方法について説明します。
+* [Security Center アラートと Azure Log Integration の統合](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration):この記事では、Security Center アラート、Azure 診断ログで収集された仮想マシンのセキュリティ イベント、Azure 監査ログを Log Analytics または SIEM ソリューションと同期させる方法について説明します。
 
 ## <a name="next-steps"></a>次の手順
 
-- [監査とログ](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview): 可視性の維持と、タイムリーなセキュリティ アラートへの迅速な対応により、データを保護します。
+- [監査とログ記録](https://docs.microsoft.com/azure/security/security-management-and-monitoring-overview):可視性の維持と、タイムリーなセキュリティ アラートへの迅速な対応により、データを保護します。
 
-- [Azure 内でのセキュリティ ログと監査ログの収集](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/): Azure インスタンスで適切なセキュリティ ログと監査ログが収集されるようにこれらの設定を適用します。
+- [Azure 内でのセキュリティ ログと監査ログの収集](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/):Azure インスタンスで適切なセキュリティ ログと監査ログが収集されるようにこれらの設定を適用します。
 
-- [サイト コレクションの監査設定を構成する](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): サイト コレクションの管理者の場合、個々のユーザーのアクションの履歴と特定の期間内に行われたアクションの履歴を取得します。 
+- [サイト コレクションの監査設定を構成する](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US):サイト コレクションの管理者の場合、個々のユーザーのアクションの履歴と特定の期間内に行われたアクションの履歴を取得します。 
 
-- [Office 365 セキュリティ/コンプライアンス センターで監査ログを検索する](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): Office 365 セキュリティ/コンプライアンス センターを使用して統合監査ログを検索し、Office 365 の組織のユーザーと管理者のアクティビティを表示できます。
+- [Office 365 セキュリティ/コンプライアンス センターで監査ログを検索する](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US):Office 365 セキュリティ/コンプライアンス センターを使用して統合監査ログを検索し、Office 365 の組織のユーザーと管理者のアクティビティを表示できます。
 
 

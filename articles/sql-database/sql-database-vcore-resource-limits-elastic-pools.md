@@ -3,7 +3,7 @@ title: Azure SQL Database の仮想コアベースのリソース制限 - エラ
 description: このページでは、Azure SQL Database のエラスティック プールに対するいくつかの一般的な仮想コアベースのリソース制限について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pool
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6673fa9d377400d7e80fc95dc7d0ce12f4b2e60e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: f41974c6e2b2b0565f0a2703cfd638777a6bb9eb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354174"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878025"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限
 
@@ -33,7 +33,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 > [!NOTE]
 > エラスティック プール内の個々のデータベースのリソース制限は、一般的に同じコンピューティング サイズのプール外の単一のデータベースのリソース制限と同じです。 たとえば、GP_Gen4_1 データベースの最大同時実行ワーカー数は 200 ワーカーです。 そのため、GP_Gen4_1 プール内のデータベースの最大の同時実行ワーカー数も 200 ワーカーです。 GP_Gen4_1 プールの同時実行ワーカーの総数は 210 です。
 
-## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>汎用サービス レベル: ストレージ サイズとコンピューティング サイズ
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>General Purpose サービス レベル:ストレージ サイズとコンピューティング サイズ
 
 ### <a name="generation-4-compute-platform"></a>第 4 世代コンピューティング プラットフォーム
 
@@ -85,7 +85,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 |||
 
-## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Business Critical サービス レベル: ストレージ サイズとコンピューティング サイズ
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Business Critical サービス レベル:ストレージ サイズとコンピューティング サイズ
 
 ### <a name="generation-4-compute-platform"></a>第 4 世代コンピューティング プラットフォーム
 

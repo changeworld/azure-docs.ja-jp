@@ -1,11 +1,11 @@
 ---
-title: Azure AI ギャラリー コンペティション | Microsoft Docs
-description: Azure AI ギャラリーでコンペティションを発見します。
+title: ギャラリーのコンペティション - Azure Machine Learning Studio | Microsoft Docs
+description: Azure AI ギャラリーでコンペティションを発見します。 複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う、絶好の機会を提供します。
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
+author: ericlicoding
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: ef74f411-bce4-4b02-aa34-902fc8d7b519
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: bfc2f40231b5e28ffa3721eef70311da8dcb6da9
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 5d38205ca614fef2ea9c10e9ad2fb94bdf3481cc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51343670"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277796"
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでコンペティションを発見する
 
@@ -52,5 +52,5 @@ ms.locfileid: "51343670"
 
 **[ギャラリーにアクセスする >>](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

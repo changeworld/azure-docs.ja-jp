@@ -1,6 +1,6 @@
 ---
-title: インデクサーを使用した Azure Search への Azure SQL Database の接続 | Microsoft Docs
-description: インデクサーを使用して Azure SQL Database から Azure Search インデックスにデータを取得する方法について説明します。
+title: Azure SQL Database に接続し、インデクサーを使用してコンテンツのインデックスを作成する - Azure Search
+description: Azure Search でのフルテキスト検索用のインデクサーを使用して Azure SQL Database 内でデータをクロールする方法について説明します。 この記事では、接続、インデクサーの構成、およびデータの取り込みについて説明します。
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,14 +9,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 28b72f63360b4ce323c1cd82b11c2798b1fbc2ff
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245649"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313396"
 ---
-# <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>インデクサーを使用した Azure Search への Azure SQL Database の接続
+# <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Azure SQL Database に接続し、Azure Search インデクサーを使用してコンテンツのインデックスを作成する
 
 [Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Search インデックスにデータを入力する必要があります。 データが Azure SQL Database に存在する場合は、**Azure SQL Database 用 Azure Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
 
@@ -34,7 +35,7 @@ Azure SQL データベースだけでなく、Azure Searchでは [Azure Cosmos D
 * スケジュールに従ってデータ ソースの変更とインデックスを更新する。
 * 必要に応じて実行し、インデックスを更新する。
 
-1 つのインデクサーで使用できるのは、1 つのテーブルまたはビューのみですが、複数の検索インデックスを設定する必要がある場合は、複数のインデクサーを作成することができます。 概念については、「[インデクサー操作: 一般的なワークフロー](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow)」をご覧ください。
+1 つのインデクサーで使用できるのは、1 つのテーブルまたはビューのみですが、複数の検索インデックスを設定する必要がある場合は、複数のインデクサーを作成することができます。 概念について詳しくは、[インデクサー操作の一般的なワークフロー](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow)に関する記事をご覧ください。
 
 Azure SQL インデクサーのセットアップと構成には次を使用できます。
 
@@ -284,7 +285,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 ## <a name="mapping-between-sql-and-azure-search-data-types"></a>SQL データ型と Azure Search データ型間のマッピング
 | SQL データ型 | ターゲット インデックス フィールドに許可される型 | メモ |
 | --- | --- | --- |
-| ビット |Edm.Boolean、Edm.String | |
+| bit |Edm.Boolean、Edm.String | |
 | int、smallint、tinyint |Edm.Int32、Edm.Int64、Edm.String | |
 | bigint |Edm.Int64、Edm.String | |
 | real、float |Edm.Double、Edm.String | |
@@ -292,14 +293,14 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 | char、nchar、varchar、nvarchar |Edm.String<br/>Collection(Edm.String) |SQL 文字列が JSON 文字列配列 `["red", "white", "blue"]` を表している場合、その SQL 文字列を使用して、Collection(Edm.String) フィールドを設定できます |
 | smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String | |
 | uniqueidentifer |Edm.String | |
-| 地理 |Edm.GeographyPoint |型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 |
+| geography |Edm.GeographyPoint |型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 |
 | rowversion |該当なし |行バージョン列は検索インデックスに保存できませんが、変更追跡に利用できます。 |
 | time、timespan、binary、varbinary、image、xml、geometry、CLR 型 |該当なし |サポートされていません |
 
 ## <a name="configuration-settings"></a>構成設定
 SQL インデクサーが公開している構成設定をいくつか次に示します。
 
-| Setting | データ型 | 目的 | 既定値 |
+| 設定 | データ型 | 目的 | 既定値 |
 | --- | --- | --- | --- |
 | queryTimeout |string |SQL クエリ実行のタイムアウトを設定します |5 分 ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |bool |高基準ポリシーが使用する SQL クエリで ORDER BY 句が省略されます。 [高基準値ポリシー](#HighWaterMarkPolicy)に関するセクションをご覧ください |false |
@@ -314,19 +315,19 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
 
 ## <a name="faq"></a>FAQ
 
-**Q: Azure の IaaS VM で実行する SQL Database で Azure SQL インデクサーを使用できますか?**
+**Q: Azure 上の IaaS VM で実行される SQL データベースで Azure SQL インデクサーを使用できますか?**
 
 はい。 ただし、Search サービスに対してデータベースへの接続を許可する必要があります。 詳細については、「[Azure VM での Azure Search インデクサーから SQL Server への接続の構成](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)」を参照してください。
 
-**Q: オンプレミスで実行する SQL Database で Azure SQL インデクサーを使用できますか?**
+**Q: オンプレミスで実行される SQL データベースで Azure SQL インデクサーを使用できますか?**
 
-直接無効にすることはできません。 直接接続は推奨もサポートもされません。これを行うには、インターネット トラフィックに対してデータベースを開く必要があります。 Azure Data Factory などのブリッジ テクノロジを使用してこのシナリオで成功した事例があります。 詳しくは、「[Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)」を参照してください。
+直接的にはできません。 直接接続は推奨もサポートもされません。これを行うには、インターネット トラフィックに対してデータベースを開く必要があります。 Azure Data Factory などのブリッジ テクノロジを使用してこのシナリオで成功した事例があります。 詳しくは、「[Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)」を参照してください。
 
-**Q: Azure の IaaS で実行している SQL Server 以外のデータベースで Azure SQL インデクサーを使用できますか?**
+**Q: Azure 上の IaaS で実行される SQL Server 以外のデータベースで Azure SQL インデクサーを使用できますか?**
 
 いいえ。 SQL Server 以外のデータベースではインデクサーをテストしていないので、このシナリオはサポートされません。  
 
-**Q: スケジュールに従って実行する複数のインデクサーを作成できますか?**
+**Q: スケジュールに従って実行される複数のインデクサーを作成できますか?**
 
 はい。 ただし、1 つのノードで一度に実行できるインデクサーは 1 つだけです。 複数のインデクサーを同時に実行する必要がある場合は、複数の検索単位に検索サービスを拡大することを検討してください。
 
@@ -338,7 +339,7 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
 
 一概には言えません。 テーブルまたはビューのインデックスの完全作成の場合、セカンダリ レプリカを使用できます。 
 
-インデックスの増分作成の場合、Azure Search では 2 つの変更検出ポリシーをサポートしています。1 つは SQL 統合変更追跡ポリシーで、もう 1 つは高基準値ポリシーです。
+Azure Search では、増分インデックス作成用に、SQL 統合変更追跡と高基準値という 2 つの変更検出ポリシーがサポートされています。
 
 読み取り専用のレプリカでは、SQL データベースは統合変更追跡に対応しません。 そのため、高基準値ポリシーを使用する必要があります。 
 
