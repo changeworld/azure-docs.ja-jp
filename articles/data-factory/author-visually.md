@@ -110,9 +110,9 @@ Azure Repos を組織の Active Directoryに接続する方法について詳し
 
 ![同期または発行してコードを変更](media/author-visually/sync-publish.png)
 
-機能ブランチでの機能開発によって準備ができたら、**[プル要求の作成]** をクリックできます。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、プル要求の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
+機能ブランチでの機能開発によって準備ができたら、**[pull request の作成]** をクリックできます。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、pull request の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
 
-![新しいプル要求を作成する](media/author-visually/create-pull-request.png)
+![新しい pull request を作成する](media/author-visually/create-pull-request.png)
 
 ## <a name="configure-publishing-settings"></a>発行の設定を構成する
 
