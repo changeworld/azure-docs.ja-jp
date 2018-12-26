@@ -96,7 +96,7 @@ Log Analytics のクエリに基づくアラート ルールは現在、[一元�
 | カスタム フィールド                | ワークスペースの **[詳細設定]** メニュー。 |
 | カスタム ログ                  | ワークスペースの **[詳細設定]** メニュー。 |
 | syslog                       | ワークスペースの **[詳細設定]** メニュー。 |
-| Application Insights         | Log Analytics と Application Insights が同じデータ エンジンを共有するようになったことから、このソリューションは非推奨となっています。  |
+| Application Insights         | Log Analytics と Application Insights が同じデータ エンジンを共有するようになったことから、このソリューションは廃止となっています。  |
 | Windows ファイルの追跡        | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/automation-change-tracking.md)」を参照してください。 |
 | Windows レジストリの追跡        | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/automation-change-tracking.md)」を参照してください。 |
 | Linux ファイルの追跡          | Azure Automation の **[変更追跡]** メニュー。 詳細については、「[Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する](../../automation/automation-change-tracking.md)」を参照してください。 |
