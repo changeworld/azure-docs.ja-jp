@@ -1,10 +1,7 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET API、SDK、およびリソース | Microsoft Docs'
+title: 'Azure Cosmos DB: SQL .NET API、SDK、およびリソース'
 description: リリース日、提供終了日、Azure Cosmos DB .NET SDK の各バージョン間の変更など、SQL .NET API と SDK に関するあらゆる詳細を提供します。
-services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
@@ -12,14 +9,14 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7f8af635eb7d5449a242f3a7708d865c13bb448
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 715d67a30bbf2c6d1f50ed7c10a013c0d421f48b
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162808"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337939"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API 用の Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
@@ -30,7 +27,7 @@ ms.locfileid: "52162808"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -50,6 +47,24 @@ ms.locfileid: "52162808"
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1 プレビュー
+* パブリック プレビュー用の .NET SDK の[バージョン 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) のプレビュー 1。
+* 対象は .NET Standard です。.NET Framework 4.6.1 以降および .NET Core 2.0 以降をサポートします。
+* 最上位レベルの CosmosClient と関連する CosmosDatabases、CosmosContainers、および CosmosItems の各クラスとの間でメソッドが分割される新しいオブジェクト モデルです。 
+* ストリームをサポートします。 
+* 状態コードを返し、応答が返されない場合にのみ例外を返すようにサーバーからの CosmosResponseMessage を更新しました。 
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* ダイレクト/TCP トランスポート診断のために、SDK の内部例外の種類である TransportException を追加しました。 例外メッセージ内に存在する場合、この種類は、クライアント接続の問題のトラブルシューティングに関する追加情報を出力します。
+
+* HttpClient 要求を送信するために使用する HTTP ハンドラー スタックである HttpMessageHandler を受け取る新しいコンストラクターのオーバーロードを追加しました (HttpClientHandler など)。
+
+* null 値を持つヘッダーが正しく処理されていなかったバグを修正しました。
+
+* コレクション キャッシュ検証を改善しました。
+
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
 * System.Net.Security を 4.3.2 に更新しました。
@@ -172,7 +187,7 @@ ms.locfileid: "52162808"
 * 特定の条件で自動フェールオーバーするために SDK の耐障害性を改善しました。
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* WebException を時々発生させる問題 (リモート名を解決できなかった) を修正しました。
+* "リモート名を解決できませんでした" という WebException を時々発生させる問題を修正しました。
 * ReadDocumentAsync API に新しいオーバーロードを追加することで、型指定されたドキュメントを直接読み取るサポートを追加しました。
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -217,7 +232,7 @@ ms.locfileid: "52162808"
 * さまざまなバグを修正しました。
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* 次の NotFoundException の原因となった問題が修正されました。認証トークンは現在の時刻で無効です。 地理的に分散したアカウントの読み取り領域にクエリを実行すると、例外が発生する場合があります。
+* "The read session is not available for the input session token (入力セッション トークンでは読み取りセッションを使用できません)" という NotFoundException の原因となった問題が修正されました。 地理的に分散したアカウントの読み取り領域にクエリを実行すると、例外が発生する場合があります。
 * ResourceResponse クラスで公開されている ResponseStream により、応答から基になるストリームへの直接アクセスが有効になります。
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
@@ -225,7 +240,7 @@ ms.locfileid: "52162808"
 * カスタム オブジェクトの JsonSerializerSettings をデータのシリアル化に使用するときにパーティション キー ヘッダーの形式が正しくなくなる原因となっていた問題を修正しました。
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* 実行時間の長いクエリがエラーのために失敗した原因となった問題を修正しました。認証トークンは現在の時刻で無効です。
+* 実行時間の長いクエリが、"Authorization token is not valid at the current time (認証トークンは現在の時刻で無効です)" というエラーのために失敗する原因となっていた問題を修正しました。
 * クロス パーティションの TOP クエリおよび ORDER BY クエリから元の SqlParameterCollection を削除する問題が修正されました。
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
@@ -335,6 +350,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
 | [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |
 | [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |

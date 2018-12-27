@@ -1,5 +1,5 @@
 ---
-title: コグニティブ検索パイプラインにスキルセットを作成する (Azure Search) | Microsoft Docs
+title: コグニティブ検索パイプラインにスキルセットを作成する - Azure Search
 description: データの抽出、自然言語処理、または画像分析のステップを定義して、データから構造化された情報を抽出および強化して、Azure Search で使用できるようにします。
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 997b106f748a2f18e8141f77f3b9ff8bb6b9d971
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.custom: seodec2018
+ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268024"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320797"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>エンリッチメント パイプラインにスキルセットを作成する方法
 
@@ -29,7 +30,7 @@ ms.locfileid: "36268024"
 
 + 1 つのインデクサーで使用できるスキルセットは 1 つのみです。
 + 1 つのスキルセットには、スキルが少なくとも 1 つ必要です。
-+ 同じ種類のスキルを複数作成できます (画像分析スキルのバリアントなど) が、各スキルは 1 つのスキルセット内で 1 回のみ使用できます。
++ 同じ種類のスキルを複数作成できます (画像分析スキルのバリアントなど)。
 
 ## <a name="begin-with-the-end-in-mind"></a>目的を念頭に置いて始める
 

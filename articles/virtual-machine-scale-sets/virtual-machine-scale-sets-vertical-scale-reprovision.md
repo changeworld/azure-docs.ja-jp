@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 8080cdf78333eed9541311ba67221c713341a21a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b961dadbe8743f1485ef0d13a44a1bb0f3ce32b5
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741574"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321377"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用した垂直方向の自動スケール
 この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 スケール セットにない VM の垂直方向のスケーリングについては、「[Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
@@ -84,7 +84,7 @@ Runbook をインポートしたら、仮想マシン スケール セットか�
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>仮想マシン スケール セットにアラートを追加する
-仮想マシン スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Insights の自動スケールの一般的なメトリック](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)」をご覧ください。
+仮想マシン スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」をご覧ください。
 
 ```
 $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
@@ -120,7 +120,7 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 アラートを作成する方法について詳しくは、次の記事を参照してください。
 
 * [Azure Monitor の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* [Azure Monitor クロスプラットフォーム CLI のクイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
+* [Azure Monitor クロスプラットフォーム CLI のクイック スタート サンプル](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>まとめ
 この記事では、簡単な垂直スケーリングの例を示しました。 これらの構成要素 (Automation アカウント、Runbook、Webhook、アラート) を使用して、さまざまなイベントを、カスタマイズされた一連のアクションで接続できます。

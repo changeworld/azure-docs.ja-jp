@@ -451,7 +451,7 @@ ParityLog_CL
 
 ### <a name="ssh-access"></a>SSH アクセス
 
-セキュリティ上の理由から、既定では、SSH ポートのアクセスはネットワーク グループ セキュリティ ルールによって 拒否されます。 PoA ネットワークで仮想マシン インスタンスにアクセスするには、このルールを [許可] に変更する必要があります
+セキュリティ上の理由から、既定では、SSH ポートのアクセスはネットワーク グループ セキュリティ ルールによって 拒否されます。 PoA ネットワークで仮想マシン インスタンスにアクセスするには、このルールを \"[許可]\" に変更する必要があります
 
 1.  まず、Azure portal で、デプロイされているリソース グループの [概要] セクションを選択します。
 
@@ -461,15 +461,15 @@ ParityLog_CL
 
     ![SSH の NSG](./media/ethereum-poa-deployment/ssh-nsg.png)
 
-3.  [allow-ssh] ルールを選択します
+3.  \"[allow-ssh]\" ルールを選択します
 
     ![ssh-allow](./media/ethereum-poa-deployment/ssh-allow.png)
 
-4.  [アクション] を [許可] に変更します
+4.  \"[アクション]\" を [許可] に変更します
 
     ![SSH 有効化を許可](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-5.  [保存] をクリックします (変更が適用されるまでに数分かかることがあります)
+5.  \"[保存]\" をクリックします (変更が適用されるまでに数分かかることがあります)
 
 これで、指定した管理者ユーザー名とパスワード/SSH キーを利用して、SSH 経由でバリデーター ノードの仮想マシンにリモート接続できます。
 1 番目の検証コントロール ノードにアクセスするために実行する SSH コマンドは、'SSH\_TO\_FIRST\_VL\_NODE\_REGION1' (サンプル デプロイの場合は ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com) というテンプレート デプロイ出力パラメーターに指定されています。 トランザクション ノードを追加するには、ポート番号を 1 ずつ増やします (たとえば、最初のトランザクション ノードはポート 4000 です)。
@@ -490,7 +490,7 @@ Traffic Manager プロファイルを作成すると、プロファイルの DNS
 
 #### <a name="creating-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 
-Azure portal で [Create a resource]\(リソースの作成\) ボタンをクリックした後に、[Traffic Manager プロファイル] を検索して選択します。
+Azure portal で \"[Create a resource]\(リソースの作成\)\" ボタンをクリックした後に、\"[Traffic Manager プロファイル]\" を検索して選択します。
 
 ![Azure Traffic Manager の検索](./media/ethereum-poa-deployment/traffic-manager-search.png)
 
